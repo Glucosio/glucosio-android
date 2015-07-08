@@ -1,2 +1,2 @@
 # android
-The OpenGlucose Android App
+The Glucosio Android App
