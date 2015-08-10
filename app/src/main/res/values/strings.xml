@@ -1,7 +1,22 @@
 <resources>
     <string name="app_name">Glucosio</string>
-
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_hello">HelloActivity</string>
+
+    <string name="title_activity_hello">Hello.</string>
+    <string name="helloactivity_headline">Hello.</string>
+    <string name="helloactivity_subhead">We just need a few quick things before getting you started.</string>
+    <string name="helloactivity_language">Preferred language</string>
+    <string-array name="helloactivity_language_list">
+        <item>English (US)</item>
+    </string-array>
+    <string name="helloactivity_age">Age</string>
+    <string name="helloactivity_gender">Gender</string>
+    <string-array name="helloactivity_gender_list">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
+    <string name="helloactivity_share_data">Share anonymous data for research.</string>
+    <string name="helloactivity_hint_settings">You can change these in settings later.</string>
+    <string name="helloactivity_button">GET STARTED ></string>
 </resources>
