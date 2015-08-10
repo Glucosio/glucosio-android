@@ -1,9 +1,11 @@
-package org.glucosio.android;
+package org.glucosio.android.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import org.glucosio.android.R;
 
 public class MainActivity extends AppCompatActivity {
 
