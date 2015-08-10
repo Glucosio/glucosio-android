@@ -2,5 +2,9 @@
 
 <resources>
     <color name="glucosio_pink">#E84579</color>
+    <color name="glucosio_pink_dark">#C23965</color>
     <color name="glucosio_accent">#F0D04C</color>
+    <color name="glucosio_gray_light">#D1D1D1</color>
+    <color name="glucosio_text">#323232</color>
+    <color name="glucosio_text_dark">#000000</color>
 </resources>
