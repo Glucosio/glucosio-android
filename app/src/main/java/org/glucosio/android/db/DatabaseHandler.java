@@ -22,6 +22,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_ID="id";
     private static final String KEY_NAME="name";
     private static final String KEY_PREF_LANG="preferred_language";
+    private static final String KEY_PREF_COUNTRY="country";
     private static final String KEY_AGE="age";
     private static final String KEY_GENDER="gender";
 
@@ -34,7 +35,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATE_USER_TABLE="CREATE TABLE "+TABLE_USER
                 +KEY_ID+" INTEGER PRIMARY KEY,"+KEY_NAME+" TEXT,"
-                +KEY_PREF_LANG+" TEXT,"+KEY_AGE+" TEXT,"+KEY_GENDER+" INTEGER";
+                +KEY_PREF_LANG+" TEXT,+KEY_PREF_COUNTRY+" TEXT,"+KEY_AGE+" TEXT,"+KEY_GENDER+" INTEGER";
         db.execSQL(CREATE_USER_TABLE);
     }
 
@@ -50,6 +51,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         ContentValues values=new ContentValues();
         values.put(KEY_NAME,user.get_name());
         values.put(KEY_PREF_LANG,user.get_preferredLanguage());
+        values.put(KEY_PREF_COUNTRY,user.get_country());
         values.put(KEY_AGE,user.get_age());
         values.put(KEY_GENDER, user.is_gender());
         db.insert(TABLE_USER, null, values);
@@ -58,12 +60,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public User getUser(int id)
     {
         SQLiteDatabase db=this.getReadableDatabase();
-        Cursor cursor=db.query(TABLE_USER,new String[] { KEY_ID,KEY_NAME,KEY_PREF_LANG,KEY_AGE,KEY_GENDER},KEY_ID+"=?",null,null,null,null);
+        Cursor cursor=db.query(TABLE_USER,new String[] { KEY_ID,KEY_NAME,KEY_PREF_LANG,KEY_PREF_COUNTRY,KEY_AGE,KEY_GENDER},KEY_ID+"=?",null,null,null,null);
         if(cursor!=null) {
             cursor.moveToFirst();
         }
-            User user=new User(Integer.parseInt(cursor.getString(0)),cursor.getString(1),cursor.getString(2)
-                                ,Integer.parseInt(cursor.getString(3)),Boolean.parseBoolean(cursor.getString(3)));
+            User user=new User(Integer.parseInt(cursor.getString(0)),cursor.getString(1),cursor.getString(2),cursor.getString(3)
+                                ,Integer.parseInt(cursor.getString(4)),Boolean.parseBoolean(cursor.getString(5)));
 
         return user;
     }
@@ -80,8 +82,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 user.set_id(Integer.parseInt(cursor.getString(0)));
                 user.set_name(cursor.getString(1));
                 user.set_preferredLanguage(cursor.getString(2));
-                user.set_age(Integer.parseInt(cursor.getString(3)));
-                user.set_gender(Boolean.parseBoolean(cursor.getString(4)));
+                user.set_country(cursor.getString(3));
+                user.set_age(Integer.parseInt(cursor.getString(4)));
+                user.set_gender(Boolean.parseBoolean(cursor.getString(5)));
                 userLists.add(user);
             }while(cursor.moveToNext());
         }
@@ -101,6 +104,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         ContentValues values=new ContentValues();
         values.put(KEY_NAME,user.get_name());
         values.put(KEY_PREF_LANG,user.get_preferredLanguage());
+        values.put(KEY_PREF_COUNTRY,user.get_country());
         values.put(KEY_AGE,user.get_age());
         values.put(KEY_GENDER, user.is_gender());
         return db.update(TABLE_USER,values,KEY_ID+" =? ",new String[]{ String.valueOf(user.get_id()) });
