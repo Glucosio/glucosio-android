@@ -38,7 +38,7 @@ public class HelloActivity extends AppCompatActivity {
         setContentView(R.layout.activity_hello);
 
         db = new DatabaseHandler(this);
-        id = 0; // Id is always 0. We don't support multi-user (for now :D).
+        id = 1; // Id is always 1. We don't support multi-user (for now :D).
         name = "Test Account"; //TODO: add input for name;
 
         languageSpinner = (LabelledSpinner) findViewById(R.id.helloactivity_spinner_language);
