@@ -17,7 +17,7 @@
         android:textSize="@dimen/abc_text_size_subhead_material"
         android:textColor="@color/glucosio_text"
         android:paddingTop="16dp"/>
-    <Spinner
+    <android.support.v7.widget.AppCompatSpinner
         android:id="@+id/helloactivity_spinner_language"
         android:layout_marginTop="32dp"
         android:prompt="@string/helloactivity_language"

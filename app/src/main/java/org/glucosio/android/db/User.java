@@ -9,6 +9,7 @@ public class User {
     int _id;
     String _name;
     String _preferred_language;
+    String _country;
     int _age;
     boolean _gender;
 
@@ -17,11 +18,12 @@ public class User {
 
     }
 
-    public User(int id, String name,String preferred_language,int age,boolean gender)
+    public User(int id, String name,String preferred_language, String country, int age,boolean gender)
     {
         this._id=id;
         this._name=name;
         this._preferred_language=preferred_language;
+        this._country=country;
         this._age=age;
         this._gender=gender;
     }
@@ -44,6 +46,16 @@ public class User {
     public void set_name(String name)
     {
         this._name=name;
+    }
+
+    public String get_country()
+    {
+        return this._country;
+    }
+
+    public void set_country(String country)
+    {
+        this._country=country;
     }
 
     public String get_preferredLanguage()
