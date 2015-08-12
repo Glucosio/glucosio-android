@@ -81,6 +81,16 @@ public class User {
         this._gender=gender;
     }
 
+    public String gender(int gender_id)
+    {
+        String[] enums={"Male","Female","Others"};
+        try{
+         return   enums[gender_id+1];
+        }
+        catch(ArrayIndexOutOfBoundsException e){
+            return "";
+        }
+    }
 
 
 

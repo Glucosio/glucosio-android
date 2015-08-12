@@ -22,7 +22,7 @@ public class HelloActivity extends AppCompatActivity {
     int age;
     String name;
     String country;
-    String gender;
+    int gender;
     String language;
 
     LabelledSpinner languageSpinner;
@@ -56,7 +56,7 @@ public class HelloActivity extends AppCompatActivity {
     public void onNextClicked(View v){
         if (validateAge()){
             this.age = Integer.parseInt(ageTextView.getText().toString());
-            this.gender = genderSpinner.getSpinner().getSelectedItem().toString();
+            this.gender = Integer.parseInt(genderSpinner.getSpinner().getSelectedItem().toString());
             this.language = languageSpinner.getSpinner().getSelectedItem().toString();
 
             saveToDatabase();
