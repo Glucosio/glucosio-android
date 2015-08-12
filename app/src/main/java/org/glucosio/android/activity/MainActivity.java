@@ -21,14 +21,15 @@ public class MainActivity extends AppCompatActivity {
 
         db = new DatabaseHandler(this);
 
-        checkIfDatabaseExists();
-
         // TODO: Check if we have all users information from database;
-        // If not, display HelloActivity
+        checkIfDatabaseExists();
     }
 
     private void checkIfDatabaseExists(){
-        Toast.makeText(getApplicationContext(), db.getUser(1).toString(), Toast.LENGTH_SHORT).show();
+        //TODO: If database exists do nothing
+        // else
+        startHelloActivity();
+
     }
 
     private void startHelloActivity() {
