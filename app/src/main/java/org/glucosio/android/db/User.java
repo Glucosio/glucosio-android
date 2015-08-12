@@ -8,14 +8,14 @@ public class User {
     String _preferred_language;
     String _country;
     int _age;
-    boolean _gender;
+    String _gender;
 
     public User()
     {
 
     }
 
-    public User(int id, String name,String preferred_language, String country, int age,boolean gender)
+    public User(int id, String name,String preferred_language, String country, int age,String gender)
     {
         this._id=id;
         this._name=name;
@@ -72,11 +72,11 @@ public class User {
     {
         this._age=age;
     }
-    public boolean is_gender()
+    public String is_gender()
     {
         return this._gender;
     }
-    public void set_gender(boolean gender)
+    public void set_gender(String gender)
     {
         this._gender=gender;
     }

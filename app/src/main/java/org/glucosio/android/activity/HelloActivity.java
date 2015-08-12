@@ -12,11 +12,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.glucosio.android.R;
+import org.glucosio.android.db.DatabaseHandler;
+import org.glucosio.android.db.User;
 import org.glucosio.android.tools.LabelledSpinner;
 
 public class HelloActivity extends AppCompatActivity {
 
+    int id;
     int age;
+    String name;
     String country;
     String gender;
     String language;
@@ -26,10 +30,16 @@ public class HelloActivity extends AppCompatActivity {
     TextView ageTextView;
     Button nextButton;
 
+    DatabaseHandler db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hello);
+
+        db = new DatabaseHandler(this);
+        id = 0; // Id is always 0. We don't support multi-user (for now :D).
+        name = "Test Account"; //TODO: add input for name;
 
         languageSpinner = (LabelledSpinner) findViewById(R.id.helloactivity_spinner_language);
         genderSpinner = (LabelledSpinner) findViewById(R.id.helloactivity_spinner_gender);
@@ -48,9 +58,17 @@ public class HelloActivity extends AppCompatActivity {
             this.age = Integer.parseInt(ageTextView.getText().toString());
             this.gender = genderSpinner.getSpinner().getSelectedItem().toString();
             this.language = languageSpinner.getSpinner().getSelectedItem().toString();
+
+            saveToDatabase();
         } else {
             setError(ageTextView, getString(R.string.helloactivity_age_invalid));
         }
+    }
+
+    private void saveToDatabase(){
+        db.addUser(new User(id, name, language, country, age, gender));
+        db.close();
+        finish();
     }
 
     private boolean validateAge(){

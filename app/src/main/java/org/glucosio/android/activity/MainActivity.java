@@ -5,19 +5,30 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import org.glucosio.android.R;
+import org.glucosio.android.db.DatabaseHandler;
 
 public class MainActivity extends AppCompatActivity {
+
+    DatabaseHandler db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        db = new DatabaseHandler(this);
+
+        checkIfDatabaseExists();
+
         // TODO: Check if we have all users information from database;
         // If not, display HelloActivity
-        startHelloActivity();
+    }
+
+    private void checkIfDatabaseExists(){
+        Toast.makeText(getApplicationContext(), db.getUser(1).toString(), Toast.LENGTH_SHORT).show();
     }
 
     private void startHelloActivity() {
