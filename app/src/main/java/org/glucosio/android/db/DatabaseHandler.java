@@ -35,7 +35,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATE_USER_TABLE="CREATE TABLE "+TABLE_USER+" ("
                 +KEY_ID+" INTEGER PRIMARY KEY,"+KEY_NAME+" TEXT,"
-                +KEY_PREF_LANG+" TEXT,"+KEY_PREF_COUNTRY+" TEXT,"+KEY_AGE+" TEXT,"+KEY_GENDER+" TEXT )";
+                +KEY_PREF_LANG+" TEXT,"+KEY_PREF_COUNTRY+" TEXT,"+KEY_AGE+" TEXT,"+KEY_GENDER+" INTEGER )";
         db.execSQL(CREATE_USER_TABLE);
     }
 
@@ -53,7 +53,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_PREF_LANG,user.get_preferredLanguage());
         values.put(KEY_PREF_COUNTRY,user.get_country());
         values.put(KEY_AGE,user.get_age());
-        values.put(KEY_GENDER, user.is_gender());
+        values.put(KEY_GENDER, user.get_gender());
         db.insert(TABLE_USER, null, values);
 
     }
@@ -65,7 +65,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             cursor.moveToFirst();
         }
             User user=new User(Integer.parseInt(cursor.getString(0)),cursor.getString(1),cursor.getString(2),cursor.getString(3)
-                                ,Integer.parseInt(cursor.getString(4)),cursor.getString(5));
+                                ,Integer.parseInt(cursor.getString(4)),Integer.parseInt(cursor.getString(5)));
 
         return user;
     }
@@ -84,7 +84,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 user.set_preferredLanguage(cursor.getString(2));
                 user.set_country(cursor.getString(3));
                 user.set_age(Integer.parseInt(cursor.getString(4)));
-                user.set_gender(cursor.getString(5));
+                user.set_gender(Integer.parseInt(cursor.getString(5)));
                 userLists.add(user);
             }while(cursor.moveToNext());
         }
@@ -106,7 +106,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_PREF_LANG,user.get_preferredLanguage());
         values.put(KEY_PREF_COUNTRY,user.get_country());
         values.put(KEY_AGE,user.get_age());
-        values.put(KEY_GENDER, user.is_gender());
+        values.put(KEY_GENDER, user.get_gender());
         return db.update(TABLE_USER,values,KEY_ID+" =? ",new String[]{ String.valueOf(user.get_id()) });
 
     }

@@ -8,14 +8,14 @@ public class User {
     String _preferred_language;
     String _country;
     int _age;
-    String _gender;
+    int _gender;  //1 male 2 female 3 others
 
     public User()
     {
 
     }
 
-    public User(int id, String name,String preferred_language, String country, int age,String gender)
+    public User(int id, String name,String preferred_language, String country, int age,int gender)
     {
         this._id=id;
         this._name=name;
@@ -72,14 +72,16 @@ public class User {
     {
         this._age=age;
     }
-    public String is_gender()
+    public int get_gender()
     {
         return this._gender;
     }
-    public void set_gender(String gender)
+    public void set_gender(int gender)
     {
         this._gender=gender;
     }
+
+
 
 
 }
