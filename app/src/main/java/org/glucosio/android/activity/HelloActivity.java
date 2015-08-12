@@ -6,16 +6,25 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.glucosio.android.R;
 import org.glucosio.android.tools.LabelledSpinner;
 
 public class HelloActivity extends AppCompatActivity {
 
+    int age;
+    String country;
+    String gender;
+    String language;
+
     LabelledSpinner languageSpinner;
     LabelledSpinner genderSpinner;
     TextView ageTextView;
+    Button nextButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,28 +34,35 @@ public class HelloActivity extends AppCompatActivity {
         languageSpinner = (LabelledSpinner) findViewById(R.id.helloactivity_spinner_language);
         genderSpinner = (LabelledSpinner) findViewById(R.id.helloactivity_spinner_gender);
         ageTextView = (TextView) findViewById(R.id.helloactivity_age);
+        nextButton = (Button) findViewById(R.id.helloactivity_next);
 
         // Populate Spinner with languages list
         languageSpinner.setItemsArray(R.array.helloactivity_language_list);
 
         // Populate Spinner with gender list
         genderSpinner.setItemsArray(R.array.helloactivity_gender_list);
+    }
 
+    public void onNextClicked(View v){
+        if (validateAge()){
+            this.age = Integer.parseInt(ageTextView.getText().toString());
+            this.gender = genderSpinner.getSpinner().getSelectedItem().toString();
+            this.language = languageSpinner.getSpinner().getSelectedItem().toString();
+        } else {
+            setError(ageTextView, getString(R.string.helloactivity_age_invalid));
+        }
     }
 
     private boolean validateAge(){
         if (TextUtils.isEmpty(ageTextView.getText())){
-            setError(ageTextView, getString(R.string.helloactivity_age_invalid));
             return false;
         } else if (!TextUtils.isDigitsOnly(ageTextView.getText())){
-            setError(ageTextView, getString(R.string.helloactivity_age_invalid));
             return false;
         } else {
             int age = Integer.parseInt(ageTextView.getText().toString());
             if (age > 0 && age < 120) {
                 return true;
             } else {
-                setError(ageTextView, getString(R.string.helloactivity_age_invalid));
                 return false;
             }
         }
