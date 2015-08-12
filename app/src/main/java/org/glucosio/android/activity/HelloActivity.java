@@ -1,21 +1,21 @@
 package org.glucosio.android.activity;
 
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
+import android.widget.TextView;
 
 import org.glucosio.android.R;
 import org.glucosio.android.tools.LabelledSpinner;
 
-public class HelloActivity extends AppCompatActivity implements LabelledSpinner.OnItemChosenListener {
+public class HelloActivity extends AppCompatActivity {
 
     LabelledSpinner languageSpinner;
     LabelledSpinner genderSpinner;
+    TextView ageTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,40 +24,42 @@ public class HelloActivity extends AppCompatActivity implements LabelledSpinner.
 
         languageSpinner = (LabelledSpinner) findViewById(R.id.helloactivity_spinner_language);
         genderSpinner = (LabelledSpinner) findViewById(R.id.helloactivity_spinner_gender);
+        ageTextView = (TextView) findViewById(R.id.helloactivity_age);
 
         // Populate Spinner with languages list
-        populateLanguageSpinner();
+        languageSpinner.setItemsArray(R.array.helloactivity_language_list);
 
         // Populate Spinner with gender list
-        populateGenderSpinner();
-
-    }
-
-    private void populateLanguageSpinner() {
-        languageSpinner.setItemsArray(R.array.helloactivity_language_list);
-        languageSpinner.setOnItemChosenListener(this);
-    }
-
-    private void populateGenderSpinner() {
         genderSpinner.setItemsArray(R.array.helloactivity_gender_list);
-        genderSpinner.setOnItemChosenListener(this);
+
     }
 
-
-    @Override
-    public void onItemChosen(View labelledSpinner, AdapterView<?> adapterView, View itemView, int position, long id) {
-        String selectedText = adapterView.getItemAtPosition(position).toString();
-        switch (labelledSpinner.getId()) {
-            case R.id.helloactivity_spinner_language:
-                // Do something here
-                break;
-            // If you have multiple LabelledSpinners, you can add more cases here
+    private boolean validateAge(){
+        if (TextUtils.isEmpty(ageTextView.getText())){
+            setError(ageTextView, getString(R.string.helloactivity_age_invalid));
+            return false;
+        } else if (!TextUtils.isDigitsOnly(ageTextView.getText())){
+            setError(ageTextView, getString(R.string.helloactivity_age_invalid));
+            return false;
+        } else {
+            int age = Integer.parseInt(ageTextView.getText().toString());
+            if (age > 0 && age < 120) {
+                return true;
+            } else {
+                setError(ageTextView, getString(R.string.helloactivity_age_invalid));
+                return false;
+            }
         }
     }
 
-    @Override
-    public void onNothingChosen(View labelledSpinner, AdapterView<?> adapterView) {
-        // Do something here
+    private void setError(TextView view, String text) {
+        TextInputLayout parent = (TextInputLayout) view.getParent();
+        parent.setError(text);
+    }
+
+    private void removeError(TextView view) {
+        TextInputLayout parent = (TextInputLayout) view.getParent();
+        parent.setError(null);
     }
 
 

@@ -39,6 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1">
             <EditText
+                android:id="@+id/helloactivity_age"
                 android:singleLine="true"
                 android:inputType="textCapSentences"
                 android:layout_width="fill_parent"
@@ -59,6 +60,7 @@
         android:layout_marginTop="32dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:checked="true"
         android:text="@string/helloactivity_share_data"/>
     <TextView
         android:layout_marginTop="16dp"
@@ -74,6 +76,5 @@
         android:background="@null"
         android:textColor="@color/glucosio_pink"
         android:layout_gravity="right"/>
-
 
 </LinearLayout>

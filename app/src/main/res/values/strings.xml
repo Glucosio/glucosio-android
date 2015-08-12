@@ -10,6 +10,8 @@
         <item>English (US)</item>
     </string-array>
     <string name="helloactivity_age">Age</string>
+    <string name="helloactivity_age_invalid">Please enter a vaild age.</string>
+
     <string name="helloactivity_gender">Gender</string>
     <string-array name="helloactivity_gender_list">
         <item>Male</item>
@@ -18,5 +20,5 @@
     </string-array>
     <string name="helloactivity_share_data">Share anonymous data for research.</string>
     <string name="helloactivity_hint_settings">You can change these in settings later.</string>
-    <string name="helloactivity_button">GET STARTED ></string>
+    <string name="helloactivity_button">GET STARTED</string>
 </resources>
