@@ -1,7 +1,9 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="32dp"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:paddingLeft="32dp"
     android:paddingRight="32dp"
     android:paddingTop="32dp"
     android:paddingBottom="32dp"
@@ -17,25 +19,25 @@
         android:textSize="@dimen/abc_text_size_subhead_material"
         android:textColor="@color/glucosio_text"
         android:paddingTop="16dp"/>
-    <android.support.v7.widget.AppCompatSpinner
-        android:id="@+id/helloactivity_spinner_language"
-        android:layout_marginTop="32dp"
-        android:prompt="@string/helloactivity_language"
-        android:singleLine="true"
-        android:inputType="textCapSentences"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"/>
+
+        <org.glucosio.android.tools.LabelledSpinner
+            android:id="@+id/helloactivity_spinner_language"
+            android:layout_marginTop="32dp"
+            custom:labelText="@string/helloactivity_language"
+            custom:widgetColor="@color/glucosio_pink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="32dp"
         android:orientation="horizontal"
-        android:layout_weight="2">
+        android:layout_marginTop="32dp"
+        android:weightSum="2">
         <android.support.design.widget.TextInputLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingBottom="32dp">
+            android:layout_weight="1">
             <EditText
                 android:singleLine="true"
                 android:inputType="textCapSentences"
@@ -44,15 +46,14 @@
                 android:textSize="@dimen/abc_text_size_body_2_material"
                 android:hint="@string/helloactivity_age"/>
         </android.support.design.widget.TextInputLayout>
-        <Spinner
-            android:id="@+id/helloactivity_spinner_gender"
-            android:layout_marginTop="32dp"
-            android:prompt="@string/helloactivity_language"
-            android:singleLine="true"
-            android:layout_weight="1"
-            android:inputType="textCapSentences"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"/>
+            <org.glucosio.android.tools.LabelledSpinner
+                android:id="@+id/helloactivity_spinner_gender"
+                android:layout_marginTop="-16dp"
+                android:layout_weight="1"
+                custom:labelText="@string/helloactivity_gender"
+                custom:widgetColor="@color/glucosio_pink"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
     </LinearLayout>
     <CheckBox
         android:layout_marginTop="32dp"

@@ -1,8 +1,5 @@
 package org.glucosio.android.db;
 
-/**
- * Created by ahmar on 10/8/15.
- */
 public class User {
 
 

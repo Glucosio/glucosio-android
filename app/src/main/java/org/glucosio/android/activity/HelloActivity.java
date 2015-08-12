@@ -4,23 +4,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import org.glucosio.android.R;
+import org.glucosio.android.tools.LabelledSpinner;
 
-public class HelloActivity extends AppCompatActivity {
+public class HelloActivity extends AppCompatActivity implements LabelledSpinner.OnItemChosenListener {
 
-    Spinner languageSpinner;
-    Spinner genderSpinner;
+    LabelledSpinner languageSpinner;
+    LabelledSpinner genderSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hello);
 
-        languageSpinner = (Spinner) findViewById(R.id.helloactivity_spinner_language);
-        genderSpinner = (Spinner) findViewById(R.id.helloactivity_spinner_gender);
+        languageSpinner = (LabelledSpinner) findViewById(R.id.helloactivity_spinner_language);
+        genderSpinner = (LabelledSpinner) findViewById(R.id.helloactivity_spinner_gender);
 
         // Populate Spinner with languages list
         populateLanguageSpinner();
@@ -31,26 +34,32 @@ public class HelloActivity extends AppCompatActivity {
     }
 
     private void populateLanguageSpinner() {
-
-        // Create an ArrayAdapter using the string array and a default spinner
-        ArrayAdapter<CharSequence> languagesAdapter = ArrayAdapter
-                .createFromResource(this, R.array.helloactivity_language_list,
-                        android.R.layout.simple_spinner_item);
-
-        languagesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        languageSpinner.setAdapter(languagesAdapter);
+        languageSpinner.setItemsArray(R.array.helloactivity_language_list);
+        languageSpinner.setOnItemChosenListener(this);
     }
 
     private void populateGenderSpinner() {
-
-        // Create an ArrayAdapter using the string array and a default spinner
-        ArrayAdapter<CharSequence> gendersAdapter = ArrayAdapter
-                .createFromResource(this, R.array.helloactivity_gender_list,
-                        android.R.layout.simple_spinner_item);
-
-        gendersAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        genderSpinner.setAdapter(gendersAdapter);
+        genderSpinner.setItemsArray(R.array.helloactivity_gender_list);
+        genderSpinner.setOnItemChosenListener(this);
     }
+
+
+    @Override
+    public void onItemChosen(View labelledSpinner, AdapterView<?> adapterView, View itemView, int position, long id) {
+        String selectedText = adapterView.getItemAtPosition(position).toString();
+        switch (labelledSpinner.getId()) {
+            case R.id.helloactivity_spinner_language:
+                // Do something here
+                break;
+            // If you have multiple LabelledSpinners, you can add more cases here
+        }
+    }
+
+    @Override
+    public void onNothingChosen(View labelledSpinner, AdapterView<?> adapterView) {
+        // Do something here
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
