@@ -56,7 +56,7 @@ public class HelloActivity extends AppCompatActivity {
     public void onNextClicked(View v){
         if (validateAge()){
             this.age = Integer.parseInt(ageTextView.getText().toString());
-            this.gender = Integer.parseInt(genderSpinner.getSpinner().getSelectedItem().toString());
+            this.gender = genderToInt();
             this.language = languageSpinner.getSpinner().getSelectedItem().toString();
 
             saveToDatabase();
@@ -84,6 +84,24 @@ public class HelloActivity extends AppCompatActivity {
                 return false;
             }
         }
+    }
+
+    private int genderToInt(){
+        String genderString = genderSpinner.getSpinner().getSelectedItem().toString();
+        int genderInt;
+        switch (genderString) {
+            case "Male":
+                genderInt = 1;
+                break;
+            case "Female":
+                genderInt = 2;
+                break;
+            default:
+                genderInt = 3;
+                break;
+        }
+
+        return  genderInt;
     }
 
     private void setError(TextView view, String text) {

@@ -9,6 +9,9 @@ import android.widget.Toast;
 
 import org.glucosio.android.R;
 import org.glucosio.android.db.DatabaseHandler;
+import org.glucosio.android.db.User;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,17 +22,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        getSupportActionBar().setElevation(0);
         db = new DatabaseHandler(this);
 
         // TODO: Check if we have all users information from database;
-        checkIfDatabaseExists();
+        loadDatabase();
     }
 
-    private void checkIfDatabaseExists(){
-        //TODO: If database exists do nothing
-        // else
+    private void loadDatabase(){
         startHelloActivity();
-
     }
 
     private void startHelloActivity() {
