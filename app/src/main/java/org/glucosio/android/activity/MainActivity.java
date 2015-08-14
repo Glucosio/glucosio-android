@@ -1,35 +1,48 @@
 package org.glucosio.android.activity;
 
 import android.content.Intent;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
-
 import org.glucosio.android.R;
+import org.glucosio.android.adapter.HomePagerAdapter;
 import org.glucosio.android.db.DatabaseHandler;
+
 
 public class MainActivity extends AppCompatActivity {
 
     DatabaseHandler db;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
+
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+            getSupportActionBar().setElevation(0);
+        }
+
+        viewPager.setAdapter(new HomePagerAdapter(getSupportFragmentManager(), getApplicationContext()));
+        tabLayout.setupWithViewPager(viewPager);
+
         db = new DatabaseHandler(this);
 
         // TODO: Check if we have all users information from database;
-        checkIfDatabaseExists();
+        loadDatabase();
     }
 
-    private void checkIfDatabaseExists(){
-        //TODO: If database exists do nothing
-        // else
-        startHelloActivity();
-
+    private void loadDatabase(){
     }
 
     private void startHelloActivity() {

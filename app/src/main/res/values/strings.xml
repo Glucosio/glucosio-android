@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Glucosio</string>
     <string name="action_settings">Settings</string>
+    <string name="tab_overview">Overview</string>
+    <string name="tab_history">History</string>
+    <string name="tab_tips">Tips</string>
 
     <string name="title_activity_hello">Hello.</string>
     <string name="helloactivity_headline">Hello.</string>
@@ -21,4 +24,6 @@
     <string name="helloactivity_share_data">Share anonymous data for research.</string>
     <string name="helloactivity_hint_settings">You can change these in settings later.</string>
     <string name="helloactivity_button">GET STARTED</string>
+
+    <string name="hello_blank_fragment" translatable="false">Fragment here.</string>
 </resources>
