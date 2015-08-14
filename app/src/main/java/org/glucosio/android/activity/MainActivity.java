@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadDatabase(){
+        startHelloActivity();
     }
 
     private void startHelloActivity() {
