@@ -8,14 +8,18 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
 import org.glucosio.android.R;
 import org.glucosio.android.adapter.HomePagerAdapter;
 import org.glucosio.android.db.DatabaseHandler;
+import org.glucosio.android.db.User;
 
 
 public class MainActivity extends AppCompatActivity {
 
     DatabaseHandler db;
+    User user;
 
 
     @Override
@@ -43,12 +47,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadDatabase(){
-        startHelloActivity();
+        user = db.getUser(1);
+
+        if (user == null){
+            startHelloActivity();
+        } else {
+            Toast.makeText(getApplicationContext(), user.get_preferredLanguage(), Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void startHelloActivity() {
         Intent intent = new Intent(this, HelloActivity.class);
         startActivity(intent);
+        finish();
     }
 
     @Override

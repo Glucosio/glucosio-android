@@ -1,5 +1,6 @@
 package org.glucosio.android.activity;
 
+import android.content.Intent;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -67,7 +68,8 @@ public class HelloActivity extends AppCompatActivity {
 
     private void saveToDatabase(){
         db.addUser(new User(id, name, language, country, age, gender));
-        db.close();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
         finish();
     }
 

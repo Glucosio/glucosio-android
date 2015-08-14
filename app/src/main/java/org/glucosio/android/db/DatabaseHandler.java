@@ -63,12 +63,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Cursor cursor=db.query(TABLE_USER,new String[] { KEY_ID,KEY_NAME,KEY_PREF_LANG,KEY_PREF_COUNTRY,KEY_AGE,KEY_GENDER},KEY_ID+"=?",
                                 new String[]{String.valueOf(id)},null,null,null);
         if(cursor!=null) {
-            cursor.moveToFirst();
-        }
-            User user=new User(Integer.parseInt(cursor.getString(0)),cursor.getString(1),cursor.getString(2),cursor.getString(3)
-                                ,Integer.parseInt(cursor.getString(4)),Integer.parseInt(cursor.getString(5)));
+            if (cursor.moveToFirst()){
+                User user=new User(Integer.parseInt(cursor.getString(0)),cursor.getString(1),cursor.getString(2),cursor.getString(3)
+                        ,Integer.parseInt(cursor.getString(4)),Integer.parseInt(cursor.getString(5)));
 
-        return user;
+                return user;
+            } else {
+                return null;
+            }
+        } else {
+            return null;
+        }
     }
 
     public List<User> getUsers()
@@ -91,6 +96,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
         return userLists;
     }
+
     public int getTotalUsers()
     {
         int usersNumber;
