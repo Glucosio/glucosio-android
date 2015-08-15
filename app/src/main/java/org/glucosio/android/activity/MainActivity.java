@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     DatabaseHandler db;
     User user;
+    int age;
 
 
     @Override
@@ -52,7 +53,8 @@ public class MainActivity extends AppCompatActivity {
         if (user == null){
             startHelloActivity();
         } else {
-            Toast.makeText(getApplicationContext(), user.get_preferredLanguage(), Toast.LENGTH_SHORT).show();
+            age = user.get_age();
+            Toast.makeText(getApplicationContext(), Integer.toString(age), Toast.LENGTH_SHORT).show();
         }
     }
 
