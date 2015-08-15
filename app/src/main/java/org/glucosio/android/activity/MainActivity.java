@@ -1,5 +1,6 @@
 package org.glucosio.android.activity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -8,6 +9,8 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
 import android.widget.Toast;
 
 import org.glucosio.android.R;
@@ -45,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         // TODO: Check if we have all users information from database;
         loadDatabase();
+        startHelloActivity();
     }
 
     private void loadDatabase(){
@@ -62,6 +66,13 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, HelloActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    public void onFabClicked(View v){
+        final Dialog dialog = new Dialog(MainActivity.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_add);
+        dialog.show();
     }
 
     @Override

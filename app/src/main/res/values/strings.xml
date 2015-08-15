@@ -25,5 +25,21 @@
     <string name="helloactivity_hint_settings">You can change these in settings later.</string>
     <string name="helloactivity_button">GET STARTED</string>
 
+    <string name="dialog_add_title">Add Blood Glucose level</string>
+    <string name="dialog_add_concentration">Concentration</string>
+    <string name="dialog_add_concentration_um" translatable="false">mg/dL</string>
+    <string name="dialog_add_date">Date &amp; time</string>
+    <string name="dialog_add_measured">Measured</string>
+    <string-array name="dialog_add_measured_list">
+        <item>Before breakfast</item>
+        <item>After breakfast</item>
+        <item>Before lunch</item>
+        <item>After lunch</item>
+        <item>Before dinner</item>
+        <item>After dinner</item>
+    </string-array>
+    <string name="dialog_add_cancel">CANCEL</string>
+    <string name="dialog_add_add">ADD</string>
+
     <string name="hello_blank_fragment" translatable="false">Fragment here.</string>
 </resources>

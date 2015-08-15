@@ -44,7 +44,8 @@
                 <EditText
                     android:id="@+id/helloactivity_age"
                     android:singleLine="true"
-                    android:inputType="textCapSentences"
+                    android:inputType="number"
+                    android:digits="0123456789"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/abc_text_size_body_2_material"
