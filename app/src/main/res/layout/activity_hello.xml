@@ -39,7 +39,7 @@
             android:weightSum="2">
             <android.support.design.widget.TextInputLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="fill_parent"
                 android:layout_weight="1">
                 <EditText
                     android:id="@+id/helloactivity_age"
@@ -47,17 +47,18 @@
                     android:inputType="number"
                     android:digits="0123456789"
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="fill_parent"
                     android:textSize="@dimen/abc_text_size_body_2_material"
                     android:hint="@string/helloactivity_age"/>
             </android.support.design.widget.TextInputLayout>
                 <org.glucosio.android.tools.LabelledSpinner
                     android:id="@+id/helloactivity_spinner_gender"
-                    android:layout_marginTop="-16dp"
+                    android:layout_marginTop="-17dp"
                     android:layout_weight="1"
                     custom:labelText="@string/helloactivity_gender"
                     custom:widgetColor="@color/glucosio_pink"
                     android:layout_width="0dp"
+                    android:textSize="@dimen/abc_text_size_body_2_material"
                     android:layout_height="wrap_content" />
         </LinearLayout>
         <CheckBox

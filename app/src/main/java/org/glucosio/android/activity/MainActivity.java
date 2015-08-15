@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
 
         // TODO: Check if we have all users information from database;
         loadDatabase();
-        startHelloActivity();
     }
 
     private void loadDatabase(){
