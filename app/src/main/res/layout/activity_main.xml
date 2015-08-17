@@ -38,6 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:onClick="onFabClicked"
+            app:backgroundTint="@color/glucosio_accent"
             android:src="@drawable/ic_add_black_24dp"
             android:layout_gravity="bottom|right"
             />
