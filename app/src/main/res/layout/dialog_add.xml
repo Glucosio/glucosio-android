@@ -10,18 +10,32 @@
         android:textColor="@color/glucosio_text_dark"
         android:textStyle="bold"
         android:textSize="@dimen/abc_text_size_subhead_material"/>
-    <android.support.design.widget.TextInputLayout
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1">
-        <EditText
-            android:id="@+id/dialog_add_concentration"
-            android:singleLine="true"
-            android:inputType="textCapSentences"
-            android:layout_width="fill_parent"
+        android:orientation="horizontal">
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <EditText
+                android:id="@+id/dialog_add_concentration"
+                android:singleLine="true"
+                android:layout_width="fill_parent"
+                android:inputType="textCapSentences"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/abc_text_size_body_2_material"
+                android:hint="@string/dialog_add_concentration"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:gravity="bottom"
+            android:layout_marginBottom="8dp"
+            android:textStyle="bold"
             android:textSize="@dimen/abc_text_size_body_2_material"
-            android:hint="@string/dialog_add_concentration"/>
-    </android.support.design.widget.TextInputLayout>
+            android:text="@string/dialog_add_concentration_um"/>
+    </LinearLayout>
 
 </LinearLayout>
