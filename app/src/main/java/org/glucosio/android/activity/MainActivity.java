@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import org.glucosio.android.R;
@@ -19,11 +20,13 @@ import org.glucosio.android.adapter.HomePagerAdapter;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
 import org.glucosio.android.db.User;
+import org.glucosio.android.tools.LabelledSpinner;
 
 
 public class MainActivity extends AppCompatActivity {
 
     DatabaseHandler db;
+    LabelledSpinner spinnerReadingType;
     User user;
     int age;
 
@@ -63,7 +66,8 @@ public class MainActivity extends AppCompatActivity {
             age = user.get_age();
             Toast.makeText(getApplicationContext(), Integer.toString(age), Toast.LENGTH_SHORT).show();
         }
-        databaseTestings();
+
+        // databaseTestings();
     }
 
     private void databaseTestings()
@@ -75,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
         for (GlucoseReading reading : db.getGlucoseReadings()) {
             Log.i("dbreturn::",String.valueOf(reading.get_user_id()));
         }
-        ;
     }
 
     private void startHelloActivity() {
@@ -85,10 +88,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onFabClicked(View v){
-        final Dialog dialog = new Dialog(MainActivity.this);
+        final Dialog dialog = new Dialog(MainActivity.this, R.style.AppTheme);
+
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(dialog.getWindow().getAttributes());
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_add);
         dialog.show();
+        dialog.getWindow().setAttributes(lp);
+        dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+        dialog.getWindow().setDimAmount(0.5f);
+
+        spinnerReadingType = (LabelledSpinner) dialog.findViewById(R.id.dialog_add_reading_type);
+        spinnerReadingType.setItemsArray(R.array.dialog_add_measured_list);
     }
 
     @Override

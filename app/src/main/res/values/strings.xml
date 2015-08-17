@@ -28,7 +28,8 @@
     <string name="dialog_add_title">Add Blood Glucose level</string>
     <string name="dialog_add_concentration">Concentration</string>
     <string name="dialog_add_concentration_um" translatable="false">mg/dL</string>
-    <string name="dialog_add_date">Date &amp; time</string>
+    <string name="dialog_add_date">Date</string>
+    <string name="dialog_add_time">Time</string>
     <string name="dialog_add_measured">Measured</string>
     <string-array name="dialog_add_measured_list">
         <item>Before breakfast</item>
