@@ -9,4 +9,6 @@
     <color name="glucosio_gray_light">#D1D1D1</color>
     <color name="glucosio_text">#323232</color>
     <color name="glucosio_text_dark">#000000</color>
+    <color name="mdtp_accent_color">@color/glucosio_pink</color>
+    <color name="mdtp_accent_color_dark">@color/glucosio_pink_dark</color>
 </resources>

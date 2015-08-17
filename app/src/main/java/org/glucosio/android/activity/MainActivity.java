@@ -7,15 +7,20 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
+import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
+import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import org.glucosio.android.R;
 import org.glucosio.android.adapter.HomePagerAdapter;
@@ -25,15 +30,16 @@ import org.glucosio.android.db.User;
 import org.glucosio.android.tools.LabelledSpinner;
 import org.w3c.dom.Text;
 
+import java.util.Calendar;
 
-public class MainActivity extends AppCompatActivity {
+
+public class MainActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
     DatabaseHandler db;
     LabelledSpinner spinnerReadingType;
     Dialog addDialog;
     User user;
     int age;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,6 +116,30 @@ public class MainActivity extends AppCompatActivity {
 
         TextView cancelButton = (TextView) addDialog.findViewById(R.id.dialog_add_cancel);
         TextView addButton = (TextView) addDialog.findViewById(R.id.dialog_add_add);
+        TextView addTime = (TextView) addDialog.findViewById(R.id.dialog_add_time);
+        TextView addDate = (TextView) addDialog.findViewById(R.id.dialog_add_date);
+
+        addTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar now = Calendar.getInstance();
+                DatePickerDialog dpd = DatePickerDialog.newInstance(
+                        MainActivity.this,
+                        now.get(Calendar.YEAR),
+                        now.get(Calendar.MONTH),
+                        now.get(Calendar.DAY_OF_MONTH)
+                );
+                dpd.show(getFragmentManager(), "Datepickerdialog");
+            }
+        });
+        addDate.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Calendar now = Calendar.getInstance();
+                TimePickerDialog tpd =  TimePickerDialog.newInstance(MainActivity.this, now.get(Calendar.HOUR_OF_DAY) ,now.get(Calendar.MINUTE), false);
+                tpd.show(getFragmentManager(), "Datepickerdialog");
+            }
+        });
         cancelButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -120,6 +150,22 @@ public class MainActivity extends AppCompatActivity {
 
     public void dialogOnAddButtonPressed(View v){
         //TODO: Add data in database;
+    }
+
+    @Override
+    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute) {
+        TextView addTime = (TextView) addDialog.findViewById(R.id.dialog_add_time);
+
+        String time = +hourOfDay+"h"+minute;
+        addTime.setText(time);
+    }
+
+    @Override
+    public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
+        TextView addDate = (TextView) addDialog.findViewById(R.id.dialog_add_date);
+
+        String date = +dayOfMonth+"/"+(monthOfYear+1)+"/"+year;
+        addDate.setText(date);
     }
 
     @Override
