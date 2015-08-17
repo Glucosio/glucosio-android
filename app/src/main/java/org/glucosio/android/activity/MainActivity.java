@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         TextView addTime = (TextView) addDialog.findViewById(R.id.dialog_add_time);
         TextView addDate = (TextView) addDialog.findViewById(R.id.dialog_add_date);
 
-        addTime.setOnClickListener(new View.OnClickListener() {
+        addDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Calendar now = Calendar.getInstance();
@@ -132,12 +132,12 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                 dpd.show(getFragmentManager(), "Datepickerdialog");
             }
         });
-        addDate.setOnClickListener(new View.OnClickListener(){
+        addTime.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 Calendar now = Calendar.getInstance();
                 TimePickerDialog tpd =  TimePickerDialog.newInstance(MainActivity.this, now.get(Calendar.HOUR_OF_DAY) ,now.get(Calendar.MINUTE), false);
-                tpd.show(getFragmentManager(), "Datepickerdialog");
+                tpd.show(getFragmentManager(), "Timepickerdialog");
             }
         });
         cancelButton.setOnClickListener(new View.OnClickListener(){
