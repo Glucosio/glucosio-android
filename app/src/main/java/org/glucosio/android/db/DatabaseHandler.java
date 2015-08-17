@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION=1;
     private static final String DATABASE_NAME="glucosio_db";
     private static final String TABLE_USER="User";
+    private static final String TABLE_GLUCOSE_READING="glucose_readings";
 
     // columns
     private static final String KEY_ID="id";
@@ -25,6 +27,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_PREF_COUNTRY="country";
     private static final String KEY_AGE="age";
     private static final String KEY_GENDER="gender";
+    private static final String KEY_CREATED_AT="created_at";
+
+    //glucose reading keys
+    private static final String KEY_READING="reading";
+    private static final String KEY_READING_TYPE="reading_type";
+    private static final String KEY_USER_ID="user_id";
 
     public DatabaseHandler(Context context)
     {
@@ -33,15 +41,39 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        createTable(db);
+    }
+
+    public void createTable(SQLiteDatabase db)
+    {
         String CREATE_USER_TABLE="CREATE TABLE "+TABLE_USER+" ("
                 +KEY_ID+" INTEGER PRIMARY KEY,"+KEY_NAME+" TEXT,"
                 +KEY_PREF_LANG+" TEXT,"+KEY_PREF_COUNTRY+" TEXT,"+KEY_AGE+" TEXT,"+KEY_GENDER+" INTEGER )";
+        String CREATE_GLUCOSE_READING_TABLE="CREATE TABLE "+TABLE_GLUCOSE_READING+" ("
+                +KEY_ID+" INTEGER PRIMARY KEY,"+KEY_READING+" TEXT, "+
+                KEY_READING_TYPE+" INTEGER, "+
+                KEY_CREATED_AT+" TIMESTAMP DEFAULT (datetime('now','localtime') ),"
+                +KEY_USER_ID+" INTEGER DEFAULT 1 )";
         db.execSQL(CREATE_USER_TABLE);
+        db.execSQL(CREATE_GLUCOSE_READING_TABLE);
     }
+    public void dropTable(SQLiteDatabase db)
+    {
+        db.execSQL("DROP TABLE IF EXISTS "+TABLE_USER);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_GLUCOSE_READING);
+    }
+
+    public void resetTable()
+    {
+        SQLiteDatabase db=this.getWritableDatabase();
+        dropTable(db);
+        createTable(db);
+    }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS "+TABLE_USER);
+        dropTable(db);
         onCreate(db);
     }
 
@@ -59,6 +91,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
     public User getUser(int id)
     {
+        //resetTable();
+
         SQLiteDatabase db=this.getReadableDatabase();
         Cursor cursor=db.query(TABLE_USER,new String[] { KEY_ID,KEY_NAME,KEY_PREF_LANG,KEY_PREF_COUNTRY,KEY_AGE,KEY_GENDER},KEY_ID+"=?",
                                 new String[]{String.valueOf(id)},null,null,null);
@@ -66,6 +100,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             if (cursor.moveToFirst()){
                 User user=new User(Integer.parseInt(cursor.getString(0)),cursor.getString(1),cursor.getString(2),cursor.getString(3)
                         ,Integer.parseInt(cursor.getString(4)),Integer.parseInt(cursor.getString(5)));
+
 
                 return user;
             } else {
@@ -81,7 +116,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         List<User> userLists=new ArrayList<User>();
         String selectQuery="SELECT * FROM "+TABLE_USER;
         SQLiteDatabase db=this.getReadableDatabase();
-        Cursor cursor=db.rawQuery(selectQuery,null);
+        Cursor cursor=db.rawQuery(selectQuery, null);
         if(cursor.moveToFirst()){
             do{
                 User user=new User();
@@ -102,7 +137,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         int usersNumber;
         String countQuery=" SELECT * from "+TABLE_USER;
         SQLiteDatabase db=this.getReadableDatabase();
-        Cursor cursor=db.rawQuery(countQuery,null);
+        Cursor cursor=db.rawQuery(countQuery, null);
         usersNumber = cursor.getCount();
         cursor.close();
         return usersNumber;
@@ -122,8 +157,51 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void deleteUser(User user)
     {
         SQLiteDatabase db=this.getWritableDatabase();
-        db.delete(TABLE_USER,KEY_ID+" =? ",new String[]{ String.valueOf(user.get_id()) });
+        db.delete(TABLE_USER, KEY_ID + " =? ", new String[]{String.valueOf(user.get_id())});
         db.close();
+    }
+
+    public void addGlucoseReading(GlucoseReading reading)
+    {
+        SQLiteDatabase db=this.getWritableDatabase();
+        ContentValues values=new ContentValues();
+
+        values.put(KEY_READING,reading.get_reading());
+        values.put(KEY_READING_TYPE, reading.get_reading_type());
+        db.insert(TABLE_GLUCOSE_READING, null, values);
+    }
+
+    public void getGlucoseReading()
+    {
+
+    }
+    public void updateGlucoseReading()
+    {
+
+    }
+    public void deleteGlucoseReadings(GlucoseReading reading)
+    {
+        SQLiteDatabase db=this.getWritableDatabase();
+        db.delete(TABLE_GLUCOSE_READING,KEY_ID+" =? ",new String[]{String.valueOf(reading.get_id())});
+    }
+    public List<GlucoseReading> getGlucoseReadings()
+    {
+        List<GlucoseReading> readings=new ArrayList<GlucoseReading>();
+        String selectQuery="select * from glucose_readings";
+        SQLiteDatabase db=this.getReadableDatabase();
+        Cursor cursor=db.rawQuery(selectQuery,null);
+        if(cursor.moveToFirst()){
+          do{
+              GlucoseReading reading=new GlucoseReading();
+              reading.set_id(Integer.parseInt(cursor.getString(0)));
+              reading.set_reading(Double.parseDouble(cursor.getString(1)));
+              reading.set_reading_type(Integer.parseInt(cursor.getString(2)));
+              reading.set_created(cursor.getString(3));
+              reading.set_user_id(Integer.parseInt(cursor.getString(4)));
+              readings.add(reading);
+          }while(cursor.moveToNext());
+        }
+        return readings;
     }
 
 }
