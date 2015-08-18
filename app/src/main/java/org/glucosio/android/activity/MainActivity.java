@@ -166,7 +166,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     }
 
     public void dialogOnAddButtonPressed(){
-        finalDateTime = readingYear+"-"+readingMonth+"-"+readingDay+"T"+readingHour+":"+readingMinute;
+        finalDateTime = readingYear+"-"+readingMonth+"-"+readingDay+" "+readingHour+":"+readingMinute;
         Toast.makeText(getApplicationContext(), finalDateTime, Toast.LENGTH_SHORT).show();
     }
 
