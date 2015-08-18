@@ -30,7 +30,11 @@ import org.glucosio.android.db.User;
 import org.glucosio.android.tools.LabelledSpinner;
 import org.w3c.dom.Text;
 
+import java.sql.Date;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 
 public class MainActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
@@ -40,6 +44,13 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     Dialog addDialog;
     User user;
     int age;
+
+    String readingYear;
+    String readingMonth;
+    String readingDay;
+    String readingHour;
+    String readingMinute;
+    String finalDateTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,9 +83,9 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
         if (user == null){
             startHelloActivity();
+            finish();
         } else {
             age = user.get_age();
-            Toast.makeText(getApplicationContext(), Integer.toString(age), Toast.LENGTH_SHORT).show();
         }
 
         // databaseTestings();
@@ -136,7 +147,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             @Override
             public void onClick(View v){
                 Calendar now = Calendar.getInstance();
-                TimePickerDialog tpd =  TimePickerDialog.newInstance(MainActivity.this, now.get(Calendar.HOUR_OF_DAY) ,now.get(Calendar.MINUTE), false);
+                TimePickerDialog tpd =  TimePickerDialog.newInstance(MainActivity.this, now.get(Calendar.HOUR_OF_DAY) ,now.get(Calendar.MINUTE), true);
                 tpd.show(getFragmentManager(), "Timepickerdialog");
             }
         });
@@ -146,25 +157,41 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                 addDialog.dismiss();
             }
         });
+        addButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                dialogOnAddButtonPressed();
+            }
+        });
     }
 
-    public void dialogOnAddButtonPressed(View v){
-        //TODO: Add data in database;
+    public void dialogOnAddButtonPressed(){
+        finalDateTime = readingYear+"-"+readingMonth+"-"+readingDay+"T"+readingHour+":"+readingMinute;
+        Toast.makeText(getApplicationContext(), finalDateTime, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute) {
         TextView addTime = (TextView) addDialog.findViewById(R.id.dialog_add_time);
+        DecimalFormat df = new DecimalFormat("00");
 
-        String time = +hourOfDay+"h"+minute;
+        this.readingHour = df.format(hourOfDay);
+        this.readingMinute = df.format(minute);
+
+        String time = +hourOfDay+":"+readingMinute;
         addTime.setText(time);
     }
 
     @Override
     public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
         TextView addDate = (TextView) addDialog.findViewById(R.id.dialog_add_date);
+        DecimalFormat df = new DecimalFormat("00");
 
-        String date = +dayOfMonth+"/"+(monthOfYear+1)+"/"+year;
+        this.readingYear = year+"";
+        this.readingMonth = df.format(monthOfYear+1);
+        this.readingDay = df.format(dayOfMonth);
+
+        String date = +dayOfMonth+"/"+readingMonth+"/"+readingYear;
         addDate.setText(date);
     }
 
