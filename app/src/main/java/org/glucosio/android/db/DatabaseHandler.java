@@ -168,6 +168,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         values.put(KEY_READING,reading.get_reading());
         values.put(KEY_READING_TYPE, reading.get_reading_type());
+        values.put(KEY_CREATED_AT, reading.get_created());
         db.insert(TABLE_GLUCOSE_READING, null, values);
     }
 

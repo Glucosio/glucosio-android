@@ -16,10 +16,11 @@ public class GlucoseReading {
 
     }
 
-    public GlucoseReading(Double reading,int reading_type)
+    public GlucoseReading(Double reading,int reading_type,String created)
     {
         this._reading=reading;
         this._reading_type=reading_type;
+        this._created=created;
     }
     public int get_user_id()
     {
