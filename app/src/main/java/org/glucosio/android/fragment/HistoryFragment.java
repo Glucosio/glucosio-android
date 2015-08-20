@@ -42,11 +42,13 @@ public class HistoryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_history, container, false);
+
+        View mFragmentView = inflater.inflate(R.layout.fragment_history, container, false);
 
         // Get database from MainActivity
         DatabaseHandler db;
         db = ((MainActivity)getActivity()).getDatabase();
+
         ArrayList<Double> reading;
         ArrayList <Integer> type;
         ArrayList<String> datetime;
@@ -55,7 +57,7 @@ public class HistoryFragment extends Fragment {
         type = db.getGlucoseTypeAsArray();
         datetime = db.getGlucoseDateTimeAsArray();
 
-        mRecyclerView = (RecyclerView) container.findViewById(R.id.fragment_history_recycler_view);
+        mRecyclerView = (RecyclerView) mFragmentView.findViewById(R.id.fragment_history_recycler_view);
 
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
@@ -66,7 +68,9 @@ public class HistoryFragment extends Fragment {
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         // specify an adapter (see also next example)
-        mAdapter = new HistoryAdapter(myDataset);
+        mAdapter = new HistoryAdapter(reading, type, datetime);
         mRecyclerView.setAdapter(mAdapter);
+
+        return mFragmentView;
     }
 }

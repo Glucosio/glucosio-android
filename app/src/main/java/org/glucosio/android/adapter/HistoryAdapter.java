@@ -8,11 +8,16 @@ import android.widget.TextView;
 
 import org.glucosio.android.R;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 /**
  * Created by paolo on 20/08/15.
  */
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHolder> {
-    private String[] mDataset;
+    private ArrayList<Double> reading;
+    private ArrayList <Integer> type;
+    private ArrayList<String> datetime;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -27,8 +32,10 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public HistoryAdapter(String[] myDataset) {
-        mDataset = myDataset;
+    public HistoryAdapter(ArrayList<Double> gReading, ArrayList<Integer> gType, ArrayList<String> gDatetime) {
+        this.reading = gReading;
+        this.type = gType;
+        this.datetime = gDatetime;
     }
 
     // Create new views (invoked by the layout manager)
@@ -55,6 +62,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return mDataset.length;
+        return reading.size();
     }
 }
