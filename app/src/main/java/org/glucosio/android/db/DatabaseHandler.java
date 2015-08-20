@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +37,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public DatabaseHandler(Context context)
     {
-        super(context,DATABASE_NAME,null,DATABASE_VERSION);
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
@@ -59,7 +60,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
     public void dropTable(SQLiteDatabase db)
     {
-        db.execSQL("DROP TABLE IF EXISTS "+TABLE_USER);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_GLUCOSE_READING);
     }
 
@@ -94,8 +95,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         //resetTable();
 
         SQLiteDatabase db=this.getReadableDatabase();
-        Cursor cursor=db.query(TABLE_USER,new String[] { KEY_ID,KEY_NAME,KEY_PREF_LANG,KEY_PREF_COUNTRY,KEY_AGE,KEY_GENDER},KEY_ID+"=?",
-                                new String[]{String.valueOf(id)},null,null,null);
+        Cursor cursor=db.query(TABLE_USER, new String[]{KEY_ID, KEY_NAME, KEY_PREF_LANG, KEY_PREF_COUNTRY, KEY_AGE, KEY_GENDER}, KEY_ID + "=?",
+                new String[]{String.valueOf(id)}, null, null, null);
         if(cursor!=null) {
             if (cursor.moveToFirst()){
                 User user=new User(Integer.parseInt(cursor.getString(0)),cursor.getString(1),cursor.getString(2),cursor.getString(3)
@@ -149,7 +150,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_NAME,user.get_name());
         values.put(KEY_PREF_LANG,user.get_preferredLanguage());
         values.put(KEY_PREF_COUNTRY,user.get_country());
-        values.put(KEY_AGE,user.get_age());
+        values.put(KEY_AGE, user.get_age());
         values.put(KEY_GENDER, user.get_gender());
         return db.update(TABLE_USER,values,KEY_ID+" =? ",new String[]{ String.valueOf(user.get_id()) });
 
@@ -205,4 +206,48 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return readings;
     }
 
+    public ArrayList<Double> getGlucoseReadingAsArray(){
+        List<GlucoseReading> glucoseReading = getGlucoseReadings();
+        ArrayList<Double> readingArray = new ArrayList<Double>();
+        int i;
+
+        for (i = 0; i < glucoseReading.size(); i++){
+            double reading;
+            GlucoseReading singleReading= glucoseReading.get(i);
+            reading = singleReading.get_reading();
+            readingArray.add(reading);
+        }
+
+        return readingArray;
+    }
+
+    public ArrayList<Integer> getGlucoseTypeAsArray(){
+        List<GlucoseReading> glucoseReading = getGlucoseReadings();
+        ArrayList<Integer> typeArray = new ArrayList<Integer>();
+        int i;
+
+        for (i = 0; i < glucoseReading.size(); i++){
+            int reading;
+            GlucoseReading singleReading= glucoseReading.get(i);
+            reading = singleReading.get_reading_type();
+            typeArray.add(reading);
+        }
+
+        return typeArray;
+    }
+
+    public ArrayList<String> getGlucoseDateTimeAsArray(){
+        List<GlucoseReading> glucoseReading = getGlucoseReadings();
+        ArrayList<String> datetimeArray = new ArrayList<String>();
+        int i;
+
+        for (i = 0; i < glucoseReading.size(); i++){
+            String reading;
+            GlucoseReading singleReading= glucoseReading.get(i);
+            reading = singleReading.get_created();
+            datetimeArray.add(reading);
+        }
+
+        return datetimeArray;
+    }
 }

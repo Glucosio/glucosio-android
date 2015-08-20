@@ -94,12 +94,16 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     private void databaseTestings()
     {
         db.resetTable();
-        db.addGlucoseReading(new GlucoseReading(1.2, 1));
+        // db.addGlucoseReading(new GlucoseReading(1.2, 1));
         Log.i("filter::", "called hee");
 
         for (GlucoseReading reading : db.getGlucoseReadings()) {
             Log.i("dbreturn::",String.valueOf(reading.get_user_id()));
         }
+    }
+
+    public DatabaseHandler getDatabase(){
+        return db;
     }
 
     private void startHelloActivity() {
