@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.glucosio.android.R;
 import org.glucosio.android.db.DatabaseHandler;
@@ -62,7 +63,8 @@ public class HelloActivity extends AppCompatActivity {
 
             saveToDatabase();
         } else {
-            setError(ageTextView, getString(R.string.helloactivity_age_invalid));
+            //TODO: find out why setError doesn't work :(
+            Toast.makeText(getApplicationContext(), getString(R.string.helloactivity_age_invalid), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -80,29 +82,20 @@ public class HelloActivity extends AppCompatActivity {
             return false;
         } else {
             int age = Integer.parseInt(ageTextView.getText().toString());
-            if (age > 0 && age < 120) {
-                return true;
-            } else {
-                return false;
-            }
+            return age > 0 && age < 120;
         }
     }
 
     private int genderToInt(){
         String genderString = genderSpinner.getSpinner().getSelectedItem().toString();
         int genderInt;
-        switch (genderString) {
-            case "Male":
-                genderInt = 1;
-                break;
-            case "Female":
-                genderInt = 2;
-                break;
-            default:
-                genderInt = 3;
-                break;
+        if (genderString.equals(getString(R.string.helloactivity_gender_list_1))) {
+            genderInt = 1;
+        } else if (genderString.equals(getString(R.string.helloactivity_gender_list_2))) {
+            genderInt = 2;
+        } else {
+            genderInt = 3;
         }
-
         return  genderInt;
     }
 

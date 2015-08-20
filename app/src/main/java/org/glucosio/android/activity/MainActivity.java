@@ -7,14 +7,12 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,13 +26,9 @@ import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
 import org.glucosio.android.db.User;
 import org.glucosio.android.tools.LabelledSpinner;
-import org.w3c.dom.Text;
 
-import java.sql.Date;
 import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Locale;
 
 
 public class MainActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
@@ -51,6 +45,13 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     String readingHour;
     String readingMinute;
     String finalDateTime;
+
+    TextView dialogCancelButton;
+    TextView dialogAddButton;
+    TextView dialogAddTime;
+    TextView dialogAddDate;
+    TextView dialogReading;
+    TextView dialogType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,12 +130,13 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         spinnerReadingType = (LabelledSpinner) addDialog.findViewById(R.id.dialog_add_reading_type);
         spinnerReadingType.setItemsArray(R.array.dialog_add_measured_list);
 
-        TextView cancelButton = (TextView) addDialog.findViewById(R.id.dialog_add_cancel);
-        TextView addButton = (TextView) addDialog.findViewById(R.id.dialog_add_add);
-        TextView addTime = (TextView) addDialog.findViewById(R.id.dialog_add_time);
-        TextView addDate = (TextView) addDialog.findViewById(R.id.dialog_add_date);
+        dialogCancelButton = (TextView) addDialog.findViewById(R.id.dialog_add_cancel);
+        dialogAddButton = (TextView) addDialog.findViewById(R.id.dialog_add_add);
+        dialogAddTime = (TextView) addDialog.findViewById(R.id.dialog_add_time);
+        dialogAddDate = (TextView) addDialog.findViewById(R.id.dialog_add_date);
+        dialogReading = (TextView) addDialog.findViewById(R.id.dialog_add_concentration);
 
-        addDate.setOnClickListener(new View.OnClickListener() {
+        dialogAddDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Calendar now = Calendar.getInstance();
@@ -147,7 +149,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                 dpd.show(getFragmentManager(), "Datepickerdialog");
             }
         });
-        addTime.setOnClickListener(new View.OnClickListener(){
+        dialogAddTime.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 Calendar now = Calendar.getInstance();
@@ -155,13 +157,13 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                 tpd.show(getFragmentManager(), "Timepickerdialog");
             }
         });
-        cancelButton.setOnClickListener(new View.OnClickListener(){
+        dialogCancelButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 addDialog.dismiss();
             }
         });
-        addButton.setOnClickListener(new View.OnClickListener(){
+        dialogAddButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 dialogOnAddButtonPressed();
@@ -169,9 +171,57 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         });
     }
 
-    public void dialogOnAddButtonPressed(){
-        finalDateTime = readingYear+"-"+readingMonth+"-"+readingDay+" "+readingHour+":"+readingMinute;
-        Toast.makeText(getApplicationContext(), finalDateTime, Toast.LENGTH_SHORT).show();
+    private void dialogOnAddButtonPressed(){
+
+        if (validateDate() && validateTime() && validateReading()) {
+            Double finalReading = Double.parseDouble(dialogReading.getText().toString());
+            int finalType = typeToInt();
+            finalDateTime = readingYear + "-" + readingMonth + "-" + readingDay + " " + readingHour + ":" + readingMinute;
+
+            GlucoseReading gReading = new GlucoseReading(finalReading, finalType, finalDateTime);
+            db.addGlucoseReading(gReading);
+
+            addDialog.dismiss();
+        } else {
+            Toast.makeText(getApplicationContext(),getString(R.string.dialog_error), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private boolean validateTime(){
+        return !dialogAddTime.getText().toString().equals("");
+    }
+    private boolean validateDate(){
+        return !dialogAddDate.getText().toString().equals("");
+    }
+    private boolean validateReading(){
+        return !dialogReading.getText().toString().equals("");
+    }
+
+    private int typeToInt(){
+        String typeString = spinnerReadingType.getSpinner().getSelectedItem().toString();
+        int typeInt;
+        if (typeString.equals(getString(R.string.dialog_add_type_1))) {
+            typeInt = 1;
+
+        } else if (typeString.equals(getString(R.string.dialog_add_type_2))) {
+            typeInt = 2;
+
+        } else if (typeString.equals(getString(R.string.dialog_add_type_3))) {
+            typeInt = 3;
+
+        } else if (typeString.equals(getString(R.string.dialog_add_type_4))) {
+            typeInt = 4;
+
+        } else if (typeString.equals(getString(R.string.dialog_add_type_5))) {
+            typeInt = 5;
+
+        } else if (typeString.equals(getString(R.string.dialog_add_type_6))) {
+            typeInt = 6;
+        } else {
+            typeInt = 0;
+        }
+
+        return  typeInt;
     }
 
     @Override
