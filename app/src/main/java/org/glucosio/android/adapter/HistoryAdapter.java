@@ -9,12 +9,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import org.glucosio.android.R;
-import org.glucosio.android.activity.MainActivity;
-import org.glucosio.android.db.DatabaseHandler;
-import org.w3c.dom.Text;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHolder> {
     private Context mContext;
@@ -54,12 +50,19 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         return vh;
     }
 
+
+
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         TextView readingTextView = (TextView) holder.mView.findViewById(R.id.item_history_reading);
         TextView datetimeTextView = (TextView) holder.mView.findViewById(R.id.item_history_time);
         TextView typeTextView = (TextView) holder.mView.findViewById(R.id.item_history_type);
+
+        // Reverse ListView order to display latest items first
+        Collections.reverse(reading);
+        Collections.reverse(datetime);
+        Collections.reverse(type);
 
         readingTextView.setText(reading.get(position).toString());
         datetimeTextView.setText(datetime.get(position));
