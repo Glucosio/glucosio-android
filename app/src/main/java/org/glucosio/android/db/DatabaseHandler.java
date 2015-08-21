@@ -189,7 +189,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public List<GlucoseReading> getGlucoseReadings()
     {
         List<GlucoseReading> readings=new ArrayList<GlucoseReading>();
-        String selectQuery="select * from glucose_readings";
+        String selectQuery="select * from glucose_readings order by created_at desc";
         SQLiteDatabase db=this.getReadableDatabase();
         Cursor cursor=db.rawQuery(selectQuery,null);
         if(cursor.moveToFirst()){
