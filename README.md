@@ -8,7 +8,7 @@ Glucosio for Android, an user centered free and open source app for diabetes man
  
 - Clone the project from GitHub: 
    ```
-   https://github.com/Glucosio/android.git
+   git clone https://github.com/Glucosio/android.git
    ```
    or download the .zip [here](https://github.com/Glucosio/android/archive/master.zip).
 
