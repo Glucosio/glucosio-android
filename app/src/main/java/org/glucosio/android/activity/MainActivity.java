@@ -3,6 +3,7 @@ package org.glucosio.android.activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,10 +22,12 @@ import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import org.glucosio.android.R;
+import org.glucosio.android.adapter.HistoryAdapter;
 import org.glucosio.android.adapter.HomePagerAdapter;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
 import org.glucosio.android.db.User;
+import org.glucosio.android.fragment.HistoryFragment;
 import org.glucosio.android.tools.LabelledSpinner;
 
 import java.text.DecimalFormat;
@@ -53,6 +56,9 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     TextView dialogReading;
     TextView dialogType;
 
+    HistoryFragment historyFragment;
+    HomePagerAdapter homePagerAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,16 +74,15 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             getSupportActionBar().setElevation(0);
         }
 
-        viewPager.setAdapter(new HomePagerAdapter(getSupportFragmentManager(), getApplicationContext()));
+        homePagerAdapter = new HomePagerAdapter(getSupportFragmentManager(), getApplicationContext());
+
+        viewPager.setAdapter(homePagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
 
         db = new DatabaseHandler(this);
-
-
-
-        // TODO: Check if we have all users information from database;
-       loadDatabase();
+        loadDatabase();
     }
+
 
     private void loadDatabase(){
         user = db.getUser(1);
@@ -182,6 +187,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             db.addGlucoseReading(gReading);
 
             addDialog.dismiss();
+            homePagerAdapter.notifyDataSetChanged();
         } else {
             Toast.makeText(getApplicationContext(),getString(R.string.dialog_error), Toast.LENGTH_SHORT).show();
         }

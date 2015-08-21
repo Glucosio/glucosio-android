@@ -14,12 +14,14 @@
             android:orientation="vertical"
             android:padding="16dp">
         <TextView
+            android:id="@+id/item_history_time"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="6:00"
             android:textStyle="bold"
             android:textColor="@color/glucosio_text_light"/>
             <TextView
+                android:id="@+id/item_history_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -33,16 +35,11 @@
             android:gravity="right"
             android:padding="16dp">
             <TextView
+                android:id="@+id/item_history_reading"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="100 mg/dL"
                 android:textColor="@color/glucosio_text_green"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:textColor="@color/glucosio_text_light"
-                android:text="-60"/>
         </LinearLayout>
     </LinearLayout>
 

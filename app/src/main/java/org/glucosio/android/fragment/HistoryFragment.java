@@ -68,7 +68,7 @@ public class HistoryFragment extends Fragment {
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         // specify an adapter (see also next example)
-        mAdapter = new HistoryAdapter(reading, type, datetime);
+        mAdapter = new HistoryAdapter(super.getActivity().getApplicationContext(),reading, type, datetime);
         mRecyclerView.setAdapter(mAdapter);
 
         return mFragmentView;

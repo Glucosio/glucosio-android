@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 
 import org.glucosio.android.R;
 import org.glucosio.android.fragment.HistoryFragment;
@@ -16,6 +17,7 @@ import org.glucosio.android.fragment.TipsFragment;
 public class HomePagerAdapter extends FragmentPagerAdapter {
 
     Context mContext;
+
 
     public HomePagerAdapter(FragmentManager fm, Context context) {
         super(fm);
@@ -39,6 +41,11 @@ public class HomePagerAdapter extends FragmentPagerAdapter {
         return 3;
     }
 
+    // Workaround to refresh views with notifyDataSetChanged()
+    public int getItemPosition(Object object) {
+        return POSITION_NONE;
+    }
+
     @Override
     public CharSequence getPageTitle(int position) {
         switch (position) {
@@ -50,4 +57,5 @@ public class HomePagerAdapter extends FragmentPagerAdapter {
                 return mContext.getString(R.string.tab_tips);
         }
     }
+
 }
