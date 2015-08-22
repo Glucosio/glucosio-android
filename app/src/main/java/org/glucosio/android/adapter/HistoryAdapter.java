@@ -60,9 +60,11 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         TextView typeTextView = (TextView) holder.mView.findViewById(R.id.item_history_type);
 
         // Reverse ListView order to display latest items first
-        Collections.reverse(reading);
-        Collections.reverse(datetime);
-        Collections.reverse(type);
+
+        Collections.addAll(reading);
+        Collections.addAll(datetime);
+        Collections.addAll(type);
+
 
         readingTextView.setText(reading.get(position).toString());
         datetimeTextView.setText(datetime.get(position));
