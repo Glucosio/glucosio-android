@@ -11,9 +11,11 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +31,7 @@ import org.glucosio.android.db.GlucoseReading;
 import org.glucosio.android.db.User;
 import org.glucosio.android.fragment.HistoryFragment;
 import org.glucosio.android.tools.LabelledSpinner;
+import org.glucosio.android.tools.NonSwipeableViewPager;
 
 import java.text.DecimalFormat;
 import java.util.Calendar;
@@ -66,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
+        NonSwipeableViewPager viewPager = (NonSwipeableViewPager) findViewById(R.id.pager);
 
         if (toolbar != null) {
             setSupportActionBar(toolbar);
