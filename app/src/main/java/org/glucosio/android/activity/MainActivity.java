@@ -117,8 +117,22 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         startActivity(intent);
         finish();
     }
+    public void printGlucoseReadingTableDetails()
+    {
+        for (GlucoseReading reading : db.getGlucoseReadings()) {
+            String data="";
+            data+=" id:     "+String.valueOf(reading.get_id());
+            data+=" reading : "+String.valueOf(reading.get_reading());
+            data+=" reading type : "+String.valueOf(reading.get_reading_type());
+            data+=" created_at : "+String.valueOf(reading.get_created());
+            Log.d("db::glucose_reading", data);
+        }
 
+    }
     public void onFabClicked(View v){
+        //only included for debug
+        printGlucoseReadingTableDetails();
+
         addDialog = new Dialog(MainActivity.this, R.style.AppTheme);
 
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
