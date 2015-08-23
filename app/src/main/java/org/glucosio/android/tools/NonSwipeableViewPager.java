@@ -1,8 +1,5 @@
 package org.glucosio.android.tools;
 
-/**
- * Created by paolo on 22/08/15.
- */
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;

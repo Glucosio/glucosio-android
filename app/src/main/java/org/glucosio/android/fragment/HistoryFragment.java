@@ -2,6 +2,7 @@ package org.glucosio.android.fragment;
 
 
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,11 +11,13 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 import org.glucosio.android.R;
 import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.adapter.HistoryAdapter;
 import org.glucosio.android.db.DatabaseHandler;
+import org.glucosio.android.db.GlucoseReading;
 import org.glucosio.android.tools.DividerItemDecoration;
 
 import java.lang.reflect.Array;
@@ -49,7 +52,7 @@ public class HistoryFragment extends Fragment {
         View mFragmentView = inflater.inflate(R.layout.fragment_history, container, false);
 
         // Get database from MainActivity
-        DatabaseHandler db;
+        final DatabaseHandler db;
         db = ((MainActivity)getActivity()).getDatabase();
 
         ArrayList<Double> reading;
@@ -61,6 +64,7 @@ public class HistoryFragment extends Fragment {
         datetime = db.getGlucoseDateTimeAsArray();
 
         mRecyclerView = (RecyclerView) mFragmentView.findViewById(R.id.fragment_history_recycler_view);
+        final FrameLayout parentLayout = (FrameLayout) mFragmentView.findViewById(R.id.fragment_history_parent);
 
         // Swipe to delete functionality
         ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
@@ -71,7 +75,12 @@ public class HistoryFragment extends Fragment {
 
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
+                int position = viewHolder.getAdapterPosition();
                 //Remove swiped item from list and notify the RecyclerView
+                Snackbar
+                        .make(parentLayout, R.string.fragment_history_snackbar_text, Snackbar.LENGTH_LONG)
+                        .setAction(R.string.fragment_history_snackbar_action, readingUndoListener)
+                        .show(); // Don’t forget to show!
             }
         };
 
@@ -95,4 +104,11 @@ public class HistoryFragment extends Fragment {
 
         return mFragmentView;
     }
+
+    // Show Snackbars
+    View.OnClickListener readingUndoListener = new View.OnClickListener() {
+        public void onClick(View v) {
+
+        }
+    };
 }

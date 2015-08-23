@@ -56,4 +56,6 @@
     <string name="dialog_error">Please fill all the fields.</string>
 
     <string name="hello_blank_fragment" translatable="false">Fragment here.</string>
+    <string name="fragment_history_snackbar_text">1 reading deleted</string>
+    <string name="fragment_history_snackbar_action">UNDO</string>
 </resources>
