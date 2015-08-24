@@ -188,24 +188,32 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
     public List<GlucoseReading> getGlucoseReadings()
     {
-        List<GlucoseReading> readings=new ArrayList<GlucoseReading>();
         String selectQuery="select * from glucose_readings order by "+KEY_CREATED_AT+" desc";
+        return getGlucoseReadingsRecords(selectQuery);
+    }
+    public List<GlucoseReading> getGlucoseReadings(String where)
+    {
+        String selectQuery="select * from glucose_readings where "+where+" order by "+KEY_CREATED_AT+" desc";
+        return getGlucoseReadingsRecords(selectQuery);
+    }
+    public List<GlucoseReading> getGlucoseReadingsRecords(String selectQuery)
+    {
+        List<GlucoseReading> readings=new ArrayList<GlucoseReading>();
         SQLiteDatabase db=this.getReadableDatabase();
         Cursor cursor=db.rawQuery(selectQuery,null);
         if(cursor.moveToFirst()){
-          do{
-              GlucoseReading reading=new GlucoseReading();
-              reading.set_id(Integer.parseInt(cursor.getString(0)));
-              reading.set_reading(Double.parseDouble(cursor.getString(1)));
-              reading.set_reading_type(Integer.parseInt(cursor.getString(2)));
-              reading.set_created(cursor.getString(3));
-              reading.set_user_id(Integer.parseInt(cursor.getString(4)));
-              readings.add(reading);
-          }while(cursor.moveToNext());
+            do{
+                GlucoseReading reading=new GlucoseReading();
+                reading.set_id(Integer.parseInt(cursor.getString(0)));
+                reading.set_reading(Double.parseDouble(cursor.getString(1)));
+                reading.set_reading_type(Integer.parseInt(cursor.getString(2)));
+                reading.set_created(cursor.getString(3));
+                reading.set_user_id(Integer.parseInt(cursor.getString(4)));
+                readings.add(reading);
+            }while(cursor.moveToNext());
         }
         return readings;
     }
-
     public ArrayList<Double> getGlucoseReadingAsArray(){
         List<GlucoseReading> glucoseReading = getGlucoseReadings();
         ArrayList<Double> readingArray = new ArrayList<Double>();
