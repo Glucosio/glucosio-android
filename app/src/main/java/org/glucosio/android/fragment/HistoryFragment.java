@@ -76,6 +76,7 @@ public class HistoryFragment extends Fragment {
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
                 int position = viewHolder.getAdapterPosition();
+
                 //Remove swiped item from list and notify the RecyclerView
                 Snackbar
                         .make(parentLayout, R.string.fragment_history_snackbar_text, Snackbar.LENGTH_LONG)
@@ -105,7 +106,7 @@ public class HistoryFragment extends Fragment {
         return mFragmentView;
     }
 
-    // Show Snackbars
+    // SnackBar undo listener
     View.OnClickListener readingUndoListener = new View.OnClickListener() {
         public void onClick(View v) {
 

@@ -97,7 +97,6 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             age = user.get_age();
         }
 
-        // databaseTestings();
     }
 
     private void databaseTestings()
