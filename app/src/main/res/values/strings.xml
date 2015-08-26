@@ -58,4 +58,9 @@
     <string name="hello_blank_fragment" translatable="false">Fragment here.</string>
     <string name="fragment_history_snackbar_text">1 reading deleted</string>
     <string name="fragment_history_snackbar_action">UNDO</string>
+
+    <string name="fragment_overview_last_reading">Last check:</string>
+    <string name="fragment_overview_tip">Tip</string>
+    <string name="tip_example" translatable="false">Use less cheese in your recipes and meals. Fresh mozzarella packed in water and Swiss cheese are usually lower in sodium.</string>
+
 </resources>
