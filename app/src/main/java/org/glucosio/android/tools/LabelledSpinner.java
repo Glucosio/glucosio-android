@@ -194,23 +194,6 @@ public class LabelledSpinner extends LinearLayout implements AdapterView.OnItemS
     }
 
     /**
-     * Sets the array of items to be used in the Spinner.
-     *
-     * @see #setItemsArray(int)
-     * @see #setItemsArray(int, int, int)
-     *
-     * @param arrayList The ArrayList used as the data source
-     */
-    public void setItemsArray(ArrayList<String> arrayList) {
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(
-                getContext(),
-                android.R.layout.simple_spinner_item,
-                arrayList);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mSpinner.setAdapter(adapter);
-    }
-
-    /**
      * A private helper method to set the array of items to be used in the
      * Spinner.
      *
