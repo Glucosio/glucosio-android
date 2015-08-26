@@ -1,5 +1,5 @@
 <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/swipe_view"
+    android:id="@+id/overview_swipe_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"

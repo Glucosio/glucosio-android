@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,12 +33,13 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
-public class OverviewFragment extends Fragment {
+public class OverviewFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
     LineChart chart;
     DatabaseHandler db;
     ArrayList<Double> reading;
     ArrayList<String> datetime;
+    SwipeRefreshLayout swipeView;
 
     public static HistoryFragment newInstance() {
         HistoryFragment fragment = new HistoryFragment();
@@ -59,6 +61,18 @@ public class OverviewFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View mFragmentView = inflater.inflate(R.layout.fragment_overview, container, false);
+        swipeView = (SwipeRefreshLayout) mFragmentView.findViewById(R.id.overview_swipe_view);
+        swipeView.setOnRefreshListener(this);
+        swipeView.setColorSchemeColors(getResources().getColor(R.color.glucosio_accent), getResources().getColor(R.color.glucosio_pink));
+
+        swipeView.postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                swipeView.setRefreshing(false);
+            }
+        }, 1000);
+
         chart = (LineChart) mFragmentView.findViewById(R.id.chart);
         Legend legend = chart.getLegend();
 
@@ -183,5 +197,17 @@ public class OverviewFragment extends Fragment {
         }
         String outputText = outputFormat.format(parsed);
         return outputText;
+    }
+
+    @Override
+    public void onRefresh() {
+        swipeView.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                swipeView.setRefreshing(true);
+                chart.notifyDataSetChanged();
+                swipeView.setRefreshing(false);
+            }
+        }, 1000);
     }
 }
