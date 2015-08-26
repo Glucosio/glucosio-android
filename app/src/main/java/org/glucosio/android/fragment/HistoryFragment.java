@@ -12,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import org.glucosio.android.R;
 import org.glucosio.android.activity.MainActivity;
@@ -28,6 +30,12 @@ public class HistoryFragment extends Fragment {
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;
     RecyclerView.Adapter mAdapter;
+    DatabaseHandler db;
+
+    ArrayList<Double> id;
+    ArrayList<Double> reading;
+    ArrayList <Integer> type;
+    ArrayList<String> datetime;
 
     public static HistoryFragment newInstance() {
         HistoryFragment fragment = new HistoryFragment();
@@ -51,20 +59,11 @@ public class HistoryFragment extends Fragment {
 
         View mFragmentView = inflater.inflate(R.layout.fragment_history, container, false);
 
-        // Get database from MainActivity
-        final DatabaseHandler db;
-        db = ((MainActivity)getActivity()).getDatabase();
-
-        ArrayList<Double> reading;
-        ArrayList <Integer> type;
-        ArrayList<String> datetime;
-
-        reading = db.getGlucoseReadingAsArray();
-        type = db.getGlucoseTypeAsArray();
-        datetime = db.getGlucoseDateTimeAsArray();
+        loadDatabase();
 
         mRecyclerView = (RecyclerView) mFragmentView.findViewById(R.id.fragment_history_recycler_view);
         final FrameLayout parentLayout = (FrameLayout) mFragmentView.findViewById(R.id.fragment_history_parent);
+        mAdapter = new HistoryAdapter(super.getActivity().getApplicationContext(),id, reading, type, datetime);
 
         // Swipe to delete functionality
         ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
@@ -76,13 +75,38 @@ public class HistoryFragment extends Fragment {
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
                 int position = viewHolder.getAdapterPosition();
+                TextView idTextView = (TextView) mRecyclerView.getChildAt(position).findViewById(R.id.item_history_id);
+                final double idToDelete = Double.parseDouble(idTextView.getText().toString());
 
-                //Remove swiped item from list and notify the RecyclerView
-                Snackbar
-                        .make(parentLayout, R.string.fragment_history_snackbar_text, Snackbar.LENGTH_LONG)
-                        .setAction(R.string.fragment_history_snackbar_action, readingUndoListener)
-                        .show(); // Don’t forget to show!
+                Snackbar.make(((MainActivity)getActivity()).getFabView(), R.string.fragment_history_snackbar_text, Snackbar.LENGTH_LONG).setCallback(new Snackbar.Callback() {
+                    @Override
+                    public void onDismissed(Snackbar snackbar, int event) {
+                        switch (event) {
+                            case Snackbar.Callback.DISMISS_EVENT_ACTION:
+                                // Do nothing, see Undo onClickListener
+                                break;
+                            case Snackbar.Callback.DISMISS_EVENT_TIMEOUT:
+                                removeReadingFromDb(db.getGlucoseReadings("id = " + idToDelete).get(0));
+                                break;
+                        }
+                    }
+
+                    @Override
+                    public void onShown(Snackbar snackbar) {
+                        // Do nothing
+                    }
+                }).setAction("UNDO", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // On Undo pressed, reload the adapter. The reading is still present in db;
+                        mAdapter.notifyDataSetChanged();
+                    }
+                }).show();
+                // Remove item just from UI
+                mAdapter.notifyItemRemoved(position);
             }
+
+
         };
 
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
@@ -99,17 +123,24 @@ public class HistoryFragment extends Fragment {
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        // specify an adapter (see also next example)
-        mAdapter = new HistoryAdapter(super.getActivity().getApplicationContext(),reading, type, datetime);
         mRecyclerView.setAdapter(mAdapter);
 
         return mFragmentView;
     }
 
-    // SnackBar undo listener
-    View.OnClickListener readingUndoListener = new View.OnClickListener() {
-        public void onClick(View v) {
+    private void removeReadingFromDb(GlucoseReading gReading) {
+        db.deleteGlucoseReadings(gReading);
+        loadDatabase();
+        mAdapter.notifyDataSetChanged();
+    }
 
-        }
-    };
+    private void loadDatabase(){
+        // Get database from MainActivity
+        db = ((MainActivity)getActivity()).getDatabase();
+
+        id = db.getGlucoseIdAsArray();
+        reading = db.getGlucoseReadingAsArray();
+        type = db.getGlucoseTypeAsArray();
+        datetime = db.getGlucoseDateTimeAsArray();
+    }
 }

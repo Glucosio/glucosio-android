@@ -40,6 +40,12 @@
                 android:layout_width="wrap_content"
                 android:text="100 mg/dL"
                 android:textColor="@color/glucosio_text_green"/>
+            <TextView
+                android:id="@+id/item_history_id"
+                android:visibility="gone"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="0" />
         </LinearLayout>
     </LinearLayout>
 

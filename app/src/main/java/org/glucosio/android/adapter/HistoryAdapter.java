@@ -14,6 +14,7 @@ import java.util.Collections;
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHolder> {
     private Context mContext;
+    private ArrayList<Double> id;
     private ArrayList<Double> reading;
     private ArrayList <Integer> type;
     private ArrayList<String> datetime;
@@ -31,8 +32,9 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public HistoryAdapter(Context context, ArrayList<Double> gReading, ArrayList<Integer> gType, ArrayList<String> gDatetime) {
+    public HistoryAdapter(Context context, ArrayList<Double> gId, ArrayList<Double> gReading, ArrayList<Integer> gType, ArrayList<String> gDatetime) {
         this.mContext = context;
+        this.id = gId;
         this.reading = gReading;
         this.type = gType;
         this.datetime = gDatetime;
@@ -58,14 +60,15 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         TextView readingTextView = (TextView) holder.mView.findViewById(R.id.item_history_reading);
         TextView datetimeTextView = (TextView) holder.mView.findViewById(R.id.item_history_time);
         TextView typeTextView = (TextView) holder.mView.findViewById(R.id.item_history_type);
+        TextView idTextView = (TextView) holder.mView.findViewById(R.id.item_history_id);
 
         // Reverse ListView order to display latest items first
-
         Collections.addAll(reading);
         Collections.addAll(datetime);
         Collections.addAll(type);
+        Collections.addAll(id);
 
-
+        idTextView.setText(id.get(position).toString());
         readingTextView.setText(reading.get(position).toString());
         datetimeTextView.setText(datetime.get(position));
         typeTextView.setText(typeToString(type.get(position)));

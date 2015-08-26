@@ -2,6 +2,7 @@ package org.glucosio.android.activity;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -244,6 +245,10 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         }
 
         return  typeInt;
+    }
+
+    public CoordinatorLayout getFabView() {
+        return (CoordinatorLayout) findViewById(R.id.coordinatorFab);
     }
 
     @Override

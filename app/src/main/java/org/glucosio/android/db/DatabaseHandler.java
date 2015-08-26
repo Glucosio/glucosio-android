@@ -214,6 +214,21 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
         return readings;
     }
+    public ArrayList<Double> getGlucoseIdAsArray(){
+        List<GlucoseReading> glucoseReading = getGlucoseReadings();
+        ArrayList<Double> idArray = new ArrayList<Double>();
+        int i;
+
+        for (i = 0; i < glucoseReading.size(); i++){
+            double id;
+            GlucoseReading singleReading= glucoseReading.get(i);
+            id = singleReading.get_id();
+            idArray.add(id);
+        }
+
+        return idArray;
+    }
+
     public ArrayList<Double> getGlucoseReadingAsArray(){
         List<GlucoseReading> glucoseReading = getGlucoseReadings();
         ArrayList<Double> readingArray = new ArrayList<Double>();
