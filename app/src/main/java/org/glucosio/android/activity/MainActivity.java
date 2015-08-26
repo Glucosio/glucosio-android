@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -250,6 +251,10 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
     public CoordinatorLayout getFabView() {
         return (CoordinatorLayout) findViewById(R.id.coordinatorFab);
+    }
+
+    public void reloadFragmentAdapter(){
+        homePagerAdapter.notifyDataSetChanged();
     }
 
     @Override

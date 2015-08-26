@@ -130,6 +130,7 @@ public class HistoryFragment extends Fragment {
 
     private void removeReadingFromDb(GlucoseReading gReading) {
         db.deleteGlucoseReadings(gReading);
+        ((MainActivity)getActivity()).reloadFragmentAdapter();
         loadDatabase();
     }
 

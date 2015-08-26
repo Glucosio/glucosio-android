@@ -1,104 +1,98 @@
-<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/overview_swipe_view"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:background="#ffffff"
-        tools:context="org.glucosio.android.fragment.OverviewFragment">
-        <LinearLayout
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#ffffff"
+    tools:context="org.glucosio.android.fragment.OverviewFragment">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chart"
+            android:layout_width="fill_parent"
+            android:layout_height="200dp" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_marginTop="16dp"
+            android:layout_height="2px"
+            android:background="#DADADA"/>
+        <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <com.github.mikephil.charting.charts.LineChart
-                android:id="@+id/chart"
-                android:layout_width="fill_parent"
-                android:layout_height="200dp" />
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_marginTop="16dp"
-                android:layout_height="2px"
-                android:background="#DADADA"/>
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/fragment_overview_last_reading"
-                android:textColor="@color/glucosio_text_light"
-                android:textStyle="bold"/>
-            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/card_view"
+            android:layout_marginTop="16dp"
+            android:text="@string/fragment_overview_last_reading"
+            android:textColor="@color/glucosio_text_light"
+            android:textStyle="bold"/>
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_view"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            card_view:cardCornerRadius="4dp">
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                card_view:cardCornerRadius="4dp">
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    <TextView
+                        android:id="@+id/item_history_time"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="6:00"
+                        android:textStyle="bold"
+                        android:textColor="@color/glucosio_text_light"/>
+                    <TextView
+                        android:id="@+id/item_history_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textColor="@color/glucosio_text"
+                        android:text="Before breakfast"/>
+                </LinearLayout>
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <LinearLayout
+                    android:orientation="vertical"
+                    android:gravity="right"
+                    android:padding="16dp">
+                    <TextView
+                        android:id="@+id/item_history_reading"
+                        android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
+                        android:text="100 mg/dL"
+                        android:textColor="@color/glucosio_text_green"/>
+                    <TextView
+                        android:id="@+id/item_history_id"
+                        android:visibility="gone"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-                        <TextView
-                            android:id="@+id/item_history_time"
-                            android:layout_height="wrap_content"
-                            android:layout_width="wrap_content"
-                            android:text="6:00"
-                            android:textStyle="bold"
-                            android:textColor="@color/glucosio_text_light"/>
-                        <TextView
-                            android:id="@+id/item_history_type"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:textColor="@color/glucosio_text"
-                            android:text="Before breakfast"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="right"
-                        android:padding="16dp">
-                        <TextView
-                            android:id="@+id/item_history_reading"
-                            android:layout_height="wrap_content"
-                            android:layout_width="wrap_content"
-                            android:text="100 mg/dL"
-                            android:textColor="@color/glucosio_text_green"/>
-                        <TextView
-                            android:id="@+id/item_history_id"
-                            android:visibility="gone"
-                            android:layout_height="wrap_content"
-                            android:layout_width="wrap_content"
-                            android:text="0" />
-                    </LinearLayout>
+                        android:layout_width="wrap_content"
+                        android:text="0" />
                 </LinearLayout>
-            </android.support.v7.widget.CardView>
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_marginTop="32dp"
-                android:layout_height="2px"
-                android:background="#DADADA"/>
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/fragment_overview_tip"
-                android:layout_marginTop="16dp"
-                android:textColor="@color/glucosio_text"
-                android:textStyle="bold"/>
-            <TextView
-                android:layout_marginTop="8dp"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/glucosio_text"
-                android:text="@string/tip_example"/>
-        </LinearLayout>
-    </ScrollView>
-</android.support.v4.widget.SwipeRefreshLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_marginTop="32dp"
+            android:layout_height="2px"
+            android:background="#DADADA"/>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/fragment_overview_tip"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/glucosio_text"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_marginTop="8dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/glucosio_text"
+            android:text="@string/tip_example"/>
+    </LinearLayout>
+</ScrollView>

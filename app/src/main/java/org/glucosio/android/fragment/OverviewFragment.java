@@ -1,15 +1,11 @@
 package org.glucosio.android.fragment;
 
-import android.app.Activity;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
@@ -19,27 +15,22 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-
 import org.glucosio.android.R;
 import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.db.DatabaseHandler;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
-import java.util.Locale;
-import java.util.TimeZone;
 
-public class OverviewFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
+public class OverviewFragment extends Fragment {
 
     LineChart chart;
     DatabaseHandler db;
     ArrayList<Double> reading;
     ArrayList<String> datetime;
-    SwipeRefreshLayout swipeView;
 
     public static HistoryFragment newInstance() {
         HistoryFragment fragment = new HistoryFragment();
@@ -61,17 +52,6 @@ public class OverviewFragment extends Fragment implements SwipeRefreshLayout.OnR
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View mFragmentView = inflater.inflate(R.layout.fragment_overview, container, false);
-        swipeView = (SwipeRefreshLayout) mFragmentView.findViewById(R.id.overview_swipe_view);
-        swipeView.setOnRefreshListener(this);
-        swipeView.setColorSchemeColors(getResources().getColor(R.color.glucosio_accent), getResources().getColor(R.color.glucosio_pink));
-
-        swipeView.postDelayed(new Runnable() {
-
-            @Override
-            public void run() {
-                swipeView.setRefreshing(false);
-            }
-        }, 1000);
 
         chart = (LineChart) mFragmentView.findViewById(R.id.chart);
         Legend legend = chart.getLegend();
@@ -83,8 +63,6 @@ public class OverviewFragment extends Fragment implements SwipeRefreshLayout.OnR
         Collections.reverse(reading);
         Collections.reverse(datetime);
 
-
-
         XAxis xAxis = chart.getXAxis();
         xAxis.setDrawGridLines(false);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
@@ -94,7 +72,6 @@ public class OverviewFragment extends Fragment implements SwipeRefreshLayout.OnR
         ll1.setLineWidth(1f);
         ll1.setLineColor(getResources().getColor(R.color.glucosio_gray_light));
         ll1.setTextColor(getResources().getColor(R.color.glucosio_text));
-
 
         LimitLine ll2 = new LimitLine(70f, "Low");
         ll2.setLineWidth(1f);
@@ -107,13 +84,11 @@ public class OverviewFragment extends Fragment implements SwipeRefreshLayout.OnR
         ll3.setLineColor(getResources().getColor(R.color.glucosio_gray_light));
         ll3.setTextColor(getResources().getColor(R.color.glucosio_text));
 
-
         LimitLine ll4 = new LimitLine(50f, "Hypo");
         ll4.setLineWidth(1f);
         ll4.enableDashedLine(10, 10, 10);
         ll4.setLineColor(getResources().getColor(R.color.glucosio_gray_light));
         ll4.setTextColor(getResources().getColor(R.color.glucosio_text));
-
 
         YAxis leftAxis = chart.getAxisLeft();
         leftAxis.removeAllLimitLines(); // reset all limit lines to avoid overlapping lines
@@ -197,17 +172,5 @@ public class OverviewFragment extends Fragment implements SwipeRefreshLayout.OnR
         }
         String outputText = outputFormat.format(parsed);
         return outputText;
-    }
-
-    @Override
-    public void onRefresh() {
-        swipeView.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                swipeView.setRefreshing(true);
-                chart.notifyDataSetChanged();
-                swipeView.setRefreshing(false);
-            }
-        }, 1000);
     }
 }
