@@ -171,6 +171,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                 dpd.show(getFragmentManager(), "Datepickerdialog");
             }
         });
+
         dialogAddTime.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){

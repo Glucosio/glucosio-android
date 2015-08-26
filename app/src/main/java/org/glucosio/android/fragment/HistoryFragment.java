@@ -131,16 +131,15 @@ public class HistoryFragment extends Fragment {
     private void removeReadingFromDb(GlucoseReading gReading) {
         db.deleteGlucoseReadings(gReading);
         loadDatabase();
-        mAdapter.notifyDataSetChanged();
     }
 
     private void loadDatabase(){
         // Get database from MainActivity
         db = ((MainActivity)getActivity()).getDatabase();
 
-        id = db.getGlucoseIdAsArray();
-        reading = db.getGlucoseReadingAsArray();
-        type = db.getGlucoseTypeAsArray();
-        datetime = db.getGlucoseDateTimeAsArray();
+        this.id = db.getGlucoseIdAsArray();
+        this.reading = db.getGlucoseReadingAsArray();
+        this.type = db.getGlucoseTypeAsArray();
+        this.datetime = db.getGlucoseDateTimeAsArray();
     }
 }
