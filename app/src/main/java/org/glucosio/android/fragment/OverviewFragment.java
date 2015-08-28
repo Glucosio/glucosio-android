@@ -6,6 +6,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
@@ -18,6 +20,8 @@ import com.github.mikephil.charting.data.LineDataSet;
 import org.glucosio.android.R;
 import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.db.DatabaseHandler;
+import org.glucosio.android.tools.ReadingTools;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -31,6 +35,11 @@ public class OverviewFragment extends Fragment {
     DatabaseHandler db;
     ArrayList<Double> reading;
     ArrayList<String> datetime;
+    ArrayList<Integer> type;
+    TextView readingTextView;
+    TextView datetimeTextView;
+    TextView typeTextView;
+    ReadingTools rTools;
 
     public static HistoryFragment newInstance() {
         HistoryFragment fragment = new HistoryFragment();
@@ -53,15 +62,24 @@ public class OverviewFragment extends Fragment {
                              Bundle savedInstanceState) {
         View mFragmentView = inflater.inflate(R.layout.fragment_overview, container, false);
 
+        rTools = new ReadingTools(getActivity().getApplicationContext());
+
         chart = (LineChart) mFragmentView.findViewById(R.id.chart);
         Legend legend = chart.getLegend();
 
         db = ((MainActivity)getActivity()).getDatabase();
         reading = db.getGlucoseReadingAsArray();
         datetime = db.getGlucoseDateTimeAsArray();
+        type = db.getGlucoseTypeAsArray();
 
         Collections.reverse(reading);
         Collections.reverse(datetime);
+        Collections.reverse(type);
+
+        readingTextView = (TextView) mFragmentView.findViewById(R.id.item_history_reading);
+        datetimeTextView = (TextView) mFragmentView.findViewById(R.id.item_history_time);
+        typeTextView = (TextView) mFragmentView.findViewById(R.id.item_history_type);
+
 
         XAxis xAxis = chart.getXAxis();
         xAxis.setDrawGridLines(false);
@@ -113,6 +131,9 @@ public class OverviewFragment extends Fragment {
         legend.setEnabled(false);
         chart.animateX(2500, Easing.EasingOption.EaseInOutQuart);
 
+        loadLastReading();
+
+
         return mFragmentView;
     }
 
@@ -121,7 +142,7 @@ public class OverviewFragment extends Fragment {
         ArrayList<String> xVals = new ArrayList<String>();
 
         for (int i = 0; i < datetime.size(); i++) {
-            String date = convertDate(datetime.get(i));
+            String date = rTools.convertDate(datetime.get(i));
             xVals.add(date + "");
         }
 
@@ -160,17 +181,9 @@ public class OverviewFragment extends Fragment {
         chart.setData(data);
     }
 
-    private String convertDate(String date) {
-        DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        DateFormat outputFormat = new SimpleDateFormat("dd MMM yyyy HH:mm");
-        Date parsed = null;
-        try {
-            parsed = inputFormat.parse(date);
-        } catch (ParseException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        String outputText = outputFormat.format(parsed);
-        return outputText;
+    private void loadLastReading(){
+        typeTextView.setText(rTools.typeToString(type.get(type.size() -1)));
+        readingTextView.setText(reading.get(reading.size() -1) + "");
+        datetimeTextView.setText(rTools.convertDate(datetime.get(datetime.size() -1)));
     }
 }

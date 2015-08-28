@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import org.glucosio.android.R;
+import org.glucosio.android.tools.ReadingTools;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -18,6 +20,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     private ArrayList<Double> reading;
     private ArrayList <Integer> type;
     private ArrayList<String> datetime;
+    private ReadingTools rTools;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -38,12 +41,15 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         this.reading = gReading;
         this.type = gType;
         this.datetime = gDatetime;
+
     }
 
     // Create new views (invoked by the layout manager)
     @Override
     public HistoryAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                    int viewType) {
+        rTools = new ReadingTools(mContext);
+
         // create a new view
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.fragment_history_item, parent, false);
@@ -71,30 +77,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         idTextView.setText(id.get(position).toString());
         readingTextView.setText(reading.get(position).toString());
         datetimeTextView.setText(datetime.get(position));
-        typeTextView.setText(typeToString(type.get(position)));
-    }
-
-    private String typeToString(int typeInt){
-        String typeString = "";
-        if (typeInt == 1) {
-            typeString = mContext.getString(R.string.dialog_add_type_1);
-
-        } else if (typeInt == 2) {
-            typeString = mContext.getString(R.string.dialog_add_type_2);
-
-        } else if (typeInt == 3) {
-            typeString = mContext.getString(R.string.dialog_add_type_3);
-
-        } else if (typeInt == 4) {
-            typeString = mContext.getString(R.string.dialog_add_type_4);
-
-        } else if (typeInt == 5) {
-            typeString = mContext.getString(R.string.dialog_add_type_5);
-
-        } else if (typeInt == 6) {
-            typeString = mContext.getString(R.string.dialog_add_type_6);
-        }
-        return  typeString;
+        typeTextView.setText(rTools.typeToString(type.get(position)));
     }
 
     // Return the size of your dataset (invoked by the layout manager)
