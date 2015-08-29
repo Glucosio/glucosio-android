@@ -41,7 +41,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         this.reading = gReading;
         this.type = gType;
         this.datetime = gDatetime;
-
     }
 
     // Create new views (invoked by the layout manager)
@@ -57,8 +56,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         ViewHolder vh = new ViewHolder(v);
         return vh;
     }
-
-
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override

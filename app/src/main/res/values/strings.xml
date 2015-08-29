@@ -25,6 +25,25 @@
         <item>@string/helloactivity_gender_list_2</item>
         <item>@string/helloactivity_gender_list_3</item>
     </string-array>
+
+    <string name="helloactivity_spinner_diabetes_type">Diabetes type</string>
+    <string name="helloactivity_spinner_diabetes_type_1">Type 1</string>
+    <string name="helloactivity_spinner_diabetes_type_2">Type 2</string>
+
+    <string-array name="helloactivity_diabetes_type">
+        <item>@string/helloactivity_spinner_diabetes_type_1</item>
+        <item>@string/helloactivity_spinner_diabetes_type_2</item>
+    </string-array>
+
+    <string name="helloactivity_spinner_preferred_unit">Preferred unit</string>
+    <string name="helloactivity_spinner_preferred_unit_1">mg/dL</string>
+    <string name="helloactivity_spinner_preferred_unit_2">mmol/L</string>
+
+    <string-array name="helloactivity_preferred_unit">
+        <item>@string/helloactivity_spinner_preferred_unit_1</item>
+        <item>@string/helloactivity_spinner_preferred_unit_2</item>
+    </string-array>
+
     <string name="helloactivity_share_data">Share anonymous data for research.</string>
     <string name="helloactivity_hint_settings">You can change these in settings later.</string>
     <string name="helloactivity_button">GET STARTED</string>

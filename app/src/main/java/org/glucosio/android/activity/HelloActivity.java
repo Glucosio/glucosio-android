@@ -29,6 +29,8 @@ public class HelloActivity extends AppCompatActivity {
 
     LabelledSpinner languageSpinner;
     LabelledSpinner genderSpinner;
+    LabelledSpinner typeSpinner;
+    LabelledSpinner unitSpinner;
     TextView ageTextView;
     Button nextButton;
 
@@ -41,18 +43,22 @@ public class HelloActivity extends AppCompatActivity {
 
         db = new DatabaseHandler(this);
         id = 1; // Id is always 1. We don't support multi-user (for now :D).
-        name = "Test Account"; //TODO: add input for name;
+        name = "Test Account"; //TODO: add input for name in Tips;
 
         languageSpinner = (LabelledSpinner) findViewById(R.id.helloactivity_spinner_language);
         genderSpinner = (LabelledSpinner) findViewById(R.id.helloactivity_spinner_gender);
+        typeSpinner = (LabelledSpinner) findViewById(R.id.helloactivity_spinner_diabetes_type);
+        unitSpinner = (LabelledSpinner) findViewById(R.id.helloactivity_spinner_preferred_unit);
         ageTextView = (TextView) findViewById(R.id.helloactivity_age);
         nextButton = (Button) findViewById(R.id.helloactivity_next);
 
-        // Populate Spinner with languages list
+        // Populate Spinners with array
         languageSpinner.setItemsArray(R.array.helloactivity_language_list);
-
-        // Populate Spinner with gender list
         genderSpinner.setItemsArray(R.array.helloactivity_gender_list);
+        unitSpinner.setItemsArray(R.array.helloactivity_preferred_unit);
+        typeSpinner.setItemsArray(R.array.helloactivity_diabetes_type);
+
+        //TODO: add Preferred Unit and Diabetes Type in dB
     }
 
     public void onNextClicked(View v){
