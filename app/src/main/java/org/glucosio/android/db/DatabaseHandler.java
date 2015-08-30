@@ -181,6 +181,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     {
 
     }
+    public int updateGlucoseReading(GlucoseReading reading)
+    {
+        SQLiteDatabase db=this.getWritableDatabase();
+        ContentValues values=new ContentValues();
+        values.put(KEY_READING,reading.get_reading());
+        values.put(KEY_READING_TYPE, reading.get_reading_type());
+        values.put(KEY_CREATED_AT, reading.get_created());
+        return db.update(TABLE_GLUCOSE_READING,values,KEY_ID+" =? ",new String[]{ String.valueOf(reading.get_id()) });
+    }
     public void deleteGlucoseReadings(GlucoseReading reading)
     {
         SQLiteDatabase db=this.getWritableDatabase();
