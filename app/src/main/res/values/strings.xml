@@ -79,6 +79,8 @@
     <string name="fragment_history_snackbar_action">UNDO</string>
 
     <string name="fragment_overview_last_reading">Last check:</string>
+    <string name="fragment_overview_trend">Trend over past month:</string>
+    <string name="fragment_overview_trend_positive">in range and healthy</string>
     <string name="fragment_overview_tip">Tip</string>
     <string name="tip_example" translatable="false">Use less cheese in your recipes and meals. Fresh mozzarella packed in water and Swiss cheese are usually lower in sodium.</string>
 
@@ -88,7 +90,7 @@
         <item>When eating out, ask for fish or meat broiled with no extra butter or oil.</item>
         <item>When eating out, ask if they have low sodium dishes.</item>
         <item>When eating out, eat the same portion sizes you would at home and take the leftovers to go.</item>
-        <item>When eating out ask for low-calorie items, such as salad dressings, even if they're not on the menu.</item>
+        <item>When eating out ask for low-calorie items, such as salad dressings, even if they\'re not on the menu.</item>
         <item>When eating out ask for substitutions. Instead of French fries, request a double order of a vegetable like salad, green beans or broccoli.</item>
         <item>When eating out, order foods that are not breaded or fried.</item>
         <item>When eating out ask for sauces, gravy and salad dressings "on the side."</item>
@@ -105,7 +107,7 @@
         <item>Visiting your doctor once a year and having regular communication throughout the year is important for diabetics to prevent any sudden onset of associated health problems.</item>
         <item>Take your medicine as prescribed by your doctor even small lapses in your medicine can impact your blood glucose level and cause other side effects. If having difficulty remembering ask your doctor about medication management and reminder options.</item>
     </array>
-    <array name="tips_age_plus_40">
+    <array name="tips_allin_age_plus_40">
         <item>Older diabetics may be at higher risk for health issues associated with diabetes. Talk to your doctor about how your age plays a role in your diabetes and what to watch for.</item>
         <item>Limit the amount of salt you use to cook food and that you add to meals after it has been cooked.</item>
     </array>
