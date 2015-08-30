@@ -1,5 +1,6 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingPrefix"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
@@ -27,42 +28,38 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <TextView
+                <TextView fontPath="fonts/lato-bold.ttf"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="@string/fragment_overview_last_reading"
-                    android:textColor="@color/glucosio_text_light"
-                    android:textStyle="bold"/>
-                <TextView
+                    android:textColor="@color/glucosio_text_light"/>
+                <TextView fontPath="fonts/lato-bold.ttf"
                     android:id="@+id/item_history_reading"
                     android:layout_marginTop="16dp"
                     android:layout_marginLeft="8dp"
                     android:textColor="@color/glucosio_text"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:textStyle="bold"
                     android:text="100 mg/dL" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <TextView
+                <TextView fontPath="fonts/lato-bold.ttf"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="@string/fragment_overview_trend"
-                    android:textColor="@color/glucosio_text_light"
-                    android:textStyle="bold"/>
-                <TextView
+                    android:textColor="@color/glucosio_text_light" />
+                <TextView fontPath="fonts/lato-bold.ttf"
                     android:id="@+id/item_history_trend"
                     android:layout_marginTop="8dp"
                     android:layout_marginLeft="8dp"
                     android:textColor="@color/glucosio_text_green"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:textStyle="bold"
                     android:text="@string/fragment_overview_trend_positive"
                     />
             </LinearLayout>
@@ -72,13 +69,12 @@
             android:layout_marginTop="16dp"
             android:layout_height="2px"
             android:background="#DADADA"/>
-        <TextView
+        <TextView fontPath="fonts/lato-bold.ttf"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/fragment_overview_tip"
             android:layout_marginTop="16dp"
-            android:textColor="@color/glucosio_text"
-            android:textStyle="bold"/>
+            android:textColor="@color/glucosio_text" />
         <TextView
             android:layout_marginTop="8dp"
             android:layout_width="fill_parent"
