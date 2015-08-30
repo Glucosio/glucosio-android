@@ -1,6 +1,7 @@
 package org.glucosio.android.activity;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TabLayout;
@@ -37,6 +38,9 @@ import org.glucosio.android.tools.NonSwipeableViewPager;
 
 import java.text.DecimalFormat;
 import java.util.Calendar;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
 public class MainActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
@@ -86,6 +90,13 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
         db = new DatabaseHandler(this);
         loadDatabase();
+
+        // Set fonts
+        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                        .setDefaultFontPath("fonts/lato.ttf")
+                        .setFontAttrId(R.attr.fontPath)
+                        .build()
+        );
     }
 
 
@@ -280,6 +291,11 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
         String date = +dayOfMonth+"/"+readingMonth+"/"+readingYear;
         addDate.setText(date);
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     @Override

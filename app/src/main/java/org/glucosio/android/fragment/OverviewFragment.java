@@ -37,8 +37,6 @@ public class OverviewFragment extends Fragment {
     ArrayList<String> datetime;
     ArrayList<Integer> type;
     TextView readingTextView;
-    TextView datetimeTextView;
-    TextView typeTextView;
     ReadingTools rTools;
 
     public static HistoryFragment newInstance() {
@@ -77,9 +75,6 @@ public class OverviewFragment extends Fragment {
         Collections.reverse(type);
 
         readingTextView = (TextView) mFragmentView.findViewById(R.id.item_history_reading);
-        datetimeTextView = (TextView) mFragmentView.findViewById(R.id.item_history_time);
-        typeTextView = (TextView) mFragmentView.findViewById(R.id.item_history_type);
-
 
         XAxis xAxis = chart.getXAxis();
         xAxis.setDrawGridLines(false);
@@ -182,8 +177,6 @@ public class OverviewFragment extends Fragment {
     }
 
     private void loadLastReading(){
-        typeTextView.setText(rTools.typeToString(type.get(type.size() -1)));
         readingTextView.setText(reading.get(reading.size() -1) + "");
-        datetimeTextView.setText(rTools.convertDate(datetime.get(datetime.size() -1)));
     }
 }
