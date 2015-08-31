@@ -62,7 +62,6 @@ public class HistoryFragment extends Fragment {
         loadDatabase();
 
         mRecyclerView = (RecyclerView) mFragmentView.findViewById(R.id.fragment_history_recycler_view);
-        final FrameLayout parentLayout = (FrameLayout) mFragmentView.findViewById(R.id.fragment_history_parent);
         mAdapter = new HistoryAdapter(super.getActivity().getApplicationContext(),id, reading, type, datetime);
 
         // Swipe to delete functionality
@@ -103,7 +102,6 @@ public class HistoryFragment extends Fragment {
                     }
                 }).show();
                 // Remove item just from UI
-                mAdapter.notifyItemRemoved(position);
             }
 
 
