@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.LimitLine;
@@ -21,13 +20,11 @@ import org.glucosio.android.R;
 import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.tools.ReadingTools;
+import org.glucosio.android.tools.TipsManager;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
+import java.util.Random;
 
 public class OverviewFragment extends Fragment {
 
@@ -38,6 +35,7 @@ public class OverviewFragment extends Fragment {
     ArrayList<Integer> type;
     TextView readingTextView;
     ReadingTools rTools;
+    TextView tipTextView;
 
     public static HistoryFragment newInstance() {
         HistoryFragment fragment = new HistoryFragment();
@@ -75,6 +73,7 @@ public class OverviewFragment extends Fragment {
         Collections.reverse(type);
 
         readingTextView = (TextView) mFragmentView.findViewById(R.id.item_history_reading);
+        tipTextView = (TextView) mFragmentView.findViewById(R.id.random_tip_textview);
 
         XAxis xAxis = chart.getXAxis();
         xAxis.setDrawGridLines(false);
@@ -124,11 +123,9 @@ public class OverviewFragment extends Fragment {
         chart.setGridBackgroundColor(Color.parseColor("#FFFFFF"));
         setData();
         legend.setEnabled(false);
-        chart.animateX(2500, Easing.EasingOption.EaseInOutQuart);
 
         loadLastReading();
-
-
+        loadRandomTip();
         return mFragmentView;
     }
 
@@ -178,5 +175,14 @@ public class OverviewFragment extends Fragment {
 
     private void loadLastReading(){
         readingTextView.setText(reading.get(reading.size() -1) + "");
+    }
+
+    private void loadRandomTip(){
+        TipsManager tipsManager = new TipsManager(getActivity().getApplicationContext(), db.getUser(1).get_age());
+        ArrayList<String> tips = tipsManager.getTips();
+
+        // Get random tip from array
+        int randomNumber = new Random().nextInt(tips.size());
+        tipTextView.setText(tips.get(randomNumber));
     }
 }

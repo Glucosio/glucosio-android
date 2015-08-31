@@ -76,10 +76,12 @@
             android:layout_marginTop="16dp"
             android:textColor="@color/glucosio_text" />
         <TextView
+            android:id="@+id/random_tip_textview"
             android:layout_marginTop="8dp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/glucosio_text"
-            android:text="@string/tip_example"/>
+            android:text="Always bring a banana to a party, Rose, bananas are good!"
+            />
     </LinearLayout>
 </ScrollView>
