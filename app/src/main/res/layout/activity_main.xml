@@ -25,7 +25,7 @@
             app:tabIndicatorColor="@color/glucosio_accent"
             app:tabTextColor="@android:color/white"/>
 
-        <org.glucosio.android.tools.NonSwipeableViewPager
+        <android.support.v4.view.ViewPager
             android:id="@+id/pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>

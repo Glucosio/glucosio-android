@@ -1,5 +1,7 @@
 package org.glucosio.android.activity;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -7,7 +9,9 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -19,6 +23,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
+import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,14 +32,11 @@ import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import org.glucosio.android.R;
-import org.glucosio.android.adapter.HistoryAdapter;
 import org.glucosio.android.adapter.HomePagerAdapter;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
 import org.glucosio.android.db.User;
-import org.glucosio.android.fragment.HistoryFragment;
 import org.glucosio.android.tools.LabelledSpinner;
-import org.glucosio.android.tools.NonSwipeableViewPager;
 
 import java.text.DecimalFormat;
 import java.util.Calendar;
@@ -63,9 +65,6 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     TextView dialogAddTime;
     TextView dialogAddDate;
     TextView dialogReading;
-    TextView dialogType;
-
-    HistoryFragment historyFragment;
     HomePagerAdapter homePagerAdapter;
 
     @Override
@@ -75,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        NonSwipeableViewPager viewPager = (NonSwipeableViewPager) findViewById(R.id.pager);
+        ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
 
         if (toolbar != null) {
             setSupportActionBar(toolbar);
@@ -87,6 +86,35 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
         viewPager.setAdapter(homePagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
+        tabLayout.setOnTabSelectedListener(
+                new TabLayout.ViewPagerOnTabSelectedListener(viewPager) {
+                    @Override
+                    public void onTabSelected(TabLayout.Tab tab) {
+                        super.onTabSelected(tab);
+                        int position = tab.getPosition();
+
+                    }
+                });
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if (position == 2) {
+                    hideFabAnimation();
+                } else {
+                    showFabAnimation();
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
         db = new DatabaseHandler(this);
         loadDatabase();
@@ -119,7 +147,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         Log.i("filter::", "called hee");
 
         for (GlucoseReading reading : db.getGlucoseReadings()) {
-            Log.i("dbreturn::",String.valueOf(reading.get_user_id()));
+            Log.i("dbreturn::", String.valueOf(reading.get_user_id()));
         }
     }
 
@@ -266,6 +294,43 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
     public void reloadFragmentAdapter(){
         homePagerAdapter.notifyDataSetChanged();
+    }
+
+    private void hideFabAnimation(){
+       final View fab = (View) getFabView();
+        int origHeight = fab.getHeight();
+        fab.animate()
+                .translationY(-5)
+                .alpha(0.0f)
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                        fab.setVisibility(View.INVISIBLE);
+                    }
+                });
+    }
+
+    private void showFabAnimation(){
+        final View fab = (View) getFabView();
+        if (fab.getVisibility() == View.INVISIBLE) {
+            // Prepare the View for the animation
+            fab.setVisibility(View.VISIBLE);
+            fab.setAlpha(0.0f);
+
+            fab.animate()
+                    .alpha(1f)
+                    .setListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            super.onAnimationEnd(animation);
+                            fab.setVisibility(View.VISIBLE);
+                        }
+                    });
+        } else {
+            // do nothing
+            // probably swiping from OVERVIEW to HISTORY tab
+        }
     }
 
     @Override
