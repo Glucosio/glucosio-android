@@ -8,6 +8,8 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/fragment_history_recycler_view"
         android:scrollbars="vertical"
+        android:clickable="true"
+        android:focusable="true"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"/>
 </LinearLayout>

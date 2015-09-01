@@ -251,7 +251,6 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         addDialog.getWindow().setDimAmount(0.5f);
         addDialog.show();
 
-
         spinnerReadingType = (LabelledSpinner) addDialog.findViewById(R.id.dialog_add_reading_type);
         spinnerReadingType.setItemsArray(R.array.dialog_add_measured_list);
 
@@ -260,7 +259,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         dialogAddTime = (TextView) addDialog.findViewById(R.id.dialog_add_time);
         dialogAddDate = (TextView) addDialog.findViewById(R.id.dialog_add_date);
         dialogReading = (TextView) addDialog.findViewById(R.id.dialog_add_concentration);
-        dialogAddButton.setText(getString(R.string.dialog_edit));
+        dialogAddButton.setText(getString(R.string.dialog_edit).toUpperCase());
         dialogReading.setText(db.getGlucoseReadings("id = " + id).get(0).get_reading().toString());
         spinnerReadingType.setSelection(db.getGlucoseReadings("id = " + id).get(0).get_reading_type());
 
@@ -394,7 +393,6 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
     private void hideFabAnimation(){
        final View fab = (View) getFabView();
-        int origHeight = fab.getHeight();
         fab.animate()
                 .translationY(-5)
                 .alpha(0.0f)

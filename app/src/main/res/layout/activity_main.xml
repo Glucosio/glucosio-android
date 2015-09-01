@@ -8,6 +8,11 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -23,7 +28,8 @@
             android:background="@color/glucosio_pink"
             app:tabSelectedTextColor="@android:color/white"
             app:tabIndicatorColor="@color/glucosio_accent"
-            app:tabTextColor="@android:color/white"/>
+            app:tabTextColor="#80ffffff"/>
+        </android.support.design.widget.AppBarLayout>
 
         <android.support.v4.view.ViewPager
             android:id="@+id/pager"

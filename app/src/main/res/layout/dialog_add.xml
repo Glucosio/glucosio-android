@@ -3,14 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:minWidth="300dp"
+    android:minWidth="500dp"
     xmlns:custom="http://schemas.android.com/apk/res-auto">
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:custom="http://schemas.android.com/apk/res-auto"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="32dp">
+        android:layout_margin="16dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -108,7 +108,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/dialog_add_cancel"
                 android:layout_marginTop="32dp"
-                android:background="@null"
+                android:background="?android:attr/selectableItemBackground"
                 android:textColor="@color/glucosio_text"
                 android:layout_gravity="right"/>
             <TextView
@@ -117,8 +117,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/dialog_add_add"
                 android:layout_marginTop="32dp"
-                android:layout_marginLeft="16dp"
-                android:background="@null"
+                android:paddingLeft="16dp"
+                android:background="?android:attr/selectableItemBackground"
                 android:textColor="@color/glucosio_pink"
                 android:layout_gravity="right"/>
         </LinearLayout>
