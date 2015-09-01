@@ -198,6 +198,20 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         dialogAddDate = (TextView) addDialog.findViewById(R.id.dialog_add_date);
         dialogReading = (TextView) addDialog.findViewById(R.id.dialog_add_concentration);
 
+
+        DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        String formatted = inputFormat.format(Calendar.getInstance().getTime());
+        SplitDateTime addSplitDateTime = new SplitDateTime(formatted, inputFormat);
+
+        this.readingYear = addSplitDateTime.getYear();
+        this.readingMonth = addSplitDateTime.getMonth();
+        this.readingDay = addSplitDateTime.getDay();
+        this.readingHour = addSplitDateTime.getHour();
+        this.readingMinute = addSplitDateTime.getMinute();
+
+        dialogAddTime.setText(readingHour + ":" + readingMinute);
+        dialogAddDate.setText(readingDay + "/" + readingMonth + "/" +readingYear);
+
         dialogAddDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -272,7 +286,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         this.readingMinute = splitDateTime.getMinute();
 
         dialogAddTime.setText(readingHour + ":" + readingMinute);
-        dialogAddDate.setText(readingDay + "/" + readingMonth + "/" + readingDay);
+        dialogAddDate.setText(readingDay + "/" + readingMonth + "/" + readingYear);
 
         dialogAddDate.setOnClickListener(new View.OnClickListener() {
             @Override

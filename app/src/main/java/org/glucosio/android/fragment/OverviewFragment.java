@@ -56,76 +56,83 @@ public class OverviewFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View mFragmentView = inflater.inflate(R.layout.fragment_overview, container, false);
-
-        rTools = new ReadingTools(getActivity().getApplicationContext());
-
-        chart = (LineChart) mFragmentView.findViewById(R.id.chart);
-        Legend legend = chart.getLegend();
-
+        View mFragmentView;
         db = ((MainActivity)getActivity()).getDatabase();
-        reading = db.getGlucoseReadingAsArray();
-        datetime = db.getGlucoseDateTimeAsArray();
-        type = db.getGlucoseTypeAsArray();
 
-        Collections.reverse(reading);
-        Collections.reverse(datetime);
-        Collections.reverse(type);
+        if (db.getGlucoseReadings().size() != 0) {
+            mFragmentView = inflater.inflate(R.layout.fragment_overview, container, false);
 
-        readingTextView = (TextView) mFragmentView.findViewById(R.id.item_history_reading);
-        tipTextView = (TextView) mFragmentView.findViewById(R.id.random_tip_textview);
+            rTools = new ReadingTools(getActivity().getApplicationContext());
 
-        XAxis xAxis = chart.getXAxis();
-        xAxis.setDrawGridLines(false);
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setTextColor(getResources().getColor(R.color.glucosio_text_light));
+            chart = (LineChart) mFragmentView.findViewById(R.id.chart);
+            Legend legend = chart.getLegend();
 
-        LimitLine ll1 = new LimitLine(130f, "High");
-        ll1.setLineWidth(1f);
-        ll1.setLineColor(getResources().getColor(R.color.glucosio_gray_light));
-        ll1.setTextColor(getResources().getColor(R.color.glucosio_text));
+            reading = db.getGlucoseReadingAsArray();
+            datetime = db.getGlucoseDateTimeAsArray();
+            type = db.getGlucoseTypeAsArray();
 
-        LimitLine ll2 = new LimitLine(70f, "Low");
-        ll2.setLineWidth(1f);
-        ll2.setLineColor(getResources().getColor(R.color.glucosio_gray_light));
-        ll2.setTextColor(getResources().getColor(R.color.glucosio_text));
+            Collections.reverse(reading);
+            Collections.reverse(datetime);
+            Collections.reverse(type);
 
-        LimitLine ll3 = new LimitLine(200f, "Hyper");
-        ll3.setLineWidth(1f);
-        ll3.enableDashedLine(10, 10, 10);
-        ll3.setLineColor(getResources().getColor(R.color.glucosio_gray_light));
-        ll3.setTextColor(getResources().getColor(R.color.glucosio_text));
+            readingTextView = (TextView) mFragmentView.findViewById(R.id.item_history_reading);
+            tipTextView = (TextView) mFragmentView.findViewById(R.id.random_tip_textview);
 
-        LimitLine ll4 = new LimitLine(50f, "Hypo");
-        ll4.setLineWidth(1f);
-        ll4.enableDashedLine(10, 10, 10);
-        ll4.setLineColor(getResources().getColor(R.color.glucosio_gray_light));
-        ll4.setTextColor(getResources().getColor(R.color.glucosio_text));
+            XAxis xAxis = chart.getXAxis();
+            xAxis.setDrawGridLines(false);
+            xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+            xAxis.setTextColor(getResources().getColor(R.color.glucosio_text_light));
 
-        YAxis leftAxis = chart.getAxisLeft();
-        leftAxis.removeAllLimitLines(); // reset all limit lines to avoid overlapping lines
-        leftAxis.addLimitLine(ll1);
-        leftAxis.addLimitLine(ll2);
-        leftAxis.addLimitLine(ll3);
-        leftAxis.addLimitLine(ll4);
-        leftAxis.setTextColor(getResources().getColor(R.color.glucosio_text_light));
-        leftAxis.setStartAtZero(false);
-        //leftAxis.setYOffset(20f);
-        leftAxis.disableGridDashedLine();
-        leftAxis.setDrawGridLines(false);
+            LimitLine ll1 = new LimitLine(130f, "High");
+            ll1.setLineWidth(1f);
+            ll1.setLineColor(getResources().getColor(R.color.glucosio_gray_light));
+            ll1.setTextColor(getResources().getColor(R.color.glucosio_text));
 
-        // limit lines are drawn behind data (and not on top)
-        leftAxis.setDrawLimitLinesBehindData(true);
+            LimitLine ll2 = new LimitLine(70f, "Low");
+            ll2.setLineWidth(1f);
+            ll2.setLineColor(getResources().getColor(R.color.glucosio_gray_light));
+            ll2.setTextColor(getResources().getColor(R.color.glucosio_text));
 
-        chart.getAxisRight().setEnabled(false);
-        chart.setBackgroundColor(Color.parseColor("#FFFFFF"));
-        chart.setDescription("");
-        chart.setGridBackgroundColor(Color.parseColor("#FFFFFF"));
-        setData();
-        legend.setEnabled(false);
+            LimitLine ll3 = new LimitLine(200f, "Hyper");
+            ll3.setLineWidth(1f);
+            ll3.enableDashedLine(10, 10, 10);
+            ll3.setLineColor(getResources().getColor(R.color.glucosio_gray_light));
+            ll3.setTextColor(getResources().getColor(R.color.glucosio_text));
 
-        loadLastReading();
-        loadRandomTip();
+            LimitLine ll4 = new LimitLine(50f, "Hypo");
+            ll4.setLineWidth(1f);
+            ll4.enableDashedLine(10, 10, 10);
+            ll4.setLineColor(getResources().getColor(R.color.glucosio_gray_light));
+            ll4.setTextColor(getResources().getColor(R.color.glucosio_text));
+
+            YAxis leftAxis = chart.getAxisLeft();
+            leftAxis.removeAllLimitLines(); // reset all limit lines to avoid overlapping lines
+            leftAxis.addLimitLine(ll1);
+            leftAxis.addLimitLine(ll2);
+            leftAxis.addLimitLine(ll3);
+            leftAxis.addLimitLine(ll4);
+            leftAxis.setTextColor(getResources().getColor(R.color.glucosio_text_light));
+            leftAxis.setStartAtZero(false);
+            //leftAxis.setYOffset(20f);
+            leftAxis.disableGridDashedLine();
+            leftAxis.setDrawGridLines(false);
+
+            // limit lines are drawn behind data (and not on top)
+            leftAxis.setDrawLimitLinesBehindData(true);
+
+            chart.getAxisRight().setEnabled(false);
+            chart.setBackgroundColor(Color.parseColor("#FFFFFF"));
+            chart.setDescription("");
+            chart.setGridBackgroundColor(Color.parseColor("#FFFFFF"));
+            setData();
+            legend.setEnabled(false);
+
+            loadLastReading();
+            loadRandomTip();
+
+        } else {
+            mFragmentView = inflater.inflate(R.layout.fragment_empty, container, false);
+        }
         return mFragmentView;
     }
 
@@ -174,7 +181,9 @@ public class OverviewFragment extends Fragment {
     }
 
     private void loadLastReading(){
-        readingTextView.setText(reading.get(reading.size() -1) + "");
+        if (db.getGlucoseReadings().size() != 0) {
+            readingTextView.setText(reading.get(reading.size() - 1) + "");
+        }
     }
 
     private void loadRandomTip(){

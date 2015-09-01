@@ -61,85 +61,93 @@ public class HistoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View mFragmentView = inflater.inflate(R.layout.fragment_history, container, false);
+        View mFragmentView;
+        db = ((MainActivity)getActivity()).getDatabase();
 
-        loadDatabase();
 
-        mRecyclerView = (RecyclerView) mFragmentView.findViewById(R.id.fragment_history_recycler_view);
-        mAdapter = new HistoryAdapter(super.getActivity().getApplicationContext(),id, reading, type, datetime);
+        if (db.getGlucoseReadings().size() != 0) {
+            mFragmentView = inflater.inflate(R.layout.fragment_history, container, false);
 
-        // use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
-        mRecyclerView.setHasFixedSize(false);
+            loadDatabase();
 
-        // use a linear layout manager
-        mLayoutManager = new LinearLayoutManager(super.getActivity());
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+            mRecyclerView = (RecyclerView) mFragmentView.findViewById(R.id.fragment_history_recycler_view);
+            mAdapter = new HistoryAdapter(super.getActivity().getApplicationContext(),id, reading, type, datetime);
 
-        mRecyclerView.setAdapter(mAdapter);
-        mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), mRecyclerView, new RecyclerItemClickListener.OnItemClickListener()
-        {
-            @Override
-            public void onItemClick(View view, int position)
+            // use this setting to improve performance if you know that changes
+            // in content do not change the layout size of the RecyclerView
+            mRecyclerView.setHasFixedSize(false);
+
+            // use a linear layout manager
+            mLayoutManager = new LinearLayoutManager(super.getActivity());
+            mRecyclerView.setLayoutManager(mLayoutManager);
+            mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+
+            mRecyclerView.setAdapter(mAdapter);
+            mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), mRecyclerView, new RecyclerItemClickListener.OnItemClickListener()
             {
-                // Do nothing
-            }
+                @Override
+                public void onItemClick(View view, int position)
+                {
+                    // Do nothing
+                }
 
-            @Override
-            public void onItemLongClick(View view, final int position)
-            {
-                CharSequence colors[] = new CharSequence[] {getResources().getString(R.string.dialog_edit), getResources().getString(R.string.dialog_delete)};
+                @Override
+                public void onItemLongClick(View view, final int position)
+                {
+                    CharSequence colors[] = new CharSequence[] {getResources().getString(R.string.dialog_edit), getResources().getString(R.string.dialog_delete)};
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setItems(colors, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        if (which == 0){
-                            // EDIT
-                            TextView idTextView = (TextView) mRecyclerView.getChildAt(position).findViewById(R.id.item_history_id);
-                            final double idToEdit = Double.parseDouble(idTextView.getText().toString());
-                            ((MainActivity)getActivity()).showEditDialog(idToEdit);
-                        } else {
-                            // DELETE
-                            TextView idTextView = (TextView) mRecyclerView.getChildAt(position).findViewById(R.id.item_history_id);
-                            final double idToDelete = Double.parseDouble(idTextView.getText().toString());
-                            readingToRestore = db.getGlucoseReadings("id = " + idToDelete).get(0);
-                            removeReadingFromDb(db.getGlucoseReadings("id = " + idToDelete).get(0));
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setItems(colors, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            if (which == 0){
+                                // EDIT
+                                TextView idTextView = (TextView) mRecyclerView.getChildAt(position).findViewById(R.id.item_history_id);
+                                final double idToEdit = Double.parseDouble(idTextView.getText().toString());
+                                ((MainActivity)getActivity()).showEditDialog(idToEdit);
+                            } else {
+                                // DELETE
+                                TextView idTextView = (TextView) mRecyclerView.getChildAt(position).findViewById(R.id.item_history_id);
+                                final double idToDelete = Double.parseDouble(idTextView.getText().toString());
+                                readingToRestore = db.getGlucoseReadings("id = " + idToDelete).get(0);
+                                removeReadingFromDb(db.getGlucoseReadings("id = " + idToDelete).get(0));
 
-                            mAdapter.notifyDataSetChanged();
+                                mAdapter.notifyDataSetChanged();
 
-                            Snackbar.make(((MainActivity)getActivity()).getFabView(), R.string.fragment_history_snackbar_text, Snackbar.LENGTH_LONG).setCallback(new Snackbar.Callback() {
-                                @Override
-                                public void onDismissed(Snackbar snackbar, int event) {
-                                    switch (event) {
-                                        case Snackbar.Callback.DISMISS_EVENT_ACTION:
-                                            // Do nothing, see Undo onClickListener
-                                            break;
-                                        case Snackbar.Callback.DISMISS_EVENT_TIMEOUT:
-                                            // Do Nothing
-                                            break;
+                                Snackbar.make(((MainActivity)getActivity()).getFabView(), R.string.fragment_history_snackbar_text, Snackbar.LENGTH_LONG).setCallback(new Snackbar.Callback() {
+                                    @Override
+                                    public void onDismissed(Snackbar snackbar, int event) {
+                                        switch (event) {
+                                            case Snackbar.Callback.DISMISS_EVENT_ACTION:
+                                                // Do nothing, see Undo onClickListener
+                                                break;
+                                            case Snackbar.Callback.DISMISS_EVENT_TIMEOUT:
+                                                // Do Nothing
+                                                break;
+                                        }
                                     }
-                                }
 
-                                @Override
-                                public void onShown(Snackbar snackbar) {
-                                    // Do nothing
-                                }
-                            }).setAction("UNDO", new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    // On Undo pressed, reload the adapter. The reading is still present in db;
-                                    db.addGlucoseReading(readingToRestore);
-                                    ((MainActivity)getActivity()).reloadFragmentAdapter();
-                                }
-                            }).show();
+                                    @Override
+                                    public void onShown(Snackbar snackbar) {
+                                        // Do nothing
+                                    }
+                                }).setAction("UNDO", new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        // On Undo pressed, reload the adapter. The reading is still present in db;
+                                        db.addGlucoseReading(readingToRestore);
+                                        ((MainActivity)getActivity()).reloadFragmentAdapter();
+                                    }
+                                }).show();
+                            }
                         }
-                    }
-                });
-                builder.show();
-            }
-        }));
+                    });
+                    builder.show();
+                }
+            }));
+        } else {
+            mFragmentView = inflater.inflate(R.layout.fragment_empty, container, false);
+        }
 
         return mFragmentView;
     }
