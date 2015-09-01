@@ -1,9 +1,11 @@
 package org.glucosio.android.fragment;
 
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -20,6 +22,7 @@ import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.adapter.HistoryAdapter;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
+import org.glucosio.android.listener.RecyclerItemClickListener;
 import org.glucosio.android.tools.DividerItemDecoration;
 
 import java.lang.reflect.Array;
@@ -119,6 +122,33 @@ public class HistoryFragment extends Fragment {
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
         mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), mRecyclerView, new RecyclerItemClickListener.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(View view, int position)
+            {
+                // Do nothing
+            }
+
+            @Override
+            public void onItemLongClick(View view, final int position)
+            {
+                CharSequence colors[] = new CharSequence[] {getResources().getString(R.string.dialog_edit), getResources().getString(R.string.dialog_delete)};
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setItems(colors, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (which == 0){
+                            TextView idTextView = (TextView) mRecyclerView.getChildAt(position).findViewById(R.id.item_history_id);
+                            final double idToEdit = Double.parseDouble(idTextView.getText().toString());
+                            ((MainActivity)getActivity()).showEditDialog(idToEdit);
+                        }
+                    }
+                });
+                builder.show();
+            }
+        }));
 
         return mFragmentView;
     }

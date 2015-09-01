@@ -9,6 +9,9 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/fragment_tips_recyclerview"
             android:layout_width="fill_parent"
+            android:focusable="true"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
             android:layout_height="fill_parent"/>
     </LinearLayout>
 </FrameLayout>

@@ -7,23 +7,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.LinearLayout;
-import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,9 +30,14 @@ import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
 import org.glucosio.android.db.User;
 import org.glucosio.android.tools.LabelledSpinner;
+import org.glucosio.android.tools.SplitDateTime;
 
+import java.text.DateFormat;
 import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
@@ -172,9 +170,10 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         }
 
     }
+
     public void onFabClicked(View v){
         //only included for debug
-        printGlucoseReadingTableDetails();
+        // printGlucoseReadingTableDetails();
 
         addDialog = new Dialog(MainActivity.this, R.style.AppTheme);
 
@@ -227,10 +226,87 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                 addDialog.dismiss();
             }
         });
+        dialogAddButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogOnAddButtonPressed();
+            }
+        });
+    }
+
+    public void showEditDialog(final Double id){
+        //only included for debug
+        // printGlucoseReadingTableDetails();
+
+        addDialog = new Dialog(MainActivity.this, R.style.AppTheme);
+
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(addDialog.getWindow().getAttributes());
+        addDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        addDialog.setContentView(R.layout.dialog_add);
+        addDialog.getWindow().setAttributes(lp);
+        addDialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+        addDialog.getWindow().setDimAmount(0.5f);
+        addDialog.show();
+
+
+        spinnerReadingType = (LabelledSpinner) addDialog.findViewById(R.id.dialog_add_reading_type);
+        spinnerReadingType.setItemsArray(R.array.dialog_add_measured_list);
+
+        dialogCancelButton = (TextView) addDialog.findViewById(R.id.dialog_add_cancel);
+        dialogAddButton = (TextView) addDialog.findViewById(R.id.dialog_add_add);
+        dialogAddTime = (TextView) addDialog.findViewById(R.id.dialog_add_time);
+        dialogAddDate = (TextView) addDialog.findViewById(R.id.dialog_add_date);
+        dialogReading = (TextView) addDialog.findViewById(R.id.dialog_add_concentration);
+        dialogAddButton.setText(getString(R.string.dialog_edit));
+        dialogReading.setText(db.getGlucoseReadings("id = " + id).get(0).get_reading().toString());
+        spinnerReadingType.setSelection(db.getGlucoseReadings("id = " + id).get(0).get_reading_type());
+
+        DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        SplitDateTime splitDateTime = new SplitDateTime(db.getGlucoseReadings("id = " + id).get(0).get_created(), inputFormat);
+        this.readingYear = splitDateTime.getYear();
+        this.readingMonth = splitDateTime.getMonth();
+        this.readingDay = splitDateTime.getDay();
+        this.readingHour = splitDateTime.getHour();
+        this.readingMinute = splitDateTime.getMinute();
+
+        dialogAddTime.setText(readingHour + ":" + readingMinute);
+        dialogAddDate.setText(readingDay + "/" + readingMonth + "/" + readingDay);
+
+        dialogAddDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar now = Calendar.getInstance();
+                DatePickerDialog dpd = DatePickerDialog.newInstance(
+                        MainActivity.this,
+                        now.get(Calendar.YEAR),
+                        now.get(Calendar.MONTH),
+                        now.get(Calendar.DAY_OF_MONTH)
+                );
+                dpd.show(getFragmentManager(), "Datepickerdialog");
+            }
+        });
+
+        dialogAddTime.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Calendar now = Calendar.getInstance();
+                TimePickerDialog tpd =  TimePickerDialog.newInstance(MainActivity.this, now.get(Calendar.HOUR_OF_DAY) ,now.get(Calendar.MINUTE), true);
+                tpd.show(getFragmentManager(), "Timepickerdialog");
+            }
+        });
+        dialogCancelButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                addDialog.dismiss();
+            }
+        });
         dialogAddButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                dialogOnAddButtonPressed();
+                dialogOnEditButtonPressed(id);
             }
         });
     }
@@ -243,6 +319,25 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             finalDateTime = readingYear + "-" + readingMonth + "-" + readingDay + " " + readingHour + ":" + readingMinute;
 
             GlucoseReading gReading = new GlucoseReading(finalReading, finalType, finalDateTime);
+            db.addGlucoseReading(gReading);
+
+            addDialog.dismiss();
+            homePagerAdapter.notifyDataSetChanged();
+        } else {
+            Toast.makeText(getApplicationContext(),getString(R.string.dialog_error), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void dialogOnEditButtonPressed(double id){
+        if (validateDate() && validateTime() && validateReading()) {
+            Double finalReading = Double.parseDouble(dialogReading.getText().toString());
+            int finalType = typeToInt();
+            finalDateTime = readingYear + "-" + readingMonth + "-" + readingDay + " " + readingHour + ":" + readingMinute;
+
+            GlucoseReading gReadingToDelete = db.getGlucoseReadings("id = " +id).get(0);
+            GlucoseReading gReading = new GlucoseReading(finalReading, finalType, finalDateTime);
+
+            db.deleteGlucoseReadings(gReadingToDelete);
             db.addGlucoseReading(gReading);
 
             addDialog.dismiss();
@@ -266,24 +361,24 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         String typeString = spinnerReadingType.getSpinner().getSelectedItem().toString();
         int typeInt;
         if (typeString.equals(getString(R.string.dialog_add_type_1))) {
-            typeInt = 1;
+            typeInt = 0;
 
         } else if (typeString.equals(getString(R.string.dialog_add_type_2))) {
-            typeInt = 2;
+            typeInt = 1;
 
         } else if (typeString.equals(getString(R.string.dialog_add_type_3))) {
-            typeInt = 3;
+            typeInt = 2;
 
         } else if (typeString.equals(getString(R.string.dialog_add_type_4))) {
-            typeInt = 4;
+            typeInt = 3;
 
         } else if (typeString.equals(getString(R.string.dialog_add_type_5))) {
-            typeInt = 5;
+            typeInt = 4;
 
         } else if (typeString.equals(getString(R.string.dialog_add_type_6))) {
-            typeInt = 6;
+            typeInt = 5;
         } else {
-            typeInt = 0;
+            typeInt = 6;
         }
 
         return  typeInt;

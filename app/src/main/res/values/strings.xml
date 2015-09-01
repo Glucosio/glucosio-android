@@ -73,6 +73,8 @@
     <string name="dialog_add_cancel">CANCEL</string>
     <string name="dialog_add_add">ADD</string>
     <string name="dialog_error">Please fill all the fields.</string>
+    <string name="dialog_delete">Delete</string>
+    <string name="dialog_edit">Edit</string>
 
     <string name="hello_blank_fragment" translatable="false">Fragment here.</string>
     <string name="fragment_history_snackbar_text">1 reading deleted</string>
@@ -83,6 +85,9 @@
     <string name="fragment_overview_trend_positive">in range and healthy</string>
     <string name="fragment_overview_tip">Tip</string>
     <string name="tip_example" translatable="false">Use less cheese in your recipes and meals. Fresh mozzarella packed in water and Swiss cheese are usually lower in sodium.</string>
+
+
+
 
     <array name="tips_all">
         <item>Eat more fresh, unprocessed foods to help reduce carbohydrate and sugar intake.</item>

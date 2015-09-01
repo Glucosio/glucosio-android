@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:paddingTop="16dp"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#ffffff">
+    android:focusable="true"
+    android:clickable="true"
+    android:background="?android:attr/selectableItemBackground">
+    <LinearLayout
+        android:paddingTop="16dp"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#ffffff"
+        android:orientation="vertical">
 
     <TextView
         android:id="@+id/fragment_tips_textview"
@@ -16,5 +23,6 @@
         android:layout_height="1dp"
         android:layout_marginRight="8dp" android:layout_marginLeft="8dp"
         android:background="#dadada"/>
+    </LinearLayout>
 
 </LinearLayout>

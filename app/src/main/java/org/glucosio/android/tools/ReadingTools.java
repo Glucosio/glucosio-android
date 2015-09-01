@@ -31,22 +31,22 @@ public class ReadingTools {
 
     public String typeToString(int typeInt){
         String typeString = "";
-        if (typeInt == 1) {
+        if (typeInt == 0) {
             typeString = mContext.getString(R.string.dialog_add_type_1);
 
-        } else if (typeInt == 2) {
+        } else if (typeInt == 1) {
             typeString = mContext.getString(R.string.dialog_add_type_2);
 
-        } else if (typeInt == 3) {
+        } else if (typeInt == 2) {
             typeString = mContext.getString(R.string.dialog_add_type_3);
 
-        } else if (typeInt == 4) {
+        } else if (typeInt == 3) {
             typeString = mContext.getString(R.string.dialog_add_type_4);
 
-        } else if (typeInt == 5) {
+        } else if (typeInt == 4) {
             typeString = mContext.getString(R.string.dialog_add_type_5);
 
-        } else if (typeInt == 6) {
+        } else if (typeInt == 5) {
             typeString = mContext.getString(R.string.dialog_add_type_6);
         }
         return  typeString;
