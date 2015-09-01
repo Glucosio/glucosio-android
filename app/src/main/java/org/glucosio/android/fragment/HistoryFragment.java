@@ -39,6 +39,7 @@ public class HistoryFragment extends Fragment {
     ArrayList<Double> reading;
     ArrayList <Integer> type;
     ArrayList<String> datetime;
+    GlucoseReading readingToRestore;
 
     public static HistoryFragment newInstance() {
         HistoryFragment fragment = new HistoryFragment();
@@ -67,51 +68,6 @@ public class HistoryFragment extends Fragment {
         mRecyclerView = (RecyclerView) mFragmentView.findViewById(R.id.fragment_history_recycler_view);
         mAdapter = new HistoryAdapter(super.getActivity().getApplicationContext(),id, reading, type, datetime);
 
-        // Swipe to delete functionality
-        ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
-            @Override
-            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder viewHolder1) {
-                return false;
-            }
-
-            @Override
-            public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
-                int position = viewHolder.getAdapterPosition();
-                TextView idTextView = (TextView) mRecyclerView.getChildAt(position).findViewById(R.id.item_history_id);
-                final double idToDelete = Double.parseDouble(idTextView.getText().toString());
-
-                Snackbar.make(((MainActivity)getActivity()).getFabView(), R.string.fragment_history_snackbar_text, Snackbar.LENGTH_LONG).setCallback(new Snackbar.Callback() {
-                    @Override
-                    public void onDismissed(Snackbar snackbar, int event) {
-                        switch (event) {
-                            case Snackbar.Callback.DISMISS_EVENT_ACTION:
-                                // Do nothing, see Undo onClickListener
-                                break;
-                            case Snackbar.Callback.DISMISS_EVENT_TIMEOUT:
-                                removeReadingFromDb(db.getGlucoseReadings("id = " + idToDelete).get(0));
-                                break;
-                        }
-                    }
-
-                    @Override
-                    public void onShown(Snackbar snackbar) {
-                        // Do nothing
-                    }
-                }).setAction("UNDO", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        // On Undo pressed, reload the adapter. The reading is still present in db;
-                        mAdapter.notifyDataSetChanged();
-                    }
-                }).show();
-                // Remove item just from UI
-            }
-
-
-        };
-
-        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
-        itemTouchHelper.attachToRecyclerView(mRecyclerView);
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
         mRecyclerView.setHasFixedSize(false);
@@ -140,9 +96,44 @@ public class HistoryFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         if (which == 0){
+                            // EDIT
                             TextView idTextView = (TextView) mRecyclerView.getChildAt(position).findViewById(R.id.item_history_id);
                             final double idToEdit = Double.parseDouble(idTextView.getText().toString());
                             ((MainActivity)getActivity()).showEditDialog(idToEdit);
+                        } else {
+                            // DELETE
+                            TextView idTextView = (TextView) mRecyclerView.getChildAt(position).findViewById(R.id.item_history_id);
+                            final double idToDelete = Double.parseDouble(idTextView.getText().toString());
+                            readingToRestore = db.getGlucoseReadings("id = " + idToDelete).get(0);
+                            removeReadingFromDb(db.getGlucoseReadings("id = " + idToDelete).get(0));
+
+                            mAdapter.notifyDataSetChanged();
+
+                            Snackbar.make(((MainActivity)getActivity()).getFabView(), R.string.fragment_history_snackbar_text, Snackbar.LENGTH_LONG).setCallback(new Snackbar.Callback() {
+                                @Override
+                                public void onDismissed(Snackbar snackbar, int event) {
+                                    switch (event) {
+                                        case Snackbar.Callback.DISMISS_EVENT_ACTION:
+                                            // Do nothing, see Undo onClickListener
+                                            break;
+                                        case Snackbar.Callback.DISMISS_EVENT_TIMEOUT:
+                                            // Do Nothing
+                                            break;
+                                    }
+                                }
+
+                                @Override
+                                public void onShown(Snackbar snackbar) {
+                                    // Do nothing
+                                }
+                            }).setAction("UNDO", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    // On Undo pressed, reload the adapter. The reading is still present in db;
+                                    db.addGlucoseReading(readingToRestore);
+                                    ((MainActivity)getActivity()).reloadFragmentAdapter();
+                                }
+                            }).show();
                         }
                     }
                 });
