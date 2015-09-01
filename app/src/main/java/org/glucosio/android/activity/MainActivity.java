@@ -180,14 +180,15 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
         lp.copyFrom(addDialog.getWindow().getAttributes());
-        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
-        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
         addDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
         addDialog.setContentView(R.layout.dialog_add);
-        addDialog.show();
         addDialog.getWindow().setAttributes(lp);
         addDialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
         addDialog.getWindow().setDimAmount(0.5f);
+        addDialog.show();
+
 
         spinnerReadingType = (LabelledSpinner) addDialog.findViewById(R.id.dialog_add_reading_type);
         spinnerReadingType.setItemsArray(R.array.dialog_add_measured_list);
