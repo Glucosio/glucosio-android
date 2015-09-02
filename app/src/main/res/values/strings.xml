@@ -13,7 +13,7 @@
         <item>English (US)</item>
     </string-array>
     <string name="helloactivity_age">Age</string>
-    <string name="helloactivity_age_invalid">Please enter a vaild age.</string>
+    <string name="helloactivity_age_invalid">Please enter a valid age.</string>
 
     <string name="helloactivity_gender">Gender</string>
     <string name="helloactivity_gender_list_1">Male</string>
@@ -49,7 +49,7 @@
     <string name="helloactivity_button">GET STARTED</string>
 
     <string name="fragment_empty_text">No data available. \n Add your first one here.</string>
-    <string name="dialog_add_title">Add Blood Glucose level</string>
+    <string name="dialog_add_title">Add Blood Glucose Level</string>
     <string name="dialog_add_concentration">Concentration</string>
     <string name="dialog_add_concentration_um" translatable="false">mg/dL</string>
     <string name="dialog_add_date">Date</string>
