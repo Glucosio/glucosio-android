@@ -9,7 +9,7 @@ env:
 android:
   components:
     - android-23
-    - sys-img-armeabi-v7a-android-23
+    - sys-img-armeabi-v7a-android-19
     - build-tools-23.0.0
     - extra-android-m2repository
     - extra-android-support
