@@ -21,11 +21,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+}
 
-    project.gradle.taskGraph.whenReady {
-        connectedAndroidTest {
-            ignoreFailures = true
-        }
+project.gradle.taskGraph.whenReady {
+    connectedAndroidTestDebug {
+        ignoreFailures = true
     }
 }
 
