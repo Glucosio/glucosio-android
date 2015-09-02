@@ -33,7 +33,7 @@ dependencies {
     compile 'com.android.support:design:23.0.0'
     compile 'com.android.support:cardview-v7:23.0.0'
     compile 'com.android.support:recyclerview-v7:23.0.0'
-    compile 'com.wdullaer:materialdatetimepicker:1.5.1'
+    compile 'com.wdullaer:materialdatetimepicker:1.4.2'
     compile 'com.android.support:percent:23.0.0'
     compile 'com.github.PhilJay:MPAndroidChart:v2.1.3'
     compile 'uk.co.chrisjenx:calligraphy:2.1.0'
