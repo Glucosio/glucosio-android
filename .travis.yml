@@ -14,4 +14,4 @@ before_install:
  - chmod +x gradlew
 
 script:
-  - ./gradlew clean build checkstyle
+  - ./gradlew clean build
