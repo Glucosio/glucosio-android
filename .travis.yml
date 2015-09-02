@@ -3,8 +3,8 @@ android:
   components:
     # Uncomment the lines below if you want to
     # use the latest revision of Android SDK Tools
-    - platform-tools
-    - tools
+    # - platform-tools
+    # - tools
     # Emulator Management
   before_script:
     - echo no | android create avd --force -n test -t android-23 --abi armeabi-v7a
