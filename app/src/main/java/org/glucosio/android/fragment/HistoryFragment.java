@@ -83,8 +83,7 @@ public class HistoryFragment extends Fragment {
             mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
             mRecyclerView.setAdapter(mAdapter);
-            mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), mRecyclerView, new RecyclerItemClickListener.OnItemClickListener()
-            {
+            mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), mRecyclerView, new RecyclerItemClickListener.OnItemClickListener() {
                 @Override
                 public void onItemClick(View view, int position)
                 {
@@ -145,6 +144,7 @@ public class HistoryFragment extends Fragment {
                     builder.show();
                 }
             }));
+
         } else {
             mFragmentView = inflater.inflate(R.layout.fragment_empty, container, false);
         }

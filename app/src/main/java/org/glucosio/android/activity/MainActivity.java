@@ -398,7 +398,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     }
 
     public CoordinatorLayout getFabView() {
-        return (CoordinatorLayout) findViewById(R.id.coordinatorFab);
+        return (CoordinatorLayout) findViewById(R.id.coordinator_layout);
     }
 
     public void reloadFragmentAdapter(){
@@ -406,7 +406,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     }
 
     private void hideFabAnimation(){
-       final View fab = (View) getFabView();
+       final View fab = (View) findViewById(R.id.main_fab);
         fab.animate()
                 .translationY(-5)
                 .alpha(0.0f)
