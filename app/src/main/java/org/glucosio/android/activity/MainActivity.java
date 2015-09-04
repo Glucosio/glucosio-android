@@ -89,8 +89,6 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                     @Override
                     public void onTabSelected(TabLayout.Tab tab) {
                         super.onTabSelected(tab);
-                        int position = tab.getPosition();
-
                     }
                 });
 
@@ -420,7 +418,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     }
 
     private void showFabAnimation(){
-        final View fab = (View) getFabView();
+        final View fab = (View) findViewById(R.id.main_fab);
         if (fab.getVisibility() == View.INVISIBLE) {
             // Prepare the View for the animation
             fab.setVisibility(View.VISIBLE);
