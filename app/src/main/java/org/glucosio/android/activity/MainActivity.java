@@ -30,6 +30,7 @@ import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
 import org.glucosio.android.db.User;
 import org.glucosio.android.tools.LabelledSpinner;
+import org.glucosio.android.tools.ReadingTools;
 import org.glucosio.android.tools.SplitDateTime;
 
 import java.text.DateFormat;
@@ -64,6 +65,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     TextView dialogAddDate;
     TextView dialogReading;
     HomePagerAdapter homePagerAdapter;
+    ReadingTools rTools;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,6 +123,8 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                         .setFontAttrId(R.attr.fontPath)
                         .build()
         );
+
+        rTools = new ReadingTools(getApplicationContext());
     }
 
 
@@ -207,6 +211,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         this.readingHour = addSplitDateTime.getHour();
         this.readingMinute = addSplitDateTime.getMinute();
 
+        updateSpinnerTypeTime();
         dialogAddTime.setText(readingHour + ":" + readingMinute);
         dialogAddDate.setText(readingDay + "/" + readingMonth + "/" +readingYear);
 
@@ -306,6 +311,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                 Calendar now = Calendar.getInstance();
                 TimePickerDialog tpd =  TimePickerDialog.newInstance(MainActivity.this, now.get(Calendar.HOUR_OF_DAY) ,now.get(Calendar.MINUTE), true);
                 tpd.show(getFragmentManager(), "Timepickerdialog");
+                spinnerReadingType.setSelection(rTools.timeToSpinnerType());
             }
         });
         dialogCancelButton.setOnClickListener(new View.OnClickListener(){
@@ -368,6 +374,14 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         return !dialogReading.getText().toString().equals("");
     }
 
+    private void updateSpinnerTypeTime(){
+        spinnerReadingType.setSelection(rTools.timeToSpinnerType());
+    }
+
+    private void updateSpinnerTypeHour(int hour){
+        spinnerReadingType.setSelection(rTools.hourToSpinnerType(hour));
+    }
+
     private int typeToInt(){
         String typeString = spinnerReadingType.getSpinner().getSelectedItem().toString();
         int typeInt;
@@ -401,6 +415,10 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
     public void reloadFragmentAdapter(){
         homePagerAdapter.notifyDataSetChanged();
+    }
+
+    public Toolbar getToolbar(){
+        return (Toolbar) findViewById(R.id.toolbar);
     }
 
     private void hideFabAnimation(){
@@ -449,6 +467,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
         String time = +hourOfDay+":"+readingMinute;
         addTime.setText(time);
+        updateSpinnerTypeHour(Integer.parseInt(df.format(hourOfDay)));
     }
 
     @Override

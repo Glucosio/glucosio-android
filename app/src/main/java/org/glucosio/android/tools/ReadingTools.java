@@ -7,6 +7,7 @@ import org.glucosio.android.R;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class ReadingTools {
@@ -50,5 +51,49 @@ public class ReadingTools {
             typeString = mContext.getString(R.string.dialog_add_type_6);
         }
         return  typeString;
+    }
+
+    public int timeToSpinnerType() {
+        DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        String formatted = inputFormat.format(Calendar.getInstance().getTime());
+        SplitDateTime addSplitDateTime = new SplitDateTime(formatted, inputFormat);
+        int hour = Integer.parseInt(addSplitDateTime.getHour());
+
+        if (hour > 4 && hour <= 7 ){
+            return 0;
+        } else if (hour > 7 && hour <= 11){
+            return 1;
+        } else if (hour > 11 && hour <= 13) {
+            return 2;
+        } else if (hour > 13 && hour <= 17) {
+            return 3;
+        } else if (hour > 17 && hour <= 20) {
+            return 4;
+        } else if (hour > 20 && hour <= 4) {
+            return 5;
+        } else {
+            return 0;
+        }
+
+    }
+
+    public int hourToSpinnerType(int hour) {
+
+        if (hour > 4 && hour <= 7 ){
+            return 0;
+        } else if (hour > 7 && hour <= 11){
+            return 1;
+        } else if (hour > 11 && hour <= 13) {
+            return 2;
+        } else if (hour > 13 && hour <= 17) {
+            return 3;
+        } else if (hour > 17 && hour <= 20) {
+            return 4;
+        } else if (hour > 20 && hour <= 4) {
+            return 5;
+        } else {
+            return 0;
+        }
+
     }
 }
