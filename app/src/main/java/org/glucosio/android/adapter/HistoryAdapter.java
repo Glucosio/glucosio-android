@@ -73,7 +73,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
 
         idTextView.setText(id.get(position).toString());
         readingTextView.setText(reading.get(position).toString());
-        datetimeTextView.setText(datetime.get(position));
+        datetimeTextView.setText(rTools.convertDate(datetime.get(position)));
         typeTextView.setText(rTools.typeToString(type.get(position)));
     }
 

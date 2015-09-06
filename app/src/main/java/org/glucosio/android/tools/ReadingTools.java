@@ -19,7 +19,7 @@ public class ReadingTools {
 
     public String convertDate(String date) {
         DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        DateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        DateFormat outputFormat = new SimpleDateFormat("E, dd MMM yyyy HH:mm");
         Date parsed = null;
         try {
             parsed = inputFormat.parse(date);
