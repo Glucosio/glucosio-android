@@ -3,7 +3,8 @@
     tools:ignore="MissingPrefix"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:layout_marginTop="16dp"
+    android:layout_marginBottom="16dp"
     android:background="#ffffff"
     tools:context="org.glucosio.android.fragment.OverviewFragment">
     <LinearLayout
@@ -13,6 +14,8 @@
         <com.github.mikephil.charting.charts.LineChart
             android:id="@+id/chart"
             android:layout_width="fill_parent"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
             android:layout_height="200dp" />
 
         <TextView
@@ -23,6 +26,8 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
             android:orientation="vertical">
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -73,12 +78,16 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/fragment_overview_tip"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
             android:layout_marginTop="16dp"
             android:textColor="@color/glucosio_text" />
         <TextView
             android:id="@+id/random_tip_textview"
             android:layout_marginTop="8dp"
             android:layout_width="fill_parent"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
             android:layout_height="wrap_content"
             android:textColor="@color/glucosio_text"
             android:text="Always bring a banana to a party, Rose, bananas are good!"
