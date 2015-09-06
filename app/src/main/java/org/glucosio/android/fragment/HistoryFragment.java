@@ -137,7 +137,7 @@ public class HistoryFragment extends Fragment {
                                         db.addGlucoseReading(readingToRestore);
                                         ((MainActivity)getActivity()).reloadFragmentAdapter();
                                     }
-                                }).show();
+                                }).setActionTextColor(getResources().getColor(R.color.glucosio_accent)).show();
                             }
                         }
                     });
