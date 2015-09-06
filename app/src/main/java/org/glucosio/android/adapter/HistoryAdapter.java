@@ -16,8 +16,8 @@ import java.util.Collections;
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHolder> {
     private Context mContext;
-    private ArrayList<Double> id;
-    private ArrayList<Double> reading;
+    private ArrayList<Integer> id;
+    private ArrayList<Integer> reading;
     private ArrayList <Integer> type;
     private ArrayList<String> datetime;
     private ReadingTools rTools;
@@ -35,7 +35,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public HistoryAdapter(Context context, ArrayList<Double> gId, ArrayList<Double> gReading, ArrayList<Integer> gType, ArrayList<String> gDatetime) {
+    public HistoryAdapter(Context context, ArrayList<Integer> gId, ArrayList<Integer> gReading, ArrayList<Integer> gType, ArrayList<String> gDatetime) {
         this.mContext = context;
         this.id = gId;
         this.reading = gReading;

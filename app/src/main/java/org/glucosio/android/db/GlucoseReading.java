@@ -5,7 +5,7 @@ package org.glucosio.android.db;
  */
 public class GlucoseReading {
 
-    Double _reading;
+    int _reading;
     int _id;
     int _reading_type;
     int _user_id;
@@ -16,7 +16,7 @@ public class GlucoseReading {
 
     }
 
-    public GlucoseReading(Double reading,int reading_type,String created)
+    public GlucoseReading(int reading,int reading_type,String created)
     {
         this._reading=reading;
         this._reading_type=reading_type;
@@ -38,7 +38,7 @@ public class GlucoseReading {
     {
         this._id=id;
     }
-    public void set_reading(Double reading)
+    public void set_reading(int reading)
     {
         this._reading=reading;
     }
@@ -47,7 +47,7 @@ public class GlucoseReading {
         this._reading_type=reading_type;
     }
 
-    public Double get_reading()
+    public int get_reading()
     {
         return this._reading;
     }

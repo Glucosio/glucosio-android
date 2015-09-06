@@ -35,8 +35,8 @@ public class HistoryFragment extends Fragment {
     RecyclerView.Adapter mAdapter;
     DatabaseHandler db;
 
-    ArrayList<Double> id;
-    ArrayList<Double> reading;
+    ArrayList<Integer> id;
+    ArrayList<Integer> reading;
     ArrayList <Integer> type;
     ArrayList<String> datetime;
     GlucoseReading readingToRestore;

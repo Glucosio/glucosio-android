@@ -277,7 +277,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         dialogAddDate = (TextView) addDialog.findViewById(R.id.dialog_add_date);
         dialogReading = (TextView) addDialog.findViewById(R.id.dialog_add_concentration);
         dialogAddButton.setText(getString(R.string.dialog_edit).toUpperCase());
-        dialogReading.setText(db.getGlucoseReadings("id = " + id).get(0).get_reading().toString());
+        dialogReading.setText(db.getGlucoseReadings("id = " + id).get(0).get_reading());
         spinnerReadingType.setSelection(db.getGlucoseReadings("id = " + id).get(0).get_reading_type());
 
         DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -331,7 +331,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     private void dialogOnAddButtonPressed(){
 
         if (validateDate() && validateTime() && validateReading()) {
-            Double finalReading = Double.parseDouble(dialogReading.getText().toString());
+            int finalReading = Integer.parseInt(dialogReading.getText().toString());
             int finalType = typeToInt();
             finalDateTime = readingYear + "-" + readingMonth + "-" + readingDay + " " + readingHour + ":" + readingMinute;
 
@@ -347,7 +347,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
     private void dialogOnEditButtonPressed(double id){
         if (validateDate() && validateTime() && validateReading()) {
-            Double finalReading = Double.parseDouble(dialogReading.getText().toString());
+            int finalReading = Integer.parseInt(dialogReading.getText().toString());
             int finalType = typeToInt();
             finalDateTime = readingYear + "-" + readingMonth + "-" + readingDay + " " + readingHour + ":" + readingMinute;
 

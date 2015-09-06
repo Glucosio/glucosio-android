@@ -214,7 +214,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             do{
                 GlucoseReading reading=new GlucoseReading();
                 reading.set_id(Integer.parseInt(cursor.getString(0)));
-                reading.set_reading(Double.parseDouble(cursor.getString(1)));
+                reading.set_reading(Integer.parseInt(cursor.getString(1)));
                 reading.set_reading_type(Integer.parseInt(cursor.getString(2)));
                 reading.set_created(cursor.getString(3));
                 reading.set_user_id(Integer.parseInt(cursor.getString(4)));
@@ -223,13 +223,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
         return readings;
     }
-    public ArrayList<Double> getGlucoseIdAsArray(){
+    public ArrayList<Integer> getGlucoseIdAsArray(){
         List<GlucoseReading> glucoseReading = getGlucoseReadings();
-        ArrayList<Double> idArray = new ArrayList<Double>();
+        ArrayList<Integer> idArray = new ArrayList<Integer>();
         int i;
 
         for (i = 0; i < glucoseReading.size(); i++){
-            double id;
+            int id;
             GlucoseReading singleReading= glucoseReading.get(i);
             id = singleReading.get_id();
             idArray.add(id);
@@ -238,13 +238,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return idArray;
     }
 
-    public ArrayList<Double> getGlucoseReadingAsArray(){
+    public ArrayList<Integer> getGlucoseReadingAsArray(){
         List<GlucoseReading> glucoseReading = getGlucoseReadings();
-        ArrayList<Double> readingArray = new ArrayList<Double>();
+        ArrayList<Integer> readingArray = new ArrayList<Integer>();
         int i;
 
         for (i = 0; i < glucoseReading.size(); i++){
-            double reading;
+            int reading;
             GlucoseReading singleReading= glucoseReading.get(i);
             reading = singleReading.get_reading();
             readingArray.add(reading);

@@ -30,7 +30,7 @@ public class OverviewFragment extends Fragment {
 
     LineChart chart;
     DatabaseHandler db;
-    ArrayList<Double> reading;
+    ArrayList<Integer> reading;
     ArrayList<String> datetime;
     ArrayList<Integer> type;
     TextView readingTextView;
