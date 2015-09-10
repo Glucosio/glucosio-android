@@ -34,22 +34,22 @@ public class TipsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        dB = ((MainActivity)getActivity()).getDatabase();
-        tipsManager = new TipsManager(getActivity(), dB.getUser(1).get_age());
+        // dB = ((MainActivity)getActivity()).getDatabase();
+        // tipsManager = new TipsManager(getActivity(), dB.getUser(1).get_age());
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View mView = inflater.inflate(R.layout.fragment_tips, container, false);
-        tipsRecycler = (RecyclerView) mView.findViewById(R.id.fragment_tips_recyclerview);
-        adapter = new TipsAdapter(tipsManager.getTips());
+        // tipsRecycler = (RecyclerView) mView.findViewById(R.id.fragment_tips_recyclerview);
+        // adapter = new TipsAdapter(tipsManager.getTips());
 
-        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-        tipsRecycler.setLayoutManager(llm);
-        tipsRecycler.setAdapter(adapter);
-        tipsRecycler.setHasFixedSize(false);
+        // LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+        // llm.setOrientation(LinearLayoutManager.VERTICAL);
+        // tipsRecycler.setLayoutManager(llm);
+        // tipsRecycler.setAdapter(adapter);
+        // tipsRecycler.setHasFixedSize(false);
         return mView;
     }
 }

@@ -9,37 +9,25 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.glucosio.android.R;
 import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.adapter.HistoryAdapter;
-import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
 import org.glucosio.android.listener.RecyclerItemClickListener;
-import org.glucosio.android.tools.DividerItemDecoration;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import org.glucosio.android.presenter.HistoryPresenter;
 
 public class HistoryFragment extends Fragment {
 
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;
     RecyclerView.Adapter mAdapter;
-    DatabaseHandler db;
-
-    ArrayList<Integer> id;
-    ArrayList<Integer> reading;
-    ArrayList <Integer> type;
-    ArrayList<String> datetime;
     GlucoseReading readingToRestore;
+    HistoryPresenter presenter;
 
     public static HistoryFragment newInstance() {
         HistoryFragment fragment = new HistoryFragment();
@@ -62,16 +50,14 @@ public class HistoryFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View mFragmentView;
-        db = ((MainActivity)getActivity()).getDatabase();
+        presenter = new HistoryPresenter(this);
+        presenter.loadDatabase();
 
-
-        if (db.getGlucoseReadings().size() != 0) {
+        if (!presenter.isdbEmpty()) {
             mFragmentView = inflater.inflate(R.layout.fragment_history, container, false);
 
-            loadDatabase();
-
             mRecyclerView = (RecyclerView) mFragmentView.findViewById(R.id.fragment_history_recycler_view);
-            mAdapter = new HistoryAdapter(super.getActivity().getApplicationContext(),id, reading, type, datetime);
+            mAdapter = new HistoryAdapter(super.getActivity().getApplicationContext(), presenter);
 
             // use this setting to improve performance if you know that changes
             // in content do not change the layout size of the RecyclerView
@@ -102,17 +88,13 @@ public class HistoryFragment extends Fragment {
                             if (which == 0){
                                 // EDIT
                                 TextView idTextView = (TextView) mRecyclerView.getChildAt(position).findViewById(R.id.item_history_id);
-                                final double idToEdit = Double.parseDouble(idTextView.getText().toString());
+                                final int idToEdit = Integer.parseInt(idTextView.getText().toString());
                                 ((MainActivity)getActivity()).showEditDialog(idToEdit);
                             } else {
                                 // DELETE
                                 TextView idTextView = (TextView) mRecyclerView.getChildAt(position).findViewById(R.id.item_history_id);
-                                final double idToDelete = Double.parseDouble(idTextView.getText().toString());
-                                readingToRestore = db.getGlucoseReadings("id = " + idToDelete).get(0);
-                                removeReadingFromDb(db.getGlucoseReadings("id = " + idToDelete).get(0));
-
-                                mAdapter.notifyDataSetChanged();
-
+                                final int idToDelete = Integer.parseInt(idTextView.getText().toString());
+                                presenter.onDeleteClicked(idToDelete);
                                 Snackbar.make(((MainActivity)getActivity()).getFabView(), R.string.fragment_history_snackbar_text, Snackbar.LENGTH_LONG).setCallback(new Snackbar.Callback() {
                                     @Override
                                     public void onDismissed(Snackbar snackbar, int event) {
@@ -121,7 +103,7 @@ public class HistoryFragment extends Fragment {
                                                 // Do nothing, see Undo onClickListener
                                                 break;
                                             case Snackbar.Callback.DISMISS_EVENT_TIMEOUT:
-                                                // Do Nothing
+                                                presenter.deleteReading(idToDelete);
                                                 break;
                                         }
                                     }
@@ -133,9 +115,7 @@ public class HistoryFragment extends Fragment {
                                 }).setAction("UNDO", new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-                                        // On Undo pressed, reload the adapter. The reading is still present in db;
-                                        db.addGlucoseReading(readingToRestore);
-                                        ((MainActivity)getActivity()).reloadFragmentAdapter();
+                                        presenter.onUndoClicked();
                                     }
                                 }).setActionTextColor(getResources().getColor(R.color.glucosio_accent)).show();
                             }
@@ -152,19 +132,11 @@ public class HistoryFragment extends Fragment {
         return mFragmentView;
     }
 
-    private void removeReadingFromDb(GlucoseReading gReading) {
-        db.deleteGlucoseReadings(gReading);
-        ((MainActivity)getActivity()).reloadFragmentAdapter();
-        loadDatabase();
+    public void notifyAdapter(){
+        mAdapter.notifyDataSetChanged();
     }
 
-    private void loadDatabase(){
-        // Get database from MainActivity
-        db = ((MainActivity)getActivity()).getDatabase();
-
-        this.id = db.getGlucoseIdAsArray();
-        this.reading = db.getGlucoseReadingAsArray();
-        this.type = db.getGlucoseTypeAsArray();
-        this.datetime = db.getGlucoseDateTimeAsArray();
+    public void reloadFragmentAdapter(){
+        ((MainActivity)getActivity()).reloadFragmentAdapter();
     }
 }

@@ -19,6 +19,7 @@ import com.github.mikephil.charting.data.LineDataSet;
 import org.glucosio.android.R;
 import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.db.DatabaseHandler;
+import org.glucosio.android.presenter.OverviewPresenter;
 import org.glucosio.android.tools.ReadingTools;
 import org.glucosio.android.tools.TipsManager;
 
@@ -29,13 +30,9 @@ import java.util.Random;
 public class OverviewFragment extends Fragment {
 
     LineChart chart;
-    DatabaseHandler db;
-    ArrayList<Integer> reading;
-    ArrayList<String> datetime;
-    ArrayList<Integer> type;
     TextView readingTextView;
-    ReadingTools rTools;
     TextView tipTextView;
+    OverviewPresenter presenter;
 
     public static HistoryFragment newInstance() {
         HistoryFragment fragment = new HistoryFragment();
@@ -57,23 +54,18 @@ public class OverviewFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View mFragmentView;
-        db = ((MainActivity)getActivity()).getDatabase();
+        presenter = new OverviewPresenter(this);
+        presenter.loadDatabase();
 
-        if (db.getGlucoseReadings().size() != 0) {
+        if (!presenter.isdbEmpty()) {
             mFragmentView = inflater.inflate(R.layout.fragment_overview, container, false);
-
-            rTools = new ReadingTools(getActivity().getApplicationContext());
 
             chart = (LineChart) mFragmentView.findViewById(R.id.chart);
             Legend legend = chart.getLegend();
 
-            reading = db.getGlucoseReadingAsArray();
-            datetime = db.getGlucoseDateTimeAsArray();
-            type = db.getGlucoseTypeAsArray();
-
-            Collections.reverse(reading);
-            Collections.reverse(datetime);
-            Collections.reverse(type);
+            Collections.reverse(presenter.getReading());
+            Collections.reverse(presenter.getDatetime());
+            Collections.reverse(presenter.getType());
 
             readingTextView = (TextView) mFragmentView.findViewById(R.id.item_history_reading);
             tipTextView = (TextView) mFragmentView.findViewById(R.id.random_tip_textview);
@@ -140,16 +132,16 @@ public class OverviewFragment extends Fragment {
 
         ArrayList<String> xVals = new ArrayList<String>();
 
-        for (int i = 0; i < datetime.size(); i++) {
-            String date = rTools.convertDate(datetime.get(i));
+        for (int i = 0; i < presenter.getDatetime().size(); i++) {
+            String date = presenter.convertDate(presenter.getDatetime().get(i));
             xVals.add(date + "");
         }
 
         ArrayList<Entry> yVals = new ArrayList<Entry>();
 
-        for (int i = 0; i < reading.size(); i++) {
+        for (int i = 0; i < presenter.getReading().size(); i++) {
 
-            float val = Float.parseFloat(reading.get(i).toString());
+            float val = Float.parseFloat(presenter.getReading().get(i).toString());
             yVals.add(new Entry(val, i));
         }
 
@@ -181,17 +173,13 @@ public class OverviewFragment extends Fragment {
     }
 
     private void loadLastReading(){
-        if (db.getGlucoseReadings().size() != 0) {
-            readingTextView.setText(reading.get(reading.size() - 1) + "");
+        if (!presenter.isdbEmpty()) {
+            readingTextView.setText(presenter.getLastReading());
         }
     }
 
     private void loadRandomTip(){
-        TipsManager tipsManager = new TipsManager(getActivity().getApplicationContext(), db.getUser(1).get_age());
-        ArrayList<String> tips = tipsManager.getTips();
-
-        // Get random tip from array
-        int randomNumber = new Random().nextInt(tips.size());
-        tipTextView.setText(tips.get(randomNumber));
+        TipsManager tipsManager = new TipsManager(getActivity().getApplicationContext(), presenter.getUserAge());
+        tipTextView.setText(presenter.getRandomTip(tipsManager));
     }
 }

@@ -193,7 +193,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void deleteGlucoseReadings(GlucoseReading reading)
     {
         SQLiteDatabase db=this.getWritableDatabase();
-        db.delete(TABLE_GLUCOSE_READING,KEY_ID+" =? ",new String[]{String.valueOf(reading.get_id())});
+        db.delete(TABLE_GLUCOSE_READING, KEY_ID + " =? ", new String[]{String.valueOf(reading.get_id())});
     }
     public List<GlucoseReading> getGlucoseReadings()
     {
@@ -281,5 +281,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
 
         return datetimeArray;
+    }
+
+    public GlucoseReading getGlucoseReadingById(int id){
+        return getGlucoseReadings("id = " + id).get(0);
     }
 }

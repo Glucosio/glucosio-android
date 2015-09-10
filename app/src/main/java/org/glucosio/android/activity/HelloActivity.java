@@ -16,16 +16,10 @@ import android.widget.Toast;
 import org.glucosio.android.R;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.User;
+import org.glucosio.android.presenter.HelloPresenter;
 import org.glucosio.android.tools.LabelledSpinner;
 
 public class HelloActivity extends AppCompatActivity {
-
-    int id;
-    int age;
-    String name;
-    String country;
-    int gender;
-    String language;
 
     LabelledSpinner languageSpinner;
     LabelledSpinner genderSpinner;
@@ -33,17 +27,15 @@ public class HelloActivity extends AppCompatActivity {
     LabelledSpinner unitSpinner;
     TextView ageTextView;
     Button nextButton;
-
-    DatabaseHandler db;
+    HelloPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hello);
 
-        db = new DatabaseHandler(this);
-        id = 1; // Id is always 1. We don't support multi-user (for now :D).
-        name = "Test Account"; //TODO: add input for name in Tips;
+        presenter = new HelloPresenter(this);
+        presenter.loadDatabase();
 
         languageSpinner = (LabelledSpinner) findViewById(R.id.helloactivity_spinner_language);
         genderSpinner = (LabelledSpinner) findViewById(R.id.helloactivity_spinner_gender);
@@ -62,47 +54,18 @@ public class HelloActivity extends AppCompatActivity {
     }
 
     public void onNextClicked(View v){
-        if (validateAge()){
-            this.age = Integer.parseInt(ageTextView.getText().toString());
-            this.gender = genderToInt();
-            this.language = languageSpinner.getSpinner().getSelectedItem().toString();
-
-            saveToDatabase();
-        } else {
-            //TODO: find out why setError doesn't work :(
-            Toast.makeText(getApplicationContext(), getString(R.string.helloactivity_age_invalid), Toast.LENGTH_SHORT).show();
-        }
+            presenter.onNextClicked(ageTextView.getText().toString(),
+                    genderSpinner.getSpinner().getSelectedItemPosition(), languageSpinner.getSpinner().getSelectedItem().toString());
     }
 
-    private void saveToDatabase(){
-        db.addUser(new User(id, name, language, country, age, gender));
+    public void displayErrorMessage(){
+        Toast.makeText(getApplicationContext(), getString(R.string.helloactivity_age_invalid), Toast.LENGTH_SHORT).show();
+    }
+
+    public void closeHelloActivity(){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
-    }
-
-    private boolean validateAge(){
-        if (TextUtils.isEmpty(ageTextView.getText())){
-            return false;
-        } else if (!TextUtils.isDigitsOnly(ageTextView.getText())){
-            return false;
-        } else {
-            int age = Integer.parseInt(ageTextView.getText().toString());
-            return age > 0 && age < 120;
-        }
-    }
-
-    private int genderToInt(){
-        String genderString = genderSpinner.getSpinner().getSelectedItem().toString();
-        int genderInt;
-        if (genderString.equals(getString(R.string.helloactivity_gender_list_1))) {
-            genderInt = 1;
-        } else if (genderString.equals(getString(R.string.helloactivity_gender_list_2))) {
-            genderInt = 2;
-        } else {
-            genderInt = 3;
-        }
-        return  genderInt;
     }
 
     private void setError(TextView view, String text) {
