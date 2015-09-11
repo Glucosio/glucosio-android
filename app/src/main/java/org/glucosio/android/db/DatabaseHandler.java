@@ -25,6 +25,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_ID="id";
     private static final String KEY_NAME="name";
     private static final String KEY_PREF_LANG="preferred_language";
+    private static final String KEY_PREF_DIABETES_TYPE="diabetes_type";
+    private static final String KEY_PREF_UNIT_TYPE="unit_type";
     private static final String KEY_PREF_COUNTRY="country";
     private static final String KEY_AGE="age";
     private static final String KEY_GENDER="gender";
@@ -43,13 +45,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         createTable(db);
-    }
+    }    
 
     public void createTable(SQLiteDatabase db)
     {
         String CREATE_USER_TABLE="CREATE TABLE "+TABLE_USER+" ("
                 +KEY_ID+" INTEGER PRIMARY KEY,"+KEY_NAME+" TEXT,"
-                +KEY_PREF_LANG+" TEXT,"+KEY_PREF_COUNTRY+" TEXT,"+KEY_AGE+" TEXT,"+KEY_GENDER+" INTEGER )";
+                +KEY_PREF_LANG+" TEXT, "+KEY_PREF_UNIT_TYPE+" TEXT, "+KEY_PREF_DIABETES_TYPE+" INTEGER, "+KEY_PREF_COUNTRY+" TEXT,"+KEY_AGE+" TEXT,"+KEY_GENDER+" INTEGER )";
         String CREATE_GLUCOSE_READING_TABLE="CREATE TABLE "+TABLE_GLUCOSE_READING+" ("
                 +KEY_ID+" INTEGER PRIMARY KEY,"+KEY_READING+" TEXT, "+
                 KEY_READING_TYPE+" INTEGER, "+
@@ -84,6 +86,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         ContentValues values=new ContentValues();
         values.put(KEY_NAME,user.get_name());
         values.put(KEY_PREF_LANG,user.get_preferredLanguage());
+        values.put(KEY_PREF_DIABETES_TYPE,user.get_diabetestype());
+        values.put(KEY_PREF_UNIT_TYPE,user.get_unittype());
         values.put(KEY_PREF_COUNTRY,user.get_country());
         values.put(KEY_AGE,user.get_age());
         values.put(KEY_GENDER, user.get_gender());
@@ -95,7 +99,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         //resetTable();
 
         SQLiteDatabase db=this.getReadableDatabase();
-        Cursor cursor=db.query(TABLE_USER, new String[]{KEY_ID, KEY_NAME, KEY_PREF_LANG, KEY_PREF_COUNTRY, KEY_AGE, KEY_GENDER}, KEY_ID + "=?",
+        Cursor cursor=db.query(TABLE_USER, new String[]{KEY_ID, KEY_NAME, KEY_PREF_LANG, KEY_PREF_UNIT_TYPE, KEY_PREF_DIABETES_TYPE, KEY_PREF_COUNTRY, KEY_AGE, KEY_GENDER}, KEY_ID + "=?",
                 new String[]{String.valueOf(id)}, null, null, null);
         if(cursor!=null) {
             if (cursor.moveToFirst()){
@@ -124,9 +128,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 user.set_id(Integer.parseInt(cursor.getString(0)));
                 user.set_name(cursor.getString(1));
                 user.set_preferredLanguage(cursor.getString(2));
-                user.set_country(cursor.getString(3));
-                user.set_age(Integer.parseInt(cursor.getString(4)));
-                user.set_gender(Integer.parseInt(cursor.getString(5)));
+                user.set_diabetestype(cursor.getString(3));
+                user.set_get_unittype(cursor.getString(4));
+                user.set_country(cursor.getString(5));
+                user.set_age(Integer.parseInt(cursor.getString(6)));
+                user.set_gender(Integer.parseInt(cursor.getString(7)));
                 userLists.add(user);
             }while(cursor.moveToNext());
         }
@@ -149,6 +155,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         ContentValues values=new ContentValues();
         values.put(KEY_NAME,user.get_name());
         values.put(KEY_PREF_LANG,user.get_preferredLanguage());
+        values.put(KEY_PREF_DIABETES_TYPE,user.get_diabetestype());
+        values.put(KEY_PREF_UNIT_TYPE,user.get_unittype());
         values.put(KEY_PREF_COUNTRY,user.get_country());
         values.put(KEY_AGE, user.get_age());
         values.put(KEY_GENDER, user.get_gender());
