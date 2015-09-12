@@ -8,8 +8,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import java.lang.reflect.Array;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Calendar;
 
 /**
  * Created by ahmar on 10/8/15.
@@ -286,4 +290,46 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public GlucoseReading getGlucoseReadingById(int id){
         return getGlucoseReadings("id = " + id).get(0);
     }
+
+    private ArrayList<Integer> getGlucoseReadingsForLastMonthAsArray(){
+
+        SQLiteDatabase db=this.getReadableDatabase();
+        Calendar calendar = Calendar.getInstance();
+        DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        String now = inputFormat.format(calendar.getTime());
+        calendar.add(Calendar.MONTH, -1);
+        String nowString = now.toString();
+        String oneMonthAgo = inputFormat.format(calendar.getTime());
+
+
+        String[] parameters = new String[] { oneMonthAgo, now } ;
+        String[] columns = new String[] { "reading" };
+        String whereString = "created_at between ? and ?";
+
+        Cursor cursor = db.query(false, "glucose_readings", columns,whereString, parameters, null, null, null, null);
+
+        ArrayList<Integer> readings = new ArrayList<Integer>();
+
+        if(cursor.moveToFirst()){
+            do{
+                readings.add(cursor.getInt(0));
+            }while(cursor.moveToNext());
+        }
+        return readings;
+    }
+
+    public Integer getAverageGlucoseReadingForLastMonth() {
+        ArrayList<Integer> readings = getGlucoseReadingsForLastMonthAsArray();
+        int sum = 0;
+        int numberOfReadings = readings.size();
+        for (int i=0; i < numberOfReadings; i++) {
+            sum += readings.get(i);
+        }
+        if (numberOfReadings > 0){
+            return Math.round(sum / numberOfReadings);
+        } else {
+            return 0;
+        }
+    }
+
 }
