@@ -11,7 +11,7 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   git config --global user.email "travis@travis-ci.org"
   git config --global user.name "Travis"
 
-  #using token clone gh-pages branch
+  #clone gh-pages branch
   git clone --quiet --branch=master https://$f070c9ac4abfa8450706e8dc28320da96ecba36e@github.com/Glucosio/glucosio.github.io.git  master > /dev/null
 
   #go into diractory and copy data we're interested in to that directory
