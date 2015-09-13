@@ -13,7 +13,9 @@ android:
 before_install:
  - chmod +x gradlew
 
-after_success: ./upload-gh-pages.sh
+after_success:
+ - chmod +x ./upload-gh-pages.sh
+ - ./upload-gh-pages.sh
 
 script:
  - ./gradlew clean build
