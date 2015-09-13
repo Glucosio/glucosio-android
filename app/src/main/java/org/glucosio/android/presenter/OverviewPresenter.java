@@ -38,6 +38,10 @@ public class OverviewPresenter {
         return rTools.convertDate(date);
     }
 
+    public int getGlucoseTrend(){
+        return dB.getAverageGlucoseReadingForLastMonth();
+    }
+
     public String getLastReading(){
         return getReading().get(getReading().size() - 1) + "";
     }

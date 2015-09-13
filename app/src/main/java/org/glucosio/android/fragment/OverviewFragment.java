@@ -31,6 +31,7 @@ public class OverviewFragment extends Fragment {
 
     LineChart chart;
     TextView readingTextView;
+    TextView trendTextView;
     TextView tipTextView;
     OverviewPresenter presenter;
 
@@ -68,6 +69,7 @@ public class OverviewFragment extends Fragment {
             Collections.reverse(presenter.getType());
 
             readingTextView = (TextView) mFragmentView.findViewById(R.id.item_history_reading);
+            trendTextView = (TextView) mFragmentView.findViewById(R.id.item_history_trend);
             tipTextView = (TextView) mFragmentView.findViewById(R.id.random_tip_textview);
 
             XAxis xAxis = chart.getXAxis();
@@ -120,6 +122,7 @@ public class OverviewFragment extends Fragment {
             legend.setEnabled(false);
 
             loadLastReading();
+            loadGlucoseTrend();
             loadRandomTip();
 
         } else {
@@ -175,6 +178,12 @@ public class OverviewFragment extends Fragment {
     private void loadLastReading(){
         if (!presenter.isdbEmpty()) {
             readingTextView.setText(presenter.getLastReading());
+        }
+    }
+
+    private void loadGlucoseTrend(){
+        if (!presenter.isdbEmpty()) {
+            trendTextView.setText(presenter.getGlucoseTrend() + "");
         }
     }
 
