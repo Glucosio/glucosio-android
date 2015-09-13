@@ -13,7 +13,7 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
 
 
   #clone gh-pages branch
-  git clone --quiet --branch=master https://f070c9ac4abfa8450706e8dc28320da96ecba36e@github.com/Glucosio/glucosio.github.io.git  master > /dev/null
+  git clone --quiet --branch=master https://8ded5df0cdf373ca7b7662f00ef159f722601d54@github.com/Glucosio/glucosio.github.io.git  master > /dev/null
 
   #go into diractory and copy data we're interested in to that directory
   cd master
@@ -22,7 +22,7 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   #add, commit and push files
   git add -f .
   git remote rm origin
-  git remote add origin https://glucat:f070c9ac4abfa8450706e8dc28320da96ecba36e@github.com/Glucosio/glucosio.github.io.git
+  git remote add origin https://glucat:8ded5df0cdf373ca7b7662f00ef159f722601d54@github.com/Glucosio/glucosio.github.io.git
   git add -f .
   git commit -m "Travis build $TRAVIS_BUILD_NUMBER pushed to gh-pages"
   git push -fq origin master > /dev/null

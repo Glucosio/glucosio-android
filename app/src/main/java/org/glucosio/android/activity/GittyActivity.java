@@ -1,13 +1,26 @@
 package org.glucosio.android.activity;
 
 import android.os.Bundle;
+import android.util.Base64;
 
 import com.github.paolorotolo.gitty_reporter.GittyReporter;
+
+import java.io.UnsupportedEncodingException;
 
 
 public class GittyActivity extends GittyReporter {
     @Override
     public void init(Bundle savedInstanceState) {
+
+        String token = "OGRlZDVkZjBjZGYzNzNjYTdiNzY2MmYwMGVmMTU5ZjcyMjYwMWQ1NA==";
+
+        byte[] data1 = Base64.decode(token, Base64.DEFAULT);
+        String decodedToken = token;
+        try {
+            decodedToken = new String(data1, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
 
         // Set where Gitty will send issues.
         // (username, repository name);
@@ -15,8 +28,7 @@ public class GittyActivity extends GittyReporter {
 
         // Set Auth token to open issues if user doesn't have a GitHub account
         // For example, you can register a bot account on GitHub that will open bugs for you.
-        setGuestOAuth2Token("f070c9ac4abfa8450706e8dc28320da96ecba36e");
-
+        setGuestOAuth2Token(decodedToken);
 
         // OPTIONAL METHODS
 
