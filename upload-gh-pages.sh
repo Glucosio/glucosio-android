@@ -4,12 +4,13 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
 
   #copy data we're interested in to other place
   mkdir $HOME/android/
-  cp -R * $HOME/android/
+  cp -R app/build/outputs/apk/app-debug.apk $HOME/android/
 
   #go to home and setup git
   cd $HOME
-  git config --global user.email "travis@travis-ci.org"
-  git config --global user.name "Travis"
+  git config --global user.email "glucosioproject@gmail.com"
+  git config --global user.name "Glucat"
+
 
   #clone gh-pages branch
   git clone --quiet --branch=master https://$f070c9ac4abfa8450706e8dc28320da96ecba36e@github.com/Glucosio/glucosio.github.io.git  master > /dev/null
@@ -19,6 +20,8 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   cp -Rf $HOME/android/* .
 
   #add, commit and push files
+  git remote rm origin
+  git remote add origin  https://$f070c9ac4abfa8450706e8dc28320da96ecba36e@github.com/Glucosio/glucosio.github.io.git
   git add -f .
   git commit -m "Travis build $TRAVIS_BUILD_NUMBER pushed to gh-pages"
   git push -fq origin master > /dev/null
