@@ -69,6 +69,10 @@
     <string name="dialog_add_type_4">After lunch</string>
     <string name="dialog_add_type_5">Before dinner</string>
     <string name="dialog_add_type_6">After dinner</string>
+    <string name="dialog_add_type_7">General</string>
+    <string name="dialog_add_type_8">Recheck</string>
+    <string name="dialog_add_type_9">Night</string>
+
 
     <string-array name="dialog_add_measured_list" translatable="false">
         <item>@string/dialog_add_type_1</item>
