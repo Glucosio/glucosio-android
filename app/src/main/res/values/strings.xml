@@ -81,6 +81,9 @@
         <item>@string/dialog_add_type_4</item>
         <item>@string/dialog_add_type_5</item>
         <item>@string/dialog_add_type_6</item>
+        <item>@string/dialog_add_type_7</item>
+        <item>@string/dialog_add_type_8</item>
+        <item>@string/dialog_add_type_9</item>
     </string-array>
     <string name="dialog_add_cancel">CANCEL</string>
     <string name="dialog_add_add">ADD</string>
