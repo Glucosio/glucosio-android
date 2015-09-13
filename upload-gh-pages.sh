@@ -1,8 +1,10 @@
+#!/usr/bin/env bash
 if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   echo -e "Starting to update gh-pages\n"
 
   #copy data we're interested in to other place
-  cp -R andorid $HOME/android/
+  mkdir $HOME/android/
+  cp -R * $HOME/android/
 
   #go to home and setup git
   cd $HOME
