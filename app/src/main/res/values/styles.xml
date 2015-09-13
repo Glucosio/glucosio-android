@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+    <style name="GlucosioTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <!-- Set AppCompat’s color theming attrs -->
         <item name="colorPrimary">@color/glucosio_pink</item>
         <item name="colorPrimaryDark">@color/glucosio_pink_dark</item>
@@ -11,6 +11,12 @@
         <!-- Set AppCompat’s color theming attrs -->
         <item name="colorPrimary">@color/glucosio_pink</item>
         <item name="colorPrimaryDark">@color/glucosio_gray_light</item>
+        <item name="colorAccent">@color/glucosio_pink</item>
+    </style>
+    <style name="GittyTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Set AppCompat’s color theming attrs -->
+        <item name="colorPrimary">@color/glucosio_pink</item>
+        <item name="colorPrimaryDark">#000000</item>
         <item name="colorAccent">@color/glucosio_pink</item>
     </style>
 </resources>

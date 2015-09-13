@@ -114,6 +114,12 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         finish();
     }
 
+    public void startGittyReporter() {
+        Intent intent = new Intent(this, GittyActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
     public void onFabClicked(View v){
         //only included for debug
         // printGlucoseReadingTableDetails();
@@ -377,6 +383,8 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        } else if (id == R.id.action_feedback) {
+            startGittyReporter();
         }
 
         return super.onOptionsItemSelected(item);

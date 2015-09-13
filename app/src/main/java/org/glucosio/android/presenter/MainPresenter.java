@@ -132,6 +132,10 @@ public class MainPresenter {
         }
     }
 
+    public void startGittyReporter(){
+
+    }
+
     private boolean validateTime(String time){
         return !time.equals("");
     }
