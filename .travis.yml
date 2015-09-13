@@ -13,7 +13,7 @@ android:
 before_install:
  - chmod +x gradlew
 
-# after_success: ./update-gh-pages.sh
+after_success: ./update-gh-pages.sh
 
 script:
  - ./gradlew clean build
