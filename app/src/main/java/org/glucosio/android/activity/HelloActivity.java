@@ -128,16 +128,9 @@ public class HelloActivity extends AppCompatActivity {
         finish();
     }
 
-    private void setError(TextView view, String text) {
-        TextInputLayout parent = (TextInputLayout) view.getParent();
-        parent.setError(text);
+    public void showToast(String text){
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }
-
-    private void removeError(TextView view) {
-        TextInputLayout parent = (TextInputLayout) view.getParent();
-        parent.setError(null);
-    }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
