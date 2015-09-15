@@ -36,6 +36,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     //glucose reading keys
     private static final String KEY_READING="reading";
+    private static final String KEY_NOTES="notes";
     private static final String KEY_READING_TYPE="reading_type";
     private static final String KEY_USER_ID="user_id";
 
@@ -58,7 +59,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 +KEY_ID+" INTEGER PRIMARY KEY,"+KEY_READING+" TEXT, "+
                 KEY_READING_TYPE+" INTEGER, "+
                 KEY_CREATED_AT+" TIMESTAMP DEFAULT (datetime('now','localtime') ),"
-                +KEY_USER_ID+" INTEGER DEFAULT 1 )";
+                +KEY_USER_ID+" INTEGER DEFAULT 1," +
+                KEY_NOTES+" TEXT DEFAULT NULL )";
         db.execSQL(CREATE_USER_TABLE);
         db.execSQL(CREATE_GLUCOSE_READING_TABLE);
     }
@@ -174,6 +176,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_READING,reading.get_reading());
         values.put(KEY_READING_TYPE, reading.get_reading_type());
         values.put(KEY_CREATED_AT, reading.get_created());
+        values.put(KEY_NOTES, reading.get_notes());
         db.insert(TABLE_GLUCOSE_READING, null, values);
     }
 
@@ -222,6 +225,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 reading.set_reading_type(Integer.parseInt(cursor.getString(2)));
                 reading.set_created(cursor.getString(3));
                 reading.set_user_id(Integer.parseInt(cursor.getString(4)));
+                reading.set_notes(cursor.getString(5));
                 readings.add(reading);
             }while(cursor.moveToNext());
         }

@@ -106,7 +106,7 @@ public class MainPresenter {
             int finalReading = Integer.parseInt(reading);
             String finalDateTime = readingYear + "-" + readingMonth + "-" + readingDay + " " + readingHour + ":" + readingMinute;
 
-            GlucoseReading gReading = new GlucoseReading(finalReading, type, finalDateTime);
+            GlucoseReading gReading = new GlucoseReading(finalReading, type, finalDateTime,"");
             dB.addGlucoseReading(gReading);
             mainActivity.dismissAddDialog();
         } else {
@@ -120,7 +120,7 @@ public class MainPresenter {
             String finalDateTime = readingYear + "-" + readingMonth + "-" + readingDay + " " + readingHour + ":" + readingMinute;
 
             GlucoseReading gReadingToDelete = dB.getGlucoseReadingById(id);
-            GlucoseReading gReading = new GlucoseReading(finalReading, type, finalDateTime);
+            GlucoseReading gReading = new GlucoseReading(finalReading, type, finalDateTime,"");
 
             dB.deleteGlucoseReadings(gReadingToDelete);
             dB.addGlucoseReading(gReading);
