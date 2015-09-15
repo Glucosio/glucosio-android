@@ -33,6 +33,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_AGE="age";
     private static final String KEY_GENDER="gender";
     private static final String KEY_CREATED_AT="created_at";
+    private static final String KEY_PREFERRED_UNIT="preferred_unit";
+    private static final String KEY_DIABETES_TYPE="diabetes_type";
 
     //glucose reading keys
     private static final String KEY_READING="reading";
@@ -54,7 +56,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     {
         String CREATE_USER_TABLE="CREATE TABLE "+TABLE_USER+" ("
                 +KEY_ID+" INTEGER PRIMARY KEY,"+KEY_NAME+" TEXT,"
-                +KEY_PREF_LANG+" TEXT,"+KEY_PREF_COUNTRY+" TEXT,"+KEY_AGE+" TEXT,"+KEY_GENDER+" INTEGER )";
+                +KEY_PREF_LANG+" TEXT,"+KEY_PREF_COUNTRY+" TEXT,"+KEY_AGE+" TEXT,"+KEY_GENDER+" INTEGER " +
+                KEY_PREFERRED_UNIT+" DEFAULT 1 " +
+                KEY_DIABETES_TYPE+" DEFAULT 1 )";
         String CREATE_GLUCOSE_READING_TABLE="CREATE TABLE "+TABLE_GLUCOSE_READING+" ("
                 +KEY_ID+" INTEGER PRIMARY KEY,"+KEY_READING+" TEXT, "+
                 KEY_READING_TYPE+" INTEGER, "+
@@ -93,6 +97,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_PREF_COUNTRY,user.get_country());
         values.put(KEY_AGE,user.get_age());
         values.put(KEY_GENDER, user.get_gender());
+        values.put(KEY_DIABETES_TYPE, user.get_d_type());
+        values.put(KEY_PREFERRED_UNIT, user.get_preferred_unit());
         db.insert(TABLE_USER, null, values);
 
     }
@@ -101,12 +107,20 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         //resetTable();
 
         SQLiteDatabase db=this.getReadableDatabase();
-        Cursor cursor=db.query(TABLE_USER, new String[]{KEY_ID, KEY_NAME, KEY_PREF_LANG, KEY_PREF_COUNTRY, KEY_AGE, KEY_GENDER}, KEY_ID + "=?",
+        Cursor cursor=db.query(TABLE_USER, new String[]{KEY_ID, KEY_NAME, KEY_PREF_LANG,
+                                                KEY_PREF_COUNTRY, KEY_AGE, KEY_GENDER,
+                                                KEY_DIABETES_TYPE,KEY_PREFERRED_UNIT}, KEY_ID + "=?",
                 new String[]{String.valueOf(id)}, null, null, null);
         if(cursor!=null) {
             if (cursor.moveToFirst()){
-                User user=new User(Integer.parseInt(cursor.getString(0)),cursor.getString(1),cursor.getString(2),cursor.getString(3)
-                        ,Integer.parseInt(cursor.getString(4)),Integer.parseInt(cursor.getString(5)));
+                User user=new User(Integer.parseInt(cursor.getString(0)),
+                                cursor.getString(1),
+                                cursor.getString(2),
+                                cursor.getString(3),
+                                Integer.parseInt(cursor.getString(4)),
+                                Integer.parseInt(cursor.getString(5)),
+                                Integer.parseInt(cursor.getString(6)),
+                                Integer.parseInt(cursor.getString(7)));
 
 
                 return user;
@@ -133,6 +147,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 user.set_country(cursor.getString(3));
                 user.set_age(Integer.parseInt(cursor.getString(4)));
                 user.set_gender(Integer.parseInt(cursor.getString(5)));
+                user.set_d_type(Integer.parseInt(cursor.getString(6)));
+                user.set_preferred_unit(Integer.parseInt(cursor.getString(7)));
                 userLists.add(user);
             }while(cursor.moveToNext());
         }
@@ -158,6 +174,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_PREF_COUNTRY,user.get_country());
         values.put(KEY_AGE, user.get_age());
         values.put(KEY_GENDER, user.get_gender());
+        values.put(KEY_DIABETES_TYPE, user.get_d_type());
+        values.put(KEY_PREFERRED_UNIT, user.get_preferred_unit());
         return db.update(TABLE_USER,values,KEY_ID+" =? ",new String[]{ String.valueOf(user.get_id()) });
 
     }

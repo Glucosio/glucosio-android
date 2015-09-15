@@ -9,13 +9,15 @@ public class User {
     String _country;
     int _age;
     int _gender;  //1 male 2 female 3 others
+    int _d_type; //diabetes type
+    int _preferred_unit; // preferred unit
 
     public User()
     {
 
     }
 
-    public User(int id, String name,String preferred_language, String country, int age,int gender)
+    public User(int id, String name,String preferred_language, String country, int age,int gender,int dType,int pUnit)
     {
         this._id=id;
         this._name=name;
@@ -23,8 +25,22 @@ public class User {
         this._country=country;
         this._age=age;
         this._gender=gender;
+        this._d_type=dType;
+        this._preferred_unit=pUnit;
     }
 
+    public int get_d_type(){
+        return this._d_type;
+    }
+    public void set_d_type(int dType){
+        this._d_type=dType;
+    }
+    public int get_preferred_unit(){
+        return this._preferred_unit;
+    }
+    public void set_preferred_unit(int pUnit){
+        this._preferred_unit=pUnit;
+    }
     public int get_id()
     {
         return this._id;
