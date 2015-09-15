@@ -1,5 +1,7 @@
 package org.glucosio.android.activity;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -88,9 +90,29 @@ public class HelloActivity extends AppCompatActivity {
     }
 
     public void showEULA(){
-        firstView.setVisibility(View.GONE);
-        EULAView.setVisibility(View.VISIBLE);
+        // Prepare the View for the animation
+        firstView.animate()
+                .alpha(0f)
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                        firstView.setVisibility(View.GONE);
+                        showEULAAnimation();
+                    }
+                });
     }
+
+    private void showEULAAnimation() {
+        // Prepare the View for the animation
+        EULAView.setVisibility(View.VISIBLE);
+        EULAView.setAlpha(0.0f);
+
+        EULAView.animate()
+                .alpha(1f);
+        firstView.setVisibility(View.GONE);
+    }
+
 
     public void onStartClicked(View v){
         presenter.saveToDatabase();
