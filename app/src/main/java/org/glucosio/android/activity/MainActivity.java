@@ -121,10 +121,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     }
 
     public void onFabClicked(View v){
-        //only included for debug
-        // printGlucoseReadingTableDetails();
-
-        addDialog = new Dialog(MainActivity.this, R.style.AppTheme);
+        addDialog = new Dialog(MainActivity.this, R.style.GlucosioTheme);
 
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
         lp.copyFrom(addDialog.getWindow().getAttributes());

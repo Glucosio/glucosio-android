@@ -108,7 +108,6 @@ public class MainPresenter {
 
             GlucoseReading gReading = new GlucoseReading(finalReading, type, finalDateTime);
             dB.addGlucoseReading(gReading);
-
             mainActivity.dismissAddDialog();
         } else {
             mainActivity.showErrorMessage();
