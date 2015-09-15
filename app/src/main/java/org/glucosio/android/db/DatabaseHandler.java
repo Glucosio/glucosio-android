@@ -198,7 +198,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.insert(TABLE_GLUCOSE_READING, null, values);
     }
 
-    public void getGlucoseReading()
+    public void getGlucoseReading(String s)
     {
 
     }
@@ -312,7 +312,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public GlucoseReading getGlucoseReadingById(int id){
         return getGlucoseReadings("id = " + id).get(0);
     }
+    public List<GlucoseReading> getGlucoseReadingsByMonth(int month){
 
+        String m=Integer.toString(month);
+        m=String.format("%02d",m);
+       return getGlucoseReadings(" strftime('%m',created)='"+m+"'");
+    }
     private ArrayList<Integer> getGlucoseReadingsForLastMonthAsArray(){
 
         SQLiteDatabase db=this.getReadableDatabase();
