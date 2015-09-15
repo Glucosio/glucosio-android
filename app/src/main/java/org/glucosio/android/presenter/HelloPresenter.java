@@ -36,7 +36,7 @@ public class HelloPresenter {
             this.gender = gender;
             this.language = language;
 
-            saveToDatabase();
+            showEULA();
         } else {
             helloActivity.displayErrorMessage();
         }
@@ -53,7 +53,11 @@ public class HelloPresenter {
         }
     }
 
-    private void saveToDatabase(){
+    private void showEULA(){
+        helloActivity.showEULA();
+    }
+
+    public void saveToDatabase(){
         dB.addUser(new User(id, name, language, country, age, gender));
         helloActivity.closeHelloActivity();
     }

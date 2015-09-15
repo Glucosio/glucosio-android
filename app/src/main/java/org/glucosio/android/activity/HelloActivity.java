@@ -6,10 +6,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,7 +29,12 @@ public class HelloActivity extends AppCompatActivity {
     LabelledSpinner genderSpinner;
     LabelledSpinner typeSpinner;
     LabelledSpinner unitSpinner;
+    View firstView;
+    View EULAView;
+    CheckBox EULACheckbox;
+    Button startButton;
     TextView ageTextView;
+    TextView termsTextView;
     Button nextButton;
     HelloPresenter presenter;
 
@@ -37,10 +46,17 @@ public class HelloActivity extends AppCompatActivity {
         presenter = new HelloPresenter(this);
         presenter.loadDatabase();
 
+        firstView = (ScrollView) findViewById(R.id.helloactivity_mainframe);
+        EULAView = (ScrollView) findViewById(R.id.helloactivity_eulaframe);
+        EULACheckbox = (CheckBox) findViewById(R.id.helloactivity_checkbox_eula);
         languageSpinner = (LabelledSpinner) findViewById(R.id.helloactivity_spinner_language);
         genderSpinner = (LabelledSpinner) findViewById(R.id.helloactivity_spinner_gender);
         typeSpinner = (LabelledSpinner) findViewById(R.id.helloactivity_spinner_diabetes_type);
         unitSpinner = (LabelledSpinner) findViewById(R.id.helloactivity_spinner_preferred_unit);
+        startButton = (Button) findViewById(R.id.helloactivity_start);
+
+        termsTextView = (TextView) findViewById(R.id.helloactivity_textview_terms);
+
         ageTextView = (TextView) findViewById(R.id.helloactivity_age);
         nextButton = (Button) findViewById(R.id.helloactivity_next);
 
@@ -50,12 +66,34 @@ public class HelloActivity extends AppCompatActivity {
         unitSpinner.setItemsArray(R.array.helloactivity_preferred_unit);
         typeSpinner.setItemsArray(R.array.helloactivity_diabetes_type);
 
+        termsTextView.setMovementMethod(new ScrollingMovementMethod());
+        EULACheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                                                    @Override
+                                                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                                                        if (isChecked) {
+                                                            startButton.setEnabled(true);
+                                                        } else {
+                                                            startButton.setEnabled(false);
+                                                        }
+                                                    }
+                                                }
+        );
+
         //TODO: add Preferred Unit and Diabetes Type in dB
     }
 
     public void onNextClicked(View v){
-            presenter.onNextClicked(ageTextView.getText().toString(),
-                    genderSpinner.getSpinner().getSelectedItemPosition(), languageSpinner.getSpinner().getSelectedItem().toString());
+        presenter.onNextClicked(ageTextView.getText().toString(),
+                genderSpinner.getSpinner().getSelectedItemPosition(), languageSpinner.getSpinner().getSelectedItem().toString());
+    }
+
+    public void showEULA(){
+        firstView.setVisibility(View.GONE);
+        EULAView.setVisibility(View.VISIBLE);
+    }
+
+    public void onStartClicked(View v){
+        presenter.saveToDatabase();
     }
 
     public void displayErrorMessage(){
