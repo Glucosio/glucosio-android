@@ -56,9 +56,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     {
         String CREATE_USER_TABLE="CREATE TABLE "+TABLE_USER+" ("
                 +KEY_ID+" INTEGER PRIMARY KEY,"+KEY_NAME+" TEXT,"
-                +KEY_PREF_LANG+" TEXT,"+KEY_PREF_COUNTRY+" TEXT,"+KEY_AGE+" TEXT,"+KEY_GENDER+" INTEGER " +
-                KEY_PREFERRED_UNIT+" DEFAULT 1 " +
-                KEY_DIABETES_TYPE+" DEFAULT 1 )";
+                +KEY_PREF_LANG+" TEXT,"+KEY_PREF_COUNTRY+" TEXT,"+KEY_AGE+" TEXT,"+KEY_GENDER+" INTEGER," +
+                KEY_PREFERRED_UNIT+" INTEGER," +
+                KEY_DIABETES_TYPE+" INTEGER )";
         String CREATE_GLUCOSE_READING_TABLE="CREATE TABLE "+TABLE_GLUCOSE_READING+" ("
                 +KEY_ID+" INTEGER PRIMARY KEY,"+KEY_READING+" TEXT, "+
                 KEY_READING_TYPE+" INTEGER, "+

@@ -18,6 +18,8 @@ public class HelloPresenter {
     String name;
     String country;
     int gender;
+    int diabetesType;
+    int unitMeasurement;
     String language;
 
     public HelloPresenter(HelloActivity helloActivity) {
@@ -30,12 +32,13 @@ public class HelloPresenter {
         name = "Test Account"; //TODO: add input for name in Tips;
     }
 
-    public void onNextClicked(String age, int gender, String language){
+    public void onNextClicked(String age, int gender, String language, int type, int unit){
         if (validateAge(age)){
             this.age = Integer.parseInt(age);
             this.gender = gender;
             this.language = language;
-
+            this.diabetesType = type;
+            this.unitMeasurement = unit;
             showEULA();
         } else {
             helloActivity.displayErrorMessage();
@@ -58,7 +61,7 @@ public class HelloPresenter {
     }
 
     public void saveToDatabase(){
-        dB.addUser(new User(id, name, language, country, age, gender));
+        dB.addUser(new User(id, name, language, country, age, gender, diabetesType, unitMeasurement));
         helloActivity.closeHelloActivity();
     }
 }

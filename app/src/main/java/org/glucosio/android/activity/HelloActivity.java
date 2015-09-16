@@ -86,7 +86,7 @@ public class HelloActivity extends AppCompatActivity {
 
     public void onNextClicked(View v){
         presenter.onNextClicked(ageTextView.getText().toString(),
-                genderSpinner.getSpinner().getSelectedItemPosition(), languageSpinner.getSpinner().getSelectedItem().toString());
+                genderSpinner.getSpinner().getSelectedItemPosition(), languageSpinner.getSpinner().getSelectedItem().toString(), typeSpinner.getSpinner().getSelectedItemPosition()+1, unitSpinner.getSpinner().getSelectedItemPosition());
     }
 
     public void showEULA(){
