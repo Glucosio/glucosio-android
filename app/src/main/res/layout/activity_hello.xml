@@ -108,9 +108,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/helloactivity_button_next"
-                        android:layout_marginTop="32dp"
+                        android:padding="8dp"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:layout_marginTop="24dp"
                         android:onClick="onNextClicked"
-                        android:background="@null"
                         android:textColor="@color/glucosio_pink"
                         android:layout_gravity="right"/>
                 </LinearLayout>
@@ -160,10 +161,10 @@
                         android:layout_height="wrap_content"
                         android:enabled="false"
                         android:text="@string/helloactivity_button_start"
-                        android:layout_marginTop="32dp"
+                        android:layout_marginTop="24dp"
                         android:onClick="onStartClicked"
-                        android:background="@null"
-                        android:textColor="@color/glucosio_pink"
+                        android:padding="8dp"
+                        android:background="?android:attr/selectableItemBackground"                        android:textColor="@color/glucosio_pink"
                         android:layout_gravity="right"/>
                 </LinearLayout>
     </ScrollView>
