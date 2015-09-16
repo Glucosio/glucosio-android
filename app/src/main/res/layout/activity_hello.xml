@@ -108,6 +108,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/helloactivity_button_next"
+                        android:drawableEnd="@drawable/ic_navigate_next_pink_24px"
+                        android:drawableRight="@drawable/ic_navigate_next_pink_24px"
                         android:padding="8dp"
                         android:background="?android:attr/selectableItemBackground"
                         android:layout_marginTop="24dp"
@@ -164,6 +166,8 @@
                         android:layout_marginTop="24dp"
                         android:onClick="onStartClicked"
                         android:padding="8dp"
+                        android:drawableEnd="@drawable/ic_navigate_next_grey_24px"
+                        android:drawableRight="@drawable/ic_navigate_next_grey_24px"
                         android:background="?android:attr/selectableItemBackground"                        android:textColor="@color/glucosio_pink"
                         android:layout_gravity="right"/>
                 </LinearLayout>

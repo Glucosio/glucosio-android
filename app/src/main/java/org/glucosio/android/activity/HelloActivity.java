@@ -3,6 +3,7 @@ package org.glucosio.android.activity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -69,13 +70,19 @@ public class HelloActivity extends AppCompatActivity {
         typeSpinner.setItemsArray(R.array.helloactivity_diabetes_type);
 
         termsTextView.setMovementMethod(new ScrollingMovementMethod());
+        final Drawable greyArrow = getApplicationContext().getResources().getDrawable( R.drawable.ic_navigate_next_grey_24px );
+        greyArrow.setBounds(0, 0, 60, 60);
+        final Drawable pinkArrow = getApplicationContext().getResources().getDrawable( R.drawable.ic_navigate_next_pink_24px );
+        pinkArrow.setBounds(0, 0, 60, 60);
         EULACheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                                                     @Override
                                                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                                                         if (isChecked) {
                                                             startButton.setEnabled(true);
+                                                            startButton.setCompoundDrawables(null, null, pinkArrow, null);
                                                         } else {
                                                             startButton.setEnabled(false);
+                                                            startButton.setCompoundDrawables(null, null, greyArrow, null);
                                                         }
                                                     }
                                                 }
@@ -86,7 +93,7 @@ public class HelloActivity extends AppCompatActivity {
 
     public void onNextClicked(View v){
         presenter.onNextClicked(ageTextView.getText().toString(),
-                genderSpinner.getSpinner().getSelectedItemPosition(), languageSpinner.getSpinner().getSelectedItem().toString(), typeSpinner.getSpinner().getSelectedItemPosition()+1, unitSpinner.getSpinner().getSelectedItemPosition());
+                genderSpinner.getSpinner().getSelectedItemPosition(), languageSpinner.getSpinner().getSelectedItem().toString(), typeSpinner.getSpinner().getSelectedItemPosition() + 1, unitSpinner.getSpinner().getSelectedItemPosition());
     }
 
     public void showEULA(){
