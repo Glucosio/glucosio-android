@@ -66,6 +66,8 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             setSupportActionBar(toolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(false);
             getSupportActionBar().setElevation(0);
+            getSupportActionBar().setTitle("");
+            getSupportActionBar().setLogo(R.drawable.ic_logo);
         }
 
         homePagerAdapter = new HomePagerAdapter(getSupportFragmentManager(), getApplicationContext());
