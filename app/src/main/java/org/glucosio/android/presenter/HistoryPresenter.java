@@ -42,6 +42,7 @@ public class HistoryPresenter {
     public void onDeleteClicked(int idToDelete){
         removeReadingFromDb(dB.getGlucoseReadingById(idToDelete));
         fragment.notifyAdapter();
+        fragment.updateToolbarBehaviour();
     }
 
     private void removeReadingFromDb(GlucoseReading gReading) {

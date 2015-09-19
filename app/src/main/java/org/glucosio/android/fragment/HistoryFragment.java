@@ -30,6 +30,7 @@ public class HistoryFragment extends Fragment {
     RecyclerView.Adapter mAdapter;
     GlucoseReading readingToRestore;
     HistoryPresenter presenter;
+    Boolean isToolbarScrolling = true;
 
     public static HistoryFragment newInstance() {
         HistoryFragment fragment = new HistoryFragment();
@@ -128,17 +129,30 @@ public class HistoryFragment extends Fragment {
                 }
             }));
 
-            Toast.makeText(getActivity().getApplicationContext(), mLayoutManager.findLastCompletelyVisibleItemPosition() + "", Toast.LENGTH_SHORT ).show();
-            if (mLayoutManager.findLastVisibleItemPosition()==presenter.getReadingsNumber()-1) {
-                ((MainActivity) getActivity()).turnOffToolbarScrolling();
-            }
-
-
+            mRecyclerView.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
+                @Override
+                public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
+                    mRecyclerView.removeOnLayoutChangeListener(this);
+                    updateToolbarBehaviour();
+                }
+            });
         } else {
             mFragmentView = inflater.inflate(R.layout.fragment_empty, container, false);
         }
 
         return mFragmentView;
+    }
+
+    public void updateToolbarBehaviour(){
+        if (mLayoutManager.findLastCompletelyVisibleItemPosition() == presenter.getReadingsNumber()-1) {
+            isToolbarScrolling = false;
+            ((MainActivity) getActivity()).turnOffToolbarScrolling();
+        } else {
+            if (!isToolbarScrolling){
+                isToolbarScrolling = true;
+                ((MainActivity)getActivity()).turnOnToolbarScrolling();
+            }
+        }
     }
 
     public void notifyAdapter(){

@@ -311,7 +311,21 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         mToolbar.setLayoutParams(toolbarLayoutParams);
 
         CoordinatorLayout.LayoutParams appBarLayoutParams = (CoordinatorLayout.LayoutParams) appBarLayout.getLayoutParams();
-        appBarLayoutParams.setBehavior(null);
+        appBarLayoutParams.setBehavior(new AppBarLayout.Behavior());
+        appBarLayout.setLayoutParams(appBarLayoutParams);
+    }
+
+    public void turnOnToolbarScrolling() {
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.appbar_layout);
+
+        //turn on scrolling
+        AppBarLayout.LayoutParams toolbarLayoutParams = (AppBarLayout.LayoutParams) mToolbar.getLayoutParams();
+        toolbarLayoutParams.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL | AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS);
+        mToolbar.setLayoutParams(toolbarLayoutParams);
+
+        CoordinatorLayout.LayoutParams appBarLayoutParams = (CoordinatorLayout.LayoutParams) appBarLayout.getLayoutParams();
+        appBarLayoutParams.setBehavior(new AppBarLayout.Behavior());
         appBarLayout.setLayoutParams(appBarLayoutParams);
     }
 
