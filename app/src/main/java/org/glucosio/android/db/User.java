@@ -8,7 +8,7 @@ public class User {
     String _preferred_language;
     String _country;
     int _age;
-    int _gender;  //1 male 2 female 3 others
+    String _gender;
     int _d_type; //diabetes type
     int _preferred_unit; // preferred unit
 
@@ -17,7 +17,7 @@ public class User {
 
     }
 
-    public User(int id, String name,String preferred_language, String country, int age,int gender,int dType,int pUnit)
+    public User(int id, String name,String preferred_language, String country, int age,String gender,int dType,int pUnit)
     {
         this._id=id;
         this._name=name;
@@ -88,11 +88,11 @@ public class User {
     {
         this._age=age;
     }
-    public int get_gender()
+    public String get_gender()
     {
         return this._gender;
     }
-    public void set_gender(int gender)
+    public void set_gender(String gender)
     {
         this._gender=gender;
     }

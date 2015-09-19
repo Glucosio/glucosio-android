@@ -122,6 +122,12 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         finish();
     }
 
+    public void openPreferences() {
+        Intent intent = new Intent(this, PreferencesActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
     public void onFabClicked(View v){
         addDialog = new Dialog(MainActivity.this, R.style.GlucosioTheme);
 
@@ -381,9 +387,11 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            openPreferences();
             return true;
         } else if (id == R.id.action_feedback) {
             startGittyReporter();
+            return true;
         }
 
         return super.onOptionsItemSelected(item);

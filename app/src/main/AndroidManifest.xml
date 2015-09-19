@@ -28,6 +28,10 @@
             android:name=".activity.GittyActivity"
             android:theme="@style/GittyTheme">
         </activity>
+        <activity
+            android:name=".activity.PreferencesActivity"
+            android:theme="@style/GlucosioTheme">
+        </activity>
     </application>
 
 </manifest>

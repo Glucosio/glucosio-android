@@ -105,8 +105,10 @@
     <string name="fragment_overview_trend_positive">in range and healthy</string>
     <string name="fragment_overview_tip">Tip</string>
     <string name="tip_example" translatable="false">Use less cheese in your recipes and meals. Fresh mozzarella packed in water and Swiss cheese are usually lower in sodium.</string>
-
-
+    <string name="preferences_about">About</string>
+    <string name="version">0.8.0 (Noce)</string>
+    <string name="preferences_version">Version</string>
+    <string name="preferences_terms">Terms of use</string>
 
 
     <string-array name="tips_all">

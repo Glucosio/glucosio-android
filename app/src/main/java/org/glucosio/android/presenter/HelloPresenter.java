@@ -17,7 +17,7 @@ public class HelloPresenter {
     int age;
     String name;
     String country;
-    int gender;
+    String gender;
     int diabetesType;
     int unitMeasurement;
     String language;
@@ -32,7 +32,7 @@ public class HelloPresenter {
         name = "Test Account"; //TODO: add input for name in Tips;
     }
 
-    public void onNextClicked(String age, int gender, String language, int type, int unit){
+    public void onNextClicked(String age, String gender, String language, int type, int unit){
         if (validateAge(age)){
             this.age = Integer.parseInt(age);
             this.gender = gender;
