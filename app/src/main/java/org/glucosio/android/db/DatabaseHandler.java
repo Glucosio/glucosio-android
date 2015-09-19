@@ -61,7 +61,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 KEY_DIABETES_TYPE+" INTEGER )";
         String CREATE_GLUCOSE_READING_TABLE="CREATE TABLE "+TABLE_GLUCOSE_READING+" ("
                 +KEY_ID+" INTEGER PRIMARY KEY,"+KEY_READING+" TEXT, "+
-                KEY_READING_TYPE+" INTEGER, "+
+                KEY_READING_TYPE+" TEXT, "+
                 KEY_CREATED_AT+" TIMESTAMP DEFAULT (datetime('now','localtime') ),"
                 +KEY_USER_ID+" INTEGER DEFAULT 1," +
                 KEY_NOTES+" TEXT DEFAULT NULL )";
@@ -240,7 +240,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 GlucoseReading reading=new GlucoseReading();
                 reading.set_id(Integer.parseInt(cursor.getString(0)));
                 reading.set_reading(Integer.parseInt(cursor.getString(1)));
-                reading.set_reading_type(Integer.parseInt(cursor.getString(2)));
+                reading.set_reading_type(cursor.getString(2));
                 reading.set_created(cursor.getString(3));
                 reading.set_user_id(Integer.parseInt(cursor.getString(4)));
                 reading.set_notes(cursor.getString(5));
@@ -279,13 +279,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return readingArray;
     }
 
-    public ArrayList<Integer> getGlucoseTypeAsArray(){
+    public ArrayList<String> getGlucoseTypeAsArray(){
         List<GlucoseReading> glucoseReading = getGlucoseReadings();
-        ArrayList<Integer> typeArray = new ArrayList<Integer>();
+        ArrayList<String> typeArray = new ArrayList<String>();
         int i;
 
         for (i = 0; i < glucoseReading.size(); i++){
-            int reading;
+            String reading;
             GlucoseReading singleReading= glucoseReading.get(i);
             reading = singleReading.get_reading_type();
             typeArray.add(reading);

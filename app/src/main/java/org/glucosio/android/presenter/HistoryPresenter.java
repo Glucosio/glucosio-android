@@ -11,7 +11,7 @@ public class HistoryPresenter {
     DatabaseHandler dB;
     private ArrayList<Integer> id;
     private ArrayList<Integer> reading;
-    private ArrayList <Integer> type;
+    private ArrayList <String> type;
     private ArrayList<String> datetime;
     GlucoseReading readingToRestore;
     HistoryFragment fragment;
@@ -69,7 +69,7 @@ public class HistoryPresenter {
         return reading;
     }
 
-    public ArrayList<Integer> getType() {
+    public ArrayList<String> getType() {
         return type;
     }
 

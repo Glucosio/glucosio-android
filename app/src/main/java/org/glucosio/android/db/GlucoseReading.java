@@ -7,7 +7,7 @@ public class GlucoseReading {
 
     int _reading;
     int _id;
-    int _reading_type;
+    String _reading_type;
     String _notes;
     int _user_id;
     String _created;
@@ -17,7 +17,7 @@ public class GlucoseReading {
 
     }
 
-    public GlucoseReading(int reading,int reading_type,String created,String notes)
+    public GlucoseReading(int reading,String reading_type,String created,String notes)
     {
         this._reading=reading;
         this._reading_type=reading_type;
@@ -50,7 +50,7 @@ public class GlucoseReading {
     {
         this._reading=reading;
     }
-    public void set_reading_type(int reading_type)
+    public void set_reading_type(String reading_type)
     {
         this._reading_type=reading_type;
     }
@@ -59,7 +59,7 @@ public class GlucoseReading {
     {
         return this._reading;
     }
-    public int get_reading_type()
+    public String get_reading_type()
     {
         return this._reading_type;
     }
@@ -73,16 +73,6 @@ public class GlucoseReading {
     }
     public String get_type()
     {
-        return type(this._reading_type);
-    }
-    public String type(int reading_type)
-    {
-        String[] enums={"Before fast","after breakfast","random"};
-        try{
-            return   enums[reading_type+1];
-        }
-        catch(ArrayIndexOutOfBoundsException e){
-            return "N/A";
-        }
+        return this._reading_type;
     }
 }

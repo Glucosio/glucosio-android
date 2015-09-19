@@ -87,7 +87,7 @@ public class MainPresenter {
         return dB.getGlucoseReadingById(id).get_reading() + "";
     }
 
-    public int getGlucoseReadingTypeById(int id){
+    public String getGlucoseReadingTypeById(int id){
         return dB.getGlucoseReadingById(id).get_reading_type();
     }
 
@@ -101,7 +101,7 @@ public class MainPresenter {
         this.readingMinute = splitDateTime.getMinute();
     }
 
-    public void dialogOnAddButtonPressed(String time, String date, String reading, int type){
+    public void dialogOnAddButtonPressed(String time, String date, String reading, String type){
         if (validateDate(date) && validateTime(time) && validateReading(reading)) {
             int finalReading = Integer.parseInt(reading);
             String finalDateTime = readingYear + "-" + readingMonth + "-" + readingDay + " " + readingHour + ":" + readingMinute;
@@ -114,7 +114,7 @@ public class MainPresenter {
         }
     }
 
-    public void dialogOnEditButtonPressed(String time, String date, String reading, int type, int id){
+    public void dialogOnEditButtonPressed(String time, String date, String reading, String type, int id){
         if (validateDate(date) && validateTime(time) && validateReading(reading)) {
             int finalReading = Integer.parseInt(reading);
             String finalDateTime = readingYear + "-" + readingMonth + "-" + readingDay + " " + readingHour + ":" + readingMinute;

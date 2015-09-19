@@ -16,7 +16,7 @@ public class OverviewPresenter {
 
     DatabaseHandler dB;
     private ArrayList<Integer> reading;
-    private ArrayList <Integer> type;
+    private ArrayList <String> type;
     private ArrayList<String> datetime;
 
     public OverviewPresenter(OverviewFragment overviewFragment) {
@@ -62,7 +62,7 @@ public class OverviewPresenter {
         return reading;
     }
 
-    public ArrayList<Integer> getType() {
+    public ArrayList<String> getType() {
         return type;
     }
 

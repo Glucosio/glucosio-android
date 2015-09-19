@@ -219,7 +219,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         dialogReading = (TextView) addDialog.findViewById(R.id.dialog_add_concentration);
         dialogAddButton.setText(getString(R.string.dialog_edit).toUpperCase());
         dialogReading.setText(presenter.getGlucoseReadingReadingById(id));
-        spinnerReadingType.setSelection(presenter.getGlucoseReadingTypeById(id));
+        spinnerReadingType.setSelection(1);
 
         presenter.getGlucoseReadingTimeById(id);
 
@@ -266,7 +266,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     private void dialogOnAddButtonPressed(){
         presenter.dialogOnAddButtonPressed(dialogAddTime.getText().toString(),
                 dialogAddDate.getText().toString(), dialogReading.getText().toString(),
-                spinnerReadingType.getSpinner().getSelectedItemPosition());
+                spinnerReadingType.getSpinner().getSelectedItem().toString());
     }
 
     public void dismissAddDialog(){
@@ -281,7 +281,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     private void dialogOnEditButtonPressed(int id){
         presenter.dialogOnEditButtonPressed(dialogAddTime.getText().toString(),
                 dialogAddDate.getText().toString(), dialogReading.getText().toString(),
-                spinnerReadingType.getSpinner().getSelectedItemPosition(), id);
+                spinnerReadingType.getSpinner().getSelectedItem().toString(), id);
     }
 
     public void updateSpinnerTypeTime(int selection){
