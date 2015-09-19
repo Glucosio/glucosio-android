@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.glucosio.android.R;
 import org.glucosio.android.activity.MainActivity;
@@ -24,7 +26,7 @@ import org.glucosio.android.presenter.HistoryPresenter;
 public class HistoryFragment extends Fragment {
 
     RecyclerView mRecyclerView;
-    RecyclerView.LayoutManager mLayoutManager;
+    LinearLayoutManager mLayoutManager;
     RecyclerView.Adapter mAdapter;
     GlucoseReading readingToRestore;
     HistoryPresenter presenter;
@@ -71,31 +73,30 @@ public class HistoryFragment extends Fragment {
             mRecyclerView.setAdapter(mAdapter);
             mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), mRecyclerView, new RecyclerItemClickListener.OnItemClickListener() {
                 @Override
-                public void onItemClick(View view, int position)
-                {
+                public void onItemClick(View view, int position) {
                     // Do nothing
                 }
 
                 @Override
-                public void onItemLongClick(View view, final int position)
-                {
-                    CharSequence colors[] = new CharSequence[] {getResources().getString(R.string.dialog_edit), getResources().getString(R.string.dialog_delete)};
+                public void onItemLongClick(View view, final int position) {
+                    CharSequence colors[] = new CharSequence[]{getResources().getString(R.string.dialog_edit), getResources().getString(R.string.dialog_delete)};
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                     builder.setItems(colors, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            if (which == 0){
+                            if (which == 0) {
                                 // EDIT
                                 TextView idTextView = (TextView) mRecyclerView.getChildAt(position).findViewById(R.id.item_history_id);
                                 final int idToEdit = Integer.parseInt(idTextView.getText().toString());
-                                ((MainActivity)getActivity()).showEditDialog(idToEdit);
+                                ((MainActivity) getActivity()).showEditDialog(idToEdit);
                             } else {
                                 // DELETE
                                 TextView idTextView = (TextView) mRecyclerView.getChildAt(position).findViewById(R.id.item_history_id);
                                 final int idToDelete = Integer.parseInt(idTextView.getText().toString());
-                                presenter.onDeleteClicked(idToDelete);
-                                Snackbar.make(((MainActivity)getActivity()).getFabView(), R.string.fragment_history_snackbar_text, Snackbar.LENGTH_LONG).setCallback(new Snackbar.Callback() {
+                                final CardView item = (CardView) mRecyclerView.getChildAt(position).findViewById(R.id.item_history);
+                                item.animate().alpha(0.0f).setDuration(2000);
+                                Snackbar.make(((MainActivity) getActivity()).getFabView(), R.string.fragment_history_snackbar_text, Snackbar.LENGTH_SHORT).setCallback(new Snackbar.Callback() {
                                     @Override
                                     public void onDismissed(Snackbar snackbar, int event) {
                                         switch (event) {
@@ -103,7 +104,7 @@ public class HistoryFragment extends Fragment {
                                                 // Do nothing, see Undo onClickListener
                                                 break;
                                             case Snackbar.Callback.DISMISS_EVENT_TIMEOUT:
-                                                presenter.deleteReading(idToDelete);
+                                                presenter.onDeleteClicked(idToDelete);
                                                 break;
                                         }
                                     }
@@ -115,7 +116,9 @@ public class HistoryFragment extends Fragment {
                                 }).setAction("UNDO", new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-                                        presenter.onUndoClicked();
+                                        item.clearAnimation();
+                                        item.setAlpha(1.0f);
+                                        mAdapter.notifyDataSetChanged();
                                     }
                                 }).setActionTextColor(getResources().getColor(R.color.glucosio_accent)).show();
                             }
@@ -124,6 +127,12 @@ public class HistoryFragment extends Fragment {
                     builder.show();
                 }
             }));
+
+            Toast.makeText(getActivity().getApplicationContext(), mLayoutManager.findLastCompletelyVisibleItemPosition() + "", Toast.LENGTH_SHORT ).show();
+            if (mLayoutManager.findLastVisibleItemPosition()==presenter.getReadingsNumber()-1) {
+                ((MainActivity) getActivity()).turnOffToolbarScrolling();
+            }
+
 
         } else {
             mFragmentView = inflater.inflate(R.layout.fragment_empty, container, false);

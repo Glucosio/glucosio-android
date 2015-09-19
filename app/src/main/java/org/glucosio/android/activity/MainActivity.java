@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -298,6 +299,20 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
     public void reloadFragmentAdapter(){
         homePagerAdapter.notifyDataSetChanged();
+    }
+
+    public void turnOffToolbarScrolling() {
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.appbar_layout);
+
+        //turn off scrolling
+        AppBarLayout.LayoutParams toolbarLayoutParams = (AppBarLayout.LayoutParams) mToolbar.getLayoutParams();
+        toolbarLayoutParams.setScrollFlags(0);
+        mToolbar.setLayoutParams(toolbarLayoutParams);
+
+        CoordinatorLayout.LayoutParams appBarLayoutParams = (CoordinatorLayout.LayoutParams) appBarLayout.getLayoutParams();
+        appBarLayoutParams.setBehavior(null);
+        appBarLayout.setLayoutParams(appBarLayoutParams);
     }
 
     public Toolbar getToolbar(){

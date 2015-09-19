@@ -109,6 +109,7 @@
     <string name="version">0.8.0 (Noce)</string>
     <string name="preferences_version">Version</string>
     <string name="preferences_terms">Terms of use</string>
+    <string name="glucose_reading_type">Type</string>
 
 
     <string-array name="tips_all">

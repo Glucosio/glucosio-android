@@ -1,5 +1,6 @@
 package org.glucosio.android.presenter;
 
+import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
 import org.glucosio.android.fragment.HistoryFragment;
@@ -39,18 +40,7 @@ public class HistoryPresenter {
     }
 
     public void onDeleteClicked(int idToDelete){
-        readingToRestore = dB.getGlucoseReadingById(idToDelete);
         removeReadingFromDb(dB.getGlucoseReadingById(idToDelete));
-        fragment.notifyAdapter();
-        dB.addGlucoseReading(readingToRestore);
-    }
-
-    public void deleteReading(int idToDelete) {
-        removeReadingFromDb(dB.getGlucoseReadingById(idToDelete));
-        fragment.notifyAdapter();
-    }
-
-    public void onUndoClicked(){
         fragment.notifyAdapter();
     }
 
@@ -75,5 +65,9 @@ public class HistoryPresenter {
 
     public ArrayList<String> getDatetime() {
         return datetime;
+    }
+
+    public int getReadingsNumber(){
+        return reading.size();
     }
 }

@@ -40,7 +40,7 @@ public class PreferencesActivity extends PreferenceActivity {
             ageEditText.setFilters(new InputFilter[]{ new InputFilterMinMax(1, 110) });
             agePref.setSummary(dB.getUser(1).get_age() + "");
             genderPref.setSummary(dB.getUser(1).get_gender() + "");
-            diabetesTypePref.setSummary(dB.getUser(1).get_d_type() + "");
+            diabetesTypePref.setSummary(getResources().getString(R.string.glucose_reading_type) + " " + dB.getUser(1).get_d_type());
             unitPref.setSummary(dB.getUser(1).get_preferred_unit() + "");
         }
     }
