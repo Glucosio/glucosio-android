@@ -62,7 +62,6 @@
     <string name="dialog_add_date">Date</string>
     <string name="dialog_add_time">Time</string>
     <string name="dialog_add_measured">Measured</string>
-
     <string name="dialog_add_type_1">Before breakfast</string>
     <string name="dialog_add_type_2">After breakfast</string>
     <string name="dialog_add_type_3">Before lunch</string>
@@ -72,8 +71,6 @@
     <string name="dialog_add_type_7">General</string>
     <string name="dialog_add_type_8">Recheck</string>
     <string name="dialog_add_type_9">Night</string>
-
-
     <string-array name="dialog_add_measured_list" translatable="false">
         <item>@string/dialog_add_type_1</item>
         <item>@string/dialog_add_type_2</item>

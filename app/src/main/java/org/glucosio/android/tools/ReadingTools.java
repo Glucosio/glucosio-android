@@ -28,23 +28,25 @@ public class ReadingTools {
         return outputFormat.format(parsed);
     }
 
-    public int hourToSpinnerType(int hour) {
+        public int hourToSpinnerType(int hour) {
 
-        if (hour > 4 && hour <= 7 ){
-            return 0;
-        } else if (hour > 7 && hour <= 11){
-            return 1;
-        } else if (hour > 11 && hour <= 13) {
-            return 2;
-        } else if (hour > 13 && hour <= 17) {
-            return 3;
-        } else if (hour > 17 && hour <= 20) {
-            return 4;
-        } else if (hour > 20 && hour <= 4) {
-            return 5;
-        } else {
-            return 0;
+            if (hour > 23) {
+                return 8;  //night
+            } else if (hour > 20) {
+                return 5; //after dinner
+            } else if (hour > 17) {
+                return 4; // before dinner
+            } else if (hour > 13) {
+                return 3; // after lunch
+            } else if (hour > 11) {
+                return 2; // before lunch
+            } else if (hour > 7) {
+                return 1; //after breakfast
+            } else if (hour > 4) {
+                return 1; // before breakfast
+            } else {
+                return 8; // night time
+            }
+
         }
-
-    }
 }
