@@ -141,9 +141,20 @@ public class MainPresenter {
     private boolean validateDate(String date){
         return !date.equals("");
     }
-    private boolean validateReading(String reading){
-        return !reading.equals("");
+
+    private boolean validateReading(String reading) {
+        try {
+            Integer readingValue = Integer.parseInt(reading);
+            if (readingValue > 19 && readingValue < 601) { //valid range is 20-600
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            return false;
+        }
     }
+
 
     // Getters and Setters
     public String getReadingYear() {
