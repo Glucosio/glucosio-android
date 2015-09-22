@@ -146,6 +146,7 @@ public class MainPresenter {
         try {
             Integer readingValue = Integer.parseInt(reading);
             if (readingValue > 19 && readingValue < 601) { //valid range is 20-600
+                // TODO: Convert range in mmol/L
                 return true;
             } else {
                 return false;

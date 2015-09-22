@@ -12,6 +12,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.InputFilter;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,6 +29,7 @@ import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 import org.glucosio.android.R;
 import org.glucosio.android.adapter.HomePagerAdapter;
 import org.glucosio.android.presenter.MainPresenter;
+import org.glucosio.android.tools.InputFilterMinMax;
 import org.glucosio.android.tools.LabelledSpinner;
 import org.glucosio.android.tools.ReadingTools;
 
@@ -276,7 +278,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     }
 
     public void showErrorMessage(){
-        Toast.makeText(getApplicationContext(),getString(R.string.dialog_error), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),getString(R.string.dialog_error2), Toast.LENGTH_SHORT).show();
     }
 
     private void dialogOnEditButtonPressed(int id){

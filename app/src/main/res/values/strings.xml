@@ -76,6 +76,7 @@
     <string name="dialog_add_type_7">General</string>
     <string name="dialog_add_type_8">Recheck</string>
     <string name="dialog_add_type_9">Night</string>
+    <string name="dialog_add_type_10">Other</string>
     <string-array name="dialog_add_measured_list" translatable="false">
         <item>@string/dialog_add_type_1</item>
         <item>@string/dialog_add_type_2</item>
@@ -86,9 +87,11 @@
         <item>@string/dialog_add_type_7</item>
         <item>@string/dialog_add_type_8</item>
         <item>@string/dialog_add_type_9</item>
+        <item>@string/dialog_add_type_10</item>
     </string-array>
     <string name="dialog_add_cancel">CANCEL</string>
     <string name="dialog_add_add">ADD</string>
+    <string name="dialog_error2">Please enter a valid value.</string>
     <string name="dialog_error">Please fill all the fields.</string>
     <string name="dialog_delete">Delete</string>
     <string name="dialog_edit">Edit</string>
@@ -107,6 +110,7 @@
     <string name="preferences_version">Version</string>
     <string name="preferences_terms">Terms of use</string>
     <string name="glucose_reading_type">Type</string>
+    <string name="dialog_add_custom_type">Custom Type</string>
 
 
     <string-array name="tips_all">
