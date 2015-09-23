@@ -43,10 +43,9 @@ public class ReadingTools {
             } else if (hour > 7) {
                 return 1; //after breakfast
             } else if (hour > 4) {
-                return 1; // before breakfast
+                return 0; // before breakfast
             } else {
                 return 8; // night time
             }
-
         }
 }

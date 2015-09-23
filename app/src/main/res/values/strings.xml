@@ -110,7 +110,7 @@
     <string name="preferences_version">Version</string>
     <string name="preferences_terms">Terms of use</string>
     <string name="glucose_reading_type">Type</string>
-    <string name="dialog_add_custom_type">Custom Type</string>
+    <string name="dialog_add_custom_type">Custom name</string>
 
 
     <string-array name="tips_all">

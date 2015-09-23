@@ -37,7 +37,6 @@ import org.glucosio.android.tools.LabelledSpinner;
 import org.glucosio.android.tools.LabelledSpinner.OnItemChosenListener;
 
 import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
@@ -54,8 +53,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     TextView dialogAddTime;
     TextView dialogAddDate;
     TextView dialogReading;
-    TextInputLayout dialogTypeCustom;
-    TextView dialogTypeCustomName;
+    EditText dialogTypeCustom;
     HomePagerAdapter homePagerAdapter;
     boolean isCustomType;
 
@@ -163,8 +161,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         dialogAddTime = (TextView) addDialog.findViewById(R.id.dialog_add_time);
         dialogAddDate = (TextView) addDialog.findViewById(R.id.dialog_add_date);
         dialogReading = (TextView) addDialog.findViewById(R.id.dialog_add_concentration);
-        dialogTypeCustom = (TextInputLayout) addDialog.findViewById(R.id.dialog_type_custom);
-        dialogTypeCustomName = (EditText) addDialog.findViewById(R.id.dialog_type_custom_name);
+        dialogTypeCustom = (EditText) addDialog.findViewById(R.id.dialog_type_custom);
 
         presenter.updateSpinnerTypeTime();
         this.isCustomType = false;
@@ -234,6 +231,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         //only included for debug
         // printGlucoseReadingTableDetails();
 
+        final int readingId = id;
         addDialog = new Dialog(MainActivity.this, R.style.GlucosioTheme);
 
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
@@ -256,15 +254,15 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         dialogAddDate = (TextView) addDialog.findViewById(R.id.dialog_add_date);
         dialogReading = (TextView) addDialog.findViewById(R.id.dialog_add_concentration);
         dialogAddButton.setText(getString(R.string.dialog_edit).toUpperCase());
-        dialogReading.setText(presenter.getGlucoseReadingReadingById(id));
-        spinnerReadingType.setSelection(1);
+        dialogReading.setText(presenter.getGlucoseReadingReadingById(readingId));
 
         dialogReading = (TextView) addDialog.findViewById(R.id.dialog_add_concentration);
-        dialogTypeCustom = (TextInputLayout) addDialog.findViewById(R.id.dialog_type_custom);
-        dialogTypeCustomName = (EditText) addDialog.findViewById(R.id.dialog_type_custom_name);
+        dialogTypeCustom = (EditText) addDialog.findViewById(R.id.dialog_type_custom);
 
         presenter.updateSpinnerTypeTime();
         this.isCustomType = false;
+
+        spinnerReadingType.setSelection(typeStringToInt(presenter.getGlucoseReadingTypeById(readingId)));
 
         spinnerReadingType.setOnItemChosenListener(new OnItemChosenListener() {
             @Override
@@ -272,10 +270,12 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                 // If other is selected
                 if (position == 9) {
                     dialogTypeCustom.setVisibility(View.VISIBLE);
+                    dialogTypeCustom.setText(presenter.getGlucoseReadingTypeById(readingId));
                     isCustomType = true;
                 } else {
                     if (dialogTypeCustom.getVisibility() == View.VISIBLE) {
                         dialogTypeCustom.setVisibility(View.GONE);
+                        dialogTypeCustom.setText("");
                         isCustomType = false;
                     }
                 }
@@ -333,7 +333,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         if (isCustomType) {
             presenter.dialogOnAddButtonPressed(dialogAddTime.getText().toString(),
                     dialogAddDate.getText().toString(), dialogReading.getText().toString(),
-                    dialogTypeCustomName.getText().toString());
+                    dialogTypeCustom.getText().toString());
         } else {
             presenter.dialogOnAddButtonPressed(dialogAddTime.getText().toString(),
                     dialogAddDate.getText().toString(), dialogReading.getText().toString(),
@@ -354,7 +354,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         if (isCustomType) {
             presenter.dialogOnEditButtonPressed(dialogAddTime.getText().toString(),
                     dialogAddDate.getText().toString(), dialogReading.getText().toString(),
-                    dialogTypeCustomName.getText().toString(), id);
+                    dialogTypeCustom.getText().toString(), id);
         } else {
             presenter.dialogOnEditButtonPressed(dialogAddTime.getText().toString(),
                     dialogAddDate.getText().toString(), dialogReading.getText().toString(),
@@ -445,6 +445,34 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             // probably swiping from OVERVIEW to HISTORY tab
         }
     }
+
+    public int typeStringToInt(String typeString) {
+        //TODO refactor this ugly mess
+        int typeInt;
+        if (typeString.equals(getString(R.string.dialog_add_type_1))) {
+            typeInt = 0;
+        } else if (typeString.equals(getString(R.string.dialog_add_type_2))) {
+            typeInt = 1;
+        } else if (typeString.equals(getString(R.string.dialog_add_type_3))) {
+            typeInt = 2;
+        } else if (typeString.equals(getString(R.string.dialog_add_type_4))) {
+            typeInt = 3;
+        } else if (typeString.equals(getString(R.string.dialog_add_type_5))) {
+            typeInt = 4;
+        } else if (typeString.equals(getString(R.string.dialog_add_type_6))) {
+            typeInt = 5;
+        } else if (typeString.equals(getString(R.string.dialog_add_type_7))) {
+            typeInt = 6;
+        } else if (typeString.equals(getString(R.string.dialog_add_type_8))) {
+            typeInt = 7;
+        } else if (typeString.equals(getString(R.string.dialog_add_type_9))) {
+            typeInt = 8;
+        } else {
+            typeInt = 9;
+        }
+
+        return  typeInt;
+}
 
     @Override
     public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute) {
