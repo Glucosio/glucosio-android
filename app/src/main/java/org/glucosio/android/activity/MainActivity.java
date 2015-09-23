@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TabLayout;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,6 +20,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.EdgeEffect;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,9 +33,8 @@ import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 import org.glucosio.android.R;
 import org.glucosio.android.adapter.HomePagerAdapter;
 import org.glucosio.android.presenter.MainPresenter;
-import org.glucosio.android.tools.InputFilterMinMax;
 import org.glucosio.android.tools.LabelledSpinner;
-import org.glucosio.android.tools.ReadingTools;
+import org.glucosio.android.tools.LabelledSpinner.OnItemChosenListener;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -41,7 +44,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
-public class MainActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
+public class MainActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener{
 
     LabelledSpinner spinnerReadingType;
     Dialog addDialog;
@@ -51,7 +54,10 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     TextView dialogAddTime;
     TextView dialogAddDate;
     TextView dialogReading;
+    TextInputLayout dialogTypeCustom;
+    TextView dialogTypeCustomName;
     HomePagerAdapter homePagerAdapter;
+    boolean isCustomType;
 
     private MainPresenter presenter;
 
@@ -132,6 +138,10 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     }
 
     public void onFabClicked(View v){
+        showAddDialog();
+    }
+
+    private void showAddDialog(){
         addDialog = new Dialog(MainActivity.this, R.style.GlucosioTheme);
 
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
@@ -153,8 +163,33 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         dialogAddTime = (TextView) addDialog.findViewById(R.id.dialog_add_time);
         dialogAddDate = (TextView) addDialog.findViewById(R.id.dialog_add_date);
         dialogReading = (TextView) addDialog.findViewById(R.id.dialog_add_concentration);
+        dialogTypeCustom = (TextInputLayout) addDialog.findViewById(R.id.dialog_type_custom);
+        dialogTypeCustomName = (EditText) addDialog.findViewById(R.id.dialog_type_custom_name);
 
         presenter.updateSpinnerTypeTime();
+        this.isCustomType = false;
+
+        spinnerReadingType.setOnItemChosenListener(new OnItemChosenListener() {
+            @Override
+            public void onItemChosen(View labelledSpinner, AdapterView<?> adapterView, View itemView, int position, long id) {
+                // If other is selected
+                if (position == 9) {
+                    dialogTypeCustom.setVisibility(View.VISIBLE);
+                    isCustomType = true;
+                } else {
+                    if (dialogTypeCustom.getVisibility() == View.VISIBLE) {
+                        dialogTypeCustom.setVisibility(View.GONE);
+                        isCustomType = false;
+                    }
+                }
+            }
+
+            @Override
+            public void onNothingChosen(View labelledSpinner, AdapterView<?> adapterView) {
+
+            }
+        });
+
 
         dialogAddTime.setText(presenter.getReadingHour() + ":" + presenter.getReadingMinute());
         dialogAddDate.setText(presenter.getReadingDay() + "/" + presenter.getReadingMonth() + "/" + presenter.getReadingYear());
@@ -199,7 +234,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         //only included for debug
         // printGlucoseReadingTableDetails();
 
-        addDialog = new Dialog(MainActivity.this, R.style.AppTheme);
+        addDialog = new Dialog(MainActivity.this, R.style.GlucosioTheme);
 
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
         lp.copyFrom(addDialog.getWindow().getAttributes());
@@ -223,6 +258,34 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         dialogAddButton.setText(getString(R.string.dialog_edit).toUpperCase());
         dialogReading.setText(presenter.getGlucoseReadingReadingById(id));
         spinnerReadingType.setSelection(1);
+
+        dialogReading = (TextView) addDialog.findViewById(R.id.dialog_add_concentration);
+        dialogTypeCustom = (TextInputLayout) addDialog.findViewById(R.id.dialog_type_custom);
+        dialogTypeCustomName = (EditText) addDialog.findViewById(R.id.dialog_type_custom_name);
+
+        presenter.updateSpinnerTypeTime();
+        this.isCustomType = false;
+
+        spinnerReadingType.setOnItemChosenListener(new OnItemChosenListener() {
+            @Override
+            public void onItemChosen(View labelledSpinner, AdapterView<?> adapterView, View itemView, int position, long id) {
+                // If other is selected
+                if (position == 9) {
+                    dialogTypeCustom.setVisibility(View.VISIBLE);
+                    isCustomType = true;
+                } else {
+                    if (dialogTypeCustom.getVisibility() == View.VISIBLE) {
+                        dialogTypeCustom.setVisibility(View.GONE);
+                        isCustomType = false;
+                    }
+                }
+            }
+
+            @Override
+            public void onNothingChosen(View labelledSpinner, AdapterView<?> adapterView) {
+
+            }
+        });
 
         presenter.getGlucoseReadingTimeById(id);
 
@@ -266,10 +329,16 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         });
     }
 
-    private void dialogOnAddButtonPressed(){
-        presenter.dialogOnAddButtonPressed(dialogAddTime.getText().toString(),
-                dialogAddDate.getText().toString(), dialogReading.getText().toString(),
-                spinnerReadingType.getSpinner().getSelectedItem().toString());
+    private void dialogOnAddButtonPressed() {
+        if (isCustomType) {
+            presenter.dialogOnAddButtonPressed(dialogAddTime.getText().toString(),
+                    dialogAddDate.getText().toString(), dialogReading.getText().toString(),
+                    dialogTypeCustomName.getText().toString());
+        } else {
+            presenter.dialogOnAddButtonPressed(dialogAddTime.getText().toString(),
+                    dialogAddDate.getText().toString(), dialogReading.getText().toString(),
+                    spinnerReadingType.getSpinner().getSelectedItem().toString());
+        }
     }
 
     public void dismissAddDialog(){
@@ -282,9 +351,15 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     }
 
     private void dialogOnEditButtonPressed(int id){
-        presenter.dialogOnEditButtonPressed(dialogAddTime.getText().toString(),
-                dialogAddDate.getText().toString(), dialogReading.getText().toString(),
-                spinnerReadingType.getSpinner().getSelectedItem().toString(), id);
+        if (isCustomType) {
+            presenter.dialogOnEditButtonPressed(dialogAddTime.getText().toString(),
+                    dialogAddDate.getText().toString(), dialogReading.getText().toString(),
+                    dialogTypeCustomName.getText().toString(), id);
+        } else {
+            presenter.dialogOnEditButtonPressed(dialogAddTime.getText().toString(),
+                    dialogAddDate.getText().toString(), dialogReading.getText().toString(),
+                    spinnerReadingType.getSpinner().getSelectedItem().toString(), id);
+        }
     }
 
     public void updateSpinnerTypeTime(int selection){

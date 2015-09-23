@@ -102,7 +102,7 @@ public class MainPresenter {
     }
 
     public void dialogOnAddButtonPressed(String time, String date, String reading, String type){
-        if (validateDate(date) && validateTime(time) && validateReading(reading)) {
+        if (validateDate(date) && validateTime(time) && validateReading(reading) && validateType(type)) {
             int finalReading = Integer.parseInt(reading);
             String finalDateTime = readingYear + "-" + readingMonth + "-" + readingDay + " " + readingHour + ":" + readingMinute;
 
@@ -140,6 +140,9 @@ public class MainPresenter {
     }
     private boolean validateDate(String date){
         return !date.equals("");
+    }
+    private boolean validateType(String type){
+        return !type.equals("");
     }
 
     private boolean validateReading(String reading) {

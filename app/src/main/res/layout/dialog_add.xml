@@ -98,12 +98,13 @@
             android:layout_height="wrap_content"/>
 
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/dialog_type_custom"
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:visibility="gone">
             <EditText
-                android:id="@+id/dialog_type_custom"
+                android:id="@+id/dialog_type_custom_name"
                 android:singleLine="true"
                 android:textColorHighlight="@color/glucosio_pink"
                 android:layout_width="fill_parent"
