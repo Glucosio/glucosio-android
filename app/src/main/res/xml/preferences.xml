@@ -27,7 +27,7 @@
             android:summary="@string/version"
             android:title="@string/preferences_version"/>
         <Preference
-            android:id="@+id/preferences_terms"
+            android:key="preferences_terms"
             android:title="@string/preferences_terms"/>
     </PreferenceCategory>
 </PreferenceScreen>
