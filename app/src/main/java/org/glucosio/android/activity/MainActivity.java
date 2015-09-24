@@ -201,6 +201,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                         now.get(Calendar.DAY_OF_MONTH)
                 );
                 dpd.show(getFragmentManager(), "Datepickerdialog");
+                dpd.setMaxDate(now);
             }
         });
 
@@ -302,6 +303,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                         now.get(Calendar.DAY_OF_MONTH)
                 );
                 dpd.show(getFragmentManager(), "Datepickerdialog");
+                dpd.setMaxDate(now);
             }
         });
 
