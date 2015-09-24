@@ -27,8 +27,7 @@ public class PreferencesActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(getString(R.string.action_settings));
     }
 
-    public static class MyPreferenceFragment extends PreferenceFragment
-    {
+    public static class MyPreferenceFragment extends PreferenceFragment {
         @Override
         public void onCreate(final Bundle savedInstanceState)
         {
@@ -51,8 +50,7 @@ public class PreferencesActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed()
-    {
+    public void onBackPressed() {
         finish();
     }
 

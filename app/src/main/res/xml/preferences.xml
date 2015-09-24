@@ -23,7 +23,7 @@
         android:entryValues="@array/helloactivity_preferred_unit" />
 
     <PreferenceCategory android:title="@string/preferences_about">
-        <EditTextPreference
+        <Preference
             android:summary="@string/version"
             android:title="@string/preferences_version"/>
         <EditTextPreference
