@@ -15,9 +15,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Calendar;
 
-/**
- * Created by ahmar on 10/8/15.
- */
 public class DatabaseHandler extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION=1;
@@ -42,8 +39,23 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_READING_TYPE="reading_type";
     private static final String KEY_USER_ID="user_id";
 
-    public DatabaseHandler(Context context)
-    {
+    private static DatabaseHandler sInstance;
+
+    public static synchronized DatabaseHandler getInstance(Context context) {
+        // Use the application context, which will ensure that you
+        // don't accidentally leak an Activity's context.
+        // See this article for more information: http://bit.ly/6LRzfx
+        if (sInstance == null) {
+            sInstance = new DatabaseHandler(context.getApplicationContext());
+        }
+        return sInstance;
+    }
+
+    /**
+     * Constructor should be private to prevent direct instantiation.
+     * Make a call to the static method "getInstance()" instead.
+     */
+    private DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
@@ -81,109 +93,187 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         createTable(db);
     }
 
-
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        dropTable(db);
-        onCreate(db);
-    }
-
-    public void addUser(User user)
-    {
-        SQLiteDatabase db=this.getWritableDatabase();
-        ContentValues values=new ContentValues();
-        values.put(KEY_NAME,user.get_name());
-        values.put(KEY_PREF_LANG,user.get_preferredLanguage());
-        values.put(KEY_PREF_COUNTRY,user.get_country());
-        values.put(KEY_AGE,user.get_age());
-        values.put(KEY_GENDER, user.get_gender());
-        values.put(KEY_DIABETES_TYPE, user.get_d_type());
-        values.put(KEY_PREFERRED_UNIT, user.get_preferred_unit());
-        db.insert(TABLE_USER, null, values);
-
-    }
-    public User getUser(int id)
-    {
-        //resetTable();
-
-        SQLiteDatabase db=this.getReadableDatabase();
-        Cursor cursor=db.query(TABLE_USER, new String[]{KEY_ID, KEY_NAME, KEY_PREF_LANG,
-                                                KEY_PREF_COUNTRY, KEY_AGE, KEY_GENDER,
-                                                KEY_DIABETES_TYPE,KEY_PREFERRED_UNIT}, KEY_ID + "=?",
-                new String[]{String.valueOf(id)}, null, null, null);
-        if(cursor!=null) {
-            if (cursor.moveToFirst()){
-                User user=new User(Integer.parseInt(cursor.getString(0)),
-                                cursor.getString(1),
-                                cursor.getString(2),
-                                cursor.getString(3),
-                                Integer.parseInt(cursor.getString(4)),
-                                cursor.getString(5),
-                                Integer.parseInt(cursor.getString(6)),
-                                Integer.parseInt(cursor.getString(7)));
-
-
-                return user;
-            } else {
-                return null;
-            }
-        } else {
-            return null;
+        if (oldVersion != newVersion) {
+            dropTable(db);
+            onCreate(db);
         }
     }
 
-    public List<User> getUsers()
-    {
+    // Called when the database connection is being configured.
+    // Configure database settings for things like foreign key support, write-ahead logging, etc.
+    @Override
+    public void onConfigure(SQLiteDatabase db) {
+        super.onConfigure(db);
+            db.setForeignKeyConstraintsEnabled(true);
+    }
+
+    public void addUser(User user) {
+        SQLiteDatabase db=this.getWritableDatabase();
+        ContentValues values=new ContentValues();
+        db.beginTransaction();
+        try {
+            // Order of deletions is important when foreign key relationships exist.
+            values.put(KEY_NAME, user.get_name());
+            values.put(KEY_PREF_LANG,user.get_preferredLanguage());
+            values.put(KEY_PREF_COUNTRY,user.get_country());
+            values.put(KEY_AGE,user.get_age());
+            values.put(KEY_GENDER, user.get_gender());
+            values.put(KEY_DIABETES_TYPE, user.get_d_type());
+            values.put(KEY_PREFERRED_UNIT, user.get_preferred_unit());
+            db.insert(TABLE_USER, null, values);
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            Log.d("Database", "Error while trying to delete user");
+        } finally {
+            db.endTransaction();
+        }
+    }
+    public User getUser(int id) {
+        SQLiteDatabase db=this.getReadableDatabase();
+        User user = new User();
+
+        db.beginTransaction();
+        try {
+            Cursor cursor=db.query(TABLE_USER, new String[]{KEY_ID, KEY_NAME, KEY_PREF_LANG,
+                            KEY_PREF_COUNTRY, KEY_AGE, KEY_GENDER,
+                            KEY_DIABETES_TYPE, KEY_PREFERRED_UNIT}, KEY_ID + "=?",
+                    new String[]{String.valueOf(id)}, null, null, null);
+            try {
+
+                    if(cursor!=null) {
+                        if (cursor.moveToFirst()){
+                            user=new User(Integer.parseInt(cursor.getString(0)),
+                                    cursor.getString(1),
+                                    cursor.getString(2),
+                                    cursor.getString(3),
+                                    Integer.parseInt(cursor.getString(4)),
+                                    cursor.getString(5),
+                                    Integer.parseInt(cursor.getString(6)),
+                                    Integer.parseInt(cursor.getString(7)));
+
+                            db.setTransactionSuccessful();
+                            return user;
+                        } else {
+                            return null;
+                        }
+                    } else {
+                        return null;
+                    }
+
+            } finally {
+                    if (cursor != null && !cursor.isClosed()) {
+                        cursor.close();
+                    }
+                }
+
+        } catch (Exception e) {
+            Log.d("Database", "Error while trying to get user");
+        } finally {
+            db.endTransaction();
+        }
+
+        return user;
+    }
+
+    public List<User> getUsers() {
+        SQLiteDatabase db=this.getReadableDatabase();
         List<User> userLists=new ArrayList<User>();
         String selectQuery="SELECT * FROM "+TABLE_USER;
-        SQLiteDatabase db=this.getReadableDatabase();
-        Cursor cursor=db.rawQuery(selectQuery, null);
-        if(cursor.moveToFirst()){
-            do{
-                User user=new User();
-                user.set_id(Integer.parseInt(cursor.getString(0)));
-                user.set_name(cursor.getString(1));
-                user.set_preferredLanguage(cursor.getString(2));
-                user.set_country(cursor.getString(3));
-                user.set_age(Integer.parseInt(cursor.getString(4)));
-                user.set_gender(cursor.getString(5));
-                user.set_d_type(Integer.parseInt(cursor.getString(6)));
-                user.set_preferred_unit(Integer.parseInt(cursor.getString(7)));
-                userLists.add(user);
-            }while(cursor.moveToNext());
+
+        db.beginTransaction();
+        try {
+            Cursor cursor=db.rawQuery(selectQuery, null);
+            try {
+                if(cursor.moveToFirst()){
+                    do{
+                        User user=new User();
+                        user.set_id(Integer.parseInt(cursor.getString(0)));
+                        user.set_name(cursor.getString(1));
+                        user.set_preferredLanguage(cursor.getString(2));
+                        user.set_country(cursor.getString(3));
+                        user.set_age(Integer.parseInt(cursor.getString(4)));
+                        user.set_gender(cursor.getString(5));
+                        user.set_d_type(Integer.parseInt(cursor.getString(6)));
+                        user.set_preferred_unit(Integer.parseInt(cursor.getString(7)));
+                        userLists.add(user);
+                    } while(cursor.moveToNext());
+                }
+                db.setTransactionSuccessful();
+            } finally {
+                if (cursor != null && !cursor.isClosed()) {
+                    cursor.close();
+                }
+            }
+
+        } catch (Exception e) {
+            Log.d("Database", "Error while trying to get users");
+        } finally {
+            db.endTransaction();
         }
         return userLists;
     }
 
     public int getTotalUsers()
     {
-        int usersNumber;
+        int usersNumber = -1;
         String countQuery=" SELECT * from "+TABLE_USER;
         SQLiteDatabase db=this.getReadableDatabase();
-        Cursor cursor=db.rawQuery(countQuery, null);
-        usersNumber = cursor.getCount();
-        cursor.close();
+
+        db.beginTransaction();
+        try {
+            Cursor cursor=db.rawQuery(countQuery, null);
+            try {
+                usersNumber = cursor.getCount();
+                db.setTransactionSuccessful();
+            } finally {
+                if (cursor != null && !cursor.isClosed()) {
+                    cursor.close();
+                }
+            }
+
+        } catch (Exception e) {
+            Log.d("Database", "Error while trying to get total users");
+        } finally {
+            db.endTransaction();
+        }
         return usersNumber;
     }
-    public int  updateUser(User user)
-    {
+
+    public int  updateUser(User user) {
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues values=new ContentValues();
-        values.put(KEY_NAME,user.get_name());
-        values.put(KEY_PREF_LANG,user.get_preferredLanguage());
-        values.put(KEY_PREF_COUNTRY,user.get_country());
-        values.put(KEY_AGE, user.get_age());
-        values.put(KEY_GENDER, user.get_gender());
-        values.put(KEY_DIABETES_TYPE, user.get_d_type());
-        values.put(KEY_PREFERRED_UNIT, user.get_preferred_unit());
+        db.beginTransaction();
+        try {
+            values.put(KEY_NAME,user.get_name());
+            values.put(KEY_PREF_LANG,user.get_preferredLanguage());
+            values.put(KEY_PREF_COUNTRY,user.get_country());
+            values.put(KEY_AGE, user.get_age());
+            values.put(KEY_GENDER, user.get_gender());
+            values.put(KEY_DIABETES_TYPE, user.get_d_type());
+            values.put(KEY_PREFERRED_UNIT, user.get_preferred_unit());
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            Log.d("Database", "Error while trying to update user");
+        } finally {
+            db.endTransaction();
+        }
         return db.update(TABLE_USER,values,KEY_ID+" =? ",new String[]{ String.valueOf(user.get_id()) });
-
     }
     public void deleteUser(User user)
     {
         SQLiteDatabase db=this.getWritableDatabase();
-        db.delete(TABLE_USER, KEY_ID + " =? ", new String[]{String.valueOf(user.get_id())});
-        db.close();
+        db.beginTransaction();
+        try {
+            // Order of deletions is important when foreign key relationships exist.
+            db.delete(TABLE_USER, KEY_ID + " =? ", new String[]{String.valueOf(user.get_id())});
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            Log.d("Database", "Error while trying to delete user");
+        } finally {
+            db.endTransaction();
+        }
     }
 
     public void addGlucoseReading(GlucoseReading reading)
@@ -191,34 +281,34 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues values=new ContentValues();
 
-        values.put(KEY_READING,reading.get_reading());
-        values.put(KEY_READING_TYPE, reading.get_reading_type());
-        values.put(KEY_CREATED_AT, reading.get_created());
-        values.put(KEY_NOTES, reading.get_notes());
-        db.insert(TABLE_GLUCOSE_READING, null, values);
+        db.beginTransaction();
+        try {
+            values.put(KEY_READING,reading.get_reading());
+            values.put(KEY_READING_TYPE, reading.get_reading_type());
+            values.put(KEY_CREATED_AT, reading.get_created());
+            values.put(KEY_NOTES, reading.get_notes());
+            db.insert(TABLE_GLUCOSE_READING, null, values);
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            Log.d("Database", "Error while trying to add reading");
+        } finally {
+            db.endTransaction();
+        }
     }
 
-    public void getGlucoseReading(String s)
-    {
-
-    }
-    public void updateGlucoseReading()
-    {
-
-    }
-    public int updateGlucoseReading(GlucoseReading reading)
-    {
-        SQLiteDatabase db=this.getWritableDatabase();
-        ContentValues values=new ContentValues();
-        values.put(KEY_READING,reading.get_reading());
-        values.put(KEY_READING_TYPE, reading.get_reading_type());
-        values.put(KEY_CREATED_AT, reading.get_created());
-        return db.update(TABLE_GLUCOSE_READING,values,KEY_ID+" =? ",new String[]{ String.valueOf(reading.get_id()) });
-    }
     public void deleteGlucoseReadings(GlucoseReading reading)
     {
         SQLiteDatabase db=this.getWritableDatabase();
-        db.delete(TABLE_GLUCOSE_READING, KEY_ID + " =? ", new String[]{String.valueOf(reading.get_id())});
+        db.beginTransaction();
+        try {
+            // Order of deletions is important when foreign key relationships exist.
+            db.delete(TABLE_GLUCOSE_READING, KEY_ID + " =? ", new String[]{String.valueOf(reading.get_id())});
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            Log.d("Database", "Error while trying to delete user");
+        } finally {
+            db.endTransaction();
+        }
     }
     public List<GlucoseReading> getGlucoseReadings()
     {
@@ -234,18 +324,34 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     {
         List<GlucoseReading> readings=new ArrayList<GlucoseReading>();
         SQLiteDatabase db=this.getReadableDatabase();
-        Cursor cursor=db.rawQuery(selectQuery,null);
-        if(cursor.moveToFirst()){
-            do{
-                GlucoseReading reading=new GlucoseReading();
-                reading.set_id(Integer.parseInt(cursor.getString(0)));
-                reading.set_reading(Integer.parseInt(cursor.getString(1)));
-                reading.set_reading_type(cursor.getString(2));
-                reading.set_created(cursor.getString(3));
-                reading.set_user_id(Integer.parseInt(cursor.getString(4)));
-                reading.set_notes(cursor.getString(5));
-                readings.add(reading);
-            }while(cursor.moveToNext());
+
+        db.beginTransaction();
+        try {
+            Cursor cursor=db.rawQuery(selectQuery,null);
+            try {
+                if(cursor.moveToFirst()){
+                    do{
+                        GlucoseReading reading=new GlucoseReading();
+                        reading.set_id(Integer.parseInt(cursor.getString(0)));
+                        reading.set_reading(Integer.parseInt(cursor.getString(1)));
+                        reading.set_reading_type(cursor.getString(2));
+                        reading.set_created(cursor.getString(3));
+                        reading.set_user_id(Integer.parseInt(cursor.getString(4)));
+                        reading.set_notes(cursor.getString(5));
+                        readings.add(reading);
+                    }while(cursor.moveToNext());
+                }
+                db.setTransactionSuccessful();
+            } finally {
+                if (cursor != null && !cursor.isClosed()) {
+                    cursor.close();
+                }
+            }
+
+        } catch (Exception e) {
+            Log.d("Database", "Error while trying to get glucose reading");
+        } finally {
+            db.endTransaction();
         }
         return readings;
     }
@@ -333,15 +439,31 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         String[] columns = new String[] { "reading" };
         String whereString = "created_at between ? and ?";
 
-        Cursor cursor = db.query(false, "glucose_readings", columns,whereString, parameters, null, null, null, null);
 
         ArrayList<Integer> readings = new ArrayList<Integer>();
 
-        if(cursor.moveToFirst()){
-            do{
-                readings.add(cursor.getInt(0));
-            }while(cursor.moveToNext());
+        db.beginTransaction();
+        try {
+            Cursor cursor = db.query(false, "glucose_readings", columns,whereString, parameters, null, null, null, null);
+            try {
+                if(cursor.moveToFirst()){
+                    do{
+                        readings.add(cursor.getInt(0));
+                    }while(cursor.moveToNext());
+                }
+                db.setTransactionSuccessful();
+            } finally {
+                if (cursor != null && !cursor.isClosed()) {
+                    cursor.close();
+                }
+            }
+
+        } catch (Exception e) {
+            Log.d("Database", "Error while trying to get glucose readings for last month");
+        } finally {
+            db.endTransaction();
         }
+
         return readings;
     }
 

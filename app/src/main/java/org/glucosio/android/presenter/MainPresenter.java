@@ -28,7 +28,7 @@ public class MainPresenter {
 
     public MainPresenter(MainActivity mainActivity) {
         this.mainActivity = mainActivity;
-        dB = new DatabaseHandler(mainActivity);
+        dB = DatabaseHandler.getInstance(mainActivity);
         if (dB.getUser(1) == null){
             mainActivity.startHelloActivity();
         } else {

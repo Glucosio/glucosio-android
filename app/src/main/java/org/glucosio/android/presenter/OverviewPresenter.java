@@ -20,7 +20,7 @@ public class OverviewPresenter {
     private ArrayList<String> datetime;
 
     public OverviewPresenter(OverviewFragment overviewFragment) {
-        dB = new DatabaseHandler(overviewFragment.getActivity());
+        dB = DatabaseHandler.getInstance(overviewFragment.getActivity());
     }
 
     public boolean isdbEmpty(){

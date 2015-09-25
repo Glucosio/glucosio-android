@@ -19,7 +19,7 @@ public class HistoryPresenter {
 
     public HistoryPresenter(HistoryFragment historyFragment) {
         this.fragment = historyFragment;
-        dB = new DatabaseHandler(historyFragment.getActivity());
+        dB = DatabaseHandler.getInstance(historyFragment.getActivity());
     }
 
     public boolean isdbEmpty(){
