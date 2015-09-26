@@ -19,7 +19,7 @@ public class HelloPresenter {
     String country;
     String gender;
     int diabetesType;
-    int unitMeasurement;
+    String unitMeasurement;
     String language;
 
     public HelloPresenter(HelloActivity helloActivity) {
@@ -32,7 +32,7 @@ public class HelloPresenter {
         name = "Test Account"; //TODO: add input for name in Tips;
     }
 
-    public void onNextClicked(String age, String gender, String language, String country, int type, int unit){
+    public void onNextClicked(String age, String gender, String language, String country, int type, String unit){
         if (validateAge(age)){
             this.age = Integer.parseInt(age);
             this.gender = gender;

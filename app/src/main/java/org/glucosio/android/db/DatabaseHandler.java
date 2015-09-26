@@ -69,7 +69,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         String CREATE_USER_TABLE="CREATE TABLE "+TABLE_USER+" ("
                 +KEY_ID+" INTEGER PRIMARY KEY,"+KEY_NAME+" TEXT,"
                 +KEY_PREF_LANG+" TEXT,"+KEY_PREF_COUNTRY+" TEXT,"+KEY_AGE+" TEXT,"+KEY_GENDER+" TEXT," +
-                KEY_PREFERRED_UNIT+" INTEGER," +
+                KEY_PREFERRED_UNIT+" TEXT," +
                 KEY_DIABETES_TYPE+" INTEGER )";
         String CREATE_GLUCOSE_READING_TABLE="CREATE TABLE "+TABLE_GLUCOSE_READING+" ("
                 +KEY_ID+" INTEGER PRIMARY KEY,"+KEY_READING+" TEXT, "+
@@ -151,7 +151,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                                     Integer.parseInt(cursor.getString(4)),
                                     cursor.getString(5),
                                     Integer.parseInt(cursor.getString(6)),
-                                    Integer.parseInt(cursor.getString(7)));
+                                    cursor.getString(7));
 
                             db.setTransactionSuccessful();
                             return user;
@@ -196,7 +196,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                         user.set_age(Integer.parseInt(cursor.getString(4)));
                         user.set_gender(cursor.getString(5));
                         user.set_d_type(Integer.parseInt(cursor.getString(6)));
-                        user.set_preferred_unit(Integer.parseInt(cursor.getString(7)));
+                        user.set_preferred_unit(cursor.getString(7));
                         userLists.add(user);
                     } while(cursor.moveToNext());
                 }

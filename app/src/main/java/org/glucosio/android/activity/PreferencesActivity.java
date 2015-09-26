@@ -15,6 +15,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.glucosio.android.R;
 import org.glucosio.android.db.DatabaseHandler;
@@ -41,28 +42,80 @@ public class PreferencesActivity extends AppCompatActivity {
     public static class MyPreferenceFragment extends PreferenceFragment {
 
         Dialog termsDialog;
+        DatabaseHandler dB;
+        User user;
+        ListPreference countryPref;
+        ListPreference genderPref;
+        ListPreference diabetesTypePref;
+        ListPreference unitPref;
+        EditText ageEditText;
+        EditTextPreference agePref;
 
         @Override
         public void onCreate(final Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.preferences);
 
-            DatabaseHandler dB = DatabaseHandler.getInstance(super.getActivity().getApplicationContext());
-            EditTextPreference agePref = (EditTextPreference) findPreference("pref_age");
-            ListPreference countryPref = (ListPreference) findPreference("pref_country");
-            ListPreference genderPref = (ListPreference) findPreference("pref_gender");
-            ListPreference diabetesTypePref = (ListPreference) findPreference("pref_diabetes_type");
-            ListPreference unitPref = (ListPreference) findPreference("pref_unit");
+            dB = DatabaseHandler.getInstance(super.getActivity().getApplicationContext());
+            user = dB.getUser(1);
+
+            agePref = (EditTextPreference) findPreference("pref_age");
+            countryPref = (ListPreference) findPreference("pref_country");
+            genderPref = (ListPreference) findPreference("pref_gender");
+            diabetesTypePref = (ListPreference) findPreference("pref_diabetes_type");
+            unitPref = (ListPreference) findPreference("pref_unit");
             final Preference termsPref = (Preference) findPreference("preferences_terms");
 
-            User user = dB.getUser(1);
+            countryPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    user.set_country(newValue.toString());
 
-            EditText ageEditText = agePref.getEditText();
-            ageEditText.setFilters(new InputFilter[]{ new InputFilterMinMax(1, 110) });
-            agePref.setSummary(user.get_age() + "");
-            genderPref.setSummary(user.get_gender() + "");
-            diabetesTypePref.setSummary(getResources().getString(R.string.glucose_reading_type) + " " + user.get_d_type());
-            unitPref.setSummary(user.get_preferred_unit() + "");
+                    updateDB();
+                    return false;
+                }
+            });
+            agePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    user.set_age(Integer.parseInt(newValue.toString()));
+                    updateDB();
+                    return false;
+                }
+            });
+            genderPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    user.set_gender(newValue.toString());
+                    updateDB();
+                    return false;
+                }
+            });
+            diabetesTypePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    if (newValue.toString().equals(getResources().getString(R.string.helloactivity_spinner_diabetes_type_1))) {
+                        user.set_d_type(1);
+                        updateDB();
+                    } else {
+                        user.set_d_type(2);
+                        updateDB();
+                    }
+                    return false;
+                }
+            });
+            unitPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    user.set_preferred_unit(newValue.toString());
+                    updateDB();
+                    return false;
+                }
+            });
+
+            ageEditText = agePref.getEditText();
+            ageEditText.setFilters(new InputFilter[]{new InputFilterMinMax(1, 110)});
+
 
             // Get countries list from locale
             ArrayList<String> countriesArray = new ArrayList<String>();
@@ -78,7 +131,7 @@ public class PreferencesActivity extends AppCompatActivity {
 
             countryPref.setEntryValues(countries);
             countryPref.setEntries(countries);
-            countryPref.setSummary(user.get_country());
+            updateDB();
 
             termsPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
@@ -109,7 +162,17 @@ public class PreferencesActivity extends AppCompatActivity {
                 }
             });
         }
+
+        private void updateDB(){
+            dB.updateUser(user);
+            agePref.setSummary(user.get_age() + "");
+            genderPref.setSummary(user.get_gender() + "");
+            diabetesTypePref.setSummary(getResources().getString(R.string.glucose_reading_type) + " " + user.get_d_type());
+            unitPref.setSummary(user.get_preferred_unit() + "");
+            countryPref.setSummary(user.get_country());
+        }
     }
+
 
     @Override
     public void onBackPressed() {
