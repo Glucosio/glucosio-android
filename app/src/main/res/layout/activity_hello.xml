@@ -29,9 +29,9 @@
                         android:paddingTop="16dp"/>
 
                         <org.glucosio.android.tools.LabelledSpinner
-                            android:id="@+id/helloactivity_spinner_language"
+                            android:id="@+id/helloactivity_spinner_country"
                             android:layout_marginTop="32dp"
-                            custom:labelText="@string/helloactivity_language"
+                            custom:labelText="@string/helloactivity_country"
                             custom:widgetColor="@color/glucosio_pink"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />

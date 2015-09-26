@@ -32,11 +32,12 @@ public class HelloPresenter {
         name = "Test Account"; //TODO: add input for name in Tips;
     }
 
-    public void onNextClicked(String age, String gender, String language, int type, int unit){
+    public void onNextClicked(String age, String gender, String language, String country, int type, int unit){
         if (validateAge(age)){
             this.age = Integer.parseInt(age);
             this.gender = gender;
             this.language = language;
+            this.country = country;
             this.diabetesType = type;
             this.unitMeasurement = unit;
             showEULA();

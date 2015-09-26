@@ -26,9 +26,13 @@ import org.glucosio.android.db.User;
 import org.glucosio.android.presenter.HelloPresenter;
 import org.glucosio.android.tools.LabelledSpinner;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Locale;
+
 public class HelloActivity extends AppCompatActivity {
 
-    LabelledSpinner languageSpinner;
+    LabelledSpinner countrySpinner;
     LabelledSpinner genderSpinner;
     LabelledSpinner typeSpinner;
     LabelledSpinner unitSpinner;
@@ -52,7 +56,7 @@ public class HelloActivity extends AppCompatActivity {
         firstView = (ScrollView) findViewById(R.id.helloactivity_mainframe);
         EULAView = (ScrollView) findViewById(R.id.helloactivity_eulaframe);
         EULACheckbox = (CheckBox) findViewById(R.id.helloactivity_checkbox_eula);
-        languageSpinner = (LabelledSpinner) findViewById(R.id.helloactivity_spinner_language);
+        countrySpinner = (LabelledSpinner) findViewById(R.id.helloactivity_spinner_country);
         genderSpinner = (LabelledSpinner) findViewById(R.id.helloactivity_spinner_gender);
         typeSpinner = (LabelledSpinner) findViewById(R.id.helloactivity_spinner_diabetes_type);
         unitSpinner = (LabelledSpinner) findViewById(R.id.helloactivity_spinner_preferred_unit);
@@ -63,8 +67,20 @@ public class HelloActivity extends AppCompatActivity {
         ageTextView = (TextView) findViewById(R.id.helloactivity_age);
         nextButton = (Button) findViewById(R.id.helloactivity_next);
 
+        // Get countries list from locale
+        ArrayList<String> countries = new ArrayList<String>();
+        Locale[] locales = Locale.getAvailableLocales();
+
+        for (Locale locale : locales) {
+            String country = locale.getDisplayCountry();
+            if (country.trim().length()>0 && !countries.contains(country)) {
+                countries.add(country);
+            }
+        }
+        Collections.sort(countries);
+
         // Populate Spinners with array
-        languageSpinner.setItemsArray(R.array.helloactivity_language_list);
+        countrySpinner.setItemsArray(countries);
         genderSpinner.setItemsArray(R.array.helloactivity_gender_list);
         unitSpinner.setItemsArray(R.array.helloactivity_preferred_unit);
         typeSpinner.setItemsArray(R.array.helloactivity_diabetes_type);
@@ -93,7 +109,7 @@ public class HelloActivity extends AppCompatActivity {
 
     public void onNextClicked(View v){
         presenter.onNextClicked(ageTextView.getText().toString(),
-                genderSpinner.getSpinner().getSelectedItem().toString(), languageSpinner.getSpinner().getSelectedItem().toString(), typeSpinner.getSpinner().getSelectedItemPosition() + 1, unitSpinner.getSpinner().getSelectedItemPosition());
+                genderSpinner.getSpinner().getSelectedItem().toString(), Locale.getDefault().getDisplayLanguage(), countrySpinner.getSpinner().getSelectedItem().toString(), typeSpinner.getSpinner().getSelectedItemPosition() + 1, unitSpinner.getSpinner().getSelectedItemPosition());
     }
 
     public void showEULA(){
