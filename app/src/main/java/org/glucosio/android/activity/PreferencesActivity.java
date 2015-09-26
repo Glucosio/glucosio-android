@@ -18,7 +18,11 @@ import android.widget.TextView;
 
 import org.glucosio.android.R;
 import org.glucosio.android.db.DatabaseHandler;
+import org.glucosio.android.db.User;
 import org.glucosio.android.tools.InputFilterMinMax;
+
+import java.util.ArrayList;
+import java.util.Locale;
 
 public class PreferencesActivity extends AppCompatActivity {
 
@@ -45,17 +49,36 @@ public class PreferencesActivity extends AppCompatActivity {
 
             DatabaseHandler dB = DatabaseHandler.getInstance(super.getActivity().getApplicationContext());
             EditTextPreference agePref = (EditTextPreference) findPreference("pref_age");
+            ListPreference countryPref = (ListPreference) findPreference("pref_country");
             ListPreference genderPref = (ListPreference) findPreference("pref_gender");
             ListPreference diabetesTypePref = (ListPreference) findPreference("pref_diabetes_type");
             ListPreference unitPref = (ListPreference) findPreference("pref_unit");
             final Preference termsPref = (Preference) findPreference("preferences_terms");
 
+            User user = dB.getUser(1);
+
             EditText ageEditText = agePref.getEditText();
             ageEditText.setFilters(new InputFilter[]{ new InputFilterMinMax(1, 110) });
-            agePref.setSummary(dB.getUser(1).get_age() + "");
-            genderPref.setSummary(dB.getUser(1).get_gender() + "");
-            diabetesTypePref.setSummary(getResources().getString(R.string.glucose_reading_type) + " " + dB.getUser(1).get_d_type());
-            unitPref.setSummary(dB.getUser(1).get_preferred_unit() + "");
+            agePref.setSummary(user.get_age() + "");
+            genderPref.setSummary(user.get_gender() + "");
+            diabetesTypePref.setSummary(getResources().getString(R.string.glucose_reading_type) + " " + user.get_d_type());
+            unitPref.setSummary(user.get_preferred_unit() + "");
+
+            // Get countries list from locale
+            ArrayList<String> countriesArray = new ArrayList<String>();
+            Locale[] locales = Locale.getAvailableLocales();
+
+            for (Locale locale : locales) {
+                String country = locale.getDisplayCountry();
+                if (country.trim().length()>0 && !countriesArray.contains(country)) {
+                    countriesArray.add(country);
+                }
+            }
+            CharSequence[] countries = countriesArray.toArray(new CharSequence[countriesArray.size()]);
+
+            countryPref.setEntryValues(countries);
+            countryPref.setEntries(countries);
+            countryPref.setSummary(user.get_country());
 
             termsPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override

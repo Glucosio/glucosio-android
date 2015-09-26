@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListPreference
+        android:dialogTitle="@string/helloactivity_country"
+        android:key="pref_country"
+        android:title="@string/helloactivity_country" />
     <EditTextPreference
-        android:id="@+id/preferences_age"
         android:dialogTitle="@string/helloactivity_age"
         android:inputType="number"
         android:key="pref_age"
