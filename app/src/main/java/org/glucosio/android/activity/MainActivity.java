@@ -12,6 +12,7 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.view.ActionMode;
 import android.support.v7.widget.Toolbar;
 import android.text.InputFilter;
 import android.util.Log;
@@ -205,11 +206,11 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             }
         });
 
-        dialogAddTime.setOnClickListener(new View.OnClickListener(){
+        dialogAddTime.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 Calendar now = Calendar.getInstance();
-                TimePickerDialog tpd =  TimePickerDialog.newInstance(MainActivity.this, now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), true);
+                TimePickerDialog tpd = TimePickerDialog.newInstance(MainActivity.this, now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), true);
                 tpd.show(getFragmentManager(), "Timepickerdialog");
             }
         });
@@ -225,6 +226,33 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                 dialogOnAddButtonPressed();
             }
         });
+
+        // Workaround for ActionBarContextView bug.
+        android.view.ActionMode.Callback workaroundCallback = new android.view.ActionMode.Callback() {
+            @Override
+            public boolean onCreateActionMode(android.view.ActionMode mode, Menu menu) {
+                return false;
+            }
+
+            @Override
+            public boolean onPrepareActionMode(android.view.ActionMode mode, Menu menu) {
+                return false;
+            }
+
+            @Override
+            public boolean onActionItemClicked(android.view.ActionMode mode, MenuItem item) {
+                return false;
+            }
+
+            @Override
+            public void onDestroyActionMode(android.view.ActionMode mode) {
+
+            }
+        };
+
+        dialogReading.setCustomSelectionActionModeCallback(workaroundCallback);
+
+        dialogTypeCustom.setCustomSelectionActionModeCallback(workaroundCallback);
     }
 
     public void showEditDialog(final int id){
@@ -307,16 +335,16 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             }
         });
 
-        dialogAddTime.setOnClickListener(new View.OnClickListener(){
+        dialogAddTime.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 Calendar now = Calendar.getInstance();
-                TimePickerDialog tpd =  TimePickerDialog.newInstance(MainActivity.this, now.get(Calendar.HOUR_OF_DAY) ,now.get(Calendar.MINUTE), true);
+                TimePickerDialog tpd = TimePickerDialog.newInstance(MainActivity.this, now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), true);
                 tpd.show(getFragmentManager(), "Timepickerdialog");
                 spinnerReadingType.setSelection(presenter.timeToSpinnerType());
             }
         });
-        dialogCancelButton.setOnClickListener(new View.OnClickListener(){
+        dialogCancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
                 addDialog.dismiss();
@@ -328,6 +356,33 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                 dialogOnEditButtonPressed(id);
             }
         });
+
+        // Workaround for ActionBarContextView bug.
+        android.view.ActionMode.Callback workaroundCallback = new android.view.ActionMode.Callback() {
+            @Override
+            public boolean onCreateActionMode(android.view.ActionMode mode, Menu menu) {
+                return false;
+            }
+
+            @Override
+            public boolean onPrepareActionMode(android.view.ActionMode mode, Menu menu) {
+                return false;
+            }
+
+            @Override
+            public boolean onActionItemClicked(android.view.ActionMode mode, MenuItem item) {
+                return false;
+            }
+
+            @Override
+            public void onDestroyActionMode(android.view.ActionMode mode) {
+
+            }
+        };
+
+        dialogReading.setCustomSelectionActionModeCallback(workaroundCallback);
+
+        dialogTypeCustom.setCustomSelectionActionModeCallback(workaroundCallback);
     }
 
     private void dialogOnAddButtonPressed() {
