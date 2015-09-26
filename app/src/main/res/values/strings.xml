@@ -100,6 +100,7 @@
     <string name="preferences_version">Version</string>
     <string name="preferences_terms">Terms of use</string>
     <string name="glucose_reading_type">Type</string>
+    <string name="weight">Weight</string>
     <string name="dialog_add_custom_type">Custom measurement category</string>
 
 
@@ -130,7 +131,6 @@
         <item>Older diabetics may be at higher risk for health issues associated with diabetes. Talk to your doctor about how your age plays a role in your diabetes and what to watch for.</item>
         <item>Limit the amount of salt you use to cook food and that you add to meals after it has been cooked.</item>
     </string-array>
-    
     <string name="assistant">Assistant</string>.
     <string name="assistant_action_update">UPDATE NOW</string>
     <string name="assistant_action_ok">OK, GOT IT</string>
@@ -148,7 +148,5 @@
     <string name="assistant_feedback_desc">If you find any technical issues or have feedback about Glucosio we encourage you to submit it in the settings menu in order to help us improve Glucosio.</string>
     <string name="assistant_reading_title">Add a reading</string>
     <string name="assistant_reading_desc">Be sure to regularly add your glucose readings so we can help you track your glucose levels over time.</string>
-
-
 
 </resources>
