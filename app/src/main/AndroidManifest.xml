@@ -21,7 +21,6 @@
         <activity
             android:name=".activity.HelloActivity"
             android:theme="@style/AppThemeNoActionBar"
-            android:screenOrientation="portrait"
             android:label="@string/title_activity_hello" >
         </activity>
         <activity
@@ -31,6 +30,10 @@
         <activity
             android:name=".activity.PreferencesActivity"
             android:theme="@style/GlucosioSettings">
+        </activity>
+        <activity
+            android:name=".activity.LicenceActivity"
+            android:theme="@style/GlucosioTheme">
         </activity>
     </application>
 

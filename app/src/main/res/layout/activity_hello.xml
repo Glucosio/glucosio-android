@@ -7,7 +7,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/helloactivity_mainframe">
+        android:id="@+id/helloactivity_mainframe"
+        android:visibility="visible">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -76,7 +77,7 @@
                             android:id="@+id/helloactivity_spinner_diabetes_type"
                             android:layout_marginTop="-17dp"
                             android:layout_weight="1"
-                            custom:labelText="@string/helloactivity_gender"
+                            custom:labelText="@string/helloactivity_spinner_diabetes_type"
                             custom:widgetColor="@color/glucosio_pink"
                             android:layout_width="0dp"
                             android:textSize="@dimen/abc_text_size_body_2_material"
@@ -85,7 +86,7 @@
                             android:id="@+id/helloactivity_spinner_preferred_unit"
                             android:layout_marginTop="-17dp"
                             android:layout_weight="1"
-                            custom:labelText="@string/helloactivity_gender"
+                            custom:labelText="@string/helloactivity_spinner_preferred_unit"
                             custom:widgetColor="@color/glucosio_pink"
                             android:layout_width="0dp"
                             android:textSize="@dimen/abc_text_size_body_2_material"
@@ -118,58 +119,68 @@
                         android:layout_gravity="right"/>
                 </LinearLayout>
     </ScrollView>
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/helloactivity_eulaframe"
-        android:visibility="gone">
+        <RelativeLayout
+            android:id="@+id/helloactivity_eulaframe"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:visibility="gone">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingLeft="32dp"
-                    android:paddingRight="32dp"
-                    android:paddingTop="32dp"
-                    android:paddingBottom="32dp"
-                    tools:context="org.glucosio.android.activity.HelloActivity"
-                    android:orientation="vertical">
-
-                    <TextView android:text="@string/helloactivity_terms" android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="@dimen/abc_text_size_display_1_material"
-                        android:textColor="@color/glucosio_text_dark"
-                        android:paddingTop="32dp"/>
-
-                    <TextView
-                        android:id="@+id/helloactivity_textview_terms"
-                        android:text="@string/helloactivity_terms_full"
-                        android:layout_width="fill_parent"
-                        android:layout_height="250dp"
-                        android:scrollbars = "vertical"
-                        android:textSize="@dimen/abc_text_size_subhead_material"
-                        android:textColor="@color/glucosio_text"
-                        android:paddingTop="16dp"/>
-
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp"
+                android:id="@+id/helloactivity_terms_layout_accept"
+                android:layout_above="@id/helloactivity_terms_layout_accept"
+                android:layout_alignParentBottom="true">
                     <CheckBox
-                        android:id="@+id/helloactivity_checkbox_eula"
-                        android:layout_marginTop="32dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checked="false"
-                        android:text="@string/helloactivity_terms_accept"/>
-                    <android.support.v7.widget.AppCompatButton
-                        android:id="@+id/helloactivity_start"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:enabled="false"
-                        android:text="@string/helloactivity_button_start"
-                        android:layout_marginTop="24dp"
-                        android:onClick="onStartClicked"
-                        android:padding="8dp"
-                        android:drawableEnd="@drawable/ic_navigate_next_grey_24px"
-                        android:drawableRight="@drawable/ic_navigate_next_grey_24px"
-                        android:background="?android:attr/selectableItemBackground"                        android:textColor="@color/glucosio_pink"
-                        android:layout_gravity="right"/>
-                </LinearLayout>
-    </ScrollView>
+                            android:id="@+id/helloactivity_checkbox_eula"
+                            android:layout_marginTop="16dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="false"
+                            android:text="@string/helloactivity_terms_accept"/>
+                        <android.support.v7.widget.AppCompatButton
+                            android:id="@+id/helloactivity_start"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:enabled="false"
+                            android:text="@string/helloactivity_button_start"
+                            android:layout_marginTop="24dp"
+                            android:onClick="onStartClicked"
+                            android:padding="8dp"
+                            android:drawableEnd="@drawable/ic_navigate_next_grey_24px"
+                            android:drawableRight="@drawable/ic_navigate_next_grey_24px"
+                            android:background="?android:attr/selectableItemBackground"                        android:textColor="@color/glucosio_pink"
+                            android:layout_gravity="right" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:paddingLeft="32dp"
+                android:paddingRight="32dp"
+                android:paddingBottom="16dp"
+                android:layout_above="@id/helloactivity_terms_layout_accept"
+                tools:context="org.glucosio.android.activity.HelloActivity"
+                android:orientation="vertical">
+
+                <TextView android:text="@string/helloactivity_terms" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/abc_text_size_display_1_material"
+                    android:textColor="@color/glucosio_text_dark"
+                    android:paddingTop="32dp"/>
+
+                <TextView
+                    android:id="@+id/helloactivity_textview_terms"
+                    android:text="@string/helloactivity_terms_full"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:scrollbars = "vertical"
+                    android:textSize="@dimen/abc_text_size_subhead_material"
+                    android:textColor="@color/glucosio_text"
+                    android:paddingTop="16dp"/>
+            </LinearLayout>
+        </RelativeLayout>
 </RelativeLayout>

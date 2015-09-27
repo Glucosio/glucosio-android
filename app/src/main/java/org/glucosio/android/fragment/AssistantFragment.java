@@ -2,32 +2,29 @@ package org.glucosio.android.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import org.glucosio.android.R;
-import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.adapter.TipsAdapter;
 import org.glucosio.android.db.DatabaseHandler;
-import org.glucosio.android.tools.DividerItemDecoration;
 import org.glucosio.android.tools.TipsManager;
 
-public class TipsFragment extends Fragment {
+public class AssistantFragment extends Fragment {
 
     private DatabaseHandler dB;
     private TipsManager tipsManager;
     private RecyclerView tipsRecycler;
     private TipsAdapter adapter;
 
-    public static TipsFragment newInstance() {
-        TipsFragment fragment = new TipsFragment();
+    public static AssistantFragment newInstance() {
+        AssistantFragment fragment = new AssistantFragment();
 
         return fragment;
     }
 
-    public TipsFragment() {
+    public AssistantFragment() {
         // Required empty public constructor
     }
 

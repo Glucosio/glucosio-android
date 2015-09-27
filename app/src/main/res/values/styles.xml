@@ -14,6 +14,7 @@
         <item name="colorAccent">@color/glucosio_pink</item>
         <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
         <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowSoftInputMode">stateHidden|adjustResize</item>
         <item name="android:windowFrame">@null</item>
     </style>
 
