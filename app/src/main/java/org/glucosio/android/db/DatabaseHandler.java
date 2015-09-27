@@ -481,4 +481,40 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
     }
 
+    private ArrayList<Integer> getAverageGlucoseReadingsByWeek(){
+
+        SQLiteDatabase db=this.getReadableDatabase();
+        String[] columns = new String[] { "reading", "strftime('%Y%W', created_at) AS week" };
+
+        Cursor cursor = db.query(false, "glucose_readings", columns,null, null, "week", null, null, null);
+
+        ArrayList<Integer> readings = new ArrayList<Integer>();
+
+        if(cursor.moveToFirst()){
+            do{
+                readings.add(cursor.getInt(0));
+            }while(cursor.moveToNext());
+        }
+        return readings;
+    }
+
+
+    private ArrayList<Integer> getAverageGlucoseReadingsByMonth(){
+
+        SQLiteDatabase db=this.getReadableDatabase();
+        String[] columns = new String[] { "reading", "strftime('%Y%m', created_at) AS month" };
+
+        Cursor cursor = db.query(false, "glucose_readings", columns,null, null, "month", null, null, null);
+
+        ArrayList<Integer> readings = new ArrayList<Integer>();
+
+        if(cursor.moveToFirst()){
+            do{
+                readings.add(cursor.getInt(0));
+            }while(cursor.moveToNext());
+        }
+        return readings;
+    }
+
+
 }
