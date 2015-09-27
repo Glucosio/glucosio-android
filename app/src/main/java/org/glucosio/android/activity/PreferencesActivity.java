@@ -70,6 +70,13 @@ public class PreferencesActivity extends AppCompatActivity {
             genderPref = (ListPreference) findPreference("pref_gender");
             diabetesTypePref = (ListPreference) findPreference("pref_diabetes_type");
             unitPref = (ListPreference) findPreference("pref_unit");
+
+            agePref.setDefaultValue(user.get_age());
+            countryPref.setDefaultValue(user.get_country());
+            genderPref.setDefaultValue(user.get_gender());
+            diabetesTypePref.setDefaultValue(user.get_d_type());
+            unitPref.setDefaultValue(user.get_preferred_unit());
+
             final Preference termsPref = (Preference) findPreference("preferences_terms");
 
             countryPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
