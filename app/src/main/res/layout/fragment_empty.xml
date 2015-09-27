@@ -8,8 +8,10 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:gravity="center"
+        android:paddingBottom="@dimen/abc_action_bar_default_height_material"
+        android:layout_gravity="center"
+        android:lineSpacingExtra="-1.5dp"
         android:onClick="onFabClicked"
-        android:textSize="@dimen/abc_text_size_headline_material"
+        android:textSize="16sp"
         android:text="@string/fragment_empty_text"/>
-
 </RelativeLayout>
