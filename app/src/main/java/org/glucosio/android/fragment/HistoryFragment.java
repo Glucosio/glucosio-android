@@ -22,6 +22,7 @@ import org.glucosio.android.adapter.HistoryAdapter;
 import org.glucosio.android.db.GlucoseReading;
 import org.glucosio.android.listener.RecyclerItemClickListener;
 import org.glucosio.android.presenter.HistoryPresenter;
+import org.glucosio.android.tools.FormatDateTime;
 
 public class HistoryFragment extends Fragment {
 
@@ -153,6 +154,11 @@ public class HistoryFragment extends Fragment {
                 ((MainActivity)getActivity()).turnOnToolbarScrolling();
             }
         }
+    }
+
+    public String convertDate(String date){
+        FormatDateTime dateTime = new FormatDateTime(getActivity().getApplicationContext());
+        return dateTime.convertDate(date);
     }
 
     public void notifyAdapter(){

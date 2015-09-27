@@ -12,6 +12,7 @@ import org.glucosio.android.R;
 import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.presenter.HistoryPresenter;
+import org.glucosio.android.tools.FormatDateTime;
 import org.glucosio.android.tools.ReadingTools;
 
 import java.util.ArrayList;

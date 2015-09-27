@@ -20,6 +20,7 @@ import org.glucosio.android.R;
 import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.presenter.OverviewPresenter;
+import org.glucosio.android.tools.FormatDateTime;
 import org.glucosio.android.tools.ReadingTools;
 import org.glucosio.android.tools.TipsManager;
 
@@ -190,5 +191,10 @@ public class OverviewFragment extends Fragment {
     private void loadRandomTip(){
         TipsManager tipsManager = new TipsManager(getActivity().getApplicationContext(), presenter.getUserAge());
         tipTextView.setText(presenter.getRandomTip(tipsManager));
+    }
+
+    public String convertDate(String date){
+        FormatDateTime dateTime = new FormatDateTime(getActivity().getApplicationContext());
+        return dateTime.convertDate(date);
     }
 }
