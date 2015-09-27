@@ -1,21 +1,16 @@
 package org.glucosio.android.activity;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputFilter;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import org.glucosio.android.R;
 import org.glucosio.android.db.DatabaseHandler;
@@ -136,27 +131,8 @@ public class PreferencesActivity extends AppCompatActivity {
             termsPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
-                    termsDialog = new Dialog(getActivity(), R.style.GlucosioTheme);
-
-                    WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
-                    lp.copyFrom(termsDialog.getWindow().getAttributes());
-                    termsDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                    lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
-                    lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
-                    termsDialog.setContentView(R.layout.dialog_licence);
-                    termsDialog.getWindow().setAttributes(lp);
-                    termsDialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-                    termsDialog.getWindow().setDimAmount(0.5f);
-                    termsDialog.setCanceledOnTouchOutside(true);
-                    termsDialog.show();
-
-                    TextView dialogOk = (TextView) termsDialog.findViewById(R.id.dialog_terms_ok);
-                    dialogOk.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            termsDialog.dismiss();
-                        }
-                    });
+                    Intent intent = new Intent(getActivity(), LicenceActivity.class);
+                    startActivity(intent);
 
                     return false;
                 }

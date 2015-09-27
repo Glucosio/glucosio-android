@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -54,7 +55,7 @@ public class HelloActivity extends AppCompatActivity {
         presenter.loadDatabase();
 
         firstView = (ScrollView) findViewById(R.id.helloactivity_mainframe);
-        EULAView = (ScrollView) findViewById(R.id.helloactivity_eulaframe);
+        EULAView = (RelativeLayout) findViewById(R.id.helloactivity_eulaframe);
         EULACheckbox = (CheckBox) findViewById(R.id.helloactivity_checkbox_eula);
         countrySpinner = (LabelledSpinner) findViewById(R.id.helloactivity_spinner_country);
         genderSpinner = (LabelledSpinner) findViewById(R.id.helloactivity_spinner_gender);
