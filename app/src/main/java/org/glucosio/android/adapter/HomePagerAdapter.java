@@ -4,12 +4,11 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
 
 import org.glucosio.android.R;
 import org.glucosio.android.fragment.HistoryFragment;
 import org.glucosio.android.fragment.OverviewFragment;
-import org.glucosio.android.fragment.TipsFragment;
+import org.glucosio.android.fragment.AssistantFragment;
 
 /**
  * Created by paolo on 13/08/15.
@@ -32,7 +31,7 @@ public class HomePagerAdapter extends FragmentPagerAdapter {
             case 1:
                 return new HistoryFragment();
             default:
-                return new TipsFragment();
+                return new AssistantFragment();
         }
     }
 
@@ -54,7 +53,7 @@ public class HomePagerAdapter extends FragmentPagerAdapter {
             case 1:
                 return mContext.getString(R.string.tab_history);
             default:
-                return mContext.getString(R.string.tab_tips);
+                return mContext.getString(R.string.assistant);
         }
     }
 
