@@ -14,6 +14,7 @@ import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -86,6 +87,11 @@ public class HelloActivity extends AppCompatActivity {
 
         // Populate Spinners with array
         countrySpinner.setItemsArray(countries);
+        String localCountry = getApplicationContext().getResources().getConfiguration().locale.getDisplayCountry();
+        if (!localCountry.equals(null)) {
+            countrySpinner.setSelection(((ArrayAdapter) countrySpinner.getSpinner().getAdapter()).getPosition(localCountry));
+        }
+
         genderSpinner.setItemsArray(R.array.helloactivity_gender_list);
         unitSpinner.setItemsArray(R.array.helloactivity_preferred_unit);
         typeSpinner.setItemsArray(R.array.helloactivity_diabetes_type);
