@@ -33,7 +33,6 @@
                     android:singleLine="true"
                     android:textColorHighlight="@color/glucosio_pink"
                     android:layout_width="fill_parent"
-                    android:textIsSelectable="false"
                     android:inputType="number"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/abc_text_size_body_2_material"
@@ -41,7 +40,6 @@
             </android.support.design.widget.TextInputLayout>
 
             <TextView
-                android:id="@+id/dialog_add_concentration_label"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:gravity="bottom"
