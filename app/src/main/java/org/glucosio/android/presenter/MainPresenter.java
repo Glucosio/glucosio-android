@@ -1,5 +1,8 @@
 package org.glucosio.android.presenter;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+
 import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
@@ -131,10 +134,29 @@ public class MainPresenter {
         return !type.equals("");
     }
 
+    public static int VALIDATE_READING_MM_MIN = 1;
+    public static int VALIDATE_READING_MM_MAX = 40;
+    public static int VALIDATE_READING_MG_MIN = 19;
+    public static int VALIDATE_READING_MG_MAX = 601;
+    public static int VALIDATE_READING_MIN = VALIDATE_READING_MG_MIN;
+    public static int VALIDATE_READING_MAX = VALIDATE_READING_MG_MAX;
+
+    private void prepareValidateReadingRage(){
+        SharedPreferences appPreferences = PreferenceManager.getDefaultSharedPreferences(mainActivity);
+        // TODO: Move to strings reading
+        String currValue = appPreferences.getString("pref_unit","mg/dL");
+        if(currValue.equals("mmol/L")) {
+            VALIDATE_READING_MIN = VALIDATE_READING_MM_MIN;
+            VALIDATE_READING_MAX = VALIDATE_READING_MM_MAX;
+        }
+    }
+
     private boolean validateReading(String reading) {
+        // TODO: Must be calling once
+        prepareValidateReadingRage();
         try {
             Integer readingValue = Integer.parseInt(reading);
-            if (readingValue > 19 && readingValue < 601) { //valid range is 20-600
+            if (readingValue > VALIDATE_READING_MIN && readingValue < VALIDATE_READING_MM_MAX) { //valid range is 20-600
                 // TODO: Convert range in mmol/L
                 return true;
             } else {

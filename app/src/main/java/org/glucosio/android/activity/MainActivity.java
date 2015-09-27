@@ -5,6 +5,8 @@ import android.animation.AnimatorListenerAdapter;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TabLayout;
@@ -54,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     TextView dialogAddTime;
     TextView dialogAddDate;
     TextView dialogReading;
+    TextView dialogReadingLabel;
     EditText dialogTypeCustom;
     HomePagerAdapter homePagerAdapter;
     boolean isCustomType;
@@ -142,6 +145,9 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     private void showAddDialog(){
         addDialog = new Dialog(MainActivity.this, R.style.GlucosioTheme);
 
+        SharedPreferences appPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String currValue = appPreferences.getString("pref_unit","mg/dL");
+
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
         lp.copyFrom(addDialog.getWindow().getAttributes());
         addDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -161,6 +167,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         dialogAddTime = (TextView) addDialog.findViewById(R.id.dialog_add_time);
         dialogAddDate = (TextView) addDialog.findViewById(R.id.dialog_add_date);
         dialogReading = (TextView) addDialog.findViewById(R.id.dialog_add_concentration);
+        dialogReadingLabel = (TextView) addDialog.findViewById(R.id.dialog_add_concentration_label);
         dialogTypeCustom = (EditText) addDialog.findViewById(R.id.dialog_type_custom);
 
         presenter.updateSpinnerTypeTime();
@@ -187,7 +194,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             }
         });
 
-
+        dialogReadingLabel.setText(currValue);
         dialogAddTime.setText(presenter.getReadingHour() + ":" + presenter.getReadingMinute());
         dialogAddDate.setText(presenter.getReadingDay() + "/" + presenter.getReadingMonth() + "/" + presenter.getReadingYear());
 
