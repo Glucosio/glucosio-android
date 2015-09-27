@@ -1,11 +1,17 @@
 package org.glucosio.android.activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Base64;
 
 import com.github.paolorotolo.gitty_reporter.GittyReporter;
 
+import org.glucosio.android.R;
+
 import java.io.UnsupportedEncodingException;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
 public class GittyActivity extends GittyReporter {
@@ -39,5 +45,17 @@ public class GittyActivity extends GittyReporter {
         // Set if Gitty can use your Auth token for users without a GitHub account (default: true)
         // If false, Gitty will redirect non registred users to github.com/join
         enableGuestGitHubLogin(true);
+
+        // Set fonts
+        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                        .setDefaultFontPath("fonts/lato.ttf")
+                        .setFontAttrId(R.attr.fontPath)
+                        .build()
+        );
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

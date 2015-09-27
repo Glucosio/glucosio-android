@@ -2,6 +2,7 @@ package org.glucosio.android.activity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.design.widget.TextInputLayout;
@@ -30,6 +31,9 @@ import org.glucosio.android.tools.LabelledSpinner;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Locale;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class HelloActivity extends AppCompatActivity {
 
@@ -105,7 +109,12 @@ public class HelloActivity extends AppCompatActivity {
                                                 }
         );
 
-        //TODO: add Preferred Unit and Diabetes Type in dB
+        // Set fonts
+        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                        .setDefaultFontPath("fonts/lato.ttf")
+                        .setFontAttrId(R.attr.fontPath)
+                        .build()
+        );
     }
 
     public void onNextClicked(View v){
@@ -176,5 +185,10 @@ public class HelloActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }
