@@ -24,7 +24,7 @@ public class HelloPresenter {
 
     public HelloPresenter(HelloActivity helloActivity) {
         this.helloActivity = helloActivity;
-        dB = DatabaseHandler.getInstance(helloActivity);
+        dB = new DatabaseHandler();
     }
 
     public void loadDatabase(){

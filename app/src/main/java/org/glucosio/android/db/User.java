@@ -1,25 +1,40 @@
 package org.glucosio.android.db;
 
-public class User {
+import com.activeandroid.Model;
+import com.activeandroid.annotation.Column;
+import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Select;
 
+@Table(name = "Users")
+public class User extends Model {
 
-    int _id;
+    @Column(name = "name")
     String _name;
+
+    @Column(name = "preferred_language")
     String _preferred_language;
+
+    @Column(name = "country")
     String _country;
+
+    @Column(name = "age")
     int _age;
+
+    @Column(name = "gender")
     String _gender;
+
+    @Column(name = "d_type")
     int _d_type; //diabetes type
+
+    @Column(name = "preferred_unit")
     String _preferred_unit; // preferred unit
 
-    public User()
-    {
-
+    public User() {
+        super();
     }
 
     public User(int id, String name,String preferred_language, String country, int age, String gender,int dType, String pUnit)
     {
-        this._id=id;
         this._name=name;
         this._preferred_language=preferred_language;
         this._country=country;
@@ -27,6 +42,14 @@ public class User {
         this._gender=gender;
         this._d_type=dType;
         this._preferred_unit=pUnit;
+    }
+
+    public static User getUser(int id) {
+        return new Select()
+                .from(User.class)
+                .where("id = ?", id)
+                .orderBy("RANDOM()")
+                .executeSingle();
     }
 
     public int get_d_type(){
@@ -40,15 +63,6 @@ public class User {
     }
     public void set_preferred_unit(String pUnit){
         this._preferred_unit=pUnit;
-    }
-    public int get_id()
-    {
-        return this._id;
-    }
-
-    public void set_id(int id)
-    {
-        this._id=id;
     }
 
     public String get_name()
@@ -96,18 +110,4 @@ public class User {
     {
         this._gender=gender;
     }
-
-    public String gender(int gender_id)
-    {
-        String[] enums={"Male","Female","Others"};
-        try{
-         return   enums[gender_id+1];
-        }
-        catch(ArrayIndexOutOfBoundsException e){
-            return "";
-        }
-    }
-
-
-
 }

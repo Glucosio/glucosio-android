@@ -62,7 +62,7 @@ public class PreferencesActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.preferences);
 
-            dB = DatabaseHandler.getInstance(super.getActivity().getApplicationContext());
+            dB = new DatabaseHandler();
             user = dB.getUser(1);
 
             agePref = (EditTextPreference) findPreference("pref_age");

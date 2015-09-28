@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class HistoryPresenter {
 
     DatabaseHandler dB;
-    private ArrayList<Integer> id;
+    private ArrayList<Long> id;
     private ArrayList<Integer> reading;
     private ArrayList <String> type;
     private ArrayList<String> datetime;
@@ -22,7 +22,7 @@ public class HistoryPresenter {
 
     public HistoryPresenter(HistoryFragment historyFragment) {
         this.fragment = historyFragment;
-        dB = DatabaseHandler.getInstance(historyFragment.getActivity());
+        dB = new DatabaseHandler();
     }
 
     public boolean isdbEmpty(){
@@ -54,7 +54,7 @@ public class HistoryPresenter {
     }
 
     // Getters
-    public ArrayList<Integer> getId() {
+    public ArrayList<Long> getId() {
         return id;
     }
 

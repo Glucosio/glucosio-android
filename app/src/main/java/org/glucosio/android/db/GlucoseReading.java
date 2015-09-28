@@ -1,20 +1,32 @@
 package org.glucosio.android.db;
 
-/**
- * Created by ahmar on 17/8/15.
- */
-public class GlucoseReading {
+import com.activeandroid.Model;
+import com.activeandroid.annotation.Column;
+import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Select;
 
+import java.util.List;
+
+@Table(name = "GlucoseReadings")
+public class GlucoseReading extends Model {
+
+    @Column(name = "reading")
     int _reading;
-    int _id;
+
+    @Column(name = "reading_type")
     String _reading_type;
+
+    @Column(name = "notes")
     String _notes;
+
+    @Column(name = "user_id")
     int _user_id;
+
+    @Column(name = "created", index = true)
     String _created;
 
-    public GlucoseReading()
-    {
-
+    public GlucoseReading() {
+        super();
     }
 
     public GlucoseReading(int reading,String reading_type,String created,String notes)
@@ -24,6 +36,30 @@ public class GlucoseReading {
         this._created=created;
         this._notes=notes;
     }
+
+    public static GlucoseReading getGlucoseReading(int id) {
+        return new Select()
+                .from(User.class)
+                .where("id = " + id)
+                .orderBy("RANDOM()")
+                .executeSingle();
+    }
+
+    public static List<GlucoseReading> getAllGlucoseReading() {
+        return new Select()
+                .from(GlucoseReading.class)
+                .orderBy("created ASC")
+                .execute();
+    }
+
+    public static List<GlucoseReading> getAllGlucoseReading(String where) {
+        return new Select()
+                .from(GlucoseReading.class)
+                .orderBy("created ASC")
+                .where(where)
+                .execute();
+    }
+
     public String get_notes(){
         return this._notes;
     }
@@ -38,14 +74,11 @@ public class GlucoseReading {
     {
         this._user_id=user_id;
     }
-    public int get_id()
+    public long get_id()
     {
-        return this._id;
+        return this.getId();
     }
-    public void set_id(int id)
-    {
-        this._id=id;
-    }
+
     public void set_reading(int reading)
     {
         this._reading=reading;

@@ -22,7 +22,7 @@ public class OverviewPresenter {
 
 
     public OverviewPresenter(OverviewFragment overviewFragment) {
-        dB = DatabaseHandler.getInstance(overviewFragment.getActivity());
+        dB = new DatabaseHandler();
         this.fragment = overviewFragment;
     }
 
@@ -41,9 +41,9 @@ public class OverviewPresenter {
         return fragment.convertDate(date);
     }
 
-    public int getGlucoseTrend(){
+/*    public int getGlucoseTrend(){
         return dB.getAverageGlucoseReadingForLastMonth();
-    }
+    }*/
 
     public String getLastReading(){
         return getReading().get(getReading().size() - 1) + "";

@@ -123,7 +123,7 @@ public class OverviewFragment extends Fragment {
             legend.setEnabled(false);
 
             loadLastReading();
-            loadGlucoseTrend();
+            // loadGlucoseTrend();
             loadRandomTip();
 
         } else {
@@ -182,11 +182,11 @@ public class OverviewFragment extends Fragment {
         }
     }
 
-    private void loadGlucoseTrend(){
+/*    private void loadGlucoseTrend(){
         if (!presenter.isdbEmpty()) {
             trendTextView.setText(presenter.getGlucoseTrend() + "");
         }
-    }
+    }*/
 
     private void loadRandomTip(){
         TipsManager tipsManager = new TipsManager(getActivity().getApplicationContext(), presenter.getUserAge());
