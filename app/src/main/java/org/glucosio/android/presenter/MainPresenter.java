@@ -3,6 +3,7 @@ package org.glucosio.android.presenter;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import org.glucosio.android.R;
 import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
@@ -144,8 +145,8 @@ public class MainPresenter {
     private void prepareValidateReadingRage(){
         SharedPreferences appPreferences = PreferenceManager.getDefaultSharedPreferences(mainActivity);
         // TODO: Move to strings reading
-        String currValue = appPreferences.getString("pref_unit","mg/dL");
-        if(currValue.equals("mmol/L")) {
+        String currValue = appPreferences.getString("pref_unit",mainActivity.getResources().getString(R.string.helloactivity_spinner_preferred_unit_1));
+        if(currValue.equals(mainActivity.getResources().getString(R.string.helloactivity_spinner_preferred_unit_2))) {
             VALIDATE_READING_MIN = VALIDATE_READING_MM_MIN;
             VALIDATE_READING_MAX = VALIDATE_READING_MM_MAX;
         }
