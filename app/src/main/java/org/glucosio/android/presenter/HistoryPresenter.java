@@ -17,7 +17,6 @@ public class HistoryPresenter {
     private ArrayList<Integer> reading;
     private ArrayList <String> type;
     private ArrayList<String> datetime;
-    GlucoseReading readingToRestore;
     HistoryFragment fragment;
 
     public HistoryPresenter(HistoryFragment historyFragment) {

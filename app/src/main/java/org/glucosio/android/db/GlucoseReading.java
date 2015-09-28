@@ -48,14 +48,14 @@ public class GlucoseReading extends Model {
     public static List<GlucoseReading> getAllGlucoseReading() {
         return new Select()
                 .from(GlucoseReading.class)
-                .orderBy("created ASC")
+                .orderBy("created DESC")
                 .execute();
     }
 
     public static List<GlucoseReading> getAllGlucoseReading(String where) {
         return new Select()
                 .from(GlucoseReading.class)
-                .orderBy("created ASC")
+                .orderBy("created DESC")
                 .where(where)
                 .execute();
     }
