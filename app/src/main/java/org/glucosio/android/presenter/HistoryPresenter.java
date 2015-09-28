@@ -4,7 +4,10 @@ import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
 import org.glucosio.android.fragment.HistoryFragment;
+import org.glucosio.android.tools.FormatDateTime;
 import org.glucosio.android.tools.ReadingTools;
+
+import java.text.DateFormat;
 import java.util.ArrayList;
 
 public class HistoryPresenter {
@@ -34,9 +37,8 @@ public class HistoryPresenter {
     }
 
 
-    public String convertDate(String date) {
-        ReadingTools rTools = new ReadingTools();
-        return rTools.convertDate(date);
+    public String convertDate(String date){
+        return fragment.convertDate(date);
     }
 
     public void onDeleteClicked(int idToDelete){

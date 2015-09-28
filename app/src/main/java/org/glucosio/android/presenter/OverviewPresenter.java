@@ -18,9 +18,12 @@ public class OverviewPresenter {
     private ArrayList<Integer> reading;
     private ArrayList <String> type;
     private ArrayList<String> datetime;
+    OverviewFragment fragment;
+
 
     public OverviewPresenter(OverviewFragment overviewFragment) {
         dB = DatabaseHandler.getInstance(overviewFragment.getActivity());
+        this.fragment = overviewFragment;
     }
 
     public boolean isdbEmpty(){
@@ -35,7 +38,7 @@ public class OverviewPresenter {
 
     public String convertDate(String date) {
         ReadingTools rTools = new ReadingTools();
-        return rTools.convertDate(date);
+        return fragment.convertDate(date);
     }
 
     public int getGlucoseTrend(){

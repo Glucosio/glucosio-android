@@ -5,27 +5,16 @@ import android.content.Context;
 import org.glucosio.android.R;
 
 import java.text.DateFormat;
+import java.text.Format;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class ReadingTools {
 
     public ReadingTools(){
-    }
-
-    public String convertDate(String date) {
-        DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        DateFormat outputFormat = new SimpleDateFormat("E, dd MMM yyyy HH:mm");
-        Date parsed = null;
-        try {
-            parsed = inputFormat.parse(date);
-        } catch (ParseException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        return outputFormat.format(parsed);
     }
 
         public int hourToSpinnerType(int hour) {
