@@ -1,28 +1,13 @@
 package org.glucosio.android.db;
 
-import android.content.ContentValues;
-import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.opengl.GLU;
-import android.util.Log;
-
-import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Calendar;
 
 public class DatabaseHandler {
 
-
-    /**
-     * Constructor should be private to prevent direct instantiation.
-     * Make a call to the static method "getInstance()" instead.
-     */
     public DatabaseHandler() {
     }
 
@@ -128,7 +113,7 @@ public class DatabaseHandler {
        return getGlucoseReadings(" strftime('%m',created)='"+m+"'");
     }
 
-/*    private ArrayList<Integer> getGlucoseReadingsForLastMonthAsArray(){
+    /*private ArrayList<Integer> getGlucoseReadingsForLastMonthAsArray(){
         Calendar calendar = Calendar.getInstance();
         DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         String now = inputFormat.format(calendar.getTime());
@@ -136,7 +121,9 @@ public class DatabaseHandler {
         String oneMonthAgo = inputFormat.format(calendar.getTime());
 
 
-        String whereString = "created_at between " + oneMonthAgo + " and " + now;
+        String[] parameters = new String[] { oneMonthAgo, now } ;
+        String[] columns = new String[] { "reading" };
+        String whereString = "created_at between ? and ?";
 
         List<GlucoseReading> gReadings;
         ArrayList<Integer> readings = new ArrayList<Integer>();
@@ -148,9 +135,9 @@ public class DatabaseHandler {
         }
 
         return readings;
-    }
+    }*/
 
-    public Integer getAverageGlucoseReadingForLastMonth() {
+/*    public Integer getAverageGlucoseReadingForLastMonth() {
         ArrayList<Integer> readings = getGlucoseReadingsForLastMonthAsArray();
         int sum = 0;
         int numberOfReadings = readings.size();

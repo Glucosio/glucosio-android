@@ -60,6 +60,14 @@ public class GlucoseReading extends Model {
                 .execute();
     }
 
+    public static List<GlucoseReading> getAllGlucoseReading(String where, Object args, String[] columns) {
+        return new Select(columns)
+                .from(GlucoseReading.class)
+                .orderBy("created DESC")
+                .where(where, args)
+                .execute();
+    }
+
     public String get_notes(){
         return this._notes;
     }
