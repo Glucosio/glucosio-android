@@ -32,7 +32,7 @@ public class MainPresenter {
 
     public MainPresenter(MainActivity mainActivity) {
         this.mainActivity = mainActivity;
-        dB = DatabaseHandler.getInstance(mainActivity);
+        dB = new DatabaseHandler();
         if (dB.getUser(1) == null){
             mainActivity.startHelloActivity();
         } else {
