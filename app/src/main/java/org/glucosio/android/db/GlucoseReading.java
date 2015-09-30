@@ -52,7 +52,7 @@ public class GlucoseReading extends Model {
                 .execute();
     }
 
-    public static List<GlucoseReading> getAllGlucoseReading(String where) {
+    public static List<GlucoseReading> getGlucoseReadings(String where) {
         return new Select()
                 .from(GlucoseReading.class)
                 .orderBy("created DESC")
@@ -60,7 +60,15 @@ public class GlucoseReading extends Model {
                 .execute();
     }
 
-    public static List<GlucoseReading> getAllGlucoseReading(String where, Object args, String[] columns) {
+    public static List<GlucoseReading> getGlucoseReadings(String where, Object args) {
+        return new Select()
+                .from(GlucoseReading.class)
+                .orderBy("created DESC")
+                .where(where, args)
+                .execute();
+    }
+
+    public static List<GlucoseReading> getGlucoseReadings(String where, Object args, String[] columns) {
         return new Select(columns)
                 .from(GlucoseReading.class)
                 .orderBy("created DESC")

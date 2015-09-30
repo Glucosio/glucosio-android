@@ -116,13 +116,6 @@ public class HelloActivity extends AppCompatActivity {
                                                     }
                                                 }
         );
-
-        // Set fonts
-        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                        .setDefaultFontPath("fonts/lato.ttf")
-                        .setFontAttrId(R.attr.fontPath)
-                        .build()
-        );
     }
 
     public void onNextClicked(View v){
@@ -193,10 +186,5 @@ public class HelloActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

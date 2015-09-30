@@ -45,17 +45,5 @@ public class GittyActivity extends GittyReporter {
         // Set if Gitty can use your Auth token for users without a GitHub account (default: true)
         // If false, Gitty will redirect non registred users to github.com/join
         enableGuestGitHubLogin(true);
-
-        // Set fonts
-        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                        .setDefaultFontPath("fonts/lato.ttf")
-                        .setFontAttrId(R.attr.fontPath)
-                        .build()
-        );
-    }
-
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }
