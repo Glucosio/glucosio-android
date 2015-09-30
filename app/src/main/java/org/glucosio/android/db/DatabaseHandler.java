@@ -113,7 +113,7 @@ public class DatabaseHandler {
        return getGlucoseReadings(" strftime('%m',created)='"+m+"'");
     }
 
-    /*private ArrayList<Integer> getGlucoseReadingsForLastMonthAsArray(){
+    private ArrayList<Integer> getGlucoseReadingsForLastMonthAsArray(){
         Calendar calendar = Calendar.getInstance();
         DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         String now = inputFormat.format(calendar.getTime());
@@ -128,16 +128,16 @@ public class DatabaseHandler {
         List<GlucoseReading> gReadings;
         ArrayList<Integer> readings = new ArrayList<Integer>();
 
-        gReadings = GlucoseReading.getAllGlucoseReading(whereString);
+        gReadings = GlucoseReading.getGlucoseReadings(whereString);
         int i;
         for (i=0; i < gReadings.size(); i++){
             readings.add(gReadings.get(i).get_reading());
         }
 
         return readings;
-    }*/
+    }
 
-/*    public Integer getAverageGlucoseReadingForLastMonth() {
+    public Integer getAverageGlucoseReadingForLastMonth() {
         ArrayList<Integer> readings = getGlucoseReadingsForLastMonthAsArray();
         int sum = 0;
         int numberOfReadings = readings.size();
@@ -149,42 +149,15 @@ public class DatabaseHandler {
         } else {
             return 0;
         }
-    }*/
+    }
 
-/*    private ArrayList<Integer> getAverageGlucoseReadingsByWeek(){
-
-        SQLiteDatabase db=this.getReadableDatabase();
+    private List<GlucoseReading> getAverageGlucoseReadingsByWeek(){
         String[] columns = new String[] { "reading", "strftime('%Y%W', created_at) AS week" };
+        return GlucoseReading.getGlucoseReadingsByGroup(columns, "week");
+    }
 
-        Cursor cursor = db.query(false, "glucose_readings", columns,null, null, "week", null, null, null);
-
-        ArrayList<Integer> readings = new ArrayList<Integer>();
-
-        if(cursor.moveToFirst()){
-            do{
-                readings.add(cursor.getInt(0));
-            }while(cursor.moveToNext());
-        }
-        return readings;
-    }*/
-
-
-/*    private ArrayList<Integer> getAverageGlucoseReadingsByMonth(){
-
-        SQLiteDatabase db=this.getReadableDatabase();
+    private List<GlucoseReading> getAverageGlucoseReadingsByMonth() {
         String[] columns = new String[] { "reading", "strftime('%Y%m', created_at) AS month" };
-
-        Cursor cursor = db.query(false, "glucose_readings", columns,null, null, "month", null, null, null);
-
-        ArrayList<Integer> readings = new ArrayList<Integer>();
-
-        if(cursor.moveToFirst()){
-            do{
-                readings.add(cursor.getInt(0));
-            }while(cursor.moveToNext());
-        }
-        return readings;
-    }*/
-
-
+        return GlucoseReading.getGlucoseReadingsByGroup(columns, "month");
+    }
 }
