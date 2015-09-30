@@ -110,13 +110,6 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
             }
         });
-
-        // Set fonts
-        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                        .setDefaultFontPath("fonts/lato.ttf")
-                        .setFontAttrId(R.attr.fontPath)
-                        .build()
-        );
     }
 
     public void startHelloActivity() {
@@ -555,11 +548,6 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
         String date = +dayOfMonth+"/"+presenter.getReadingMonth()+"/"+presenter.getReadingYear();
         addDate.setText(date);
-    }
-
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     @Override

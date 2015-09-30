@@ -36,13 +36,6 @@ public class PreferencesActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(getString(R.string.action_settings));
-
-        // Set fonts
-        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                        .setDefaultFontPath("fonts/lato.ttf")
-                        .setFontAttrId(R.attr.fontPath)
-                        .build()
-        );
     }
 
     public static class MyPreferenceFragment extends PreferenceFragment {
@@ -165,11 +158,6 @@ public class PreferencesActivity extends AppCompatActivity {
             unitPref.setSummary(user.get_preferred_unit() + "");
             countryPref.setSummary(user.get_country());
         }
-    }
-
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     @Override

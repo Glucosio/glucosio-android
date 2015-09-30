@@ -25,17 +25,5 @@ public class LicenceActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-        // Set fonts
-        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                        .setDefaultFontPath("fonts/lato.ttf")
-                        .setFontAttrId(R.attr.fontPath)
-                        .build()
-        );
-    }
-
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }
