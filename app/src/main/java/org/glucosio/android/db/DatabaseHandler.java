@@ -40,7 +40,7 @@ public class DatabaseHandler {
     }
 
     public List<GlucoseReading> getGlucoseReadings(String where) {
-        return GlucoseReading.getAllGlucoseReading(where);
+        return GlucoseReading.getGlucoseReadings(where);
     }
 
     public ArrayList<Long> getGlucoseIdAsArray(){

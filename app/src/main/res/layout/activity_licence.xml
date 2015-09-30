@@ -17,6 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/mdtp_ok"
+            android:textStyle="bold"
             android:layout_marginRight="16dp"
             android:padding="16dp"
             android:background="?android:attr/selectableItemBackground"
