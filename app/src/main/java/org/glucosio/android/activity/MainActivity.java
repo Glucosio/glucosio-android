@@ -42,6 +42,7 @@ import org.glucosio.android.presenter.MainPresenter;
 import org.glucosio.android.tools.FormatDateTime;
 import org.glucosio.android.tools.LabelledSpinner;
 import org.glucosio.android.tools.LabelledSpinner.OnItemChosenListener;
+import org.w3c.dom.Text;
 
 import java.text.DecimalFormat;
 import java.util.Calendar;
@@ -228,6 +229,14 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             }
         });
 
+        TextView unitM = (TextView) addDialog.findViewById(R.id.dialog_add_unit_measurement);
+
+        if (presenter.getUnitMeasuerement().equals("mg/dL")){
+            unitM.setText("mg/dL");
+        } else {
+            unitM.setText("mmol/L");
+        }
+
         // Workaround for ActionBarContextView bug.
         android.view.ActionMode.Callback workaroundCallback = new android.view.ActionMode.Callback() {
             @Override
@@ -357,6 +366,13 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                 dialogOnEditButtonPressed(id);
             }
         });
+
+        TextView unitM = (TextView) addDialog.findViewById(R.id.dialog_add_unit_measurement);
+        if (presenter.getUnitMeasuerement().equals("mg/dl")){
+            unitM.setText("mg/dl");
+        } else {
+            unitM.setText("mmol/L");
+        }
 
         // Workaround for ActionBarContextView bug.
         android.view.ActionMode.Callback workaroundCallback = new android.view.ActionMode.Callback() {
