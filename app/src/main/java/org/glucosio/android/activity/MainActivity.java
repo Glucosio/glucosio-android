@@ -5,6 +5,8 @@ import android.animation.AnimatorListenerAdapter;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TabLayout;
@@ -511,7 +513,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             emptyLayout.setVisibility(View.VISIBLE);
 
             ImageView arrow = (ImageView) findViewById(R.id.mainactivity_arrow);
-            arrow.setBackground(VectorDrawable.getDrawable(getApplicationContext(), R.drawable.curved_line));
+            arrow.setBackground((VectorDrawable.getDrawable(getApplicationContext(), R.drawable.curved_line)));
         } else {
             pager.setVisibility(View.VISIBLE);
             emptyLayout.setVisibility(View.INVISIBLE);

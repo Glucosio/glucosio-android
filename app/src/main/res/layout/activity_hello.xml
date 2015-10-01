@@ -174,15 +174,18 @@
                     android:textColor="@color/glucosio_text_dark"
                     android:paddingTop="32dp"/>
 
-                <TextView
-                    android:id="@+id/helloactivity_textview_terms"
-                    android:text="@string/helloactivity_terms_full"
+                <ScrollView
                     android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:scrollbars = "vertical"
-                    android:textSize="@dimen/abc_text_size_subhead_material"
-                    android:textColor="@color/glucosio_text"
-                    android:paddingTop="16dp"/>
+                    android:layout_height="fill_parent">
+                    <TextView
+                        android:id="@+id/helloactivity_textview_terms"
+                        android:text="@string/helloactivity_terms_full"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:textSize="@dimen/abc_text_size_subhead_material"
+                        android:textColor="@color/glucosio_text"
+                        android:paddingTop="16dp"/>
+                </ScrollView>
             </LinearLayout>
         </RelativeLayout>
 </RelativeLayout>
