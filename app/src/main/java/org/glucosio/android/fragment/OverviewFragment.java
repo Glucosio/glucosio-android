@@ -59,78 +59,74 @@ public class OverviewFragment extends Fragment {
         presenter = new OverviewPresenter(this);
         presenter.loadDatabase();
 
-        if (!presenter.isdbEmpty()) {
-            mFragmentView = inflater.inflate(R.layout.fragment_overview, container, false);
+        mFragmentView = inflater.inflate(R.layout.fragment_overview, container, false);
 
-            chart = (LineChart) mFragmentView.findViewById(R.id.chart);
-            Legend legend = chart.getLegend();
+        chart = (LineChart) mFragmentView.findViewById(R.id.chart);
+        Legend legend = chart.getLegend();
 
-            Collections.reverse(presenter.getReading());
-            Collections.reverse(presenter.getDatetime());
-            Collections.reverse(presenter.getType());
+        Collections.reverse(presenter.getReading());
+        Collections.reverse(presenter.getDatetime());
+        Collections.reverse(presenter.getType());
 
-            readingTextView = (TextView) mFragmentView.findViewById(R.id.item_history_reading);
-            trendTextView = (TextView) mFragmentView.findViewById(R.id.item_history_trend);
-            tipTextView = (TextView) mFragmentView.findViewById(R.id.random_tip_textview);
+        readingTextView = (TextView) mFragmentView.findViewById(R.id.item_history_reading);
+        trendTextView = (TextView) mFragmentView.findViewById(R.id.item_history_trend);
+        tipTextView = (TextView) mFragmentView.findViewById(R.id.random_tip_textview);
 
-            XAxis xAxis = chart.getXAxis();
-            xAxis.setDrawGridLines(false);
-            xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-            xAxis.setTextColor(getResources().getColor(R.color.glucosio_text_light));
+        XAxis xAxis = chart.getXAxis();
+        xAxis.setDrawGridLines(false);
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setTextColor(getResources().getColor(R.color.glucosio_text_light));
 
-            LimitLine ll1 = new LimitLine(130f, "High");
-            ll1.setLineWidth(1f);
-            ll1.setLineColor(getResources().getColor(R.color.glucosio_gray_light));
-            ll1.setTextColor(getResources().getColor(R.color.glucosio_text));
+        LimitLine ll1 = new LimitLine(130f, "High");
+        ll1.setLineWidth(1f);
+        ll1.setLineColor(getResources().getColor(R.color.glucosio_gray_light));
+        ll1.setTextColor(getResources().getColor(R.color.glucosio_text));
 
-            LimitLine ll2 = new LimitLine(70f, "Low");
-            ll2.setLineWidth(1f);
-            ll2.setLineColor(getResources().getColor(R.color.glucosio_gray_light));
-            ll2.setTextColor(getResources().getColor(R.color.glucosio_text));
+        LimitLine ll2 = new LimitLine(70f, "Low");
+        ll2.setLineWidth(1f);
+        ll2.setLineColor(getResources().getColor(R.color.glucosio_gray_light));
+        ll2.setTextColor(getResources().getColor(R.color.glucosio_text));
 
-            LimitLine ll3 = new LimitLine(200f, "Hyper");
-            ll3.setLineWidth(1f);
-            ll3.enableDashedLine(10, 10, 10);
-            ll3.setLineColor(getResources().getColor(R.color.glucosio_gray_light));
-            ll3.setTextColor(getResources().getColor(R.color.glucosio_text));
+        LimitLine ll3 = new LimitLine(200f, "Hyper");
+        ll3.setLineWidth(1f);
+        ll3.enableDashedLine(10, 10, 10);
+        ll3.setLineColor(getResources().getColor(R.color.glucosio_gray_light));
+        ll3.setTextColor(getResources().getColor(R.color.glucosio_text));
 
-            LimitLine ll4 = new LimitLine(50f, "Hypo");
-            ll4.setLineWidth(1f);
-            ll4.enableDashedLine(10, 10, 10);
-            ll4.setLineColor(getResources().getColor(R.color.glucosio_gray_light));
-            ll4.setTextColor(getResources().getColor(R.color.glucosio_text));
+        LimitLine ll4 = new LimitLine(50f, "Hypo");
+        ll4.setLineWidth(1f);
+        ll4.enableDashedLine(10, 10, 10);
+        ll4.setLineColor(getResources().getColor(R.color.glucosio_gray_light));
+        ll4.setTextColor(getResources().getColor(R.color.glucosio_text));
 
-            YAxis leftAxis = chart.getAxisLeft();
-            leftAxis.removeAllLimitLines(); // reset all limit lines to avoid overlapping lines
-            leftAxis.addLimitLine(ll1);
-            leftAxis.addLimitLine(ll2);
-            leftAxis.addLimitLine(ll3);
-            leftAxis.addLimitLine(ll4);
-            leftAxis.setTextColor(getResources().getColor(R.color.glucosio_text_light));
-            leftAxis.setStartAtZero(false);
-            //leftAxis.setYOffset(20f);
-            leftAxis.disableGridDashedLine();
-            leftAxis.setDrawGridLines(false);
+        YAxis leftAxis = chart.getAxisLeft();
+        leftAxis.removeAllLimitLines(); // reset all limit lines to avoid overlapping lines
+        leftAxis.addLimitLine(ll1);
+        leftAxis.addLimitLine(ll2);
+        leftAxis.addLimitLine(ll3);
+        leftAxis.addLimitLine(ll4);
+        leftAxis.setTextColor(getResources().getColor(R.color.glucosio_text_light));
+        leftAxis.setStartAtZero(false);
+        //leftAxis.setYOffset(20f);
+        leftAxis.disableGridDashedLine();
+        leftAxis.setDrawGridLines(false);
 
-            // limit lines are drawn behind data (and not on top)
-            leftAxis.setDrawLimitLinesBehindData(true);
+        // limit lines are drawn behind data (and not on top)
+        leftAxis.setDrawLimitLinesBehindData(true);
 
-            chart.getAxisRight().setEnabled(false);
-            chart.setBackgroundColor(Color.parseColor("#FFFFFF"));
-            chart.setDescription("");
-            chart.setGridBackgroundColor(Color.parseColor("#FFFFFF"));
-            setData();
-            legend.setEnabled(false);
+        chart.getAxisRight().setEnabled(false);
+        chart.setBackgroundColor(Color.parseColor("#FFFFFF"));
+        chart.setDescription("");
+        chart.setGridBackgroundColor(Color.parseColor("#FFFFFF"));
+        setData();
+        legend.setEnabled(false);
 
-            loadLastReading();
+        loadLastReading();
 /*
-            loadGlucoseTrend();
+        loadGlucoseTrend();
 */
-            loadRandomTip();
+        loadRandomTip();
 
-        } else {
-            mFragmentView = inflater.inflate(R.layout.fragment_empty, container, false);
-        }
         return mFragmentView;
     }
 

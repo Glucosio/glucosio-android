@@ -24,12 +24,15 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.EdgeEffect;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
+import com.wnafee.vector.compat.VectorDrawable;
 
 import org.glucosio.android.R;
 import org.glucosio.android.adapter.HomePagerAdapter;
@@ -110,6 +113,8 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
             }
         });
+
+        checkIfEmptyLayout();
     }
 
     public void startHelloActivity() {
@@ -394,6 +399,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     public void dismissAddDialog(){
         addDialog.dismiss();
         homePagerAdapter.notifyDataSetChanged();
+        checkIfEmptyLayout();
     }
 
     public void showErrorMessage(){
@@ -493,6 +499,22 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         } else {
             // do nothing
             // probably swiping from OVERVIEW to HISTORY tab
+        }
+    }
+
+    public void checkIfEmptyLayout(){
+        LinearLayout emptyLayout = (LinearLayout) findViewById(R.id.mainactivity_empty_layout);
+        ViewPager pager = (ViewPager) findViewById(R.id.pager);
+
+        if (presenter.isdbEmpty()) {
+            pager.setVisibility(View.GONE);
+            emptyLayout.setVisibility(View.VISIBLE);
+
+            ImageView arrow = (ImageView) findViewById(R.id.mainactivity_arrow);
+            arrow.setBackground(VectorDrawable.getDrawable(getApplicationContext(), R.drawable.curved_line));
+        } else {
+            pager.setVisibility(View.VISIBLE);
+            emptyLayout.setVisibility(View.INVISIBLE);
         }
     }
 

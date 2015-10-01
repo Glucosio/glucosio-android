@@ -39,6 +39,10 @@ public class MainPresenter {
         }
     }
 
+    public boolean isdbEmpty(){
+        return dB.getGlucoseReadings().size() == 0;
+    }
+
     public void updateSpinnerTypeTime() {
         getCurrentTime();
         mainActivity.updateSpinnerTypeTime(timeToSpinnerType());
