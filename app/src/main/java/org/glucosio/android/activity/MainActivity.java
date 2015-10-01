@@ -189,6 +189,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             }
         });
 
+
         dialogAddTime.setText(presenter.getReadingHour() + ":" + presenter.getReadingMinute());
         dialogAddDate.setText(presenter.getReadingDay() + "/" + presenter.getReadingMonth() + "/" + presenter.getReadingYear());
 
