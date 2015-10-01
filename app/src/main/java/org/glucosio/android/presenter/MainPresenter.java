@@ -39,6 +39,7 @@ public class MainPresenter {
             rTools = new ReadingTools();
 
         }
+        converter = new GlucoseConverter();
     }
 
     public boolean isdbEmpty(){
