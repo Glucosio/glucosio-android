@@ -31,7 +31,7 @@
 
                         <org.glucosio.android.tools.LabelledSpinner
                             android:id="@+id/helloactivity_spinner_country"
-                            android:layout_marginTop="32dp"
+                            android:layout_marginTop="16dp"
                             custom:labelText="@string/helloactivity_country"
                             custom:widgetColor="@color/glucosio_pink"
                             android:layout_width="match_parent"
@@ -99,7 +99,7 @@
                         android:checked="true"
                         android:text="@string/helloactivity_share_data"/>
                     <TextView
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="8dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/helloactivity_hint_settings"
