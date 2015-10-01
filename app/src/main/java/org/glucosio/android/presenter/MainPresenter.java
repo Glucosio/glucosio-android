@@ -144,7 +144,6 @@ public class MainPresenter {
     }
 
     private boolean validateReading(String reading) {
-
         if (getUnitMeasuerement().equals("mg/dL")) {
             // We store data in db in mg/dl
             try {
