@@ -24,10 +24,6 @@ public class HistoryPresenter {
         dB = new DatabaseHandler();
     }
 
-    public boolean isdbEmpty(){
-        return dB.getGlucoseReadings().size() == 0;
-    }
-
     public void loadDatabase(){
         this.id = dB.getGlucoseIdAsArray();
         this.reading = dB.getGlucoseReadingAsArray();

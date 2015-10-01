@@ -76,6 +76,14 @@ public class GlucoseReading extends Model {
                 .execute();
     }
 
+    public static List<GlucoseReading> getGlucoseReadingsByGroup(String[] columns, String groupBy) {
+        return new Select(columns)
+                .from(GlucoseReading.class)
+                .orderBy("created DESC")
+                .groupBy(groupBy)
+                .execute();
+    }
+
     public String get_notes(){
         return this._notes;
     }

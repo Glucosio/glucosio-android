@@ -57,89 +57,85 @@ public class HistoryFragment extends Fragment {
         presenter = new HistoryPresenter(this);
         presenter.loadDatabase();
 
-        if (!presenter.isdbEmpty()) {
-            mFragmentView = inflater.inflate(R.layout.fragment_history, container, false);
+        mFragmentView = inflater.inflate(R.layout.fragment_history, container, false);
 
-            mRecyclerView = (RecyclerView) mFragmentView.findViewById(R.id.fragment_history_recycler_view);
-            mAdapter = new HistoryAdapter(super.getActivity().getApplicationContext(), presenter);
+        mRecyclerView = (RecyclerView) mFragmentView.findViewById(R.id.fragment_history_recycler_view);
+        mAdapter = new HistoryAdapter(super.getActivity().getApplicationContext(), presenter);
 
-            // use this setting to improve performance if you know that changes
-            // in content do not change the layout size of the RecyclerView
-            mRecyclerView.setHasFixedSize(false);
+        // use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        mRecyclerView.setHasFixedSize(false);
 
-            // use a linear layout manager
-            mLayoutManager = new LinearLayoutManager(super.getActivity());
-            mRecyclerView.setLayoutManager(mLayoutManager);
-            mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        // use a linear layout manager
+        mLayoutManager = new LinearLayoutManager(super.getActivity());
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
-            mRecyclerView.setAdapter(mAdapter);
-            mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), mRecyclerView, new RecyclerItemClickListener.OnItemClickListener() {
-                @Override
-                public void onItemClick(View view, int position) {
-                    // Do nothing
-                }
+        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), mRecyclerView, new RecyclerItemClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                // Do nothing
+            }
 
-                @Override
-                public void onItemLongClick(View view, final int position) {
-                    CharSequence colors[] = new CharSequence[]{getResources().getString(R.string.dialog_edit), getResources().getString(R.string.dialog_delete)};
+            @Override
+            public void onItemLongClick(View view, final int position) {
+                CharSequence colors[] = new CharSequence[]{getResources().getString(R.string.dialog_edit), getResources().getString(R.string.dialog_delete)};
 
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                    builder.setItems(colors, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            if (which == 0) {
-                                // EDIT
-                                TextView idTextView = (TextView) mRecyclerView.getChildAt(position).findViewById(R.id.item_history_id);
-                                final int idToEdit = Integer.parseInt(idTextView.getText().toString());
-                                ((MainActivity) getActivity()).showEditDialog(idToEdit);
-                            } else {
-                                // DELETE
-                                TextView idTextView = (TextView) mRecyclerView.getChildAt(position).findViewById(R.id.item_history_id);
-                                final int idToDelete = Integer.parseInt(idTextView.getText().toString());
-                                final CardView item = (CardView) mRecyclerView.getChildAt(position).findViewById(R.id.item_history);
-                                item.animate().alpha(0.0f).setDuration(2000);
-                                Snackbar.make(((MainActivity) getActivity()).getFabView(), R.string.fragment_history_snackbar_text, Snackbar.LENGTH_SHORT).setCallback(new Snackbar.Callback() {
-                                    @Override
-                                    public void onDismissed(Snackbar snackbar, int event) {
-                                        switch (event) {
-                                            case Snackbar.Callback.DISMISS_EVENT_ACTION:
-                                                // Do nothing, see Undo onClickListener
-                                                break;
-                                            case Snackbar.Callback.DISMISS_EVENT_TIMEOUT:
-                                                presenter.onDeleteClicked(idToDelete);
-                                                break;
-                                        }
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setItems(colors, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (which == 0) {
+                            // EDIT
+                            TextView idTextView = (TextView) mRecyclerView.getChildAt(position).findViewById(R.id.item_history_id);
+                            final int idToEdit = Integer.parseInt(idTextView.getText().toString());
+                            ((MainActivity) getActivity()).showEditDialog(idToEdit);
+                        } else {
+                            // DELETE
+                            TextView idTextView = (TextView) mRecyclerView.getChildAt(position).findViewById(R.id.item_history_id);
+                            final int idToDelete = Integer.parseInt(idTextView.getText().toString());
+                            final CardView item = (CardView) mRecyclerView.getChildAt(position).findViewById(R.id.item_history);
+                            item.animate().alpha(0.0f).setDuration(2000);
+                            Snackbar.make(((MainActivity) getActivity()).getFabView(), R.string.fragment_history_snackbar_text, Snackbar.LENGTH_SHORT).setCallback(new Snackbar.Callback() {
+                                @Override
+                                public void onDismissed(Snackbar snackbar, int event) {
+                                    switch (event) {
+                                        case Snackbar.Callback.DISMISS_EVENT_ACTION:
+                                            // Do nothing, see Undo onClickListener
+                                            break;
+                                        case Snackbar.Callback.DISMISS_EVENT_TIMEOUT:
+                                            presenter.onDeleteClicked(idToDelete);
+                                            break;
                                     }
+                                }
 
-                                    @Override
-                                    public void onShown(Snackbar snackbar) {
-                                        // Do nothing
-                                    }
-                                }).setAction("UNDO", new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        item.clearAnimation();
-                                        item.setAlpha(1.0f);
-                                        mAdapter.notifyDataSetChanged();
-                                    }
-                                }).setActionTextColor(getResources().getColor(R.color.glucosio_accent)).show();
-                            }
+                                @Override
+                                public void onShown(Snackbar snackbar) {
+                                    // Do nothing
+                                }
+                            }).setAction("UNDO", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    item.clearAnimation();
+                                    item.setAlpha(1.0f);
+                                    mAdapter.notifyDataSetChanged();
+                                }
+                            }).setActionTextColor(getResources().getColor(R.color.glucosio_accent)).show();
                         }
-                    });
-                    builder.show();
-                }
-            }));
+                    }
+                });
+                builder.show();
+            }
+        }));
 
-            mRecyclerView.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
-                @Override
-                public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
-                    mRecyclerView.removeOnLayoutChangeListener(this);
-                    updateToolbarBehaviour();
-                }
-            });
-        } else {
-            mFragmentView = inflater.inflate(R.layout.fragment_empty, container, false);
-        }
+        mRecyclerView.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
+            @Override
+            public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
+                mRecyclerView.removeOnLayoutChangeListener(this);
+                updateToolbarBehaviour();
+            }
+        });
 
         return mFragmentView;
     }
@@ -167,5 +163,6 @@ public class HistoryFragment extends Fragment {
 
     public void reloadFragmentAdapter(){
         ((MainActivity)getActivity()).reloadFragmentAdapter();
+        ((MainActivity)getActivity()).checkIfEmptyLayout();
     }
 }

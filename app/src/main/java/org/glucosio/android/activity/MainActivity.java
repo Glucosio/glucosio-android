@@ -5,8 +5,8 @@ import android.animation.AnimatorListenerAdapter;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TabLayout;
@@ -26,12 +26,15 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.EdgeEffect;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
+import com.wnafee.vector.compat.VectorDrawable;
 
 import org.glucosio.android.R;
 import org.glucosio.android.adapter.HomePagerAdapter;
@@ -39,6 +42,7 @@ import org.glucosio.android.presenter.MainPresenter;
 import org.glucosio.android.tools.FormatDateTime;
 import org.glucosio.android.tools.LabelledSpinner;
 import org.glucosio.android.tools.LabelledSpinner.OnItemChosenListener;
+import org.w3c.dom.Text;
 
 import java.text.DecimalFormat;
 import java.util.Calendar;
@@ -113,6 +117,8 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
             }
         });
+
+        checkIfEmptyLayout();
     }
 
     public void startHelloActivity() {
@@ -139,9 +145,6 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     private void showAddDialog(){
         addDialog = new Dialog(MainActivity.this, R.style.GlucosioTheme);
 
-        SharedPreferences appPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        String currValue = appPreferences.getString("pref_unit","mg/dL");
-
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
         lp.copyFrom(addDialog.getWindow().getAttributes());
         addDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -161,7 +164,6 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         dialogAddTime = (TextView) addDialog.findViewById(R.id.dialog_add_time);
         dialogAddDate = (TextView) addDialog.findViewById(R.id.dialog_add_date);
         dialogReading = (TextView) addDialog.findViewById(R.id.dialog_add_concentration);
-        dialogReadingLabel = (TextView) addDialog.findViewById(R.id.dialog_add_concentration_label);
         dialogTypeCustom = (EditText) addDialog.findViewById(R.id.dialog_type_custom);
 
         presenter.updateSpinnerTypeTime();
@@ -188,7 +190,6 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             }
         });
 
-        dialogReadingLabel.setText(currValue);
         dialogAddTime.setText(presenter.getReadingHour() + ":" + presenter.getReadingMinute());
         dialogAddDate.setText(presenter.getReadingDay() + "/" + presenter.getReadingMonth() + "/" + presenter.getReadingYear());
 
@@ -227,6 +228,14 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                 dialogOnAddButtonPressed();
             }
         });
+
+        TextView unitM = (TextView) addDialog.findViewById(R.id.dialog_add_unit_measurement);
+
+        if (presenter.getUnitMeasuerement().equals("mg/dL")){
+            unitM.setText("mg/dL");
+        } else {
+            unitM.setText("mmol/L");
+        }
 
         // Workaround for ActionBarContextView bug.
         android.view.ActionMode.Callback workaroundCallback = new android.view.ActionMode.Callback() {
@@ -358,6 +367,13 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             }
         });
 
+        TextView unitM = (TextView) addDialog.findViewById(R.id.dialog_add_unit_measurement);
+        if (presenter.getUnitMeasuerement().equals("mg/dl")){
+            unitM.setText("mg/dl");
+        } else {
+            unitM.setText("mmol/L");
+        }
+
         // Workaround for ActionBarContextView bug.
         android.view.ActionMode.Callback workaroundCallback = new android.view.ActionMode.Callback() {
             @Override
@@ -401,6 +417,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     public void dismissAddDialog(){
         addDialog.dismiss();
         homePagerAdapter.notifyDataSetChanged();
+        checkIfEmptyLayout();
     }
 
     public void showErrorMessage(){
@@ -500,6 +517,22 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         } else {
             // do nothing
             // probably swiping from OVERVIEW to HISTORY tab
+        }
+    }
+
+    public void checkIfEmptyLayout(){
+        LinearLayout emptyLayout = (LinearLayout) findViewById(R.id.mainactivity_empty_layout);
+        ViewPager pager = (ViewPager) findViewById(R.id.pager);
+
+        if (presenter.isdbEmpty()) {
+            pager.setVisibility(View.GONE);
+            emptyLayout.setVisibility(View.VISIBLE);
+
+            ImageView arrow = (ImageView) findViewById(R.id.mainactivity_arrow);
+            arrow.setBackground((VectorDrawable.getDrawable(getApplicationContext(), R.drawable.curved_line)));
+        } else {
+            pager.setVisibility(View.VISIBLE);
+            emptyLayout.setVisibility(View.INVISIBLE);
         }
     }
 

@@ -1,13 +1,10 @@
 package org.glucosio.android.presenter;
 
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-
-import org.glucosio.android.R;
 import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
 import org.glucosio.android.db.User;
+import org.glucosio.android.tools.GlucoseConverter;
 import org.glucosio.android.tools.ReadingTools;
 import org.glucosio.android.tools.SplitDateTime;
 
@@ -22,6 +19,7 @@ public class MainPresenter {
     DatabaseHandler dB;
     User user;
     ReadingTools rTools;
+    GlucoseConverter converter;
     int age;
 
     private String readingYear;
@@ -41,6 +39,10 @@ public class MainPresenter {
             rTools = new ReadingTools();
 
         }
+    }
+
+    public boolean isdbEmpty(){
+        return dB.getGlucoseReadings().size() == 0;
     }
 
     public void updateSpinnerTypeTime() {
@@ -93,11 +95,17 @@ public class MainPresenter {
 
     public void dialogOnAddButtonPressed(String time, String date, String reading, String type){
         if (validateDate(date) && validateTime(time) && validateReading(reading) && validateType(type)) {
-            int finalReading = Integer.parseInt(reading);
             String finalDateTime = readingYear + "-" + readingMonth + "-" + readingDay + " " + readingHour + ":" + readingMinute;
 
-            GlucoseReading gReading = new GlucoseReading(finalReading, type, finalDateTime,"");
-            dB.addGlucoseReading(gReading);
+            if (getUnitMeasuerement().equals("mg/dL")) {
+                int finalReading = Integer.parseInt(reading);
+                GlucoseReading gReading = new GlucoseReading(finalReading, type, finalDateTime, "");
+                dB.addGlucoseReading(gReading);
+            } else {
+                int convertedReading = converter.toMgDl(Double.parseDouble(reading));
+                GlucoseReading gReading = new GlucoseReading(convertedReading, type, finalDateTime, "");
+                dB.addGlucoseReading(gReading);
+            }
             mainActivity.dismissAddDialog();
         } else {
             mainActivity.showErrorMessage();
@@ -135,41 +143,48 @@ public class MainPresenter {
         return !type.equals("");
     }
 
-    public static int VALIDATE_READING_MM_MIN = 1;
-    public static int VALIDATE_READING_MM_MAX = 40;
-    public static int VALIDATE_READING_MG_MIN = 19;
-    public static int VALIDATE_READING_MG_MAX = 601;
-    public static int VALIDATE_READING_MIN = VALIDATE_READING_MG_MIN;
-    public static int VALIDATE_READING_MAX = VALIDATE_READING_MG_MAX;
-
-    private void prepareValidateReadingRage(){
-        SharedPreferences appPreferences = PreferenceManager.getDefaultSharedPreferences(mainActivity);
-        // TODO: Move to strings reading
-        String currValue = appPreferences.getString("pref_unit",mainActivity.getResources().getString(R.string.helloactivity_spinner_preferred_unit_1));
-        if(currValue.equals(mainActivity.getResources().getString(R.string.helloactivity_spinner_preferred_unit_2))) {
-            VALIDATE_READING_MIN = VALIDATE_READING_MM_MIN;
-            VALIDATE_READING_MAX = VALIDATE_READING_MM_MAX;
-        }
-    }
-
     private boolean validateReading(String reading) {
-        // TODO: Must be calling once
-        prepareValidateReadingRage();
-        try {
-            Integer readingValue = Integer.parseInt(reading);
-            if (readingValue > VALIDATE_READING_MIN && readingValue < VALIDATE_READING_MM_MAX) { //valid range is 20-600
-                // TODO: Convert range in mmol/L
-                return true;
-            } else {
+
+        if (getUnitMeasuerement().equals("mg/dL")) {
+            // We store data in db in mg/dl
+            try {
+                Integer readingValue = Integer.parseInt(reading);
+                if (readingValue > 19 && readingValue < 601) {
+                //TODO: Add custom ranges
+                    // TODO: Convert range in mmol/L
+                    return true;
+                } else {
+                    return false;
+                }
+            } catch (Exception e) {
                 return false;
             }
-        } catch (Exception e) {
-            return false;
+        } else {
+/*            try {
+                //TODO: Add custom ranges for mmol/L
+                Integer readingValue = Integer.parseInt(reading);
+                if (readingValue > 19 && readingValue < 601) {
+                    // TODO: Convert range in mmol/L
+                    return true;
+                } else {
+                    return false;
+                }
+            } catch (Exception e) {
+                return false;
+            }*/
+            // TODO: return always true: we don't have ranges yet.
+            return true;
         }
     }
+
 
 
     // Getters and Setters
+
+    public String getUnitMeasuerement(){
+        return dB.getUser(1).get_preferred_unit();
+    }
+
     public String getReadingYear() {
         return readingYear;
     }
