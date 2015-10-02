@@ -14,7 +14,7 @@
             android:value="glucosio_db.db" />
         <meta-data
             android:name="AA_DB_VERSION"
-            android:value="1" />
+            android:value="4" />
         <activity
             android:name=".activity.MainActivity"
             android:theme="@style/GlucosioTheme"

@@ -6,19 +6,20 @@ public class GlucoseRanges {
 
     DatabaseHandler dB;
     String preferredRange;
-    int customMin;
-    int customMax;
+    int customMin=0;
+    int customMax=0;
 
     public GlucoseRanges(){
         dB = new DatabaseHandler();
         this.preferredRange = dB.getUser(1).get_preferred_range();
-        if (preferredRange.equals("Custom range")){
+        if (preferredRange != null && preferredRange.equals("Custom range")){
             this.customMin = dB.getUser(1).get_custom_range_min();
             this.customMax = dB.getUser(1).get_custom_range_max();
         }
     }
 
     public String colorFromRange(int reading) {
+        if (preferredRange==null) return "green";
         if (preferredRange.equals("ADA")){
             if (reading >= 70  & reading <= 180){
                 return "green";
