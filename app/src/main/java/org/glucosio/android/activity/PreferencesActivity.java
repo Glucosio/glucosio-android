@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.InputFilter;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import org.glucosio.android.R;
 import org.glucosio.android.db.DatabaseHandler;
@@ -234,12 +235,16 @@ public class PreferencesActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
         finish();
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() ==  android.R.id.home) {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
             finish();
         }
         return true;

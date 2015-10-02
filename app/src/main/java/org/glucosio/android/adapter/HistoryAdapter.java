@@ -1,12 +1,14 @@
 package org.glucosio.android.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.provider.ContactsContract;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.glucosio.android.R;
 import org.glucosio.android.activity.MainActivity;
@@ -14,6 +16,7 @@ import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.presenter.HistoryPresenter;
 import org.glucosio.android.tools.FormatDateTime;
 import org.glucosio.android.tools.GlucoseConverter;
+import org.glucosio.android.tools.GlucoseRanges;
 import org.glucosio.android.tools.ReadingTools;
 
 import java.util.ArrayList;
@@ -74,11 +77,21 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
 
         idTextView.setText(presenter.getId().get(position).toString());
 
+        GlucoseRanges ranges = new GlucoseRanges();
+        String color = ranges.colorFromRange(presenter.getReading().get(position));
+
         if (presenter.getUnitMeasuerement().equals("mg/dL")) {
             readingTextView.setText(presenter.getReading().get(position).toString() + " mg/dL");
         } else {
             readingTextView.setText(converter.toMmolL(Double.parseDouble(presenter.getReading().get(position).toString())) + " mmol/L");
         }
+
+        if (color.equals("green")){
+            readingTextView.setTextColor(Color.parseColor("#4CAF50"));
+        } else {
+            readingTextView.setTextColor(Color.parseColor("#F44336"));
+        }
+
         datetimeTextView.setText(presenter.convertDate(presenter.getDatetime().get(position)));
         typeTextView.setText(presenter.getType().get(position));
     }
