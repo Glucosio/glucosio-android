@@ -57,6 +57,10 @@ public class OverviewPresenter {
         return tips.get(randomNumber);
     }
 
+    public String getUnitMeasuerement(){
+        return dB.getUser(1).get_preferred_unit();
+    }
+
     public int getUserAge(){
         return dB.getUser(1).get_age();
     }

@@ -135,6 +135,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     public void openPreferences() {
         Intent intent = new Intent(this, PreferencesActivity.class);
         startActivity(intent);
+        finish();
     }
 
     public void onFabClicked(View v){

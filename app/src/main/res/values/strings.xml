@@ -149,4 +149,18 @@
     <string name="assistant_reading_title">Add a reading</string>
     <string name="assistant_reading_desc">Be sure to regularly add your glucose readings so we can help you track your glucose levels over time.</string>
 
+    <string name="helloactivity_spinner_preferred_range">Preferred range</string>
+    <string name="helloactivity_spinner_preferred_range_1">ADA</string>
+    <string name="helloactivity_spinner_preferred_range_2">AACE</string>
+    <string name="helloactivity_spinner_preferred_range_3">UK NICE</string>
+    <string name="helloactivity_spinner_preferred_range_4">Custom range</string>
+    <string name="helloactivity_preferred_range_min">Min value</string>
+    <string name="helloactivity_preferred_range_max">Max value</string>
+
+    <string-array name="helloactivity_preferred_range">
+        <item>@string/helloactivity_spinner_preferred_range_1</item>
+        <item>@string/helloactivity_spinner_preferred_range_2</item>
+        <item>@string/helloactivity_spinner_preferred_range_3</item>
+        <item>@string/helloactivity_spinner_preferred_range_4</item>
+    </string-array>
 </resources>

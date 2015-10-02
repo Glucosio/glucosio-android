@@ -37,7 +37,7 @@ public class MainPresenter {
             user = dB.getUser(1);
             age = user.get_age();
             rTools = new ReadingTools();
-
+            converter = new GlucoseConverter();
         }
         converter = new GlucoseConverter();
     }

@@ -24,6 +24,21 @@
         android:title="@string/helloactivity_spinner_preferred_unit"
         android:entries="@array/helloactivity_preferred_unit"
         android:entryValues="@array/helloactivity_preferred_unit" />
+    <ListPreference android:key="pref_range"
+        android:id="@+id/preferences_range"
+        android:title="@string/helloactivity_spinner_preferred_range"
+        android:entries="@array/helloactivity_preferred_range"
+        android:entryValues="@array/helloactivity_preferred_range" />
+    <EditTextPreference
+        android:dialogTitle="@string/helloactivity_preferred_range_min"
+        android:inputType="number"
+        android:key="pref_range_min"
+        android:title="@string/helloactivity_preferred_range_min" />
+    <EditTextPreference
+        android:dialogTitle="@string/helloactivity_preferred_range_max"
+        android:inputType="number"
+        android:key="pref_range_max"
+        android:title="@string/helloactivity_preferred_range_max" />
 
     <PreferenceCategory android:title="@string/preferences_about">
         <Preference
