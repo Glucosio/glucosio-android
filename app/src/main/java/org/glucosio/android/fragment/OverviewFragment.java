@@ -22,6 +22,7 @@ import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.presenter.OverviewPresenter;
 import org.glucosio.android.tools.FormatDateTime;
 import org.glucosio.android.tools.GlucoseConverter;
+import org.glucosio.android.tools.GlucoseRanges;
 import org.glucosio.android.tools.ReadingTools;
 import org.glucosio.android.tools.TipsManager;
 
@@ -189,6 +190,14 @@ public class OverviewFragment extends Fragment {
             } else {
                 GlucoseConverter converter = new GlucoseConverter();
                 readingTextView.setText(converter.toMmolL(Double.parseDouble(presenter.getLastReading().toString())) + " mmol/L");
+            }
+
+            GlucoseRanges ranges = new GlucoseRanges();
+            String color = ranges.colorFromRange(Integer.parseInt(presenter.getLastReading()));
+            if (color.equals("green")){
+                readingTextView.setTextColor(Color.parseColor("#4CAF50"));
+            } else {
+                readingTextView.setTextColor(Color.parseColor("#F44336"));
             }
         }
     }
