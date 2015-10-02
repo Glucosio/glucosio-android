@@ -21,6 +21,7 @@ import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.presenter.OverviewPresenter;
 import org.glucosio.android.tools.FormatDateTime;
+import org.glucosio.android.tools.GlucoseConverter;
 import org.glucosio.android.tools.ReadingTools;
 import org.glucosio.android.tools.TipsManager;
 
@@ -139,12 +140,19 @@ public class OverviewFragment extends Fragment {
             xVals.add(date + "");
         }
 
+        GlucoseConverter converter = new GlucoseConverter();
+
         ArrayList<Entry> yVals = new ArrayList<Entry>();
 
         for (int i = 0; i < presenter.getReading().size(); i++) {
-
-            float val = Float.parseFloat(presenter.getReading().get(i).toString());
-            yVals.add(new Entry(val, i));
+            if (presenter.getUnitMeasuerement().equals("mg/dL")) {
+                float val = Float.parseFloat(presenter.getReading().get(i).toString());
+                yVals.add(new Entry(val, i));
+            } else {
+                double val = converter.toMmolL(Double.parseDouble(presenter.getReading().get(i).toString()));
+                float converted = (float) val;
+                yVals.add(new Entry(converted, i));
+            }
         }
 
         // create a dataset and give it a type
@@ -176,7 +184,12 @@ public class OverviewFragment extends Fragment {
 
     private void loadLastReading(){
         if (!presenter.isdbEmpty()) {
-            readingTextView.setText(presenter.getLastReading());
+            if (presenter.getUnitMeasuerement().equals("mg/dL")) {
+                readingTextView.setText(presenter.getLastReading() + " mg/dL");
+            } else {
+                GlucoseConverter converter = new GlucoseConverter();
+                readingTextView.setText(converter.toMmolL(Double.parseDouble(presenter.getLastReading().toString())) + " mmol/L");
+            }
         }
     }
 

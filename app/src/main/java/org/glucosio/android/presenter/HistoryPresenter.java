@@ -49,6 +49,10 @@ public class HistoryPresenter {
     }
 
     // Getters
+    public String getUnitMeasuerement(){
+        return dB.getUser(1).get_preferred_unit();
+    }
+
     public ArrayList<Long> getId() {
         return id;
     }

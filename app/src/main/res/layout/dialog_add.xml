@@ -34,7 +34,7 @@
                     android:textColorHighlight="@color/glucosio_pink"
                     android:layout_width="fill_parent"
                     android:textIsSelectable="false"
-                    android:inputType="number"
+                    android:inputType="numberDecimal"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/abc_text_size_body_2_material"
                     android:hint="@string/dialog_add_concentration"/>
