@@ -47,8 +47,13 @@ public class PreferencesActivity extends AppCompatActivity {
         ListPreference genderPref;
         ListPreference diabetesTypePref;
         ListPreference unitPref;
+        ListPreference rangePref;
         EditText ageEditText;
+        EditText minEditText;
+        EditText maxEditText;
         EditTextPreference agePref;
+        EditTextPreference minRangePref;
+        EditTextPreference maxRangePref;
 
         @Override
         public void onCreate(final Bundle savedInstanceState) {
@@ -63,12 +68,30 @@ public class PreferencesActivity extends AppCompatActivity {
             genderPref = (ListPreference) findPreference("pref_gender");
             diabetesTypePref = (ListPreference) findPreference("pref_diabetes_type");
             unitPref = (ListPreference) findPreference("pref_unit");
+            rangePref = (ListPreference) findPreference("pref_range");
+            minRangePref = (EditTextPreference) findPreference("pref_range_min");
+            maxRangePref = (EditTextPreference) findPreference("pref_range_max");
 
             agePref.setDefaultValue(user.get_age());
-            countryPref.setDefaultValue(user.get_country());
-            genderPref.setDefaultValue(user.get_gender());
-            diabetesTypePref.setDefaultValue(user.get_d_type());
-            unitPref.setDefaultValue(user.get_preferred_unit());
+            countryPref.setValue(user.get_country());
+            genderPref.setValue(user.get_gender());
+            diabetesTypePref.setValue(user.get_d_type() + "");
+            unitPref.setValue(user.get_preferred_unit());
+            agePref.setDefaultValue(user.get_age());
+            countryPref.setValue(user.get_country());
+            genderPref.setValue(user.get_gender());
+            unitPref.setValue(user.get_preferred_unit());
+            rangePref.setValue(user.get_preferred_range());
+            minRangePref.setDefaultValue(user.get_custom_range_min() + "");
+            maxRangePref.setDefaultValue(user.get_custom_range_max() + "");
+
+            if (!rangePref.equals("custom")){
+                minRangePref.setEnabled(false);
+                maxRangePref.setEnabled(false);
+            } else {
+                minRangePref.setEnabled(true);
+                maxRangePref.setEnabled(true);
+            }
 
             final Preference termsPref = (Preference) findPreference("preferences_terms");
 
@@ -118,9 +141,38 @@ public class PreferencesActivity extends AppCompatActivity {
                     return false;
                 }
             });
+            rangePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    user.set_preferred_range(newValue.toString());
+                    updateDB();
+                    return false;
+                }
+            });
+            minRangePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    user.set_custom_range_min(Integer.parseInt(newValue.toString()));
+                    updateDB();
+                    return false;
+                }
+            });
+            maxRangePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    user.set_custom_range_max(Integer.parseInt(newValue.toString()));
+                    updateDB();
+                    return false;
+                }
+            });
 
             ageEditText = agePref.getEditText();
+            minEditText = minRangePref.getEditText();
+            maxEditText = maxRangePref.getEditText();
+
             ageEditText.setFilters(new InputFilter[]{new InputFilterMinMax(1, 110)});
+            minEditText.setFilters(new InputFilter[]{new InputFilterMinMax(1, 1500)});
+            maxEditText.setFilters(new InputFilter[]{new InputFilterMinMax(1, 1500)});
 
 
             // Get countries list from locale
@@ -150,13 +202,33 @@ public class PreferencesActivity extends AppCompatActivity {
             });
         }
 
-        private void updateDB(){
+        private void updateDB() {
             dB.updateUser(user);
             agePref.setSummary(user.get_age() + "");
             genderPref.setSummary(user.get_gender() + "");
             diabetesTypePref.setSummary(getResources().getString(R.string.glucose_reading_type) + " " + user.get_d_type());
             unitPref.setSummary(user.get_preferred_unit() + "");
             countryPref.setSummary(user.get_country());
+            rangePref.setSummary(user.get_preferred_range() + "");
+            minRangePref.setSummary(user.get_custom_range_min() + "");
+            maxRangePref.setSummary(user.get_custom_range_max() + "");
+
+            countryPref.setValue(user.get_country());
+            genderPref.setValue(user.get_gender());
+            diabetesTypePref.setValue(user.get_d_type() + "");
+            unitPref.setValue(user.get_preferred_unit());
+            countryPref.setValue(user.get_country());
+            genderPref.setValue(user.get_gender());
+            unitPref.setValue(user.get_preferred_unit());
+            rangePref.setValue(user.get_preferred_range());
+
+            if (!user.get_preferred_range().equals("Custom range")){
+                minRangePref.setEnabled(false);
+                maxRangePref.setEnabled(false);
+            } else {
+                minRangePref.setEnabled(true);
+                maxRangePref.setEnabled(true);
+            }
         }
     }
 
