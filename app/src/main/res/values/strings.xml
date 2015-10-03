@@ -21,7 +21,7 @@
     <string name="helloactivity_gender_list_2">Female</string>
     <string name="helloactivity_gender_list_3">Other</string>
 
-    <string-array name="helloactivity_gender_list">
+    <string-array name="helloactivity_gender_list" translatable="false">
         <item>@string/helloactivity_gender_list_1</item>
         <item>@string/helloactivity_gender_list_2</item>
         <item>@string/helloactivity_gender_list_3</item>
@@ -31,16 +31,16 @@
     <string name="helloactivity_spinner_diabetes_type_1">Type 1</string>
     <string name="helloactivity_spinner_diabetes_type_2">Type 2</string>
 
-    <string-array name="helloactivity_diabetes_type">
+    <string-array name="helloactivity_diabetes_type" translatable="false">
         <item>@string/helloactivity_spinner_diabetes_type_1</item>
         <item>@string/helloactivity_spinner_diabetes_type_2</item>
     </string-array>
 
     <string name="helloactivity_spinner_preferred_unit">Preferred unit</string>
-    <string name="helloactivity_spinner_preferred_unit_1">mg/dL</string>
-    <string name="helloactivity_spinner_preferred_unit_2">mmol/L</string>
+    <string name="helloactivity_spinner_preferred_unit_1" translatable="false">mg/dL</string>
+    <string name="helloactivity_spinner_preferred_unit_2" translatable="false">mmol/L</string>
 
-    <string-array name="helloactivity_preferred_unit">
+    <string-array name="helloactivity_preferred_unit" translatable="false">
         <item>@string/helloactivity_spinner_preferred_unit_1</item>
         <item>@string/helloactivity_spinner_preferred_unit_2</item>
     </string-array>
@@ -86,7 +86,6 @@
     <string name="dialog_delete">Delete</string>
     <string name="dialog_edit">Edit</string>
 
-    <string name="hello_blank_fragment" translatable="false">Fragment here.</string>
     <string name="fragment_history_snackbar_text">1 reading deleted</string>
     <string name="fragment_history_snackbar_action">UNDO</string>
 
@@ -96,7 +95,7 @@
     <string name="fragment_overview_tip">Tip</string>
     <string name="tip_example" translatable="false">Use less cheese in your recipes and meals. Fresh mozzarella packed in water and Swiss cheese are usually lower in sodium.</string>
     <string name="preferences_about">About</string>
-    <string name="version">0.8.0 (Noce)</string>
+    <string name="version" translatable="false">0.8.0 (Noce)</string>
     <string name="preferences_version">Version</string>
     <string name="preferences_terms">Terms of use</string>
     <string name="glucose_reading_type">Type</string>
@@ -150,14 +149,14 @@
     <string name="assistant_reading_desc">Be sure to regularly add your glucose readings so we can help you track your glucose levels over time.</string>
 
     <string name="helloactivity_spinner_preferred_range">Preferred range</string>
-    <string name="helloactivity_spinner_preferred_range_1">ADA</string>
-    <string name="helloactivity_spinner_preferred_range_2">AACE</string>
-    <string name="helloactivity_spinner_preferred_range_3">UK NICE</string>
+    <string name="helloactivity_spinner_preferred_range_1" translatable="false">ADA</string>
+    <string name="helloactivity_spinner_preferred_range_2" translatable="false">AACE</string>
+    <string name="helloactivity_spinner_preferred_range_3" translatable="false">UK NICE</string>
     <string name="helloactivity_spinner_preferred_range_4">Custom range</string>
     <string name="helloactivity_preferred_range_min">Min value</string>
     <string name="helloactivity_preferred_range_max">Max value</string>
 
-    <string-array name="helloactivity_preferred_range">
+    <string-array name="helloactivity_preferred_range" translatable="false">
         <item>@string/helloactivity_spinner_preferred_range_1</item>
         <item>@string/helloactivity_spinner_preferred_range_2</item>
         <item>@string/helloactivity_spinner_preferred_range_3</item>
