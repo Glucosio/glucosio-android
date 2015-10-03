@@ -88,8 +88,10 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
 
         if (color.equals("green")){
             readingTextView.setTextColor(Color.parseColor("#4CAF50"));
-        } else {
+        } else if (color.equals("red")){
             readingTextView.setTextColor(Color.parseColor("#F44336"));
+        } else {
+            readingTextView.setTextColor(Color.parseColor("#9C27B0"));
         }
 
         datetimeTextView.setText(presenter.convertDate(presenter.getDatetime().get(position)));

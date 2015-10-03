@@ -19,29 +19,36 @@ public class GlucoseRanges {
     }
 
     public String colorFromRange(int reading) {
-        if (preferredRange.equals("ADA")){
-            if (reading >= 70  & reading <= 180){
-                return "green";
-            } else {
-                return "red";
-            }
-        } else if (preferredRange.equals("AACE")){
-            if (reading >= 110 & reading <= 140){
-                return "green";
-            } else {
-                return "red";
-            }
-        } else if (preferredRange.equals("UK NICE")) {
-            if (reading >= 72 & reading <= 153){
-                return "green";
-            } else {
-                return "red";
-            }
+        // Check for Hypo/Hyperglycemia
+        if (reading < 70 | reading > 200) {
+            return "purple";
         } else {
-            if (reading >= customMin & reading <= customMax){
-                return "green";
-            } else {
-                return "red";
+            // if not check with custom ranges
+            switch (preferredRange) {
+                case "ADA":
+                    if (reading >= 70 & reading <= 180) {
+                        return "green";
+                    } else {
+                        return "red";
+                    }
+                case "AACE":
+                    if (reading >= 110 & reading <= 140) {
+                        return "green";
+                    } else {
+                        return "red";
+                    }
+                case "UK NICE":
+                    if (reading >= 72 & reading <= 153) {
+                        return "green";
+                    } else {
+                        return "red";
+                    }
+                default:
+                    if (reading >= customMin & reading <= customMax) {
+                        return "green";
+                    } else {
+                        return "red";
+                    }
             }
         }
     }
