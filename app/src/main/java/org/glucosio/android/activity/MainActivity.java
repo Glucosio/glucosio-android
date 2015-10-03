@@ -3,28 +3,20 @@ package org.glucosio.android.activity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TabLayout;
-import android.support.design.widget.TextInputLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.view.ActionMode;
 import android.support.v7.widget.Toolbar;
-import android.text.InputFilter;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
-import android.widget.EdgeEffect;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -39,16 +31,11 @@ import com.wnafee.vector.compat.VectorDrawable;
 import org.glucosio.android.R;
 import org.glucosio.android.adapter.HomePagerAdapter;
 import org.glucosio.android.presenter.MainPresenter;
-import org.glucosio.android.tools.FormatDateTime;
 import org.glucosio.android.tools.LabelledSpinner;
 import org.glucosio.android.tools.LabelledSpinner.OnItemChosenListener;
-import org.w3c.dom.Text;
 
 import java.text.DecimalFormat;
 import java.util.Calendar;
-
-import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
 public class MainActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener{
@@ -536,8 +523,15 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             pager.setVisibility(View.GONE);
             emptyLayout.setVisibility(View.VISIBLE);
 
-            ImageView arrow = (ImageView) findViewById(R.id.mainactivity_arrow);
-            arrow.setBackground((VectorDrawable.getDrawable(getApplicationContext(), R.drawable.curved_line)));
+            if (getResources().getConfiguration().orientation == 1) {
+                // If Portrait choose vertical curved line
+                ImageView arrow = (ImageView) findViewById(R.id.mainactivity_arrow);
+                arrow.setBackground((VectorDrawable.getDrawable(getApplicationContext(), R.drawable.curved_line_vertical)));
+            } else {
+                // Else choose horizontal one
+                ImageView arrow = (ImageView) findViewById(R.id.mainactivity_arrow);
+                arrow.setBackground((VectorDrawable.getDrawable(getApplicationContext(), R.drawable.curved_line_horizontal)));
+            }
         } else {
             pager.setVisibility(View.VISIBLE);
             emptyLayout.setVisibility(View.INVISIBLE);
