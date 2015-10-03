@@ -223,7 +223,7 @@ public class PreferencesActivity extends AppCompatActivity {
             unitPref.setValue(user.get_preferred_unit());
             rangePref.setValue(user.get_preferred_range());
 
-            if (!user.get_preferred_range().equals("Custom range")){
+            if (user.get_preferred_range() != null && !user.get_preferred_range().equals("Custom range")){
                 minRangePref.setEnabled(false);
                 maxRangePref.setEnabled(false);
             } else {
