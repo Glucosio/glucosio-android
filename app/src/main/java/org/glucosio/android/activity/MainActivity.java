@@ -136,7 +136,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         showAddDialog();
     }
 
-    private void showAddDialog(){
+    public void showAddDialog(){
         addDialog = new Dialog(MainActivity.this, R.style.GlucosioTheme);
 
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();

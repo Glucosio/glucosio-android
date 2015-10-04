@@ -149,23 +149,20 @@
     <string name="assistant_reading_desc">Be sure to regularly add your glucose readings so we can help you track your glucose levels over time.</string>
 
     <string-array name="assistant_titles">
-        <item>@string/assistant_research_title</item>
-        <item>@string/assistant_categories_title</item>
         <item>@string/assistant_feedback_title</item>
         <item>@string/assistant_reading_title</item>
+        <item>@string/assistant_categories_title</item>
     </string-array>
     <string-array name="assistant_descriptions">
-        <item>@string/assistant_research_desc</item>
-        <item>@string/assistant_categories_desc</item>
         <item>@string/assistant_feedback_desc</item>
         <item>@string/assistant_reading_desc</item>
+        <item>@string/assistant_categories_desc</item>
     </string-array>
 
     <string-array name="assistant_actions">
-    <item>@string/assistant_action_ok</item>
-    <item>@string/assistant_action_ok</item>
     <item>@string/assistant_action_feedback</item>
     <item>@string/assistant_action_reading</item>
+        <item>@string/assistant_action_try</item>
     </string-array>
 
     <string name="helloactivity_spinner_preferred_range">Preferred range</string>
@@ -175,6 +172,7 @@
     <string name="helloactivity_spinner_preferred_range_4">Custom range</string>
     <string name="helloactivity_preferred_range_min">Min value</string>
     <string name="helloactivity_preferred_range_max">Max value</string>
+    <string name="assistant_action_try">TRT IT NOW</string>
 
     <string-array name="helloactivity_preferred_range" translatable="false">
         <item>@string/helloactivity_spinner_preferred_range_1</item>

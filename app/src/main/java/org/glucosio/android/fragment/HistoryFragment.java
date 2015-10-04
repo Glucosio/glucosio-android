@@ -29,7 +29,6 @@ public class HistoryFragment extends Fragment {
     RecyclerView mRecyclerView;
     LinearLayoutManager mLayoutManager;
     RecyclerView.Adapter mAdapter;
-    GlucoseReading readingToRestore;
     HistoryPresenter presenter;
     Boolean isToolbarScrolling = true;
 
