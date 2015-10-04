@@ -11,16 +11,16 @@ import org.w3c.dom.Text;
 
 
 public class HelloPresenter {
-    DatabaseHandler dB;
-    HelloActivity helloActivity;
-    int id;
-    int age;
-    String name;
-    String country;
-    String gender;
-    int diabetesType;
-    String unitMeasurement;
-    String language;
+    private DatabaseHandler dB;
+    private HelloActivity helloActivity;
+    private int id;
+    private int age;
+    private String name;
+    private String country;
+    private String gender;
+    private int diabetesType;
+    private String unitMeasurement;
+    private String language;
 
     public HelloPresenter(HelloActivity helloActivity) {
         this.helloActivity = helloActivity;

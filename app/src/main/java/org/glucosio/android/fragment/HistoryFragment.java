@@ -26,11 +26,11 @@ import org.glucosio.android.tools.FormatDateTime;
 
 public class HistoryFragment extends Fragment {
 
-    RecyclerView mRecyclerView;
-    LinearLayoutManager mLayoutManager;
-    RecyclerView.Adapter mAdapter;
-    HistoryPresenter presenter;
-    Boolean isToolbarScrolling = true;
+    private RecyclerView mRecyclerView;
+    private LinearLayoutManager mLayoutManager;
+    private RecyclerView.Adapter mAdapter;
+    private HistoryPresenter presenter;
+    private Boolean isToolbarScrolling = true;
 
     public static HistoryFragment newInstance() {
         HistoryFragment fragment = new HistoryFragment();

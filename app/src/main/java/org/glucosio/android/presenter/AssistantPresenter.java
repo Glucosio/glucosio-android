@@ -6,8 +6,8 @@ import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.fragment.AssistantFragment;
 
 public class AssistantPresenter {
-    DatabaseHandler dB;
-    AssistantFragment fragment;
+    private DatabaseHandler dB;
+    private AssistantFragment fragment;
 
 
     public AssistantPresenter(AssistantFragment assistantFragment) {

@@ -36,12 +36,12 @@ import java.util.Random;
 
 public class OverviewFragment extends Fragment {
 
-    LineChart chart;
-    TextView readingTextView;
-    TextView trendTextView;
-    TextView tipTextView;
-    Spinner graphSpinner;
-    OverviewPresenter presenter;
+    private LineChart chart;
+    private TextView readingTextView;
+    private TextView trendTextView;
+    private TextView tipTextView;
+    private Spinner graphSpinner;
+    private OverviewPresenter presenter;
 
     public static HistoryFragment newInstance() {
         HistoryFragment fragment = new HistoryFragment();
@@ -199,7 +199,6 @@ public class OverviewFragment extends Fragment {
             }
         } else if (graphSpinner.getSelectedItemPosition() == 1){
             // Week view
-            Toast.makeText(getActivity().getApplicationContext(), presenter.getReadingsMonth().size()+"", Toast.LENGTH_SHORT).show();
             for (int i = 0; i < presenter.getReadingsWeek().size(); i++) {
                 if (presenter.getUnitMeasuerement().equals("mg/dL")) {
                     float val = Float.parseFloat(presenter.getReadingsWeek().get(i).get_reading()+"");

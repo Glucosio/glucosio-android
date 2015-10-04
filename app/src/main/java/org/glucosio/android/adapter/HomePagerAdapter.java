@@ -15,7 +15,7 @@ import org.glucosio.android.fragment.AssistantFragment;
  */
 public class HomePagerAdapter extends FragmentPagerAdapter {
 
-    Context mContext;
+    private Context mContext;
 
 
     public HomePagerAdapter(FragmentManager fm, Context context) {

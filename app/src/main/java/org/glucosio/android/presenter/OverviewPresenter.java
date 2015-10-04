@@ -13,13 +13,13 @@ import java.util.Random;
 
 public class OverviewPresenter {
 
-    DatabaseHandler dB;
+    private DatabaseHandler dB;
     private ArrayList<Integer> reading;
     private ArrayList <String> type;
     private ArrayList<String> datetime;
     private List<GlucoseReading> readingsWeek;
     private List<GlucoseReading> readingsMonth;
-    OverviewFragment fragment;
+    private OverviewFragment fragment;
 
 
     public OverviewPresenter(OverviewFragment overviewFragment) {

@@ -42,20 +42,20 @@ public class PreferencesActivity extends AppCompatActivity {
 
     public static class MyPreferenceFragment extends PreferenceFragment {
 
-        Dialog termsDialog;
-        DatabaseHandler dB;
-        User user;
-        ListPreference countryPref;
-        ListPreference genderPref;
-        ListPreference diabetesTypePref;
-        ListPreference unitPref;
-        ListPreference rangePref;
-        EditText ageEditText;
-        EditText minEditText;
-        EditText maxEditText;
-        EditTextPreference agePref;
-        EditTextPreference minRangePref;
-        EditTextPreference maxRangePref;
+        private Dialog termsDialog;
+        private DatabaseHandler dB;
+        private User user;
+        private ListPreference countryPref;
+        private ListPreference genderPref;
+        private ListPreference diabetesTypePref;
+        private ListPreference unitPref;
+        private ListPreference rangePref;
+        private EditText ageEditText;
+        private EditText minEditText;
+        private EditText maxEditText;
+        private EditTextPreference agePref;
+        private EditTextPreference minRangePref;
+        private EditTextPreference maxRangePref;
 
         @Override
         public void onCreate(final Bundle savedInstanceState) {

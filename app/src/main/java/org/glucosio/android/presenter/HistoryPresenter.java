@@ -12,12 +12,12 @@ import java.util.ArrayList;
 
 public class HistoryPresenter {
 
-    DatabaseHandler dB;
+    private DatabaseHandler dB;
     private ArrayList<Long> id;
     private ArrayList<Integer> reading;
     private ArrayList <String> type;
     private ArrayList<String> datetime;
-    HistoryFragment fragment;
+    private HistoryFragment fragment;
 
     public HistoryPresenter(HistoryFragment historyFragment) {
         this.fragment = historyFragment;

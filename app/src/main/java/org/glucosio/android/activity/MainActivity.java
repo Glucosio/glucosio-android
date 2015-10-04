@@ -40,17 +40,17 @@ import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener{
 
-    LabelledSpinner spinnerReadingType;
-    Dialog addDialog;
+    private LabelledSpinner spinnerReadingType;
+    private Dialog addDialog;
 
-    TextView dialogCancelButton;
-    TextView dialogAddButton;
-    TextView dialogAddTime;
-    TextView dialogAddDate;
-    TextView dialogReading;
-    EditText dialogTypeCustom;
-    HomePagerAdapter homePagerAdapter;
-    boolean isCustomType;
+    private TextView dialogCancelButton;
+    private TextView dialogAddButton;
+    private TextView dialogAddTime;
+    private TextView dialogAddDate;
+    private TextView dialogReading;
+    private EditText dialogTypeCustom;
+    private HomePagerAdapter homePagerAdapter;
+    private boolean isCustomType;
 
     private MainPresenter presenter;
 
