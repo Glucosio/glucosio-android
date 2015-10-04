@@ -92,7 +92,15 @@
     <string name="fragment_overview_last_reading">Last check:</string>
     <string name="fragment_overview_trend">Trend over past month:</string>
     <string name="fragment_overview_trend_positive">in range and healthy</string>
-    <string name="fragment_overview_tip">Tip</string>
+    <string name="fragment_overview_selector_month">Month</string>
+    <string name="fragment_overview_selector_day">Day</string>
+    <string name="fragment_overview_selector_week">Week</string>
+
+    <string-array name="fragment_overview_selector">
+        <item>@string/fragment_overview_selector_day</item>
+        <item>@string/fragment_overview_selector_week</item>
+        <item>@string/fragment_overview_selector_month</item>
+    </string-array>
     <string name="tip_example" translatable="false">Use less cheese in your recipes and meals. Fresh mozzarella packed in water and Swiss cheese are usually lower in sodium.</string>
     <string name="preferences_about">About</string>
     <string name="version" translatable="false">0.8.0 (Noce)</string>
