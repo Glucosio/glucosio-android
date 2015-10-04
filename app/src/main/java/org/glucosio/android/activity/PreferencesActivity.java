@@ -20,6 +20,7 @@ import org.glucosio.android.db.User;
 import org.glucosio.android.tools.InputFilterMinMax;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Locale;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
@@ -186,8 +187,9 @@ public class PreferencesActivity extends AppCompatActivity {
                     countriesArray.add(country);
                 }
             }
-            CharSequence[] countries = countriesArray.toArray(new CharSequence[countriesArray.size()]);
+            Collections.sort(countriesArray);
 
+            CharSequence[] countries = countriesArray.toArray(new CharSequence[countriesArray.size()]);
             countryPref.setEntryValues(countries);
             countryPref.setEntries(countries);
             updateDB();
