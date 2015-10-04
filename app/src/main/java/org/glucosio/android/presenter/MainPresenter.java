@@ -14,13 +14,13 @@ import java.util.Calendar;
 
 public class MainPresenter {
 
-    MainActivity mainActivity;
+    private MainActivity mainActivity;
 
-    DatabaseHandler dB;
-    User user;
-    ReadingTools rTools;
-    GlucoseConverter converter;
-    int age;
+    private DatabaseHandler dB;
+    private User user;
+    private ReadingTools rTools;
+    private GlucoseConverter converter;
+    private int age;
 
     private String readingYear;
     private String readingMonth;

@@ -6,7 +6,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
@@ -32,11 +36,12 @@ import java.util.Random;
 
 public class OverviewFragment extends Fragment {
 
-    LineChart chart;
-    TextView readingTextView;
-    TextView trendTextView;
-    TextView tipTextView;
-    OverviewPresenter presenter;
+    private LineChart chart;
+    private TextView readingTextView;
+    private TextView trendTextView;
+    private TextView tipTextView;
+    private Spinner graphSpinner;
+    private OverviewPresenter presenter;
 
     public static HistoryFragment newInstance() {
         HistoryFragment fragment = new HistoryFragment();
@@ -73,6 +78,26 @@ public class OverviewFragment extends Fragment {
         readingTextView = (TextView) mFragmentView.findViewById(R.id.item_history_reading);
         trendTextView = (TextView) mFragmentView.findViewById(R.id.item_history_trend);
         tipTextView = (TextView) mFragmentView.findViewById(R.id.random_tip_textview);
+        graphSpinner = (Spinner) mFragmentView.findViewById(R.id.chart_spinner);
+
+        // Set array and adapter for graphSpinner
+        String[] selectorArray = getActivity().getResources().getStringArray(R.array.fragment_overview_selector);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, selectorArray);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        graphSpinner.setAdapter(dataAdapter);
+
+        graphSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                setData();
+                chart.invalidate();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         XAxis xAxis = chart.getXAxis();
         xAxis.setDrawGridLines(false);
@@ -136,23 +161,65 @@ public class OverviewFragment extends Fragment {
 
         ArrayList<String> xVals = new ArrayList<String>();
 
-        for (int i = 0; i < presenter.getDatetime().size(); i++) {
-            String date = presenter.convertDate(presenter.getDatetime().get(i));
-            xVals.add(date + "");
+        if (graphSpinner.getSelectedItemPosition() == 0) {
+            // Day view
+            for (int i = 0; i < presenter.getDatetime().size(); i++) {
+                String date = presenter.convertDate(presenter.getDatetime().get(i));
+                xVals.add(date + "");
+            }
+        } else if (graphSpinner.getSelectedItemPosition() == 1){
+            // Week view
+            for (int i = 0; i < presenter.getReadingsWeek().size(); i++) {
+                String date = presenter.convertDate(presenter.getReadingsWeek().get(i).get_created());
+                xVals.add(date + "");
+            }
+        } else {
+            // Month view
+            for (int i = 0; i < presenter.getReadingsWeek().size(); i++) {
+                String date = presenter.convertDate(presenter.getReadingsMonth().get(i).get_created());
+                xVals.add(date + "");
+            }
         }
 
         GlucoseConverter converter = new GlucoseConverter();
 
         ArrayList<Entry> yVals = new ArrayList<Entry>();
 
-        for (int i = 0; i < presenter.getReading().size(); i++) {
-            if (presenter.getUnitMeasuerement().equals("mg/dL")) {
-                float val = Float.parseFloat(presenter.getReading().get(i).toString());
-                yVals.add(new Entry(val, i));
-            } else {
-                double val = converter.toMmolL(Double.parseDouble(presenter.getReading().get(i).toString()));
-                float converted = (float) val;
-                yVals.add(new Entry(converted, i));
+        if (graphSpinner.getSelectedItemPosition() == 0) {
+            // Day view
+            for (int i = 0; i < presenter.getReading().size(); i++) {
+                if (presenter.getUnitMeasuerement().equals("mg/dL")) {
+                    float val = Float.parseFloat(presenter.getReading().get(i).toString());
+                    yVals.add(new Entry(val, i));
+                } else {
+                    double val = converter.toMmolL(Double.parseDouble(presenter.getReading().get(i).toString()));
+                    float converted = (float) val;
+                    yVals.add(new Entry(converted, i));
+                }
+            }
+        } else if (graphSpinner.getSelectedItemPosition() == 1){
+            // Week view
+            for (int i = 0; i < presenter.getReadingsWeek().size(); i++) {
+                if (presenter.getUnitMeasuerement().equals("mg/dL")) {
+                    float val = Float.parseFloat(presenter.getReadingsWeek().get(i).get_reading()+"");
+                    yVals.add(new Entry(val, i));
+                } else {
+                    double val = converter.toMmolL(Double.parseDouble(presenter.getReadingsWeek().get(i).get_reading()+""));
+                    float converted = (float) val;
+                    yVals.add(new Entry(converted, i));
+                }
+            }
+        } else {
+            // Month view
+            for (int i = 0; i < presenter.getReadingsMonth().size(); i++) {
+                if (presenter.getUnitMeasuerement().equals("mg/dL")) {
+                    float val = Float.parseFloat(presenter.getReadingsMonth().get(i).get_reading()+"");
+                    yVals.add(new Entry(val, i));
+                } else {
+                    double val = converter.toMmolL(Double.parseDouble(presenter.getReadingsMonth().get(i).get_reading()+""));
+                    float converted = (float) val;
+                    yVals.add(new Entry(converted, i));
+                }
             }
         }
 

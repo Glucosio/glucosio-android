@@ -38,18 +38,18 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class HelloActivity extends AppCompatActivity {
 
-    LabelledSpinner countrySpinner;
-    LabelledSpinner genderSpinner;
-    LabelledSpinner typeSpinner;
-    LabelledSpinner unitSpinner;
-    View firstView;
-    View EULAView;
-    CheckBox EULACheckbox;
-    Button startButton;
-    TextView ageTextView;
-    TextView termsTextView;
-    Button nextButton;
-    HelloPresenter presenter;
+    private LabelledSpinner countrySpinner;
+    private LabelledSpinner genderSpinner;
+    private LabelledSpinner typeSpinner;
+    private LabelledSpinner unitSpinner;
+    private View firstView;
+    private View EULAView;
+    private CheckBox EULACheckbox;
+    private Button startButton;
+    private TextView ageTextView;
+    private TextView termsTextView;
+    private Button nextButton;
+    private HelloPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

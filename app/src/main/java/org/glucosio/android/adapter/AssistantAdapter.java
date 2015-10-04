@@ -8,6 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import org.glucosio.android.R;
+import org.glucosio.android.activity.MainActivity;
+import org.glucosio.android.presenter.AssistantPresenter;
+import org.glucosio.android.presenter.HistoryPresenter;
+
 import java.util.ArrayList;
 
 public class AssistantAdapter extends RecyclerView.Adapter<AssistantAdapter.ViewHolder> {
@@ -15,6 +19,7 @@ public class AssistantAdapter extends RecyclerView.Adapter<AssistantAdapter.View
     private String[] actionTipTitles;
     private String[] actionTipDescriptions;
     private String[] actionTipActions;
+    private AssistantPresenter presenter;
 
 
     // Provide a reference to the views for each data item
@@ -30,11 +35,12 @@ public class AssistantAdapter extends RecyclerView.Adapter<AssistantAdapter.View
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public AssistantAdapter(Context context) {
+    public AssistantAdapter(Context context, AssistantPresenter assistantPresenter) {
         this.mContext = context;
         this.actionTipTitles = context.getResources().getStringArray(R.array.assistant_titles);
         this.actionTipDescriptions = context.getResources().getStringArray(R.array.assistant_descriptions);
         this.actionTipActions = context.getResources().getStringArray(R.array.assistant_actions);
+        this.presenter = assistantPresenter;
     }
 
     // Create new views (invoked by the layout manager)
@@ -59,6 +65,26 @@ public class AssistantAdapter extends RecyclerView.Adapter<AssistantAdapter.View
         actionTipTitle.setText(actionTipTitles[position]);
         actionTipDescription.setText(actionTipDescriptions[position]);
         actionTipAction.setText(actionTipActions[position]);
+
+        View.OnClickListener actionListener;
+        if (actionTipTitle.getText().equals(mContext.getResources().getString(R.string.assistant_feedback_title))) {
+            actionListener = new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    presenter.openGitty();
+
+                }
+            };
+        } else {
+            actionListener = new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    presenter.addReading();
+                }
+            };
+        }
+
+        actionTipAction.setOnClickListener(actionListener);
     }
 
     // Return the size of your dataset (invoked by the layout manager)

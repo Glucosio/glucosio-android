@@ -151,13 +151,13 @@ public class DatabaseHandler {
         }
     }
 
-    private List<GlucoseReading> getAverageGlucoseReadingsByWeek(){
-        String[] columns = new String[] { "reading", "strftime('%Y%W', created_at) AS week" };
+    public List<GlucoseReading> getAverageGlucoseReadingsByWeek(){
+        String[] columns = new String[] { "reading", "strftime('%Y%W', created) AS week" };
         return GlucoseReading.getGlucoseReadingsByGroup(columns, "week");
     }
 
-    private List<GlucoseReading> getAverageGlucoseReadingsByMonth() {
-        String[] columns = new String[] { "reading", "strftime('%Y%m', created_at) AS month" };
+    public List<GlucoseReading> getAverageGlucoseReadingsByMonth() {
+        String[] columns = new String[] { "reading", "strftime('%Y%m', created) AS month" };
         return GlucoseReading.getGlucoseReadingsByGroup(columns, "month");
     }
 }

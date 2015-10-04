@@ -1,24 +1,25 @@
 package org.glucosio.android.presenter;
 
 import org.glucosio.android.db.DatabaseHandler;
+import org.glucosio.android.db.GlucoseReading;
 import org.glucosio.android.fragment.HistoryFragment;
 import org.glucosio.android.fragment.OverviewFragment;
 import org.glucosio.android.tools.ReadingTools;
 import org.glucosio.android.tools.TipsManager;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
-/**
- * Created by paolo on 10/09/15.
- */
 public class OverviewPresenter {
 
-    DatabaseHandler dB;
+    private DatabaseHandler dB;
     private ArrayList<Integer> reading;
     private ArrayList <String> type;
     private ArrayList<String> datetime;
-    OverviewFragment fragment;
+    private List<GlucoseReading> readingsWeek;
+    private List<GlucoseReading> readingsMonth;
+    private OverviewFragment fragment;
 
 
     public OverviewPresenter(OverviewFragment overviewFragment) {
@@ -32,6 +33,8 @@ public class OverviewPresenter {
 
     public void loadDatabase(){
         this.reading = dB.getGlucoseReadingAsArray();
+        this.readingsMonth = dB.getAverageGlucoseReadingsByMonth();
+        this.readingsWeek = dB.getAverageGlucoseReadingsByWeek();
         this.type = dB.getGlucoseTypeAsArray();
         this.datetime = dB.getGlucoseDateTimeAsArray();
     }
@@ -75,5 +78,13 @@ public class OverviewPresenter {
 
     public ArrayList<String> getDatetime() {
         return datetime;
+    }
+
+    public List<GlucoseReading> getReadingsWeek() {
+        return readingsWeek;
+    }
+
+    public List<GlucoseReading> getReadingsMonth() {
+        return readingsMonth;
     }
 }

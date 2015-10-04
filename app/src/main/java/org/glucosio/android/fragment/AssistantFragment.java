@@ -8,12 +8,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import org.glucosio.android.R;
+import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.adapter.AssistantAdapter;
+import org.glucosio.android.presenter.AssistantPresenter;
 
 public class AssistantFragment extends Fragment {
 
     private RecyclerView tipsRecycler;
     private AssistantAdapter adapter;
+    private AssistantPresenter presenter;
 
     public static AssistantFragment newInstance() {
         AssistantFragment fragment = new AssistantFragment();
@@ -35,9 +38,11 @@ public class AssistantFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        presenter = new AssistantPresenter(this);
+
         View mView = inflater.inflate(R.layout.fragment_assistant, container, false);
         tipsRecycler = (RecyclerView) mView.findViewById(R.id.fragment_tips_recyclerview);
-        adapter = new AssistantAdapter(getActivity().getApplicationContext());
+        adapter = new AssistantAdapter(getActivity().getApplicationContext(), presenter);
 
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
@@ -46,5 +51,13 @@ public class AssistantFragment extends Fragment {
         tipsRecycler.setHasFixedSize(false);
 
         return mView;
+    }
+
+    public void addReading(){
+        ((MainActivity)getActivity()).showAddDialog();
+    }
+
+    public void openGitty(){
+        ((MainActivity)getActivity()).startGittyReporter();
     }
 }
