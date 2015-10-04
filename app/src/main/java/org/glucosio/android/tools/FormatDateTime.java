@@ -23,7 +23,6 @@ public class FormatDateTime {
         String localPattern  = ((SimpleDateFormat)formatter).toLocalizedPattern();
         java.text.DateFormat finalDataFormat = new SimpleDateFormat(localPattern);
         java.text.DateFormat finalTimeFormat = DateFormat.getTimeInstance(DateFormat.SHORT);
-
         Date parsed = null;
         try {
             parsed = inputFormat.parse(date);
