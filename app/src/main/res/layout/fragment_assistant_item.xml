@@ -13,18 +13,20 @@
         android:background="#ffffff"
         android:orientation="vertical">
         <TextView
+            android:id="@+id/fragment_assistant_item_title"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Title"
             android:textStyle="bold"
             android:paddingRight="16dp" android:paddingLeft="16dp" android:paddingBottom="8dp"/>
     <TextView
-        android:id="@+id/fragment_tips_textview"
+        android:id="@+id/fragment_assistant_item_description"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Always bring a banana to a party, Rose, bananas are good!"
-        android:paddingRight="16dp" android:paddingLeft="16dp" android:paddingBottom="16dp"/>
+        android:paddingRight="16dp" android:paddingLeft="16dp" android:paddingBottom="8dp"/>
         <android.support.v7.widget.AppCompatButton
+            android:id="@+id/fragment_assistant_item_action"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:attr/selectableItemBackground"
@@ -34,7 +36,6 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="1dp"
-        android:layout_marginRight="8dp" android:layout_marginLeft="8dp"
         android:background="#dadada"/>
     </LinearLayout>
 

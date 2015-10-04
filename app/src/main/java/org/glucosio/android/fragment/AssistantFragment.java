@@ -2,21 +2,18 @@ package org.glucosio.android.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import org.glucosio.android.R;
-import org.glucosio.android.adapter.TipsAdapter;
-import org.glucosio.android.db.DatabaseHandler;
-import org.glucosio.android.tools.TipsManager;
+import org.glucosio.android.adapter.AssistantAdapter;
 
 public class AssistantFragment extends Fragment {
 
-    private DatabaseHandler dB;
-    private TipsManager tipsManager;
     private RecyclerView tipsRecycler;
-    private TipsAdapter adapter;
+    private AssistantAdapter adapter;
 
     public static AssistantFragment newInstance() {
         AssistantFragment fragment = new AssistantFragment();
@@ -38,15 +35,16 @@ public class AssistantFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View mView = inflater.inflate(R.layout.fragment_tips, container, false);
-        // tipsRecycler = (RecyclerView) mView.findViewById(R.id.fragment_tips_recyclerview);
-        // adapter = new TipsAdapter(tipsManager.getTips());
+        View mView = inflater.inflate(R.layout.fragment_assistant, container, false);
+        tipsRecycler = (RecyclerView) mView.findViewById(R.id.fragment_tips_recyclerview);
+        adapter = new AssistantAdapter(getActivity().getApplicationContext());
 
-        // LinearLayoutManager llm = new LinearLayoutManager(getActivity());
-        // llm.setOrientation(LinearLayoutManager.VERTICAL);
-        // tipsRecycler.setLayoutManager(llm);
-        // tipsRecycler.setAdapter(adapter);
-        // tipsRecycler.setHasFixedSize(false);
+        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        tipsRecycler.setLayoutManager(llm);
+        tipsRecycler.setAdapter(adapter);
+        tipsRecycler.setHasFixedSize(false);
+
         return mView;
     }
 }

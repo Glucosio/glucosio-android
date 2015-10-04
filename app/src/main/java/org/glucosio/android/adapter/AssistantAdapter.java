@@ -1,6 +1,7 @@
 package org.glucosio.android.adapter;
 
 import android.content.Context;
+import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,8 +10,11 @@ import android.widget.TextView;
 import org.glucosio.android.R;
 import java.util.ArrayList;
 
-public class TipsAdapter extends RecyclerView.Adapter<TipsAdapter.ViewHolder> {
-    private ArrayList<String> tipsList;
+public class AssistantAdapter extends RecyclerView.Adapter<AssistantAdapter.ViewHolder> {
+    private Context mContext;
+    private String[] actionTipTitles;
+    private String[] actionTipDescriptions;
+    private String[] actionTipActions;
 
 
     // Provide a reference to the views for each data item
@@ -26,18 +30,21 @@ public class TipsAdapter extends RecyclerView.Adapter<TipsAdapter.ViewHolder> {
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public TipsAdapter(ArrayList<String> tips) {
-        this.tipsList = tips;
+    public AssistantAdapter(Context context) {
+        this.mContext = context;
+        this.actionTipTitles = context.getResources().getStringArray(R.array.assistant_titles);
+        this.actionTipDescriptions = context.getResources().getStringArray(R.array.assistant_descriptions);
+        this.actionTipActions = context.getResources().getStringArray(R.array.assistant_actions);
     }
 
     // Create new views (invoked by the layout manager)
     @Override
-    public TipsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
+    public AssistantAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                         int viewType) {
 
         // create a new view
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_tips_item, parent, false);
+                .inflate(R.layout.fragment_assistant_item, parent, false);
 
         ViewHolder vh = new ViewHolder(v);
         return vh;
@@ -46,13 +53,17 @@ public class TipsAdapter extends RecyclerView.Adapter<TipsAdapter.ViewHolder> {
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        TextView tipTextView = (TextView) holder.mView.findViewById(R.id.fragment_tips_textview);
-        tipTextView.setText(tipsList.get(position));
+        TextView actionTipTitle = (TextView) holder.mView.findViewById(R.id.fragment_assistant_item_title);
+        TextView actionTipDescription = (TextView) holder.mView.findViewById(R.id.fragment_assistant_item_description);
+        AppCompatButton actionTipAction = (AppCompatButton) holder.mView.findViewById(R.id.fragment_assistant_item_action);
+        actionTipTitle.setText(actionTipTitles[position]);
+        actionTipDescription.setText(actionTipDescriptions[position]);
+        actionTipAction.setText(actionTipActions[position]);
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return tipsList.size();
+        return actionTipTitles.length;
     }
 }
