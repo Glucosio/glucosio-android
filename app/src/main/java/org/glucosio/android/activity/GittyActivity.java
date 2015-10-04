@@ -30,7 +30,7 @@ public class GittyActivity extends GittyReporter {
 
         // Set where Gitty will send issues.
         // (username, repository name);
-        setTargetRepository("Glucosio", "andorid");
+        setTargetRepository("Glucosio", "android");
 
         // Set Auth token to open issues if user doesn't have a GitHub account
         // For example, you can register a bot account on GitHub that will open bugs for you.
