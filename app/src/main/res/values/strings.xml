@@ -180,7 +180,7 @@
     <string name="helloactivity_spinner_preferred_range_4">Custom range</string>
     <string name="helloactivity_preferred_range_min">Min value</string>
     <string name="helloactivity_preferred_range_max">Max value</string>
-    <string name="assistant_action_try">TRT IT NOW</string>
+    <string name="assistant_action_try">TRY IT NOW</string>
 
     <string-array name="helloactivity_preferred_range" translatable="false">
         <item>@string/helloactivity_spinner_preferred_range_1</item>
