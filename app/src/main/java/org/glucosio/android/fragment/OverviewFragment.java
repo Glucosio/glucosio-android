@@ -10,7 +10,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
@@ -21,18 +20,14 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import org.glucosio.android.R;
-import org.glucosio.android.activity.MainActivity;
-import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.presenter.OverviewPresenter;
 import org.glucosio.android.tools.FormatDateTime;
 import org.glucosio.android.tools.GlucoseConverter;
 import org.glucosio.android.tools.GlucoseRanges;
-import org.glucosio.android.tools.ReadingTools;
 import org.glucosio.android.tools.TipsManager;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
 
 public class OverviewFragment extends Fragment {
 

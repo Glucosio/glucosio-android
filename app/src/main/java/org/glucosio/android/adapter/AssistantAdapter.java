@@ -8,12 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import org.glucosio.android.R;
-import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.presenter.AssistantPresenter;
-import org.glucosio.android.presenter.HistoryPresenter;
-
-import java.util.ArrayList;
-
 public class AssistantAdapter extends RecyclerView.Adapter<AssistantAdapter.ViewHolder> {
     private Context mContext;
     private String[] actionTipTitles;

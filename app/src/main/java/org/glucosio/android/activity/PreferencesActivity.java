@@ -1,7 +1,5 @@
 package org.glucosio.android.activity;
 
-import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.EditTextPreference;
@@ -12,19 +10,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.InputFilter;
 import android.view.MenuItem;
 import android.widget.EditText;
-import android.widget.Toast;
-
 import org.glucosio.android.R;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.User;
 import org.glucosio.android.tools.InputFilterMinMax;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Locale;
-
-import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class PreferencesActivity extends AppCompatActivity {
 
@@ -41,8 +33,6 @@ public class PreferencesActivity extends AppCompatActivity {
     }
 
     public static class MyPreferenceFragment extends PreferenceFragment {
-
-        private Dialog termsDialog;
         private DatabaseHandler dB;
         private User user;
         private ListPreference countryPref;

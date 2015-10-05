@@ -1,13 +1,10 @@
 package org.glucosio.android.presenter;
 
 import android.text.TextUtils;
-import android.widget.HeaderViewListAdapter;
 
-import org.glucosio.android.R;
 import org.glucosio.android.activity.HelloActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.User;
-import org.w3c.dom.Text;
 
 
 public class HelloPresenter {

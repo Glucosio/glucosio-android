@@ -2,28 +2,21 @@ package org.glucosio.android.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.provider.ContactsContract;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.glucosio.android.R;
-import org.glucosio.android.activity.MainActivity;
-import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.presenter.HistoryPresenter;
-import org.glucosio.android.tools.FormatDateTime;
 import org.glucosio.android.tools.GlucoseConverter;
 import org.glucosio.android.tools.GlucoseRanges;
-import org.glucosio.android.tools.ReadingTools;
 
-import java.util.ArrayList;
 import java.util.Collections;
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHolder> {
-    private Context mContext;
+    Context mContext;
     private HistoryPresenter presenter;
     private GlucoseConverter converter;
 

@@ -2,14 +2,10 @@ package org.glucosio.android.activity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
 import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,17 +20,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.glucosio.android.R;
-import org.glucosio.android.db.DatabaseHandler;
-import org.glucosio.android.db.User;
 import org.glucosio.android.presenter.HelloPresenter;
 import org.glucosio.android.tools.LabelledSpinner;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Locale;
-
-import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class HelloActivity extends AppCompatActivity {
 

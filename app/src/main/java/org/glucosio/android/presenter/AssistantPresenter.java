@@ -1,7 +1,5 @@
 package org.glucosio.android.presenter;
 
-import org.glucosio.android.activity.HelloActivity;
-import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.fragment.AssistantFragment;
 

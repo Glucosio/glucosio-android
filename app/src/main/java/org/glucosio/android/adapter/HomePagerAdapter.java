@@ -10,9 +10,6 @@ import org.glucosio.android.fragment.HistoryFragment;
 import org.glucosio.android.fragment.OverviewFragment;
 import org.glucosio.android.fragment.AssistantFragment;
 
-/**
- * Created by paolo on 13/08/15.
- */
 public class HomePagerAdapter extends FragmentPagerAdapter {
 
     private Context mContext;

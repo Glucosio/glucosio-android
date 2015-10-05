@@ -2,7 +2,6 @@ package org.glucosio.android.presenter;
 
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
-import org.glucosio.android.fragment.HistoryFragment;
 import org.glucosio.android.fragment.OverviewFragment;
 import org.glucosio.android.tools.ReadingTools;
 import org.glucosio.android.tools.TipsManager;

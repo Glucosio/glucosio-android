@@ -14,12 +14,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.glucosio.android.R;
 import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.adapter.HistoryAdapter;
-import org.glucosio.android.db.GlucoseReading;
 import org.glucosio.android.listener.RecyclerItemClickListener;
 import org.glucosio.android.presenter.HistoryPresenter;
 import org.glucosio.android.tools.FormatDateTime;
