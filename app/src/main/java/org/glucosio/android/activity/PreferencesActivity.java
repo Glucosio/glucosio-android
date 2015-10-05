@@ -109,9 +109,12 @@ public class PreferencesActivity extends AppCompatActivity {
             agePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    if (newValue.toString().trim().equals("")) {
+                        return false;
+                    }
                     user.set_age(Integer.parseInt(newValue.toString()));
                     updateDB();
-                    return false;
+                    return true;
                 }
             });
             genderPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
@@ -119,7 +122,7 @@ public class PreferencesActivity extends AppCompatActivity {
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
                     user.set_gender(newValue.toString());
                     updateDB();
-                    return false;
+                    return true;
                 }
             });
             diabetesTypePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
@@ -132,7 +135,7 @@ public class PreferencesActivity extends AppCompatActivity {
                         user.set_d_type(2);
                         updateDB();
                     }
-                    return false;
+                    return true;
                 }
             });
             unitPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
@@ -140,7 +143,7 @@ public class PreferencesActivity extends AppCompatActivity {
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
                     user.set_preferred_unit(newValue.toString());
                     updateDB();
-                    return false;
+                    return true;
                 }
             });
             rangePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
@@ -148,23 +151,29 @@ public class PreferencesActivity extends AppCompatActivity {
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
                     user.set_preferred_range(newValue.toString());
                     updateDB();
-                    return false;
+                    return true;
                 }
             });
             minRangePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    if (newValue.toString().trim().equals("")) {
+                        return false;
+                    }
                     user.set_custom_range_min(Integer.parseInt(newValue.toString()));
                     updateDB();
-                    return false;
+                    return true;
                 }
             });
             maxRangePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    if (newValue.toString().trim().equals("")) {
+                        return false;
+                    }
                     user.set_custom_range_max(Integer.parseInt(newValue.toString()));
                     updateDB();
-                    return false;
+                    return true;
                 }
             });
 

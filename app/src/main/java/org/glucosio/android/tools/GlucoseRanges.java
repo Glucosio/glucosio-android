@@ -4,10 +4,10 @@ import org.glucosio.android.db.DatabaseHandler;
 
 public class GlucoseRanges {
 
-    DatabaseHandler dB;
-    String preferredRange;
-    int customMin;
-    int customMax;
+    private DatabaseHandler dB;
+    private String preferredRange;
+    private int customMin;
+    private int customMax;
 
     public GlucoseRanges(){
         dB = new DatabaseHandler();

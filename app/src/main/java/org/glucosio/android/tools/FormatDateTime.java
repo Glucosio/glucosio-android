@@ -11,7 +11,7 @@ import java.util.Locale;
 
 public class FormatDateTime {
 
-    Context context;
+    private Context context;
     public FormatDateTime(Context mContext){
         this.context= mContext;
     }
