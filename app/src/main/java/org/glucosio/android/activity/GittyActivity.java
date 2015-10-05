@@ -1,6 +1,7 @@
 package org.glucosio.android.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Base64;
 
@@ -45,5 +46,10 @@ public class GittyActivity extends GittyReporter {
         // Set if Gitty can use your Auth token for users without a GitHub account (default: true)
         // If false, Gitty will redirect non registred users to github.com/join
         enableGuestGitHubLogin(true);
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 }

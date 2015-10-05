@@ -123,7 +123,6 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     public void startGittyReporter() {
         Intent intent = new Intent(this, GittyActivity.class);
         startActivity(intent);
-        finish();
     }
 
     public void openPreferences() {
