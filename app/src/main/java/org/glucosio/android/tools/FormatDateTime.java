@@ -22,7 +22,15 @@ public class FormatDateTime {
         DateFormat formatter = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
         String localPattern  = ((SimpleDateFormat)formatter).toLocalizedPattern();
         java.text.DateFormat finalDataFormat = new SimpleDateFormat(localPattern);
-        java.text.DateFormat finalTimeFormat = DateFormat.getTimeInstance(DateFormat.SHORT);
+
+        java.text.DateFormat finalTimeFormat;
+
+        if (android.text.format.DateFormat.is24HourFormat(context)) {
+            finalTimeFormat = new SimpleDateFormat("HH:mm");
+        } else {
+            finalTimeFormat = new SimpleDateFormat("hh:mm a");
+        }
+
         Date parsed = null;
         try {
             parsed = inputFormat.parse(date);
