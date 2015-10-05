@@ -22,7 +22,6 @@ public class FormatDateTime {
         DateFormat formatter = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
         String localPattern  = ((SimpleDateFormat)formatter).toLocalizedPattern();
         java.text.DateFormat finalDataFormat = new SimpleDateFormat(localPattern);
-
         java.text.DateFormat finalTimeFormat;
 
         if (android.text.format.DateFormat.is24HourFormat(context)) {
