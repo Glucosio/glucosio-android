@@ -86,7 +86,7 @@
         <TextView fontPath="fonts/lato-bold.ttf"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/fragment_overview_tip"
+            android:text="@string/tab_tips"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:layout_marginTop="16dp"
