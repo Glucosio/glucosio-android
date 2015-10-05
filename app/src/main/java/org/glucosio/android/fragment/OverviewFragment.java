@@ -99,7 +99,7 @@ public class OverviewFragment extends Fragment {
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setTextColor(getResources().getColor(R.color.glucosio_text_light));
 
-        LimitLine ll1 = new LimitLine(130f, "High");
+      /*  LimitLine ll1 = new LimitLine(130f, "High");
         ll1.setLineWidth(1f);
         ll1.setLineColor(getResources().getColor(R.color.glucosio_gray_light));
         ll1.setTextColor(getResources().getColor(R.color.glucosio_text));
@@ -119,14 +119,14 @@ public class OverviewFragment extends Fragment {
         ll4.setLineWidth(1f);
         ll4.enableDashedLine(10, 10, 10);
         ll4.setLineColor(getResources().getColor(R.color.glucosio_gray_light));
-        ll4.setTextColor(getResources().getColor(R.color.glucosio_text));
+        ll4.setTextColor(getResources().getColor(R.color.glucosio_text));*/
 
         YAxis leftAxis = chart.getAxisLeft();
         leftAxis.removeAllLimitLines(); // reset all limit lines to avoid overlapping lines
-        leftAxis.addLimitLine(ll1);
+/*        leftAxis.addLimitLine(ll1);
         leftAxis.addLimitLine(ll2);
         leftAxis.addLimitLine(ll3);
-        leftAxis.addLimitLine(ll4);
+        leftAxis.addLimitLine(ll4);*/
         leftAxis.setTextColor(getResources().getColor(R.color.glucosio_text_light));
         leftAxis.setStartAtZero(false);
         //leftAxis.setYOffset(20f);
