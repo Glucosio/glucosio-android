@@ -45,4 +45,6 @@ dependencies {
     compile 'com.github.paolorotolo:gitty_reporter:1.1.1'
     compile 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
     compile 'com.wnafee:vector-compat:1.0.5'
+    compile 'io.realm:realm-android:0.82.2'
+
 }
