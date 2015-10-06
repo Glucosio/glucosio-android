@@ -98,6 +98,7 @@ public class OverviewFragment extends Fragment {
         xAxis.setDrawGridLines(false);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setTextColor(getResources().getColor(R.color.glucosio_text_light));
+        xAxis.setAvoidFirstLastClipping(true);
 
       /*  LimitLine ll1 = new LimitLine(130f, "High");
         ll1.setLineWidth(1f);
@@ -243,6 +244,7 @@ public class OverviewFragment extends Fragment {
 
         // set data
         chart.setData(data);
+        chart.setPinchZoom(true);
     }
 
     private void loadLastReading(){
