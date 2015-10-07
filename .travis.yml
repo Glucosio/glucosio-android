@@ -17,14 +17,7 @@ before_install:
 after_success:
  - chmod +x ./upload-gh-pages.sh
  - chmod +x ./import-translations-github.sh
- - ./import-translations-github.sh
  - ./upload-gh-pages.sh
-
-before_script:
- - cd $TRAVIS_BUILD_DIR/app/src/main/res/
- - wget https://crowdin.com/downloads/crowdin-cli.jar
- - java -jar crowdin-cli.jar download
- - rm crowdin-cli.jar
 
 script:
  - cd $TRAVIS_BUILD_DIR/
