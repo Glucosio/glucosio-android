@@ -1,0 +1,10 @@
+<resources>
+
+    <declare-styleable name="LabelledSpinner" >
+        <attr name="labelText" format="string" />
+        <attr name="widgetColor" format="color" />
+    </declare-styleable>
+
+    <color name="widget_labelled_spinner">#6D6D6D</color>
+
+</resources>

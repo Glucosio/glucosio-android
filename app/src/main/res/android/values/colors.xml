@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <color name="white">#FFFFFF</color>
+
+    <color name="glucosio_pink">#E84579</color>
+    <color name="glucosio_pink_dark">#C23965</color>
+    <color name="glucosio_accent">#F0D04C</color>
+    <color name="glucosio_separator">#eaeaea</color>
+    <color name="glucosio_gray_light">#D1D1D1</color>
+    <color name="glucosio_text">#323232</color>
+    <color name="glucosio_text_dark">#000000</color>
+    <color name="glucosio_text_light">#686E71</color>
+    <color name="glucosio_text_green">#46a644</color>
+    <color name="glucosio_text_red">#e04737</color>
+    <color name="glucosio_light_grey_background">#F9F9F9</color>
+    <color name="mdtp_accent_color">@color/glucosio_pink</color>
+    <color name="mdtp_accent_color_dark">@color/glucosio_pink_dark</color>
+</resources>
