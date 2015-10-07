@@ -18,9 +18,11 @@ after_success:
  - chmod +x ./upload-gh-pages.sh
  - ./upload-gh-pages.sh
 
-script:
- - cd /app/src/main/res/
+before_script:
+ - cd TRAVIS_BUILD_DIR/android/app/src/main/res/
  - wget https://crowdin.com/downloads/crowdin-cli.jar
  - java -jar crowdin-cli.jar download
  - rm crowdin-cli.jar
+
+script:
  - ./gradlew clean build
