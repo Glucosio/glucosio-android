@@ -7,9 +7,9 @@
   <string name="tab_overview">概觀</string>
   <string name="tab_history">記錄</string>
   <string name="tab_tips">秘訣</string>
-  <string name="title_activity_hello">您好。</string>
-  <string name="helloactivity_headline">您好。</string>
-  <string name="helloactivity_terms">使用條款。</string>
+  <string name="title_activity_hello">Hello.</string>
+  <string name="helloactivity_headline">Hello.</string>
+  <string name="helloactivity_terms">Terms of Use</string>
   <string name="helloactivity_terms_accept">我已閱讀並接受使用條款。</string>
   <string name="helloactivity_terms_full">Glucosio 網站與應用程式當中的內容，包含文字、圖片、圖形及其他內容（簡稱「內容」）僅作為資訊提供。這些內容並非為了要取代專業醫療建議、診斷或治療。我們建議 Glucosio 使用者若遇到任何醫療相關問題時，諮詢醫生或其他相關專業人士。請務必不要因為在 Glucosio 網站或應用程式當中閱讀的任何資訊而忽略任何資料建議或延誤就醫。Glucosio 網站、部落格、維基與其他網頁瀏覽器可存取的內容（簡稱「網站」）應僅供上述目的使用。\n由 Glucosio、Glucosio 團隊成員、志工或其他人提供於網站或應用程式的可靠度應由使用者自行判斷。網站與內容均僅依照「現況」提供。</string>
   <string name="helloactivity_subhead">在開始使用前要先向您詢問幾個小問題。</string>
@@ -27,7 +27,7 @@
   <string name="helloactivity_share_data">匿名地分享資料提供研究。</string>
   <string name="helloactivity_hint_settings">您以後可以更改這些設定。</string>
   <string name="helloactivity_button_next">下一步</string>
-  <string name="helloactivity_button_start">入門</string>
+  <string name="helloactivity_button_start">GET STARTED</string>
   <string name="fragment_empty_text">還沒有資訊。\n在此新增您的第一筆血糖紀錄。</string>
   <string name="dialog_add_title">新增血糖值</string>
   <string name="dialog_add_concentration">濃度</string>
@@ -79,7 +79,7 @@
     <item>在外用餐時，詢問是否有不同餐點選擇，例如把薯條換成兩份蔬菜沙拉、青豆、花椰菜等。</item>
     <item>在外用餐時，避免吃裹粉或油炸的食物。</item>
     <item>在外用餐時，詢問是否可將醬汁、滷汁、沙拉醬等放到一邊或分開上餐。</item>
-    <item>「無糖」不真的是無糖，每一份當中還是會有 0.5 公克的蔗糖。還是請小心別吃進太多「無糖」餐點。</item>
+    <item>Sugar free doesn’t really mean sugar free. It means 0.5 grams (g) of sugar per serving, so be careful to not indulge in too many sugar free items.</item>
     <item>控制在健康的體重對於控制血糖有很大的幫助。您的醫師、營養師、健身教練都能夠幫助您開始規劃最適合您的減重方式。</item>
     <item>每天測量血糖值兩次，並且記錄在 Glucosio 這類應用程式，可幫助您控制飲食與生活習慣。</item>
     <item>測量 A1c 糖化血色素可找出您過去 2~3 個月的平均血糖值。您的醫生應該會告訴您多久要測量一次。</item>

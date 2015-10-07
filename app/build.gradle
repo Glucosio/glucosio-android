@@ -8,6 +8,15 @@ android {
         abortOnError false
     }
 
+    sourceSets {
+        main {
+            resources {
+                srcDir 'res'
+                exclude '**/values-sr-rCyrl-rME'
+            }
+        }
+    }
+
     defaultConfig {
         applicationId "org.glucosio.android"
         minSdkVersion 16
