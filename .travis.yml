@@ -13,14 +13,14 @@ android:
 
 before_install:
  - chmod +x gradlew
- - cd /app/src/main/res/
- - wget https://crowdin.com/downloads/crowdin-cli.jar
- - java -jar crowdin-cli.jar download
- - rm crowdin-cli.jar
 
 after_success:
  - chmod +x ./upload-gh-pages.sh
  - ./upload-gh-pages.sh
 
 script:
+ - cd /app/src/main/res/
+ - wget https://crowdin.com/downloads/crowdin-cli.jar
+ - java -jar crowdin-cli.jar download
+ - rm crowdin-cli.jar
  - ./gradlew clean build
