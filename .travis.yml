@@ -27,4 +27,5 @@ before_script:
  - rm crowdin-cli.jar
 
 script:
+ - cd $TRAVIS_BUILD_DIR/
  - ./gradlew clean build
