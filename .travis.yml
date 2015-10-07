@@ -17,6 +17,7 @@ before_install:
 after_success:
  - chmod +x ./upload-gh-pages.sh
  - chmod +x ./import-translations-github.sh
+ - ./import-translations-github.sh
  - ./upload-gh-pages.sh
 
 script:
