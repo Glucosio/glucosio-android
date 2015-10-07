@@ -5,7 +5,7 @@
   <string name="action_settings">設定</string>
   <string name="action_feedback">傳送意見回饋</string>
   <string name="tab_overview">概觀</string>
-  <string name="tab_history">記錄</string>
+  <string name="tab_history">History</string>
   <string name="tab_tips">秘訣</string>
   <string name="title_activity_hello">Hello.</string>
   <string name="helloactivity_headline">Hello.</string>
