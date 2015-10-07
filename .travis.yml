@@ -13,8 +13,8 @@ android:
 
 before_install:
  - chmod +x gradlew
- - pip install crowdin-cli-py
- - ./download-translations.sh
+ - wget https://crowdin.com/downloads/crowdin-cli.jar
+ - java -jar crowdin-cli.jar download
 
 after_success:
  - chmod +x ./upload-gh-pages.sh
