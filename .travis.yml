@@ -19,8 +19,7 @@ after_success:
  - ./upload-gh-pages.sh
 
 before_script:
- - cd TRAVIS_BUILD_DIR/
- - ls
+ - cd $TRAVIS_BUILD_DIR/app/src/main/res/
  - wget https://crowdin.com/downloads/crowdin-cli.jar
  - java -jar crowdin-cli.jar download
  - rm crowdin-cli.jar
