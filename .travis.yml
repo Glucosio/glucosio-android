@@ -13,7 +13,7 @@ android:
 
 before_install:
  - chmod +x gradlew
-  - cd $HOME/android/app/src/main/res/
+ - cd $HOME/android/app/src/main/res/
  - wget https://crowdin.com/downloads/crowdin-cli.jar
  - java -jar crowdin-cli.jar download
  - rm crowdin-cli.jar
