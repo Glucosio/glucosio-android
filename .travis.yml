@@ -16,6 +16,8 @@ before_install:
 
 after_success:
  - chmod +x ./upload-gh-pages.sh
+ - chmod +x ./import-translations-github.sh
+ - ./import-translations-github
  - ./upload-gh-pages.sh
 
 before_script:
@@ -23,15 +25,6 @@ before_script:
  - wget https://crowdin.com/downloads/crowdin-cli.jar
  - java -jar crowdin-cli.jar download
  - rm crowdin-cli.jar
- - cd $TRAVIS_BUILD_DIR
- - git config --global user.email "glucosioproject@gmail.com"
- - git config --global user.name "Glucat"
- - git add -f .
- - git remote rm origin
- - git remote add origin https://glucat:$GITHUB_API_KEY@github.com/Glucosio/android
- - git add -f .
- - git commit -m "Automatic translations import (build  $TRAVIS_BUILD_NUMBER)."
- - git push origin develop
 
 script:
  - ./gradlew clean build
