@@ -1,5 +1,5 @@
 language: android
-sudo: required
+sudo: false
 
 android:
   components:
@@ -13,8 +13,7 @@ android:
 
 before_install:
  - chmod +x gradlew
- - sudo apt-get update -qq
- - sudo pip install crowdin-cli-py
+ - pip install crowdin-cli-py
  - ./download-translations.sh
 
 after_success:
