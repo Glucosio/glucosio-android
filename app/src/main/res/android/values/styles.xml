@@ -1,0 +1,40 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="GlucosioTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <!-- Set AppCompat’s color theming attrs -->
+        <item name="colorPrimary">@color/glucosio_pink</item>
+        <item name="colorPrimaryDark">@color/glucosio_pink_dark</item>
+        <item name="colorAccent">@color/glucosio_pink</item>
+    </style>
+
+    <style name="GlucosioDialog" parent="@android:style/Theme.Dialog">
+        <item name="colorPrimary">@color/glucosio_pink</item>
+        <item name="colorPrimaryDark">@color/glucosio_pink_dark</item>
+        <item name="colorAccent">@color/glucosio_pink</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowSoftInputMode">stateHidden|adjustResize</item>
+        <item name="android:windowFrame">@null</item>
+    </style>
+
+    <!-- Settings theme. -->
+    <style name="GlucosioSettings" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+        <!-- Set AppCompat’s color theming attrs -->
+        <item name="colorPrimary">@color/glucosio_pink</item>
+        <item name="colorPrimaryDark">@color/glucosio_pink_dark</item>
+        <item name="colorAccent">@color/glucosio_pink</item>
+    </style>
+    <style name="AppThemeNoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Set AppCompat’s color theming attrs -->
+        <item name="colorPrimary">@color/glucosio_pink</item>
+        <item name="colorPrimaryDark">@color/glucosio_gray_light</item>
+        <item name="colorAccent">@color/glucosio_pink</item>
+    </style>
+    <style name="GittyTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Set AppCompat’s color theming attrs -->
+        <item name="colorPrimary">@color/glucosio_pink</item>
+        <item name="colorPrimaryDark">#000000</item>
+        <item name="colorAccent">@color/glucosio_pink</item>
+    </style>
+</resources>

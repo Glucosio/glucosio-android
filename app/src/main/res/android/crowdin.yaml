@@ -1,0 +1,18 @@
+---
+project_identifier: 'glucosio'
+api_key_env: 'CROWDIN_API_KEY'
+base_url: 'https://api.crowdin.com'
+
+files:
+  -
+   source: '/values/strings.xml'
+   translation: '/values-%android_code%/%original_file_name%'
+   languages_mapping:
+     android_code:
+       sr-Cyrl-ME: sr-rCy
+       kab: kab
+       kdh: kdh
+       zea: zea
+       tzl: tzl
+       pap: pap
+       mos: mos
