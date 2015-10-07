@@ -8,7 +8,7 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   git config --global user.name "Glucat"
 
   #clone gh-pages branch
-  git clone --quiet --branch=develop https://8ded5df0cdf373ca7b7662f00ef159f722601d54@github.com/Glucosio/android.git  develop > /dev/null
+  git clone --quiet --branch=develop https://$GITHUB_API_KEY@github.com/Glucosio/android.git  develop > /dev/null
 
   #go into directory and copy data we're interested in to that directory
   cd develop/app/src/main/res/
