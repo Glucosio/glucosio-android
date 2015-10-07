@@ -10,7 +10,6 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   #clone gh-pages branch
   git clone --quiet --branch=develop https://$GITHUB_API_KEY@github.com/Glucosio/android.git  develop > /dev/null
 
-  #go into directory and copy data we're interested in to that directory
   cd develop/app/src/main/res/
   wget https://crowdin.com/downloads/crowdin-cli.jar
   java -jar crowdin-cli.jar download
