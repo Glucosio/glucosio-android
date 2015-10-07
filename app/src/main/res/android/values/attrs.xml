@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <declare-styleable name="button_left"></declare-styleable>
-    <declare-styleable name="button_left_b_icon">1</declare-styleable>
-</resources>
