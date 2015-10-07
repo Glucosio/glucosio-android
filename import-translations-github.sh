@@ -16,7 +16,7 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
 
   #go into directory and copy data we're interested in to that directory
   cd develop
-  cp -u $HOME/android/ app/src/main/res/
+  cp -Ru $HOME/android/ app/src/main/res/
 
   #add, commit and push files
   git add -f .
