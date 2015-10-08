@@ -207,7 +207,7 @@ public class PreferencesActivity extends AppCompatActivity {
 
             versionPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
 
-                public int easterEggCount;
+                int easterEggCount;
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
                     if (easterEggCount == 6) {

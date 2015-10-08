@@ -29,6 +29,7 @@
             android:id="@+id/fragment_assistant_item_action"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center_vertical|start"
             android:background="?android:attr/selectableItemBackground"
             android:textColor="@color/glucosio_pink"
             android:text="ACTION"
