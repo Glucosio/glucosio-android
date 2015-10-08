@@ -205,8 +205,6 @@ public class PreferencesActivity extends AppCompatActivity {
                 }
             });
 
-            int easterEggCount = 0;
-
             versionPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
 
                 public int easterEggCount;
