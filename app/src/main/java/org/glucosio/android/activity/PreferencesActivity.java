@@ -1,6 +1,7 @@
 package org.glucosio.android.activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
@@ -85,7 +86,8 @@ public class PreferencesActivity extends AppCompatActivity {
                 maxRangePref.setEnabled(true);
             }
 
-            final Preference termsPref = (Preference) findPreference("preferences_terms");
+            final Preference termsPref = (Preference) findPreference("preference_terms");
+            final Preference versionPref = (Preference) findPreference("preference_version");
 
             countryPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
@@ -199,6 +201,25 @@ public class PreferencesActivity extends AppCompatActivity {
                     Intent intent = new Intent(getActivity(), LicenceActivity.class);
                     startActivity(intent);
 
+                    return false;
+                }
+            });
+
+            int easterEggCount = 0;
+
+            versionPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+
+                public int easterEggCount;
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    if (easterEggCount == 6) {
+                        String uri = String.format(Locale.ENGLISH, "geo:%f,%f", 40.794010, 17.124583);
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+                        getActivity().startActivity(intent);
+                        easterEggCount = 0;
+                    } else {
+                        this.easterEggCount = easterEggCount+1;
+                    }
                     return false;
                 }
             });
