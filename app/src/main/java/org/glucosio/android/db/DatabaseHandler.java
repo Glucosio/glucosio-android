@@ -6,9 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Calendar;
 
+import io.realm.Realm;
+
 public class DatabaseHandler {
 
+    Realm realm;
     public DatabaseHandler() {
+        this.realm=Realm.getInstance(this);
     }
 
     public void addUser(User user) {

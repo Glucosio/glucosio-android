@@ -5,59 +5,53 @@ import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 import com.activeandroid.query.Select;
 
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
-@Table(name = "GlucoseReadings")
-public class GlucoseReading extends Model {
+import io.realm.Realm;
+import io.realm.RealmObject;
+import io.realm.RealmResults;
+import io.realm.annotations.PrimaryKey;
 
-    @Column(name = "reading")
-    int _reading;
+public class GlucoseReading extends RealmObject {
 
-    @Column(name = "reading_type")
-    String _reading_type;
+    @PrimaryKey
+    private long id;
 
-    @Column(name = "notes")
-    String _notes;
-
-    @Column(name = "user_id")
-    int _user_id;
-
-    @Column(name = "created", index = true)
-    String _created;
-
+    private int reading;
+    private String reading_type;
+    private String notes;
+    private int user_id;
+    private Date created;
+    Realm realm;
     public GlucoseReading() {
-        super();
+        //it should be the context  || How can we achieve it u can refer
+        this.realm=Realm.getInstance(this);
     }
 
-    public GlucoseReading(int reading,String reading_type,String created,String notes)
+    public GlucoseReading(int reading,String reading_type,Date created,String notes)
     {
-        this._reading=reading;
-        this._reading_type=reading_type;
-        this._created=created;
-        this._notes=notes;
+        this.reading=reading;
+        this.reading_type=reading_type;
+        this.created=created;
+        this.notes=notes;
     }
 
-    public static GlucoseReading getGlucoseReading(int id) {
-        return new Select()
-                .from(User.class)
-                .where("id = " + id)
-                .orderBy("RANDOM()")
-                .executeSingle();
+    public static RealmResults<GlucoseReading> getGlucoseReading(int id) {
+        return realm.where(GlucoseReading.class)
+                        .equalTo("id",Integer.toString(id))
+                        .findFirst();
     }
 
-    public static List<GlucoseReading> getAllGlucoseReading() {
-        return new Select()
-                .from(GlucoseReading.class)
-                .orderBy("created DESC")
-                .execute();
+    public static RealmResults<GlucoseReading> getAllGlucoseReading() {
+        return realm.where(GlucoseReading.class)
+                    .findAll();
     }
 
-    public static List<GlucoseReading> getGlucoseReadings(String where) {
-        return new Select()
-                .from(GlucoseReading.class)
-                .orderBy("created DESC")
-                .where(where)
-                .execute();
+    public static RealmResults<GlucoseReading> getGlucoseReadings(String where) {
+        return realm.where(GlucoseReading.class)
+                    .
     }
 
     public static List<GlucoseReading> getGlucoseReadings(String where, Object args) {
@@ -84,52 +78,57 @@ public class GlucoseReading extends Model {
                 .execute();
     }
 
-    public String get_notes(){
-        return this._notes;
+    public String getNotes(){
+        return this.notes;
     }
-    public void set_notes(String notes){
-        this._notes=notes;
+    public void setNotes(String notes){
+        this.notes=notes;
     }
-    public int get_user_id()
+    public int getUser_id()
     {
-        return this._user_id;
+        return this.user_id;
     }
-    public void set_user_id(int user_id)
+    public void setUser_id(int user_id)
     {
-        this._user_id=user_id;
+        this.user_id=user_id;
     }
-    public long get_id()
+    public long getId()
     {
         return this.getId();
     }
-
-    public void set_reading(int reading)
+    public void setId()
     {
-        this._reading=reading;
-    }
-    public void set_reading_type(String reading_type)
-    {
-        this._reading_type=reading_type;
+        String uniqueID= UUID.randomUUID().toString();
+        this.id=Long.parseLong(uniqueID);
     }
 
-    public int get_reading()
+    public void setReading(int reading)
     {
-        return this._reading;
+        this.reading=reading;
     }
-    public String get_reading_type()
+    public void setReading_type(String reading_type)
     {
-        return this._reading_type;
+        this.reading_type=reading_type;
     }
-    public String get_created()
+
+    public int getReading()
     {
-        return this._created;
+        return this.reading;
     }
-    public void set_created(String created)
+    public String getReading_type()
     {
-       this._created=created;
+        return this.reading_type;
     }
-    public String get_type()
+    public Date getCreated()
     {
-        return this._reading_type;
+        return this.created;
+    }
+    public void setCreated(Date created)
+    {
+       this.created=created;
+    }
+    public String getType()
+    {
+        return this.reading_type;
     }
 }
