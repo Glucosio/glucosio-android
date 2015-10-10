@@ -1,46 +1,71 @@
 package org.glucosio.android.db;
 
+import android.content.Context;
+import android.opengl.GLU;
+
+import com.activeandroid.query.Select;
+
+import org.glucosio.android.tools.GlucoseConverter;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Calendar;
 
+import io.realm.Realm;
+import io.realm.RealmQuery;
+import io.realm.RealmResults;
+
 public class DatabaseHandler {
 
-    public DatabaseHandler() {
+    Context mContext;
+    Realm realm;
+
+    public DatabaseHandler(Context context) {
+        this.realm=Realm.getInstance(mContext);
     }
 
     public void addUser(User user) {
-        User newUser = user;
-        newUser.save();
+        realm.beginTransaction();
+        realm.copyToRealm(user);
+        realm.commitTransaction();
     }
 
     public User getUser(int id) {
-        return User.getUser(id);
+        return realm.where(User.class)
+                .equalTo("id", id)
+                .findFirst();
     }
 
     public void updateUser(User user) {
-        User newUser = user;
-        newUser.save();
+        realm.beginTransaction();
+        realm.copyToRealmOrUpdate(user);
+        realm.commitTransaction();
     }
 
     public void addGlucoseReading(GlucoseReading reading) {
         GlucoseReading newGlucoseReading = reading;
-        newGlucoseReading.save();
+        realm.beginTransaction();
+        realm.copyToRealm(reading);
+        realm.commitTransaction();
     }
 
     public void deleteGlucoseReadings(GlucoseReading reading) {
-        GlucoseReading glucoseReading = reading;
-        reading.delete();
+        realm.beginTransaction();
+        reading.removeFromRealm();
+        realm.commitTransaction();
     }
 
-    public List<GlucoseReading> getGlucoseReadings() {
-        return GlucoseReading.getAllGlucoseReading();
+    public RealmResults<GlucoseReading> getGlucoseReadings() {
+        return realm.where(GlucoseReading.class)
+                .findAllSorted("created", false);
     }
 
-    public List<GlucoseReading> getGlucoseReadings(String where) {
-        return GlucoseReading.getGlucoseReadings(where);
+    public GlucoseReading getGlucoseReading(int id) {
+        return realm.where(GlucoseReading.class)
+                .equalTo("id", id)
+                .findFirst();
     }
 
     public ArrayList<Long> getGlucoseIdAsArray(){
@@ -51,7 +76,7 @@ public class DatabaseHandler {
         for (i = 0; i < glucoseReading.size(); i++){
             long id;
             GlucoseReading singleReading= glucoseReading.get(i);
-            id = singleReading.get_id();
+            id = singleReading.getId();
             idArray.add(id);
         }
 
@@ -66,7 +91,7 @@ public class DatabaseHandler {
         for (i = 0; i < glucoseReading.size(); i++){
             int reading;
             GlucoseReading singleReading= glucoseReading.get(i);
-            reading = singleReading.get_reading();
+            reading = singleReading.getReading();
             readingArray.add(reading);
         }
 
@@ -81,7 +106,7 @@ public class DatabaseHandler {
         for (i = 0; i < glucoseReading.size(); i++){
             String reading;
             GlucoseReading singleReading= glucoseReading.get(i);
-            reading = singleReading.get_reading_type();
+            reading = singleReading.getReading_type();
             typeArray.add(reading);
         }
 
@@ -96,7 +121,7 @@ public class DatabaseHandler {
         for (i = 0; i < glucoseReading.size(); i++){
             String reading;
             GlucoseReading singleReading= glucoseReading.get(i);
-            reading = singleReading.get_created();
+            reading = singleReading.getCreated().toString();
             datetimeArray.add(reading);
         }
 
@@ -104,16 +129,11 @@ public class DatabaseHandler {
     }
 
     public GlucoseReading getGlucoseReadingById(int id){
-        return getGlucoseReadings("id = " + id).get(0);
-    }
-    public List<GlucoseReading> getGlucoseReadingsByMonth(int month){
-
-        String m=Integer.toString(month);
-        m=String.format("%02d",m);
-       return getGlucoseReadings(" strftime('%m',created)='"+m+"'");
+        return getGlucoseReading(id);
     }
 
-    private ArrayList<Integer> getGlucoseReadingsForLastMonthAsArray(){
+
+/*    private ArrayList<Integer> getGlucoseReadingsForLastMonthAsArray(){
         Calendar calendar = Calendar.getInstance();
         DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         String now = inputFormat.format(calendar.getTime());
@@ -131,13 +151,13 @@ public class DatabaseHandler {
         gReadings = GlucoseReading.getGlucoseReadings(whereString);
         int i;
         for (i=0; i < gReadings.size(); i++){
-            readings.add(gReadings.get(i).get_reading());
+            readings.add(gReadings.get(i).getReading());
         }
 
         return readings;
-    }
+    }*/
 
-    public Integer getAverageGlucoseReadingForLastMonth() {
+/*    public Integer getAverageGlucoseReadingForLastMonth() {
         ArrayList<Integer> readings = getGlucoseReadingsForLastMonthAsArray();
         int sum = 0;
         int numberOfReadings = readings.size();
@@ -159,5 +179,5 @@ public class DatabaseHandler {
     public List<GlucoseReading> getAverageGlucoseReadingsByMonth() {
         String[] columns = new String[] { "reading", "strftime('%Y%m', created) AS month" };
         return GlucoseReading.getGlucoseReadingsByGroup(columns, "month");
-    }
+    }*/
 }
