@@ -26,47 +26,51 @@ public class GlucoseReading extends RealmObject {
         this.notes=notes;
     }
 
-    public String getNotes(){
-        return this.notes;
-    }
-    public void setNotes(String notes){
-        this.notes=notes;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
-    public int getId()
-    {
+    public int getId() {
         return id;
     }
 
-    public void setReading(int reading)
-    {
-        this.reading=reading;
-    }
-    public void setReading_type(String reading_type)
-    {
-        this.reading_type=reading_type;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public int getReading()
-    {
-        return this.reading;
+    public int getReading() {
+        return reading;
     }
-    public String getReading_type()
-    {
-        return this.reading_type;
+
+    public void setReading(int reading) {
+        this.reading = reading;
     }
-    public Date getCreated()
-    {
-        return this.created;
+
+    public String getReading_type() {
+        return reading_type;
     }
-    public void setCreated(Date created)
-    {
-       this.created=created;
+
+    public void setReading_type(String reading_type) {
+        this.reading_type = reading_type;
     }
-    public String getType()
-    {
-        return this.reading_type;
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
     }
 }
