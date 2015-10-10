@@ -1,14 +1,11 @@
 package org.glucosio.android.db;
-
-import com.activeandroid.Model;
-import com.activeandroid.annotation.Column;
-import com.activeandroid.annotation.Table;
-import com.activeandroid.query.Select;
-
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 public class User extends RealmObject {
 
+    @PrimaryKey
+    private int id;
     private String name;
     private String preferred_language;
     private String country;
@@ -19,10 +16,13 @@ public class User extends RealmObject {
     private String preferred_range;
     private int custom_range_min;
     private int custom_range_max;
+
     public User() {
 
     }
+
     public User(int id, String name,String preferred_language, String country, int age, String gender,int dType, String pUnit, String pRange, int minRange, int maxRange) {
+        this.id=id;
         this.name=name;
         this.preferred_language=preferred_language;
         this.country=country;
@@ -33,10 +33,6 @@ public class User extends RealmObject {
         this.preferred_range = pRange;
         this.custom_range_max = maxRange;
         this.custom_range_min = minRange;
-    }
-
-    public static User getUser(int id) {
-        return new User();
     }
 
     public int getD_type(){
@@ -109,5 +105,13 @@ public class User extends RealmObject {
 
     public void setCustom_range_max(int custom_range_max) {
         this.custom_range_max = custom_range_max;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
