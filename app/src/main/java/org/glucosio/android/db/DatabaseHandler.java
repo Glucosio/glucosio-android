@@ -1,15 +1,22 @@
 package org.glucosio.android.db;
 
 import android.content.Context;
+import android.content.ReceiverCallNotAllowedException;
 import android.opengl.GLU;
 
 import com.activeandroid.query.Select;
 
+import net.danlew.android.joda.JodaTimeAndroid;
+
 import org.glucosio.android.tools.GlucoseConverter;
+import org.joda.time.DateTime;
+import org.joda.time.Months;
+import org.joda.time.Weeks;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Calendar;
 
@@ -157,9 +164,9 @@ public class DatabaseHandler {
         }
 
         return readings;
-    }*/
+    }
 
-/*    public Integer getAverageGlucoseReadingForLastMonth() {
+    public Integer getAverageGlucoseReadingForLastMonth() {
         ArrayList<Integer> readings = getGlucoseReadingsForLastMonthAsArray();
         int sum = 0;
         int numberOfReadings = readings.size();
@@ -171,17 +178,47 @@ public class DatabaseHandler {
         } else {
             return 0;
         }
-    }
-
-    public List<GlucoseReading> getAverageGlucoseReadingsByWeek(){
-        String[] columns = new String[] { "reading", "strftime('%Y%W', created) AS week" };
-        return GlucoseReading.getGlucoseReadingsByGroup(columns, "week");
-    }
-
-    public List<GlucoseReading> getAverageGlucoseReadingsByMonth() {
-        String[] columns = new String[] { "reading", "strftime('%Y%m', created) AS month" };
-        return GlucoseReading.getGlucoseReadingsByGroup(columns, "month");
     }*/
+
+    public List<Integer> getAverageGlucoseReadingsByWeek(){
+        JodaTimeAndroid.init(mContext);
+
+        Date maxDate = realm.where(GlucoseReading.class)
+                .maximumDate("created");
+        Date minDate = realm.where(GlucoseReading.class)
+                .minimumDate("created");
+
+        DateTime maxDateTime = new DateTime(maxDate.getTime());
+        DateTime minDateTime = new DateTime(minDate.getTime());
+
+        Weeks weeksNumber = Weeks.weeksBetween(minDateTime, maxDateTime);
+        ArrayList<GlucoseReading> readings;
+
+
+        /*  USE THIS TO GET READINGS BETWEEN 2 DATES:
+
+              realm.where(GlucoseReading.class)
+                        .between("created", DATE1, DATE2);*/
+
+    }
+
+    public List<Integer> getAverageGlucoseReadingsByMonth() {
+        JodaTimeAndroid.init(mContext);
+
+        Date maxDate = realm.where(GlucoseReading.class)
+                .maximumDate("created");
+        Date minDate = realm.where(GlucoseReading.class)
+                .minimumDate("created");
+        DateTime maxDateTime = new DateTime(maxDate.getTime());
+        DateTime minDateTime = new DateTime(minDate.getTime());
+
+        int monthsNumber = Months.monthsBetween(minDateTime, maxDateTime).getMonths();
+
+        /*  USE THIS TO GET READINGS BETWEEN 2 DATES:
+
+              realm.where(GlucoseReading.class)
+                        .between("created", DATE1, DATE2);*/
+    }
 
     public long getNextKey() {
         Number maxId = realm.where(GlucoseReading.class)

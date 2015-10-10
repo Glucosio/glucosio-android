@@ -46,4 +46,5 @@ dependencies {
     compile 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
     compile 'com.wnafee:vector-compat:1.0.5'
     compile 'io.realm:realm-android:0.83.0'
+    compile 'net.danlew:android.joda:2.8.2'
 }
