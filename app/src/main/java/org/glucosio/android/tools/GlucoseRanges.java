@@ -1,20 +1,24 @@
 package org.glucosio.android.tools;
 
+import android.content.Context;
+
 import org.glucosio.android.db.DatabaseHandler;
 
 public class GlucoseRanges {
 
     private DatabaseHandler dB;
+    private Context mContext;
     private String preferredRange;
     private int customMin;
     private int customMax;
 
-    public GlucoseRanges(){
-        dB = new DatabaseHandler();
-        this.preferredRange = dB.getUser(1).get_preferred_range();
+    public GlucoseRanges(Context context){
+        this.mContext = context;
+        dB = new DatabaseHandler(mContext);
+        this.preferredRange = dB.getUser(1).getPreferred_range();
         if (preferredRange.equals("Custom range")){
-            this.customMin = dB.getUser(1).get_custom_range_min();
-            this.customMax = dB.getUser(1).get_custom_range_max();
+            this.customMin = dB.getUser(1).getCustom_range_min();
+            this.customMax = dB.getUser(1).getCustom_range_max();
         }
     }
 

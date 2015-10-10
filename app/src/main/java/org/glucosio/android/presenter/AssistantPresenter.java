@@ -10,7 +10,7 @@ public class AssistantPresenter {
 
     public AssistantPresenter(AssistantFragment assistantFragment) {
         this.fragment= assistantFragment;
-        dB = new DatabaseHandler();
+        dB = new DatabaseHandler(assistantFragment.getContext());
     }
 
     public void addReading() {

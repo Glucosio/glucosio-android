@@ -23,6 +23,7 @@ public class DatabaseHandler {
     Realm realm;
 
     public DatabaseHandler(Context context) {
+        this.mContext = context;
         this.realm=Realm.getInstance(mContext);
     }
 
@@ -32,7 +33,7 @@ public class DatabaseHandler {
         realm.commitTransaction();
     }
 
-    public User getUser(int id) {
+    public User getUser(long id) {
         return realm.where(User.class)
                 .equalTo("id", id)
                 .findFirst();
@@ -45,8 +46,8 @@ public class DatabaseHandler {
     }
 
     public void addGlucoseReading(GlucoseReading reading) {
-        GlucoseReading newGlucoseReading = reading;
         realm.beginTransaction();
+        reading.setId(getNextKey());
         realm.copyToRealm(reading);
         realm.commitTransaction();
     }
@@ -62,7 +63,7 @@ public class DatabaseHandler {
                 .findAllSorted("created", false);
     }
 
-    public GlucoseReading getGlucoseReading(int id) {
+    public GlucoseReading getGlucoseReading(long id) {
         return realm.where(GlucoseReading.class)
                 .equalTo("id", id)
                 .findFirst();
@@ -117,18 +118,19 @@ public class DatabaseHandler {
         List<GlucoseReading> glucoseReading = getGlucoseReadings();
         ArrayList<String> datetimeArray = new ArrayList<String>();
         int i;
+        DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
         for (i = 0; i < glucoseReading.size(); i++){
             String reading;
             GlucoseReading singleReading= glucoseReading.get(i);
-            reading = singleReading.getCreated().toString();
+            reading = inputFormat.format(singleReading.getCreated());
             datetimeArray.add(reading);
         }
 
         return datetimeArray;
     }
 
-    public GlucoseReading getGlucoseReadingById(int id){
+    public GlucoseReading getGlucoseReadingById(long id){
         return getGlucoseReading(id);
     }
 
@@ -180,4 +182,14 @@ public class DatabaseHandler {
         String[] columns = new String[] { "reading", "strftime('%Y%m', created) AS month" };
         return GlucoseReading.getGlucoseReadingsByGroup(columns, "month");
     }*/
+
+    public long getNextKey() {
+        Number maxId = realm.where(GlucoseReading.class)
+                .max("id");
+        if (maxId == null){
+            return 0;
+        } else {
+            return Long.parseLong(maxId.toString())+1;
+        }
+    }
 }

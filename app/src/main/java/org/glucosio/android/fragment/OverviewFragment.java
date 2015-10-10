@@ -166,13 +166,13 @@ public class OverviewFragment extends Fragment {
         } else if (graphSpinner.getSelectedItemPosition() == 1){
             // Week view
             for (int i = 0; i < presenter.getReadingsWeek().size(); i++) {
-                String date = presenter.convertDate(presenter.getReadingsWeek().get(i).get_created());
+                String date = presenter.convertDate(presenter.getReadingsWeek().get(i).getCreated().toString());
                 xVals.add(date + "");
             }
         } else {
             // Month view
             for (int i = 0; i < presenter.getReadingsWeek().size(); i++) {
-                String date = presenter.convertDate(presenter.getReadingsMonth().get(i).get_created());
+                String date = presenter.convertDate(presenter.getReadingsMonth().get(i).getCreated().toString());
                 xVals.add(date + "");
             }
         }
@@ -197,10 +197,10 @@ public class OverviewFragment extends Fragment {
             // Week view
             for (int i = 0; i < presenter.getReadingsWeek().size(); i++) {
                 if (presenter.getUnitMeasuerement().equals("mg/dL")) {
-                    float val = Float.parseFloat(presenter.getReadingsWeek().get(i).get_reading()+"");
+                    float val = Float.parseFloat(presenter.getReadingsWeek().get(i).getReading()+"");
                     yVals.add(new Entry(val, i));
                 } else {
-                    double val = converter.toMmolL(Double.parseDouble(presenter.getReadingsWeek().get(i).get_reading()+""));
+                    double val = converter.toMmolL(Double.parseDouble(presenter.getReadingsWeek().get(i).getReading()+""));
                     float converted = (float) val;
                     yVals.add(new Entry(converted, i));
                 }
@@ -209,10 +209,10 @@ public class OverviewFragment extends Fragment {
             // Month view
             for (int i = 0; i < presenter.getReadingsMonth().size(); i++) {
                 if (presenter.getUnitMeasuerement().equals("mg/dL")) {
-                    float val = Float.parseFloat(presenter.getReadingsMonth().get(i).get_reading()+"");
+                    float val = Float.parseFloat(presenter.getReadingsMonth().get(i).getReading()+"");
                     yVals.add(new Entry(val, i));
                 } else {
-                    double val = converter.toMmolL(Double.parseDouble(presenter.getReadingsMonth().get(i).get_reading()+""));
+                    double val = converter.toMmolL(Double.parseDouble(presenter.getReadingsMonth().get(i).getReading()+""));
                     float converted = (float) val;
                     yVals.add(new Entry(converted, i));
                 }
@@ -256,7 +256,7 @@ public class OverviewFragment extends Fragment {
                 readingTextView.setText(converter.toMmolL(Double.parseDouble(presenter.getLastReading().toString())) + " mmol/L");
             }
 
-            GlucoseRanges ranges = new GlucoseRanges();
+            GlucoseRanges ranges = new GlucoseRanges(getActivity().getApplicationContext());
             String color = ranges.colorFromRange(Integer.parseInt(presenter.getLastReading()));
             switch (color) {
                 case "green":

@@ -11,8 +11,10 @@ import org.glucosio.android.tools.ReadingTools;
 import org.glucosio.android.tools.SplitDateTime;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class MainPresenter {
 
@@ -32,18 +34,18 @@ public class MainPresenter {
 
     public MainPresenter(MainActivity mainActivity) {
         this.mainActivity = mainActivity;
-        dB = new DatabaseHandler();
+        dB = new DatabaseHandler(mainActivity.getApplicationContext());
         Log.i("msg::","initiated db object");
-        /*if (dB.getUser(1) == null){
+        if (dB.getUser(1) == null){
             // if user exists start hello activity
             mainActivity.startHelloActivity();
         } else {
             //creating  a nrw user
             user = dB.getUser(1);
-            age = user.get_age();
+            age = user.getAge();
             rTools = new ReadingTools();
             converter = new GlucoseConverter();
-        }*/
+        }
     }
 
     public boolean isdbEmpty(){
@@ -57,7 +59,8 @@ public class MainPresenter {
 
     public void getCurrentTime(){
         DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        String formatted = inputFormat.format(Calendar.getInstance().getTime());
+        Date formatted = Calendar.getInstance().getTime();
+
         SplitDateTime addSplitDateTime = new SplitDateTime(formatted, inputFormat);
 
         this.readingYear = addSplitDateTime.getYear();
@@ -69,7 +72,8 @@ public class MainPresenter {
 
     public int timeToSpinnerType() {
         DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        String formatted = inputFormat.format(Calendar.getInstance().getTime());
+        Date formatted = Calendar.getInstance().getTime();
+
         SplitDateTime addSplitDateTime = new SplitDateTime(formatted, inputFormat);
         int hour = Integer.parseInt(addSplitDateTime.getHour());
 
@@ -81,16 +85,16 @@ public class MainPresenter {
     }
 
     public String getGlucoseReadingReadingById(int id){
-        return dB.getGlucoseReadingById(id).get_reading() + "";
+        return dB.getGlucoseReadingById(id).getReading() + "";
     }
 
     public String getGlucoseReadingTypeById(int id){
-        return dB.getGlucoseReadingById(id).get_reading_type();
+        return dB.getGlucoseReadingById(id).getReading_type();
     }
 
     public void getGlucoseReadingTimeById(int id){
         DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        SplitDateTime splitDateTime = new SplitDateTime(dB.getGlucoseReadingById(id).get_created(), inputFormat);
+        SplitDateTime splitDateTime = new SplitDateTime(dB.getGlucoseReadingById(id).getCreated(), inputFormat);
         this.readingYear = splitDateTime.getYear();
         this.readingMonth = splitDateTime.getMonth();
         this.readingDay = splitDateTime.getDay();
@@ -100,7 +104,10 @@ public class MainPresenter {
 
     public void dialogOnAddButtonPressed(String time, String date, String reading, String type){
         if (validateDate(date) && validateTime(time) && validateReading(reading) && validateType(type)) {
-            String finalDateTime = readingYear + "-" + readingMonth + "-" + readingDay + " " + readingHour + ":" + readingMinute;
+
+            Calendar cal = Calendar.getInstance();
+            cal.set(Integer.parseInt(readingYear),Integer.parseInt(readingMonth),Integer.parseInt(readingDay),Integer.parseInt(readingHour),Integer.parseInt(readingMinute));
+            Date finalDateTime = cal.getTime();
 
             if (getUnitMeasuerement().equals("mg/dL")) {
                 int finalReading = Integer.parseInt(reading);
@@ -120,7 +127,9 @@ public class MainPresenter {
     public void dialogOnEditButtonPressed(String time, String date, String reading, String type, int id){
         if (validateDate(date) && validateTime(time) && validateReading(reading)) {
             int finalReading = Integer.parseInt(reading);
-            String finalDateTime = readingYear + "-" + readingMonth + "-" + readingDay + " " + readingHour + ":" + readingMinute;
+            Calendar cal = Calendar.getInstance();
+            cal.set(Integer.parseInt(readingYear),Integer.parseInt(readingMonth),Integer.parseInt(readingDay),Integer.parseInt(readingHour),Integer.parseInt(readingMinute));
+            Date finalDateTime = cal.getTime();
 
             GlucoseReading gReadingToDelete = dB.getGlucoseReadingById(id);
             GlucoseReading gReading = new GlucoseReading(finalReading, type, finalDateTime,"");
@@ -186,7 +195,7 @@ public class MainPresenter {
     // Getters and Setters
 
     public String getUnitMeasuerement(){
-        return dB.getUser(1).get_preferred_unit();
+        return dB.getUser(1).getPreferred_unit();
     }
 
     public String getReadingYear() {

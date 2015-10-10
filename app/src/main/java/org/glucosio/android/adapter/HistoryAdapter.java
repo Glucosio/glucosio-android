@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import org.glucosio.android.R;
+import org.glucosio.android.fragment.HistoryFragment;
 import org.glucosio.android.presenter.HistoryPresenter;
 import org.glucosio.android.tools.GlucoseConverter;
 import org.glucosio.android.tools.GlucoseRanges;
@@ -70,7 +71,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
 
         idTextView.setText(presenter.getId().get(position).toString());
 
-        GlucoseRanges ranges = new GlucoseRanges();
+        GlucoseRanges ranges = new GlucoseRanges(mContext);
         String color = ranges.colorFromRange(presenter.getReading().get(position));
 
         if (presenter.getUnitMeasuerement().equals("mg/dL")) {

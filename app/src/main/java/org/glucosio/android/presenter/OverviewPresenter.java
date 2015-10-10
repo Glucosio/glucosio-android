@@ -22,7 +22,7 @@ public class OverviewPresenter {
 
 
     public OverviewPresenter(OverviewFragment overviewFragment) {
-        dB = new DatabaseHandler();
+        dB = new DatabaseHandler(overviewFragment.getContext());
         this.fragment = overviewFragment;
     }
 
@@ -32,8 +32,8 @@ public class OverviewPresenter {
 
     public void loadDatabase(){
         this.reading = dB.getGlucoseReadingAsArray();
-        this.readingsMonth = dB.getAverageGlucoseReadingsByMonth();
-        this.readingsWeek = dB.getAverageGlucoseReadingsByWeek();
+/*        this.readingsMonth = dB.getAverageGlucoseReadingsByMonth();
+        this.readingsWeek = dB.getAverageGlucoseReadingsByWeek();*/
         this.type = dB.getGlucoseTypeAsArray();
         this.datetime = dB.getGlucoseDateTimeAsArray();
     }
@@ -60,11 +60,11 @@ public class OverviewPresenter {
     }
 
     public String getUnitMeasuerement(){
-        return dB.getUser(1).get_preferred_unit();
+        return dB.getUser(1).getPreferred_unit();
     }
 
     public int getUserAge(){
-        return dB.getUser(1).get_age();
+        return dB.getUser(1).getAge();
     }
 
     public ArrayList<Integer> getReading() {

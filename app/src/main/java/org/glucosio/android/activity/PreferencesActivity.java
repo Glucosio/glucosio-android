@@ -47,14 +47,16 @@ public class PreferencesActivity extends AppCompatActivity {
         private EditTextPreference agePref;
         private EditTextPreference minRangePref;
         private EditTextPreference maxRangePref;
+        private User updatedUser;
 
         @Override
         public void onCreate(final Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.preferences);
 
-            dB = new DatabaseHandler();
+            dB = new DatabaseHandler(getActivity().getApplicationContext());
             user = dB.getUser(1);
+            updatedUser = new User(user.getId(),user.getName(),user.getPreferred_language(),user.getCountry(),user.getAge(),user.getGender(),user.getD_type(),user.getPreferred_unit(),user.getPreferred_range(),user.getCustom_range_min(),user.getCustom_range_max());
 
             agePref = (EditTextPreference) findPreference("pref_age");
             countryPref = (ListPreference) findPreference("pref_country");
@@ -65,18 +67,14 @@ public class PreferencesActivity extends AppCompatActivity {
             minRangePref = (EditTextPreference) findPreference("pref_range_min");
             maxRangePref = (EditTextPreference) findPreference("pref_range_max");
 
-            agePref.setDefaultValue(user.get_age());
-            countryPref.setValue(user.get_country());
-            genderPref.setValue(user.get_gender());
-            diabetesTypePref.setValue(user.get_d_type() + "");
-            unitPref.setValue(user.get_preferred_unit());
-            agePref.setDefaultValue(user.get_age());
-            countryPref.setValue(user.get_country());
-            genderPref.setValue(user.get_gender());
-            unitPref.setValue(user.get_preferred_unit());
-            rangePref.setValue(user.get_preferred_range());
-            minRangePref.setDefaultValue(user.get_custom_range_min() + "");
-            maxRangePref.setDefaultValue(user.get_custom_range_max() + "");
+            agePref.setDefaultValue(user.getAge());
+            countryPref.setValue(user.getCountry());
+            genderPref.setValue(user.getGender());
+            diabetesTypePref.setValue(user.getD_type() + "");
+            unitPref.setValue(user.getPreferred_unit());
+            rangePref.setValue(user.getPreferred_range());
+            minRangePref.setDefaultValue(user.getCustom_range_min() + "");
+            maxRangePref.setDefaultValue(user.getCustom_range_max() + "");
 
             if (!rangePref.equals("custom")){
                 minRangePref.setEnabled(false);
@@ -92,7 +90,7 @@ public class PreferencesActivity extends AppCompatActivity {
             countryPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    user.set_country(newValue.toString());
+                    updatedUser.setCountry(newValue.toString());
 
                     updateDB();
                     return false;
@@ -104,7 +102,7 @@ public class PreferencesActivity extends AppCompatActivity {
                     if (newValue.toString().trim().equals("")) {
                         return false;
                     }
-                    user.set_age(Integer.parseInt(newValue.toString()));
+                    updatedUser.setAge(Integer.parseInt(newValue.toString()));
                     updateDB();
                     return true;
                 }
@@ -112,7 +110,7 @@ public class PreferencesActivity extends AppCompatActivity {
             genderPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    user.set_gender(newValue.toString());
+                    updatedUser.setGender(newValue.toString());
                     updateDB();
                     return true;
                 }
@@ -121,10 +119,10 @@ public class PreferencesActivity extends AppCompatActivity {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
                     if (newValue.toString().equals(getResources().getString(R.string.helloactivity_spinner_diabetes_type_1))) {
-                        user.set_d_type(1);
+                        updatedUser.setD_type(1);
                         updateDB();
                     } else {
-                        user.set_d_type(2);
+                        updatedUser.setD_type(2);
                         updateDB();
                     }
                     return true;
@@ -133,7 +131,7 @@ public class PreferencesActivity extends AppCompatActivity {
             unitPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    user.set_preferred_unit(newValue.toString());
+                    updatedUser.setPreferred_unit(newValue.toString());
                     updateDB();
                     return true;
                 }
@@ -141,7 +139,7 @@ public class PreferencesActivity extends AppCompatActivity {
             rangePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    user.set_preferred_range(newValue.toString());
+                    updatedUser.setPreferred_range(newValue.toString());
                     updateDB();
                     return true;
                 }
@@ -152,7 +150,7 @@ public class PreferencesActivity extends AppCompatActivity {
                     if (newValue.toString().trim().equals("")) {
                         return false;
                     }
-                    user.set_custom_range_min(Integer.parseInt(newValue.toString()));
+                    updatedUser.setCustom_range_min(Integer.parseInt(newValue.toString()));
                     updateDB();
                     return true;
                 }
@@ -163,7 +161,7 @@ public class PreferencesActivity extends AppCompatActivity {
                     if (newValue.toString().trim().equals("")) {
                         return false;
                     }
-                    user.set_custom_range_max(Integer.parseInt(newValue.toString()));
+                    updatedUser.setCustom_range_max(Integer.parseInt(newValue.toString()));
                     updateDB();
                     return true;
                 }
@@ -224,26 +222,26 @@ public class PreferencesActivity extends AppCompatActivity {
         }
 
         private void updateDB() {
-            dB.updateUser(user);
-            agePref.setSummary(user.get_age() + "");
-            genderPref.setSummary(user.get_gender() + "");
-            diabetesTypePref.setSummary(getResources().getString(R.string.glucose_reading_type) + " " + user.get_d_type());
-            unitPref.setSummary(user.get_preferred_unit() + "");
-            countryPref.setSummary(user.get_country());
-            rangePref.setSummary(user.get_preferred_range() + "");
-            minRangePref.setSummary(user.get_custom_range_min() + "");
-            maxRangePref.setSummary(user.get_custom_range_max() + "");
+            dB.updateUser(updatedUser);
+            agePref.setSummary(user.getAge() + "");
+            genderPref.setSummary(user.getGender() + "");
+            diabetesTypePref.setSummary(getResources().getString(R.string.glucose_reading_type) + " " + user.getD_type());
+            unitPref.setSummary(user.getPreferred_unit() + "");
+            countryPref.setSummary(user.getCountry());
+            rangePref.setSummary(user.getPreferred_range() + "");
+            minRangePref.setSummary(user.getCustom_range_min() + "");
+            maxRangePref.setSummary(user.getCustom_range_max() + "");
 
-            countryPref.setValue(user.get_country());
-            genderPref.setValue(user.get_gender());
-            diabetesTypePref.setValue(user.get_d_type() + "");
-            unitPref.setValue(user.get_preferred_unit());
-            countryPref.setValue(user.get_country());
-            genderPref.setValue(user.get_gender());
-            unitPref.setValue(user.get_preferred_unit());
-            rangePref.setValue(user.get_preferred_range());
+            countryPref.setValue(user.getCountry());
+            genderPref.setValue(user.getGender());
+            diabetesTypePref.setValue(user.getD_type() + "");
+            unitPref.setValue(user.getPreferred_unit());
+            countryPref.setValue(user.getCountry());
+            genderPref.setValue(user.getGender());
+            unitPref.setValue(user.getPreferred_unit());
+            rangePref.setValue(user.getPreferred_range());
 
-            if (!user.get_preferred_range().equals("Custom range")){
+            if (!user.getPreferred_range().equals("Custom range")){
                 minRangePref.setEnabled(false);
                 maxRangePref.setEnabled(false);
             } else {

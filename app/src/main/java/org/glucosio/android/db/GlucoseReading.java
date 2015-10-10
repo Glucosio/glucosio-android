@@ -8,7 +8,7 @@ import io.realm.annotations.PrimaryKey;
 public class GlucoseReading extends RealmObject {
 
     @PrimaryKey
-    private int id;
+    private long id;
 
     private int reading;
     private String reading_type;
@@ -26,11 +26,11 @@ public class GlucoseReading extends RealmObject {
         this.notes=notes;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

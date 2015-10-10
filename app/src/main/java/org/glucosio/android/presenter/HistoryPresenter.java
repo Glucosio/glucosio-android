@@ -5,6 +5,7 @@ import org.glucosio.android.db.GlucoseReading;
 import org.glucosio.android.fragment.HistoryFragment;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class HistoryPresenter {
 
@@ -17,7 +18,7 @@ public class HistoryPresenter {
 
     public HistoryPresenter(HistoryFragment historyFragment) {
         this.fragment = historyFragment;
-        dB = new DatabaseHandler();
+        dB = new DatabaseHandler(historyFragment.getContext());
     }
 
     public void loadDatabase(){
@@ -46,7 +47,7 @@ public class HistoryPresenter {
 
     // Getters
     public String getUnitMeasuerement(){
-        return dB.getUser(1).get_preferred_unit();
+        return dB.getUser(1).getPreferred_unit();
     }
 
     public ArrayList<Long> getId() {
