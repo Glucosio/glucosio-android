@@ -183,41 +183,41 @@ public class DatabaseHandler {
     public List<Integer> getAverageGlucoseReadingsByWeek(){
         JodaTimeAndroid.init(mContext);
 
-        Date maxDate = realm.where(GlucoseReading.class)
-                .maximumDate("created");
-        Date minDate = realm.where(GlucoseReading.class)
-                .minimumDate("created");
+        DateTime maxDateTime = new DateTime(realm.where(GlucoseReading.class).minimumDate("created").getTime());
+        DateTime minDateTime = new DateTime(realm.where(GlucoseReading.class).maximumDate("created").getTime());
 
-        DateTime maxDateTime = new DateTime(maxDate.getTime());
-        DateTime minDateTime = new DateTime(minDate.getTime());
+        DateTime currentDateTime = minDateTime;
+        DateTime newDateTime = minDateTime;
 
-        Weeks weeksNumber = Weeks.weeksBetween(minDateTime, maxDateTime);
-        ArrayList<GlucoseReading> readings;
+        ArrayList<Integer> averageReadings = new ArrayList<Integer>();
 
-
-        /*  USE THIS TO GET READINGS BETWEEN 2 DATES:
-
-              realm.where(GlucoseReading.class)
-                        .between("created", DATE1, DATE2);*/
-
+        while (newDateTime.compareTo(maxDateTime) != 1) {
+            newDateTime = currentDateTime.plusWeeks(1);
+            RealmResults<GlucoseReading> readings = realm.where(GlucoseReading.class)
+                    .between("created", currentDateTime.toDate(), newDateTime.toDate()).findAll();
+            averageReadings.add(((int)readings.average("reading")));
+        }
+        return averageReadings;
     }
 
     public List<Integer> getAverageGlucoseReadingsByMonth() {
         JodaTimeAndroid.init(mContext);
 
-        Date maxDate = realm.where(GlucoseReading.class)
-                .maximumDate("created");
-        Date minDate = realm.where(GlucoseReading.class)
-                .minimumDate("created");
-        DateTime maxDateTime = new DateTime(maxDate.getTime());
-        DateTime minDateTime = new DateTime(minDate.getTime());
+        DateTime maxDateTime = new DateTime(realm.where(GlucoseReading.class).minimumDate("created").getTime());
+        DateTime minDateTime = new DateTime(realm.where(GlucoseReading.class).maximumDate("created").getTime());
 
-        int monthsNumber = Months.monthsBetween(minDateTime, maxDateTime).getMonths();
+        DateTime currentDateTime = minDateTime;
+        DateTime newDateTime = minDateTime;
 
-        /*  USE THIS TO GET READINGS BETWEEN 2 DATES:
+        ArrayList<Integer> averageReadings = new ArrayList<Integer>();
 
-              realm.where(GlucoseReading.class)
-                        .between("created", DATE1, DATE2);*/
+        while (newDateTime.compareTo(maxDateTime) != 1) {
+            newDateTime = currentDateTime.plusMonths(1);
+            RealmResults<GlucoseReading> readings = realm.where(GlucoseReading.class)
+                    .between("created", currentDateTime.toDate(), newDateTime.toDate()).findAll();
+            averageReadings.add(((int)readings.average("reading")));
+        }
+        return averageReadings;
     }
 
     public long getNextKey() {
