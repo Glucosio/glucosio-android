@@ -216,8 +216,6 @@ public class OverviewFragment extends Fragment {
             }
         } else {
             // Month view
-            Toast.makeText(getActivity().getApplicationContext(), presenter.getReadingsMonth().size() +"",Toast.LENGTH_SHORT).show();
-
             for (int i = 0; i < presenter.getReadingsMonth().size(); i++) {
                 if (presenter.getUnitMeasuerement().equals("mg/dL")) {
                     float val = Float.parseFloat(presenter.getReadingsMonth().get(i)+"");
