@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
@@ -59,16 +60,20 @@ public class OverviewFragment extends Fragment {
                              Bundle savedInstanceState) {
         View mFragmentView;
         presenter = new OverviewPresenter(this);
-        presenter.loadDatabase();
+        if (!presenter.isdbEmpty()) {
+            presenter.loadDatabase();
+        }
 
         mFragmentView = inflater.inflate(R.layout.fragment_overview, container, false);
 
         chart = (LineChart) mFragmentView.findViewById(R.id.chart);
         Legend legend = chart.getLegend();
 
-        Collections.reverse(presenter.getReading());
-        Collections.reverse(presenter.getDatetime());
-        Collections.reverse(presenter.getType());
+        if (!presenter.isdbEmpty()) {
+            Collections.reverse(presenter.getReading());
+            Collections.reverse(presenter.getDatetime());
+            Collections.reverse(presenter.getType());
+        }
 
         readingTextView = (TextView) mFragmentView.findViewById(R.id.item_history_reading);
         trendTextView = (TextView) mFragmentView.findViewById(R.id.item_history_trend);
@@ -84,8 +89,10 @@ public class OverviewFragment extends Fragment {
         graphSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                setData();
-                chart.invalidate();
+                if (!presenter.isdbEmpty()) {
+                    setData();
+                    chart.invalidate();
+                }
             }
 
             @Override
@@ -141,7 +148,9 @@ public class OverviewFragment extends Fragment {
         chart.setBackgroundColor(Color.parseColor("#FFFFFF"));
         chart.setDescription("");
         chart.setGridBackgroundColor(Color.parseColor("#FFFFFF"));
-        setData();
+        if (!presenter.isdbEmpty()) {
+            setData();
+        }
         legend.setEnabled(false);
 
         loadLastReading();
@@ -166,13 +175,13 @@ public class OverviewFragment extends Fragment {
         } else if (graphSpinner.getSelectedItemPosition() == 1){
             // Week view
             for (int i = 0; i < presenter.getReadingsWeek().size(); i++) {
-                String date = presenter.convertDate(presenter.getReadingsWeek().get(i).getCreated().toString());
+                String date = presenter.convertDate(presenter.getDatetimeWeek().get(i));
                 xVals.add(date + "");
             }
         } else {
             // Month view
-            for (int i = 0; i < presenter.getReadingsWeek().size(); i++) {
-                String date = presenter.convertDate(presenter.getReadingsMonth().get(i).getCreated().toString());
+            for (int i = 0; i < presenter.getReadingsMonth().size(); i++) {
+                String date = presenter.convertDate(presenter.getDatetimeMonth().get(i));
                 xVals.add(date + "");
             }
         }
@@ -197,22 +206,24 @@ public class OverviewFragment extends Fragment {
             // Week view
             for (int i = 0; i < presenter.getReadingsWeek().size(); i++) {
                 if (presenter.getUnitMeasuerement().equals("mg/dL")) {
-                    float val = Float.parseFloat(presenter.getReadingsWeek().get(i).getReading()+"");
+                    float val = Float.parseFloat(presenter.getReadingsWeek().get(i)+"");
                     yVals.add(new Entry(val, i));
                 } else {
-                    double val = converter.toMmolL(Double.parseDouble(presenter.getReadingsWeek().get(i).getReading()+""));
+                    double val = converter.toMmolL(Double.parseDouble(presenter.getReadingsWeek().get(i)+""));
                     float converted = (float) val;
                     yVals.add(new Entry(converted, i));
                 }
             }
         } else {
             // Month view
+            Toast.makeText(getActivity().getApplicationContext(), presenter.getReadingsMonth().size() +"",Toast.LENGTH_SHORT).show();
+
             for (int i = 0; i < presenter.getReadingsMonth().size(); i++) {
                 if (presenter.getUnitMeasuerement().equals("mg/dL")) {
-                    float val = Float.parseFloat(presenter.getReadingsMonth().get(i).getReading()+"");
+                    float val = Float.parseFloat(presenter.getReadingsMonth().get(i)+"");
                     yVals.add(new Entry(val, i));
                 } else {
-                    double val = converter.toMmolL(Double.parseDouble(presenter.getReadingsMonth().get(i).getReading()+""));
+                    double val = converter.toMmolL(Double.parseDouble(presenter.getReadingsMonth().get(i)+""));
                     float converted = (float) val;
                     yVals.add(new Entry(converted, i));
                 }

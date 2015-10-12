@@ -16,8 +16,10 @@ public class OverviewPresenter {
     private ArrayList<Integer> reading;
     private ArrayList <String> type;
     private ArrayList<String> datetime;
-    private List<GlucoseReading> readingsWeek;
-    private List<GlucoseReading> readingsMonth;
+    private List<Integer> readingsWeek;
+    private List<Integer> readingsMonth;
+    private List<String> datetimeWeek;
+    private List<String> datetimeMonth;
     private OverviewFragment fragment;
 
 
@@ -30,16 +32,17 @@ public class OverviewPresenter {
         return dB.getGlucoseReadings().size() == 0;
     }
 
-    public void loadDatabase(){
+    public void loadDatabase() {
         this.reading = dB.getGlucoseReadingAsArray();
-/*        this.readingsMonth = dB.getAverageGlucoseReadingsByMonth();
-        this.readingsWeek = dB.getAverageGlucoseReadingsByWeek();*/
+        this.readingsMonth = dB.getAverageGlucoseReadingsByMonth();
+        this.readingsWeek = dB.getAverageGlucoseReadingsByWeek();
+        this.datetimeWeek = dB.getGlucoseDatetimesByWeek();
+        this.datetimeMonth = dB.getGlucoseDatetimesByMonth();
         this.type = dB.getGlucoseTypeAsArray();
         this.datetime = dB.getGlucoseDateTimeAsArray();
     }
 
     public String convertDate(String date) {
-        ReadingTools rTools = new ReadingTools();
         return fragment.convertDate(date);
     }
 
@@ -79,11 +82,19 @@ public class OverviewPresenter {
         return datetime;
     }
 
-    public List<GlucoseReading> getReadingsWeek() {
+    public List<Integer> getReadingsWeek() {
         return readingsWeek;
     }
 
-    public List<GlucoseReading> getReadingsMonth() {
+    public List<Integer> getReadingsMonth() {
         return readingsMonth;
+    }
+
+    public List<String> getDatetimeWeek() {
+        return datetimeWeek;
+    }
+
+    public List<String> getDatetimeMonth() {
+        return datetimeMonth;
     }
 }
