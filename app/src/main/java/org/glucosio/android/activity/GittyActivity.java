@@ -19,7 +19,7 @@ public class GittyActivity extends GittyReporter {
     @Override
     public void init(Bundle savedInstanceState) {
 
-        String token = "OGRlZDVkZjBjZGYzNzNjYTdiNzY2MmYwMGVmMTU5ZjcyMjYwMWQ1NA==";
+        String token = "NTZhYmQ5NjQ5MTU5ZmU5ZjI3ZDU2MmE2OTM0OWU0MGRhMDRmMGVhMg==";
 
         byte[] data1 = Base64.decode(token, Base64.DEFAULT);
         String decodedToken = token;
