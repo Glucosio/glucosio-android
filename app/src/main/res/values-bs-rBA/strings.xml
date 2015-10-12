@@ -55,9 +55,9 @@
   <string name="fragment_overview_last_reading">Zadnja provjera:</string>
   <string name="fragment_overview_trend">Trend u proteklih mjesec dana:</string>
   <string name="fragment_overview_trend_positive">u granicama i zdrav</string>
-  <string name="fragment_overview_selector_month">Month</string>
-  <string name="fragment_overview_selector_day">Day</string>
-  <string name="fragment_overview_selector_week">Week</string>
+  <string name="fragment_overview_selector_month">Mjesec</string>
+  <string name="fragment_overview_selector_day">Dan</string>
+  <string name="fragment_overview_selector_week">Sedmica</string>
   <string-array name="fragment_overview_selector">
     <item>@string/fragment_overview_selector_day</item>
     <item>@string/fragment_overview_selector_week</item>
@@ -67,7 +67,7 @@
   <string name="preferences_version">Verzija</string>
   <string name="preferences_terms">Uvjeti korištenja</string>
   <string name="glucose_reading_type">Tip</string>
-  <string name="weight">Weight</string>
+  <string name="weight">Težina</string>
   <string name="dialog_add_custom_type">Zasebna kategorija mjerenja</string>
   <string-array name="tips_all">
     <item>Jedite više svježe neprocesirane hrane da biste smanjili unos ugljikohidrata i šećera.</item>
@@ -128,9 +128,9 @@
     <item>@string/assistant_action_reading</item>
     <item>@string/assistant_action_try</item>
   </string-array>
-  <string name="helloactivity_spinner_preferred_range">Preferred range</string>
-  <string name="helloactivity_spinner_preferred_range_4">Custom range</string>
-  <string name="helloactivity_preferred_range_min">Min value</string>
-  <string name="helloactivity_preferred_range_max">Max value</string>
-  <string name="assistant_action_try">TRY IT NOW</string>
+  <string name="helloactivity_spinner_preferred_range">Željeni raspon</string>
+  <string name="helloactivity_spinner_preferred_range_4">Zaseban raspon</string>
+  <string name="helloactivity_preferred_range_min">Min. vrijednost</string>
+  <string name="helloactivity_preferred_range_max">Max. vrijednost</string>
+  <string name="assistant_action_try">PROBAJ ODMAH</string>
 </resources>

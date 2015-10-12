@@ -104,15 +104,15 @@
   <string name="assistant_weight_title">Actualizar su peso</string>
   <string name="assistant_weight_desc">Asegúrese de actualizar su peso para que Glucosio tenga la información más precisa.</string>
   <string name="assistant_research_title">Actualizar su investigación opt-in</string>
-  <string name="assistant_research_desc">You can always opt-in or opt-out of diabetes research sharing, but remember all data shared is entirely anonymous. We only share demographics and glucose level trends.</string>
+  <string name="assistant_research_desc">Usted puede siempre opt-in u opt-out del intercambio de la investigación de diabetes, pero recuerde que todos los datos compartidos son totalmente anónimos. Solamente compartimos datos demográficos y las tendencias de los niveles de glucosio.</string>
   <string name="assistant_categories_title">Crear categorías</string>
   <string name="assistant_categories_desc">Glucosio tiene categorías predeterminadas para la entrada de glucosa, pero puede crear categorías personalizadas en la configuración para que coincida con sus necesidades particulares.</string>
-  <string name="assistant_check_title">Check here often</string>
-  <string name="assistant_check_desc">Glucosio assistant provides regular tips and will keep improving, so always check here for useful actions you can take to improve your Glucosio experience and for other useful tips.</string>
-  <string name="assistant_feedback_title">Submit feedback </string>
-  <string name="assistant_feedback_desc">If you find any technical issues or have feedback about Glucosio we encourage you to submit it in the settings menu in order to help us improve Glucosio.</string>
-  <string name="assistant_reading_title">Add a reading</string>
-  <string name="assistant_reading_desc">Asegúrese de añadir regularmente sus lecturas de glucosa para que podamos ayudarle a seguir sus niveles de glucosa a lo largo del tiempo.</string>
+  <string name="assistant_check_title">Revise esto a menudo</string>
+  <string name="assistant_check_desc">Asistente de Glucosio ofrece consejos regulares y seguirá mejorando, así que siempre revisa aquí para ver lo que puede hacer para mejorar su experiencia con Glucosio y para aprender otros consejos útiles.</string>
+  <string name="assistant_feedback_title">Enviar comentarios </string>
+  <string name="assistant_feedback_desc">Si encuentra cualquier problema técnico o tiene comentarios sobre Glucosio, le animamos a enviar sus comentarios en el menú de configuración con el fin de ayudarnos a mejorar Glucosio.</string>
+  <string name="assistant_reading_title">Añadir una medición de glucosa</string>
+  <string name="assistant_reading_desc">Asegúrese de añadir regularmente sus lecturas de glucosa para que podamos ayudarle a seguir sus niveles de glucosa a largo plazo.</string>
   <string-array name="assistant_titles">
     <item>@string/assistant_feedback_title</item>
     <item>@string/assistant_reading_title</item>
@@ -128,9 +128,9 @@
     <item>@string/assistant_action_reading</item>
     <item>@string/assistant_action_try</item>
   </string-array>
-  <string name="helloactivity_spinner_preferred_range">Preferred range</string>
-  <string name="helloactivity_spinner_preferred_range_4">Custom range</string>
-  <string name="helloactivity_preferred_range_min">Min value</string>
-  <string name="helloactivity_preferred_range_max">Max value</string>
-  <string name="assistant_action_try">TRY IT NOW</string>
+  <string name="helloactivity_spinner_preferred_range">Gama preferida</string>
+  <string name="helloactivity_spinner_preferred_range_4">Gama personalizada</string>
+  <string name="helloactivity_preferred_range_min">Valor mínimo</string>
+  <string name="helloactivity_preferred_range_max">Valor máximo</string>
+  <string name="assistant_action_try">PRUÉBELO AHORA</string>
 </resources>
