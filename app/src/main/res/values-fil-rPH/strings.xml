@@ -55,9 +55,9 @@
   <string name="fragment_overview_last_reading">Huling pagsusuri:</string>
   <string name="fragment_overview_trend">Trend sa nakalipas na buwan:</string>
   <string name="fragment_overview_trend_positive">nasa tamang sukat at ikaw ay malusog</string>
-  <string name="fragment_overview_selector_month">Month</string>
-  <string name="fragment_overview_selector_day">Day</string>
-  <string name="fragment_overview_selector_week">Week</string>
+  <string name="fragment_overview_selector_month">Buwan</string>
+  <string name="fragment_overview_selector_day">Araw</string>
+  <string name="fragment_overview_selector_week">Linggo</string>
   <string-array name="fragment_overview_selector">
     <item>@string/fragment_overview_selector_day</item>
     <item>@string/fragment_overview_selector_week</item>
@@ -67,7 +67,7 @@
   <string name="preferences_version">Bersyon</string>
   <string name="preferences_terms">Terms of use</string>
   <string name="glucose_reading_type">Uri</string>
-  <string name="weight">Weight</string>
+  <string name="weight">Timbang</string>
   <string name="dialog_add_custom_type">Custom na kategorya para sa mga sukat</string>
   <string-array name="tips_all">
     <item>Kumain ng mga sariwa at hindi processed na mga pagkain para makaiwas sa carbohydrate at asukal.</item>
@@ -128,9 +128,9 @@
     <item>@string/assistant_action_reading</item>
     <item>@string/assistant_action_try</item>
   </string-array>
-  <string name="helloactivity_spinner_preferred_range">Preferred range</string>
-  <string name="helloactivity_spinner_preferred_range_4">Custom range</string>
+  <string name="helloactivity_spinner_preferred_range">Nais na saklaw</string>
+  <string name="helloactivity_spinner_preferred_range_4">Custom na saklaw</string>
   <string name="helloactivity_preferred_range_min">Min value</string>
   <string name="helloactivity_preferred_range_max">Max value</string>
-  <string name="assistant_action_try">TRY IT NOW</string>
+  <string name="assistant_action_try">SUBUKAN NGAYON</string>
 </resources>

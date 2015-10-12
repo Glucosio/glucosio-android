@@ -103,7 +103,7 @@
   <string name="assistant_action_reading">AJOUTER LECTURE</string>
   <string name="assistant_weight_title">Mise à jour de votre poids</string>
   <string name="assistant_weight_desc">Assurez-vous de mettre à jour votre poids afin Glucosio contient les informations les plus exactes.</string>
-  <string name="assistant_research_title">Update your research opt-in</string>
+  <string name="assistant_research_title">Mettre à jour votre consentement à la recherche</string>
   <string name="assistant_research_desc">Vous pouvez toujours activer ou désactiver le partage pour la recherche sur le diabète, mais rappelez vous que les données partagées sont entièrement anonyme. Nous partageons seulement les données démographiques et le niveau de glucose.</string>
   <string name="assistant_categories_title">Créer des catégories</string>
   <string name="assistant_categories_desc">Glucosio comprend des catégories par défaut pour l\'entrée de glucose mais vous pouvez créer des catégories personnalisées dans paramètres pour assortir vos besoins uniques.</string>

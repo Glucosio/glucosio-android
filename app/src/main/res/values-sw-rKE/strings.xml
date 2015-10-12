@@ -55,9 +55,9 @@
   <string name="fragment_overview_last_reading">Kuangalia ya mwisho:</string>
   <string name="fragment_overview_trend">Mwenendo zaidi ya mwezi uliopita:</string>
   <string name="fragment_overview_trend_positive">katika mbalimbali na afya njema</string>
-  <string name="fragment_overview_selector_month">Month</string>
-  <string name="fragment_overview_selector_day">Day</string>
-  <string name="fragment_overview_selector_week">Week</string>
+  <string name="fragment_overview_selector_month">Mwezi</string>
+  <string name="fragment_overview_selector_day">Siku</string>
+  <string name="fragment_overview_selector_week">Wiki</string>
   <string-array name="fragment_overview_selector">
     <item>@string/fragment_overview_selector_day</item>
     <item>@string/fragment_overview_selector_week</item>
@@ -67,14 +67,14 @@
   <string name="preferences_version">Toleo</string>
   <string name="preferences_terms">Masharti ya matumizi</string>
   <string name="glucose_reading_type">Aina</string>
-  <string name="weight">Weight</string>
+  <string name="weight">Uzito</string>
   <string name="dialog_add_custom_type">Kategoria ya kipimo maalum</string>
   <string-array name="tips_all">
     <item>Eat more fresh, unprocessed foods to help reduce carbohydrate and sugar intake.</item>
-    <item>Read the nutritional label on packaged foods and beverages to control sugar and carbohydrate intake.</item>
-    <item>When eating out, ask for fish or meat broiled with no extra butter or oil.</item>
-    <item>When eating out, ask if they have low sodium dishes.</item>
-    <item>When eating out, eat the same portion sizes you would at home and take the leftovers to go.</item>
+    <item>Soma lebo za lishe zilizo katika vyakula na vinywaji vilivyo wekwa katika pakiti ili kudhibiti ulaji wa sukari na kabohaidreti.</item>
+    <item>Wakati unapokula nje, itisha samaki au nyama iliyookwa bila kuongeza siagi au mafuta.</item>
+    <item>Wakati unapokula nje, uliza kama wanaandaa vyakula vilivyo na kiasi kidogo cha sodiamu.</item>
+    <item>Unapokula nje, kula kiasi sawia na kiasi ambacho ungekula nyumbani kisha ubebe kitakacho baki.</item>
     <item>When eating out ask for low-calorie items, such as salad dressings, even if they\'re not on the menu.</item>
     <item>When eating out ask for substitutions. Instead of French fries, request a double order of a vegetable like salad, green beans or broccoli.</item>
     <item>When eating out, order foods that are not breaded or fried.</item>
