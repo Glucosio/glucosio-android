@@ -4,6 +4,12 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 public class GlucoseConverter {
+    public int toMgDl(double mmolL){
+        double converted = mmolL * 18;
+        int finalInteger = (int) converted;
+        return finalInteger;
+    }
+
     public double toMmolL(double mgDl){
         return round(mgDl / 18.0, 2);
     }

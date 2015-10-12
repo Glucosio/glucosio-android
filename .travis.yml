@@ -1,4 +1,5 @@
 language: android
+sudo: false
 
 android:
   components:
@@ -15,7 +16,10 @@ before_install:
 
 after_success:
  - chmod +x ./upload-gh-pages.sh
+ - chmod +x ./import-translations-github.sh
+ - ./import-translations-github.sh
  - ./upload-gh-pages.sh
 
 script:
+ - cd $TRAVIS_BUILD_DIR/
  - ./gradlew clean build

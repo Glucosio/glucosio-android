@@ -1,80 +1,76 @@
 package org.glucosio.android.db;
 
-/**
- * Created by ahmar on 17/8/15.
- */
-public class GlucoseReading {
+import java.util.Date;
+import java.util.UUID;
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
-    int _reading;
-    int _id;
-    int _reading_type;
-    int _user_id;
-    String _created;
+public class GlucoseReading extends RealmObject {
 
-    public GlucoseReading()
-    {
+    @PrimaryKey
+    private long id;
 
-    }
+    private int reading;
+    private String reading_type;
+    private String notes;
+    private int user_id;
+    private Date created;
 
-    public GlucoseReading(int reading,int reading_type,String created)
-    {
-        this._reading=reading;
-        this._reading_type=reading_type;
-        this._created=created;
-    }
-    public int get_user_id()
-    {
-        return this._user_id;
-    }
-    public void set_user_id(int user_id)
-    {
-        this._user_id=user_id;
-    }
-    public int get_id()
-    {
-        return this._id;
-    }
-    public void set_id(int id)
-    {
-        this._id=id;
-    }
-    public void set_reading(int reading)
-    {
-        this._reading=reading;
-    }
-    public void set_reading_type(int reading_type)
-    {
-        this._reading_type=reading_type;
+    public GlucoseReading() {
     }
 
-    public int get_reading()
-    {
-        return this._reading;
+    public GlucoseReading(int reading,String reading_type,Date created,String notes) {
+        this.reading=reading;
+        this.reading_type=reading_type;
+        this.created=created;
+        this.notes=notes;
     }
-    public int get_reading_type()
-    {
-        return this._reading_type;
+
+    public long getId() {
+        return id;
     }
-    public String get_created()
-    {
-        return this._created;
+
+    public void setId(long id) {
+        this.id = id;
     }
-    public void set_created(String created)
-    {
-       this._created=created;
+
+    public int getReading() {
+        return reading;
     }
-    public String get_type()
-    {
-        return type(this._reading_type);
+
+    public void setReading(int reading) {
+        this.reading = reading;
     }
-    public String type(int reading_type)
-    {
-        String[] enums={"Before fast","after breakfast","random"};
-        try{
-            return   enums[reading_type+1];
-        }
-        catch(ArrayIndexOutOfBoundsException e){
-            return "";
-        }
+
+    public String getReading_type() {
+        return reading_type;
+    }
+
+    public void setReading_type(String reading_type) {
+        this.reading_type = reading_type;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
     }
 }

@@ -1,28 +1,27 @@
 package org.glucosio.android.presenter;
 
 import android.text.TextUtils;
-import android.widget.HeaderViewListAdapter;
 
-import org.glucosio.android.R;
 import org.glucosio.android.activity.HelloActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.User;
-import org.w3c.dom.Text;
 
 
 public class HelloPresenter {
-    DatabaseHandler dB;
-    HelloActivity helloActivity;
-    int id;
-    int age;
-    String name;
-    String country;
-    int gender;
-    String language;
+    private DatabaseHandler dB;
+    private HelloActivity helloActivity;
+    private int id;
+    private int age;
+    private String name;
+    private String country;
+    private String gender;
+    private int diabetesType;
+    private String unitMeasurement;
+    private String language;
 
     public HelloPresenter(HelloActivity helloActivity) {
         this.helloActivity = helloActivity;
-        dB = new DatabaseHandler(helloActivity);
+        dB = new DatabaseHandler(helloActivity.getApplicationContext());
     }
 
     public void loadDatabase(){
@@ -30,12 +29,14 @@ public class HelloPresenter {
         name = "Test Account"; //TODO: add input for name in Tips;
     }
 
-    public void onNextClicked(String age, int gender, String language){
+    public void onNextClicked(String age, String gender, String language, String country, int type, String unit){
         if (validateAge(age)){
             this.age = Integer.parseInt(age);
             this.gender = gender;
             this.language = language;
-
+            this.country = country;
+            this.diabetesType = type;
+            this.unitMeasurement = unit;
             showEULA();
         } else {
             helloActivity.displayErrorMessage();
@@ -58,7 +59,7 @@ public class HelloPresenter {
     }
 
     public void saveToDatabase(){
-        dB.addUser(new User(id, name, language, country, age, gender));
+        dB.addUser(new User(id, name, language, country, age, gender, diabetesType, unitMeasurement, "ADA", 70, 180)); // We use ADA range by default
         helloActivity.closeHelloActivity();
     }
 }

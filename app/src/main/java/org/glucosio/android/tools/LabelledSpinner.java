@@ -1,5 +1,3 @@
-package org.glucosio.android.tools;
-
 /*
  * Copyright 2015 Farbod Salamat-Zadeh
  *
@@ -15,6 +13,9 @@ package org.glucosio.android.tools;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+package org.glucosio.android.tools;
+
 
         import android.content.Context;
         import android.content.res.TypedArray;
@@ -191,6 +192,23 @@ public class LabelledSpinner extends LinearLayout implements AdapterView.OnItemS
                 android.R.layout.simple_spinner_item,
                 android.R.layout.simple_spinner_dropdown_item
         );
+    }
+
+    /**
+     * Sets the array of items to be used in the Spinner.
+     *
+     * @see #setItemsArray(int)
+     * @see #setItemsArray(int, int, int)
+     *
+     * @param arrayList The ArrayList used as the data source
+     */
+    public void setItemsArray(ArrayList<?> arrayList) {
+        ArrayAdapter<?> adapter = new ArrayAdapter<>(
+                getContext(),
+                android.R.layout.simple_spinner_item,
+                arrayList);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mSpinner.setAdapter(adapter);
     }
 
     /**

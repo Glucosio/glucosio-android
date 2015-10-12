@@ -1,0 +1,271 @@
+package org.glucosio.android.activity;
+
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.preference.EditTextPreference;
+import android.preference.ListPreference;
+import android.preference.Preference;
+import android.preference.PreferenceFragment;
+import android.support.v7.app.AppCompatActivity;
+import android.text.InputFilter;
+import android.view.MenuItem;
+import android.widget.EditText;
+import org.glucosio.android.R;
+import org.glucosio.android.db.DatabaseHandler;
+import org.glucosio.android.db.User;
+import org.glucosio.android.tools.InputFilterMinMax;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Locale;
+
+public class PreferencesActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.preferences);
+
+        getFragmentManager().beginTransaction()
+                .replace(R.id.preferencesFrame, new MyPreferenceFragment()).commit();
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(getString(R.string.action_settings));
+    }
+
+    public static class MyPreferenceFragment extends PreferenceFragment {
+        private DatabaseHandler dB;
+        private User user;
+        private ListPreference countryPref;
+        private ListPreference genderPref;
+        private ListPreference diabetesTypePref;
+        private ListPreference unitPref;
+        private ListPreference rangePref;
+        private EditText ageEditText;
+        private EditText minEditText;
+        private EditText maxEditText;
+        private EditTextPreference agePref;
+        private EditTextPreference minRangePref;
+        private EditTextPreference maxRangePref;
+        private User updatedUser;
+
+        @Override
+        public void onCreate(final Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            addPreferencesFromResource(R.xml.preferences);
+
+            dB = new DatabaseHandler(getActivity().getApplicationContext());
+            user = dB.getUser(1);
+            updatedUser = new User(user.getId(),user.getName(),user.getPreferred_language(),user.getCountry(),user.getAge(),user.getGender(),user.getD_type(),user.getPreferred_unit(),user.getPreferred_range(),user.getCustom_range_min(),user.getCustom_range_max());
+
+            agePref = (EditTextPreference) findPreference("pref_age");
+            countryPref = (ListPreference) findPreference("pref_country");
+            genderPref = (ListPreference) findPreference("pref_gender");
+            diabetesTypePref = (ListPreference) findPreference("pref_diabetes_type");
+            unitPref = (ListPreference) findPreference("pref_unit");
+            rangePref = (ListPreference) findPreference("pref_range");
+            minRangePref = (EditTextPreference) findPreference("pref_range_min");
+            maxRangePref = (EditTextPreference) findPreference("pref_range_max");
+
+            agePref.setDefaultValue(user.getAge());
+            countryPref.setValue(user.getCountry());
+            genderPref.setValue(user.getGender());
+            diabetesTypePref.setValue(user.getD_type() + "");
+            unitPref.setValue(user.getPreferred_unit());
+            rangePref.setValue(user.getPreferred_range());
+            minRangePref.setDefaultValue(user.getCustom_range_min() + "");
+            maxRangePref.setDefaultValue(user.getCustom_range_max() + "");
+
+            if (!rangePref.equals("custom")){
+                minRangePref.setEnabled(false);
+                maxRangePref.setEnabled(false);
+            } else {
+                minRangePref.setEnabled(true);
+                maxRangePref.setEnabled(true);
+            }
+
+            final Preference termsPref = (Preference) findPreference("preference_terms");
+            final Preference versionPref = (Preference) findPreference("preference_version");
+
+            countryPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    updatedUser.setCountry(newValue.toString());
+
+                    updateDB();
+                    return false;
+                }
+            });
+            agePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    if (newValue.toString().trim().equals("")) {
+                        return false;
+                    }
+                    updatedUser.setAge(Integer.parseInt(newValue.toString()));
+                    updateDB();
+                    return true;
+                }
+            });
+            genderPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    updatedUser.setGender(newValue.toString());
+                    updateDB();
+                    return true;
+                }
+            });
+            diabetesTypePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    if (newValue.toString().equals(getResources().getString(R.string.helloactivity_spinner_diabetes_type_1))) {
+                        updatedUser.setD_type(1);
+                        updateDB();
+                    } else {
+                        updatedUser.setD_type(2);
+                        updateDB();
+                    }
+                    return true;
+                }
+            });
+            unitPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    updatedUser.setPreferred_unit(newValue.toString());
+                    updateDB();
+                    return true;
+                }
+            });
+            rangePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    updatedUser.setPreferred_range(newValue.toString());
+                    updateDB();
+                    return true;
+                }
+            });
+            minRangePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    if (newValue.toString().trim().equals("")) {
+                        return false;
+                    }
+                    updatedUser.setCustom_range_min(Integer.parseInt(newValue.toString()));
+                    updateDB();
+                    return true;
+                }
+            });
+            maxRangePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    if (newValue.toString().trim().equals("")) {
+                        return false;
+                    }
+                    updatedUser.setCustom_range_max(Integer.parseInt(newValue.toString()));
+                    updateDB();
+                    return true;
+                }
+            });
+
+            ageEditText = agePref.getEditText();
+            minEditText = minRangePref.getEditText();
+            maxEditText = maxRangePref.getEditText();
+
+            ageEditText.setFilters(new InputFilter[]{new InputFilterMinMax(1, 110)});
+            minEditText.setFilters(new InputFilter[]{new InputFilterMinMax(1, 1500)});
+            maxEditText.setFilters(new InputFilter[]{new InputFilterMinMax(1, 1500)});
+
+
+            // Get countries list from locale
+            ArrayList<String> countriesArray = new ArrayList<String>();
+            Locale[] locales = Locale.getAvailableLocales();
+
+            for (Locale locale : locales) {
+                String country = locale.getDisplayCountry();
+                if (country.trim().length()>0 && !countriesArray.contains(country)) {
+                    countriesArray.add(country);
+                }
+            }
+            Collections.sort(countriesArray);
+
+            CharSequence[] countries = countriesArray.toArray(new CharSequence[countriesArray.size()]);
+            countryPref.setEntryValues(countries);
+            countryPref.setEntries(countries);
+            updateDB();
+
+            termsPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    Intent intent = new Intent(getActivity(), LicenceActivity.class);
+                    startActivity(intent);
+
+                    return false;
+                }
+            });
+
+            versionPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+
+                int easterEggCount;
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    if (easterEggCount == 6) {
+                        String uri = String.format(Locale.ENGLISH, "geo:%f,%f", 40.794010, 17.124583);
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+                        getActivity().startActivity(intent);
+                        easterEggCount = 0;
+                    } else {
+                        this.easterEggCount = easterEggCount+1;
+                    }
+                    return false;
+                }
+            });
+        }
+
+        private void updateDB() {
+            dB.updateUser(updatedUser);
+            agePref.setSummary(user.getAge() + "");
+            genderPref.setSummary(user.getGender() + "");
+            diabetesTypePref.setSummary(getResources().getString(R.string.glucose_reading_type) + " " + user.getD_type());
+            unitPref.setSummary(user.getPreferred_unit() + "");
+            countryPref.setSummary(user.getCountry());
+            rangePref.setSummary(user.getPreferred_range() + "");
+            minRangePref.setSummary(user.getCustom_range_min() + "");
+            maxRangePref.setSummary(user.getCustom_range_max() + "");
+
+            countryPref.setValue(user.getCountry());
+            genderPref.setValue(user.getGender());
+            diabetesTypePref.setValue(user.getD_type() + "");
+            unitPref.setValue(user.getPreferred_unit());
+            countryPref.setValue(user.getCountry());
+            genderPref.setValue(user.getGender());
+            unitPref.setValue(user.getPreferred_unit());
+            rangePref.setValue(user.getPreferred_range());
+
+            if (!user.getPreferred_range().equals("Custom range")){
+                minRangePref.setEnabled(false);
+                maxRangePref.setEnabled(false);
+            } else {
+                minRangePref.setEnabled(true);
+                maxRangePref.setEnabled(true);
+            }
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() ==  android.R.id.home) {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        return true;
+    }
+
+}

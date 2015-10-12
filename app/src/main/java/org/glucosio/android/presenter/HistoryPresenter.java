@@ -3,26 +3,22 @@ package org.glucosio.android.presenter;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
 import org.glucosio.android.fragment.HistoryFragment;
-import org.glucosio.android.tools.ReadingTools;
+
 import java.util.ArrayList;
+import java.util.Date;
 
 public class HistoryPresenter {
 
-    DatabaseHandler dB;
-    private ArrayList<Integer> id;
+    private DatabaseHandler dB;
+    private ArrayList<Long> id;
     private ArrayList<Integer> reading;
-    private ArrayList <Integer> type;
+    private ArrayList <String> type;
     private ArrayList<String> datetime;
-    GlucoseReading readingToRestore;
-    HistoryFragment fragment;
+    private HistoryFragment fragment;
 
     public HistoryPresenter(HistoryFragment historyFragment) {
         this.fragment = historyFragment;
-        dB = new DatabaseHandler(historyFragment.getActivity());
-    }
-
-    public boolean isdbEmpty(){
-        return dB.getGlucoseReadings().size() == 0;
+        dB = new DatabaseHandler(historyFragment.getContext());
     }
 
     public void loadDatabase(){
@@ -33,25 +29,14 @@ public class HistoryPresenter {
     }
 
 
-    public String convertDate(String date) {
-        ReadingTools rTools = new ReadingTools();
-        return rTools.convertDate(date);
+    public String convertDate(String date){
+        return fragment.convertDate(date);
     }
 
     public void onDeleteClicked(int idToDelete){
-        readingToRestore = dB.getGlucoseReadingById(idToDelete);
         removeReadingFromDb(dB.getGlucoseReadingById(idToDelete));
         fragment.notifyAdapter();
-        dB.addGlucoseReading(readingToRestore);
-    }
-
-    public void deleteReading(int idToDelete) {
-        removeReadingFromDb(dB.getGlucoseReadingById(idToDelete));
-        fragment.notifyAdapter();
-    }
-
-    public void onUndoClicked(){
-        fragment.notifyAdapter();
+        fragment.updateToolbarBehaviour();
     }
 
     private void removeReadingFromDb(GlucoseReading gReading) {
@@ -61,7 +46,11 @@ public class HistoryPresenter {
     }
 
     // Getters
-    public ArrayList<Integer> getId() {
+    public String getUnitMeasuerement(){
+        return dB.getUser(1).getPreferred_unit();
+    }
+
+    public ArrayList<Long> getId() {
         return id;
     }
 
@@ -69,11 +58,15 @@ public class HistoryPresenter {
         return reading;
     }
 
-    public ArrayList<Integer> getType() {
+    public ArrayList<String> getType() {
         return type;
     }
 
     public ArrayList<String> getDatetime() {
         return datetime;
+    }
+
+    public int getReadingsNumber(){
+        return reading.size();
     }
 }

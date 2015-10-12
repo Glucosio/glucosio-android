@@ -7,81 +7,36 @@ import java.util.Date;
 
 public class SplitDateTime {
 
-    String origDateTime; // Example "yyyy-MM-dd HH:mm"
+    Date origDateTime; // Example "yyyy-MM-dd HH:mm"
     DateFormat inputFormat;
 
-    public SplitDateTime(String origDatetime, DateFormat origDateFormat) {
+    public SplitDateTime(Date origDatetime, DateFormat origDateFormat) {
         this.origDateTime = origDatetime;
         this.inputFormat = origDateFormat;
     }
 
     public String getHour(){
         DateFormat finalFormat = new SimpleDateFormat("HH");
-
-        Date parsed = null;
-        try {
-            parsed = inputFormat.parse(origDateTime);
-        } catch (ParseException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-        return finalFormat.format(parsed);
+        return finalFormat.format(origDateTime);
     }
 
     public String getMinute(){
         DateFormat finalFormat = new SimpleDateFormat("mm");
-
-        Date parsed = null;
-        try {
-            parsed = inputFormat.parse(origDateTime);
-        } catch (ParseException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-        return finalFormat.format(parsed);
+        return finalFormat.format(origDateTime);
     }
 
     public String getYear(){
         DateFormat finalFormat = new SimpleDateFormat("yyyy");
-
-        Date parsed = null;
-        try {
-            parsed = inputFormat.parse(origDateTime);
-        } catch (ParseException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-        return finalFormat.format(parsed);
+        return finalFormat.format(origDateTime);
     }
 
     public String getMonth(){
         DateFormat finalFormat = new SimpleDateFormat("MM");
-
-        Date parsed = null;
-        try {
-            parsed = inputFormat.parse(origDateTime);
-        } catch (ParseException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-        return finalFormat.format(parsed);
+        return finalFormat.format(origDateTime);
     }
 
     public String getDay(){
         DateFormat finalFormat = new SimpleDateFormat("dd");
-
-        Date parsed = null;
-        try {
-            parsed = inputFormat.parse(origDateTime);
-        } catch (ParseException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-        return finalFormat.format(parsed);
+        return finalFormat.format(origDateTime);
     }
 }

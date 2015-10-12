@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListPreference
+        android:dialogTitle="@string/helloactivity_country"
+        android:key="pref_country"
+        android:title="@string/helloactivity_country" />
+    <EditTextPreference
+        android:dialogTitle="@string/helloactivity_age"
+        android:inputType="number"
+        android:key="pref_age"
+        android:title="@string/helloactivity_age" />
+    <ListPreference android:key="pref_gender"
+        android:id="@+id/preferences_gender"
+        android:title="@string/helloactivity_gender"
+        android:entries="@array/helloactivity_gender_list"
+        android:entryValues="@array/helloactivity_gender_list" />
+    <ListPreference android:key="pref_diabetes_type"
+        android:id="@+id/preferences_diabetes_type"
+        android:title="@string/helloactivity_spinner_diabetes_type"
+        android:entries="@array/helloactivity_diabetes_type"
+        android:entryValues="@array/helloactivity_diabetes_type" />
+    <ListPreference android:key="pref_unit"
+        android:id="@+id/preferences_unit"
+        android:title="@string/helloactivity_spinner_preferred_unit"
+        android:entries="@array/helloactivity_preferred_unit"
+        android:entryValues="@array/helloactivity_preferred_unit" />
+    <ListPreference android:key="pref_range"
+        android:id="@+id/preferences_range"
+        android:title="@string/helloactivity_spinner_preferred_range"
+        android:entries="@array/helloactivity_preferred_range"
+        android:entryValues="@array/helloactivity_preferred_range" />
+    <EditTextPreference
+        android:dialogTitle="@string/helloactivity_preferred_range_min"
+        android:inputType="number"
+        android:key="pref_range_min"
+        android:title="@string/helloactivity_preferred_range_min" />
+    <EditTextPreference
+        android:dialogTitle="@string/helloactivity_preferred_range_max"
+        android:inputType="number"
+        android:key="pref_range_max"
+        android:title="@string/helloactivity_preferred_range_max" />
+
+    <PreferenceCategory android:title="@string/preferences_about">
+        <Preference
+            android:key="preference_version"
+            android:summary="@string/version"
+            android:title="@string/preferences_version"/>
+        <Preference
+            android:key="preference_terms"
+            android:title="@string/preferences_terms"/>
+    </PreferenceCategory>
+</PreferenceScreen>

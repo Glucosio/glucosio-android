@@ -3,55 +3,61 @@ package org.glucosio.android.activity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
-import android.support.design.widget.TextInputLayout;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
 import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import org.glucosio.android.R;
-import org.glucosio.android.db.DatabaseHandler;
-import org.glucosio.android.db.User;
 import org.glucosio.android.presenter.HelloPresenter;
 import org.glucosio.android.tools.LabelledSpinner;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Locale;
+
 public class HelloActivity extends AppCompatActivity {
 
-    LabelledSpinner languageSpinner;
-    LabelledSpinner genderSpinner;
-    LabelledSpinner typeSpinner;
-    LabelledSpinner unitSpinner;
-    View firstView;
-    View EULAView;
-    CheckBox EULACheckbox;
-    Button startButton;
-    TextView ageTextView;
-    TextView termsTextView;
-    Button nextButton;
-    HelloPresenter presenter;
+    private LabelledSpinner countrySpinner;
+    private LabelledSpinner genderSpinner;
+    private LabelledSpinner typeSpinner;
+    private LabelledSpinner unitSpinner;
+    private View firstView;
+    private View EULAView;
+    private CheckBox EULACheckbox;
+    private Button startButton;
+    private TextView ageTextView;
+    private TextView termsTextView;
+    private Button nextButton;
+    private HelloPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hello);
 
+        // Prevent SoftKeyboard to pop up on start
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
         presenter = new HelloPresenter(this);
         presenter.loadDatabase();
 
         firstView = (ScrollView) findViewById(R.id.helloactivity_mainframe);
-        EULAView = (ScrollView) findViewById(R.id.helloactivity_eulaframe);
+        EULAView = (RelativeLayout) findViewById(R.id.helloactivity_eulaframe);
         EULACheckbox = (CheckBox) findViewById(R.id.helloactivity_checkbox_eula);
-        languageSpinner = (LabelledSpinner) findViewById(R.id.helloactivity_spinner_language);
+        countrySpinner = (LabelledSpinner) findViewById(R.id.helloactivity_spinner_country);
         genderSpinner = (LabelledSpinner) findViewById(R.id.helloactivity_spinner_gender);
         typeSpinner = (LabelledSpinner) findViewById(R.id.helloactivity_spinner_diabetes_type);
         unitSpinner = (LabelledSpinner) findViewById(R.id.helloactivity_spinner_preferred_unit);
@@ -62,31 +68,54 @@ public class HelloActivity extends AppCompatActivity {
         ageTextView = (TextView) findViewById(R.id.helloactivity_age);
         nextButton = (Button) findViewById(R.id.helloactivity_next);
 
+        // Get countries list from locale
+        ArrayList<String> countries = new ArrayList<String>();
+        Locale[] locales = Locale.getAvailableLocales();
+
+        for (Locale locale : locales) {
+            String country = locale.getDisplayCountry();
+            if (country.trim().length()>0 && !countries.contains(country)) {
+                countries.add(country);
+            }
+        }
+        Collections.sort(countries);
+
         // Populate Spinners with array
-        languageSpinner.setItemsArray(R.array.helloactivity_language_list);
+        countrySpinner.setItemsArray(countries);
+
+        // Get locale country name and set the spinner
+        String localCountry = getApplicationContext().getResources().getConfiguration().locale.getDisplayCountry();
+        if (!localCountry.equals(null)) {
+            countrySpinner.setSelection(((ArrayAdapter) countrySpinner.getSpinner().getAdapter()).getPosition(localCountry));
+        }
+
         genderSpinner.setItemsArray(R.array.helloactivity_gender_list);
         unitSpinner.setItemsArray(R.array.helloactivity_preferred_unit);
         typeSpinner.setItemsArray(R.array.helloactivity_diabetes_type);
 
         termsTextView.setMovementMethod(new ScrollingMovementMethod());
+        final Drawable greyArrow = getApplicationContext().getResources().getDrawable( R.drawable.ic_navigate_next_grey_24px );
+        greyArrow.setBounds(0, 0, 60, 60);
+        final Drawable pinkArrow = getApplicationContext().getResources().getDrawable( R.drawable.ic_navigate_next_pink_24px );
+        pinkArrow.setBounds(0, 0, 60, 60);
         EULACheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                                                     @Override
                                                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                                                         if (isChecked) {
                                                             startButton.setEnabled(true);
+                                                            startButton.setCompoundDrawables(null, null, pinkArrow, null);
                                                         } else {
                                                             startButton.setEnabled(false);
+                                                            startButton.setCompoundDrawables(null, null, greyArrow, null);
                                                         }
                                                     }
                                                 }
         );
-
-        //TODO: add Preferred Unit and Diabetes Type in dB
     }
 
     public void onNextClicked(View v){
         presenter.onNextClicked(ageTextView.getText().toString(),
-                genderSpinner.getSpinner().getSelectedItemPosition(), languageSpinner.getSpinner().getSelectedItem().toString());
+                genderSpinner.getSpinner().getSelectedItem().toString(), Locale.getDefault().getDisplayLanguage(), countrySpinner.getSpinner().getSelectedItem().toString(), typeSpinner.getSpinner().getSelectedItemPosition() + 1, unitSpinner.getSpinner().getSelectedItem().toString());
     }
 
     public void showEULA(){
