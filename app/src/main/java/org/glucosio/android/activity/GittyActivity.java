@@ -45,7 +45,14 @@ public class GittyActivity extends GittyReporter {
 
         // Set if Gitty can use your Auth token for users without a GitHub account (default: true)
         // If false, Gitty will redirect non registred users to github.com/join
-        enableGuestGitHubLogin(true);
+        enableGuestGitHubLogin(false);
+        canEditDebugInfo(true);
+        int pink = getResources().getColor(R.color.glucosio_pink_dark);
+        int yellow = getResources().getColor(R.color.glucosio_accent);
+        setBackgroundColor1(pink);
+        setBackgroundColor2(yellow);
+        setRippleColor(yellow);
+
     }
 
     @Override
