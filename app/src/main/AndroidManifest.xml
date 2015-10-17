@@ -34,7 +34,7 @@
         </activity>
         <activity
             android:name=".activity.LicenceActivity"
-            android:theme="@style/GlucosioTheme">
+            android:theme="@style/GlucosioSettings">
         </activity>
     </application>
 
