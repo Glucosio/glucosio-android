@@ -2,9 +2,12 @@ package org.glucosio.android.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.TextView;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import org.glucosio.android.R;
+
 
 public class LicenceActivity extends AppCompatActivity {
 
@@ -13,12 +16,21 @@ public class LicenceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_licence);
 
-        TextView dialogOk = (TextView) findViewById(R.id.dialog_terms_ok);
-        dialogOk.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
+        WebView webView = (WebView) findViewById(R.id.webview_licence);
+
+        webView.loadUrl("http://www.glucosio.org/licensing/");
+        webView.setWebViewClient(new WebViewClient() {
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                return true;
             }
         });
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle(getResources().getString(R.string.helloactivity_terms));
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        finish();
+        return true;
     }
 }
