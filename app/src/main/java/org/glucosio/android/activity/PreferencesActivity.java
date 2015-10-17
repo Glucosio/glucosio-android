@@ -9,8 +9,14 @@ import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputFilter;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.EditText;
+
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
+import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.User;
@@ -20,6 +26,8 @@ import java.util.Collections;
 import java.util.Locale;
 
 public class PreferencesActivity extends AppCompatActivity {
+
+    private Tracker mTracker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +39,13 @@ public class PreferencesActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(getString(R.string.action_settings));
+
+        // Obtain the Analytics shared Tracker instance.
+        GlucosioApplication application = (GlucosioApplication) getApplication();
+        mTracker = application.getDefaultTracker();
+        Log.i("MainActivity", "Setting screen name: " + "main");
+        mTracker.setScreenName("Preferences");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
 
     public static class MyPreferenceFragment extends PreferenceFragment {
@@ -206,6 +221,7 @@ public class PreferencesActivity extends AppCompatActivity {
             versionPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
 
                 int easterEggCount;
+
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
                     if (easterEggCount == 6) {
@@ -214,7 +230,7 @@ public class PreferencesActivity extends AppCompatActivity {
                         getActivity().startActivity(intent);
                         easterEggCount = 0;
                     } else {
-                        this.easterEggCount = easterEggCount+1;
+                        this.easterEggCount = easterEggCount + 1;
                     }
                     return false;
                 }

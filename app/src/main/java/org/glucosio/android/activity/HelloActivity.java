@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,6 +21,10 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
+import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.presenter.HelloPresenter;
 import org.glucosio.android.tools.LabelledSpinner;
@@ -42,6 +47,8 @@ public class HelloActivity extends AppCompatActivity {
     private TextView termsTextView;
     private Button nextButton;
     private HelloPresenter presenter;
+
+    private Tracker mTracker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,6 +118,13 @@ public class HelloActivity extends AppCompatActivity {
                                                     }
                                                 }
         );
+
+        // Obtain the Analytics shared Tracker instance.
+        GlucosioApplication application = (GlucosioApplication) getApplication();
+        mTracker = application.getDefaultTracker();
+        Log.i("MainActivity", "Setting screen name: " + "main");
+        mTracker.setScreenName("Hello Activity");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
 
     public void onNextClicked(View v){
