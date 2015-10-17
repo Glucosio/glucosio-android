@@ -1,11 +1,12 @@
 package org.glucosio.android;
 
+import android.app.Application;
 import android.content.Context;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class GlucosioApplication extends com.activeandroid.app.Application {
+public class GlucosioApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
