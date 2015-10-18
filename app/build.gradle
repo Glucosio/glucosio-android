@@ -1,24 +1,26 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.0"
-
     lintOptions {
         abortOnError false
     }
-
     defaultConfig {
-        applicationId "org.glucosio.android"
         minSdkVersion 16
         targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName '0.8.1'
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            applicationIdSuffix '.daily'
+            versionNameSuffix '-DEVEL'
         }
     }
     lintOptions {
@@ -33,18 +35,17 @@ repositories {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:23.0.1'
-    compile 'com.android.support:design:23.0.1'
-    compile 'com.android.support:cardview-v7:23.0.1'
-    compile 'com.android.support:recyclerview-v7:23.0.1'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:23.1.0'
+    compile 'com.android.support:design:23.1.0'
+    compile 'com.android.support:cardview-v7:23.1.0'
+    compile 'com.android.support:recyclerview-v7:23.1.0'
+    compile 'com.android.support:percent:23.1.0'
+    compile 'com.google.android.gms:play-services-analytics:8.1.0'
     compile 'com.wdullaer:materialdatetimepicker:1.5.3'
-    compile 'com.android.support:percent:23.0.1'
     compile 'com.github.PhilJay:MPAndroidChart:v2.1.4'
     compile 'uk.co.chrisjenx:calligraphy:2.1.0'
-    compile 'com.github.paolorotolo:gitty_reporter:1.1.1'
-    compile 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
-    compile 'com.wnafee:vector-compat:1.0.5'
+    compile 'com.github.paolorotolo:gitty_reporter:1.2.1'
     compile 'io.realm:realm-android:0.83.0'
     compile 'net.danlew:android.joda:2.8.2'
 }

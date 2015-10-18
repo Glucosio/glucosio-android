@@ -106,7 +106,7 @@ public class MainPresenter {
         if (validateDate(date) && validateTime(time) && validateReading(reading) && validateType(type)) {
 
             Calendar cal = Calendar.getInstance();
-            cal.set(Integer.parseInt(readingYear),Integer.parseInt(readingMonth),Integer.parseInt(readingDay),Integer.parseInt(readingHour),Integer.parseInt(readingMinute));
+            cal.set(Integer.parseInt(readingYear), Integer.parseInt(readingMonth)-1, Integer.parseInt(readingDay), Integer.parseInt(readingHour), Integer.parseInt(readingMinute));
             Date finalDateTime = cal.getTime();
 
             if (getUnitMeasuerement().equals("mg/dL")) {
@@ -128,7 +128,7 @@ public class MainPresenter {
         if (validateDate(date) && validateTime(time) && validateReading(reading)) {
             int finalReading = Integer.parseInt(reading);
             Calendar cal = Calendar.getInstance();
-            cal.set(Integer.parseInt(readingYear),Integer.parseInt(readingMonth),Integer.parseInt(readingDay),Integer.parseInt(readingHour),Integer.parseInt(readingMinute));
+            cal.set(Integer.parseInt(readingYear),Integer.parseInt(readingMonth)-1,Integer.parseInt(readingDay),Integer.parseInt(readingHour),Integer.parseInt(readingMinute));
             Date finalDateTime = cal.getTime();
 
             GlucoseReading gReadingToDelete = dB.getGlucoseReadingById(id);
