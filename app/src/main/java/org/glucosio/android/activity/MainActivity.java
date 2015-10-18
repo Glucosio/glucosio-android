@@ -11,6 +11,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,11 +24,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
-import com.wnafee.vector.compat.VectorDrawable;
 
+import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.adapter.HomePagerAdapter;
 import org.glucosio.android.presenter.MainPresenter;
@@ -53,6 +56,8 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     private boolean isCustomType;
 
     private MainPresenter presenter;
+
+    private Tracker mTracker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,6 +117,13 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         });
 
         checkIfEmptyLayout();
+
+        // Obtain the Analytics shared Tracker instance.
+        GlucosioApplication application = (GlucosioApplication) getApplication();
+        mTracker = application.getDefaultTracker();
+        Log.i("MainActivity", "Setting screen name: " + "main");
+        mTracker.setScreenName("Main Activity");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
 
     public void startHelloActivity() {
@@ -220,6 +232,10 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             @Override
             public void onClick(View v) {
                 dialogOnAddButtonPressed();
+                mTracker.send(new HitBuilders.EventBuilder()
+                        .setCategory("GlucoseDialog")
+                        .setAction("Add")
+                        .build());
             }
         });
 
@@ -525,11 +541,11 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             if (getResources().getConfiguration().orientation == 1) {
                 // If Portrait choose vertical curved line
                 ImageView arrow = (ImageView) findViewById(R.id.mainactivity_arrow);
-                arrow.setBackground((VectorDrawable.getDrawable(getApplicationContext(), R.drawable.curved_line_vertical)));
+                arrow.setBackground(getResources().getDrawable(R.drawable.curved_line_vertical));
             } else {
                 // Else choose horizontal one
                 ImageView arrow = (ImageView) findViewById(R.id.mainactivity_arrow);
-                arrow.setBackground((VectorDrawable.getDrawable(getApplicationContext(), R.drawable.curved_line_horizontal)));
+                arrow.setBackground((getResources().getDrawable(R.drawable.curved_line_horizontal)));
             }
         } else {
             pager.setVisibility(View.VISIBLE);
