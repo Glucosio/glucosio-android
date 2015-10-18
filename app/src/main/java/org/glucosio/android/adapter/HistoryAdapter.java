@@ -80,17 +80,8 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
             readingTextView.setText(converter.toMmolL(Double.parseDouble(presenter.getReading().get(position).toString())) + " mmol/L");
         }
 
-        switch (color) {
-            case "green":
-                readingTextView.setTextColor(Color.parseColor("#4CAF50"));
-                break;
-            case "red":
-                readingTextView.setTextColor(Color.parseColor("#F44336"));
-                break;
-            default:
-                readingTextView.setTextColor(Color.parseColor("#9C27B0"));
-                break;
-        }
+        readingTextView.setTextColor(ranges.stringToColor(color));
+
 
         datetimeTextView.setText(presenter.convertDate(presenter.getDatetime().get(position)));
         typeTextView.setText(presenter.getType().get(position));
