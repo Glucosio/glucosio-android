@@ -267,17 +267,7 @@ public class OverviewFragment extends Fragment {
 
             GlucoseRanges ranges = new GlucoseRanges(getActivity().getApplicationContext());
             String color = ranges.colorFromRange(Integer.parseInt(presenter.getLastReading()));
-            switch (color) {
-                case "green":
-                    readingTextView.setTextColor(Color.parseColor("#4CAF50"));
-                    break;
-                case "red":
-                    readingTextView.setTextColor(Color.parseColor("#F44336"));
-                    break;
-                default:
-                    readingTextView.setTextColor(Color.parseColor("#9C27B0"));
-                    break;
-            }
+            readingTextView.setTextColor(ranges.stringToColor(color));
         }
     }
 
