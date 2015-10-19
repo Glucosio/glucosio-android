@@ -181,11 +181,112 @@
     <string name="helloactivity_preferred_range_min">Min value</string>
     <string name="helloactivity_preferred_range_max">Max value</string>
     <string name="assistant_action_try">TRY IT NOW</string>
+    <string name="helloactivity_language">Language</string>
 
     <string-array name="helloactivity_preferred_range" translatable="false">
         <item>@string/helloactivity_spinner_preferred_range_1</item>
         <item>@string/helloactivity_spinner_preferred_range_2</item>
         <item>@string/helloactivity_spinner_preferred_range_3</item>
         <item>@string/helloactivity_spinner_preferred_range_4</item>
+    </string-array>
+
+    <string name="language_name_1">Azerbaijani</string>
+    <string name="language_name_2">Bengali</string>
+    <string name="language_name_3">Bengali, India</string>
+    <string name="language_name_4">Bosnian</string>
+    <string name="language_name_5">Bulgarian</string>
+    <string name="language_name_6">Burmese</string>
+    <string name="language_name_7">Catalan</string>
+    <string name="language_name_8">Chinese Simplified</string>
+    <string name="language_name_9">Chinese Traditional</string>
+    <string name="language_name_10">Dutch</string>
+    <string name="language_name_11">English</string>
+    <string name="language_name_12">English, UK</string>
+    <string name="language_name_13">Filipino</string>
+    <string name="language_name_14">French</string>
+    <string name="language_name_15">Hebrew</string>
+    <string name="language_name_16">Italian</string>
+    <string name="language_name_17">Portuguese, Brazilian</string>
+    <string name="language_name_18">Romanian</string>
+    <string name="language_name_19">Russian</string>
+    <string name="language_name_20">Slovenian</string>
+    <string name="language_name_21">Spanish</string>
+    <string name="language_name_22">Spanish, Mexico</string>
+    <string name="language_name_23">Swedish</string>
+
+    <string name="language_code_1">az</string>
+    <string name="language_code_2">bn</string>
+    <string name="language_code_3">bn_IN</string>
+    <string name="language_code_4">bs</string>
+    <string name="language_code_5">bg_BG</string>
+    <string name="language_code_6">my</string>
+    <string name="language_code_7">ca</string>
+    <string name="language_code_8">zh_CN</string>
+    <string name="language_code_9">zh_TW</string>
+    <string name="language_code_10">nl_BE</string>
+    <string name="language_code_11">en_US</string>
+    <string name="language_code_12">en_GB</string>
+    <string name="language_code_13">fil</string>
+    <string name="language_code_14">fr_FR</string>
+    <string name="language_code_15">iw</string>
+    <string name="language_code_16">it_IT</string>
+    <string name="language_code_17">pt_BR</string>
+    <string name="language_code_18">ro_RO</string>
+    <string name="language_code_19">ru_RU</string>
+    <string name="language_code_20">sl_SI</string>
+    <string name="language_code_21">es</string>
+    <string name="language_code_22">es_MX</string>
+    <string name="language_code_23">sv</string>
+
+    <string-array name="array_languages_name" translatable="false">
+        <item>@string/language_name_1</item>
+        <item>@string/language_name_2</item>
+        <item>@string/language_name_3</item>
+        <item>@string/language_name_4</item>
+        <item>@string/language_name_5</item>
+        <item>@string/language_name_6</item>
+        <item>@string/language_name_7</item>
+        <item>@string/language_name_8</item>
+        <item>@string/language_name_9</item>
+        <item>@string/language_name_10</item>
+        <item>@string/language_name_11</item>
+        <item>@string/language_name_12</item>
+        <item>@string/language_name_13</item>
+        <item>@string/language_name_14</item>
+        <item>@string/language_name_15</item>
+        <item>@string/language_name_16</item>
+        <item>@string/language_name_17</item>
+        <item>@string/language_name_18</item>
+        <item>@string/language_name_19</item>
+        <item>@string/language_name_20</item>
+        <item>@string/language_name_21</item>
+        <item>@string/language_name_22</item>
+        <item>@string/language_name_23</item>
+    </string-array>
+
+    <string-array name="array_languages_code" translatable="false">
+        <item>@string/language_code_1</item>
+        <item>@string/language_code_2</item>
+        <item>@string/language_code_3</item>
+        <item>@string/language_code_4</item>
+        <item>@string/language_code_5</item>
+        <item>@string/language_code_6</item>
+        <item>@string/language_code_7</item>
+        <item>@string/language_code_8</item>
+        <item>@string/language_code_9</item>
+        <item>@string/language_code_10</item>
+        <item>@string/language_code_11</item>
+        <item>@string/language_code_12</item>
+        <item>@string/language_code_13</item>
+        <item>@string/language_code_14</item>
+        <item>@string/language_code_15</item>
+        <item>@string/language_code_16</item>
+        <item>@string/language_code_17</item>
+        <item>@string/language_code_18</item>
+        <item>@string/language_code_19</item>
+        <item>@string/language_code_20</item>
+        <item>@string/language_code_21</item>
+        <item>@string/language_code_22</item>
+        <item>@string/language_code_23</item>
     </string-array>
 </resources>

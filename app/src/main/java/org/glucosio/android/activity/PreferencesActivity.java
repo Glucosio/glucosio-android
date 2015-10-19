@@ -12,6 +12,7 @@ import android.text.InputFilter;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
@@ -51,6 +52,7 @@ public class PreferencesActivity extends AppCompatActivity {
     public static class MyPreferenceFragment extends PreferenceFragment {
         private DatabaseHandler dB;
         private User user;
+        private ListPreference languagePref;
         private ListPreference countryPref;
         private ListPreference genderPref;
         private ListPreference diabetesTypePref;
@@ -75,6 +77,7 @@ public class PreferencesActivity extends AppCompatActivity {
 
             agePref = (EditTextPreference) findPreference("pref_age");
             countryPref = (ListPreference) findPreference("pref_country");
+            // languagePref = (ListPreference) findPreference("pref_language");
             genderPref = (ListPreference) findPreference("pref_gender");
             diabetesTypePref = (ListPreference) findPreference("pref_diabetes_type");
             unitPref = (ListPreference) findPreference("pref_unit");
@@ -84,6 +87,7 @@ public class PreferencesActivity extends AppCompatActivity {
 
             agePref.setDefaultValue(user.getAge());
             countryPref.setValue(user.getCountry());
+            // languagePref.setValue(user.getPreferred_language());
             genderPref.setValue(user.getGender());
             diabetesTypePref.setValue(user.getD_type() + "");
             unitPref.setValue(user.getPreferred_unit());
@@ -102,6 +106,18 @@ public class PreferencesActivity extends AppCompatActivity {
             final Preference termsPref = (Preference) findPreference("preference_terms");
             final Preference versionPref = (Preference) findPreference("preference_version");
 
+            /*languagePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+
+                    int position = languagePref.findIndexOfValue(newValue.toString());
+                    String lang_code = getResources().getStringArray(R.array.array_languages_code)[position];
+
+                    updatedUser.setPreferred_language(lang_code);
+                    updateDB();
+                    return true;
+                }
+            });*/
             countryPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -206,6 +222,10 @@ public class PreferencesActivity extends AppCompatActivity {
             CharSequence[] countries = countriesArray.toArray(new CharSequence[countriesArray.size()]);
             countryPref.setEntryValues(countries);
             countryPref.setEntries(countries);
+
+/*            CharSequence[] languages = getActivity().getResources().getStringArray(R.array.array_languages_name);
+            languagePref.setEntryValues(languages);
+            languagePref.setEntries(languages);*/
             updateDB();
 
             termsPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
@@ -244,15 +264,20 @@ public class PreferencesActivity extends AppCompatActivity {
             diabetesTypePref.setSummary(getResources().getString(R.string.glucose_reading_type) + " " + user.getD_type());
             unitPref.setSummary(user.getPreferred_unit() + "");
             countryPref.setSummary(user.getCountry());
+/*
+            languagePref.setSummary(user.getPreferred_language());
+*/
             rangePref.setSummary(user.getPreferred_range() + "");
             minRangePref.setSummary(user.getCustom_range_min() + "");
             maxRangePref.setSummary(user.getCustom_range_max() + "");
 
             countryPref.setValue(user.getCountry());
+/*
+            languagePref.setValue(user.getPreferred_language());
+*/
             genderPref.setValue(user.getGender());
             diabetesTypePref.setValue(user.getD_type() + "");
             unitPref.setValue(user.getPreferred_unit());
-            countryPref.setValue(user.getCountry());
             genderPref.setValue(user.getGender());
             unitPref.setValue(user.getPreferred_unit());
             rangePref.setValue(user.getPreferred_range());
