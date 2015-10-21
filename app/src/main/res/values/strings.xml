@@ -237,6 +237,9 @@
     <string name="language_code_21">es</string>
     <string name="language_code_22">es_MX</string>
     <string name="language_code_23">sv</string>
+    <string name="invitation_title">Invite other people</string>
+    <string name="invitation_message">Try Glucosio, an open source app for diabetes management and research.</string>
+    <string name="invitation_cta">Try Glucosio</string>
 
     <string-array name="array_languages_name" translatable="false">
         <item>@string/language_name_1</item>

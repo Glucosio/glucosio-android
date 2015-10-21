@@ -1,18 +1,29 @@
 package org.glucosio.android.fragment;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+
+import com.google.android.gms.appinvite.AppInviteInvitation;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
+
 import org.glucosio.android.R;
 import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.adapter.AssistantAdapter;
 import org.glucosio.android.presenter.AssistantPresenter;
 
 public class AssistantFragment extends Fragment {
+
+    private static final int REQUEST_INVITE = 0;
 
     private RecyclerView tipsRecycler;
     private AssistantAdapter adapter;
@@ -53,11 +64,29 @@ public class AssistantFragment extends Fragment {
         return mView;
     }
 
+    private void onInviteClicked() {
+        Intent intent = new AppInviteInvitation.IntentBuilder(getString(R.string.invitation_title))
+                .setMessage(getString(R.string.invitation_message))
+                .setCallToActionText(getString(R.string.invitation_cta))
+                .build();
+        getActivity().startActivityForResult(intent, REQUEST_INVITE);
+    }
+
     public void addReading(){
         ((MainActivity)getActivity()).showAddDialog();
     }
 
     public void openGitty(){
         ((MainActivity)getActivity()).startGittyReporter();
+    }
+
+    private boolean isPlayServicesConfigured() {
+        int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getActivity().getApplicationContext());
+        if(status == ConnectionResult.SUCCESS)
+            return true;
+        else {
+            Log.d("STATUS", "Error connecting with Google Play services. Code: " + String.valueOf(status));
+            return false;
+        }
     }
 }
