@@ -133,5 +133,4 @@
   <string name="helloactivity_preferred_range_min">Min value</string>
   <string name="helloactivity_preferred_range_max">Max value</string>
   <string name="assistant_action_try">TRY IT NOW</string>
-  <string name="backup_activity">Backup</string>
 </resources>
