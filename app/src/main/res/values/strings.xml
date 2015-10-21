@@ -289,4 +289,5 @@
         <item>@string/language_code_22</item>
         <item>@string/language_code_23</item>
     </string-array>
+    <string name="title_activity_backup">BackupActivity</string>
 </resources>

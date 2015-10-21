@@ -40,6 +40,10 @@
         android:key="pref_range_max"
         android:title="@string/helloactivity_preferred_range_max" />
 
+    <Preference
+        android:key="backup_settings"
+        android:title="Backup" />
+
     <PreferenceCategory android:title="@string/preferences_about">
         <Preference
             android:key="preference_version"

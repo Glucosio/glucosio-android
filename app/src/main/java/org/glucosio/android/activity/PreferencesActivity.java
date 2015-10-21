@@ -12,7 +12,6 @@ import android.text.InputFilter;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
@@ -22,6 +21,7 @@ import org.glucosio.android.R;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.User;
 import org.glucosio.android.tools.InputFilterMinMax;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Locale;
@@ -85,6 +85,7 @@ public class PreferencesActivity extends AppCompatActivity {
             minRangePref = (EditTextPreference) findPreference("pref_range_min");
             maxRangePref = (EditTextPreference) findPreference("pref_range_max");
 
+
             agePref.setDefaultValue(user.getAge());
             countryPref.setValue(user.getCountry());
             // languagePref.setValue(user.getPreferred_language());
@@ -105,7 +106,7 @@ public class PreferencesActivity extends AppCompatActivity {
 
             final Preference termsPref = (Preference) findPreference("preference_terms");
             final Preference versionPref = (Preference) findPreference("preference_version");
-
+            final Preference backupPref = (Preference) findPreference("backup_settings");
             /*languagePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -198,6 +199,7 @@ public class PreferencesActivity extends AppCompatActivity {
                 }
             });
 
+
             ageEditText = agePref.getEditText();
             minEditText = minRangePref.getEditText();
             maxEditText = maxRangePref.getEditText();
@@ -252,6 +254,16 @@ public class PreferencesActivity extends AppCompatActivity {
                     } else {
                         this.easterEggCount = easterEggCount + 1;
                     }
+                    return false;
+                }
+            });
+
+            backupPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    Intent backupActivity = new Intent(getActivity(), BackupActivity.class);
+                    getActivity().startActivity(backupActivity);
                     return false;
                 }
             });
