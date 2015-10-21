@@ -9,7 +9,7 @@
         android:label="@string/app_name"
         android:configChanges="locale"
         android:theme="@style/GlucosioTheme"
--       android:supportsRtl="true">
+        android:supportsRtl="true">
         <activity
             android:name=".activity.MainActivity"
             android:theme="@style/GlucosioTheme"
@@ -37,7 +37,14 @@
             android:name=".activity.LicenceActivity"
             android:theme="@style/GlucosioSettings">
         </activity>
-
+        <activity
+            android:name=".activity.BackupActivity"
+            android:label="@string/title_activity_backup"
+            android:parentActivityName=".activity.PreferencesActivity" >
+                    <meta-data
+                        android:name="android.support.PARENT_ACTIVITY"
+                        android:value="org.glucosio.android.activity.PreferencesActivity" />
+        </activity>
         <!-- Register AnalyticsReceiver and AnalyticsService to support background
  dispatching on non-Google Play devices -->
         <receiver android:name="com.google.android.gms.analytics.AnalyticsReceiver"
@@ -46,7 +53,6 @@
                 <action android:name="com.google.android.gms.analytics.ANALYTICS_DISPATCH" />
             </intent-filter>
         </receiver>
-
         <service android:name="com.google.android.gms.analytics.AnalyticsService"
             android:enabled="true"
             android:exported="false"/>
@@ -59,17 +65,6 @@
                 <action android:name="com.android.vending.INSTALL_REFERRER" />
             </intent-filter>
         </receiver>
-
         <service android:name="com.google.android.gms.analytics.CampaignTrackingService" />
-
-        <activity
-            android:name=".activity.BackupActivity"
-            android:label="@string/title_activity_backup"
-            android:parentActivityName=".activity.PreferencesActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="org.glucosio.android.activity.PreferencesActivity" />
-        </activity>
     </application>
-
 </manifest>
