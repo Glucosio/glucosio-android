@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.glucosio.android" >
 
-    <application
+    <application>
         android:name=".GlucosioApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
