@@ -37,7 +37,14 @@
             android:name=".activity.LicenceActivity"
             android:theme="@style/GlucosioSettings">
         </activity>
-
+        <activity
+            android:name=".activity.BackupActivity"
+            android:label="@string/title_activity_backup"
+            android:parentActivityName=".activity.PreferencesActivity" >
+                    <meta-data
+                        android:name="android.support.PARENT_ACTIVITY"
+                        android:value="org.glucosio.android.activity.PreferencesActivity" />
+        </activity>
         <!-- Register AnalyticsReceiver and AnalyticsService to support background
  dispatching on non-Google Play devices -->
         <receiver android:name="com.google.android.gms.analytics.AnalyticsReceiver"
