@@ -3,15 +3,15 @@ apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.0"
+    buildToolsVersion "23.0.1"
     lintOptions {
         abortOnError false
     }
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 23
-        versionCode 3
-        versionName '0.8.2'
+        versionCode 4
+        versionName '0.8.3'
     }
     buildTypes {
         release {

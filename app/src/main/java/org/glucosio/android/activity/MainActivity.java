@@ -36,6 +36,7 @@ import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.adapter.HomePagerAdapter;
 import org.glucosio.android.presenter.MainPresenter;
+import org.glucosio.android.tools.GlucoseConverter;
 import org.glucosio.android.tools.LabelledSpinner;
 import org.glucosio.android.tools.LabelledSpinner.OnItemChosenListener;
 
@@ -281,6 +282,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     public void showEditDialog(final int id){
         //only included for debug
         // printGlucoseReadingTableDetails();
+        GlucoseConverter converter = new GlucoseConverter();
 
         final int readingId = id;
         addDialog = new Dialog(MainActivity.this, R.style.GlucosioTheme);
@@ -305,7 +307,12 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         dialogAddDate = (TextView) addDialog.findViewById(R.id.dialog_add_date);
         dialogReading = (TextView) addDialog.findViewById(R.id.dialog_add_concentration);
         dialogAddButton.setText(getString(R.string.dialog_edit).toUpperCase());
-        dialogReading.setText(presenter.getGlucoseReadingReadingById(readingId));
+
+        if (presenter.getUnitMeasuerement().equals("mg/dL")) {
+            dialogReading.setText(presenter.getGlucoseReadingReadingById(readingId));
+        } else {
+            dialogReading.setText(converter.toMmolL(Double.parseDouble(presenter.getGlucoseReadingReadingById(readingId))) + "");
+        }
 
         dialogReading = (TextView) addDialog.findViewById(R.id.dialog_add_concentration);
         dialogTypeCustom = (EditText) addDialog.findViewById(R.id.dialog_type_custom);
