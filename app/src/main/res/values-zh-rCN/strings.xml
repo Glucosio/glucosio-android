@@ -58,11 +58,6 @@
   <string name="fragment_overview_selector_month">月</string>
   <string name="fragment_overview_selector_day">日</string>
   <string name="fragment_overview_selector_week">周</string>
-  <string-array name="fragment_overview_selector">
-    <item>@string/fragment_overview_selector_day</item>
-    <item>@string/fragment_overview_selector_week</item>
-    <item>@string/fragment_overview_selector_month</item>
-  </string-array>
   <string name="preferences_about">关于</string>
   <string name="preferences_version">版本</string>
   <string name="preferences_terms">使用条款</string>
@@ -114,21 +109,6 @@
   <string name="assistant_feedback_desc">如果您发现了任何技术问题，或有关于 Glucosio 的反馈，我们鼓励您在设置菜单中提交它，以帮助我们改进 Glucosio。</string>
   <string name="assistant_reading_title">添加阅读</string>
   <string name="assistant_reading_desc">一定要定期添加您的血糖读数，以便我们帮助您随时间跟踪您的血糖水平。</string>
-  <string-array name="assistant_titles">
-    <item>@string/assistant_feedback_title</item>
-    <item>@string/assistant_reading_title</item>
-    <item>@string/assistant_categories_title</item>
-  </string-array>
-  <string-array name="assistant_descriptions">
-    <item>@string/assistant_feedback_desc</item>
-    <item>@string/assistant_reading_desc</item>
-    <item>@string/assistant_categories_desc</item>
-  </string-array>
-  <string-array name="assistant_actions">
-    <item>@string/assistant_action_feedback</item>
-    <item>@string/assistant_action_reading</item>
-    <item>@string/assistant_action_try</item>
-  </string-array>
   <string name="helloactivity_spinner_preferred_range">首选范围</string>
   <string name="helloactivity_spinner_preferred_range_4">自定义范围</string>
   <string name="helloactivity_preferred_range_min">最小值</string>

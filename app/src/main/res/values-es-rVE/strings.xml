@@ -58,11 +58,6 @@
   <string name="fragment_overview_selector_month">Mes</string>
   <string name="fragment_overview_selector_day">Día</string>
   <string name="fragment_overview_selector_week">Semana</string>
-  <string-array name="fragment_overview_selector">
-    <item>@string/fragment_overview_selector_day</item>
-    <item>@string/fragment_overview_selector_week</item>
-    <item>@string/fragment_overview_selector_month</item>
-  </string-array>
   <string name="preferences_about">Acerca de</string>
   <string name="preferences_version">Versión</string>
   <string name="preferences_terms">Términos de uso</string>
@@ -113,21 +108,6 @@
   <string name="assistant_feedback_desc">Si encuentra cualquier problema técnico o tiene comentarios sobre Glucosio, le animamos a enviar sus comentarios en el menú de configuración con el fin de ayudarnos a mejorar Glucosio.</string>
   <string name="assistant_reading_title">Añadir una medición de glucosa</string>
   <string name="assistant_reading_desc">Asegúrese de añadir regularmente sus lecturas de glucosa para que podamos ayudarle a seguir sus niveles de glucosa a lo largo del tiempo.</string>
-  <string-array name="assistant_titles">
-    <item>@string/assistant_feedback_title</item>
-    <item>@string/assistant_reading_title</item>
-    <item>@string/assistant_categories_title</item>
-  </string-array>
-  <string-array name="assistant_descriptions">
-    <item>@string/assistant_feedback_desc</item>
-    <item>@string/assistant_reading_desc</item>
-    <item>@string/assistant_categories_desc</item>
-  </string-array>
-  <string-array name="assistant_actions">
-    <item>@string/assistant_action_feedback</item>
-    <item>@string/assistant_action_reading</item>
-    <item>@string/assistant_action_try</item>
-  </string-array>
   <string name="helloactivity_spinner_preferred_range">Rango preferido</string>
   <string name="helloactivity_spinner_preferred_range_4">Rango a medida</string>
   <string name="helloactivity_preferred_range_min">Valor mínimo</string>
