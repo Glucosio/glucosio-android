@@ -55,9 +55,9 @@
   <string name="fragment_overview_last_reading">Lasta kontrolo:</string>
   <string name="fragment_overview_trend">Trend over past month:</string>
   <string name="fragment_overview_trend_positive">in range and healthy</string>
-  <string name="fragment_overview_selector_month">Month</string>
-  <string name="fragment_overview_selector_day">Day</string>
-  <string name="fragment_overview_selector_week">Week</string>
+  <string name="fragment_overview_selector_month">Monato</string>
+  <string name="fragment_overview_selector_day">Tago</string>
+  <string name="fragment_overview_selector_week">Semajno</string>
   <string-array name="fragment_overview_selector">
     <item>@string/fragment_overview_selector_day</item>
     <item>@string/fragment_overview_selector_week</item>
