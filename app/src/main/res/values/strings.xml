@@ -143,6 +143,7 @@
     <string name="assistant_action_ok">OK, GOT IT</string>
     <string name="assistant_action_feedback">SUBMIT FEEDBACK</string>
     <string name="assistant_action_reading">ADD READING</string>
+    <string name="assistant_action_invite">SHARE</string>
     <string name="assistant_weight_title">Update your weight</string>
     <string name="assistant_weight_desc">Make sure to update your weight so Glucosio has the most accurate information.</string>
     <string name="assistant_research_title">Update your research opt-in</string>
@@ -155,22 +156,27 @@
     <string name="assistant_feedback_desc">If you find any technical issues or have feedback about Glucosio we encourage you to submit it in the settings menu in order to help us improve Glucosio.</string>
     <string name="assistant_reading_title">Add a reading</string>
     <string name="assistant_reading_desc">Be sure to regularly add your glucose readings so we can help you track your glucose levels over time.</string>
+    <string name="assistant_invite_title">Invite a friend</string>
+    <string name="assistant_invite_desc">Do you like Glucosio? Share it with a friend.</string>
 
-    <string-array name="assistant_titles">
+    <string-array name="assistant_titles" translatable="false">
         <item>@string/assistant_feedback_title</item>
         <item>@string/assistant_reading_title</item>
         <item>@string/assistant_categories_title</item>
+        <item>@string/assistant_invite_title</item>
     </string-array>
-    <string-array name="assistant_descriptions">
+    <string-array name="assistant_descriptions" translatable="false">
         <item>@string/assistant_feedback_desc</item>
         <item>@string/assistant_reading_desc</item>
-        <item>@string/assistant_categories_desc</item>
+        <item>@string/assistant_categories_title</item>
+        <item>@string/assistant_invite_desc</item>
     </string-array>
 
-    <string-array name="assistant_actions">
-    <item>@string/assistant_action_feedback</item>
-    <item>@string/assistant_action_reading</item>
+    <string-array name="assistant_actions" translatable="false">
+        <item>@string/assistant_action_feedback</item>
+        <item>@string/assistant_action_reading</item>
         <item>@string/assistant_action_try</item>
+        <item>@string/assistant_action_invite</item>
     </string-array>
 
     <string name="helloactivity_spinner_preferred_range">Preferred range</string>
@@ -190,107 +196,9 @@
         <item>@string/helloactivity_spinner_preferred_range_4</item>
     </string-array>
 
-    <string name="language_name_1">Azerbaijani</string>
-    <string name="language_name_2">Bengali</string>
-    <string name="language_name_3">Bengali, India</string>
-    <string name="language_name_4">Bosnian</string>
-    <string name="language_name_5">Bulgarian</string>
-    <string name="language_name_6">Burmese</string>
-    <string name="language_name_7">Catalan</string>
-    <string name="language_name_8">Chinese Simplified</string>
-    <string name="language_name_9">Chinese Traditional</string>
-    <string name="language_name_10">Dutch</string>
-    <string name="language_name_11">English</string>
-    <string name="language_name_12">English, UK</string>
-    <string name="language_name_13">Filipino</string>
-    <string name="language_name_14">French</string>
-    <string name="language_name_15">Hebrew</string>
-    <string name="language_name_16">Italian</string>
-    <string name="language_name_17">Portuguese, Brazilian</string>
-    <string name="language_name_18">Romanian</string>
-    <string name="language_name_19">Russian</string>
-    <string name="language_name_20">Slovenian</string>
-    <string name="language_name_21">Spanish</string>
-    <string name="language_name_22">Spanish, Mexico</string>
-    <string name="language_name_23">Swedish</string>
-
-    <string name="language_code_1">az</string>
-    <string name="language_code_2">bn</string>
-    <string name="language_code_3">bn_IN</string>
-    <string name="language_code_4">bs</string>
-    <string name="language_code_5">bg_BG</string>
-    <string name="language_code_6">my</string>
-    <string name="language_code_7">ca</string>
-    <string name="language_code_8">zh_CN</string>
-    <string name="language_code_9">zh_TW</string>
-    <string name="language_code_10">nl_BE</string>
-    <string name="language_code_11">en_US</string>
-    <string name="language_code_12">en_GB</string>
-    <string name="language_code_13">fil</string>
-    <string name="language_code_14">fr_FR</string>
-    <string name="language_code_15">iw</string>
-    <string name="language_code_16">it_IT</string>
-    <string name="language_code_17">pt_BR</string>
-    <string name="language_code_18">ro_RO</string>
-    <string name="language_code_19">ru_RU</string>
-    <string name="language_code_20">sl_SI</string>
-    <string name="language_code_21">es</string>
-    <string name="language_code_22">es_MX</string>
-    <string name="language_code_23">sv</string>
     <string name="invitation_title">Invite other people</string>
     <string name="invitation_message">Try Glucosio, an open source app for diabetes management and research.</string>
     <string name="invitation_cta">Try Glucosio</string>
 
-    <string-array name="array_languages_name" translatable="false">
-        <item>@string/language_name_1</item>
-        <item>@string/language_name_2</item>
-        <item>@string/language_name_3</item>
-        <item>@string/language_name_4</item>
-        <item>@string/language_name_5</item>
-        <item>@string/language_name_6</item>
-        <item>@string/language_name_7</item>
-        <item>@string/language_name_8</item>
-        <item>@string/language_name_9</item>
-        <item>@string/language_name_10</item>
-        <item>@string/language_name_11</item>
-        <item>@string/language_name_12</item>
-        <item>@string/language_name_13</item>
-        <item>@string/language_name_14</item>
-        <item>@string/language_name_15</item>
-        <item>@string/language_name_16</item>
-        <item>@string/language_name_17</item>
-        <item>@string/language_name_18</item>
-        <item>@string/language_name_19</item>
-        <item>@string/language_name_20</item>
-        <item>@string/language_name_21</item>
-        <item>@string/language_name_22</item>
-        <item>@string/language_name_23</item>
-    </string-array>
-
-    <string-array name="array_languages_code" translatable="false">
-        <item>@string/language_code_1</item>
-        <item>@string/language_code_2</item>
-        <item>@string/language_code_3</item>
-        <item>@string/language_code_4</item>
-        <item>@string/language_code_5</item>
-        <item>@string/language_code_6</item>
-        <item>@string/language_code_7</item>
-        <item>@string/language_code_8</item>
-        <item>@string/language_code_9</item>
-        <item>@string/language_code_10</item>
-        <item>@string/language_code_11</item>
-        <item>@string/language_code_12</item>
-        <item>@string/language_code_13</item>
-        <item>@string/language_code_14</item>
-        <item>@string/language_code_15</item>
-        <item>@string/language_code_16</item>
-        <item>@string/language_code_17</item>
-        <item>@string/language_code_18</item>
-        <item>@string/language_code_19</item>
-        <item>@string/language_code_20</item>
-        <item>@string/language_code_21</item>
-        <item>@string/language_code_22</item>
-        <item>@string/language_code_23</item>
-    </string-array>
-    <string name="title_activity_backup">BackupActivity</string>
+    <string name="title_activity_backup">Backup</string>
 </resources>

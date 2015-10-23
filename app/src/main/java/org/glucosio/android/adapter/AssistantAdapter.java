@@ -1,6 +1,7 @@
 package org.glucosio.android.adapter;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ public class AssistantAdapter extends RecyclerView.Adapter<AssistantAdapter.View
     private String[] actionTipDescriptions;
     private String[] actionTipActions;
     private AssistantPresenter presenter;
+    Resources res;
 
 
     // Provide a reference to the views for each data item
@@ -32,10 +34,11 @@ public class AssistantAdapter extends RecyclerView.Adapter<AssistantAdapter.View
     // Provide a suitable constructor (depends on the kind of dataset)
     public AssistantAdapter(Context context, AssistantPresenter assistantPresenter) {
         this.mContext = context;
+        this.res = context.getResources();
+        this.presenter = assistantPresenter;
         this.actionTipTitles = context.getResources().getStringArray(R.array.assistant_titles);
         this.actionTipDescriptions = context.getResources().getStringArray(R.array.assistant_descriptions);
         this.actionTipActions = context.getResources().getStringArray(R.array.assistant_actions);
-        this.presenter = assistantPresenter;
     }
 
     // Create new views (invoked by the layout manager)
@@ -61,13 +64,21 @@ public class AssistantAdapter extends RecyclerView.Adapter<AssistantAdapter.View
         actionTipDescription.setText(actionTipDescriptions[position]);
         actionTipAction.setText(actionTipActions[position]);
 
+        String actionTipTitleString = actionTipTitles[position];
+
         View.OnClickListener actionListener;
-        if (actionTipTitle.getText().equals(mContext.getResources().getString(R.string.assistant_feedback_title))) {
+        if (actionTipTitleString.equals(res.getString(R.string.assistant_feedback_title))) {
             actionListener = new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     presenter.openGitty();
-
+                }
+            };
+        } else if (actionTipTitleString.equals(res.getString(R.string.assistant_invite_title))) {
+            actionListener = new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    presenter.onInviteClicked();
                 }
             };
         } else {
@@ -81,7 +92,6 @@ public class AssistantAdapter extends RecyclerView.Adapter<AssistantAdapter.View
 
         actionTipAction.setOnClickListener(actionListener);
     }
-
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
