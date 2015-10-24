@@ -44,6 +44,9 @@
   <string name="fragment_history_snackbar_text">1 útlêzing fuortsmiten</string>
   <string name="fragment_history_snackbar_action">ÛNGEDIEN MEITSJE</string>
   <string name="fragment_overview_last_reading">Lêste kontrôle:</string>
+  <string name="fragment_overview_selector_month">Moanne</string>
+  <string name="fragment_overview_selector_day">Dei</string>
+  <string name="fragment_overview_selector_week">Wike</string>
   <string name="preferences_about">Oer</string>
   <string name="preferences_version">Ferzje</string>
   <string name="preferences_terms">Brûksbetingsten</string>

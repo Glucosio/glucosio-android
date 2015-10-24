@@ -53,6 +53,9 @@
   <string name="fragment_overview_last_reading">ਆਖਰੀ ਜਾਂਚ:</string>
   <string name="fragment_overview_trend">ਪਿਛਲੇ ਮਹੀਨਾ ਦਾ ਰੁਝਾਨ:</string>
   <string name="fragment_overview_trend_positive">ਹੱਦ ਵਿੱਚ ਅਤੇ ਸਿਹਤਮੰਦ</string>
+  <string name="fragment_overview_selector_month">ਮਹੀਨਾ</string>
+  <string name="fragment_overview_selector_day">ਦਿਨ</string>
+  <string name="fragment_overview_selector_week">ਹਫ਼ਤਾ</string>
   <string name="preferences_about">ਬਾਰੇ</string>
   <string name="preferences_version">ਵਰਜਨ</string>
   <string name="preferences_terms">ਸੇਵਾ ਦੀਆਂ ਸ਼ਰਤਾਂ</string>
@@ -106,4 +109,5 @@
   <string name="helloactivity_spinner_preferred_range_4">ਮਨਪਸੰਦ ਸੀਮਾ</string>
   <string name="helloactivity_preferred_range_min">ਘੱਟੋ-ਘਂੱਟ ਮੁੱਲ</string>
   <string name="helloactivity_preferred_range_max">ਵੱਧੋ-ਵੱਧ ਮੁੱਲ</string>
+  <string name="assistant_action_try">ਹੁਣੇ ਇਸ ਦੀ ਵਰਤੋਂ ਕਰੋ</string>
 </resources>

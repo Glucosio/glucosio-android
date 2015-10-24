@@ -97,6 +97,7 @@
   <string name="assistant_action_ok">好的，知道了！</string>
   <string name="assistant_action_feedback">提交反馈</string>
   <string name="assistant_action_reading">添加阅读</string>
+  <string name="assistant_action_invite">分享</string>
   <string name="assistant_weight_title">更新你的体重</string>
   <string name="assistant_weight_desc">请确保更新你的体重，以便 Glucosio 有最准确的信息。</string>
   <string name="assistant_research_title">更新你的研究选项</string>
@@ -109,9 +110,16 @@
   <string name="assistant_feedback_desc">如果您发现了任何技术问题，或有关于 Glucosio 的反馈，我们鼓励您在设置菜单中提交它，以帮助我们改进 Glucosio。</string>
   <string name="assistant_reading_title">添加阅读</string>
   <string name="assistant_reading_desc">一定要定期添加您的血糖读数，以便我们帮助您随时间跟踪您的血糖水平。</string>
+  <string name="assistant_invite_title">邀请朋友</string>
+  <string name="assistant_invite_desc">你喜欢 Glucosio 吗？与朋友分享它。</string>
   <string name="helloactivity_spinner_preferred_range">首选范围</string>
   <string name="helloactivity_spinner_preferred_range_4">自定义范围</string>
   <string name="helloactivity_preferred_range_min">最小值</string>
   <string name="helloactivity_preferred_range_max">最大值</string>
   <string name="assistant_action_try">现在试试它</string>
+  <string name="helloactivity_language">语言</string>
+  <string name="invitation_title">邀请其他人</string>
+  <string name="invitation_message">试试 Glucosio，一个糖尿病管理和研究的开放源码应用程序。</string>
+  <string name="invitation_cta">试试 Glucosio</string>
+  <string name="title_activity_backup">备份</string>
 </resources>
