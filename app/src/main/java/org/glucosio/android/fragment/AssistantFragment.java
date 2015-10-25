@@ -33,8 +33,6 @@ public class AssistantFragment extends Fragment {
     SharedPreferences sharedPref;
     SharedPreferences.Editor editor;
 
-    private static final int REQUEST_INVITE = 0;
-
     private RecyclerView tipsRecycler;
     private AssistantAdapter adapter;
     private AssistantPresenter presenter;
@@ -121,29 +119,11 @@ public class AssistantFragment extends Fragment {
         editor.commit();
     }
 
-    public void onInviteClicked() {
-        Intent intent = new AppInviteInvitation.IntentBuilder(getString(R.string.invitation_title))
-                .setMessage(getString(R.string.invitation_message))
-                .setCallToActionText(getString(R.string.invitation_cta))
-                .build();
-        getActivity().startActivityForResult(intent, REQUEST_INVITE);
-    }
-
     public void addReading(){
         ((MainActivity)getActivity()).showAddDialog();
     }
 
     public void openGitty(){
         ((MainActivity)getActivity()).startGittyReporter();
-    }
-
-    private boolean isPlayServicesConfigured() {
-        int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getActivity().getApplicationContext());
-        if(status == ConnectionResult.SUCCESS)
-            return true;
-        else {
-            Log.d("STATUS", "Error connecting with Google Play services. Code: " + String.valueOf(status));
-            return false;
-        }
     }
 }

@@ -28,6 +28,9 @@ import android.widget.Toast;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+import com.google.android.gms.appinvite.AppInviteInvitation;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
@@ -540,6 +543,14 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         }
     }
 
+    public void showInviteDialog() {
+        Intent intent = new AppInviteInvitation.IntentBuilder(getString(R.string.invitation_title))
+                .setMessage(getString(R.string.invitation_message))
+                .setCallToActionText(getString(R.string.invitation_cta))
+                .build();
+        startActivityForResult(intent, 0);
+    }
+
     public void checkIfEmptyLayout(){
         LinearLayout emptyLayout = (LinearLayout) findViewById(R.id.mainactivity_empty_layout);
         ViewPager pager = (ViewPager) findViewById(R.id.pager);
@@ -611,18 +622,34 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         TextView addDate = (TextView) addDialog.findViewById(R.id.dialog_add_date);
         DecimalFormat df = new DecimalFormat("00");
 
-        presenter.setReadingYear(year+"");
-        presenter.setReadingMonth(df.format(monthOfYear+1));
+        presenter.setReadingYear(year + "");
+        presenter.setReadingMonth(df.format(monthOfYear + 1));
         presenter.setReadingDay(df.format(dayOfMonth));
 
         String date = +dayOfMonth+"/"+presenter.getReadingMonth()+"/"+presenter.getReadingYear();
         addDate.setText(date);
     }
 
+    private boolean isPlayServicesAvailable() {
+        int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext());
+        if(status == ConnectionResult.SUCCESS)
+            return true;
+        else {
+            Log.d("STATUS", "Error connecting with Google Play services. Code: " + String.valueOf(status));
+            return false;
+        }
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        // If Play Services are available, show Invite button
+        if (!isPlayServicesAvailable()){
+            MenuItem item = menu.findItem(R.id.action_invite);
+            item.setVisible(false);
+        }
         return true;
     }
 
@@ -639,6 +666,9 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             return true;
         } else if (id == R.id.action_feedback) {
             startGittyReporter();
+            return true;
+        } else if (id == R.id.action_invite){
+            showInviteDialog();
             return true;
         }
 

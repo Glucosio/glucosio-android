@@ -20,8 +20,4 @@ public class AssistantPresenter {
     public void openGitty() {
         fragment.openGitty();
     }
-
-    public void onInviteClicked() {
-        fragment.onInviteClicked();
-    }
 }

@@ -77,13 +77,6 @@ public class AssistantAdapter extends RecyclerView.Adapter<AssistantAdapter.View
                     presenter.openGitty();
                 }
             };
-        } else if (actionTipTitleString.equals(res.getString(R.string.assistant_invite_title))) {
-            actionListener = new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    presenter.onInviteClicked();
-                }
-            };
         } else {
             actionListener = new View.OnClickListener() {
                 @Override
