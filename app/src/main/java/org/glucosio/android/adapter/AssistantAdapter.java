@@ -1,20 +1,27 @@
 package org.glucosio.android.adapter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import org.glucosio.android.ActionTip;
 import org.glucosio.android.R;
 import org.glucosio.android.presenter.AssistantPresenter;
+
+import java.util.ArrayList;
+
 public class AssistantAdapter extends RecyclerView.Adapter<AssistantAdapter.ViewHolder> {
     private Context mContext;
-    private String[] actionTipTitles;
-    private String[] actionTipDescriptions;
-    private String[] actionTipActions;
+    ArrayList<ActionTip> actionTips;
     private AssistantPresenter presenter;
+    Resources res;
 
 
     // Provide a reference to the views for each data item
@@ -30,12 +37,11 @@ public class AssistantAdapter extends RecyclerView.Adapter<AssistantAdapter.View
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public AssistantAdapter(Context context, AssistantPresenter assistantPresenter) {
+    public AssistantAdapter(Context context, AssistantPresenter assistantPresenter, ArrayList<ActionTip> tips) {
         this.mContext = context;
-        this.actionTipTitles = context.getResources().getStringArray(R.array.assistant_titles);
-        this.actionTipDescriptions = context.getResources().getStringArray(R.array.assistant_descriptions);
-        this.actionTipActions = context.getResources().getStringArray(R.array.assistant_actions);
+        this.res = context.getResources();
         this.presenter = assistantPresenter;
+        this.actionTips = tips;
     }
 
     // Create new views (invoked by the layout manager)
@@ -57,17 +63,25 @@ public class AssistantAdapter extends RecyclerView.Adapter<AssistantAdapter.View
         TextView actionTipTitle = (TextView) holder.mView.findViewById(R.id.fragment_assistant_item_title);
         TextView actionTipDescription = (TextView) holder.mView.findViewById(R.id.fragment_assistant_item_description);
         AppCompatButton actionTipAction = (AppCompatButton) holder.mView.findViewById(R.id.fragment_assistant_item_action);
-        actionTipTitle.setText(actionTipTitles[position]);
-        actionTipDescription.setText(actionTipDescriptions[position]);
-        actionTipAction.setText(actionTipActions[position]);
+        actionTipTitle.setText(actionTips.get(position).getTipTitle());
+        actionTipDescription.setText(actionTips.get(position).getTipDescription());
+        actionTipAction.setText(actionTips.get(position).getTipAction());
+
+        String actionTipTitleString = actionTips.get(position).getTipTitle();
 
         View.OnClickListener actionListener;
-        if (actionTipTitle.getText().equals(mContext.getResources().getString(R.string.assistant_feedback_title))) {
+        if (actionTipTitleString.equals(res.getString(R.string.assistant_feedback_title))) {
             actionListener = new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     presenter.openGitty();
-
+                }
+            };
+        } else if (actionTipTitleString.equals(res.getString(R.string.assistant_invite_title))) {
+            actionListener = new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    presenter.onInviteClicked();
                 }
             };
         } else {
@@ -85,6 +99,6 @@ public class AssistantAdapter extends RecyclerView.Adapter<AssistantAdapter.View
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return actionTipTitles.length;
+        return actionTips.size();
     }
 }

@@ -3,15 +3,15 @@ apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.0"
+    buildToolsVersion "23.0.1"
     lintOptions {
         abortOnError false
     }
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 23
-        versionCode 2
-        versionName '0.8.1'
+        versionCode 4
+        versionName '0.8.3'
     }
     buildTypes {
         release {
@@ -36,16 +36,23 @@ repositories {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
+    // Android Support libraries
     compile 'com.android.support:appcompat-v7:23.1.0'
     compile 'com.android.support:design:23.1.0'
     compile 'com.android.support:cardview-v7:23.1.0'
     compile 'com.android.support:recyclerview-v7:23.1.0'
     compile 'com.android.support:percent:23.1.0'
+
+    // Google Play Services
+    compile 'com.google.android.gms:play-services-appinvite:8.1.0'
     compile 'com.google.android.gms:play-services-analytics:8.1.0'
+
+    // Other libraries
+    compile 'com.google.android.gms:play-services-drive:8.1.0'
     compile 'com.wdullaer:materialdatetimepicker:1.5.3'
     compile 'com.github.PhilJay:MPAndroidChart:v2.1.4'
     compile 'uk.co.chrisjenx:calligraphy:2.1.0'
-    compile 'com.github.paolorotolo:gitty_reporter:1.2.1'
+    compile 'com.github.paolorotolo:gitty_reporter:1.2.2'
     compile 'io.realm:realm-android:0.83.0'
     compile 'net.danlew:android.joda:2.8.2'
 }

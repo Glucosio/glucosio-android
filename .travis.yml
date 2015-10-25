@@ -3,13 +3,13 @@ sudo: false
 
 android:
   components:
-    - build-tools-23.0.0
+    - build-tools-23.0.1
     - android-23
     - extra-android-support
     - extra-google-google_play_services
     - extra-android-m2repository
     - extra-google-m2repository
-    - addon-google_apis-google-21
+    - addon-google_apis-google-23
 
 before_install:
  - chmod +x gradlew
@@ -23,3 +23,6 @@ after_success:
 script:
  - cd $TRAVIS_BUILD_DIR/
  - ./gradlew clean build
+ 
+ notifications:
+  slack: glucosio:uk2xb9sAxOaVedj7zePyuBqa

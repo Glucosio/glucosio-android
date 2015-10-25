@@ -4,6 +4,8 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.os.Build;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TabLayout;
@@ -34,11 +36,13 @@ import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.adapter.HomePagerAdapter;
 import org.glucosio.android.presenter.MainPresenter;
+import org.glucosio.android.tools.GlucoseConverter;
 import org.glucosio.android.tools.LabelledSpinner;
 import org.glucosio.android.tools.LabelledSpinner.OnItemChosenListener;
 
 import java.text.DecimalFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 
 public class MainActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener{
@@ -143,7 +147,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         finish();
     }
 
-    public void onFabClicked(View v){
+    public void onFabClicked(View v) {
         showAddDialog();
     }
 
@@ -278,6 +282,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     public void showEditDialog(final int id){
         //only included for debug
         // printGlucoseReadingTableDetails();
+        GlucoseConverter converter = new GlucoseConverter();
 
         final int readingId = id;
         addDialog = new Dialog(MainActivity.this, R.style.GlucosioTheme);
@@ -302,7 +307,12 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         dialogAddDate = (TextView) addDialog.findViewById(R.id.dialog_add_date);
         dialogReading = (TextView) addDialog.findViewById(R.id.dialog_add_concentration);
         dialogAddButton.setText(getString(R.string.dialog_edit).toUpperCase());
-        dialogReading.setText(presenter.getGlucoseReadingReadingById(readingId));
+
+        if (presenter.getUnitMeasuerement().equals("mg/dL")) {
+            dialogReading.setText(presenter.getGlucoseReadingReadingById(readingId));
+        } else {
+            dialogReading.setText(converter.toMmolL(Double.parseDouble(presenter.getGlucoseReadingReadingById(readingId))) + "");
+        }
 
         dialogReading = (TextView) addDialog.findViewById(R.id.dialog_add_concentration);
         dialogTypeCustom = (EditText) addDialog.findViewById(R.id.dialog_type_custom);
@@ -538,14 +548,16 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             pager.setVisibility(View.GONE);
             emptyLayout.setVisibility(View.VISIBLE);
 
-            if (getResources().getConfiguration().orientation == 1) {
-                // If Portrait choose vertical curved line
-                ImageView arrow = (ImageView) findViewById(R.id.mainactivity_arrow);
-                arrow.setBackground(getResources().getDrawable(R.drawable.curved_line_vertical));
-            } else {
-                // Else choose horizontal one
-                ImageView arrow = (ImageView) findViewById(R.id.mainactivity_arrow);
-                arrow.setBackground((getResources().getDrawable(R.drawable.curved_line_horizontal)));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                if (getResources().getConfiguration().orientation == 1) {
+                    // If Portrait choose vertical curved line
+                    ImageView arrow = (ImageView) findViewById(R.id.mainactivity_arrow);
+                    arrow.setBackground(getResources().getDrawable(R.drawable.curved_line_vertical));
+                } else {
+                    // Else choose horizontal one
+                    ImageView arrow = (ImageView) findViewById(R.id.mainactivity_arrow);
+                    arrow.setBackground((getResources().getDrawable(R.drawable.curved_line_horizontal)));
+                }
             }
         } else {
             pager.setVisibility(View.VISIBLE);

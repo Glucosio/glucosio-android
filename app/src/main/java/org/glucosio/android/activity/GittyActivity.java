@@ -52,7 +52,7 @@ public class GittyActivity extends GittyReporter {
         setBackgroundColor1(pink);
         setBackgroundColor2(yellow);
         setRippleColor(yellow);
-
+        setTitleColor2(getResources().getColor(R.color.glucosio_text_dark));
     }
 
     @Override
