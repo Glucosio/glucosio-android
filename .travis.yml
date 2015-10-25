@@ -23,3 +23,6 @@ after_success:
 script:
  - cd $TRAVIS_BUILD_DIR/
  - ./gradlew clean build
+ 
+ notifications:
+  slack: glucosio:uk2xb9sAxOaVedj7zePyuBqa
