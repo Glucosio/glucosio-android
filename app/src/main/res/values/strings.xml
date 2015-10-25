@@ -196,4 +196,5 @@
     <string name="invitation_cta">Try Glucosio</string>
 
     <string name="title_activity_backup">Backup</string>
+    <string name="preferences_privacy">Privacy</string>
 </resources>

@@ -52,5 +52,8 @@
         <Preference
             android:key="preference_terms"
             android:title="@string/preferences_terms"/>
+        <Preference
+            android:key="preference_privacy"
+            android:title="@string/preferences_privacy"/>
     </PreferenceCategory>
 </PreferenceScreen>

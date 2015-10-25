@@ -104,6 +104,7 @@ public class PreferencesActivity extends AppCompatActivity {
                 maxRangePref.setEnabled(true);
             }
 
+            final Preference privacyPref = (Preference) findPreference("preference_privacy");
             final Preference termsPref = (Preference) findPreference("preference_terms");
             final Preference versionPref = (Preference) findPreference("preference_version");
             final Preference backupPref = (Preference) findPreference("backup_settings");
@@ -234,6 +235,22 @@ public class PreferencesActivity extends AppCompatActivity {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
                     Intent intent = new Intent(getActivity(), LicenceActivity.class);
+                    Bundle ePzl= new Bundle();
+                    ePzl.putString("key", "terms");
+                    intent.putExtras(ePzl);
+                    startActivity(intent);
+
+                    return false;
+                }
+            });
+
+            privacyPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    Intent intent = new Intent(getActivity(), LicenceActivity.class);
+                    Bundle ePzl= new Bundle();
+                    ePzl.putString("key", "privacy");
+                    intent.putExtras(ePzl);
                     startActivity(intent);
 
                     return false;
