@@ -9,8 +9,6 @@
   <string name="title_activity_hello">Salut.</string>
   <string name="helloactivity_headline">Salut.</string>
   <string name="helloactivity_terms">Termeni de folosire</string>
-  <string name="helloactivity_terms_accept">Am citit și accept termenii de folosire</string>
-  <string name="helloactivity_terms_full">Conținutul site-ului și applicațiilor Glucosio, cum ar fi textul, graficele, imaginile și alte materiale (”Conținut”) sunt doar cu scop informativ. Conținutul nu este un înlocuitor la sfatul medicului, diagnostic sau tratament. Ne încurajăm utilizatorii să caute ajutorul medicului când vine vorba de orice afecțiune. Nu ignorați sfatul medicului sau amânați căutarea lui din cauza a ceva ce ați citit pe site-ul sau aplicațiile Glucosio. Site-ul, blogul și wiki-ul Glucosio și alte resurse accesibile prin navigator (”Site-ul”) ar trebuii folosite doar în scopurile menționate mai sus.\n Încrederea în orice informație asigurată de Glucosio, membrii echipei Glucosio, voluntari și alții, apărută pe Site sau în aplicațiile noastre este pe riscul dumneavoastră. Site-ul și Conținutul sunt furnizate pe principiul \"ca atare\".</string>
   <string name="helloactivity_subhead">Avem nevoie de doar câteva lucruri rapide înainte de a începe.</string>
   <string name="helloactivity_country">Țară</string>
   <string name="helloactivity_age">Vârsta</string>
@@ -95,7 +93,6 @@
   <string name="assistant_action_ok">OK, AM ÎNȚELES</string>
   <string name="assistant_action_feedback">TRIMITE FEEDBACK</string>
   <string name="assistant_action_reading">ADAUGĂ ÎNREGISTRARE</string>
-  <string name="assistant_action_invite">ÎMPĂRTĂȘEȘTE</string>
   <string name="assistant_weight_title">Actualizați greutatea dumneavoastră</string>
   <string name="assistant_weight_desc">Asiguraţi-vă că actualizați greutatea dumneavoastră, astfel încât Glucosio să aibă informaţii cât mai precise.</string>
   <string name="assistant_research_title">Actualizați opțiunea pentru cercetare</string>
@@ -108,8 +105,6 @@
   <string name="assistant_feedback_desc">Dacă găsiţi orice probleme tehnice sau aveți feedback despre Glucosio vă recomandăm să-l trimiteți prin meniul de setări, pentru a ne ajuta să îmbunătăţim Glucosio.</string>
   <string name="assistant_reading_title">Adauga o înregistrare</string>
   <string name="assistant_reading_desc">Asiguraţi-vă că adăugați în mod regulat înregistrările dumneavoastră de glucoză, astfel încât să vă putem ajuta să urmăriți nivelurile glucozei în timp.</string>
-  <string name="assistant_invite_title">Invită un prieten</string>
-  <string name="assistant_invite_desc">Îți place Glucosio? Împărtășește-l cu un prieten.</string>
   <string name="helloactivity_spinner_preferred_range">Gamă preferată</string>
   <string name="helloactivity_spinner_preferred_range_4">Gamă proprie</string>
   <string name="helloactivity_preferred_range_min">Valoare minimă</string>

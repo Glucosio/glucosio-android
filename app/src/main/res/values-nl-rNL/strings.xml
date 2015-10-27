@@ -9,8 +9,6 @@
   <string name="title_activity_hello">Hallo.</string>
   <string name="helloactivity_headline">Hallo.</string>
   <string name="helloactivity_terms">Gebruiksvoorwaarden.</string>
-  <string name="helloactivity_terms_accept">Ik heb de gebruiksvoorwaarden gelezen en geaccepteerd</string>
-  <string name="helloactivity_terms_full">De inhoud van de Glucosio-website en -apps, zoals tekst, afbeeldingen en ander materiaal (\'Inhoud\'), dient alleen voor informatieve doeleinden. De inhoud is niet bedoeld als vervanging voor professioneel medisch(e) advies, diagnose of behandeling. Gebruikers van Glucosio wordt aanbevolen bij eventuele vragen over een medische toestand altijd het advies van uw arts of andere gekwalificeerde gezondheidszorgverlener te raadplegen. Negeer nooit professioneel medisch advies en vermijd vertraging in het opvragen ervan omdat u iets op de Glucosio-website of in onze apps hebt gelezen. De Glucosio-website, -blog, -wiki en andere via een webbrowser toegankelijke inhoud (\'Website\') dienen alleen voor het hierboven beschreven doel te worden gebruikt.\n Het vertrouwen op enige informatie die door Glucosio, Glucosio-teamleden, vrijwilligers en anderen wordt aangeboden en op de website of in onze apps verschijnt, is geheel op eigen risico. De Website en de Inhoud worden op een ‘as is’-basis aangeboden.</string>
   <string name="helloactivity_subhead">We hebben even wat info nodig voordat u aan de slag kunt.</string>
   <string name="helloactivity_country">Land</string>
   <string name="helloactivity_age">Leeftijd</string>
@@ -112,4 +110,9 @@
   <string name="helloactivity_preferred_range_min">Min. waarde</string>
   <string name="helloactivity_preferred_range_max">Max. waarde</string>
   <string name="assistant_action_try">NU PROBEREN</string>
+  <string name="helloactivity_language">Taal</string>
+  <string name="invitation_title">Anderen uitnodigen</string>
+  <string name="invitation_message">Probeer Glucosio, een opensource-app voor diabetesbeheer en -onderzoek.</string>
+  <string name="invitation_cta">Glucosio proberen</string>
+  <string name="title_activity_backup">Back-up maken</string>
 </resources>

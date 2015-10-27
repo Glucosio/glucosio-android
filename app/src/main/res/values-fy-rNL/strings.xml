@@ -9,7 +9,6 @@
   <string name="title_activity_hello">Hallo.</string>
   <string name="helloactivity_headline">Hallo.</string>
   <string name="helloactivity_terms">Brûksbetingsten.</string>
-  <string name="helloactivity_terms_accept">Ik ha de brûksbetingsten lêzen en akseptearre</string>
   <string name="helloactivity_country">Lân</string>
   <string name="helloactivity_age">Aldens</string>
   <string name="helloactivity_gender">Geslacht</string>

@@ -9,8 +9,6 @@
   <string name="title_activity_hello">Hola.</string>
   <string name="helloactivity_headline">Hola.</string>
   <string name="helloactivity_terms">Términos d\'usu</string>
-  <string name="helloactivity_terms_accept">Lleílo y aceuto los términos d\'usu</string>
-  <string name="helloactivity_terms_full">Los conteníos del sitiu web y aplicaciones Glucosio, como: testu, gráficos, semeyes y otru material, («Conteníu»), son namái pa propósitu d\'información. El conteníu nun ta empobináu a ser un troquéu de conseyos, diagnósticos o tratamientos mélicos. Encamentamos a los usuarios de Glucosio que vaigan en cata de conseyos del so mélicu u otru fornidor de salú cualificáu con cualesquier entruga que pudiéreis tener no tocante a la condición mélica. Enxamás nun inores el conseyu mélicu o apostalgues la gueta d\'información pola mor de daqué que lleeres nel sitiu web Glucosio o nes nueses aplicaciones. El sitiu web, blogue y otru conteníu accesible pa restoladores web, («Sitios web»), ha usase namái cola fin descrita enriba.\nLa dependencia haza cualesquier información fornida por Glucosio, miembros de Glucosio, voluntarios y otros qu\'apaezan nel sitiu web o nes nueses aplicaciones ta namái sol to riesgu. El sitiu y el conteníu fornise «tal cual».</string>
   <string name="helloactivity_subhead">Namái necesitamos delles coses rápides enantes qu\'entames.</string>
   <string name="helloactivity_country">País</string>
   <string name="helloactivity_age">Edá</string>
@@ -67,14 +65,14 @@
     <item>Llei la etiqueta nutricional nes comíes envasaes y bébores pa controlar el consumu de zucre y carbohidratos.</item>
     <item>Al comer fuera, entruga por pexe o carne asao ensin aceite o mantega estra.</item>
     <item>Al comer fuera, entruga si tienen platos baxos en sodiu.</item>
-    <item>When eating out, eat the same portion sizes you would at home and take the leftovers to go.</item>
+    <item>Al comer fuera, comi la mesma cantidá que comeríes en casa y lleva les sobres contigo.</item>
     <item>Al comer fuera, entruga por elementos baxos en caloríes como alliños, magar que nun tean nel menú.</item>
     <item>Al comer fuera, entruga por troqueos. En cuantes de pataques fritíes, solicita un pidíu doblu vexetal como ensalada, fréxoles o brócoli.</item>
     <item>Al comer fuera, pidi comíes que nun sían rebozaes o tean fritíes.</item>
     <item>Al comer fuera, entruga por salses, zusmios o alliños «al llau».</item>
     <item>Llibre de zucre nun quier dicir que lo seya. Quier dicir, 0,5 gramos (g) per unidá, asina que ten curiáu de nun fartucate de munchos elementos «llibres de zucre».</item>
     <item>Movese haza un pesu saludable ayuda a controlar los zucres nel sangre. El to mélicu, un dietista y el to entrenador personal puen facer qu\'entames nun plan que furrule contigo.</item>
-    <item>Checking your blood level and tracking it in an app like Glucosio twice a day will help you be aware of outcomes from food and lifestyle choices.</item>
+    <item>Comprobar los tos niveles sanguineos y siguilos nuna aplicación como Glucosio dos vegaes caldía ayudaránte a tar na cuenta de les escoyetes de comíes y estilos de vida.</item>
     <item>Get A1c blood tests to find out your average blood sugar for the past 2 to 3 months. Your doctor should tell you how frequently this test will be needed to be performed.</item>
     <item>Siguir cuantos carbohidratos consumes pue ser cenciellamente tan importante como comprobar los sos niveles nel sangre darréu qu\'inflúin nos niveles de glucosa. Charra col to mélicu o dietista tocante al consumu de carbohidratos.</item>
     <item>Controlar la presión nel sangre y los niveles de colesterol y triglicéridos ye importante darréu que los diabéticos son susceptibles a enfermedaes cardiaques.</item>
@@ -94,7 +92,9 @@
   <string name="assistant_action_ok">VAL, PESCANCIÉLO</string>
   <string name="assistant_action_feedback">UNVIAR FEEDBACK</string>
   <string name="assistant_action_reading">AMESTAR LLECTURA</string>
+  <string name="assistant_weight_title">Anueva\'l to pesu</string>
   <string name="assistant_weight_desc">Asegúrate d\'anovar el to pesu pa qu\'asina Glucosio tenga la información más precisa.</string>
+  <string name="assistant_research_desc">Siempres pues optar o non pola compartición d\'información diabética pero recuerda que tolos datos compartíos son anónimos dafechu. Namái compartimos tendencies demográfiques y niveles de glucosa.</string>
   <string name="assistant_categories_title">Crea estayes</string>
   <string name="assistant_categories_desc">Glucosio vien con estayes predeterminaes pa la entrada de glucosa pero pues crear estayes personalizaes nos axustes pa concasar coles tos necesidaes úniques.</string>
   <string name="assistant_check_desc">L\'asistente Glucosio apurre conseyos regulaes y siguirá ameyorando, asina qu\'equí comprueba siempres les aiciones que pues tomar p\'ameyorar la to esperiencia Glucosio y pa otros conseyos útiles.</string>
@@ -107,4 +107,8 @@
   <string name="helloactivity_preferred_range_min">Valor mínimu</string>
   <string name="helloactivity_preferred_range_max">Valor máximu</string>
   <string name="assistant_action_try">PRUÉBALO AGORA</string>
+  <string name="helloactivity_language">Llingua</string>
+  <string name="invitation_title">Convidar a otra xente</string>
+  <string name="invitation_message">Prueba Glucosio, una aplicación de códigu llibre pa la xestión ya investigación de la diabetes.</string>
+  <string name="invitation_cta">Prueba Glucosio</string>
 </resources>

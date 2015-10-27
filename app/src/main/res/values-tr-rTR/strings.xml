@@ -9,9 +9,6 @@
   <string name="title_activity_hello">Merhaba.</string>
   <string name="helloactivity_headline">Merhaba.</string>
   <string name="helloactivity_terms">Kullanım Şartları.</string>
-  <string name="helloactivity_terms_accept">Kullanım şartlarını okudum ve kabul ediyorum</string>
-  <string name="helloactivity_terms_full">Glucosio Web sitesi, grafik, resim ve diğer malzemeleri (\"içerik\") gibi şeyler sadece
-bilgilendirme amaçlıdır. Doktorunuzun söylediklerinin yanı sıra, size yardımcı olmak için hazırlanan profesyonel bir uygulamadır. Nitelikli sağlık denetimi için her zaman doktorunuza danışın. Uygulama profesyonel bir  sağlık uygulamasıdır, fakat asla ve asla doktorunuza görünmeyi ihmal etmeyin ve uygulamanın söylediklerine göre doktorunuza gitmemezlik etmeyin. Glucosio Web sitesi, Blog, Wiki ve diğer erişilebilir içerik (\"Web sitesi\") yalnızca yukarıda açıklanan amaç için kullanılmalıdır. \n güven Glucosio, Glucosio ekip üyeleri, gönüllüler ve diğerleri tarafından sağlanan herhangi bir bilgi Web sitesi veya bizim uygulamamız içerisinde  görülen sadece vasıl senin kendi tehlike üzerindedir.  Site ve içeriği \"olduğu gibi\" bazında sağlanır.</string>
   <string name="helloactivity_subhead">Başlamadan önce birkaç şey yapmamız gerekiyor.</string>
   <string name="helloactivity_country">Ülke</string>
   <string name="helloactivity_age">Yaş</string>
@@ -92,7 +89,6 @@ bilgilendirme amaçlıdır. Doktorunuzun söylediklerinin yanı sıra, size yard
   <string name="assistant_action_ok">TAMAM, ANLADIM</string>
   <string name="assistant_action_feedback">GERİ BİLDİRİM GÖNDER</string>
   <string name="assistant_action_reading">OKUMA EKLE</string>
-  <string name="assistant_action_invite">PAYLAŞ</string>
   <string name="assistant_weight_title">Kilonuzu güncelleştirin</string>
   <string name="assistant_weight_desc">Kilonuzu sık sık güncelleyin böylece Glucosio en en doğru bilgilere sahip olsun.</string>
   <string name="assistant_research_title">Araştırmanı güncelle opt-in</string>
@@ -105,7 +101,6 @@ bilgilendirme amaçlıdır. Doktorunuzun söylediklerinin yanı sıra, size yard
   <string name="assistant_feedback_desc">Eğer herhangi bir teknik sorun bulursanız veya Glucosio hakkında geribildiriminiz varsa Glucosio\'yu geliştirmemize yardımcı olmak için Ayarlar menüsünden geribildirim göndermeyi öneririz.</string>
   <string name="assistant_reading_title">Bir okuma Ekle</string>
   <string name="assistant_reading_desc">Glikoz değerlerinizi düzenli olarak eklediğinizden emin olun böylece glikoz seviyenizi takip edebilelim.</string>
-  <string name="assistant_invite_title">Eşi dostu davet et</string>
   <string name="helloactivity_spinner_preferred_range">Tercih edilen aralık</string>
   <string name="helloactivity_spinner_preferred_range_4">Özel Aralık</string>
   <string name="helloactivity_preferred_range_min">En küçük değer</string>

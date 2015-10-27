@@ -10,7 +10,6 @@
   <string name="title_activity_hello">مرحباً.</string>
   <string name="helloactivity_headline">مرحباً.</string>
   <string name="helloactivity_terms">شروط الاستخدام</string>
-  <string name="helloactivity_terms_accept">لقد قرأت وقبلت \"شروط الاستخدام\"</string>
   <string name="helloactivity_subhead">نحن بحاجة فقط لبضعة أشياء سريعة قبل البدء.</string>
   <string name="helloactivity_country">الدولة</string>
   <string name="helloactivity_age">العمر</string>

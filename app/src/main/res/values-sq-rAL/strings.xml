@@ -9,8 +9,6 @@
   <string name="title_activity_hello">Përshëndetje.</string>
   <string name="helloactivity_headline">Përshëndetje.</string>
   <string name="helloactivity_terms">Termat e Përdorimit.</string>
-  <string name="helloactivity_terms_accept">I kam lexuar dhe i pranoj Termat e Përdorimit</string>
-  <string name="helloactivity_terms_full">Përmbajtja e websitit dhe aplikacioneve Glucosio, si teksti, grafikët, imazhet dhe materiale të tjera janë vetëm për qëllime informuese. Përmbajtja nuk ka si synim të jetë një zëvëndësim i këshillave profesionale mjekësore, diagnozave apo trajtimit. Ne i inkurajojmë përdoruesit e Glucosio që gjithmonë të kërkojnë këshillën e mjekut ose të personave të tjerë të kualifikuar për çështjtet e shëndetit për pyetjet që ata mund të kenë rreth gjëndjes së tyre shëndetësore. Kurrë nuk duhet ta shpërfillni këshillën mjekësore të një profesionisti ose të mos e kërkoni atë për shkak të diçkaje që keni lexuar në websitin e Glucoson ose në ndonjë nga aplikacionet tona. Websiti i Glucosio, Blogu, Wiki, dhe përmbajtje të tjera të arritshme nëpërmjet kërkimit në web duhet të përdoren vetëm për qëllimet e përshkruara më sipër. Besimi te çdo informacion i siguruar nga Glucosio, antarët e skuadrës së Glucosio, vullnetarët dhe personat e tjerë që shfaqen në site ose ne aplikacionet tona është vetëm në dorën tuaj. Siti dhe Përmbajtja ju sigurohen me baza \"siç është\".</string>
   <string name="helloactivity_subhead">Na duhen vetëm disa gjëra të vogla para se të fillojmë.</string>
   <string name="helloactivity_country">Vendi</string>
   <string name="helloactivity_age">Mosha</string>

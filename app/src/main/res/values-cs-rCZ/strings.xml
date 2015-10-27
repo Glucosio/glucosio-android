@@ -9,7 +9,6 @@
   <string name="title_activity_hello">Ahoj.</string>
   <string name="helloactivity_headline">Ahoj.</string>
   <string name="helloactivity_terms">Podmínky užívání.</string>
-  <string name="helloactivity_terms_accept">Přečetl jsem si a souhlasím s výše uvedenými Podmínkami užívání</string>
   <string name="helloactivity_subhead">Ještě než začneme, chtěli bychom vědět pár věcí.</string>
   <string name="helloactivity_country">Země</string>
   <string name="helloactivity_age">Věk</string>

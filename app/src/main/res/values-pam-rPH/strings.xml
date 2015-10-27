@@ -9,8 +9,6 @@
   <string name="title_activity_hello">Mabuhay.</string>
   <string name="helloactivity_headline">Mabuhay.</string>
   <string name="helloactivity_terms">Terms of Use.</string>
-  <string name="helloactivity_terms_accept">Nabasa ko at tinatanggap ang Terms of Use</string>
-  <string name="helloactivity_terms_full">Ang mga nilalaman ng Glucosio website at apps, lahat ng mga teksto, larawan, imahen at iba pang materyal (\"Content\") ay inilathala para sa impormasyon lamang. Ang mga nasabing nilalaman at hindi maaring gamit sa pangpropesyunal na payong pangmedikal, pagsusuri o kagamutan. Lahat ng gumagamit ng Glucosio ay hinihikayat na magpasuri sa mga doktor o mga tagapayong pangkalusugan sa anumang katanungan hingil sa inyong sakit.\n Walang pananagutan ang Glucosio team, volunteers at mga nilalaman sa aming website sa paggamit ng aming produkto.</string>
   <string name="helloactivity_subhead">Kinakailangan namin ang ilang mga bagay bago tayo makapagsimula.</string>
   <string name="helloactivity_country">Bansa</string>
   <string name="helloactivity_age">Edad</string>

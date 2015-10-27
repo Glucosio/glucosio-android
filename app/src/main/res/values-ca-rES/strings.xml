@@ -9,8 +9,6 @@
   <string name="title_activity_hello">Hola.</string>
   <string name="helloactivity_headline">Hola.</string>
   <string name="helloactivity_terms">Condicions d\'ús.</string>
-  <string name="helloactivity_terms_accept">He llegit i accepto les condicions d\'ús</string>
-  <string name="helloactivity_terms_full">Els continguts de l\'aplicació i pàgina web de Glucosio, tal com el text, gràfics, imatges, i altre material (\"Contingut\") són només amb finalitats informatives. El contingut no pretén ser un substitutiu pels consells, diagnòstics o tractaments mèdics professionals. Animem als usuaris de Glucosio a seguir sempre les recomanacions del seu metge o altre assistent sanitari amb qualsevol consulta que puguin tenir relacionada amb la seva condició mèdica. Mai s\'han de desatendre o retardar les recomanacions mèdiques per haver llegit alguna cosa a la pàgina web de Glucosio a a les nostres aplicacions. El lloc web, blog i wiki de Glucosio i altre contingut accessible des del navegador (\"Lloc web\") s\'hauria d\'utilitzar únicament amb la finalitat descrita anteriorment.\n La confiança dipositada en qualsevol informació proporcionada per Glucosio, els membres de l\'equip de Glucosio, voluntaris i altres que apareixen al lloc web o a les nostres aplicacions queda baix el seu propi risc. El lloc i el contingut es proporcionen sobre una base \"tal qual\".</string>
   <string name="helloactivity_subhead">Només necessitem unes quantes coses abans de començar.</string>
   <string name="helloactivity_country">País</string>
   <string name="helloactivity_age">Edat</string>

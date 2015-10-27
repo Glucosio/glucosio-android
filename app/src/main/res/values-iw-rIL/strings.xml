@@ -9,8 +9,6 @@
   <string name="title_activity_hello">שלום.</string>
   <string name="helloactivity_headline">שלום.</string>
   <string name="helloactivity_terms">תנאי שימוש</string>
-  <string name="helloactivity_terms_accept">קראתי ואני מסכים לתנאי השימוש</string>
-  <string name="helloactivity_terms_full">התכנים של אתר Glucosio, יישומים, כגון טקסט, גרפיקה, תמונות, חומר אחר (\"תוכן\") הן למטרות שיתוף מידע \ אינפורמציה בלבד. התוכן לא נועד לשמש כתחליף לייעוץ רפואי, אבחון או טיפול מוסמך. אנו ממליצים למשתמשי Glucosio תמיד להתייעץ עם הרופא שלך או ספק שירותי בריאות מוסמכים אחרים על כל שאלה לגבי מצבך רפואי. לעולם אל תמנע  או תתעכב במציאת ייעוץ רפואי מוסמך בגלל משהו שקראת באתר Glucosio או ביישומים שלנו. אתר האינטרנט Glucosio, הבלוג, הויקי וכל תוכן אחר באתר האינטרנט (\"האתר\") אמור לשמש רק לצרכים המתוארים לעיל. \n הסתמכות על כל מידע המסופק על ידי Glucosio, חברי צוות האתר, או מתנדבים אחרים המופיעים באתר או ביישומים שלנו הוא באחריות המשתמש בלבד. האתר והתוכן הינם מסופקים על בסיס כהוא וללא אחריות.</string>
   <string name="helloactivity_subhead">אנא מלא את הפרטים הבאים בשביל להתחיל.</string>
   <string name="helloactivity_country">מדינה</string>
   <string name="helloactivity_age">גיל</string>

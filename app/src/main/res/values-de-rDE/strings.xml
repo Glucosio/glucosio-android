@@ -9,7 +9,6 @@
   <string name="title_activity_hello">Hallo.</string>
   <string name="helloactivity_headline">Hallo.</string>
   <string name="helloactivity_terms">Nutzungsbedingungen.</string>
-  <string name="helloactivity_terms_accept">Ich habe die Nutzungsbedingungen gelesen und ich akzeptiere sie</string>
   <string name="helloactivity_subhead">Wir brauchen nur noch einige Dinge bevor Sie loslegen können.</string>
   <string name="helloactivity_country">Land</string>
   <string name="helloactivity_age">Alter</string>

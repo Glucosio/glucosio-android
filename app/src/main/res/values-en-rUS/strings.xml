@@ -9,8 +9,6 @@
   <string name="title_activity_hello">Hello.</string>
   <string name="helloactivity_headline">Hello.</string>
   <string name="helloactivity_terms">Terms of Use</string>
-  <string name="helloactivity_terms_accept">I\'ve read and accept the Terms of Use</string>
-  <string name="helloactivity_terms_full">The contents of the Glucosio website and apps, such as text, graphics, images, and other material (“Content”) are for informational purposes only. The content is not intended to be a substitute for professional medical advice, diagnosis, or treatment. We encourage Glucosio users to always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition. Never disregard professional medical advice or delay in seeking it because of something you have read on the Glucosio website or in our apps. The Glucosio Website, Blog, Wiki and other web browser accessible content (“Website”) should be used only for the purpose described above.\n Reliance on any information provided by Glucosio, Glucosio team members, volunteers and others appearing on the Website or in our apps is solely at your own risk.  The Site and the Content are provided on an “as is” basis.</string>
   <string name="helloactivity_subhead">We just need a few quick things before getting you started.</string>
   <string name="helloactivity_country">Country</string>
   <string name="helloactivity_age">Age</string>

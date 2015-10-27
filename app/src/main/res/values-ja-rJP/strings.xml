@@ -9,8 +9,6 @@
   <string name="title_activity_hello">こんにちは。</string>
   <string name="helloactivity_headline">こんにちは。</string>
   <string name="helloactivity_terms">利用規約</string>
-  <string name="helloactivity_terms_accept">使用規約を読んで同意する</string>
-  <string name="helloactivity_terms_full">Glucosio の Web サイトとアプリの内容、テキスト、グラフィックス、イメージ、およびその他の資料 (「コンテンツ」) などは情報提供のみを目的とします。内容は、医療専門家のアドバイス、診断、または治療の代わりになるものではありません。私たちは、Glucosio ユーザーが病状に関して持つかもしれないあらゆる質問とアドバイスを、常にあなたの医師またはその他の資格をもつ医療提供者に求めることをお勧めします。Glucosio の Web サイト上やアプリで何かを読んでも、医療専門家のアドバイスを無視したり、求めることに遅れないでください。Glucosio の Web サイト、ブログ、Wiki、その他 Web ブラウザーでアクセス可能な内容 (「ウェブサイト」) は上記の目的ためにのみ使用する必要があります。 \n Glucosio、Glucosio チーム メンバー、ボランティアおよびその他 Web サイト上に表示される人、または私たちのアプリによって提供された情報の信頼性はもっぱらあなた自身のリスクに基づきます。サイトと内容は、\"あるがまま\" に基づいて提供されます。</string>
   <string name="helloactivity_subhead">始める前に、いくつか簡単な設定を行います。</string>
   <string name="helloactivity_country">国</string>
   <string name="helloactivity_age">年齢</string>
@@ -112,4 +110,9 @@
   <string name="helloactivity_preferred_range_min">最小値</string>
   <string name="helloactivity_preferred_range_max">最大値</string>
   <string name="assistant_action_try">今すぐ試す</string>
+  <string name="helloactivity_language">言語</string>
+  <string name="invitation_title">他の人を招待</string>
+  <string name="invitation_message">糖尿病の管理と研究のためのオープンソース アプリ Glucosio を試してください。</string>
+  <string name="invitation_cta">Glucosio を試してください</string>
+  <string name="title_activity_backup">バックアップ</string>
 </resources>

@@ -9,7 +9,6 @@
   <string name="title_activity_hello">Saluton.</string>
   <string name="helloactivity_headline">Saluton.</string>
   <string name="helloactivity_terms">Kondiĉoj de uzado.</string>
-  <string name="helloactivity_terms_accept">Mi legis kaj konsentas la kondiĉoj de uzado</string>
   <string name="helloactivity_country">Lando</string>
   <string name="helloactivity_age">Aĝo</string>
   <string name="helloactivity_gender">Sekso</string>

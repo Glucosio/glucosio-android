@@ -9,8 +9,6 @@
   <string name="title_activity_hello">Kumusta.</string>
   <string name="helloactivity_headline">Kumusta.</string>
   <string name="helloactivity_terms">Patakaran sa Paggamit.</string>
-  <string name="helloactivity_terms_accept">Binasa at sumasang-ayon ako sa Patakaran sa Paggamit</string>
-  <string name="helloactivity_terms_full">Ang mga nilalaman ng website at apps ng Glucosio, kagaya ng mga teksto, grapiks, larawan, st iba osng materyales (\"Nilalaman\") ay para sa kaalaman lamang. Ang nilalaman ay hindi pakay na panghalili sa propesyonal na payo ng doktor, diagnosis, o panlunas. Hinihikayat namin ang mga taga-gamit ng Glucosio na laginf kumonsulta sa doktor o sa iba pang kwalipikadong health provider sa kahit na anong katanungang tungkol sa inyong kundisyong pangkalusugan. Huwag isa-isang-tabi o ipagpa-bukas ang pagpapakonsulta nang dahil sa kung anong inyong nabasa sa website o sa apps ng Glucosio.  Ang website, blog, wiki, at iba psng mga nilalamang nakakalap sa pamamagitan ng web browser (\"Website\") ay dapat lamang gamitin sa mga kadahilanang inilarawan sa itaas. \n Ang pagbabatay sa kahit alinmang impormasyong ibinahagi ng Glucosio, ng mga kasali sa pangkat Glucosio, mga boluntaryo at iba pang nakikita sa aming website o apps ay</string>
   <string name="helloactivity_subhead">Kinakailangan natin ng ilang mga bagay bago tayo magsimula.</string>
   <string name="helloactivity_country">Bansa</string>
   <string name="helloactivity_age">Edad</string>

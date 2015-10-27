@@ -9,8 +9,6 @@
   <string name="title_activity_hello">Dia dhuit.</string>
   <string name="helloactivity_headline">Dia dhuit.</string>
   <string name="helloactivity_terms">Téarmaí Úsáide.</string>
-  <string name="helloactivity_terms_accept">Léigh mé na Téarmaí Úsáide agus glacaim leo</string>
-  <string name="helloactivity_terms_full">The contents of the Glucosio website and apps, such as text, graphics, images, and other material (“Content”) are for informational purposes only. The content is not intended to be a substitute for professional medical advice, diagnosis, or treatment. We encourage Glucosio users to always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition. Never disregard professional medical advice or delay in seeking it because of something you have read on the Glucosio website or in our apps. The Glucosio Website, Blog, Wiki and other web browser accessible content (“Website”) should be used only for the purpose described above.\n Reliance on any information provided by Glucosio, Glucosio team members, volunteers and others appearing on the Website or in our apps is solely at your own risk.  The Site and the Content are provided on an “as is” basis.</string>
   <string name="helloactivity_subhead">Cúpla rud beag sula dtosóimid.</string>
   <string name="helloactivity_country">Tír</string>
   <string name="helloactivity_age">Aois</string>
@@ -112,4 +110,9 @@
   <string name="helloactivity_preferred_range_min">Íosluach</string>
   <string name="helloactivity_preferred_range_max">Uasluach</string>
   <string name="assistant_action_try">BAIN TRIAIL AS</string>
+  <string name="helloactivity_language">Teanga</string>
+  <string name="invitation_title">Tabhair cuirí do dhaoine eile</string>
+  <string name="invitation_message">Bain triail as Glucosio, aip oscailte le haghaidh bainistíocht agus taighde ar dhiaibéiteas.</string>
+  <string name="invitation_cta">Bain triail as Glucosio</string>
+  <string name="title_activity_backup">Cúltaca</string>
 </resources>

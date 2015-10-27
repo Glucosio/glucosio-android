@@ -9,8 +9,6 @@
   <string name="title_activity_hello">您好！</string>
   <string name="helloactivity_headline">您好！</string>
   <string name="helloactivity_terms">使用條款</string>
-  <string name="helloactivity_terms_accept">我已閱讀並接受使用條款。</string>
-  <string name="helloactivity_terms_full">Glucosio 網站與應用程式當中的內容，包含文字、圖片、圖形及其他內容（簡稱「內容」）僅作為資訊提供。這些內容並非為了要取代專業醫療建議、診斷或治療。我們建議 Glucosio 使用者若遇到任何醫療相關問題時，諮詢醫生或其他相關專業人士。請務必不要因為在 Glucosio 網站或應用程式當中閱讀的任何資訊而忽略任何資料建議或延誤就醫。Glucosio 網站、部落格、維基與其他網頁瀏覽器可存取的內容（簡稱「網站」）應僅供上述目的使用。\n由 Glucosio、Glucosio 團隊成員、志工或其他人提供於網站或應用程式的可靠度應由使用者自行判斷。網站與內容均僅依照「現況」提供。</string>
   <string name="helloactivity_subhead">在開始使用前要先向您詢問幾個小問題。</string>
   <string name="helloactivity_country">國家</string>
   <string name="helloactivity_age">年齡</string>
@@ -95,7 +93,6 @@
   <string name="assistant_action_ok">好，收到！</string>
   <string name="assistant_action_feedback">送出意見回饋</string>
   <string name="assistant_action_reading">新增測量讀數</string>
-  <string name="assistant_action_invite">分享</string>
   <string name="assistant_weight_title">更新您的體重</string>
   <string name="assistant_weight_desc">記得要常在此更新您的體重，這樣 Glucosio 才能有最準確的資訊。</string>
   <string name="assistant_research_title">參與研究意願</string>
@@ -108,8 +105,6 @@
   <string name="assistant_feedback_desc">若您發現任何技術問題，或是對 Glucosio 有任何意見想說，我們相當歡迎您在設定選單告訴我們，以幫助我們改善 Glucosio。</string>
   <string name="assistant_reading_title">新增測量值</string>
   <string name="assistant_reading_desc">務必定期紀錄血糖測量值，這樣才能幫助您追蹤血糖值。</string>
-  <string name="assistant_invite_title">邀請好友</string>
-  <string name="assistant_invite_desc">您喜歡 Glucosio 嗎？分享給朋友知道！</string>
   <string name="helloactivity_spinner_preferred_range">建議體重範圍標準</string>
   <string name="helloactivity_spinner_preferred_range_4">自訂範圍</string>
   <string name="helloactivity_preferred_range_min">最小值</string>

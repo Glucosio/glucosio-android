@@ -9,7 +9,6 @@
   <string name="title_activity_hello">สวัสดี</string>
   <string name="helloactivity_headline">สวัสดี</string>
   <string name="helloactivity_terms">เงื่อนไขการใช้</string>
-  <string name="helloactivity_terms_accept">ฉันได้อ่านและยอมรับเงื่อนไขการใช้งาน</string>
   <string name="helloactivity_country">ประเทศ</string>
   <string name="helloactivity_age">อายุ</string>
   <string name="helloactivity_age_invalid">กรุณาระบุอายุที่ถูกต้อง</string>

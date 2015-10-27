@@ -10,8 +10,6 @@
   <string name="title_activity_hello">Ciao.</string>
   <string name="helloactivity_headline">Ciao.</string>
   <string name="helloactivity_terms">Condizioni d\'uso.</string>
-  <string name="helloactivity_terms_accept">Ho letto e accetto le condizioni d\'uso</string>
-  <string name="helloactivity_terms_full">I contenuti del sito web e dell\'applicazione Glucosio, come testo, grafici, immagini e altro materiale (\"Contenuti\") sono a scopo puramente informativo. Le informazioni non sono da considerarsi come sostitutive di consigli medici professionali, diagnosi o trattamenti terapeutici. Noi incoraggiamo gli utenti di Glucosio a chiedere sempre il parere del proprio medico curante o di personale qualificato su qualsiasi domanda tu abbia inerente una condizione medica. Mai ignorare i consigli di una consulenza medica professionale o ritardarne la ricerca a causa di qualcosa letta nel sito web di Glucosio o nella nostra applicazione. Il sito web di Glucosio, Blog, Wiki e altri contenuti accessibili dovrebbero essere usati solo per gli scopi sopra descritti. \n In affidamento su qualsiasi informazione fornita da Glucosio, dai membri del team di Glucosio, volontari o altri che appaiono nel sito web o applicazione, usale a tuo rischio e pericolo. Il Sito Web e i contenuti vengono forniti \"così come sono\".</string>
   <string name="helloactivity_subhead">Abbiamo solo bisogno di un paio di cose veloci prima di iniziare.</string>
   <string name="helloactivity_country">Nazione</string>
   <string name="helloactivity_age">Età</string>
@@ -113,4 +111,9 @@
   <string name="helloactivity_preferred_range_min">Valore minimo</string>
   <string name="helloactivity_preferred_range_max">Valore massimo</string>
   <string name="assistant_action_try">PROVALO ORA</string>
+  <string name="helloactivity_language">Lingua</string>
+  <string name="invitation_title">Invita altre persone</string>
+  <string name="invitation_message">Prova Glucosio, un\'app open source per la gestione del diabete e per la ricerca.</string>
+  <string name="invitation_cta">Prova Glucosio</string>
+  <string name="title_activity_backup">Backup</string>
 </resources>

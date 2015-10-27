@@ -9,7 +9,6 @@
   <string name="title_activity_hello">नमस्कार।</string>
   <string name="helloactivity_headline">नमस्कार।</string>
   <string name="helloactivity_terms">उपयोग सर्तहरु।</string>
-  <string name="helloactivity_terms_accept">मैले उपयोग सर्तहरु पढिसकेँ र स्वीकार गर्दछु</string>
   <string name="helloactivity_subhead">शुरुवात गर्नु अघि हामिलाई केहि कुराहरु चाहिनेछ।</string>
   <string name="helloactivity_country">देश</string>
   <string name="helloactivity_age">उमेर</string>

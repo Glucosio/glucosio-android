@@ -9,7 +9,6 @@
   <string name="title_activity_hello">வணக்கம்.</string>
   <string name="helloactivity_headline">வணக்கம்.</string>
   <string name="helloactivity_terms">பயன்பாட்டு முறைமை.</string>
-  <string name="helloactivity_terms_accept">பயன்பாட்டு விதிமுறைகளை படித்தேன், அவற்றை ஏற்கிறேன்</string>
   <string name="helloactivity_subhead">நீங்கள் துவங்குவதற்கு முன் விரைவாக ஒருசில தகவல் மட்டும் தேவை.</string>
   <string name="helloactivity_country">நாடு</string>
   <string name="helloactivity_age">வயது</string>

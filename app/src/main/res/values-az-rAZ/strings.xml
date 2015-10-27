@@ -9,9 +9,6 @@
   <string name="title_activity_hello">Salam.</string>
   <string name="helloactivity_headline">Salam.</string>
   <string name="helloactivity_terms">İstifadə şərtləri.</string>
-  <string name="helloactivity_terms_accept">İstifadə şərtlərini oxudum və qəbul edirəm</string>
-  <string name="helloactivity_terms_full">Glucosio Web saytı, qrfika, rəsm və digər materialları (\"məzmunlar\") şeyləri sadəcə
-məlumat məqsədlidir. Həkiminizin dedikləri ilə bərabər, sizə köməkçi olmaq üçün hazırlanan professional bir proqramdır. Uyğun sağlamlıq yoxlanması üçün həmişə həkiminizlə məsləhətləşin. Proqram professional bir sağlamlıq proqramıdır, ancaq əsla və əsla həkimin müayinəsini laqeydlik etməyin və proqramın dediklərinə görə həkimə getməkdən imtina etməyin. Glucosio Web saytı, Blog, Viki və digər əlçatan məzmunlar (\"Web saytı\") sadəcə yuxarıda açıqlanan məqsəd üçün istifadə olunmalıdırr. \n güven Glucosio, Glucosio komanda üzvləri, könüllüllər və digərləri tərəfindən verilən hər hansı məlumatata etibar edin ya da bütün risk sizin üzərinizdədir.  Sayt və məzmunu \"olduğu kimi\" formasında təqdim olunur.</string>
   <string name="helloactivity_subhead">Başlamamışdan əvvəl bir neçə şey etməliyik.</string>
   <string name="helloactivity_country">Ölkə</string>
   <string name="helloactivity_age">Yaş</string>

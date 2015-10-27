@@ -8,7 +8,6 @@
   <string name="title_activity_hello">നമസ്കാരം.</string>
   <string name="helloactivity_headline">നമസ്കാരം.</string>
   <string name="helloactivity_terms">ഉപയോഗനിബന്ധനകൾ.</string>
-  <string name="helloactivity_terms_accept">ഞാൻ നിബന്ധനകൾ അംഗീകരിക്കുന്നു</string>
   <string name="helloactivity_country">രാജ്യം</string>
   <string name="helloactivity_age">വയസ്സു്</string>
   <string name="helloactivity_age_invalid">ഒരു സാധുതയുള്ള വയസ്സ് നൽകുക.</string>

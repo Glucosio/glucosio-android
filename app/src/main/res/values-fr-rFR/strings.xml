@@ -10,8 +10,6 @@
   <string name="title_activity_hello">Bonjour.</string>
   <string name="helloactivity_headline">Bonjour.</string>
   <string name="helloactivity_terms">Conditions d\'utilisation.</string>
-  <string name="helloactivity_terms_accept">J\'ai lu et accepté les conditions d\'utilisation</string>
-  <string name="helloactivity_terms_full">Le contenu du site Web Glucosio et applications, tels que textes, graphiques, images et autre matériel (\"contenu\") est à titre informatif seulement. Le contenu ne vise pas à se substituer à un avis médical professionnel, diagnostic ou traitement. Nous encourageons les utilisateurs de Glucosio de toujours demander l\'avis de votre médecin ou un autre fournisseur de santé qualifié pour toute question que vous pourriez avoir concernant un trouble médical. Ne jamais ignorer un avis médical professionnel ou tarder à le chercher parce que vous avez lu sur le site Glucosio ou dans nos applications. Le site Glucosio, Blog, Wiki et autres contenus accessibles du navigateur web (« site Web ») devraient être utilisés qu\'aux fins décrites ci-dessus. \n Reliance sur tout renseignement fourni par Glucosio, membres de l\'équipe Glucosio, bénévoles et autres apparaissant sur le site ou dans nos applications est exclusivement à vos propres risques.  Le Site et son contenu sont fournis sur une base \"tel quel\".</string>
   <string name="helloactivity_subhead">Avant de démarrer, nous avons besoin de quelques renseignements.</string>
   <string name="helloactivity_country">Pays</string>
   <string name="helloactivity_age">Âge</string>
@@ -113,4 +111,9 @@
   <string name="helloactivity_preferred_range_min">Valeur minimum</string>
   <string name="helloactivity_preferred_range_max">Valeur maximum</string>
   <string name="assistant_action_try">Essayez Maintenant</string>
+  <string name="helloactivity_language">Langue</string>
+  <string name="invitation_title">Inviter d\'autres personnes</string>
+  <string name="invitation_message">Essayer Glucosio, une application open-source pour la gestion du diabète et la recherche associée.</string>
+  <string name="invitation_cta">Essayer Glucosio</string>
+  <string name="title_activity_backup">Sauvegardes</string>
 </resources>

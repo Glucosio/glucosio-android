@@ -8,8 +8,6 @@
   <string name="title_activity_hello">Hallo.</string>
   <string name="helloactivity_headline">Gyebale.</string>
   <string name="helloactivity_terms">Endagano ye Enkozesa</string>
-  <string name="helloactivity_terms_accept">Mazze okusoma atte nzikiriza Endagano Z\'enkozesa</string>
-  <string name="helloactivity_terms_full">Ebintu ebiri ku mutingabagano ne appu za Glucosio, nga ebigambo, grafikis, ebifananyi ne ebintu ebikozesebwa ebirala byona (\"Ebintu\") bya kusoma kwoka. Ebintu bino tebigendereddwa ku kuzesebwa mu kifo ky\'obubaka bwe ddwaliro obukugu, okeberwa oba obujanjjabi. Tuwaniriza abakozesa Glucosio buli kaseera okunonya obubaka obutufu obwo omusawo oba omujanjabi omulala omukugu ng\'obabuza ebibuzo byona byoyina ebikwatagana n\'ekirwadde kyona. Togana nga bubaka bw\'abasawo abakugu oba n\'olwawo okubunonya lwakuba oyina byosomye ku mutinbagano gwa Glucosio oba mu appu z\'affe. Omutinbagano, bulogo, Wiki n\'engeri endala ez\'okukatimbe (\"Omutinbagano\") biyina okozesebwa mungeri y\'oka nga wetugambye wangulu.\n Okweyunira ku bubaka obuwerebwa Glucosio, ba memba ba tiimu ya Glucosio, bamuzira-kisa nabalala abana beera ku mutinbagano oba mu appu zaffe mukikola ku bulabe bwamwe. Omutinbagano N\'ebiriko biwerebwa nga bwebiri.</string>
   <string name="helloactivity_subhead">Twetagayo ebintu bitono nga tetunakuyamba kutandika.</string>
   <string name="helloactivity_country">Ensi</string>
   <string name="helloactivity_age">Emyaka</string>

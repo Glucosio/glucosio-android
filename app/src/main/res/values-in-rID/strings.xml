@@ -9,7 +9,6 @@
   <string name="title_activity_hello">Halo.</string>
   <string name="helloactivity_headline">Halo.</string>
   <string name="helloactivity_terms">Ketentuan Penggunaan.</string>
-  <string name="helloactivity_terms_accept">Saya telah membaca dan menerima syarat penggunaan</string>
   <string name="helloactivity_subhead">Kami hanya perlu beberapa hal sebelum Anda bisa mulai.</string>
   <string name="helloactivity_country">Negara</string>
   <string name="helloactivity_age">Umur</string>

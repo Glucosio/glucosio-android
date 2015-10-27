@@ -9,8 +9,6 @@
   <string name="title_activity_hello">Hallå.</string>
   <string name="helloactivity_headline">Hallå.</string>
   <string name="helloactivity_terms">Användarvillkor.</string>
-  <string name="helloactivity_terms_accept">Jag har läst och accepterar användarvillkoren</string>
-  <string name="helloactivity_terms_full">Innehållet på Glucosios hemsida och appar, såsom text, grafik, bilder och annat material (\"innehållet\") är endast i informationssyfte. Innehållet är inte avsett att vara en ersättning för professionell medicinsk rådgivning, diagnos eller behandling. Vi uppmuntrar Glucosio-användare att alltid rådfråga sin läkare eller annan kvalificerad hälsoleverantör med eventuella frågor du har om ett medicinskt tillstånd. Aldrig bortse från professionell medicinsk rådgivning eller försening i söker det på grund av något du läst på Glucosio hemsida eller i våra appar. Glucosio hemsida, blogg, Wiki och andra web browser tillgängligt innehåll (\"webbplatsen\") bör användas endast för det ändamål som beskrivs ovan. \n förlitan på information som tillhandahålls av Glucosio, Glucosio medlemmar, volontärer och andra som förekommer på webbplatsen eller i våra appar är enbart på egen risk.  Webbplatsen och innehållet tillhandahålls på grundval av \"som är\".</string>
   <string name="helloactivity_subhead">Vi behöver bara några få enkla saker innan du kan sätta igång.</string>
   <string name="helloactivity_country">Land</string>
   <string name="helloactivity_age">Ålder</string>
@@ -112,4 +110,9 @@
   <string name="helloactivity_preferred_range_min">Minvärde</string>
   <string name="helloactivity_preferred_range_max">Maxvärde</string>
   <string name="assistant_action_try">Prova det nu</string>
+  <string name="helloactivity_language">Språk</string>
+  <string name="invitation_title">Bjud in andra personer</string>
+  <string name="invitation_message">Prova Glucosio, en app med öppen källkod för diabetesbehandling och forskning.</string>
+  <string name="invitation_cta">Prova Glucosio</string>
+  <string name="title_activity_backup">Säkerhetskopiera</string>
 </resources>

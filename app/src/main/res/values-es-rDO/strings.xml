@@ -10,8 +10,6 @@
   <string name="title_activity_hello">Hola.</string>
   <string name="helloactivity_headline">Hola.</string>
   <string name="helloactivity_terms">Términos de Uso</string>
-  <string name="helloactivity_terms_accept">He leído y acepto los términos de uso</string>
-  <string name="helloactivity_terms_full">El contenido de la página web de Glucosio y sus aplicaciones, tales como el texto, los gráficos, las imágenes y otros materiales (\"contenido\"), son sólo para los fines informativos. El contenido no intenta ser un sustituto de los consejos, diagnósticos o tratamientos de los médicos profesionales. Animamos a los usuarios de Glucosio a que siempre busquen el asesoramiento de un médico u otro proveedor de salud calificado con cualquier pregunta que puedan tener sobre una condición médica. Nunca ignore los consejos médicos profesionales o retrasa en buscar el consejo debido a algo que ha leído en la Página Web de Glucosio o en nuestras aplicaciones. La Página Web, el Blog, el Wiki y otro contenido accesible por el navegador web (los sitios web) de Glucosio, deben ser utilizados únicamente para el propósito descrito. \n  Confianza en cualquier información proporcionada por Glucosio, miembros del equipo de Glucosio, voluntarios u otros que aparecen en el sitio web o en nuestras aplicaciones es exclusivamente bajo su propio riesgo.  El Sitio y el Contenido se proporcionan sobre una base \"tal cual\".</string>
   <string name="helloactivity_subhead">Solo necesitamos algunas cosas antes de empezar.</string>
   <string name="helloactivity_country">País</string>
   <string name="helloactivity_age">Edad</string>
@@ -75,12 +73,12 @@
     <item>Cuando coma fuera, pida comidas que no sean apanadas ni fritas.</item>
     <item>Cuando coma fuera de casa, pida salsas y aderezos \"al lado.\"</item>
     <item>Sin azúcar no realmente significa sin azúcar. Significa 0,5 gramos (g) de azúcar por porción, así que tenga cuidado para no comer demasiados artículos sin azucar.</item>
-    <item>Moverse hacia un peso saludable ayuda a control azúcar en la sangre. Su médico, una nutricionista y un entrenador físico pueden ayudarle a empezar en un plan que funcione para usted.</item>
+    <item>Moverse hacia un peso saludable ayuda a control azúcar en la sangre. Su médico, un dietético y un entrenador físico pueden ayudarle a empezar en un plan que funcione para usted.</item>
     <item>La verificación del nivel de sangre y el seguimiento del nivel en una aplicación como Glucosio dos veces al día le ayudará a ser consciente de los resultados de las opciones de comida y estilo de vida.</item>
     <item>Obtenga un análisis de sangre A1c para averiguar su nivel de azúcar promedio durante los últimos 2 a 3 meses. Su médico debe decirle con qué frecuencia esta prueba será necesaria hacer.</item>
-    <item>Seguimiento de la cantidad de carbohidratos que consume puede ser tan importante como comprobar los niveles de sangre ya que los carbohidratos influyen los niveles de glucosa. Hable con su médico o dietista sobre el consumo de carbohidratos.</item>
+    <item>Seguimiento de la cantidad de carbohidratos que consume puede ser tan importante como comprobar los niveles de sangre ya que los carbohidratos influyen los niveles de glucosa. Hable con su médico o dietético sobre el consumo de carbohidratos.</item>
     <item>Controlar la presión arterial, el colesterol y los niveles de triglicéridos es importante porque los diabéticos son susceptibles a la enfermedad cardíaca.</item>
-    <item>Existen varios enfoques dietéticos que usted puede tomar para comer más sano y mejorar los resultados de su diabetes. Busque consejos de un dietista sobre lo que funcionaría mejor para usted y su presupuesto.</item>
+    <item>Existen varios enfoques dietéticos que usted puede tomar para comer más sano y mejorar los resultados de su diabetes. Busque consejos de un dietético sobre lo que funcionaría mejor para usted y su presupuesto.</item>
     <item>Es especialmente importante para los con diabetes que se esfuercen por hacer ejercicio regularmente, lo que puede ayudarles a mantener un peso saludable. Hable con su doctor para ver cuales ejercicios son adecuados para usted.</item>
     <item>La privación de sueño puede llevarse a comer más comida chatarra, y como resultado, puede impactar su salud negativamente. Asegúrese de dormir bien y consulte a un especialista del sueño si le dificulta dormir.</item>
     <item>El estrés puede tener un impacto negativo en los con diabetes. Hable con su doctor u otro profesional de salud de cómo manejar el estrés.</item>

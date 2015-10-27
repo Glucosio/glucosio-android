@@ -9,7 +9,6 @@
   <string name="title_activity_hello">Xin chào.</string>
   <string name="helloactivity_headline">Xin chào.</string>
   <string name="helloactivity_terms">Điều khoản sử dụng.</string>
-  <string name="helloactivity_terms_accept">Tôi đã đọc và chấp nhận các điều khoản sử dụng</string>
   <string name="helloactivity_country">Quốc gia</string>
   <string name="helloactivity_age">Tuổi</string>
   <string name="helloactivity_age_invalid">Vui lòng nhập tuổi hợp lệ.</string>

@@ -9,8 +9,6 @@
   <string name="title_activity_hello">Dobrodošli.</string>
   <string name="helloactivity_headline">Dobrodošli.</string>
   <string name="helloactivity_terms">Pogoji uporabe.</string>
-  <string name="helloactivity_terms_accept">Sprejmem pogoje uporabe</string>
-  <string name="helloactivity_terms_full">Vsebina spletne strani Glucosio in aplikacij, besedilo, grafike, slike in ostali material (\"Content\") so informativne narave. Vsebina ni namenjena kot nadomestilo za strokovni zdravniški nasvet, diagnozo ali zdravljenje. Uporabnike Glucosio storitev spodbujamo, da se vedno posvetujejo z zdravnikom ali drugim usposobljenim zdravstvenim osebjem o vseh vprašanjih, ki bi jih imeli o svojem zdravstvenem stanju. Ne ignorirajte strokovnega zdravniškega nasveta in ne odlašajte iskanje pomoči zaradi nečesa, kar ste prebrali na spletni strani Glucosio ali v naših aplikacijah. Spletna stran Glucosio, blog, Wiki stran in ostala vsebina, ki je dostopna spletnim brskalnikom (\"Website\") je namenjena samo za opisane namene.\n Zanašanje na katero koli informacijo, ki jo je posredovalo podjetje Glucosio, člani ekipe Glucosio, prostovoljci in drugi osebe, ki objavljajo na spletni strani ali aplikacijah, je izključno vaša lastna odgovornost. Stran in vsebina so na voljo \"tako kot so\".</string>
   <string name="helloactivity_subhead">Preden začnete, potrebujemo nekaj podatkov.</string>
   <string name="helloactivity_country">Država</string>
   <string name="helloactivity_age">Starost</string>

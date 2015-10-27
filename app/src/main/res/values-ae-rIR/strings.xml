@@ -9,7 +9,6 @@
   <string name="title_activity_hello">سلام.</string>
   <string name="helloactivity_headline">سلام.</string>
   <string name="helloactivity_terms">شرایط استفاده.</string>
-  <string name="helloactivity_terms_accept">من شرایط استفاده را مطالعه کردم و آنرا پذیرفتم</string>
   <string name="helloactivity_subhead">ما فقط به چند چیز کوچک قبل از شروع نیاز داریم.</string>
   <string name="helloactivity_country">کشور</string>
   <string name="helloactivity_age">سن</string>

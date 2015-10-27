@@ -9,7 +9,6 @@
   <string name="title_activity_hello">હેલ્લો.</string>
   <string name="helloactivity_headline">હેલ્લો.</string>
   <string name="helloactivity_terms">વપરાશ ની શરતો.</string>
-  <string name="helloactivity_terms_accept">હું વપરાશની શરતો વાંચીને સ્વીકાર કરું છુ</string>
   <string name="helloactivity_country">દેશ</string>
   <string name="helloactivity_age">ઉંમર</string>
   <string name="helloactivity_age_invalid">કૃપા કરી સાચી ઉમર નાખો.</string>

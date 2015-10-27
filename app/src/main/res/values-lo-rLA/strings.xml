@@ -9,7 +9,6 @@
   <string name="title_activity_hello">ສະບາຍດີ.</string>
   <string name="helloactivity_headline">ສະບາຍດີ.</string>
   <string name="helloactivity_terms">ເງື່ອນໄຂການໃຊ້.</string>
-  <string name="helloactivity_terms_accept">ຂ້ອຍໄດ້ອ່ານ ແລະ ຍອມຮັບເງື່ອນໄຂການນຳໃຊ້ແລ້ວ</string>
   <string name="helloactivity_country">ປະເທດ</string>
   <string name="helloactivity_age">ອາຍຸ</string>
   <string name="helloactivity_age_invalid">ກະລຸນາປ້ອນອາຍຸທີ່ຖືກຕ້ອງ.</string>

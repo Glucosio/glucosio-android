@@ -9,8 +9,6 @@
   <string name="title_activity_hello">Привет.</string>
   <string name="helloactivity_headline">Привет.</string>
   <string name="helloactivity_terms">Условия использования.</string>
-  <string name="helloactivity_terms_accept">Я прочитал условия использования и принимаю их</string>
-  <string name="helloactivity_terms_full">Содержание веб-сайта и приложения Glucosio, такие как текст, графика, изображения и другие материалы (\"Содержание\") предназначены только для информационных целей. Указанное содержание не является заменой профессиональной медицинской консультации, диагноза или лечения. Мы советуем пользователям Glucosio всегда обращаться за консультацией к врачу или другому квалифицированному специалисту в случае возникновения любых вопросов касательно состояния их здоровья. Никогда не отказывайтесь от профессиональных медицинских рекомендаций и не откладывайте визит к врачу из-за того, что вы что-то прочитали на веб-сайте Glucosio или в нашем приложении. Веб-сайт Glucosio, блог, вики и другое содержание, открываемое веб-браузером, (\"Веб-сайт\") предназначены только для указанного выше использования.\n Вы полагаетесь на информацию, предоставляемую Glucosio, членами команды Glucosio, волонтёрами и другими пользователями Веб-сайта или нашего приложения на свой страх и риск. Веб-сайт и Содержание предоставляются \"как есть\".</string>
   <string name="helloactivity_subhead">Для того, чтобы начать, нам нужны некоторые сведения.</string>
   <string name="helloactivity_country">Страна</string>
   <string name="helloactivity_age">Возраст</string>
@@ -112,4 +110,9 @@
   <string name="helloactivity_preferred_range_min">Минимальное значение</string>
   <string name="helloactivity_preferred_range_max">Максимальное значение</string>
   <string name="assistant_action_try">ПОПРОБОВАТЬ ПРЯМО СЕЙЧАС</string>
+  <string name="helloactivity_language">Язык</string>
+  <string name="invitation_title">Пригласить других людей</string>
+  <string name="invitation_message">Попробовать Glucosio, приложение с открытым исходным кодом для исследований и отслеживания диабета.</string>
+  <string name="invitation_cta">Попробовать Glucosio</string>
+  <string name="title_activity_backup">Резервное копирование</string>
 </resources>
