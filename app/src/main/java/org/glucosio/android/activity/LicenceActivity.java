@@ -2,10 +2,10 @@ package org.glucosio.android.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
 import org.glucosio.android.R;
 
 
@@ -18,9 +18,19 @@ public class LicenceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_licence);
         WebView webView = (WebView) findViewById(R.id.webview_licence);
 
-        Bundle p = getIntent().getExtras();
-        String url = p.getString("key");
-        if (url.equals("privacy")) {
+        Bundle p;
+        String url;
+
+        // Check if extras are available. If not, show terms by default
+        if (getIntent().getExtras() != null) {
+            p = getIntent().getExtras();
+            url = p.getString("key");
+        } else {
+            url = "terms";
+        }
+
+
+        if (url != null && url.equals("privacy")) {
             webView.loadUrl("http://www.glucosio.org/privacy");
             getSupportActionBar().setTitle(getResources().getString(R.string.preferences_privacy));
         } else {

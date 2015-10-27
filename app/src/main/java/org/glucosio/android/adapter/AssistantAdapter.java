@@ -1,14 +1,12 @@
 package org.glucosio.android.adapter;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import org.glucosio.android.ActionTip;
@@ -66,7 +64,6 @@ public class AssistantAdapter extends RecyclerView.Adapter<AssistantAdapter.View
         actionTipTitle.setText(actionTips.get(position).getTipTitle());
         actionTipDescription.setText(actionTips.get(position).getTipDescription());
         actionTipAction.setText(actionTips.get(position).getTipAction());
-
         String actionTipTitleString = actionTips.get(position).getTipTitle();
 
         View.OnClickListener actionListener;

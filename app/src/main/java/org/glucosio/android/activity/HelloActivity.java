@@ -1,12 +1,9 @@
 package org.glucosio.android.activity;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.method.ScrollingMovementMethod;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,10 +11,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,13 +34,10 @@ public class HelloActivity extends AppCompatActivity {
     private LabelledSpinner unitSpinner;
     private View firstView;
     private View EULAView;
-    private CheckBox EULACheckbox;
     private Button startButton;
     private TextView ageTextView;
-    private TextView termsTextView;
-    private Button nextButton;
     private HelloPresenter presenter;
-
+    private TextView termsTextView ;
     private Tracker mTracker;
 
     @Override
@@ -61,19 +51,15 @@ public class HelloActivity extends AppCompatActivity {
         presenter = new HelloPresenter(this);
         presenter.loadDatabase();
 
-        firstView = (ScrollView) findViewById(R.id.helloactivity_mainframe);
-        EULAView = (RelativeLayout) findViewById(R.id.helloactivity_eulaframe);
-        EULACheckbox = (CheckBox) findViewById(R.id.helloactivity_checkbox_eula);
         countrySpinner = (LabelledSpinner) findViewById(R.id.helloactivity_spinner_country);
         genderSpinner = (LabelledSpinner) findViewById(R.id.helloactivity_spinner_gender);
         typeSpinner = (LabelledSpinner) findViewById(R.id.helloactivity_spinner_diabetes_type);
         unitSpinner = (LabelledSpinner) findViewById(R.id.helloactivity_spinner_preferred_unit);
-        startButton = (Button) findViewById(R.id.helloactivity_start);
+        startButton = (Button) findViewById(R.id.helloactivity_button_start);
 
         termsTextView = (TextView) findViewById(R.id.helloactivity_textview_terms);
 
         ageTextView = (TextView) findViewById(R.id.helloactivity_age);
-        nextButton = (Button) findViewById(R.id.helloactivity_next);
 
         // Get countries list from locale
         ArrayList<String> countries = new ArrayList<String>();
@@ -100,24 +86,17 @@ public class HelloActivity extends AppCompatActivity {
         unitSpinner.setItemsArray(R.array.helloactivity_preferred_unit);
         typeSpinner.setItemsArray(R.array.helloactivity_diabetes_type);
 
-        termsTextView.setMovementMethod(new ScrollingMovementMethod());
-        final Drawable greyArrow = getApplicationContext().getResources().getDrawable( R.drawable.ic_navigate_next_grey_24px );
-        greyArrow.setBounds(0, 0, 60, 60);
         final Drawable pinkArrow = getApplicationContext().getResources().getDrawable( R.drawable.ic_navigate_next_pink_24px );
         pinkArrow.setBounds(0, 0, 60, 60);
-        EULACheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                                                    @Override
-                                                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                                                        if (isChecked) {
-                                                            startButton.setEnabled(true);
-                                                            startButton.setCompoundDrawables(null, null, pinkArrow, null);
-                                                        } else {
-                                                            startButton.setEnabled(false);
-                                                            startButton.setCompoundDrawables(null, null, greyArrow, null);
-                                                        }
-                                                    }
-                                                }
-        );
+        startButton.setCompoundDrawables(null, null, pinkArrow, null);
+
+        termsTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HelloActivity.this, LicenceActivity.class);
+                startActivity(intent);
+            }
+        });
 
         // Obtain the Analytics shared Tracker instance.
         GlucosioApplication application = (GlucosioApplication) getApplication();
@@ -127,37 +106,9 @@ public class HelloActivity extends AppCompatActivity {
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
 
-    public void onNextClicked(View v){
+    public void onStartClicked(View v){
         presenter.onNextClicked(ageTextView.getText().toString(),
                 genderSpinner.getSpinner().getSelectedItem().toString(), Locale.getDefault().getDisplayLanguage(), countrySpinner.getSpinner().getSelectedItem().toString(), typeSpinner.getSpinner().getSelectedItemPosition() + 1, unitSpinner.getSpinner().getSelectedItem().toString());
-    }
-
-    public void showEULA(){
-        // Prepare the View for the animation
-        firstView.animate()
-                .alpha(0f)
-                .setListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-                        firstView.setVisibility(View.GONE);
-                        showEULAAnimation();
-                    }
-                });
-    }
-
-    private void showEULAAnimation() {
-        // Prepare the View for the animation
-        EULAView.setVisibility(View.VISIBLE);
-        EULAView.setAlpha(0.0f);
-
-        EULAView.animate()
-                .alpha(1f);
-        firstView.setVisibility(View.GONE);
-    }
-
-
-    public void onStartClicked(View v){
         presenter.saveToDatabase();
     }
 

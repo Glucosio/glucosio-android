@@ -235,9 +235,9 @@ public class PreferencesActivity extends AppCompatActivity {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
                     Intent intent = new Intent(getActivity(), LicenceActivity.class);
-                    Bundle ePzl= new Bundle();
-                    ePzl.putString("key", "terms");
-                    intent.putExtras(ePzl);
+                    Bundle bundle= new Bundle();
+                    bundle.putString("key", "terms");
+                    intent.putExtras(bundle);
                     startActivity(intent);
 
                     return false;
@@ -248,9 +248,9 @@ public class PreferencesActivity extends AppCompatActivity {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
                     Intent intent = new Intent(getActivity(), LicenceActivity.class);
-                    Bundle ePzl= new Bundle();
-                    ePzl.putString("key", "privacy");
-                    intent.putExtras(ePzl);
+                    Bundle bundle= new Bundle();
+                    bundle.putString("key", "privacy");
+                    intent.putExtras(bundle);
                     startActivity(intent);
 
                     return false;
