@@ -178,14 +178,17 @@ public class DatabaseHandler {
         DateTime newDateTime = minDateTime;
 
         ArrayList<Integer> averageReadings = new ArrayList<Integer>();
-        int weeksNumber = Weeks.weeksBetween(minDateTime, maxDateTime).getWeeks();
 
-        for (int i=0; i<=weeksNumber; i++) {
-            newDateTime = currentDateTime.plusWeeks(i);
+	// The number of weeks is at least 1 since we do have average for the current week even if incomplete
+        int weeksNumber = Weeks.weeksBetween(minDateTime, maxDateTime).getWeeks() + 1;
+
+        for (int i=0; i<weeksNumber; i++) {
+            newDateTime = currentDateTime.plusWeeks(1);
             RealmResults<GlucoseReading> readings = realm.where(GlucoseReading.class)
                     .between("created", currentDateTime.toDate(), newDateTime.toDate())
                     .findAll();
             averageReadings.add(((int)readings.average("reading")));
+            currentDateTime = newDateTime;
         }
         return averageReadings;
     }
@@ -200,12 +203,15 @@ public class DatabaseHandler {
         DateTime newDateTime = minDateTime;
 
         ArrayList<String> finalWeeks = new ArrayList<String>();
-        int weeksNumber = Weeks.weeksBetween(minDateTime, maxDateTime).getWeeks();
+
+	// The number of weeks is at least 1 since we do have average for the current week even if incomplete
+        int weeksNumber = Weeks.weeksBetween(minDateTime, maxDateTime).getWeeks() + 1;
 
         DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        for (int i=0; i<=weeksNumber; i++) {
-            newDateTime = currentDateTime.plusWeeks(i);
+        for (int i=0; i<weeksNumber; i++) {
+            newDateTime = currentDateTime.plusWeeks(1);
             finalWeeks.add(inputFormat.format(newDateTime.toDate()));
+            currentDateTime = newDateTime;
         }
         return finalWeeks;
     }
