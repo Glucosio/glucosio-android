@@ -115,6 +115,7 @@
             android:layout_marginTop="8dp"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
+            android:layout_marginBottom="64dp"
             android:text="Always bring a banana to a party, Rose, bananas are good!"
             android:textColor="@color/glucosio_text" />
     </LinearLayout>
