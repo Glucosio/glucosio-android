@@ -1,142 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:minWidth="330dp"
-    android:paddingTop="16dp"
-    xmlns:custom="http://schemas.android.com/apk/res-auto">
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:custom="http://schemas.android.com/apk/res-auto"
-        android:orientation="vertical"
+    android:paddingTop="16dp">
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp">
+        android:layout_margin="16dp"
+        android:orientation="vertical">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/dialog_add_title"
             android:textColor="@color/glucosio_text"
-            android:textStyle="bold"
-            android:textSize="@dimen/abc_text_size_subhead_material"/>
+            android:textSize="@dimen/abc_text_size_subhead_material"
+            android:textStyle="bold" />
+
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="16dp">
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
+
             <android.support.design.widget.TextInputLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
+
                 <EditText
                     android:id="@+id/dialog_add_concentration"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/dialog_add_concentration"
+                    android:inputType="numberDecimal"
                     android:singleLine="true"
                     android:textColorHighlight="@color/glucosio_pink"
-                    android:layout_width="fill_parent"
                     android:textIsSelectable="false"
-                    android:inputType="numberDecimal"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/abc_text_size_body_2_material"
-                    android:hint="@string/dialog_add_concentration"/>
+                    android:textSize="@dimen/abc_text_size_body_2_material" />
             </android.support.design.widget.TextInputLayout>
 
             <TextView
                 android:id="@+id/dialog_add_unit_measurement"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
-                android:gravity="bottom"
                 android:layout_marginBottom="8dp"
-                android:textStyle="bold"
+                android:gravity="bottom"
+                android:text="@string/dialog_add_concentration_um"
                 android:textSize="@dimen/abc_text_size_body_2_material"
-                android:text="@string/dialog_add_concentration_um"/>
+                android:textStyle="bold" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginTop="16dp"
+            android:orientation="horizontal"
             android:weightSum="2">
+
             <android.support.design.widget.TextInputLayout
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="1">
+
                 <EditText
                     android:id="@+id/dialog_add_date"
-                    android:singleLine="true"
                     android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
                     android:clickable="false"
                     android:cursorVisible="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
-                    android:layout_height="fill_parent"
-                    android:textSize="@dimen/abc_text_size_body_2_material"
-                    android:hint="@string/dialog_add_date"/>
+                    android:hint="@string/dialog_add_date"
+                    android:singleLine="true"
+                    android:textSize="@dimen/abc_text_size_body_2_material" />
             </android.support.design.widget.TextInputLayout>
+
             <android.support.design.widget.TextInputLayout
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="1">
+
                 <EditText
                     android:id="@+id/dialog_add_time"
-                    android:singleLine="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
                     android:clickable="false"
                     android:cursorVisible="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:textSize="@dimen/abc_text_size_body_2_material"
-                    android:hint="@string/dialog_add_time"/>
+                    android:hint="@string/dialog_add_time"
+                    android:singleLine="true"
+                    android:textSize="@dimen/abc_text_size_body_2_material" />
             </android.support.design.widget.TextInputLayout>
 
         </LinearLayout>
 
         <org.glucosio.android.tools.LabelledSpinner
             android:id="@+id/dialog_add_reading_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             custom:labelText="@string/dialog_add_measured"
-            custom:widgetColor="@color/glucosio_pink"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            custom:widgetColor="@color/glucosio_pink" />
 
-            <EditText
-                android:id="@+id/dialog_type_custom"
-                android:singleLine="true"
-                android:visibility="gone"
-                android:layout_marginTop="16dp"
-                android:textColorHighlight="@color/glucosio_pink"
-                android:hint="@string/dialog_add_custom_type"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/abc_text_size_body_2_material" />
+        <EditText
+            android:id="@+id/dialog_type_custom"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="@string/dialog_add_custom_type"
+            android:singleLine="true"
+            android:textColorHighlight="@color/glucosio_pink"
+            android:textSize="@dimen/abc_text_size_body_2_material"
+            android:visibility="gone" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:layout_gravity="right"
+            android:layout_marginTop="16dp"
             android:gravity="right|bottom"
             android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/dialog_add_cancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/dialog_add_cancel"
-                android:textStyle="bold"
-                android:padding="8dp"
+                android:layout_gravity="right"
                 android:background="?android:attr/selectableItemBackground"
+                android:padding="8dp"
+                android:text="@string/dialog_add_cancel"
                 android:textColor="@color/glucosio_text"
-                android:layout_gravity="right"/>
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/dialog_add_add"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/dialog_add_add"
-                android:textStyle="bold"
-                android:padding="8dp"
+                android:layout_gravity="right"
                 android:background="?android:attr/selectableItemBackground"
+                android:padding="8dp"
+                android:text="@string/dialog_add_add"
                 android:textColor="@color/glucosio_pink"
-                android:layout_gravity="right"/>
+                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

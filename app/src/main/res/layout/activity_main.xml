@@ -5,100 +5,106 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-        <android.support.design.widget.AppBarLayout
-            android:id="@+id/appbar_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_scrollFlags="scroll|enterAlways"
             android:background="?attr/colorPrimary"
-            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/glucosio_pink"
-            app:tabSelectedTextColor="@android:color/white"
             app:tabIndicatorColor="@color/glucosio_accent"
-            app:tabTextColor="#80ffffff"/>
-        </android.support.design.widget.AppBarLayout>
+            app:tabSelectedTextColor="@android:color/white"
+            app:tabTextColor="#80ffffff" />
+    </android.support.design.widget.AppBarLayout>
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/pager"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="visible"/>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <LinearLayout
         android:id="@+id/mainactivity_empty_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:baselineAligned="false"
         android:orientation="vertical"
         android:visibility="gone"
-        android:weightSum="100"
-        android:baselineAligned="false">
+        android:weightSum="100">
+
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="45">
+
             <TextView
                 android:id="@+id/mainactivity_empty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center|bottom"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
+                android:gravity="center|bottom"
                 android:lineSpacingExtra="-1dp"
                 android:onClick="onFabClicked"
-                android:textSize="16sp"
-                android:text="@string/fragment_empty_text"/>
+                android:text="@string/fragment_empty_text"
+                android:textSize="16sp" />
         </RelativeLayout>
+
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="55">
-            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:baselineAligned="false">
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
                 <RelativeLayout
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
-                    android:layout_weight="1">
-                </RelativeLayout>
+                    android:layout_weight="1"></RelativeLayout>
+
                 <RelativeLayout
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
-                    android:layout_marginTop="@dimen/abc_action_bar_content_inset_material"
                     android:layout_marginRight="32dp"
+                    android:layout_marginTop="@dimen/abc_action_bar_content_inset_material"
                     android:layout_weight="1">
+
                     <ImageView
                         android:id="@+id/mainactivity_arrow"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:layout_marginBottom="@dimen/fab_size_normal"
-                        android:layout_marginRight="@dimen/fab_size_normal"/>
+                        android:layout_marginRight="@dimen/fab_size_normal" />
                 </RelativeLayout>
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
+        android:id="@+id/main_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/main_fab"
+        android:layout_gravity="bottom|right"
         android:layout_margin="16dp"
         android:onClick="onFabClicked"
-        app:backgroundTint="@color/glucosio_accent"
         android:src="@drawable/ic_add_black_24dp"
-        android:layout_gravity="bottom|right"
-        />
-    </android.support.design.widget.CoordinatorLayout>
+        app:backgroundTint="@color/glucosio_accent" />
+</android.support.design.widget.CoordinatorLayout>
