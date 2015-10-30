@@ -12,9 +12,13 @@ android {
         targetSdkVersion 23
         versionCode 4
         versionName '0.8.3'
+<<<<<<< HEAD
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
+=======
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+>>>>>>> 8818eea3efb8a05295951056a8981cf27acf682f
     }
     buildTypes {
         release {
@@ -63,4 +67,10 @@ dependencies {
     compile 'com.github.paolorotolo:gitty_reporter:1.2.2'
     compile 'io.realm:realm-android:0.83.0'
     compile 'net.danlew:android.joda:2.8.2'
+
+    // Testing libraries
+    androidTestCompile 'com.android.support:support-annotations:23.1.0'
+    androidTestCompile 'com.android.support.test:runner:0.4'
+    androidTestCompile 'com.android.support.test:rules:0.4'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.1'
 }
