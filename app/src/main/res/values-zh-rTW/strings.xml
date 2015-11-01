@@ -106,7 +106,6 @@
   <string name="assistant_feedback_desc">若您發現任何技術問題，或是對 Glucosio 有任何意見想說，我們相當歡迎您在設定選單告訴我們，以幫助我們改善 Glucosio。</string>
   <string name="assistant_reading_title">新增測量值</string>
   <string name="assistant_reading_desc">務必定期紀錄血糖測量值，這樣才能幫助您追蹤血糖值。</string>
-  <string name="helloactivity_spinner_preferred_range">建議體重範圍標準</string>
   <string name="helloactivity_spinner_preferred_range_4">自訂範圍</string>
   <string name="helloactivity_preferred_range_min">最小值</string>
   <string name="helloactivity_preferred_range_max">最大值</string>
