@@ -4,14 +4,13 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.Dialog;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -31,6 +30,11 @@ import com.google.android.gms.analytics.Tracker;
 import com.google.android.gms.appinvite.AppInviteInvitation;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.mikepenz.materialdrawer.AccountHeaderBuilder;
+import com.mikepenz.materialdrawer.Drawer;
+import com.mikepenz.materialdrawer.DrawerBuilder;
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
@@ -45,7 +49,6 @@ import org.glucosio.android.tools.LabelledSpinner.OnItemChosenListener;
 
 import java.text.DecimalFormat;
 import java.util.Calendar;
-import java.util.Locale;
 
 
 public class MainActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener{
@@ -122,6 +125,47 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
             }
         });
+
+        // Add Nav Drawer
+        PrimaryDrawerItem item1 = new PrimaryDrawerItem().withName(R.string.action_settings).withIcon(R.drawable.ic_settings_black_24dp);
+        PrimaryDrawerItem item2 = new PrimaryDrawerItem().withName(R.string.action_feedback).withIcon(R.drawable.ic_feedback_black_24dp);
+        PrimaryDrawerItem item3 = new PrimaryDrawerItem().withName(R.string.action_invite).withIcon(R.drawable.ic_face_black_24dp);
+
+
+        DrawerBuilder drawerBuilder = new DrawerBuilder()
+                .withActivity(this)
+                .withTranslucentStatusBar(false)
+                .withToolbar(toolbar)
+                .withActionBarDrawerToggle(true)
+                .withAccountHeader(new AccountHeaderBuilder()
+                                .withActivity(this)
+                                .withHeaderBackground(R.drawable.drawer_header)
+                                .build()
+                )
+                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                    @Override
+                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                        // do something with the clicked item :D
+                        return true;
+                    }
+                });
+
+        if (isPlayServicesAvailable()) {
+            drawerBuilder.addDrawerItems(
+                    item1,
+                    item2,
+                    item3
+            )
+                    .withSelectedItem(-1)
+                    .build();
+        } else {
+            drawerBuilder.addDrawerItems(
+                    item1,
+                    item2
+            )
+                    .withSelectedItem(-1)
+                    .build();
+        }
 
         checkIfEmptyLayout();
 
@@ -508,7 +552,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     }
 
     private void hideFabAnimation(){
-       final View fab = (View) findViewById(R.id.main_fab);
+        final View fab = findViewById(R.id.main_fab);
         fab.animate()
                 .translationY(-5)
                 .alpha(0.0f)
@@ -522,7 +566,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     }
 
     private void showFabAnimation(){
-        final View fab = (View) findViewById(R.id.main_fab);
+        final View fab = findViewById(R.id.main_fab);
         if (fab.getVisibility() == View.INVISIBLE) {
             // Prepare the View for the animation
             fab.setVisibility(View.VISIBLE);
