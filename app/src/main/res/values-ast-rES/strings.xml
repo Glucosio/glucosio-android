@@ -37,6 +37,7 @@
   <string name="dialog_add_type_3">Enantes de xintar</string>
   <string name="dialog_add_type_4">Dempués de xintar</string>
   <string name="dialog_add_type_5">Enantes de cenar</string>
+  <string name="dialog_add_type_6">Dempués de cenar</string>
   <string name="dialog_add_type_7">Xeneral</string>
   <string name="dialog_add_type_8">Recomprobacación</string>
   <string name="dialog_add_type_9">Nueche</string>
@@ -73,11 +74,11 @@
     <item>Llibre de zucre nun quier dicir que lo seya. Quier dicir, 0,5 gramos (g) per unidá, asina que ten curiáu de nun fartucate de munchos elementos «llibres de zucre».</item>
     <item>Movese haza un pesu saludable ayuda a controlar los zucres nel sangre. El to mélicu, un dietista y el to entrenador personal puen facer qu\'entames nun plan que furrule contigo.</item>
     <item>Comprobar los tos niveles sanguineos y siguilos nuna aplicación como Glucosio dos vegaes caldía ayudaránte a tar na cuenta de les escoyetes de comíes y estilos de vida.</item>
-    <item>Get A1c blood tests to find out your average blood sugar for the past 2 to 3 months. Your doctor should tell you how frequently this test will be needed to be performed.</item>
+    <item>Consigui pruebes de sangre A1c pa dir en cata del promediu de zucre nel sangre nos pasaos 2 a 3 meses. El to doctor debería dicite con qué frecuencia sedrá preciso facelu.</item>
     <item>Siguir cuantos carbohidratos consumes pue ser cenciellamente tan importante como comprobar los sos niveles nel sangre darréu qu\'inflúin nos niveles de glucosa. Charra col to mélicu o dietista tocante al consumu de carbohidratos.</item>
     <item>Controlar la presión nel sangre y los niveles de colesterol y triglicéridos ye importante darréu que los diabéticos son susceptibles a enfermedaes cardiaques.</item>
     <item>There are several diet approaches you can take to eating healthier and helping improve your diabetes outcomes. Seek advice from a dietician on what will work best for you and your budget.</item>
-    <item>Working on getting regular exercise is especially important for those with diabetes and can help you maintain a healthy weight. Talk to your doctor about exercises that will be appropriate for you.</item>
+    <item>Dir na gueta d\'exerciciu regular ye especialmente importante p\'aquellos con diabetes y pue ayudate a caltener un pesu sanu. Charra col to doctor tocante a los exercicios que son afayadizos pa tigo.</item>
     <item>Being sleep-deprived can make you eat more especially things like junk food and as a result can negatively impact your health. Be sure to get a good night sleep and consult a sleep specialist if you are having difficulty.</item>
     <item>L\'estrés pue tener un impautu negativu na diabetes. Charra col to doctor o profesional de la salú tocante a acostinar col estrés.</item>
     <item>Visita al to mélicu añalmente y tenéi una comunicación regular per tol añu porque ye importante pa que los diabéticos eviten cualesquier ataque repentín de problemes venceyaos al corazón.</item>
@@ -94,6 +95,7 @@
   <string name="assistant_action_reading">AMESTAR LLECTURA</string>
   <string name="assistant_weight_title">Anueva\'l to pesu</string>
   <string name="assistant_weight_desc">Asegúrate d\'anovar el to pesu pa qu\'asina Glucosio tenga la información más precisa.</string>
+  <string name="assistant_research_title">Anueva les tos preferencies d\'investigación</string>
   <string name="assistant_research_desc">Siempres pues optar o non pola compartición d\'información diabética pero recuerda que tolos datos compartíos son anónimos dafechu. Namái compartimos tendencies demográfiques y niveles de glucosa.</string>
   <string name="assistant_categories_title">Crea estayes</string>
   <string name="assistant_categories_desc">Glucosio vien con estayes predeterminaes pa la entrada de glucosa pero pues crear estayes personalizaes nos axustes pa concasar coles tos necesidaes úniques.</string>
