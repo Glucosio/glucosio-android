@@ -3,6 +3,7 @@
 <resources>
   <string name="action_settings">Setări</string>
   <string name="action_feedback">Trimite feedback</string>
+  <string name="action_invite">Invită un prieten</string>
   <string name="tab_overview">General</string>
   <string name="tab_history">Istoric</string>
   <string name="tab_tips">Ponturi</string>
@@ -115,4 +116,6 @@
   <string name="invitation_message">Încearcă Glucosio, o aplicație cu sursă deschisă pentru gestionarea diabetului și cercetare.</string>
   <string name="invitation_cta">Încearcă Glucosio</string>
   <string name="title_activity_backup">Copie de siguranță</string>
+  <string name="preferences_privacy">Confidențialitate</string>
+  <string name="helloactivity_textview_tos">Folosind Glucosio, ești de acord cu</string>
 </resources>

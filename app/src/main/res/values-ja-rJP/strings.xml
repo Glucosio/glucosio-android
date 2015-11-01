@@ -3,6 +3,7 @@
 <resources>
   <string name="action_settings">設定</string>
   <string name="action_feedback">フィードバックを送信</string>
+  <string name="action_invite">友だちを招待する</string>
   <string name="tab_overview">概要</string>
   <string name="tab_history">履歴</string>
   <string name="tab_tips">ヒント</string>
@@ -115,4 +116,6 @@
   <string name="invitation_message">糖尿病の管理と研究のためのオープンソース アプリ Glucosio を試してください。</string>
   <string name="invitation_cta">Glucosio を試してください</string>
   <string name="title_activity_backup">バックアップ</string>
+  <string name="preferences_privacy">プライバシー</string>
+  <string name="helloactivity_textview_tos">Glucosio の使用に関して、以下に同意します</string>
 </resources>

@@ -3,6 +3,7 @@
 <resources>
   <string name="action_settings">Configuració</string>
   <string name="action_feedback">Envieu comentaris</string>
+  <string name="action_invite">Convideu un amic</string>
   <string name="tab_overview">Informació general</string>
   <string name="tab_history">Historial</string>
   <string name="tab_tips">Consells</string>
@@ -110,4 +111,11 @@
   <string name="helloactivity_preferred_range_min">Valor mínim</string>
   <string name="helloactivity_preferred_range_max">Valor màxim</string>
   <string name="assistant_action_try">PROVEU-HO ARA</string>
+  <string name="helloactivity_language">Idioma</string>
+  <string name="invitation_title">Convideu altres persones</string>
+  <string name="invitation_message">Proveu Glucosio, una applicació de codi obert per a la recerca i la gestió de la diabetis.</string>
+  <string name="invitation_cta">Proveu Glucosio</string>
+  <string name="title_activity_backup">Còpia de seguretat</string>
+  <string name="preferences_privacy">Privacitat</string>
+  <string name="helloactivity_textview_tos">En utilitzar Glucosio, accepteu la</string>
 </resources>

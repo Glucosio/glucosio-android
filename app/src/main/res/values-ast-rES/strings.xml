@@ -3,6 +3,7 @@
 <resources>
   <string name="action_settings">Axustes</string>
   <string name="action_feedback">Unviar feedback</string>
+  <string name="action_invite">Convidar a collciu/a</string>
   <string name="tab_overview">Vista previa</string>
   <string name="tab_history">Historia</string>
   <string name="tab_tips">Conseyos</string>
@@ -36,7 +37,6 @@
   <string name="dialog_add_type_3">Enantes de xintar</string>
   <string name="dialog_add_type_4">Dempués de xintar</string>
   <string name="dialog_add_type_5">Enantes de cenar</string>
-  <string name="dialog_add_type_6">Dempues de cenar</string>
   <string name="dialog_add_type_7">Xeneral</string>
   <string name="dialog_add_type_8">Recomprobacación</string>
   <string name="dialog_add_type_9">Nueche</string>
@@ -111,4 +111,6 @@
   <string name="invitation_title">Convidar a otra xente</string>
   <string name="invitation_message">Prueba Glucosio, una aplicación de códigu llibre pa la xestión ya investigación de la diabetes.</string>
   <string name="invitation_cta">Prueba Glucosio</string>
+  <string name="preferences_privacy">Privacidá</string>
+  <string name="helloactivity_textview_tos">Usando Glucosio tas acordies colos</string>
 </resources>

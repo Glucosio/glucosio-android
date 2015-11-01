@@ -4,6 +4,7 @@
   <string name="app_name">Glucosio</string>
   <string name="action_settings">Réglages</string>
   <string name="action_feedback">Envoyez vos commentaires</string>
+  <string name="action_invite">Inviter un ami</string>
   <string name="tab_overview">Aperçu</string>
   <string name="tab_history">Historique</string>
   <string name="tab_tips">Astuces</string>
@@ -116,4 +117,6 @@
   <string name="invitation_message">Essayer Glucosio, une application open-source pour la gestion du diabète et la recherche associée.</string>
   <string name="invitation_cta">Essayer Glucosio</string>
   <string name="title_activity_backup">Sauvegardes</string>
+  <string name="preferences_privacy">Politique de confidentialité</string>
+  <string name="helloactivity_textview_tos">En utilisant Glucosio, vous acceptez les</string>
 </resources>

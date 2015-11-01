@@ -3,6 +3,7 @@
 <resources>
   <string name="action_settings">設定</string>
   <string name="action_feedback">傳送意見回饋</string>
+  <string name="action_invite">邀請朋友</string>
   <string name="tab_overview">概觀</string>
   <string name="tab_history">紀錄</string>
   <string name="tab_tips">秘訣</string>
@@ -115,4 +116,6 @@
   <string name="invitation_message">試試 Glucosio，一套開放原始碼的糖尿病管理與研究程式。</string>
   <string name="invitation_cta">試試 Glucosio</string>
   <string name="title_activity_backup">備份</string>
+  <string name="preferences_privacy">隱私權</string>
+  <string name="helloactivity_textview_tos">使用 Glucosio，代表您同意</string>
 </resources>

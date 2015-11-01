@@ -4,6 +4,7 @@
   <string name="app_name">Glucosio</string>
   <string name="action_settings">设置</string>
   <string name="action_feedback">发送反馈</string>
+  <string name="action_invite">邀请朋友</string>
   <string name="tab_overview">概览</string>
   <string name="tab_history">历史记录</string>
   <string name="tab_tips">小提示</string>
@@ -117,4 +118,6 @@
   <string name="invitation_message">试试 Glucosio，一个糖尿病管理和研究的开放源码应用程序。</string>
   <string name="invitation_cta">试试 Glucosio</string>
   <string name="title_activity_backup">备份</string>
+  <string name="preferences_privacy">隐私政策</string>
+  <string name="helloactivity_textview_tos">使用 Glucosio 即代表您同意</string>
 </resources>

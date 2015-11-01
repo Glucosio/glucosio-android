@@ -50,12 +50,22 @@
   <string name="preferences_version">Versio</string>
   <string name="preferences_terms">Kondiĉoj de uzado</string>
   <string name="glucose_reading_type">Tipo</string>
+  <string name="weight">Pezo</string>
   <string name="assistant">Asistanto</string>
   <string name="assistant_action_update">ĜISDATIGI NUN</string>
+  <string name="assistant_action_ok">BONE, KOMPRENITA</string>
   <string name="assistant_action_feedback">Sendi rimarkon</string>
   <string name="assistant_action_reading">ALDONI LEGADON</string>
   <string name="assistant_weight_title">Ĝisdatigi vian pezon</string>
   <string name="assistant_categories_title">Krei kategoriojn</string>
+  <string name="assistant_check_title">Vidi ĉi tie ofte</string>
   <string name="assistant_feedback_title">Sendi rimarkon </string>
   <string name="assistant_reading_title">Aldoni legadon</string>
+  <string name="helloactivity_preferred_range_min">Minimuma valoro</string>
+  <string name="helloactivity_preferred_range_max">Maksimuma valoro</string>
+  <string name="assistant_action_try">PROVI ĜIN NUN</string>
+  <string name="helloactivity_language">Lingvo</string>
+  <string name="invitation_title">Inviti aliajn personojn</string>
+  <string name="invitation_cta">Provi Glucosion</string>
+  <string name="title_activity_backup">Savkopii</string>
 </resources>

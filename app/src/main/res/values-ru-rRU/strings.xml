@@ -3,6 +3,7 @@
 <resources>
   <string name="action_settings">Настройки</string>
   <string name="action_feedback">Отправить отзыв</string>
+  <string name="action_invite">Пригласить друга</string>
   <string name="tab_overview">Общие сведения</string>
   <string name="tab_history">История</string>
   <string name="tab_tips">Подсказки</string>
@@ -115,4 +116,6 @@
   <string name="invitation_message">Попробовать Glucosio, приложение с открытым исходным кодом для исследований и отслеживания диабета.</string>
   <string name="invitation_cta">Попробовать Glucosio</string>
   <string name="title_activity_backup">Резервное копирование</string>
+  <string name="preferences_privacy">Приватность</string>
+  <string name="helloactivity_textview_tos">Используя Glucosio, вы соглашаетесь с</string>
 </resources>

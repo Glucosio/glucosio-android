@@ -3,6 +3,7 @@
 <resources>
   <string name="action_settings">Inställningar</string>
   <string name="action_feedback">Skicka feedback</string>
+  <string name="action_invite">Bjud in en vän</string>
   <string name="tab_overview">Översikt</string>
   <string name="tab_history">Historik</string>
   <string name="tab_tips">Tips</string>
@@ -115,4 +116,6 @@
   <string name="invitation_message">Prova Glucosio, en app med öppen källkod för diabetesbehandling och forskning.</string>
   <string name="invitation_cta">Prova Glucosio</string>
   <string name="title_activity_backup">Säkerhetskopiera</string>
+  <string name="preferences_privacy">Sekretess</string>
+  <string name="helloactivity_textview_tos">Genom att använda Glucosio, godkänner du</string>
 </resources>
