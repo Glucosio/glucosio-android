@@ -200,4 +200,53 @@
     <string name="title_activity_backup">Backup</string>
     <string name="preferences_privacy">Privacy</string>
     <string name="helloactivity_textview_tos">By using Glucosio, you are agreeing to the</string>
+    
+<!-- Future Strings Baked In Early For l10n -->
+<!-- Exercise Types -->   
+
+<string name="dialog_add_exercisetype_1">Leisurely walking</string>
+<string name="dialog_add_exercisetype_2">Walking fast</string>
+<string name="dialog_add_exercisetype_3">Jogging</string>
+<string name="dialog_add_exercisetype_4">Running</string>
+<string name="dialog_add_exercisetype_5">Swimming</string>
+<string name="dialog_add_exercisetype_6">Dancing</string>
+<string name="dialog_add_exercisetype_7">Roller skating</string>
+<string name="dialog_add_exercisetype_8">Bicycling</string>
+<string name="dialog_add_exercisetype_9">Golf</string>
+<string name="dialog_add_exercisetype_10">Softball</string>
+<string name="dialog_add_exercisetype_11">Badminton</string>
+<string name="dialog_add_exercisetype_12">Football</string>
+<string name="dialog_add_exercisetype_13">Basketball</string>
+<string name="dialog_add_exercisetype_14">Volleyball</string>
+<string name="dialog_add_exercisetype_15">Cricket</string>
+<string name="dialog_add_exercisetype_16">Frisbee</string>
+<string name="dialog_add_exercisetype_17">Skiing</string>
+<string name="dialog_add_exercisetype_18">Boxing</string>
+<string name="dialog_add_exercisetype_19">Tennis</string>
+<string name="dialog_add_exercisetype_20">Table tennis</string>
+<string name="dialog_add_exercisetype_21">Martial arts</string>
+<string name="dialog_add_exercisetype_22">Rock-climbing</string>
+<string name="dialog_add_exercisetype_23">Wrestling</string>
+<string name="dialog_add_exercisetype_24">Hiking</string>
+<string name="dialog_add_exercisetype_25">Yard work</string>
+
+<!-- Food Entry Labels -->
+
+<string name="dialog_addfood_carbs">Carbs:</string>
+<string name="dialog_addfood_protein">Protein:</string>
+<string name="dialog_addfood_sugars">Sugars:</string>
+<string name="dialog_addfood_fat">Fat:</string>
+
+
+<!-- About Glucosio Strings -->
+
+<string name="about_licenses">Open Source Licenses</string>
+<string name="about_credits">Credits</string>
+<string name="about_contribute">Contribute</string>
+<string name="about_contributel10n">Contribute to Translation</string>
+<string name="about_contributedev">Contribute to Development</string>
+<string name="about_discussion">Join our discussion community</string>
+<string name="about_maillist">Subscribe to our mailing list</string>
+<string name="about_donate">Donate to Glucosio</string>
+    
 </resources>
