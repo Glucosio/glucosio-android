@@ -18,7 +18,8 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
@@ -39,6 +40,7 @@ repositories {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
+
     // Android Support libraries
     compile 'com.android.support:appcompat-v7:23.1.0'
     compile 'com.android.support:design:23.1.0'
@@ -49,20 +51,23 @@ dependencies {
     // Google Play Services
     compile 'com.google.android.gms:play-services-appinvite:8.1.0'
     compile 'com.google.android.gms:play-services-analytics:8.1.0'
-
-    //Espresso UI testing framework
-    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.1'
-    androidTestCompile 'com.android.support.test:runner:0.4.1'
-    androidTestCompile 'com.android.support.test.espresso:espresso-intents:2.2.1'
+    compile 'com.google.android.gms:play-services-drive:8.1.0'
 
     // Other libraries
-    compile 'com.google.android.gms:play-services-drive:8.1.0'
     compile 'com.wdullaer:materialdatetimepicker:1.5.3'
     compile 'com.github.PhilJay:MPAndroidChart:v2.1.4'
     compile 'uk.co.chrisjenx:calligraphy:2.1.0'
     compile 'com.github.paolorotolo:gitty_reporter:1.2.2'
     compile 'io.realm:realm-android:0.84.1'
     compile 'net.danlew:android.joda:2.8.2'
+    compile('com.mikepenz:materialdrawer:4.4.3@aar') {
+        transitive = true
+    }
+
+    //Espresso UI testing framework
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.1'
+    androidTestCompile 'com.android.support.test:runner:0.4.1'
+    androidTestCompile 'com.android.support.test.espresso:espresso-intents:2.2.1'
 
     // Testing libraries
     androidTestCompile 'com.android.support:support-annotations:23.1.0'
