@@ -74,7 +74,6 @@ public class PreferencesActivity extends AppCompatActivity {
             dB = new DatabaseHandler(getActivity().getApplicationContext());
             user = dB.getUser(1);
             updatedUser = new User(user.getId(),user.getName(),user.getPreferred_language(),user.getCountry(),user.getAge(),user.getGender(),user.getD_type(),user.getPreferred_unit(),user.getPreferred_range(),user.getCustom_range_min(),user.getCustom_range_max());
-
             agePref = (EditTextPreference) findPreference("pref_age");
             countryPref = (ListPreference) findPreference("pref_country");
             // languagePref = (ListPreference) findPreference("pref_language");

@@ -40,6 +40,7 @@
         <activity
             android:name=".activity.BackupActivity"
             android:label="@string/title_activity_backup"
+            android:theme="@style/GlucosioSettings"
             android:parentActivityName=".activity.PreferencesActivity" >
                     <meta-data
                         android:name="android.support.PARENT_ACTIVITY"

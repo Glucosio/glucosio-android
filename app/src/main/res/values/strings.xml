@@ -248,5 +248,6 @@
 <string name="about_discussion">Join our discussion community</string>
 <string name="about_maillist">Subscribe to our mailing list</string>
 <string name="about_donate">Donate to Glucosio</string>
-    
+    <string name="preferences_backup_google_drive">Google Drive</string>
+
 </resources>
