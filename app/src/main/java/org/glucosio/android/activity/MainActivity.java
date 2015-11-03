@@ -127,9 +127,9 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         });
 
         // Add Nav Drawer
-        PrimaryDrawerItem item1 = new PrimaryDrawerItem().withName(R.string.action_settings).withIcon(R.drawable.ic_settings_black_24dp);
-        PrimaryDrawerItem item2 = new PrimaryDrawerItem().withName(R.string.action_feedback).withIcon(R.drawable.ic_feedback_black_24dp);
-        PrimaryDrawerItem item3 = new PrimaryDrawerItem().withName(R.string.action_invite).withIcon(R.drawable.ic_face_black_24dp);
+        final PrimaryDrawerItem item1 = new PrimaryDrawerItem().withName(R.string.action_settings).withIcon(R.drawable.ic_settings_black_24dp).withSelectable(false);
+        final PrimaryDrawerItem item2 = new PrimaryDrawerItem().withName(R.string.action_feedback).withIcon(R.drawable.ic_feedback_black_24dp).withSelectable(false);
+        final PrimaryDrawerItem item3 = new PrimaryDrawerItem().withName(R.string.action_invite).withIcon(R.drawable.ic_face_black_24dp).withSelectable(false);
 
 
         DrawerBuilder drawerBuilder = new DrawerBuilder()
@@ -145,8 +145,17 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                        // do something with the clicked item :D
-                        return true;
+                        if (drawerItem.equals(item1)) {
+                            // Settings
+                            openPreferences();
+                        } else if (drawerItem.equals(item2)) {
+                            // Feedback
+                            startGittyReporter();
+                        } else if (drawerItem.equals(item3)) {
+                            // Invite
+                            showInviteDialog();
+                        }
+                        return false;
                     }
                 });
 
@@ -682,40 +691,5 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             Log.d("STATUS", "Error connecting with Google Play services. Code: " + String.valueOf(status));
             return false;
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-
-        // If Play Services are available, show Invite button
-        if (!isPlayServicesAvailable()){
-            MenuItem item = menu.findItem(R.id.action_invite);
-            item.setVisible(false);
-        }
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            openPreferences();
-            return true;
-        } else if (id == R.id.action_feedback) {
-            startGittyReporter();
-            return true;
-        } else if (id == R.id.action_invite){
-            showInviteDialog();
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }
