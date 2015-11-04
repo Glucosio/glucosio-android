@@ -37,6 +37,7 @@ public class HelloPresenter {
             this.country = country;
             this.diabetesType = type;
             this.unitMeasurement = unit;
+            saveToDatabase();
         } else {
             helloActivity.displayErrorMessage();
         }
