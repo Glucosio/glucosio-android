@@ -10,16 +10,15 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.components.LimitLine;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+
 import org.glucosio.android.R;
 import org.glucosio.android.presenter.OverviewPresenter;
 import org.glucosio.android.tools.FormatDateTime;
@@ -233,14 +232,17 @@ public class OverviewFragment extends Fragment {
         // set the line to be drawn like this "- - - - - -"
         set1.setColor(getResources().getColor(R.color.glucosio_pink));
         set1.setCircleColor(getResources().getColor(R.color.glucosio_pink));
-        set1.setLineWidth(1f);
+        set1.setLineWidth(2f);
         set1.setCircleSize(4f);
         set1.setDrawCircleHole(false);
         set1.disableDashedLine();
-        set1.setFillAlpha(65);
+        set1.setFillAlpha(255);
+        set1.setDrawFilled(true);
+        set1.setDrawCubic(false);
+        set1.setCubicIntensity(0.15f);
         set1.setValueTextSize(0);
         set1.setValueTextColor(Color.parseColor("#FFFFFF"));
-        set1.setFillColor(Color.BLACK);
+        set1.setFillColor(Color.parseColor("#FCE2EA"));
 //        set1.setDrawFilled(true);
         // set1.setShader(new LinearGradient(0, 0, 0, mChart.getHeight(),
         // Color.BLACK, Color.WHITE, Shader.TileMode.MIRROR));

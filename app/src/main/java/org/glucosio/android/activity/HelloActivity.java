@@ -109,7 +109,6 @@ public class HelloActivity extends AppCompatActivity {
     public void onStartClicked(View v){
         presenter.onNextClicked(ageTextView.getText().toString(),
                 genderSpinner.getSpinner().getSelectedItem().toString(), Locale.getDefault().getDisplayLanguage(), countrySpinner.getSpinner().getSelectedItem().toString(), typeSpinner.getSpinner().getSelectedItemPosition() + 1, unitSpinner.getSpinner().getSelectedItem().toString());
-        presenter.saveToDatabase();
     }
 
     public void displayErrorMessage(){
