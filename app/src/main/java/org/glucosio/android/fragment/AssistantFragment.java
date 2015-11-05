@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.google.android.gms.appinvite.AppInviteInvitation;
@@ -90,7 +91,7 @@ public class AssistantFragment extends Fragment {
         tipsRecycler.setHasFixedSize(false);
 
         // Swipe to remove functionality
-        ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+     /*   ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
             @Override
             public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
                 return false;
@@ -102,7 +103,9 @@ public class AssistantFragment extends Fragment {
                 addPreference(title.getText().toString());
 
                 int position = viewHolder.getAdapterPosition();
+
                 actionTips.remove(position);
+
                 adapter.notifyDataSetChanged();
             }
         };
@@ -110,7 +113,7 @@ public class AssistantFragment extends Fragment {
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
 
         itemTouchHelper.attachToRecyclerView(tipsRecycler);
-
+*/
         return mView;
     }
 
