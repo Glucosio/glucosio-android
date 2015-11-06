@@ -48,9 +48,9 @@ dependencies {
     compile 'com.android.support:percent:23.1.0'
 
     // Google Play Services
-    compile 'com.google.android.gms:play-services-appinvite:8.1.0'
-    compile 'com.google.android.gms:play-services-analytics:8.1.0'
-    compile 'com.google.android.gms:play-services-drive:8.1.0'
+    compile 'com.google.android.gms:play-services-appinvite:8.3.0'
+    compile 'com.google.android.gms:play-services-analytics:8.3.0'
+    compile 'com.google.android.gms:play-services-drive:8.3.0'
 
     // Other libraries
     compile 'com.wdullaer:materialdatetimepicker:1.5.3'
