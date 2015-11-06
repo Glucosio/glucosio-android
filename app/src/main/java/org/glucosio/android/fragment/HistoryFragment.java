@@ -76,7 +76,7 @@ public class HistoryFragment extends Fragment {
             }
 
             @Override
-            public void onItemLongClick(View view, final int position) {
+            public void onItemLongClick(final View view, final int position) {
                 CharSequence colors[] = new CharSequence[]{getResources().getString(R.string.dialog_edit), getResources().getString(R.string.dialog_delete)};
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -85,14 +85,14 @@ public class HistoryFragment extends Fragment {
                     public void onClick(DialogInterface dialog, int which) {
                         if (which == 0) {
                             // EDIT
-                            TextView idTextView = (TextView) mRecyclerView.getChildAt(position).findViewById(R.id.item_history_id);
+                            TextView idTextView = (TextView) view.findViewById(R.id.item_history_id);
                             final int idToEdit = Integer.parseInt(idTextView.getText().toString());
                             ((MainActivity) getActivity()).showEditDialog(idToEdit);
                         } else {
                             // DELETE
-                            TextView idTextView = (TextView) mRecyclerView.getChildAt(position).findViewById(R.id.item_history_id);
+                            TextView idTextView = (TextView) view.findViewById(R.id.item_history_id);
                             final int idToDelete = Integer.parseInt(idTextView.getText().toString());
-                            final CardView item = (CardView) mRecyclerView.getChildAt(position).findViewById(R.id.item_history);
+                            final CardView item = (CardView) view.findViewById(R.id.item_history);
                             item.animate().alpha(0.0f).setDuration(2000);
                             Snackbar.make(((MainActivity) getActivity()).getFabView(), R.string.fragment_history_snackbar_text, Snackbar.LENGTH_SHORT).setCallback(new Snackbar.Callback() {
                                 @Override
