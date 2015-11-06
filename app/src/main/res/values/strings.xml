@@ -200,6 +200,10 @@
     <string name="title_activity_backup">Backup</string>
     <string name="preferences_privacy">Privacy</string>
     <string name="helloactivity_textview_tos">By using Glucosio, you are agreeing to the</string>
+    <string name="preferences_backup_google_drive">Google Drive</string>
+    <string name="preferences_about_glucosio">About Glucosio</string>
+    <string name="preferences_rate">Rate Glucosio</string>
+    <string name="preferences_licences_open">Open source Licences</string>
     
 <!-- Future Strings Baked In Early For l10n -->
 <!-- Exercise Types -->   
@@ -240,7 +244,6 @@
 
 <!-- About Glucosio Strings -->
 
-<string name="about_licenses">Open Source Licenses</string>
 <string name="about_credits">Credits</string>
 <string name="about_contribute">Contribute</string>
 <string name="about_contributel10n">Contribute to Translation</string>
@@ -248,6 +251,5 @@
 <string name="about_discussion">Join our discussion community</string>
 <string name="about_maillist">Subscribe to our mailing list</string>
 <string name="about_donate">Donate to Glucosio</string>
-    <string name="preferences_backup_google_drive">Google Drive</string>
 
 </resources>

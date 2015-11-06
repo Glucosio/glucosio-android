@@ -42,18 +42,8 @@
 
     <Preference
         android:key="backup_settings"
-        android:title="Backup" />
-
-    <PreferenceCategory android:title="@string/preferences_about">
-        <Preference
-            android:key="preference_version"
-            android:summary="@string/version"
-            android:title="@string/preferences_version"/>
-        <Preference
-            android:key="preference_terms"
-            android:title="@string/preferences_terms"/>
-        <Preference
-            android:key="preference_privacy"
-            android:title="@string/preferences_privacy"/>
-    </PreferenceCategory>
+        android:title="@string/title_activity_backup" />
+    <Preference
+        android:key="about_settings"
+        android:title="@string/preferences_about_glucosio"/>
 </PreferenceScreen>

@@ -1,7 +1,6 @@
 package org.glucosio.android.activity;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
@@ -103,10 +102,8 @@ public class PreferencesActivity extends AppCompatActivity {
                 maxRangePref.setEnabled(true);
             }
 
-            final Preference privacyPref = (Preference) findPreference("preference_privacy");
-            final Preference termsPref = (Preference) findPreference("preference_terms");
-            final Preference versionPref = (Preference) findPreference("preference_version");
             final Preference backupPref = (Preference) findPreference("backup_settings");
+            final Preference aboutPref = (Preference) findPreference("about_settings");
             /*languagePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -230,56 +227,21 @@ public class PreferencesActivity extends AppCompatActivity {
             languagePref.setEntries(languages);*/
             updateDB();
 
-            termsPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-                @Override
-                public boolean onPreferenceClick(Preference preference) {
-                    Intent intent = new Intent(getActivity(), LicenceActivity.class);
-                    Bundle bundle= new Bundle();
-                    bundle.putString("key", "terms");
-                    intent.putExtras(bundle);
-                    startActivity(intent);
-
-                    return false;
-                }
-            });
-
-            privacyPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-                @Override
-                public boolean onPreferenceClick(Preference preference) {
-                    Intent intent = new Intent(getActivity(), LicenceActivity.class);
-                    Bundle bundle= new Bundle();
-                    bundle.putString("key", "privacy");
-                    intent.putExtras(bundle);
-                    startActivity(intent);
-
-                    return false;
-                }
-            });
-
-            versionPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-
-                int easterEggCount;
-
-                @Override
-                public boolean onPreferenceClick(Preference preference) {
-                    if (easterEggCount == 6) {
-                        String uri = String.format(Locale.ENGLISH, "geo:%f,%f", 40.794010, 17.124583);
-                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-                        getActivity().startActivity(intent);
-                        easterEggCount = 0;
-                    } else {
-                        this.easterEggCount = easterEggCount + 1;
-                    }
-                    return false;
-                }
-            });
-
             backupPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
 
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
                     Intent backupActivity = new Intent(getActivity(), BackupActivity.class);
                     getActivity().startActivity(backupActivity);
+                    return false;
+                }
+            });
+
+            aboutPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    Intent aboutActivity = new Intent(getActivity(), AboutActivity.class);
+                    getActivity().startActivity(aboutActivity);
                     return false;
                 }
             });

@@ -33,10 +33,12 @@ public class LicenceActivity extends AppCompatActivity {
         if (url != null && url.equals("privacy")) {
             webView.loadUrl("http://www.glucosio.org/privacy");
             getSupportActionBar().setTitle(getResources().getString(R.string.preferences_privacy));
+        } else if (url != null && url.equals("open_source")) {
+            webView.loadUrl("http://www.glucosio.org/licences");
+            getSupportActionBar().setTitle(getResources().getString(R.string.preferences_licences_open));
         } else {
             webView.loadUrl("http://www.glucosio.org/terms");
             getSupportActionBar().setTitle(getResources().getString(R.string.preferences_terms));
-
         }
 
         webView.setWebViewClient(new WebViewClient() {

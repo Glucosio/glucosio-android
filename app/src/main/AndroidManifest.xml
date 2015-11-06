@@ -38,6 +38,10 @@
             android:theme="@style/GlucosioSettings">
         </activity>
         <activity
+            android:name=".activity.AboutActivity"
+            android:theme="@style/GlucosioSettings">
+        </activity>
+        <activity
             android:name=".activity.BackupActivity"
             android:label="@string/title_activity_backup"
             android:theme="@style/GlucosioSettings"
