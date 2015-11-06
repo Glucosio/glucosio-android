@@ -8,6 +8,7 @@
     android:background="@color/glucosio_light_grey_background"
     android:clickable="true"
     android:focusable="true"
+    android:paddingBottom="32dp"
     android:orientation="vertical"
     android:scrollbars="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
