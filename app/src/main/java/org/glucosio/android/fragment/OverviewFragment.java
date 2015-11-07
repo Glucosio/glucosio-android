@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
@@ -232,14 +233,12 @@ public class OverviewFragment extends Fragment {
         // set the line to be drawn like this "- - - - - -"
         set1.setColor(getResources().getColor(R.color.glucosio_pink));
         set1.setCircleColor(getResources().getColor(R.color.glucosio_pink));
-        set1.setLineWidth(1f);
-        set1.setCircleSize(4f);
-        set1.setDrawCircleHole(false);
+        set1.setLineWidth(4f);
+        set1.setCircleSize(4.5f);
+        set1.setDrawCircleHole(true);
         set1.disableDashedLine();
         set1.setFillAlpha(255);
         set1.setDrawFilled(true);
-        set1.setDrawCubic(true);
-        set1.setCubicIntensity(0.15f);
         set1.setValueTextSize(0);
         set1.setValueTextColor(Color.parseColor("#FFFFFF"));
         set1.setFillColor(Color.parseColor("#FCE2EA"));
@@ -256,6 +255,8 @@ public class OverviewFragment extends Fragment {
         // set data
         chart.setData(data);
         chart.setPinchZoom(true);
+        chart.setHardwareAccelerationEnabled(true);
+        chart.animateY(1000, Easing.EasingOption.EaseOutCubic);
     }
 
     private void loadLastReading(){
