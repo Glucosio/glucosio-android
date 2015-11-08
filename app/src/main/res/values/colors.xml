@@ -16,4 +16,9 @@
     <color name="glucosio_light_grey_background">#F9F9F9</color>
     <color name="mdtp_accent_color">@color/glucosio_pink</color>
     <color name="mdtp_accent_color_dark">@color/glucosio_pink_dark</color>
+    <color name="glucosio_reading_ok">#749756</color>
+    <color name="glucosio_reading_hyper">#E86445</color>
+    <color name="glucosio_reading_low">#4B8DDB</color>
+    <color name="glucosio_reading_high">#E7B85D</color>
+    <color name="glucosio_reading_hypo">#6F4EAB</color>
 </resources>

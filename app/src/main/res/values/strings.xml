@@ -251,5 +251,10 @@
 <string name="about_discussion">Join our discussion community</string>
 <string name="about_maillist">Subscribe to our mailing list</string>
 <string name="about_donate">Donate to Glucosio</string>
+    <string name="reading_ok">Ok</string>
+    <string name="reading_hypo">Hypoglycemia</string>
+    <string name="reading_low">Low</string>
+    <string name="reading_high">High</string>
+    <string name="reading_hyper">Hyperglycemia</string>
 
 </resources>

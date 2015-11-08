@@ -1,8 +1,8 @@
 package org.glucosio.android.tools;
 
 import android.content.Context;
-import android.graphics.Color;
 
+import org.glucosio.android.R;
 import org.glucosio.android.db.DatabaseHandler;
 
 public class GlucoseRanges {
@@ -71,15 +71,15 @@ public class GlucoseRanges {
     public int stringToColor (String color){
         switch (color) {
             case "green":
-                return Color.parseColor("#4CAF50");
+                return mContext.getResources().getColor(R.color.glucosio_reading_ok);
             case "red":
-                return Color.parseColor("#D32F2F");
+                return mContext.getResources().getColor(R.color.glucosio_reading_hyper);
             case "blue":
-                return Color.parseColor("#448AFF");
+                return mContext.getResources().getColor(R.color.glucosio_reading_low);
             case "orange":
-                return Color.parseColor("#FF5722");
+                return mContext.getResources().getColor(R.color.glucosio_reading_high);
             default:
-                return Color.parseColor("#9C27B0");
+                return mContext.getResources().getColor(R.color.glucosio_reading_hypo);
         }
     };
 }
