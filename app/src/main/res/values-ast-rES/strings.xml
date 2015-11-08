@@ -3,6 +3,7 @@
 <resources>
   <string name="action_settings">Axustes</string>
   <string name="action_feedback">Unviar feedback</string>
+  <string name="action_invite">Convidar a collaciu/a</string>
   <string name="tab_overview">Vista previa</string>
   <string name="tab_history">Historia</string>
   <string name="tab_tips">Conseyos</string>
@@ -21,6 +22,7 @@
   <string name="helloactivity_spinner_diabetes_type_1">Tipu 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Tipu 2</string>
   <string name="helloactivity_spinner_preferred_unit">Unidá preferida</string>
+  <string name="helloactivity_share_data">Compartir datos anónimos pa investigación.</string>
   <string name="helloactivity_hint_settings">Sero pues camudar esto n\'axustes.</string>
   <string name="helloactivity_button_next">SIGUIENTE</string>
   <string name="helloactivity_button_start">ENTAMAR</string>
@@ -29,6 +31,7 @@
   <string name="dialog_add_concentration">Concentración</string>
   <string name="dialog_add_date">Data</string>
   <string name="dialog_add_time">Hora</string>
+  <string name="dialog_add_measured">Midióse</string>
   <string name="dialog_add_type_1">Enantes d\'almorzar</string>
   <string name="dialog_add_type_2">Dempués d\'almorzar</string>
   <string name="dialog_add_type_3">Enantes de xintar</string>
@@ -40,6 +43,7 @@
   <string name="dialog_add_add">AMESTAR</string>
   <string name="dialog_error2">Introduz un valor válidu, por favor.</string>
   <string name="dialog_error">Enllena tolos campos, por favor.</string>
+  <string name="dialog_delete">Desaniciar</string>
   <string name="dialog_edit">Editar</string>
   <string name="fragment_history_snackbar_text">Desanicióse una llectura</string>
   <string name="fragment_history_snackbar_action">DESFACER</string>
@@ -71,9 +75,9 @@
     <item>Consigui pruebes de sangre A1c pa dir en cata del promediu de zucre nel sangre nos pasaos 2 a 3 meses. El to doctor debería dicite con qué frecuencia sedrá preciso facelu.</item>
     <item>Siguir cuantos carbohidratos consumes pue ser cenciellamente tan importante como comprobar los sos niveles nel sangre darréu qu\'inflúin nos niveles de glucosa. Charra col to mélicu o dietista tocante al consumu de carbohidratos.</item>
     <item>Controlar la presión nel sangre y los niveles de colesterol y triglicéridos ye importante darréu que los diabéticos son susceptibles a enfermedaes cardiaques.</item>
-    <item>There are several diet approaches you can take to eating healthier and helping improve your diabetes outcomes. Seek advice from a dietician on what will work best for you and your budget.</item>
+    <item>Hai dellos enfoques que pues tomar pa comer más sano y ayudar a ameyorar la to diabetes. Gueta conseyu d\'un dietista sobro que dirá meyor pa tigo y el to presupuestu.</item>
     <item>Dir na gueta d\'exerciciu regular ye especialmente importante p\'aquellos con diabetes y pue ayudate a caltener un pesu sanu. Charra col to doctor tocante a los exercicios que son afayadizos pa tigo.</item>
-    <item>Being sleep-deprived can make you eat more especially things like junk food and as a result can negatively impact your health. Be sure to get a good night sleep and consult a sleep specialist if you are having difficulty.</item>
+    <item>Tar priváu de dormir pue facete que comas más, especialmente coses como comida puxarra y como resultáu afeutate de mou negativu na to salú. Asegúrate de dormir bien y consultar a un especialista del sueñu si tas teniendo dificultaes.</item>
     <item>L\'estrés pue tener un impautu negativu na diabetes. Charra col to doctor o profesional de la salú tocante a acostinar col estrés.</item>
     <item>Visita al to mélicu añalmente y tenéi una comunicación regular per tol añu porque ye importante pa que los diabéticos eviten cualesquier ataque repentín de problemes venceyaos al corazón.</item>
     <item>Amelecínate como te prescribió\'l to mélicu. Lapsos pequeños de tiempu puen tener un impautu nos niveles de glucosa nel sangre y causar efeutos secundarios. Si tienes dificultaes pa facer mientes, entrúga-y al to mélicu tocante a la xestión de melecines y les opciones recordatories.</item>
@@ -93,9 +97,12 @@
   <string name="assistant_research_desc">Siempres pues optar o non pola compartición d\'información diabética pero recuerda que tolos datos compartíos son anónimos dafechu. Namái compartimos tendencies demográfiques y niveles de glucosa.</string>
   <string name="assistant_categories_title">Crea estayes</string>
   <string name="assistant_categories_desc">Glucosio vien con estayes predeterminaes pa la entrada de glucosa pero pues crear estayes personalizaes nos axustes pa concasar coles tos necesidaes úniques.</string>
+  <string name="assistant_check_title">Compruébalo equí davezu</string>
   <string name="assistant_check_desc">L\'asistente Glucosio apurre conseyos regulaes y siguirá ameyorando, asina qu\'equí comprueba siempres les aiciones que pues tomar p\'ameyorar la to esperiencia Glucosio y pa otros conseyos útiles.</string>
+  <string name="assistant_feedback_title">Unvia feedback </string>
   <string name="assistant_feedback_desc">Si alcuentres cualesquier torga téunica o tienes feedback tocante a Glucosio encamentámoste unvialo nel menú d\'axustes p\'ayudamos a ameyorar Glucosio.</string>
   <string name="assistant_reading_title">Amiesta una llectura</string>
+  <string name="assistant_reading_desc">Asegúrate d\'amestar davezu los tos niveles de glucosa nel sangre pa qu\'asina podamos siguilos nel tiempu.</string>
   <string name="helloactivity_spinner_preferred_range">Rangu preferíu</string>
   <string name="helloactivity_spinner_preferred_range_4">Rangu personalizáu</string>
   <string name="helloactivity_preferred_range_min">Valor mínimu</string>
@@ -105,6 +112,7 @@
   <string name="invitation_title">Convidar a otra xente</string>
   <string name="invitation_message">Prueba Glucosio, una aplicación de códigu llibre pa la xestión ya investigación de la diabetes.</string>
   <string name="invitation_cta">Prueba Glucosio</string>
+  <string name="title_activity_backup">Copies de seguranza</string>
   <string name="preferences_privacy">Privacidá</string>
   <string name="helloactivity_textview_tos">Usando Glucosio tas acordies colos</string>
 </resources>

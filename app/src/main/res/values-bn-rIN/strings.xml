@@ -3,6 +3,7 @@
 <resources>
   <string name="action_settings">সেটিংস</string>
   <string name="action_feedback">মতামত পাঠান</string>
+  <string name="action_invite">একটা বন্ধুকে আমন্ত্রণ করুন</string>
   <string name="tab_overview">সংক্ষিপ্ত বিবরণ</string>
   <string name="tab_history">ইতিহাস</string>
   <string name="tab_tips">পরামর্শ</string>
@@ -110,4 +111,6 @@
   <string name="helloactivity_preferred_range_min">সর্বনিম্ন মান</string>
   <string name="helloactivity_preferred_range_max">সর্বোচ্চ মান</string>
   <string name="assistant_action_try">এখনই ব্যবহার করে দেখুন</string>
+  <string name="helloactivity_language">ভাষা</string>
+  <string name="invitation_title">অন্যান্য মানুষদের আমন্ত্রণ করুন</string>
 </resources>
