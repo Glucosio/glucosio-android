@@ -110,4 +110,10 @@
   <string name="helloactivity_preferred_range_max">Valor máximo</string>
   <string name="assistant_action_try">PRUÉBELO AHORA</string>
   <string name="helloactivity_language">Idioma</string>
+  <string name="invitation_title">Invitar a otras personas</string>
+  <string name="invitation_message">Probar Glucosio, una aplicación de fuente libre para la investigación y manejo de la diabetes.</string>
+  <string name="invitation_cta">Probar Glucosio</string>
+  <string name="title_activity_backup">Hacer copia de respaldo</string>
+  <string name="preferences_privacy">Privacidad</string>
+  <string name="helloactivity_textview_tos">Al usar Glucioa, acepta a los</string>
 </resources>
