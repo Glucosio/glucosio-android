@@ -167,7 +167,7 @@
     <string-array name="assistant_descriptions" translatable="false">
         <item>@string/assistant_feedback_desc</item>
         <item>@string/assistant_reading_desc</item>
-        <item>@string/assistant_categories_title</item>
+        <item>@string/assistant_categories_desc</item>
     </string-array>
 
     <string-array name="assistant_actions" translatable="false">
@@ -204,8 +204,15 @@
     <string name="preferences_about_glucosio">About Glucosio</string>
     <string name="preferences_rate">Rate Glucosio</string>
     <string name="preferences_licences_open">Open source Licences</string>
-    
-<!-- Future Strings Baked In Early For l10n -->
+    <string name="about_donate">Donate to Glucosio</string>
+    <string name="reading_ok">OK</string>
+    <string name="reading_hypo">Hypoglycemia</string>
+    <string name="reading_low">Low</string>
+    <string name="reading_high">High</string>
+    <string name="reading_hyper">Hyperglycemia</string>
+
+
+    <!-- Future Strings Baked In Early For l10n -->
 <!-- Exercise Types -->   
 
 <string name="dialog_add_exercisetype_1">Leisurely walking</string>
@@ -250,11 +257,5 @@
 <string name="about_contributedev">Contribute to Development</string>
 <string name="about_discussion">Join our discussion community</string>
 <string name="about_maillist">Subscribe to our mailing list</string>
-<string name="about_donate">Donate to Glucosio</string>
-    <string name="reading_ok">Ok</string>
-    <string name="reading_hypo">Hypoglycemia</string>
-    <string name="reading_low">Low</string>
-    <string name="reading_high">High</string>
-    <string name="reading_hyper">Hyperglycemia</string>
-
+    <string name="assistant_archived">ARCHIVED TIPS</string>
 </resources>

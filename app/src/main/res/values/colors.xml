@@ -4,6 +4,7 @@
     <color name="white">#FFFFFF</color>
 
     <color name="glucosio_pink">#E84579</color>
+    <color name="glucosio_pink_light">#ec6a93</color>
     <color name="glucosio_pink_dark">#C23965</color>
     <color name="glucosio_accent">#F0D04C</color>
     <color name="glucosio_separator">#eaeaea</color>
