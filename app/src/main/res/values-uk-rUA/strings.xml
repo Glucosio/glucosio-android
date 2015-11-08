@@ -35,9 +35,7 @@
   <string name="dialog_add_type_4">Після обіду</string>
   <string name="dialog_add_type_5">Перед вечерею</string>
   <string name="dialog_add_type_6">Після вечері</string>
-  <string name="dialog_add_type_8">Повторна перевірка</string>
   <string name="dialog_add_type_9">Ніч</string>
-  <string name="dialog_add_type_10">Інше</string>
   <string name="dialog_add_cancel">СКАСУВАТИ</string>
   <string name="dialog_add_add">ДОДАТИ</string>
   <string name="dialog_error2">Будь ласка, введіть припустиме значення.</string>

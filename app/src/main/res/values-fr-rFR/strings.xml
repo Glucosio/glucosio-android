@@ -39,10 +39,7 @@
   <string name="dialog_add_type_4">Après le déjeuner</string>
   <string name="dialog_add_type_5">Avant le dîner</string>
   <string name="dialog_add_type_6">Après le dîner</string>
-  <string name="dialog_add_type_7">Général</string>
-  <string name="dialog_add_type_8">Revérifier</string>
   <string name="dialog_add_type_9">Nuit</string>
-  <string name="dialog_add_type_10">Autre</string>
   <string name="dialog_add_cancel">ANNULER</string>
   <string name="dialog_add_add">AJOUTER</string>
   <string name="dialog_error2">Merci d\'entrer une valeur valide.</string>

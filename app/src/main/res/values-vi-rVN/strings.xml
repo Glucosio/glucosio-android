@@ -30,10 +30,7 @@
   <string name="dialog_add_type_4">Sau khi ăn trưa</string>
   <string name="dialog_add_type_5">Trước khi ăn tối</string>
   <string name="dialog_add_type_6">Sau khi ăn tối</string>
-  <string name="dialog_add_type_7">Tổng quát</string>
-  <string name="dialog_add_type_8">Kiểm tra lại</string>
   <string name="dialog_add_type_9">Buổi tối</string>
-  <string name="dialog_add_type_10">Khác</string>
   <string name="dialog_add_cancel">HỦY BỎ</string>
   <string name="dialog_add_add">THÊM</string>
   <string name="dialog_error2">Vui lòng nhập một giá trị hợp lệ.</string>

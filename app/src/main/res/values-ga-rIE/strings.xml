@@ -37,10 +37,7 @@
   <string name="dialog_add_type_4">Tar éis lóin</string>
   <string name="dialog_add_type_5">Roimh shuipéar</string>
   <string name="dialog_add_type_6">Tar éis suipéir</string>
-  <string name="dialog_add_type_7">Ginearálta</string>
-  <string name="dialog_add_type_8">Seiceáil arís</string>
   <string name="dialog_add_type_9">Oíche</string>
-  <string name="dialog_add_type_10">Eile</string>
   <string name="dialog_add_cancel">CEALAIGH</string>
   <string name="dialog_add_add">OK</string>
   <string name="dialog_error2">Cuir luach bailí isteach.</string>

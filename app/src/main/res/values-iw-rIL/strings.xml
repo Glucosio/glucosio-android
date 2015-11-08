@@ -37,10 +37,7 @@
   <string name="dialog_add_type_4">לאחר ארוחת הצהריים</string>
   <string name="dialog_add_type_5">לפני ארוחת הערב</string>
   <string name="dialog_add_type_6">לאחר ארוחת הערב</string>
-  <string name="dialog_add_type_7">כללי</string>
-  <string name="dialog_add_type_8">בדוק מחדש</string>
   <string name="dialog_add_type_9">לילה</string>
-  <string name="dialog_add_type_10">אחר</string>
   <string name="dialog_add_cancel">ביטול</string>
   <string name="dialog_add_add">להוסיף</string>
   <string name="dialog_error2">אנא הזינו ערך תקין.</string>

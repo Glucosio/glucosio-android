@@ -36,10 +36,7 @@
   <string name="dialog_add_type_4">หลังอาหารกลางวัน</string>
   <string name="dialog_add_type_5">ก่อนอาหารเย็น</string>
   <string name="dialog_add_type_6">หลังอาหารเย็น</string>
-  <string name="dialog_add_type_7">ทั่วไป</string>
-  <string name="dialog_add_type_8">ตรวจสอบอีกครั้ง</string>
   <string name="dialog_add_type_9">กลางคืน</string>
-  <string name="dialog_add_type_10">อื่น ๆ</string>
   <string name="dialog_add_cancel">ยกเลิก</string>
   <string name="dialog_add_add">เพิ่ม</string>
   <string name="dialog_error2">กรุณาใส่ค่าถูกต้อง</string>

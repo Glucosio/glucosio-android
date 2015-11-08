@@ -38,10 +38,7 @@
   <string name="dialog_add_type_4">Después de la comida</string>
   <string name="dialog_add_type_5">Antes de la cena</string>
   <string name="dialog_add_type_6">Después de la cena</string>
-  <string name="dialog_add_type_7">Ajustes generales</string>
-  <string name="dialog_add_type_8">Vuelva a revisar</string>
   <string name="dialog_add_type_9">Noche</string>
-  <string name="dialog_add_type_10">Información adicional</string>
   <string name="dialog_add_cancel">Cancelar</string>
   <string name="dialog_add_add">Añadir</string>
   <string name="dialog_error2">Por favor, ingrese un valor válido.</string>

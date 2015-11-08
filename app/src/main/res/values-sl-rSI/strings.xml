@@ -37,10 +37,7 @@
   <string name="dialog_add_type_4">Po kosilu</string>
   <string name="dialog_add_type_5">Pred večerjo</string>
   <string name="dialog_add_type_6">Po večerji</string>
-  <string name="dialog_add_type_7">Splošno</string>
-  <string name="dialog_add_type_8">Ponovno</string>
   <string name="dialog_add_type_9">Noč</string>
-  <string name="dialog_add_type_10">Ostalo</string>
   <string name="dialog_add_cancel">PREKLIČI</string>
   <string name="dialog_add_add">DODAJ</string>
   <string name="dialog_error2">Vnesite veljavno vrednost.</string>

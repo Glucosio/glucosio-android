@@ -36,9 +36,7 @@
   <string name="dialog_add_type_4">Nach dem Mittagessen</string>
   <string name="dialog_add_type_5">Vor dem Abendessen</string>
   <string name="dialog_add_type_6">Nach dem Abendessen</string>
-  <string name="dialog_add_type_7">Allgemein</string>
   <string name="dialog_add_type_9">Nacht</string>
-  <string name="dialog_add_type_10">Anderes</string>
   <string name="dialog_add_cancel">ABBRECHEN</string>
   <string name="dialog_add_add">HINZUFÜGEN</string>
   <string name="dialog_error2">Bitte einen gültigen Wert eingeben.</string>

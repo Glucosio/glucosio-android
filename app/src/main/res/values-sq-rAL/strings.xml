@@ -37,10 +37,7 @@
   <string name="dialog_add_type_4">Pas drekës</string>
   <string name="dialog_add_type_5">Para darkës</string>
   <string name="dialog_add_type_6">Pas darkës</string>
-  <string name="dialog_add_type_7">Të përgjithshme</string>
-  <string name="dialog_add_type_8">Kontrollo përsëri</string>
   <string name="dialog_add_type_9">Natë</string>
-  <string name="dialog_add_type_10">Tjetër</string>
   <string name="dialog_add_cancel">ANULLO</string>
   <string name="dialog_add_add">SHTO</string>
   <string name="dialog_error2">Ju lutemi shtoni një vlerë të vlefshme.</string>

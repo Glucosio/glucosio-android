@@ -37,10 +37,7 @@
   <string name="dialog_add_type_4">بعد الغداء</string>
   <string name="dialog_add_type_5">قبل العشاء</string>
   <string name="dialog_add_type_6">بعد العشاء</string>
-  <string name="dialog_add_type_7">عامّ</string>
-  <string name="dialog_add_type_8">إعادة فحص</string>
   <string name="dialog_add_type_9">ليل</string>
-  <string name="dialog_add_type_10">غير ذلك</string>
   <string name="dialog_add_cancel">ألغِ</string>
   <string name="dialog_add_add">أضِف</string>
   <string name="dialog_error2">الرجاء إدخال قيمة صحيحة.</string>
