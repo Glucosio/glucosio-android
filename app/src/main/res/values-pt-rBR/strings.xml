@@ -3,6 +3,7 @@
 <resources>
   <string name="action_settings">Configurações</string>
   <string name="action_feedback">Enviar comentários</string>
+  <string name="action_invite">Convidar um amigo</string>
   <string name="tab_overview">Visão geral</string>
   <string name="tab_history">Histórico</string>
   <string name="tab_tips">Dicas</string>
@@ -112,4 +113,6 @@
   <string name="invitation_message">Experimente o Glucosio, um aplicativo de código-aberto para o controle da diabetes e pesquisas.</string>
   <string name="invitation_cta">Experimente o Glucosio</string>
   <string name="title_activity_backup">Backup</string>
+  <string name="preferences_privacy">Privacidade</string>
+  <string name="helloactivity_textview_tos">Ao usar o Glucosio, você concorda com os</string>
 </resources>
