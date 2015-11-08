@@ -189,6 +189,7 @@ public class OverviewFragment extends Fragment {
         GlucoseConverter converter = new GlucoseConverter();
 
         ArrayList<Entry> yVals = new ArrayList<Entry>();
+        ArrayList<Integer> colors = new ArrayList<>();
 
         if (graphSpinner.getSelectedItemPosition() == 0) {
             // Day view
@@ -201,6 +202,8 @@ public class OverviewFragment extends Fragment {
                     float converted = (float) val;
                     yVals.add(new Entry(converted, i));
                 }
+                GlucoseRanges ranges = new GlucoseRanges(getActivity().getApplicationContext());
+                colors.add(ranges.stringToColor(ranges.colorFromRange(presenter.getReading().get(i))));
             }
         } else if (graphSpinner.getSelectedItemPosition() == 1){
             // Week view
@@ -232,10 +235,10 @@ public class OverviewFragment extends Fragment {
         LineDataSet set1 = new LineDataSet(yVals, "");
         // set the line to be drawn like this "- - - - - -"
         set1.setColor(getResources().getColor(R.color.glucosio_pink));
-        set1.setCircleColor(getResources().getColor(R.color.glucosio_pink));
-        set1.setLineWidth(4f);
-        set1.setCircleSize(4.5f);
-        set1.setDrawCircleHole(true);
+        set1.setCircleColors(colors);
+        set1.setLineWidth(0f);
+        set1.setCircleSize(3f);
+        set1.setDrawCircleHole(false);
         set1.disableDashedLine();
         set1.setFillAlpha(255);
         set1.setDrawFilled(true);

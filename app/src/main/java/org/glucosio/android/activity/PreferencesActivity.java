@@ -1,5 +1,6 @@
 package org.glucosio.android.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.EditTextPreference;
@@ -24,6 +25,8 @@ import org.glucosio.android.tools.InputFilterMinMax;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Locale;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class PreferencesActivity extends AppCompatActivity {
 
@@ -299,4 +302,8 @@ public class PreferencesActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
 }

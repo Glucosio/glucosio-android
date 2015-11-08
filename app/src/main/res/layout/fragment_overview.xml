@@ -37,7 +37,7 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:paddingTop="16dp">
@@ -57,6 +57,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/glucosio_reading_hypo"
+                    android:paddingRight="8dp"
                     android:text="@string/reading_hypo" />
             </LinearLayout>
 
@@ -75,6 +79,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/glucosio_reading_low"
+                    android:paddingRight="8dp"
                     android:text="@string/reading_low" />
             </LinearLayout>
 
@@ -93,6 +101,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/glucosio_reading_ok"
+                    android:textStyle="bold"
+                    android:paddingRight="8dp"
+                    android:textSize="12sp"
                     android:text="@string/reading_ok" />
             </LinearLayout>
 
@@ -111,6 +123,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/glucosio_reading_high"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:paddingRight="8dp"
                     android:text="@string/reading_high" />
             </LinearLayout>
 
@@ -129,6 +145,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/glucosio_reading_hyper"
+                    android:textStyle="bold"
+                    android:textSize="12sp"
+                    android:paddingRight="8dp"
                     android:text="@string/reading_hyper" />
             </LinearLayout>
         </LinearLayout>
