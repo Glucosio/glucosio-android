@@ -39,10 +39,7 @@
   <string name="dialog_add_type_4">午餐后</string>
   <string name="dialog_add_type_5">晚餐前</string>
   <string name="dialog_add_type_6">晚餐后</string>
-  <string name="dialog_add_type_7">常规</string>
-  <string name="dialog_add_type_8">重新检查</string>
   <string name="dialog_add_type_9">夜间</string>
-  <string name="dialog_add_type_10">其他</string>
   <string name="dialog_add_cancel">取消</string>
   <string name="dialog_add_add">添加</string>
   <string name="dialog_error2">请输入有效的值。</string>

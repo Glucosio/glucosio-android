@@ -38,10 +38,7 @@
   <string name="dialog_add_type_4">После обеда</string>
   <string name="dialog_add_type_5">До ужина</string>
   <string name="dialog_add_type_6">После ужина</string>
-  <string name="dialog_add_type_7">Общее</string>
-  <string name="dialog_add_type_8">Повторная проверка</string>
   <string name="dialog_add_type_9">Ночь</string>
-  <string name="dialog_add_type_10">Другое</string>
   <string name="dialog_add_cancel">ОТМЕНА</string>
   <string name="dialog_add_add">ДОБАВИТЬ</string>
   <string name="dialog_error2">Введите корректное значение.</string>

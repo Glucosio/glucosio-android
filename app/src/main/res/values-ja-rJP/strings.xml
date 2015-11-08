@@ -38,10 +38,7 @@
   <string name="dialog_add_type_4">昼食後</string>
   <string name="dialog_add_type_5">夕食前</string>
   <string name="dialog_add_type_6">夕食後</string>
-  <string name="dialog_add_type_7">全般</string>
-  <string name="dialog_add_type_8">再確認</string>
   <string name="dialog_add_type_9">夜</string>
-  <string name="dialog_add_type_10">その他</string>
   <string name="dialog_add_cancel">キャンセル</string>
   <string name="dialog_add_add">追加</string>
   <string name="dialog_error2">有効な値を入力してください。</string>

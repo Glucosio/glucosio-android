@@ -38,10 +38,7 @@
   <string name="dialog_add_type_4">After lunch</string>
   <string name="dialog_add_type_5">Before dinner</string>
   <string name="dialog_add_type_6">After dinner</string>
-  <string name="dialog_add_type_7">General</string>
-  <string name="dialog_add_type_8">Recheck</string>
   <string name="dialog_add_type_9">Night</string>
-  <string name="dialog_add_type_10">Other</string>
   <string name="dialog_add_cancel">CANCEL</string>
   <string name="dialog_add_add">ADD</string>
   <string name="dialog_error2">Please enter a valid value.</string>

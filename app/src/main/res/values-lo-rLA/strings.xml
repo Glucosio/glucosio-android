@@ -36,10 +36,7 @@
   <string name="dialog_add_type_4">ກ່ອນຮັບປະທ່ານອາຫານທ່ຽງ</string>
   <string name="dialog_add_type_5">ຫລັງຮັບປະທ່ານອາຫານຄຳ</string>
   <string name="dialog_add_type_6">ກ່ອນຮັບປະທ່ານອາຫານຄຳ</string>
-  <string name="dialog_add_type_7">ທົ່ວໄປ</string>
-  <string name="dialog_add_type_8">ກວດຄືນ</string>
   <string name="dialog_add_type_9">ຕອນກາງຄືນ</string>
-  <string name="dialog_add_type_10">ອື່ນໆ</string>
   <string name="dialog_add_cancel">ອອກ</string>
   <string name="dialog_add_add">ເພີ່ມ</string>
   <string name="dialog_error2">ກະລຸນາໃສ່ຄ່າຂໍ້ມູນທີ່ຖືກຕ້ອງ.</string>

@@ -37,10 +37,7 @@
   <string name="dialog_add_type_4">Pagkatapos ng tanghalian</string>
   <string name="dialog_add_type_5">Bago magdinner</string>
   <string name="dialog_add_type_6">Pagkatapos magdinner</string>
-  <string name="dialog_add_type_7">Pangkabuuan</string>
-  <string name="dialog_add_type_8">Suriin muli</string>
   <string name="dialog_add_type_9">Gabi</string>
-  <string name="dialog_add_type_10">Iba pa</string>
   <string name="dialog_add_cancel">KANSELAHIN</string>
   <string name="dialog_add_add">IDAGDAG</string>
   <string name="dialog_error2">Mag-enter ng tamang value.</string>

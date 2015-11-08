@@ -38,10 +38,7 @@
   <string name="dialog_add_type_4">Després del dinar</string>
   <string name="dialog_add_type_5">Abans del sopar</string>
   <string name="dialog_add_type_6">Després del sopar</string>
-  <string name="dialog_add_type_7">General</string>
-  <string name="dialog_add_type_8">Torna a comprovar</string>
   <string name="dialog_add_type_9">Nocturn</string>
-  <string name="dialog_add_type_10">Altre</string>
   <string name="dialog_add_cancel">CANCEL·LA</string>
   <string name="dialog_add_add">AFEGEIX</string>
   <string name="dialog_error2">Si us plau, introduïu un valor vàlid.</string>

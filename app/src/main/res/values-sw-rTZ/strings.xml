@@ -37,10 +37,7 @@
   <string name="dialog_add_type_4">Baada ya chakula cha mchana</string>
   <string name="dialog_add_type_5">Kabla ya chakula cha jioni</string>
   <string name="dialog_add_type_6">Baada ya chakula cha jioni</string>
-  <string name="dialog_add_type_7">Kwa ujumla</string>
-  <string name="dialog_add_type_8">Thibitisha tena</string>
   <string name="dialog_add_type_9">Usiku</string>
-  <string name="dialog_add_type_10">Nyingine</string>
   <string name="dialog_add_cancel">BATILISHA</string>
   <string name="dialog_add_add">ONGEZA</string>
   <string name="dialog_error2">Tafadhali ingiza thamani halali.</string>

@@ -4,6 +4,7 @@
   <string name="app_name">Glucosio</string>
   <string name="action_settings">Impostazioni</string>
   <string name="action_feedback">Invia feedback</string>
+  <string name="action_invite">Invita un amico</string>
   <string name="tab_overview">Riepilogo</string>
   <string name="tab_history">Cronologia</string>
   <string name="tab_tips">Suggerimenti</string>
@@ -38,10 +39,8 @@
   <string name="dialog_add_type_4">Dopo pranzo</string>
   <string name="dialog_add_type_5">Prima della cena</string>
   <string name="dialog_add_type_6">Dopo cena</string>
-  <string name="dialog_add_type_7">Generale</string>
-  <string name="dialog_add_type_8">Ricontrollare</string>
   <string name="dialog_add_type_9">Notte</string>
-  <string name="dialog_add_type_10">Altro</string>
+  <string name="dialog_add_type_12">Altro</string>
   <string name="dialog_add_cancel">ANNULLA</string>
   <string name="dialog_add_add">AGGIUNGI</string>
   <string name="dialog_error2">Inserisci un valore valido.</string>
@@ -116,4 +115,15 @@
   <string name="invitation_message">Prova Glucosio, un\'app open source per la gestione del diabete e per la ricerca.</string>
   <string name="invitation_cta">Prova Glucosio</string>
   <string name="title_activity_backup">Backup</string>
+  <string name="preferences_privacy">Privacy</string>
+  <string name="helloactivity_textview_tos">Usando Glucosio, accetti le</string>
+  <string name="preferences_backup_google_drive">Google Drive</string>
+  <string name="preferences_about_glucosio">Info su Glucosio</string>
+  <string name="preferences_rate">Valuta Glucosio</string>
+  <string name="preferences_licences_open">Licenze open source</string>
+  <string name="about_credits">Riconoscimenti</string>
+  <string name="about_contribute">Contribuisci</string>
+  <string name="about_contributel10n">Contribuisci alle Traduzioni</string>
+  <string name="about_contributedev">Contribuisci allo Sviluppo</string>
+  <string name="about_maillist">Iscriviti alla nostra mailing list</string>
 </resources>

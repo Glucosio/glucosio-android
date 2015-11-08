@@ -35,10 +35,7 @@
   <string name="dialog_add_type_4">Po obede</string>
   <string name="dialog_add_type_5">Pred večerou</string>
   <string name="dialog_add_type_6">Po večeri</string>
-  <string name="dialog_add_type_7">Všeobecné</string>
-  <string name="dialog_add_type_8">Znovu skontrolovať</string>
   <string name="dialog_add_type_9">Noc</string>
-  <string name="dialog_add_type_10">Ostatné</string>
   <string name="dialog_add_cancel">ZRUŠIŤ</string>
   <string name="dialog_add_add">PRIDAŤ</string>
   <string name="dialog_error2">Prosím, zadajte platnú hodnotu.</string>

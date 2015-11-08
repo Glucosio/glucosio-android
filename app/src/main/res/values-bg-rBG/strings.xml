@@ -37,10 +37,7 @@
   <string name="dialog_add_type_4">След обяд</string>
   <string name="dialog_add_type_5">Преди вечеря</string>
   <string name="dialog_add_type_6">След вечеря</string>
-  <string name="dialog_add_type_7">Основни</string>
-  <string name="dialog_add_type_8">Повторна проверка</string>
   <string name="dialog_add_type_9">Нощ</string>
-  <string name="dialog_add_type_10">Друг</string>
   <string name="dialog_add_cancel">Отказ</string>
   <string name="dialog_add_add">Добави</string>
   <string name="dialog_error2">Моля въведете правилна стойност.</string>

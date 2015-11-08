@@ -37,10 +37,7 @@
   <string name="dialog_add_type_4">Öğle yemeğinden sonra</string>
   <string name="dialog_add_type_5">Akşam yemeğinden önce</string>
   <string name="dialog_add_type_6">Akşam yemeğinden sonra</string>
-  <string name="dialog_add_type_7">Genel</string>
-  <string name="dialog_add_type_8">Yeniden denetle</string>
   <string name="dialog_add_type_9">Gece</string>
-  <string name="dialog_add_type_10">Diğer</string>
   <string name="dialog_add_cancel">İptal</string>
   <string name="dialog_add_add">EKLE</string>
   <string name="dialog_error2">Lütfen geçerli bir değer girin.</string>

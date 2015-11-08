@@ -38,10 +38,7 @@
   <string name="dialog_add_type_4">Efter lunch</string>
   <string name="dialog_add_type_5">Innan middagen</string>
   <string name="dialog_add_type_6">Efter middagen</string>
-  <string name="dialog_add_type_7">Allmänt</string>
-  <string name="dialog_add_type_8">Kontrollera igen</string>
   <string name="dialog_add_type_9">Natt</string>
-  <string name="dialog_add_type_10">Annat</string>
   <string name="dialog_add_cancel">Avbryt</string>
   <string name="dialog_add_add">Lägg till</string>
   <string name="dialog_error2">Ange ett giltigt värde.</string>

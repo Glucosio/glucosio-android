@@ -37,10 +37,7 @@
   <string name="dialog_add_type_4">দুপুরে খাওয়ার পরে</string>
   <string name="dialog_add_type_5">রাতে খাওয়ার আগে</string>
   <string name="dialog_add_type_6">রাতে খাওয়ার পরে</string>
-  <string name="dialog_add_type_7">সাধারণ</string>
-  <string name="dialog_add_type_8">পুনঃপরীক্ষা</string>
   <string name="dialog_add_type_9">রাত</string>
-  <string name="dialog_add_type_10">অন্যান্য</string>
   <string name="dialog_add_cancel">বাতিল</string>
   <string name="dialog_add_add">যোগ</string>
   <string name="dialog_error2">অনুগ্রহ করে একটি বৈধ মান প্রবেশ করান।</string>

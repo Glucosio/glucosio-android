@@ -34,10 +34,7 @@
   <string name="dialog_add_type_4">खाजा पछि</string>
   <string name="dialog_add_type_5">रात्री भोजन अघि</string>
   <string name="dialog_add_type_6">रात्री भोजन पछि</string>
-  <string name="dialog_add_type_7">साधारन</string>
-  <string name="dialog_add_type_8">पुन:हेर्नुहोस्</string>
   <string name="dialog_add_type_9">रात्री</string>
-  <string name="dialog_add_type_10">अन्य</string>
   <string name="dialog_add_cancel">रद्द</string>
   <string name="dialog_add_add">थप्नुहोस्</string>
   <string name="dialog_error2">कृपया ठिक मान हाल्नुहोस्।</string>

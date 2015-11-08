@@ -38,10 +38,7 @@
   <string name="dialog_add_type_4">După prânz</string>
   <string name="dialog_add_type_5">Înainte de cină</string>
   <string name="dialog_add_type_6">După cină</string>
-  <string name="dialog_add_type_7">General</string>
-  <string name="dialog_add_type_8">Re-verifică</string>
   <string name="dialog_add_type_9">Noapte</string>
-  <string name="dialog_add_type_10">Altul</string>
   <string name="dialog_add_cancel">RENUNȚĂ</string>
   <string name="dialog_add_add">ADAUGĂ</string>
   <string name="dialog_error2">Te rog introdu o valoare validă.</string>

@@ -37,10 +37,7 @@
   <string name="dialog_add_type_4">Nakon ručka</string>
   <string name="dialog_add_type_5">Prije večere</string>
   <string name="dialog_add_type_6">Nakon večere</string>
-  <string name="dialog_add_type_7">Opće</string>
-  <string name="dialog_add_type_8">Ponovo provjeri</string>
   <string name="dialog_add_type_9">Noć</string>
-  <string name="dialog_add_type_10">Ostalo</string>
   <string name="dialog_add_cancel">OTKAŽI</string>
   <string name="dialog_add_add">DODAJ</string>
   <string name="dialog_error2">Molimo da unesete valjanu vrijednost.</string>
