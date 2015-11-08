@@ -24,17 +24,17 @@ public class GlucosioApplication extends Application {
 
     /**
      * Gets the default {@link Tracker} for this {@link Application}.
+     *
      * @return tracker
      */
     synchronized public Tracker getDefaultTracker() {
         if (mTracker == null) {
-            String TRACKER_ID = "UA-68882401-2";
             GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
             // To enable debug logging use: adb shell setprop log.tag.GAv4 DEBUG
-            mTracker = analytics.newTracker(TRACKER_ID);
+            mTracker = analytics.newTracker(BuildConfig.GOOGLE_ANALYTICS_TRACKER);
             mTracker.enableAdvertisingIdCollection(true);
 
-            if(BuildConfig.DEBUG) {
+            if (BuildConfig.DEBUG) {
                 GoogleAnalytics.getInstance(this).setAppOptOut(true);
                 Log.i("Glucosio", "DEBUG BUILD: ANALYTICS IS DISABLED");
             }
