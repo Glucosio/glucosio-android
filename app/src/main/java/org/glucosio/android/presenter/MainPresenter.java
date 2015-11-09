@@ -126,16 +126,22 @@ public class MainPresenter {
 
     public void dialogOnEditButtonPressed(String time, String date, String reading, String type, int id){
         if (validateDate(date) && validateTime(time) && validateReading(reading)) {
-            int finalReading = Integer.parseInt(reading);
             Calendar cal = Calendar.getInstance();
             cal.set(Integer.parseInt(readingYear),Integer.parseInt(readingMonth)-1,Integer.parseInt(readingDay),Integer.parseInt(readingHour),Integer.parseInt(readingMinute));
             Date finalDateTime = cal.getTime();
 
             GlucoseReading gReadingToDelete = dB.getGlucoseReadingById(id);
-            GlucoseReading gReading = new GlucoseReading(finalReading, type, finalDateTime,"");
-
-            dB.deleteGlucoseReadings(gReadingToDelete);
-            dB.addGlucoseReading(gReading);
+            if (getUnitMeasuerement().equals("mg/dL")) {
+                int finalReading = Integer.parseInt(reading);
+                GlucoseReading gReading = new GlucoseReading(finalReading, type, finalDateTime, "");
+                dB.deleteGlucoseReadings(gReadingToDelete);
+                dB.addGlucoseReading(gReading);
+            } else {
+                int convertedReading = converter.toMgDl(Double.parseDouble(reading));
+                GlucoseReading gReading = new GlucoseReading(convertedReading, type, finalDateTime, "");
+                dB.deleteGlucoseReadings(gReadingToDelete);
+                dB.addGlucoseReading(gReading);
+            }
 
             mainActivity.dismissAddDialog();
         } else {

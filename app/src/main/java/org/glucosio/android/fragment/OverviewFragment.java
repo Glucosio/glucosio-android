@@ -1,6 +1,7 @@
 package org.glucosio.android.fragment;
 
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,16 +11,16 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.components.LimitLine;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+
 import org.glucosio.android.R;
 import org.glucosio.android.presenter.OverviewPresenter;
 import org.glucosio.android.tools.FormatDateTime;
@@ -189,6 +190,7 @@ public class OverviewFragment extends Fragment {
         GlucoseConverter converter = new GlucoseConverter();
 
         ArrayList<Entry> yVals = new ArrayList<Entry>();
+        ArrayList<Integer> colors = new ArrayList<>();
 
         if (graphSpinner.getSelectedItemPosition() == 0) {
             // Day view
@@ -201,6 +203,8 @@ public class OverviewFragment extends Fragment {
                     float converted = (float) val;
                     yVals.add(new Entry(converted, i));
                 }
+                GlucoseRanges ranges = new GlucoseRanges(getActivity().getApplicationContext());
+                colors.add(ranges.stringToColor(ranges.colorFromRange(presenter.getReading().get(i))));
             }
         } else if (graphSpinner.getSelectedItemPosition() == 1){
             // Week view
@@ -214,6 +218,7 @@ public class OverviewFragment extends Fragment {
                     yVals.add(new Entry(converted, i));
                 }
             }
+            colors.add(getResources().getColor(R.color.glucosio_pink));
         } else {
             // Month view
             for (int i = 0; i < presenter.getReadingsMonth().size(); i++) {
@@ -226,21 +231,31 @@ public class OverviewFragment extends Fragment {
                     yVals.add(new Entry(converted, i));
                 }
             }
+            colors.add(getResources().getColor(R.color.glucosio_pink));
         }
 
         // create a dataset and give it a type
         LineDataSet set1 = new LineDataSet(yVals, "");
         // set the line to be drawn like this "- - - - - -"
         set1.setColor(getResources().getColor(R.color.glucosio_pink));
-        set1.setCircleColor(getResources().getColor(R.color.glucosio_pink));
-        set1.setLineWidth(1f);
-        set1.setCircleSize(4f);
+        set1.setCircleColors(colors);
+        set1.setLineWidth(0f);
+        set1.setCircleSize(2.8f);
         set1.setDrawCircleHole(false);
         set1.disableDashedLine();
-        set1.setFillAlpha(65);
+        set1.setFillAlpha(255);
+        set1.setDrawFilled(true);
         set1.setValueTextSize(0);
         set1.setValueTextColor(Color.parseColor("#FFFFFF"));
-        set1.setFillColor(Color.BLACK);
+        set1.setFillColor(Color.parseColor("#FCE2EA"));
+
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.JELLY_BEAN_MR2){
+            set1.setDrawFilled(false);
+            set1.setLineWidth(3f);
+            set1.setCircleSize(4.5f);
+            set1.setDrawCircleHole(true);
+        }
+
 //        set1.setDrawFilled(true);
         // set1.setShader(new LinearGradient(0, 0, 0, mChart.getHeight(),
         // Color.BLACK, Color.WHITE, Shader.TileMode.MIRROR));
@@ -254,6 +269,8 @@ public class OverviewFragment extends Fragment {
         // set data
         chart.setData(data);
         chart.setPinchZoom(true);
+        chart.setHardwareAccelerationEnabled(true);
+        chart.animateY(1000, Easing.EasingOption.EaseOutCubic);
     }
 
     private void loadLastReading(){

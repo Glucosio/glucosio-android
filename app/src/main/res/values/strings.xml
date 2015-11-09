@@ -2,6 +2,7 @@
     <string name="app_name">Glucosio</string>
     <string name="action_settings">Settings</string>
     <string name="action_feedback">Send feedback</string>
+    <string name="action_invite">Invite a friend</string>
     <string name="tab_overview">Overview</string>
     <string name="tab_history">History</string>
     <string name="tab_tips">Tips</string>
@@ -9,8 +10,6 @@
     <string name="title_activity_hello">Hello.</string>
     <string name="helloactivity_headline">Hello.</string>
     <string name="helloactivity_terms">Terms of Use</string>
-    <string name="helloactivity_terms_accept">I\'ve read and accept the Terms of Use</string>
-    <string name="helloactivity_terms_full">The contents of the Glucosio website and apps, such as text, graphics, images, and other material (“Content”) are for informational purposes only. The content is not intended to be a substitute for professional medical advice, diagnosis, or treatment. We encourage Glucosio users to always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition. Never disregard professional medical advice or delay in seeking it because of something you have read on the Glucosio website or in our apps. The Glucosio Website, Blog, Wiki and other web browser accessible content (“Website”) should be used only for the purpose described above.\n Reliance on any information provided by Glucosio, Glucosio team members, volunteers and others appearing on the Website or in our apps is solely at your own risk.  The Site and the Content are provided on an “as is” basis.</string>
     <string name="helloactivity_subhead">We just need a few quick things before getting you started.</string>
     <string name="helloactivity_country">Country</string>
     <string name="helloactivity_age">Age</string>
@@ -63,10 +62,12 @@
     <string name="dialog_add_type_4">After lunch</string>
     <string name="dialog_add_type_5">Before dinner</string>
     <string name="dialog_add_type_6">After dinner</string>
-    <string name="dialog_add_type_7">General</string>
-    <string name="dialog_add_type_8">Recheck</string>
+    <string name="dialog_add_type_7">Snack</string>
+    <string name="dialog_add_type_8">Bedtime</string>
     <string name="dialog_add_type_9">Night</string>
-    <string name="dialog_add_type_10">Other</string>
+    <string name="dialog_add_type_10">Fasting glucose</string>
+    <string name="dialog_add_type_11">Recheck</string>
+    <string name="dialog_add_type_12">Other</string>
     <string-array name="dialog_add_measured_list" translatable="false">
         <item>@string/dialog_add_type_1</item>
         <item>@string/dialog_add_type_2</item>
@@ -78,6 +79,8 @@
         <item>@string/dialog_add_type_8</item>
         <item>@string/dialog_add_type_9</item>
         <item>@string/dialog_add_type_10</item>
+        <item>@string/dialog_add_type_11</item>
+        <item>@string/dialog_add_type_12</item>
     </string-array>
     <string name="dialog_add_cancel">CANCEL</string>
     <string name="dialog_add_add">ADD</string>
@@ -103,7 +106,7 @@
     </string-array>
     <string name="tip_example" translatable="false">Use less cheese in your recipes and meals. Fresh mozzarella packed in water and Swiss cheese are usually lower in sodium.</string>
     <string name="preferences_about">About</string>
-    <string name="version" translatable="false">0.8.0 (Noce)</string>
+    <string name="version" translatable="false">0.8.3 (Noce)</string>
     <string name="preferences_version">Version</string>
     <string name="preferences_terms">Terms of use</string>
     <string name="glucose_reading_type">Type</string>
@@ -156,20 +159,20 @@
     <string name="assistant_reading_title">Add a reading</string>
     <string name="assistant_reading_desc">Be sure to regularly add your glucose readings so we can help you track your glucose levels over time.</string>
 
-    <string-array name="assistant_titles">
+    <string-array name="assistant_titles" translatable="false">
         <item>@string/assistant_feedback_title</item>
         <item>@string/assistant_reading_title</item>
         <item>@string/assistant_categories_title</item>
     </string-array>
-    <string-array name="assistant_descriptions">
+    <string-array name="assistant_descriptions" translatable="false">
         <item>@string/assistant_feedback_desc</item>
         <item>@string/assistant_reading_desc</item>
         <item>@string/assistant_categories_desc</item>
     </string-array>
 
-    <string-array name="assistant_actions">
-    <item>@string/assistant_action_feedback</item>
-    <item>@string/assistant_action_reading</item>
+    <string-array name="assistant_actions" translatable="false">
+        <item>@string/assistant_action_feedback</item>
+        <item>@string/assistant_action_reading</item>
         <item>@string/assistant_action_try</item>
     </string-array>
 
@@ -190,103 +193,69 @@
         <item>@string/helloactivity_spinner_preferred_range_4</item>
     </string-array>
 
-    <string name="language_name_1">Azerbaijani</string>
-    <string name="language_name_2">Bengali</string>
-    <string name="language_name_3">Bengali, India</string>
-    <string name="language_name_4">Bosnian</string>
-    <string name="language_name_5">Bulgarian</string>
-    <string name="language_name_6">Burmese</string>
-    <string name="language_name_7">Catalan</string>
-    <string name="language_name_8">Chinese Simplified</string>
-    <string name="language_name_9">Chinese Traditional</string>
-    <string name="language_name_10">Dutch</string>
-    <string name="language_name_11">English</string>
-    <string name="language_name_12">English, UK</string>
-    <string name="language_name_13">Filipino</string>
-    <string name="language_name_14">French</string>
-    <string name="language_name_15">Hebrew</string>
-    <string name="language_name_16">Italian</string>
-    <string name="language_name_17">Portuguese, Brazilian</string>
-    <string name="language_name_18">Romanian</string>
-    <string name="language_name_19">Russian</string>
-    <string name="language_name_20">Slovenian</string>
-    <string name="language_name_21">Spanish</string>
-    <string name="language_name_22">Spanish, Mexico</string>
-    <string name="language_name_23">Swedish</string>
+    <string name="invitation_title">Invite other people</string>
+    <string name="invitation_message">Try Glucosio, an open source app for diabetes management and research.</string>
+    <string name="invitation_cta">Try Glucosio</string>
 
-    <string name="language_code_1">az</string>
-    <string name="language_code_2">bn</string>
-    <string name="language_code_3">bn_IN</string>
-    <string name="language_code_4">bs</string>
-    <string name="language_code_5">bg_BG</string>
-    <string name="language_code_6">my</string>
-    <string name="language_code_7">ca</string>
-    <string name="language_code_8">zh_CN</string>
-    <string name="language_code_9">zh_TW</string>
-    <string name="language_code_10">nl_BE</string>
-    <string name="language_code_11">en_US</string>
-    <string name="language_code_12">en_GB</string>
-    <string name="language_code_13">fil</string>
-    <string name="language_code_14">fr_FR</string>
-    <string name="language_code_15">iw</string>
-    <string name="language_code_16">it_IT</string>
-    <string name="language_code_17">pt_BR</string>
-    <string name="language_code_18">ro_RO</string>
-    <string name="language_code_19">ru_RU</string>
-    <string name="language_code_20">sl_SI</string>
-    <string name="language_code_21">es</string>
-    <string name="language_code_22">es_MX</string>
-    <string name="language_code_23">sv</string>
+    <string name="title_activity_backup">Backup</string>
+    <string name="preferences_privacy">Privacy</string>
+    <string name="helloactivity_textview_tos">By using Glucosio, you are agreeing to the</string>
+    <string name="preferences_backup_google_drive">Google Drive</string>
+    <string name="preferences_about_glucosio">About Glucosio</string>
+    <string name="preferences_rate">Rate Glucosio</string>
+    <string name="preferences_licences_open">Open source Licences</string>
+    <string name="about_donate">Donate to Glucosio</string>
+    <string name="reading_ok">OK</string>
+    <string name="reading_hypo">Hypoglycemia</string>
+    <string name="reading_low">Low</string>
+    <string name="reading_high">High</string>
+    <string name="reading_hyper">Hyperglycemia</string>
 
-    <string-array name="array_languages_name" translatable="false">
-        <item>@string/language_name_1</item>
-        <item>@string/language_name_2</item>
-        <item>@string/language_name_3</item>
-        <item>@string/language_name_4</item>
-        <item>@string/language_name_5</item>
-        <item>@string/language_name_6</item>
-        <item>@string/language_name_7</item>
-        <item>@string/language_name_8</item>
-        <item>@string/language_name_9</item>
-        <item>@string/language_name_10</item>
-        <item>@string/language_name_11</item>
-        <item>@string/language_name_12</item>
-        <item>@string/language_name_13</item>
-        <item>@string/language_name_14</item>
-        <item>@string/language_name_15</item>
-        <item>@string/language_name_16</item>
-        <item>@string/language_name_17</item>
-        <item>@string/language_name_18</item>
-        <item>@string/language_name_19</item>
-        <item>@string/language_name_20</item>
-        <item>@string/language_name_21</item>
-        <item>@string/language_name_22</item>
-        <item>@string/language_name_23</item>
-    </string-array>
 
-    <string-array name="array_languages_code" translatable="false">
-        <item>@string/language_code_1</item>
-        <item>@string/language_code_2</item>
-        <item>@string/language_code_3</item>
-        <item>@string/language_code_4</item>
-        <item>@string/language_code_5</item>
-        <item>@string/language_code_6</item>
-        <item>@string/language_code_7</item>
-        <item>@string/language_code_8</item>
-        <item>@string/language_code_9</item>
-        <item>@string/language_code_10</item>
-        <item>@string/language_code_11</item>
-        <item>@string/language_code_12</item>
-        <item>@string/language_code_13</item>
-        <item>@string/language_code_14</item>
-        <item>@string/language_code_15</item>
-        <item>@string/language_code_16</item>
-        <item>@string/language_code_17</item>
-        <item>@string/language_code_18</item>
-        <item>@string/language_code_19</item>
-        <item>@string/language_code_20</item>
-        <item>@string/language_code_21</item>
-        <item>@string/language_code_22</item>
-        <item>@string/language_code_23</item>
-    </string-array>
+    <!-- Future Strings Baked In Early For l10n -->
+<!-- Exercise Types -->   
+
+<string name="dialog_add_exercisetype_1">Leisurely walking</string>
+<string name="dialog_add_exercisetype_2">Walking fast</string>
+<string name="dialog_add_exercisetype_3">Jogging</string>
+<string name="dialog_add_exercisetype_4">Running</string>
+<string name="dialog_add_exercisetype_5">Swimming</string>
+<string name="dialog_add_exercisetype_6">Dancing</string>
+<string name="dialog_add_exercisetype_7">Roller skating</string>
+<string name="dialog_add_exercisetype_8">Bicycling</string>
+<string name="dialog_add_exercisetype_9">Golf</string>
+<string name="dialog_add_exercisetype_10">Softball</string>
+<string name="dialog_add_exercisetype_11">Badminton</string>
+<string name="dialog_add_exercisetype_12">Football</string>
+<string name="dialog_add_exercisetype_13">Basketball</string>
+<string name="dialog_add_exercisetype_14">Volleyball</string>
+<string name="dialog_add_exercisetype_15">Cricket</string>
+<string name="dialog_add_exercisetype_16">Frisbee</string>
+<string name="dialog_add_exercisetype_17">Skiing</string>
+<string name="dialog_add_exercisetype_18">Boxing</string>
+<string name="dialog_add_exercisetype_19">Tennis</string>
+<string name="dialog_add_exercisetype_20">Table tennis</string>
+<string name="dialog_add_exercisetype_21">Martial arts</string>
+<string name="dialog_add_exercisetype_22">Rock-climbing</string>
+<string name="dialog_add_exercisetype_23">Wrestling</string>
+<string name="dialog_add_exercisetype_24">Hiking</string>
+<string name="dialog_add_exercisetype_25">Yard work</string>
+
+<!-- Food Entry Labels -->
+
+<string name="dialog_addfood_carbs">Carbs:</string>
+<string name="dialog_addfood_protein">Protein:</string>
+<string name="dialog_addfood_sugars">Sugars:</string>
+<string name="dialog_addfood_fat">Fat:</string>
+
+
+<!-- About Glucosio Strings -->
+
+<string name="about_credits">Credits</string>
+<string name="about_contribute">Contribute</string>
+<string name="about_contributel10n">Contribute to Translation</string>
+<string name="about_contributedev">Contribute to Development</string>
+<string name="about_discussion">Join our discussion community</string>
+<string name="about_maillist">Subscribe to our mailing list</string>
+    <string name="assistant_archived">ARCHIVED TIPS</string>
 </resources>

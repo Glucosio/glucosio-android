@@ -11,7 +11,7 @@ public class GlucoseConverter {
     }
 
     public double toMmolL(double mgDl){
-        return round(mgDl / 18.0, 2);
+        return round(mgDl / 18.0, 1);
     }
 
     public static double round(double value, int places) {

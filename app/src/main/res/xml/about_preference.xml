@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <Preference
+        android:key="preference_feedback"
+        android:title="@string/action_feedback"/>
+    <Preference
+        android:key="preference_rate"
+        android:title="@string/preferences_rate"/>
+    <Preference
+        android:key="preference_terms"
+        android:title="@string/preferences_terms"/>
+    <Preference
+        android:key="preference_privacy"
+        android:title="@string/preferences_privacy"/>
+    <Preference
+        android:key="preference_licences"
+        android:title="@string/preferences_licences_open"/>
+    <Preference
+        android:key="preference_version"
+        android:summary="@string/version"
+        android:title="@string/preferences_version"/>
+</PreferenceScreen>

@@ -37,7 +37,19 @@
             android:name=".activity.LicenceActivity"
             android:theme="@style/GlucosioSettings">
         </activity>
-
+        <activity
+            android:name=".activity.AboutActivity"
+            android:theme="@style/GlucosioSettings">
+        </activity>
+        <activity
+            android:name=".activity.BackupActivity"
+            android:label="@string/title_activity_backup"
+            android:theme="@style/GlucosioSettings"
+            android:parentActivityName=".activity.PreferencesActivity" >
+                    <meta-data
+                        android:name="android.support.PARENT_ACTIVITY"
+                        android:value="org.glucosio.android.activity.PreferencesActivity" />
+        </activity>
         <!-- Register AnalyticsReceiver and AnalyticsService to support background
  dispatching on non-Google Play devices -->
         <receiver android:name="com.google.android.gms.analytics.AnalyticsReceiver"
@@ -49,7 +61,6 @@
         <service android:name="com.google.android.gms.analytics.AnalyticsService"
             android:enabled="true"
             android:exported="false"/>
-
         <!-- Register CampaignTrackingReceiver and CampaignTrackingService to enable
              installation campaign reporting -->
         <receiver android:name="com.google.android.gms.analytics.CampaignTrackingReceiver"
@@ -59,5 +70,9 @@
             </intent-filter>
         </receiver>
         <service android:name="com.google.android.gms.analytics.CampaignTrackingService" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
     </application>
 </manifest>

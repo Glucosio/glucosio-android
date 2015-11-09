@@ -10,17 +10,19 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-
 <merge xmlns:android="http://schemas.android.com/apk/res/android">
+
     <TextView
-        android:textSize="12sp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textSize="12sp" />
+
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
     <View
-        android:gravity="start|center_vertical"
         android:layout_width="match_parent"
-        android:layout_height="1dp" />
+        android:layout_height="1dp"
+        android:gravity="start|center_vertical" />
 </merge>

@@ -1,7 +1,5 @@
 package org.glucosio.android.activity;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Base64;
 
@@ -10,9 +8,6 @@ import com.github.paolorotolo.gitty_reporter.GittyReporter;
 import org.glucosio.android.R;
 
 import java.io.UnsupportedEncodingException;
-
-import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
 public class GittyActivity extends GittyReporter {
@@ -47,7 +42,7 @@ public class GittyActivity extends GittyReporter {
         // If false, Gitty will redirect non registred users to github.com/join
         enableGuestGitHubLogin(false);
         canEditDebugInfo(true);
-        int pink = getResources().getColor(R.color.glucosio_pink_dark);
+        int pink = getResources().getColor(R.color.glucosio_pink);
         int yellow = getResources().getColor(R.color.glucosio_accent);
         setBackgroundColor1(pink);
         setBackgroundColor2(yellow);

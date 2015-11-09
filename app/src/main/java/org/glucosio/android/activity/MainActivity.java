@@ -3,15 +3,15 @@ package org.glucosio.android.activity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -28,6 +28,14 @@ import android.widget.Toast;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+import com.google.android.gms.appinvite.AppInviteInvitation;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.mikepenz.materialdrawer.AccountHeaderBuilder;
+import com.mikepenz.materialdrawer.Drawer;
+import com.mikepenz.materialdrawer.DrawerBuilder;
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
@@ -36,12 +44,14 @@ import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.adapter.HomePagerAdapter;
 import org.glucosio.android.presenter.MainPresenter;
+import org.glucosio.android.tools.GlucoseConverter;
 import org.glucosio.android.tools.LabelledSpinner;
 import org.glucosio.android.tools.LabelledSpinner.OnItemChosenListener;
 
 import java.text.DecimalFormat;
 import java.util.Calendar;
-import java.util.Locale;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
 public class MainActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener{
@@ -119,6 +129,62 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             }
         });
 
+        // Add Nav Drawer
+        final PrimaryDrawerItem item1 = new PrimaryDrawerItem().withName(R.string.action_settings).withIcon(R.drawable.ic_settings_black_24dp).withSelectable(false);
+        final PrimaryDrawerItem item2 = new PrimaryDrawerItem().withName(R.string.preferences_about_glucosio).withIcon(R.drawable.ic_info_black_24dp).withSelectable(false);
+        final PrimaryDrawerItem item3 = new PrimaryDrawerItem().withName(R.string.action_feedback).withIcon(R.drawable.ic_feedback_black_24dp).withSelectable(false);
+        final PrimaryDrawerItem item4 = new PrimaryDrawerItem().withName(R.string.action_invite).withIcon(R.drawable.ic_face_black_24dp).withSelectable(false);
+
+
+        DrawerBuilder drawerBuilder = new DrawerBuilder()
+                .withActivity(this)
+                .withTranslucentStatusBar(false)
+                .withToolbar(toolbar)
+                .withActionBarDrawerToggle(true)
+                .withAccountHeader(new AccountHeaderBuilder()
+                                .withActivity(this)
+                                .withHeaderBackground(R.drawable.drawer_header)
+                                .build()
+                )
+                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                    @Override
+                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                        if (drawerItem.equals(item1)) {
+                            // Settings
+                            openPreferences();
+                        } else if (drawerItem.equals(item2)) {
+                            // About
+                            startAboutActivity();
+                        } else if (drawerItem.equals(item3)) {
+                            // Feedback
+                            startGittyReporter();
+                        } else if (drawerItem.equals(item4)) {
+                            // Invite
+                            showInviteDialog();
+                        }
+                        return false;
+                    }
+                });
+
+        if (isPlayServicesAvailable()) {
+            drawerBuilder.addDrawerItems(
+                    item1,
+                    item2,
+                    item3,
+                    item4
+            )
+                    .withSelectedItem(-1)
+                    .build();
+        } else {
+            drawerBuilder.addDrawerItems(
+                    item1,
+                    item2,
+                    item3
+            )
+                    .withSelectedItem(-1)
+                    .build();
+        }
+
         checkIfEmptyLayout();
 
         // Obtain the Analytics shared Tracker instance.
@@ -127,6 +193,11 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         Log.i("MainActivity", "Setting screen name: " + "main");
         mTracker.setScreenName("Main Activity");
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+    }
+
+    private void startAboutActivity() {
+        Intent intent = new Intent(this, AboutActivity.class);
+        startActivity(intent);
     }
 
     public void startHelloActivity() {
@@ -281,6 +352,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     public void showEditDialog(final int id){
         //only included for debug
         // printGlucoseReadingTableDetails();
+        GlucoseConverter converter = new GlucoseConverter();
 
         final int readingId = id;
         addDialog = new Dialog(MainActivity.this, R.style.GlucosioTheme);
@@ -305,7 +377,12 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         dialogAddDate = (TextView) addDialog.findViewById(R.id.dialog_add_date);
         dialogReading = (TextView) addDialog.findViewById(R.id.dialog_add_concentration);
         dialogAddButton.setText(getString(R.string.dialog_edit).toUpperCase());
-        dialogReading.setText(presenter.getGlucoseReadingReadingById(readingId));
+
+        if (presenter.getUnitMeasuerement().equals("mg/dL")) {
+            dialogReading.setText(presenter.getGlucoseReadingReadingById(readingId));
+        } else {
+            dialogReading.setText(converter.toMmolL(Double.parseDouble(presenter.getGlucoseReadingReadingById(readingId))) + "");
+        }
 
         dialogReading = (TextView) addDialog.findViewById(R.id.dialog_add_concentration);
         dialogTypeCustom = (EditText) addDialog.findViewById(R.id.dialog_type_custom);
@@ -498,7 +575,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     }
 
     private void hideFabAnimation(){
-       final View fab = (View) findViewById(R.id.main_fab);
+        final View fab = findViewById(R.id.main_fab);
         fab.animate()
                 .translationY(-5)
                 .alpha(0.0f)
@@ -512,7 +589,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     }
 
     private void showFabAnimation(){
-        final View fab = (View) findViewById(R.id.main_fab);
+        final View fab = findViewById(R.id.main_fab);
         if (fab.getVisibility() == View.INVISIBLE) {
             // Prepare the View for the animation
             fab.setVisibility(View.VISIBLE);
@@ -531,6 +608,14 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             // do nothing
             // probably swiping from OVERVIEW to HISTORY tab
         }
+    }
+
+    public void showInviteDialog() {
+        Intent intent = new AppInviteInvitation.IntentBuilder(getString(R.string.invitation_title))
+                .setMessage(getString(R.string.invitation_message))
+                .setCallToActionText(getString(R.string.invitation_cta))
+                .build();
+        startActivityForResult(intent, 0);
     }
 
     public void checkIfEmptyLayout(){
@@ -604,37 +689,26 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         TextView addDate = (TextView) addDialog.findViewById(R.id.dialog_add_date);
         DecimalFormat df = new DecimalFormat("00");
 
-        presenter.setReadingYear(year+"");
-        presenter.setReadingMonth(df.format(monthOfYear+1));
+        presenter.setReadingYear(year + "");
+        presenter.setReadingMonth(df.format(monthOfYear + 1));
         presenter.setReadingDay(df.format(dayOfMonth));
 
         String date = +dayOfMonth+"/"+presenter.getReadingMonth()+"/"+presenter.getReadingYear();
         addDate.setText(date);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+    private boolean isPlayServicesAvailable() {
+        int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext());
+        if(status == ConnectionResult.SUCCESS)
+            return true;
+        else {
+            Log.d("STATUS", "Error connecting with Google Play services. Code: " + String.valueOf(status));
+            return false;
+        }
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            openPreferences();
-            return true;
-        } else if (id == R.id.action_feedback) {
-            startGittyReporter();
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

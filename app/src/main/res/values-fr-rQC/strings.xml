@@ -4,14 +4,13 @@
   <string name="app_name">Glucosio</string>
   <string name="action_settings">Réglages</string>
   <string name="action_feedback">Envoyez vos commentaires</string>
+  <string name="action_invite">Inviter un ami</string>
   <string name="tab_overview">Aperçu</string>
   <string name="tab_history">Historique</string>
   <string name="tab_tips">Astuces</string>
   <string name="title_activity_hello">Bonjour.</string>
   <string name="helloactivity_headline">Bonjour.</string>
   <string name="helloactivity_terms">Conditions d\'utilisation.</string>
-  <string name="helloactivity_terms_accept">J\'ai lu et accepté les conditions d\'utilisation</string>
-  <string name="helloactivity_terms_full">Le contenu du site Web Glucosio et applications, tels que textes, graphiques, images et autre matériel (\"contenu\") est à titre informatif seulement. Le contenu ne vise pas à se substituer à un avis médical professionnel, diagnostic ou traitement. Nous encourageons les utilisateurs de Glucosio de toujours demander l\'avis de votre médecin ou un autre fournisseur de santé qualifié pour toute question que vous pourriez avoir concernant un trouble médical. Ne jamais ignorer un avis médical professionnel ou tarder à le chercher parce que vous avez lu sur le site Glucosio ou dans nos applications. Le site Glucosio, Blog, Wiki et autres contenus accessibles du navigateur web (« site Web ») devraient être utilisés qu\'aux fins décrites ci-dessus. \n Reliance sur tout renseignement fourni par Glucosio, membres de l\'équipe Glucosio, bénévoles et autres apparaissant sur le site ou dans nos applications est exclusivement à vos propres risques.  Le Site et son contenu sont fournis sur une base \"tel quel\".</string>
   <string name="helloactivity_subhead">Avant de démarrer, nous avons besoin de quelques renseignements.</string>
   <string name="helloactivity_country">Pays</string>
   <string name="helloactivity_age">Âge</string>
@@ -40,10 +39,12 @@
   <string name="dialog_add_type_4">Après le déjeuner</string>
   <string name="dialog_add_type_5">Avant le dîner</string>
   <string name="dialog_add_type_6">Après le dîner</string>
-  <string name="dialog_add_type_7">Général</string>
-  <string name="dialog_add_type_8">Revérifier</string>
+  <string name="dialog_add_type_7">Casse-croûte</string>
+  <string name="dialog_add_type_8">Coucher</string>
   <string name="dialog_add_type_9">Nuit</string>
-  <string name="dialog_add_type_10">Autre</string>
+  <string name="dialog_add_type_10">Glycémie à jeun</string>
+  <string name="dialog_add_type_11">Contrôle</string>
+  <string name="dialog_add_type_12">Autre</string>
   <string name="dialog_add_cancel">ANNULER</string>
   <string name="dialog_add_add">AJOUTER</string>
   <string name="dialog_error2">Merci d\'entrer une valeur valide.</string>
@@ -58,11 +59,6 @@
   <string name="fragment_overview_selector_month">Mois</string>
   <string name="fragment_overview_selector_day">Jour</string>
   <string name="fragment_overview_selector_week">Semaine</string>
-  <string-array name="fragment_overview_selector">
-    <item>@string/fragment_overview_selector_day</item>
-    <item>@string/fragment_overview_selector_week</item>
-    <item>@string/fragment_overview_selector_month</item>
-  </string-array>
   <string name="preferences_about">A propos</string>
   <string name="preferences_version">Version</string>
   <string name="preferences_terms">Conditions d\'utilisation</string>
@@ -113,24 +109,60 @@
   <string name="assistant_feedback_desc">Si vous trouvez des problèmes techniques ou avez des commentaires sur Glucosio nous vous encourageons à nous les transmettre dans le menu réglages afin de nous aider à améliorer Glucosio.</string>
   <string name="assistant_reading_title">Ajouter une lecture</string>
   <string name="assistant_reading_desc">N\'oubliez pas d\'ajouter régulièrement vos lectures de glucose, donc nous pouvons vous aider à suivre votre taux de glucose dans le temps.</string>
-  <string-array name="assistant_titles">
-    <item>@string/assistant_feedback_title</item>
-    <item>@string/assistant_reading_title</item>
-    <item>@string/assistant_categories_title</item>
-  </string-array>
-  <string-array name="assistant_descriptions">
-    <item>@string/assistant_feedback_desc</item>
-    <item>@string/assistant_reading_desc</item>
-    <item>@string/assistant_categories_desc</item>
-  </string-array>
-  <string-array name="assistant_actions">
-    <item>@string/assistant_action_feedback</item>
-    <item>@string/assistant_action_reading</item>
-    <item>@string/assistant_action_try</item>
-  </string-array>
   <string name="helloactivity_spinner_preferred_range">Gamme préférée</string>
   <string name="helloactivity_spinner_preferred_range_4">Gamme personnalisée</string>
   <string name="helloactivity_preferred_range_min">Valeur minimum</string>
   <string name="helloactivity_preferred_range_max">Valeur maximum</string>
   <string name="assistant_action_try">Essayez Maintenant</string>
+  <string name="helloactivity_language">Langue</string>
+  <string name="invitation_title">Inviter d\'autres personnes</string>
+  <string name="invitation_message">Essayer Glucosio, une application open-source pour la gestion du diabète et la recherche associée.</string>
+  <string name="invitation_cta">Essayer Glucosio</string>
+  <string name="title_activity_backup">Sauvegardes</string>
+  <string name="preferences_privacy">Politique de confidentialité</string>
+  <string name="helloactivity_textview_tos">En utilisant Glucosio, vous acceptez les</string>
+  <string name="preferences_backup_google_drive">Google Drive</string>
+  <string name="preferences_about_glucosio">À propos de Glucosio</string>
+  <string name="preferences_rate">Noter Glucosio</string>
+  <string name="preferences_licences_open">Licences open-source</string>
+  <string name="about_donate">Don à Glucosio</string>
+  <string name="reading_hypo">Hypoglycémie</string>
+  <string name="reading_low">Basse</string>
+  <string name="reading_high">Élevée</string>
+  <string name="reading_hyper">Hyperglycémie</string>
+  <string name="dialog_add_exercisetype_1">Marche lente</string>
+  <string name="dialog_add_exercisetype_2">Marche rapide</string>
+  <string name="dialog_add_exercisetype_3">Course lente</string>
+  <string name="dialog_add_exercisetype_4">Course rapide</string>
+  <string name="dialog_add_exercisetype_5">Nage</string>
+  <string name="dialog_add_exercisetype_6">Danse</string>
+  <string name="dialog_add_exercisetype_7">Patins à roulette/Roller</string>
+  <string name="dialog_add_exercisetype_8">Vélo</string>
+  <string name="dialog_add_exercisetype_9">Golf</string>
+  <string name="dialog_add_exercisetype_10">Softball</string>
+  <string name="dialog_add_exercisetype_11">Badminton</string>
+  <string name="dialog_add_exercisetype_12">Football</string>
+  <string name="dialog_add_exercisetype_13">Basketball</string>
+  <string name="dialog_add_exercisetype_14">Volleyball</string>
+  <string name="dialog_add_exercisetype_15">Cricket</string>
+  <string name="dialog_add_exercisetype_16">Frisbee</string>
+  <string name="dialog_add_exercisetype_17">Ski</string>
+  <string name="dialog_add_exercisetype_18">Boxe</string>
+  <string name="dialog_add_exercisetype_19">Tennis</string>
+  <string name="dialog_add_exercisetype_20">Ping-pong</string>
+  <string name="dialog_add_exercisetype_21">Art martial</string>
+  <string name="dialog_add_exercisetype_22">Escalade</string>
+  <string name="dialog_add_exercisetype_23">Lutte</string>
+  <string name="dialog_add_exercisetype_24">Randonnée</string>
+  <string name="dialog_add_exercisetype_25">Jardinage</string>
+  <string name="dialog_addfood_carbs">Glucides :</string>
+  <string name="dialog_addfood_protein">Protéines :</string>
+  <string name="dialog_addfood_sugars">Sucres :</string>
+  <string name="dialog_addfood_fat">Graisses :</string>
+  <string name="about_credits">Crédits</string>
+  <string name="about_contribute">Contribuer</string>
+  <string name="about_contributel10n">Contribuer à la traduction</string>
+  <string name="about_contributedev">Contribuer au développement</string>
+  <string name="about_discussion">Accéder à nos canaux de discussion</string>
+  <string name="about_maillist">S\'abonner à notre liste de diffusion</string>
 </resources>

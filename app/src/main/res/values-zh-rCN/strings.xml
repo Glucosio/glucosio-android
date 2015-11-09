@@ -4,14 +4,13 @@
   <string name="app_name">Glucosio</string>
   <string name="action_settings">设置</string>
   <string name="action_feedback">发送反馈</string>
+  <string name="action_invite">邀请朋友</string>
   <string name="tab_overview">概览</string>
   <string name="tab_history">历史记录</string>
   <string name="tab_tips">小提示</string>
   <string name="title_activity_hello">你好</string>
   <string name="helloactivity_headline">你好</string>
   <string name="helloactivity_terms">使用条款。</string>
-  <string name="helloactivity_terms_accept">我已经阅读并接受使用条款</string>
-  <string name="helloactivity_terms_full">Glucosio 网站的内容，包括文字、图形、图像及其他材料（内容）均仅供参考。内容不能取代专业的医疗建议、诊断和治疗。我们鼓励 Glucosio 的用户始终与你的医生或者其他合格的健康提供者提出有关医疗的问题。千万不要因为阅读了我们的 Glucosio 网站或应用而忽视或者耽搁专业的医疗咨询。Glucosio 网站、博客、Wiki 及其他网络浏览器可访问的内容（网站）应仅用于上述目的。\n来自 Glucosio、Glucosio 团队成员、志愿者，以及其他出现在我们网站或应用中的内容均需要您自担风险。网站和内容按“原样”提供。</string>
   <string name="helloactivity_subhead">在开始使用前，我们需要少许时间。</string>
   <string name="helloactivity_country">国家 / 地区</string>
   <string name="helloactivity_age">年龄</string>
@@ -40,10 +39,12 @@
   <string name="dialog_add_type_4">午餐后</string>
   <string name="dialog_add_type_5">晚餐前</string>
   <string name="dialog_add_type_6">晚餐后</string>
-  <string name="dialog_add_type_7">常规</string>
-  <string name="dialog_add_type_8">重新检查</string>
+  <string name="dialog_add_type_7">正餐外</string>
+  <string name="dialog_add_type_8">睡前</string>
   <string name="dialog_add_type_9">夜间</string>
-  <string name="dialog_add_type_10">其他</string>
+  <string name="dialog_add_type_10">空腹血糖</string>
+  <string name="dialog_add_type_11">重新检查</string>
+  <string name="dialog_add_type_12">其他</string>
   <string name="dialog_add_cancel">取消</string>
   <string name="dialog_add_add">添加</string>
   <string name="dialog_error2">请输入有效的值。</string>
@@ -58,11 +59,6 @@
   <string name="fragment_overview_selector_month">月</string>
   <string name="fragment_overview_selector_day">日</string>
   <string name="fragment_overview_selector_week">周</string>
-  <string-array name="fragment_overview_selector">
-    <item>@string/fragment_overview_selector_day</item>
-    <item>@string/fragment_overview_selector_week</item>
-    <item>@string/fragment_overview_selector_month</item>
-  </string-array>
   <string name="preferences_about">关于</string>
   <string name="preferences_version">版本</string>
   <string name="preferences_terms">使用条款</string>
@@ -114,24 +110,62 @@
   <string name="assistant_feedback_desc">如果您发现了任何技术问题，或有关于 Glucosio 的反馈，我们鼓励您在设置菜单中提交它，以帮助我们改进 Glucosio。</string>
   <string name="assistant_reading_title">添加阅读</string>
   <string name="assistant_reading_desc">一定要定期添加您的血糖读数，以便我们帮助您随时间跟踪您的血糖水平。</string>
-  <string-array name="assistant_titles">
-    <item>@string/assistant_feedback_title</item>
-    <item>@string/assistant_reading_title</item>
-    <item>@string/assistant_categories_title</item>
-  </string-array>
-  <string-array name="assistant_descriptions">
-    <item>@string/assistant_feedback_desc</item>
-    <item>@string/assistant_reading_desc</item>
-    <item>@string/assistant_categories_desc</item>
-  </string-array>
-  <string-array name="assistant_actions">
-    <item>@string/assistant_action_feedback</item>
-    <item>@string/assistant_action_reading</item>
-    <item>@string/assistant_action_try</item>
-  </string-array>
   <string name="helloactivity_spinner_preferred_range">首选范围</string>
   <string name="helloactivity_spinner_preferred_range_4">自定义范围</string>
   <string name="helloactivity_preferred_range_min">最小值</string>
   <string name="helloactivity_preferred_range_max">最大值</string>
   <string name="assistant_action_try">现在试试它</string>
+  <string name="helloactivity_language">语言</string>
+  <string name="invitation_title">邀请其他人</string>
+  <string name="invitation_message">试试 Glucosio，一个糖尿病管理和研究的开放源码应用程序。</string>
+  <string name="invitation_cta">试试 Glucosio</string>
+  <string name="title_activity_backup">备份</string>
+  <string name="preferences_privacy">隐私政策</string>
+  <string name="helloactivity_textview_tos">使用 Glucosio 即代表您同意</string>
+  <string name="preferences_backup_google_drive">Google 云端硬盘</string>
+  <string name="preferences_about_glucosio">关于 Glucosio</string>
+  <string name="preferences_rate">评价 Glucosio</string>
+  <string name="preferences_licences_open">开源许可证</string>
+  <string name="about_donate">捐款给 Glucosio</string>
+  <string name="reading_ok">良好</string>
+  <string name="reading_hypo">低血糖</string>
+  <string name="reading_low">较低</string>
+  <string name="reading_high">较高</string>
+  <string name="reading_hyper">高血糖</string>
+  <string name="dialog_add_exercisetype_1">悠闲地散步</string>
+  <string name="dialog_add_exercisetype_2">快走</string>
+  <string name="dialog_add_exercisetype_3">慢跑</string>
+  <string name="dialog_add_exercisetype_4">跑步</string>
+  <string name="dialog_add_exercisetype_5">游泳</string>
+  <string name="dialog_add_exercisetype_6">跳舞</string>
+  <string name="dialog_add_exercisetype_7">轮滑</string>
+  <string name="dialog_add_exercisetype_8">骑自行车</string>
+  <string name="dialog_add_exercisetype_9">高尔夫</string>
+  <string name="dialog_add_exercisetype_10">垒球</string>
+  <string name="dialog_add_exercisetype_11">羽毛球</string>
+  <string name="dialog_add_exercisetype_12">足球</string>
+  <string name="dialog_add_exercisetype_13">篮球</string>
+  <string name="dialog_add_exercisetype_14">排球</string>
+  <string name="dialog_add_exercisetype_15">板球</string>
+  <string name="dialog_add_exercisetype_16">飞盘</string>
+  <string name="dialog_add_exercisetype_17">滑雪</string>
+  <string name="dialog_add_exercisetype_18">拳击</string>
+  <string name="dialog_add_exercisetype_19">网球</string>
+  <string name="dialog_add_exercisetype_20">乒乓球</string>
+  <string name="dialog_add_exercisetype_21">武术</string>
+  <string name="dialog_add_exercisetype_22">攀岩</string>
+  <string name="dialog_add_exercisetype_23">摔跤</string>
+  <string name="dialog_add_exercisetype_24">徒步旅行</string>
+  <string name="dialog_add_exercisetype_25">院子里工作</string>
+  <string name="dialog_addfood_carbs">碳水化合物:</string>
+  <string name="dialog_addfood_protein">蛋白质:</string>
+  <string name="dialog_addfood_sugars">糖:</string>
+  <string name="dialog_addfood_fat">脂肪:</string>
+  <string name="about_credits">制作人员</string>
+  <string name="about_contribute">贡献</string>
+  <string name="about_contributel10n">参与翻译</string>
+  <string name="about_contributedev">参与开发</string>
+  <string name="about_discussion">加入我们的讨论社区</string>
+  <string name="about_maillist">订阅我们的邮件列表</string>
+  <string name="assistant_archived">已存档提示</string>
 </resources>

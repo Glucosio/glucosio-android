@@ -16,27 +16,26 @@
 
 package org.glucosio.android.tools;
 
+import android.content.Context;
+import android.content.res.TypedArray;
+import android.support.annotation.ArrayRes;
+import android.support.annotation.ColorRes;
+import android.support.annotation.LayoutRes;
+import android.support.annotation.StringRes;
+import android.util.AttributeSet;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
+import android.widget.TextView;
 
-        import android.content.Context;
-        import android.content.res.TypedArray;
-        import android.support.annotation.ArrayRes;
-        import android.support.annotation.ColorRes;
-        import android.support.annotation.LayoutRes;
-        import android.support.annotation.StringRes;
-        import android.util.AttributeSet;
-        import android.view.LayoutInflater;
-        import android.view.View;
-        import android.view.ViewGroup;
-        import android.widget.AdapterView;
-        import android.widget.ArrayAdapter;
-        import android.widget.LinearLayout;
-        import android.widget.Spinner;
-        import android.widget.SpinnerAdapter;
-        import android.widget.TextView;
+import org.glucosio.android.R;
 
-        import org.glucosio.android.R;
-
-        import java.util.ArrayList;
+import java.util.ArrayList;
 
 public class LabelledSpinner extends LinearLayout implements AdapterView.OnItemSelectedListener {
 
@@ -136,9 +135,8 @@ public class LabelledSpinner extends LinearLayout implements AdapterView.OnItemS
     /**
      * Sets the text the label is to display.
      *
-     * @see #setLabelText(int)
-     *
      * @param labelText The CharSequence value to be displayed on the label.
+     * @see #setLabelText(int)
      */
     public void setLabelText(CharSequence labelText) {
         mLabel.setText(labelText);
@@ -147,11 +145,10 @@ public class LabelledSpinner extends LinearLayout implements AdapterView.OnItemS
     /**
      * Sets the text the label is to display.
      *
-     * @see #setLabelText(CharSequence)
-     *
      * @param labelTextId The string resource identifier which refers to
      *                    the string value which is to be displayed on
      *                    the label.
+     * @see #setLabelText(CharSequence)
      */
     public void setLabelText(@StringRes int labelTextId) {
         mLabel.setText(getResources().getString(labelTextId));
@@ -180,11 +177,10 @@ public class LabelledSpinner extends LinearLayout implements AdapterView.OnItemS
     /**
      * Sets the array of items to be used in the Spinner.
      *
-     * @see #setItemsArray(ArrayList)
-     * @see #setItemsArray(int, int, int)
-     *
      * @param arrayResId The identifier of the array to use as the data
      *                   source (e.g. R.array.myArray)
+     * @see #setItemsArray(ArrayList)
+     * @see #setItemsArray(int, int, int)
      */
     public void setItemsArray(@ArrayRes int arrayResId) {
         setItemsArray(
@@ -197,10 +193,9 @@ public class LabelledSpinner extends LinearLayout implements AdapterView.OnItemS
     /**
      * Sets the array of items to be used in the Spinner.
      *
+     * @param arrayList The ArrayList used as the data source
      * @see #setItemsArray(int)
      * @see #setItemsArray(int, int, int)
-     *
-     * @param arrayList The ArrayList used as the data source
      */
     public void setItemsArray(ArrayList<?> arrayList) {
         ArrayAdapter<?> adapter = new ArrayAdapter<>(
@@ -215,15 +210,14 @@ public class LabelledSpinner extends LinearLayout implements AdapterView.OnItemS
      * A private helper method to set the array of items to be used in the
      * Spinner.
      *
-     * @see #setItemsArray(int)
-     * @see #setItemsArray(ArrayList)
-     *
-     * @param arrayResId The identifier of the array to use as the data
-     *                   source (e.g. R.array.myArray)
-     * @param spinnerItemRes The identifier of the layout used to create
-     *                       views (e.g. R.layout.my_item)
+     * @param arrayResId      The identifier of the array to use as the data
+     *                        source (e.g. R.array.myArray)
+     * @param spinnerItemRes  The identifier of the layout used to create
+     *                        views (e.g. R.layout.my_item)
      * @param dropdownViewRes The layout resource to create the drop down
      *                        views (e.g. R.layout.my_dropdown)
+     * @see #setItemsArray(int)
+     * @see #setItemsArray(ArrayList)
      */
     private void setItemsArray(@ArrayRes int arrayResId, @LayoutRes int spinnerItemRes, @LayoutRes int dropdownViewRes) {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
@@ -269,12 +263,12 @@ public class LabelledSpinner extends LinearLayout implements AdapterView.OnItemS
          *
          * @param labelledSpinner The LabelledSpinner where the selection
          *                        happened. This view contains the AdapterView.
-         * @param adapterView The AdapterView where the selection happened. Note
-         *                    that this AdapterView is part of the LabelledSpinner
-         *                    component.
-         * @param itemView The view within the AdapterView that was clicked.
-         * @param position The position of the view in the adapter.
-         * @param id The row id of the item that is selected.
+         * @param adapterView     The AdapterView where the selection happened. Note
+         *                        that this AdapterView is part of the LabelledSpinner
+         *                        component.
+         * @param itemView        The view within the AdapterView that was clicked.
+         * @param position        The position of the view in the adapter.
+         * @param id              The row id of the item that is selected.
          */
         void onItemChosen(View labelledSpinner, AdapterView<?> adapterView, View itemView, int position, long id);
 
@@ -285,7 +279,7 @@ public class LabelledSpinner extends LinearLayout implements AdapterView.OnItemS
          *
          * @param labelledSpinner The LabelledSpinner view that contains the
          *                        AdapterView.
-         * @param adapterView The AdapterView that now contains no selected item.
+         * @param adapterView     The AdapterView that now contains no selected item.
          */
         void onNothingChosen(View labelledSpinner, AdapterView<?> adapterView);
     }
@@ -334,8 +328,9 @@ public class LabelledSpinner extends LinearLayout implements AdapterView.OnItemS
      * it aligns with the Spinner item text. By default, the additional 4dp
      * margin will not be added.
      *
+     * @param indentLabel Whether or not the label will be indented
      * @see #alignLabelWithSpinnerItem(int)
-     *
+     * <p/>
      * Note: By default, however, a 4dp margin will be added so that the label
      * and divider align correctly with other UI components, such as the label
      * in a {@link android.support.design.widget.TextInputLayout}. This means
@@ -345,8 +340,6 @@ public class LabelledSpinner extends LinearLayout implements AdapterView.OnItemS
      * Also note that if {@param indentLabel} is true, the label and divider
      * will not be aligned with other UI components as they would be 4dp
      * further right from them.
-     *
-     * @param indentLabel Whether or not the label will be indented
      */
     public void alignLabelWithSpinnerItem(boolean indentLabel) {
         if (indentLabel) {
@@ -361,9 +354,8 @@ public class LabelledSpinner extends LinearLayout implements AdapterView.OnItemS
      * divider line underneath, used to align these to the start of the Spinner
      * item text.
      *
-     * @see #alignLabelWithSpinnerItem(boolean)
-     *
      * @param indentDps The density-independent pixel value for the left margin
+     * @see #alignLabelWithSpinnerItem(boolean)
      */
     private void alignLabelWithSpinnerItem(int indentDps) {
         MarginLayoutParams labelParams =
@@ -393,5 +385,4 @@ public class LabelledSpinner extends LinearLayout implements AdapterView.OnItemS
         final float scale = getResources().getDisplayMetrics().density;
         return (int) (dps * scale + 0.5f);
     }
-
 }

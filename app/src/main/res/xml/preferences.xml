@@ -40,13 +40,7 @@
         android:key="pref_range_max"
         android:title="@string/helloactivity_preferred_range_max" />
 
-    <PreferenceCategory android:title="@string/preferences_about">
-        <Preference
-            android:key="preference_version"
-            android:summary="@string/version"
-            android:title="@string/preferences_version"/>
-        <Preference
-            android:key="preference_terms"
-            android:title="@string/preferences_terms"/>
-    </PreferenceCategory>
+    <Preference
+        android:key="about_settings"
+        android:title="@string/preferences_about_glucosio"/>
 </PreferenceScreen>

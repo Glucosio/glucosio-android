@@ -6,7 +6,6 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
 public class FormatDateTime {
 
@@ -17,10 +16,7 @@ public class FormatDateTime {
 
     public String convertDate(String date) {
         java.text.DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-
-        DateFormat formatter = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
-        String localPattern  = ((SimpleDateFormat)formatter).toLocalizedPattern();
-        java.text.DateFormat finalDataFormat = new SimpleDateFormat(localPattern);
+        java.text.DateFormat finalDataFormat = DateFormat.getDateInstance(DateFormat.SHORT);
         java.text.DateFormat finalTimeFormat;
 
         if (android.text.format.DateFormat.is24HourFormat(context)) {

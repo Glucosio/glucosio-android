@@ -37,7 +37,8 @@ public class HelloPresenter {
             this.country = country;
             this.diabetesType = type;
             this.unitMeasurement = unit;
-            showEULA();
+
+            saveToDatabase();
         } else {
             helloActivity.displayErrorMessage();
         }
@@ -52,10 +53,6 @@ public class HelloPresenter {
             int finalAge = Integer.parseInt(age);
             return finalAge > 0 && finalAge < 120;
         }
-    }
-
-    private void showEULA(){
-        helloActivity.showEULA();
     }
 
     public void saveToDatabase(){

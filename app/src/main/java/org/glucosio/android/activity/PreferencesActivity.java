@@ -1,7 +1,7 @@
 package org.glucosio.android.activity;
 
+import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
@@ -12,7 +12,6 @@ import android.text.InputFilter;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
@@ -22,9 +21,12 @@ import org.glucosio.android.R;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.User;
 import org.glucosio.android.tools.InputFilterMinMax;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Locale;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class PreferencesActivity extends AppCompatActivity {
 
@@ -74,7 +76,6 @@ public class PreferencesActivity extends AppCompatActivity {
             dB = new DatabaseHandler(getActivity().getApplicationContext());
             user = dB.getUser(1);
             updatedUser = new User(user.getId(),user.getName(),user.getPreferred_language(),user.getCountry(),user.getAge(),user.getGender(),user.getD_type(),user.getPreferred_unit(),user.getPreferred_range(),user.getCustom_range_min(),user.getCustom_range_max());
-
             agePref = (EditTextPreference) findPreference("pref_age");
             countryPref = (ListPreference) findPreference("pref_country");
             // languagePref = (ListPreference) findPreference("pref_language");
@@ -84,6 +85,7 @@ public class PreferencesActivity extends AppCompatActivity {
             rangePref = (ListPreference) findPreference("pref_range");
             minRangePref = (EditTextPreference) findPreference("pref_range_min");
             maxRangePref = (EditTextPreference) findPreference("pref_range_max");
+
 
             agePref.setDefaultValue(user.getAge());
             countryPref.setValue(user.getCountry());
@@ -103,9 +105,10 @@ public class PreferencesActivity extends AppCompatActivity {
                 maxRangePref.setEnabled(true);
             }
 
-            final Preference termsPref = (Preference) findPreference("preference_terms");
-            final Preference versionPref = (Preference) findPreference("preference_version");
-
+/*
+            final Preference backupPref = (Preference) findPreference("backup_settings");
+*/
+            final Preference aboutPref = (Preference) findPreference("about_settings");
             /*languagePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -198,6 +201,7 @@ public class PreferencesActivity extends AppCompatActivity {
                 }
             });
 
+
             ageEditText = agePref.getEditText();
             minEditText = minRangePref.getEditText();
             maxEditText = maxRangePref.getEditText();
@@ -228,30 +232,21 @@ public class PreferencesActivity extends AppCompatActivity {
             languagePref.setEntries(languages);*/
             updateDB();
 
-            termsPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+/*            backupPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
-                    Intent intent = new Intent(getActivity(), LicenceActivity.class);
-                    startActivity(intent);
-
+                    Intent backupActivity = new Intent(getActivity(), BackupActivity.class);
+                    getActivity().startActivity(backupActivity);
                     return false;
                 }
-            });
+            });*/
 
-            versionPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-
-                int easterEggCount;
-
+            aboutPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
-                    if (easterEggCount == 6) {
-                        String uri = String.format(Locale.ENGLISH, "geo:%f,%f", 40.794010, 17.124583);
-                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-                        getActivity().startActivity(intent);
-                        easterEggCount = 0;
-                    } else {
-                        this.easterEggCount = easterEggCount + 1;
-                    }
+                    Intent aboutActivity = new Intent(getActivity(), AboutActivity.class);
+                    getActivity().startActivity(aboutActivity);
                     return false;
                 }
             });
@@ -309,4 +304,8 @@ public class PreferencesActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
 }
