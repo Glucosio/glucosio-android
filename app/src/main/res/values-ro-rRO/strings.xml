@@ -41,7 +41,9 @@
   <string name="dialog_add_type_7">Gustare</string>
   <string name="dialog_add_type_8">Ora de culcare</string>
   <string name="dialog_add_type_9">Noapte</string>
+  <string name="dialog_add_type_10">Nivel de glucoză pe nemâncate</string>
   <string name="dialog_add_type_11">Reverifică</string>
+  <string name="dialog_add_type_12">Altceva</string>
   <string name="dialog_add_cancel">RENUNȚĂ</string>
   <string name="dialog_add_add">ADAUGĂ</string>
   <string name="dialog_error2">Te rog introdu o valoare validă.</string>
@@ -122,6 +124,12 @@
   <string name="preferences_about_glucosio">Despre Glucosio</string>
   <string name="preferences_rate">Apreciază Glucosio</string>
   <string name="preferences_licences_open">Licențe de sursă deschisă</string>
+  <string name="about_donate">Donează la Glucosio</string>
+  <string name="reading_ok">Ok</string>
+  <string name="reading_hypo">Hipoglicemie</string>
+  <string name="reading_low">Scăzută</string>
+  <string name="reading_high">Ridicată</string>
+  <string name="reading_hyper">Hiperglicemie</string>
   <string name="dialog_add_exercisetype_1">Mers lejer</string>
   <string name="dialog_add_exercisetype_2">Mers rapid</string>
   <string name="dialog_add_exercisetype_3">Jogging</string>
@@ -157,5 +165,5 @@
   <string name="about_contributedev">Contribuie la dezvoltare</string>
   <string name="about_discussion">Alătură-te comunității noastre de discuții</string>
   <string name="about_maillist">Abonează-te la lista noastră de discuții</string>
-  <string name="about_donate">Donează la Glucosio</string>
+  <string name="assistant_archived">SFATURI ARHIVATE</string>
 </resources>

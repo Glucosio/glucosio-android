@@ -124,6 +124,7 @@
   <string name="preferences_about_glucosio">Glucosio について</string>
   <string name="preferences_rate">Glucosio を評価</string>
   <string name="preferences_licences_open">オープンソース ライセンス</string>
+  <string name="about_donate">Glucosio に寄付</string>
   <string name="dialog_add_exercisetype_1">のんびり歩く</string>
   <string name="dialog_add_exercisetype_2">早歩き</string>
   <string name="dialog_add_exercisetype_3">ジョギング</string>
@@ -159,5 +160,4 @@
   <string name="about_contributedev">開発に貢献</string>
   <string name="about_discussion">私たちのコミュニティに参加</string>
   <string name="about_maillist">私たちのメーリングリストを購読</string>
-  <string name="about_donate">Glucosio に寄付</string>
 </resources>

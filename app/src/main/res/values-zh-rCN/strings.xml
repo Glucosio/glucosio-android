@@ -126,6 +126,12 @@
   <string name="preferences_about_glucosio">关于 Glucosio</string>
   <string name="preferences_rate">评价 Glucosio</string>
   <string name="preferences_licences_open">开源许可证</string>
+  <string name="about_donate">捐款给 Glucosio</string>
+  <string name="reading_ok">良好</string>
+  <string name="reading_hypo">低血糖</string>
+  <string name="reading_low">较低</string>
+  <string name="reading_high">较高</string>
+  <string name="reading_hyper">高血糖</string>
   <string name="dialog_add_exercisetype_1">悠闲地散步</string>
   <string name="dialog_add_exercisetype_2">快走</string>
   <string name="dialog_add_exercisetype_3">慢跑</string>
@@ -161,5 +167,5 @@
   <string name="about_contributedev">参与开发</string>
   <string name="about_discussion">加入我们的讨论社区</string>
   <string name="about_maillist">订阅我们的邮件列表</string>
-  <string name="about_donate">捐款给 Glucosio</string>
+  <string name="assistant_archived">已存档提示</string>
 </resources>

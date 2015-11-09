@@ -38,7 +38,12 @@
   <string name="dialog_add_type_4">Na de lunch</string>
   <string name="dialog_add_type_5">Voor het avondeten</string>
   <string name="dialog_add_type_6">Na het avondeten</string>
+  <string name="dialog_add_type_7">Tussendoortje</string>
+  <string name="dialog_add_type_8">Bedtijd</string>
   <string name="dialog_add_type_9">Nacht</string>
+  <string name="dialog_add_type_10">Nuchtere glucose</string>
+  <string name="dialog_add_type_11">Opnieuw controleren</string>
+  <string name="dialog_add_type_12">Anders</string>
   <string name="dialog_add_cancel">ANNULEREN</string>
   <string name="dialog_add_add">TOEVOEGEN</string>
   <string name="dialog_error2">Voer een geldige waarde in.</string>
@@ -115,8 +120,15 @@
   <string name="title_activity_backup">Back-up maken</string>
   <string name="preferences_privacy">Privacy</string>
   <string name="helloactivity_textview_tos">Door Glucosio te gebruiken, gaat u akkoord met de</string>
+  <string name="preferences_backup_google_drive">Google Drive</string>
   <string name="preferences_about_glucosio">Over Glucosio</string>
+  <string name="preferences_rate">Glucosio beoordelen</string>
   <string name="preferences_licences_open">Opensourcelicenties</string>
+  <string name="about_donate">Doneren aan Glucosio</string>
+  <string name="reading_hypo">Hypoglykemie</string>
+  <string name="reading_low">Laag</string>
+  <string name="reading_high">Hoog</string>
+  <string name="reading_hyper">Hyperglykemie</string>
   <string name="dialog_add_exercisetype_1">Ontspannen wandelen</string>
   <string name="dialog_add_exercisetype_2">Snelwandelen</string>
   <string name="dialog_add_exercisetype_3">Joggen</string>
@@ -128,6 +140,7 @@
   <string name="dialog_add_exercisetype_9">Golf</string>
   <string name="dialog_add_exercisetype_10">Softbal</string>
   <string name="dialog_add_exercisetype_11">Badminton</string>
+  <string name="dialog_add_exercisetype_12">Voetbal</string>
   <string name="dialog_add_exercisetype_13">Basketbal</string>
   <string name="dialog_add_exercisetype_14">Volleybal</string>
   <string name="dialog_add_exercisetype_15">Cricket</string>
@@ -151,5 +164,4 @@
   <string name="about_contributedev">Meewerken aan ontwikkeling</string>
   <string name="about_discussion">Deelnemen aan onze discussiegemeenschap</string>
   <string name="about_maillist">Inschrijven voor onze mailinglijst</string>
-  <string name="about_donate">Doneren aan Glucosio</string>
 </resources>
