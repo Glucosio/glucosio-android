@@ -1,6 +1,7 @@
 package org.glucosio.android.fragment;
 
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -239,7 +240,7 @@ public class OverviewFragment extends Fragment {
         set1.setColor(getResources().getColor(R.color.glucosio_pink));
         set1.setCircleColors(colors);
         set1.setLineWidth(0f);
-        set1.setCircleSize(2.5f);
+        set1.setCircleSize(2.8f);
         set1.setDrawCircleHole(false);
         set1.disableDashedLine();
         set1.setFillAlpha(255);
@@ -247,6 +248,14 @@ public class OverviewFragment extends Fragment {
         set1.setValueTextSize(0);
         set1.setValueTextColor(Color.parseColor("#FFFFFF"));
         set1.setFillColor(Color.parseColor("#FCE2EA"));
+
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.JELLY_BEAN_MR2){
+            set1.setDrawFilled(false);
+            set1.setLineWidth(3f);
+            set1.setCircleSize(4.5f);
+            set1.setDrawCircleHole(true);
+        }
+
 //        set1.setDrawFilled(true);
         // set1.setShader(new LinearGradient(0, 0, 0, mChart.getHeight(),
         // Color.BLACK, Color.WHITE, Shader.TileMode.MIRROR));

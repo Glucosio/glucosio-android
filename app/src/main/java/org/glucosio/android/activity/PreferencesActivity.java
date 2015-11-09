@@ -105,7 +105,9 @@ public class PreferencesActivity extends AppCompatActivity {
                 maxRangePref.setEnabled(true);
             }
 
+/*
             final Preference backupPref = (Preference) findPreference("backup_settings");
+*/
             final Preference aboutPref = (Preference) findPreference("about_settings");
             /*languagePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
@@ -230,7 +232,7 @@ public class PreferencesActivity extends AppCompatActivity {
             languagePref.setEntries(languages);*/
             updateDB();
 
-            backupPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+/*            backupPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
 
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
@@ -238,7 +240,7 @@ public class PreferencesActivity extends AppCompatActivity {
                     getActivity().startActivity(backupActivity);
                     return false;
                 }
-            });
+            });*/
 
             aboutPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override

@@ -41,9 +41,6 @@
         android:title="@string/helloactivity_preferred_range_max" />
 
     <Preference
-        android:key="backup_settings"
-        android:title="@string/title_activity_backup" />
-    <Preference
         android:key="about_settings"
         android:title="@string/preferences_about_glucosio"/>
 </PreferenceScreen>
