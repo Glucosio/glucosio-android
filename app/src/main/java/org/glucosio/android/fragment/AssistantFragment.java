@@ -141,6 +141,8 @@ public class AssistantFragment extends Fragment {
                 tipsRecycler.swapAdapter(adapter, false);
                 archivedDismissButton.setVisibility(View.GONE);
                 archivedButton.setVisibility(View.VISIBLE);
+
+                ((MainActivity) getActivity()).reloadFragmentAdapter();
             }
         });
 

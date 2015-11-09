@@ -54,6 +54,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_below="@id/fragment_assistant_archived_dismiss"
+    android:paddingBottom="52dp"
     android:clickable="true"
     android:focusable="true"
     android:foreground="?android:attr/selectableItemBackground"
