@@ -237,7 +237,7 @@ public class OverviewFragment extends Fragment {
         set1.setColor(getResources().getColor(R.color.glucosio_pink));
         set1.setCircleColors(colors);
         set1.setLineWidth(0f);
-        set1.setCircleSize(3f);
+        set1.setCircleSize(2.5f);
         set1.setDrawCircleHole(false);
         set1.disableDashedLine();
         set1.setFillAlpha(255);

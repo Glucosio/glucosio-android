@@ -60,6 +60,7 @@
                     android:textSize="12sp"
                     android:textStyle="bold"
                     android:textColor="@color/glucosio_reading_hypo"
+                    android:paddingTop="2px"
                     android:paddingRight="8dp"
                     android:text="@string/reading_hypo" />
             </LinearLayout>
@@ -81,6 +82,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
                     android:textStyle="bold"
+                    android:paddingTop="2px"
                     android:textColor="@color/glucosio_reading_low"
                     android:paddingRight="8dp"
                     android:text="@string/reading_low" />
@@ -104,6 +106,7 @@
                     android:textColor="@color/glucosio_reading_ok"
                     android:textStyle="bold"
                     android:paddingRight="8dp"
+                    android:paddingTop="2px"
                     android:textSize="12sp"
                     android:text="@string/reading_ok" />
             </LinearLayout>
@@ -126,6 +129,7 @@
                     android:textColor="@color/glucosio_reading_high"
                     android:textSize="12sp"
                     android:textStyle="bold"
+                    android:paddingTop="2px"
                     android:paddingRight="8dp"
                     android:text="@string/reading_high" />
             </LinearLayout>
@@ -148,6 +152,7 @@
                     android:textColor="@color/glucosio_reading_hyper"
                     android:textStyle="bold"
                     android:textSize="12sp"
+                    android:paddingTop="2px"
                     android:paddingRight="8dp"
                     android:text="@string/reading_hyper" />
             </LinearLayout>
