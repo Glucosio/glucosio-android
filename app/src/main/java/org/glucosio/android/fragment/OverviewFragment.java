@@ -217,6 +217,7 @@ public class OverviewFragment extends Fragment {
                     yVals.add(new Entry(converted, i));
                 }
             }
+            colors.add(getResources().getColor(R.color.glucosio_pink));
         } else {
             // Month view
             for (int i = 0; i < presenter.getReadingsMonth().size(); i++) {
@@ -229,6 +230,7 @@ public class OverviewFragment extends Fragment {
                     yVals.add(new Entry(converted, i));
                 }
             }
+            colors.add(getResources().getColor(R.color.glucosio_pink));
         }
 
         // create a dataset and give it a type
