@@ -125,6 +125,7 @@
   <string name="preferences_rate">Glucosio beoordelen</string>
   <string name="preferences_licences_open">Opensourcelicenties</string>
   <string name="about_donate">Doneren aan Glucosio</string>
+  <string name="reading_ok">OK</string>
   <string name="reading_hypo">Hypoglykemie</string>
   <string name="reading_low">Laag</string>
   <string name="reading_high">Hoog</string>
@@ -164,4 +165,5 @@
   <string name="about_contributedev">Meewerken aan ontwikkeling</string>
   <string name="about_discussion">Deelnemen aan onze discussiegemeenschap</string>
   <string name="about_maillist">Inschrijven voor onze mailinglijst</string>
+  <string name="assistant_archived">GEARCHIVEERDE TIPS</string>
 </resources>

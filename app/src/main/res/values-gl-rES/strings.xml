@@ -41,7 +41,9 @@
   <string name="dialog_add_type_7">Refrixerio</string>
   <string name="dialog_add_type_8">Á hora de deitarse</string>
   <string name="dialog_add_type_9">Á noite</string>
+  <string name="dialog_add_type_10">Glicosa en xaxún</string>
   <string name="dialog_add_type_11">Volver comprobar</string>
+  <string name="dialog_add_type_12">Outro</string>
   <string name="dialog_add_cancel">CANCELAR</string>
   <string name="dialog_add_add">ENGADIR</string>
   <string name="dialog_error2">Por favor, insire un valor válido.</string>
@@ -143,6 +145,7 @@
   <string name="dialog_add_exercisetype_13">Baloncesto</string>
   <string name="dialog_add_exercisetype_14">Voleibol</string>
   <string name="dialog_add_exercisetype_15">Crícket</string>
+  <string name="dialog_add_exercisetype_16">Prato voador</string>
   <string name="dialog_add_exercisetype_17">Esquí</string>
   <string name="dialog_add_exercisetype_18">Boxeo</string>
   <string name="dialog_add_exercisetype_19">Tenis</string>
