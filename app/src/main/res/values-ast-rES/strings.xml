@@ -38,11 +38,6 @@
   <string name="dialog_add_type_4">Dempués de xintar</string>
   <string name="dialog_add_type_5">Enantes de cenar</string>
   <string name="dialog_add_type_6">Dempués de cenar</string>
-  <string name="dialog_add_type_8">Hora d\'echase</string>
-  <string name="dialog_add_type_9">Nueche</string>
-  <string name="dialog_add_type_10">Glucosa n\'aínes</string>
-  <string name="dialog_add_type_11">Recomprobación</string>
-  <string name="dialog_add_type_12">Otra llectura</string>
   <string name="dialog_add_cancel">ENCABOXAR</string>
   <string name="dialog_add_add">AMESTAR</string>
   <string name="dialog_error2">Introduz un valor válidu, por favor.</string>
