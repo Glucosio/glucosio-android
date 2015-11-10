@@ -22,7 +22,7 @@ Glucosio for Android, an user centered free and open source app for diabetes man
   <img src="http://www.android.com/images/brand/android_app_on_play_large.png">
 </a>
 
-## Test Drive Glucosio Daily
+## Test Drive Glucosio Daily (Testing Only)
 http://daily.glucosio.org
 
 
