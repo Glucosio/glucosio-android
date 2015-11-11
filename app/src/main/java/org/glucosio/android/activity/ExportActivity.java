@@ -87,7 +87,8 @@ public class ExportActivity extends AppCompatActivity implements DatePickerDialo
             presenter.setFromMonth(monthOfYear);
             presenter.setFromDay(dayOfMonth);
 
-            String date = +dayOfMonth+"/"+presenter.getFromMonth()+"/"+presenter.getFromYear();
+            int monthToShow = monthOfYear +1;
+            String date = +dayOfMonth+"/"+monthToShow+"/"+year;
             dateTextView.setText(date);
         } else {
             TextView dateTextView = (TextView) findViewById(R.id.dialog_export_date_to);
@@ -97,7 +98,8 @@ public class ExportActivity extends AppCompatActivity implements DatePickerDialo
             presenter.setToMonth(monthOfYear);
             presenter.setToDay(dayOfMonth);
 
-            String date = +dayOfMonth+"/"+presenter.getToMonth()+"/"+presenter.getToYear();
+            int monthToShow = monthOfYear +1;
+            String date = +dayOfMonth+"/"+monthToShow+"/"+year;
             dateTextView.setText(date);
         }
     }
