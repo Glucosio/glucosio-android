@@ -49,4 +49,9 @@
         <item name="colorPrimaryDark">#000000</item>
         <item name="colorAccent">@color/glucosio_pink</item>
     </style>
+
+    <style name="Toolbar.ExpandedText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
 </resources>

@@ -131,9 +131,10 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
         // Add Nav Drawer
         final PrimaryDrawerItem item1 = new PrimaryDrawerItem().withName(R.string.action_settings).withIcon(R.drawable.ic_settings_black_24dp).withSelectable(false);
-        final PrimaryDrawerItem item2 = new PrimaryDrawerItem().withName(R.string.preferences_about_glucosio).withIcon(R.drawable.ic_info_black_24dp).withSelectable(false);
-        final PrimaryDrawerItem item3 = new PrimaryDrawerItem().withName(R.string.action_feedback).withIcon(R.drawable.ic_feedback_black_24dp).withSelectable(false);
-        final PrimaryDrawerItem item4 = new PrimaryDrawerItem().withName(R.string.action_invite).withIcon(R.drawable.ic_face_black_24dp).withSelectable(false);
+        final PrimaryDrawerItem item2 = new PrimaryDrawerItem().withName(R.string.title_activity_export).withIcon(R.drawable.ic_share_black_24dp).withSelectable(false);
+        final PrimaryDrawerItem item3 = new PrimaryDrawerItem().withName(R.string.preferences_about_glucosio).withIcon(R.drawable.ic_info_black_24dp).withSelectable(false);
+        final PrimaryDrawerItem item4 = new PrimaryDrawerItem().withName(R.string.action_feedback).withIcon(R.drawable.ic_feedback_black_24dp).withSelectable(false);
+        final PrimaryDrawerItem item5 = new PrimaryDrawerItem().withName(R.string.action_invite).withIcon(R.drawable.ic_face_black_24dp).withSelectable(false);
 
 
         DrawerBuilder drawerBuilder = new DrawerBuilder()
@@ -152,15 +153,18 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                         if (drawerItem.equals(item1)) {
                             // Settings
                             openPreferences();
-                        } else if (drawerItem.equals(item2)) {
+                        } else if (drawerItem.equals(item3)) {
                             // About
                             startAboutActivity();
-                        } else if (drawerItem.equals(item3)) {
+                        } else if (drawerItem.equals(item4)) {
                             // Feedback
                             startGittyReporter();
-                        } else if (drawerItem.equals(item4)) {
+                        } else if (drawerItem.equals(item5)) {
                             // Invite
                             showInviteDialog();
+                        } else if (drawerItem.equals(item2)) {
+                            // Export
+                            startExportActivity();
                         }
                         return false;
                     }
@@ -193,6 +197,11 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         Log.i("MainActivity", "Setting screen name: " + "main");
         mTracker.setScreenName("Main Activity");
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+    }
+
+    private void startExportActivity() {
+        Intent intent = new Intent(this, ExportActivity.class);
+        startActivity(intent);
     }
 
     private void startAboutActivity() {
