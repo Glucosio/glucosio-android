@@ -5,20 +5,21 @@
     android:id="@+id/helloactivity_mainframe"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:visibility="visible">
+    android:visibility="visible"
+    tools:context="org.glucosio.android.activity.HelloActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingBottom="32dp"
         android:paddingLeft="32dp"
         android:paddingRight="32dp"
-        android:paddingTop="32dp"
-        tools:context="org.glucosio.android.activity.HelloActivity">
+        android:paddingTop="32dp">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/activity_hello_title"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="32dp"
             android:text="@string/helloactivity_headline"
@@ -26,7 +27,8 @@
             android:textSize="@dimen/abc_text_size_display_1_material" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/activity_hello_subtitle"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="16dp"
             android:text="@string/helloactivity_subhead"
@@ -34,7 +36,7 @@
             android:textSize="@dimen/abc_text_size_subhead_material" />
 
         <org.glucosio.android.tools.LabelledSpinner
-            android:id="@+id/helloactivity_spinner_country"
+            android:id="@+id/activity_hello_spinner_country"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -50,13 +52,13 @@
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="0dp"
-                android:layout_height="fill_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1">
 
                 <EditText
-                    android:id="@+id/helloactivity_age"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
+                    android:id="@+id/activity_hello_age"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:digits="0123456789"
                     android:hint="@string/helloactivity_age"
                     android:inputType="number"
@@ -65,7 +67,7 @@
             </android.support.design.widget.TextInputLayout>
 
             <org.glucosio.android.tools.LabelledSpinner
-                android:id="@+id/helloactivity_spinner_gender"
+                android:id="@+id/activity_hello_spinner_gender"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-17dp"
@@ -83,7 +85,7 @@
             android:weightSum="2">
 
             <org.glucosio.android.tools.LabelledSpinner
-                android:id="@+id/helloactivity_spinner_diabetes_type"
+                android:id="@+id/activity_hello_spinner_diabetes_type"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-17dp"
@@ -93,7 +95,7 @@
                 custom:widgetColor="@color/glucosio_pink" />
 
             <org.glucosio.android.tools.LabelledSpinner
-                android:id="@+id/helloactivity_spinner_preferred_unit"
+                android:id="@+id/activity_hello_spinner_preferred_unit"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-17dp"
@@ -104,7 +106,8 @@
         </LinearLayout>
 
         <CheckBox
-            android:layout_width="wrap_content"
+            android:id="@+id/activity_hello_check_share"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:checked="true"
@@ -135,12 +138,11 @@
             android:textStyle="bold" />
 
         <android.support.v7.widget.AppCompatButton
-            android:id="@+id/helloactivity_button_start"
+            android:id="@+id/activity_hello_button_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:layout_marginTop="24dp"
-
             android:background="?android:attr/selectableItemBackground"
             android:drawableEnd="@drawable/ic_navigate_next_pink_24px"
             android:drawableRight="@drawable/ic_navigate_next_pink_24px"
