@@ -3,8 +3,7 @@ package org.glucosio.android.util;
 /**
  * @author amouly on 11/12/15.
  */
-import static android.support.test.espresso.matcher.ViewMatchers.isDisplayingAtLeast;
-import static org.hamcrest.Matchers.allOf;
+
 import android.support.test.espresso.PerformException;
 import android.support.test.espresso.UiController;
 import android.support.test.espresso.ViewAction;
@@ -19,7 +18,11 @@ import android.support.test.espresso.util.HumanReadables;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.webkit.WebView;
+
 import org.hamcrest.Matcher;
+
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayingAtLeast;
+import static org.hamcrest.Matchers.allOf;
 /**
  * Enables clicking on views.
  */
