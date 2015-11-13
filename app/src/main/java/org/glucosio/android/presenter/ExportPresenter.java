@@ -1,9 +1,11 @@
 package org.glucosio.android.presenter;
 
+import android.net.Uri;
+
 import org.glucosio.android.activity.ExportActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
-import org.glucosio.android.tools.JsonTools;
+import org.glucosio.android.tools.ReadingToCSV;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -37,10 +39,9 @@ public class ExportPresenter {
         toDate.set(Calendar.DAY_OF_MONTH, toDay);
         final ArrayList<GlucoseReading> readings = dB.getGlucoseReadings(fromDate.getTime(), toDate.getTime());
 
-
-        JsonTools json = new JsonTools();
-        String finalJson = json.objToJson(readings);
-        activity.showShareDialog(finalJson);
+        ReadingToCSV csv = new ReadingToCSV(activity.getApplicationContext());
+        Uri csvUri = csv.createCSV(readings);
+        activity.showShareDialog(csvUri);
     }
 
 

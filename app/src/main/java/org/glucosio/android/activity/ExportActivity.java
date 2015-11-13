@@ -1,6 +1,7 @@
 package org.glucosio.android.activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -104,11 +105,10 @@ public class ExportActivity extends AppCompatActivity implements DatePickerDialo
         }
     }
 
-    public void showShareDialog(String finalJson) {
-        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-        sharingIntent.setType("text/plain");
-        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, R.string.share_subject);
-        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, finalJson);
-        startActivity(Intent.createChooser(sharingIntent, getResources().getString(R.string.share_using)));
+    public void showShareDialog(Uri uri) {
+        Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
+        shareIntent.setType("*/*");
+        shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
+        startActivity(Intent.createChooser(shareIntent, "Share via"));
     }
 }
