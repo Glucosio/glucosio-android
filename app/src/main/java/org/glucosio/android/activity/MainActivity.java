@@ -199,7 +199,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
 
-    private void startExportActivity() {
+    public void startExportActivity() {
         Intent intent = new Intent(this, ExportActivity.class);
         startActivity(intent);
     }
