@@ -2,8 +2,10 @@ package org.glucosio.android.tools;
 
 import android.content.Context;
 import android.net.Uri;
+import android.support.v4.content.FileProvider;
 import android.util.Log;
 
+import org.glucosio.android.R;
 import org.glucosio.android.db.GlucoseReading;
 
 import java.io.File;
@@ -19,41 +21,67 @@ public class ReadingToCSV {
         this.context = mContext;
     }
 
-    public Uri createCSV(final ArrayList<GlucoseReading> readings) {
+    public Uri createCSV(final ArrayList<GlucoseReading> readings, String um) {
 
-        final File dir = context.getDir("Glucosio", Context.MODE_PRIVATE); //Creating an internal dir;
-        final File file = new File(dir, "exported_data.csv"); //Getting a file within the dir.
+        final File file = new File(context.getFilesDir(), "glucosio_exported_data.csv"); //Getting a file within the dir.
+        file.delete();
 
 
-        new Thread() {
-            public void run() {
-                try {
-                    FileOutputStream fileOutputStream = new FileOutputStream(file);
-                    OutputStreamWriter osw = new OutputStreamWriter(fileOutputStream);
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream(file);
+            OutputStreamWriter osw = new OutputStreamWriter(fileOutputStream);
 
-                    Log.e("Glucosio", readings.size() + "mg/dL");
+            osw.append(context.getResources().getString(R.string.dialog_add_concentration));
+            osw.append(',');
 
-                    for (int i=0; i<readings.size(); i++) {
+            osw.append(context.getResources().getString(R.string.dialog_add_measured));
+            osw.append(',');
 
-                        osw.append(readings.get(i).getReading() + "mg/dL");
-                        Log.e("", readings.get(i).getReading() + "mg/dL");
-                        osw.append(',');
+            osw.append(context.getResources().getString(R.string.dialog_add_date));
+            osw.append(',');
 
-                        osw.append(readings.get(i).getReading_type() + "");
-                        osw.append(',');
+            osw.append(context.getResources().getString(R.string.dialog_add_time));
+            osw.append('\n');
 
-                        osw.append(readings.get(i).getCreated() + "");
-                        osw.append('\n');
-                    }
+            FormatDateTime dateTool = new FormatDateTime(context);
 
-                    osw.close();
-                    Log.e("Glucosio", "finished" );
+            if (um.equals("mg/dL")) {
+                for (int i = 0; i < readings.size(); i++) {
 
-                } catch (Exception e) {
-                    e.printStackTrace();
+                    osw.append(readings.get(i).getReading() + "mg/dL");
+                    osw.append(',');
+
+                    osw.append(readings.get(i).getReading_type() + "");
+                    osw.append(',');
+
+                    osw.append(dateTool.convertRawDate(readings.get(i).getCreated() + ""));
+                    osw.append(',');
+
+                    osw.append(dateTool.convertRawTime(readings.get(i).getCreated() + ""));
+                    osw.append('\n');
+                }
+            } else {
+                GlucoseConverter converter = new GlucoseConverter();
+
+                for (int i = 0; i < readings.size(); i++) {
+
+                    osw.append(converter.toMmolL(readings.get(i).getReading())+ "mmol/L");
+                    osw.append(',');
+
+                    osw.append(dateTool.convertRawDate(readings.get(i).getCreated() + ""));
+                    osw.append(',');
+
+                    osw.append(dateTool.convertRawTime(readings.get(i).getCreated() + ""));
+                    osw.append('\n');
                 }
             }
-        }.run();
-        return Uri.parse(file.toString());
+
+            osw.close();
+            Log.e("Glucosio", "Done writing" );
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return FileProvider.getUriForFile(context, "org.glucosio.android", file);
     }
 }

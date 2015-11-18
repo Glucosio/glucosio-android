@@ -106,9 +106,14 @@ public class ExportActivity extends AppCompatActivity implements DatePickerDialo
     }
 
     public void showShareDialog(Uri uri) {
+
+
         Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
-        shareIntent.setType("*/*");
+        shareIntent.setData(uri);
+        shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        shareIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
         shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
-        startActivity(Intent.createChooser(shareIntent, "Share via"));
+        shareIntent.setType("*/*");
+        startActivity(Intent.createChooser(shareIntent, getResources().getString(R.string.share_using)));
     }
 }

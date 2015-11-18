@@ -40,7 +40,7 @@ public class ExportPresenter {
         final ArrayList<GlucoseReading> readings = dB.getGlucoseReadings(fromDate.getTime(), toDate.getTime());
 
         ReadingToCSV csv = new ReadingToCSV(activity.getApplicationContext());
-        Uri csvUri = csv.createCSV(readings);
+        Uri csvUri = csv.createCSV(readings, dB.getUser(1).getPreferred_unit());
         activity.showShareDialog(csvUri);
     }
 
