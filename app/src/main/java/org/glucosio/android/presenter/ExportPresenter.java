@@ -27,18 +27,25 @@ public class ExportPresenter {
         dB = new DatabaseHandler(exportActivity.getApplicationContext());
     }
 
-    public void onFabClicked(){
-        Calendar fromDate = Calendar.getInstance();
-        fromDate.set(Calendar.YEAR, fromYear);
-        fromDate.set(Calendar.MONTH, fromMonth);
-        fromDate.set(Calendar.DAY_OF_MONTH, fromDay);
+    public void onFabClicked(Boolean all){
+        ArrayList<GlucoseReading> readings;
 
-        Calendar toDate = Calendar.getInstance();
-        toDate.set(Calendar.YEAR, toYear);
-        toDate.set(Calendar.MONTH, toMonth);
-        toDate.set(Calendar.DAY_OF_MONTH, toDay);
-        final ArrayList<GlucoseReading> readings = dB.getGlucoseReadings(fromDate.getTime(), toDate.getTime());
+        if (all){
+            readings = dB.getGlucoseReadings();
+        } else {
+            Calendar fromDate = Calendar.getInstance();
+            fromDate.set(Calendar.YEAR, fromYear);
+            fromDate.set(Calendar.MONTH, fromMonth);
+            fromDate.set(Calendar.DAY_OF_MONTH, fromDay);
 
+            Calendar toDate = Calendar.getInstance();
+            toDate.set(Calendar.YEAR, toYear);
+            toDate.set(Calendar.MONTH, toMonth);
+            toDate.set(Calendar.DAY_OF_MONTH, toDay);
+            readings = dB.getGlucoseReadings(fromDate.getTime(), toDate.getTime());
+        }
+
+        activity.showSnackBar(readings.size());
         ReadingToCSV csv = new ReadingToCSV(activity.getApplicationContext());
         Uri csvUri = csv.createCSV(readings, dB.getUser(1).getPreferred_unit());
         activity.showShareDialog(csvUri);

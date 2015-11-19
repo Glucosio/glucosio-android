@@ -58,9 +58,15 @@ public class DatabaseHandler {
         realm.commitTransaction();
     }
 
-    public RealmResults<GlucoseReading> getGlucoseReadings() {
-        return realm.where(GlucoseReading.class)
-                .findAllSorted("created", false);
+    public ArrayList<GlucoseReading> getGlucoseReadings() {
+        RealmResults<GlucoseReading> results =
+                realm.where(GlucoseReading.class)
+                        .findAllSorted("created", false);
+        ArrayList<GlucoseReading> readingList = new ArrayList<>();
+        for (int i=0; i < results.size(); i++){
+            readingList.add(results.get(i));
+        }
+        return readingList;
     }
 
     public ArrayList<GlucoseReading> getGlucoseReadings(Date from, Date to) {
