@@ -166,4 +166,13 @@
   <string name="about_discussion">Glac páirt sa díospóireacht</string>
   <string name="about_maillist">Cláraigh leis an liosta ríomhphoist</string>
   <string name="assistant_archived">LEIDEANNA SA gCARTLANN</string>
+  <string name="dialog_export_title">Easpórtáil sonraí</string>
+  <string name="dialog_export_date_from">Ó:</string>
+  <string name="dialog_export_date_to">Go:</string>
+  <string name="dialog_export_today">Inniu</string>
+  <string name="dialog_export_button">EASPÓRTÁIL</string>
+  <string name="title_activity_export">Easpórtáil Sonraí</string>
+  <string name="dialog_export_all">Easpórtáil uile</string>
+  <string name="share_using">Comhroinn ar</string>
+  <string name="share_subject">Sonraí Glucosio</string>
 </resources>

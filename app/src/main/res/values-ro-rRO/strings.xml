@@ -166,4 +166,13 @@
   <string name="about_discussion">Alătură-te comunității noastre de discuții</string>
   <string name="about_maillist">Abonează-te la lista noastră de discuții</string>
   <string name="assistant_archived">SFATURI ARHIVATE</string>
+  <string name="dialog_export_title">Export de date</string>
+  <string name="dialog_export_date_from">De la:</string>
+  <string name="dialog_export_date_to">La:</string>
+  <string name="dialog_export_today">Alege azi</string>
+  <string name="dialog_export_button">EXPORT</string>
+  <string name="title_activity_export">Exportă date</string>
+  <string name="dialog_export_all">Exportă totul</string>
+  <string name="share_using">Partajează folosind</string>
+  <string name="share_subject">Date Glucosio</string>
 </resources>
