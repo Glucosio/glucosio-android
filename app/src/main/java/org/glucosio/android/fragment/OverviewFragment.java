@@ -1,14 +1,20 @@
 package org.glucosio.android.fragment;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -33,12 +39,15 @@ import java.util.Collections;
 
 public class OverviewFragment extends Fragment {
 
+    private static final int PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 0;
     private LineChart chart;
     private TextView readingTextView;
     private TextView trendTextView;
     private TextView tipTextView;
+    private ImageButton graphExport;
     private Spinner graphSpinner;
     private OverviewPresenter presenter;
+    private View mFragmentView;
 
     public static HistoryFragment newInstance() {
         HistoryFragment fragment = new HistoryFragment();
@@ -59,7 +68,6 @@ public class OverviewFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View mFragmentView;
         presenter = new OverviewPresenter(this);
         if (!presenter.isdbEmpty()) {
             presenter.loadDatabase();
@@ -80,6 +88,7 @@ public class OverviewFragment extends Fragment {
         trendTextView = (TextView) mFragmentView.findViewById(R.id.item_history_trend);
         tipTextView = (TextView) mFragmentView.findViewById(R.id.random_tip_textview);
         graphSpinner = (Spinner) mFragmentView.findViewById(R.id.chart_spinner);
+        graphExport = (ImageButton) mFragmentView.findViewById(R.id.fragment_overview_graph_export);
 
         // Set array and adapter for graphSpinner
         String[] selectorArray = getActivity().getResources().getStringArray(R.array.fragment_overview_selector);
@@ -154,6 +163,27 @@ public class OverviewFragment extends Fragment {
         }
         legend.setEnabled(false);
 
+
+        graphExport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (ContextCompat.checkSelfPermission(getActivity(),
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    // If we don't have permission, ask the user
+
+                        ActivityCompat.requestPermissions(getActivity(),
+                                new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                                PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE);
+
+                    Snackbar.make(mFragmentView, getString(R.string.fragment_overview_permission_storage), Snackbar.LENGTH_SHORT).show();
+                } else {
+                    // else save the image to gallery
+                    exportGraphToGallery();
+                }
+            }
+        });
+
         loadLastReading();
 /*
         loadGlucoseTrend();
@@ -161,6 +191,16 @@ public class OverviewFragment extends Fragment {
         loadRandomTip();
 
         return mFragmentView;
+    }
+
+    private void exportGraphToGallery() {
+        long timestamp = System.currentTimeMillis()/1000;
+        boolean saved = chart.saveToGallery("glucosio_" + timestamp , 50);
+        if (saved) {
+            Snackbar.make(mFragmentView, R.string.fragment_overview_graph_export_true, Snackbar.LENGTH_SHORT).show();
+        } else {
+            Snackbar.make(mFragmentView, R.string.fragment_overview_graph_export_false, Snackbar.LENGTH_SHORT).show();
+        }
     }
 
     private void setData() {
@@ -302,5 +342,22 @@ public class OverviewFragment extends Fragment {
     public String convertDate(String date){
         FormatDateTime dateTime = new FormatDateTime(getActivity().getApplicationContext());
         return dateTime.convertDate(date);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // permission was granted, yay!
+                    exportGraphToGallery();
+                } else {
+                    Snackbar.make(mFragmentView, R.string.fragment_overview_permission_storage, Snackbar.LENGTH_LONG).show();
+                }
+            }
+        }
     }
 }

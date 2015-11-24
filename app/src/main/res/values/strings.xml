@@ -274,4 +274,7 @@
     <string name="share_subject">Glucosio data</string>
     <string name="activity_export_snackbar_1">"Exporting"</string>
     <string name="activity_export_snackbar_2">readings</string>
+    <string name="fragment_overview_permission_storage">Glucosio needs storage permission to save a screenshot</string>
+    <string name="fragment_overview_graph_export_true">Screenshot saved to gallery</string>
+    <string name="fragment_overview_graph_export_false">Error saving screenshot to gallery</string>
 </resources>
