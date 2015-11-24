@@ -166,4 +166,13 @@
   <string name="about_discussion">加入社群討論</string>
   <string name="about_maillist">訂閱我們的郵件群組</string>
   <string name="assistant_archived">已封存的提示</string>
+  <string name="dialog_export_title">匯出資料</string>
+  <string name="dialog_export_date_from">自:</string>
+  <string name="dialog_export_date_to">至:</string>
+  <string name="dialog_export_today">選擇今日</string>
+  <string name="dialog_export_button">匯出</string>
+  <string name="title_activity_export">匯出資料</string>
+  <string name="dialog_export_all">全部匯出</string>
+  <string name="share_using">以下列程式分享</string>
+  <string name="share_subject">Glucosio 資料</string>
 </resources>

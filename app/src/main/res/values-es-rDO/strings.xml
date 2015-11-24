@@ -161,10 +161,15 @@
   <string name="dialog_addfood_sugars">Azúcares:</string>
   <string name="dialog_addfood_fat">Grasa:</string>
   <string name="about_credits">Agradecimientos</string>
-  <string name="about_contribute">Contribuye</string>
-  <string name="about_contributel10n">Contribuye en la traducción</string>
-  <string name="about_contributedev">Contribuye en el desarrollo</string>
-  <string name="about_discussion">Únete en nuestra comunidad de debate</string>
+  <string name="about_contribute">Contribuir</string>
+  <string name="about_contributel10n">Contribuir a la traducción</string>
+  <string name="about_contributedev">Contribuir al desarrollo</string>
+  <string name="about_discussion">Unirse a nuestra comunidad de debate</string>
   <string name="about_maillist">Suscríbete a nuestra lista de correo</string>
   <string name="assistant_archived">CONSEJOS ARCHIVADOS</string>
+  <string name="dialog_export_date_from">De:</string>
+  <string name="dialog_export_date_to">Para:</string>
+  <string name="dialog_export_today">Escoger hoy</string>
+  <string name="share_using">Compartir con</string>
+  <string name="share_subject">Datos de Glucosio</string>
 </resources>

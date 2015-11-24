@@ -166,4 +166,13 @@
   <string name="about_discussion">Присоединиться к дискуссионному сообществу</string>
   <string name="about_maillist">Подписаться на наш список рассылки</string>
   <string name="assistant_archived">АРХИВИРОВАННЫЕ СОВЕТЫ</string>
+  <string name="dialog_export_title">Экспорт данных</string>
+  <string name="dialog_export_date_from">От:</string>
+  <string name="dialog_export_date_to">Кому:</string>
+  <string name="dialog_export_today">Выбрать сегодня</string>
+  <string name="dialog_export_button">ЭКСПОРТ</string>
+  <string name="title_activity_export">Экспорт данных</string>
+  <string name="dialog_export_all">Экспортировать всё</string>
+  <string name="share_using">Поделиться через</string>
+  <string name="share_subject">Данные Glucosio</string>
 </resources>

@@ -166,4 +166,13 @@
   <string name="about_discussion">私たちのコミュニティに参加</string>
   <string name="about_maillist">私たちのメーリングリストを購読</string>
   <string name="assistant_archived">アーカイブされたヒント</string>
+  <string name="dialog_export_title">データをエクスポート</string>
+  <string name="dialog_export_date_from">開始:</string>
+  <string name="dialog_export_date_to">終了:</string>
+  <string name="dialog_export_today">今日を選択</string>
+  <string name="dialog_export_button">エクスポート</string>
+  <string name="title_activity_export">データをエクスポート</string>
+  <string name="dialog_export_all">すべてエクスポート</string>
+  <string name="share_using">次を使用して共有</string>
+  <string name="share_subject">Glucosio データ</string>
 </resources>
