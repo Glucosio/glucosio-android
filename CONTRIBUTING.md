@@ -21,7 +21,7 @@ If you have questions about how to install or use Glucosio, please direct these 
 
 Help us to maximize the effort we can spend fixing issues and adding new features, by not reporting duplicate issues.
 
-[template]: https://raw.github.com/Glucosio/glucosio-project-tools/gh/templates/master/issue_template.md
+[template]: https://github.com/Glucosio/project-tools/blob/master/gh/templates/issue_template.md
 [mailinglist]: https://groups.google.com/forum/#!forum/glucosio-help/
 [forum]: https://community.glucosio.org
 [slack]: https://slack.glucosio.org
