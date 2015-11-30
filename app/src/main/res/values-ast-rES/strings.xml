@@ -163,4 +163,11 @@
   <string name="about_discussion">Xúnite a la nuesa comunidá de discutiniu</string>
   <string name="about_maillist">Soscríbite a la nuesa llista de corréu</string>
   <string name="assistant_archived">CONSEYOS ARCHIVAOS</string>
+  <string name="dialog_export_title">Esportar datos</string>
+  <string name="dialog_export_date_from">De:</string>
+  <string name="dialog_export_date_to">Pa:</string>
+  <string name="dialog_export_button">ESPORTAR</string>
+  <string name="title_activity_export">Esportar datos</string>
+  <string name="dialog_export_all">Esportar too</string>
+  <string name="share_subject">Datos Glucosio</string>
 </resources>
