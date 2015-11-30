@@ -159,7 +159,7 @@
     <string name="assistant_reading_title">Add a reading</string>
     <string name="assistant_reading_desc">Be sure to regularly add your glucose readings so we can help you track your glucose levels over time.</string>
     <string name="assistant_export_title">Export your data</string>
-    <string name="assistant_export_desc">DESC HERE.</string>
+    <string name="assistant_export_desc">Share your data with your doctor or backup your data to Google Drive using the export feature.</string>
 
     <string-array name="assistant_titles" translatable="false">
         <item>@string/assistant_feedback_title</item>
@@ -171,7 +171,7 @@
         <item>@string/assistant_feedback_desc</item>
         <item>@string/assistant_reading_desc</item>
         <item>@string/assistant_categories_desc</item>
-        <item>@string/assistant_export_title</item>
+        <item>@string/assistant_export_desc</item>
     </string-array>
 
     <string-array name="assistant_actions" translatable="false">
