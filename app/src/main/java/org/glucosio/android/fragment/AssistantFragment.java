@@ -206,6 +206,6 @@ public class AssistantFragment extends Fragment {
     }
 
     public void startExportActivity() {
-        ((MainActivity)getActivity()).startExportActivity();
+        ((MainActivity)getActivity()).showExportDialog();
     }
 }

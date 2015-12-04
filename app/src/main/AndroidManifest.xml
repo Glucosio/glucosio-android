@@ -37,10 +37,6 @@
             android:name=".activity.AboutActivity"
             android:theme="@style/GlucosioSettings"/>
         <activity
-            android:name=".activity.ExportActivity"
-            android:label="@string/title_activity_export"
-            android:theme="@style/GlucosioTheme"/>
-        <activity
             android:name=".activity.BackupActivity"
             android:label="@string/title_activity_backup"
             android:parentActivityName=".activity.PreferencesActivity"

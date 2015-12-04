@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="org.glucosio.android.activity.ExportActivity">
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_height="128dp"
@@ -55,49 +56,51 @@
                 android:layout_weight="2"
                 android:textStyle="bold"
                 android:textColor="@color/glucosio_text_dark"
-                android:text="@string/activity_export_date_from"/>
+                android:text="@string/activity_export_date_from" />
 
-                <EditText
-                    android:id="@+id/activity_export_date_from"
-                    android:layout_weight="8"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:clickable="false"
-                    android:cursorVisible="false"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:singleLine="true"
-                    android:textSize="@dimen/abc_text_size_body_2_material" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="fill_parent"
+            <EditText
+                android:id="@+id/activity_export_date_from"
+                android:layout_weight="8"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:orientation="horizontal"
-                android:weightSum="10">
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:singleLine="true"
+                android:textSize="@dimen/abc_text_size_body_2_material" />
+        </LinearLayout>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:textStyle="bold"
-                    android:textColor="@color/glucosio_text_dark"
-                    android:text="@string/dialog_export_date_to"/>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:orientation="horizontal"
+            android:weightSum="10">
 
-                <EditText
-                    android:id="@+id/activity_export_date_to"
-                    android:layout_weight="8"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:clickable="false"
-                    android:cursorVisible="false"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:singleLine="true"
-                    android:textSize="@dimen/abc_text_size_body_2_material" />
-            </LinearLayout>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textStyle="bold"
+                android:textColor="@color/glucosio_text_dark"
+                android:text="@string/dialog_export_date_to" />
+
+            <EditText
+                android:id="@+id/activity_export_date_to"
+                android:layout_weight="8"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:singleLine="true"
+                android:textSize="@dimen/abc_text_size_body_2_material" />
+        </LinearLayout>
+
         <CheckBox
             android:id="@+id/activity_export_all"
             android:layout_width="wrap_content"
@@ -125,7 +128,6 @@
             android:layout_gravity="right"
             android:layout_marginTop="16dp"
             android:gravity="right|bottom"
-            android:orientation="horizontal">
-        </LinearLayout>
+            android:orientation="horizontal"></LinearLayout>
     </LinearLayout>
 </RelativeLayout>

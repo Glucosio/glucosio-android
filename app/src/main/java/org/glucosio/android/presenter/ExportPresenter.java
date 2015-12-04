@@ -2,7 +2,7 @@ package org.glucosio.android.presenter;
 
 import android.net.Uri;
 
-import org.glucosio.android.activity.ExportActivity;
+import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
 import org.glucosio.android.tools.ReadingToCSV;
@@ -19,15 +19,15 @@ public class ExportPresenter {
     private int toMonth;
     private int toYear;
     private DatabaseHandler dB;
-    private ExportActivity activity;
+    private MainActivity activity;
 
 
-    public ExportPresenter(ExportActivity exportActivity) {
+    public ExportPresenter(MainActivity exportActivity) {
         this.activity= exportActivity;
         dB = new DatabaseHandler(exportActivity.getApplicationContext());
     }
 
-    public void onFabClicked(Boolean all){
+    public void onExportClicked(Boolean all){
         ArrayList<GlucoseReading> readings;
 
         if (all){
