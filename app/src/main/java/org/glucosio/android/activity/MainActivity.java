@@ -48,6 +48,7 @@ import org.glucosio.android.R;
 import org.glucosio.android.adapter.HomePagerAdapter;
 import org.glucosio.android.presenter.ExportPresenter;
 import org.glucosio.android.presenter.MainPresenter;
+import org.glucosio.android.tools.FormatDateTime;
 import org.glucosio.android.tools.GlucoseConverter;
 import org.glucosio.android.tools.LabelledSpinner;
 import org.glucosio.android.tools.LabelledSpinner.OnItemChosenListener;
@@ -283,10 +284,9 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             }
         });
 
-
-        dialogAddTime.setText(presenter.getReadingHour() + ":" + presenter.getReadingMinute());
+        FormatDateTime formatDateTime = new FormatDateTime(getApplicationContext());
         dialogAddDate.setText(presenter.getReadingDay() + "/" + presenter.getReadingMonth() + "/" + presenter.getReadingYear());
-
+        dialogAddTime.setText(formatDateTime.getCurrentTime());
         dialogAddDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -306,8 +306,13 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             @Override
             public void onClick(View v) {
                 Calendar now = Calendar.getInstance();
-                TimePickerDialog tpd = TimePickerDialog.newInstance(MainActivity.this, now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), true);
-                tpd.show(getFragmentManager(), "Timepickerdialog");
+                if (android.text.format.DateFormat.is24HourFormat(getApplicationContext())) {
+                    TimePickerDialog tpd = TimePickerDialog.newInstance(MainActivity.this, now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), true);
+                    tpd.show(getFragmentManager(), "Timepickerdialog");
+                } else {
+                    TimePickerDialog tpd = TimePickerDialog.newInstance(MainActivity.this, now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), false);
+                    tpd.show(getFragmentManager(), "Timepickerdialog");
+                }
             }
         });
         dialogCancelButton.setOnClickListener(new View.OnClickListener() {
@@ -799,8 +804,11 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         presenter.setReadingHour(df.format(hourOfDay));
         presenter.setReadingMinute(df.format(minute));
 
-        String time = +hourOfDay + ":" + presenter.getReadingMinute();
-        addTime.setText(time);
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.HOUR_OF_DAY, hourOfDay);
+        cal.set(Calendar.MINUTE, minute);
+        FormatDateTime formatDateTime = new FormatDateTime(getApplicationContext());
+        addTime.setText(formatDateTime.getTime(cal));
         updateSpinnerTypeHour(Integer.parseInt(df.format(hourOfDay)));
     }
 

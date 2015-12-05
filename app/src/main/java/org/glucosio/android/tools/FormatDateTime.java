@@ -96,4 +96,32 @@ public class FormatDateTime {
         String finalTime = finalTimeFormat.format(parsed);
         return finalTime + "";
     }
+
+    public String getCurrentTime(){
+        Calendar cal = Calendar.getInstance();
+
+        java.text.DateFormat finalTimeFormat;
+
+        if (android.text.format.DateFormat.is24HourFormat(context)) {
+            finalTimeFormat = new SimpleDateFormat("HH:mm");
+        } else {
+            finalTimeFormat = new SimpleDateFormat("hh:mm a");
+        }
+
+        String finalTime = finalTimeFormat.format(cal.getTime());
+        return finalTime + "";
+    }
+
+    public String getTime(Calendar cal){
+        java.text.DateFormat finalTimeFormat;
+
+        if (android.text.format.DateFormat.is24HourFormat(context)) {
+            finalTimeFormat = new SimpleDateFormat("HH:mm");
+        } else {
+            finalTimeFormat = new SimpleDateFormat("hh:mm a");
+        }
+
+        String finalTime = finalTimeFormat.format(cal.getTime());
+        return finalTime + "";
+    }
 }
