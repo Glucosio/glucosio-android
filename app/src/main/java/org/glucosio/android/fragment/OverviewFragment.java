@@ -222,7 +222,7 @@ public class OverviewFragment extends Fragment {
         } else {
             // Month view
             for (int i = 0; i < presenter.getReadingsMonth().size(); i++) {
-                String date = presenter.convertDate(presenter.getDatetimeMonth().get(i));
+                String date = presenter.convertDateToMonth(presenter.getDatetimeMonth().get(i));
                 xVals.add(date + "");
             }
         }
@@ -342,6 +342,11 @@ public class OverviewFragment extends Fragment {
     public String convertDate(String date){
         FormatDateTime dateTime = new FormatDateTime(getActivity().getApplicationContext());
         return dateTime.convertDate(date);
+    }
+
+    public String convertDateToMonth(String date){
+        FormatDateTime dateTime = new FormatDateTime((getActivity().getApplication()));
+        return dateTime.convertDateToMonthOverview(date);
     }
 
     @Override

@@ -97,4 +97,8 @@ public class OverviewPresenter {
     public List<String> getDatetimeMonth() {
         return datetimeMonth;
     }
+
+    public String convertDateToMonth(String s) {
+        return fragment.convertDateToMonth(s);
+    }
 }

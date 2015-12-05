@@ -239,7 +239,7 @@ public class DatabaseHandler {
         return finalWeeks;
     }
 
-    public List<Integer> getAverageGlucoseReadingsByMonth() {
+    public List<Integer> getAverageGlucoseReadingsByMonth(){
         JodaTimeAndroid.init(mContext);
 
         DateTime maxDateTime = new DateTime(realm.where(GlucoseReading.class).maximumDate("created").getTime());
@@ -247,20 +247,24 @@ public class DatabaseHandler {
 
         DateTime currentDateTime = minDateTime;
         DateTime newDateTime = minDateTime;
-        ArrayList<Integer> averageReadings = new ArrayList<Integer>();
-        int monthsNumber = Months.monthsBetween(minDateTime, maxDateTime).getMonths();
 
-        for (int i=0; i<=monthsNumber; i++) {
-            newDateTime = currentDateTime.plusMonths(i);
+        ArrayList<Integer> averageReadings = new ArrayList<Integer>();
+
+        // The number of months is at least 1 since we do have average for the current week even if incomplete
+        int monthsNumber = Months.monthsBetween(minDateTime, maxDateTime).getMonths() + 1;
+
+        for (int i=0; i<monthsNumber; i++) {
+            newDateTime = currentDateTime.plusMonths(1);
             RealmResults<GlucoseReading> readings = realm.where(GlucoseReading.class)
                     .between("created", currentDateTime.toDate(), newDateTime.toDate())
                     .findAll();
             averageReadings.add(((int)readings.average("reading")));
+            currentDateTime = newDateTime;
         }
         return averageReadings;
     }
 
-    public List<String> getGlucoseDatetimesByMonth() {
+    public List<String> getGlucoseDatetimesByMonth(){
         JodaTimeAndroid.init(mContext);
 
         DateTime maxDateTime = new DateTime(realm.where(GlucoseReading.class).maximumDate("created").getTime());
@@ -268,13 +272,17 @@ public class DatabaseHandler {
 
         DateTime currentDateTime = minDateTime;
         DateTime newDateTime = minDateTime;
-        ArrayList<String> finalMonths = new ArrayList<String>();
-        int monthsNumber = Months.monthsBetween(minDateTime, maxDateTime).getMonths();
-        DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
-        for (int i = 0; i <= monthsNumber; i++) {
-            newDateTime = currentDateTime.plusMonths(i);
+        ArrayList<String> finalMonths = new ArrayList<String>();
+
+        // The number of months is at least 1 since we do have average for the current week even if incomplete
+        int monthsNumber = Months.monthsBetween(minDateTime, maxDateTime).getMonths() + 1;
+
+        DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        for (int i=0; i<monthsNumber; i++) {
+            newDateTime = currentDateTime.plusMonths(1);
             finalMonths.add(inputFormat.format(newDateTime.toDate()));
+            currentDateTime = newDateTime;
         }
         return finalMonths;
     }
