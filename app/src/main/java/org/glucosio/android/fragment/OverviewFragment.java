@@ -41,7 +41,8 @@ public class OverviewFragment extends Fragment {
 
     private static final int PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 0;
     private LineChart chart;
-    private TextView readingTextView;
+    private TextView lastReadingTextView;
+    private TextView lastDateTextView;
     private TextView trendTextView;
     private TextView tipTextView;
     private ImageButton graphExport;
@@ -84,7 +85,8 @@ public class OverviewFragment extends Fragment {
             Collections.reverse(presenter.getType());
         }
 
-        readingTextView = (TextView) mFragmentView.findViewById(R.id.item_history_reading);
+        lastReadingTextView = (TextView) mFragmentView.findViewById(R.id.item_history_reading);
+        lastDateTextView = (TextView) mFragmentView.findViewById(R.id.fragment_overview_last_date);
         trendTextView = (TextView) mFragmentView.findViewById(R.id.item_history_trend);
         tipTextView = (TextView) mFragmentView.findViewById(R.id.random_tip_textview);
         graphSpinner = (Spinner) mFragmentView.findViewById(R.id.chart_spinner);
@@ -316,15 +318,18 @@ public class OverviewFragment extends Fragment {
     private void loadLastReading(){
         if (!presenter.isdbEmpty()) {
             if (presenter.getUnitMeasuerement().equals("mg/dL")) {
-                readingTextView.setText(presenter.getLastReading() + " mg/dL");
+                lastReadingTextView.setText(presenter.getLastReading() + " mg/dL");
             } else {
                 GlucoseConverter converter = new GlucoseConverter();
-                readingTextView.setText(converter.toMmolL(Double.parseDouble(presenter.getLastReading().toString())) + " mmol/L");
+                lastReadingTextView.setText(converter.toMmolL(Double.parseDouble(presenter.getLastReading().toString())) + " mmol/L");
             }
 
+            FormatDateTime dateTime = new FormatDateTime(getActivity().getApplicationContext());
+
+            lastDateTextView.setText(dateTime.convertDate(presenter.getLastDateTime()));
             GlucoseRanges ranges = new GlucoseRanges(getActivity().getApplicationContext());
             String color = ranges.colorFromRange(Integer.parseInt(presenter.getLastReading()));
-            readingTextView.setTextColor(ranges.stringToColor(color));
+            lastReadingTextView.setTextColor(ranges.stringToColor(color));
         }
     }
 

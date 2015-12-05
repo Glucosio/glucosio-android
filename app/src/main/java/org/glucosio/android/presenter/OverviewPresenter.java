@@ -54,6 +54,10 @@ public class OverviewPresenter {
         return getReading().get(getReading().size() - 1) + "";
     }
 
+    public String getLastDateTime(){
+        return getDatetime().get(getDatetime().size() - 1) + "";
+    }
+
     public String getRandomTip(TipsManager manager){
         ArrayList<String> tips = manager.getTips();
 
