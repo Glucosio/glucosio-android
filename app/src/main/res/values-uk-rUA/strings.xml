@@ -153,11 +153,9 @@
   <string name="about_maillist">Підпишіться на нашу розсилку</string>
   <string name="assistant_archived">ЗААРХІВОВАНІ ПОРАДИ</string>
   <string name="dialog_export_title">Експорт даних</string>
-  <string name="dialog_export_date_from">Від кого:</string>
   <string name="dialog_export_date_to">Кому:</string>
   <string name="dialog_export_button">ЕКСПОРТ</string>
   <string name="title_activity_export">Експорт даних</string>
-  <string name="dialog_export_all">Експортувати все</string>
   <string name="share_using">Надіслати за допомогою</string>
   <string name="share_subject">Дані Glucosio</string>
 </resources>

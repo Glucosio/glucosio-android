@@ -167,12 +167,10 @@
   <string name="about_maillist">Inscreva-se em nossa lista de e-mail</string>
   <string name="assistant_archived">DICAS ARQUIVADAS</string>
   <string name="dialog_export_title">Exportar dados</string>
-  <string name="dialog_export_date_from">De:</string>
   <string name="dialog_export_date_to">Para:</string>
   <string name="dialog_export_today">Escolha hoje</string>
   <string name="dialog_export_button">EXPORTAR</string>
   <string name="title_activity_export">Exportar Dados</string>
-  <string name="dialog_export_all">Exportar tudo</string>
   <string name="share_using">Compartilhar usando</string>
   <string name="share_subject">Dados do Glucosio</string>
 </resources>

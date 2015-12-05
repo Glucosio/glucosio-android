@@ -169,12 +169,10 @@
   <string name="about_maillist">订阅我们的邮件列表</string>
   <string name="assistant_archived">已存档提示</string>
   <string name="dialog_export_title">导出数据</string>
-  <string name="dialog_export_date_from">从：</string>
   <string name="dialog_export_date_to">至：</string>
   <string name="dialog_export_today">选择今天</string>
   <string name="dialog_export_button">导出</string>
   <string name="title_activity_export">导出日期</string>
-  <string name="dialog_export_all">全部导出</string>
   <string name="share_using">分享方式</string>
   <string name="share_subject">Glucosio 数据</string>
 </resources>

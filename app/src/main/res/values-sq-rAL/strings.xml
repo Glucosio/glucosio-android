@@ -167,12 +167,10 @@
   <string name="about_maillist">Abonohuni në mailing listën tonë</string>
   <string name="assistant_archived">KËSHILLA TË ARKIVUARA</string>
   <string name="dialog_export_title">Eksporto të dhëna</string>
-  <string name="dialog_export_date_from">Nga:</string>
   <string name="dialog_export_date_to">Për:</string>
   <string name="dialog_export_today">Merre sot</string>
   <string name="dialog_export_button">EKSPORT</string>
   <string name="title_activity_export">Eksporto të Dhëna</string>
-  <string name="dialog_export_all">Eksportoi të gjitha</string>
   <string name="share_using">Ndani përdorimin</string>
   <string name="share_subject">Të dhënat e Glucosio</string>
 </resources>

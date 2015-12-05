@@ -136,5 +136,4 @@
   <string name="dialog_export_title">Daten exportieren</string>
   <string name="dialog_export_button">Export</string>
   <string name="title_activity_export">Daten exportieren</string>
-  <string name="dialog_export_all">Alles exportieren</string>
 </resources>

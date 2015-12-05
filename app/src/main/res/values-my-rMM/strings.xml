@@ -167,12 +167,10 @@
   <string name="about_maillist">ကျွန်​တော်တို့ရဲ့ စာပို့စာရင်းကို လစဉ် ဖတ်ရှုပါ</string>
   <string name="assistant_archived">သိမ်းထားသည့် အကြံပြုချက်များ</string>
   <string name="dialog_export_title">အချက်အလက် ထုတ်ယူရန်</string>
-  <string name="dialog_export_date_from">မှ။</string>
   <string name="dialog_export_date_to">သို့။</string>
   <string name="dialog_export_today">ဒီနေ့ကို ရွေးပါ</string>
   <string name="dialog_export_button">ထုတ်ယူပါ</string>
   <string name="title_activity_export">အချက်အလက် ထုတ်ယူရန်</string>
-  <string name="dialog_export_all">အားလုံးကို ထုတ်ယူပါ</string>
   <string name="share_using">အသုံးပြုခြင်းကို မျှဝေပါ</string>
   <string name="share_subject">Glucosio အချက်အလက်</string>
 </resources>

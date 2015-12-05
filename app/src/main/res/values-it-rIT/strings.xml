@@ -168,12 +168,10 @@
   <string name="about_maillist">Iscriviti alla nostra mailing list</string>
   <string name="assistant_archived">SUGGERIMENTI ARCHIVIATI</string>
   <string name="dialog_export_title">Esporta dati</string>
-  <string name="dialog_export_date_from">Da:</string>
   <string name="dialog_export_date_to">A:</string>
   <string name="dialog_export_today">Scegli oggi</string>
   <string name="dialog_export_button">Esporta</string>
   <string name="title_activity_export">Esporta Dati</string>
-  <string name="dialog_export_all">Esporta tutto</string>
   <string name="share_using">Condividi utilizzando</string>
   <string name="share_subject">Dati di Glucosio</string>
 </resources>

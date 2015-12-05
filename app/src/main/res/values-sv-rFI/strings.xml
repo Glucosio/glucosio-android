@@ -167,12 +167,10 @@
   <string name="about_maillist">Prenumerera på vår e-postlista</string>
   <string name="assistant_archived">Arkiverade tips</string>
   <string name="dialog_export_title">Exportera data</string>
-  <string name="dialog_export_date_from">Från:</string>
   <string name="dialog_export_date_to">Till:</string>
   <string name="dialog_export_today">Välj idag</string>
   <string name="dialog_export_button">EXPORTERA</string>
   <string name="title_activity_export">Exportera data</string>
-  <string name="dialog_export_all">Exportera allt</string>
   <string name="share_using">Dela med hjälp av</string>
   <string name="share_subject">Glucosio data</string>
 </resources>

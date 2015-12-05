@@ -167,12 +167,10 @@
   <string name="about_maillist">Inschrijven voor onze mailinglijst</string>
   <string name="assistant_archived">GEARCHIVEERDE TIPS</string>
   <string name="dialog_export_title">Gegevens exporteren</string>
-  <string name="dialog_export_date_from">Van:</string>
   <string name="dialog_export_date_to">Naar:</string>
   <string name="dialog_export_today">Vandaag kiezen</string>
   <string name="dialog_export_button">EXPORTEREN</string>
   <string name="title_activity_export">Gegevens exporteren</string>
-  <string name="dialog_export_all">Alles exporteren</string>
   <string name="share_using">Delen via</string>
   <string name="share_subject">Glucosio-gegevens</string>
 </resources>
