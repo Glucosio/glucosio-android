@@ -142,6 +142,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         final PrimaryDrawerItem item3 = new PrimaryDrawerItem().withName(R.string.preferences_about_glucosio).withIcon(R.drawable.ic_info_black_24dp).withSelectable(false);
         final PrimaryDrawerItem item4 = new PrimaryDrawerItem().withName(R.string.action_feedback).withIcon(R.drawable.ic_feedback_black_24dp).withSelectable(false);
         final PrimaryDrawerItem item5 = new PrimaryDrawerItem().withName(R.string.action_invite).withIcon(R.drawable.ic_face_black_24dp).withSelectable(false);
+        final PrimaryDrawerItem item6 = new PrimaryDrawerItem().withName(R.string.about_donate).withIcon(R.drawable.ic_favorite_black_24dp).withSelectable(false);
 
 
         DrawerBuilder drawerBuilder = new DrawerBuilder()
@@ -172,6 +173,9 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                         } else if (drawerItem.equals(item2)) {
                             // Export
                             startExportActivity();
+                        } else if (drawerItem.equals(item6)) {
+                            // Donate
+                            openDonateIntent();
                         }
                         return false;
                     }
@@ -182,7 +186,8 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                     item1,
                     item2,
                     item3,
-                    item4
+                    item4,
+                    item6
             )
                     .withSelectedItem(-1)
                     .build();
@@ -190,7 +195,8 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             drawerBuilder.addDrawerItems(
                     item1,
                     item2,
-                    item3
+                    item3,
+                    item6
             )
                     .withSelectedItem(-1)
                     .build();
@@ -204,6 +210,11 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         Log.i("MainActivity", "Setting screen name: " + "main");
         mTracker.setScreenName("Main Activity");
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+    }
+
+    private void openDonateIntent() {
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.glucosio.org/donate/"));
+        startActivity(browserIntent);
     }
 
     public void startExportActivity() {
