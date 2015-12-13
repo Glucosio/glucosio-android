@@ -16,6 +16,7 @@ import java.util.List;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
+import io.realm.Sort;
 
 public class DatabaseHandler {
 
@@ -61,7 +62,7 @@ public class DatabaseHandler {
     public ArrayList<GlucoseReading> getGlucoseReadings() {
         RealmResults<GlucoseReading> results =
                 realm.where(GlucoseReading.class)
-                        .findAllSorted("created", false);
+                        .findAllSorted("created", Sort.DESCENDING);
         ArrayList<GlucoseReading> readingList = new ArrayList<>();
         for (int i=0; i < results.size(); i++){
             readingList.add(results.get(i));
@@ -73,7 +74,7 @@ public class DatabaseHandler {
         RealmResults<GlucoseReading> results =
                 realm.where(GlucoseReading.class)
                 .between("created", from, to)
-                .findAllSorted("created", false);
+                .findAllSorted("created", Sort.DESCENDING);
         ArrayList<GlucoseReading> readingList = new ArrayList<>();
         for (int i=0; i < results.size(); i++){
             readingList.add(results.get(i));
