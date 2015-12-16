@@ -21,6 +21,7 @@ public class MainActivity extends Activity {
     private TextView mTextView;
     private static final int SPEECH_REQUEST_CODE = 0;
     private GoogleApiClient mGoogleApiClient;
+    String spokenText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +55,7 @@ public class MainActivity extends Activity {
         if (requestCode == SPEECH_REQUEST_CODE && resultCode == RESULT_OK) {
             List<String> results = data.getStringArrayListExtra(
                     RecognizerIntent.EXTRA_RESULTS);
-            String spokenText = results.get(0);
+            spokenText = results.get(0);
 
 
             mTextView.setText(spokenText);
@@ -78,7 +79,8 @@ public class MainActivity extends Activity {
                         final Node node = nodes.get(i);
 
                         // Send glucose reading to phone
-                        Wearable.MessageApi.sendMessage(mGoogleApiClient, node.getId(), "/MESSAGE", null);
+                        Wearable.MessageApi.sendMessage(mGoogleApiClient, node.getId(), spokenText, null);
+                        finish();
                     }
                 }
             }

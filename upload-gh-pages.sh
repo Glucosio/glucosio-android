@@ -3,8 +3,10 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   echo -e "Starting to update gh-pages\n"
 
   #copy data we're interested in to other place
-  mkdir $HOME/android/
-  cp -R app/build/outputs/apk/*.apk $HOME/android/
+  mkdir $HOME/android/wear
+
+  cp -R app/build/outputs/apk/app-debug.apk $HOME/android/
+  cp -R wear/build/outputs/apk/app-debug.apk $HOME/android/wear
 
   #go to home and setup git
   cd $HOME
