@@ -4,7 +4,7 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
 
   #copy data we're interested in to other place
   mkdir $HOME/android/
-  cp -R app/build/outputs/apk/app-debug.apk $HOME/android/
+  cp -R app/build/outputs/apk/*.apk $HOME/android/
 
   #go to home and setup git
   cd $HOME
