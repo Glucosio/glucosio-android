@@ -1,4 +1,4 @@
-package org.glucosio.android;
+package org.glucosio.android.service;
 
 import com.google.android.gms.wearable.MessageEvent;
 import com.google.android.gms.wearable.WearableListenerService;
@@ -11,10 +11,10 @@ public class DataLayerListenerService extends WearableListenerService {
     @Override
     public void onMessageReceived(MessageEvent messageEvent) {
         super.onMessageReceived(messageEvent);
-       /* if("/MESSAGE".equals(messageEvent.getPath())) {
-            DatabaseHandler dB = new DatabaseHandler(this);
-            GlucoseReading gReading = new GlucoseReading(finalReading, type, finalDateTime, "");
-            dB.addGlucoseReading(gReading);
-        }*/
+            if("/GLUCOSIO_READING_WEAR".equals(messageEvent.getPath())) {
+/*                DatabaseHandler dB = new DatabaseHandler(this);
+                GlucoseReading gReading = new GlucoseReading(finalReading, type, finalDateTime, "");
+                dB.addGlucoseReading(gReading);*/
+            }
     }
 }

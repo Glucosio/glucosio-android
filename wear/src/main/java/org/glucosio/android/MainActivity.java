@@ -79,7 +79,7 @@ public class MainActivity extends Activity {
                         final Node node = nodes.get(i);
 
                         // Send glucose reading to phone
-                        Wearable.MessageApi.sendMessage(mGoogleApiClient, node.getId(), "/MESSAGE", null);
+                        Wearable.MessageApi.sendMessage(mGoogleApiClient, node.getId(), "/GLUCOSIO_READING_WEAR", "Hello World".getBytes());
                     }
                 }
             }
