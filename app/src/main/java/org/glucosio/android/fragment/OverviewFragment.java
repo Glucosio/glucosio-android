@@ -246,7 +246,7 @@ public class OverviewFragment extends Fragment {
                     yVals.add(new Entry(converted, i));
                 }
                 GlucoseRanges ranges = new GlucoseRanges(getActivity().getApplicationContext());
-                colors.add(ranges.stringToColor(ranges.colorFromRange(presenter.getReading().get(i))));
+                colors.add(ranges.stringToColor(ranges.colorFromReading(presenter.getReading().get(i))));
             }
         } else if (graphSpinner.getSelectedItemPosition() == 1){
             // Week view
@@ -328,7 +328,7 @@ public class OverviewFragment extends Fragment {
 
             lastDateTextView.setText(dateTime.convertDate(presenter.getLastDateTime()));
             GlucoseRanges ranges = new GlucoseRanges(getActivity().getApplicationContext());
-            String color = ranges.colorFromRange(Integer.parseInt(presenter.getLastReading()));
+            String color = ranges.colorFromReading(Integer.parseInt(presenter.getLastReading()));
             lastReadingTextView.setTextColor(ranges.stringToColor(color));
         }
     }
