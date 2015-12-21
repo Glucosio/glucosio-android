@@ -4,7 +4,10 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
 
   #copy data we're interested in to other place
   mkdir $HOME/android/
+  mkdir $HOME/android/wear
+
   cp -R app/build/outputs/apk/app-debug.apk $HOME/android/
+  cp -R wear/build/outputs/apk/wear-debug.apk $HOME/android/wear
 
   #go to home and setup git
   cd $HOME
