@@ -26,6 +26,12 @@
   <string name="helloactivity_hint_settings">Du kan ändra detta i inställningar senare.</string>
   <string name="helloactivity_button_next">Nästa</string>
   <string name="helloactivity_button_start">Kom igång</string>
+  <string name="fab_weight">Kroppsvikt</string>
+  <string name="fab_ketonest">Ketoner</string>
+  <string name="fab_pressure">Blodtryck</string>
+  <string name="fab_cholesterol">Kolesterolnivå</string>
+  <string name="fab_HB1AC">HB1AC värden</string>
+  <string name="fab_glucose">Blodsockernivå</string>
   <string name="fragment_empty_text">Ingen information tillgänglig ännu. \n Lägg till dina första värden här.</string>
   <string name="dialog_add_title">Lägg till blodsockernivå</string>
   <string name="dialog_add_concentration">Koncentration</string>
@@ -108,6 +114,8 @@
   <string name="assistant_feedback_desc">Om du hittar några tekniska problem eller har synpunkter om Glucosio rekommenderar vi att du skickar in den i inställningsmenyn för att hjälpa oss att förbättra Glucosio.</string>
   <string name="assistant_reading_title">Lägga till ett värde</string>
   <string name="assistant_reading_desc">Var noga med att regelbundet lägga till dina glukosvärden så att vi kan hjälpa dig att spåra dina glukosnivåer över tiden.</string>
+  <string name="assistant_export_title">Exportera din data</string>
+  <string name="assistant_export_desc">Dela din data med din läkare eller säkerhetskopiera dina data till Google Drive med hjälp av exportfunktionen.</string>
   <string name="helloactivity_spinner_preferred_range">Standardintervall</string>
   <string name="helloactivity_spinner_preferred_range_4">Anpassat intervall</string>
   <string name="helloactivity_preferred_range_min">Minvärde</string>
@@ -167,10 +175,19 @@
   <string name="about_maillist">Prenumerera på vår e-postlista</string>
   <string name="assistant_archived">Arkiverade tips</string>
   <string name="dialog_export_title">Exportera data</string>
+  <string name="activity_export_date_from">Från:</string>
   <string name="dialog_export_date_to">Till:</string>
   <string name="dialog_export_today">Välj idag</string>
   <string name="dialog_export_button">EXPORTERA</string>
   <string name="title_activity_export">Exportera data</string>
+  <string name="dialog_export_all">Exportera allt</string>
   <string name="share_using">Dela med hjälp av</string>
   <string name="share_subject">Glucosio data</string>
+  <string name="activity_export_snackbar_1">"Exporterar"</string>
+  <string name="activity_export_snackbar_2">avläsningar</string>
+  <string name="fragment_overview_permission_storage">Glucosio behöver lagringstillåtelse för att spara en skärmdump</string>
+  <string name="fragment_overview_graph_export_true">Skärmdump sparad i galleriet</string>
+  <string name="fragment_overview_graph_export_false">Fel vid sparande av skärmdump till galleriet</string>
+  <string name="dialog_export_range">Exportintervall</string>
+  <string name="activity_export_no_readings_snackbar">Inga värden att exportera.</string>
 </resources>
