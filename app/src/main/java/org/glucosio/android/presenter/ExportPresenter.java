@@ -45,14 +45,10 @@ public class ExportPresenter {
             readings = dB.getGlucoseReadings(fromDate.getTime(), toDate.getTime());
         }
 
-        if (readings.size()!=0) {
-            activity.showExportedSnackBar(readings.size());
-            ReadingToCSV csv = new ReadingToCSV(activity.getApplicationContext());
-            Uri csvUri = csv.createCSV(readings, dB.getUser(1).getPreferred_unit());
-            activity.showShareDialog(csvUri);
-        } else {
-            activity.showNoReadingsSnackBar();
-        }
+        activity.showSnackBar(readings.size());
+        ReadingToCSV csv = new ReadingToCSV(activity.getApplicationContext());
+        Uri csvUri = csv.createCSV(readings, dB.getUser(1).getPreferred_unit());
+        activity.showShareDialog(csvUri);
     }
 
 

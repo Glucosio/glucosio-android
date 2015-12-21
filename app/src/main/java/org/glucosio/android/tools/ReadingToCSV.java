@@ -77,7 +77,7 @@ public class ReadingToCSV {
             }
 
             osw.close();
-            Log.i("Glucosio", "Done exporting readings" );
+            Log.e("Glucosio", "Done writing" );
 
         } catch (Exception e) {
             e.printStackTrace();
