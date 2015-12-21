@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     private TextView dialogReading;
     private TextView exportDialogDateFrom;
     private TextView exportDialogDateTo;
+    private RadioButton exportRangeButton;
     private EditText dialogTypeCustom;
     private HomePagerAdapter homePagerAdapter;
     private boolean isCustomType;
@@ -548,7 +549,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
         exportDialogDateFrom = (TextView) exportDialog.findViewById(R.id.activity_export_date_from);
         exportDialogDateTo = (TextView) exportDialog.findViewById(R.id.activity_export_date_to);
-        final RadioButton exportRangeButton = (RadioButton) exportDialog.findViewById(R.id.activity_export_range);
+        exportRangeButton = (RadioButton) exportDialog.findViewById(R.id.activity_export_range);
         final RadioButton exportAllButton = (RadioButton) exportDialog.findViewById(R.id.activity_export_all);
         final TextView exportButton = (TextView) exportDialog.findViewById(R.id.dialog_export_add);
         final TextView cancelButton = (TextView) exportDialog.findViewById(R.id.dialog_export_cancel);
@@ -602,14 +603,19 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                 exportDialogDateFrom.setEnabled(false);
                 exportDialogDateTo.setEnabled(false);
                 exportRangeButton.setChecked(!isChecked);
+                exportButton.setEnabled(true);
             }
         });
 
         exportButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                exportPresenter.onExportClicked(exportAllButton.isChecked());
-                exportDialog.dismiss();
+                if (validateExportDialog()){
+                    exportPresenter.onExportClicked(exportAllButton.isChecked());
+                    exportDialog.dismiss();
+                } else {
+                    showSnackBar(getResources().getString(R.string.dialog_error));
+                }
             }
         });
 
@@ -620,6 +626,12 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             }
         });
 
+    }
+
+    private boolean validateExportDialog() {
+        String dateTo = exportDialogDateTo.getText().toString();
+        String dateFrom = exportDialogDateFrom.getText().toString();
+        return !exportRangeButton.isChecked() || !(dateTo.equals("") || dateFrom.equals(""));
     }
 
     private void dialogOnAddButtonPressed() {
@@ -773,9 +785,19 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         }
     }
 
-    public void showSnackBar(int nReadings) {
+    public void showExportedSnackBar(int nReadings) {
         View rootLayout = findViewById(android.R.id.content);
         Snackbar.make(rootLayout, getString(R.string.activity_export_snackbar_1) + " " + nReadings + " " + getString(R.string.activity_export_snackbar_2), Snackbar.LENGTH_SHORT).show();
+    }
+
+    public void showNoReadingsSnackBar(){
+        View rootLayout = findViewById(android.R.id.content);
+        Snackbar.make(rootLayout, getString(R.string.activity_export_no_readings_snackbar), Snackbar.LENGTH_SHORT).show();
+    }
+
+    private void showSnackBar(String text) {
+        View rootLayout = findViewById(android.R.id.content);
+        Snackbar.make(rootLayout, text, Snackbar.LENGTH_SHORT).show();
     }
 
     public void showShareDialog(Uri uri) {

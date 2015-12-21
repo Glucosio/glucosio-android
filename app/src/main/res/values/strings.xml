@@ -286,4 +286,5 @@
     <string name="fragment_overview_graph_export_true">Screenshot saved to gallery</string>
     <string name="fragment_overview_graph_export_false">Error saving screenshot to gallery</string>
     <string name="dialog_export_range">Export range</string>
+    <string name="activity_export_no_readings_snackbar">No readings to export.</string>
 </resources>
