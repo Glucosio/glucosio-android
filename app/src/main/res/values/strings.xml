@@ -48,14 +48,6 @@
     <string name="helloactivity_hint_settings">You can change these in settings later.</string>
     <string name="helloactivity_button_next">NEXT</string>
     <string name="helloactivity_button_start">GET STARTED</string>
-    
-    <string name="fab_weight">Body Weight</string>
-    <string name="fab_ketonest">Ketones</string>
-    <string name="fab_pressure">Blood Pressure</string>
-    <string name="fab_cholesterol">Cholesterol Level</string>
-    <string name="fab_HB1AC">HB1AC Reading</string>
-    <string name="fab_glucose">Blood Glucose Level</string>
-
 
     <string name="fragment_empty_text">No info available yet. \n Add your first reading here.</string>
     <string name="dialog_add_title">Add Blood Glucose Level</string>

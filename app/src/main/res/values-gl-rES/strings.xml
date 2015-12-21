@@ -26,12 +26,6 @@
   <string name="helloactivity_hint_settings">Podes cambiar estes axustes máis tarde.</string>
   <string name="helloactivity_button_next">SEGUINTE</string>
   <string name="helloactivity_button_start">COMEZAR</string>
-  <string name="fab_weight">Peso corporal</string>
-  <string name="fab_ketonest">Cetonas</string>
-  <string name="fab_pressure">Presión arterial</string>
-  <string name="fab_cholesterol">Nivel de colesterol</string>
-  <string name="fab_HB1AC">Rexistro de HB1AC</string>
-  <string name="fab_glucose">Nivel de glicosa en sangue</string>
   <string name="fragment_empty_text">Ningunha información dispoñible aínda.\nEngade o teu primeiro rexistro aquí.</string>
   <string name="dialog_add_title">Engadir o nivel de glicosa en sangue</string>
   <string name="dialog_add_concentration">Concentración</string>
@@ -114,8 +108,6 @@
   <string name="assistant_feedback_desc">Se dás con calquera problema técnico ou tes comentarios sobre Glucosio, animámoste a envialos desde o menú dos axustes co fin de contribuír á mellora e evolución de Glucosio.</string>
   <string name="assistant_reading_title">Engadir un rexistro</string>
   <string name="assistant_reading_desc">Procura ir engadindo periodicamente os teus rexistros ou lecturas de glicosa para que así poidamos axudarche a levar conta deles no tempo.</string>
-  <string name="assistant_export_title">Exportar os teus datos</string>
-  <string name="assistant_export_desc">Comparte os teus datos co teu doutor ou fai unha copia de seguranza deles en Google Drive mediante a funcionalidade de exportar.</string>
   <string name="helloactivity_spinner_preferred_range">Rango preferido</string>
   <string name="helloactivity_spinner_preferred_range_4">Personalizar rango</string>
   <string name="helloactivity_preferred_range_min">Valor mínimo</string>
@@ -175,19 +167,10 @@
   <string name="about_maillist">Subscríbete á nosa lista de correo</string>
   <string name="assistant_archived">CONSELLOS ARQUIVADOS</string>
   <string name="dialog_export_title">Exportar datos</string>
-  <string name="activity_export_date_from">Desde:</string>
   <string name="dialog_export_date_to">A:</string>
   <string name="dialog_export_today">Hoxe</string>
   <string name="dialog_export_button">EXPORTAR</string>
   <string name="title_activity_export">Exportar datos</string>
-  <string name="dialog_export_all">Exportar todo</string>
   <string name="share_using">Compartir vía</string>
   <string name="share_subject">Datos de Glucosio</string>
-  <string name="activity_export_snackbar_1">"Exportando"</string>
-  <string name="activity_export_snackbar_2">rexistros</string>
-  <string name="fragment_overview_permission_storage">Glucosio precisa de permisos de almacenamento para gardar unha captura de pantalla</string>
-  <string name="fragment_overview_graph_export_true">Captura de pantalla gardada na galería</string>
-  <string name="fragment_overview_graph_export_false">Erro ao gardar a captura de pantalla na galería</string>
-  <string name="dialog_export_range">Exportar rango</string>
-  <string name="activity_export_no_readings_snackbar">Ningún rexistro para exportar.</string>
 </resources>

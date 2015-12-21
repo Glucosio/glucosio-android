@@ -26,12 +26,6 @@
   <string name="helloactivity_hint_settings">Позже вы можете изменить свои настройки.</string>
   <string name="helloactivity_button_next">ДАЛЬШЕ</string>
   <string name="helloactivity_button_start">НАЧАТЬ</string>
-  <string name="fab_weight">Вес</string>
-  <string name="fab_ketonest">Кетоны</string>
-  <string name="fab_pressure">Кровяное давление</string>
-  <string name="fab_cholesterol">Уровень холестерина</string>
-  <string name="fab_HB1AC">Показания HB1AC</string>
-  <string name="fab_glucose">Уровень глюкозы в крови</string>
   <string name="fragment_empty_text">Информация пока не доступна. \n Добавьте сюда ваши первые данные.</string>
   <string name="dialog_add_title">Добавить уровень глюкозы в крови</string>
   <string name="dialog_add_concentration">Концентрация</string>
@@ -114,8 +108,6 @@
   <string name="assistant_feedback_desc">Если вы обнаружите какие-либо технические проблемы или захотите отправить отзыв о работе Glucosio, вы можете сделать это в меню настроек. Это поможет нам улучшить Glucosio.</string>
   <string name="assistant_reading_title">Добавить данные</string>
   <string name="assistant_reading_desc">Регулярно вводите данные об уровне глюкозы, в течением времени это поможет вам отслеживать уровень глюкозы.</string>
-  <string name="assistant_export_title">Экспорт данных</string>
-  <string name="assistant_export_desc">Поделитесь данными с вашим доктором или сделайте резервную копию ваших данных на Google Диск, используя функцию экспорта.</string>
   <string name="helloactivity_spinner_preferred_range">Предпочтительный диапазон</string>
   <string name="helloactivity_spinner_preferred_range_4">Собственный диапазон</string>
   <string name="helloactivity_preferred_range_min">Минимальное значение</string>
@@ -175,19 +167,10 @@
   <string name="about_maillist">Подписаться на наш список рассылки</string>
   <string name="assistant_archived">АРХИВИРОВАННЫЕ СОВЕТЫ</string>
   <string name="dialog_export_title">Экспорт данных</string>
-  <string name="activity_export_date_from">От:</string>
   <string name="dialog_export_date_to">Кому:</string>
   <string name="dialog_export_today">Выбрать сегодня</string>
   <string name="dialog_export_button">ЭКСПОРТ</string>
   <string name="title_activity_export">Экспорт данных</string>
-  <string name="dialog_export_all">Экспортировать всё</string>
   <string name="share_using">Поделиться через</string>
   <string name="share_subject">Данные Glucosio</string>
-  <string name="activity_export_snackbar_1">"Экспорт"</string>
-  <string name="activity_export_snackbar_2">записей</string>
-  <string name="fragment_overview_permission_storage">Glucosio требуется разрешение на доступ к хранилищу для сохранения снимка экрана</string>
-  <string name="fragment_overview_graph_export_true">Снимок экрана сохранён в галерее</string>
-  <string name="fragment_overview_graph_export_false">Ошибка сохранения снимка экрана в галерею</string>
-  <string name="dialog_export_range">Диапазон экспорта</string>
-  <string name="activity_export_no_readings_snackbar">Нет данных для экспорта.</string>
 </resources>

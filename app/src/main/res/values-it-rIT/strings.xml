@@ -15,7 +15,7 @@
   <string name="helloactivity_country">Nazione</string>
   <string name="helloactivity_age">Età</string>
   <string name="helloactivity_age_invalid">Inserisci una età valida.</string>
-  <string name="helloactivity_gender">Genere</string>
+  <string name="helloactivity_gender">Sesso</string>
   <string name="helloactivity_gender_list_1">Maschio</string>
   <string name="helloactivity_gender_list_2">Femmina</string>
   <string name="helloactivity_gender_list_3">Altro</string>
@@ -27,12 +27,6 @@
   <string name="helloactivity_hint_settings">Puoi cambiare queste impostazioni dopo.</string>
   <string name="helloactivity_button_next">SUCCESSIVO</string>
   <string name="helloactivity_button_start">INIZIAMO</string>
-  <string name="fab_weight">Peso corporeo</string>
-  <string name="fab_ketonest">Chetoni</string>
-  <string name="fab_pressure">Pressione sanguigna</string>
-  <string name="fab_cholesterol">Livello di colesterolo</string>
-  <string name="fab_HB1AC">Emoglobina glicata (HB1AC)</string>
-  <string name="fab_glucose">Livello Glicemia</string>
   <string name="fragment_empty_text">Nessuna informazione disponibile. \n Aggiungi la tua prima lettura qui.</string>
   <string name="dialog_add_title">Aggiungi livello di Glucosio nel sangue</string>
   <string name="dialog_add_concentration">Concentrazione</string>
@@ -115,8 +109,6 @@
   <string name="assistant_feedback_desc">Se trovi eventuali problemi tecnici o hai feedback su Glucosio ti invitiamo a segnalarli nel menu impostazioni, al fine di aiutarci a migliorare Glucosio.</string>
   <string name="assistant_reading_title">Aggiungi una lettura</string>
   <string name="assistant_reading_desc">Assicurati di aggiungere regolarmente le letture della tua glicemia, così possiamo aiutarti a monitorare i livelli di glucosio nel corso del tempo.</string>
-  <string name="assistant_export_title">Esporta i tuoi dati</string>
-  <string name="assistant_export_desc">Condividi le letture con il tuo medico o effettua un backup dei dati su Google Drive grazie alla nuova funzionalità esporta.</string>
   <string name="helloactivity_spinner_preferred_range">Intervallo desiderato</string>
   <string name="helloactivity_spinner_preferred_range_4">Intervallo personalizzato</string>
   <string name="helloactivity_preferred_range_min">Valore minimo</string>
@@ -176,19 +168,10 @@
   <string name="about_maillist">Iscriviti alla nostra mailing list</string>
   <string name="assistant_archived">SUGGERIMENTI ARCHIVIATI</string>
   <string name="dialog_export_title">Esporta dati</string>
-  <string name="activity_export_date_from">Dal:</string>
   <string name="dialog_export_date_to">A:</string>
   <string name="dialog_export_today">Scegli oggi</string>
   <string name="dialog_export_button">Esporta</string>
   <string name="title_activity_export">Esporta Dati</string>
-  <string name="dialog_export_all">Esporta tutto</string>
   <string name="share_using">Condividi utilizzando</string>
   <string name="share_subject">Dati di Glucosio</string>
-  <string name="activity_export_snackbar_1">"Esportazione in corso di"</string>
-  <string name="activity_export_snackbar_2">letture</string>
-  <string name="fragment_overview_permission_storage">Glucosio ha bisogno dei permessi di scrittura per salvare uno screenshot</string>
-  <string name="fragment_overview_graph_export_true">Screenshot salvato nella galleria</string>
-  <string name="fragment_overview_graph_export_false">Errore durante il salvataggio nella galleria</string>
-  <string name="dialog_export_range">Esporta intervallo di date</string>
-  <string name="activity_export_no_readings_snackbar">Nessuna lettura da esportare.</string>
 </resources>

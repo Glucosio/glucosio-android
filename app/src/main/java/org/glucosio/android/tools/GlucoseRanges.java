@@ -22,7 +22,8 @@ public class GlucoseRanges {
             this.customMax = dB.getUser(1).getCustom_range_max();
         }
     }
-    public String colorFromReading(int reading) {
+
+    public String colorFromRange(int reading) {
         // Check for Hypo/Hyperglycemia
         if (reading < 70) {
             return "purple";

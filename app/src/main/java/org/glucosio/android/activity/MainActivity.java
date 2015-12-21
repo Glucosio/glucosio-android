@@ -29,8 +29,6 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.github.clans.fab.FloatingActionButton;
-import com.github.clans.fab.FloatingActionMenu;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.google.android.gms.appinvite.AppInviteInvitation;
@@ -78,14 +76,6 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     private HomePagerAdapter homePagerAdapter;
     private boolean isCustomType;
     private MainPresenter presenter;
-
-    private FloatingActionMenu fabMenu;
-    private FloatingActionButton fabCholestorol;
-    private FloatingActionButton fabPressure;
-    private FloatingActionButton fabWeight;
-    private FloatingActionButton fabKetones;
-    private FloatingActionButton fabHbA1c;
-    private FloatingActionButton fabGlucose;
     private Tracker mTracker;
 
     @Override
@@ -254,7 +244,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         finish();
     }
 
-    public void onGlucoseFabClicked(View v) {
+    public void onFabClicked(View v) {
         showAddDialog();
     }
 
@@ -717,7 +707,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     }
 
     private void hideFabAnimation() {
-        final View fab = findViewById(R.id.fab_menu_add_reading);
+        final View fab = findViewById(R.id.main_fab);
         fab.animate()
                 .translationY(-5)
                 .alpha(0.0f)
@@ -731,7 +721,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     }
 
     private void showFabAnimation() {
-        final View fab = findViewById(R.id.fab_menu_add_reading);
+        final View fab = findViewById(R.id.main_fab);
         if (fab.getVisibility() == View.INVISIBLE) {
             // Prepare the View for the animation
             fab.setVisibility(View.VISIBLE);

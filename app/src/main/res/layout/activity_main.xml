@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:fab="http://schemas.android.com/tools"
     android:id="@+id/coordinator_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -99,79 +98,13 @@
         </RelativeLayout>
     </LinearLayout>
 
-    <com.github.clans.fab.FloatingActionMenu
-        android:id="@+id/fab_menu_add_reading"
-        android:layout_gravity="bottom|right"
-        android:layout_margin="16dp"
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/main_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-        app:menu_labels_maxLines="2"
-        app:menu_labels_ellipsize="end"
-        app:menu_fab_size="normal"
-        app:menu_showShadow="true"
-        app:menu_shadowColor="#66000000"
-        app:menu_shadowRadius="4dp"
-        app:menu_shadowXOffset="1dp"
-        app:menu_shadowYOffset="3dp"
-        app:menu_colorNormal="@color/glucosio_accent"
-        app:menu_colorPressed="@color/glucosio_accent"
-        app:menu_colorRipple="#99FFFFFF"
-        app:menu_animationDelayPerItem="50"
-        app:menu_icon="@drawable/ic_add_black_24dp">
-
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fab_weight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fab_colorNormal="@color/glucosio_fab_weight"
-            app:fab_colorPressed="@color/glucosio_fab_weight"
-            app:fab_size="mini"
-            app:fab_label="@string/fab_weight" />
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fab_ketonest"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fab_colorNormal="@color/glucosio_fab_ketonest"
-            app:fab_colorPressed="@color/glucosio_fab_ketonest"
-            app:fab_size="mini"
-            app:fab_label="@string/fab_ketonest" />
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fab_pressure"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fab_colorNormal="@color/glucosio_fab_pressure"
-            app:fab_colorPressed="@color/glucosio_fab_pressure"
-            app:fab_size="mini"
-            app:fab_label="@string/fab_pressure" />
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fab_cholesterol"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fab_colorNormal="@color/glucosio_fab_cholesterol"
-            app:fab_colorPressed="@color/glucosio_fab_cholesterol"
-            app:fab_size="mini"
-            app:fab_label="@string/fab_cholesterol" />
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fab_HB1AC"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fab_colorNormal="@color/glucosio_fab_HB1AC"
-            app:fab_colorPressed="@color/glucosio_fab_HB1AC"
-            app:fab_size="mini"
-            app:fab_label="@string/fab_HB1AC" />
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fab_glucose"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fab_colorNormal="@color/glucosio_fab_glucose"
-            app:fab_colorPressed="@color/glucosio_fab_glucose"
-            android:onClick="onGlucoseFabClicked"
-            app:fab_size="mini"
-            app:fab_label="@string/fab_glucose" />
-    </com.github.clans.fab.FloatingActionMenu>
+        android:layout_gravity="bottom|right"
+        android:layout_margin="16dp"
+        android:onClick="onFabClicked"
+        android:src="@drawable/ic_add_black_24dp"
+        app:backgroundTint="@color/glucosio_accent" />
 </android.support.design.widget.CoordinatorLayout>
