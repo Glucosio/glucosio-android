@@ -26,6 +26,12 @@
   <string name="helloactivity_hint_settings">後でこれらの設定を変更できます。</string>
   <string name="helloactivity_button_next">次へ</string>
   <string name="helloactivity_button_start">始める</string>
+  <string name="fab_weight">体重</string>
+  <string name="fab_ketonest">ケトン</string>
+  <string name="fab_pressure">血圧</string>
+  <string name="fab_cholesterol">コレステロール値</string>
+  <string name="fab_HB1AC">HB1AC 測定値</string>
+  <string name="fab_glucose">血糖値</string>
   <string name="fragment_empty_text">まだ利用可能な情報がありません。\n 最初の測定値を追加してください。</string>
   <string name="dialog_add_title">血糖値を追加</string>
   <string name="dialog_add_concentration">濃度</string>
@@ -108,6 +114,8 @@
   <string name="assistant_feedback_desc">技術的な問題を見つけたり、Glucosio についてのフィードバックをしたい場合、 Glucosio を改善するため、設定メニューでそれを送信することをお勧めします。</string>
   <string name="assistant_reading_title">測定値を追加</string>
   <string name="assistant_reading_desc">私たちが時間をかけてあなたの血糖値を追跡できるように、血糖値の測定値を定期的に追加するようにしてください。</string>
+  <string name="assistant_export_title">データをエクスポート</string>
+  <string name="assistant_export_desc">エクスポート機能を使用して、お医者さんとデータを共有したり、Google ドライブにデータをバックアップします。</string>
   <string name="helloactivity_spinner_preferred_range">使用する範囲</string>
   <string name="helloactivity_spinner_preferred_range_4">カスタムの範囲</string>
   <string name="helloactivity_preferred_range_min">最小値</string>
@@ -166,4 +174,20 @@
   <string name="about_discussion">私たちのコミュニティに参加</string>
   <string name="about_maillist">私たちのメーリングリストを購読</string>
   <string name="assistant_archived">アーカイブされたヒント</string>
+  <string name="dialog_export_title">データをエクスポート</string>
+  <string name="activity_export_date_from">開始:</string>
+  <string name="dialog_export_date_to">終了:</string>
+  <string name="dialog_export_today">今日を選択</string>
+  <string name="dialog_export_button">エクスポート</string>
+  <string name="title_activity_export">データをエクスポート</string>
+  <string name="dialog_export_all">すべてエクスポート</string>
+  <string name="share_using">次を使用して共有</string>
+  <string name="share_subject">Glucosio データ</string>
+  <string name="activity_export_snackbar_1">"エクスポート中"</string>
+  <string name="activity_export_snackbar_2">測定値</string>
+  <string name="fragment_overview_permission_storage">Glucosio は、スクリーン ショットを保存するストレージのアクセス許可が必要です</string>
+  <string name="fragment_overview_graph_export_true">スクリーン ショットをギャラリーに保存しました</string>
+  <string name="fragment_overview_graph_export_false">スクリーン ショットをギャラリーに保存中にエラー</string>
+  <string name="dialog_export_range">エクスポート範囲</string>
+  <string name="activity_export_no_readings_snackbar">エクスポートする測定値はありません。</string>
 </resources>

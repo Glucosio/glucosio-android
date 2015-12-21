@@ -26,6 +26,12 @@
   <string name="helloactivity_hint_settings">Podeu canviar-ho més tard a les preferències.</string>
   <string name="helloactivity_button_next">SEGÜENT</string>
   <string name="helloactivity_button_start">COMENÇA</string>
+  <string name="fab_weight">Pes corporal</string>
+  <string name="fab_ketonest">Cetones</string>
+  <string name="fab_pressure">Pressió arterial</string>
+  <string name="fab_cholesterol">Nivell de colesterol</string>
+  <string name="fab_HB1AC">Lectura del HB1AC</string>
+  <string name="fab_glucose">Nivell de glucosa en sang</string>
   <string name="fragment_empty_text">Encara no hi ha informació disponible.\n Afegiu aquí la vostra primera lectura.</string>
   <string name="dialog_add_title">Afegeix nivell de glucosa a la sang</string>
   <string name="dialog_add_concentration">Concentració</string>
@@ -108,6 +114,8 @@
   <string name="assistant_feedback_desc">Si trobeu incidències tècniques o teniu comentaris sobre Glucosio us animem a enviar-ho des del menú de configuració per tal d\'ajudar-nos a millorar Glucosio.</string>
   <string name="assistant_reading_title">Afegeix una lectura</string>
   <string name="assistant_reading_desc">Assegureu-vos d\'afegir regularment les vostres lectures de glucosa per tal que puguem ajudar-vos a fer un seguiment dels vostres nivells de glucosa al llarg del temps.</string>
+  <string name="assistant_export_title">Exporteu les vostres dades</string>
+  <string name="assistant_export_desc">Compartiu les dades amb el vostre doctor o realitzeu una còpia de seguretat a Google Drive amb la funció d\'exportació.</string>
   <string name="helloactivity_spinner_preferred_range">Rang preferit</string>
   <string name="helloactivity_spinner_preferred_range_4">Rang personalitzat</string>
   <string name="helloactivity_preferred_range_min">Valor mínim</string>
@@ -166,4 +174,20 @@
   <string name="about_discussion">Uniu-vos a la nostra comunitat de discussió</string>
   <string name="about_maillist">Subscriviu-vos a la nostra llista de correu</string>
   <string name="assistant_archived">CONSELLS ARXIVATS</string>
+  <string name="dialog_export_title">Exporta les dades</string>
+  <string name="activity_export_date_from">Des de:</string>
+  <string name="dialog_export_date_to">A:</string>
+  <string name="dialog_export_today">Tria avui</string>
+  <string name="dialog_export_button">EXPORTA</string>
+  <string name="title_activity_export">Exporta les dades</string>
+  <string name="dialog_export_all">Exporta tot</string>
+  <string name="share_using">Comparteix amb</string>
+  <string name="share_subject">Dades de Glucosio</string>
+  <string name="activity_export_snackbar_1">"S'està exportant"</string>
+  <string name="activity_export_snackbar_2">lectures</string>
+  <string name="fragment_overview_permission_storage">El Glucosio necessita permisos d\'emmagatzematge per desar captures de pantalla</string>
+  <string name="fragment_overview_graph_export_true">S\'ha desat la captura a la galeria</string>
+  <string name="fragment_overview_graph_export_false">S\'ha produït un error en desar la captura a la galeria</string>
+  <string name="dialog_export_range">Rang d\'exportació</string>
+  <string name="activity_export_no_readings_snackbar">No hi ha lectures per a exportar.</string>
 </resources>

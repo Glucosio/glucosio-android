@@ -3,6 +3,7 @@
 <resources>
   <string name="action_settings">Einstellungen</string>
   <string name="action_feedback">Rückmeldung senden</string>
+  <string name="action_invite">Einen Freund einladen</string>
   <string name="tab_overview">Übersicht</string>
   <string name="tab_history">Verlauf</string>
   <string name="tab_tips">Tipps</string>
@@ -25,6 +26,7 @@
   <string name="helloactivity_hint_settings">Sie können dies später in den Einstellungen ändern.</string>
   <string name="helloactivity_button_next">NÄCHSTE</string>
   <string name="helloactivity_button_start">LOSLEGEN</string>
+  <string name="fragment_empty_text">Bisher keine Werte gespeichert. \n Starte jetzt deine erste Messung.</string>
   <string name="dialog_add_title">Blutzuckerspiegel hinzufügen</string>
   <string name="dialog_add_concentration">Konzentration</string>
   <string name="dialog_add_date">Datum</string>
@@ -36,7 +38,11 @@
   <string name="dialog_add_type_4">Nach dem Mittagessen</string>
   <string name="dialog_add_type_5">Vor dem Abendessen</string>
   <string name="dialog_add_type_6">Nach dem Abendessen</string>
+  <string name="dialog_add_type_7">Jause</string>
   <string name="dialog_add_type_9">Nacht</string>
+  <string name="dialog_add_type_10">Nüchtern-Zucker</string>
+  <string name="dialog_add_type_11">Kontrollmessung</string>
+  <string name="dialog_add_type_12">Sonstiges</string>
   <string name="dialog_add_cancel">ABBRECHEN</string>
   <string name="dialog_add_add">HINZUFÜGEN</string>
   <string name="dialog_error2">Bitte einen gültigen Wert eingeben.</string>
@@ -79,4 +85,55 @@
     <item>Visiting your doctor once a year and having regular communication throughout the year is important for diabetics to prevent any sudden onset of associated health problems.</item>
     <item>Take your medicine as prescribed by your doctor even small lapses in your medicine can impact your blood glucose level and cause other side effects. If having difficulty remembering ask your doctor about medication management and reminder options.</item>
   </string-array>
+  <string name="assistant">Einrichte-Assistent</string>
+  <string name="assistant_action_update">Jetzt aktualisieren</string>
+  <string name="assistant_action_feedback">Kontaktiere uns</string>
+  <string name="assistant_action_reading">Speichere deine Messung</string>
+  <string name="assistant_weight_title">Aktualisiere dein Gewicht</string>
+  <string name="assistant_categories_title">Kategorie erstellen</string>
+  <string name="assistant_reading_title">Messwert hinzufügen</string>
+  <string name="helloactivity_preferred_range_min">Minimumwert</string>
+  <string name="helloactivity_preferred_range_max">Maximalwert</string>
+  <string name="helloactivity_language">Sprache</string>
+  <string name="invitation_title">Empfehle Glucosio weiter</string>
+  <string name="invitation_message">Teste Glucosio, ein Open Source Programm für Diabetes-Managment und Forschung.</string>
+  <string name="invitation_cta">Teste Glucosio</string>
+  <string name="title_activity_backup">Programmdaten sichern</string>
+  <string name="preferences_privacy">Datenschutz</string>
+  <string name="helloactivity_textview_tos">Durch die Verwendung von Glucosio akzeptierst du die</string>
+  <string name="preferences_about_glucosio">Über Glucosio</string>
+  <string name="preferences_rate">Bewerte Glucosio</string>
+  <string name="preferences_licences_open">Open Source Lizenz</string>
+  <string name="about_donate">Spende für Glucosio</string>
+  <string name="reading_ok">Optimal</string>
+  <string name="reading_hypo">Hypoglykämie</string>
+  <string name="reading_low">Niedrig</string>
+  <string name="reading_high">Hoch</string>
+  <string name="reading_hyper">Hyperglykämie</string>
+  <string name="dialog_add_exercisetype_2">Schnelles gehen</string>
+  <string name="dialog_add_exercisetype_3">Joggen</string>
+  <string name="dialog_add_exercisetype_4">Laufen</string>
+  <string name="dialog_add_exercisetype_5">Schwimmen</string>
+  <string name="dialog_add_exercisetype_6">Tanzen</string>
+  <string name="dialog_add_exercisetype_7">Inlineskating</string>
+  <string name="dialog_add_exercisetype_8">Radfahren</string>
+  <string name="dialog_add_exercisetype_9">Golf spielen</string>
+  <string name="dialog_add_exercisetype_11">Federball</string>
+  <string name="dialog_add_exercisetype_12">Fußball</string>
+  <string name="dialog_add_exercisetype_13">Basketball</string>
+  <string name="dialog_add_exercisetype_14">Volleyball</string>
+  <string name="dialog_add_exercisetype_15">Cricket</string>
+  <string name="dialog_add_exercisetype_16">Frisbee</string>
+  <string name="dialog_add_exercisetype_17">Schifahren</string>
+  <string name="dialog_add_exercisetype_18">Boxen</string>
+  <string name="dialog_add_exercisetype_19">Tennis</string>
+  <string name="dialog_add_exercisetype_20">Tischtennis</string>
+  <string name="dialog_add_exercisetype_22">Klettern</string>
+  <string name="dialog_add_exercisetype_24">Wandern</string>
+  <string name="dialog_addfood_carbs">Kohlenhydrate:</string>
+  <string name="dialog_addfood_protein">Eiweiß:</string>
+  <string name="dialog_addfood_sugars">Zucker:</string>
+  <string name="dialog_export_title">Daten exportieren</string>
+  <string name="dialog_export_button">Export</string>
+  <string name="title_activity_export">Daten exportieren</string>
 </resources>

@@ -27,6 +27,12 @@
   <string name="helloactivity_hint_settings">您可以在以后更改这些设置。</string>
   <string name="helloactivity_button_next">下一步</string>
   <string name="helloactivity_button_start">开始使用</string>
+  <string name="fab_weight">体重</string>
+  <string name="fab_ketonest">酮体</string>
+  <string name="fab_pressure">血压</string>
+  <string name="fab_cholesterol">胆固醇水平</string>
+  <string name="fab_HB1AC">糖化血红蛋白指数</string>
+  <string name="fab_glucose">血糖水平</string>
   <string name="fragment_empty_text">尚无可用信息。\n先在这里阅读一些信息吧。</string>
   <string name="dialog_add_title">添加血糖水平</string>
   <string name="dialog_add_concentration">浓度</string>
@@ -110,6 +116,8 @@
   <string name="assistant_feedback_desc">如果您发现了任何技术问题，或有关于 Glucosio 的反馈，我们鼓励您在设置菜单中提交它，以帮助我们改进 Glucosio。</string>
   <string name="assistant_reading_title">添加阅读</string>
   <string name="assistant_reading_desc">一定要定期添加您的血糖读数，以便我们帮助您随时间跟踪您的血糖水平。</string>
+  <string name="assistant_export_title">导出您的数据</string>
+  <string name="assistant_export_desc">使用导出功能，您可以与您的医生分享您的数据，或者备份您的数据到 Google Drive。</string>
   <string name="helloactivity_spinner_preferred_range">首选范围</string>
   <string name="helloactivity_spinner_preferred_range_4">自定义范围</string>
   <string name="helloactivity_preferred_range_min">最小值</string>
@@ -168,4 +176,20 @@
   <string name="about_discussion">加入我们的讨论社区</string>
   <string name="about_maillist">订阅我们的邮件列表</string>
   <string name="assistant_archived">已存档提示</string>
+  <string name="dialog_export_title">导出数据</string>
+  <string name="activity_export_date_from">从：</string>
+  <string name="dialog_export_date_to">至：</string>
+  <string name="dialog_export_today">选择今天</string>
+  <string name="dialog_export_button">导出</string>
+  <string name="title_activity_export">导出日期</string>
+  <string name="dialog_export_all">全部导出</string>
+  <string name="share_using">分享方式</string>
+  <string name="share_subject">Glucosio 数据</string>
+  <string name="activity_export_snackbar_1">"导出"</string>
+  <string name="activity_export_snackbar_2">读数</string>
+  <string name="fragment_overview_permission_storage">Glucosio 需要存储权限以保存截图</string>
+  <string name="fragment_overview_graph_export_true">截图已保存到图库</string>
+  <string name="fragment_overview_graph_export_false">保存截图到图库出错</string>
+  <string name="dialog_export_range">导出范围</string>
+  <string name="activity_export_no_readings_snackbar">没有读数可导出。</string>
 </resources>

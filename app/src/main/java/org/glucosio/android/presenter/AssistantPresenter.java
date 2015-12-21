@@ -20,4 +20,8 @@ public class AssistantPresenter {
     public void openGitty() {
         fragment.openGitty();
     }
+
+    public void startExportActivity() {
+        fragment.startExportActivity();
+    }
 }

@@ -26,6 +26,12 @@
   <string name="helloactivity_hint_settings">U kunt dit later wijzigen in de instellingen.</string>
   <string name="helloactivity_button_next">VOLGENDE</string>
   <string name="helloactivity_button_start">AAN DE SLAG</string>
+  <string name="fab_weight">Lichaamsgewicht</string>
+  <string name="fab_ketonest">Ketonen</string>
+  <string name="fab_pressure">Bloeddruk</string>
+  <string name="fab_cholesterol">Cholesterolspiegel</string>
+  <string name="fab_HB1AC">HB1AC-uitlezing</string>
+  <string name="fab_glucose">Bloedsuikerspiegel</string>
   <string name="fragment_empty_text">Nog geen info beschikbaar. \n Voeg hier uw eerste uitlezing toe.</string>
   <string name="dialog_add_title">Bloedsuikerspiegel toevoegen</string>
   <string name="dialog_add_concentration">Concentratie</string>
@@ -108,6 +114,8 @@
   <string name="assistant_feedback_desc">Als u technische problemen tegenkomt of feedback over Glucosio hebt, zien we graag dat u deze indient in het instellingenmenu om Glucosio te helpen verbeteren.</string>
   <string name="assistant_reading_title">Een uitlezing toevoegen</string>
   <string name="assistant_reading_desc">Zorg ervoor dat u regelmatig uw glucose-uitlezingen toevoegt, zodat we kunnen helpen uw glucosegehalten in de loop der tijd bij te houden.</string>
+  <string name="assistant_export_title">Uw gegevens exporteren</string>
+  <string name="assistant_export_desc">Deel uw gegevens met uw arts of plaats een back-up ervan op Google Drive via de exporteerfunctie.</string>
   <string name="helloactivity_spinner_preferred_range">Voorkeursbereik</string>
   <string name="helloactivity_spinner_preferred_range_4">Aangepast bereik</string>
   <string name="helloactivity_preferred_range_min">Min. waarde</string>
@@ -166,4 +174,20 @@
   <string name="about_discussion">Deelnemen aan onze discussiegemeenschap</string>
   <string name="about_maillist">Inschrijven voor onze mailinglijst</string>
   <string name="assistant_archived">GEARCHIVEERDE TIPS</string>
+  <string name="dialog_export_title">Gegevens exporteren</string>
+  <string name="activity_export_date_from">Van:</string>
+  <string name="dialog_export_date_to">Naar:</string>
+  <string name="dialog_export_today">Vandaag kiezen</string>
+  <string name="dialog_export_button">EXPORTEREN</string>
+  <string name="title_activity_export">Gegevens exporteren</string>
+  <string name="dialog_export_all">Alles exporteren</string>
+  <string name="share_using">Delen via</string>
+  <string name="share_subject">Glucosio-gegevens</string>
+  <string name="activity_export_snackbar_1">"Exporteren"</string>
+  <string name="activity_export_snackbar_2">uitlezingen</string>
+  <string name="fragment_overview_permission_storage">Glucosio heeft een opslagmachtiging nodig om een schermafbeelding op te slaan</string>
+  <string name="fragment_overview_graph_export_true">Schermafbeelding opgeslagen naar galerij</string>
+  <string name="fragment_overview_graph_export_false">Fout bij opslaan van schermafbeelding naar galerij</string>
+  <string name="dialog_export_range">Bereik exporteren</string>
+  <string name="activity_export_no_readings_snackbar">Geen uitlezingen te exporteren.</string>
 </resources>

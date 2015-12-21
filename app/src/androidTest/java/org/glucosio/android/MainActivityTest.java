@@ -16,7 +16,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 
 /**
- * Created by piotr on 29.10.15.
+ * @author piotr on 29/10/15.
  */
 @RunWith(AndroidJUnit4.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -25,8 +25,16 @@ public class MainActivityTest {
     @Rule
     public ActivityTestRule<MainActivity> mRule = new ActivityTestRule<>(MainActivity.class);
 
+    HelloActivityTest previousTest = new HelloActivityTest();
+
+    private void goThroughHelloActivity() throws InterruptedException {
+        previousTest.check_004_IfICanEnterMyAgeUsingHelloAgeEditText();
+        previousTest.check_009_IfICanSubmitAnyData();
+    }
+
     @Test
-    public void check_001_ifToolbarIsDisplayed() throws InterruptedException {
+    public void check_001_checkIfToolbarIsDisplayed() throws InterruptedException {
+        goThroughHelloActivity();
         onView(withId(R.id.toolbar)).check(matches(isDisplayed()));
     }
 }

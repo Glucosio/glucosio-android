@@ -158,22 +158,27 @@
     <string name="assistant_feedback_desc">If you find any technical issues or have feedback about Glucosio we encourage you to submit it in the settings menu in order to help us improve Glucosio.</string>
     <string name="assistant_reading_title">Add a reading</string>
     <string name="assistant_reading_desc">Be sure to regularly add your glucose readings so we can help you track your glucose levels over time.</string>
+    <string name="assistant_export_title">Export your data</string>
+    <string name="assistant_export_desc">Share your data with your doctor or backup your data to Google Drive using the export feature.</string>
 
     <string-array name="assistant_titles" translatable="false">
         <item>@string/assistant_feedback_title</item>
         <item>@string/assistant_reading_title</item>
         <item>@string/assistant_categories_title</item>
+        <item>@string/assistant_export_title</item>
     </string-array>
     <string-array name="assistant_descriptions" translatable="false">
         <item>@string/assistant_feedback_desc</item>
         <item>@string/assistant_reading_desc</item>
         <item>@string/assistant_categories_desc</item>
+        <item>@string/assistant_export_desc</item>
     </string-array>
 
     <string-array name="assistant_actions" translatable="false">
         <item>@string/assistant_action_feedback</item>
         <item>@string/assistant_action_reading</item>
         <item>@string/assistant_action_try</item>
+        <item>@string/dialog_export_button</item>
     </string-array>
 
     <string name="helloactivity_spinner_preferred_range">Preferred range</string>
@@ -213,49 +218,65 @@
 
 
     <!-- Future Strings Baked In Early For l10n -->
-<!-- Exercise Types -->   
+    <!-- Exercise Types -->
 
-<string name="dialog_add_exercisetype_1">Leisurely walking</string>
-<string name="dialog_add_exercisetype_2">Walking fast</string>
-<string name="dialog_add_exercisetype_3">Jogging</string>
-<string name="dialog_add_exercisetype_4">Running</string>
-<string name="dialog_add_exercisetype_5">Swimming</string>
-<string name="dialog_add_exercisetype_6">Dancing</string>
-<string name="dialog_add_exercisetype_7">Roller skating</string>
-<string name="dialog_add_exercisetype_8">Bicycling</string>
-<string name="dialog_add_exercisetype_9">Golf</string>
-<string name="dialog_add_exercisetype_10">Softball</string>
-<string name="dialog_add_exercisetype_11">Badminton</string>
-<string name="dialog_add_exercisetype_12">Football</string>
-<string name="dialog_add_exercisetype_13">Basketball</string>
-<string name="dialog_add_exercisetype_14">Volleyball</string>
-<string name="dialog_add_exercisetype_15">Cricket</string>
-<string name="dialog_add_exercisetype_16">Frisbee</string>
-<string name="dialog_add_exercisetype_17">Skiing</string>
-<string name="dialog_add_exercisetype_18">Boxing</string>
-<string name="dialog_add_exercisetype_19">Tennis</string>
-<string name="dialog_add_exercisetype_20">Table tennis</string>
-<string name="dialog_add_exercisetype_21">Martial arts</string>
-<string name="dialog_add_exercisetype_22">Rock-climbing</string>
-<string name="dialog_add_exercisetype_23">Wrestling</string>
-<string name="dialog_add_exercisetype_24">Hiking</string>
-<string name="dialog_add_exercisetype_25">Yard work</string>
+    <string name="dialog_add_exercisetype_1">Leisurely walking</string>
+    <string name="dialog_add_exercisetype_2">Walking fast</string>
+    <string name="dialog_add_exercisetype_3">Jogging</string>
+    <string name="dialog_add_exercisetype_4">Running</string>
+    <string name="dialog_add_exercisetype_5">Swimming</string>
+    <string name="dialog_add_exercisetype_6">Dancing</string>
+    <string name="dialog_add_exercisetype_7">Roller skating</string>
+    <string name="dialog_add_exercisetype_8">Bicycling</string>
+    <string name="dialog_add_exercisetype_9">Golf</string>
+    <string name="dialog_add_exercisetype_10">Softball</string>
+    <string name="dialog_add_exercisetype_11">Badminton</string>
+    <string name="dialog_add_exercisetype_12">Football</string>
+    <string name="dialog_add_exercisetype_13">Basketball</string>
+    <string name="dialog_add_exercisetype_14">Volleyball</string>
+    <string name="dialog_add_exercisetype_15">Cricket</string>
+    <string name="dialog_add_exercisetype_16">Frisbee</string>
+    <string name="dialog_add_exercisetype_17">Skiing</string>
+    <string name="dialog_add_exercisetype_18">Boxing</string>
+    <string name="dialog_add_exercisetype_19">Tennis</string>
+    <string name="dialog_add_exercisetype_20">Table tennis</string>
+    <string name="dialog_add_exercisetype_21">Martial arts</string>
+    <string name="dialog_add_exercisetype_22">Rock-climbing</string>
+    <string name="dialog_add_exercisetype_23">Wrestling</string>
+    <string name="dialog_add_exercisetype_24">Hiking</string>
+    <string name="dialog_add_exercisetype_25">Yard work</string>
 
-<!-- Food Entry Labels -->
+    <!-- Food Entry Labels -->
 
-<string name="dialog_addfood_carbs">Carbs:</string>
-<string name="dialog_addfood_protein">Protein:</string>
-<string name="dialog_addfood_sugars">Sugars:</string>
-<string name="dialog_addfood_fat">Fat:</string>
+    <string name="dialog_addfood_carbs">Carbs:</string>
+    <string name="dialog_addfood_protein">Protein:</string>
+    <string name="dialog_addfood_sugars">Sugars:</string>
+    <string name="dialog_addfood_fat">Fat:</string>
 
 
-<!-- About Glucosio Strings -->
+    <!-- About Glucosio Strings -->
 
-<string name="about_credits">Credits</string>
-<string name="about_contribute">Contribute</string>
-<string name="about_contributel10n">Contribute to Translation</string>
-<string name="about_contributedev">Contribute to Development</string>
-<string name="about_discussion">Join our discussion community</string>
-<string name="about_maillist">Subscribe to our mailing list</string>
+    <string name="about_credits">Credits</string>
+    <string name="about_contribute">Contribute</string>
+    <string name="about_contributel10n">Contribute to Translation</string>
+    <string name="about_contributedev">Contribute to Development</string>
+    <string name="about_discussion">Join our discussion community</string>
+    <string name="about_maillist">Subscribe to our mailing list</string>
     <string name="assistant_archived">ARCHIVED TIPS</string>
+    <string name="dialog_export_title">Export data</string>
+    <string name="activity_export_date_from">From:</string>
+    <string name="dialog_export_date_to">To:</string>
+    <string name="dialog_export_today">Pick today</string>
+    <string name="dialog_export_button">EXPORT</string>
+    <string name="title_activity_export">Export Data</string>
+    <string name="dialog_export_all">Export everything</string>
+    <string name="share_using">Share using</string>
+    <string name="share_subject">Glucosio data</string>
+    <string name="activity_export_snackbar_1">"Exporting"</string>
+    <string name="activity_export_snackbar_2">readings</string>
+    <string name="fragment_overview_permission_storage">Glucosio needs storage permission to save a screenshot</string>
+    <string name="fragment_overview_graph_export_true">Screenshot saved to gallery</string>
+    <string name="fragment_overview_graph_export_false">Error saving screenshot to gallery</string>
+    <string name="dialog_export_range">Export range</string>
+    <string name="activity_export_no_readings_snackbar">No readings to export.</string>
 </resources>

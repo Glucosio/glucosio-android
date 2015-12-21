@@ -204,4 +204,8 @@ public class AssistantFragment extends Fragment {
     public void openGitty(){
         ((MainActivity)getActivity()).startGittyReporter();
     }
+
+    public void startExportActivity() {
+        ((MainActivity)getActivity()).showExportDialog();
+    }
 }
