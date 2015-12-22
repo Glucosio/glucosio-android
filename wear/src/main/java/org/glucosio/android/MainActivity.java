@@ -4,7 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
+import android.support.wearable.view.DelayedConfirmationView;
+import android.support.wearable.view.WearableListView;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -16,18 +19,23 @@ import com.google.android.gms.wearable.Wearable;
 
 import java.util.List;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements
+        DelayedConfirmationView.DelayedConfirmationListener, WearableListView.ClickListener{
 
-    private TextView mTextView;
     private static final int SPEECH_REQUEST_CODE = 0;
     private GoogleApiClient mGoogleApiClient;
-    String spokenText;
+    private String spokenText;
+    private DelayedConfirmationView mDelayedView;
+    private String[] typeArray;
+    private FrameLayout listFrame;
+    private FrameLayout confirmFrame;
+    private TextView confirmTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mTextView = (TextView) findViewById(R.id.glucose_value);
+        typeArray = getResources().getStringArray(R.array.dialog_add_measured_list);
 
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -36,6 +44,56 @@ public class MainActivity extends Activity {
         mGoogleApiClient.connect();
 
         displaySpeechRecognizer();
+
+        // Get the list component from the layout of the activity
+        WearableListView listView =
+                (WearableListView) findViewById(R.id.reading_type_list);
+        mDelayedView =
+                (DelayedConfirmationView) findViewById(R.id.delayed_confirm);
+        mDelayedView.setListener(this);
+        listFrame = (FrameLayout) findViewById(R.id.list_frame);
+        confirmFrame = (FrameLayout) findViewById(R.id.confirm_frame);
+        confirmTextView = (TextView) findViewById(R.id.confirm_textview);
+
+        // Assign an adapter to the list
+        listView.setAdapter(new Adapter(this, typeArray));
+
+        // Set a click listener
+        listView.setClickListener(this);
+    }
+
+    @Override
+    public void onTimerFinished(View view) {
+        // User didn't cancel, perform the action
+    }
+
+    @Override
+    public void onTimerSelected(View view) {
+        // User canceled, abort the action
+    }
+
+    // WearableListView click listener
+    @Override
+    public void onClick(WearableListView.ViewHolder v) {
+        Integer tag = (Integer) v.itemView.getTag();
+        // use this data to complete some action ...
+        String type = typeArray[tag];
+
+
+        // Show confirm dialog
+        listFrame.setVisibility(View.GONE);
+        confirmFrame.setVisibility(View.VISIBLE);
+
+        confirmTextView.setText(spokenText + ", " + type);
+
+        // Two seconds to cancel the action
+        mDelayedView.setTotalTimeMs(2000);
+        // Start the timer
+        mDelayedView.start();
+    }
+
+    @Override
+    public void onTopEmptyRegionClick() {
     }
 
     // Create an intent that can start the Speech Recognizer activity
@@ -56,9 +114,8 @@ public class MainActivity extends Activity {
             List<String> results = data.getStringArrayListExtra(
                     RecognizerIntent.EXTRA_RESULTS);
             spokenText = results.get(0);
+            // Send text to phone
 
-
-            mTextView.setText(spokenText);
         } else {
             finish();
         }
