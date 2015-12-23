@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.AlphaAnimation;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -98,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
+        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
 
         if (toolbar != null) {
             setSupportActionBar(toolbar);
@@ -144,6 +145,24 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             @Override
             public void onPageScrollStateChanged(int state) {
 
+            }
+        });
+
+        fabMenu = (FloatingActionMenu) findViewById(R.id.fab_menu_add_reading);
+
+        fabMenu.setOnMenuToggleListener(new FloatingActionMenu.OnMenuToggleListener() {
+            @Override
+            public void onMenuToggle(boolean opened) {
+                if (opened){
+                    AlphaAnimation alpha = new AlphaAnimation(1F, 0.8F);
+                    alpha.setDuration(100);
+                    alpha.setFillAfter(true);
+                    viewPager.startAnimation(alpha);
+                } else {
+                    AlphaAnimation alpha = new AlphaAnimation(0.8F, 1F);
+                    alpha.setDuration(100);
+                    alpha.setFillAfter(true);
+                    viewPager.startAnimation(alpha);                }
             }
         });
 
