@@ -38,6 +38,13 @@
         android:visibility="visible"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
+    <FrameLayout
+        android:visibility="gone"
+        android:id="@+id/whiteLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"/>
+
     <LinearLayout
         android:id="@+id/mainactivity_empty_layout"
         android:layout_width="match_parent"
@@ -111,7 +118,9 @@
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="10dp"
         app:menu_labels_maxLines="2"
-        app:menu_labels_ellipsize="end"
+        app:menu_labels_textColor="#222222"
+        app:menu_labels_colorPressed="#dedede"
+        app:menu_labels_colorNormal="#ffffff"
         app:menu_fab_size="normal"
         app:menu_showShadow="true"
         app:menu_shadowColor="#66000000"
@@ -177,7 +186,7 @@
             app:fab_colorNormal="@color/glucosio_fab_glucose"
             app:fab_colorPressed="@color/glucosio_fab_glucose"
             android:onClick="onGlucoseFabClicked"
-            app:fab_size="mini"
+            app:fab_size="normal"
             app:fab_label="@string/fab_glucose" />
     </com.github.clans.fab.FloatingActionMenu>
 </android.support.design.widget.CoordinatorLayout>

@@ -24,6 +24,7 @@ import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -79,6 +80,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     private HomePagerAdapter homePagerAdapter;
     private boolean isCustomType;
     private MainPresenter presenter;
+    private FrameLayout whiteLayout;
 
     private FloatingActionMenu fabMenu;
     private FloatingActionButton fabCholestorol;
@@ -148,21 +150,23 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             }
         });
 
+        whiteLayout = (FrameLayout) findViewById(R.id.whiteLayout);
         fabMenu = (FloatingActionMenu) findViewById(R.id.fab_menu_add_reading);
-
+        fabMenu.setClosedOnTouchOutside(true);
         fabMenu.setOnMenuToggleListener(new FloatingActionMenu.OnMenuToggleListener() {
             @Override
             public void onMenuToggle(boolean opened) {
                 if (opened){
-                    AlphaAnimation alpha = new AlphaAnimation(1F, 0.8F);
-                    alpha.setDuration(100);
+                    AlphaAnimation alpha = new AlphaAnimation(0F, 0.8F);
+                    alpha.setDuration(600);
                     alpha.setFillAfter(true);
-                    viewPager.startAnimation(alpha);
+                    whiteLayout.startAnimation(alpha);
                 } else {
-                    AlphaAnimation alpha = new AlphaAnimation(0.8F, 1F);
-                    alpha.setDuration(100);
+                    AlphaAnimation alpha = new AlphaAnimation(0.8F, 0F);
+                    alpha.setDuration(200);
                     alpha.setFillAfter(true);
-                    viewPager.startAnimation(alpha);                }
+                    whiteLayout.startAnimation(alpha);
+                }
             }
         });
 
@@ -274,6 +278,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     }
 
     public void onGlucoseFabClicked(View v) {
+        fabMenu.toggle(false);
         showAddDialog();
     }
 
