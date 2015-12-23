@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/Glucosio/glucosio-android.svg)](https://travis-ci.org/Glucosio/glucosio-android)
 [![Stories in Ready](https://badge.waffle.io/Glucosio/android.svg?label=ready&title=Ready)](http://waffle.io/Glucosio/android)
 # Glucosio for Android
-Glucosio for Android, an user centered free and open source app for diabetes management and research for Android.
+Glucosio for Android, an user centered free and open source app for Diabetes management and research for Android.
 
  https://glucosio.org
  
