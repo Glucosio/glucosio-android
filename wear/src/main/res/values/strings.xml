@@ -12,6 +12,7 @@
     <string name="dialog_add_type_10">Fasting glucose</string>
     <string name="dialog_add_type_11">Recheck</string>
     <string name="dialog_add_type_12">Other</string>
+    <string name="wear_error">Unable to connect to phone</string>
     <string-array name="dialog_add_measured_list" translatable="false">
         <item>@string/dialog_add_type_1</item>
         <item>@string/dialog_add_type_2</item>

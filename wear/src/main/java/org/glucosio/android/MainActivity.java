@@ -1,6 +1,7 @@
 package org.glucosio.android;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
@@ -10,21 +11,20 @@ import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.PendingResult;
-import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.wearable.Node;
 import com.google.android.gms.wearable.NodeApi;
 import com.google.android.gms.wearable.Wearable;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends Activity implements
         DelayedConfirmationView.DelayedConfirmationListener, WearableListView.ClickListener{
 
     private static final int SPEECH_REQUEST_CODE = 0;
-    private GoogleApiClient mGoogleApiClient;
     private String spokenText;
     private DelayedConfirmationView mDelayedView;
     private String[] typeArray;
@@ -33,18 +33,17 @@ public class MainActivity extends Activity implements
     private TextView confirmTextView;
     private String finalString;
 
+    private static final long CONNECTION_TIME_OUT_MS = 10000;
+    private GoogleApiClient client;
+    private String nodeId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         typeArray = getResources().getStringArray(R.array.dialog_add_measured_list);
 
-
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .addApi(Wearable.API)
-                .build();
-        mGoogleApiClient.connect();
-
+        initApi();
         displaySpeechRecognizer();
 
         // Get the list component from the layout of the activity
@@ -64,9 +63,69 @@ public class MainActivity extends Activity implements
         listView.setClickListener(this);
     }
 
+    /**
+     * Initializes the GoogleApiClient and gets the Node ID of the connected device.
+     */
+    private void initApi() {
+        client = getGoogleApiClient(this);
+        retrieveDeviceNode();
+    }
+
+    /**
+     * Returns a GoogleApiClient that can access the Wear API.
+     * @param context
+     * @return A GoogleApiClient that can make calls to the Wear API
+     */
+    private GoogleApiClient getGoogleApiClient(Context context) {
+        return new GoogleApiClient.Builder(context)
+                .addApi(Wearable.API)
+                .build();
+    }
+
+
+    /**
+     * Connects to the GoogleApiClient and retrieves the connected device's Node ID. If there are
+     * multiple connected devices, the first Node ID is returned.
+     */
+    private void retrieveDeviceNode() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                client.blockingConnect(CONNECTION_TIME_OUT_MS, TimeUnit.MILLISECONDS);
+                NodeApi.GetConnectedNodesResult result =
+                        Wearable.NodeApi.getConnectedNodes(client).await();
+                List<Node> nodes = result.getNodes();
+                if (nodes.size() > 0) {
+                    nodeId = nodes.get(0).getId();
+                }
+                client.disconnect();
+            }
+        }).start();
+    }
+
+    /**
+     * Sends a message to the connected mobile device, telling it to show a Toast.
+     */
+    private void sendMessage() {
+        if (nodeId != null) {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    client.blockingConnect(CONNECTION_TIME_OUT_MS, TimeUnit.MILLISECONDS);
+                    Wearable.MessageApi.sendMessage(client, nodeId, "/GLUCOSIO_READING_WEAR", finalString.getBytes());
+                    Log.i(getPackageName(), "New reading sent to phone");
+                    finish();
+                    client.disconnect();
+                }
+            }).start();
+        } else {
+            Toast.makeText(MainActivity.this, getResources().getString(R.string.wear_error), Toast.LENGTH_SHORT).show();
+        }
+    }
+
     @Override
     public void onTimerFinished(View view) {
-        onDoneButtonPressed(view);
+        sendMessage();
     }
 
     @Override
@@ -117,35 +176,9 @@ public class MainActivity extends Activity implements
             List<String> results = data.getStringArrayListExtra(
                     RecognizerIntent.EXTRA_RESULTS);
             spokenText = results.get(0);
-            // Send text to phone
-
         } else {
             finish();
         }
         super.onActivityResult(requestCode, resultCode, data);
-    }
-
-    public void onDoneButtonPressed(View target) {
-        if (mGoogleApiClient == null) {
-            return;
-        }
-
-        final PendingResult<NodeApi.GetConnectedNodesResult> nodes = Wearable.NodeApi.getConnectedNodes(mGoogleApiClient);
-        nodes.setResultCallback(new ResultCallback<NodeApi.GetConnectedNodesResult>() {
-            @Override
-            public void onResult(NodeApi.GetConnectedNodesResult result) {
-                final List<Node> nodes = result.getNodes();
-                if (nodes != null) {
-                    for (int i=0; i<nodes.size(); i++) {
-                        final Node node = nodes.get(i);
-
-                        // Send glucose reading to phone
-                        Wearable.MessageApi.sendMessage(mGoogleApiClient, node.getId(), "/GLUCOSIO_READING_WEAR", finalString.getBytes());
-                        Log.e("wear", "sent to phone");
-                        finish();
-                    }
-                }
-            }
-        });
     }
 }

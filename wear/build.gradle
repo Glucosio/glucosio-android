@@ -13,6 +13,13 @@ android {
         versionName "0.8.4"
     }
     buildTypes {
+        debug {
+            minifyEnabled false
+            debuggable true
+
+            applicationIdSuffix '.daily'
+            versionNameSuffix '-DEVEL'
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
