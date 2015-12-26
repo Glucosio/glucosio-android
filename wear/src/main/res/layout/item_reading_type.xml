@@ -6,9 +6,8 @@
     android:layout_height="80dp">
     <TextView
         android:id="@+id/type_name"
-        android:gravity="center_vertical|left"
-        android:layout_width="wrap_content"
-        android:layout_marginRight="16dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fontFamily="sans-serif-condensed-light"
         android:lineSpacingExtra="-4sp"

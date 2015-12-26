@@ -45,7 +45,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.glucosio.android.activity.PreferencesActivity" />
         </activity>
-        <service android:name=".DataLayerListenerService" >
+        <service android:name=".service.DataLayerListenerService" >
             <intent-filter>
                 <action android:name="com.google.android.gms.wearable.BIND_LISTENER" />
             </intent-filter>
@@ -86,7 +86,7 @@
 
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="org.glucosio.android"
+            android:authorities="${applicationId}"
             android:exported="false"
             android:grantUriPermissions="true" >
             <meta-data

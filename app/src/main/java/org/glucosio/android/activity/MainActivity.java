@@ -24,7 +24,6 @@ import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.widget.AdapterView;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -80,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     private HomePagerAdapter homePagerAdapter;
     private boolean isCustomType;
     private MainPresenter presenter;
-    private FrameLayout whiteLayout;
+    private ViewPager viewPager;
 
     private FloatingActionMenu fabMenu;
     private FloatingActionButton fabCholestorol;
@@ -101,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
+        viewPager = (ViewPager) findViewById(R.id.pager);
 
         if (toolbar != null) {
             setSupportActionBar(toolbar);
@@ -150,22 +149,23 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             }
         });
 
-        whiteLayout = (FrameLayout) findViewById(R.id.whiteLayout);
         fabMenu = (FloatingActionMenu) findViewById(R.id.fab_menu_add_reading);
         fabMenu.setClosedOnTouchOutside(true);
         fabMenu.setOnMenuToggleListener(new FloatingActionMenu.OnMenuToggleListener() {
             @Override
             public void onMenuToggle(boolean opened) {
+                // When Fab Menu is opened, dim the main view.
                 if (opened){
-                    AlphaAnimation alpha = new AlphaAnimation(0F, 0.8F);
-                    alpha.setDuration(600);
-                    alpha.setFillAfter(true);
-                    whiteLayout.startAnimation(alpha);
+                    if (!presenter.isdbEmpty()) {
+                        AlphaAnimation alpha = new AlphaAnimation(1F, 0.2F);
+                        alpha.setDuration(600);
+                        alpha.setFillAfter(true);
+                        viewPager.startAnimation(alpha);
+                    }
                 } else {
-                    AlphaAnimation alpha = new AlphaAnimation(0.8F, 0F);
-                    alpha.setDuration(200);
-                    alpha.setFillAfter(true);
-                    whiteLayout.startAnimation(alpha);
+                    if (!presenter.isdbEmpty()) {
+                        removeWhiteOverlay();
+                    }
                 }
             }
         });
@@ -365,6 +365,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             @Override
             public void onClick(View v) {
                 addDialog.dismiss();
+                removeWhiteOverlay();
             }
         });
         dialogAddButton.setOnClickListener(new View.OnClickListener() {
@@ -375,6 +376,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                         .setCategory("GlucoseDialog")
                         .setAction("Add")
                         .build());
+                removeWhiteOverlay();
             }
         });
 
@@ -412,6 +414,13 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         dialogReading.setCustomSelectionActionModeCallback(workaroundCallback);
 
         dialogTypeCustom.setCustomSelectionActionModeCallback(workaroundCallback);
+    }
+
+    private void removeWhiteOverlay() {
+        AlphaAnimation alpha = new AlphaAnimation(viewPager.getAlpha(), 1F);
+        alpha.setDuration(0);
+        alpha.setFillAfter(true);
+        viewPager.startAnimation(alpha);
     }
 
     public void showEditDialog(final int id) {

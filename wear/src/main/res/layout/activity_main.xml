@@ -14,7 +14,6 @@
         app:layout_box="all">
         <android.support.wearable.view.WearableListView
             android:id="@+id/reading_type_list"
-            android:layout_marginLeft="16dp"
             android:layout_height="match_parent"
             android:layout_width="match_parent">
         </android.support.wearable.view.WearableListView>
@@ -39,7 +38,7 @@
                 android:paddingBottom="16dp"
                 android:textColor="#222222"
                 android:textSize="16sp"
-                android:text="20, after lunch"/>
+                android:text="N/A"/>
             <android.support.wearable.view.DelayedConfirmationView
                 android:id="@+id/delayed_confirm"
                 android:layout_width="56dp"
@@ -49,7 +48,7 @@
                 android:background="#dedede"
                 android:src="@drawable/ic_cancel_black_24dp"
                 app:circle_border_width="4dp"
-                app:circle_radius="16dp">
+                app:circle_radius="24dp">
             </android.support.wearable.view.DelayedConfirmationView>
         </LinearLayout>
     </FrameLayout>

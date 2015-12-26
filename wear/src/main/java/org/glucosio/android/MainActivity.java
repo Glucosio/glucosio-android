@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.support.wearable.view.DelayedConfirmationView;
 import android.support.wearable.view.WearableListView;
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -30,6 +31,7 @@ public class MainActivity extends Activity implements
     private FrameLayout listFrame;
     private FrameLayout confirmFrame;
     private TextView confirmTextView;
+    private String finalString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,12 +66,12 @@ public class MainActivity extends Activity implements
 
     @Override
     public void onTimerFinished(View view) {
-        // User didn't cancel, perform the action
+        onDoneButtonPressed(view);
     }
 
     @Override
     public void onTimerSelected(View view) {
-        // User canceled, abort the action
+        finish();
     }
 
     // WearableListView click listener
@@ -84,7 +86,8 @@ public class MainActivity extends Activity implements
         listFrame.setVisibility(View.GONE);
         confirmFrame.setVisibility(View.VISIBLE);
 
-        confirmTextView.setText(spokenText + ", " + type);
+        finalString = spokenText + ", " + type;
+        confirmTextView.setText(finalString);
 
         // Two seconds to cancel the action
         mDelayedView.setTotalTimeMs(2000);
@@ -123,8 +126,9 @@ public class MainActivity extends Activity implements
     }
 
     public void onDoneButtonPressed(View target) {
-        if (mGoogleApiClient == null)
+        if (mGoogleApiClient == null) {
             return;
+        }
 
         final PendingResult<NodeApi.GetConnectedNodesResult> nodes = Wearable.NodeApi.getConnectedNodes(mGoogleApiClient);
         nodes.setResultCallback(new ResultCallback<NodeApi.GetConnectedNodesResult>() {
@@ -136,7 +140,9 @@ public class MainActivity extends Activity implements
                         final Node node = nodes.get(i);
 
                         // Send glucose reading to phone
-                        Wearable.MessageApi.sendMessage(mGoogleApiClient, node.getId(), "/GLUCOSIO_READING_WEAR", "Hello World".getBytes());
+                        Wearable.MessageApi.sendMessage(mGoogleApiClient, node.getId(), "/GLUCOSIO_READING_WEAR", finalString.getBytes());
+                        Log.e("wear", "sent to phone");
+                        finish();
                     }
                 }
             }

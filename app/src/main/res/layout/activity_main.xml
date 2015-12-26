@@ -38,13 +38,6 @@
         android:visibility="visible"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-    <FrameLayout
-        android:visibility="gone"
-        android:id="@+id/whiteLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#ffffff"/>
-
     <LinearLayout
         android:id="@+id/mainactivity_empty_layout"
         android:layout_width="match_parent"
@@ -110,8 +103,8 @@
         android:id="@+id/fab_menu_add_reading"
         android:layout_gravity="bottom|right"
         android:layout_margin="16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
