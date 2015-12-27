@@ -15,6 +15,7 @@ import java.util.Date;
 import java.util.List;
 
 import io.realm.Realm;
+import io.realm.RealmConfiguration;
 import io.realm.RealmResults;
 import io.realm.Sort;
 
@@ -22,10 +23,18 @@ public class DatabaseHandler {
 
     Context mContext;
     Realm realm;
+    private static RealmConfiguration mRealmConfig;
 
     public DatabaseHandler(Context context) {
         this.mContext = context;
-        this.realm=Realm.getInstance(mContext);
+
+        if (mRealmConfig == null) {
+            mRealmConfig = new RealmConfiguration.Builder(context)
+                    .schemaVersion(1)
+                    .migration(new Migration())
+                    .build();
+        }
+        this.realm = Realm.getInstance(mRealmConfig); // Automatically run migration if needed
     }
 
     public void addUser(User user) {
@@ -286,6 +295,102 @@ public class DatabaseHandler {
             currentDateTime = newDateTime;
         }
         return finalMonths;
+    }
+
+    public void addHB1ACReading(HB1ACReading reading) {
+        realm.beginTransaction();
+        reading.setId(getNextKey());
+        realm.copyToRealm(reading);
+        realm.commitTransaction();
+    }
+
+    public void deleteHB1ACReadingReading(HB1ACReading reading) {
+        realm.beginTransaction();
+        reading.removeFromRealm();
+        realm.commitTransaction();
+    }
+
+    public ArrayList<HB1ACReading> getHB1ACReadings() {
+        RealmResults<HB1ACReading> results =
+                realm.where(HB1ACReading.class)
+                        .findAllSorted("created", Sort.DESCENDING);
+        ArrayList<HB1ACReading> readingList = new ArrayList<>();
+        for (int i=0; i < results.size(); i++){
+            readingList.add(results.get(i));
+        }
+        return readingList;
+    }
+
+    public void addKetoneReading(KetoneReading reading) {
+        realm.beginTransaction();
+        reading.setId(getNextKey());
+        realm.copyToRealm(reading);
+        realm.commitTransaction();
+    }
+
+    public void deleteKetoneReading(KetoneReading reading) {
+        realm.beginTransaction();
+        reading.removeFromRealm();
+        realm.commitTransaction();
+    }
+
+    public ArrayList<KetoneReading> getKetoneReadings() {
+        RealmResults<KetoneReading> results =
+                realm.where(KetoneReading.class)
+                        .findAllSorted("created", Sort.DESCENDING);
+        ArrayList<KetoneReading> readingList = new ArrayList<>();
+        for (int i=0; i < results.size(); i++){
+            readingList.add(results.get(i));
+        }
+        return readingList;
+    }
+
+    public void addPressureReading(PressureReading reading) {
+        realm.beginTransaction();
+        reading.setId(getNextKey());
+        realm.copyToRealm(reading);
+        realm.commitTransaction();
+    }
+
+    public void deletePressureReading(PressureReading reading) {
+        realm.beginTransaction();
+        reading.removeFromRealm();
+        realm.commitTransaction();
+    }
+
+    public ArrayList<PressureReading> getPressureReadings() {
+        RealmResults<PressureReading> results =
+                realm.where(PressureReading.class)
+                        .findAllSorted("created", Sort.DESCENDING);
+        ArrayList<PressureReading> readingList = new ArrayList<>();
+        for (int i=0; i < results.size(); i++){
+            readingList.add(results.get(i));
+        }
+        return readingList;
+    }
+
+    public void addWeightReading(WeightReading reading) {
+        realm.beginTransaction();
+        reading.setId(getNextKey());
+        realm.copyToRealm(reading);
+        realm.commitTransaction();
+    }
+
+    public void deleteWeightReading(WeightReading reading) {
+        realm.beginTransaction();
+        reading.removeFromRealm();
+        realm.commitTransaction();
+    }
+
+    public ArrayList<WeightReading> getWeightReadings() {
+        RealmResults<WeightReading> results =
+                realm.where(WeightReading.class)
+                        .findAllSorted("created", Sort.DESCENDING);
+        ArrayList<WeightReading> readingList = new ArrayList<>();
+        for (int i=0; i < results.size(); i++){
+            readingList.add(results.get(i));
+        }
+        return readingList;
     }
 
     public long getNextKey() {
