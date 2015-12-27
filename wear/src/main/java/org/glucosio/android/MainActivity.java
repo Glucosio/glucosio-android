@@ -167,6 +167,17 @@ public class MainActivity extends Activity implements
         startActivityForResult(intent, SPEECH_REQUEST_CODE);
     }
 
+    public static boolean isNumeric(String str) {
+        try {
+            double d = Double.parseDouble(str);
+        }
+        catch(NumberFormatException nfe)
+        {
+            return false;
+        }
+        return true;
+    }
+
     // This callback is invoked when the Speech Recognizer returns.
 // This is where you process the intent and extract the speech text from the intent.
     @Override
@@ -176,6 +187,10 @@ public class MainActivity extends Activity implements
             List<String> results = data.getStringArrayListExtra(
                     RecognizerIntent.EXTRA_RESULTS);
             spokenText = results.get(0);
+            if (!isNumeric(spokenText)){
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.reading_invalid), Toast.LENGTH_SHORT).show();
+                finish();
+            }
         } else {
             finish();
         }

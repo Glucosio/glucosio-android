@@ -365,7 +365,6 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             @Override
             public void onClick(View v) {
                 addDialog.dismiss();
-                removeWhiteOverlay();
             }
         });
         dialogAddButton.setOnClickListener(new View.OnClickListener() {
@@ -376,7 +375,6 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                         .setCategory("GlucoseDialog")
                         .setAction("Add")
                         .build());
-                removeWhiteOverlay();
             }
         });
 
@@ -814,7 +812,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             }
         } else {
             pager.setVisibility(View.VISIBLE);
-            emptyLayout.setVisibility(View.INVISIBLE);
+            emptyLayout.setVisibility(View.GONE);
         }
     }
 

@@ -51,8 +51,8 @@
             </intent-filter>
         </service>
         <!--
- Register AnalyticsReceiver and AnalyticsService to support background
- dispatching on non-Google Play devices
+         Register AnalyticsReceiver and AnalyticsService to support background
+         dispatching on non-Google Play devices
         -->
         <receiver
             android:name="com.google.android.gms.analytics.AnalyticsReceiver"
@@ -67,8 +67,8 @@
             android:enabled="true"
             android:exported="false" />
         <!--
-             Register CampaignTrackingReceiver and CampaignTrackingService to enable
-             installation campaign reporting
+         Register CampaignTrackingReceiver and CampaignTrackingService to enable
+         installation campaign reporting
         -->
         <receiver
             android:name="com.google.android.gms.analytics.CampaignTrackingReceiver"
