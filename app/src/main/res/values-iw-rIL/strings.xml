@@ -190,4 +190,5 @@
   <string name="fragment_overview_graph_export_false">שגיאה בשמירת הצילום מסך לגלריה</string>
   <string name="dialog_export_range">טווח ייצוא</string>
   <string name="activity_export_no_readings_snackbar">אין קריאה לייצוא.</string>
+  <string name="wear_new_reading">נוספה קריאה חדשה</string>
 </resources>

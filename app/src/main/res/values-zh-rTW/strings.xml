@@ -190,4 +190,5 @@
   <string name="fragment_overview_graph_export_false">將畫面擷圖儲存至圖片庫時發生錯誤</string>
   <string name="dialog_export_range">匯出範圍</string>
   <string name="activity_export_no_readings_snackbar">沒有可匯出的的讀數。</string>
+  <string name="wear_new_reading">已新增讀數</string>
 </resources>

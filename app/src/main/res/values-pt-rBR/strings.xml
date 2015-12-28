@@ -190,4 +190,5 @@
   <string name="fragment_overview_graph_export_false">Erro ao salvar a captura de tela na galeria</string>
   <string name="dialog_export_range">Intervalo de exportação</string>
   <string name="activity_export_no_readings_snackbar">Nenhuma leitura para exportar.</string>
+  <string name="wear_new_reading">Nova leitura adicionada</string>
 </resources>

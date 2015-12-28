@@ -190,4 +190,5 @@
   <string name="fragment_overview_graph_export_false">スクリーン ショットをギャラリーに保存中にエラー</string>
   <string name="dialog_export_range">エクスポート範囲</string>
   <string name="activity_export_no_readings_snackbar">エクスポートする測定値はありません。</string>
+  <string name="wear_new_reading">新しい測定値が追加されました</string>
 </resources>
