@@ -190,4 +190,5 @@
   <string name="fragment_overview_graph_export_false">Erro ao gardar a captura de pantalla na galería</string>
   <string name="dialog_export_range">Exportar rango</string>
   <string name="activity_export_no_readings_snackbar">Ningún rexistro para exportar.</string>
+  <string name="wear_new_reading">Novo rexistro engadido</string>
 </resources>

@@ -190,4 +190,5 @@
   <string name="fragment_overview_graph_export_false">Fel vid sparande av skärmdump till galleriet</string>
   <string name="dialog_export_range">Exportintervall</string>
   <string name="activity_export_no_readings_snackbar">Inga värden att exportera.</string>
+  <string name="wear_new_reading">Ny avläsning har lagts till</string>
 </resources>

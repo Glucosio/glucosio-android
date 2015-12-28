@@ -190,4 +190,5 @@
   <string name="fragment_overview_graph_export_false">Fout bij opslaan van schermafbeelding naar galerij</string>
   <string name="dialog_export_range">Bereik exporteren</string>
   <string name="activity_export_no_readings_snackbar">Geen uitlezingen te exporteren.</string>
+  <string name="wear_new_reading">Nieuwe uitlezing toegevoegd</string>
 </resources>

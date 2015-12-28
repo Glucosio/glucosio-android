@@ -190,4 +190,5 @@
   <string name="fragment_overview_graph_export_false">Ошибка сохранения снимка экрана в галерею</string>
   <string name="dialog_export_range">Диапазон экспорта</string>
   <string name="activity_export_no_readings_snackbar">Нет данных для экспорта.</string>
+  <string name="wear_new_reading">Добавлены новые данные</string>
 </resources>
