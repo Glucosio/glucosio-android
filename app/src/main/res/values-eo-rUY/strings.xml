@@ -63,6 +63,5 @@
   <string name="assistant_action_try">PROVI ĜIN NUN</string>
   <string name="helloactivity_language">Lingvo</string>
   <string name="invitation_title">Inviti aliajn personojn</string>
-  <string name="invitation_cta">Provi Glucosion</string>
   <string name="title_activity_backup">Savkopii</string>
 </resources>
