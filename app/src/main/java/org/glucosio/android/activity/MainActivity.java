@@ -16,19 +16,14 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
-import android.widget.AdapterView;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
@@ -43,43 +38,29 @@ import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
-import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
-import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.adapter.HomePagerAdapter;
 import org.glucosio.android.presenter.ExportPresenter;
 import org.glucosio.android.presenter.MainPresenter;
-import org.glucosio.android.tools.FormatDateTime;
-import org.glucosio.android.tools.GlucoseConverter;
-import org.glucosio.android.tools.LabelledSpinner;
-import org.glucosio.android.tools.LabelledSpinner.OnItemChosenListener;
 
-import java.text.DecimalFormat;
 import java.util.Calendar;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
-public class MainActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
+public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
 
     ExportPresenter exportPresenter;
-    private LabelledSpinner spinnerReadingType;
     private Dialog addDialog;
-    private TextView dialogCancelButton;
-    private TextView dialogAddButton;
-    private TextView dialogAddTime;
-    private TextView dialogAddDate;
-    private TextView dialogReading;
-    private TextView exportDialogDateFrom;
-    private TextView exportDialogDateTo;
     private RadioButton exportRangeButton;
-    private EditText dialogTypeCustom;
     private HomePagerAdapter homePagerAdapter;
-    private boolean isCustomType;
     private MainPresenter presenter;
     private ViewPager viewPager;
+
+    private TextView exportDialogDateFrom;
+    private TextView exportDialogDateTo;
 
     private FloatingActionMenu fabMenu;
     private FloatingActionButton fabCholestorol;
@@ -279,139 +260,9 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
     public void onGlucoseFabClicked(View v) {
         fabMenu.toggle(false);
-        showAddDialog();
-    }
-
-    public void showAddDialog() {
-        addDialog = new Dialog(MainActivity.this, R.style.GlucosioTheme);
-
-        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
-        lp.copyFrom(addDialog.getWindow().getAttributes());
-        addDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
-        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
-        addDialog.setContentView(R.layout.dialog_add);
-        addDialog.getWindow().setAttributes(lp);
-        addDialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-        addDialog.getWindow().setDimAmount(0.5f);
-        addDialog.show();
-
-        spinnerReadingType = (LabelledSpinner) addDialog.findViewById(R.id.dialog_add_reading_type);
-        spinnerReadingType.setItemsArray(R.array.dialog_add_measured_list);
-
-        dialogCancelButton = (TextView) addDialog.findViewById(R.id.dialog_add_cancel);
-        dialogAddButton = (TextView) addDialog.findViewById(R.id.dialog_add_add);
-        dialogAddTime = (TextView) addDialog.findViewById(R.id.dialog_add_time);
-        dialogAddDate = (TextView) addDialog.findViewById(R.id.dialog_add_date);
-        dialogReading = (TextView) addDialog.findViewById(R.id.dialog_add_concentration);
-        dialogTypeCustom = (EditText) addDialog.findViewById(R.id.dialog_type_custom);
-
-        presenter.updateSpinnerTypeTime();
-        this.isCustomType = false;
-
-        spinnerReadingType.setOnItemChosenListener(new OnItemChosenListener() {
-            @Override
-            public void onItemChosen(View labelledSpinner, AdapterView<?> adapterView, View itemView, int position, long id) {
-                // If other is selected
-                if (position == 9) {
-                    dialogTypeCustom.setVisibility(View.VISIBLE);
-                    isCustomType = true;
-                } else {
-                    if (dialogTypeCustom.getVisibility() == View.VISIBLE) {
-                        dialogTypeCustom.setVisibility(View.GONE);
-                        isCustomType = false;
-                    }
-                }
-            }
-
-            @Override
-            public void onNothingChosen(View labelledSpinner, AdapterView<?> adapterView) {
-
-            }
-        });
-
-        FormatDateTime formatDateTime = new FormatDateTime(getApplicationContext());
-        dialogAddDate.setText(presenter.getReadingDay() + "/" + presenter.getReadingMonth() + "/" + presenter.getReadingYear());
-        dialogAddTime.setText(formatDateTime.getCurrentTime());
-        dialogAddDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar now = Calendar.getInstance();
-                DatePickerDialog dpd = DatePickerDialog.newInstance(
-                        MainActivity.this,
-                        now.get(Calendar.YEAR),
-                        now.get(Calendar.MONTH),
-                        now.get(Calendar.DAY_OF_MONTH)
-                );
-                dpd.show(getFragmentManager(), "Datepickerdialog");
-                dpd.setMaxDate(now);
-            }
-        });
-
-        dialogAddTime.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar now = Calendar.getInstance();
-                if (android.text.format.DateFormat.is24HourFormat(getApplicationContext())) {
-                    TimePickerDialog tpd = TimePickerDialog.newInstance(MainActivity.this, now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), true);
-                    tpd.show(getFragmentManager(), "Timepickerdialog");
-                } else {
-                    TimePickerDialog tpd = TimePickerDialog.newInstance(MainActivity.this, now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), false);
-                    tpd.show(getFragmentManager(), "Timepickerdialog");
-                }
-            }
-        });
-        dialogCancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addDialog.dismiss();
-            }
-        });
-        dialogAddButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialogOnAddButtonPressed();
-                mTracker.send(new HitBuilders.EventBuilder()
-                        .setCategory("GlucoseDialog")
-                        .setAction("Add")
-                        .build());
-            }
-        });
-
-        TextView unitM = (TextView) addDialog.findViewById(R.id.dialog_add_unit_measurement);
-
-        if (presenter.getUnitMeasuerement().equals("mg/dL")) {
-            unitM.setText("mg/dL");
-        } else {
-            unitM.setText("mmol/L");
-        }
-
-        // Workaround for ActionBarContextView bug.
-        android.view.ActionMode.Callback workaroundCallback = new android.view.ActionMode.Callback() {
-            @Override
-            public boolean onCreateActionMode(android.view.ActionMode mode, Menu menu) {
-                return false;
-            }
-
-            @Override
-            public boolean onPrepareActionMode(android.view.ActionMode mode, Menu menu) {
-                return false;
-            }
-
-            @Override
-            public boolean onActionItemClicked(android.view.ActionMode mode, MenuItem item) {
-                return false;
-            }
-
-            @Override
-            public void onDestroyActionMode(android.view.ActionMode mode) {
-
-            }
-        };
-
-        dialogReading.setCustomSelectionActionModeCallback(workaroundCallback);
-
-        dialogTypeCustom.setCustomSelectionActionModeCallback(workaroundCallback);
+        Intent intent = new Intent(this, AddGlucoseActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void removeWhiteOverlay() {
@@ -419,149 +270,6 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         alpha.setDuration(0);
         alpha.setFillAfter(true);
         viewPager.startAnimation(alpha);
-    }
-
-    public void showEditDialog(final int id) {
-        //only included for debug
-        // printGlucoseReadingTableDetails();
-        GlucoseConverter converter = new GlucoseConverter();
-
-        final int readingId = id;
-        addDialog = new Dialog(MainActivity.this, R.style.GlucosioTheme);
-
-        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
-        lp.copyFrom(addDialog.getWindow().getAttributes());
-        addDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
-        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
-        addDialog.setContentView(R.layout.dialog_add);
-        addDialog.getWindow().setAttributes(lp);
-        addDialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-        addDialog.getWindow().setDimAmount(0.5f);
-        addDialog.show();
-
-        spinnerReadingType = (LabelledSpinner) addDialog.findViewById(R.id.dialog_add_reading_type);
-        spinnerReadingType.setItemsArray(R.array.dialog_add_measured_list);
-
-        dialogCancelButton = (TextView) addDialog.findViewById(R.id.dialog_add_cancel);
-        dialogAddButton = (TextView) addDialog.findViewById(R.id.dialog_add_add);
-        dialogAddTime = (TextView) addDialog.findViewById(R.id.dialog_add_time);
-        dialogAddDate = (TextView) addDialog.findViewById(R.id.dialog_add_date);
-        dialogReading = (TextView) addDialog.findViewById(R.id.dialog_add_concentration);
-        dialogAddButton.setText(getString(R.string.dialog_edit).toUpperCase());
-
-        if (presenter.getUnitMeasuerement().equals("mg/dL")) {
-            dialogReading.setText(presenter.getGlucoseReadingReadingById(readingId));
-        } else {
-            dialogReading.setText(converter.toMmolL(Double.parseDouble(presenter.getGlucoseReadingReadingById(readingId))) + "");
-        }
-
-        dialogReading = (TextView) addDialog.findViewById(R.id.dialog_add_concentration);
-        dialogTypeCustom = (EditText) addDialog.findViewById(R.id.dialog_type_custom);
-
-        presenter.updateSpinnerTypeTime();
-        this.isCustomType = false;
-
-        spinnerReadingType.setSelection(typeStringToInt(presenter.getGlucoseReadingTypeById(readingId)));
-
-        spinnerReadingType.setOnItemChosenListener(new OnItemChosenListener() {
-            @Override
-            public void onItemChosen(View labelledSpinner, AdapterView<?> adapterView, View itemView, int position, long id) {
-                // If other is selected
-                if (position == 9) {
-                    dialogTypeCustom.setVisibility(View.VISIBLE);
-                    dialogTypeCustom.setText(presenter.getGlucoseReadingTypeById(readingId));
-                    isCustomType = true;
-                } else {
-                    if (dialogTypeCustom.getVisibility() == View.VISIBLE) {
-                        dialogTypeCustom.setVisibility(View.GONE);
-                        dialogTypeCustom.setText("");
-                        isCustomType = false;
-                    }
-                }
-            }
-
-            @Override
-            public void onNothingChosen(View labelledSpinner, AdapterView<?> adapterView) {
-
-            }
-        });
-
-        presenter.getGlucoseReadingTimeById(id);
-
-        dialogAddTime.setText(presenter.getReadingHour() + ":" + presenter.getReadingMinute());
-        dialogAddDate.setText(presenter.getReadingDay() + "/" + presenter.getReadingMonth() + "/" + presenter.getReadingYear());
-
-        dialogAddDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar now = Calendar.getInstance();
-                DatePickerDialog dpd = DatePickerDialog.newInstance(
-                        MainActivity.this,
-                        now.get(Calendar.YEAR),
-                        now.get(Calendar.MONTH),
-                        now.get(Calendar.DAY_OF_MONTH)
-                );
-                dpd.show(getFragmentManager(), "Datepickerdialog");
-                dpd.setMaxDate(now);
-            }
-        });
-
-        dialogAddTime.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar now = Calendar.getInstance();
-                TimePickerDialog tpd = TimePickerDialog.newInstance(MainActivity.this, now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), true);
-                tpd.show(getFragmentManager(), "Timepickerdialog");
-                spinnerReadingType.setSelection(presenter.timeToSpinnerType());
-            }
-        });
-        dialogCancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addDialog.dismiss();
-            }
-        });
-        dialogAddButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialogOnEditButtonPressed(id);
-            }
-        });
-
-        TextView unitM = (TextView) addDialog.findViewById(R.id.dialog_add_unit_measurement);
-        if (presenter.getUnitMeasuerement().equals("mg/dl")) {
-            unitM.setText("mg/dl");
-        } else {
-            unitM.setText("mmol/L");
-        }
-
-        // Workaround for ActionBarContextView bug.
-        android.view.ActionMode.Callback workaroundCallback = new android.view.ActionMode.Callback() {
-            @Override
-            public boolean onCreateActionMode(android.view.ActionMode mode, Menu menu) {
-                return false;
-            }
-
-            @Override
-            public boolean onPrepareActionMode(android.view.ActionMode mode, Menu menu) {
-                return false;
-            }
-
-            @Override
-            public boolean onActionItemClicked(android.view.ActionMode mode, MenuItem item) {
-                return false;
-            }
-
-            @Override
-            public void onDestroyActionMode(android.view.ActionMode mode) {
-
-            }
-        };
-
-        dialogReading.setCustomSelectionActionModeCallback(workaroundCallback);
-
-        dialogTypeCustom.setCustomSelectionActionModeCallback(workaroundCallback);
     }
 
     public void showExportDialog() {
@@ -663,48 +371,6 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         String dateTo = exportDialogDateTo.getText().toString();
         String dateFrom = exportDialogDateFrom.getText().toString();
         return !exportRangeButton.isChecked() || !(dateTo.equals("") || dateFrom.equals(""));
-    }
-
-    private void dialogOnAddButtonPressed() {
-        if (isCustomType) {
-            presenter.dialogOnAddButtonPressed(dialogAddTime.getText().toString(),
-                    dialogAddDate.getText().toString(), dialogReading.getText().toString(),
-                    dialogTypeCustom.getText().toString());
-        } else {
-            presenter.dialogOnAddButtonPressed(dialogAddTime.getText().toString(),
-                    dialogAddDate.getText().toString(), dialogReading.getText().toString(),
-                    spinnerReadingType.getSpinner().getSelectedItem().toString());
-        }
-    }
-
-    public void dismissAddDialog() {
-        addDialog.dismiss();
-        homePagerAdapter.notifyDataSetChanged();
-        checkIfEmptyLayout();
-    }
-
-    public void showErrorMessage() {
-        Toast.makeText(getApplicationContext(), getString(R.string.dialog_error2), Toast.LENGTH_SHORT).show();
-    }
-
-    private void dialogOnEditButtonPressed(int id) {
-        if (isCustomType) {
-            presenter.dialogOnEditButtonPressed(dialogAddTime.getText().toString(),
-                    dialogAddDate.getText().toString(), dialogReading.getText().toString(),
-                    dialogTypeCustom.getText().toString(), id);
-        } else {
-            presenter.dialogOnEditButtonPressed(dialogAddTime.getText().toString(),
-                    dialogAddDate.getText().toString(), dialogReading.getText().toString(),
-                    spinnerReadingType.getSpinner().getSelectedItem().toString(), id);
-        }
-    }
-
-    public void updateSpinnerTypeTime(int selection) {
-        spinnerReadingType.setSelection(selection);
-    }
-
-    private void updateSpinnerTypeHour(int hour) {
-        spinnerReadingType.setSelection(presenter.hourToSpinnerType(hour));
     }
 
     public CoordinatorLayout getFabView() {
@@ -871,27 +537,9 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     }
 
     @Override
-    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute) {
-        TextView addTime = (TextView) addDialog.findViewById(R.id.dialog_add_time);
-        DecimalFormat df = new DecimalFormat("00");
-
-        presenter.setReadingHour(df.format(hourOfDay));
-        presenter.setReadingMinute(df.format(minute));
-
-        Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.HOUR_OF_DAY, hourOfDay);
-        cal.set(Calendar.MINUTE, minute);
-        FormatDateTime formatDateTime = new FormatDateTime(getApplicationContext());
-        addTime.setText(formatDateTime.getTime(cal));
-        updateSpinnerTypeHour(Integer.parseInt(df.format(hourOfDay)));
-    }
-
-    @Override
     public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
         // Check which dialog set the date
         if (view.getTag().equals("fromDateDialog")) {
-            DecimalFormat df = new DecimalFormat("00");
-
             exportPresenter.setFromYear(year);
             exportPresenter.setFromMonth(monthOfYear);
             exportPresenter.setFromDay(dayOfMonth);
@@ -899,9 +547,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             int monthToShow = monthOfYear + 1;
             String date = +dayOfMonth + "/" + monthToShow + "/" + year;
             exportDialogDateFrom.setText(date);
-        } else if (view.getTag().equals("toDateDialog")) {
-            DecimalFormat df = new DecimalFormat("00");
-
+        } else {
             exportPresenter.setToYear(year);
             exportPresenter.setToMonth(monthOfYear);
             exportPresenter.setToDay(dayOfMonth);
@@ -909,16 +555,6 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             int monthToShow = monthOfYear + 1;
             String date = +dayOfMonth + "/" + monthToShow + "/" + year;
             exportDialogDateTo.setText(date);
-        } else {
-            TextView addDate = (TextView) addDialog.findViewById(R.id.dialog_add_date);
-            DecimalFormat df = new DecimalFormat("00");
-
-            presenter.setReadingYear(year + "");
-            presenter.setReadingMonth(df.format(monthOfYear + 1));
-            presenter.setReadingDay(df.format(dayOfMonth));
-
-            String date = +dayOfMonth + "/" + presenter.getReadingMonth() + "/" + presenter.getReadingYear();
-            addDate.setText(date);
         }
     }
 

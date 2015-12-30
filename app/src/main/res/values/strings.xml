@@ -48,7 +48,7 @@
     <string name="helloactivity_hint_settings">You can change these in settings later.</string>
     <string name="helloactivity_button_next">NEXT</string>
     <string name="helloactivity_button_start">GET STARTED</string>
-    
+
     <string name="fab_weight">Body Weight</string>
     <string name="fab_ketonest">Ketones</string>
     <string name="fab_pressure">Blood Pressure</string>
@@ -95,7 +95,6 @@
     <string name="dialog_error2">Please enter a valid value.</string>
     <string name="dialog_error">Please fill all the fields.</string>
     <string name="dialog_delete">Delete</string>
-    <string name="dialog_edit">Edit</string>
 
     <string name="fragment_history_snackbar_text">1 reading deleted</string>
     <string name="fragment_history_snackbar_action">UNDO</string>
@@ -288,4 +287,5 @@
     <string name="dialog_export_range">Export range</string>
     <string name="activity_export_no_readings_snackbar">No readings to export.</string>
     <string name="wear_new_reading">New reading added</string>
+    <string name="title_activity_add_glucose">Add Glucose reading</string>
 </resources>

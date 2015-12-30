@@ -33,7 +33,7 @@
                 android:layout_weight="1">
 
                 <EditText
-                    android:id="@+id/dialog_add_concentration"
+                    android:id="@+id/glucose_add_concentration"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/dialog_add_concentration"
@@ -45,7 +45,7 @@
             </android.support.design.widget.TextInputLayout>
 
             <TextView
-                android:id="@+id/dialog_add_unit_measurement"
+                android:id="@+id/glucose_add_unit_measurement"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_marginBottom="8dp"
@@ -68,7 +68,7 @@
                 android:layout_weight="1">
 
                 <EditText
-                    android:id="@+id/dialog_add_date"
+                    android:id="@+id/glucose_add_date"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:clickable="false"
@@ -86,7 +86,7 @@
                 android:layout_weight="1">
 
                 <EditText
-                    android:id="@+id/dialog_add_time"
+                    android:id="@+id/glucose_add_time"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:clickable="false"
@@ -101,7 +101,7 @@
         </LinearLayout>
 
         <org.glucosio.android.tools.LabelledSpinner
-            android:id="@+id/dialog_add_reading_type"
+            android:id="@+id/glucose_add_reading_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -109,7 +109,7 @@
             custom:widgetColor="@color/glucosio_pink" />
 
         <EditText
-            android:id="@+id/dialog_type_custom"
+            android:id="@+id/glucose_type_custom"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"

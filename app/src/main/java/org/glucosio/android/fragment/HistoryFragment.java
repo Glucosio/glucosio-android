@@ -77,49 +77,42 @@ public class HistoryFragment extends Fragment {
 
             @Override
             public void onItemLongClick(final View view, final int position) {
-                CharSequence colors[] = new CharSequence[]{getResources().getString(R.string.dialog_edit), getResources().getString(R.string.dialog_delete)};
+                CharSequence items[] = new CharSequence[]{getResources().getString(R.string.dialog_delete)};
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setItems(colors, new DialogInterface.OnClickListener() {
+                builder.setItems(items, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        if (which == 0) {
-                            // EDIT
-                            TextView idTextView = (TextView) view.findViewById(R.id.item_history_id);
-                            final int idToEdit = Integer.parseInt(idTextView.getText().toString());
-                            ((MainActivity) getActivity()).showEditDialog(idToEdit);
-                        } else {
-                            // DELETE
-                            TextView idTextView = (TextView) view.findViewById(R.id.item_history_id);
-                            final int idToDelete = Integer.parseInt(idTextView.getText().toString());
-                            final CardView item = (CardView) view.findViewById(R.id.item_history);
-                            item.animate().alpha(0.0f).setDuration(2000);
-                            Snackbar.make(((MainActivity) getActivity()).getFabView(), R.string.fragment_history_snackbar_text, Snackbar.LENGTH_SHORT).setCallback(new Snackbar.Callback() {
-                                @Override
-                                public void onDismissed(Snackbar snackbar, int event) {
-                                    switch (event) {
-                                        case Snackbar.Callback.DISMISS_EVENT_ACTION:
-                                            // Do nothing, see Undo onClickListener
-                                            break;
-                                        case Snackbar.Callback.DISMISS_EVENT_TIMEOUT:
-                                            presenter.onDeleteClicked(idToDelete);
-                                            break;
-                                    }
+                        // DELETE
+                        TextView idTextView = (TextView) view.findViewById(R.id.item_history_id);
+                        final int idToDelete = Integer.parseInt(idTextView.getText().toString());
+                        final CardView item = (CardView) view.findViewById(R.id.item_history);
+                        item.animate().alpha(0.0f).setDuration(2000);
+                        Snackbar.make(((MainActivity) getActivity()).getFabView(), R.string.fragment_history_snackbar_text, Snackbar.LENGTH_SHORT).setCallback(new Snackbar.Callback() {
+                            @Override
+                            public void onDismissed(Snackbar snackbar, int event) {
+                                switch (event) {
+                                    case Snackbar.Callback.DISMISS_EVENT_ACTION:
+                                        // Do nothing, see Undo onClickListener
+                                        break;
+                                    case Snackbar.Callback.DISMISS_EVENT_TIMEOUT:
+                                        presenter.onDeleteClicked(idToDelete);
+                                        break;
                                 }
+                            }
 
-                                @Override
-                                public void onShown(Snackbar snackbar) {
-                                    // Do nothing
-                                }
-                            }).setAction("UNDO", new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    item.clearAnimation();
-                                    item.setAlpha(1.0f);
-                                    mAdapter.notifyDataSetChanged();
-                                }
-                            }).setActionTextColor(getResources().getColor(R.color.glucosio_accent)).show();
-                        }
+                            @Override
+                            public void onShown(Snackbar snackbar) {
+                                // Do nothing
+                            }
+                        }).setAction("UNDO", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                item.clearAnimation();
+                                item.setAlpha(1.0f);
+                                mAdapter.notifyDataSetChanged();
+                            }
+                        }).setActionTextColor(getResources().getColor(R.color.glucosio_accent)).show();
                     }
                 });
                 builder.show();

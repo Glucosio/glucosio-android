@@ -112,7 +112,7 @@
 
 
         <EditText
-            android:id="@+id/dialog_type_custom"
+            android:id="@+id/glucose_type_custom"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
