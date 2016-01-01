@@ -289,8 +289,8 @@
     <string name="wear_new_reading">New reading added</string>
     <string name="dialog_add_weight">Weight</string>
     <string name="dialog_add_ketones">Ketones</string>
-    <string name="dialog_add_pression_min">Min Pression</string>
-    <string name="dialog_add_pression_max">Max Pression</string>
+    <string name="dialog_add_pressure_min">Min Pressure</string>
+    <string name="dialog_add_pressure_max">Max Pressure</string>
     <string name="dialog_add_cholesterol_total">Total Cholesterol</string>
     <string name="dialog_add_cholesterol_ldl">LDL Cholesterol</string>
     <string name="dialog_add_cholesterol_hdl">HDL Cholesterol</string>
