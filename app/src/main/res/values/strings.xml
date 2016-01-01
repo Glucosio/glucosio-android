@@ -287,7 +287,18 @@
     <string name="dialog_export_range">Export range</string>
     <string name="activity_export_no_readings_snackbar">No readings to export.</string>
     <string name="wear_new_reading">New reading added</string>
-    <string name="title_activity_add_glucose">Add Glucose reading</string>
-    <string name="title_activity_add_weight">Add Weight</string>
     <string name="dialog_add_weight">Weight</string>
+    <string name="dialog_add_ketones">Ketones</string>
+    <string name="dialog_add_pression_min">Min Pression</string>
+    <string name="dialog_add_pression_max">Max Pression</string>
+    <string name="dialog_add_cholesterol_total">Total Cholesterol</string>
+    <string name="dialog_add_cholesterol_ldl">LDL Cholesterol</string>
+    <string name="dialog_add_cholesterol_hdl">HDL Cholesterol</string>
+    <string name="dialog_add_hb1ac">HB1AC</string>
+    <string name="title_activity_add_glucose">Add Glucose reading</string>
+    <string name="title_activity_add_weight">Add Body Weight</string>
+    <string name="title_activity_add_cholesterol">Add Cholesterol Level</string>
+    <string name="title_activity_add_hb1ac">Add HB1AC</string>
+    <string name="title_activity_add_ketone">Add Ketones</string>
+    <string name="title_activity_add_pressure">Add Blood Pressure</string>
 </resources>
