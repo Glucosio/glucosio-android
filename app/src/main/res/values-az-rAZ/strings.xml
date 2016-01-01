@@ -43,7 +43,6 @@
   <string name="dialog_error2">Etibarlı dəyər daxil edin.</string>
   <string name="dialog_error">Boş yerləri doldurun.</string>
   <string name="dialog_delete">Sil</string>
-  <string name="dialog_edit">Redaktə</string>
   <string name="fragment_history_snackbar_text">1 oxunma silindi</string>
   <string name="fragment_history_snackbar_action">GERİ</string>
   <string name="fragment_overview_last_reading">Son yoxlama:</string>

@@ -47,7 +47,6 @@
   <string name="dialog_error2">Будь ласка, введіть припустиме значення.</string>
   <string name="dialog_error">Будь ласка, заповніть всі поля.</string>
   <string name="dialog_delete">Вилучити</string>
-  <string name="dialog_edit">Редагувати</string>
   <string name="fragment_history_snackbar_text">1 читання видалено</string>
   <string name="fragment_history_snackbar_action">СКАСУВАТИ</string>
   <string name="fragment_overview_last_reading">Остання перевірка:</string>

@@ -43,7 +43,6 @@
   <string name="dialog_error2">कृपया कोई मान्य मान दर्ज करें.</string>
   <string name="dialog_error">सभी क्षेत्रों को भरें.</string>
   <string name="dialog_delete">हटाना</string>
-  <string name="dialog_edit">संपादित</string>
   <string name="fragment_history_snackbar_text">1 पढ़ने हटाए गए</string>
   <string name="fragment_history_snackbar_action">पूर्ववत</string>
   <string name="fragment_overview_last_reading">अंतिम जांच:</string>

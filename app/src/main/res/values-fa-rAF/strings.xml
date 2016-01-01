@@ -49,7 +49,6 @@
   <string name="dialog_error2">لطفا مقداری معتبر وارد کنید.</string>
   <string name="dialog_error">همه زمینه ها را پر کنید.</string>
   <string name="dialog_delete">پاک کردن</string>
-  <string name="dialog_edit">ویرایش</string>
   <string name="fragment_history_snackbar_text">1 اندازه گیری حذف شد</string>
   <string name="fragment_history_snackbar_action">برگرداندن</string>
   <string name="fragment_overview_last_reading">آخرین چک:</string>

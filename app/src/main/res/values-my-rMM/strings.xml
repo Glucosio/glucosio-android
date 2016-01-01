@@ -49,7 +49,6 @@
   <string name="dialog_error2">ကျေးဇူးပြု၍ မှန်ကန်သော တန်ဖိုးကို ဖြည့်ပါ။</string>
   <string name="dialog_error">ကျေးဇူးပြု၍ ကွက်လပ်အားလုံးကို ဖြည့်ပေးပါ။</string>
   <string name="dialog_delete">ဖျက်ရန်</string>
-  <string name="dialog_edit">ပြင်ရန်</string>
   <string name="fragment_history_snackbar_text">ပြန်ဆိုချက် ၁ ခု ဖျက်ပြီး</string>
   <string name="fragment_history_snackbar_action">UNDO</string>
   <string name="fragment_overview_last_reading">နောက်ဆုံး စစ်ဆေးမှု။</string>

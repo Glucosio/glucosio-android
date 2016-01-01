@@ -55,7 +55,6 @@
   <string name="dialog_error2">Si us plau, introduïu un valor vàlid.</string>
   <string name="dialog_error">Si us plau, empleneu tots els camps.</string>
   <string name="dialog_delete">Suprimeix</string>
-  <string name="dialog_edit">Edita</string>
   <string name="fragment_history_snackbar_text">S\'ha suprimit 1 lectura</string>
   <string name="fragment_history_snackbar_action">DESFÉS</string>
   <string name="fragment_overview_last_reading">Darrera verificació:</string>

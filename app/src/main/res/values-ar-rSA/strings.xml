@@ -45,7 +45,6 @@
   <string name="dialog_error2">الرجاء إدخال قيمة صحيحة.</string>
   <string name="dialog_error">الرجاء تعبئة كافة الحقول.</string>
   <string name="dialog_delete">احذف</string>
-  <string name="dialog_edit">عدِّل</string>
   <string name="fragment_history_snackbar_text">حُذِفت قراءة واحدة</string>
   <string name="fragment_history_snackbar_action">التراجع عن</string>
   <string name="fragment_overview_last_reading">أخر فحص:</string>

@@ -36,7 +36,6 @@
   <string name="dialog_add_cancel">NULIGI</string>
   <string name="dialog_add_add">ALDONI</string>
   <string name="dialog_delete">Forigi</string>
-  <string name="dialog_edit">Redakti</string>
   <string name="fragment_history_snackbar_text">1 legado forigita</string>
   <string name="fragment_history_snackbar_action">MALFARI</string>
   <string name="fragment_overview_last_reading">Lasta kontrolo:</string>

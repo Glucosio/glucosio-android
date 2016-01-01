@@ -55,7 +55,6 @@
   <string name="dialog_error2">Te rog introdu o valoare validă.</string>
   <string name="dialog_error">Te rog completează toate câmpurile.</string>
   <string name="dialog_delete">Șterge</string>
-  <string name="dialog_edit">Modifică</string>
   <string name="fragment_history_snackbar_text">O înregistrare ștearsă</string>
   <string name="fragment_history_snackbar_action">ANULEAZĂ</string>
   <string name="fragment_overview_last_reading">Ultima verificare:</string>

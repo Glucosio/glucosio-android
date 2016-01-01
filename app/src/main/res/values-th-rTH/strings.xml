@@ -42,7 +42,6 @@
   <string name="dialog_error2">กรุณาใส่ค่าถูกต้อง</string>
   <string name="dialog_error">กรุณากรอกข้อมูลให้ครบทุกรายการ</string>
   <string name="dialog_delete">ลบ</string>
-  <string name="dialog_edit">แก้ไข</string>
   <string name="fragment_history_snackbar_text">ลบแล้ว 1 รายการ</string>
   <string name="fragment_history_snackbar_action">เลิกทำ</string>
   <string name="fragment_overview_last_reading">ตรวจสอบครั้งล่าสุด:</string>

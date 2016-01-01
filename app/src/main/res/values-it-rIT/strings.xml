@@ -32,9 +32,9 @@
   <string name="fab_pressure">Pressione sanguigna</string>
   <string name="fab_cholesterol">Livello di colesterolo</string>
   <string name="fab_HB1AC">Emoglobina glicata (HB1AC)</string>
-  <string name="fab_glucose">Livello Glicemia</string>
+  <string name="fab_glucose">Glicemia</string>
   <string name="fragment_empty_text">Nessuna informazione disponibile. \n Aggiungi la tua prima lettura qui.</string>
-  <string name="dialog_add_title">Aggiungi livello di Glucosio nel sangue</string>
+  <string name="dialog_add_title">Aggiungi Glicemia</string>
   <string name="dialog_add_concentration">Concentrazione</string>
   <string name="dialog_add_date">Data</string>
   <string name="dialog_add_time">Ora</string>
@@ -56,7 +56,6 @@
   <string name="dialog_error2">Inserisci un valore valido.</string>
   <string name="dialog_error">Per favore compila tutti i campi.</string>
   <string name="dialog_delete">Cancella</string>
-  <string name="dialog_edit">Modifica</string>
   <string name="fragment_history_snackbar_text">1 lettura cancellata</string>
   <string name="fragment_history_snackbar_action">ANNULLA</string>
   <string name="fragment_overview_last_reading">Ultimo controllo:</string>
@@ -192,4 +191,18 @@
   <string name="dialog_export_range">Esporta intervallo di date</string>
   <string name="activity_export_no_readings_snackbar">Nessuna lettura da esportare.</string>
   <string name="wear_new_reading">Nuova lettura aggiunta</string>
+  <string name="dialog_add_weight">Peso</string>
+  <string name="dialog_add_ketones">Chetoni</string>
+  <string name="dialog_add_pression_min">Pressione Minima</string>
+  <string name="dialog_add_pression_max">Pressione Massima</string>
+  <string name="dialog_add_cholesterol_total">Colesterolo totale</string>
+  <string name="dialog_add_cholesterol_ldl">Colesterolo LDL</string>
+  <string name="dialog_add_cholesterol_hdl">Colesterolo HDL</string>
+  <string name="dialog_add_hb1ac">HB1AC</string>
+  <string name="title_activity_add_glucose">Aggiungi Glicemia</string>
+  <string name="title_activity_add_weight">Aggiungi Peso Corporeo</string>
+  <string name="title_activity_add_cholesterol">Aggiungi Colesterolo</string>
+  <string name="title_activity_add_hb1ac">Aggiungi HB1AC</string>
+  <string name="title_activity_add_ketone">Aggiungi Chetoni</string>
+  <string name="title_activity_add_pressure">Aggiungi pressione sanguigna</string>
 </resources>

@@ -49,7 +49,6 @@
   <string name="dialog_error2">Introduz un valor válidu, por favor.</string>
   <string name="dialog_error">Enllena tolos campos, por favor.</string>
   <string name="dialog_delete">Desaniciar</string>
-  <string name="dialog_edit">Editar</string>
   <string name="fragment_history_snackbar_text">Desanicióse una llectura</string>
   <string name="fragment_history_snackbar_action">DESFACER</string>
   <string name="fragment_overview_last_reading">Cabera comprobación:</string>

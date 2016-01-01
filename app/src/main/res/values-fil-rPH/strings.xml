@@ -43,7 +43,6 @@
   <string name="dialog_error2">Mag-enter ng tamang value.</string>
   <string name="dialog_error">Paki-punan ang lahat ng mga fields.</string>
   <string name="dialog_delete">Burahin</string>
-  <string name="dialog_edit">I-edit</string>
   <string name="fragment_history_snackbar_text">Binura ang 1 reading</string>
   <string name="fragment_history_snackbar_action">I-UNDO</string>
   <string name="fragment_overview_last_reading">Huling pagsusuri:</string>

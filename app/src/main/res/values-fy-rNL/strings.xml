@@ -36,7 +36,6 @@
   <string name="dialog_add_cancel">ANNULEARJE</string>
   <string name="dialog_add_add">TAFOEGJE</string>
   <string name="dialog_delete">Fuortsmite</string>
-  <string name="dialog_edit">Bewurkje</string>
   <string name="fragment_history_snackbar_text">1 útlêzing fuortsmiten</string>
   <string name="fragment_history_snackbar_action">ÛNGEDIEN MEITSJE</string>
   <string name="fragment_overview_last_reading">Lêste kontrôle:</string>
