@@ -10,35 +10,30 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="128dp"
+        android:layout_height="wrap_content"
         android:background="@color/glucosio_pink"
-        android:gravity="bottom"
         android:minHeight="?android:attr/actionBarSize"
-        android:paddingBottom="16dp"
         app:contentInsetLeft="0dp"
         app:contentInsetStart="0dp"
-        app:expandedTitleGravity="center_horizontal"
-        app:titleTextAppearance="@style/Toolbar.ExpandedText" />
+        android:layout_marginBottom="16dp"
+        app:titleTextAppearance="@style/Toolbar.WhiteText" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/done_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/toolbar"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:layout_gravity="bottom|right"
-        android:layout_marginBottom="-32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
         android:onClick="onFabClicked"
+        android:layout_margin="32dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
         android:src="@drawable/ic_done_black_24dp"
         app:backgroundTint="@color/glucosio_accent" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/done_fab"
+        android:layout_below="@id/toolbar"
         android:layout_margin="16dp"
         android:orientation="vertical">
 
@@ -47,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             android:orientation="vertical">
 
             <LinearLayout
