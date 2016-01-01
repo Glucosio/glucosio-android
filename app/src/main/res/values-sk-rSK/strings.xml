@@ -42,7 +42,6 @@
   <string name="dialog_error2">Prosím, zadajte platnú hodnotu.</string>
   <string name="dialog_error">Vyplňte prosím všetky položky.</string>
   <string name="dialog_delete">Odstrániť</string>
-  <string name="dialog_edit">Upraviť</string>
   <string name="fragment_history_snackbar_text">odstránený 1 záznam</string>
   <string name="fragment_history_snackbar_action">SPÄŤ</string>
   <string name="fragment_overview_last_reading">Posledná kontrola:</string>

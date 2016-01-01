@@ -44,7 +44,6 @@
   <string name="dialog_error2">Please enter a valid value.</string>
   <string name="dialog_error">Please fill all the fields.</string>
   <string name="dialog_delete">Delete</string>
-  <string name="dialog_edit">Edit</string>
   <string name="fragment_history_snackbar_text">1 reading deleted</string>
   <string name="fragment_history_snackbar_action">UNDO</string>
   <string name="fragment_overview_last_reading">Last check:</string>

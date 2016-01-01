@@ -49,7 +49,6 @@
   <string name="dialog_error2">Cuir luach bailí isteach.</string>
   <string name="dialog_error">Líon isteach na réimsí go léir.</string>
   <string name="dialog_delete">Scrios</string>
-  <string name="dialog_edit">Eagar</string>
   <string name="fragment_history_snackbar_text">Scriosadh tomhas amháin</string>
   <string name="fragment_history_snackbar_action">CEALAIGH</string>
   <string name="fragment_overview_last_reading">Tomhas is déanaí:</string>

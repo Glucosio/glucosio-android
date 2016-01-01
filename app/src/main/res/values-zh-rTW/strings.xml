@@ -55,7 +55,6 @@
   <string name="dialog_error2">請輸入有效的值。</string>
   <string name="dialog_error">請輸入所有欄位。</string>
   <string name="dialog_delete">刪除</string>
-  <string name="dialog_edit">編輯</string>
   <string name="fragment_history_snackbar_text">已刪除一筆紀錄</string>
   <string name="fragment_history_snackbar_action">還原</string>
   <string name="fragment_overview_last_reading">上次檢查：</string>

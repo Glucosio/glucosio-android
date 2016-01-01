@@ -48,7 +48,6 @@
   <string name="dialog_error2">Bitte einen gültigen Wert eingeben.</string>
   <string name="dialog_error">Bitte alle Felder ausfüllen.</string>
   <string name="dialog_delete">Löschen</string>
-  <string name="dialog_edit">Bearbeiten</string>
   <string name="fragment_history_snackbar_text">1 Messwert gelöscht</string>
   <string name="fragment_history_snackbar_action">RÜCKGÄNGIG</string>
   <string name="fragment_overview_last_reading">Zuletzt geprüft:</string>

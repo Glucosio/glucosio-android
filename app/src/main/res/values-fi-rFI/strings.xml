@@ -41,7 +41,6 @@
   <string name="dialog_add_add">LISÄÄ</string>
   <string name="dialog_error">Täytä kaikki kentät.</string>
   <string name="dialog_delete">Poista</string>
-  <string name="dialog_edit">Muokkaa</string>
   <string name="fragment_history_snackbar_text">1 lukema poistettu</string>
   <string name="fragment_history_snackbar_action">KUMOA</string>
   <string name="fragment_overview_last_reading">Viimeisin tarkistus:</string>

@@ -36,7 +36,6 @@
   <string name="dialog_add_cancel">रद्द</string>
   <string name="dialog_add_add">जोडा</string>
   <string name="dialog_delete">नष्ट</string>
-  <string name="dialog_edit">संपादन</string>
   <string name="fragment_overview_last_reading">शेवटची तपासणी:</string>
   <string name="preferences_about">या बद्दल</string>
   <string name="preferences_version">आवृत्ती</string>

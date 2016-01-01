@@ -55,7 +55,6 @@
   <string name="dialog_error2">אנא הזינו ערך תקין.</string>
   <string name="dialog_error">אנא מלאו את כל השדות.</string>
   <string name="dialog_delete">למחוק</string>
-  <string name="dialog_edit">ערוך</string>
   <string name="fragment_history_snackbar_text">מדידה אחת נמחקה</string>
   <string name="fragment_history_snackbar_action">בטל</string>
   <string name="fragment_overview_last_reading">בדיקה אחרונה:</string>

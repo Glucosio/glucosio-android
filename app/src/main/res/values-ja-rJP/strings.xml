@@ -55,7 +55,6 @@
   <string name="dialog_error2">有効な値を入力してください。</string>
   <string name="dialog_error">すべてのフィールドを記入してください。</string>
   <string name="dialog_delete">削除</string>
-  <string name="dialog_edit">編集</string>
   <string name="fragment_history_snackbar_text">1 つ測定値を削除しました</string>
   <string name="fragment_history_snackbar_action">元に戻す</string>
   <string name="fragment_overview_last_reading">最後の確認:</string>

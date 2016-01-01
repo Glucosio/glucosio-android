@@ -49,7 +49,6 @@
   <string name="dialog_error2">ກະລຸນາໃສ່ຄ່າຂໍ້ມູນທີ່ຖືກຕ້ອງ.</string>
   <string name="dialog_error">ກະລຸນາຕື່ມໃສ່ໃຫ້ຄົບທຸກຫ້ອງ.</string>
   <string name="dialog_delete">ລຶບ</string>
-  <string name="dialog_edit">ແກ້ໄຂ</string>
   <string name="fragment_history_snackbar_text">ລົບ 1 ການອ່ານ</string>
   <string name="fragment_history_snackbar_action">ເອົາກັບຄືນ</string>
   <string name="fragment_overview_last_reading">ກວດສອບຄັ້ງຫຼ້າສຸດ:</string>

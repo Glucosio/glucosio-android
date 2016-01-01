@@ -55,7 +55,6 @@
   <string name="dialog_error2">Введите корректное значение.</string>
   <string name="dialog_error">Пожалуйста, заполните все поля.</string>
   <string name="dialog_delete">Удалить</string>
-  <string name="dialog_edit">Правка</string>
   <string name="fragment_history_snackbar_text">1 запись удалена</string>
   <string name="fragment_history_snackbar_action">ОТМЕНИТЬ</string>
   <string name="fragment_overview_last_reading">Последняя проверка:</string>

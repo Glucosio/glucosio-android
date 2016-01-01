@@ -55,7 +55,6 @@
   <string name="dialog_error2">Voer een geldige waarde in.</string>
   <string name="dialog_error">Vul alle velden in.</string>
   <string name="dialog_delete">Verwijderen</string>
-  <string name="dialog_edit">Bewerken</string>
   <string name="fragment_history_snackbar_text">1 uitlezing verwijderd</string>
   <string name="fragment_history_snackbar_action">ONGEDAAN MAKEN</string>
   <string name="fragment_overview_last_reading">Laatste controle:</string>
