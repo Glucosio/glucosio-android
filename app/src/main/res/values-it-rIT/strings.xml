@@ -193,8 +193,8 @@
   <string name="wear_new_reading">Nuova lettura aggiunta</string>
   <string name="dialog_add_weight">Peso</string>
   <string name="dialog_add_ketones">Chetoni</string>
-  <string name="dialog_add_pression_min">Pressione Minima</string>
-  <string name="dialog_add_pression_max">Pressione Massima</string>
+  <string name="dialog_add_pressure_min">Pressione Minima</string>
+  <string name="dialog_add_pressure_max">Pressione Massima</string>
   <string name="dialog_add_cholesterol_total">Colesterolo totale</string>
   <string name="dialog_add_cholesterol_ldl">Colesterolo LDL</string>
   <string name="dialog_add_cholesterol_hdl">Colesterolo HDL</string>
