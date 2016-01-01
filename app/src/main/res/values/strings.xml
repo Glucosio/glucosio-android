@@ -288,4 +288,6 @@
     <string name="activity_export_no_readings_snackbar">No readings to export.</string>
     <string name="wear_new_reading">New reading added</string>
     <string name="title_activity_add_glucose">Add Glucose reading</string>
+    <string name="title_activity_add_weight">Add Weight</string>
+    <string name="dialog_add_weight">Weight</string>
 </resources>

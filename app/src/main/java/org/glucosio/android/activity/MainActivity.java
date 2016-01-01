@@ -265,6 +265,13 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         finish();
     }
 
+    public void onWeightFabClicked(View v) {
+        fabMenu.toggle(false);
+        Intent intent = new Intent(this, AddWeightActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
     private void removeWhiteOverlay() {
         AlphaAnimation alpha = new AlphaAnimation(viewPager.getAlpha(), 1F);
         alpha.setDuration(0);

@@ -106,6 +106,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.glucosio.android.activity.MainActivity" />
         </activity>
+        <activity
+            android:name=".activity.AddWeightActivity"
+            android:label="@string/title_activity_add_weight"
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.glucosio.android.activity.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

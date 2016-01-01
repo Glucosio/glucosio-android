@@ -57,7 +57,7 @@ public class DatabaseHandler {
 
     public void addGlucoseReading(GlucoseReading reading) {
         realm.beginTransaction();
-        reading.setId(getNextKey());
+        reading.setId(getNextKey("glucose"));
         realm.copyToRealm(reading);
         realm.commitTransaction();
     }
@@ -299,7 +299,7 @@ public class DatabaseHandler {
 
     public void addHB1ACReading(HB1ACReading reading) {
         realm.beginTransaction();
-        reading.setId(getNextKey());
+        reading.setId(getNextKey("hb1ac"));
         realm.copyToRealm(reading);
         realm.commitTransaction();
     }
@@ -323,7 +323,7 @@ public class DatabaseHandler {
 
     public void addKetoneReading(KetoneReading reading) {
         realm.beginTransaction();
-        reading.setId(getNextKey());
+        reading.setId(getNextKey("ketone"));
         realm.copyToRealm(reading);
         realm.commitTransaction();
     }
@@ -347,7 +347,7 @@ public class DatabaseHandler {
 
     public void addPressureReading(PressureReading reading) {
         realm.beginTransaction();
-        reading.setId(getNextKey());
+        reading.setId(getNextKey("pressure"));
         realm.copyToRealm(reading);
         realm.commitTransaction();
     }
@@ -371,7 +371,7 @@ public class DatabaseHandler {
 
     public void addWeightReading(WeightReading reading) {
         realm.beginTransaction();
-        reading.setId(getNextKey());
+        reading.setId(getNextKey("weight"));
         realm.copyToRealm(reading);
         realm.commitTransaction();
     }
@@ -393,9 +393,58 @@ public class DatabaseHandler {
         return readingList;
     }
 
-    public long getNextKey() {
-        Number maxId = realm.where(GlucoseReading.class)
-                .max("id");
+    public void addCholesterolReading(CholesterolReading reading) {
+        realm.beginTransaction();
+        reading.setId(getNextKey("cholesterol"));
+        realm.copyToRealm(reading);
+        realm.commitTransaction();
+    }
+
+    public void deleteCholesterolReading(CholesterolReading reading) {
+        realm.beginTransaction();
+        reading.removeFromRealm();
+        realm.commitTransaction();
+    }
+
+    public ArrayList<CholesterolReading> getCholesterolReadings() {
+        RealmResults<CholesterolReading> results =
+                realm.where(CholesterolReading.class)
+                        .findAllSorted("created", Sort.DESCENDING);
+        ArrayList<CholesterolReading> readingList = new ArrayList<>();
+        for (int i=0; i < results.size(); i++){
+            readingList.add(results.get(i));
+        }
+        return readingList;
+    }
+
+    public long getNextKey(String where) {
+        Number maxId = null;
+        switch (where) {
+            case "glucose":
+                maxId = realm.where(GlucoseReading.class)
+                        .max("id");
+                break;
+            case "weight":
+                maxId = realm.where(WeightReading.class)
+                        .max("id");
+                break;
+            case "hb1ac":
+                maxId = realm.where(HB1ACReading.class)
+                        .max("id");
+                break;
+            case "pressure":
+                maxId = realm.where(PressureReading.class)
+                        .max("id");
+                break;
+            case "ketone":
+                maxId = realm.where(KetoneReading.class)
+                        .max("id");
+                break;
+            case "cholesterol":
+                maxId = realm.where(CholesterolReading.class)
+                        .max("id");
+                break;
+        }
         if (maxId == null){
             return 0;
         } else {
