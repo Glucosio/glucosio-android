@@ -43,6 +43,7 @@ import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.adapter.HomePagerAdapter;
 import org.glucosio.android.presenter.AddHB1ACPresenter;
+import org.glucosio.android.presenter.AddWeightPresenter;
 import org.glucosio.android.presenter.ExportPresenter;
 import org.glucosio.android.presenter.MainPresenter;
 
@@ -290,6 +291,13 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     public void onCholesterolFabClicked(View v) {
         fabMenu.toggle(false);
         Intent intent = new Intent(this, AddCholesterolActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void onWeightFabClicked(View v) {
+        fabMenu.toggle(false);
+        Intent intent = new Intent(this, AddWeightActivity.class);
         startActivity(intent);
         finish();
     }

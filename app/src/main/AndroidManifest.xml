@@ -114,6 +114,38 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.glucosio.android.activity.MainActivity" />
         </activity>
+        <activity
+            android:name=".activity.AddCholesterolActivity"
+            android:label="@string/title_activity_add_cholesterol"
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.glucosio.android.activity.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activity.AddKetoneActivity"
+            android:label="@string/title_activity_add_ketone"
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.glucosio.android.activity.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activity.AddPressureActivity"
+            android:label="@string/title_activity_add_pressure"
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.glucosio.android.activity.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activity.AddHB1ACActivity"
+            android:label="@string/title_activity_add_hb1ac"
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.glucosio.android.activity.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
