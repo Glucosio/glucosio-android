@@ -42,6 +42,7 @@ import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.adapter.HomePagerAdapter;
+import org.glucosio.android.presenter.AddHB1ACPresenter;
 import org.glucosio.android.presenter.ExportPresenter;
 import org.glucosio.android.presenter.MainPresenter;
 
@@ -265,9 +266,30 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         finish();
     }
 
-    public void onWeightFabClicked(View v) {
+    public void onKetoneFabClicked(View v) {
         fabMenu.toggle(false);
-        Intent intent = new Intent(this, AddWeightActivity.class);
+        Intent intent = new Intent(this, AddKetoneActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void onPressureFabClicked(View v) {
+        fabMenu.toggle(false);
+        Intent intent = new Intent(this, AddPressureActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void onHB1ACFabClicked(View v) {
+        fabMenu.toggle(false);
+        Intent intent = new Intent(this, AddHB1ACActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void onCholesterolFabClicked(View v) {
+        fabMenu.toggle(false);
+        Intent intent = new Intent(this, AddCholesterolActivity.class);
         startActivity(intent);
         finish();
     }
