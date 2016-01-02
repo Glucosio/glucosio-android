@@ -90,7 +90,7 @@
                     android:layout_weight="1">
 
                     <EditText
-                        android:id="@+id/cholesterol_add_value_min"
+                        android:id="@+id/cholesterol_add_value_ldl"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/dialog_add_cholesterol_ldl"
@@ -106,7 +106,7 @@
                     android:layout_weight="1">
 
                     <EditText
-                        android:id="@+id/cholesterol_add_value_max"
+                        android:id="@+id/cholesterol_add_value_hdl"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/dialog_add_cholesterol_hdl"
