@@ -190,4 +190,18 @@
   <string name="dialog_export_range">エクスポート範囲</string>
   <string name="activity_export_no_readings_snackbar">エクスポートする測定値はありません。</string>
   <string name="wear_new_reading">新しい測定値が追加されました</string>
+  <string name="dialog_add_weight">体重</string>
+  <string name="dialog_add_ketones">ケトン</string>
+  <string name="dialog_add_pressure_min">最低血圧</string>
+  <string name="dialog_add_pressure_max">最高血圧</string>
+  <string name="dialog_add_cholesterol_total">総コレステロール</string>
+  <string name="dialog_add_cholesterol_ldl">LDL コレステロール</string>
+  <string name="dialog_add_cholesterol_hdl">HDL コレステロール</string>
+  <string name="dialog_add_hb1ac">HB1AC</string>
+  <string name="title_activity_add_glucose">血糖の測定値を追加</string>
+  <string name="title_activity_add_weight">体重を追加</string>
+  <string name="title_activity_add_cholesterol">コレステ ロール値を追加</string>
+  <string name="title_activity_add_hb1ac">HB1AC を追加</string>
+  <string name="title_activity_add_ketone">ケトンを追加</string>
+  <string name="title_activity_add_pressure">血圧を追加</string>
 </resources>

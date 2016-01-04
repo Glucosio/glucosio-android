@@ -190,4 +190,18 @@
   <string name="dialog_export_range">匯出範圍</string>
   <string name="activity_export_no_readings_snackbar">沒有可匯出的的讀數。</string>
   <string name="wear_new_reading">已新增讀數</string>
+  <string name="dialog_add_weight">體重</string>
+  <string name="dialog_add_ketones">酮類</string>
+  <string name="dialog_add_pressure_min">舒張壓</string>
+  <string name="dialog_add_pressure_max">收縮壓</string>
+  <string name="dialog_add_cholesterol_total">總膽固醇</string>
+  <string name="dialog_add_cholesterol_ldl">低密度膽固醇</string>
+  <string name="dialog_add_cholesterol_hdl">高密度膽固醇</string>
+  <string name="dialog_add_hb1ac">糖化血色素</string>
+  <string name="title_activity_add_glucose">新增血糖讀數</string>
+  <string name="title_activity_add_weight">新增體重讀數</string>
+  <string name="title_activity_add_cholesterol">新增膽固醇讀數</string>
+  <string name="title_activity_add_hb1ac">新增糖化血色素讀數</string>
+  <string name="title_activity_add_ketone">新增酮類讀數</string>
+  <string name="title_activity_add_pressure">新增血壓讀數</string>
 </resources>
