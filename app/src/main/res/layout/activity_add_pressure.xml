@@ -17,19 +17,21 @@
         app:contentInsetStart="0dp"
         android:layout_marginBottom="16dp"
         app:titleTextAppearance="@style/Toolbar.WhiteText" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/done_fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:onClick="onFabClicked"
-        android:layout_margin="32dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:src="@drawable/ic_done_black_24dp"
-        app:backgroundTint="@color/glucosio_accent" />
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/done_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:onClick="onFabClicked"
+            android:layout_margin="32dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_done_black_24dp"
+            app:backgroundTint="@color/glucosio_accent" />
+    </ScrollView>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -50,17 +52,16 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="2">
-
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
 
                     <EditText
-                        android:id="@+id/pressure_add_value_min"
+                        android:id="@+id/pressure_add_value_max"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/dialog_add_pressure_min"
+                        android:hint="@string/dialog_add_pressure_max"
                         android:inputType="numberDecimal"
                         android:singleLine="true"
                         android:textColorHighlight="@color/glucosio_pink"
@@ -79,17 +80,16 @@
                     android:layout_weight="1">
 
                     <EditText
-                        android:id="@+id/pressure_add_value_max"
+                        android:id="@+id/pressure_add_value_min"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/dialog_add_pressure_max"
+                        android:hint="@string/dialog_add_pressure_min"
                         android:inputType="numberDecimal"
                         android:singleLine="true"
                         android:textColorHighlight="@color/glucosio_pink"
                         android:textIsSelectable="false"
                         android:textSize="@dimen/abc_text_size_body_2_material" />
                 </android.support.design.widget.TextInputLayout>
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"

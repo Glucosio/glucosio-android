@@ -108,7 +108,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
             // Pressure
             case 3:
                 idTextView.setText(presenter.getPressureId().get(position).toString());
-                readingTextView.setText(presenter.getMaxPressureReading().get(position).toString() + "/" + presenter.getMinPressureReading().get(position).toString() + " mm/Hg");
+                readingTextView.setText(presenter.getMaxPressureReading().get(position).toString() + "/" + presenter.getMinPressureReading().get(position).toString() + "  mm/Hg");
                 datetimeTextView.setText(presenter.convertDate(presenter.getPressureDateTime().get(position)));
                 typeTextView.setText("");
                 typeTextView.setVisibility(View.GONE);
