@@ -190,4 +190,18 @@
   <string name="dialog_export_range">Exportintervall</string>
   <string name="activity_export_no_readings_snackbar">Inga värden att exportera.</string>
   <string name="wear_new_reading">Ny avläsning har lagts till</string>
+  <string name="dialog_add_weight">Vikt</string>
+  <string name="dialog_add_ketones">Ketoner</string>
+  <string name="dialog_add_pressure_min">Minsta tryck</string>
+  <string name="dialog_add_pressure_max">Högsta tryck</string>
+  <string name="dialog_add_cholesterol_total">Total kolesterol</string>
+  <string name="dialog_add_cholesterol_ldl">LDL-kolesterol</string>
+  <string name="dialog_add_cholesterol_hdl">HDL-kolesterol</string>
+  <string name="dialog_add_hb1ac">HB1AC</string>
+  <string name="title_activity_add_glucose">Lägg till glukosvärden</string>
+  <string name="title_activity_add_weight">Lägg till kroppsvikt</string>
+  <string name="title_activity_add_cholesterol">Lägg till kolesterolnivå</string>
+  <string name="title_activity_add_hb1ac">Lägg till HB1AC</string>
+  <string name="title_activity_add_ketone">Lägg till ketoner</string>
+  <string name="title_activity_add_pressure">Lägg till blodtryck</string>
 </resources>
