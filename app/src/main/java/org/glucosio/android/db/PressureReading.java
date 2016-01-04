@@ -20,6 +20,7 @@ public class PressureReading extends RealmObject {
         // mm/Hg
         this.minReading=minReading;
         this.maxReading=maxReading;
+        this.created=created;
     }
 
     public int getMinReading() {
