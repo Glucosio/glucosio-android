@@ -75,13 +75,14 @@ public class HistoryFragment extends Fragment {
         historySpinner.setAdapter(dataAdapter);
 
         final Context context = getActivity().getApplicationContext();
-        final int metricId = historySpinner.getSelectedItemPosition();
         historySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (!presenter.isdbEmpty()) {
+                    int metricId = position;
                     mAdapter = new HistoryAdapter(context, presenter, metricId);
                     mRecyclerView.setAdapter(mAdapter);
+                    mAdapter.notifyDataSetChanged();
                 }
             }
 

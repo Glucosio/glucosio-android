@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.glucosio.android.R;
 import org.glucosio.android.presenter.HistoryPresenter;
@@ -95,20 +94,25 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
                 readingTextView.setText(presenter.getGlucoseReading().get(position).toString() + " %");
                 datetimeTextView.setText(presenter.convertDate(presenter.getHB1ACDateTime().get(position)));
                 typeTextView.setText("");
+                typeTextView.setVisibility(View.GONE);
+                readingTextView.setTextColor(mContext.getResources().getColor(R.color.glucosio_text_dark));
                 break;
             // Cholesterol
             case 2:
                 idTextView.setText(presenter.getCholesterolId().get(position).toString());
                 readingTextView.setText(presenter.getTotalCholesterolReading().get(position).toString() + " mg/dL");
-                datetimeTextView.setText(presenter.convertDate(presenter.getHB1ACDateTime().get(position)));
-                typeTextView.setText("LDL: "+ presenter.getLDLCholesterolReading() + " - " + "HDL: " + presenter.getHDLCholesterolReading());
+                datetimeTextView.setText(presenter.convertDate(presenter.getCholesterolDateTime().get(position)));
+                typeTextView.setText("LDL: "+ presenter.getLDLCholesterolReading().get(position) + " - " + "HDL: " + presenter.getHDLCholesterolReading().get(position));
+                readingTextView.setTextColor(mContext.getResources().getColor(R.color.glucosio_text_dark));
                 break;
             // Pressure
             case 3:
                 idTextView.setText(presenter.getPressureId().get(position).toString());
-                readingTextView.setText(presenter.getMinPressureReading().get(position).toString() + "/" + presenter.getMaxPressureReading().get(position).toString() + " mm/Hg");
+                readingTextView.setText(presenter.getMaxPressureReading().get(position).toString() + "/" + presenter.getMinPressureReading().get(position).toString() + " mm/Hg");
                 datetimeTextView.setText(presenter.convertDate(presenter.getPressureDateTime().get(position)));
                 typeTextView.setText("");
+                typeTextView.setVisibility(View.GONE);
+                readingTextView.setTextColor(mContext.getResources().getColor(R.color.glucosio_text_dark));
                 break;
             //Ketones
             case 4:
@@ -116,13 +120,17 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
                 readingTextView.setText(presenter.getKetoneReading().get(position).toString() + " mmol");
                 datetimeTextView.setText(presenter.convertDate(presenter.getKetoneDateTime().get(position)));
                 typeTextView.setText("");
+                typeTextView.setVisibility(View.GONE);
+                readingTextView.setTextColor(mContext.getResources().getColor(R.color.glucosio_text_dark));
                 break;
             // Weight
             case 5:
                 idTextView.setText(presenter.getWeightId().get(position).toString());
                 readingTextView.setText(presenter.getWeightReadings().get(position).toString() + " kg");
-                datetimeTextView.setText(presenter.convertDate(presenter.getKetoneDateTime().get(position)));
+                datetimeTextView.setText(presenter.convertDate(presenter.getWeightDateTime().get(position)));
                 typeTextView.setText("");
+                typeTextView.setVisibility(View.GONE);
+                readingTextView.setTextColor(mContext.getResources().getColor(R.color.glucosio_text_dark));
                 break;
         }
     }
@@ -133,7 +141,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         switch (metricId) {
             // Glucose
             case 0:
-                Toast.makeText(mContext, metricId + presenter.getGlucoseReadingsNumber() + "", Toast.LENGTH_SHORT).show();
                 return presenter.getGlucoseReadingsNumber();
             // HB1AC
             case 1:
