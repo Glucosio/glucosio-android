@@ -1,10 +1,8 @@
 package org.glucosio.android.presenter;
 
 import org.glucosio.android.activity.AddKetoneActivity;
-import org.glucosio.android.activity.AddWeightActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.KetoneReading;
-import org.glucosio.android.db.WeightReading;
 import org.glucosio.android.tools.ReadingTools;
 import org.glucosio.android.tools.SplitDateTime;
 
@@ -65,7 +63,7 @@ public class AddKetonePresenter {
             Calendar cal = Calendar.getInstance();
             cal.set(Integer.parseInt(readingYear), Integer.parseInt(readingMonth)-1, Integer.parseInt(readingDay), Integer.parseInt(readingHour), Integer.parseInt(readingMinute));
             Date finalDateTime = cal.getTime();
-            int finalReading = Integer.parseInt(reading);
+            long finalReading = Long.parseLong(reading);
             KetoneReading kReading = new KetoneReading(finalReading, finalDateTime);
 
             dB.addKetoneReading(kReading);

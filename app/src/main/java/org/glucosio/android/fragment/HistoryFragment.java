@@ -1,6 +1,7 @@
 package org.glucosio.android.fragment;
 
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -13,6 +14,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import org.glucosio.android.R;
@@ -28,6 +32,7 @@ public class HistoryFragment extends Fragment {
     private LinearLayoutManager mLayoutManager;
     private RecyclerView.Adapter mAdapter;
     private HistoryPresenter presenter;
+    private Spinner historySpinner;
     private Boolean isToolbarScrolling = true;
 
     public static HistoryFragment newInstance() {
@@ -52,23 +57,40 @@ public class HistoryFragment extends Fragment {
 
         View mFragmentView;
         presenter = new HistoryPresenter(this);
-        presenter.loadDatabase();
-
         mFragmentView = inflater.inflate(R.layout.fragment_history, container, false);
 
         mRecyclerView = (RecyclerView) mFragmentView.findViewById(R.id.fragment_history_recycler_view);
-        mAdapter = new HistoryAdapter(super.getActivity().getApplicationContext(), presenter);
-
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
-        mRecyclerView.setHasFixedSize(false);
-
-        // use a linear layout manager
         mLayoutManager = new LinearLayoutManager(super.getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setHasFixedSize(false);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        historySpinner = (Spinner) mFragmentView.findViewById(R.id.history_spinner);
+        // use a linear layout manager
+        // Set array and adapter for graphSpinner
+        String[] selectorArray = getActivity().getResources().getStringArray(R.array.fragment_history_selector);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, selectorArray);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        historySpinner.setAdapter(dataAdapter);
 
-        mRecyclerView.setAdapter(mAdapter);
+        final Context context = getActivity().getApplicationContext();
+        final int metricId = historySpinner.getSelectedItemPosition();
+        historySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (!presenter.isdbEmpty()) {
+                    mAdapter = new HistoryAdapter(context, presenter, metricId);
+                    mRecyclerView.setAdapter(mAdapter);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), mRecyclerView, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
@@ -131,13 +153,15 @@ public class HistoryFragment extends Fragment {
     }
 
     public void updateToolbarBehaviour(){
-        if (mLayoutManager.findLastCompletelyVisibleItemPosition() == presenter.getReadingsNumber()-1) {
-            isToolbarScrolling = false;
-            ((MainActivity) getActivity()).turnOffToolbarScrolling();
-        } else {
-            if (!isToolbarScrolling){
-                isToolbarScrolling = true;
-                ((MainActivity)getActivity()).turnOnToolbarScrolling();
+        if (mAdapter!=null) {
+            if (mLayoutManager.findLastCompletelyVisibleItemPosition() == mAdapter.getItemCount() - 1) {
+                isToolbarScrolling = false;
+                ((MainActivity) getActivity()).turnOffToolbarScrolling();
+            } else {
+                if (!isToolbarScrolling) {
+                    isToolbarScrolling = true;
+                    ((MainActivity) getActivity()).turnOnToolbarScrolling();
+                }
             }
         }
     }

@@ -49,14 +49,6 @@
     <string name="helloactivity_button_next">NEXT</string>
     <string name="helloactivity_button_start">GET STARTED</string>
 
-    <string name="fab_weight">Body Weight</string>
-    <string name="fab_ketonest">Ketones</string>
-    <string name="fab_pressure">Blood Pressure</string>
-    <string name="fab_cholesterol">Cholesterol Level</string>
-    <string name="fab_HB1AC">HB1AC Reading</string>
-    <string name="fab_glucose">Blood Glucose Level</string>
-
-
     <string name="fragment_empty_text">No info available yet. \n Add your first reading here.</string>
     <string name="dialog_add_title">Add Blood Glucose Level</string>
     <string name="dialog_add_concentration">Concentration</string>
@@ -301,4 +293,20 @@
     <string name="title_activity_add_hb1ac">Add HB1AC</string>
     <string name="title_activity_add_ketone">Add Ketones</string>
     <string name="title_activity_add_pressure">Add Blood Pressure</string>
+
+    <string name="fab_weight">Body Weight</string>
+    <string name="fab_ketonest">Ketones</string>
+    <string name="fab_pressure">Blood Pressure</string>
+    <string name="fab_cholesterol">Cholesterol Level</string>
+    <string name="fab_HB1AC">HB1AC Reading</string>
+    <string name="fab_glucose">Blood Glucose Level</string>
+
+    <string-array name="fragment_history_selector" translatable="false">
+        <item>@string/fab_glucose</item>
+        <item>@string/fab_HB1AC</item>
+        <item>@string/fab_cholesterol</item>
+        <item>@string/fab_pressure</item>
+        <item>@string/fab_ketonest</item>
+        <item>@string/fab_weight</item>
+    </string-array>
 </resources>

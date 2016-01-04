@@ -17,7 +17,6 @@ import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import org.glucosio.android.R;
 import org.glucosio.android.presenter.AddKetonePresenter;
-import org.glucosio.android.presenter.AddWeightPresenter;
 import org.glucosio.android.tools.FormatDateTime;
 
 import java.text.DecimalFormat;
@@ -93,7 +92,7 @@ public class AddKetoneActivity extends AppCompatActivity implements TimePickerDi
 
     private void dialogOnAddButtonPressed() {
             presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
-                    addDateTextView.getText().toString(), readingTextView.getText().toString());
+                    addDateTextView.getText().toString(), readingTextView.getText().toString().trim());
     }
 
     public void showErrorMessage() {
