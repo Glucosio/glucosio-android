@@ -58,8 +58,7 @@ public class AddPressurePresenter {
     }
 
     public void dialogOnAddButtonPressed(String time, String date, String minReading, String maxReading){
-        if (validateDate(date) && validateTime(time)) {
-
+        if (validateEmpty(date) && validateEmpty(time) && validateEmpty(minReading) && validateEmpty(maxReading)) {
             Calendar cal = Calendar.getInstance();
             cal.set(Integer.parseInt(readingYear), Integer.parseInt(readingMonth)-1, Integer.parseInt(readingDay), Integer.parseInt(readingHour), Integer.parseInt(readingMinute));
             Date finalDateTime = cal.getTime();
@@ -74,11 +73,8 @@ public class AddPressurePresenter {
         }
     }
 
-    private boolean validateTime(String time){
+    private boolean validateEmpty(String time){
         return !time.equals("");
-    }
-    private boolean validateDate(String date){
-        return !date.equals("");
     }
 
     // Getters and Setters

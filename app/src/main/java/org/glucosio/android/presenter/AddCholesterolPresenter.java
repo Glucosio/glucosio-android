@@ -1,10 +1,8 @@
 package org.glucosio.android.presenter;
 
 import org.glucosio.android.activity.AddCholesterolActivity;
-import org.glucosio.android.activity.AddPressureActivity;
 import org.glucosio.android.db.CholesterolReading;
 import org.glucosio.android.db.DatabaseHandler;
-import org.glucosio.android.db.PressureReading;
 import org.glucosio.android.tools.ReadingTools;
 import org.glucosio.android.tools.SplitDateTime;
 
@@ -60,7 +58,7 @@ public class AddCholesterolPresenter {
     }
 
     public void dialogOnAddButtonPressed(String time, String date, String totalCho, String LDLCho, String HDLCho){
-        if (validateDate(date) && validateTime(time)) {
+        if (validateEmpty(date) && validateEmpty(time) && validateEmpty(totalCho) && validateEmpty(LDLCho) && validateEmpty(HDLCho)) {
 
             Calendar cal = Calendar.getInstance();
             cal.set(Integer.parseInt(readingYear), Integer.parseInt(readingMonth)-1, Integer.parseInt(readingDay), Integer.parseInt(readingHour), Integer.parseInt(readingMinute));
@@ -77,13 +75,9 @@ public class AddCholesterolPresenter {
         }
     }
 
-    private boolean validateTime(String time){
+    private boolean validateEmpty(String time){
         return !time.equals("");
     }
-    private boolean validateDate(String date){
-        return !date.equals("");
-    }
-
     // Getters and Setters
 
     public String getUnitMeasuerement(){
