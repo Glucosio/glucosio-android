@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
+import android.support.wearable.activity.ConfirmationActivity;
 import android.support.wearable.view.DelayedConfirmationView;
 import android.support.wearable.view.WearableListView;
 import android.util.Log;
@@ -118,6 +119,11 @@ public class MainActivity extends Activity implements
                     client.disconnect();
                 }
             }).start();
+            // Show Success ConfirmationActivity
+            Intent intent = new Intent(this, ConfirmationActivity.class);
+            intent.putExtra(ConfirmationActivity.EXTRA_ANIMATION_TYPE,
+                    ConfirmationActivity.SUCCESS_ANIMATION);
+            startActivity(intent);
         } else {
             Toast.makeText(MainActivity.this, getResources().getString(R.string.wear_error), Toast.LENGTH_SHORT).show();
         }

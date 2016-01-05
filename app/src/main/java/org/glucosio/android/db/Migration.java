@@ -54,7 +54,7 @@ public class Migration implements RealmMigration {
                  @PrimaryKey
                  long id;
 
-                 long reading;
+                 double reading;
                  Date created;
 
              class PressureReading
@@ -94,7 +94,7 @@ public class Migration implements RealmMigration {
             RealmObjectSchema ketoneSchema = schema.create("KetoneReading")
                     .addField("id", Long.class, FieldAttribute.PRIMARY_KEY, FieldAttribute.REQUIRED)
                     .addField("created", Date.class)
-                    .addField("reading", Long.class, FieldAttribute.REQUIRED);
+                    .addField("reading", Double.class, FieldAttribute.REQUIRED);
 
             RealmObjectSchema HB1ACSchema = schema.create("HB1ACReading")
                     .addField("id", Long.class, FieldAttribute.PRIMARY_KEY, FieldAttribute.REQUIRED)

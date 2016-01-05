@@ -63,7 +63,7 @@ public class AddKetonePresenter {
             Calendar cal = Calendar.getInstance();
             cal.set(Integer.parseInt(readingYear), Integer.parseInt(readingMonth)-1, Integer.parseInt(readingDay), Integer.parseInt(readingHour), Integer.parseInt(readingMinute));
             Date finalDateTime = cal.getTime();
-            long finalReading = Long.parseLong(reading);
+            double finalReading = Double.parseDouble(reading);
             KetoneReading kReading = new KetoneReading(finalReading, finalDateTime);
 
             dB.addKetoneReading(kReading);

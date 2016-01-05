@@ -9,22 +9,22 @@ public class KetoneReading extends RealmObject {
     @PrimaryKey
     private long id;
 
-    private long reading;
+    private double reading;
     private Date created;
 
     public KetoneReading() {
     }
 
-    public KetoneReading(long reading,Date created) {
+    public KetoneReading(double reading,Date created) {
         this.reading=reading;
         this.created=created;
     }
 
-    public long getReading() {
+    public double getReading() {
         return reading;
     }
 
-    public void setReading(long reading) {
+    public void setReading(double reading) {
         this.reading = reading;
     }
 

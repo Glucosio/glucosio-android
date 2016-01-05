@@ -1,7 +1,6 @@
 package org.glucosio.android.presenter;
 
 import org.glucosio.android.db.DatabaseHandler;
-import org.glucosio.android.db.GlucoseReading;
 import org.glucosio.android.fragment.HistoryFragment;
 
 import java.util.ArrayList;
@@ -25,15 +24,41 @@ public class HistoryPresenter {
         return fragment.convertDate(date);
     }
 
-    public void onDeleteClicked(int idToDelete){
-        removeReadingFromDb(dB.getGlucoseReadingById(idToDelete));
+    public void onDeleteClicked(int idToDelete, int metricID){
+        switch (metricID) {
+            // Glucose
+            case 0:
+                dB.deleteGlucoseReadings(dB.getGlucoseReading(idToDelete));
+                fragment.reloadFragmentAdapter();
+                break;
+            // HB1AC
+            case 1:
+                dB.deleteHB1ACReadingReading(dB.getHB1ACReading(idToDelete));
+                fragment.reloadFragmentAdapter();
+                break;
+            // Cholesterol
+            case 2:
+                dB.deleteCholesterolReading(dB.getCholesterolReading(idToDelete));
+                fragment.reloadFragmentAdapter();
+                break;
+            // Pressure
+            case 3:
+                dB.deletePressureReading(dB.getPressureReading(idToDelete));
+                fragment.reloadFragmentAdapter();
+                break;
+            //Ketones
+            case 4:
+                dB.deleteKetoneReading(dB.getKetoneReading(idToDelete));
+                fragment.reloadFragmentAdapter();
+                break;
+            // Weight
+            case 5:
+                dB.deleteWeightReading(dB.getWeightReading(idToDelete));
+                fragment.reloadFragmentAdapter();
+                break;
+        }
         fragment.notifyAdapter();
         fragment.updateToolbarBehaviour();
-    }
-
-    private void removeReadingFromDb(GlucoseReading gReading) {
-        dB.deleteGlucoseReadings(gReading);
-        fragment.reloadFragmentAdapter();
     }
 
     // Getters
@@ -61,7 +86,7 @@ public class HistoryPresenter {
         return dB.getGlucoseReadingAsArray().size();
     }
 
-    public ArrayList<Long> getKetoneReading() {
+    public ArrayList<Double> getKetoneReading() {
         return dB.getKetoneReadingAsArray();
     }
 

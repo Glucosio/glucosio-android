@@ -310,6 +310,13 @@ public class DatabaseHandler {
         realm.commitTransaction();
     }
 
+    public HB1ACReading getHB1ACReading(long id) {
+        return realm.where(HB1ACReading.class)
+                .equalTo("id", id)
+                .findFirst();
+    }
+
+
     public ArrayList<HB1ACReading> getHB1ACReadings() {
         RealmResults<HB1ACReading> results =
                 realm.where(HB1ACReading.class)
@@ -374,6 +381,12 @@ public class DatabaseHandler {
         realm.commitTransaction();
     }
 
+    public KetoneReading getKetoneReading(long id) {
+        return realm.where(KetoneReading.class)
+                .equalTo("id", id)
+                .findFirst();
+    }
+
     public void deleteKetoneReading(KetoneReading reading) {
         realm.beginTransaction();
         reading.removeFromRealm();
@@ -406,13 +419,13 @@ public class DatabaseHandler {
         return idArray;
     }
 
-    public ArrayList<Long> getKetoneReadingAsArray(){
+    public ArrayList<Double> getKetoneReadingAsArray(){
         List<KetoneReading> readings = getKetoneReadings();
-        ArrayList<Long> readingArray = new ArrayList<Long>();
+        ArrayList<Double> readingArray = new ArrayList<Double>();
         int i;
 
         for (i = 0; i < readings.size(); i++){
-            long reading;
+            double reading;
             KetoneReading singleReading = readings.get(i);
             reading = singleReading.getReading();
             readingArray.add(reading);
@@ -442,6 +455,12 @@ public class DatabaseHandler {
         reading.setId(getNextKey("pressure"));
         realm.copyToRealm(reading);
         realm.commitTransaction();
+    }
+
+    public PressureReading getPressureReading(long id) {
+        return realm.where(PressureReading.class)
+                .equalTo("id", id)
+                .findFirst();
     }
 
     public void deletePressureReading(PressureReading reading) {
@@ -529,6 +548,12 @@ public class DatabaseHandler {
         realm.commitTransaction();
     }
 
+    public WeightReading getWeightReading(long id) {
+        return realm.where(WeightReading.class)
+                .equalTo("id", id)
+                .findFirst();
+    }
+
     public void deleteWeightReading(WeightReading reading) {
         realm.beginTransaction();
         reading.removeFromRealm();
@@ -597,6 +622,12 @@ public class DatabaseHandler {
         reading.setId(getNextKey("cholesterol"));
         realm.copyToRealm(reading);
         realm.commitTransaction();
+    }
+
+    public CholesterolReading getCholesterolReading(long id) {
+        return realm.where(CholesterolReading.class)
+                .equalTo("id", id)
+                .findFirst();
     }
 
     public void deleteCholesterolReading(CholesterolReading reading) {
