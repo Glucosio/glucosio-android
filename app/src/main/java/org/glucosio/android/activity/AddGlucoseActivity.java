@@ -67,7 +67,7 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
             @Override
             public void onItemChosen(View labelledSpinner, AdapterView<?> adapterView, View itemView, int position, long id) {
                 // If other is selected
-                if (position == 9) {
+                if (position == 11) {
                     typeCustomEditText.setVisibility(View.VISIBLE);
                     isCustomType = true;
                 } else {
