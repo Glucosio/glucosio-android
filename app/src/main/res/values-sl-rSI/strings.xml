@@ -43,7 +43,6 @@
   <string name="dialog_error2">Vnesite veljavno vrednost.</string>
   <string name="dialog_error">Prosimo, izpolnite vsa polja.</string>
   <string name="dialog_delete">Izbriši</string>
-  <string name="dialog_edit">Uredi</string>
   <string name="fragment_history_snackbar_text">1 meritev je bila izbrisana</string>
   <string name="fragment_history_snackbar_action">RAZVELJAVI</string>
   <string name="fragment_overview_last_reading">Zadnja meritev:</string>

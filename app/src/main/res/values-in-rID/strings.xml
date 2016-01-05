@@ -43,7 +43,6 @@
   <string name="dialog_error2">Tolong masukan nilai yang sah.</string>
   <string name="dialog_error">Mohon lengkapi semua isian.</string>
   <string name="dialog_delete">Hapus</string>
-  <string name="dialog_edit">Edit</string>
   <string name="fragment_history_snackbar_text">1 bacaan dihapus</string>
   <string name="fragment_history_snackbar_action">URUNG</string>
   <string name="fragment_overview_last_reading">Periksa terakhir:</string>

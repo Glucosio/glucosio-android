@@ -36,6 +36,5 @@
   <string name="dialog_error2">Vui lòng nhập một giá trị hợp lệ.</string>
   <string name="dialog_error">Xin vui lòng điền vào tất cả các mục.</string>
   <string name="dialog_delete">Xoá</string>
-  <string name="dialog_edit">Chỉnh sửa</string>
   <string name="fragment_history_snackbar_action">HOÀN TÁC</string>
 </resources>

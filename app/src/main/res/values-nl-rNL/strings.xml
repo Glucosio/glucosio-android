@@ -55,7 +55,6 @@
   <string name="dialog_error2">Voer een geldige waarde in.</string>
   <string name="dialog_error">Vul alle velden in.</string>
   <string name="dialog_delete">Verwijderen</string>
-  <string name="dialog_edit">Bewerken</string>
   <string name="fragment_history_snackbar_text">1 uitlezing verwijderd</string>
   <string name="fragment_history_snackbar_action">ONGEDAAN MAKEN</string>
   <string name="fragment_overview_last_reading">Laatste controle:</string>
@@ -190,4 +189,19 @@
   <string name="fragment_overview_graph_export_false">Fout bij opslaan van schermafbeelding naar galerij</string>
   <string name="dialog_export_range">Bereik exporteren</string>
   <string name="activity_export_no_readings_snackbar">Geen uitlezingen te exporteren.</string>
+  <string name="wear_new_reading">Nieuwe uitlezing toegevoegd</string>
+  <string name="dialog_add_weight">Gewicht</string>
+  <string name="dialog_add_ketones">Ketonen</string>
+  <string name="dialog_add_pressure_min">Minimale druk</string>
+  <string name="dialog_add_pressure_max">Maximale druk</string>
+  <string name="dialog_add_cholesterol_total">Totale cholesterol</string>
+  <string name="dialog_add_cholesterol_ldl">LDL-cholesterol</string>
+  <string name="dialog_add_cholesterol_hdl">HDL-cholesterol</string>
+  <string name="dialog_add_hb1ac">HB1AC</string>
+  <string name="title_activity_add_glucose">Glucose-uitlezing toevoegen</string>
+  <string name="title_activity_add_weight">Lichaamsgewicht toevoegen</string>
+  <string name="title_activity_add_cholesterol">Cholesterolspiegel toevoegen</string>
+  <string name="title_activity_add_hb1ac">HB1AC toevoegen</string>
+  <string name="title_activity_add_ketone">Ketonen toevoegen</string>
+  <string name="title_activity_add_pressure">Bloeddruk toevoegen</string>
 </resources>

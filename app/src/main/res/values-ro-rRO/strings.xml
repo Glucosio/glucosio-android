@@ -22,12 +22,18 @@
   <string name="helloactivity_spinner_diabetes_type_1">Tip 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Tip 2</string>
   <string name="helloactivity_spinner_preferred_unit">Unitatea preferată</string>
-  <string name="helloactivity_share_data">Patajează date în mod anonim pentru cercetare.</string>
+  <string name="helloactivity_share_data">Partajează date în mod anonim pentru cercetare.</string>
   <string name="helloactivity_hint_settings">Poți schimba aceste setări mai târziu.</string>
   <string name="helloactivity_button_next">URMĂTORUL</string>
   <string name="helloactivity_button_start">CUM SĂ ÎNCEPI</string>
+  <string name="fab_weight">Greutate corporală</string>
+  <string name="fab_ketonest">Ketone</string>
+  <string name="fab_pressure">Tensiune arterială</string>
+  <string name="fab_cholesterol">Nivelul de colesterol</string>
+  <string name="fab_HB1AC">Citiri HB1AC</string>
+  <string name="fab_glucose">Nivel de glucoză în sânge</string>
   <string name="fragment_empty_text">Nu avem informații disponibile momentan. \n Adaugă prima înregistrare aici.</string>
-  <string name="dialog_add_title">Adaugă Nivelul Glucozei în Sânge</string>
+  <string name="dialog_add_title">Adaugă nivelul glucozei în sânge</string>
   <string name="dialog_add_concentration">Concentrație</string>
   <string name="dialog_add_date">Dată</string>
   <string name="dialog_add_time">Ora</string>
@@ -49,7 +55,6 @@
   <string name="dialog_error2">Te rog introdu o valoare validă.</string>
   <string name="dialog_error">Te rog completează toate câmpurile.</string>
   <string name="dialog_delete">Șterge</string>
-  <string name="dialog_edit">Modifică</string>
   <string name="fragment_history_snackbar_text">O înregistrare ștearsă</string>
   <string name="fragment_history_snackbar_action">ANULEAZĂ</string>
   <string name="fragment_overview_last_reading">Ultima verificare:</string>
@@ -69,27 +74,27 @@
     <item>Citește eticheta de pe mâncare si băutură pentru a controla aportul de carbohidrați și zaharuri.</item>
     <item>Când mănânci în oraș, cere pește sau carne fiartă fără adaos de unt sau ulei.</item>
     <item>Când mănânci în oraș, cere preparate cu conținut scăzut de sodiu.</item>
-    <item>Când mănânci în oraș, mănâncă aceeaşi porţie ca și acasă şi ia restul la pachet.</item>
-    <item>Când mănânci în oraș cere înlocuitori cu calorii puține, cum ar fi sosul pentru salată, chiar dacă nu sunt pe meniu.</item>
-    <item>Când mănânci în oraș cere schimbări în meniu. În loc de cartofi prăjiți, cere o porție dublă de legume, ca salată, mazăre verde sau broccoli.</item>
-    <item>Când mănânci în oraș cere mâncăruri care nu sunt cu pesmet sau prăjite.</item>
+    <item>Când mănânci în oraș, mănâncă aceeași porție ca și acasă și ia restul la pachet.</item>
+    <item>Când mănânci în oraș cere înlocuitori cu calorii puține, cum ar fi sosul pentru salată, chiar dacă nu sunt în meniu.</item>
+    <item>Când mănânci în oraș cere schimbări în meniu. În loc de cartofi prăjiți, cere o porție dublă de legume, cum ar fi salata, mazărea verde sau conopida.</item>
+    <item>Când mănânci în oraș cere mâncăruri care nu conțin făinoase și nu sunt prăjite.</item>
     <item>Când mănânci în oraș cere ca sosurile să fie aduse separat.</item>
     <item>Fără zahăr nu înseamnă chiar fără zahăr. Înseamnă 0.5 grame (g) de zahăr per porție, așa că ai grijă să nu faci exces de produse fără zahăr.</item>
     <item>O greutate sănătoasă ajută la controlul zaharurilor din sânge. Doctorul, dieteticianul și instructorul de fitness te poate ajuta să faci un plan care funcționează pentru tine.</item>
     <item>Verificarea nivelului glucozei în sânge și înregistrarea lui într-o aplicație ca Glucosio de două ori pe zi te va ajuta să vezi rezultatele pe care le au alegerile tale legate de mâncare și stilul de viață.</item>
-    <item>Fă testul de sânge A1c ca să aflii media glucozei în sânge pentru ultimele 2-3 luni. Doctorul ar trebuii să îți spună cât de des va trebuii să faci testul acesta.</item>
-    <item>Nivelul carbohidraților consumați poate fi la fel de important ca verificarea nivelului zaharurilor in sânge deoarece carbohidrații influențează nivelul glucozei în sânge. Consultă doctorul sau nutriționistul despre consumul de carbohidrați.</item>
+    <item>Fă testul de sânge A1c ca să afli media glucozei în sânge pentru ultimele 2-3 luni. Doctorul ar trebui să îți spună cât de des va trebui să faci testul acesta.</item>
+    <item>Nivelul carbohidraților consumați poate fi la fel de important ca verificarea nivelului zaharurilor în sânge deoarece carbohidrații influențează nivelul glucozei în sânge. Consultă doctorul sau nutriționistul despre consumul de carbohidrați.</item>
     <item>Măsurarea tensiunii, colesterolului și trigliceridelor este importantă deoarece diabeticii sunt predispuși problemelor cardiace.</item>
-    <item>Sunt câteva diete pe care le poți urma pentru a mânca mai sănătos si pentru a te ajuta să îți ameliorezi starea diabetului. Consultă un nutriționist pentru a vedea ce dietă ți se potrivește.</item>
+    <item>Sunt câteva diete pe care le poți urma pentru a mânca mai sănătos și pentru a ameliora starea diabetului. Consultă un nutriționist pentru a vedea ce dietă ți se potrivește.</item>
     <item>Exercițiile fizice regulate sunt foarte importante pentru diabetici și pot ajuta la menținerea unei greutăți sănătoase. Vorbește cu doctorul despre exercițiile care sunt indicate pentru tine.</item>
-    <item>Insomniile pot crește pofta de mâncare, în special mâncare nesănătoasă si ca un rezultat îți pot afecta negativ sănătatea. Ai grijă să dormi suficient și să consulți un specialist daca ai probleme cu somnul.</item>
+    <item>Insomniile pot crește pofta de mâncare, în special mâncare nesănătoasă și îți pot afecta negativ sănătatea. Ai grijă să dormi suficient și să consulți un specialist dacă ai probleme cu somnul.</item>
     <item>Stresul poate avea un impact negativ asupra diabetului. Vorbește cu doctorul sau cu un terapeut despre reducerea stresului.</item>
-    <item>Vizita medicală o data pe an si comunicarea cu doctorul pe parcursul anului este importantă pentru diabetici pentru a preveni orice apariție bruscă a problemelor medicale asociate cu diabetul.</item>
-    <item>Ia tratamentul așa cum a fost prescris de doctor, chiar și cele mai mici abateri pot afecta nivelul glucozei în sânge si pot cauza alte efecte secundare. Dacă ai probleme cu memoria cere-i doctorului sfaturi despre cum sa îți organizezi tratamentul și ce poți face ca să îți amintești mai usor.</item>
+    <item>Vizita medicală o data pe an și comunicarea cu doctorul pe parcursul anului sunt importante pentru diabetici pentru a preveni orice apariție bruscă a problemelor medicale asociate diabetului.</item>
+    <item>Urmează tratamentul așa cum a fost prescris de doctor, chiar și cele mai mici abateri pot afecta nivelul glucozei în sânge și pot cauza alte efecte secundare. Dacă ai probleme cu memoria cere-i doctorului sfaturi despre cum sa îți organizezi tratamentul și ce poți face ca să îți amintești mai ușor.</item>
   </string-array>
   <string-array name="tips_all_age_plus_40">
-    <item>Persoanele diabetice în vârstă pot avea un risc mai mare pentru problemele de sănătate asociate cu diabetul. Vorbește cu doctorul despre cum vârsta joacă un rol in diabet și cum să îl monitorizezi.</item>
-    <item>Limitează cantitatea de sare pe care o folosești când gătesti sau pe care o adaugi în mâncare după ce a fost gătită.</item>
+    <item>Persoanele diabetice în vârstă pot avea un risc mai mare pentru problemele de sănătate asociate diabetului. Vorbește cu doctorul despre efectul pe care îl are vârsta asupra diabetului și la ce să te aștepți.</item>
+    <item>Limitează cantitatea de sare pe care o folosești când gătești sau pe care o adaugi în mâncare după ce a fost gătită.</item>
   </string-array>
   <string name="assistant">Asistent</string>
   <string name="assistant_action_update">Actualizaţi acum</string>
@@ -108,6 +113,8 @@
   <string name="assistant_feedback_desc">Dacă găsiţi orice probleme tehnice sau aveți feedback despre Glucosio vă recomandăm să-l trimiteți prin meniul de setări, pentru a ne ajuta să îmbunătăţim Glucosio.</string>
   <string name="assistant_reading_title">Adauga o înregistrare</string>
   <string name="assistant_reading_desc">Asiguraţi-vă că adăugați în mod regulat înregistrările dumneavoastră de glucoză, astfel încât să vă putem ajuta să urmăriți nivelurile glucozei în timp.</string>
+  <string name="assistant_export_title">Exportă datele tale</string>
+  <string name="assistant_export_desc">Împărtășește datele tale cu doctorul, sau salvează datele pe Google Drive folosind funcția de exportare.</string>
   <string name="helloactivity_spinner_preferred_range">Gamă preferată</string>
   <string name="helloactivity_spinner_preferred_range_4">Gamă proprie</string>
   <string name="helloactivity_preferred_range_min">Valoare minimă</string>
@@ -167,10 +174,34 @@
   <string name="about_maillist">Abonează-te la lista noastră de discuții</string>
   <string name="assistant_archived">SFATURI ARHIVATE</string>
   <string name="dialog_export_title">Export de date</string>
+  <string name="activity_export_date_from">De la:</string>
   <string name="dialog_export_date_to">La:</string>
   <string name="dialog_export_today">Alege azi</string>
   <string name="dialog_export_button">EXPORT</string>
   <string name="title_activity_export">Exportă date</string>
+  <string name="dialog_export_all">Exportă tot</string>
   <string name="share_using">Partajează folosind</string>
   <string name="share_subject">Date Glucosio</string>
+  <string name="activity_export_snackbar_1">"Se exportă"</string>
+  <string name="activity_export_snackbar_2">citirile</string>
+  <string name="fragment_overview_permission_storage">Glucosio are nevoie de permisiuni de stocare pentru a salva captura de ecran</string>
+  <string name="fragment_overview_graph_export_true">Captură salvată în galerie</string>
+  <string name="fragment_overview_graph_export_false">Eroare la salvarea capturii în galerie</string>
+  <string name="dialog_export_range">Exportă în intervalul</string>
+  <string name="activity_export_no_readings_snackbar">Nu sunt citiri de exportat.</string>
+  <string name="wear_new_reading">Noua citire a fost adăugată</string>
+  <string name="dialog_add_weight">Greutate</string>
+  <string name="dialog_add_ketones">Ketone</string>
+  <string name="dialog_add_pressure_min">Tensiune minimă</string>
+  <string name="dialog_add_pressure_max">Tensiune maximă</string>
+  <string name="dialog_add_cholesterol_total">Total colesterol</string>
+  <string name="dialog_add_cholesterol_ldl">Colesterol LDL</string>
+  <string name="dialog_add_cholesterol_hdl">Colesterol HDL</string>
+  <string name="dialog_add_hb1ac">HB1AC</string>
+  <string name="title_activity_add_glucose">Adaugă citire a glucozei</string>
+  <string name="title_activity_add_weight">Adaugă greutatea corporală</string>
+  <string name="title_activity_add_cholesterol">Adaugă nivelul de colesterol</string>
+  <string name="title_activity_add_hb1ac">Adaugă HB1AC</string>
+  <string name="title_activity_add_ketone">Adaugă ketone</string>
+  <string name="title_activity_add_pressure">Adaugă tensiune arterială</string>
 </resources>

@@ -14,7 +14,7 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   wget https://crowdin.com/downloads/crowdin-cli.jar
   java -jar crowdin-cli.jar download
   rm crowdin-cli.jar
-
+  cp -r wear/* $HOME/develop/wear/src/main/res/
   cd $HOME/develop
 
   #add, commit and push files

@@ -1,6 +1,7 @@
 package org.glucosio.android.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 
 import org.glucosio.android.ActionTip;
 import org.glucosio.android.R;
+import org.glucosio.android.activity.AddGlucoseActivity;
 import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.adapter.AssistantAdapter;
 import org.glucosio.android.presenter.AssistantPresenter;
@@ -198,7 +200,9 @@ public class AssistantFragment extends Fragment {
     }
 
     public void addReading(){
-        ((MainActivity)getActivity()).showAddDialog();
+        Intent intent = new Intent(getActivity(), AddGlucoseActivity.class);
+        startActivity(intent);
+        getActivity().finish();
     }
 
     public void openGitty(){

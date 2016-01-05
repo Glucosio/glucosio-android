@@ -82,6 +82,6 @@ public class ReadingToCSV {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return FileProvider.getUriForFile(context, "org.glucosio.android", file);
+        return FileProvider.getUriForFile(context, context.getPackageName() + ".provider.fileprovider", file);
     }
 }

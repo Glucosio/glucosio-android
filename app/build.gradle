@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 23
@@ -10,8 +9,8 @@ android {
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 23
-        versionCode 5
-        versionName '0.8.4'
+        versionCode 6
+        versionName '0.9.0'
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -54,18 +53,21 @@ dependencies {
     compile 'com.android.support:cardview-v7:23.1.1'
     compile 'com.android.support:recyclerview-v7:23.1.1'
     compile 'com.android.support:percent:23.1.1'
+    compile 'com.google.android.support:wearable:1.3.0'
 
     // Google Play Services
-    compile 'com.google.android.gms:play-services-appinvite:8.3.0'
-    compile 'com.google.android.gms:play-services-analytics:8.3.0'
-    compile 'com.google.android.gms:play-services-drive:8.3.0'
+    compile 'com.google.android.gms:play-services-appinvite:8.4.0'
+    compile 'com.google.android.gms:play-services-analytics:8.4.0'
+    compile 'com.google.android.gms:play-services-drive:8.4.0'
+    compile 'com.google.android.gms:play-services-wearable:8.4.0'
 
     // Other libraries
+    compile 'com.github.clans:fab:1.6.2'
     compile 'com.wdullaer:materialdatetimepicker:1.5.3'
     compile 'com.github.PhilJay:MPAndroidChart:v2.1.6'
     compile 'uk.co.chrisjenx:calligraphy:2.1.0'
     compile 'com.github.paolorotolo:gitty_reporter:1.2.2'
-    compile 'io.realm:realm-android:0.84.1'
+    compile 'io.realm:realm-android:0.87.1'
     compile 'net.danlew:android.joda:2.8.2'
     compile('com.mikepenz:materialdrawer:4.4.3@aar') {
         transitive = true
@@ -80,3 +82,5 @@ dependencies {
     androidTestCompile 'com.android.support.test.espresso:espresso-intents:2.2.1'
     androidTestCompile 'com.android.support.test.espresso:espresso-contrib:2.2.1'
 }
+
+apply plugin: 'com.google.gms.google-services'

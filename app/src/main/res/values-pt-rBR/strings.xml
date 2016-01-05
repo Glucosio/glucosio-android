@@ -55,7 +55,6 @@
   <string name="dialog_error2">Por favor, insira um valor válido.</string>
   <string name="dialog_error">Por favor, preencha todos os campos.</string>
   <string name="dialog_delete">Excluir</string>
-  <string name="dialog_edit">Editar</string>
   <string name="fragment_history_snackbar_text">1 leitura eliminada</string>
   <string name="fragment_history_snackbar_action">DESFAZER</string>
   <string name="fragment_overview_last_reading">Última verificação:</string>
@@ -190,4 +189,19 @@
   <string name="fragment_overview_graph_export_false">Erro ao salvar a captura de tela na galeria</string>
   <string name="dialog_export_range">Intervalo de exportação</string>
   <string name="activity_export_no_readings_snackbar">Nenhuma leitura para exportar.</string>
+  <string name="wear_new_reading">Nova leitura adicionada</string>
+  <string name="dialog_add_weight">Peso</string>
+  <string name="dialog_add_ketones">Cetonas</string>
+  <string name="dialog_add_pressure_min">Pressão mín</string>
+  <string name="dialog_add_pressure_max">Pressão máx</string>
+  <string name="dialog_add_cholesterol_total">Colesterol total</string>
+  <string name="dialog_add_cholesterol_ldl">Colesterol LDL</string>
+  <string name="dialog_add_cholesterol_hdl">Colesterol HDL</string>
+  <string name="dialog_add_hb1ac">HB1AC</string>
+  <string name="title_activity_add_glucose">Adicionar leitura de glicose</string>
+  <string name="title_activity_add_weight">Adicionar o peso corporal</string>
+  <string name="title_activity_add_cholesterol">Adicionar o nível de colesterol</string>
+  <string name="title_activity_add_hb1ac">Adicionar HB1AC</string>
+  <string name="title_activity_add_ketone">Adicionar cetonas</string>
+  <string name="title_activity_add_pressure">Adicionar a pressão arterial</string>
 </resources>

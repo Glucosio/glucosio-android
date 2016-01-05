@@ -20,6 +20,7 @@ import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.User;
+import org.glucosio.android.tools.GlucoseConverter;
 import org.glucosio.android.tools.InputFilterMinMax;
 
 import java.util.ArrayList;
@@ -94,6 +95,9 @@ public class PreferencesActivity extends AppCompatActivity {
             diabetesTypePref.setValue(user.getD_type() + "");
             unitPref.setValue(user.getPreferred_unit());
             rangePref.setValue(user.getPreferred_range());
+
+            minRangePref.setDefaultValue(user.getCustom_range_min() + "");
+            maxRangePref.setDefaultValue(user.getCustom_range_max() + "");
             minRangePref.setDefaultValue(user.getCustom_range_min() + "");
             maxRangePref.setDefaultValue(user.getCustom_range_max() + "");
 
@@ -210,8 +214,7 @@ public class PreferencesActivity extends AppCompatActivity {
             minEditText.setFilters(new InputFilter[]{new InputFilterMinMax(1, 1500)});
             maxEditText.setFilters(new InputFilter[]{new InputFilterMinMax(1, 1500)});
 
-
-            // Get countries list from locale
+                // Get countries list from locale
             ArrayList<String> countriesArray = new ArrayList<String>();
             Locale[] locales = Locale.getAvailableLocales();
 
@@ -250,6 +253,19 @@ public class PreferencesActivity extends AppCompatActivity {
                     return false;
                 }
             });
+
+
+            convertMinMax();
+        }
+
+        private void convertMinMax() {
+            if(dB.getUser(1).getPreferred_unit().equals("mmol/L")) {
+                GlucoseConverter converter = new GlucoseConverter();
+                maxRangePref.setSummary(converter.toMmolL(Double.parseDouble(maxRangePref.getText())) +"");
+                minRangePref.setSummary(converter.toMmolL(Double.parseDouble(minRangePref.getText())) +"");
+                minEditText.setText(converter.toMmolL(Double.parseDouble(minRangePref.getText())) +"");
+                maxEditText.setText(converter.toMmolL(Double.parseDouble(maxRangePref.getText())) +"");
+            }
         }
 
         private void updateDB() {
@@ -284,6 +300,8 @@ public class PreferencesActivity extends AppCompatActivity {
                 minRangePref.setEnabled(true);
                 maxRangePref.setEnabled(true);
             }
+
+            convertMinMax();
         }
     }
 

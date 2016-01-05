@@ -43,7 +43,6 @@
   <string name="dialog_error2">Моля въведете правилна стойност.</string>
   <string name="dialog_error">Моля попълнете всички полета.</string>
   <string name="dialog_delete">Изтриване</string>
-  <string name="dialog_edit">Промяна</string>
   <string name="fragment_history_snackbar_text">1 отчитане изтрито</string>
   <string name="fragment_history_snackbar_action">Отменям</string>
   <string name="fragment_overview_last_reading">Последна проверка:</string>

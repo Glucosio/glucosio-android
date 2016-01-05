@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.glucosio.android">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:name=".GlucosioApplication"
         android:allowBackup="true"
@@ -9,7 +13,6 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/GlucosioTheme">
-
         <activity
             android:name=".activity.MainActivity"
             android:label="@string/app_name"
@@ -23,19 +26,19 @@
         <activity
             android:name=".activity.HelloActivity"
             android:label="@string/title_activity_hello"
-            android:theme="@style/AppThemeNoActionBar"/>
+            android:theme="@style/AppThemeNoActionBar" />
         <activity
             android:name=".activity.GittyActivity"
-            android:theme="@style/GittyTheme"/>
+            android:theme="@style/GittyTheme" />
         <activity
             android:name=".activity.PreferencesActivity"
-            android:theme="@style/GlucosioSettings"/>
+            android:theme="@style/GlucosioSettings" />
         <activity
             android:name=".activity.LicenceActivity"
-            android:theme="@style/GlucosioSettings"/>
+            android:theme="@style/GlucosioSettings" />
         <activity
             android:name=".activity.AboutActivity"
-            android:theme="@style/GlucosioSettings"/>
+            android:theme="@style/GlucosioSettings" />
         <activity
             android:name=".activity.BackupActivity"
             android:label="@string/title_activity_backup"
@@ -45,9 +48,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.glucosio.android.activity.PreferencesActivity" />
         </activity>
+
+        <service android:name=".service.DataLayerListenerService">
+            <intent-filter>
+                <action android:name="com.google.android.gms.wearable.BIND_LISTENER" />
+            </intent-filter>
+        </service>
         <!--
- Register AnalyticsReceiver and AnalyticsService to support background
- dispatching on non-Google Play devices
+         Register AnalyticsReceiver and AnalyticsService to support background
+         dispatching on non-Google Play devices
         -->
         <receiver
             android:name="com.google.android.gms.analytics.AnalyticsReceiver"
@@ -62,8 +71,8 @@
             android:enabled="true"
             android:exported="false" />
         <!--
-             Register CampaignTrackingReceiver and CampaignTrackingService to enable
-             installation campaign reporting
+         Register CampaignTrackingReceiver and CampaignTrackingService to enable
+         installation campaign reporting
         -->
         <receiver
             android:name="com.google.android.gms.analytics.CampaignTrackingReceiver"
@@ -81,15 +90,62 @@
 
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="org.glucosio.android"
+            android:authorities="${applicationId}.provider.fileprovider"
             android:exported="false"
-            android:grantUriPermissions="true" >
+            android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/my_paths" />
         </provider>
 
+        <activity
+            android:name=".activity.AddGlucoseActivity"
+            android:label="@string/title_activity_add_glucose"
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.glucosio.android.activity.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activity.AddWeightActivity"
+            android:label="@string/title_activity_add_weight"
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.glucosio.android.activity.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activity.AddCholesterolActivity"
+            android:label="@string/title_activity_add_cholesterol"
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.glucosio.android.activity.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activity.AddKetoneActivity"
+            android:label="@string/title_activity_add_ketone"
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.glucosio.android.activity.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activity.AddPressureActivity"
+            android:label="@string/title_activity_add_pressure"
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.glucosio.android.activity.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activity.AddHB1ACActivity"
+            android:label="@string/title_activity_add_hb1ac"
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.glucosio.android.activity.MainActivity" />
+        </activity>
     </application>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
 </manifest>

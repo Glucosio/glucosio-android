@@ -87,7 +87,6 @@
     <string name="dialog_error2">Please enter a valid value.</string>
     <string name="dialog_error">Please fill all the fields.</string>
     <string name="dialog_delete">Delete</string>
-    <string name="dialog_edit">Edit</string>
 
     <string name="fragment_history_snackbar_text">1 reading deleted</string>
     <string name="fragment_history_snackbar_action">UNDO</string>
@@ -106,7 +105,7 @@
     </string-array>
     <string name="tip_example" translatable="false">Use less cheese in your recipes and meals. Fresh mozzarella packed in water and Swiss cheese are usually lower in sodium.</string>
     <string name="preferences_about">About</string>
-    <string name="version" translatable="false">0.8.3 (Noce)</string>
+    <string name="version" translatable="false">0.9.0 (Imli)</string>
     <string name="preferences_version">Version</string>
     <string name="preferences_terms">Terms of use</string>
     <string name="glucose_reading_type">Type</string>
@@ -279,4 +278,35 @@
     <string name="fragment_overview_graph_export_false">Error saving screenshot to gallery</string>
     <string name="dialog_export_range">Export range</string>
     <string name="activity_export_no_readings_snackbar">No readings to export.</string>
+    <string name="wear_new_reading">New reading added</string>
+    <string name="dialog_add_weight">Weight</string>
+    <string name="dialog_add_ketones">Ketones</string>
+    <string name="dialog_add_pressure_min">Min Pressure</string>
+    <string name="dialog_add_pressure_max">Max Pressure</string>
+    <string name="dialog_add_cholesterol_total">Total Cholesterol</string>
+    <string name="dialog_add_cholesterol_ldl">LDL Cholesterol</string>
+    <string name="dialog_add_cholesterol_hdl">HDL Cholesterol</string>
+    <string name="dialog_add_hb1ac">HB1AC</string>
+    <string name="title_activity_add_glucose">Add Glucose reading</string>
+    <string name="title_activity_add_weight">Add Body Weight</string>
+    <string name="title_activity_add_cholesterol">Add Cholesterol Level</string>
+    <string name="title_activity_add_hb1ac">Add HB1AC</string>
+    <string name="title_activity_add_ketone">Add Ketones</string>
+    <string name="title_activity_add_pressure">Add Blood Pressure</string>
+
+    <string name="fab_weight">Body Weight</string>
+    <string name="fab_ketonest">Ketones</string>
+    <string name="fab_pressure">Blood Pressure</string>
+    <string name="fab_cholesterol">Cholesterol Level</string>
+    <string name="fab_HB1AC">HB1AC Reading</string>
+    <string name="fab_glucose">Blood Glucose Level</string>
+
+    <string-array name="fragment_history_selector" translatable="false">
+        <item>@string/fab_glucose</item>
+        <item>@string/fab_HB1AC</item>
+        <item>@string/fab_cholesterol</item>
+        <item>@string/fab_pressure</item>
+        <item>@string/fab_ketonest</item>
+        <item>@string/fab_weight</item>
+    </string-array>
 </resources>

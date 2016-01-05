@@ -55,7 +55,6 @@
   <string name="dialog_error2">Введите корректное значение.</string>
   <string name="dialog_error">Пожалуйста, заполните все поля.</string>
   <string name="dialog_delete">Удалить</string>
-  <string name="dialog_edit">Правка</string>
   <string name="fragment_history_snackbar_text">1 запись удалена</string>
   <string name="fragment_history_snackbar_action">ОТМЕНИТЬ</string>
   <string name="fragment_overview_last_reading">Последняя проверка:</string>
@@ -190,4 +189,19 @@
   <string name="fragment_overview_graph_export_false">Ошибка сохранения снимка экрана в галерею</string>
   <string name="dialog_export_range">Диапазон экспорта</string>
   <string name="activity_export_no_readings_snackbar">Нет данных для экспорта.</string>
+  <string name="wear_new_reading">Добавлены новые данные</string>
+  <string name="dialog_add_weight">Вес</string>
+  <string name="dialog_add_ketones">Кетоны</string>
+  <string name="dialog_add_pressure_min">Минимальное давление</string>
+  <string name="dialog_add_pressure_max">Максимальное давление</string>
+  <string name="dialog_add_cholesterol_total">Общий холестерин</string>
+  <string name="dialog_add_cholesterol_ldl">ЛНП холестерина</string>
+  <string name="dialog_add_cholesterol_hdl">ЛВП холестерина</string>
+  <string name="dialog_add_hb1ac">HB1AC</string>
+  <string name="title_activity_add_glucose">Добавить данные об уровне глюкозы</string>
+  <string name="title_activity_add_weight">Добавить вес тела</string>
+  <string name="title_activity_add_cholesterol">Добавить уровень холестерина</string>
+  <string name="title_activity_add_hb1ac">Добавить HB1AC</string>
+  <string name="title_activity_add_ketone">Добавить кетоны</string>
+  <string name="title_activity_add_pressure">Добавить уровень кровяного давления</string>
 </resources>

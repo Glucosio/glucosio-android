@@ -19,7 +19,6 @@
   <string name="dialog_add_cancel">NIÞILIÇARH</string>
   <string name="dialog_add_add">AXHUNTARH</string>
   <string name="dialog_delete">Zeletarh</string>
-  <string name="dialog_edit">Redactarh</string>
   <string name="preferences_about">Över</string>
   <string name="preferences_version">Verziun</string>
   <string name="glucose_reading_type">Sorta</string>
