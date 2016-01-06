@@ -25,7 +25,8 @@ android {
             versionNameSuffix '-DEVEL'
         }
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             debuggable false
 
             buildConfigField "String", "GOOGLE_ANALYTICS_TRACKER", '"UA-68882401-2"'
