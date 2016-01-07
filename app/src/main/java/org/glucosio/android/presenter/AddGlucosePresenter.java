@@ -119,21 +119,22 @@ public class AddGlucosePresenter {
     }
 
     private boolean validateReading(String reading) {
-        if (getUnitMeasuerement().equals("mg/dL")) {
-            // We store data in db in mg/dl
-            try {
-                Integer readingValue = Integer.parseInt(reading);
-                if (readingValue > 19 && readingValue < 601) {
-                    //TODO: Add custom ranges
-                    // TODO: Convert range in mmol/L
-                    return true;
-                } else {
+        if (!reading.equals("")) {
+            if (getUnitMeasuerement().equals("mg/dL")) {
+                // We store data in db in mg/dl
+                try {
+                    Integer readingValue = Integer.parseInt(reading);
+                    if (readingValue > 19 && readingValue < 601) {
+                        //TODO: Add custom ranges
+                        // TODO: Convert range in mmol/L
+                        return true;
+                    } else {
+                        return false;
+                    }
+                } catch (Exception e) {
                     return false;
                 }
-            } catch (Exception e) {
-                return false;
-            }
-        } else {
+            } else {
 /*            try {
                 //TODO: Add custom ranges for mmol/L
                 Integer readingValue = Integer.parseInt(reading);
@@ -146,8 +147,11 @@ public class AddGlucosePresenter {
             } catch (Exception e) {
                 return false;
             }*/
-            // TODO: return always true: we don't have ranges yet.
-            return true;
+                // IT return always true: we don't have ranges yet.
+                return true;
+            }
+        } else {
+            return false;
         }
     }
 
