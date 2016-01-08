@@ -25,11 +25,11 @@ android {
             versionNameSuffix '-DEVEL'
         }
         release {
-            minifyEnabled false
             debuggable false
-
+            minifyEnabled true
+            shrinkResources true
+            zipAlignEnabled true
             buildConfigField "String", "GOOGLE_ANALYTICS_TRACKER", '"UA-68882401-2"'
-
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
