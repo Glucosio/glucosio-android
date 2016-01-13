@@ -13,17 +13,28 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="16dp" />
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/fragment_history_recycler_view"
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/history_spinner"
-        android:background="@color/glucosio_light_grey_background"
-        android:clickable="true"
-        android:focusable="true"
-        android:paddingBottom="32dp"
-        android:orientation="vertical"
-        android:scrollbars="vertical"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context="org.glucosio.android.fragment.HistoryFragment" />
+        android:orientation="vertical">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/fragment_history_recycler_view"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingBottom="32dp"
+            android:orientation="vertical"
+            android:scrollbars="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:context="org.glucosio.android.fragment.HistoryFragment" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/glucosio_light_grey_background"
+            />
+    </LinearLayout>
+
 </RelativeLayout>

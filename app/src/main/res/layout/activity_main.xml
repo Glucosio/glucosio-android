@@ -16,7 +16,6 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
@@ -25,7 +24,6 @@
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/glucosio_pink"
             app:tabIndicatorColor="@color/glucosio_accent"
             app:tabSelectedTextColor="@android:color/white"
             app:tabTextColor="#80ffffff" />
@@ -76,10 +74,10 @@
                 android:baselineAligned="false"
                 android:orientation="horizontal">
 
-                <RelativeLayout
+                <TextView
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
-                    android:layout_weight="1"></RelativeLayout>
+                    android:layout_weight="1"></TextView>
 
                 <RelativeLayout
                     android:layout_width="0dp"
