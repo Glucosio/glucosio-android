@@ -1,5 +1,6 @@
 package org.glucosio.android.activity;
 
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -18,7 +19,6 @@ import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 import org.glucosio.android.R;
 import org.glucosio.android.presenter.AddCholesterolPresenter;
 import org.glucosio.android.tools.FormatDateTime;
-import org.w3c.dom.Text;
 
 import java.text.DecimalFormat;
 import java.util.Calendar;
@@ -162,5 +162,23 @@ public class AddCholesterolActivity extends AppCompatActivity implements TimePic
     @Override
     public void onBackPressed() {
         finishActivity();
+    }
+
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        //Restore date chosen
+        FragmentManager fm = getFragmentManager();
+        TimePickerDialog tpd = (TimePickerDialog) fm.findFragmentByTag( "Timepickerdialog");
+        DatePickerDialog dpd = (DatePickerDialog) fm.findFragmentByTag("Datepickerdialog");
+
+        if(tpd != null)
+            tpd.setOnTimeSetListener(this);
+        if (dpd != null)
+            dpd.setOnDateSetListener(this);
+
     }
 }
