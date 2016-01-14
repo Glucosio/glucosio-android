@@ -1,5 +1,6 @@
 package org.glucosio.android.activity;
 
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -25,7 +26,8 @@ import org.glucosio.android.tools.LabelledSpinner;
 import java.text.DecimalFormat;
 import java.util.Calendar;
 
-public class AddGlucoseActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
+public class AddGlucoseActivity extends AppCompatActivity
+        implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
     private FloatingActionButton doneFAB;
     private TextView addTimeTextView;
@@ -65,7 +67,8 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
 
         readingTypeSpinner.setOnItemChosenListener(new LabelledSpinner.OnItemChosenListener() {
             @Override
-            public void onItemChosen(View labelledSpinner, AdapterView<?> adapterView, View itemView, int position, long id) {
+            public void onItemChosen(View labelledSpinner, AdapterView<?> adapterView,
+                                     View itemView, int position, long id) {
                 // If other is selected
                 if (position == 11) {
                     typeCustomEditText.setVisibility(View.VISIBLE);
@@ -85,7 +88,8 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
         });
 
         FormatDateTime formatDateTime = new FormatDateTime(getApplicationContext());
-        addDateTextView.setText(presenter.getReadingDay() + "/" + presenter.getReadingMonth() + "/" + presenter.getReadingYear());
+        addDateTextView.setText(presenter.getReadingDay() + "/" + presenter.getReadingMonth()
+                + "/" + presenter.getReadingYear());
         addTimeTextView.setText(formatDateTime.getCurrentTime());
         addDateTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,10 +111,12 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
             public void onClick(View v) {
                 Calendar now = Calendar.getInstance();
                 if (android.text.format.DateFormat.is24HourFormat(getApplicationContext())) {
-                    TimePickerDialog tpd = TimePickerDialog.newInstance(AddGlucoseActivity.this, now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), true);
+                    TimePickerDialog tpd = TimePickerDialog.newInstance(AddGlucoseActivity.this,
+                            now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), true);
                     tpd.show(getFragmentManager(), "Timepickerdialog");
                 } else {
-                    TimePickerDialog tpd = TimePickerDialog.newInstance(AddGlucoseActivity.this, now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), false);
+                    TimePickerDialog tpd = TimePickerDialog.newInstance(AddGlucoseActivity.this,
+                            now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), false);
                     tpd.show(getFragmentManager(), "Timepickerdialog");
                 }
             }
@@ -144,7 +150,8 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
     }
 
     public void showErrorMessage() {
-        Toast.makeText(getApplicationContext(), getString(R.string.dialog_error2), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), getString(R.string.dialog_error2),
+                Toast.LENGTH_SHORT).show();
     }
 
     public void updateSpinnerTypeTime(int selection) {
@@ -186,7 +193,8 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
         presenter.setReadingMonth(df.format(monthOfYear + 1));
         presenter.setReadingDay(df.format(dayOfMonth));
 
-        String date = +dayOfMonth + "/" + presenter.getReadingMonth() + "/" + presenter.getReadingYear();
+        String date = +dayOfMonth + "/" + presenter.getReadingMonth()
+                + "/" + presenter.getReadingYear();
         addDate.setText(date);
     }
 
@@ -214,5 +222,18 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
     @Override
     public void onBackPressed() {
         finishActivity();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        FragmentManager fm = getFragmentManager();
+        TimePickerDialog tpd = (TimePickerDialog)  fm.findFragmentByTag("Timepickerdialog");
+        DatePickerDialog dpd = (DatePickerDialog) fm.findFragmentByTag("Datepickerdialog");
+
+        if(tpd!=null)
+            tpd.setOnTimeSetListener(this);
+        if(dpd != null)
+            dpd.setOnDateSetListener(this);
     }
 }
