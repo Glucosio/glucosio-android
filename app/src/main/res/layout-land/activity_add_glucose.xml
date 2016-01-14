@@ -8,10 +8,11 @@
     android:fillViewport="true">
 
     <LinearLayout
+        xmlns:custom="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context="org.glucosio.android.activity.AddCholesterolActivity">
+        tools:context="org.glucosio.android.activity.AddGlucoseActivity">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -36,19 +37,18 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:orientation="horizontal"
-                android:weightSum="2">
+                android:orientation="horizontal">
 
                 <android.support.design.widget.TextInputLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2">
+                    android:layout_weight="1">
 
                     <EditText
-                        android:id="@+id/cholesterol_add_value_total"
+                        android:id="@+id/glucose_add_concentration"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/dialog_add_cholesterol_total"
+                        android:hint="@string/dialog_add_concentration"
                         android:inputType="numberDecimal"
                         android:singleLine="true"
                         android:textColorHighlight="@color/glucosio_pink"
@@ -57,62 +57,12 @@
                 </android.support.design.widget.TextInputLayout>
 
                 <TextView
+                    android:id="@+id/glucose_add_unit_measurement"
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:layout_marginBottom="8dp"
                     android:gravity="bottom"
-                    android:text="mg/dL"
-                    android:textSize="@dimen/abc_text_size_body_2_material"
-                    android:textStyle="bold"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:orientation="horizontal"
-                android:weightSum="2">
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
-
-                    <EditText
-                        android:id="@+id/cholesterol_add_value_ldl"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/dialog_add_cholesterol_ldl"
-                        android:inputType="numberDecimal"
-                        android:singleLine="true"
-                        android:textColorHighlight="@color/glucosio_pink"
-                        android:textIsSelectable="false"
-                        android:textSize="@dimen/abc_text_size_body_2_material"/>
-                </android.support.design.widget.TextInputLayout>
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
-
-                    <EditText
-                        android:id="@+id/cholesterol_add_value_hdl"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/dialog_add_cholesterol_hdl"
-                        android:inputType="numberDecimal"
-                        android:singleLine="true"
-                        android:textColorHighlight="@color/glucosio_pink"
-                        android:textIsSelectable="false"
-                        android:textSize="@dimen/abc_text_size_body_2_material"/>
-                </android.support.design.widget.TextInputLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
-                    android:layout_marginBottom="8dp"
-                    android:gravity="bottom"
-                    android:text="mg/dL"
+                    android:text="@string/dialog_add_concentration_um"
                     android:textSize="@dimen/abc_text_size_body_2_material"
                     android:textStyle="bold"/>
             </LinearLayout>
@@ -130,7 +80,7 @@
                     android:layout_weight="1">
 
                     <EditText
-                        android:id="@+id/dialog_add_date"
+                        android:id="@+id/glucose_add_date"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:clickable="false"
@@ -148,7 +98,7 @@
                     android:layout_weight="1">
 
                     <EditText
-                        android:id="@+id/dialog_add_time"
+                        android:id="@+id/glucose_add_time"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:clickable="false"
@@ -159,12 +109,35 @@
                         android:singleLine="true"
                         android:textSize="@dimen/abc_text_size_body_2_material"/>
                 </android.support.design.widget.TextInputLayout>
+
             </LinearLayout>
+
+            <org.glucosio.android.tools.LabelledSpinner
+                android:id="@+id/glucose_add_reading_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:focusableInTouchMode="false"
+                custom:labelText="@string/dialog_add_measured"
+                custom:widgetColor="@color/glucosio_pink"/>
+
+            <EditText
+                android:id="@+id/glucose_type_custom"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/dialog_add_custom_type"
+                android:singleLine="true"
+                android:textColorHighlight="@color/glucosio_pink"
+                android:textSize="@dimen/abc_text_size_body_2_material"
+                android:visibility="gone"/>
+
         </LinearLayout>
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true">
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/done_fab"
@@ -176,6 +149,7 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginRight="32dp"
                 android:layout_marginTop="8dp"
+                android:focusableInTouchMode="true"
                 android:onClick="onFabClicked"
                 android:src="@drawable/ic_done_black_24dp"
                 app:backgroundTint="@color/glucosio_accent"/>
