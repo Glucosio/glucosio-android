@@ -1,36 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:orientation="vertical"
+    tools:context="org.glucosio.android.activity.AddCholesterolActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/glucosio_pink"
+        android:minHeight="?android:attr/actionBarSize"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        app:titleTextAppearance="@style/Toolbar.WhiteText"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context="org.glucosio.android.activity.AddCholesterolActivity">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/glucosio_pink"
-            android:minHeight="?android:attr/actionBarSize"
-            app:contentInsetLeft="0dp"
-            app:contentInsetStart="0dp"
-            app:titleTextAppearance="@style/Toolbar.WhiteText"/>
+        android:orientation="horizontal"
+        android:layout_below="@id/toolbar">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/toolbar"
             android:layout_marginLeft="32dp"
-            android:layout_marginRight="32dp"
-            android:layout_marginTop="16dp"
-            android:orientation="vertical">
+            android:layout_marginRight="16dp"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical"
+            android:layout_weight="1">
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -164,7 +165,10 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="4">
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/done_fab"
@@ -174,11 +178,11 @@
                 android:layout_alignParentRight="true"
                 android:layout_gravity="bottom|right"
                 android:layout_marginBottom="8dp"
-                android:layout_marginRight="32dp"
+                android:layout_marginRight="16dp"
                 android:layout_marginTop="8dp"
                 android:onClick="onFabClicked"
                 android:src="@drawable/ic_done_black_24dp"
                 app:backgroundTint="@color/glucosio_accent"/>
         </FrameLayout>
     </LinearLayout>
-</ScrollView>
+</LinearLayout>
