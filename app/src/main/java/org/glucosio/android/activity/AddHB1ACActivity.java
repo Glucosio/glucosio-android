@@ -1,5 +1,6 @@
 package org.glucosio.android.activity;
 
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -17,7 +18,6 @@ import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import org.glucosio.android.R;
 import org.glucosio.android.presenter.AddHB1ACPresenter;
-import org.glucosio.android.presenter.AddWeightPresenter;
 import org.glucosio.android.tools.FormatDateTime;
 
 import java.text.DecimalFormat;
@@ -158,5 +158,22 @@ public class AddHB1ACActivity extends AppCompatActivity implements TimePickerDia
     @Override
     public void onBackPressed() {
         finishActivity();
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        //Restore date chosen
+        FragmentManager fm = getFragmentManager();
+        TimePickerDialog tpd = (TimePickerDialog) fm.findFragmentByTag( "Timepickerdialog");
+        DatePickerDialog dpd = (DatePickerDialog) fm.findFragmentByTag("Datepickerdialog");
+
+        if(tpd != null)
+            tpd.setOnTimeSetListener(this);
+        if (dpd != null)
+            dpd.setOnDateSetListener(this);
+
     }
 }
