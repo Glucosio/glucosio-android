@@ -27,12 +27,6 @@
   <string name="helloactivity_hint_settings">您可以在以后更改这些设置。</string>
   <string name="helloactivity_button_next">下一步</string>
   <string name="helloactivity_button_start">开始使用</string>
-  <string name="fab_weight">体重</string>
-  <string name="fab_ketonest">酮体</string>
-  <string name="fab_pressure">血压</string>
-  <string name="fab_cholesterol">胆固醇水平</string>
-  <string name="fab_HB1AC">糖化血红蛋白指数</string>
-  <string name="fab_glucose">血糖水平</string>
   <string name="fragment_empty_text">尚无可用信息。\n先在这里阅读一些信息吧。</string>
   <string name="dialog_add_title">添加血糖水平</string>
   <string name="dialog_add_concentration">浓度</string>
@@ -191,4 +185,10 @@
   <string name="fragment_overview_graph_export_false">保存截图到图库出错</string>
   <string name="dialog_export_range">导出范围</string>
   <string name="activity_export_no_readings_snackbar">没有读数可导出。</string>
+  <string name="fab_weight">体重</string>
+  <string name="fab_ketonest">酮体</string>
+  <string name="fab_pressure">血压</string>
+  <string name="fab_cholesterol">胆固醇水平</string>
+  <string name="fab_HB1AC">糖化血红蛋白指数</string>
+  <string name="fab_glucose">血糖水平</string>
 </resources>

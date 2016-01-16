@@ -27,12 +27,6 @@
   <string name="helloactivity_hint_settings">Puoi cambiare queste impostazioni dopo.</string>
   <string name="helloactivity_button_next">SUCCESSIVO</string>
   <string name="helloactivity_button_start">INIZIAMO</string>
-  <string name="fab_weight">Peso corporeo</string>
-  <string name="fab_ketonest">Chetoni</string>
-  <string name="fab_pressure">Pressione sanguigna</string>
-  <string name="fab_cholesterol">Livello di colesterolo</string>
-  <string name="fab_HB1AC">Emoglobina glicata (HB1AC)</string>
-  <string name="fab_glucose">Glicemia</string>
   <string name="fragment_empty_text">Nessuna informazione disponibile. \n Aggiungi la tua prima lettura qui.</string>
   <string name="dialog_add_title">Aggiungi Glicemia</string>
   <string name="dialog_add_concentration">Concentrazione</string>
@@ -205,4 +199,11 @@
   <string name="title_activity_add_hb1ac">Aggiungi HB1AC</string>
   <string name="title_activity_add_ketone">Aggiungi Chetoni</string>
   <string name="title_activity_add_pressure">Aggiungi pressione sanguigna</string>
+  <string name="fab_weight">Peso corporeo</string>
+  <string name="fab_ketonest">Chetoni</string>
+  <string name="fab_pressure">Pressione sanguigna</string>
+  <string name="fab_cholesterol">Livello di colesterolo</string>
+  <string name="fab_HB1AC">Emoglobina glicata (HB1AC)</string>
+  <string name="fab_glucose">Glicemia</string>
+  <string name="dialog_error_duplicate">Hai già aggiunto questa lettura oggi. Rimuovila dalla cronologia e prova di nuovo.</string>
 </resources>
