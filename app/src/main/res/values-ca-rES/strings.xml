@@ -26,12 +26,6 @@
   <string name="helloactivity_hint_settings">Podeu canviar-ho més tard a les preferències.</string>
   <string name="helloactivity_button_next">SEGÜENT</string>
   <string name="helloactivity_button_start">COMENÇA</string>
-  <string name="fab_weight">Pes corporal</string>
-  <string name="fab_ketonest">Cetones</string>
-  <string name="fab_pressure">Pressió arterial</string>
-  <string name="fab_cholesterol">Nivell de colesterol</string>
-  <string name="fab_HB1AC">Lectura del HB1AC</string>
-  <string name="fab_glucose">Nivell de glucosa en sang</string>
   <string name="fragment_empty_text">Encara no hi ha informació disponible.\n Afegiu aquí la vostra primera lectura.</string>
   <string name="dialog_add_title">Afegeix nivell de glucosa a la sang</string>
   <string name="dialog_add_concentration">Concentració</string>
@@ -189,4 +183,10 @@
   <string name="fragment_overview_graph_export_false">S\'ha produït un error en desar la captura a la galeria</string>
   <string name="dialog_export_range">Rang d\'exportació</string>
   <string name="activity_export_no_readings_snackbar">No hi ha lectures per a exportar.</string>
+  <string name="fab_weight">Pes corporal</string>
+  <string name="fab_ketonest">Cetones</string>
+  <string name="fab_pressure">Pressió arterial</string>
+  <string name="fab_cholesterol">Nivell de colesterol</string>
+  <string name="fab_HB1AC">Lectura del HB1AC</string>
+  <string name="fab_glucose">Nivell de glucosa en sang</string>
 </resources>

@@ -26,12 +26,6 @@
   <string name="helloactivity_hint_settings">Poți schimba aceste setări mai târziu.</string>
   <string name="helloactivity_button_next">URMĂTORUL</string>
   <string name="helloactivity_button_start">CUM SĂ ÎNCEPI</string>
-  <string name="fab_weight">Greutate corporală</string>
-  <string name="fab_ketonest">Ketone</string>
-  <string name="fab_pressure">Tensiune arterială</string>
-  <string name="fab_cholesterol">Nivelul de colesterol</string>
-  <string name="fab_HB1AC">Citiri HB1AC</string>
-  <string name="fab_glucose">Nivel de glucoză în sânge</string>
   <string name="fragment_empty_text">Nu avem informații disponibile momentan. \n Adaugă prima înregistrare aici.</string>
   <string name="dialog_add_title">Adaugă nivelul glucozei în sânge</string>
   <string name="dialog_add_concentration">Concentrație</string>
@@ -204,4 +198,10 @@
   <string name="title_activity_add_hb1ac">Adaugă HB1AC</string>
   <string name="title_activity_add_ketone">Adaugă ketone</string>
   <string name="title_activity_add_pressure">Adaugă tensiune arterială</string>
+  <string name="fab_weight">Greutate corporală</string>
+  <string name="fab_ketonest">Ketone</string>
+  <string name="fab_pressure">Tensiune arterială</string>
+  <string name="fab_cholesterol">Nivelul de colesterol</string>
+  <string name="fab_HB1AC">Citiri HB1AC</string>
+  <string name="fab_glucose">Nivel de glucoză în sânge</string>
 </resources>

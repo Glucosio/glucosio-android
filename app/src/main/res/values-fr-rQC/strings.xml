@@ -27,12 +27,6 @@
   <string name="helloactivity_hint_settings">Vous pouvez modifier ces réglages plus tard.</string>
   <string name="helloactivity_button_next">SUIVANT</string>
   <string name="helloactivity_button_start">COMMENCER</string>
-  <string name="fab_weight">Masse corporelle</string>
-  <string name="fab_ketonest">Cétones</string>
-  <string name="fab_pressure">Pression artérielle</string>
-  <string name="fab_cholesterol">Taux de cholestérol</string>
-  <string name="fab_HB1AC">Valeur de l\'Hb1Ac</string>
-  <string name="fab_glucose">Glycémie</string>
   <string name="fragment_empty_text">Aucune info disponible encore. \n ajouter votre première lecture ici.</string>
   <string name="dialog_add_title">Saisir le niveau de glycémie</string>
   <string name="dialog_add_concentration">Concentration</string>
@@ -205,4 +199,10 @@
   <string name="title_activity_add_hb1ac">Ajouter une hémoglobine glyquée</string>
   <string name="title_activity_add_ketone">Ajouter des cétones</string>
   <string name="title_activity_add_pressure">Ajouter une pression artérielle</string>
+  <string name="fab_weight">Masse corporelle</string>
+  <string name="fab_ketonest">Cétones</string>
+  <string name="fab_pressure">Pression artérielle</string>
+  <string name="fab_cholesterol">Taux de cholestérol</string>
+  <string name="fab_HB1AC">Valeur de l\'Hb1Ac</string>
+  <string name="fab_glucose">Glycémie</string>
 </resources>

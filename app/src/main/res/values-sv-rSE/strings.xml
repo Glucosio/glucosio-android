@@ -26,12 +26,6 @@
   <string name="helloactivity_hint_settings">Du kan ändra detta i inställningar senare.</string>
   <string name="helloactivity_button_next">Nästa</string>
   <string name="helloactivity_button_start">Kom igång</string>
-  <string name="fab_weight">Kroppsvikt</string>
-  <string name="fab_ketonest">Ketoner</string>
-  <string name="fab_pressure">Blodtryck</string>
-  <string name="fab_cholesterol">Kolesterolnivå</string>
-  <string name="fab_HB1AC">HB1AC värden</string>
-  <string name="fab_glucose">Blodsockernivå</string>
   <string name="fragment_empty_text">Ingen information tillgänglig ännu. \n Lägg till dina första värden här.</string>
   <string name="dialog_add_title">Lägg till blodsockernivå</string>
   <string name="dialog_add_concentration">Koncentration</string>
@@ -204,4 +198,10 @@
   <string name="title_activity_add_hb1ac">Lägg till HB1AC</string>
   <string name="title_activity_add_ketone">Lägg till ketoner</string>
   <string name="title_activity_add_pressure">Lägg till blodtryck</string>
+  <string name="fab_weight">Kroppsvikt</string>
+  <string name="fab_ketonest">Ketoner</string>
+  <string name="fab_pressure">Blodtryck</string>
+  <string name="fab_cholesterol">Kolesterolnivå</string>
+  <string name="fab_HB1AC">HB1AC värden</string>
+  <string name="fab_glucose">Blodsockernivå</string>
 </resources>

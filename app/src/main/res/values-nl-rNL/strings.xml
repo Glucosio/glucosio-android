@@ -26,12 +26,6 @@
   <string name="helloactivity_hint_settings">U kunt dit later wijzigen in de instellingen.</string>
   <string name="helloactivity_button_next">VOLGENDE</string>
   <string name="helloactivity_button_start">AAN DE SLAG</string>
-  <string name="fab_weight">Lichaamsgewicht</string>
-  <string name="fab_ketonest">Ketonen</string>
-  <string name="fab_pressure">Bloeddruk</string>
-  <string name="fab_cholesterol">Cholesterolspiegel</string>
-  <string name="fab_HB1AC">HB1AC-uitlezing</string>
-  <string name="fab_glucose">Bloedsuikerspiegel</string>
   <string name="fragment_empty_text">Nog geen info beschikbaar. \n Voeg hier uw eerste uitlezing toe.</string>
   <string name="dialog_add_title">Bloedsuikerspiegel toevoegen</string>
   <string name="dialog_add_concentration">Concentratie</string>
@@ -204,4 +198,10 @@
   <string name="title_activity_add_hb1ac">HB1AC toevoegen</string>
   <string name="title_activity_add_ketone">Ketonen toevoegen</string>
   <string name="title_activity_add_pressure">Bloeddruk toevoegen</string>
+  <string name="fab_weight">Lichaamsgewicht</string>
+  <string name="fab_ketonest">Ketonen</string>
+  <string name="fab_pressure">Bloeddruk</string>
+  <string name="fab_cholesterol">Cholesterolspiegel</string>
+  <string name="fab_HB1AC">HB1AC-uitlezing</string>
+  <string name="fab_glucose">Bloedsuikerspiegel</string>
 </resources>

@@ -26,12 +26,6 @@
   <string name="helloactivity_hint_settings">Podes cambiar estes axustes máis tarde.</string>
   <string name="helloactivity_button_next">SEGUINTE</string>
   <string name="helloactivity_button_start">COMEZAR</string>
-  <string name="fab_weight">Peso corporal</string>
-  <string name="fab_ketonest">Cetonas</string>
-  <string name="fab_pressure">Presión arterial</string>
-  <string name="fab_cholesterol">Nivel de colesterol</string>
-  <string name="fab_HB1AC">Rexistro de HB1AC</string>
-  <string name="fab_glucose">Nivel de glicosa en sangue</string>
   <string name="fragment_empty_text">Ningunha información dispoñible aínda.\nEngade o teu primeiro rexistro aquí.</string>
   <string name="dialog_add_title">Engadir o nivel de glicosa en sangue</string>
   <string name="dialog_add_concentration">Concentración</string>
@@ -204,4 +198,10 @@
   <string name="title_activity_add_hb1ac">Engadir HB1AC</string>
   <string name="title_activity_add_ketone">Engadir cetonas</string>
   <string name="title_activity_add_pressure">Engadir presión arterial</string>
+  <string name="fab_weight">Peso corporal</string>
+  <string name="fab_ketonest">Cetonas</string>
+  <string name="fab_pressure">Presión arterial</string>
+  <string name="fab_cholesterol">Nivel de colesterol</string>
+  <string name="fab_HB1AC">Rexistro de HB1AC</string>
+  <string name="fab_glucose">Nivel de glicosa en sangue</string>
 </resources>
