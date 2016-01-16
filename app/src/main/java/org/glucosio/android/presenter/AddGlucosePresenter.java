@@ -87,22 +87,26 @@ public class AddGlucosePresenter {
 
     public void dialogOnAddButtonPressed(String time, String date, String reading, String type){
         if (validateDate(date) && validateTime(time) && validateReading(reading) && validateType(type)) {
-
             Calendar cal = Calendar.getInstance();
             cal.set(Integer.parseInt(readingYear), Integer.parseInt(readingMonth)-1, Integer.parseInt(readingDay), Integer.parseInt(readingHour), Integer.parseInt(readingMinute));
             Date finalDateTime = cal.getTime();
-
+            boolean isReadingAdded;
             if (getUnitMeasuerement().equals("mg/dL")) {
                 int finalReading = Integer.parseInt(reading);
                 GlucoseReading gReading = new GlucoseReading(finalReading, type, finalDateTime, "");
-                dB.addGlucoseReading(gReading);
+                isReadingAdded = dB.addGlucoseReading(gReading);
             } else {
                 converter = new GlucoseConverter();
                 int convertedReading = converter.toMgDl(Double.parseDouble(reading));
                 GlucoseReading gReading = new GlucoseReading(convertedReading, type, finalDateTime, "");
                 dB.addGlucoseReading(gReading);
+                isReadingAdded = dB.addGlucoseReading(gReading);
             }
-            activity.finishActivity();
+            if (!isReadingAdded){
+                activity.showDuplicateErrorMessage();
+            } else {
+                activity.finishActivity();
+            }
         } else {
             activity.showErrorMessage();
         }

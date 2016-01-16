@@ -11,6 +11,7 @@ import org.joda.time.Weeks;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -55,11 +56,26 @@ public class DatabaseHandler {
         realm.commitTransaction();
     }
 
-    public void addGlucoseReading(GlucoseReading reading) {
-        realm.beginTransaction();
-        reading.setId(getNextKey("glucose"));
-        realm.copyToRealm(reading);
-        realm.commitTransaction();
+    public boolean addGlucoseReading(GlucoseReading reading) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(reading.getCreated());
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        int hours = calendar.get(Calendar.HOUR_OF_DAY);
+        int minutes = calendar.get(Calendar.MINUTE);
+        String id = "" + year+month+day+hours+minutes+reading.getReading();
+
+        // Check for duplicates
+        if (getGlucoseReadingById(Long.parseLong(id)) != null){
+            return false;
+        } else {
+            realm.beginTransaction();
+            reading.setId(Long.parseLong(id));
+            realm.copyToRealm(reading);
+            realm.commitTransaction();
+            return true;
+        }
     }
 
     public void deleteGlucoseReadings(GlucoseReading reading) {
