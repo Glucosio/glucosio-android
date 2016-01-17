@@ -62,14 +62,14 @@ dependencies {
     compile 'com.google.android.gms:play-services-wearable:8.4.0'
 
     // Other libraries
+    compile 'io.realm:realm-android:0.87.2'
     compile 'com.github.clans:fab:1.6.2'
-    compile 'com.wdullaer:materialdatetimepicker:1.5.3'
+    compile 'com.wdullaer:materialdatetimepicker:2.1.1'
     compile 'com.github.PhilJay:MPAndroidChart:v2.1.6'
     compile 'uk.co.chrisjenx:calligraphy:2.1.0'
     compile 'com.github.paolorotolo:gitty_reporter:1.2.2'
-    compile 'io.realm:realm-android:0.87.1'
     compile 'net.danlew:android.joda:2.8.2'
-    compile('com.mikepenz:materialdrawer:4.4.3@aar') {
+    compile('com.mikepenz:materialdrawer:4.6.4@aar') {
         transitive = true
     }
 

@@ -27,6 +27,7 @@ import java.util.Calendar;
 
 public class AddGlucoseActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
+    AddGlucosePresenter presenter;
     private FloatingActionButton doneFAB;
     private TextView addTimeTextView;
     private TextView addDateTextView;
@@ -34,8 +35,6 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
     private EditText typeCustomEditText;
     private LabelledSpinner readingTypeSpinner;
     private boolean isCustomType;
-
-    AddGlucosePresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -169,7 +168,7 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
     }
 
     @Override
-    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute) {
+    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int seconds) {
         TextView addTime = (TextView) findViewById(R.id.glucose_add_time);
         DecimalFormat df = new DecimalFormat("00");
 
