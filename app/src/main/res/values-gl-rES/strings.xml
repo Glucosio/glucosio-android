@@ -204,4 +204,5 @@
   <string name="fab_cholesterol">Nivel de colesterol</string>
   <string name="fab_HB1AC">Rexistro de HB1AC</string>
   <string name="fab_glucose">Nivel de glicosa en sangue</string>
+  <string name="dialog_error_duplicate">Xa tes un rexistro anterior. Elimínao primeiro e despois engade a corrección.</string>
 </resources>

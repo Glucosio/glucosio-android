@@ -205,4 +205,5 @@
   <string name="fab_cholesterol">Taux de cholestérol</string>
   <string name="fab_HB1AC">Valeur de l\'Hb1Ac</string>
   <string name="fab_glucose">Glycémie</string>
+  <string name="dialog_error_duplicate">Vous avez déjà enregistré une donnée pour cette heure-là. Merci de la supprimer avant d\'ajouter une valeur corrigée.</string>
 </resources>

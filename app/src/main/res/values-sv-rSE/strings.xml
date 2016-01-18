@@ -204,4 +204,5 @@
   <string name="fab_cholesterol">Kolesterolnivå</string>
   <string name="fab_HB1AC">HB1AC värden</string>
   <string name="fab_glucose">Blodsockernivå</string>
+  <string name="dialog_error_duplicate">Du har redan en post för denna tid. Ta bort den innan du lägger till en korrigering.</string>
 </resources>

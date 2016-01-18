@@ -204,4 +204,5 @@
   <string name="fab_cholesterol">Nivelul de colesterol</string>
   <string name="fab_HB1AC">Citiri HB1AC</string>
   <string name="fab_glucose">Nivel de glucoză în sânge</string>
+  <string name="dialog_error_duplicate">Ai deja o înregistrare pentru această perioadă. Te rugăm să o elimini înainte de a adăuga o corecție.</string>
 </resources>

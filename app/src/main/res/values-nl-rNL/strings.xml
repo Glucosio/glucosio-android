@@ -204,4 +204,5 @@
   <string name="fab_cholesterol">Cholesterolspiegel</string>
   <string name="fab_HB1AC">HB1AC-uitlezing</string>
   <string name="fab_glucose">Bloedsuikerspiegel</string>
+  <string name="dialog_error_duplicate">U hebt al een vermelding voor deze tijd. Verwijder deze voordat u een correctie toevoegt.</string>
 </resources>

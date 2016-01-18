@@ -204,4 +204,5 @@
   <string name="fab_cholesterol">コレステロール値</string>
   <string name="fab_HB1AC">HB1AC 測定値</string>
   <string name="fab_glucose">血糖値</string>
+  <string name="dialog_error_duplicate">既にこの時間の登録があります。修正を追加する前に削除してください。</string>
 </resources>

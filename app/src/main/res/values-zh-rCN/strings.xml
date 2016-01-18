@@ -185,10 +185,26 @@
   <string name="fragment_overview_graph_export_false">保存截图到图库出错</string>
   <string name="dialog_export_range">导出范围</string>
   <string name="activity_export_no_readings_snackbar">没有读数可导出。</string>
+  <string name="wear_new_reading">新读数已添加</string>
+  <string name="dialog_add_weight">体重</string>
+  <string name="dialog_add_ketones">酮体</string>
+  <string name="dialog_add_pressure_min">低压</string>
+  <string name="dialog_add_pressure_max">高压</string>
+  <string name="dialog_add_cholesterol_total">总胆固醇</string>
+  <string name="dialog_add_cholesterol_ldl">低密度脂蛋白胆固醇</string>
+  <string name="dialog_add_cholesterol_hdl">高密度脂蛋白胆固醇</string>
+  <string name="dialog_add_hb1ac">糖化血红蛋白</string>
+  <string name="title_activity_add_glucose">添加血糖读数</string>
+  <string name="title_activity_add_weight">增加体重</string>
+  <string name="title_activity_add_cholesterol">添加胆固醇水平</string>
+  <string name="title_activity_add_hb1ac">添加糖化血红蛋白</string>
+  <string name="title_activity_add_ketone">添加酮体</string>
+  <string name="title_activity_add_pressure">添加血压</string>
   <string name="fab_weight">体重</string>
   <string name="fab_ketonest">酮体</string>
   <string name="fab_pressure">血压</string>
   <string name="fab_cholesterol">胆固醇水平</string>
   <string name="fab_HB1AC">糖化血红蛋白指数</string>
   <string name="fab_glucose">血糖水平</string>
+  <string name="dialog_error_duplicate">您已经为此时间添加一个此项。请在更正前移除它。</string>
 </resources>
