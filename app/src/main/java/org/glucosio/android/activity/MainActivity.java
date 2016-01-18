@@ -31,6 +31,7 @@ import com.google.android.gms.analytics.Tracker;
 import com.google.android.gms.appinvite.AppInviteInvitation;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.instabug.library.Instabug;
 import com.instabug.wrapper.support.activity.InstabugAppCompatActivity;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
@@ -181,7 +182,7 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
                             startAboutActivity();
                         } else if (drawerItem.equals(item4)) {
                             // Feedback
-                            startGittyReporter();
+                            Instabug.getInstance().invoke();
                         } else if (drawerItem.equals(item5)) {
                             // Invite
                             showInviteDialog();
@@ -245,11 +246,6 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
         Intent intent = new Intent(this, HelloActivity.class);
         startActivity(intent);
         finish();
-    }
-
-    public void startGittyReporter() {
-        Intent intent = new Intent(this, GittyActivity.class);
-        startActivity(intent);
     }
 
     public void openPreferences() {

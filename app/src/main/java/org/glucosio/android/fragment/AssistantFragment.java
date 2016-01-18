@@ -16,6 +16,8 @@ import android.view.animation.TranslateAnimation;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.instabug.library.Instabug;
+
 import org.glucosio.android.ActionTip;
 import org.glucosio.android.R;
 import org.glucosio.android.activity.AddGlucoseActivity;
@@ -206,7 +208,7 @@ public class AssistantFragment extends Fragment {
     }
 
     public void openGitty(){
-        ((MainActivity)getActivity()).startGittyReporter();
+        Instabug.getInstance().invoke();
     }
 
     public void startExportActivity() {

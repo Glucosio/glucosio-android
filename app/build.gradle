@@ -67,12 +67,11 @@ dependencies {
     compile 'com.wdullaer:materialdatetimepicker:2.1.1'
     compile 'com.github.PhilJay:MPAndroidChart:v2.1.6'
     compile 'uk.co.chrisjenx:calligraphy:2.1.0'
-    compile 'com.github.paolorotolo:gitty_reporter:1.2.2'
     compile 'net.danlew:android.joda:2.8.2'
     compile('com.mikepenz:materialdrawer:4.6.4@aar') {
         transitive = true
     }
-    compile ("com.instabug.library:instabugsupport:1.+")
+    compile ("com.instabug.library:instabugsupport:1.7.3")
 
     wearApp project(':wear')
 
