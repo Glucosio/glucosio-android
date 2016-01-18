@@ -22,3 +22,10 @@
 -keep @io.realm.internal.Keep class * { *; }
 -dontwarn javax.**
 -dontwarn io.realm.**
+
+-dontwarn android.support.**
+-keep class android.support.v7.** { *; }
+-keep interface android.support.v7.** { *; }
+-keep class com.google.android.gms.** { *; }
+-dontwarn com.google.android.gms.**
+-keep class com.instabug.** { *; }

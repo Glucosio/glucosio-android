@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
+import com.instabug.library.Instabug;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
@@ -42,6 +43,8 @@ public class GlucosioApplication extends Application {
                 .setDefaultFontPath("fonts/lato.ttf")
                 .setFontAttrId(R.attr.fontPath)
                 .build());
+        Instabug.initialize(this, "b2226aa30fec24f6f4bed6ad68964e9b");
+
     }
 
     @Override

@@ -72,6 +72,7 @@ dependencies {
     compile('com.mikepenz:materialdrawer:4.6.4@aar') {
         transitive = true
     }
+    compile ("com.instabug.library:instabugsupport:1.+")
 
     wearApp project(':wear')
 
