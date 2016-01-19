@@ -105,7 +105,7 @@
     </string-array>
     <string name="tip_example" translatable="false">Use less cheese in your recipes and meals. Fresh mozzarella packed in water and Swiss cheese are usually lower in sodium.</string>
     <string name="preferences_about">About</string>
-    <string name="version" translatable="false">0.9.2 (Imli)</string>
+    <string name="version" translatable="false">0.9.3 (Imli)</string>
     <string name="preferences_version">Version</string>
     <string name="preferences_terms">Terms of use</string>
     <string name="glucose_reading_type">Type</string>
@@ -300,6 +300,7 @@
     <string name="fab_cholesterol">Cholesterol Level</string>
     <string name="fab_HB1AC">HB1AC Reading</string>
     <string name="fab_glucose">Blood Glucose Level</string>
+    <string name="dialog_error_duplicate">You already have an entry for this time. Please remove it before adding a correction.</string>
 
     <string-array name="fragment_history_selector" translatable="false">
         <item>@string/fab_glucose</item>

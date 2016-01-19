@@ -3,6 +3,7 @@ package org.glucosio.android.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
@@ -11,7 +12,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
@@ -27,6 +27,7 @@ import java.util.Calendar;
 
 public class AddGlucoseActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
+    AddGlucosePresenter presenter;
     private FloatingActionButton doneFAB;
     private TextView addTimeTextView;
     private TextView addDateTextView;
@@ -34,8 +35,6 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
     private EditText typeCustomEditText;
     private LabelledSpinner readingTypeSpinner;
     private boolean isCustomType;
-
-    AddGlucosePresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,7 +143,14 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
     }
 
     public void showErrorMessage() {
-        Toast.makeText(getApplicationContext(), getString(R.string.dialog_error2), Toast.LENGTH_SHORT).show();
+        View rootLayout = findViewById(android.R.id.content);
+        Snackbar.make(rootLayout, getString(R.string.dialog_error2), Snackbar.LENGTH_SHORT).show();
+    }
+
+
+    public void showDuplicateErrorMessage() {
+        View rootLayout = findViewById(android.R.id.content);
+        Snackbar.make(rootLayout, getString(R.string.dialog_error_duplicate), Snackbar.LENGTH_LONG).show();
     }
 
     public void updateSpinnerTypeTime(int selection) {
@@ -162,7 +168,7 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
     }
 
     @Override
-    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute) {
+    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int seconds) {
         TextView addTime = (TextView) findViewById(R.id.glucose_add_time);
         DecimalFormat df = new DecimalFormat("00");
 

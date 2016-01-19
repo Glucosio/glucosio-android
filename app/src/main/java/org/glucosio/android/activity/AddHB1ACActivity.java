@@ -17,7 +17,6 @@ import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import org.glucosio.android.R;
 import org.glucosio.android.presenter.AddHB1ACPresenter;
-import org.glucosio.android.presenter.AddWeightPresenter;
 import org.glucosio.android.tools.FormatDateTime;
 
 import java.text.DecimalFormat;
@@ -25,12 +24,11 @@ import java.util.Calendar;
 
 public class AddHB1ACActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
+    AddHB1ACPresenter presenter;
     private FloatingActionButton doneFAB;
     private TextView addTimeTextView;
     private TextView addDateTextView;
     private TextView readingTextView;
-
-    AddHB1ACPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,7 +105,7 @@ public class AddHB1ACActivity extends AppCompatActivity implements TimePickerDia
     }
 
     @Override
-    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute) {
+    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int seconds) {
         TextView addTime = (TextView) findViewById(R.id.dialog_add_time);
         DecimalFormat df = new DecimalFormat("00");
 

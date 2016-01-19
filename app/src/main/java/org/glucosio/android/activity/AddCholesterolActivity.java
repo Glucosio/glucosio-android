@@ -18,21 +18,19 @@ import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 import org.glucosio.android.R;
 import org.glucosio.android.presenter.AddCholesterolPresenter;
 import org.glucosio.android.tools.FormatDateTime;
-import org.w3c.dom.Text;
 
 import java.text.DecimalFormat;
 import java.util.Calendar;
 
 public class AddCholesterolActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
+    AddCholesterolPresenter presenter;
     private FloatingActionButton doneFAB;
     private TextView addTimeTextView;
     private TextView addDateTextView;
     private TextView totalChoTextView;
     private TextView LDLChoTextView;
     private TextView HDLChoTextView;
-
-    AddCholesterolPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,7 +109,7 @@ public class AddCholesterolActivity extends AppCompatActivity implements TimePic
     }
 
     @Override
-    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute) {
+    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int second) {
         TextView addTime = (TextView) findViewById(R.id.dialog_add_time);
         DecimalFormat df = new DecimalFormat("00");
 

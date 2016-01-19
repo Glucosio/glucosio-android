@@ -17,7 +17,6 @@ import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import org.glucosio.android.R;
 import org.glucosio.android.presenter.AddPressurePresenter;
-import org.glucosio.android.presenter.AddWeightPresenter;
 import org.glucosio.android.tools.FormatDateTime;
 
 import java.text.DecimalFormat;
@@ -25,13 +24,12 @@ import java.util.Calendar;
 
 public class AddPressureActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
+    AddPressurePresenter presenter;
     private FloatingActionButton doneFAB;
     private TextView addTimeTextView;
     private TextView addDateTextView;
     private TextView minPressureTextView;
     private TextView maxPressureTextView;
-
-    AddPressurePresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,7 +107,7 @@ public class AddPressureActivity extends AppCompatActivity implements TimePicker
     }
 
     @Override
-    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute) {
+    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int seconds) {
         TextView addTime = (TextView) findViewById(R.id.dialog_add_time);
         DecimalFormat df = new DecimalFormat("00");
 

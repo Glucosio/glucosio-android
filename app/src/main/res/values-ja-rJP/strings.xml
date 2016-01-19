@@ -26,12 +26,6 @@
   <string name="helloactivity_hint_settings">後でこれらの設定を変更できます。</string>
   <string name="helloactivity_button_next">次へ</string>
   <string name="helloactivity_button_start">始める</string>
-  <string name="fab_weight">体重</string>
-  <string name="fab_ketonest">ケトン</string>
-  <string name="fab_pressure">血圧</string>
-  <string name="fab_cholesterol">コレステロール値</string>
-  <string name="fab_HB1AC">HB1AC 測定値</string>
-  <string name="fab_glucose">血糖値</string>
   <string name="fragment_empty_text">まだ利用可能な情報がありません。\n 最初の測定値を追加してください。</string>
   <string name="dialog_add_title">血糖値を追加</string>
   <string name="dialog_add_concentration">濃度</string>
@@ -204,4 +198,11 @@
   <string name="title_activity_add_hb1ac">HB1AC を追加</string>
   <string name="title_activity_add_ketone">ケトンを追加</string>
   <string name="title_activity_add_pressure">血圧を追加</string>
+  <string name="fab_weight">体重</string>
+  <string name="fab_ketonest">ケトン</string>
+  <string name="fab_pressure">血圧</string>
+  <string name="fab_cholesterol">コレステロール値</string>
+  <string name="fab_HB1AC">HB1AC 測定値</string>
+  <string name="fab_glucose">血糖値</string>
+  <string name="dialog_error_duplicate">既にこの時間の登録があります。修正を追加する前に削除してください。</string>
 </resources>

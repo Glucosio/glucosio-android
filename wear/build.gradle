@@ -9,19 +9,19 @@ android {
         applicationId "org.glucosio.android"
         minSdkVersion 21
         targetSdkVersion 23
-        versionCode 8
-        versionName "0.9.2"
+        versionCode 9
+        versionName "0.9.3"
     }
     buildTypes {
         debug {
-            minifyEnabled false
+            minifyEnabled true
             debuggable true
 
             applicationIdSuffix '.daily'
             versionNameSuffix '-DEVEL'
         }
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }

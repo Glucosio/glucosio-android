@@ -13,7 +13,6 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -32,6 +31,8 @@ import com.google.android.gms.analytics.Tracker;
 import com.google.android.gms.appinvite.AppInviteInvitation;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.instabug.library.Instabug;
+import com.instabug.wrapper.support.activity.InstabugAppCompatActivity;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
@@ -42,8 +43,6 @@ import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.adapter.HomePagerAdapter;
-import org.glucosio.android.presenter.AddHB1ACPresenter;
-import org.glucosio.android.presenter.AddWeightPresenter;
 import org.glucosio.android.presenter.ExportPresenter;
 import org.glucosio.android.presenter.MainPresenter;
 
@@ -52,7 +51,7 @@ import java.util.Calendar;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
-public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
+public class MainActivity extends InstabugAppCompatActivity implements DatePickerDialog.OnDateSetListener{
 
     ExportPresenter exportPresenter;
     private Dialog addDialog;
@@ -183,7 +182,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                             startAboutActivity();
                         } else if (drawerItem.equals(item4)) {
                             // Feedback
-                            startGittyReporter();
+                            Instabug.getInstance().invoke();
                         } else if (drawerItem.equals(item5)) {
                             // Invite
                             showInviteDialog();
@@ -247,11 +246,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         Intent intent = new Intent(this, HelloActivity.class);
         startActivity(intent);
         finish();
-    }
-
-    public void startGittyReporter() {
-        Intent intent = new Intent(this, GittyActivity.class);
-        startActivity(intent);
     }
 
     public void openPreferences() {
