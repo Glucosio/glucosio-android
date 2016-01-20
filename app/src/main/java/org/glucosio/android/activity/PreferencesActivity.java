@@ -55,6 +55,7 @@ public class PreferencesActivity extends AppCompatActivity {
         private DatabaseHandler dB;
         private User user;
         private ListPreference languagePref;
+        private Preference backupPref;
         private ListPreference countryPref;
         private ListPreference genderPref;
         private ListPreference diabetesTypePref;
@@ -68,6 +69,7 @@ public class PreferencesActivity extends AppCompatActivity {
         private EditTextPreference maxRangePref;
         private User updatedUser;
 
+
         @Override
         public void onCreate(final Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -79,6 +81,7 @@ public class PreferencesActivity extends AppCompatActivity {
             agePref = (EditTextPreference) findPreference("pref_age");
             countryPref = (ListPreference) findPreference("pref_country");
             // languagePref = (ListPreference) findPreference("pref_language");
+            backupPref = (Preference) findPreference("backup_settings");
             genderPref = (ListPreference) findPreference("pref_gender");
             diabetesTypePref = (ListPreference) findPreference("pref_diabetes_type");
             unitPref = (ListPreference) findPreference("pref_unit");
@@ -201,6 +204,14 @@ public class PreferencesActivity extends AppCompatActivity {
                     updatedUser.setCustom_range_max(Integer.parseInt(newValue.toString()));
                     updateDB();
                     return true;
+                }
+            });
+            backupPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    Intent backupActivity = new Intent(getActivity(), BackupActivity.class);
+                    getActivity().startActivity(backupActivity);
+                    return false;
                 }
             });
 
