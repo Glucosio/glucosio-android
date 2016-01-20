@@ -24,7 +24,7 @@ public class HistoryPresenter {
         return fragment.convertDate(date);
     }
 
-    public void onDeleteClicked(int idToDelete, int metricID){
+    public void onDeleteClicked(long idToDelete, int metricID){
         switch (metricID) {
             // Glucose
             case 0:

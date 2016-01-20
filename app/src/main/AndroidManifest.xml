@@ -28,9 +28,6 @@
             android:label="@string/title_activity_hello"
             android:theme="@style/AppThemeNoActionBar" />
         <activity
-            android:name=".activity.GittyActivity"
-            android:theme="@style/GittyTheme" />
-        <activity
             android:name=".activity.PreferencesActivity"
             android:theme="@style/GlucosioSettings" />
         <activity

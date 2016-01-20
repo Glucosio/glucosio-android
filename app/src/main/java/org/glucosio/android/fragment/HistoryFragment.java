@@ -108,7 +108,7 @@ public class HistoryFragment extends Fragment {
                     public void onClick(DialogInterface dialog, int which) {
                         // DELETE
                         TextView idTextView = (TextView) view.findViewById(R.id.item_history_id);
-                        final int idToDelete = Integer.parseInt(idTextView.getText().toString());
+                        final long idToDelete = Long.parseLong(idTextView.getText().toString());
                         final CardView item = (CardView) view.findViewById(R.id.item_history);
                         item.animate().alpha(0.0f).setDuration(2000);
                         Snackbar.make(((MainActivity) getActivity()).getFabView(), R.string.fragment_history_snackbar_text, Snackbar.LENGTH_SHORT).setCallback(new Snackbar.Callback() {

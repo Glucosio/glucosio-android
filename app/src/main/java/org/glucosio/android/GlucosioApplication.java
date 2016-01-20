@@ -46,9 +46,4 @@ public class GlucosioApplication extends Application {
         Instabug.initialize(this, "b2226aa30fec24f6f4bed6ad68964e9b");
 
     }
-
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
-    }
 }
