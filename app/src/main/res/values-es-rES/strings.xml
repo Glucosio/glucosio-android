@@ -205,4 +205,5 @@
   <string name="fab_cholesterol">Nivel de colesterol</string>
   <string name="fab_HB1AC">Lectura de HB1AC</string>
   <string name="fab_glucose">Nivel de glucosa en sangre</string>
+  <string name="dialog_error_duplicate">Ya tienes una entrada en esa hora. Quítelo antes de añadir una corrección.</string>
 </resources>
