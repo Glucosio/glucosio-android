@@ -16,7 +16,7 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
 
 
   #clone gh-pages branch
-  git clone --quiet --branch=master https://8ded5df0cdf373ca7b7662f00ef159f722601d54@github.com/Glucosio/glucosio.github.io.git  master > /dev/null
+  git clone --quiet --branch=master https://glucat:$GITHUB_API_KEY@github.com/Glucosio/glucosio.github.io.git  master > /dev/null
 
   #go into diractory and copy data we're interested in to that directory
   cd master
