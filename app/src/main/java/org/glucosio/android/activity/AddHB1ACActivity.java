@@ -51,7 +51,7 @@ public class AddHB1ACActivity extends AppCompatActivity implements TimePickerDia
         readingTextView = (TextView) findViewById(R.id.hb1ac_add_value);
 
         FormatDateTime formatDateTime = new FormatDateTime(getApplicationContext());
-        addDateTextView.setText(presenter.getReadingDay() + "/" + presenter.getReadingMonth() + "/" + presenter.getReadingYear());
+        addDateTextView.setText(formatDateTime.getCurrentDate());
         addTimeTextView.setText(formatDateTime.getCurrentTime());
         addDateTextView.setOnClickListener(new View.OnClickListener() {
             @Override

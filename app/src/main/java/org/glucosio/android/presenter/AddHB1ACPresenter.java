@@ -3,7 +3,6 @@ package org.glucosio.android.presenter;
 import org.glucosio.android.activity.AddHB1ACActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.HB1ACReading;
-import org.glucosio.android.tools.ReadingTools;
 import org.glucosio.android.tools.SplitDateTime;
 
 import java.text.DateFormat;
@@ -14,8 +13,6 @@ import java.util.Date;
 public class AddHB1ACPresenter {
     private DatabaseHandler dB;
     private AddHB1ACActivity activity;
-
-    private ReadingTools rTools;
     private String readingYear;
     private String readingMonth;
     private String readingDay;
@@ -40,21 +37,6 @@ public class AddHB1ACPresenter {
         this.readingDay = addSplitDateTime.getDay();
         this.readingHour = addSplitDateTime.getHour();
         this.readingMinute = addSplitDateTime.getMinute();
-    }
-
-    public int timeToSpinnerType() {
-        DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        Date formatted = Calendar.getInstance().getTime();
-
-        SplitDateTime addSplitDateTime = new SplitDateTime(formatted, inputFormat);
-        int hour = Integer.parseInt(addSplitDateTime.getHour());
-
-        return hourToSpinnerType(hour);
-    }
-
-    public int hourToSpinnerType(int hour){
-        rTools = new ReadingTools();
-        return rTools.hourToSpinnerType(hour);
     }
 
     public void dialogOnAddButtonPressed(String time, String date, String reading){
@@ -88,18 +70,6 @@ public class AddHB1ACPresenter {
 
     public String getReadingMonth() {
         return readingMonth;
-    }
-
-    public String getReadingDay() {
-        return readingDay;
-    }
-
-    public String getReadingHour() {
-        return readingHour;
-    }
-
-    public String getReadingMinute() {
-        return readingMinute;
     }
 
     public void setReadingYear(String readingYear) {

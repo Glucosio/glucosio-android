@@ -3,7 +3,6 @@ package org.glucosio.android.presenter;
 import org.glucosio.android.activity.AddGlucoseActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
-import org.glucosio.android.db.User;
 import org.glucosio.android.tools.GlucoseConverter;
 import org.glucosio.android.tools.ReadingTools;
 import org.glucosio.android.tools.SplitDateTime;
@@ -16,12 +15,8 @@ import java.util.Date;
 public class AddGlucosePresenter {
     private DatabaseHandler dB;
     private AddGlucoseActivity activity;
-
-    private User user;
     private ReadingTools rTools;
     private GlucoseConverter converter;
-    private int age;
-
     private String readingYear;
     private String readingMonth;
     private String readingDay;
@@ -65,24 +60,6 @@ public class AddGlucosePresenter {
     public int hourToSpinnerType(int hour){
         rTools = new ReadingTools();
         return rTools.hourToSpinnerType(hour);
-    }
-
-    public String getGlucoseReadingReadingById(int id){
-        return dB.getGlucoseReadingById(id).getReading() + "";
-    }
-
-    public String getGlucoseReadingTypeById(int id){
-        return dB.getGlucoseReadingById(id).getReading_type();
-    }
-
-    public void getGlucoseReadingTimeById(int id){
-        DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        SplitDateTime splitDateTime = new SplitDateTime(dB.getGlucoseReadingById(id).getCreated(), inputFormat);
-        this.readingYear = splitDateTime.getYear();
-        this.readingMonth = splitDateTime.getMonth();
-        this.readingDay = splitDateTime.getDay();
-        this.readingHour = splitDateTime.getHour();
-        this.readingMinute = splitDateTime.getMinute();
     }
 
     public void dialogOnAddButtonPressed(String time, String date, String reading, String type){
@@ -175,14 +152,6 @@ public class AddGlucosePresenter {
 
     public String getReadingDay() {
         return readingDay;
-    }
-
-    public String getReadingHour() {
-        return readingHour;
-    }
-
-    public String getReadingMinute() {
-        return readingMinute;
     }
 
     public void setReadingYear(String readingYear) {

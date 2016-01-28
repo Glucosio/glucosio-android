@@ -84,7 +84,7 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
         });
 
         FormatDateTime formatDateTime = new FormatDateTime(getApplicationContext());
-        addDateTextView.setText(presenter.getReadingDay() + "/" + presenter.getReadingMonth() + "/" + presenter.getReadingYear());
+        addDateTextView.setText(formatDateTime.getCurrentDate());
         addTimeTextView.setText(formatDateTime.getCurrentTime());
         addDateTextView.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -14,8 +14,6 @@ import java.util.Date;
 public class AddCholesterolPresenter {
     private DatabaseHandler dB;
     private AddCholesterolActivity activity;
-
-    private ReadingTools rTools;
     private String readingYear;
     private String readingMonth;
     private String readingDay;
@@ -40,21 +38,6 @@ public class AddCholesterolPresenter {
         this.readingDay = addSplitDateTime.getDay();
         this.readingHour = addSplitDateTime.getHour();
         this.readingMinute = addSplitDateTime.getMinute();
-    }
-
-    public int timeToSpinnerType() {
-        DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        Date formatted = Calendar.getInstance().getTime();
-
-        SplitDateTime addSplitDateTime = new SplitDateTime(formatted, inputFormat);
-        int hour = Integer.parseInt(addSplitDateTime.getHour());
-
-        return hourToSpinnerType(hour);
-    }
-
-    public int hourToSpinnerType(int hour){
-        rTools = new ReadingTools();
-        return rTools.hourToSpinnerType(hour);
     }
 
     public void dialogOnAddButtonPressed(String time, String date, String totalCho, String LDLCho, String HDLCho){
@@ -90,18 +73,6 @@ public class AddCholesterolPresenter {
 
     public String getReadingMonth() {
         return readingMonth;
-    }
-
-    public String getReadingDay() {
-        return readingDay;
-    }
-
-    public String getReadingHour() {
-        return readingHour;
-    }
-
-    public String getReadingMinute() {
-        return readingMinute;
     }
 
     public void setReadingYear(String readingYear) {

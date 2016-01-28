@@ -53,7 +53,7 @@ public class AddPressureActivity extends AppCompatActivity implements TimePicker
         maxPressureTextView = (TextView) findViewById(R.id.pressure_add_value_max);
 
         FormatDateTime formatDateTime = new FormatDateTime(getApplicationContext());
-        addDateTextView.setText(presenter.getReadingDay() + "/" + presenter.getReadingMonth() + "/" + presenter.getReadingYear());
+        addDateTextView.setText(formatDateTime.getCurrentDate());
         addTimeTextView.setText(formatDateTime.getCurrentTime());
         addDateTextView.setOnClickListener(new View.OnClickListener() {
             @Override
