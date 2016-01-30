@@ -206,4 +206,10 @@
   <string name="fab_HB1AC">Emoglobina glicata (HB1AC)</string>
   <string name="fab_glucose">Glicemia</string>
   <string name="dialog_error_duplicate">Hai già inserito questa lettura. Per favore rimuovila dalla cronologia prima di aggiungere una correzione.</string>
+  <string name="freestylelibre_nfc_ready">Per favore, avvicina il telefono al sensore e non muoverlo finchè non vibra.</string>
+  <string name="freestylelibre_nfc_not_supported">Questo dispositivo non supporta NFC</string>
+  <string name="freestylelibre_nfc_not_enabled">NFC è disabilitato.</string>
+  <string name="dialog_add_glucose_freestylelibre">Aggiungi da FreeStyle Libre</string>
+  <string name="freestylelibre_nfc_error">Errore durante l\'apertura di una connessione NFC</string>
+  <string name="dialog_add_glucose_freestylelibre_success">Aggiunta lettura da FreeStyle Libre</string>
 </resources>
