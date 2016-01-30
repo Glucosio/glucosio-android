@@ -167,6 +167,27 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
         finish();
     }
 
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (resultCode == RESULT_OK) {
+            String returnedResult = data.getData().toString();
+            String glucoseReading = Integer.parseInt(returnedResult) + "";
+            View rootLayout = findViewById(android.R.id.content);
+            Snackbar.make(rootLayout, getString(R.string.dialog_add_glucose_freestylelibre_success), Snackbar.LENGTH_SHORT).show();
+
+            // Add reading to database
+            if (isCustomType) {
+                presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
+                        addDateTextView.getText().toString(), glucoseReading,
+                        typeCustomEditText.getText().toString());
+            } else {
+                presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
+                        addDateTextView.getText().toString(), glucoseReading,
+                        readingTypeSpinner.getSpinner().getSelectedItem().toString());
+            }
+        }
+    }
+
     @Override
     public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int seconds) {
         TextView addTime = (TextView) findViewById(R.id.glucose_add_time);
@@ -220,5 +241,10 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
     @Override
     public void onBackPressed() {
         finishActivity();
+    }
+
+    public void startLibreActivity(View view) {
+        Intent intent = new Intent(this, FreestyleLibre.class);
+        startActivityForResult(intent, 1);
     }
 }
