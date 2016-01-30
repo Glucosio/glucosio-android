@@ -149,6 +149,8 @@ public class FreestyleLibre extends Activity {
             Vibrator vibrator = (Vibrator)getSystemService(VIBRATOR_SERVICE);
             vibrator.vibrate(1000);
 
+            Toast.makeText(getApplicationContext(), "Reading added:" + currentGlucose, Toast.LENGTH_SHORT).show();
+
             // Return Glucose reading
             Intent data = new Intent();
             String text = currentGlucose + "";
@@ -280,7 +282,6 @@ public class FreestyleLibre extends Activity {
                     ii++;
                 }
                 Log.d("glucosio", "--------------------------------------------------");
-
             } catch (IOException e) {
                 FreestyleLibre.this.runOnUiThread(new Runnable() {
                     public void run() {
