@@ -32,7 +32,7 @@ import com.google.android.gms.appinvite.AppInviteInvitation;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.instabug.library.Instabug;
-import com.instabug.wrapper.support.activity.InstabugAppCompatActivity;
+import com.instabug.library.compat.InstabugAppCompatActivity;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
@@ -182,7 +182,7 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
                             startAboutActivity();
                         } else if (drawerItem.equals(item4)) {
                             // Feedback
-                            Instabug.getInstance().invoke();
+                            Instabug.invoke();
                         } else if (drawerItem.equals(item5)) {
                             // Invite
                             showInviteDialog();

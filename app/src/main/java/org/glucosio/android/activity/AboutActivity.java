@@ -86,7 +86,7 @@ public class AboutActivity extends AppCompatActivity {
             feedbackPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
-                    Instabug.getInstance().invoke();
+                    Instabug.invoke();
 
                     return false;
                 }
