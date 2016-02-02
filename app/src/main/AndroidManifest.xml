@@ -144,7 +144,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.glucosio.android.activity.MainActivity" />
         </activity>
-        <activity android:name=".activity.FreestyleLibre"></activity>
+        <activity android:name=".activity.FreestyleLibre" />
+        <activity android:name=".activity.A1Calculator"></activity>
     </application>
 
 </manifest>

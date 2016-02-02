@@ -62,7 +62,7 @@ dependencies {
     compile 'com.google.android.gms:play-services-wearable:8.4.0'
 
     // Other libraries
-    compile 'io.realm:realm-android:0.87.2'
+    compile 'io.realm:realm-android:0.87.4'
     compile 'com.github.clans:fab:1.6.2'
     compile 'com.wdullaer:materialdatetimepicker:2.1.1'
     compile 'com.github.PhilJay:MPAndroidChart:v2.1.6'

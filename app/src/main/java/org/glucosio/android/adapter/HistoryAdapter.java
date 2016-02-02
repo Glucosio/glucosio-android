@@ -143,7 +143,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
                 if (presenter.getUnitMeasuerement().equals("mg/dL")) {
                     readingTextView.setText(glucoseReadingArray.get(position).toString() + " mg/dL");
                 } else {
-                    readingTextView.setText(converter.toMmolL(Double.parseDouble(glucoseReadingArray.get(position).toString())) + " mmol/L");
+                    readingTextView.setText(converter.glucoseToMmolL(Double.parseDouble(glucoseReadingArray.get(position).toString())) + " mmol/L");
                 }
 
                 readingTextView.setTextColor(ranges.stringToColor(color));

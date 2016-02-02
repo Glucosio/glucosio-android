@@ -24,7 +24,6 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
-import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
@@ -54,7 +53,6 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 public class MainActivity extends InstabugAppCompatActivity implements DatePickerDialog.OnDateSetListener{
 
     ExportPresenter exportPresenter;
-    private Dialog addDialog;
     private RadioButton exportRangeButton;
     private HomePagerAdapter homePagerAdapter;
     private MainPresenter presenter;
@@ -64,12 +62,6 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
     private TextView exportDialogDateTo;
 
     private FloatingActionMenu fabMenu;
-    private FloatingActionButton fabCholestorol;
-    private FloatingActionButton fabPressure;
-    private FloatingActionButton fabWeight;
-    private FloatingActionButton fabKetones;
-    private FloatingActionButton fabHbA1c;
-    private FloatingActionButton fabGlucose;
     private Tracker mTracker;
 
     @Override
