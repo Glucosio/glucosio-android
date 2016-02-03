@@ -316,4 +316,783 @@
         <item>@string/fab_ketonest</item>
         <item>@string/fab_weight</item>
     </string-array>
+
+
+    <string-array name="calculator_carbs_foods">
+        <item>Buffalo milk</item>
+        <item>Donkey milk</item>
+        <item>Human milk</item>
+        <item>Pre-transitory human milk</item>
+        <item>Transitory human milk</item>
+        <item>Camel milk</item>
+        <item>Cow milk - Full milk (raw milk,
+attested milk)</item>
+        <item>Cow milk - Consumption milk at least 3.5% Fat</item>
+        <item>Cow milk - low ft at least 1.5%, maximum 1.8% Fat</item>
+        <item>Cow milk -  Skimmed milk </item>
+        <item>Cow milk - UHT</item>
+        <item>Cow milk - Sterilised milk</item>
+        <item>Sheeps milk</item>
+        <item>Mares milk</item>
+        <item>Goats milk</item>
+        <item>Condensed milk - at least 7.5 % Fat</item>
+        <item>Condensed milk - at least. 10 % Fat</item>
+        <item>Condensed milk  - sweetened</item>
+        <item>Condensed skimmed milk</item>
+        <item>Dried whole milk</item>
+        <item>Dried skimmed milk</item>
+        <item>Coffee cream</item>
+        <item>Whipping cream</item>
+        <item>Sour cream</item>
+        <item>Butter Milk</item>
+        <item>Dried buttermilk</item>
+        <item>Whey</item>
+        <item>Dried whey</item>
+        <item>Yoghurt - at least 3.5 % fat</item>
+        <item>Yoghurt - low ft at least 1.5%, maximum 1.8% Fat</item>
+        <item>Yoghurt - skimmed maximum. 0.3% Fat</item>
+        <item>Fruit yoghurt -  full fat</item>
+        <item>Fruit yoghurt - low fat</item>
+        <item>Fruit yoghurt -  skimmed</item>
+        <item>Kefir</item>
+        <item>Appenzeller cheese 20% FiDM</item>
+        <item>Appenzeller cheese 50% FiDM</item>
+        <item>Bel Paese cheese</item>
+        <item>Brie</item>
+        <item>Butter cheese</item>
+        <item>Camembert - 50% FiDM</item>
+        <item>Camembert - 30% FiDM</item>
+        <item>Camembert - 40% FiDM</item>
+        <item>Camembert - 45% FiDM</item>
+        <item>Camembert - 50% FiDM</item>
+        <item>Camembert - 60% FiDM</item>
+        <item>Cheshire cheese</item>
+        <item>Cottage cheese</item>
+        <item>Edam - 30% FiDM</item>
+        <item>Edam - 40% FiDM</item>
+        <item>Edam - 45% FiDM</item>
+        <item>Mushroom cheese</item>
+        <item>Emmentaler</item>
+        <item>Feta cheese</item>
+        <item>Fresh cheese - Cream 50% FiDM</item>
+        <item>Fresh cheese - at least 60%, max. 85% FiDM</item>
+        <item>Gorgonzola</item>
+        <item>Gouda</item>
+        <item>Greyerzer</item>
+        <item>Limburger - 20% FiDM</item>
+        <item>Limburger - 40% FiDM</item>
+        <item>Mozzarella</item>
+        <item>Münster - 45% FiDM</item>
+        <item>Münster - 50% FiDM</item>
+        <item>Parmesan</item>
+        <item>Provolone</item>
+        <item>Ricotta cheese</item>
+        <item>Romadur cheese - 20% FiDM</item>
+        <item>Romadur cheese - 30% FiDM</item>
+        <item>Romadur cheese - 40% FiDM</item>
+        <item>Romadur cheese - 45% FiDM</item>
+        <item>Romadur cheese - 50% FiDM</item>
+        <item>Roquefort cheese</item>
+        <item>Sour milk cheese</item>
+        <item>Schicht cheese - 10% FiDM</item>
+        <item>Schicht cheese - 20% FiDM</item>
+        <item>Schicht cheese - 40% FiDM</item>
+        <item>Spreading cheese</item>
+        <item>Processed cheese</item>
+        <item>Farmer's cheese - skimmed</item>
+        <item>Farmer's cheese - 20% FiDM</item>
+        <item>Farmer's cheese with cream - 40% FiDM</item>
+        <item>Tilsiter - 30% FiDM</item>
+        <item>Tilsiter - 45% FiDM</item>
+        <item>Duck eggs</item>
+        <item>Chicken egg</item>
+        <item>Chicken egg yolk</item>
+        <item>Chicken egg white</item>
+        <item>Chicken egg dried</item>
+        <item>Chicken egg yolk</item>
+        <item>Chicken egg white dried</item>
+        <item>Butter</item>
+        <item>Butter oil</item>
+        <item>Goose grease</item>
+        <item>Shark oil</item>
+        <item>Mutton tallow</item>
+        <item>Herring oil</item>
+        <item>Chicken fat</item>
+        <item>Sperm whale oil</item>
+        <item>Beef tallow</item>
+        <item>Lard</item>
+        <item>Cottonseed oil</item>
+        <item>Peanut oil</item>
+        <item>Illipo fat</item>
+        <item>Cocoa butter</item>
+        <item>Coconut oil</item>
+        <item>Pumpkin seed oil</item>
+        <item>Linseed oil</item>
+        <item>Maize germ oil</item>
+        <item>Poppy seed oil</item>
+        <item>Olive oil</item>
+        <item>Palm kernel oil</item>
+        <item>Palm oil</item>
+        <item>Rapeseed oil</item>
+        <item>Saffl ower oil</item>
+        <item>Sesame oil</item>
+        <item> Sheabutter</item>
+        <item>Soja oil</item>
+        <item>Sunfl ower oil</item>
+        <item>Grape seed oil</item>
+        <item>Walnut oil</item>
+        <item>Wheat germ oil</item>
+        <item>Peanut paste</item>
+        <item>half-fat milk</item>
+        <item>Margarine</item>
+        <item>Margarine Vegetable</item>
+        <item>Margarine Diet</item>
+        <item>Margarine Half-fat</item>
+        <item>Mutton - Muscle meat</item>
+        <item>Mutton -  Breast</item>
+        <item>Mutton - Chuck, Shoulder</item>
+        <item>Mutton - Leg, Loin</item>
+        <item>Mutton - Chop</item>
+        <item>Mutton - Haunch</item>
+        <item>Mutton heart</item>
+        <item>Mutton brain</item>
+        <item>Mutton liver</item>
+        <item>Mutton lung</item>
+        <item>Mutton spleen</item>
+        <item>Mutton kidney</item>
+        <item>Mutton tongue</item>
+        <item>Lamb - pure muscle meat</item>
+        <item>Lamb - inter-muscular fat tissue</item>
+        <item>Lamb - subcutaneous fat tissue</item>
+        <item>Lamb - Breast</item>
+        <item>Lamb - Hip without bone</item>
+        <item>Lamb - Chop with fat</item>
+        <item>Lamb - Neck</item>
+        <item>Lamb - Flank</item>
+        <item>Lamb - Topside, boneless</item>
+        <item>Lamb - Back with no fat cover</item>
+        <item>Lamb - Shoulder, boneless</item>
+        <item>Lamb - Silverside, boneless</item>
+        <item>Veal - pure muscle meat</item>
+        <item>Veal - Breast</item>
+        <item>Veal - Chuck, Shoulder</item>
+        <item>Veal - Fillet</item>
+        <item>Veal - Throat and neck with bone</item>
+        <item>Veal - Shank with bone</item>
+        <item>Veal - Leg, loin, with bone</item>
+        <item>Veal - Saddle of veal, saddle steak with bone</item>
+        <item>Sweetbreads</item>
+        <item>Calfs ruffle</item>
+        <item>Calfs heart</item>
+        <item>Calf brain</item>
+        <item>Calf liver</item>
+        <item>Calfs lung</item>
+        <item>Calf spleen</item>
+        <item>Calf kidney</item>
+        <item>Calf tongue</item>
+        <item>Beef - pure muscle meat</item>
+        <item>Beef - inter-muscular fat tissue</item>
+        <item>Beef - subcutaneous fat tissue</item>
+        <item>Beef - Breast, breast core</item>
+        <item>Beef - Chuck, Shoulder</item>
+        <item>Beef - Fillet</item>
+        <item>Beef - Prime rib, sirloin, rib, thick rib</item>
+        <item>Beef - Hip, rump</item>
+        <item>Beef - Collar, tongue piece, neck</item>
+        <item>Beef - Topside</item>
+        <item>Beef - Roastbeef, Loin</item>
+        <item>Beef - Silverside</item>
+        <item>Beef blood</item>
+        <item>Beef heart</item>
+        <item>Beef liver</item>
+        <item>Beef lung</item>
+        <item>Beef spleen</item>
+        <item>Beef kidney</item>
+        <item>Beef tongue</item>
+        <item>Pork - pure muscle meat</item>
+        <item>Pork - inter-muscular fat tissue</item>
+        <item>Pork - subcutaneous fat tissue</item>
+        <item>Pork - Belly</item>
+        <item>Pork - Chuck with crackling, knuckle, shoulder, shoulderblade</item>
+        <item>Pork - Fillet</item>
+        <item>Pork - Hind shank, hind</item>
+        <item>Pork - Collar, neck ridge</item>
+        <item>Pork - Pork chop with bone</item>
+        <item>Pork - Topside, schnitzel meat</item>
+        <item>Pork fat</item>
+        <item>Pork blood</item>
+        <item>Pork heart</item>
+        <item>Pork brain</item>
+        <item>Pork liver</item>
+        <item>Pork lung</item>
+        <item>Pork spleen</item>
+        <item>Pork kidney</item>
+        <item>Pork tongue</item>
+        <item>Rabbit</item>
+        <item>Horsemeat</item>
+        <item>Goat</item>
+        <item>Goat - Loin, muscle meat</item>
+        <item>Grisons meat</item>
+        <item>American Corned Beef</item>
+        <item>German Corned Beef</item>
+        <item>Meat extract</item>
+        <item>Spam</item>
+        <item>Gelatine</item>
+        <item>Minced beef</item>
+        <item>Beef</item>
+        <item>Beef patty</item>
+        <item>Pork - Tinned pork in its own juice</item>
+        <item>Pork - canned, rillettes</item>
+        <item>Pork - Kassler</item>
+        <item>Minced pork</item>
+        <item>Pork-hams</item>
+        <item>Pork ham</item>
+        <item>Belly pork</item>
+        <item>Pork fat</item>
+        <item>Cabanoss</item>
+        <item>Farmer sausage</item>
+        <item>Beer ham</item>
+        <item>Beer sausage</item>
+        <item>Boiling sausage</item>
+        <item>Cervelat</item>
+        <item>Tinned sausage</item>
+        <item>Meatloaf</item>
+        <item>Sausage meat</item>
+        <item>Frankfurter</item>
+        <item>Yellow sausage</item>
+        <item>Göttinger</item>
+        <item>Smoked sausage</item>
+        <item>Veal sausage</item>
+        <item>Veal cheese</item>
+        <item>Calf liver sausage</item>
+        <item>Saveloys</item>
+        <item>Landjäger sausage</item>
+        <item>Liver paste</item>
+        <item>Liver sausage</item>
+        <item>Liver sausage</item>
+        <item>Liver brawn</item>
+        <item>Lyoner sausage</item>
+        <item>Mettwurst sausage</item>
+        <item>Mettwurst sausage - coarse</item>
+        <item>Mortadella</item>
+        <item>Bavarian veal sausage</item>
+        <item>Plockwurst sausage</item>
+        <item>Brawn</item>
+        <item>Brawn, red</item>
+        <item>Brawn, white</item>
+        <item>Regensburger sausage</item>
+        <item>Blood sausage</item>
+        <item>Blood sausage</item>
+        <item>Salami</item>
+        <item>Ham sausage</item>
+        <item> Pork frying sausage</item>
+        <item>Wiener sausage</item>
+        <item>Tongue sausage</item>
+        <item>Hare</item>
+        <item>Venison</item>
+        <item>Venison -  Leg, Loin</item>
+        <item>Venison - Back</item>
+        <item>Wild boar meat</item>
+        <item>Duck</item>
+        <item>Pheasant</item>
+        <item>Goose</item>
+        <item>Chicken - Roast chicken, Average</item>
+        <item>Chicken - Soup chicken, Average</item>
+        <item>Chicken -  Breast with skin</item>
+        <item>Chicken - Leg with skin, boneless</item>
+        <item>Chicken -  Heart</item>
+        <item>Chicken - Liver</item>
+        <item>Dove</item>
+        <item>Turkey - adult animal, average, with skin</item>
+        <item>Turkey - young animal, average, with skin</item>
+        <item>Turkey - Breast without skin</item>
+        <item>Turkey - Leg, drumstick, without skin and bones</item>
+        <item>Quail</item>
+        <item>Anglerfish</item>
+        <item>Blue ling</item>
+        <item>Butter mackerel</item>
+        <item>Dorade royal</item>
+        <item>Dogfish</item>
+        <item>Flounder</item>
+        <item>Grenadier</item>
+        <item>Halibut</item>
+        <item>Black halibut</item>
+        <item>Herring - Atlantic</item>
+        <item>Herring - Baltic herring</item>
+        <item>Herring milk</item>
+        <item>Eel</item>
+        <item>Bass, perch</item>
+        <item>Bream</item>
+        <item>Trout</item>
+        <item>Pike</item>
+        <item>Carp</item>
+        <item>Salmon</item>
+        <item>Whitefish</item>
+        <item>Tench</item>
+        <item>Catfish</item>
+        <item>Pike-Perch</item>
+        <item>Oyster</item>
+        <item>Shrimp,crab</item>
+        <item>Lobster</item>
+        <item>Crab</item>
+        <item>Krill</item>
+        <item>Langouste</item>
+        <item>Mussel</item>
+        <item>Atlantic scallop</item>
+        <item>Ormer</item>
+        <item>Turtle</item>
+        <item>Ham musse</item>
+        <item>Cuttlefish</item>
+        <item>Roman snail</item>
+        <item>Eel</item>
+        <item>Pickled herring</item>
+        <item>Kippers</item>
+        <item>Flounder</item>
+        <item>Black halibut</item>
+        <item>Herring in jelly</item>
+        <item>Herring marinated</item>
+        <item>Catfish</item>
+        <item>Caviar</item>
+        <item>German Caviar</item>
+        <item>Stockfi sh</item>
+        <item>Crabmeat</item>
+        <item>Salmon - Tinned</item>
+        <item>Salmon - In oil</item>
+        <item>Mackerel</item>
+        <item>Young salted herring</item>
+        <item>Ocean perch</item>
+        <item>Salt herring</item>
+        <item>Sardines</item>
+        <item>Shellfish</item>
+        <item>Smoked dogfish</item>
+        <item>Dogfish</item>
+        <item>Smoked Pollack</item>
+        <item>Pollack in oil</item>
+        <item>Sprats</item>
+        <item>Stockfisch</item>
+        <item>Tuna</item>
+        <item>Fish fingers</item>
+        <item>Amaranth</item>
+        <item>Buckwheat</item>
+        <item>Buckwheat groats</item>
+        <item>Buckwheat fl our</item>
+        <item>Spelt</item>
+        <item>Spelt flour - Type 630</item>
+        <item>Spelt flour</item>
+        <item>Barley</item>
+        <item>Pearl barley</item>
+        <item>Barley groats</item>
+        <item>Green corn</item>
+        <item>Green corn flour</item>
+        <item>Oats</item>
+        <item>Crushed hulled oats</item>
+        <item>Oat groats</item>
+        <item>Oatmeal</item>
+        <item>Millet</item>
+        <item>Maize</item>
+        <item>Maize breakfast cereals</item>
+        <item>Cornflour</item>
+        <item>Quinoa</item>
+        <item>Rice - unpolished</item>
+        <item>Rice - polished</item>
+        <item>Rice - polished, cooked, drained</item>
+        <item>Ground rice</item>
+        <item>Rye - whole grain</item>
+        <item>Rye - Type 815</item>
+        <item>Rye - Type 997</item>
+        <item>Rye - Type 1150</item>
+        <item>Rye - Type 1370</item>
+        <item>Rye - Type 1800</item>
+        <item>Sorghum</item>
+        <item>Triticale</item>
+        <item>Wheat</item>
+        <item>Wheat semolina</item>
+        <item>Plain wheat Type 405</item>
+        <item>Plain wheat Type 550</item>
+        <item>Plain wheat Type 630</item>
+        <item>Plain wheat Type 812</item>
+        <item>Plain wheat Type 1050</item>
+        <item>Plain wheat Type 1700</item>
+        <item>Wheat germ</item>
+        <item>Wheat bran - Edible bran</item>
+        <item> Bread crumbs</item>
+
+        <item>Rolls Buns</item>
+        <item>Graham bread</item>
+        <item>Crisp bread</item>
+        <item>Pumpernickel</item>
+        <item>Rye bread</item>
+        <item>Rye mixed bread</item>
+        <item>Rye mixed bread with wheat bran</item>
+        <item>Rye whole grain bread</item>
+        <item>Wheat (fl our) bread</item>
+        <item>Wheat mixed bread</item>
+        <item>Wheat toast bread</item>
+        <item>Wheat wholemeal bread</item>
+        <item>Egg pasta products - Noodles, macaroni, spaghetti, etc.</item>
+        <item>Egg pasta products - Noodles, cooked, drained</item>
+        <item>Biscuits</item>
+        <item>Salted sticks</item>
+        <item>Fruitcak</item>
+        <item>Cake base</item>
+        <item>Zwieback</item>
+        <item>Butter cake</item>
+        <item>cheesecake</item>
+        <item>Flaky pastry</item>
+        <item>cheese biscuits</item>
+        <item>Potato starch</item>
+        <item>Cornstarch</item>
+        <item>Rice starch</item>
+        <item>Tapioca starch</item>
+        <item>Wheat starch</item>
+        <item>Pudding powder</item>
+        <item>Batate</item>
+        <item>Cassave</item>
+        <item>Fennel</item>
+        <item>Potato</item>
+        <item>Potato - boiled</item>
+        <item>Potato - baked</item>
+        <item>Potato flakes</item>
+        <item>Potato dumplings</item>
+        <item>Potato dumplings</item>
+        <item>Potato croquettes</item>
+        <item>Potato fritters</item>
+        <item>Potato slices</item>
+        <item>Potato strips</item>
+        <item>Potato soup</item>
+        <item>Crisps</item>
+        <item>Kohlrabi</item>
+        <item>Swede</item>
+        <item>Horseradish</item>
+        <item>Carrot</item>
+        <item>Carrot cooked</item>
+        <item>Carrot dried</item>
+        <item>Carrot canned</item>
+        <item>Carrot juice</item>
+        <item>Parsnip</item>
+        <item>Parsley</item>
+        <item>Radish</item>
+        <item>White radish</item>
+        <item>Red beet</item>
+        <item>Beetroot juice</item>
+        <item>Scorzonera</item>
+        <item>Scorzonera - cooked, drained</item>
+        <item>Celeriac</item>
+        <item>Taro</item>
+        <item>Topinambur</item>
+        <item>White turnip</item>
+        <item>Yam</item>
+        <item>Artichoke</item>
+        <item>Bamboo shoots</item>
+        <item>Ribbed celery</item>
+        <item>Caulifl ower</item>
+        <item>Caulifl ower</item>
+        <item>Broccoli</item>
+        <item>Broccoli - cooked, drained</item>
+        <item>Watercress</item>
+        <item>Chicory</item>
+        <item>Chinese cabbage</item>
+        <item>Endive</item>
+        <item>Pea sprouts</item>
+        <item>Lamb's lettuce</item>
+        <item>Fennel</item>
+        <item>Garden cress</item>
+        <item>Kale</item>
+        <item>Garlic</item>
+        <item>Lettuce</item>
+        <item>Lentil sprouts</item>
+        <item>Dandelion leaves</item>
+        <item>Chard</item>
+        <item>Mung bean sprouts</item>
+        <item>Parsley</item>
+        <item>Leek</item>
+        <item>Portulaca</item>
+        <item>Rhubarb</item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+
+
+
+
+
+
+
+
+
+    </string-array>
 </resources>
