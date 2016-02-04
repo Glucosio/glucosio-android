@@ -1,6 +1,5 @@
 package org.glucosio.android.activity;
 
-import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -87,12 +86,7 @@ public class AddGlucoseActivity extends AppCompatActivity
         });
 
         FormatDateTime formatDateTime = new FormatDateTime(getApplicationContext());
-<<<<<<< HEAD
-        addDateTextView.setText(presenter.getReadingDay() + "/" + presenter.getReadingMonth()
-                + "/" + presenter.getReadingYear());
-=======
         addDateTextView.setText(formatDateTime.getCurrentDate());
->>>>>>> 02a3a5bd281403f54f75ac34bdb66ed3fdbc71ef
         addTimeTextView.setText(formatDateTime.getCurrentTime());
         addDateTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -153,10 +147,6 @@ public class AddGlucoseActivity extends AppCompatActivity
     }
 
     public void showErrorMessage() {
-<<<<<<< HEAD
-        Toast.makeText(getApplicationContext(), getString(R.string.dialog_error2),
-                Toast.LENGTH_SHORT).show();
-=======
         View rootLayout = findViewById(android.R.id.content);
         Snackbar.make(rootLayout, getString(R.string.dialog_error2), Snackbar.LENGTH_SHORT).show();
     }
@@ -165,7 +155,6 @@ public class AddGlucoseActivity extends AppCompatActivity
     public void showDuplicateErrorMessage() {
         View rootLayout = findViewById(android.R.id.content);
         Snackbar.make(rootLayout, getString(R.string.dialog_error_duplicate), Snackbar.LENGTH_LONG).show();
->>>>>>> 02a3a5bd281403f54f75ac34bdb66ed3fdbc71ef
     }
 
     public void updateSpinnerTypeTime(int selection) {
@@ -259,22 +248,9 @@ public class AddGlucoseActivity extends AppCompatActivity
         finishActivity();
     }
 
-<<<<<<< HEAD
-    @Override
-    protected void onResume() {
-        super.onResume();
-        FragmentManager fm = getFragmentManager();
-        TimePickerDialog tpd = (TimePickerDialog)  fm.findFragmentByTag("Timepickerdialog");
-        DatePickerDialog dpd = (DatePickerDialog) fm.findFragmentByTag("Datepickerdialog");
-
-        if(tpd!=null)
-            tpd.setOnTimeSetListener(this);
-        if(dpd != null)
-            dpd.setOnDateSetListener(this);
-=======
     public void startLibreActivity(View view) {
         Intent intent = new Intent(this, FreestyleLibre.class);
         startActivityForResult(intent, 1);
->>>>>>> 02a3a5bd281403f54f75ac34bdb66ed3fdbc71ef
+
     }
 }

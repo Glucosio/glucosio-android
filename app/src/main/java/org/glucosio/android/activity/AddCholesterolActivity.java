@@ -57,12 +57,8 @@ public class AddCholesterolActivity extends AppCompatActivity
         HDLChoTextView = (TextView) findViewById(R.id.cholesterol_add_value_hdl);
 
         FormatDateTime formatDateTime = new FormatDateTime(getApplicationContext());
-<<<<<<< HEAD
-        addDateTextView.setText(presenter.getReadingDay() + "/" + presenter.getReadingMonth()
-                + "/" + presenter.getReadingYear());
-=======
+
         addDateTextView.setText(formatDateTime.getCurrentDate());
->>>>>>> 02a3a5bd281403f54f75ac34bdb66ed3fdbc71ef
         addTimeTextView.setText(formatDateTime.getCurrentTime());
         addDateTextView.setOnClickListener(new View.OnClickListener() {
             @Override
