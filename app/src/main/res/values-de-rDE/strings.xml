@@ -39,6 +39,7 @@
   <string name="dialog_add_type_5">Vor dem Abendessen</string>
   <string name="dialog_add_type_6">Nach dem Abendessen</string>
   <string name="dialog_add_type_7">Jause</string>
+  <string name="dialog_add_type_8">Zubettgehzeit</string>
   <string name="dialog_add_type_9">Nacht</string>
   <string name="dialog_add_type_10">Nüchtern-Zucker</string>
   <string name="dialog_add_type_11">Kontrollmessung</string>
@@ -61,10 +62,11 @@
   <string name="preferences_terms">Nutzungsbedingungen</string>
   <string name="glucose_reading_type">Typ</string>
   <string name="weight">Gewicht</string>
+  <string name="dialog_add_custom_type">Benutzerdefinierte Kategorie</string>
   <string-array name="tips_all">
     <item>Essen Sie mehr frische, unverarbeitete Lebensmittel um Aufnahme von Kohlenhydraten und Zucker zu reduzieren.</item>
     <item>Lesen Sie das ernährungsphysiologische Etikett auf verpackten Lebensmitteln und Getränken, um Zucker- und Kohlenhydrataufnahme zu kontrollieren.</item>
-    <item>When eating out, ask for fish or meat broiled with no extra butter or oil.</item>
+    <item>Wenn Sie auswärts essen, fragen Sie nach Fisch oder gegrillten Fleisch, zubereitet ohne Öl oder Butter.</item>
     <item>When eating out, ask if they have low sodium dishes.</item>
     <item>When eating out, eat the same portion sizes you would at home and take the leftovers to go.</item>
     <item>When eating out ask for low-calorie items, such as salad dressings, even if they\'re not on the menu.</item>
@@ -86,6 +88,7 @@
   </string-array>
   <string name="assistant">Einrichte-Assistent</string>
   <string name="assistant_action_update">Jetzt aktualisieren</string>
+  <string name="assistant_action_ok">OK, ich habe verstanden</string>
   <string name="assistant_action_feedback">Kontaktiere uns</string>
   <string name="assistant_action_reading">Speichere deine Messung</string>
   <string name="assistant_weight_title">Aktualisiere dein Gewicht</string>
@@ -135,4 +138,10 @@
   <string name="dialog_export_title">Daten exportieren</string>
   <string name="dialog_export_button">Export</string>
   <string name="title_activity_export">Daten exportieren</string>
+  <string name="fab_weight">Körpergewicht</string>
+  <string name="fab_ketonest">Keton</string>
+  <string name="fab_pressure">Blutdruck</string>
+  <string name="fab_cholesterol">Cholesterinspiegel</string>
+  <string name="fab_HB1AC">HB1AC Wert</string>
+  <string name="fab_glucose">Blutzuckerspiegel</string>
 </resources>

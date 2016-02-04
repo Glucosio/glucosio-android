@@ -25,13 +25,12 @@ import java.util.Calendar;
 
 public class AddPressureActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
+    AddPressurePresenter presenter;
     private FloatingActionButton doneFAB;
     private TextView addTimeTextView;
     private TextView addDateTextView;
     private TextView minPressureTextView;
     private TextView maxPressureTextView;
-
-    AddPressurePresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +54,7 @@ public class AddPressureActivity extends AppCompatActivity implements TimePicker
         maxPressureTextView = (TextView) findViewById(R.id.pressure_add_value_max);
 
         FormatDateTime formatDateTime = new FormatDateTime(getApplicationContext());
-        addDateTextView.setText(presenter.getReadingDay() + "/" + presenter.getReadingMonth() + "/" + presenter.getReadingYear());
+        addDateTextView.setText(formatDateTime.getCurrentDate());
         addTimeTextView.setText(formatDateTime.getCurrentTime());
         addDateTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,7 +108,7 @@ public class AddPressureActivity extends AppCompatActivity implements TimePicker
     }
 
     @Override
-    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute) {
+    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int seconds) {
         TextView addTime = (TextView) findViewById(R.id.dialog_add_time);
         DecimalFormat df = new DecimalFormat("00");
 

@@ -26,12 +26,6 @@
   <string name="helloactivity_hint_settings">您以後可以更改這些設定。</string>
   <string name="helloactivity_button_next">下一步</string>
   <string name="helloactivity_button_start">開始使用</string>
-  <string name="fab_weight">體重</string>
-  <string name="fab_ketonest">酮類</string>
-  <string name="fab_pressure">血壓</string>
-  <string name="fab_cholesterol">膽固醇水準</string>
-  <string name="fab_HB1AC">糖化血色素（HbA1c）讀數</string>
-  <string name="fab_glucose">血糖水準</string>
   <string name="fragment_empty_text">還沒有資訊。\n在此新增您的第一筆血糖紀錄。</string>
   <string name="dialog_add_title">新增血糖值</string>
   <string name="dialog_add_concentration">濃度</string>
@@ -204,4 +198,11 @@
   <string name="title_activity_add_hb1ac">新增糖化血色素讀數</string>
   <string name="title_activity_add_ketone">新增酮類讀數</string>
   <string name="title_activity_add_pressure">新增血壓讀數</string>
+  <string name="fab_weight">體重</string>
+  <string name="fab_ketonest">酮類</string>
+  <string name="fab_pressure">血壓</string>
+  <string name="fab_cholesterol">膽固醇水準</string>
+  <string name="fab_HB1AC">糖化血色素（HbA1c）讀數</string>
+  <string name="fab_glucose">血糖水準</string>
+  <string name="dialog_error_duplicate">您在這個時間已經有一筆紀錄，請先移除該紀錄後再新增修正紀錄。</string>
 </resources>

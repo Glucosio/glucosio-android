@@ -3,7 +3,6 @@ package org.glucosio.android.presenter;
 import org.glucosio.android.activity.AddGlucoseActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
-import org.glucosio.android.db.User;
 import org.glucosio.android.tools.GlucoseConverter;
 import org.glucosio.android.tools.ReadingTools;
 import org.glucosio.android.tools.SplitDateTime;
@@ -16,12 +15,8 @@ import java.util.Date;
 public class AddGlucosePresenter {
     private DatabaseHandler dB;
     private AddGlucoseActivity activity;
-
-    private User user;
     private ReadingTools rTools;
     private GlucoseConverter converter;
-    private int age;
-
     private String readingYear;
     private String readingMonth;
     private String readingDay;
@@ -67,42 +62,28 @@ public class AddGlucosePresenter {
         return rTools.hourToSpinnerType(hour);
     }
 
-    public String getGlucoseReadingReadingById(int id){
-        return dB.getGlucoseReadingById(id).getReading() + "";
-    }
-
-    public String getGlucoseReadingTypeById(int id){
-        return dB.getGlucoseReadingById(id).getReading_type();
-    }
-
-    public void getGlucoseReadingTimeById(int id){
-        DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        SplitDateTime splitDateTime = new SplitDateTime(dB.getGlucoseReadingById(id).getCreated(), inputFormat);
-        this.readingYear = splitDateTime.getYear();
-        this.readingMonth = splitDateTime.getMonth();
-        this.readingDay = splitDateTime.getDay();
-        this.readingHour = splitDateTime.getHour();
-        this.readingMinute = splitDateTime.getMinute();
-    }
-
     public void dialogOnAddButtonPressed(String time, String date, String reading, String type){
         if (validateDate(date) && validateTime(time) && validateReading(reading) && validateType(type)) {
-
             Calendar cal = Calendar.getInstance();
             cal.set(Integer.parseInt(readingYear), Integer.parseInt(readingMonth)-1, Integer.parseInt(readingDay), Integer.parseInt(readingHour), Integer.parseInt(readingMinute));
             Date finalDateTime = cal.getTime();
-
+            boolean isReadingAdded;
             if (getUnitMeasuerement().equals("mg/dL")) {
                 int finalReading = Integer.parseInt(reading);
                 GlucoseReading gReading = new GlucoseReading(finalReading, type, finalDateTime, "");
-                dB.addGlucoseReading(gReading);
+                isReadingAdded = dB.addGlucoseReading(gReading);
             } else {
                 converter = new GlucoseConverter();
-                int convertedReading = converter.toMgDl(Double.parseDouble(reading));
+                int convertedReading = converter.glucoseToMgDl(Double.parseDouble(reading));
                 GlucoseReading gReading = new GlucoseReading(convertedReading, type, finalDateTime, "");
                 dB.addGlucoseReading(gReading);
+                isReadingAdded = dB.addGlucoseReading(gReading);
             }
-            activity.finishActivity();
+            if (!isReadingAdded){
+                activity.showDuplicateErrorMessage();
+            } else {
+                activity.finishActivity();
+            }
         } else {
             activity.showErrorMessage();
         }
@@ -171,14 +152,6 @@ public class AddGlucosePresenter {
 
     public String getReadingDay() {
         return readingDay;
-    }
-
-    public String getReadingHour() {
-        return readingHour;
-    }
-
-    public String getReadingMinute() {
-        return readingMinute;
     }
 
     public void setReadingYear(String readingYear) {

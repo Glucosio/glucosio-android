@@ -241,7 +241,7 @@ public class OverviewFragment extends Fragment {
                     float val = Float.parseFloat(presenter.getReading().get(i).toString());
                     yVals.add(new Entry(val, i));
                 } else {
-                    double val = converter.toMmolL(Double.parseDouble(presenter.getReading().get(i).toString()));
+                    double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getReading().get(i).toString()));
                     float converted = (float) val;
                     yVals.add(new Entry(converted, i));
                 }
@@ -255,7 +255,7 @@ public class OverviewFragment extends Fragment {
                     float val = Float.parseFloat(presenter.getReadingsWeek().get(i)+"");
                     yVals.add(new Entry(val, i));
                 } else {
-                    double val = converter.toMmolL(Double.parseDouble(presenter.getReadingsWeek().get(i)+""));
+                    double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getReadingsWeek().get(i)+""));
                     float converted = (float) val;
                     yVals.add(new Entry(converted, i));
                 }
@@ -268,7 +268,7 @@ public class OverviewFragment extends Fragment {
                     float val = Float.parseFloat(presenter.getReadingsMonth().get(i)+"");
                     yVals.add(new Entry(val, i));
                 } else {
-                    double val = converter.toMmolL(Double.parseDouble(presenter.getReadingsMonth().get(i)+""));
+                    double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getReadingsMonth().get(i)+""));
                     float converted = (float) val;
                     yVals.add(new Entry(converted, i));
                 }
@@ -321,7 +321,7 @@ public class OverviewFragment extends Fragment {
                 lastReadingTextView.setText(presenter.getLastReading() + " mg/dL");
             } else {
                 GlucoseConverter converter = new GlucoseConverter();
-                lastReadingTextView.setText(converter.toMmolL(Double.parseDouble(presenter.getLastReading().toString())) + " mmol/L");
+                lastReadingTextView.setText(converter.glucoseToMmolL(Double.parseDouble(presenter.getLastReading().toString())) + " mmol/L");
             }
 
             FormatDateTime dateTime = new FormatDateTime(getActivity().getApplicationContext());

@@ -25,12 +25,11 @@ import java.util.Calendar;
 
 public class AddWeightActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
+    AddWeightPresenter presenter;
     private FloatingActionButton doneFAB;
     private TextView addTimeTextView;
     private TextView addDateTextView;
     private TextView readingTextView;
-
-    AddWeightPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +52,7 @@ public class AddWeightActivity extends AppCompatActivity implements TimePickerDi
         readingTextView = (TextView) findViewById(R.id.weight_add_value);
 
         FormatDateTime formatDateTime = new FormatDateTime(getApplicationContext());
-        addDateTextView.setText(presenter.getReadingDay() + "/" + presenter.getReadingMonth() + "/" + presenter.getReadingYear());
+        addDateTextView.setText(formatDateTime.getCurrentDate());
         addTimeTextView.setText(formatDateTime.getCurrentTime());
         addDateTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,7 +106,7 @@ public class AddWeightActivity extends AppCompatActivity implements TimePickerDi
     }
 
     @Override
-    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute) {
+    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int seconds) {
         TextView addTime = (TextView) findViewById(R.id.dialog_add_time);
         DecimalFormat df = new DecimalFormat("00");
 

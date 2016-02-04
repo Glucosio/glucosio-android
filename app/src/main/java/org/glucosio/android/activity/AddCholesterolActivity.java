@@ -26,14 +26,13 @@ import java.util.Calendar;
 public class AddCholesterolActivity extends AppCompatActivity
         implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
+    AddCholesterolPresenter presenter;
     private FloatingActionButton doneFAB;
     private TextView addTimeTextView;
     private TextView addDateTextView;
     private TextView totalChoTextView;
     private TextView LDLChoTextView;
     private TextView HDLChoTextView;
-
-    AddCholesterolPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +57,12 @@ public class AddCholesterolActivity extends AppCompatActivity
         HDLChoTextView = (TextView) findViewById(R.id.cholesterol_add_value_hdl);
 
         FormatDateTime formatDateTime = new FormatDateTime(getApplicationContext());
+<<<<<<< HEAD
         addDateTextView.setText(presenter.getReadingDay() + "/" + presenter.getReadingMonth()
                 + "/" + presenter.getReadingYear());
+=======
+        addDateTextView.setText(formatDateTime.getCurrentDate());
+>>>>>>> 02a3a5bd281403f54f75ac34bdb66ed3fdbc71ef
         addTimeTextView.setText(formatDateTime.getCurrentTime());
         addDateTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,7 +120,7 @@ public class AddCholesterolActivity extends AppCompatActivity
     }
 
     @Override
-    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute) {
+    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int second) {
         TextView addTime = (TextView) findViewById(R.id.dialog_add_time);
         DecimalFormat df = new DecimalFormat("00");
 

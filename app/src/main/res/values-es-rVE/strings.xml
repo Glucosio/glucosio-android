@@ -27,12 +27,6 @@
   <string name="helloactivity_hint_settings">Puedes cambiar la configuración más tarde.</string>
   <string name="helloactivity_button_next">SIGUIENTE</string>
   <string name="helloactivity_button_start">EMPEZAR</string>
-  <string name="fab_weight">Peso corporal</string>
-  <string name="fab_ketonest">Cetonas</string>
-  <string name="fab_pressure">Presión arterial</string>
-  <string name="fab_cholesterol">Nivel de colesterol</string>
-  <string name="fab_HB1AC">Lectura de HB1AC</string>
-  <string name="fab_glucose">Nivel de glucosa en sangre</string>
   <string name="fragment_empty_text">No hay información disponible todavía. \n Añadir tu primera medición de glucosa aquí.</string>
   <string name="dialog_add_title">Añade el nivel de glucosa en la sangre</string>
   <string name="dialog_add_concentration">Concentración</string>
@@ -205,4 +199,11 @@
   <string name="title_activity_add_hb1ac">Añadir HB1AC</string>
   <string name="title_activity_add_ketone">Añadir cetonas</string>
   <string name="title_activity_add_pressure">Añadir presión arterial</string>
+  <string name="fab_weight">Peso corporal</string>
+  <string name="fab_ketonest">Cetonas</string>
+  <string name="fab_pressure">Presión arterial</string>
+  <string name="fab_cholesterol">Nivel de colesterol</string>
+  <string name="fab_HB1AC">Lectura de HB1AC</string>
+  <string name="fab_glucose">Nivel de glucosa en sangre</string>
+  <string name="dialog_error_duplicate">Ya tienes una entrada en esa hora. Quítelo antes de añadir una corrección.</string>
 </resources>

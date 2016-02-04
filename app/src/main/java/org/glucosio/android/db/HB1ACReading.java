@@ -9,23 +9,23 @@ public class HB1ACReading extends RealmObject {
     @PrimaryKey
     private long id;
 
-    private int reading;
+    private double reading;
     private Date created;
 
     public HB1ACReading() {
     }
 
-    public HB1ACReading(int reading,Date created) {
+    public HB1ACReading(double reading,Date created) {
         // %
         this.reading=reading;
         this.created=created;
     }
 
-    public int getReading() {
+    public double getReading() {
         return reading;
     }
 
-    public void setReading(int reading) {
+    public void setReading(double reading) {
         this.reading = reading;
     }
 

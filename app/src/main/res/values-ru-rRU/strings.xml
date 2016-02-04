@@ -26,12 +26,6 @@
   <string name="helloactivity_hint_settings">Позже вы можете изменить свои настройки.</string>
   <string name="helloactivity_button_next">ДАЛЬШЕ</string>
   <string name="helloactivity_button_start">НАЧАТЬ</string>
-  <string name="fab_weight">Вес</string>
-  <string name="fab_ketonest">Кетоны</string>
-  <string name="fab_pressure">Кровяное давление</string>
-  <string name="fab_cholesterol">Уровень холестерина</string>
-  <string name="fab_HB1AC">Показания HB1AC</string>
-  <string name="fab_glucose">Уровень глюкозы в крови</string>
   <string name="fragment_empty_text">Информация пока не доступна. \n Добавьте сюда ваши первые данные.</string>
   <string name="dialog_add_title">Добавить уровень глюкозы в крови</string>
   <string name="dialog_add_concentration">Концентрация</string>
@@ -204,4 +198,11 @@
   <string name="title_activity_add_hb1ac">Добавить HB1AC</string>
   <string name="title_activity_add_ketone">Добавить кетоны</string>
   <string name="title_activity_add_pressure">Добавить уровень кровяного давления</string>
+  <string name="fab_weight">Вес</string>
+  <string name="fab_ketonest">Кетоны</string>
+  <string name="fab_pressure">Кровяное давление</string>
+  <string name="fab_cholesterol">Уровень холестерина</string>
+  <string name="fab_HB1AC">Показания HB1AC</string>
+  <string name="fab_glucose">Уровень глюкозы в крови</string>
+  <string name="dialog_error_duplicate">Для этого времени запись уже есть. Удалите её для добавления новой записи.</string>
 </resources>

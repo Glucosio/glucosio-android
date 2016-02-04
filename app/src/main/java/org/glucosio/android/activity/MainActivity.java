@@ -13,7 +13,6 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -25,13 +24,14 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
-import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.google.android.gms.appinvite.AppInviteInvitation;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.instabug.library.Instabug;
+import com.instabug.library.compat.InstabugAppCompatActivity;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
@@ -42,8 +42,6 @@ import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.adapter.HomePagerAdapter;
-import org.glucosio.android.presenter.AddHB1ACPresenter;
-import org.glucosio.android.presenter.AddWeightPresenter;
 import org.glucosio.android.presenter.ExportPresenter;
 import org.glucosio.android.presenter.MainPresenter;
 
@@ -52,10 +50,9 @@ import java.util.Calendar;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
-public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
+public class MainActivity extends InstabugAppCompatActivity implements DatePickerDialog.OnDateSetListener{
 
     ExportPresenter exportPresenter;
-    private Dialog addDialog;
     private RadioButton exportRangeButton;
     private HomePagerAdapter homePagerAdapter;
     private MainPresenter presenter;
@@ -65,13 +62,9 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private TextView exportDialogDateTo;
 
     private FloatingActionMenu fabMenu;
-    private FloatingActionButton fabCholestorol;
-    private FloatingActionButton fabPressure;
-    private FloatingActionButton fabWeight;
-    private FloatingActionButton fabKetones;
-    private FloatingActionButton fabHbA1c;
-    private FloatingActionButton fabGlucose;
     private Tracker mTracker;
+    Toolbar toolbar;
+    TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,9 +73,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         presenter = new MainPresenter(this);
         exportPresenter = new ExportPresenter(this);
 
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         viewPager = (ViewPager) findViewById(R.id.pager);
 
         if (toolbar != null) {
@@ -183,7 +175,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                             startAboutActivity();
                         } else if (drawerItem.equals(item4)) {
                             // Feedback
-                            startGittyReporter();
+                            Instabug.invoke();
                         } else if (drawerItem.equals(item5)) {
                             // Invite
                             showInviteDialog();
@@ -247,11 +239,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         Intent intent = new Intent(this, HelloActivity.class);
         startActivity(intent);
         finish();
-    }
-
-    public void startGittyReporter() {
-        Intent intent = new Intent(this, GittyActivity.class);
-        startActivity(intent);
     }
 
     public void openPreferences() {
@@ -500,6 +487,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
         if (presenter.isdbEmpty()) {
             pager.setVisibility(View.GONE);
+            tabLayout.setVisibility(View.GONE);
             emptyLayout.setVisibility(View.VISIBLE);
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

@@ -9,7 +9,7 @@
   <string name="tab_tips">Tips</string>
   <string name="title_activity_hello">Hallo.</string>
   <string name="helloactivity_headline">Hallo.</string>
-  <string name="helloactivity_terms">Gebruiksvoorwaarden.</string>
+  <string name="helloactivity_terms">Gebruiksvoorwaarden</string>
   <string name="helloactivity_subhead">We hebben even wat info nodig voordat u aan de slag kunt.</string>
   <string name="helloactivity_country">Land</string>
   <string name="helloactivity_age">Leeftijd</string>
@@ -26,12 +26,6 @@
   <string name="helloactivity_hint_settings">U kunt dit later wijzigen in de instellingen.</string>
   <string name="helloactivity_button_next">VOLGENDE</string>
   <string name="helloactivity_button_start">AAN DE SLAG</string>
-  <string name="fab_weight">Lichaamsgewicht</string>
-  <string name="fab_ketonest">Ketonen</string>
-  <string name="fab_pressure">Bloeddruk</string>
-  <string name="fab_cholesterol">Cholesterolspiegel</string>
-  <string name="fab_HB1AC">HB1AC-uitlezing</string>
-  <string name="fab_glucose">Bloedsuikerspiegel</string>
   <string name="fragment_empty_text">Nog geen info beschikbaar. \n Voeg hier uw eerste uitlezing toe.</string>
   <string name="dialog_add_title">Bloedsuikerspiegel toevoegen</string>
   <string name="dialog_add_concentration">Concentratie</string>
@@ -99,7 +93,7 @@
   <string name="assistant">Assistent</string>
   <string name="assistant_action_update">NU BIJWERKEN</string>
   <string name="assistant_action_ok">OK, BEGREPEN</string>
-  <string name="assistant_action_feedback">FEEDBACK VERZENDEN</string>
+  <string name="assistant_action_feedback">FEEDBACK INDIENEN</string>
   <string name="assistant_action_reading">UITLEZING TOEVOEGEN</string>
   <string name="assistant_weight_title">Uw gewicht bijwerken</string>
   <string name="assistant_weight_desc">Zorg ervoor dat u uw gewicht bijwerkt, zodat Glucosio de meest accurate gegevens bevat.</string>
@@ -109,7 +103,7 @@
   <string name="assistant_categories_desc">Glucosio bevat standaardcategorieën voor glucose-invoer, maar in de instellingen kunt u eigen categorieën maken die aan uw unieke behoeften voldoen.</string>
   <string name="assistant_check_title">Kijk hier regelmatig</string>
   <string name="assistant_check_desc">Glucosio-assistent levert regelmatig tips en wordt continu verbeterd, dus kijk altijd hier voor nuttige acties die u kunt nemen om uw Glucosio-ervaring te verbeteren en voor andere nuttige tips.</string>
-  <string name="assistant_feedback_title">Feedback verzenden </string>
+  <string name="assistant_feedback_title">Feedback indienen </string>
   <string name="assistant_feedback_desc">Als u technische problemen tegenkomt of feedback over Glucosio hebt, zien we graag dat u deze indient in het instellingenmenu om Glucosio te helpen verbeteren.</string>
   <string name="assistant_reading_title">Een uitlezing toevoegen</string>
   <string name="assistant_reading_desc">Zorg ervoor dat u regelmatig uw glucose-uitlezingen toevoegt, zodat we kunnen helpen uw glucosegehalten in de loop der tijd bij te houden.</string>
@@ -204,4 +198,11 @@
   <string name="title_activity_add_hb1ac">HB1AC toevoegen</string>
   <string name="title_activity_add_ketone">Ketonen toevoegen</string>
   <string name="title_activity_add_pressure">Bloeddruk toevoegen</string>
+  <string name="fab_weight">Lichaamsgewicht</string>
+  <string name="fab_ketonest">Ketonen</string>
+  <string name="fab_pressure">Bloeddruk</string>
+  <string name="fab_cholesterol">Cholesterolspiegel</string>
+  <string name="fab_HB1AC">HB1AC-uitlezing</string>
+  <string name="fab_glucose">Bloedsuikerspiegel</string>
+  <string name="dialog_error_duplicate">U hebt al een vermelding voor deze tijd. Verwijder deze voordat u een correctie toevoegt.</string>
 </resources>

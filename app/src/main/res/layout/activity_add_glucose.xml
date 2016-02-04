@@ -20,8 +20,7 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:focusableInTouchMode="true">
+        android:layout_height="match_parent">
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/done_fab"
             android:layout_width="wrap_content"
@@ -31,7 +30,6 @@
             android:layout_margin="32dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:focusableInTouchMode="true"
             android:src="@drawable/ic_done_black_24dp"
             app:backgroundTint="@color/glucosio_accent" />
     </FrameLayout>
@@ -138,6 +136,17 @@
                 android:layout_marginTop="16dp"
                 custom:labelText="@string/dialog_add_measured"
                 custom:widgetColor="@color/glucosio_pink" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:onClick="startLibreActivity"
+                android:padding="8dp"
+                android:text="@string/dialog_add_glucose_freestylelibre"
+                android:textColor="@color/glucosio_text_light"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/glucose_type_custom"

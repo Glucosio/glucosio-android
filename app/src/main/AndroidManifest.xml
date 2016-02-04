@@ -2,8 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.glucosio.android">
 
+    <uses-permission android:name="android.permission.NFC" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- Required for Instabug -->
+    <uses-permission android:name="${applicationId}.permission.C2D_MESSAGE"/>
+    <permission
+        android:name="${applicationId}.permission.C2D_MESSAGE"
+        android:protectionLevel="signature"/>
 
     <application
         android:name=".GlucosioApplication"
@@ -27,9 +33,6 @@
             android:name=".activity.HelloActivity"
             android:label="@string/title_activity_hello"
             android:theme="@style/AppThemeNoActionBar" />
-        <activity
-            android:name=".activity.GittyActivity"
-            android:theme="@style/GittyTheme" />
         <activity
             android:name=".activity.PreferencesActivity"
             android:theme="@style/GlucosioSettings" />
@@ -146,6 +149,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.glucosio.android.activity.MainActivity" />
         </activity>
+        <activity android:name=".activity.FreestyleLibre" />
+        <activity android:name=".activity.A1Calculator"></activity>
     </application>
 
 </manifest>

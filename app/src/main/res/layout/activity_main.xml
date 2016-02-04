@@ -58,7 +58,6 @@
                 android:layout_centerHorizontal="true"
                 android:gravity="center|bottom"
                 android:lineSpacingExtra="-1dp"
-                android:onClick="onFabClicked"
                 android:text="@string/fragment_empty_text"
                 android:textSize="16sp" />
         </RelativeLayout>

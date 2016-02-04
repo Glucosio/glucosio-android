@@ -4,6 +4,7 @@ import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
@@ -12,7 +13,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
@@ -29,6 +29,7 @@ import java.util.Calendar;
 public class AddGlucoseActivity extends AppCompatActivity
         implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
+    AddGlucosePresenter presenter;
     private FloatingActionButton doneFAB;
     private TextView addTimeTextView;
     private TextView addDateTextView;
@@ -36,8 +37,6 @@ public class AddGlucoseActivity extends AppCompatActivity
     private EditText typeCustomEditText;
     private LabelledSpinner readingTypeSpinner;
     private boolean isCustomType;
-
-    AddGlucosePresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,8 +87,12 @@ public class AddGlucoseActivity extends AppCompatActivity
         });
 
         FormatDateTime formatDateTime = new FormatDateTime(getApplicationContext());
+<<<<<<< HEAD
         addDateTextView.setText(presenter.getReadingDay() + "/" + presenter.getReadingMonth()
                 + "/" + presenter.getReadingYear());
+=======
+        addDateTextView.setText(formatDateTime.getCurrentDate());
+>>>>>>> 02a3a5bd281403f54f75ac34bdb66ed3fdbc71ef
         addTimeTextView.setText(formatDateTime.getCurrentTime());
         addDateTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -150,8 +153,19 @@ public class AddGlucoseActivity extends AppCompatActivity
     }
 
     public void showErrorMessage() {
+<<<<<<< HEAD
         Toast.makeText(getApplicationContext(), getString(R.string.dialog_error2),
                 Toast.LENGTH_SHORT).show();
+=======
+        View rootLayout = findViewById(android.R.id.content);
+        Snackbar.make(rootLayout, getString(R.string.dialog_error2), Snackbar.LENGTH_SHORT).show();
+    }
+
+
+    public void showDuplicateErrorMessage() {
+        View rootLayout = findViewById(android.R.id.content);
+        Snackbar.make(rootLayout, getString(R.string.dialog_error_duplicate), Snackbar.LENGTH_LONG).show();
+>>>>>>> 02a3a5bd281403f54f75ac34bdb66ed3fdbc71ef
     }
 
     public void updateSpinnerTypeTime(int selection) {
@@ -168,8 +182,29 @@ public class AddGlucoseActivity extends AppCompatActivity
         finish();
     }
 
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (resultCode == RESULT_OK) {
+            String returnedResult = data.getData().toString();
+            String glucoseReading = Integer.parseInt(returnedResult) + "";
+            View rootLayout = findViewById(android.R.id.content);
+            Snackbar.make(rootLayout, getString(R.string.dialog_add_glucose_freestylelibre_success), Snackbar.LENGTH_SHORT).show();
+
+            // Add reading to database
+            if (isCustomType) {
+                presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
+                        addDateTextView.getText().toString(), glucoseReading,
+                        typeCustomEditText.getText().toString());
+            } else {
+                presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
+                        addDateTextView.getText().toString(), glucoseReading,
+                        readingTypeSpinner.getSpinner().getSelectedItem().toString());
+            }
+        }
+    }
+
     @Override
-    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute) {
+    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int seconds) {
         TextView addTime = (TextView) findViewById(R.id.glucose_add_time);
         DecimalFormat df = new DecimalFormat("00");
 
@@ -224,6 +259,7 @@ public class AddGlucoseActivity extends AppCompatActivity
         finishActivity();
     }
 
+<<<<<<< HEAD
     @Override
     protected void onResume() {
         super.onResume();
@@ -235,5 +271,10 @@ public class AddGlucoseActivity extends AppCompatActivity
             tpd.setOnTimeSetListener(this);
         if(dpd != null)
             dpd.setOnDateSetListener(this);
+=======
+    public void startLibreActivity(View view) {
+        Intent intent = new Intent(this, FreestyleLibre.class);
+        startActivityForResult(intent, 1);
+>>>>>>> 02a3a5bd281403f54f75ac34bdb66ed3fdbc71ef
     }
 }

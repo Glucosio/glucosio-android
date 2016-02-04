@@ -39,7 +39,9 @@
         android:inputType="number"
         android:key="pref_range_max"
         android:title="@string/helloactivity_preferred_range_max" />
-
+    <Preference
+        android:key="backup_settings"
+        android:title="Backup" />
     <Preference
         android:key="about_settings"
         android:title="@string/preferences_about_glucosio"/>

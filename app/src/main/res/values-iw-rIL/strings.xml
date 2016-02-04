@@ -26,12 +26,6 @@
   <string name="helloactivity_hint_settings">תוכלו לשנות את ההגדרות האלו מאוחר יותר.</string>
   <string name="helloactivity_button_next">הבא</string>
   <string name="helloactivity_button_start">התחל</string>
-  <string name="fab_weight">משקל גוף</string>
-  <string name="fab_ketonest">קטונים</string>
-  <string name="fab_pressure">לחץ דם</string>
-  <string name="fab_cholesterol">רמת הכולסטרול</string>
-  <string name="fab_HB1AC">קריאת HB1AC</string>
-  <string name="fab_glucose">רמת סוכר בדם</string>
   <string name="fragment_empty_text">אין מידע זמין כעט.\n הוסף את קריאת המדדים הראשונה שלך כאן.</string>
   <string name="dialog_add_title">הוסף רמת סוכר הדם</string>
   <string name="dialog_add_concentration">ריכוז</string>
@@ -190,4 +184,22 @@
   <string name="dialog_export_range">טווח ייצוא</string>
   <string name="activity_export_no_readings_snackbar">אין קריאה לייצוא.</string>
   <string name="wear_new_reading">נוספה קריאה חדשה</string>
+  <string name="dialog_add_weight">משקל</string>
+  <string name="dialog_add_pressure_min">לחץ מינימלי</string>
+  <string name="dialog_add_pressure_max">לחץ מקסימלי</string>
+  <string name="dialog_add_cholesterol_total">סך הכל כולסטרול</string>
+  <string name="dialog_add_cholesterol_ldl">כולסטרול LDL</string>
+  <string name="dialog_add_cholesterol_hdl">כולסטרול HDL</string>
+  <string name="dialog_add_hb1ac">HB1AC</string>
+  <string name="title_activity_add_glucose">הוספת קריאת סוכר</string>
+  <string name="title_activity_add_weight">הוספת משקל גוף</string>
+  <string name="title_activity_add_cholesterol">הוספת רמת כולסטרול</string>
+  <string name="title_activity_add_hb1ac">הוספת HB1AC</string>
+  <string name="title_activity_add_pressure">הוספת לחץ דם</string>
+  <string name="fab_weight">משקל גוף</string>
+  <string name="fab_ketonest">קטונים</string>
+  <string name="fab_pressure">לחץ דם</string>
+  <string name="fab_cholesterol">רמת הכולסטרול</string>
+  <string name="fab_HB1AC">קריאת HB1AC</string>
+  <string name="fab_glucose">רמת סוכר בדם</string>
 </resources>

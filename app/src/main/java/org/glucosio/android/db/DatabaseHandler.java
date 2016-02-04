@@ -11,6 +11,7 @@ import org.joda.time.Weeks;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class DatabaseHandler {
 
         if (mRealmConfig == null) {
             mRealmConfig = new RealmConfiguration.Builder(context)
-                    .schemaVersion(1)
+                    .schemaVersion(2)
                     .migration(new Migration())
                     .build();
         }
@@ -55,11 +56,26 @@ public class DatabaseHandler {
         realm.commitTransaction();
     }
 
-    public void addGlucoseReading(GlucoseReading reading) {
-        realm.beginTransaction();
-        reading.setId(getNextKey("glucose"));
-        realm.copyToRealm(reading);
-        realm.commitTransaction();
+    public boolean addGlucoseReading(GlucoseReading reading) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(reading.getCreated());
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        int hours = calendar.get(Calendar.HOUR_OF_DAY);
+        int minutes = calendar.get(Calendar.MINUTE);
+        String id = "" + year+month+day+hours+minutes+reading.getReading();
+
+        // Check for duplicates
+        if (getGlucoseReadingById(Long.parseLong(id)) != null){
+            return false;
+        } else {
+            realm.beginTransaction();
+            reading.setId(Long.parseLong(id));
+            realm.copyToRealm(reading);
+            realm.commitTransaction();
+            return true;
+        }
     }
 
     public void deleteGlucoseReadings(GlucoseReading reading) {
@@ -343,13 +359,13 @@ public class DatabaseHandler {
         return idArray;
     }
 
-    public ArrayList<Integer> getHB1ACReadingAsArray(){
+    public ArrayList<Double> getHB1ACReadingAsArray(){
         List<HB1ACReading> readings = getHB1ACReadings();
-        ArrayList<Integer> readingArray = new ArrayList<Integer>();
+        ArrayList<Double> readingArray = new ArrayList<Double>();
         int i;
 
         for (i = 0; i < readings.size(); i++){
-            int reading;
+            double reading;
             HB1ACReading singleReading= readings.get(i);
             reading = singleReading.getReading();
             readingArray.add(reading);
