@@ -44,7 +44,7 @@ public class AddHB1ACPresenter {
             Calendar cal = Calendar.getInstance();
             cal.set(Integer.parseInt(readingYear), Integer.parseInt(readingMonth)-1, Integer.parseInt(readingDay), Integer.parseInt(readingHour), Integer.parseInt(readingMinute));
             Date finalDateTime = cal.getTime();
-            int finalReading = Integer.parseInt(reading);
+            double finalReading = Double.parseDouble(reading);
             HB1ACReading hReading = new HB1ACReading(finalReading, finalDateTime);
 
             dB.addHB1ACReading(hReading);

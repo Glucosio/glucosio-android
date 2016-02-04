@@ -134,7 +134,7 @@ public class HistoryPresenter {
         return dB.getHB1ACDateTimeAsArray();
     }
 
-    public ArrayList<Integer> getHB1ACReading() {
+    public ArrayList<Double> getHB1ACReading() {
         return dB.getHB1ACReadingAsArray();
     }
 

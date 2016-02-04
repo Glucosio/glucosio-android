@@ -33,7 +33,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     private ArrayList<Integer> cholesterolTotalArray;
     private ArrayList<Long> cholesterolIdArray;
     private ArrayList<String> hb1acDateTimeArray;
-    private ArrayList<Integer> hb1acReadingArray;
+    private ArrayList<Double> hb1acReadingArray;
     private ArrayList<Long> hb1acIdArray;
     Context mContext;
     private HistoryPresenter presenter;

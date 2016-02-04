@@ -31,7 +31,7 @@ public class DatabaseHandler {
 
         if (mRealmConfig == null) {
             mRealmConfig = new RealmConfiguration.Builder(context)
-                    .schemaVersion(1)
+                    .schemaVersion(2)
                     .migration(new Migration())
                     .build();
         }
@@ -359,13 +359,13 @@ public class DatabaseHandler {
         return idArray;
     }
 
-    public ArrayList<Integer> getHB1ACReadingAsArray(){
+    public ArrayList<Double> getHB1ACReadingAsArray(){
         List<HB1ACReading> readings = getHB1ACReadings();
-        ArrayList<Integer> readingArray = new ArrayList<Integer>();
+        ArrayList<Double> readingArray = new ArrayList<Double>();
         int i;
 
         for (i = 0; i < readings.size(); i++){
-            int reading;
+            double reading;
             HB1ACReading singleReading= readings.get(i);
             reading = singleReading.getReading();
             readingArray.add(reading);
