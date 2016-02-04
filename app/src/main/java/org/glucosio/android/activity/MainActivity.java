@@ -63,6 +63,8 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
 
     private FloatingActionMenu fabMenu;
     private Tracker mTracker;
+    Toolbar toolbar;
+    TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,9 +73,8 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
         presenter = new MainPresenter(this);
         exportPresenter = new ExportPresenter(this);
 
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         viewPager = (ViewPager) findViewById(R.id.pager);
 
         if (toolbar != null) {
@@ -486,6 +487,7 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
 
         if (presenter.isdbEmpty()) {
             pager.setVisibility(View.GONE);
+            tabLayout.setVisibility(View.GONE);
             emptyLayout.setVisibility(View.VISIBLE);
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
