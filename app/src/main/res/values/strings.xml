@@ -359,7 +359,6 @@
         <item>Bel Paese cheese</item>
         <item>Brie</item>
         <item>Butter cheese</item>
-        <item>Camembert - 50% FiDM</item>
         <item>Camembert - 30% FiDM</item>
         <item>Camembert - 40% FiDM</item>
         <item>Camembert - 45% FiDM</item>
@@ -619,6 +618,35 @@
         <item>Herring - Atlantic</item>
         <item>Herring - Baltic herring</item>
         <item>Herring milk</item>
+        <item>Herring roe</item>
+        <item>John Dory</item>
+        <item>Cod</item>
+        <item>Catfish</item>
+        <item>Common dab</item>
+        <item>Coalfish</item>
+        <item>Ling</item>
+        <item>Lemon sole</item>
+        <item>Lumb</item>
+        <item>Mackerel</item>
+        <item>Grey mullet</item>
+        <item>Red mullet</item>
+        <item>Skate</item>
+        <item>Ocean perch</item>
+        <item>Witch flounder</item>
+        <item>Anchovy</item>
+        <item>Sardine</item>
+        <item>Shellfish</item>
+        <item>Plaice</item>
+        <item>Swordfish</item>
+        <item>Hake</item>
+        <item>Alaska pollack</item>
+        <item>Common sole</item>
+        <item>Sprats</item>
+        <item>Turbot</item>
+        <item>Smelt</item>
+        <item>Horse mackerel</item>
+        <item>Sturgeon</item>
+        <item>Tuna</item>
         <item>Eel</item>
         <item>Bass, perch</item>
         <item>Bream</item>
@@ -842,7 +870,7 @@
         <item>Wild garlic</item>
         <item>Common plantain</item>
         <item>French herb</item>
-        <item>Stinging nettle</item>        
+        <item>Stinging nettle</item>
         <item>Garden orache</item>
         <item>Goutweed</item>
         <item>Great Burdock</item>
@@ -873,7 +901,7 @@
         <item>Lentil</item>
         <item>Lentils</item>
         <item>Poppy</item>
-        <item>Mung beans</item>        
+        <item>Mung beans</item>
         <item>Sesame</item>
         <item>Soybeans</item>
         <item>Soy flour</item>
@@ -934,7 +962,7 @@
         <item>Cranberries - Cranberry</item>
         <item>Cranberries - canned</item>
         <item>Cranberries - canned, withoutadded sugar, steamed cranberries</item>
-        <item>Gooseberries</item>        
+        <item>Gooseberries</item>
         <item>Grape - Wine grape</item>
         <item>Grape - Grape berry, dried, raisin</item>
         <item>Rowan fruit</item>
@@ -992,6 +1020,7 @@
         <item>Tamarinde</item>
         <item>Matai</item>
         <item>Watermelon</item>
+        <item>Lemon</item>
         <item>Cantaloupe melon</item>
         <item>Cashew nut</item>
         <item>Sweet chestnut</item>
