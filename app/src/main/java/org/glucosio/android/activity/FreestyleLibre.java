@@ -85,6 +85,8 @@ public class FreestyleLibre extends Activity {
 
     private void handleIntent(Intent intent) {
         String action = intent.getAction();
+        Log.d("glucosio", "NfcAdapter.ACTION_TECH_DISCOVERED");
+
         if (NfcAdapter.ACTION_TECH_DISCOVERED.equals(action)) {
 
             Log.d("glucosio", "NfcAdapter.ACTION_TECH_DISCOVERED");
