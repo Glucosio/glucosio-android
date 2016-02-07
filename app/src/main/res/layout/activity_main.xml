@@ -194,10 +194,10 @@
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="10dp"
-        android:src="@drawable/fab_glucose"
-        app:fab_colorNormal="@color/glucosio_fab_glucose"
-        app:fab_colorPressed="@color/glucosio_fab_glucose"
+        android:src="@drawable/ic_add_black_24dp"
+        app:fab_colorNormal="@color/glucosio_accent"
+        app:fab_colorPressed="@color/glucosio_accent"
+        app:fab_colorRipple="#99FFFFFF"
         android:onClick="onGlucoseFabClicked"
-        app:fab_size="normal"
-        app:fab_label="@string/fab_glucose" />
+        app:fab_size="normal"/>
 </android.support.design.widget.CoordinatorLayout>
