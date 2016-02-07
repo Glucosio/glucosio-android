@@ -45,6 +45,8 @@ public class OverviewFragment extends Fragment {
     private TextView lastDateTextView;
     private TextView trendTextView;
     private TextView tipTextView;
+    private TextView HB1ACTextView;
+    private TextView HB1ACDateTextView;
     private ImageButton graphExport;
     private Spinner graphSpinner;
     private OverviewPresenter presenter;
@@ -91,6 +93,8 @@ public class OverviewFragment extends Fragment {
         tipTextView = (TextView) mFragmentView.findViewById(R.id.random_tip_textview);
         graphSpinner = (Spinner) mFragmentView.findViewById(R.id.chart_spinner);
         graphExport = (ImageButton) mFragmentView.findViewById(R.id.fragment_overview_graph_export);
+        HB1ACTextView = (TextView) mFragmentView.findViewById(R.id.fragment_overview_hb1ac);
+        HB1ACDateTextView = (TextView) mFragmentView.findViewById(R.id.fragment_overview_hb1ac_date);
 
         // Set array and adapter for graphSpinner
         String[] selectorArray = getActivity().getResources().getStringArray(R.array.fragment_overview_selector);
@@ -187,6 +191,7 @@ public class OverviewFragment extends Fragment {
         });
 
         loadLastReading();
+        loadHB1AC();
 /*
         loadGlucoseTrend();
 */
@@ -313,6 +318,13 @@ public class OverviewFragment extends Fragment {
         chart.setPinchZoom(true);
         chart.setHardwareAccelerationEnabled(true);
         chart.animateY(1000, Easing.EasingOption.EaseOutCubic);
+    }
+
+    private void loadHB1AC(){
+        if (!presenter.isdbEmpty()){
+            HB1ACTextView.setText(presenter.getHB1AC());
+            HB1ACDateTextView.setText(presenter.getH1ACMonth());
+        }
     }
 
     private void loadLastReading(){
