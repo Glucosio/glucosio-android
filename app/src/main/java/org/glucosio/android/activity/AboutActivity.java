@@ -17,9 +17,6 @@ import java.util.Locale;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-/**
- * Created by paolo on 06/11/15.
- */
 public class AboutActivity extends AppCompatActivity {
 
     @Override

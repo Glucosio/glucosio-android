@@ -324,6 +324,9 @@ public class OverviewFragment extends Fragment {
         if (!presenter.isdbEmpty()){
             HB1ACTextView.setText(presenter.getHB1AC());
             HB1ACDateTextView.setText(presenter.getH1ACMonth());
+            if (HB1ACDateTextView.getText().equals(" ")){
+                HB1ACDateTextView.setVisibility(View.GONE);
+            }
         }
     }
 

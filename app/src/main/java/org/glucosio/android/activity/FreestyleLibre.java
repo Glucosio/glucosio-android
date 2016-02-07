@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.net.Uri;
 import android.nfc.NfcAdapter;
 import android.nfc.Tag;
 import android.nfc.tech.NfcV;
@@ -85,8 +84,6 @@ public class FreestyleLibre extends Activity {
 
     private void handleIntent(Intent intent) {
         String action = intent.getAction();
-        Log.d("glucosio", "NfcAdapter.ACTION_TECH_DISCOVERED");
-
         if (NfcAdapter.ACTION_TECH_DISCOVERED.equals(action)) {
 
             Log.d("glucosio", "NfcAdapter.ACTION_TECH_DISCOVERED");
@@ -151,13 +148,12 @@ public class FreestyleLibre extends Activity {
             Vibrator vibrator = (Vibrator)getSystemService(VIBRATOR_SERVICE);
             vibrator.vibrate(1000);
 
-            Toast.makeText(getApplicationContext(), "Reading added:" + currentGlucose, Toast.LENGTH_SHORT).show();
-
-            // Return Glucose reading
-            Intent data = new Intent();
-            String text = currentGlucose + "";
-            data.setData(Uri.parse(text));
-            setResult(RESULT_OK, data);
+            // Start AddGlucose Activity passing the reading value
+            Intent intent = new Intent(getApplicationContext(), AddGlucoseActivity.class);
+            Bundle bundle= new Bundle();
+            bundle.putString("reading", currentGlucose + "");
+            intent.putExtras(bundle);
+            startActivity(intent);
             FreestyleLibre.this.finish();
         }
 

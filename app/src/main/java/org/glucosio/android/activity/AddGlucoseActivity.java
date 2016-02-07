@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.MenuItem;
@@ -33,6 +35,8 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
     private TextView addDateTextView;
     private TextView readingTextView;
     private EditText typeCustomEditText;
+    private AppCompatButton addFreeStyleButton;
+    private TextInputLayout readingInputLayout;
     private LabelledSpinner readingTypeSpinner;
     private boolean isCustomType;
 
@@ -58,6 +62,8 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
         addDateTextView = (TextView) findViewById(R.id.glucose_add_date);
         readingTextView = (TextView) findViewById(R.id.glucose_add_concentration);
         typeCustomEditText = (EditText) findViewById(R.id.glucose_type_custom);
+        readingInputLayout = (TextInputLayout) findViewById(R.id.glucose_add_concentration_layout);
+        addFreeStyleButton = (AppCompatButton) findViewById(R.id.glucose_add_freestyle_button);
 
         presenter.updateSpinnerTypeTime();
         this.isCustomType = false;
@@ -128,6 +134,22 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
         } else {
             unitM.setText("mmol/L");
         }
+
+        // Check if activity was started from a NFC sensor
+        if (getIntent().getExtras() != null) {
+            Bundle p;
+            String reading;
+
+            p = getIntent().getExtras();
+            reading = p.getString("reading");
+            // If yes, first convert the decimal value from Freestyle to Integer
+            double d = Double.parseDouble(reading);
+            int glucoseValue = (int) d;
+            readingTextView.setText(glucoseValue+"");
+            readingInputLayout.setErrorEnabled(true);
+            readingInputLayout.setError(getResources().getString(R.string.dialog_add_glucose_freestylelibre_added));
+            addFreeStyleButton.setVisibility(View.GONE);
+        }
     }
 
     private void dialogOnAddButtonPressed() {
@@ -165,27 +187,6 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
-    }
-
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        if (resultCode == RESULT_OK) {
-            String returnedResult = data.getData().toString();
-            String glucoseReading = Integer.parseInt(returnedResult) + "";
-            View rootLayout = findViewById(android.R.id.content);
-            Snackbar.make(rootLayout, getString(R.string.dialog_add_glucose_freestylelibre_success), Snackbar.LENGTH_SHORT).show();
-
-            // Add reading to database
-            if (isCustomType) {
-                presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
-                        addDateTextView.getText().toString(), glucoseReading,
-                        typeCustomEditText.getText().toString());
-            } else {
-                presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
-                        addDateTextView.getText().toString(), glucoseReading,
-                        readingTypeSpinner.getSpinner().getSelectedItem().toString());
-            }
-        }
     }
 
     @Override
@@ -245,6 +246,6 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
 
     public void startLibreActivity(View view) {
         Intent intent = new Intent(this, FreestyleLibre.class);
-        startActivityForResult(intent, 1);
+        startActivity(intent);
     }
 }
