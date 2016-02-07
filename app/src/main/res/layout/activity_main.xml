@@ -134,7 +134,7 @@
             app:fab_size="mini"
             app:fab_label="@string/fab_weight" />
         <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fab_ketonest"
+            android:id="@+id/fab_ketone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/fab_ketones"
@@ -184,4 +184,20 @@
             app:fab_size="normal"
             app:fab_label="@string/fab_glucose" />
     </com.github.clans.fab.FloatingActionMenu>
+    <com.github.clans.fab.FloatingActionButton
+        android:id="@+id/fab_glucose_empty"
+        android:layout_gravity="bottom|right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/fab_glucose"
+        app:fab_colorNormal="@color/glucosio_fab_glucose"
+        app:fab_colorPressed="@color/glucosio_fab_glucose"
+        android:onClick="onGlucoseFabClicked"
+        app:fab_size="normal"
+        app:fab_label="@string/fab_glucose" />
 </android.support.design.widget.CoordinatorLayout>

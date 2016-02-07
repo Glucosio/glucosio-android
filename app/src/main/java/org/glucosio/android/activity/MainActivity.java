@@ -24,6 +24,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
@@ -63,6 +64,8 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
 
     private FloatingActionMenu fabMenu;
     private Tracker mTracker;
+    private FloatingActionButton fabGlucoseEmpty;
+
     Toolbar toolbar;
     TabLayout tabLayout;
 
@@ -124,6 +127,7 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
             }
         });
 
+        fabGlucoseEmpty = (FloatingActionButton) findViewById(R.id.fab_glucose_empty);
         fabMenu = (FloatingActionMenu) findViewById(R.id.fab_menu_add_reading);
         fabMenu.setClosedOnTouchOutside(true);
         fabMenu.setOnMenuToggleListener(new FloatingActionMenu.OnMenuToggleListener() {
@@ -490,6 +494,10 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
             tabLayout.setVisibility(View.GONE);
             emptyLayout.setVisibility(View.VISIBLE);
 
+            // If empty show only Glucose fab
+            fabMenu.setVisibility(View.GONE);
+            fabGlucoseEmpty.setVisibility(View.VISIBLE);
+
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 if (getResources().getConfiguration().orientation == 1) {
                     // If Portrait choose vertical curved line
@@ -504,6 +512,7 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
         } else {
             pager.setVisibility(View.VISIBLE);
             emptyLayout.setVisibility(View.GONE);
+            fabGlucoseEmpty.setVisibility(View.GONE);
         }
     }
 
