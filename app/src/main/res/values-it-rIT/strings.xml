@@ -196,7 +196,7 @@
   <string name="title_activity_add_glucose">Aggiungi Glicemia</string>
   <string name="title_activity_add_weight">Aggiungi Peso Corporeo</string>
   <string name="title_activity_add_cholesterol">Aggiungi Colesterolo</string>
-  <string name="title_activity_add_hb1ac">Aggiungi HB1AC</string>
+  <string name="title_activity_add_hb1ac">Aggiungi Emoglobina glicata</string>
   <string name="title_activity_add_ketone">Aggiungi Chetoni</string>
   <string name="title_activity_add_pressure">Aggiungi pressione sanguigna</string>
   <string name="fab_weight">Peso corporeo</string>
@@ -212,4 +212,6 @@
   <string name="dialog_add_glucose_freestylelibre">Aggiungi da FreeStyle Libre</string>
   <string name="freestylelibre_nfc_error">Errore durante l\'apertura di una connessione NFC</string>
   <string name="dialog_add_glucose_freestylelibre_success">Aggiunta lettura da FreeStyle Libre</string>
+  <string name="overview_hb1ac_error_no_data">Dati insufficienti</string>
+  <string name="overview_hb1ac">Emoglobina glicata:</string>
 </resources>
