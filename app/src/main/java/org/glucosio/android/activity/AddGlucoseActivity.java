@@ -25,7 +25,8 @@ import org.glucosio.android.tools.LabelledSpinner;
 import java.text.DecimalFormat;
 import java.util.Calendar;
 
-public class AddGlucoseActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
+public class AddGlucoseActivity extends AppCompatActivity
+        implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
     AddGlucosePresenter presenter;
     private FloatingActionButton doneFAB;
@@ -64,7 +65,8 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
 
         readingTypeSpinner.setOnItemChosenListener(new LabelledSpinner.OnItemChosenListener() {
             @Override
-            public void onItemChosen(View labelledSpinner, AdapterView<?> adapterView, View itemView, int position, long id) {
+            public void onItemChosen(View labelledSpinner, AdapterView<?> adapterView,
+                                     View itemView, int position, long id) {
                 // If other is selected
                 if (position == 11) {
                     typeCustomEditText.setVisibility(View.VISIBLE);
@@ -106,10 +108,12 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
             public void onClick(View v) {
                 Calendar now = Calendar.getInstance();
                 if (android.text.format.DateFormat.is24HourFormat(getApplicationContext())) {
-                    TimePickerDialog tpd = TimePickerDialog.newInstance(AddGlucoseActivity.this, now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), true);
+                    TimePickerDialog tpd = TimePickerDialog.newInstance(AddGlucoseActivity.this,
+                            now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), true);
                     tpd.show(getFragmentManager(), "Timepickerdialog");
                 } else {
-                    TimePickerDialog tpd = TimePickerDialog.newInstance(AddGlucoseActivity.this, now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), false);
+                    TimePickerDialog tpd = TimePickerDialog.newInstance(AddGlucoseActivity.this,
+                            now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), false);
                     tpd.show(getFragmentManager(), "Timepickerdialog");
                 }
             }
@@ -213,7 +217,8 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
         presenter.setReadingMonth(df.format(monthOfYear + 1));
         presenter.setReadingDay(df.format(dayOfMonth));
 
-        String date = +dayOfMonth + "/" + presenter.getReadingMonth() + "/" + presenter.getReadingYear();
+        String date = +dayOfMonth + "/" + presenter.getReadingMonth()
+                + "/" + presenter.getReadingYear();
         addDate.setText(date);
     }
 
@@ -246,5 +251,6 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
     public void startLibreActivity(View view) {
         Intent intent = new Intent(this, FreestyleLibre.class);
         startActivityForResult(intent, 1);
+
     }
 }

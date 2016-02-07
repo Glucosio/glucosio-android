@@ -1,5 +1,6 @@
 package org.glucosio.android.activity;
 
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -22,7 +23,8 @@ import org.glucosio.android.tools.FormatDateTime;
 import java.text.DecimalFormat;
 import java.util.Calendar;
 
-public class AddCholesterolActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
+public class AddCholesterolActivity extends AppCompatActivity
+        implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
     AddCholesterolPresenter presenter;
     private FloatingActionButton doneFAB;
@@ -55,6 +57,7 @@ public class AddCholesterolActivity extends AppCompatActivity implements TimePic
         HDLChoTextView = (TextView) findViewById(R.id.cholesterol_add_value_hdl);
 
         FormatDateTime formatDateTime = new FormatDateTime(getApplicationContext());
+
         addDateTextView.setText(formatDateTime.getCurrentDate());
         addTimeTextView.setText(formatDateTime.getCurrentTime());
         addDateTextView.setOnClickListener(new View.OnClickListener() {
@@ -77,10 +80,12 @@ public class AddCholesterolActivity extends AppCompatActivity implements TimePic
             public void onClick(View v) {
                 Calendar now = Calendar.getInstance();
                 if (android.text.format.DateFormat.is24HourFormat(getApplicationContext())) {
-                    TimePickerDialog tpd = TimePickerDialog.newInstance(AddCholesterolActivity.this, now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), true);
+                    TimePickerDialog tpd = TimePickerDialog.newInstance(AddCholesterolActivity.this,
+                            now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), true);
                     tpd.show(getFragmentManager(), "Timepickerdialog");
                 } else {
-                    TimePickerDialog tpd = TimePickerDialog.newInstance(AddCholesterolActivity.this, now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), false);
+                    TimePickerDialog tpd = TimePickerDialog.newInstance(AddCholesterolActivity.this,
+                            now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), false);
                     tpd.show(getFragmentManager(), "Timepickerdialog");
                 }
             }
@@ -95,11 +100,13 @@ public class AddCholesterolActivity extends AppCompatActivity implements TimePic
 
     private void dialogOnAddButtonPressed() {
             presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
-                    addDateTextView.getText().toString(), totalChoTextView.getText().toString(), LDLChoTextView.getText().toString(), HDLChoTextView.getText().toString());
+                    addDateTextView.getText().toString(), totalChoTextView.getText().toString(),
+                    LDLChoTextView.getText().toString(), HDLChoTextView.getText().toString());
     }
 
     public void showErrorMessage() {
-        Toast.makeText(getApplicationContext(), getString(R.string.dialog_error2), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), getString(R.string.dialog_error2),
+                Toast.LENGTH_SHORT).show();
     }
 
     public void finishActivity(){
@@ -132,7 +139,8 @@ public class AddCholesterolActivity extends AppCompatActivity implements TimePic
         presenter.setReadingMonth(df.format(monthOfYear + 1));
         presenter.setReadingDay(df.format(dayOfMonth));
 
-        String date = +dayOfMonth + "/" + presenter.getReadingMonth() + "/" + presenter.getReadingYear();
+        String date = +dayOfMonth + "/" + presenter.getReadingMonth()
+                + "/" + presenter.getReadingYear();
         addDate.setText(date);
     }
 
@@ -160,5 +168,23 @@ public class AddCholesterolActivity extends AppCompatActivity implements TimePic
     @Override
     public void onBackPressed() {
         finishActivity();
+    }
+
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        //Restore date chosen
+        FragmentManager fm = getFragmentManager();
+        TimePickerDialog tpd = (TimePickerDialog) fm.findFragmentByTag( "Timepickerdialog");
+        DatePickerDialog dpd = (DatePickerDialog) fm.findFragmentByTag("Datepickerdialog");
+
+        if(tpd != null)
+            tpd.setOnTimeSetListener(this);
+        if (dpd != null)
+            dpd.setOnDateSetListener(this);
+
     }
 }
