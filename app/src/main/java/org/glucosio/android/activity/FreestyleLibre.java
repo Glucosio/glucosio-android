@@ -14,6 +14,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import org.glucosio.android.R;
+import org.glucosio.android.db.DatabaseHandler;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -148,13 +149,24 @@ public class FreestyleLibre extends Activity {
             Vibrator vibrator = (Vibrator)getSystemService(VIBRATOR_SERVICE);
             vibrator.vibrate(1000);
 
-            // Start AddGlucose Activity passing the reading value
-            Intent intent = new Intent(getApplicationContext(), AddGlucoseActivity.class);
-            Bundle bundle= new Bundle();
-            bundle.putString("reading", currentGlucose + "");
-            intent.putExtras(bundle);
-            startActivity(intent);
-            FreestyleLibre.this.finish();
+            if (currentGlucose != 0f) {
+                DatabaseHandler dB = new DatabaseHandler(getApplicationContext());
+
+                if (dB.getUser(1) != null) {
+                    // Start AddGlucose Activity passing the reading value
+                    Intent intent = new Intent(getApplicationContext(), AddGlucoseActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("reading", currentGlucose + "");
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                    FreestyleLibre.this.finish();
+                } else {
+                    Intent intent = new Intent(getApplicationContext(), HelloActivity.class);
+                    startActivity(intent);
+                }
+            } else {
+                FreestyleLibre.this.finish();
+            }
         }
 
         @Override
