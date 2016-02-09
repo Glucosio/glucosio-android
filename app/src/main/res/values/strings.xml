@@ -208,8 +208,8 @@
     <string name="preferences_about_glucosio">About Glucosio</string>
     <string name="preferences_rate">Rate Glucosio</string>
     <string name="preferences_licences_open">Open source Licences</string>
-    <string name="preferences_freestyle_libre">Enable FreeStyle Libre support</string>
-    <string name="preferences_freestyle_libre_experimental">EXPERIMENTAL: Enable FreeStyle Libre support</string>
+    <string name="preferences_freestyle_libre">Enable FreeStyle Libre® support</string>
+    <string name="preferences_freestyle_libre_experimental">EXPERIMENTAL: Enable FreeStyle Libre® support</string>
     <string name="about_donate">Donate to Glucosio</string>
     <string name="reading_ok">OK</string>
     <string name="reading_hypo">Hypoglycemia</string>
@@ -306,9 +306,9 @@
     <string name="freestylelibre_nfc_ready">Please, put your phone on the sensor and do not move until it vibrates.</string>
     <string name="freestylelibre_nfc_not_supported">This device doesn\'t support NFC.</string>
     <string name="freestylelibre_nfc_not_enabled">NFC is disabled.</string>
-    <string name="dialog_add_glucose_freestylelibre">Add from FreeStyle Libre</string>
+    <string name="dialog_add_glucose_freestylelibre">Add from FreeStyle Libre®</string>
     <string name="freestylelibre_nfc_error">Error opening NFC connection!</string>
-    <string name="dialog_add_glucose_freestylelibre_success">Successfully added reading from FreeStyle Libre</string>
+    <string name="dialog_add_glucose_freestylelibre_success">Successfully added reading from FreeStyle Libre®</string>
     <string name="overview_hb1ac_error_no_data">Not enough data to calculate HBA1C</string>
     <string name="overview_hb1ac">HBA1C:</string>
     <string name="dialog_add_glucose_freestylelibre_added">Added from your FreeStyle Libre®</string>
