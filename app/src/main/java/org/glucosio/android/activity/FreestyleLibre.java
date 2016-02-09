@@ -182,8 +182,10 @@ public class FreestyleLibre extends Activity {
             try {
                 nfcvTag.connect();
             } catch (IOException e) {
+                final IOException ex = e;
                 FreestyleLibre.this.runOnUiThread(new Runnable() {
                     public void run() {
+                        Log.e("Glucosio", ex.toString());
                         Toast.makeText(getApplicationContext(), R.string.freestylelibre_nfc_error, Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -293,8 +295,10 @@ public class FreestyleLibre extends Activity {
                 }
                 Log.d("glucosio", "--------------------------------------------------");
             } catch (IOException e) {
+                final IOException ex = e;
                 FreestyleLibre.this.runOnUiThread(new Runnable() {
                     public void run() {
+                        Log.e("Glucosio", ex.toString());
                         Toast.makeText(getApplicationContext(), R.string.freestylelibre_nfc_error, Toast.LENGTH_SHORT).show();
                     }
                 });
