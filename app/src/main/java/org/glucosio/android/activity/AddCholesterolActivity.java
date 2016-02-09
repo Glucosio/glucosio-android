@@ -23,8 +23,7 @@ import org.glucosio.android.tools.FormatDateTime;
 import java.text.DecimalFormat;
 import java.util.Calendar;
 
-public class AddCholesterolActivity extends AppCompatActivity
-        implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
+public class AddCholesterolActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
     AddCholesterolPresenter presenter;
     private FloatingActionButton doneFAB;
@@ -80,12 +79,10 @@ public class AddCholesterolActivity extends AppCompatActivity
             public void onClick(View v) {
                 Calendar now = Calendar.getInstance();
                 if (android.text.format.DateFormat.is24HourFormat(getApplicationContext())) {
-                    TimePickerDialog tpd = TimePickerDialog.newInstance(AddCholesterolActivity.this,
-                            now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), true);
+                    TimePickerDialog tpd = TimePickerDialog.newInstance(AddCholesterolActivity.this, now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), true);
                     tpd.show(getFragmentManager(), "Timepickerdialog");
                 } else {
-                    TimePickerDialog tpd = TimePickerDialog.newInstance(AddCholesterolActivity.this,
-                            now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), false);
+                    TimePickerDialog tpd = TimePickerDialog.newInstance(AddCholesterolActivity.this, now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), false);
                     tpd.show(getFragmentManager(), "Timepickerdialog");
                 }
             }
@@ -100,13 +97,11 @@ public class AddCholesterolActivity extends AppCompatActivity
 
     private void dialogOnAddButtonPressed() {
             presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
-                    addDateTextView.getText().toString(), totalChoTextView.getText().toString(),
-                    LDLChoTextView.getText().toString(), HDLChoTextView.getText().toString());
+                    addDateTextView.getText().toString(), totalChoTextView.getText().toString(), LDLChoTextView.getText().toString(), HDLChoTextView.getText().toString());
     }
 
     public void showErrorMessage() {
-        Toast.makeText(getApplicationContext(), getString(R.string.dialog_error2),
-                Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), getString(R.string.dialog_error2), Toast.LENGTH_SHORT).show();
     }
 
     public void finishActivity(){
