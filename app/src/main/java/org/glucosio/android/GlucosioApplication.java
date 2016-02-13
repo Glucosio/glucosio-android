@@ -1,6 +1,8 @@
 package org.glucosio.android;
 
 import android.app.Application;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
@@ -38,10 +40,16 @@ public class GlucosioApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                .setDefaultFontPath("fonts/lato.ttf")
-                .setFontAttrId(R.attr.fontPath)
-                .build());
+        // Get Dyslexia preference and adjust font
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean isDislexicModeOn = sharedPref.getBoolean("pref_font_dyslexia", false);
+
+        if (isDislexicModeOn) {
+            setFont("fonts/opendyslexic.otf");
+        } else {
+            setFont("fonts/lato.ttf");
+        }
+
         if (BuildConfig.DEBUG) {
             new Instabug.Builder(this, "b2226aa30fec24f6f4bed6ad68964e9b")
                     .setInvocationEvent(IBGInvocationEvent.IBGInvocationEventShake)
@@ -51,5 +59,12 @@ public class GlucosioApplication extends Application {
                     .setInvocationEvent(IBGInvocationEvent.IBGInvocationEventShake)
                     .build();
         }
+    }
+
+    private void setFont(String font){
+        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                .setDefaultFontPath(font)
+                .setFontAttrId(R.attr.fontPath)
+                .build());
     }
 }

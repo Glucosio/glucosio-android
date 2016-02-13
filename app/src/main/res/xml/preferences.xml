@@ -39,9 +39,21 @@
         android:inputType="number"
         android:key="pref_range_max"
         android:title="@string/helloactivity_preferred_range_max" />
-    <Preference
+    <SwitchPreference
+        android:id="@+id/preferences_freestyle_libre"
+        android:summary="@string/preferences_freestyle_libre_experimental"
+        android:defaultValue="false"
+        android:key="pref_freestyle_libre"
+        />
+    <SwitchPreference
+        android:id="@+id/preferences_font_dyslexia"
+        android:key="pref_font_dyslexia"
+        android:defaultValue="false"
+        android:summary="@string/preferences_font_dyslexia_experimental"
+        />
+<!--    <Preference
         android:key="backup_settings"
-        android:title="Backup" />
+        android:title="Backup" />-->
     <Preference
         android:key="about_settings"
         android:title="@string/preferences_about_glucosio"/>
