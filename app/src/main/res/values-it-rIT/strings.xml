@@ -59,6 +59,7 @@
   <string name="fragment_overview_selector_day">Giorno</string>
   <string name="fragment_overview_selector_week">Settimana</string>
   <string name="preferences_about">Informazioni</string>
+  <string name="preferences_experimental">Queste funzioni sono sperimentali e potrebbero non funzionare correttamente. Ricorda che puoi scuotere il dispositivo per inviarci suggerimenti e problemi relative ad esse.</string>
   <string name="preferences_version">Versione</string>
   <string name="preferences_terms">Termini di utilizzo</string>
   <string name="glucose_reading_type">Tipo</string>
@@ -128,6 +129,8 @@
   <string name="preferences_licences_open">Licenze open source</string>
   <string name="preferences_freestyle_libre">Abilita supporto a FreeStyle Libre®</string>
   <string name="preferences_freestyle_libre_experimental">BETA: Abilita supporto a FreeStyle Libre®</string>
+  <string name="preferences_font_dyslexia_experimental">BETA: Aumenta leggibilità per utenti dislessici</string>
+  <string name="preferences_font_dyslexia">Aumenta leggibilità per utenti dislessici</string>
   <string name="about_donate">Fai una donazione</string>
   <string name="reading_ok">OK</string>
   <string name="reading_hypo">Ipoglicemia</string>
