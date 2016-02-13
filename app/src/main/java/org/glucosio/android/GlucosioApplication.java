@@ -42,9 +42,9 @@ public class GlucosioApplication extends Application {
 
         // Get Dyslexia preference and adjust font
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        boolean isDislexicModeOn = sharedPref.getBoolean("pref_font_dyslexia", false);
+        boolean isDyslexicModeOn = sharedPref.getBoolean("pref_font_dyslexia", false);
 
-        if (isDislexicModeOn) {
+        if (isDyslexicModeOn) {
             setFont("fonts/opendyslexic.otf");
         } else {
             setFont("fonts/lato.ttf");
