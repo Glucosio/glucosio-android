@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
@@ -149,6 +150,11 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
             readingInputLayout.setErrorEnabled(true);
             readingInputLayout.setError(getResources().getString(R.string.dialog_add_glucose_freestylelibre_added));
             addFreeStyleButton.setVisibility(View.GONE);
+        } else {
+            // Check if FreeStyle support is enabled in Preferences
+            if (presenter.isFreeStyleLibreEnabled()){
+                addFreeStyleButton.setVisibility(View.VISIBLE);
+            }
         }
     }
 

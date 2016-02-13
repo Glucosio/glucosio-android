@@ -74,7 +74,8 @@ public class PreferencesActivity extends AppCompatActivity {
         private EditTextPreference agePref;
         private EditTextPreference minRangePref;
         private EditTextPreference maxRangePref;
-        private SwitchPreference dyslexiaMode;
+        private SwitchPreference dyslexiaModePref;
+        private SwitchPreference freestyleLibrePref;
         private User updatedUser;
 
 
@@ -96,8 +97,8 @@ public class PreferencesActivity extends AppCompatActivity {
             rangePref = (ListPreference) findPreference("pref_range");
             minRangePref = (EditTextPreference) findPreference("pref_range_min");
             maxRangePref = (EditTextPreference) findPreference("pref_range_max");
-            dyslexiaMode = (SwitchPreference) findPreference("pref_font_dyslexia");
-
+            dyslexiaModePref = (SwitchPreference) findPreference("pref_font_dyslexia");
+            freestyleLibrePref = (SwitchPreference) findPreference("pref_freestyle_libre");
 
             agePref.setDefaultValue(user.getAge());
             countryPref.setValue(user.getCountry());
@@ -215,16 +216,23 @@ public class PreferencesActivity extends AppCompatActivity {
                     return true;
                 }
             });
-            dyslexiaMode.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            dyslexiaModePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    if (!((SwitchPreference) preference)
-                            .isChecked()){
+                    // EXPERIMENTAL PREFERENCE
+                    // Display Alert
+                    showExperimentalDialog(true);
+                    return true;
+                }
+            });
+            freestyleLibrePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    if(!((SwitchPreference) preference).isChecked()) {
                         // EXPERIMENTAL PREFERENCE
                         // Display Alert
-                        showExperimentalDialog(true);
-                    } else {
-                        rebootApp();
+                        showExperimentalDialog(false);
+                        return true;
                     }
                     return true;
                 }
