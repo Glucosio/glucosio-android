@@ -199,20 +199,21 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
 
         if (isPlayServicesAvailable()) {
             drawerBuilder.addDrawerItems(
-                    itemSettings,
-                    itemExport,
                     itemA1C,
+                    itemExport,
+                    itemSettings,
                     itemAbout,
                     itemFeedback,
-                    itemDonate
+                    itemDonate,
+                    itemInvite
             )
                     .withSelectedItem(-1)
                     .build();
         } else {
             drawerBuilder.addDrawerItems(
-                    itemSettings,
-                    itemExport,
                     itemA1C,
+                    itemExport,
+                    itemSettings,
                     itemAbout,
                     itemFeedback,
                     itemDonate
