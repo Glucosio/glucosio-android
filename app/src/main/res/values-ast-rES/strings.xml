@@ -95,6 +95,7 @@
   <string name="assistant_action_ok">VAL, PESCANCIÉLO</string>
   <string name="assistant_action_feedback">UNVIAR FEEDBACK</string>
   <string name="assistant_action_reading">AMESTAR LLECTURA</string>
+  <string name="assistant_action_try">PRUÉBALO AGORA</string>
   <string name="assistant_weight_title">Anueva\'l to pesu</string>
   <string name="assistant_weight_desc">Asegúrate d\'anovar el to pesu pa qu\'asina Glucosio tenga la información más precisa.</string>
   <string name="assistant_research_title">Anueva les tos preferencies d\'investigación</string>
@@ -112,7 +113,6 @@
   <string name="helloactivity_spinner_preferred_range_4">Rangu personalizáu</string>
   <string name="helloactivity_preferred_range_min">Valor mínimu</string>
   <string name="helloactivity_preferred_range_max">Valor máximu</string>
-  <string name="assistant_action_try">PRUÉBALO AGORA</string>
   <string name="helloactivity_language">Llingua</string>
   <string name="invitation_title">Convidar a otra xente</string>
   <string name="invitation_message">Prueba Glucosio, una aplicación de códigu llibre pa la xestión ya investigación de la diabetes.</string>

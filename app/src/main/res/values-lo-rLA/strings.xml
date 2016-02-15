@@ -91,6 +91,7 @@
   <string name="assistant_action_ok">Ok, ເຂົ້າໃຈແລ້ວ</string>
   <string name="assistant_action_feedback">ສົ່ງຄໍາຄິດເຫັນ</string>
   <string name="assistant_action_reading">ເພີ່ມການອ່ານ</string>
+  <string name="assistant_action_try">ລອງໃຊ້ດຽວນີ້ເລີຍ</string>
   <string name="assistant_weight_title">ອັບເດດນ້ຳຫນັກຂອງທ່ານ</string>
   <string name="assistant_categories_title">ສ້າງປະເພດ</string>
   <string name="assistant_feedback_title">ສົ່ງຄໍາຄິດເຫັນ </string>
@@ -102,7 +103,6 @@
   <string name="helloactivity_spinner_preferred_range_4">ຊ່ວງທີ່ກຳນົດເອງ</string>
   <string name="helloactivity_preferred_range_min">ຄ່າຕຳສຸດ</string>
   <string name="helloactivity_preferred_range_max">ຄ່າໃຫຍ່ສຸດ</string>
-  <string name="assistant_action_try">ລອງໃຊ້ດຽວນີ້ເລີຍ</string>
   <string name="helloactivity_language">ພາສາ</string>
   <string name="invitation_title">ເຊີນສ່ວນຫມູ່ເພື່ອນຄົນອື່ນໆ</string>
   <string name="invitation_cta">ທົດລອງໃຊ້ Glucosio</string>

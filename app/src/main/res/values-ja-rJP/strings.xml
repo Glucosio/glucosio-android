@@ -95,6 +95,7 @@
   <string name="assistant_action_ok">OK、取得する</string>
   <string name="assistant_action_feedback">フィードバックを送信</string>
   <string name="assistant_action_reading">測定値を追加</string>
+  <string name="assistant_action_try">今すぐ試す</string>
   <string name="assistant_weight_title">あなたの体重を更新</string>
   <string name="assistant_weight_desc">Glucosio の情報が最も正確になるために、あなたの体重を更新するようにしてください。</string>
   <string name="assistant_research_title">研究の参加を更新</string>
@@ -113,7 +114,6 @@
   <string name="helloactivity_spinner_preferred_range_4">カスタムの範囲</string>
   <string name="helloactivity_preferred_range_min">最小値</string>
   <string name="helloactivity_preferred_range_max">最大値</string>
-  <string name="assistant_action_try">今すぐ試す</string>
   <string name="helloactivity_language">言語</string>
   <string name="invitation_title">他の人を招待</string>
   <string name="invitation_message">糖尿病の管理と研究のためのオープンソース アプリ Glucosio を試してください。</string>

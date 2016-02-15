@@ -95,6 +95,7 @@
   <string name="assistant_action_ok">OK, AM ÎNȚELES</string>
   <string name="assistant_action_feedback">TRIMITE FEEDBACK</string>
   <string name="assistant_action_reading">ADAUGĂ ÎNREGISTRARE</string>
+  <string name="assistant_action_try">ÎNCEARCĂ ACUM</string>
   <string name="assistant_weight_title">Actualizați greutatea dumneavoastră</string>
   <string name="assistant_weight_desc">Asiguraţi-vă că actualizați greutatea dumneavoastră, astfel încât Glucosio să aibă informaţii cât mai precise.</string>
   <string name="assistant_research_title">Actualizați opțiunea pentru cercetare</string>
@@ -113,7 +114,6 @@
   <string name="helloactivity_spinner_preferred_range_4">Gamă proprie</string>
   <string name="helloactivity_preferred_range_min">Valoare minimă</string>
   <string name="helloactivity_preferred_range_max">Valoare maximă</string>
-  <string name="assistant_action_try">ÎNCEARCĂ ACUM</string>
   <string name="helloactivity_language">Limba</string>
   <string name="invitation_title">Invită alte persoane</string>
   <string name="invitation_message">Încearcă Glucosio, o aplicație cu sursă deschisă pentru gestionarea diabetului și cercetare.</string>

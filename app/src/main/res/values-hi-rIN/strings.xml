@@ -85,6 +85,7 @@
   <string name="assistant_action_ok">ठीक मिल गया</string>
   <string name="assistant_action_feedback">प्रतिक्रिया सबमिट करें</string>
   <string name="assistant_action_reading">पढ़ना जोड़ें</string>
+  <string name="assistant_action_try">अब यह कोशिश करो</string>
   <string name="assistant_weight_title">अपने वजन को अपडेट करें</string>
   <string name="assistant_research_title">अपने अनुसंधान में ऑप्ट अद्यतन</string>
   <string name="assistant_categories_title">श्रेणियों बनाएँ</string>
@@ -95,5 +96,4 @@
   <string name="helloactivity_spinner_preferred_range_4">कस्टम श्रेणी</string>
   <string name="helloactivity_preferred_range_min">न्यूनतम मूल्य</string>
   <string name="helloactivity_preferred_range_max">अधिकतम मूल्य</string>
-  <string name="assistant_action_try">अब यह कोशिश करो</string>
 </resources>

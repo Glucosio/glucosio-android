@@ -97,6 +97,7 @@
   <string name="assistant_action_ok">好的，知道了！</string>
   <string name="assistant_action_feedback">提交反馈</string>
   <string name="assistant_action_reading">添加阅读</string>
+  <string name="assistant_action_try">现在试试它</string>
   <string name="assistant_weight_title">更新你的体重</string>
   <string name="assistant_weight_desc">请确保更新你的体重，以便 Glucosio 有最准确的信息。</string>
   <string name="assistant_research_title">更新你的研究选项</string>
@@ -115,7 +116,6 @@
   <string name="helloactivity_spinner_preferred_range_4">自定义范围</string>
   <string name="helloactivity_preferred_range_min">最小值</string>
   <string name="helloactivity_preferred_range_max">最大值</string>
-  <string name="assistant_action_try">现在试试它</string>
   <string name="helloactivity_language">语言</string>
   <string name="invitation_title">邀请其他人</string>
   <string name="invitation_message">试试 Glucosio，一个糖尿病管理和研究的开放源码应用程序。</string>

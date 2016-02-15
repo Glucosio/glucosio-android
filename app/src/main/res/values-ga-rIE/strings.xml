@@ -95,6 +95,7 @@
   <string name="assistant_action_ok">TUIGIM</string>
   <string name="assistant_action_feedback">SEOL AISEOLAS</string>
   <string name="assistant_action_reading">TOMHAS NUA</string>
+  <string name="assistant_action_try">BAIN TRIAIL AS</string>
   <string name="assistant_weight_title">Nuashonraigh do mheáchan</string>
   <string name="assistant_weight_desc">Ba chóir duit do mheáchan a choinneáil cothrom le dáta sa chaoi go mbeidh an t-eolas is fearr ag Glucosio.</string>
   <string name="assistant_research_title">Athraigh an socrú a bhaineann le taighde</string>
@@ -113,7 +114,6 @@
   <string name="helloactivity_spinner_preferred_range_4">Raon saincheaptha</string>
   <string name="helloactivity_preferred_range_min">Íosluach</string>
   <string name="helloactivity_preferred_range_max">Uasluach</string>
-  <string name="assistant_action_try">BAIN TRIAIL AS</string>
   <string name="helloactivity_language">Teanga</string>
   <string name="invitation_title">Tabhair cuirí do dhaoine eile</string>
   <string name="invitation_message">Bain triail as Glucosio, aip oscailte le haghaidh bainistíocht agus taighde ar dhiaibéiteas.</string>

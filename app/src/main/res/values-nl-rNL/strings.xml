@@ -95,6 +95,7 @@
   <string name="assistant_action_ok">OK, BEGREPEN</string>
   <string name="assistant_action_feedback">FEEDBACK INDIENEN</string>
   <string name="assistant_action_reading">UITLEZING TOEVOEGEN</string>
+  <string name="assistant_action_try">NU PROBEREN</string>
   <string name="assistant_weight_title">Uw gewicht bijwerken</string>
   <string name="assistant_weight_desc">Zorg ervoor dat u uw gewicht bijwerkt, zodat Glucosio de meest accurate gegevens bevat.</string>
   <string name="assistant_research_title">Uw onderzoeks-opt-in bijwerken</string>
@@ -113,7 +114,6 @@
   <string name="helloactivity_spinner_preferred_range_4">Aangepast bereik</string>
   <string name="helloactivity_preferred_range_min">Min. waarde</string>
   <string name="helloactivity_preferred_range_max">Max. waarde</string>
-  <string name="assistant_action_try">NU PROBEREN</string>
   <string name="helloactivity_language">Taal</string>
   <string name="invitation_title">Anderen uitnodigen</string>
   <string name="invitation_message">Probeer Glucosio, een opensource-app voor diabetesbeheer en -onderzoek.</string>

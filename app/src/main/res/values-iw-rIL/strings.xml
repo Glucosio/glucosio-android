@@ -95,6 +95,7 @@
   <string name="assistant_action_ok">אוקיי</string>
   <string name="assistant_action_feedback">שלח משוב</string>
   <string name="assistant_action_reading">הוסף מדידה</string>
+  <string name="assistant_action_try">נסה זאת עכשיו</string>
   <string name="assistant_weight_title">עדכן את משקלך</string>
   <string name="assistant_weight_desc">הקפד לעדכן את המשקל שלך כך שב-Glucosio יהיה את המידע המדויק ביותר.</string>
   <string name="assistant_research_title">עדכון שיתוף מידע למחקר (opt-in)</string>
@@ -113,7 +114,6 @@
   <string name="helloactivity_spinner_preferred_range_4">טווח מותאם אישית</string>
   <string name="helloactivity_preferred_range_min">ערך מינימום</string>
   <string name="helloactivity_preferred_range_max">ערך מקסימום</string>
-  <string name="assistant_action_try">נסה זאת עכשיו</string>
   <string name="helloactivity_language">שפה</string>
   <string name="invitation_title">הזמנת אנשים אחרים</string>
   <string name="invitation_message">נסו את Glucosio, אפליקציית פתוחת קוד לטיפול בסכרת ומחקר.</string>

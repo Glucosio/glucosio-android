@@ -95,6 +95,7 @@
   <string name="assistant_action_ok">ХОРОШО, Я ПОНЯЛ</string>
   <string name="assistant_action_feedback">ОТПРАВИТЬ ОТЗЫВ</string>
   <string name="assistant_action_reading">ДОБАВИТЬ ДАННЫЕ</string>
+  <string name="assistant_action_try">ПОПРОБОВАТЬ ПРЯМО СЕЙЧАС</string>
   <string name="assistant_weight_title">Обновите свой вес</string>
   <string name="assistant_weight_desc">Убедитесь, что вы обновили свой вес, и у Glucosio имеется наиболее точная информация.</string>
   <string name="assistant_research_title">Обновить согласие на участие в исследованиях</string>
@@ -113,7 +114,6 @@
   <string name="helloactivity_spinner_preferred_range_4">Собственный диапазон</string>
   <string name="helloactivity_preferred_range_min">Минимальное значение</string>
   <string name="helloactivity_preferred_range_max">Максимальное значение</string>
-  <string name="assistant_action_try">ПОПРОБОВАТЬ ПРЯМО СЕЙЧАС</string>
   <string name="helloactivity_language">Язык</string>
   <string name="invitation_title">Пригласить других людей</string>
   <string name="invitation_message">Попробовать Glucosio, приложение с открытым исходным кодом для исследований и отслеживания диабета.</string>

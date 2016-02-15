@@ -91,6 +91,7 @@
   <string name="assistant_action_ok">خوب، فهمیدم</string>
   <string name="assistant_action_feedback">ارسال بازخورد</string>
   <string name="assistant_action_reading">اضافه کردن اندازه گیری</string>
+  <string name="assistant_action_try">الان امتحان کنید</string>
   <string name="assistant_weight_title">وزن خود را به روز رسانی کنید</string>
   <string name="assistant_categories_title">ایجاد دسته</string>
   <string name="assistant_check_title">اینجا را مکررا بررسی کنید</string>
@@ -100,7 +101,6 @@
   <string name="helloactivity_spinner_preferred_range_4">محدوده سفارشی</string>
   <string name="helloactivity_preferred_range_min">حداقل مقدار</string>
   <string name="helloactivity_preferred_range_max">حداکثر مقدار</string>
-  <string name="assistant_action_try">الان امتحان کنید</string>
   <string name="helloactivity_language">زبان</string>
   <string name="invitation_title">دعوت سایر افراد</string>
   <string name="invitation_message">Glucosio نرم افزار منبع باز برای مدیریت دیابت و تحقیقات را امتحان کنید.</string>

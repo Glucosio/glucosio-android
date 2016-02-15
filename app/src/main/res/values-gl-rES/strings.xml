@@ -95,6 +95,7 @@
   <string name="assistant_action_ok">DE ACORDO</string>
   <string name="assistant_action_feedback">ENVIAR COMENTARIOS</string>
   <string name="assistant_action_reading">ENGADIR REXISTRO</string>
+  <string name="assistant_action_try">PROBAR AGORA</string>
   <string name="assistant_weight_title">Actualiza o teu peso</string>
   <string name="assistant_weight_desc">Para que a información resulte do máis precisa, procura ir actualizando o teu peso.</string>
   <string name="assistant_research_title">Actualizar a opción de investigación voluntaria</string>
@@ -113,7 +114,6 @@
   <string name="helloactivity_spinner_preferred_range_4">Personalizar rango</string>
   <string name="helloactivity_preferred_range_min">Valor mínimo</string>
   <string name="helloactivity_preferred_range_max">Valor máximo</string>
-  <string name="assistant_action_try">PROBAR AGORA</string>
   <string name="helloactivity_language">Idioma</string>
   <string name="invitation_title">Convidar a outras persoas</string>
   <string name="invitation_message">Proba Glucosio, unha aplicación de código aberto para xestionar a diabete e de utilidade para a súa investigación.</string>

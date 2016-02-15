@@ -95,6 +95,7 @@
   <string name="assistant_action_ok">OK, E KUPTOVA</string>
   <string name="assistant_action_feedback">DËRGO PËRSHTYPJET</string>
   <string name="assistant_action_reading">SHTO LEXIM</string>
+  <string name="assistant_action_try">Provoje tani</string>
   <string name="assistant_weight_title">Përditëso peshën</string>
   <string name="assistant_weight_desc">Sigurohuni që të përditësoni peshën në mënyrë që Glucosio të ketë informacionet më të sakta.</string>
   <string name="assistant_research_title">Përditësoni kërkimin opt-in tuajin</string>
@@ -111,7 +112,6 @@
   <string name="helloactivity_spinner_preferred_range_4">Shtrirja e zakonshme</string>
   <string name="helloactivity_preferred_range_min">Vlera minimale</string>
   <string name="helloactivity_preferred_range_max">Vlera maksimale</string>
-  <string name="assistant_action_try">Provoje tani</string>
   <string name="helloactivity_language">Gjuha</string>
   <string name="invitation_title">Ftoni njerëz të tjerë</string>
   <string name="invitation_message">Provoni Glucosio, një aplikacion me kod burimi të hapur për menaxhimin e diabetit dhe kërkimin rreth tij.</string>

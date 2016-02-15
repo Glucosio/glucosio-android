@@ -92,6 +92,7 @@
   <string name="assistant_action_ok">ГАРАЗД, ЗРОЗУМІЛО</string>
   <string name="assistant_action_feedback">НАДІСЛАТИ ВІДГУК</string>
   <string name="assistant_action_reading">ДОДАТИ ЧИТАННЯ</string>
+  <string name="assistant_action_try">СПРОБУЙТЕ ЗАРАЗ</string>
   <string name="assistant_weight_title">Оновити свою вагу</string>
   <string name="assistant_weight_desc">Не забудьте оновити свою вагу, аби Glucosio мав найточнішу інформацію.</string>
   <string name="assistant_categories_title">Додати категорії</string>
@@ -103,7 +104,6 @@
   <string name="helloactivity_spinner_preferred_range_4">Власний діапазон</string>
   <string name="helloactivity_preferred_range_min">Мінімальне значення</string>
   <string name="helloactivity_preferred_range_max">Максимальне значення</string>
-  <string name="assistant_action_try">СПРОБУЙТЕ ЗАРАЗ</string>
   <string name="helloactivity_language">Мова</string>
   <string name="invitation_title">Запросити інших користувачів</string>
   <string name="invitation_cta">Спробуйте Glucosio</string>

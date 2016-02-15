@@ -95,6 +95,7 @@
   <string name="assistant_action_ok">အိုကေ၊ ရပြီ</string>
   <string name="assistant_action_feedback">အကြံပြုချက် ပေးရန်</string>
   <string name="assistant_action_reading">ပြန်ဆိုချက် ထည့်ရန်</string>
+  <string name="assistant_action_try">အခုပဲ သုံးကြည့်လိုက်ပါ</string>
   <string name="assistant_weight_title">သင့် ကိုယ်အလေးချိန်ကို ပြင်ရန်</string>
   <string name="assistant_weight_desc">သင့်ကိုယ်အလေးချိန်ကို အမြဲတမ်း မွမ်းမံပြင်ဆင်ပါ။ ထိုအခါ Glucosio တွင် မှန်ကန်တိကျသည့် အချက်အလက်များ ရှိနေမည်ဖြစ်သည်။</string>
   <string name="assistant_research_title">သုတေသနတွင် သင် ပါဝင်နေမှု(opt-in)ကို မွမ်းမံပါ။</string>
@@ -111,7 +112,6 @@
   <string name="helloactivity_spinner_preferred_range_4">စိတ်ကြိုက် တန်ဖိုး (မှ - ထိ)</string>
   <string name="helloactivity_preferred_range_min">အနည်းဆုံး တန်ဖိုး</string>
   <string name="helloactivity_preferred_range_max">အများဆုံး တန်ဖိုး</string>
-  <string name="assistant_action_try">အခုပဲ သုံးကြည့်လိုက်ပါ</string>
   <string name="helloactivity_language">ဘာသာစကား</string>
   <string name="invitation_title">အခြားသူများကို ဖိတ်ခေါ်ပါ</string>
   <string name="invitation_message">ဆီးချိုရောဂါဆိုင်ရာ စီမံခန့်ခွဲမှုနှင့် သုတေသနအတွက် ပွင့်လင်းရင်းမြစ် အက်ပ် Glucosio ကို စမ်းသုံးကြည့်ပါ။</string>
