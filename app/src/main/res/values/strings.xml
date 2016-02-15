@@ -146,6 +146,7 @@
     <string name="assistant_action_ok">OK, GOT IT</string>
     <string name="assistant_action_feedback">SUBMIT FEEDBACK</string>
     <string name="assistant_action_reading">ADD READING</string>
+    <string name="assistant_action_try">TRY IT NOW</string>
     <string name="assistant_weight_title">Update your weight</string>
     <string name="assistant_weight_desc">Make sure to update your weight so Glucosio has the most accurate information.</string>
     <string name="assistant_research_title">Update your research opt-in</string>
@@ -160,14 +161,18 @@
     <string name="assistant_reading_desc">Be sure to regularly add your glucose readings so we can help you track your glucose levels over time.</string>
     <string name="assistant_export_title">Export your data</string>
     <string name="assistant_export_desc">Share your data with your doctor or backup your data to Google Drive using the export feature.</string>
+    <string name="assistant_calculator_a1c_title">Calculate A1C</string>
+    <string name="assistant_calculator_a1c_desc">Glucosio\'s built–in A1C calculator is now available to use in navigation drawer. Enter your average blood glucose and save the calculated A1C value instantly.</string>
 
     <string-array name="assistant_titles" translatable="false">
+        <item>@string/assistant_calculator_a1c_title</item>
         <item>@string/assistant_feedback_title</item>
         <item>@string/assistant_reading_title</item>
         <item>@string/assistant_categories_title</item>
         <item>@string/assistant_export_title</item>
     </string-array>
     <string-array name="assistant_descriptions" translatable="false">
+        <item>@string/assistant_calculator_a1c_desc</item>
         <item>@string/assistant_feedback_desc</item>
         <item>@string/assistant_reading_desc</item>
         <item>@string/assistant_categories_desc</item>
@@ -175,6 +180,7 @@
     </string-array>
 
     <string-array name="assistant_actions" translatable="false">
+        <item>@string/assistant_action_try</item>
         <item>@string/assistant_action_feedback</item>
         <item>@string/assistant_action_reading</item>
         <item>@string/assistant_action_try</item>
@@ -188,7 +194,6 @@
     <string name="helloactivity_spinner_preferred_range_4">Custom range</string>
     <string name="helloactivity_preferred_range_min">Min value</string>
     <string name="helloactivity_preferred_range_max">Max value</string>
-    <string name="assistant_action_try">TRY IT NOW</string>
     <string name="helloactivity_language">Language</string>
 
     <string-array name="helloactivity_preferred_range" translatable="false">

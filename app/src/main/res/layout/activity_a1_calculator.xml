@@ -21,20 +21,18 @@
         android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
-                android:paddingBottom="16dp"
+                android:padding="16dp"
                 android:orientation="vertical">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="right"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     android:textStyle="bold"
                     android:paddingTop="8dp"
                     android:textColor="@color/glucosio_text_dark"
@@ -53,7 +51,7 @@
                         android:gravity="end"
                         android:background="@null"
                         android:inputType="numberDecimal"
-                        android:textSize="56sp"
+                        android:textSize="52sp"
                         android:textColor="@color/glucosio_text_dark"/>
                     <TextView
                         android:id="@+id/activity_converter_a1c_glucose_unit"
@@ -83,7 +81,7 @@
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:gravity="right"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     android:paddingTop="8dp"
                     android:textColor="@color/glucosio_text_dark"
                     android:text="@string/activity_converter_a1c"/>
@@ -98,7 +96,7 @@
                         android:layout_weight="1"
                         android:paddingTop="8dp"
                         android:gravity="end"
-                        android:textSize="56sp"
+                        android:textSize="52sp"
                         android:textColor="@color/glucosio_text_dark"
                         android:text="00"/>
                     <TextView
