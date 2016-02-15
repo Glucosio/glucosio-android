@@ -43,7 +43,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-                    <org.glucosio.android.tools.NotDismissableEditText
+                    <org.glucosio.android.tools.NotDismissableEditText fontPath="fonts/lato-light.ttf"
                         android:id="@+id/activity_converter_a1c_glucose"
                         android:layout_width="0dp"
                         android:singleLine="true"
@@ -53,7 +53,6 @@
                         android:gravity="end"
                         android:background="@null"
                         android:inputType="numberDecimal"
-                        android:fontFamily="sans-serif-light"
                         android:textSize="56sp"
                         android:textColor="@color/glucosio_text_dark"/>
                     <TextView
@@ -92,17 +91,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-                    <TextView
+                    <TextView fontPath="fonts/lato-light.ttf"
                         android:id="@+id/activity_converter_a1c_a1c"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:paddingTop="8dp"
                         android:gravity="end"
-                        android:fontFamily="sans-serif-light"
                         android:textSize="56sp"
                         android:textColor="@color/glucosio_text_dark"
-                        android:text="--"/>
+                        android:text="00"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

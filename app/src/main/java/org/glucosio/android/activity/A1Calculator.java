@@ -7,6 +7,8 @@ import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -15,11 +17,13 @@ import android.widget.TextView;
 import org.glucosio.android.R;
 import org.glucosio.android.presenter.A1CCalculatorPresenter;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 public class A1Calculator extends AppCompatActivity {
 
     A1CCalculatorPresenter presenter;
     TextView glucoseUnit;
-    double convertedA1C;
+    double convertedA1C = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,5 +101,29 @@ public class A1Calculator extends AppCompatActivity {
                     (InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_converter_a1c, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_menu_save:
+                presenter.saveA1C(convertedA1C);
+                break;
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return true;
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

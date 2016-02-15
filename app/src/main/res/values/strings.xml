@@ -318,6 +318,7 @@
     <string name="activity_converter_a1c_glucose">AVERAGE BLOOD GLUCOSE LEVEL</string>
     <string name="activity_converter_a1c">A1C</string>
     <string name="activity_converter_title">A1C Calculator</string>
+    <string name="activity_converter_save">SAVE</string>
 
     <string-array name="fragment_history_selector" translatable="false">
         <item>@string/fab_glucose</item>
