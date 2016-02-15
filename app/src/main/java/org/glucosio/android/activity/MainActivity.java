@@ -150,12 +150,13 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
         });
 
         // Add Nav Drawer
-        final PrimaryDrawerItem item1 = new PrimaryDrawerItem().withName(R.string.action_settings).withIcon(R.drawable.ic_settings_black_24dp).withSelectable(false);
-        final PrimaryDrawerItem item2 = new PrimaryDrawerItem().withName(R.string.title_activity_export).withIcon(R.drawable.ic_share_black_24dp).withSelectable(false);
-        final PrimaryDrawerItem item3 = new PrimaryDrawerItem().withName(R.string.preferences_about_glucosio).withIcon(R.drawable.ic_info_black_24dp).withSelectable(false);
-        final PrimaryDrawerItem item4 = new PrimaryDrawerItem().withName(R.string.action_feedback).withIcon(R.drawable.ic_feedback_black_24dp).withSelectable(false);
-        final PrimaryDrawerItem item5 = new PrimaryDrawerItem().withName(R.string.action_invite).withIcon(R.drawable.ic_face_black_24dp).withSelectable(false);
-        final PrimaryDrawerItem item6 = new PrimaryDrawerItem().withName(R.string.about_donate).withIcon(R.drawable.ic_favorite_black_24dp).withSelectable(false);
+        final PrimaryDrawerItem itemSettings = new PrimaryDrawerItem().withName(R.string.action_settings).withIcon(R.drawable.ic_settings_black_24dp).withSelectable(false);
+        final PrimaryDrawerItem itemExport = new PrimaryDrawerItem().withName(R.string.title_activity_export).withIcon(R.drawable.ic_share_black_24dp).withSelectable(false);
+        final PrimaryDrawerItem itemAbout = new PrimaryDrawerItem().withName(R.string.preferences_about_glucosio).withIcon(R.drawable.ic_info_black_24dp).withSelectable(false);
+        final PrimaryDrawerItem itemFeedback = new PrimaryDrawerItem().withName(R.string.action_feedback).withIcon(R.drawable.ic_feedback_black_24dp).withSelectable(false);
+        final PrimaryDrawerItem itemInvite = new PrimaryDrawerItem().withName(R.string.action_invite).withIcon(R.drawable.ic_face_black_24dp).withSelectable(false);
+        final PrimaryDrawerItem itemDonate = new PrimaryDrawerItem().withName(R.string.about_donate).withIcon(R.drawable.ic_favorite_black_24dp).withSelectable(false);
+        final PrimaryDrawerItem itemA1C = new PrimaryDrawerItem().withName(R.string.activity_converter_title).withIcon(R.drawable.ic_drawer_calculator_a1c).withSelectable(false);
 
 
         DrawerBuilder drawerBuilder = new DrawerBuilder()
@@ -171,24 +172,26 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                        if (drawerItem.equals(item1)) {
+                        if (drawerItem.equals(itemSettings)) {
                             // Settings
                             openPreferences();
-                        } else if (drawerItem.equals(item3)) {
+                        } else if (drawerItem.equals(itemAbout)) {
                             // About
                             startAboutActivity();
-                        } else if (drawerItem.equals(item4)) {
+                        } else if (drawerItem.equals(itemFeedback)) {
                             // Feedback
                             Instabug.invoke();
-                        } else if (drawerItem.equals(item5)) {
+                        } else if (drawerItem.equals(itemInvite)) {
                             // Invite
                             showInviteDialog();
-                        } else if (drawerItem.equals(item2)) {
+                        } else if (drawerItem.equals(itemExport)) {
                             // Export
                             startExportActivity();
-                        } else if (drawerItem.equals(item6)) {
+                        } else if (drawerItem.equals(itemDonate)) {
                             // Donate
                             openDonateIntent();
+                        } else if (drawerItem.equals(itemA1C)){
+                            openA1CCalculator();
                         }
                         return false;
                     }
@@ -196,20 +199,23 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
 
         if (isPlayServicesAvailable()) {
             drawerBuilder.addDrawerItems(
-                    item1,
-                    item2,
-                    item3,
-                    item4,
-                    item6
+                    itemSettings,
+                    itemExport,
+                    itemA1C,
+                    itemAbout,
+                    itemFeedback,
+                    itemDonate
             )
                     .withSelectedItem(-1)
                     .build();
         } else {
             drawerBuilder.addDrawerItems(
-                    item1,
-                    item2,
-                    item3,
-                    item6
+                    itemSettings,
+                    itemExport,
+                    itemA1C,
+                    itemAbout,
+                    itemFeedback,
+                    itemDonate
             )
                     .withSelectedItem(-1)
                     .build();
@@ -223,6 +229,11 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
         Log.i("MainActivity", "Setting screen name: " + "main");
         mTracker.setScreenName("Main Activity");
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+    }
+
+    private void openA1CCalculator() {
+        Intent calculatorIntent = new Intent(this, A1Calculator.class);
+        startActivity(calculatorIntent);
     }
 
     private void openDonateIntent() {

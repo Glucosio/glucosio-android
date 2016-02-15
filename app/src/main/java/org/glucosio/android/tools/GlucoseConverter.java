@@ -21,7 +21,7 @@ public class GlucoseConverter {
         return bd.doubleValue();
     }
 
-    public double glucoseToA1C(int mgDl){
+    public double glucoseToA1C(double mgDl){
         // A1C = (Average glucose + 46.7) / 28.7
         return round((mgDl+46.7)/28.7, 2);
     }

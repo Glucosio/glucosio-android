@@ -158,7 +158,15 @@
             </intent-filter>
             <meta-data android:name="android.nfc.action.TECH_DISCOVERED" android:resource="@xml/nfc_tech_filter" />
         </activity>
-        <activity android:name=".activity.A1Calculator"></activity>
+        <activity android:name=".activity.A1Calculator"
+            android:label="@string/activity_converter_title"
+            android:windowSoftInputMode="stateVisible"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.glucosio.android.activity.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

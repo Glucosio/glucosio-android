@@ -315,6 +315,9 @@
     <string name="overview_hb1ac_error_no_data">Not enough data to calculate HBA1C</string>
     <string name="overview_hb1ac">HBA1C:</string>
     <string name="dialog_add_glucose_freestylelibre_added">Added from your FreeStyle Libre®</string>
+    <string name="activity_converter_a1c_glucose">BLOOD GLUCOSE LEVEL</string>
+    <string name="activity_converter_a1c">A1C</string>
+    <string name="activity_converter_title">A1C Calculator</string>
 
     <string-array name="fragment_history_selector" translatable="false">
         <item>@string/fab_glucose</item>
