@@ -220,4 +220,7 @@
   <string name="overview_hb1ac_error_no_data">Dati insufficienti</string>
   <string name="overview_hb1ac">Emoglobina glicata:</string>
   <string name="dialog_add_glucose_freestylelibre_added">Aggiunto dal tuo FreeStyle Libre®</string>
+  <string name="activity_converter_a1c_glucose">GLICEMIA MEDIA</string>
+  <string name="activity_converter_a1c">EMOGLOBINA GLICATA</string>
+  <string name="activity_converter_title">Calcola Glicata</string>
 </resources>
