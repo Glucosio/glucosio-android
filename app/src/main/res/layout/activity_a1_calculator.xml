@@ -102,7 +102,7 @@
                         android:fontFamily="sans-serif-light"
                         android:textSize="56sp"
                         android:textColor="@color/glucosio_text_dark"
-                        android:text="6.2"/>
+                        android:text="--"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
