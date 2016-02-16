@@ -58,6 +58,7 @@
   <string name="fragment_overview_selector_day">日</string>
   <string name="fragment_overview_selector_week">週</string>
   <string name="preferences_about">アプリについて</string>
+  <string name="preferences_experimental">これらの機能は実験的で完全には動作しないことがあり、ユーザーによる早期テスト用です。お使いの携帯電話を振って、フィードバックを送信することができることを覚えておいてください。</string>
   <string name="preferences_version">バージョン</string>
   <string name="preferences_terms">利用規約</string>
   <string name="glucose_reading_type">型</string>
@@ -110,6 +111,8 @@
   <string name="assistant_reading_desc">私たちが時間をかけてあなたの血糖値を追跡できるように、血糖値の測定値を定期的に追加するようにしてください。</string>
   <string name="assistant_export_title">データをエクスポート</string>
   <string name="assistant_export_desc">エクスポート機能を使用して、お医者さんとデータを共有したり、Google ドライブにデータをバックアップします。</string>
+  <string name="assistant_calculator_a1c_title">A1C を計算</string>
+  <string name="assistant_calculator_a1c_desc">Glucosio の内蔵 A1C 計算機がナビゲーション ドロワーで利用できるようになりました。平均血糖値を入力して、すぐに計算した A1C 値を保存します。</string>
   <string name="helloactivity_spinner_preferred_range">使用する範囲</string>
   <string name="helloactivity_spinner_preferred_range_4">カスタムの範囲</string>
   <string name="helloactivity_preferred_range_min">最小値</string>
@@ -125,6 +128,10 @@
   <string name="preferences_about_glucosio">Glucosio について</string>
   <string name="preferences_rate">Glucosio を評価</string>
   <string name="preferences_licences_open">オープンソース ライセンス</string>
+  <string name="preferences_freestyle_libre">FreeStyle Libre® サポートを有効にする</string>
+  <string name="preferences_freestyle_libre_experimental">実験的: FreeStyle Libre® サポートを有効にする</string>
+  <string name="preferences_font_dyslexia_experimental">実験的: 難読症のユーザー向けに可読性を向上します</string>
+  <string name="preferences_font_dyslexia">難読症のユーザー向けに可読性を向上します</string>
   <string name="about_donate">Glucosio に寄付</string>
   <string name="reading_ok">OK</string>
   <string name="reading_hypo">低血糖</string>
@@ -205,4 +212,17 @@
   <string name="fab_HB1AC">HB1AC 測定値</string>
   <string name="fab_glucose">血糖値</string>
   <string name="dialog_error_duplicate">既にこの時間の登録があります。修正を追加する前に削除してください。</string>
+  <string name="freestylelibre_nfc_ready">センサーの上に携帯電話を置いて、振動するまで動かさないでください。</string>
+  <string name="freestylelibre_nfc_not_supported">このデバイスは、NFC をサポートしていません。</string>
+  <string name="freestylelibre_nfc_not_enabled">NFC は無効です。</string>
+  <string name="dialog_add_glucose_freestylelibre">FreeStyle Libre® から追加</string>
+  <string name="freestylelibre_nfc_error">NFC 接続を開くときにエラー!</string>
+  <string name="dialog_add_glucose_freestylelibre_success">FreeStyle Libre® から正常に測定値を追加しました</string>
+  <string name="overview_hb1ac_error_no_data">HB1AC を計算するために十分なデータがありませｎ</string>
+  <string name="overview_hb1ac">HB1AC:</string>
+  <string name="dialog_add_glucose_freestylelibre_added">FreeStyle Libre® から追加されました</string>
+  <string name="activity_converter_a1c_glucose">平均血糖値</string>
+  <string name="activity_converter_a1c">A1C</string>
+  <string name="activity_converter_title">A1C 計算機</string>
+  <string name="activity_converter_save">保存</string>
 </resources>

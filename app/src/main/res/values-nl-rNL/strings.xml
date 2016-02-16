@@ -58,6 +58,7 @@
   <string name="fragment_overview_selector_day">Dag</string>
   <string name="fragment_overview_selector_week">Week</string>
   <string name="preferences_about">Over</string>
+  <string name="preferences_experimental">Deze functies zijn experimenteel, werken mogelijk niet volledig en zijn bedoeld voor vroege tests door gebruikers. Onthoud dat u uw telefoon kunt schudden om feedback te verzenden.</string>
   <string name="preferences_version">Versie</string>
   <string name="preferences_terms">Gebruiksvoorwaarden</string>
   <string name="glucose_reading_type">Type</string>
@@ -110,6 +111,8 @@
   <string name="assistant_reading_desc">Zorg ervoor dat u regelmatig uw glucose-uitlezingen toevoegt, zodat we kunnen helpen uw glucosegehalten in de loop der tijd bij te houden.</string>
   <string name="assistant_export_title">Uw gegevens exporteren</string>
   <string name="assistant_export_desc">Deel uw gegevens met uw arts of plaats een back-up ervan op Google Drive via de exporteerfunctie.</string>
+  <string name="assistant_calculator_a1c_title">A1C berekenen</string>
+  <string name="assistant_calculator_a1c_desc">Glucosio’s ingebouwde A1C-calculator is nu in de zijbalk beschikbaar. Voer uw gemiddelde bloedsuikerspiegel in en sla direct de berekende A1C-waarde op.</string>
   <string name="helloactivity_spinner_preferred_range">Voorkeursbereik</string>
   <string name="helloactivity_spinner_preferred_range_4">Aangepast bereik</string>
   <string name="helloactivity_preferred_range_min">Min. waarde</string>
@@ -125,6 +128,10 @@
   <string name="preferences_about_glucosio">Over Glucosio</string>
   <string name="preferences_rate">Glucosio beoordelen</string>
   <string name="preferences_licences_open">Opensourcelicenties</string>
+  <string name="preferences_freestyle_libre">FreeStyle Libre®-ondersteuning inschakelen</string>
+  <string name="preferences_freestyle_libre_experimental">EXPERIMENTEEL: FreeStyle Libre®-ondersteuning inschakelen</string>
+  <string name="preferences_font_dyslexia_experimental">EXPERIMENTEEL: leesbaarheid voor gebruikers met dyslexie verbeteren</string>
+  <string name="preferences_font_dyslexia">Leesbaarheid voor gebruikers met dyslexie verbeteren</string>
   <string name="about_donate">Doneren aan Glucosio</string>
   <string name="reading_ok">OK</string>
   <string name="reading_hypo">Hypoglykemie</string>
@@ -205,4 +212,17 @@
   <string name="fab_HB1AC">HB1AC-uitlezing</string>
   <string name="fab_glucose">Bloedsuikerspiegel</string>
   <string name="dialog_error_duplicate">U hebt al een vermelding voor deze tijd. Verwijder deze voordat u een correctie toevoegt.</string>
+  <string name="freestylelibre_nfc_ready">Houd uw telefoon voor de sensor en beweeg niet totdat deze trilt.</string>
+  <string name="freestylelibre_nfc_not_supported">Dit apparaat ondersteunt geen NFC.</string>
+  <string name="freestylelibre_nfc_not_enabled">NFC is uitgeschakeld.</string>
+  <string name="dialog_add_glucose_freestylelibre">Toevoegen vanuit FreeStyle Libre®</string>
+  <string name="freestylelibre_nfc_error">Fout bij openen van NFC-verbinding!</string>
+  <string name="dialog_add_glucose_freestylelibre_success">Uitlezing met succes toegevoegd vanuit FreeStyle Libre®</string>
+  <string name="overview_hb1ac_error_no_data">Onvoldoende gegevens om HBA1C te berekenen</string>
+  <string name="overview_hb1ac">HBA1C:</string>
+  <string name="dialog_add_glucose_freestylelibre_added">Toegevoegd vanuit uw FreeStyle Libre®</string>
+  <string name="activity_converter_a1c_glucose">GEMIDDELDE BLOEDSUIKERSPIEGEL</string>
+  <string name="activity_converter_a1c">A1C</string>
+  <string name="activity_converter_title">A1C-calculator</string>
+  <string name="activity_converter_save">OPSLAAN</string>
 </resources>

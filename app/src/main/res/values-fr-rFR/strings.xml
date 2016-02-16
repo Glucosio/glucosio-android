@@ -206,4 +206,11 @@
   <string name="fab_HB1AC">Valeur de l\'Hb1Ac</string>
   <string name="fab_glucose">Glycémie</string>
   <string name="dialog_error_duplicate">Vous avez déjà enregistré une donnée pour cette heure-là. Merci de la supprimer avant d\'ajouter une valeur corrigée.</string>
+  <string name="freestylelibre_nfc_ready">Veuillez placer votre téléphone sur le capteur et ne plus le bouger jusqu\'à ce qu\'il vibre.</string>
+  <string name="freestylelibre_nfc_not_supported">Cet appareil ne supporte pas le NFC.</string>
+  <string name="freestylelibre_nfc_not_enabled">Le NFC est désactivé.</string>
+  <string name="freestylelibre_nfc_error">Erreur de connexion NFC !</string>
+  <string name="overview_hb1ac_error_no_data">Données insuffisantes pour le calcul de l\'Hb1AC</string>
+  <string name="overview_hb1ac">Hb1AC :</string>
+  <string name="dialog_add_glucose_freestylelibre_added">Ajoutées depuis votre compte FreeStyle Libre®</string>
 </resources>

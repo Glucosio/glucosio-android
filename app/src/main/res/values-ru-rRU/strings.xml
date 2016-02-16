@@ -58,6 +58,7 @@
   <string name="fragment_overview_selector_day">День</string>
   <string name="fragment_overview_selector_week">Неделя</string>
   <string name="preferences_about">О нас</string>
+  <string name="preferences_experimental">Эти возможности экспериментальны, они могут не работать и предназначены для тестирования. Помните, что для того, чтобы отправить отзыв, достаточно потрести телефон.</string>
   <string name="preferences_version">Версия</string>
   <string name="preferences_terms">Условия использования</string>
   <string name="glucose_reading_type">Тип</string>
@@ -110,6 +111,8 @@
   <string name="assistant_reading_desc">Регулярно вводите данные об уровне глюкозы, в течением времени это поможет вам отслеживать уровень глюкозы.</string>
   <string name="assistant_export_title">Экспорт данных</string>
   <string name="assistant_export_desc">Поделитесь данными с вашим доктором или сделайте резервную копию ваших данных на Google Диск, используя функцию экспорта.</string>
+  <string name="assistant_calculator_a1c_title">Вычислить A1C</string>
+  <string name="assistant_calculator_a1c_desc">Встроенный в Glucosio калькулятор A1C теперь доступен для использования в области навигации. Введите ваш средний уровень глюкозы в крови и сохраните вычисленное значение A1C.</string>
   <string name="helloactivity_spinner_preferred_range">Предпочтительный диапазон</string>
   <string name="helloactivity_spinner_preferred_range_4">Собственный диапазон</string>
   <string name="helloactivity_preferred_range_min">Минимальное значение</string>
@@ -125,6 +128,10 @@
   <string name="preferences_about_glucosio">О Glucosio</string>
   <string name="preferences_rate">Оценить Glucosio</string>
   <string name="preferences_licences_open">Лицензии на ПО с открытым исходным кодом</string>
+  <string name="preferences_freestyle_libre">Включить поддержку FreeStyle LibreⓇ</string>
+  <string name="preferences_freestyle_libre_experimental">ЭКСПЕРИМЕНТАЛЬНОЕ: Включить поддержку FreeStyle LibreⓇ</string>
+  <string name="preferences_font_dyslexia_experimental">ЭКСПЕРИМЕНТАЛЬНОЕ: Улучшить читаемость для пользователей с дислексией</string>
+  <string name="preferences_font_dyslexia">Улучшить читаемость для пользователей с дислексией</string>
   <string name="about_donate">Пожертвовать Glucosio</string>
   <string name="reading_ok">ОК</string>
   <string name="reading_hypo">Пониженное содержание сахара в крови</string>
@@ -205,4 +212,17 @@
   <string name="fab_HB1AC">Показания HB1AC</string>
   <string name="fab_glucose">Уровень глюкозы в крови</string>
   <string name="dialog_error_duplicate">Для этого времени запись уже есть. Удалите её для добавления новой записи.</string>
+  <string name="freestylelibre_nfc_ready">Поместите ваш телефон на сенсор и не двигайте его до тех пор, пока он не завибрирует.</string>
+  <string name="freestylelibre_nfc_not_supported">Данное устройство не поддерживает NFC.</string>
+  <string name="freestylelibre_nfc_not_enabled">NDF отключён.</string>
+  <string name="dialog_add_glucose_freestylelibre">Добавить из FreeStyle LibreⓇ</string>
+  <string name="freestylelibre_nfc_error">Ошибка открытия соединения NFC!</string>
+  <string name="dialog_add_glucose_freestylelibre_success">Записи из FreeStyle LibreⓇ успешно добавлены</string>
+  <string name="overview_hb1ac_error_no_data">Не достаточно данных для расчёта HBA1C</string>
+  <string name="overview_hb1ac">HBA1C:</string>
+  <string name="dialog_add_glucose_freestylelibre_added">Добавлено из вашего FreeStyle LibreⓇ</string>
+  <string name="activity_converter_a1c_glucose">СРЕДНИЙ УРОВЕНЬ ГЛЮКОЗЫ В КРОВИ</string>
+  <string name="activity_converter_a1c">A1C</string>
+  <string name="activity_converter_title">Калькулятор A1C</string>
+  <string name="activity_converter_save">СОХРАНИТЬ</string>
 </resources>
