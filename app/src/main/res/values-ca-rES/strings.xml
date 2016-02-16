@@ -95,6 +95,7 @@
   <string name="assistant_action_ok">D\'ACORD, HO ENTENC</string>
   <string name="assistant_action_feedback">ENVIA COMENTARIS</string>
   <string name="assistant_action_reading">AFEGEIX LECTURA</string>
+  <string name="assistant_action_try">PROVEU-HO ARA</string>
   <string name="assistant_weight_title">Actualitzeu el vostre pes</string>
   <string name="assistant_weight_desc">Assegureu-vos d\'actualitzar el vostre pes per tal que Glucosio disposi de l\'informació més precisa.</string>
   <string name="assistant_research_title">Opció d\'actualització de la recerca</string>
@@ -113,7 +114,6 @@
   <string name="helloactivity_spinner_preferred_range_4">Rang personalitzat</string>
   <string name="helloactivity_preferred_range_min">Valor mínim</string>
   <string name="helloactivity_preferred_range_max">Valor màxim</string>
-  <string name="assistant_action_try">PROVEU-HO ARA</string>
   <string name="helloactivity_language">Idioma</string>
   <string name="invitation_title">Convideu altres persones</string>
   <string name="invitation_message">Proveu Glucosio, una applicació de codi obert per a la recerca i la gestió de la diabetis.</string>

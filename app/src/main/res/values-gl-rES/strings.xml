@@ -58,6 +58,7 @@
   <string name="fragment_overview_selector_day">Día</string>
   <string name="fragment_overview_selector_week">Semana</string>
   <string name="preferences_about">Acerca de</string>
+  <string name="preferences_experimental">Estas funcionalidades están aínda en probas e pode que non funcionen todo o correctamente que deberían. Lembra que podes enviarnos suxestións abaneando o teu teléfono.</string>
   <string name="preferences_version">Versión</string>
   <string name="preferences_terms">Condicións de uso</string>
   <string name="glucose_reading_type">Tipo</string>
@@ -95,6 +96,7 @@
   <string name="assistant_action_ok">DE ACORDO</string>
   <string name="assistant_action_feedback">ENVIAR COMENTARIOS</string>
   <string name="assistant_action_reading">ENGADIR REXISTRO</string>
+  <string name="assistant_action_try">PROBAR AGORA</string>
   <string name="assistant_weight_title">Actualiza o teu peso</string>
   <string name="assistant_weight_desc">Para que a información resulte do máis precisa, procura ir actualizando o teu peso.</string>
   <string name="assistant_research_title">Actualizar a opción de investigación voluntaria</string>
@@ -109,11 +111,12 @@
   <string name="assistant_reading_desc">Procura ir engadindo periodicamente os teus rexistros ou lecturas de glicosa para que así poidamos axudarche a levar conta deles no tempo.</string>
   <string name="assistant_export_title">Exportar os teus datos</string>
   <string name="assistant_export_desc">Comparte os teus datos co teu doutor ou fai unha copia de seguranza deles en Google Drive mediante a funcionalidade de exportar.</string>
+  <string name="assistant_calculator_a1c_title">Calcular A1C</string>
+  <string name="assistant_calculator_a1c_desc">Agora Glucosio dispón dunha calculadora de A1C no seu panel de navegación. Insire o teu nivel medio de glicosa en sangue e garda o valor calculado de A1C ao momento.</string>
   <string name="helloactivity_spinner_preferred_range">Rango preferido</string>
   <string name="helloactivity_spinner_preferred_range_4">Personalizar rango</string>
   <string name="helloactivity_preferred_range_min">Valor mínimo</string>
   <string name="helloactivity_preferred_range_max">Valor máximo</string>
-  <string name="assistant_action_try">PROBAR AGORA</string>
   <string name="helloactivity_language">Idioma</string>
   <string name="invitation_title">Convidar a outras persoas</string>
   <string name="invitation_message">Proba Glucosio, unha aplicación de código aberto para xestionar a diabete e de utilidade para a súa investigación.</string>
@@ -125,6 +128,10 @@
   <string name="preferences_about_glucosio">Acerca de Gluosio</string>
   <string name="preferences_rate">Valorar Glucosio</string>
   <string name="preferences_licences_open">Licenzas de código aberto</string>
+  <string name="preferences_freestyle_libre">Activar o soporte a FreeStyle Libre®</string>
+  <string name="preferences_freestyle_libre_experimental">EXPERIMENTAL: activar o soporte a FreeStyle Libre®</string>
+  <string name="preferences_font_dyslexia_experimental">EN PROBAS: aumento da lexibilidade para usuarios con dislexia</string>
+  <string name="preferences_font_dyslexia">Aumentar a lexibilidade para usuarios con dislexia</string>
   <string name="about_donate">Fai unha doazón a Glucosio</string>
   <string name="reading_ok">Aceptar</string>
   <string name="reading_hypo">Hipoglicemia</string>
@@ -205,4 +212,17 @@
   <string name="fab_HB1AC">Rexistro de HB1AC</string>
   <string name="fab_glucose">Nivel de glicosa en sangue</string>
   <string name="dialog_error_duplicate">Xa tes un rexistro anterior. Elimínao primeiro e despois engade a corrección.</string>
+  <string name="freestylelibre_nfc_ready">Por favor, sitúa o teu teléfono sobre o sensor e non o movas ata que vibre.</string>
+  <string name="freestylelibre_nfc_not_supported">Este dispositivo non admite NFC.</string>
+  <string name="freestylelibre_nfc_not_enabled">NFC está deshabilitado.</string>
+  <string name="dialog_add_glucose_freestylelibre">Engadir desde FreeStyle Libre®</string>
+  <string name="freestylelibre_nfc_error">Erro ao abrir a conexión NFC!</string>
+  <string name="dialog_add_glucose_freestylelibre_success">Engadiuse satisfactoriamente un rexistro desde FreeStyle Libre®</string>
+  <string name="overview_hb1ac_error_no_data">Non hai datos suficientes para calcular a HbA1c</string>
+  <string name="overview_hb1ac">HbA1c:</string>
+  <string name="dialog_add_glucose_freestylelibre_added">Engadido desde FreeStyle Libre®</string>
+  <string name="activity_converter_a1c_glucose">NIVEL MEDIO DE GLICOSA EN SANGUE</string>
+  <string name="activity_converter_a1c">A1C</string>
+  <string name="activity_converter_title">Calculadora de A1C</string>
+  <string name="activity_converter_save">GARDAR</string>
 </resources>

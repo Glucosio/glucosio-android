@@ -112,6 +112,15 @@ public class FormatDateTime {
         return finalTime + "";
     }
 
+    public String getCurrentDate(){
+        Calendar cal = Calendar.getInstance();
+
+        java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(context);
+
+        String finalTime = dateFormat.format(cal.getTime());
+        return finalTime + "";
+    }
+
     public String getTime(Calendar cal){
         java.text.DateFormat finalTimeFormat;
 

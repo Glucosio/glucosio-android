@@ -95,6 +95,7 @@
   <string name="assistant_action_ok">OK, ENTENDI</string>
   <string name="assistant_action_feedback">ENVIAR COMENTÁRIOS</string>
   <string name="assistant_action_reading">ADICIONAR LEITURA</string>
+  <string name="assistant_action_try">EXPERIMENTE AGORA</string>
   <string name="assistant_weight_title">Atualize seu peso</string>
   <string name="assistant_weight_desc">Certifique-se de atualizar seu peso para que Glucosio tenha sempre as informações mais precisas.</string>
   <string name="assistant_research_title">Atualize seu opt-in de pesquisa</string>
@@ -113,7 +114,6 @@
   <string name="helloactivity_spinner_preferred_range_4">Faixa personalizada</string>
   <string name="helloactivity_preferred_range_min">Valor mínimo</string>
   <string name="helloactivity_preferred_range_max">Valor máximo</string>
-  <string name="assistant_action_try">EXPERIMENTE AGORA</string>
   <string name="helloactivity_language">Idioma</string>
   <string name="invitation_title">Convidar outras pessoas</string>
   <string name="invitation_message">Experimente o Glucosio, um aplicativo de código-aberto para o controle da diabetes e pesquisas.</string>

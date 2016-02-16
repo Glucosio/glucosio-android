@@ -93,6 +93,7 @@
   <string name="assistant_action_ok">ঠিক আছে, বুঝেছি</string>
   <string name="assistant_action_feedback">ফিডব্যাক জমা করুন</string>
   <string name="assistant_action_reading">পড়া যোগ করুন</string>
+  <string name="assistant_action_try">এখনই ব্যবহার করে দেখুন</string>
   <string name="assistant_weight_title">আপনার ওজন আপডেট করুন</string>
   <string name="assistant_weight_desc">অবশ্যই আপনার ওজন নিয়মিত আপডেট করুন যেন Glucosio সঠিক তথ্য পেতে পারে।</string>
   <string name="assistant_research_title">আপনার গবেষণার আপডেট যোগ করুন</string>
@@ -109,7 +110,6 @@
   <string name="helloactivity_spinner_preferred_range_4">স্বনির্ধারিত পরিসীমা</string>
   <string name="helloactivity_preferred_range_min">সর্বনিম্ন মান</string>
   <string name="helloactivity_preferred_range_max">সর্বোচ্চ মান</string>
-  <string name="assistant_action_try">এখনই ব্যবহার করে দেখুন</string>
   <string name="helloactivity_language">ভাষা</string>
   <string name="invitation_title">অন্যান্য মানুষদের আমন্ত্রণ করুন</string>
 </resources>

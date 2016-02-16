@@ -20,6 +20,7 @@ import com.instabug.library.Instabug;
 
 import org.glucosio.android.ActionTip;
 import org.glucosio.android.R;
+import org.glucosio.android.activity.A1Calculator;
 import org.glucosio.android.activity.AddGlucoseActivity;
 import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.adapter.AssistantAdapter;
@@ -213,5 +214,10 @@ public class AssistantFragment extends Fragment {
 
     public void startExportActivity() {
         ((MainActivity)getActivity()).showExportDialog();
+    }
+
+    public void startA1CCalculatorActivity() {
+        Intent intent = new Intent(getActivity(), A1Calculator.class);
+        startActivity(intent);
     }
 }

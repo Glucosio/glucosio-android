@@ -81,6 +81,13 @@ public class AssistantAdapter extends RecyclerView.Adapter<AssistantAdapter.View
                     presenter.startExportActivity();
                 }
             };
+        } else if (actionTipTitleString.equals(res.getString(R.string.assistant_calculator_a1c_title))){
+            actionListener = new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    presenter.startA1CCalculatorActivity();
+                }
+            };
         } else {
             actionListener = new View.OnClickListener() {
                 @Override

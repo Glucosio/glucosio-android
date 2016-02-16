@@ -18,9 +18,7 @@ Glucosio for Android, an user centered free and open source app for Diabetes man
   Alternatively, from the Welcome screen, select **Import project**.
 
 ## Download on Google Play Store
-<a href="https://play.google.com/store/apps/details?id=org.glucosio.android" alt="Download from Google Play">
-  <img src="http://www.android.com/images/brand/android_app_on_play_large.png">
-</a>
+<a href="https://play.google.com/store/apps/details?id=org.glucosio.android&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-AC-global-none-all-co-pr-py-PartBadges-Oct1515-1"><img alt="Get it on Google Play" height="100" src="https://play.google.com/intl/en_us/badges/images/apps/en-play-badge.png" /></a>
 
 ## Test Drive Glucosio Daily
 http://daily.glucosio.org

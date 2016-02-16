@@ -65,7 +65,7 @@ public class ReadingToCSV {
 
                 for (int i = 0; i < readings.size(); i++) {
 
-                    osw.append(converter.toMmolL(readings.get(i).getReading())+ "mmol/L");
+                    osw.append(converter.glucoseToMmolL(readings.get(i).getReading())+ "mmol/L");
                     osw.append(',');
 
                     osw.append(dateTool.convertRawDate(readings.get(i).getCreated() + ""));

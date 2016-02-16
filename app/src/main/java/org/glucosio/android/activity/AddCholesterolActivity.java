@@ -55,7 +55,7 @@ public class AddCholesterolActivity extends AppCompatActivity implements TimePic
         HDLChoTextView = (TextView) findViewById(R.id.cholesterol_add_value_hdl);
 
         FormatDateTime formatDateTime = new FormatDateTime(getApplicationContext());
-        addDateTextView.setText(presenter.getReadingDay() + "/" + presenter.getReadingMonth() + "/" + presenter.getReadingYear());
+        addDateTextView.setText(formatDateTime.getCurrentDate());
         addTimeTextView.setText(formatDateTime.getCurrentTime());
         addDateTextView.setOnClickListener(new View.OnClickListener() {
             @Override

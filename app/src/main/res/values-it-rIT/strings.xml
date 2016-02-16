@@ -59,6 +59,7 @@
   <string name="fragment_overview_selector_day">Giorno</string>
   <string name="fragment_overview_selector_week">Settimana</string>
   <string name="preferences_about">Informazioni</string>
+  <string name="preferences_experimental">Queste funzioni sono sperimentali e potrebbero non funzionare correttamente. Ricorda che puoi scuotere il dispositivo per inviarci suggerimenti e problemi relative ad esse.</string>
   <string name="preferences_version">Versione</string>
   <string name="preferences_terms">Termini di utilizzo</string>
   <string name="glucose_reading_type">Tipo</string>
@@ -96,6 +97,7 @@
   <string name="assistant_action_ok">OK, CAPITO</string>
   <string name="assistant_action_feedback">INVIA FEEDBACK</string>
   <string name="assistant_action_reading">AGGIUNGI UNA MISURAZIONE</string>
+  <string name="assistant_action_try">PROVALO ORA</string>
   <string name="assistant_weight_title">Aggiorna il tuo peso</string>
   <string name="assistant_weight_desc">Aggiorna il peso regolarmente così Glucosio ha le informazioni più accurate.</string>
   <string name="assistant_research_title">Aggiorna la tua scelta di mandare il tuoi dati in modo anonimo ai gruppo di ricerca</string>
@@ -110,11 +112,12 @@
   <string name="assistant_reading_desc">Assicurati di aggiungere regolarmente le letture della tua glicemia, così possiamo aiutarti a monitorare i livelli di glucosio nel corso del tempo.</string>
   <string name="assistant_export_title">Esporta i tuoi dati</string>
   <string name="assistant_export_desc">Condividi le letture con il tuo medico o effettua un backup dei dati su Google Drive grazie alla nuova funzionalità esporta.</string>
+  <string name="assistant_calculator_a1c_title">Calcola Glicata</string>
+  <string name="assistant_calculator_a1c_desc">Prova il nuovo calcolatore di emoglobina glicata disponibile nel pannello laterale di Glucosio. Inseriesci la tua glicemia media e salva la relativa glicata istantaneamente.</string>
   <string name="helloactivity_spinner_preferred_range">Intervallo desiderato</string>
   <string name="helloactivity_spinner_preferred_range_4">Intervallo personalizzato</string>
   <string name="helloactivity_preferred_range_min">Valore minimo</string>
   <string name="helloactivity_preferred_range_max">Valore massimo</string>
-  <string name="assistant_action_try">PROVALO ORA</string>
   <string name="helloactivity_language">Lingua</string>
   <string name="invitation_title">Invita altre persone</string>
   <string name="invitation_message">Prova Glucosio, un\'app open source per la gestione del diabete e per la ricerca.</string>
@@ -126,6 +129,10 @@
   <string name="preferences_about_glucosio">Info su Glucosio</string>
   <string name="preferences_rate">Valuta Glucosio</string>
   <string name="preferences_licences_open">Licenze open source</string>
+  <string name="preferences_freestyle_libre">Abilita supporto a FreeStyle Libre®</string>
+  <string name="preferences_freestyle_libre_experimental">BETA: Abilita supporto a FreeStyle Libre®</string>
+  <string name="preferences_font_dyslexia_experimental">BETA: Aumenta leggibilità per utenti dislessici</string>
+  <string name="preferences_font_dyslexia">Aumenta leggibilità per utenti dislessici</string>
   <string name="about_donate">Fai una donazione</string>
   <string name="reading_ok">OK</string>
   <string name="reading_hypo">Ipoglicemia</string>
@@ -196,7 +203,7 @@
   <string name="title_activity_add_glucose">Aggiungi Glicemia</string>
   <string name="title_activity_add_weight">Aggiungi Peso Corporeo</string>
   <string name="title_activity_add_cholesterol">Aggiungi Colesterolo</string>
-  <string name="title_activity_add_hb1ac">Aggiungi HB1AC</string>
+  <string name="title_activity_add_hb1ac">Aggiungi Emoglobina glicata</string>
   <string name="title_activity_add_ketone">Aggiungi Chetoni</string>
   <string name="title_activity_add_pressure">Aggiungi pressione sanguigna</string>
   <string name="fab_weight">Peso corporeo</string>
@@ -206,4 +213,17 @@
   <string name="fab_HB1AC">Emoglobina glicata (HB1AC)</string>
   <string name="fab_glucose">Glicemia</string>
   <string name="dialog_error_duplicate">Hai già inserito questa lettura. Per favore rimuovila dalla cronologia prima di aggiungere una correzione.</string>
+  <string name="freestylelibre_nfc_ready">Per favore, avvicina il telefono al sensore e non muoverlo finchè non vibra.</string>
+  <string name="freestylelibre_nfc_not_supported">Questo dispositivo non supporta NFC</string>
+  <string name="freestylelibre_nfc_not_enabled">NFC è disabilitato.</string>
+  <string name="dialog_add_glucose_freestylelibre">Aggiungi da FreeStyle Libre®</string>
+  <string name="freestylelibre_nfc_error">Errore durante l\'apertura di una connessione NFC</string>
+  <string name="dialog_add_glucose_freestylelibre_success">Lettura aggiunta correttamente da FreeStyle Libre®</string>
+  <string name="overview_hb1ac_error_no_data">Dati insufficienti</string>
+  <string name="overview_hb1ac">Emoglobina glicata:</string>
+  <string name="dialog_add_glucose_freestylelibre_added">Aggiunto dal tuo FreeStyle Libre®</string>
+  <string name="activity_converter_a1c_glucose">GLICEMIA MEDIA</string>
+  <string name="activity_converter_a1c">EMOGLOBINA GLICATA</string>
+  <string name="activity_converter_title">Calcola Glicata</string>
+  <string name="activity_converter_save">SALVA</string>
 </resources>

@@ -9,8 +9,8 @@ android {
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 23
-        versionCode 10
-        versionName '0.9.4'
+        versionCode 11
+        versionName '0.10.0'
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -62,7 +62,7 @@ dependencies {
     compile 'com.google.android.gms:play-services-wearable:8.4.0'
 
     // Other libraries
-    compile 'io.realm:realm-android:0.87.2'
+    compile 'io.realm:realm-android:0.87.4'
     compile 'com.github.clans:fab:1.6.2'
     compile 'com.wdullaer:materialdatetimepicker:2.1.1'
     compile 'com.github.PhilJay:MPAndroidChart:v2.1.6'
@@ -71,10 +71,9 @@ dependencies {
     compile('com.mikepenz:materialdrawer:4.6.4@aar') {
         transitive = true
     }
-    compile ("com.instabug.library:instabugsupport:1.7.3")
+    compile 'com.instabug.library:instabugcompat:2.1.1'
 
     wearApp project(':wear')
-
     // Testing libraries
     androidTestCompile 'com.android.support.test:rules:0.4.1'
     androidTestCompile 'com.android.support.test:runner:0.4.1'

@@ -91,6 +91,7 @@
   <string name="assistant_action_ok">حسنا، فهمت</string>
   <string name="assistant_action_feedback">أرسل الملاحظات</string>
   <string name="assistant_action_reading">أضف القراءة</string>
+  <string name="assistant_action_try">جرِّبها الآن</string>
   <string name="assistant_weight_title">حدِّث وزنك</string>
   <string name="assistant_weight_desc">تأكد من تحديث وزنك لكي يحصل جلوكوسيو على معلومات أكثر دقة.</string>
   <string name="assistant_research_title">حدّث اختيار المشاركة في البحث</string>
@@ -107,7 +108,6 @@
   <string name="helloactivity_spinner_preferred_range_4">نطاق مُخصص</string>
   <string name="helloactivity_preferred_range_min">قيمة الحد الأدنى</string>
   <string name="helloactivity_preferred_range_max">قيمة الحد الأقصى</string>
-  <string name="assistant_action_try">جرِّبها الآن</string>
   <string name="helloactivity_language">اللغه</string>
   <string name="invitation_title">ادعو أشخاص آخرين</string>
   <string name="invitation_message">جرِّب جلوكوسيو، تطبيق مصدر مفتوح لإدارة مرض السكري والبحث.</string>

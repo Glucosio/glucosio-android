@@ -17,9 +17,6 @@ import java.util.Locale;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-/**
- * Created by paolo on 06/11/15.
- */
 public class AboutActivity extends AppCompatActivity {
 
     @Override
@@ -86,7 +83,7 @@ public class AboutActivity extends AppCompatActivity {
             feedbackPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
-                    Instabug.getInstance().invoke();
+                    Instabug.invoke();
 
                     return false;
                 }

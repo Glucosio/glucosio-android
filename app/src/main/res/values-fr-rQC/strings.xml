@@ -96,6 +96,7 @@
   <string name="assistant_action_ok">OK, COMPRIS</string>
   <string name="assistant_action_feedback">SOUMETTRE UN RETOUR</string>
   <string name="assistant_action_reading">AJOUTER LECTURE</string>
+  <string name="assistant_action_try">Essayez Maintenant</string>
   <string name="assistant_weight_title">Mise à jour de votre poids</string>
   <string name="assistant_weight_desc">Assurez-vous de mettre à jour votre poids afin Glucosio contient les informations les plus exactes.</string>
   <string name="assistant_research_title">Mettre à jour votre consentement à la recherche</string>
@@ -114,7 +115,6 @@
   <string name="helloactivity_spinner_preferred_range_4">Gamme personnalisée</string>
   <string name="helloactivity_preferred_range_min">Valeur minimum</string>
   <string name="helloactivity_preferred_range_max">Valeur maximum</string>
-  <string name="assistant_action_try">Essayez Maintenant</string>
   <string name="helloactivity_language">Langue</string>
   <string name="invitation_title">Inviter d\'autres personnes</string>
   <string name="invitation_message">Essayer Glucosio, une application open-source pour la gestion du diabète et la recherche associée.</string>
@@ -206,4 +206,11 @@
   <string name="fab_HB1AC">Valeur de l\'Hb1Ac</string>
   <string name="fab_glucose">Glycémie</string>
   <string name="dialog_error_duplicate">Vous avez déjà enregistré une donnée pour cette heure-là. Merci de la supprimer avant d\'ajouter une valeur corrigée.</string>
+  <string name="freestylelibre_nfc_ready">Veuillez placer votre téléphone sur le capteur et ne plus le bouger jusqu\'à ce qu\'il vibre.</string>
+  <string name="freestylelibre_nfc_not_supported">Cet appareil ne supporte pas le NFC.</string>
+  <string name="freestylelibre_nfc_not_enabled">Le NFC est désactivé.</string>
+  <string name="freestylelibre_nfc_error">Erreur de connexion NFC !</string>
+  <string name="overview_hb1ac_error_no_data">Données insuffisantes pour le calcul de l\'Hb1AC</string>
+  <string name="overview_hb1ac">Hb1AC :</string>
+  <string name="dialog_add_glucose_freestylelibre_added">Ajoutées depuis votre compte FreeStyle Libre®</string>
 </resources>

@@ -58,6 +58,7 @@
   <string name="fragment_overview_selector_day">日</string>
   <string name="fragment_overview_selector_week">週</string>
   <string name="preferences_about">關於</string>
+  <string name="preferences_experimental">這些功能還在實驗中，有可能無法正常使用，僅供早期使用者協助測試。別忘記您可以搖晃手機傳送意見回饋給我們。</string>
   <string name="preferences_version">版本</string>
   <string name="preferences_terms">使用條款</string>
   <string name="glucose_reading_type">類型</string>
@@ -95,6 +96,7 @@
   <string name="assistant_action_ok">好，收到！</string>
   <string name="assistant_action_feedback">送出意見回饋</string>
   <string name="assistant_action_reading">新增測量讀數</string>
+  <string name="assistant_action_try">立刻試試</string>
   <string name="assistant_weight_title">更新您的體重</string>
   <string name="assistant_weight_desc">記得要常在此更新您的體重，這樣 Glucosio 才能有最準確的資訊。</string>
   <string name="assistant_research_title">參與研究意願</string>
@@ -109,11 +111,12 @@
   <string name="assistant_reading_desc">務必定期紀錄血糖測量值，這樣才能幫助您追蹤血糖值。</string>
   <string name="assistant_export_title">匯出您的資料</string>
   <string name="assistant_export_desc">使用匯出功能將資料分享給您的醫生，或備份至 Google 雲端硬碟。</string>
+  <string name="assistant_calculator_a1c_title">計算糖化血色素</string>
+  <string name="assistant_calculator_a1c_desc">Glucosio 內建的糖化血色素計算機功能現在位於導航抽屜。您輸入平均血糖值後即可儲存計算出的糖化血色素值。</string>
   <string name="helloactivity_spinner_preferred_range">建議血糖範圍標準</string>
   <string name="helloactivity_spinner_preferred_range_4">自訂範圍</string>
   <string name="helloactivity_preferred_range_min">最小值</string>
   <string name="helloactivity_preferred_range_max">最大值</string>
-  <string name="assistant_action_try">立刻試試</string>
   <string name="helloactivity_language">語言</string>
   <string name="invitation_title">邀請其他人</string>
   <string name="invitation_message">試試 Glucosio，一套開放原始碼的糖尿病管理與研究程式。</string>
@@ -125,6 +128,10 @@
   <string name="preferences_about_glucosio">關於 Glucosio</string>
   <string name="preferences_rate">幫 Glucosio 打分數</string>
   <string name="preferences_licences_open">開放原始碼授權</string>
+  <string name="preferences_freestyle_libre">開啟 FreeStyle Libre® 支援</string>
+  <string name="preferences_freestyle_libre_experimental">實驗中: 開啟 FreeStyle Libre® 支援</string>
+  <string name="preferences_font_dyslexia_experimental">實驗中: 為有讀寫困難的使用者增加可讀性</string>
+  <string name="preferences_font_dyslexia">為有讀寫困難的使用者增加可讀性</string>
   <string name="about_donate">捐款給 Glucosio</string>
   <string name="reading_ok">確定</string>
   <string name="reading_hypo">低血糖</string>
@@ -205,4 +212,16 @@
   <string name="fab_HB1AC">糖化血色素（HbA1c）讀數</string>
   <string name="fab_glucose">血糖水準</string>
   <string name="dialog_error_duplicate">您在這個時間已經有一筆紀錄，請先移除該紀錄後再新增修正紀錄。</string>
+  <string name="freestylelibre_nfc_ready">請將您的手機放到感應器上，在震動前不要移動手機。</string>
+  <string name="freestylelibre_nfc_not_supported">此裝置不支援 NFC。</string>
+  <string name="freestylelibre_nfc_not_enabled">已停用 NFC。</string>
+  <string name="dialog_add_glucose_freestylelibre">自 FreeStyle Libre® 新增讀數</string>
+  <string name="freestylelibre_nfc_error">開啟 NFC 連線時發生錯誤！</string>
+  <string name="dialog_add_glucose_freestylelibre_success">已成功自 FreeStyle Libre® 新增讀數</string>
+  <string name="overview_hb1ac_error_no_data">沒有足夠的資料來計算糖化血色素</string>
+  <string name="overview_hb1ac">HB1AC:</string>
+  <string name="dialog_add_glucose_freestylelibre_added">自您的 FreeStyle Libre® 新增</string>
+  <string name="activity_converter_a1c_glucose">平均血糖讀數</string>
+  <string name="activity_converter_a1c">糖化血色素</string>
+  <string name="activity_converter_title">糖化血色素計算機</string>
 </resources>

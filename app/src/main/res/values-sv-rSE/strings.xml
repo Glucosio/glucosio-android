@@ -95,6 +95,7 @@
   <string name="assistant_action_ok">Ok, fick den</string>
   <string name="assistant_action_feedback">Skicka in feedback</string>
   <string name="assistant_action_reading">Lägg till värden</string>
+  <string name="assistant_action_try">Prova det nu</string>
   <string name="assistant_weight_title">Uppdatera din vikt</string>
   <string name="assistant_weight_desc">Se till att uppdatera din vikt så att Glucosio har en mer exakt information.</string>
   <string name="assistant_research_title">Uppdatera din forskning om du vill vara med</string>
@@ -113,7 +114,6 @@
   <string name="helloactivity_spinner_preferred_range_4">Anpassat intervall</string>
   <string name="helloactivity_preferred_range_min">Minvärde</string>
   <string name="helloactivity_preferred_range_max">Maxvärde</string>
-  <string name="assistant_action_try">Prova det nu</string>
   <string name="helloactivity_language">Språk</string>
   <string name="invitation_title">Bjud in andra personer</string>
   <string name="invitation_message">Prova Glucosio, en app med öppen källkod för diabetesbehandling och forskning.</string>

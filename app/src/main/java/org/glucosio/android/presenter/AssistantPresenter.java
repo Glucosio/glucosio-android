@@ -24,4 +24,8 @@ public class AssistantPresenter {
     public void startExportActivity() {
         fragment.startExportActivity();
     }
+
+    public void startA1CCalculatorActivity() {
+        fragment.startA1CCalculatorActivity();
+    }
 }

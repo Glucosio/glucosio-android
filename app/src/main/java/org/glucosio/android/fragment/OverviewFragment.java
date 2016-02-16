@@ -45,6 +45,8 @@ public class OverviewFragment extends Fragment {
     private TextView lastDateTextView;
     private TextView trendTextView;
     private TextView tipTextView;
+    private TextView HB1ACTextView;
+    private TextView HB1ACDateTextView;
     private ImageButton graphExport;
     private Spinner graphSpinner;
     private OverviewPresenter presenter;
@@ -91,6 +93,8 @@ public class OverviewFragment extends Fragment {
         tipTextView = (TextView) mFragmentView.findViewById(R.id.random_tip_textview);
         graphSpinner = (Spinner) mFragmentView.findViewById(R.id.chart_spinner);
         graphExport = (ImageButton) mFragmentView.findViewById(R.id.fragment_overview_graph_export);
+        HB1ACTextView = (TextView) mFragmentView.findViewById(R.id.fragment_overview_hb1ac);
+        HB1ACDateTextView = (TextView) mFragmentView.findViewById(R.id.fragment_overview_hb1ac_date);
 
         // Set array and adapter for graphSpinner
         String[] selectorArray = getActivity().getResources().getStringArray(R.array.fragment_overview_selector);
@@ -187,6 +191,7 @@ public class OverviewFragment extends Fragment {
         });
 
         loadLastReading();
+        loadHB1AC();
 /*
         loadGlucoseTrend();
 */
@@ -241,7 +246,7 @@ public class OverviewFragment extends Fragment {
                     float val = Float.parseFloat(presenter.getReading().get(i).toString());
                     yVals.add(new Entry(val, i));
                 } else {
-                    double val = converter.toMmolL(Double.parseDouble(presenter.getReading().get(i).toString()));
+                    double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getReading().get(i).toString()));
                     float converted = (float) val;
                     yVals.add(new Entry(converted, i));
                 }
@@ -255,7 +260,7 @@ public class OverviewFragment extends Fragment {
                     float val = Float.parseFloat(presenter.getReadingsWeek().get(i)+"");
                     yVals.add(new Entry(val, i));
                 } else {
-                    double val = converter.toMmolL(Double.parseDouble(presenter.getReadingsWeek().get(i)+""));
+                    double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getReadingsWeek().get(i)+""));
                     float converted = (float) val;
                     yVals.add(new Entry(converted, i));
                 }
@@ -268,7 +273,7 @@ public class OverviewFragment extends Fragment {
                     float val = Float.parseFloat(presenter.getReadingsMonth().get(i)+"");
                     yVals.add(new Entry(val, i));
                 } else {
-                    double val = converter.toMmolL(Double.parseDouble(presenter.getReadingsMonth().get(i)+""));
+                    double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getReadingsMonth().get(i)+""));
                     float converted = (float) val;
                     yVals.add(new Entry(converted, i));
                 }
@@ -315,13 +320,23 @@ public class OverviewFragment extends Fragment {
         chart.animateY(1000, Easing.EasingOption.EaseOutCubic);
     }
 
+    private void loadHB1AC(){
+        if (!presenter.isdbEmpty()){
+            HB1ACTextView.setText(presenter.getHB1AC());
+            HB1ACDateTextView.setText(presenter.getH1ACMonth());
+            if (HB1ACDateTextView.getText().equals(" ")){
+                HB1ACDateTextView.setVisibility(View.GONE);
+            }
+        }
+    }
+
     private void loadLastReading(){
         if (!presenter.isdbEmpty()) {
             if (presenter.getUnitMeasuerement().equals("mg/dL")) {
                 lastReadingTextView.setText(presenter.getLastReading() + " mg/dL");
             } else {
                 GlucoseConverter converter = new GlucoseConverter();
-                lastReadingTextView.setText(converter.toMmolL(Double.parseDouble(presenter.getLastReading().toString())) + " mmol/L");
+                lastReadingTextView.setText(converter.glucoseToMmolL(Double.parseDouble(presenter.getLastReading().toString())) + " mmol/L");
             }
 
             FormatDateTime dateTime = new FormatDateTime(getActivity().getApplicationContext());

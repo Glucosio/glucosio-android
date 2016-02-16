@@ -87,6 +87,7 @@
   <string name="assistant_action_ok">OK, ROZUMIEM</string>
   <string name="assistant_action_feedback">ODOSLAŤ SPÄTNÚ VÄZBU</string>
   <string name="assistant_action_reading">PRIDAŤ MERANIE</string>
+  <string name="assistant_action_try">VYSKÚŠAJTE TO</string>
   <string name="assistant_weight_title">Aktualizujte vašu hmotnosť</string>
   <string name="assistant_weight_desc">Uistite sa, aby bola vaša váha vždy aktuálna, aby mal Glucosio čo najpresnejšie údaje.</string>
   <string name="assistant_categories_title">Vytvoriť kategórie</string>
@@ -98,7 +99,6 @@
   <string name="helloactivity_spinner_preferred_range_4">Vlastný rozsah</string>
   <string name="helloactivity_preferred_range_min">Minimálna hodnota</string>
   <string name="helloactivity_preferred_range_max">Maximálna hodnota</string>
-  <string name="assistant_action_try">VYSKÚŠAJTE TO</string>
   <string name="helloactivity_language">Jazyk</string>
   <string name="invitation_title">Pozvať ďalšie osoby</string>
   <string name="invitation_message">Vyskúšajte Glucosio, open source aplikáciu pre výskum a správu cukrovky.</string>

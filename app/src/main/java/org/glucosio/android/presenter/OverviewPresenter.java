@@ -1,14 +1,18 @@
 package org.glucosio.android.presenter;
 
+import org.glucosio.android.R;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
 import org.glucosio.android.fragment.OverviewFragment;
+import org.glucosio.android.tools.FormatDateTime;
+import org.glucosio.android.tools.GlucoseConverter;
 import org.glucosio.android.tools.ReadingTools;
 import org.glucosio.android.tools.TipsManager;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.StringTokenizer;
 
 public class OverviewPresenter {
 
@@ -49,6 +53,25 @@ public class OverviewPresenter {
 /*    public int getGlucoseTrend(){
         return dB.getAverageGlucoseReadingForLastMonth();
     }*/
+
+    public String getHB1AC(){
+        // Check if last month is available first
+        if (getReadingsMonth().size()>1) {
+            GlucoseConverter converter = new GlucoseConverter();
+            return converter.glucoseToA1C(getReadingsMonth().get(getReadingsMonth().size()-2))+" %";
+        } else {
+            return fragment.getResources().getString(R.string.overview_hb1ac_error_no_data);
+        }
+    }
+
+    public String getH1ACMonth(){
+        // Check if last month is available first
+        if (getReadingsMonth().size()>1) {
+            return convertDateToMonth(getDatetimeMonth().get(getDatetimeMonth().size()-2))+"";
+        } else {
+            return " ";
+        }
+    }
 
     public String getLastReading(){
         return getReading().get(getReading().size() - 1) + "";

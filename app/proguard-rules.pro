@@ -23,9 +23,40 @@
 -dontwarn javax.**
 -dontwarn io.realm.**
 
--dontwarn android.support.**
--keep class android.support.v7.** { *; }
--keep interface android.support.v7.** { *; }
--keep class com.google.android.gms.** { *; }
+# RxAndroid
+-dontwarn rx.internal.util.unsafe.**
+
+## Instabug
+-dontwarn org.apache.http.**
+-dontwarn android.net.http.AndroidHttpClient
 -dontwarn com.google.android.gms.**
--keep class com.instabug.** { *; }
+-dontwarn com.android.volley.toolbox.**
+-dontwarn com.instabug.**
+
+## AppCompat
+-keep public class android.support.v7.widget.** { *; }
+-keep public class android.support.v7.internal.widget.** { *; }
+-keep public class android.support.v7.internal.view.menu.** { *; }
+
+-keep public class * extends android.support.v4.view.ActionProvider {
+    public <init>(android.content.Context);
+}
+
+## Google Play Services
+-dontnote com.google.vending.licensing.ILicensingService
+-keep class * extends java.util.ListResourceBundle {
+    protected Object[][] getContents();
+}
+
+-keep public class com.google.android.gms.common.internal.safeparcel.SafeParcelable {
+    public static final *** NULL;
+}
+
+-keepnames @com.google.android.gms.common.annotation.KeepName class *
+-keepclassmembernames class * {
+    @com.google.android.gms.common.annotation.KeepName *;
+}
+
+-keepnames class * implements android.os.Parcelable {
+    public static final ** CREATOR;
+}

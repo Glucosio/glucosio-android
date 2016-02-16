@@ -3,7 +3,6 @@ package org.glucosio.android.presenter;
 import org.glucosio.android.activity.AddPressureActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.PressureReading;
-import org.glucosio.android.tools.ReadingTools;
 import org.glucosio.android.tools.SplitDateTime;
 
 import java.text.DateFormat;
@@ -14,8 +13,6 @@ import java.util.Date;
 public class AddPressurePresenter {
     private DatabaseHandler dB;
     private AddPressureActivity activity;
-
-    private ReadingTools rTools;
     private String readingYear;
     private String readingMonth;
     private String readingDay;
@@ -40,21 +37,6 @@ public class AddPressurePresenter {
         this.readingDay = addSplitDateTime.getDay();
         this.readingHour = addSplitDateTime.getHour();
         this.readingMinute = addSplitDateTime.getMinute();
-    }
-
-    public int timeToSpinnerType() {
-        DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        Date formatted = Calendar.getInstance().getTime();
-
-        SplitDateTime addSplitDateTime = new SplitDateTime(formatted, inputFormat);
-        int hour = Integer.parseInt(addSplitDateTime.getHour());
-
-        return hourToSpinnerType(hour);
-    }
-
-    public int hourToSpinnerType(int hour){
-        rTools = new ReadingTools();
-        return rTools.hourToSpinnerType(hour);
     }
 
     public void dialogOnAddButtonPressed(String time, String date, String minReading, String maxReading){
@@ -89,18 +71,6 @@ public class AddPressurePresenter {
 
     public String getReadingMonth() {
         return readingMonth;
-    }
-
-    public String getReadingDay() {
-        return readingDay;
-    }
-
-    public String getReadingHour() {
-        return readingHour;
-    }
-
-    public String getReadingMinute() {
-        return readingMinute;
     }
 
     public void setReadingYear(String readingYear) {
