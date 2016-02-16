@@ -105,6 +105,7 @@
         <activity
             android:name=".activity.AddGlucoseActivity"
             android:label="@string/title_activity_add_glucose"
+            android:windowSoftInputMode="stateVisible"
             android:parentActivityName=".activity.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -113,6 +114,7 @@
         <activity
             android:name=".activity.AddWeightActivity"
             android:label="@string/title_activity_add_weight"
+            android:windowSoftInputMode="stateVisible"
             android:parentActivityName=".activity.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -121,6 +123,7 @@
         <activity
             android:name=".activity.AddCholesterolActivity"
             android:label="@string/title_activity_add_cholesterol"
+            android:windowSoftInputMode="stateVisible"
             android:parentActivityName=".activity.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -129,6 +132,7 @@
         <activity
             android:name=".activity.AddKetoneActivity"
             android:label="@string/title_activity_add_ketone"
+            android:windowSoftInputMode="stateVisible"
             android:parentActivityName=".activity.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -137,6 +141,7 @@
         <activity
             android:name=".activity.AddPressureActivity"
             android:label="@string/title_activity_add_pressure"
+            android:windowSoftInputMode="stateVisible"
             android:parentActivityName=".activity.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -145,6 +150,7 @@
         <activity
             android:name=".activity.AddHB1ACActivity"
             android:label="@string/title_activity_add_hb1ac"
+            android:windowSoftInputMode="stateVisible"
             android:parentActivityName=".activity.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
