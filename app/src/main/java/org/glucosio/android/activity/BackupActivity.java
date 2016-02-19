@@ -22,6 +22,7 @@ public class BackupActivity extends AppCompatActivity implements GoogleApiClient
 
     GoogleBackup googleBackupDriver;
     GoogleApiClient mClient;
+    PreferenceFragment fragment;
 
     @Override
     public void onCreate(final Bundle savedInstanceState) {
@@ -98,12 +99,14 @@ public class BackupActivity extends AppCompatActivity implements GoogleApiClient
 
     public static class MyPreferenceFragment extends PreferenceFragment {
 
+        CheckBoxPreference driveBackup;
+
         @Override
         public void onCreate(final Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.backup_preference);
 
-            final CheckBoxPreference driveBackup = (CheckBoxPreference) findPreference("google_drive");
+            driveBackup = (CheckBoxPreference) findPreference("backup_google_drive_enabled");
 
             driveBackup.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
@@ -118,6 +121,10 @@ public class BackupActivity extends AppCompatActivity implements GoogleApiClient
                     return true;
                 }
             });
+        }
+
+        public void setCheckboxChecked(boolean value) {
+            driveBackup.setChecked(value);
         }
     }
 

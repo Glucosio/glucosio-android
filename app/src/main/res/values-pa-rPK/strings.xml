@@ -43,7 +43,6 @@
   <string name="dialog_error2">ਕਿਰਪਾ ਕਰਕੇ ਇੱਕ ਸਹੀ ਮੁੱਲ ਦਰਜ ਕਰੋ।</string>
   <string name="dialog_error">ਕਿਰਪਾ ਕਰਕੇ ਸਾਰੀਆਂ ਥਾਵਾਂ ਭਰੋ।</string>
   <string name="dialog_delete">ਹਟਾਓ</string>
-  <string name="dialog_edit">ਸੋਧ ਕਰੋ</string>
   <string name="fragment_history_snackbar_text">1 ਰੀਡਿੰਗ ਹਟਾਈ</string>
   <string name="fragment_history_snackbar_action">ਵਾਪਸ</string>
   <string name="fragment_overview_last_reading">ਆਖਰੀ ਜਾਂਚ:</string>
@@ -90,6 +89,7 @@
   <string name="assistant_action_ok">ਠੀਕ, ਸਮਝ ਗਿਆ</string>
   <string name="assistant_action_feedback">ਫੀਡਬੈਕ ਦਿਓ</string>
   <string name="assistant_action_reading">ਰੀਡਿੰਗ ਜੋੜੋ</string>
+  <string name="assistant_action_try">ਹੁਣੇ ਇਸ ਦੀ ਵਰਤੋਂ ਕਰੋ</string>
   <string name="assistant_weight_title">ਆਪਣਾ ਭਾਰ ਅੱਪਡੇਟ ਕਰੋ</string>
   <string name="assistant_weight_desc">ਆਪਣੇ ਭਾਰ ਨੂੰ ਅੱਪਡੇਟ ਕਰਨਾ ਯਕੀਨੀ ਬਣਾਓ ਤਾਂ ਕਿ Glucosio ਕੋਲ ਬਿਲਕੁਲ ਸਹੀ ਜਾਣਕਾਰੀ ਹੋਵੇ।</string>
   <string name="assistant_research_title">ਆਪਣੀ ਖੋਜ ਭਾਗੀਦਾਰੀ ਨੂੰ ਅੱਪਡੇਟ ਕਰੋ</string>
@@ -105,5 +105,4 @@
   <string name="helloactivity_spinner_preferred_range_4">ਮਨਪਸੰਦ ਸੀਮਾ</string>
   <string name="helloactivity_preferred_range_min">ਘੱਟੋ-ਘਂੱਟ ਮੁੱਲ</string>
   <string name="helloactivity_preferred_range_max">ਵੱਧੋ-ਵੱਧ ਮੁੱਲ</string>
-  <string name="assistant_action_try">ਹੁਣੇ ਇਸ ਦੀ ਵਰਤੋਂ ਕਰੋ</string>
 </resources>

@@ -1,6 +1,7 @@
 package org.glucosio.android.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,8 +16,12 @@ import android.view.animation.TranslateAnimation;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.instabug.library.Instabug;
+
 import org.glucosio.android.ActionTip;
 import org.glucosio.android.R;
+import org.glucosio.android.activity.A1Calculator;
+import org.glucosio.android.activity.AddGlucoseActivity;
 import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.adapter.AssistantAdapter;
 import org.glucosio.android.presenter.AssistantPresenter;
@@ -198,10 +203,21 @@ public class AssistantFragment extends Fragment {
     }
 
     public void addReading(){
-        ((MainActivity)getActivity()).showAddDialog();
+        Intent intent = new Intent(getActivity(), AddGlucoseActivity.class);
+        startActivity(intent);
+        getActivity().finish();
     }
 
     public void openGitty(){
-        ((MainActivity)getActivity()).startGittyReporter();
+        Instabug.getInstance().invoke();
+    }
+
+    public void startExportActivity() {
+        ((MainActivity)getActivity()).showExportDialog();
+    }
+
+    public void startA1CCalculatorActivity() {
+        Intent intent = new Intent(getActivity(), A1Calculator.class);
+        startActivity(intent);
     }
 }

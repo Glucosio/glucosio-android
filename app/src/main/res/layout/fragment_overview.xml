@@ -12,14 +12,39 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/fab_size_normal"
         android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
         <Spinner
             android:id="@+id/chart_spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="16dp" />
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+
+            <ImageButton
+                android:id="@+id/fragment_overview_graph_export"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:paddingRight="16dp"
+                android:paddingLeft="16dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_photo_black_24dp"/>
+        </LinearLayout>
 
         <com.github.mikephil.charting.charts.LineChart
             android:id="@+id/chart"
@@ -182,7 +207,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="@string/fragment_overview_last_reading"
-                    android:textColor="@color/glucosio_text_light" />
+                    android:textColor="@color/glucosio_text" />
 
                 <TextView
                     android:id="@+id/item_history_reading"
@@ -194,12 +219,33 @@
                     android:text="100 mg/dL"
                     android:textColor="@color/glucosio_text" />
             </LinearLayout>
-
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    fontPath="fonts/lato-bold.ttf"
+                    android:visibility="invisible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/fragment_overview_last_reading" />
+                <TextView
+                    fontPath="fonts/lato.ttf"
+                    android:id="@+id/fragment_overview_last_date"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/glucosio_text_light"
+                    android:text="Thu, 22 dic 2016"/>
+                </LinearLayout>
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:visibility="gone">
+                android:visibility="gone"
+                android:text="">
 
                 <TextView
                     fontPath="fonts/lato-bold.ttf"
@@ -218,6 +264,65 @@
                     android:layout_marginTop="8dp"
                     android:text="@string/fragment_overview_trend_positive"
                     android:textColor="@color/glucosio_text_green" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="2px"
+            android:layout_marginTop="16dp"
+            android:background="#DADADA" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    fontPath="fonts/lato-bold.ttf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/overview_hb1ac"
+                    android:textColor="@color/glucosio_text" />
+
+                <TextView
+                    android:id="@+id/fragment_overview_hb1ac"
+                    fontPath="fonts/lato-bold.ttf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="16dp"
+                    android:text="6.5%"
+                    android:textColor="@color/glucosio_text_light" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    fontPath="fonts/lato-bold.ttf"
+                    android:visibility="invisible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/dialog_add_hb1ac" />
+                <TextView
+                    fontPath="fonts/lato.ttf"
+                    android:id="@+id/fragment_overview_hb1ac_date"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/glucosio_text_light"
+                    android:text="December - March"/>
             </LinearLayout>
         </LinearLayout>
 

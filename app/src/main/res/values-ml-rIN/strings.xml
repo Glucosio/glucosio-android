@@ -42,7 +42,6 @@
   <string name="dialog_error2">ഒരു സാധുതയുള്ള മൂല്യം ചേർക്കുക.</string>
   <string name="dialog_error">ദയവായി എല്ലാ കോളങ്ങളും പൂരിപ്പിക്കുക.</string>
   <string name="dialog_delete">നീക്കം ചെയ്യുക</string>
-  <string name="dialog_edit">മാറ്റം വരുത്തുക</string>
   <string name="fragment_history_snackbar_text">1 നിരീക്ഷണം മായിച്ചിരിക്കുന്നു</string>
   <string name="fragment_history_snackbar_action">തിരുത്തുക</string>
   <string name="fragment_overview_last_reading">അവസാന നോട്ടം:</string>

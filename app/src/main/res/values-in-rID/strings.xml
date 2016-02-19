@@ -43,7 +43,6 @@
   <string name="dialog_error2">Tolong masukan nilai yang sah.</string>
   <string name="dialog_error">Mohon lengkapi semua isian.</string>
   <string name="dialog_delete">Hapus</string>
-  <string name="dialog_edit">Edit</string>
   <string name="fragment_history_snackbar_text">1 bacaan dihapus</string>
   <string name="fragment_history_snackbar_action">URUNG</string>
   <string name="fragment_overview_last_reading">Periksa terakhir:</string>
@@ -88,6 +87,7 @@
   <string name="assistant_action_ok">OK, MENGERTI</string>
   <string name="assistant_action_feedback">KIRIM UMPAN BALIK</string>
   <string name="assistant_action_reading">TAMBAHKAN BACAAN</string>
+  <string name="assistant_action_try">COBA SEKARANG JUGA</string>
   <string name="assistant_weight_title">Perbarui berat kamu</string>
   <string name="assistant_weight_desc">Pastikan untuk memperbarui berat badanmu sehingga Glucosio akan menghasilkan informasi yang paling akurat.</string>
   <string name="assistant_research_title">Perbaharui persetujuan penelitian</string>
@@ -103,5 +103,4 @@
   <string name="helloactivity_spinner_preferred_range">Kisaran yang diinginkan</string>
   <string name="helloactivity_preferred_range_min">Nilai minimal</string>
   <string name="helloactivity_preferred_range_max">Nilai maksimal</string>
-  <string name="assistant_action_try">COBA SEKARANG JUGA</string>
 </resources>

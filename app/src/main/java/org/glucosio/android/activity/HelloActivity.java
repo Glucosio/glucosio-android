@@ -54,26 +54,28 @@ public class HelloActivity extends AppCompatActivity {
         presenter = new HelloPresenter(this);
         presenter.loadDatabase();
 
-        countrySpinner = (LabelledSpinner) findViewById(R.id.helloactivity_spinner_country);
-        genderSpinner = (LabelledSpinner) findViewById(R.id.helloactivity_spinner_gender);
-        typeSpinner = (LabelledSpinner) findViewById(R.id.helloactivity_spinner_diabetes_type);
-        unitSpinner = (LabelledSpinner) findViewById(R.id.helloactivity_spinner_preferred_unit);
-        startButton = (Button) findViewById(R.id.helloactivity_button_start);
+        countrySpinner = (LabelledSpinner) findViewById(R.id.activity_hello_spinner_country);
+        genderSpinner = (LabelledSpinner) findViewById(R.id.activity_hello_spinner_gender);
+        typeSpinner = (LabelledSpinner) findViewById(R.id.activity_hello_spinner_diabetes_type);
+        unitSpinner = (LabelledSpinner) findViewById(R.id.activity_hello_spinner_preferred_unit);
+        startButton = (Button) findViewById(R.id.activity_hello_button_start);
 
         termsTextView = (TextView) findViewById(R.id.helloactivity_textview_terms);
 
-        ageTextView = (TextView) findViewById(R.id.helloactivity_age);
+        ageTextView = (TextView) findViewById(R.id.activity_hello_age);
 
         // Get countries list from locale
-        ArrayList<String> countries = new ArrayList<String>();
+        ArrayList<String> countries = new ArrayList<>();
         Locale[] locales = Locale.getAvailableLocales();
 
         for (Locale locale : locales) {
             String country = locale.getDisplayCountry();
-            if (country.trim().length()>0 && !countries.contains(country)) {
+
+            if ((country.trim().length() > 0) && (!countries.contains(country))) {
                 countries.add(country);
             }
         }
+
         Collections.sort(countries);
 
         // Populate Spinners with array
@@ -81,6 +83,7 @@ public class HelloActivity extends AppCompatActivity {
 
         // Get locale country name and set the spinner
         String localCountry = getApplicationContext().getResources().getConfiguration().locale.getDisplayCountry();
+
         if (!localCountry.equals(null)) {
             countrySpinner.setSelection(((ArrayAdapter) countrySpinner.getSpinner().getAdapter()).getPosition(localCountry));
         }
@@ -111,7 +114,11 @@ public class HelloActivity extends AppCompatActivity {
 
     public void onStartClicked(View v){
         presenter.onNextClicked(ageTextView.getText().toString(),
-                genderSpinner.getSpinner().getSelectedItem().toString(), Locale.getDefault().getDisplayLanguage(), countrySpinner.getSpinner().getSelectedItem().toString(), typeSpinner.getSpinner().getSelectedItemPosition() + 1, unitSpinner.getSpinner().getSelectedItem().toString());
+                genderSpinner.getSpinner().getSelectedItem().toString(),
+                Locale.getDefault().getDisplayLanguage(),
+                countrySpinner.getSpinner().getSelectedItem().toString(),
+                typeSpinner.getSpinner().getSelectedItemPosition() + 1,
+                unitSpinner.getSpinner().getSelectedItem().toString());
     }
 
     public void displayErrorMessage(){

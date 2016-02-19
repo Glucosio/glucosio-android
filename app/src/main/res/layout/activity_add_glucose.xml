@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    tools:context="org.glucosio.android.activity.AddGlucoseActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/glucosio_pink"
+        android:minHeight="?android:attr/actionBarSize"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        android:layout_marginBottom="16dp"
+        app:titleTextAppearance="@style/Toolbar.WhiteText" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/done_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:onClick="onFabClicked"
+            android:layout_margin="32dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_done_black_24dp"
+            app:backgroundTint="@color/glucosio_accent" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:layout_margin="16dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/glucose_add_concentration_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:id="@+id/glucose_add_concentration"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/dialog_add_concentration"
+                        android:inputType="numberDecimal"
+                        android:singleLine="true"
+                        android:textColorHighlight="@color/glucosio_pink"
+                        android:textIsSelectable="false"
+                        android:textSize="@dimen/abc_text_size_body_2_material" />
+                </android.support.design.widget.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/glucose_add_unit_measurement"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="bottom"
+                    android:text="@string/dialog_add_concentration_um"
+                    android:textSize="@dimen/abc_text_size_body_2_material"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:id="@+id/glucose_add_date"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:hint="@string/dialog_add_date"
+                        android:singleLine="true"
+                        android:textSize="@dimen/abc_text_size_body_2_material" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:id="@+id/glucose_add_time"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:hint="@string/dialog_add_time"
+                        android:singleLine="true"
+                        android:textSize="@dimen/abc_text_size_body_2_material" />
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+            <org.glucosio.android.tools.LabelledSpinner
+                android:id="@+id/glucose_add_reading_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusableInTouchMode="false"
+                android:layout_marginTop="16dp"
+                custom:labelText="@string/dialog_add_measured"
+                custom:widgetColor="@color/glucosio_pink" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/glucose_add_freestyle_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginTop="24dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:onClick="startLibreActivity"
+                android:padding="8dp"
+                android:text="@string/dialog_add_glucose_freestylelibre"
+                android:textColor="@color/glucosio_text_light"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/glucose_type_custom"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/dialog_add_custom_type"
+                android:singleLine="true"
+                android:textColorHighlight="@color/glucosio_pink"
+                android:textSize="@dimen/abc_text_size_body_2_material"
+                android:visibility="gone" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

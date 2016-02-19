@@ -43,7 +43,6 @@
   <string name="dialog_error2">Моля въведете правилна стойност.</string>
   <string name="dialog_error">Моля попълнете всички полета.</string>
   <string name="dialog_delete">Изтриване</string>
-  <string name="dialog_edit">Промяна</string>
   <string name="fragment_history_snackbar_text">1 отчитане изтрито</string>
   <string name="fragment_history_snackbar_action">Отменям</string>
   <string name="fragment_overview_last_reading">Последна проверка:</string>
@@ -90,6 +89,7 @@
   <string name="assistant_action_ok">ДОБРЕ, РАЗБРАХ</string>
   <string name="assistant_action_feedback">ИЗПРАТИ ОТЗИВ</string>
   <string name="assistant_action_reading">ДОБАВИ ПОКАЗАТЕЛ</string>
+  <string name="assistant_action_try">ИЗПРОБВАЙ СЕГА</string>
   <string name="assistant_weight_title">Актуализиране на тегло</string>
   <string name="assistant_weight_desc">Актуализирайте теглото си, за да може Glucosio да разполага с най-точна информация.</string>
   <string name="assistant_research_title">Актуализиране на участието в проучването</string>
@@ -106,5 +106,4 @@
   <string name="helloactivity_spinner_preferred_range_4">Потребителски диапазон</string>
   <string name="helloactivity_preferred_range_min">Минимална стойност</string>
   <string name="helloactivity_preferred_range_max">Максимална стойност</string>
-  <string name="assistant_action_try">ИЗПРОБВАЙ СЕГА</string>
 </resources>

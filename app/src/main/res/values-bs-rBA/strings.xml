@@ -43,7 +43,6 @@
   <string name="dialog_error2">Molimo da unesete valjanu vrijednost.</string>
   <string name="dialog_error">Molimo da popunite sva polja.</string>
   <string name="dialog_delete">Obriši</string>
-  <string name="dialog_edit">Uredi</string>
   <string name="fragment_history_snackbar_text">1 čitanje obrisano</string>
   <string name="fragment_history_snackbar_action">PONIŠTI</string>
   <string name="fragment_overview_last_reading">Zadnja provjera:</string>
@@ -90,6 +89,7 @@
   <string name="assistant_action_ok">OK, HVALA</string>
   <string name="assistant_action_feedback">POŠALJI POVRATNU INFORMACIJU</string>
   <string name="assistant_action_reading">DODAJ OČITAVANJE</string>
+  <string name="assistant_action_try">PROBAJ ODMAH</string>
   <string name="assistant_weight_title">Ažurirajte vašu težinu</string>
   <string name="assistant_weight_desc">Pobrinite se da ažurirate vašu težinu kako bi Glucosio imao najtačnije informacije.</string>
   <string name="assistant_research_title">Ažurirajte vaše opt-in istraživanje</string>
@@ -106,5 +106,4 @@
   <string name="helloactivity_spinner_preferred_range_4">Zaseban raspon</string>
   <string name="helloactivity_preferred_range_min">Min. vrijednost</string>
   <string name="helloactivity_preferred_range_max">Max. vrijednost</string>
-  <string name="assistant_action_try">PROBAJ ODMAH</string>
 </resources>

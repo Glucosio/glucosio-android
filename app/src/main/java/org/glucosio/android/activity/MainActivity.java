@@ -5,82 +5,80 @@ import android.animation.AnimatorListenerAdapter;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.AdapterView;
-import android.widget.EditText;
+import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.github.clans.fab.FloatingActionButton;
+import com.github.clans.fab.FloatingActionMenu;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.google.android.gms.appinvite.AppInviteInvitation;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.instabug.library.Instabug;
+import com.instabug.library.compat.InstabugAppCompatActivity;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
-import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
-import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.adapter.HomePagerAdapter;
+import org.glucosio.android.presenter.ExportPresenter;
 import org.glucosio.android.presenter.MainPresenter;
-import org.glucosio.android.tools.GlucoseConverter;
-import org.glucosio.android.tools.LabelledSpinner;
-import org.glucosio.android.tools.LabelledSpinner.OnItemChosenListener;
 
-import java.text.DecimalFormat;
 import java.util.Calendar;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
-public class MainActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener{
+public class MainActivity extends InstabugAppCompatActivity implements DatePickerDialog.OnDateSetListener{
 
-    private LabelledSpinner spinnerReadingType;
-    private Dialog addDialog;
-
-    private TextView dialogCancelButton;
-    private TextView dialogAddButton;
-    private TextView dialogAddTime;
-    private TextView dialogAddDate;
-    private TextView dialogReading;
-    private EditText dialogTypeCustom;
+    ExportPresenter exportPresenter;
+    private RadioButton exportRangeButton;
     private HomePagerAdapter homePagerAdapter;
-    private boolean isCustomType;
-
     private MainPresenter presenter;
+    private ViewPager viewPager;
 
+    private TextView exportDialogDateFrom;
+    private TextView exportDialogDateTo;
+
+    private FloatingActionMenu fabMenu;
     private Tracker mTracker;
+    private FloatingActionButton fabGlucoseEmpty;
+
+    Toolbar toolbar;
+    TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         presenter = new MainPresenter(this);
+        exportPresenter = new ExportPresenter(this);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        viewPager = (ViewPager) findViewById(R.id.pager);
 
         if (toolbar != null) {
             setSupportActionBar(toolbar);
@@ -129,11 +127,36 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             }
         });
 
+        fabGlucoseEmpty = (FloatingActionButton) findViewById(R.id.fab_glucose_empty);
+        fabMenu = (FloatingActionMenu) findViewById(R.id.fab_menu_add_reading);
+        fabMenu.setClosedOnTouchOutside(true);
+        fabMenu.setOnMenuToggleListener(new FloatingActionMenu.OnMenuToggleListener() {
+            @Override
+            public void onMenuToggle(boolean opened) {
+                // When Fab Menu is opened, dim the main view.
+                if (opened){
+                    if (!presenter.isdbEmpty()) {
+                        AlphaAnimation alpha = new AlphaAnimation(1F, 0.2F);
+                        alpha.setDuration(600);
+                        alpha.setFillAfter(true);
+                        viewPager.startAnimation(alpha);
+                    }
+                } else {
+                    if (!presenter.isdbEmpty()) {
+                        removeWhiteOverlay();
+                    }
+                }
+            }
+        });
+
         // Add Nav Drawer
-        final PrimaryDrawerItem item1 = new PrimaryDrawerItem().withName(R.string.action_settings).withIcon(R.drawable.ic_settings_black_24dp).withSelectable(false);
-        final PrimaryDrawerItem item2 = new PrimaryDrawerItem().withName(R.string.preferences_about_glucosio).withIcon(R.drawable.ic_info_black_24dp).withSelectable(false);
-        final PrimaryDrawerItem item3 = new PrimaryDrawerItem().withName(R.string.action_feedback).withIcon(R.drawable.ic_feedback_black_24dp).withSelectable(false);
-        final PrimaryDrawerItem item4 = new PrimaryDrawerItem().withName(R.string.action_invite).withIcon(R.drawable.ic_face_black_24dp).withSelectable(false);
+        final PrimaryDrawerItem itemSettings = new PrimaryDrawerItem().withName(R.string.action_settings).withIcon(R.drawable.ic_settings_black_24dp).withSelectable(false);
+        final PrimaryDrawerItem itemExport = new PrimaryDrawerItem().withName(R.string.title_activity_export).withIcon(R.drawable.ic_share_black_24dp).withSelectable(false);
+        final PrimaryDrawerItem itemAbout = new PrimaryDrawerItem().withName(R.string.preferences_about_glucosio).withIcon(R.drawable.ic_info_black_24dp).withSelectable(false);
+        final PrimaryDrawerItem itemFeedback = new PrimaryDrawerItem().withName(R.string.action_feedback).withIcon(R.drawable.ic_feedback_black_24dp).withSelectable(false);
+        final PrimaryDrawerItem itemInvite = new PrimaryDrawerItem().withName(R.string.action_invite).withIcon(R.drawable.ic_face_black_24dp).withSelectable(false);
+        final PrimaryDrawerItem itemDonate = new PrimaryDrawerItem().withName(R.string.about_donate).withIcon(R.drawable.ic_favorite_black_24dp).withSelectable(false);
+        final PrimaryDrawerItem itemA1C = new PrimaryDrawerItem().withName(R.string.activity_converter_title).withIcon(R.drawable.ic_drawer_calculator_a1c).withSelectable(false);
 
 
         DrawerBuilder drawerBuilder = new DrawerBuilder()
@@ -142,25 +165,33 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                 .withToolbar(toolbar)
                 .withActionBarDrawerToggle(true)
                 .withAccountHeader(new AccountHeaderBuilder()
-                                .withActivity(this)
-                                .withHeaderBackground(R.drawable.drawer_header)
-                                .build()
+                        .withActivity(this)
+                        .withHeaderBackground(R.drawable.drawer_header)
+                        .build()
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                        if (drawerItem.equals(item1)) {
+                        if (drawerItem.equals(itemSettings)) {
                             // Settings
                             openPreferences();
-                        } else if (drawerItem.equals(item2)) {
+                        } else if (drawerItem.equals(itemAbout)) {
                             // About
                             startAboutActivity();
-                        } else if (drawerItem.equals(item3)) {
+                        } else if (drawerItem.equals(itemFeedback)) {
                             // Feedback
-                            startGittyReporter();
-                        } else if (drawerItem.equals(item4)) {
+                            Instabug.invoke();
+                        } else if (drawerItem.equals(itemInvite)) {
                             // Invite
                             showInviteDialog();
+                        } else if (drawerItem.equals(itemExport)) {
+                            // Export
+                            startExportActivity();
+                        } else if (drawerItem.equals(itemDonate)) {
+                            // Donate
+                            openDonateIntent();
+                        } else if (drawerItem.equals(itemA1C)){
+                            openA1CCalculator();
                         }
                         return false;
                     }
@@ -168,18 +199,24 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
         if (isPlayServicesAvailable()) {
             drawerBuilder.addDrawerItems(
-                    item1,
-                    item2,
-                    item3,
-                    item4
+                    itemA1C,
+                    itemExport,
+                    itemSettings,
+                    itemAbout,
+                    itemFeedback,
+                    itemDonate,
+                    itemInvite
             )
                     .withSelectedItem(-1)
                     .build();
         } else {
             drawerBuilder.addDrawerItems(
-                    item1,
-                    item2,
-                    item3
+                    itemA1C,
+                    itemExport,
+                    itemSettings,
+                    itemAbout,
+                    itemFeedback,
+                    itemDonate
             )
                     .withSelectedItem(-1)
                     .build();
@@ -195,6 +232,20 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
 
+    private void openA1CCalculator() {
+        Intent calculatorIntent = new Intent(this, A1Calculator.class);
+        startActivity(calculatorIntent);
+    }
+
+    private void openDonateIntent() {
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.glucosio.org/donate/"));
+        startActivity(browserIntent);
+    }
+
+    public void startExportActivity() {
+        showExportDialog();
+    }
+
     private void startAboutActivity() {
         Intent intent = new Intent(this, AboutActivity.class);
         startActivity(intent);
@@ -206,74 +257,85 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         finish();
     }
 
-    public void startGittyReporter() {
-        Intent intent = new Intent(this, GittyActivity.class);
-        startActivity(intent);
-    }
-
     public void openPreferences() {
         Intent intent = new Intent(this, PreferencesActivity.class);
         startActivity(intent);
         finish();
     }
 
-    public void onFabClicked(View v) {
-        showAddDialog();
+    public void onGlucoseFabClicked(View v) {
+        fabMenu.toggle(false);
+        Intent intent = new Intent(this, AddGlucoseActivity.class);
+        startActivity(intent);
+        finish();
     }
 
-    public void showAddDialog(){
-        addDialog = new Dialog(MainActivity.this, R.style.GlucosioTheme);
+    public void onKetoneFabClicked(View v) {
+        fabMenu.toggle(false);
+        Intent intent = new Intent(this, AddKetoneActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void onPressureFabClicked(View v) {
+        fabMenu.toggle(false);
+        Intent intent = new Intent(this, AddPressureActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void onHB1ACFabClicked(View v) {
+        fabMenu.toggle(false);
+        Intent intent = new Intent(this, AddHB1ACActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void onCholesterolFabClicked(View v) {
+        fabMenu.toggle(false);
+        Intent intent = new Intent(this, AddCholesterolActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void onWeightFabClicked(View v) {
+        fabMenu.toggle(false);
+        Intent intent = new Intent(this, AddWeightActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    private void removeWhiteOverlay() {
+        AlphaAnimation alpha = new AlphaAnimation(viewPager.getAlpha(), 1F);
+        alpha.setDuration(0);
+        alpha.setFillAfter(true);
+        viewPager.startAnimation(alpha);
+    }
+
+    public void showExportDialog() {
+        final Dialog exportDialog = new Dialog(MainActivity.this, R.style.GlucosioTheme);
 
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
-        lp.copyFrom(addDialog.getWindow().getAttributes());
-        addDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        lp.copyFrom(exportDialog.getWindow().getAttributes());
+        exportDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
-        addDialog.setContentView(R.layout.dialog_add);
-        addDialog.getWindow().setAttributes(lp);
-        addDialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-        addDialog.getWindow().setDimAmount(0.5f);
-        addDialog.show();
+        exportDialog.setContentView(R.layout.dialog_export);
+        exportDialog.getWindow().setAttributes(lp);
+        exportDialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+        exportDialog.getWindow().setDimAmount(0.5f);
+        exportDialog.show();
 
-        spinnerReadingType = (LabelledSpinner) addDialog.findViewById(R.id.dialog_add_reading_type);
-        spinnerReadingType.setItemsArray(R.array.dialog_add_measured_list);
+        exportDialogDateFrom = (TextView) exportDialog.findViewById(R.id.activity_export_date_from);
+        exportDialogDateTo = (TextView) exportDialog.findViewById(R.id.activity_export_date_to);
+        exportRangeButton = (RadioButton) exportDialog.findViewById(R.id.activity_export_range);
+        final RadioButton exportAllButton = (RadioButton) exportDialog.findViewById(R.id.activity_export_all);
+        final TextView exportButton = (TextView) exportDialog.findViewById(R.id.dialog_export_add);
+        final TextView cancelButton = (TextView) exportDialog.findViewById(R.id.dialog_export_cancel);
 
-        dialogCancelButton = (TextView) addDialog.findViewById(R.id.dialog_add_cancel);
-        dialogAddButton = (TextView) addDialog.findViewById(R.id.dialog_add_add);
-        dialogAddTime = (TextView) addDialog.findViewById(R.id.dialog_add_time);
-        dialogAddDate = (TextView) addDialog.findViewById(R.id.dialog_add_date);
-        dialogReading = (TextView) addDialog.findViewById(R.id.dialog_add_concentration);
-        dialogTypeCustom = (EditText) addDialog.findViewById(R.id.dialog_type_custom);
+        exportRangeButton.setChecked(true);
 
-        presenter.updateSpinnerTypeTime();
-        this.isCustomType = false;
-
-        spinnerReadingType.setOnItemChosenListener(new OnItemChosenListener() {
-            @Override
-            public void onItemChosen(View labelledSpinner, AdapterView<?> adapterView, View itemView, int position, long id) {
-                // If other is selected
-                if (position == 9) {
-                    dialogTypeCustom.setVisibility(View.VISIBLE);
-                    isCustomType = true;
-                } else {
-                    if (dialogTypeCustom.getVisibility() == View.VISIBLE) {
-                        dialogTypeCustom.setVisibility(View.GONE);
-                        isCustomType = false;
-                    }
-                }
-            }
-
-            @Override
-            public void onNothingChosen(View labelledSpinner, AdapterView<?> adapterView) {
-
-            }
-        });
-
-
-        dialogAddTime.setText(presenter.getReadingHour() + ":" + presenter.getReadingMinute());
-        dialogAddDate.setText(presenter.getReadingDay() + "/" + presenter.getReadingMonth() + "/" + presenter.getReadingYear());
-
-        dialogAddDate.setOnClickListener(new View.OnClickListener() {
+        exportDialogDateFrom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Calendar now = Calendar.getInstance();
@@ -283,144 +345,12 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                         now.get(Calendar.MONTH),
                         now.get(Calendar.DAY_OF_MONTH)
                 );
-                dpd.show(getFragmentManager(), "Datepickerdialog");
+                dpd.show(getFragmentManager(), "fromDateDialog");
                 dpd.setMaxDate(now);
             }
         });
 
-        dialogAddTime.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar now = Calendar.getInstance();
-                TimePickerDialog tpd = TimePickerDialog.newInstance(MainActivity.this, now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), true);
-                tpd.show(getFragmentManager(), "Timepickerdialog");
-            }
-        });
-        dialogCancelButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                addDialog.dismiss();
-            }
-        });
-        dialogAddButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialogOnAddButtonPressed();
-                mTracker.send(new HitBuilders.EventBuilder()
-                        .setCategory("GlucoseDialog")
-                        .setAction("Add")
-                        .build());
-            }
-        });
-
-        TextView unitM = (TextView) addDialog.findViewById(R.id.dialog_add_unit_measurement);
-
-        if (presenter.getUnitMeasuerement().equals("mg/dL")){
-            unitM.setText("mg/dL");
-        } else {
-            unitM.setText("mmol/L");
-        }
-
-        // Workaround for ActionBarContextView bug.
-        android.view.ActionMode.Callback workaroundCallback = new android.view.ActionMode.Callback() {
-            @Override
-            public boolean onCreateActionMode(android.view.ActionMode mode, Menu menu) {
-                return false;
-            }
-
-            @Override
-            public boolean onPrepareActionMode(android.view.ActionMode mode, Menu menu) {
-                return false;
-            }
-
-            @Override
-            public boolean onActionItemClicked(android.view.ActionMode mode, MenuItem item) {
-                return false;
-            }
-
-            @Override
-            public void onDestroyActionMode(android.view.ActionMode mode) {
-
-            }
-        };
-
-        dialogReading.setCustomSelectionActionModeCallback(workaroundCallback);
-
-        dialogTypeCustom.setCustomSelectionActionModeCallback(workaroundCallback);
-    }
-
-    public void showEditDialog(final int id){
-        //only included for debug
-        // printGlucoseReadingTableDetails();
-        GlucoseConverter converter = new GlucoseConverter();
-
-        final int readingId = id;
-        addDialog = new Dialog(MainActivity.this, R.style.GlucosioTheme);
-
-        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
-        lp.copyFrom(addDialog.getWindow().getAttributes());
-        addDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
-        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
-        addDialog.setContentView(R.layout.dialog_add);
-        addDialog.getWindow().setAttributes(lp);
-        addDialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-        addDialog.getWindow().setDimAmount(0.5f);
-        addDialog.show();
-
-        spinnerReadingType = (LabelledSpinner) addDialog.findViewById(R.id.dialog_add_reading_type);
-        spinnerReadingType.setItemsArray(R.array.dialog_add_measured_list);
-
-        dialogCancelButton = (TextView) addDialog.findViewById(R.id.dialog_add_cancel);
-        dialogAddButton = (TextView) addDialog.findViewById(R.id.dialog_add_add);
-        dialogAddTime = (TextView) addDialog.findViewById(R.id.dialog_add_time);
-        dialogAddDate = (TextView) addDialog.findViewById(R.id.dialog_add_date);
-        dialogReading = (TextView) addDialog.findViewById(R.id.dialog_add_concentration);
-        dialogAddButton.setText(getString(R.string.dialog_edit).toUpperCase());
-
-        if (presenter.getUnitMeasuerement().equals("mg/dL")) {
-            dialogReading.setText(presenter.getGlucoseReadingReadingById(readingId));
-        } else {
-            dialogReading.setText(converter.toMmolL(Double.parseDouble(presenter.getGlucoseReadingReadingById(readingId))) + "");
-        }
-
-        dialogReading = (TextView) addDialog.findViewById(R.id.dialog_add_concentration);
-        dialogTypeCustom = (EditText) addDialog.findViewById(R.id.dialog_type_custom);
-
-        presenter.updateSpinnerTypeTime();
-        this.isCustomType = false;
-
-        spinnerReadingType.setSelection(typeStringToInt(presenter.getGlucoseReadingTypeById(readingId)));
-
-        spinnerReadingType.setOnItemChosenListener(new OnItemChosenListener() {
-            @Override
-            public void onItemChosen(View labelledSpinner, AdapterView<?> adapterView, View itemView, int position, long id) {
-                // If other is selected
-                if (position == 9) {
-                    dialogTypeCustom.setVisibility(View.VISIBLE);
-                    dialogTypeCustom.setText(presenter.getGlucoseReadingTypeById(readingId));
-                    isCustomType = true;
-                } else {
-                    if (dialogTypeCustom.getVisibility() == View.VISIBLE) {
-                        dialogTypeCustom.setVisibility(View.GONE);
-                        dialogTypeCustom.setText("");
-                        isCustomType = false;
-                    }
-                }
-            }
-
-            @Override
-            public void onNothingChosen(View labelledSpinner, AdapterView<?> adapterView) {
-
-            }
-        });
-
-        presenter.getGlucoseReadingTimeById(id);
-
-        dialogAddTime.setText(presenter.getReadingHour() + ":" + presenter.getReadingMinute());
-        dialogAddDate.setText(presenter.getReadingDay() + "/" + presenter.getReadingMonth() + "/" + presenter.getReadingYear());
-
-        dialogAddDate.setOnClickListener(new View.OnClickListener() {
+        exportDialogDateTo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Calendar now = Calendar.getInstance();
@@ -430,115 +360,64 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                         now.get(Calendar.MONTH),
                         now.get(Calendar.DAY_OF_MONTH)
                 );
-                dpd.show(getFragmentManager(), "Datepickerdialog");
+                dpd.show(getFragmentManager(), "toDateDialog");
                 dpd.setMaxDate(now);
             }
         });
 
-        dialogAddTime.setOnClickListener(new View.OnClickListener() {
+        exportRangeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Calendar now = Calendar.getInstance();
-                TimePickerDialog tpd = TimePickerDialog.newInstance(MainActivity.this, now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), true);
-                tpd.show(getFragmentManager(), "Timepickerdialog");
-                spinnerReadingType.setSelection(presenter.timeToSpinnerType());
-            }
-        });
-        dialogCancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-                addDialog.dismiss();
-            }
-        });
-        dialogAddButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                dialogOnEditButtonPressed(id);
+                boolean isChecked = exportRangeButton.isChecked();
+                exportDialogDateFrom.setEnabled(true);
+                exportDialogDateTo.setEnabled(true);
+                exportAllButton.setChecked(!isChecked);
             }
         });
 
-        TextView unitM = (TextView) addDialog.findViewById(R.id.dialog_add_unit_measurement);
-        if (presenter.getUnitMeasuerement().equals("mg/dl")){
-            unitM.setText("mg/dl");
-        } else {
-            unitM.setText("mmol/L");
-        }
-
-        // Workaround for ActionBarContextView bug.
-        android.view.ActionMode.Callback workaroundCallback = new android.view.ActionMode.Callback() {
+        exportAllButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onCreateActionMode(android.view.ActionMode mode, Menu menu) {
-                return false;
+            public void onClick(View v) {
+                boolean isChecked = exportAllButton.isChecked();
+                exportDialogDateFrom.setEnabled(false);
+                exportDialogDateTo.setEnabled(false);
+                exportRangeButton.setChecked(!isChecked);
+                exportButton.setEnabled(true);
             }
+        });
 
+        exportButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onPrepareActionMode(android.view.ActionMode mode, Menu menu) {
-                return false;
+            public void onClick(View v) {
+                if (validateExportDialog()){
+                    exportPresenter.onExportClicked(exportAllButton.isChecked());
+                    exportDialog.dismiss();
+                } else {
+                    showSnackBar(getResources().getString(R.string.dialog_error));
+                }
             }
+        });
 
+        cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onActionItemClicked(android.view.ActionMode mode, MenuItem item) {
-                return false;
+            public void onClick(View v) {
+                exportDialog.dismiss();
             }
+        });
 
-            @Override
-            public void onDestroyActionMode(android.view.ActionMode mode) {
-
-            }
-        };
-
-        dialogReading.setCustomSelectionActionModeCallback(workaroundCallback);
-
-        dialogTypeCustom.setCustomSelectionActionModeCallback(workaroundCallback);
     }
 
-    private void dialogOnAddButtonPressed() {
-        if (isCustomType) {
-            presenter.dialogOnAddButtonPressed(dialogAddTime.getText().toString(),
-                    dialogAddDate.getText().toString(), dialogReading.getText().toString(),
-                    dialogTypeCustom.getText().toString());
-        } else {
-            presenter.dialogOnAddButtonPressed(dialogAddTime.getText().toString(),
-                    dialogAddDate.getText().toString(), dialogReading.getText().toString(),
-                    spinnerReadingType.getSpinner().getSelectedItem().toString());
-        }
-    }
-
-    public void dismissAddDialog(){
-        addDialog.dismiss();
-        homePagerAdapter.notifyDataSetChanged();
-        checkIfEmptyLayout();
-    }
-
-    public void showErrorMessage(){
-        Toast.makeText(getApplicationContext(),getString(R.string.dialog_error2), Toast.LENGTH_SHORT).show();
-    }
-
-    private void dialogOnEditButtonPressed(int id){
-        if (isCustomType) {
-            presenter.dialogOnEditButtonPressed(dialogAddTime.getText().toString(),
-                    dialogAddDate.getText().toString(), dialogReading.getText().toString(),
-                    dialogTypeCustom.getText().toString(), id);
-        } else {
-            presenter.dialogOnEditButtonPressed(dialogAddTime.getText().toString(),
-                    dialogAddDate.getText().toString(), dialogReading.getText().toString(),
-                    spinnerReadingType.getSpinner().getSelectedItem().toString(), id);
-        }
-    }
-
-    public void updateSpinnerTypeTime(int selection){
-        spinnerReadingType.setSelection(selection);
-    }
-
-    private void updateSpinnerTypeHour(int hour){
-        spinnerReadingType.setSelection(presenter.hourToSpinnerType(hour));
+    private boolean validateExportDialog() {
+        String dateTo = exportDialogDateTo.getText().toString();
+        String dateFrom = exportDialogDateFrom.getText().toString();
+        return !exportRangeButton.isChecked() || !(dateTo.equals("") || dateFrom.equals(""));
     }
 
     public CoordinatorLayout getFabView() {
         return (CoordinatorLayout) findViewById(R.id.coordinator_layout);
     }
 
-    public void reloadFragmentAdapter(){
+    public void reloadFragmentAdapter() {
         homePagerAdapter.notifyDataSetChanged();
     }
 
@@ -570,12 +449,12 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         appBarLayout.setLayoutParams(appBarLayoutParams);
     }
 
-    public Toolbar getToolbar(){
+    public Toolbar getToolbar() {
         return (Toolbar) findViewById(R.id.toolbar);
     }
 
-    private void hideFabAnimation(){
-        final View fab = findViewById(R.id.main_fab);
+    private void hideFabAnimation() {
+        final View fab = findViewById(R.id.fab_menu_add_reading);
         fab.animate()
                 .translationY(-5)
                 .alpha(0.0f)
@@ -588,8 +467,8 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                 });
     }
 
-    private void showFabAnimation(){
-        final View fab = findViewById(R.id.main_fab);
+    private void showFabAnimation() {
+        final View fab = findViewById(R.id.fab_menu_add_reading);
         if (fab.getVisibility() == View.INVISIBLE) {
             // Prepare the View for the animation
             fab.setVisibility(View.VISIBLE);
@@ -618,13 +497,18 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         startActivityForResult(intent, 0);
     }
 
-    public void checkIfEmptyLayout(){
+    public void checkIfEmptyLayout() {
         LinearLayout emptyLayout = (LinearLayout) findViewById(R.id.mainactivity_empty_layout);
         ViewPager pager = (ViewPager) findViewById(R.id.pager);
 
         if (presenter.isdbEmpty()) {
             pager.setVisibility(View.GONE);
+            tabLayout.setVisibility(View.GONE);
             emptyLayout.setVisibility(View.VISIBLE);
+
+            // If empty show only Glucose fab
+            fabMenu.setVisibility(View.GONE);
+            fabGlucoseEmpty.setVisibility(View.VISIBLE);
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 if (getResources().getConfiguration().orientation == 1) {
@@ -639,9 +523,36 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             }
         } else {
             pager.setVisibility(View.VISIBLE);
-            emptyLayout.setVisibility(View.INVISIBLE);
+            emptyLayout.setVisibility(View.GONE);
+            fabGlucoseEmpty.setVisibility(View.GONE);
         }
     }
+
+    public void showExportedSnackBar(int nReadings) {
+        View rootLayout = findViewById(android.R.id.content);
+        Snackbar.make(rootLayout, getString(R.string.activity_export_snackbar_1) + " " + nReadings + " " + getString(R.string.activity_export_snackbar_2), Snackbar.LENGTH_SHORT).show();
+    }
+
+    public void showNoReadingsSnackBar(){
+        View rootLayout = findViewById(android.R.id.content);
+        Snackbar.make(rootLayout, getString(R.string.activity_export_no_readings_snackbar), Snackbar.LENGTH_SHORT).show();
+    }
+
+    private void showSnackBar(String text) {
+        View rootLayout = findViewById(android.R.id.content);
+        Snackbar.make(rootLayout, text, Snackbar.LENGTH_SHORT).show();
+    }
+
+    public void showShareDialog(Uri uri) {
+        Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
+        shareIntent.setData(uri);
+        shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        shareIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+        shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
+        shareIntent.setType("*/*");
+        startActivity(Intent.createChooser(shareIntent, getResources().getString(R.string.share_using)));
+    }
+
 
     public int typeStringToInt(String typeString) {
         //TODO refactor this ugly mess
@@ -668,38 +579,34 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             typeInt = 9;
         }
 
-        return  typeInt;
-}
-
-    @Override
-    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute) {
-        TextView addTime = (TextView) addDialog.findViewById(R.id.dialog_add_time);
-        DecimalFormat df = new DecimalFormat("00");
-
-        presenter.setReadingHour(df.format(hourOfDay));
-        presenter.setReadingMinute(df.format(minute));
-
-        String time = +hourOfDay+":"+presenter.getReadingMinute();
-        addTime.setText(time);
-        updateSpinnerTypeHour(Integer.parseInt(df.format(hourOfDay)));
+        return typeInt;
     }
 
     @Override
     public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-        TextView addDate = (TextView) addDialog.findViewById(R.id.dialog_add_date);
-        DecimalFormat df = new DecimalFormat("00");
+        // Check which dialog set the date
+        if (view.getTag().equals("fromDateDialog")) {
+            exportPresenter.setFromYear(year);
+            exportPresenter.setFromMonth(monthOfYear);
+            exportPresenter.setFromDay(dayOfMonth);
 
-        presenter.setReadingYear(year + "");
-        presenter.setReadingMonth(df.format(monthOfYear + 1));
-        presenter.setReadingDay(df.format(dayOfMonth));
+            int monthToShow = monthOfYear + 1;
+            String date = +dayOfMonth + "/" + monthToShow + "/" + year;
+            exportDialogDateFrom.setText(date);
+        } else {
+            exportPresenter.setToYear(year);
+            exportPresenter.setToMonth(monthOfYear);
+            exportPresenter.setToDay(dayOfMonth);
 
-        String date = +dayOfMonth+"/"+presenter.getReadingMonth()+"/"+presenter.getReadingYear();
-        addDate.setText(date);
+            int monthToShow = monthOfYear + 1;
+            String date = +dayOfMonth + "/" + monthToShow + "/" + year;
+            exportDialogDateTo.setText(date);
+        }
     }
 
     private boolean isPlayServicesAvailable() {
         int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext());
-        if(status == ConnectionResult.SUCCESS)
+        if (status == ConnectionResult.SUCCESS)
             return true;
         else {
             Log.d("STATUS", "Error connecting with Google Play services. Code: " + String.valueOf(status));

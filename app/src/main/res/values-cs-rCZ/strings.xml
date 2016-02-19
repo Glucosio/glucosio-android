@@ -43,7 +43,6 @@
   <string name="dialog_error2">Prosím, zadejte platnou hodnotu.</string>
   <string name="dialog_error">Vyplňte, prosím, všechna pole.</string>
   <string name="dialog_delete">Odstranit</string>
-  <string name="dialog_edit">Upravit</string>
   <string name="fragment_history_snackbar_text">odstraněn 1 záznam</string>
   <string name="fragment_history_snackbar_action">ZPĚT</string>
   <string name="fragment_overview_last_reading">Poslední kontrola:</string>

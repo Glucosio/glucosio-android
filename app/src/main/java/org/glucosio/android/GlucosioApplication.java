@@ -1,22 +1,16 @@
 package org.glucosio.android;
 
 import android.app.Application;
-import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
-
-import org.glucosio.android.db.DatabaseHandler;
-
-import java.util.Locale;
+import com.instabug.library.IBGInvocationEvent;
+import com.instabug.library.Instabug;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class GlucosioApplication extends Application {
 
@@ -46,14 +40,31 @@ public class GlucosioApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                .setDefaultFontPath("fonts/lato.ttf")
-                .setFontAttrId(R.attr.fontPath)
-                .build());
+        // Get Dyslexia preference and adjust font
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean isDyslexicModeOn = sharedPref.getBoolean("pref_font_dyslexia", false);
+
+        if (isDyslexicModeOn) {
+            setFont("fonts/opendyslexic.otf");
+        } else {
+            setFont("fonts/lato.ttf");
+        }
+
+        if (BuildConfig.DEBUG) {
+            new Instabug.Builder(this, "b2226aa30fec24f6f4bed6ad68964e9b")
+                    .setInvocationEvent(IBGInvocationEvent.IBGInvocationEventShake)
+                    .build();
+        } else {
+            new Instabug.Builder(this, "820ee7db3118d03fd5f4249b5a73672e")
+                    .setInvocationEvent(IBGInvocationEvent.IBGInvocationEventShake)
+                    .build();
+        }
     }
 
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    private void setFont(String font){
+        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                .setDefaultFontPath(font)
+                .setFontAttrId(R.attr.fontPath)
+                .build());
     }
 }

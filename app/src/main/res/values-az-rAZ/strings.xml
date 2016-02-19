@@ -43,7 +43,6 @@
   <string name="dialog_error2">Etibarlı dəyər daxil edin.</string>
   <string name="dialog_error">Boş yerləri doldurun.</string>
   <string name="dialog_delete">Sil</string>
-  <string name="dialog_edit">Redaktə</string>
   <string name="fragment_history_snackbar_text">1 oxunma silindi</string>
   <string name="fragment_history_snackbar_action">GERİ</string>
   <string name="fragment_overview_last_reading">Son yoxlama:</string>
@@ -90,6 +89,7 @@
   <string name="assistant_action_ok">OLDU, ANLADIM</string>
   <string name="assistant_action_feedback">ƏKS ƏLAQƏ GÖNDƏR</string>
   <string name="assistant_action_reading">OXUMA ƏLAVƏ ET</string>
+  <string name="assistant_action_try">İNDİ SINA</string>
   <string name="assistant_weight_title">Çəkinizi yeniləyin</string>
   <string name="assistant_weight_desc">Ən dəqiq informasiyaya malik olmaq üçün Glucosio-u yeniləməyi unutmayın.</string>
   <string name="assistant_research_title">Araşdırma qəbulunu yeniləyin</string>
@@ -106,5 +106,4 @@
   <string name="helloactivity_spinner_preferred_range_4">Şəxsi aralıq</string>
   <string name="helloactivity_preferred_range_min">Minimum dəyər</string>
   <string name="helloactivity_preferred_range_max">Maksimum dəyər</string>
-  <string name="assistant_action_try">İNDİ SINA</string>
 </resources>

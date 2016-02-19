@@ -4,7 +4,10 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
 
   #copy data we're interested in to other place
   mkdir $HOME/android/
+  mkdir $HOME/android/wear
+
   cp -R app/build/outputs/apk/app-debug.apk $HOME/android/
+  cp -R wear/build/outputs/apk/wear-debug.apk $HOME/android/wear
 
   #go to home and setup git
   cd $HOME
@@ -13,9 +16,9 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
 
 
   #clone gh-pages branch
-  git clone --quiet --branch=master https://8ded5df0cdf373ca7b7662f00ef159f722601d54@github.com/Glucosio/glucosio.github.io.git  master > /dev/null
+  git clone --quiet --branch=master https://glucat:$GITHUB_API_KEY@github.com/Glucosio/glucosio.github.io.git  master > /dev/null
 
-  #go into diractory and copy data we're interested in to that directory
+  #go into directory and copy data we're interested
   cd master
   cp -Rf $HOME/android/* .
 

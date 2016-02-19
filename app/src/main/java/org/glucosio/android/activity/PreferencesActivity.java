@@ -1,12 +1,17 @@
 package org.glucosio.android.activity;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
+import android.preference.SwitchPreference;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputFilter;
 import android.util.Log;
@@ -55,6 +60,9 @@ public class PreferencesActivity extends AppCompatActivity {
         private DatabaseHandler dB;
         private User user;
         private ListPreference languagePref;
+/*
+        private Preference backupPref;
+*/
         private ListPreference countryPref;
         private ListPreference genderPref;
         private ListPreference diabetesTypePref;
@@ -66,7 +74,10 @@ public class PreferencesActivity extends AppCompatActivity {
         private EditTextPreference agePref;
         private EditTextPreference minRangePref;
         private EditTextPreference maxRangePref;
+        private SwitchPreference dyslexiaModePref;
+        private SwitchPreference freestyleLibrePref;
         private User updatedUser;
+
 
         @Override
         public void onCreate(final Bundle savedInstanceState) {
@@ -79,13 +90,15 @@ public class PreferencesActivity extends AppCompatActivity {
             agePref = (EditTextPreference) findPreference("pref_age");
             countryPref = (ListPreference) findPreference("pref_country");
             // languagePref = (ListPreference) findPreference("pref_language");
+            // backupPref = (Preference) findPreference("backup_settings");
             genderPref = (ListPreference) findPreference("pref_gender");
             diabetesTypePref = (ListPreference) findPreference("pref_diabetes_type");
             unitPref = (ListPreference) findPreference("pref_unit");
             rangePref = (ListPreference) findPreference("pref_range");
             minRangePref = (EditTextPreference) findPreference("pref_range_min");
             maxRangePref = (EditTextPreference) findPreference("pref_range_max");
-
+            dyslexiaModePref = (SwitchPreference) findPreference("pref_font_dyslexia");
+            freestyleLibrePref = (SwitchPreference) findPreference("pref_freestyle_libre");
 
             agePref.setDefaultValue(user.getAge());
             countryPref.setValue(user.getCountry());
@@ -94,6 +107,9 @@ public class PreferencesActivity extends AppCompatActivity {
             diabetesTypePref.setValue(user.getD_type() + "");
             unitPref.setValue(user.getPreferred_unit());
             rangePref.setValue(user.getPreferred_range());
+
+            minRangePref.setDefaultValue(user.getCustom_range_min() + "");
+            maxRangePref.setDefaultValue(user.getCustom_range_max() + "");
             minRangePref.setDefaultValue(user.getCustom_range_min() + "");
             maxRangePref.setDefaultValue(user.getCustom_range_max() + "");
 
@@ -200,6 +216,35 @@ public class PreferencesActivity extends AppCompatActivity {
                     return true;
                 }
             });
+            dyslexiaModePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    // EXPERIMENTAL PREFERENCE
+                    // Display Alert
+                    showExperimentalDialog(true);
+                    return true;
+                }
+            });
+            freestyleLibrePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    if(!((SwitchPreference) preference).isChecked()) {
+                        // EXPERIMENTAL PREFERENCE
+                        // Display Alert
+                        showExperimentalDialog(false);
+                        return true;
+                    }
+                    return true;
+                }
+            });
+/*            backupPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    Intent backupActivity = new Intent(getActivity(), BackupActivity.class);
+                    getActivity().startActivity(backupActivity);
+                    return false;
+                }
+            });*/
 
 
             ageEditText = agePref.getEditText();
@@ -210,8 +255,7 @@ public class PreferencesActivity extends AppCompatActivity {
             minEditText.setFilters(new InputFilter[]{new InputFilterMinMax(1, 1500)});
             maxEditText.setFilters(new InputFilter[]{new InputFilterMinMax(1, 1500)});
 
-
-            // Get countries list from locale
+                // Get countries list from locale
             ArrayList<String> countriesArray = new ArrayList<String>();
             Locale[] locales = Locale.getAvailableLocales();
 
@@ -284,6 +328,29 @@ public class PreferencesActivity extends AppCompatActivity {
                 minRangePref.setEnabled(true);
                 maxRangePref.setEnabled(true);
             }
+        }
+
+        private void showExperimentalDialog(final boolean restartRequired){
+            new AlertDialog.Builder(getActivity())
+                    .setTitle(getResources().getString(R.string.preferences_experimental_title))
+                    .setMessage(R.string.preferences_experimental)
+                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            if (restartRequired){
+                                rebootApp();
+                            }
+                        }
+                    })
+                    .show();
+        }
+
+        private void rebootApp(){
+            Intent mStartActivity = new Intent(getActivity().getApplicationContext(), MainActivity.class);
+            int mPendingIntentId = 123456;
+            PendingIntent mPendingIntent = PendingIntent.getActivity(getActivity().getApplicationContext(), mPendingIntentId,    mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT);
+            AlarmManager mgr = (AlarmManager)getActivity().getApplicationContext().getSystemService(Context.ALARM_SERVICE);
+            mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
+            System.exit(0);
         }
     }
 

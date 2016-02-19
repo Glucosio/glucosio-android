@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.glucosio.android" >
+    package="org.glucosio.android">
+
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-feature android:name="android.hardware.nfc" android:required="true" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- Required for Instabug -->
+    <uses-permission android:name="${applicationId}.permission.C2D_MESSAGE"/>
+    <permission
+        android:name="${applicationId}.permission.C2D_MESSAGE"
+        android:protectionLevel="signature"/>
 
     <application
         android:name=".GlucosioApplication"
         android:allowBackup="true"
+        android:configChanges="locale"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:configChanges="locale"
-        android:theme="@style/GlucosioTheme"
-        android:supportsRtl="true">
+        android:supportsRtl="true"
+        android:theme="@style/GlucosioTheme">
         <activity
             android:name=".activity.MainActivity"
-            android:theme="@style/GlucosioTheme"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:theme="@style/GlucosioTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,57 +32,147 @@
         </activity>
         <activity
             android:name=".activity.HelloActivity"
-            android:theme="@style/AppThemeNoActionBar"
-            android:label="@string/title_activity_hello" >
-        </activity>
-        <activity
-            android:name=".activity.GittyActivity"
-            android:theme="@style/GittyTheme">
-        </activity>
+            android:label="@string/title_activity_hello"
+            android:theme="@style/AppThemeNoActionBar" />
         <activity
             android:name=".activity.PreferencesActivity"
-            android:theme="@style/GlucosioSettings">
-        </activity>
+            android:theme="@style/GlucosioSettings" />
         <activity
             android:name=".activity.LicenceActivity"
-            android:theme="@style/GlucosioSettings">
-        </activity>
+            android:theme="@style/GlucosioSettings" />
         <activity
             android:name=".activity.AboutActivity"
-            android:theme="@style/GlucosioSettings">
-        </activity>
+            android:theme="@style/GlucosioSettings" />
         <activity
             android:name=".activity.BackupActivity"
             android:label="@string/title_activity_backup"
-            android:theme="@style/GlucosioSettings"
-            android:parentActivityName=".activity.PreferencesActivity" >
-                    <meta-data
-                        android:name="android.support.PARENT_ACTIVITY"
-                        android:value="org.glucosio.android.activity.PreferencesActivity" />
+            android:parentActivityName=".activity.PreferencesActivity"
+            android:theme="@style/GlucosioSettings">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.glucosio.android.activity.PreferencesActivity" />
         </activity>
-        <!-- Register AnalyticsReceiver and AnalyticsService to support background
- dispatching on non-Google Play devices -->
-        <receiver android:name="com.google.android.gms.analytics.AnalyticsReceiver"
+
+        <service android:name=".service.DataLayerListenerService">
+            <intent-filter>
+                <action android:name="com.google.android.gms.wearable.BIND_LISTENER" />
+            </intent-filter>
+        </service>
+        <!--
+         Register AnalyticsReceiver and AnalyticsService to support background
+         dispatching on non-Google Play devices
+        -->
+        <receiver
+            android:name="com.google.android.gms.analytics.AnalyticsReceiver"
             android:enabled="true">
             <intent-filter>
                 <action android:name="com.google.android.gms.analytics.ANALYTICS_DISPATCH" />
             </intent-filter>
         </receiver>
-        <service android:name="com.google.android.gms.analytics.AnalyticsService"
+
+        <service
+            android:name="com.google.android.gms.analytics.AnalyticsService"
             android:enabled="true"
-            android:exported="false"/>
-        <!-- Register CampaignTrackingReceiver and CampaignTrackingService to enable
-             installation campaign reporting -->
-        <receiver android:name="com.google.android.gms.analytics.CampaignTrackingReceiver"
+            android:exported="false" />
+        <!--
+         Register CampaignTrackingReceiver and CampaignTrackingService to enable
+         installation campaign reporting
+        -->
+        <receiver
+            android:name="com.google.android.gms.analytics.CampaignTrackingReceiver"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.android.vending.INSTALL_REFERRER" />
             </intent-filter>
         </receiver>
+
         <service android:name="com.google.android.gms.analytics.CampaignTrackingService" />
 
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/my_paths" />
+        </provider>
+
+        <activity
+            android:name=".activity.AddGlucoseActivity"
+            android:label="@string/title_activity_add_glucose"
+            android:windowSoftInputMode="stateVisible"
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.glucosio.android.activity.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activity.AddWeightActivity"
+            android:label="@string/title_activity_add_weight"
+            android:windowSoftInputMode="stateVisible"
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.glucosio.android.activity.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activity.AddCholesterolActivity"
+            android:label="@string/title_activity_add_cholesterol"
+            android:windowSoftInputMode="stateVisible"
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.glucosio.android.activity.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activity.AddKetoneActivity"
+            android:label="@string/title_activity_add_ketone"
+            android:windowSoftInputMode="stateVisible"
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.glucosio.android.activity.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activity.AddPressureActivity"
+            android:label="@string/title_activity_add_pressure"
+            android:windowSoftInputMode="stateVisible"
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.glucosio.android.activity.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activity.AddHB1ACActivity"
+            android:label="@string/title_activity_add_hb1ac"
+            android:windowSoftInputMode="stateVisible"
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.glucosio.android.activity.MainActivity" />
+        </activity>
+        <activity android:name=".activity.FreestyleLibre">
+            <!-- NFC for FreeStyle -->
+            <intent-filter>
+                <action android:name="android.nfc.action.TECH_DISCOVERED" />
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <meta-data android:name="android.nfc.action.TECH_DISCOVERED" android:resource="@xml/nfc_tech_filter" />
+        </activity>
+        <activity android:name=".activity.A1Calculator"
+            android:label="@string/activity_converter_title"
+            android:windowSoftInputMode="stateVisible"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.glucosio.android.activity.MainActivity" />
+        </activity>
     </application>
+
 </manifest>

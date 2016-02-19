@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.wearable.view.BoxInsetLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#222222"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <FrameLayout
+        android:id="@+id/list_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="15dp"
+        app:layout_box="all">
+        <android.support.wearable.view.WearableListView
+            android:id="@+id/reading_type_list"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent">
+        </android.support.wearable.view.WearableListView>
+    </FrameLayout>
+    <FrameLayout
+        android:id="@+id/confirm_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="15dp"
+        android:visibility="gone"
+        android:background="#dedede"
+        app:layout_box="all">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/confirm_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="16dp"
+                android:textColor="#222222"
+                android:textSize="16sp"
+                android:text="N/A"/>
+            <android.support.wearable.view.DelayedConfirmationView
+                android:id="@+id/delayed_confirm"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                app:circle_border_color="#E84579"
+                android:layout_gravity="center_horizontal"
+                android:background="#dedede"
+                android:src="@drawable/ic_cancel_black_24dp"
+                app:circle_border_width="4dp"
+                app:circle_radius="24dp">
+            </android.support.wearable.view.DelayedConfirmationView>
+        </LinearLayout>
+    </FrameLayout>
+</android.support.wearable.view.BoxInsetLayout>

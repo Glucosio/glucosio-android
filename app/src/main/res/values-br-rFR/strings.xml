@@ -35,7 +35,6 @@
   <string name="dialog_add_add">OUZHPENN</string>
   <string name="dialog_error">Leunit ar maezioù mar plij.</string>
   <string name="dialog_delete">Dilemel</string>
-  <string name="dialog_edit">Embann</string>
   <string name="fragment_history_snackbar_text">1 lenn dilezet</string>
   <string name="fragment_history_snackbar_action">DIZOBER</string>
   <string name="fragment_overview_last_reading">Gwiriadur diwezhañ:</string>

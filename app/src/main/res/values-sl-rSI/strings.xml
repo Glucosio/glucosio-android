@@ -43,7 +43,6 @@
   <string name="dialog_error2">Vnesite veljavno vrednost.</string>
   <string name="dialog_error">Prosimo, izpolnite vsa polja.</string>
   <string name="dialog_delete">Izbriši</string>
-  <string name="dialog_edit">Uredi</string>
   <string name="fragment_history_snackbar_text">1 meritev je bila izbrisana</string>
   <string name="fragment_history_snackbar_action">RAZVELJAVI</string>
   <string name="fragment_overview_last_reading">Zadnja meritev:</string>
@@ -90,6 +89,7 @@
   <string name="assistant_action_ok">V REDU</string>
   <string name="assistant_action_feedback">POŠLJI POVRATNO INFORMACIJO</string>
   <string name="assistant_action_reading">DODAJ MERITEV</string>
+  <string name="assistant_action_try">Preizkusite</string>
   <string name="assistant_weight_title">Posodobite svojo težo</string>
   <string name="assistant_weight_desc">Poskrbite, da redno posodabljate svojo težo, tako, da ima aplikacija Glucosio točne informacije.</string>
   <string name="assistant_research_title">Posodobitev vaše raziskave</string>
@@ -106,5 +106,4 @@
   <string name="helloactivity_spinner_preferred_range_4">Uporabnikov obseg</string>
   <string name="helloactivity_preferred_range_min">Najmanjša vrednost</string>
   <string name="helloactivity_preferred_range_max">Največja vrednost</string>
-  <string name="assistant_action_try">Preizkusite</string>
 </resources>

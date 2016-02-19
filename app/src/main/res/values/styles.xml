@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/glucosio_pink</item>
         <item name="colorPrimaryDark">@color/glucosio_pink_dark</item>
         <item name="colorAccent">@color/glucosio_pink</item>
+        <item name="android:actionMenuTextColor">@color/white</item>
 
         <!-- MaterialDrawer specific values -->
         <item name="material_drawer_primary_text">@color/material_drawer_primary_text</item>
@@ -48,5 +49,9 @@
         <item name="colorPrimary">@color/glucosio_pink</item>
         <item name="colorPrimaryDark">#000000</item>
         <item name="colorAccent">@color/glucosio_pink</item>
+    </style>
+
+    <style name="Toolbar.WhiteText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textColor">@color/white</item>
     </style>
 </resources>

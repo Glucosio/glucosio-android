@@ -1,9 +1,10 @@
 language: android
-sudo: false
+sudo: required
 
 android:
   components:
-    - build-tools-23.0.1
+    - tools
+    - build-tools-23.0.2
     - android-23
     - extra-android-support
     - extra-google-google_play_services
@@ -22,7 +23,7 @@ after_success:
 
 script:
  - cd $TRAVIS_BUILD_DIR/
- - ./gradlew clean build
+ - ./gradlew assembleDebug
  
 notifications:
   slack: glucosio:uk2xb9sAxOaVedj7zePyuBqa

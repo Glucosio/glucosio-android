@@ -43,7 +43,6 @@
   <string name="dialog_error2">Tafadhali ingiza thamani halali.</string>
   <string name="dialog_error">Tafadhali jaza maeneo yote.</string>
   <string name="dialog_delete">Futa</string>
-  <string name="dialog_edit">Hariri</string>
   <string name="fragment_history_snackbar_text">Usomi mmoja umefutwa</string>
   <string name="fragment_history_snackbar_action">TENDUA</string>
   <string name="fragment_overview_last_reading">Kupima mara ya mwisho:</string>
@@ -90,6 +89,7 @@
   <string name="assistant_action_ok">SAWA, NIMEELEWA</string>
   <string name="assistant_action_feedback">WASILISHA MREJESHO</string>
   <string name="assistant_action_reading">ONGEZA KIPIMO</string>
+  <string name="assistant_action_try">JARIBU SASA</string>
   <string name="assistant_weight_title">Hifadhi uzito wapi</string>
   <string name="assistant_weight_desc">Hakikisha unahifadhi uzito wako ili Glucosio iwe na taarifa sahihi zaidi.</string>
   <string name="assistant_research_title">Hifadhi utafiti wako -muhimu</string>
@@ -106,5 +106,4 @@
   <string name="helloactivity_spinner_preferred_range_4">Kiwango maalum</string>
   <string name="helloactivity_preferred_range_min">Thamani ya chini</string>
   <string name="helloactivity_preferred_range_max">Thamani ya juu</string>
-  <string name="assistant_action_try">JARIBU SASA</string>
 </resources>
