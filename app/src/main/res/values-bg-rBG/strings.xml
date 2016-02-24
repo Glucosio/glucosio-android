@@ -38,6 +38,7 @@
   <string name="dialog_add_type_5">Преди вечеря</string>
   <string name="dialog_add_type_6">След вечеря</string>
   <string name="dialog_add_type_9">Нощ</string>
+  <string name="dialog_add_type_12">Друг</string>
   <string name="dialog_add_cancel">Отказ</string>
   <string name="dialog_add_add">Добави</string>
   <string name="dialog_error2">Моля въведете правилна стойност.</string>
@@ -106,4 +107,5 @@
   <string name="helloactivity_spinner_preferred_range_4">Потребителски диапазон</string>
   <string name="helloactivity_preferred_range_min">Минимална стойност</string>
   <string name="helloactivity_preferred_range_max">Максимална стойност</string>
+  <string name="dialog_add_weight">Тегло</string>
 </resources>

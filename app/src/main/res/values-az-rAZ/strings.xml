@@ -38,6 +38,7 @@
   <string name="dialog_add_type_5">Şam yeməyindən əvvəl</string>
   <string name="dialog_add_type_6">Şam yeməyindən sonra</string>
   <string name="dialog_add_type_9">Gecə</string>
+  <string name="dialog_add_type_12">Digər</string>
   <string name="dialog_add_cancel">LƏĞV ET</string>
   <string name="dialog_add_add">ƏLAVƏ ET</string>
   <string name="dialog_error2">Etibarlı dəyər daxil edin.</string>
@@ -106,4 +107,5 @@
   <string name="helloactivity_spinner_preferred_range_4">Şəxsi aralıq</string>
   <string name="helloactivity_preferred_range_min">Minimum dəyər</string>
   <string name="helloactivity_preferred_range_max">Maksimum dəyər</string>
+  <string name="dialog_add_weight">Çəki</string>
 </resources>

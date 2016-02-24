@@ -112,5 +112,6 @@
   <string name="activity_export_snackbar_1">"Eksportado"</string>
   <string name="activity_export_snackbar_2">legadoj</string>
   <string name="wear_new_reading">Novaj legadoj aldonitaj</string>
+  <string name="dialog_add_weight">Pezo</string>
   <string name="dialog_add_cholesterol_ldl">LDL-kolesterolo</string>
 </resources>

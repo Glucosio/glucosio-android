@@ -38,6 +38,7 @@
   <string name="dialog_add_type_5">रात के खाने से पहले</string>
   <string name="dialog_add_type_6">रात के खाने के बाद</string>
   <string name="dialog_add_type_9">रात</string>
+  <string name="dialog_add_type_12">अन्य</string>
   <string name="dialog_add_cancel">रद्द</string>
   <string name="dialog_add_add">जोड़ें</string>
   <string name="dialog_error2">कृपया कोई मान्य मान दर्ज करें.</string>
@@ -96,4 +97,5 @@
   <string name="helloactivity_spinner_preferred_range_4">कस्टम श्रेणी</string>
   <string name="helloactivity_preferred_range_min">न्यूनतम मूल्य</string>
   <string name="helloactivity_preferred_range_max">अधिकतम मूल्य</string>
+  <string name="dialog_add_weight">वजन</string>
 </resources>

@@ -185,6 +185,7 @@
   <string name="activity_export_no_readings_snackbar">אין קריאה לייצוא.</string>
   <string name="wear_new_reading">נוספה קריאה חדשה</string>
   <string name="dialog_add_weight">משקל</string>
+  <string name="dialog_add_ketones">קטונים</string>
   <string name="dialog_add_pressure_min">לחץ מינימלי</string>
   <string name="dialog_add_pressure_max">לחץ מקסימלי</string>
   <string name="dialog_add_cholesterol_total">סך הכל כולסטרול</string>

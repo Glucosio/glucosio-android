@@ -179,6 +179,7 @@
   <string name="dialog_export_range">Esportar rangu</string>
   <string name="activity_export_no_readings_snackbar">Nun hai llectures pa esportar.</string>
   <string name="wear_new_reading">Amestóse la llectura nueva</string>
+  <string name="dialog_add_weight">Pesu</string>
   <string name="dialog_add_pressure_min">Presión mínima</string>
   <string name="dialog_add_pressure_max">Presión máxima</string>
   <string name="dialog_add_cholesterol_total">Colesterol total</string>

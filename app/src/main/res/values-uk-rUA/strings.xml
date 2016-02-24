@@ -157,4 +157,5 @@
   <string name="title_activity_export">Експорт даних</string>
   <string name="share_using">Надіслати за допомогою</string>
   <string name="share_subject">Дані Glucosio</string>
+  <string name="dialog_add_weight">Вага</string>
 </resources>

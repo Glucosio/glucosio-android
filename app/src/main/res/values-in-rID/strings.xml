@@ -38,6 +38,7 @@
   <string name="dialog_add_type_5">Sebelum makan malam</string>
   <string name="dialog_add_type_6">Setelah makan malam</string>
   <string name="dialog_add_type_9">Malam</string>
+  <string name="dialog_add_type_12">Lainnya</string>
   <string name="dialog_add_cancel">BATAL</string>
   <string name="dialog_add_add">TAMBAH</string>
   <string name="dialog_error2">Tolong masukan nilai yang sah.</string>
@@ -103,4 +104,5 @@
   <string name="helloactivity_spinner_preferred_range">Kisaran yang diinginkan</string>
   <string name="helloactivity_preferred_range_min">Nilai minimal</string>
   <string name="helloactivity_preferred_range_max">Nilai maksimal</string>
+  <string name="dialog_add_weight">Berat</string>
 </resources>

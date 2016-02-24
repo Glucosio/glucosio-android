@@ -68,7 +68,7 @@
     <item>Eet meer vers, onverwerkt voedsel om inname van koolhydraten en suikers te verminderen.</item>
     <item>Lees het voedingslabel op voorverpakt voedsel en drinkwaren om inname van suikers en koolhydraten te beheersen.</item>
     <item>Als u buiten de deur eet, vraag dan om vis of vlees dat zonder extra boter of olie is gebakken.</item>
-    <item>Als u buiten de deur eet, vraag dan om zoutarme schotels.</item>
+    <item>Als u buiten de deur eet, vraag dan om natriumarme schotels.</item>
     <item>Als u buiten de deur eet, hanteer dan dezelfde portiegroottes als dat u thuis zou doen en neem mee wat over is.</item>
     <item>Als u buiten de deur eet, vraag dan om items met weinig calorieën, zoals saladedressings, zelfs als ze niet op het menu staan.</item>
     <item>Als u buiten de deur eet, vraag dan om vervangingen. Vraag in plaats van patat om een dubbele portie van iets vegetarisch, zoals salade, sperziebonen of broccoli.</item>
@@ -176,7 +176,7 @@
   <string name="assistant_archived">GEARCHIVEERDE TIPS</string>
   <string name="dialog_export_title">Gegevens exporteren</string>
   <string name="activity_export_date_from">Van:</string>
-  <string name="dialog_export_date_to">Naar:</string>
+  <string name="dialog_export_date_to">Tot:</string>
   <string name="dialog_export_today">Vandaag kiezen</string>
   <string name="dialog_export_button">EXPORTEREN</string>
   <string name="title_activity_export">Gegevens exporteren</string>
@@ -188,7 +188,7 @@
   <string name="fragment_overview_permission_storage">Glucosio heeft een opslagmachtiging nodig om een schermafbeelding op te slaan</string>
   <string name="fragment_overview_graph_export_true">Schermafbeelding opgeslagen naar galerij</string>
   <string name="fragment_overview_graph_export_false">Fout bij opslaan van schermafbeelding naar galerij</string>
-  <string name="dialog_export_range">Bereik exporteren</string>
+  <string name="dialog_export_range">Exportbereik</string>
   <string name="activity_export_no_readings_snackbar">Geen uitlezingen te exporteren.</string>
   <string name="wear_new_reading">Nieuwe uitlezing toegevoegd</string>
   <string name="dialog_add_weight">Gewicht</string>

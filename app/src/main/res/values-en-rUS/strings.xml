@@ -106,4 +106,5 @@
   <string name="helloactivity_spinner_preferred_range_4">Custom range</string>
   <string name="helloactivity_preferred_range_min">Min value</string>
   <string name="helloactivity_preferred_range_max">Max value</string>
+  <string name="dialog_add_weight">Weight</string>
 </resources>

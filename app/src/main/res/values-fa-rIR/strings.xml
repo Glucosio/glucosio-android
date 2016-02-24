@@ -154,4 +154,5 @@
   <string name="about_discussion">به گروه تبادل نظر ما ملحق شوید</string>
   <string name="about_maillist">در لیست ایمیلهای ما مشترک شوید</string>
   <string name="assistant_archived">آرشیو نکات</string>
+  <string name="dialog_add_weight">وزن</string>
 </resources>

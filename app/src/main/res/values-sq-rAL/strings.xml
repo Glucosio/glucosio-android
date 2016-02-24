@@ -172,4 +172,5 @@
   <string name="title_activity_export">Eksporto të Dhëna</string>
   <string name="share_using">Ndani përdorimin</string>
   <string name="share_subject">Të dhënat e Glucosio</string>
+  <string name="dialog_add_weight">Pesha</string>
 </resources>
