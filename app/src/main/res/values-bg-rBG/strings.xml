@@ -107,5 +107,9 @@
   <string name="helloactivity_spinner_preferred_range_4">Потребителски диапазон</string>
   <string name="helloactivity_preferred_range_min">Минимална стойност</string>
   <string name="helloactivity_preferred_range_max">Максимална стойност</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
+  <!-- Food Entry Labels -->
+  <!-- About Glucosio Strings -->
   <string name="dialog_add_weight">Тегло</string>
 </resources>
