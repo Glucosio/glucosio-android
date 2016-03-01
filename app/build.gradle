@@ -65,7 +65,7 @@ dependencies {
     compile 'io.realm:realm-android:0.87.5'
     compile 'com.github.clans:fab:1.6.2'
     compile 'com.wdullaer:materialdatetimepicker:2.2.0'
-    compile 'com.github.PhilJay:MPAndroidChart:v2.2.2'
+    compile 'com.github.PhilJay:MPAndroidChart:v2.2.3'
     compile 'uk.co.chrisjenx:calligraphy:2.1.0'
     compile 'net.danlew:android.joda:2.9.2'
     compile('com.mikepenz:materialdrawer:5.0.5@aar') {
