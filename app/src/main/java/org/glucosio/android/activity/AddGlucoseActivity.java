@@ -177,8 +177,7 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
 
 
     public void showDuplicateErrorMessage() {
-        View rootLayout = findViewById(android.R.id.content);
-        Snackbar.make(rootLayout, getString(R.string.dialog_error_duplicate), Snackbar.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), getString(R.string.dialog_error_duplicate), Toast.LENGTH_LONG).show();
     }
 
     public void updateSpinnerTypeTime(int selection) {

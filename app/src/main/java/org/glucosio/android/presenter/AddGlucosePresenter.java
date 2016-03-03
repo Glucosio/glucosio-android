@@ -84,6 +84,7 @@ public class AddGlucosePresenter {
             }
             if (!isReadingAdded){
                 activity.showDuplicateErrorMessage();
+                activity.finishActivity();
             } else {
                 activity.finishActivity();
             }
