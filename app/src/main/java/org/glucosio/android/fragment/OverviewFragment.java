@@ -319,6 +319,8 @@ public class OverviewFragment extends Fragment {
         chart.setPinchZoom(true);
         chart.setHardwareAccelerationEnabled(true);
         chart.animateY(1000, Easing.EasingOption.EaseOutCubic);
+        chart.setVisibleXRangeMaximum(20);
+        chart.moveViewToX(data.getXValCount());
     }
 
     private void loadHB1AC(){
