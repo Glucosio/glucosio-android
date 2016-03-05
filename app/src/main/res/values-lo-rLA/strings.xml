@@ -175,7 +175,7 @@
   <string name="title_activity_add_ketone">ເພີ່ມຄີໂຕນ</string>
   <string name="title_activity_add_pressure">ເພີ່ມລະດັບຄວາມດັນເລືອດ</string>
   <string name="fab_weight">ນໍ້າໜັກ</string>
-  <string name="fab_ketones">ຄີໂຕນ</string>
+  <string name="fab_ketonest">ຄີໂຕນ</string>
   <string name="fab_pressure">ຄວາມ​ດັນ​ເລືອດ</string>
   <string name="fab_cholesterol">ລະດັບ Cholesterol</string>
   <string name="fab_HB1AC">ການອ່ານ HB1AC</string>

@@ -200,7 +200,7 @@
   <string name="title_activity_add_ketone">Añadir cetonas</string>
   <string name="title_activity_add_pressure">Añadir presión arterial</string>
   <string name="fab_weight">Peso corporal</string>
-  <string name="fab_ketones">Cetonas</string>
+  <string name="fab_ketonest">Cetonas</string>
   <string name="fab_pressure">Presión arterial</string>
   <string name="fab_cholesterol">Nivel de colesterol</string>
   <string name="fab_HB1AC">Lectura de HB1AC</string>

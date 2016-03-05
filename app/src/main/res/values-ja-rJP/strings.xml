@@ -206,7 +206,7 @@
   <string name="title_activity_add_ketone">ケトンを追加</string>
   <string name="title_activity_add_pressure">血圧を追加</string>
   <string name="fab_weight">体重</string>
-  <string name="fab_ketones">ケトン</string>
+  <string name="fab_ketonest">ケトン</string>
   <string name="fab_pressure">血圧</string>
   <string name="fab_cholesterol">コレステロール値</string>
   <string name="fab_HB1AC">HB1AC 測定値</string>

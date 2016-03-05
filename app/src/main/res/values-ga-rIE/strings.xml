@@ -199,7 +199,7 @@
   <string name="title_activity_add_ketone">Cuir isteach céatóin</string>
   <string name="title_activity_add_pressure">Cuir isteach brú fola</string>
   <string name="fab_weight">Meáchan Coirp</string>
-  <string name="fab_ketones">Céatóin</string>
+  <string name="fab_ketonest">Céatóin</string>
   <string name="fab_pressure">Brú Fola</string>
   <string name="fab_cholesterol">Leibhéal Colaistéaróil</string>
   <string name="fab_HB1AC">Leibhéal HB1AC</string>

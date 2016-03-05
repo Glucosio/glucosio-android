@@ -172,7 +172,7 @@
   <string name="title_activity_add_ketone">Kotonin hinzufügen</string>
   <string name="title_activity_add_pressure">Blutdruckmessung hinzufügen</string>
   <string name="fab_weight">Körpergewicht</string>
-  <string name="fab_ketones">Keton</string>
+  <string name="fab_ketonest">Keton</string>
   <string name="fab_pressure">Blutdruck</string>
   <string name="fab_cholesterol">Cholesterinspiegel</string>
   <string name="fab_HB1AC">HB1AC Wert</string>
