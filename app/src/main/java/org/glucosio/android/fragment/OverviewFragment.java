@@ -286,10 +286,10 @@ public class OverviewFragment extends Fragment {
         LineDataSet set1 = new LineDataSet(yVals, "");
         // set the line to be drawn like this "- - - - - -"
         set1.setColor(getResources().getColor(R.color.glucosio_pink));
-        set1.setCircleColors(colors);
-        set1.setLineWidth(0f);
-        set1.setCircleSize(2.8f);
-        set1.setDrawCircleHole(false);
+        set1.setLineWidth(2.5f);
+        set1.setCircleColor(getResources().getColor(R.color.glucosio_pink));
+        set1.setCircleSize(4f);
+        set1.setDrawCircleHole(true);
         set1.disableDashedLine();
         set1.setFillAlpha(255);
         set1.setDrawFilled(true);

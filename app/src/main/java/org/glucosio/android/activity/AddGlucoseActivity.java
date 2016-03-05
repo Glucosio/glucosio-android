@@ -14,7 +14,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
@@ -177,7 +176,8 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
 
 
     public void showDuplicateErrorMessage() {
-        Toast.makeText(getApplicationContext(), getString(R.string.dialog_error_duplicate), Toast.LENGTH_LONG).show();
+        View rootLayout = findViewById(android.R.id.content);
+        Snackbar.make(rootLayout, getString(R.string.dialog_error_duplicate), Snackbar.LENGTH_SHORT).show();
     }
 
     public void updateSpinnerTypeTime(int selection) {
