@@ -110,7 +110,6 @@ public class OverviewFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (!presenter.isdbEmpty()) {
                     setData();
-                    chart.invalidate();
                 }
             }
 
@@ -203,21 +202,6 @@ public class OverviewFragment extends Fragment {
         return mFragmentView;
     }
 
-    public static void disableTouchTheft(View view) {
-        view.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                view.getParent().requestDisallowInterceptTouchEvent(true);
-                switch (motionEvent.getAction() & MotionEvent.ACTION_MASK) {
-                    case MotionEvent.ACTION_UP:
-                        view.getParent().requestDisallowInterceptTouchEvent(false);
-                        break;
-                }
-                return false;
-            }
-        });
-    }
-
     private void exportGraphToGallery() {
         long timestamp = System.currentTimeMillis()/1000;
         boolean saved = chart.saveToGallery("glucosio_" + timestamp , 50);
@@ -229,7 +213,6 @@ public class OverviewFragment extends Fragment {
     }
 
     private void setData() {
-
         ArrayList<String> xVals = new ArrayList<String>();
 
         if (graphSpinner.getSelectedItemPosition() == 0) {
@@ -301,7 +284,6 @@ public class OverviewFragment extends Fragment {
 
         // create a dataset and give it a type
         LineDataSet set1 = new LineDataSet(yVals, "");
-        // set the line to be drawn like this "- - - - - -"
         set1.setColor(getResources().getColor(R.color.glucosio_pink));
         set1.setLineWidth(2.5f);
         set1.setCircleColor(getResources().getColor(R.color.glucosio_pink));
@@ -336,6 +318,9 @@ public class OverviewFragment extends Fragment {
         chart.setPinchZoom(true);
         chart.setHardwareAccelerationEnabled(true);
         chart.animateY(1000, Easing.EasingOption.EaseOutCubic);
+        chart.invalidate();
+        chart.notifyDataSetChanged();
+        chart.fitScreen();
         chart.setVisibleXRangeMaximum(20);
         chart.moveViewToX(data.getXValCount());
     }
@@ -387,6 +372,21 @@ public class OverviewFragment extends Fragment {
     public String convertDateToMonth(String date){
         FormatDateTime dateTime = new FormatDateTime((getActivity().getApplication()));
         return dateTime.convertDateToMonthOverview(date);
+    }
+
+    public static void disableTouchTheft(View view) {
+        view.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                view.getParent().requestDisallowInterceptTouchEvent(true);
+                switch (motionEvent.getAction() & MotionEvent.ACTION_MASK) {
+                    case MotionEvent.ACTION_UP:
+                        view.getParent().requestDisallowInterceptTouchEvent(false);
+                        break;
+                }
+                return false;
+            }
+        });
     }
 
     @Override
