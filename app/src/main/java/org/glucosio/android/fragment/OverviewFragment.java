@@ -50,7 +50,8 @@ public class OverviewFragment extends Fragment {
     private TextView HB1ACTextView;
     private TextView HB1ACDateTextView;
     private ImageButton graphExport;
-    private Spinner graphSpinner;
+    private Spinner graphSpinnerRange;
+    private Spinner graphSpinnerMetric;
     private OverviewPresenter presenter;
     private View mFragmentView;
 
@@ -85,27 +86,46 @@ public class OverviewFragment extends Fragment {
         Legend legend = chart.getLegend();
 
         if (!presenter.isdbEmpty()) {
-            Collections.reverse(presenter.getReading());
-            Collections.reverse(presenter.getDatetime());
-            Collections.reverse(presenter.getType());
+            Collections.reverse(presenter.getGlucoseReading());
+            Collections.reverse(presenter.getGlucoseDatetime());
+            Collections.reverse(presenter.getGlucoseType());
         }
 
         lastReadingTextView = (TextView) mFragmentView.findViewById(R.id.item_history_reading);
         lastDateTextView = (TextView) mFragmentView.findViewById(R.id.fragment_overview_last_date);
         trendTextView = (TextView) mFragmentView.findViewById(R.id.item_history_trend);
         tipTextView = (TextView) mFragmentView.findViewById(R.id.random_tip_textview);
-        graphSpinner = (Spinner) mFragmentView.findViewById(R.id.chart_spinner_range);
+        graphSpinnerRange = (Spinner) mFragmentView.findViewById(R.id.chart_spinner_range);
+        graphSpinnerMetric = (Spinner) mFragmentView.findViewById(R.id.chart_spinner_metrics);
         graphExport = (ImageButton) mFragmentView.findViewById(R.id.fragment_overview_graph_export);
         HB1ACTextView = (TextView) mFragmentView.findViewById(R.id.fragment_overview_hb1ac);
         HB1ACDateTextView = (TextView) mFragmentView.findViewById(R.id.fragment_overview_hb1ac_date);
 
-        // Set array and adapter for graphSpinner
-        String[] selectorArray = getActivity().getResources().getStringArray(R.array.fragment_overview_selector);
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, selectorArray);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        graphSpinner.setAdapter(dataAdapter);
+        // Set array and adapter for graphSpinnerRange
+        String[] selectorRangeArray = getActivity().getResources().getStringArray(R.array.fragment_overview_selector_range);
+        String[] selectorMetricArray = getActivity().getResources().getStringArray(R.array.fragment_overview_selector_metric);
+        ArrayAdapter<String> dataRangeAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, selectorRangeArray);
+        ArrayAdapter<String> dataMetricAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, selectorMetricArray);
+        dataRangeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        dataMetricAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        graphSpinnerRange.setAdapter(dataRangeAdapter);
+        graphSpinnerMetric.setAdapter(dataMetricAdapter);
 
-        graphSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        graphSpinnerRange.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (!presenter.isdbEmpty()) {
+                    setData();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        graphSpinnerRange.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (!presenter.isdbEmpty()) {
@@ -213,24 +233,26 @@ public class OverviewFragment extends Fragment {
     }
 
     private void setData() {
+        // int metricSpinnerPosition = graphSpinnerMetric.getSelectedItemPosition();
+        // if (metricSpinnerPosition == 0) {
         ArrayList<String> xVals = new ArrayList<String>();
 
-        if (graphSpinner.getSelectedItemPosition() == 0) {
+        if (graphSpinnerRange.getSelectedItemPosition() == 0) {
             // Day view
-            for (int i = 0; i < presenter.getDatetime().size(); i++) {
-                String date = presenter.convertDate(presenter.getDatetime().get(i));
+            for (int i = 0; i < presenter.getGlucoseDatetime().size(); i++) {
+                String date = presenter.convertDate(presenter.getGlucoseDatetime().get(i));
                 xVals.add(date + "");
             }
-        } else if (graphSpinner.getSelectedItemPosition() == 1){
+        } else if (graphSpinnerRange.getSelectedItemPosition() == 1){
             // Week view
-            for (int i = 0; i < presenter.getReadingsWeek().size(); i++) {
-                String date = presenter.convertDate(presenter.getDatetimeWeek().get(i));
+            for (int i = 0; i < presenter.getGlucoseReadingsWeek().size(); i++) {
+                String date = presenter.convertDate(presenter.getGlucoseDatetimeWeek().get(i));
                 xVals.add(date + "");
             }
         } else {
             // Month view
-            for (int i = 0; i < presenter.getReadingsMonth().size(); i++) {
-                String date = presenter.convertDateToMonth(presenter.getDatetimeMonth().get(i));
+            for (int i = 0; i < presenter.getGlucoseReadingsMonth().size(); i++) {
+                String date = presenter.convertDateToMonth(presenter.getGlucoseDatetimeMonth().get(i));
                 xVals.add(date + "");
             }
         }
@@ -240,47 +262,76 @@ public class OverviewFragment extends Fragment {
         ArrayList<Entry> yVals = new ArrayList<Entry>();
         ArrayList<Integer> colors = new ArrayList<>();
 
-        if (graphSpinner.getSelectedItemPosition() == 0) {
-            // Day view
-            for (int i = 0; i < presenter.getReading().size(); i++) {
-                if (presenter.getUnitMeasuerement().equals("mg/dL")) {
-                    float val = Float.parseFloat(presenter.getReading().get(i).toString());
-                    yVals.add(new Entry(val, i));
-                } else {
-                    double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getReading().get(i).toString()));
-                    float converted = (float) val;
-                    yVals.add(new Entry(converted, i));
+            if (graphSpinnerRange.getSelectedItemPosition() == 0) {
+                // Day view
+                for (int i = 0; i < presenter.getGlucoseReading().size(); i++) {
+                    if (presenter.getUnitMeasuerement().equals("mg/dL")) {
+                        float val = Float.parseFloat(presenter.getGlucoseReading().get(i).toString());
+                        yVals.add(new Entry(val, i));
+                    } else {
+                        double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getGlucoseReading().get(i).toString()));
+                        float converted = (float) val;
+                        yVals.add(new Entry(converted, i));
+                    }
+                    GlucoseRanges ranges = new GlucoseRanges(getActivity().getApplicationContext());
+                    colors.add(ranges.stringToColor(ranges.colorFromReading(presenter.getGlucoseReading().get(i))));
                 }
-                GlucoseRanges ranges = new GlucoseRanges(getActivity().getApplicationContext());
-                colors.add(ranges.stringToColor(ranges.colorFromReading(presenter.getReading().get(i))));
-            }
-        } else if (graphSpinner.getSelectedItemPosition() == 1){
-            // Week view
-            for (int i = 0; i < presenter.getReadingsWeek().size(); i++) {
-                if (presenter.getUnitMeasuerement().equals("mg/dL")) {
-                    float val = Float.parseFloat(presenter.getReadingsWeek().get(i)+"");
-                    yVals.add(new Entry(val, i));
-                } else {
-                    double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getReadingsWeek().get(i)+""));
-                    float converted = (float) val;
-                    yVals.add(new Entry(converted, i));
+            } else if (graphSpinnerRange.getSelectedItemPosition() == 1){
+                // Week view
+                for (int i = 0; i < presenter.getGlucoseReadingsWeek().size(); i++) {
+                    if (presenter.getUnitMeasuerement().equals("mg/dL")) {
+                        float val = Float.parseFloat(presenter.getGlucoseReadingsWeek().get(i)+"");
+                        yVals.add(new Entry(val, i));
+                    } else {
+                        double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getGlucoseReadingsWeek().get(i)+""));
+                        float converted = (float) val;
+                        yVals.add(new Entry(converted, i));
+                    }
                 }
+                colors.add(getResources().getColor(R.color.glucosio_pink));
+            } else {
+                // Month view
+                for (int i = 0; i < presenter.getGlucoseReadingsMonth().size(); i++) {
+                    if (presenter.getUnitMeasuerement().equals("mg/dL")) {
+                        float val = Float.parseFloat(presenter.getGlucoseReadingsMonth().get(i)+"");
+                        yVals.add(new Entry(val, i));
+                    } else {
+                        double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getGlucoseReadingsMonth().get(i)+""));
+                        float converted = (float) val;
+                        yVals.add(new Entry(converted, i));
+                    }
+                }
+                colors.add(getResources().getColor(R.color.glucosio_pink));
             }
-            colors.add(getResources().getColor(R.color.glucosio_pink));
+        /*} else if (metricSpinnerPosition == 1){
+            // A1C
+            ArrayList<String> xVals = new ArrayList<String>();
+
+            for (int i = 0; i < presenter.getGlucoseDatetime().size(); i++) {
+                String date = presenter.convertDate(presenter.getGlucoseDatetime().get(i));
+                xVals.add(date + "");
+            }
+
+            ArrayList<Entry> yVals = new ArrayList<Entry>();
+
+
+            for (int i = 0; i < presenter.getGlucoseReading().size(); i++) {
+                float val = Float.parseFloat(presenter.getGlucoseReading().get(i).toString());
+                yVals.add(new Entry(val, i));
+            }
+
+        } else if (metricSpinnerPosition == 2){
+            // Cholesterol
+
+        } else if (metricSpinnerPosition == 3){
+            // Pressure
+
+        } else if (metricSpinnerPosition == 4){
+            // Ketones
+
         } else {
-            // Month view
-            for (int i = 0; i < presenter.getReadingsMonth().size(); i++) {
-                if (presenter.getUnitMeasuerement().equals("mg/dL")) {
-                    float val = Float.parseFloat(presenter.getReadingsMonth().get(i)+"");
-                    yVals.add(new Entry(val, i));
-                } else {
-                    double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getReadingsMonth().get(i)+""));
-                    float converted = (float) val;
-                    yVals.add(new Entry(converted, i));
-                }
-            }
-            colors.add(getResources().getColor(R.color.glucosio_pink));
-        }
+            // Weight
+        }*/
 
         // create a dataset and give it a type
         LineDataSet set1 = new LineDataSet(yVals, "");

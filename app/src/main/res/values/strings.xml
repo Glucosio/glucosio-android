@@ -98,10 +98,18 @@
     <string name="fragment_overview_selector_day">Day</string>
     <string name="fragment_overview_selector_week">Week</string>
 
-    <string-array name="fragment_overview_selector">
+    <string-array name="fragment_overview_selector_range">
         <item>@string/fragment_overview_selector_day</item>
         <item>@string/fragment_overview_selector_week</item>
         <item>@string/fragment_overview_selector_month</item>
+    </string-array>
+    <string-array name="fragment_overview_selector_metric">
+        <item>@string/fab_glucose</item>
+        <item>@string/fab_HB1AC</item>
+        <item>@string/fab_cholesterol</item>
+        <item>@string/fab_pressure</item>
+        <item>@string/fab_ketones</item>
+        <item>@string/fab_weight</item>
     </string-array>
     <string name="tip_example" translatable="false">Use less cheese in your recipes and meals. Fresh mozzarella packed in water and Swiss cheese are usually lower in sodium.</string>
     <string name="preferences_about">About</string>
@@ -305,7 +313,7 @@
     <string name="title_activity_add_pressure">Add Blood Pressure</string>
 
     <string name="fab_weight">Body Weight</string>
-    <string name="fab_ketonest">Ketones</string>
+    <string name="fab_ketones">Ketones</string>
     <string name="fab_pressure">Blood Pressure</string>
     <string name="fab_cholesterol">Cholesterol Level</string>
     <string name="fab_HB1AC">HBA1C Reading</string>
@@ -330,7 +338,7 @@
         <item>@string/fab_HB1AC</item>
         <item>@string/fab_cholesterol</item>
         <item>@string/fab_pressure</item>
-        <item>@string/fab_ketonest</item>
+        <item>@string/fab_ketones</item>
         <item>@string/fab_weight</item>
     </string-array>
 </resources>

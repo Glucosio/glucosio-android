@@ -2,28 +2,24 @@ package org.glucosio.android.presenter;
 
 import org.glucosio.android.R;
 import org.glucosio.android.db.DatabaseHandler;
-import org.glucosio.android.db.GlucoseReading;
 import org.glucosio.android.fragment.OverviewFragment;
-import org.glucosio.android.tools.FormatDateTime;
 import org.glucosio.android.tools.GlucoseConverter;
-import org.glucosio.android.tools.ReadingTools;
 import org.glucosio.android.tools.TipsManager;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.StringTokenizer;
 
 public class OverviewPresenter {
 
     private DatabaseHandler dB;
-    private ArrayList<Integer> reading;
-    private ArrayList <String> type;
-    private ArrayList<String> datetime;
-    private List<Integer> readingsWeek;
-    private List<Integer> readingsMonth;
-    private List<String> datetimeWeek;
-    private List<String> datetimeMonth;
+    private ArrayList<Integer> glucoseReading;
+    private ArrayList <String> glucoseType;
+    private ArrayList<String> glucoseDatetime;
+    private List<Integer> glucoseReadingsWeek;
+    private List<Integer> glucoseReadingsMonth;
+    private List<String> glucoseDatetimeWeek;
+    private List<String> glucoseDatetimeMonth;
     private OverviewFragment fragment;
 
 
@@ -37,13 +33,13 @@ public class OverviewPresenter {
     }
 
     public void loadDatabase() {
-        this.reading = dB.getGlucoseReadingAsArray();
-        this.readingsMonth = dB.getAverageGlucoseReadingsByMonth();
-        this.readingsWeek = dB.getAverageGlucoseReadingsByWeek();
-        this.datetimeWeek = dB.getGlucoseDatetimesByWeek();
-        this.datetimeMonth = dB.getGlucoseDatetimesByMonth();
-        this.type = dB.getGlucoseTypeAsArray();
-        this.datetime = dB.getGlucoseDateTimeAsArray();
+        this.glucoseReading = dB.getGlucoseReadingAsArray();
+        this.glucoseReadingsMonth = dB.getAverageGlucoseReadingsByMonth();
+        this.glucoseReadingsWeek = dB.getAverageGlucoseReadingsByWeek();
+        this.glucoseDatetimeWeek = dB.getGlucoseDatetimesByWeek();
+        this.glucoseDatetimeMonth = dB.getGlucoseDatetimesByMonth();
+        this.glucoseType = dB.getGlucoseTypeAsArray();
+        this.glucoseDatetime = dB.getGlucoseDateTimeAsArray();
     }
 
     public String convertDate(String date) {
@@ -56,9 +52,9 @@ public class OverviewPresenter {
 
     public String getHB1AC(){
         // Check if last month is available first
-        if (getReadingsMonth().size()>1) {
+        if (getGlucoseReadingsMonth().size()>1) {
             GlucoseConverter converter = new GlucoseConverter();
-            return converter.glucoseToA1C(getReadingsMonth().get(getReadingsMonth().size()-2))+" %";
+            return converter.glucoseToA1C(getGlucoseReadingsMonth().get(getGlucoseReadingsMonth().size()-2))+" %";
         } else {
             return fragment.getResources().getString(R.string.overview_hb1ac_error_no_data);
         }
@@ -66,19 +62,19 @@ public class OverviewPresenter {
 
     public String getH1ACMonth(){
         // Check if last month is available first
-        if (getReadingsMonth().size()>1) {
-            return convertDateToMonth(getDatetimeMonth().get(getDatetimeMonth().size()-2))+"";
+        if (getGlucoseReadingsMonth().size()>1) {
+            return convertDateToMonth(getGlucoseDatetimeMonth().get(getGlucoseDatetimeMonth().size()-2))+"";
         } else {
             return " ";
         }
     }
 
     public String getLastReading(){
-        return getReading().get(getReading().size() - 1) + "";
+        return getGlucoseReading().get(getGlucoseReading().size() - 1) + "";
     }
 
     public String getLastDateTime(){
-        return getDatetime().get(getDatetime().size() - 1) + "";
+        return getGlucoseDatetime().get(getGlucoseDatetime().size() - 1) + "";
     }
 
     public String getRandomTip(TipsManager manager){
@@ -97,32 +93,32 @@ public class OverviewPresenter {
         return dB.getUser(1).getAge();
     }
 
-    public ArrayList<Integer> getReading() {
-        return reading;
+    public ArrayList<Integer> getGlucoseReading() {
+        return glucoseReading;
     }
 
-    public ArrayList<String> getType() {
-        return type;
+    public ArrayList<String> getGlucoseType() {
+        return glucoseType;
     }
 
-    public ArrayList<String> getDatetime() {
-        return datetime;
+    public ArrayList<String> getGlucoseDatetime() {
+        return glucoseDatetime;
     }
 
-    public List<Integer> getReadingsWeek() {
-        return readingsWeek;
+    public List<Integer> getGlucoseReadingsWeek() {
+        return glucoseReadingsWeek;
     }
 
-    public List<Integer> getReadingsMonth() {
-        return readingsMonth;
+    public List<Integer> getGlucoseReadingsMonth() {
+        return glucoseReadingsMonth;
     }
 
-    public List<String> getDatetimeWeek() {
-        return datetimeWeek;
+    public List<String> getGlucoseDatetimeWeek() {
+        return glucoseDatetimeWeek;
     }
 
-    public List<String> getDatetimeMonth() {
-        return datetimeMonth;
+    public List<String> getGlucoseDatetimeMonth() {
+        return glucoseDatetimeMonth;
     }
 
     public String convertDateToMonth(String s) {

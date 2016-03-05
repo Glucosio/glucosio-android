@@ -32,7 +32,8 @@
             android:layout_marginBottom="8dp"
             android:layout_marginTop="16dp" />
             <Spinner
-                android:id="@+id/chart_spinner2"
+                android:id="@+id/chart_spinner_metrics"
+                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"

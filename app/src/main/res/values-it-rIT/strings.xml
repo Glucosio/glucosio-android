@@ -207,7 +207,7 @@
   <string name="title_activity_add_ketone">Aggiungi Chetoni</string>
   <string name="title_activity_add_pressure">Aggiungi pressione sanguigna</string>
   <string name="fab_weight">Peso corporeo</string>
-  <string name="fab_ketonest">Chetoni</string>
+  <string name="fab_ketones">Chetoni</string>
   <string name="fab_pressure">Pressione sanguigna</string>
   <string name="fab_cholesterol">Livello di colesterolo</string>
   <string name="fab_HB1AC">Emoglobina glicata (HB1AC)</string>

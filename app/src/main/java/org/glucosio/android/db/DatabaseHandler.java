@@ -219,7 +219,7 @@ public class DatabaseHandler {
         gReadings = GlucoseReading.getGlucoseReadings(whereString);
         int i;
         for (i=0; i < gReadings.size(); i++){
-            readings.add(gReadings.get(i).getReading());
+            readings.add(gReadings.get(i).getGlucoseReading());
         }
 
         return readings;
@@ -354,6 +354,10 @@ public class DatabaseHandler {
                 .findFirst();
     }
 
+    public RealmResults<HB1ACReading> getrHB1ACRawReadings() {
+        return realm.where(HB1ACReading.class)
+                        .findAllSorted("created", Sort.DESCENDING);
+    }
 
     public ArrayList<HB1ACReading> getHB1ACReadings() {
         RealmResults<HB1ACReading> results =
@@ -410,6 +414,11 @@ public class DatabaseHandler {
         }
 
         return datetimeArray;
+    }
+
+    public RealmResults<KetoneReading> getRawKetoneReadings() {
+        return realm.where(KetoneReading.class)
+                .findAllSorted("created", Sort.DESCENDING);
     }
 
     public void addKetoneReading(KetoneReading reading) {
