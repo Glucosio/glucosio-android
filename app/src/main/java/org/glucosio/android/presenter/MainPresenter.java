@@ -32,6 +32,9 @@ public class MainPresenter {
             //creating  a new user
             rTools = new ReadingTools();
             converter = new GlucoseConverter();
+
+            // DEBUG METHODS
+            // dB.addNGlucoseReadings();
         }
     }
 

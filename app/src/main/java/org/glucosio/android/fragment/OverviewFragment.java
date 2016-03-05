@@ -10,6 +10,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -80,6 +81,7 @@ public class OverviewFragment extends Fragment {
         mFragmentView = inflater.inflate(R.layout.fragment_overview, container, false);
 
         chart = (LineChart) mFragmentView.findViewById(R.id.chart);
+        disableTouchTheft(chart);
         Legend legend = chart.getLegend();
 
         if (!presenter.isdbEmpty()) {
@@ -92,7 +94,7 @@ public class OverviewFragment extends Fragment {
         lastDateTextView = (TextView) mFragmentView.findViewById(R.id.fragment_overview_last_date);
         trendTextView = (TextView) mFragmentView.findViewById(R.id.item_history_trend);
         tipTextView = (TextView) mFragmentView.findViewById(R.id.random_tip_textview);
-        graphSpinner = (Spinner) mFragmentView.findViewById(R.id.chart_spinner);
+        graphSpinner = (Spinner) mFragmentView.findViewById(R.id.chart_spinner_range);
         graphExport = (ImageButton) mFragmentView.findViewById(R.id.fragment_overview_graph_export);
         HB1ACTextView = (TextView) mFragmentView.findViewById(R.id.fragment_overview_hb1ac);
         HB1ACDateTextView = (TextView) mFragmentView.findViewById(R.id.fragment_overview_hb1ac_date);
@@ -199,6 +201,21 @@ public class OverviewFragment extends Fragment {
         loadRandomTip();
 
         return mFragmentView;
+    }
+
+    public static void disableTouchTheft(View view) {
+        view.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                view.getParent().requestDisallowInterceptTouchEvent(true);
+                switch (motionEvent.getAction() & MotionEvent.ACTION_MASK) {
+                    case MotionEvent.ACTION_UP:
+                        view.getParent().requestDisallowInterceptTouchEvent(false);
+                        break;
+                }
+                return false;
+            }
+        });
     }
 
     private void exportGraphToGallery() {

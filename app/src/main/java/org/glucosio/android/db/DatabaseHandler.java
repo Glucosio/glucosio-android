@@ -78,6 +78,28 @@ public class DatabaseHandler {
         }
     }
 
+    public void addNGlucoseReadings(int n) {
+        for (int i=0; i<n; i++){
+            Calendar calendar = Calendar.getInstance();
+            GlucoseReading gReading = new GlucoseReading(50+i, "Debug reading", calendar.getTime(), "");
+
+            int year = calendar.get(Calendar.YEAR);
+            int month = calendar.get(Calendar.MONTH);
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+            int hours = calendar.get(Calendar.HOUR_OF_DAY);
+            int minutes = calendar.get(Calendar.MINUTE);
+            String id = "" + year + month + day + hours + minutes + gReading.getReading();
+
+            // Check for duplicates
+            if (getGlucoseReadingById(Long.parseLong(id)) == null) {
+                realm.beginTransaction();
+                gReading.setId(Long.parseLong(id));
+                realm.copyToRealm(gReading);
+                realm.commitTransaction();
+            }
+        }
+    }
+
     public void deleteGlucoseReadings(GlucoseReading reading) {
         realm.beginTransaction();
         reading.removeFromRealm();
