@@ -11,11 +11,11 @@
 
  <string name="PlaystoreDescription_para_0100">Glucosio - Diabetes Tracker</string>
  <string name="PlaystoreDescription_para_0200">Glucosio is a modern diabetes tracker</string>
- <string name="PlaystoreDescription_para_0300">Glucosio is a modern diabetes tracker for blood glucose, HB1AC, Cholesterol, Blood Pressure, Ketones, Body Weight and more. Glucosio diabetes tracker makes it quick and easy to track all aspects of your diabetes! Glucosio is the only open source diabetes app for both type 1 & type 2 diabetes and entirely free!</string> 
+ <string name="PlaystoreDescription_para_0300">Glucosio is a modern diabetes tracker for blood glucose, HB1AC, Cholesterol, Blood Pressure, Ketones, Body Weight and more. Glucosio diabetes tracker makes it quick and easy to track all aspects of your diabetes! Glucosio is the only open source diabetes app for both type 1 &amp; type 2 diabetes and entirely free!</string>
  <string name="PlaystoreDescription_para_0400">FEATURES:</string>
  <string name="PlaystoreDescription_para_0500">• Quick and easy logging (blood glucose, HB1AC, Cholesterol, Blood Pressure, Ketones, Body Weight etc.)</string>
- <string name="PlaystoreDescription_para_0600">• Designed for both type 1 & type 2 diabetes</string>
- <string name="PlaystoreDescription_para_0700">• Estimated HbA1c & HbA1c conversion calculator</string>
+ <string name="PlaystoreDescription_para_0600">• Designed for both type 1 &amp; type 2 diabetes</string>
+ <string name="PlaystoreDescription_para_0700">• Estimated HbA1c &amp; HbA1c conversion calculator</string>
  <string name="PlaystoreDescription_para_0800">• Choose Glucose Target (ADA, NICE, AACE, Custom)</string>
  <string name="PlaystoreDescription_para_0900">• CGM data integration via CSV import and NFC</string>
  <string name="PlaystoreDescription_para_1000">• Daily, weekly and monthly graphs and analysis</string>
