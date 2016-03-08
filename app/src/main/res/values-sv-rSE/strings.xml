@@ -131,6 +131,8 @@
   <string name="reading_low">Lågt</string>
   <string name="reading_high">Högt</string>
   <string name="reading_hyper">Hyperglykemi</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
   <string name="dialog_add_exercisetype_1">Avkopplande promenad</string>
   <string name="dialog_add_exercisetype_2">Gå snabbt</string>
   <string name="dialog_add_exercisetype_3">Joggning</string>
@@ -156,10 +158,12 @@
   <string name="dialog_add_exercisetype_23">Brottning</string>
   <string name="dialog_add_exercisetype_24">Vandring</string>
   <string name="dialog_add_exercisetype_25">Gårdsarbete</string>
+  <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">Kolhydrater:</string>
   <string name="dialog_addfood_protein">Protein:</string>
   <string name="dialog_addfood_sugars">Socker:</string>
   <string name="dialog_addfood_fat">Fett:</string>
+  <!-- About Glucosio Strings -->
   <string name="about_credits">Tack till</string>
   <string name="about_contribute">Bidra</string>
   <string name="about_contributel10n">Bidra med översättning</string>
@@ -205,4 +209,8 @@
   <string name="fab_HB1AC">HB1AC värden</string>
   <string name="fab_glucose">Blodsockernivå</string>
   <string name="dialog_error_duplicate">Du har redan en post för denna tid. Ta bort den innan du lägger till en korrigering.</string>
+  <string name="freestylelibre_nfc_ready">Vänligen lägg telefonen på sensorn och flytta inte förrän den vibrerar.</string>
+  <string name="freestylelibre_nfc_not_supported">Enheter stöder inte NFC.</string>
+  <string name="freestylelibre_nfc_not_enabled">NFC är inaktiverat.</string>
+  <string name="freestylelibre_nfc_error">Ett fel uppstod när NFC-anslutning skulle öppnas!</string>
 </resources>

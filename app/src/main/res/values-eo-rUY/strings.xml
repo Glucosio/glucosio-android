@@ -36,6 +36,7 @@
   <string name="dialog_add_type_7">Manĝeto</string>
   <string name="dialog_add_type_8">Kuŝhoro</string>
   <string name="dialog_add_type_9">Nokto</string>
+  <string name="dialog_add_type_10">Nemanĝinta glukozo</string>
   <string name="dialog_add_type_11">Rekontroli</string>
   <string name="dialog_add_type_12">Alia</string>
   <string name="dialog_add_cancel">NULIGI</string>
@@ -68,6 +69,7 @@
   <string name="helloactivity_preferred_range_max">Maksimuma valoro</string>
   <string name="helloactivity_language">Lingvo</string>
   <string name="invitation_title">Inviti aliajn personojn</string>
+  <string name="invitation_message">Provu Glukozion, malfermitkoda aplikaĵo por administrado kaj esplorado de diabeto.</string>
   <string name="invitation_cta">Provu Glukozion</string>
   <string name="title_activity_backup">Savkopii</string>
   <string name="preferences_privacy">Privateco</string>
@@ -81,6 +83,8 @@
   <string name="reading_low">Malalta</string>
   <string name="reading_high">Alta</string>
   <string name="reading_hyper">Hiperglukozemio</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
   <string name="dialog_add_exercisetype_4">Kurado</string>
   <string name="dialog_add_exercisetype_5">Naĝado</string>
   <string name="dialog_add_exercisetype_6">Dancado</string>
@@ -92,10 +96,12 @@
   <string name="dialog_add_exercisetype_23">Luktado</string>
   <string name="dialog_add_exercisetype_24">Marŝado</string>
   <string name="dialog_add_exercisetype_25">Ĝardenado</string>
+  <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">Karbonhidratoj:</string>
   <string name="dialog_addfood_protein">Proteino:</string>
   <string name="dialog_addfood_sugars">Sukeroj:</string>
   <string name="dialog_addfood_fat">Graso:</string>
+  <!-- About Glucosio Strings -->
   <string name="about_credits">Agnoskoj</string>
   <string name="about_contribute">Kontribui</string>
   <string name="about_contributel10n">Kontribui al la tradukado</string>
@@ -113,5 +119,18 @@
   <string name="activity_export_snackbar_2">legadoj</string>
   <string name="wear_new_reading">Novaj legadoj aldonitaj</string>
   <string name="dialog_add_weight">Pezo</string>
+  <string name="dialog_add_ketones">Ketonoj</string>
   <string name="dialog_add_cholesterol_ldl">LDL-kolesterolo</string>
+  <string name="dialog_add_cholesterol_hdl">HDL-kolesterolo</string>
+  <string name="dialog_add_hb1ac">HB1AC</string>
+  <string name="title_activity_add_glucose">Aldoni glukozolegadon</string>
+  <string name="title_activity_add_cholesterol">Aldoni kolesterolnivelon</string>
+  <string name="title_activity_add_hb1ac">Aldoni HB1AC</string>
+  <string name="title_activity_add_ketone">Aldoni ketonojn</string>
+  <string name="fab_weight">Korpopezo</string>
+  <string name="fab_ketonest">Ketonoj</string>
+  <string name="fab_pressure">Sangtensio</string>
+  <string name="fab_cholesterol">Kolesterolnivelo</string>
+  <string name="fab_HB1AC">HB1AC-legado</string>
+  <string name="fab_glucose">Sangoglukozonivelo</string>
 </resources>

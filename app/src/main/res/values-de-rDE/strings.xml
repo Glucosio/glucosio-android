@@ -68,14 +68,14 @@
     <item>Essen Sie mehr frische, unverarbeitete Lebensmittel um Aufnahme von Kohlenhydraten und Zucker zu reduzieren.</item>
     <item>Lesen Sie das ernährungsphysiologische Etikett auf verpackten Lebensmitteln und Getränken, um Zucker- und Kohlenhydrataufnahme zu kontrollieren.</item>
     <item>Wenn Sie auswärts essen, fragen Sie nach Fisch oder gegrillten Fleisch, zubereitet ohne Öl oder Butter.</item>
-    <item>When eating out, ask if they have low sodium dishes.</item>
-    <item>When eating out, eat the same portion sizes you would at home and take the leftovers to go.</item>
-    <item>When eating out ask for low-calorie items, such as salad dressings, even if they\'re not on the menu.</item>
-    <item>When eating out ask for substitutions. Instead of French fries, request a double order of a vegetable like salad, green beans or broccoli.</item>
-    <item>When eating out, order foods that are not breaded or fried.</item>
-    <item>When eating out ask for sauces, gravy and salad dressings "on the side."</item>
-    <item>Sugar free doesn’t really mean sugar free. It means 0.5 grams (g) of sugar per serving, so be careful to not indulge in too many sugar free items.</item>
-    <item>Moving toward a healthy weight helps control blood sugars. Your doctor, a dietitian, and a fitness trainer can get you started on a plan that will work for you.</item>
+    <item>Wenn Sie essen gehen, fragen Sie nach salzarmen Gerichten.</item>
+    <item>Wenn Sie essen gehen, Essen Sie die gleiche Portionsgröße wie Zuhause und lassen Sie sich den Rest einpacken.</item>
+    <item>Wenn Sie essen gehen, fragen Sie, z.B.: bei Salatdressings, nach kalorienarmen Zutaten, auch wenn diese nicht in der Menükarte stehen.</item>
+    <item>Wenn Sie essen gehen, fragen Sie nach alternativen Beilagen. Anstatt von Pommes Frittes könnten Sie eine doppelte Portion Gemüse, grüne Bohnen, Brokkoli oder einen Salat bestellen.</item>
+    <item>Wenn Sie essen gehen, bestellen Sie Gerichte die nicht parniert oder in Fett gebraten werden.</item>
+    <item>Wenn Sie essen gehen, fragen Sie ob die Küche die Soße oder das Salatdressing an der Seite oder in einem Schälchen, anstatt auf dem Essen, beistellen kann.</item>
+    <item>\"Zuckerfrei\" bedeutet nicht, dass das Produkt auch wirklich ohne Zucker ist. Mindestmengen von 0,5 Gramm pro 100g sind deklarationsfrei. Außerdem kann das Produkt Zuckerersatzstoffe enthalten.</item>
+    <item>Ein gesundes Körpergewicht hilft den Blutzucker zu stabilisieren. Ihr Arzt, ein Ernährungsberater oder Fitnesstrainer kann ihnen helfen.</item>
     <item>Checking your blood level and tracking it in an app like Glucosio twice a day will help you be aware of outcomes from food and lifestyle choices.</item>
     <item>Get A1c blood tests to find out your average blood sugar for the past 2 to 3 months. Your doctor should tell you how frequently this test will be needed to be performed.</item>
     <item>Tracking how many carbohydrates you consume can be just as important as checking blood levels since carbohydrates influence blood glucose levels. Talk to your doctor or a dietician about carbohydrate intake.</item>
@@ -125,6 +125,8 @@
   <string name="reading_low">Niedrig</string>
   <string name="reading_high">Hoch</string>
   <string name="reading_hyper">Hyperglykämie</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
   <string name="dialog_add_exercisetype_1">Langsames Gehen</string>
   <string name="dialog_add_exercisetype_2">Schnelles gehen</string>
   <string name="dialog_add_exercisetype_3">Joggen</string>
@@ -150,14 +152,36 @@
   <string name="dialog_add_exercisetype_23">Wrestling</string>
   <string name="dialog_add_exercisetype_24">Wandern</string>
   <string name="dialog_add_exercisetype_25">Gartenarbeit</string>
+  <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">Kohlenhydrate:</string>
   <string name="dialog_addfood_protein">Eiweiß:</string>
   <string name="dialog_addfood_sugars">Zucker:</string>
   <string name="dialog_addfood_fat">Fett:</string>
+  <!-- About Glucosio Strings -->
   <string name="about_credits">Über</string>
+  <string name="about_contribute">Mitwirken</string>
+  <string name="about_contributel10n">An der Übersetzung mitwirken</string>
+  <string name="about_contributedev">Zur Entwicklung beitragen</string>
+  <string name="about_discussion">Diskutiere mit der Glucosio-Gemeinschaft</string>
+  <string name="about_maillist">Aboniere unsere Mailingliste</string>
+  <string name="assistant_archived">Archivierte Tipps</string>
   <string name="dialog_export_title">Daten exportieren</string>
+  <string name="activity_export_date_from">Startdatum:</string>
+  <string name="dialog_export_date_to">Enddatum:</string>
   <string name="dialog_export_button">Export</string>
   <string name="title_activity_export">Daten exportieren</string>
+  <string name="dialog_export_all">Alles exportieren</string>
+  <string name="share_using">Teilen</string>
+  <string name="share_subject">Glucosio Daten</string>
+  <string name="activity_export_snackbar_1">"Exportiere"</string>
+  <string name="activity_export_snackbar_2">Aufzeichnungen</string>
+  <string name="fragment_overview_permission_storage">Glucosio benötigt Speicher Berechtigung um einen Screenshot zu speichern</string>
+  <string name="fragment_overview_graph_export_true">Screenshot in der Galerie gespeichert</string>
+  <string name="fragment_overview_graph_export_false">Fehler beim Speichern des Screenshot in der Galerie</string>
+  <string name="dialog_export_range">Bereichbereich</string>
+  <string name="activity_export_no_readings_snackbar">Keine Messungen zum exportieren.</string>
+  <string name="wear_new_reading">Neue Messungen hinzugefügt</string>
+  <string name="dialog_add_weight">Gewicht</string>
   <string name="dialog_add_ketones">Ketonin</string>
   <string name="dialog_add_pressure_min">Min. Druck</string>
   <string name="dialog_add_pressure_max">Max. Druck</string>

@@ -58,6 +58,7 @@
   <string name="fragment_overview_selector_day">Zi</string>
   <string name="fragment_overview_selector_week">Săptămâna</string>
   <string name="preferences_about">Despre</string>
+  <string name="preferences_experimental">Aceste funcții sunt experimentale, s-ar putea să nu funcționeze complet și sunt intenționate doar pentru testare. Puteți scutura telefonul pentru a ne trimite feedback.</string>
   <string name="preferences_version">Versiunea</string>
   <string name="preferences_terms">Termeni de folosire</string>
   <string name="glucose_reading_type">Tip</string>
@@ -110,6 +111,8 @@
   <string name="assistant_reading_desc">Asiguraţi-vă că adăugați în mod regulat înregistrările dumneavoastră de glucoză, astfel încât să vă putem ajuta să urmăriți nivelurile glucozei în timp.</string>
   <string name="assistant_export_title">Exportă datele tale</string>
   <string name="assistant_export_desc">Împărtășește datele tale cu doctorul, sau salvează datele pe Google Drive folosind funcția de exportare.</string>
+  <string name="assistant_calculator_a1c_title">Calculează A1C</string>
+  <string name="assistant_calculator_a1c_desc">Calculatorul încorporat în Glucosio pentru A1C este disponibil pentru a fi folosit în modulul de navigare. Introduce nivelul mediu de glucoză al tău și salvează valoarea A1C instant.</string>
   <string name="helloactivity_spinner_preferred_range">Gamă preferată</string>
   <string name="helloactivity_spinner_preferred_range_4">Gamă proprie</string>
   <string name="helloactivity_preferred_range_min">Valoare minimă</string>
@@ -125,12 +128,18 @@
   <string name="preferences_about_glucosio">Despre Glucosio</string>
   <string name="preferences_rate">Apreciază Glucosio</string>
   <string name="preferences_licences_open">Licențe de sursă deschisă</string>
+  <string name="preferences_freestyle_libre">Permite suport pentru FreeStyle Libre®</string>
+  <string name="preferences_freestyle_libre_experimental">EXPERIMENTAL: permite suport pentru FreeStyle Libre®</string>
+  <string name="preferences_font_dyslexia_experimental">EXPERIMENTAL: crește capacitatea de citire pentru utilizatori cu dislexie</string>
+  <string name="preferences_font_dyslexia">Crește rata de citire pentru utilizatori cu dislexie</string>
   <string name="about_donate">Donează la Glucosio</string>
   <string name="reading_ok">Ok</string>
   <string name="reading_hypo">Hipoglicemie</string>
   <string name="reading_low">Scăzută</string>
   <string name="reading_high">Ridicată</string>
   <string name="reading_hyper">Hiperglicemie</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
   <string name="dialog_add_exercisetype_1">Mers lejer</string>
   <string name="dialog_add_exercisetype_2">Mers rapid</string>
   <string name="dialog_add_exercisetype_3">Jogging</string>
@@ -156,10 +165,12 @@
   <string name="dialog_add_exercisetype_23">Lupte</string>
   <string name="dialog_add_exercisetype_24">Drumeții</string>
   <string name="dialog_add_exercisetype_25">Muncă în curte</string>
+  <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">Carbohidrați:</string>
   <string name="dialog_addfood_protein">Proteine:</string>
   <string name="dialog_addfood_sugars">Zaharuri:</string>
   <string name="dialog_addfood_fat">Grăsimi:</string>
+  <!-- About Glucosio Strings -->
   <string name="about_credits">Contribuitori</string>
   <string name="about_contribute">Contribuie</string>
   <string name="about_contributel10n">Contribuie la traducere</string>
@@ -205,4 +216,17 @@
   <string name="fab_HB1AC">Citiri HB1AC</string>
   <string name="fab_glucose">Nivel de glucoză în sânge</string>
   <string name="dialog_error_duplicate">Ai deja o înregistrare pentru această perioadă. Te rugăm să o elimini înainte de a adăuga o corecție.</string>
+  <string name="freestylelibre_nfc_ready">Te rugăm să pui telefonul pe senzor și nu-l mișca până nu vibrează.</string>
+  <string name="freestylelibre_nfc_not_supported">Dispozitivul nu suportă NFC.</string>
+  <string name="freestylelibre_nfc_not_enabled">NFC este dezactivat.</string>
+  <string name="dialog_add_glucose_freestylelibre">Adaugă de la FreeStyle Libre®</string>
+  <string name="freestylelibre_nfc_error">Eroare la deschiderea unei conexiuni NFC!</string>
+  <string name="dialog_add_glucose_freestylelibre_success">O citire de la FreeStyle Libre® a fost adăugată cu succes</string>
+  <string name="overview_hb1ac_error_no_data">Nu sunt suficiente date pentru a calcula HBA1C</string>
+  <string name="overview_hb1ac">HBA1C:</string>
+  <string name="dialog_add_glucose_freestylelibre_added">Adăugat de FreeStyle Libre®</string>
+  <string name="activity_converter_a1c_glucose">NIVEL MEDIU DE GLUCOZĂ</string>
+  <string name="activity_converter_a1c">A1C</string>
+  <string name="activity_converter_title">Calculator A1C</string>
+  <string name="activity_converter_save">SALVEAZĂ</string>
 </resources>

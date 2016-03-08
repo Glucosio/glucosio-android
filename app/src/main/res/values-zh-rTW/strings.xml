@@ -138,6 +138,8 @@
   <string name="reading_low">低</string>
   <string name="reading_high">高</string>
   <string name="reading_hyper">高血糖</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
   <string name="dialog_add_exercisetype_1">悠閒地散步</string>
   <string name="dialog_add_exercisetype_2">快走</string>
   <string name="dialog_add_exercisetype_3">慢跑</string>
@@ -163,10 +165,12 @@
   <string name="dialog_add_exercisetype_23">摔跤</string>
   <string name="dialog_add_exercisetype_24">登山</string>
   <string name="dialog_add_exercisetype_25">園藝工作</string>
+  <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">碳水化合物:</string>
   <string name="dialog_addfood_protein">蛋白質:</string>
   <string name="dialog_addfood_sugars">糖分:</string>
   <string name="dialog_addfood_fat">脂肪:</string>
+  <!-- About Glucosio Strings -->
   <string name="about_credits">誌謝</string>
   <string name="about_contribute">貢獻</string>
   <string name="about_contributel10n">協助翻譯</string>

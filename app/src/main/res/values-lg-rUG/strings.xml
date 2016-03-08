@@ -42,4 +42,16 @@
   <string name="dialog_error2">Tusaba oyingizemu enukutta entufu.</string>
   <string name="dialog_error">Tusaba ojuzzemu amabanga gona.</string>
   <string name="dialog_delete">Sazamu</string>
+  <string name="fragment_overview_selector_month">Omwezi</string>
+  <string name="fragment_overview_selector_day">Olunaku</string>
+  <string name="fragment_overview_selector_week">Sabiiti</string>
+  <string name="preferences_version">Ekyikka</string>
+  <string name="weight">Obuzito</string>
+  <string name="assistant_feedback_title">Waayo endowooza yo </string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
+  <!-- Food Entry Labels -->
+  <!-- About Glucosio Strings -->
+  <string name="dialog_add_weight">Obuzito</string>
+  <string name="fab_pressure">Entunnmuusi</string>
 </resources>

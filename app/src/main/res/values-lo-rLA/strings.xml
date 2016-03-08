@@ -115,6 +115,8 @@
   <string name="reading_ok">ຕົກລົງ</string>
   <string name="reading_low">ຕຳ</string>
   <string name="reading_high">ສູງ</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
   <string name="dialog_add_exercisetype_2">ຢ່າງໄວຂື້ນ</string>
   <string name="dialog_add_exercisetype_3">ການແລ່ນອອກກຳລັງກາຍ</string>
   <string name="dialog_add_exercisetype_4">ແລ່ນ</string>
@@ -138,10 +140,12 @@
   <string name="dialog_add_exercisetype_22">ການປີນຫນ້າຜາ</string>
   <string name="dialog_add_exercisetype_23">ກິລາມວຍປໍ້າ</string>
   <string name="dialog_add_exercisetype_24">ການຢ່າງຫລີ້ນໄລຍະໃກ</string>
+  <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">ທາດຄາໂບໄຮເດຣທ:</string>
   <string name="dialog_addfood_protein">ທາດໂປຣຕີນ:</string>
   <string name="dialog_addfood_sugars">ທາດນໍ້າຕານ:</string>
   <string name="dialog_addfood_fat">ທາດໄຂມັນ:</string>
+  <!-- About Glucosio Strings -->
   <string name="about_credits">ເຄຣດຶຕ</string>
   <string name="about_contribute">ປະກອບສ່ວນ</string>
   <string name="about_contributel10n">ປະກອບສ່ວນເຂົ້າໃນການແປ</string>

@@ -132,6 +132,8 @@
   <string name="reading_low">Bajo</string>
   <string name="reading_high">Alto</string>
   <string name="reading_hyper">Hiperglucemia</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
   <string name="dialog_add_exercisetype_1">Camina sin prisa</string>
   <string name="dialog_add_exercisetype_2">Caminar rápido</string>
   <string name="dialog_add_exercisetype_3">Footing</string>
@@ -157,10 +159,12 @@
   <string name="dialog_add_exercisetype_23">Lucha libre</string>
   <string name="dialog_add_exercisetype_24">Senderismo</string>
   <string name="dialog_add_exercisetype_25">Trabajo de jardinería</string>
+  <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">Carbohidratos:</string>
   <string name="dialog_addfood_protein">Proteínas:</string>
   <string name="dialog_addfood_sugars">Azúcares:</string>
   <string name="dialog_addfood_fat">Grasa:</string>
+  <!-- About Glucosio Strings -->
   <string name="about_credits">Agradecimientos</string>
   <string name="about_contribute">Contribuye</string>
   <string name="about_contributel10n">Contribuye en la traducción</string>
