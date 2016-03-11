@@ -332,6 +332,13 @@
     <string name="activity_converter_a1c">A1C</string>
     <string name="activity_converter_title">A1C Calculator</string>
     <string name="activity_converter_save">SAVE</string>
+    <string name="menu_support">Support</string>
+    <string name="menu_support_title">How can we help you?</string>
+    <string name="menu_support_email">Email</string>
+    <string name="menu_support_live">Live Chat</string>
+    <string name="menu_support_forum">Support Forum</string>
+    <string name="notification_reminder_glucose">It is time to log your blood glucose level!</string>
+    <string name="notification_reminder_medication">It is time to take your medication!</string>
 
     <string-array name="fragment_history_selector" translatable="false">
         <item>@string/fab_glucose</item>
