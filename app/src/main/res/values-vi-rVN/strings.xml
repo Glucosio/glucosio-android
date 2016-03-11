@@ -38,4 +38,8 @@
   <string name="dialog_error">Xin vui lòng điền vào tất cả các mục.</string>
   <string name="dialog_delete">Xoá</string>
   <string name="fragment_history_snackbar_action">HOÀN TÁC</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
+  <!-- Food Entry Labels -->
+  <!-- About Glucosio Strings -->
 </resources>

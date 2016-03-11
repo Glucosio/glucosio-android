@@ -43,5 +43,9 @@
   <string name="preferences_terms">वापराच्या अटी</string>
   <string name="glucose_reading_type">प्रकार</string>
   <string name="weight">वजन</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
+  <!-- Food Entry Labels -->
+  <!-- About Glucosio Strings -->
   <string name="dialog_add_weight">वजन</string>
 </resources>

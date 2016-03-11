@@ -110,7 +110,7 @@
   <string name="assistant_reading_title">Een uitlezing toevoegen</string>
   <string name="assistant_reading_desc">Zorg ervoor dat u regelmatig uw glucose-uitlezingen toevoegt, zodat we kunnen helpen uw glucosegehalten in de loop der tijd bij te houden.</string>
   <string name="assistant_export_title">Uw gegevens exporteren</string>
-  <string name="assistant_export_desc">Deel uw gegevens met uw arts of plaats een back-up ervan op Google Drive via de exporteerfunctie.</string>
+  <string name="assistant_export_desc">Deel uw gegevens met uw arts of plaats een back-up ervan op Google Drive via de exportfunctie.</string>
   <string name="assistant_calculator_a1c_title">A1C berekenen</string>
   <string name="assistant_calculator_a1c_desc">Glucosio’s ingebouwde A1C-calculator is nu in de zijbalk beschikbaar. Voer uw gemiddelde bloedsuikerspiegel in en sla direct de berekende A1C-waarde op.</string>
   <string name="helloactivity_spinner_preferred_range">Voorkeursbereik</string>
@@ -210,7 +210,7 @@
   <string name="title_activity_add_ketone">Ketonen toevoegen</string>
   <string name="title_activity_add_pressure">Bloeddruk toevoegen</string>
   <string name="fab_weight">Lichaamsgewicht</string>
-  <string name="fab_ketonest">Ketonen</string>
+  <string name="fab_ketones">Ketonen</string>
   <string name="fab_pressure">Bloeddruk</string>
   <string name="fab_cholesterol">Cholesterolspiegel</string>
   <string name="fab_HB1AC">HB1AC-uitlezing</string>

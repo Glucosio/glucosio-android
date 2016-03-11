@@ -131,6 +131,8 @@
   <string name="reading_low">נמוך</string>
   <string name="reading_high">גבוה</string>
   <string name="reading_hyper">היפרגליקמיה</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
   <string name="dialog_add_exercisetype_1">הליכה נינוחה</string>
   <string name="dialog_add_exercisetype_2">הליכה מהירה</string>
   <string name="dialog_add_exercisetype_3">ריצה קלה</string>
@@ -156,10 +158,12 @@
   <string name="dialog_add_exercisetype_23">היאבקות</string>
   <string name="dialog_add_exercisetype_24">טיולי הליכה</string>
   <string name="dialog_add_exercisetype_25">טיולים בחצר</string>
+  <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">פחמימות:</string>
   <string name="dialog_addfood_protein">חלבון:</string>
   <string name="dialog_addfood_sugars">סוכרים:</string>
   <string name="dialog_addfood_fat">שומן:</string>
+  <!-- About Glucosio Strings -->
   <string name="about_credits">תודות</string>
   <string name="about_contribute">תרומה</string>
   <string name="about_contributel10n">תרומה לתרגום</string>
@@ -198,7 +202,7 @@
   <string name="title_activity_add_hb1ac">הוספת HB1AC</string>
   <string name="title_activity_add_pressure">הוספת לחץ דם</string>
   <string name="fab_weight">משקל גוף</string>
-  <string name="fab_ketonest">קטונים</string>
+  <string name="fab_ketones">קטונים</string>
   <string name="fab_pressure">לחץ דם</string>
   <string name="fab_cholesterol">רמת הכולסטרול</string>
   <string name="fab_HB1AC">קריאת HB1AC</string>

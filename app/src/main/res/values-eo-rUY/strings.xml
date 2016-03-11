@@ -128,7 +128,7 @@
   <string name="title_activity_add_hb1ac">Aldoni HB1AC</string>
   <string name="title_activity_add_ketone">Aldoni ketonojn</string>
   <string name="fab_weight">Korpopezo</string>
-  <string name="fab_ketonest">Ketonoj</string>
+  <string name="fab_ketones">Ketonoj</string>
   <string name="fab_pressure">Sangtensio</string>
   <string name="fab_cholesterol">Kolesterolnivelo</string>
   <string name="fab_HB1AC">HB1AC-legado</string>

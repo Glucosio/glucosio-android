@@ -107,5 +107,9 @@
   <string name="helloactivity_spinner_preferred_range_4">Zaseban raspon</string>
   <string name="helloactivity_preferred_range_min">Min. vrijednost</string>
   <string name="helloactivity_preferred_range_max">Max. vrijednost</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
+  <!-- Food Entry Labels -->
+  <!-- About Glucosio Strings -->
   <string name="dialog_add_weight">Težina</string>
 </resources>

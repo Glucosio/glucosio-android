@@ -184,7 +184,7 @@
   <string name="title_activity_add_ketone">Přidat ketony</string>
   <string name="title_activity_add_pressure">Přidat krevní tlak</string>
   <string name="fab_weight">Tělesná hmotnost</string>
-  <string name="fab_ketonest">Ketony</string>
+  <string name="fab_ketones">Ketony</string>
   <string name="fab_pressure">Krevní tlak</string>
   <string name="fab_cholesterol">Hladina cholesterolu</string>
   <string name="fab_HB1AC">Hodnota HB1AC</string>

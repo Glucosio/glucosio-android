@@ -207,7 +207,7 @@
   <string name="title_activity_add_ketone">添加酮体</string>
   <string name="title_activity_add_pressure">添加血压</string>
   <string name="fab_weight">体重</string>
-  <string name="fab_ketonest">酮体</string>
+  <string name="fab_ketones">酮体</string>
   <string name="fab_pressure">血压</string>
   <string name="fab_cholesterol">胆固醇水平</string>
   <string name="fab_HB1AC">糖化血红蛋白指数</string>

@@ -113,5 +113,9 @@
   <string name="helloactivity_preferred_range_max">সর্বোচ্চ মান</string>
   <string name="helloactivity_language">ভাষা</string>
   <string name="invitation_title">অন্যান্য মানুষদের আমন্ত্রণ করুন</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
+  <!-- Food Entry Labels -->
+  <!-- About Glucosio Strings -->
   <string name="dialog_add_weight">ওজন</string>
 </resources>

@@ -42,5 +42,9 @@
   <string name="glucose_reading_type">வகை</string>
   <string name="weight">எடை</string>
   <string name="dialog_add_custom_type">விருப்ப அளவீடு வகை</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
+  <!-- Food Entry Labels -->
+  <!-- About Glucosio Strings -->
   <string name="dialog_add_weight">எடை</string>
 </resources>

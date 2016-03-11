@@ -107,5 +107,9 @@
   <string name="helloactivity_spinner_preferred_range_4">স্বনির্ধারিত পরিসীমা</string>
   <string name="helloactivity_preferred_range_min">সর্বনিম্ন মান</string>
   <string name="helloactivity_preferred_range_max">সর্বোচ্চ মান</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
+  <!-- Food Entry Labels -->
+  <!-- About Glucosio Strings -->
   <string name="dialog_add_weight">ওজন</string>
 </resources>

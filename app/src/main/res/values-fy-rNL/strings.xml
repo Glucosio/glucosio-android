@@ -55,4 +55,8 @@
   <string name="assistant_check_title">Sjoch hjir regelmjittich</string>
   <string name="assistant_feedback_title">Weromkeppeling ferstjoere </string>
   <string name="assistant_reading_title">In útlêzing tafoegje</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
+  <!-- Food Entry Labels -->
+  <!-- About Glucosio Strings -->
 </resources>
