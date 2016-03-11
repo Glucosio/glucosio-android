@@ -98,12 +98,12 @@
     <string name="fragment_overview_selector_day">Day</string>
     <string name="fragment_overview_selector_week">Week</string>
 
-    <string-array name="fragment_overview_selector_range">
+    <string-array translatable="false" name="fragment_overview_selector_range">
         <item>@string/fragment_overview_selector_day</item>
         <item>@string/fragment_overview_selector_week</item>
         <item>@string/fragment_overview_selector_month</item>
     </string-array>
-    <string-array name="fragment_overview_selector_metric">
+    <string-array translatable="false" name="fragment_overview_selector_metric">
         <item>@string/fab_glucose</item>
         <item>@string/fab_HB1AC</item>
         <item>@string/fab_cholesterol</item>
