@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -32,6 +33,7 @@ public class HistoryFragment extends Fragment {
     private LinearLayoutManager mLayoutManager;
     private RecyclerView.Adapter mAdapter;
     private HistoryPresenter presenter;
+    private LinearLayout glucoseLegend;
     private Spinner historySpinner;
     private Boolean isToolbarScrolling = true;
 
@@ -67,6 +69,8 @@ public class HistoryFragment extends Fragment {
         mRecyclerView.setHasFixedSize(false);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         historySpinner = (Spinner) mFragmentView.findViewById(R.id.history_spinner);
+        glucoseLegend = (LinearLayout) mFragmentView.findViewById(R.id.fragment_history_legend);
+
         // use a linear layout manager
         // Set array and adapter for graphSpinner
         String[] selectorArray = getActivity().getResources().getStringArray(R.array.fragment_history_selector);
@@ -80,6 +84,11 @@ public class HistoryFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (!presenter.isdbEmpty()) {
                     int metricId = position;
+                    if (position != 0){
+                        glucoseLegend.setVisibility(View.GONE);
+                    } else {
+                        glucoseLegend.setVisibility(View.VISIBLE);
+                    }
                     mAdapter = new HistoryAdapter(context, presenter, metricId);
                     mRecyclerView.setAdapter(mAdapter);
                     mAdapter.notifyDataSetChanged();
