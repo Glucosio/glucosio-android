@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="org.glucosio.android">
 
     <uses-permission android:name="android.permission.NFC" android:required="false"/>
     <uses-feature android:name="android.hardware.nfc" android:required="false" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" tools:node="remove" />
+
     <!-- Required for Instabug -->
     <uses-permission android:name="${applicationId}.permission.C2D_MESSAGE"/>
     <permission
