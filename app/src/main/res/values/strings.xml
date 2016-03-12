@@ -98,12 +98,12 @@
     <string name="fragment_overview_selector_day">Day</string>
     <string name="fragment_overview_selector_week">Week</string>
 
-    <string-array name="fragment_overview_selector_range" translatable="false">
+    <string-array translatable="false" name="fragment_overview_selector_range">
         <item>@string/fragment_overview_selector_day</item>
         <item>@string/fragment_overview_selector_week</item>
         <item>@string/fragment_overview_selector_month</item>
     </string-array>
-    <string-array name="fragment_overview_selector_metric" translatable="false">
+    <string-array translatable="false" name="fragment_overview_selector_metric">
         <item>@string/fab_glucose</item>
         <item>@string/fab_HB1AC</item>
         <item>@string/fab_cholesterol</item>
@@ -113,7 +113,7 @@
     </string-array>
     <string name="tip_example" translatable="false">Use less cheese in your recipes and meals. Fresh mozzarella packed in water and Swiss cheese are usually lower in sodium.</string>
     <string name="preferences_about">About</string>
-    <string name="preferences_experimental_title" translatable="false">Here be dragons :/</string>
+    <string translatable="false" name="preferences_experimental_title">Here be dragons :/</string>
     <string name="preferences_experimental">These features are experimental and may not fully work and are for early testing by users. Remember that you can shake your phone to send us feedback.</string>
     <string name="version" translatable="false">0.10.0 (Imli)</string>
     <string name="preferences_version">Version</string>
@@ -174,12 +174,14 @@
 
     <string-array name="assistant_titles" translatable="false">
         <item>@string/assistant_calculator_a1c_title</item>
+        <item>@string/assistant_feedback_title</item>
         <item>@string/assistant_reading_title</item>
         <item>@string/assistant_categories_title</item>
         <item>@string/assistant_export_title</item>
     </string-array>
     <string-array name="assistant_descriptions" translatable="false">
         <item>@string/assistant_calculator_a1c_desc</item>
+        <item>@string/assistant_feedback_desc</item>
         <item>@string/assistant_reading_desc</item>
         <item>@string/assistant_categories_desc</item>
         <item>@string/assistant_export_desc</item>
@@ -187,6 +189,7 @@
 
     <string-array name="assistant_actions" translatable="false">
         <item>@string/assistant_action_try</item>
+        <item>@string/assistant_action_feedback</item>
         <item>@string/assistant_action_reading</item>
         <item>@string/assistant_action_try</item>
         <item>@string/dialog_export_button</item>
@@ -336,13 +339,6 @@
     <string name="menu_support_forum">Support Forum</string>
     <string name="notification_reminder_glucose">It is time to log your blood glucose level!</string>
     <string name="notification_reminder_medication">It is time to take your medication!</string>
-    <string name="menu_support_error1">There isn\'t an email app installed. Please send a mail to hello@glucosio.org</string>
-
-    <string-array name="menu_support_options" translatable="false">
-        <item>@string/menu_support_email</item>
-        <item>@string/menu_support_live</item>
-        <item>@string/menu_support_forum</item>
-    </string-array>
 
     <string-array name="fragment_history_selector" translatable="false">
         <item>@string/fab_glucose</item>

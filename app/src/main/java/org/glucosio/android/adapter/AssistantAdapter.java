@@ -67,7 +67,14 @@ public class AssistantAdapter extends RecyclerView.Adapter<AssistantAdapter.View
         String actionTipTitleString = actionTips.get(position).getTipTitle();
 
         View.OnClickListener actionListener;
-        if (actionTipTitleString.equals(res.getString(R.string.assistant_export_title))) {
+        if (actionTipTitleString.equals(res.getString(R.string.assistant_feedback_title))) {
+            actionListener = new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    presenter.openGitty();
+                }
+            };
+        } else if (actionTipTitleString.equals(res.getString(R.string.assistant_export_title))) {
             actionListener = new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

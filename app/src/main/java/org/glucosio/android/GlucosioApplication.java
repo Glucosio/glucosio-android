@@ -7,15 +7,14 @@ import android.util.Log;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
-import com.tenmiles.helpstack.HSHelpStack;
-import com.tenmiles.helpstack.gears.HSEmailGear;
+import com.instabug.library.IBGInvocationEvent;
+import com.instabug.library.Instabug;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 public class GlucosioApplication extends Application {
 
     private Tracker mTracker;
-    HSHelpStack helpStack;
 
     /**
      * Gets the default {@link Tracker} for this {@link Application}.
@@ -51,13 +50,15 @@ public class GlucosioApplication extends Application {
             setFont("fonts/lato.ttf");
         }
 
-        helpStack = HSHelpStack.getInstance(this); // Get the HSHelpStack instance
-
-        HSEmailGear emailGear = new HSEmailGear(
-                "rotolopao@gmail.com",
-                R.xml.articles);
-
-        helpStack.setGear(emailGear); // Set the Gear
+        if (BuildConfig.DEBUG) {
+            new Instabug.Builder(this, "b2226aa30fec24f6f4bed6ad68964e9b")
+                    .setInvocationEvent(IBGInvocationEvent.IBGInvocationEventShake)
+                    .build();
+        } else {
+            new Instabug.Builder(this, "820ee7db3118d03fd5f4249b5a73672e")
+                    .setInvocationEvent(IBGInvocationEvent.IBGInvocationEventShake)
+                    .build();
+        }
     }
 
     private void setFont(String font){

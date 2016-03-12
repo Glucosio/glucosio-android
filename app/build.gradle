@@ -36,18 +36,6 @@ android {
     lintOptions {
         abortOnError false
     }
-    packagingOptions {
-        exclude 'META-INF/DEPENDENCIES.txt'
-        exclude 'META-INF/LICENSE.txt'
-        exclude 'META-INF/NOTICE.txt'
-        exclude 'META-INF/NOTICE'
-        exclude 'META-INF/LICENSE'
-        exclude 'META-INF/DEPENDENCIES'
-        exclude 'META-INF/notice.txt'
-        exclude 'META-INF/license.txt'
-        exclude 'META-INF/dependencies.txt'
-        exclude 'META-INF/LGPL2.1'
-    }
 }
 
 repositories {
@@ -80,10 +68,10 @@ dependencies {
     compile 'com.github.PhilJay:MPAndroidChart:v2.2.3'
     compile 'uk.co.chrisjenx:calligraphy:2.1.0'
     compile 'net.danlew:android.joda:2.9.2'
-    compile 'com.tenmiles:helpstack:1.2.0'
     compile('com.mikepenz:materialdrawer:5.0.5@aar') {
         transitive = true
     }
+    compile 'com.instabug.library:instabugcompat:2.1.1'
 
     wearApp project(':wear')
     // Testing libraries
