@@ -103,9 +103,9 @@
   <string name="assistant_research_title">Actualizar tu aprobación de compartir datos</string>
   <string name="assistant_research_desc">Siempre se puede aceptar o optar por no compartir la investigación de la diabetes, pero recuerda que todos los datos compartidos son totalmente anónimos. Solamente compartimos datos demográficos y las tendencias de los niveles de glucosa.</string>
   <string name="assistant_categories_title">Crear categorías</string>
-  <string name="assistant_categories_desc">Glucosio tiene categorías predeterminadas para la entrada de glucosa, pero puede crear categorías personalizadas en la configuración para que coincida con sus necesidades particulares.</string>
+  <string name="assistant_categories_desc">Glucosio tiene categorías predeterminadas para la entrada de glucosa, pero puedes crear categorías personalizadas en la configuración para que coincida con tus necesidades particulares.</string>
   <string name="assistant_check_title">Revise esto a menudo</string>
-  <string name="assistant_check_desc">Asistente de Glucosio ofrece consejos regulares y seguirá mejorando, así que siempre revisa aquí para ver lo que puede hacer para mejorar su experiencia con Glucosio y por otros consejos útiles.</string>
+  <string name="assistant_check_desc">Asistente de Glucosio ofrece consejos regulares y seguirá mejorando, así que siempre revisa aquí para ver lo que puedes hacer para mejorar tu experiencia con Glucosio y por otros consejos útiles.</string>
   <string name="assistant_feedback_title">Enviar Comentarios </string>
   <string name="assistant_feedback_desc">Si encuentra cualquier problema técnico o desea comentar sobre Glucosio, envíenos sus comentarios en el menú de configuración para que mejoremos Glucosio.</string>
   <string name="assistant_reading_title">Añadir Lectura</string>
@@ -230,4 +230,11 @@
   <string name="activity_converter_a1c">A1C</string>
   <string name="activity_converter_title">Calculador de A1C</string>
   <string name="activity_converter_save">GUARDAR</string>
+  <string name="menu_support">Asistencia técnica</string>
+  <string name="menu_support_title">¿En qué te podemos ayudar?</string>
+  <string name="menu_support_email">Email</string>
+  <string name="menu_support_live">Chat en vivo</string>
+  <string name="menu_support_forum">Foro para asistencia técnica</string>
+  <string name="notification_reminder_glucose">¡Inicia sesión para ver tu nivel de glucemia!</string>
+  <string name="notification_reminder_medication">¡Es hora de tomar tu medicamento!</string>
 </resources>

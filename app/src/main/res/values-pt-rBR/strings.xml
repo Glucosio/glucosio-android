@@ -229,4 +229,11 @@
   <string name="activity_converter_a1c">A1C</string>
   <string name="activity_converter_title">Calculadora A1C</string>
   <string name="activity_converter_save">SALVAR</string>
+  <string name="menu_support">Suporte</string>
+  <string name="menu_support_title">Como podemos ajudá-lo?</string>
+  <string name="menu_support_email">E-mail</string>
+  <string name="menu_support_live">Chat ao vivo</string>
+  <string name="menu_support_forum">Fórum de suporte</string>
+  <string name="notification_reminder_glucose">Está na hora de registrar o seu nível de glicose no sangue!</string>
+  <string name="notification_reminder_medication">Está na hora de tomar sua medicação!</string>
 </resources>

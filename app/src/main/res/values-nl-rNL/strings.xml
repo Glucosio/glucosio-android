@@ -229,4 +229,11 @@
   <string name="activity_converter_a1c">A1C</string>
   <string name="activity_converter_title">A1C-calculator</string>
   <string name="activity_converter_save">OPSLAAN</string>
+  <string name="menu_support">Ondersteuning</string>
+  <string name="menu_support_title">Hoe kunnen we u helpen?</string>
+  <string name="menu_support_email">E-mail</string>
+  <string name="menu_support_live">Livechat</string>
+  <string name="menu_support_forum">Ondersteuningsforum</string>
+  <string name="notification_reminder_glucose">Het is tijd om uw bloedsuikerspiegel vast te leggen!</string>
+  <string name="notification_reminder_medication">Het is tijd voor uw medicatie!</string>
 </resources>

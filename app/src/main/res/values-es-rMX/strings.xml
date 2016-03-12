@@ -59,6 +59,7 @@
   <string name="fragment_overview_selector_day">Día</string>
   <string name="fragment_overview_selector_week">Semana</string>
   <string name="preferences_about">Sobre la aplicación</string>
+  <string name="preferences_experimental">Estas características son experimentales y pueden no funcionar correctamente, están disponibles para que los usuarios las prueben. Recuerda que puedes agitar tu teléfono para enviarnos comentarios.</string>
   <string name="preferences_version">Versión</string>
   <string name="preferences_terms">Términos de Uso</string>
   <string name="glucose_reading_type">Tipo</string>
@@ -111,6 +112,8 @@
   <string name="assistant_reading_desc">Asegúrese de añadir regularmente sus lecturas de glucosa para que podamos ayudarle a seguir sus niveles de glucosa a largo plazo.</string>
   <string name="assistant_export_title">Exportar datos</string>
   <string name="assistant_export_desc">Comparte los datos con tu médico o haz una copia de seguridad en Google Drive usando la función de exportar.</string>
+  <string name="assistant_calculator_a1c_title">Calcular A1C</string>
+  <string name="assistant_calculator_a1c_desc">La calculadora integrada de A1C está ahora disponible desde el panel de navegación. Introduce tu media de glucosa en sangre y podrás guardar el valor calculado de A1C al instante.</string>
   <string name="helloactivity_spinner_preferred_range">Gama preferida</string>
   <string name="helloactivity_spinner_preferred_range_4">Gama personalizada</string>
   <string name="helloactivity_preferred_range_min">Valor mínimo</string>
@@ -196,7 +199,7 @@
   <string name="dialog_add_cholesterol_total">Colesterol total</string>
   <string name="dialog_add_cholesterol_ldl">Colesterol LDL</string>
   <string name="dialog_add_cholesterol_hdl">Colesterol HDL</string>
-  <string name="dialog_add_hb1ac">HB1AC</string>
+  <string name="dialog_add_hb1ac">HBA1C</string>
   <string name="title_activity_add_glucose">Añadir lectura de glucosa</string>
   <string name="title_activity_add_weight">Añadir peso corporal</string>
   <string name="title_activity_add_cholesterol">Añadir nivel de colesterol</string>

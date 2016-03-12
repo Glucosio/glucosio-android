@@ -229,4 +229,11 @@
   <string name="activity_converter_a1c">A1C</string>
   <string name="activity_converter_title">A1C 計算機</string>
   <string name="activity_converter_save">保存</string>
+  <string name="menu_support">サポート</string>
+  <string name="menu_support_title">お困りですか?</string>
+  <string name="menu_support_email">メール</string>
+  <string name="menu_support_live">ライブチャット</string>
+  <string name="menu_support_forum">サポート フォーラム</string>
+  <string name="notification_reminder_glucose">血糖値を記録する時間です!</string>
+  <string name="notification_reminder_medication">薬を服用する時間です!</string>
 </resources>

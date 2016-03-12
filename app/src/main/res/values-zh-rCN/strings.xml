@@ -59,6 +59,7 @@
   <string name="fragment_overview_selector_day">日</string>
   <string name="fragment_overview_selector_week">周</string>
   <string name="preferences_about">关于</string>
+  <string name="preferences_experimental">这些实验性功能不保证能稳定工作，仅面向早期测试用户。您可以摇动手机以给我们发送反馈。</string>
   <string name="preferences_version">版本</string>
   <string name="preferences_terms">使用条款</string>
   <string name="glucose_reading_type">类型</string>
@@ -112,6 +113,8 @@
   <string name="assistant_reading_desc">一定要定期添加您的血糖读数，以便我们帮助您随时间跟踪您的血糖水平。</string>
   <string name="assistant_export_title">导出您的数据</string>
   <string name="assistant_export_desc">使用导出功能，您可以与您的医生分享您的数据，或者备份您的数据到 Google Drive。</string>
+  <string name="assistant_calculator_a1c_title">计算糖化血红蛋白</string>
+  <string name="assistant_calculator_a1c_desc">Glucosio 内置的糖化血红蛋白（A1C）计算器现在可以在导航抽屉中调用。输入您的平均血糖水平，然后可立即保存计算后的糖化血红蛋白值。</string>
   <string name="helloactivity_spinner_preferred_range">首选范围</string>
   <string name="helloactivity_spinner_preferred_range_4">自定义范围</string>
   <string name="helloactivity_preferred_range_min">最小值</string>
@@ -129,6 +132,8 @@
   <string name="preferences_licences_open">开源许可证</string>
   <string name="preferences_freestyle_libre">启用 FreeStyle Libre® 支持</string>
   <string name="preferences_freestyle_libre_experimental">实验性：启用 FreeStyle Libre® 支持</string>
+  <string name="preferences_font_dyslexia_experimental">实验性：加强对阅读障碍用户的可读性</string>
+  <string name="preferences_font_dyslexia">加强对阅读障碍用户的可读性</string>
   <string name="about_donate">捐款给 Glucosio</string>
   <string name="reading_ok">良好</string>
   <string name="reading_hypo">低血糖</string>
@@ -222,4 +227,15 @@
   <string name="overview_hb1ac_error_no_data">没有足够的数据来计算糖化血红蛋白</string>
   <string name="overview_hb1ac">糖化血红蛋白:</string>
   <string name="dialog_add_glucose_freestylelibre_added">从你的 FreeStyle Libre® 添加</string>
+  <string name="activity_converter_a1c_glucose">平均血糖水平</string>
+  <string name="activity_converter_a1c">糖化血红蛋白</string>
+  <string name="activity_converter_title">糖化血红蛋白计算器</string>
+  <string name="activity_converter_save">保存</string>
+  <string name="menu_support">支持</string>
+  <string name="menu_support_title">我们该怎样帮助您？</string>
+  <string name="menu_support_email">电子邮件</string>
+  <string name="menu_support_live">在线聊天</string>
+  <string name="menu_support_forum">支持论坛</string>
+  <string name="notification_reminder_glucose">该记录您的血糖水平了！</string>
+  <string name="notification_reminder_medication">现在是您的服药时间！</string>
 </resources>

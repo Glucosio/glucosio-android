@@ -229,4 +229,11 @@
   <string name="activity_converter_a1c">A1C</string>
   <string name="activity_converter_title">Calculator A1C</string>
   <string name="activity_converter_save">SALVEAZĂ</string>
+  <string name="menu_support">Asistență</string>
+  <string name="menu_support_title">Cum te putem ajuta?</string>
+  <string name="menu_support_email">E-mail</string>
+  <string name="menu_support_live">Chat instant</string>
+  <string name="menu_support_forum">Forum de asistență</string>
+  <string name="notification_reminder_glucose">Este timpul să înregistrezi nivelul de glucoză!</string>
+  <string name="notification_reminder_medication">Este timpul să iei medicația!</string>
 </resources>

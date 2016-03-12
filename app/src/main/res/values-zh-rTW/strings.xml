@@ -228,4 +228,12 @@
   <string name="activity_converter_a1c_glucose">平均血糖讀數</string>
   <string name="activity_converter_a1c">糖化血色素</string>
   <string name="activity_converter_title">糖化血色素計算機</string>
+  <string name="activity_converter_save">儲存</string>
+  <string name="menu_support">技術支援</string>
+  <string name="menu_support_title">我可以幫忙什麼？</string>
+  <string name="menu_support_email">電子郵件</string>
+  <string name="menu_support_live">線上聊天</string>
+  <string name="menu_support_forum">技術支援討論區</string>
+  <string name="notification_reminder_glucose">是時候來記錄血糖值了！</string>
+  <string name="notification_reminder_medication">是時候來吃藥了！</string>
 </resources>

@@ -110,6 +110,7 @@
   <string name="assistant_reading_title">Dodajte očitavanje</string>
   <string name="assistant_reading_desc">Redovito dodavajte očitanja razine glukoze tako da bi mobli pratiti razinu glukoze tijekom vremena.</string>
   <string name="assistant_export_title">Izvoz podataka</string>
+  <string name="assistant_export_desc">Dijelite vaše podatake s vašim liječnikom ili napravite sigurnosnu kopiju vaših podataka na Google disk koristeći izvoz funkciju.</string>
   <string name="assistant_calculator_a1c_title">Izračunajte A1C</string>
   <string name="assistant_calculator_a1c_desc">U Glucosiu je ugrađen A1C kalkulator je sada dostupna za korištenje u navigacijskom ladici. Unesite prosječnu glukoze i spremajte odmah izračunate A1C vrijednosti.</string>
   <string name="helloactivity_spinner_preferred_range">Preferirani raspon</string>
@@ -123,6 +124,7 @@
   <string name="title_activity_backup">Sigurnosna kopija</string>
   <string name="preferences_privacy">Privatnost</string>
   <string name="helloactivity_textview_tos">Korištenjem Glucosio, suglasni ste</string>
+  <string name="preferences_backup_google_drive">Google disk</string>
   <string name="preferences_about_glucosio">O Glucosio</string>
   <string name="preferences_rate">Ocijenite Glucosio</string>
   <string name="preferences_licences_open">Licence otvorenog koda</string>
@@ -227,4 +229,11 @@
   <string name="activity_converter_a1c">A1C</string>
   <string name="activity_converter_title">A1C Kalkulator</string>
   <string name="activity_converter_save">SPREMI</string>
+  <string name="menu_support">Podrška</string>
+  <string name="menu_support_title">Kako vam možemo pomoći?</string>
+  <string name="menu_support_email">E-pošta</string>
+  <string name="menu_support_live">Čavrljati uživo</string>
+  <string name="menu_support_forum">Forum za podršku</string>
+  <string name="notification_reminder_glucose">Vrijeme je za zapisivanje vaše razine glukoze u krvi!</string>
+  <string name="notification_reminder_medication">Vrijeme je da uzmete svoje lijekove!</string>
 </resources>
