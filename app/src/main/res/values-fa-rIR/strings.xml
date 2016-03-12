@@ -118,6 +118,8 @@
   <string name="reading_low">پایین</string>
   <string name="reading_high">زیاد</string>
   <string name="reading_hyper">قند خون</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
   <string name="dialog_add_exercisetype_1">راه رفتن تفریحی</string>
   <string name="dialog_add_exercisetype_2">پیاده روی سریع</string>
   <string name="dialog_add_exercisetype_3">آهسته دویدن</string>
@@ -143,10 +145,12 @@
   <string name="dialog_add_exercisetype_23">کشتی</string>
   <string name="dialog_add_exercisetype_24">پیاده روی</string>
   <string name="dialog_add_exercisetype_25">کار در حیاط</string>
+  <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">کربوهیدرات:</string>
   <string name="dialog_addfood_protein">پروتئین:</string>
   <string name="dialog_addfood_sugars">قند:</string>
   <string name="dialog_addfood_fat">چربی:</string>
+  <!-- About Glucosio Strings -->
   <string name="about_credits">اعتبارات</string>
   <string name="about_contribute">مشارکت</string>
   <string name="about_contributel10n">مشارکت در ترجمه</string>
@@ -154,4 +158,5 @@
   <string name="about_discussion">به گروه تبادل نظر ما ملحق شوید</string>
   <string name="about_maillist">در لیست ایمیلهای ما مشترک شوید</string>
   <string name="assistant_archived">آرشیو نکات</string>
+  <string name="dialog_add_weight">وزن</string>
 </resources>

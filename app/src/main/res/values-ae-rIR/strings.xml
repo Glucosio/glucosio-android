@@ -37,6 +37,7 @@
   <string name="dialog_add_type_5">قبل از شام</string>
   <string name="dialog_add_type_6">بعد از شام</string>
   <string name="dialog_add_type_9">شب</string>
+  <string name="dialog_add_type_12">دیگر</string>
   <string name="dialog_add_cancel">لغو</string>
   <string name="dialog_add_add">اضافه</string>
   <string name="dialog_error2">لطفا یک مقدار معتبر وارد کنید.</string>
@@ -78,4 +79,8 @@
   <string name="assistant_action_feedback">ارسال بازخورد</string>
   <string name="assistant_weight_title">بروزرسانی وزن</string>
   <string name="assistant_feedback_title">ارسال بازخورد </string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
+  <!-- Food Entry Labels -->
+  <!-- About Glucosio Strings -->
 </resources>

@@ -79,7 +79,6 @@ public class AddGlucosePresenter {
                 converter = new GlucoseConverter();
                 int convertedReading = converter.glucoseToMgDl(Double.parseDouble(reading));
                 GlucoseReading gReading = new GlucoseReading(convertedReading, type, finalDateTime, "");
-                dB.addGlucoseReading(gReading);
                 isReadingAdded = dB.addGlucoseReading(gReading);
             }
             if (!isReadingAdded){

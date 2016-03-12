@@ -3,6 +3,7 @@
 <resources>
   <string name="action_settings">Settings</string>
   <string name="action_feedback">Send feedback</string>
+  <string name="action_invite">Invite a friend</string>
   <string name="tab_overview">Overview</string>
   <string name="tab_history">History</string>
   <string name="tab_tips">Tips</string>
@@ -37,7 +38,12 @@
   <string name="dialog_add_type_4">After lunch</string>
   <string name="dialog_add_type_5">Before dinner</string>
   <string name="dialog_add_type_6">After dinner</string>
+  <string name="dialog_add_type_7">Snack</string>
+  <string name="dialog_add_type_8">Bedtime</string>
   <string name="dialog_add_type_9">Night</string>
+  <string name="dialog_add_type_10">Fasting glucose</string>
+  <string name="dialog_add_type_11">Recheck</string>
+  <string name="dialog_add_type_12">Other</string>
   <string name="dialog_add_cancel">CANCEL</string>
   <string name="dialog_add_add">ADD</string>
   <string name="dialog_error2">Please enter a valid value.</string>
@@ -76,7 +82,7 @@
     <item>There are several diet approaches you can take to eating healthier and helping improve your diabetes outcomes. Seek advice from a dietician on what will work best for you and your budget.</item>
     <item>Working on getting regular exercise is especially important for those with diabetes and can help you maintain a healthy weight. Talk to your doctor about exercises that will be appropriate for you.</item>
     <item>Being sleep-deprived can make you eat more especially things like junk food and as a result can negatively impact your health. Be sure to get a good night sleep and consult a sleep specialist if you are having difficulty.</item>
-    <item>Stress can have a negative impact on diabetes talk to your doctor or other health care professional about coping with stress.</item>
+    <item>Stress can have a negative impact on diabetes. Talk to your doctor or other health care professional about coping with stress.</item>
     <item>Visiting your doctor once a year and having regular communication throughout the year is important for diabetics to prevent any sudden onset of associated health problems.</item>
     <item>Take your medicine as prescribed by your doctor even small lapses in your medicine can impact your blood glucose level and cause other side effects. If having difficulty remembering ask your doctor about medication management and reminder options.</item>
   </string-array>
@@ -106,4 +112,28 @@
   <string name="helloactivity_spinner_preferred_range_4">Custom range</string>
   <string name="helloactivity_preferred_range_min">Min value</string>
   <string name="helloactivity_preferred_range_max">Max value</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
+  <string name="dialog_add_exercisetype_25">Yard work</string>
+  <!-- Food Entry Labels -->
+  <string name="dialog_addfood_carbs">Carbs:</string>
+  <string name="dialog_addfood_protein">Protein:</string>
+  <string name="dialog_addfood_sugars">Sugars:</string>
+  <string name="dialog_addfood_fat">Fat:</string>
+  <!-- About Glucosio Strings -->
+  <string name="about_credits">Credits</string>
+  <string name="about_contribute">Contribute</string>
+  <string name="about_contributel10n">Contribute to Translation</string>
+  <string name="about_contributedev">Contribute to Development</string>
+  <string name="about_discussion">Join our discussion community</string>
+  <string name="about_maillist">Subscribe to our mailing list</string>
+  <string name="assistant_archived">ARCHIVED TIPS</string>
+  <string name="dialog_export_title">Export data</string>
+  <string name="dialog_export_date_to">To:</string>
+  <string name="dialog_export_today">Pick today</string>
+  <string name="dialog_export_button">EXPORT</string>
+  <string name="title_activity_export">Export Data</string>
+  <string name="share_using">Share using</string>
+  <string name="share_subject">Glucosio data</string>
+  <string name="dialog_add_weight">Weight</string>
 </resources>

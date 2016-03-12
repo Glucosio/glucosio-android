@@ -3,6 +3,7 @@
 <resources>
   <string name="action_settings">Настройки</string>
   <string name="action_feedback">Изпрати отзив</string>
+  <string name="action_invite">Покани приятел</string>
   <string name="tab_overview">Преглед</string>
   <string name="tab_history">История</string>
   <string name="tab_tips">Съвети</string>
@@ -37,7 +38,10 @@
   <string name="dialog_add_type_4">След обяд</string>
   <string name="dialog_add_type_5">Преди вечеря</string>
   <string name="dialog_add_type_6">След вечеря</string>
+  <string name="dialog_add_type_8">Преди лягане</string>
   <string name="dialog_add_type_9">Нощ</string>
+  <string name="dialog_add_type_10">Глюкоза на гладно</string>
+  <string name="dialog_add_type_12">Друг</string>
   <string name="dialog_add_cancel">Отказ</string>
   <string name="dialog_add_add">Добави</string>
   <string name="dialog_error2">Моля въведете правилна стойност.</string>
@@ -102,8 +106,17 @@
   <string name="assistant_feedback_desc">Ако откриете някакви технически грешки или имате отзив за Glucosio ви насърчаваме да го изпратите в менюто \"Настройки\", за да ни помогнете да усъвършенстваме Glucosio.</string>
   <string name="assistant_reading_title">Добави стойност</string>
   <string name="assistant_reading_desc">Не забравяйте редовно да добавяте показанията на кръвната ви захар, така ще можем да ви помогнем да проследите нивата с течение на времето.</string>
+  <string name="assistant_export_title">Експортиране на данни</string>
+  <string name="assistant_calculator_a1c_title">Изчисли A1C</string>
   <string name="helloactivity_spinner_preferred_range">Предпочитан диапазон</string>
   <string name="helloactivity_spinner_preferred_range_4">Потребителски диапазон</string>
   <string name="helloactivity_preferred_range_min">Минимална стойност</string>
   <string name="helloactivity_preferred_range_max">Максимална стойност</string>
+  <string name="helloactivity_language">Език</string>
+  <string name="invitation_title">Поканете други хора</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
+  <!-- Food Entry Labels -->
+  <!-- About Glucosio Strings -->
+  <string name="dialog_add_weight">Тегло</string>
 </resources>

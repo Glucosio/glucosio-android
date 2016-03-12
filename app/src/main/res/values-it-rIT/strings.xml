@@ -139,6 +139,8 @@
   <string name="reading_low">Basso</string>
   <string name="reading_high">Alto</string>
   <string name="reading_hyper">Iperglicemia</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
   <string name="dialog_add_exercisetype_1">Passeggiata</string>
   <string name="dialog_add_exercisetype_2">Camminata veloce</string>
   <string name="dialog_add_exercisetype_3">Jogging</string>
@@ -164,10 +166,12 @@
   <string name="dialog_add_exercisetype_23">Wrestling</string>
   <string name="dialog_add_exercisetype_24">Escursionismo</string>
   <string name="dialog_add_exercisetype_25">Lavori di casa</string>
+  <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">Carboidrati:</string>
   <string name="dialog_addfood_protein">Proteine:</string>
   <string name="dialog_addfood_sugars">Zuccheri:</string>
   <string name="dialog_addfood_fat">Grassi:</string>
+  <!-- About Glucosio Strings -->
   <string name="about_credits">Riconoscimenti</string>
   <string name="about_contribute">Contribuisci</string>
   <string name="about_contributel10n">Contribuisci alle Traduzioni</string>
@@ -207,7 +211,7 @@
   <string name="title_activity_add_ketone">Aggiungi Chetoni</string>
   <string name="title_activity_add_pressure">Aggiungi pressione sanguigna</string>
   <string name="fab_weight">Peso corporeo</string>
-  <string name="fab_ketonest">Chetoni</string>
+  <string name="fab_ketones">Chetoni</string>
   <string name="fab_pressure">Pressione sanguigna</string>
   <string name="fab_cholesterol">Livello di colesterolo</string>
   <string name="fab_HB1AC">Emoglobina glicata (HB1AC)</string>
@@ -226,4 +230,10 @@
   <string name="activity_converter_a1c">EMOGLOBINA GLICATA</string>
   <string name="activity_converter_title">Calcola Glicata</string>
   <string name="activity_converter_save">SALVA</string>
+  <string name="menu_support">Aiuto</string>
+  <string name="menu_support_title">Come possiamo aiutarti?</string>
+  <string name="menu_support_email">Email</string>
+  <string name="menu_support_live">Chat Live</string>
+  <string name="menu_support_forum">Forum di supporto</string>
+  <string name="notification_reminder_glucose">È ora di registrare la tua glicemia!</string>
 </resources>

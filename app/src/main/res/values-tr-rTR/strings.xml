@@ -104,6 +104,7 @@
   <string name="assistant_feedback_desc">Eğer herhangi bir teknik sorun bulursanız veya Glucosio hakkında geribildiriminiz varsa Glucosio\'yu geliştirmemize yardımcı olmak için Ayarlar menüsünden geribildirim göndermeyi öneririz.</string>
   <string name="assistant_reading_title">Bir okuma Ekle</string>
   <string name="assistant_reading_desc">Glikoz değerlerinizi düzenli olarak eklediğinizden emin olun böylece glikoz seviyenizi takip edebilelim.</string>
+  <string name="assistant_export_title">Verilerinizi dışarı aktar</string>
   <string name="helloactivity_spinner_preferred_range">Tercih edilen aralık</string>
   <string name="helloactivity_spinner_preferred_range_4">Özel Aralık</string>
   <string name="helloactivity_preferred_range_min">En küçük değer</string>
@@ -122,6 +123,8 @@
   <string name="reading_hypo">Hipoglisemi</string>
   <string name="reading_low">Düşük</string>
   <string name="reading_high">Yüksek</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
   <string name="dialog_add_exercisetype_2">Hızlı yürüme</string>
   <string name="dialog_add_exercisetype_3">Koşu</string>
   <string name="dialog_add_exercisetype_5">Yüzme</string>
@@ -143,10 +146,12 @@
   <string name="dialog_add_exercisetype_22">Dağ tırmanışı</string>
   <string name="dialog_add_exercisetype_23">Güreş</string>
   <string name="dialog_add_exercisetype_25">Bahçe işleri</string>
+  <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">Karbonhidrat:</string>
   <string name="dialog_addfood_protein">Protein:</string>
   <string name="dialog_addfood_sugars">Şekerler:</string>
   <string name="dialog_addfood_fat">Yağ:</string>
+  <!-- About Glucosio Strings -->
   <string name="about_credits">Krediler</string>
   <string name="about_contribute">Katkıda Bulunun</string>
   <string name="about_contributedev">Geliştirmeye katkıda bulunun</string>
@@ -165,7 +170,25 @@
   <string name="fragment_overview_permission_storage">Glucosio ekran görüntüsü kaydetmek için depolama izninin olması gerekir</string>
   <string name="fragment_overview_graph_export_true">Ekran görüntüsü galeriye kaydedildi</string>
   <string name="dialog_export_range">Dışa aktarma aralığı</string>
+  <string name="dialog_add_weight">Ağırlık</string>
+  <string name="dialog_add_ketones">Ketonlar</string>
+  <string name="dialog_add_pressure_min">Min Basınç</string>
+  <string name="dialog_add_pressure_max">Maks Basınc</string>
+  <string name="dialog_add_cholesterol_total">Toplam Kolesterol</string>
+  <string name="dialog_add_cholesterol_ldl">LDL Kolesterol</string>
+  <string name="dialog_add_cholesterol_hdl">HDL Kolesterol</string>
+  <string name="dialog_add_hb1ac">HB1AC</string>
+  <string name="title_activity_add_weight">Vücut Ağırlığı Ekle</string>
+  <string name="title_activity_add_cholesterol">Kolesterol Düzeyini Ekle</string>
+  <string name="title_activity_add_hb1ac">HB1AC Ekle</string>
+  <string name="title_activity_add_ketone">Keton Ekle</string>
+  <string name="title_activity_add_pressure">Kan Basıncını Ekle</string>
   <string name="fab_weight">Vücut Ağırlığı</string>
+  <string name="fab_ketones">Ketonlar</string>
   <string name="fab_pressure">Kan Basıncı</string>
   <string name="fab_cholesterol">Kolesterol Düzeyi</string>
+  <string name="fab_HB1AC">HBA1C Okunuyor</string>
+  <string name="freestylelibre_nfc_not_enabled">NFC devre dışı.</string>
+  <string name="overview_hb1ac_error_no_data">HBA1C hesaplamak için yeterli veri yok</string>
+  <string name="overview_hb1ac">HBA1C:</string>
 </resources>

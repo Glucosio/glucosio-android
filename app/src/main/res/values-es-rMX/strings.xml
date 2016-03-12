@@ -59,6 +59,7 @@
   <string name="fragment_overview_selector_day">Día</string>
   <string name="fragment_overview_selector_week">Semana</string>
   <string name="preferences_about">Sobre la aplicación</string>
+  <string name="preferences_experimental">Estas características son experimentales y pueden no funcionar correctamente, están disponibles para que los usuarios las prueben. Recuerda que puedes agitar tu teléfono para enviarnos comentarios.</string>
   <string name="preferences_version">Versión</string>
   <string name="preferences_terms">Términos de Uso</string>
   <string name="glucose_reading_type">Tipo</string>
@@ -111,6 +112,8 @@
   <string name="assistant_reading_desc">Asegúrese de añadir regularmente sus lecturas de glucosa para que podamos ayudarle a seguir sus niveles de glucosa a largo plazo.</string>
   <string name="assistant_export_title">Exportar datos</string>
   <string name="assistant_export_desc">Comparte los datos con tu médico o haz una copia de seguridad en Google Drive usando la función de exportar.</string>
+  <string name="assistant_calculator_a1c_title">Calcular A1C</string>
+  <string name="assistant_calculator_a1c_desc">La calculadora integrada de A1C está ahora disponible desde el panel de navegación. Introduce tu media de glucosa en sangre y podrás guardar el valor calculado de A1C al instante.</string>
   <string name="helloactivity_spinner_preferred_range">Gama preferida</string>
   <string name="helloactivity_spinner_preferred_range_4">Gama personalizada</string>
   <string name="helloactivity_preferred_range_min">Valor mínimo</string>
@@ -132,6 +135,8 @@
   <string name="reading_low">Bajo</string>
   <string name="reading_high">Alto</string>
   <string name="reading_hyper">Hiperglucemia</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
   <string name="dialog_add_exercisetype_1">Camina sin prisa</string>
   <string name="dialog_add_exercisetype_2">Caminar rápido</string>
   <string name="dialog_add_exercisetype_3">Footing</string>
@@ -157,10 +162,12 @@
   <string name="dialog_add_exercisetype_23">Lucha libre</string>
   <string name="dialog_add_exercisetype_24">Senderismo</string>
   <string name="dialog_add_exercisetype_25">Trabajo de jardinería</string>
+  <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">Carbohidratos:</string>
   <string name="dialog_addfood_protein">Proteínas:</string>
   <string name="dialog_addfood_sugars">Azúcares:</string>
   <string name="dialog_addfood_fat">Grasa:</string>
+  <!-- About Glucosio Strings -->
   <string name="about_credits">Agradecimientos</string>
   <string name="about_contribute">Contribuye</string>
   <string name="about_contributel10n">Contribuye en la traducción</string>
@@ -192,7 +199,7 @@
   <string name="dialog_add_cholesterol_total">Colesterol total</string>
   <string name="dialog_add_cholesterol_ldl">Colesterol LDL</string>
   <string name="dialog_add_cholesterol_hdl">Colesterol HDL</string>
-  <string name="dialog_add_hb1ac">HB1AC</string>
+  <string name="dialog_add_hb1ac">HBA1C</string>
   <string name="title_activity_add_glucose">Añadir lectura de glucosa</string>
   <string name="title_activity_add_weight">Añadir peso corporal</string>
   <string name="title_activity_add_cholesterol">Añadir nivel de colesterol</string>
@@ -200,7 +207,6 @@
   <string name="title_activity_add_ketone">Añadir cetonas</string>
   <string name="title_activity_add_pressure">Añadir presión arterial</string>
   <string name="fab_weight">Peso corporal</string>
-  <string name="fab_ketonest">Cetonas</string>
   <string name="fab_pressure">Presión arterial</string>
   <string name="fab_cholesterol">Nivel de colesterol</string>
   <string name="fab_HB1AC">Lectura de HB1AC</string>

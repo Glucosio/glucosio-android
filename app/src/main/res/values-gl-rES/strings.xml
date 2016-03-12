@@ -138,6 +138,8 @@
   <string name="reading_low">Baixo</string>
   <string name="reading_high">Alto</string>
   <string name="reading_hyper">Hiperglicemia</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
   <string name="dialog_add_exercisetype_1">Pasear</string>
   <string name="dialog_add_exercisetype_2">Marcha rápida</string>
   <string name="dialog_add_exercisetype_3">Carreira lixeira</string>
@@ -163,10 +165,12 @@
   <string name="dialog_add_exercisetype_23">Loita</string>
   <string name="dialog_add_exercisetype_24">Excursionismo</string>
   <string name="dialog_add_exercisetype_25">Xardinaría</string>
+  <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">Carbohidratos:</string>
   <string name="dialog_addfood_protein">Proteínas:</string>
   <string name="dialog_addfood_sugars">Azucres:</string>
   <string name="dialog_addfood_fat">Graxas:</string>
+  <!-- About Glucosio Strings -->
   <string name="about_credits">Créditos</string>
   <string name="about_contribute">Contribuír</string>
   <string name="about_contributel10n">Axuda a traducir</string>
@@ -188,7 +192,7 @@
   <string name="fragment_overview_permission_storage">Glucosio precisa de permisos de almacenamento para gardar unha captura de pantalla</string>
   <string name="fragment_overview_graph_export_true">Captura de pantalla gardada na galería</string>
   <string name="fragment_overview_graph_export_false">Erro ao gardar a captura de pantalla na galería</string>
-  <string name="dialog_export_range">Exportar rango</string>
+  <string name="dialog_export_range">Intervalo de exportación</string>
   <string name="activity_export_no_readings_snackbar">Ningún rexistro para exportar.</string>
   <string name="wear_new_reading">Novo rexistro engadido</string>
   <string name="dialog_add_weight">Peso</string>
@@ -206,7 +210,7 @@
   <string name="title_activity_add_ketone">Engadir cetonas</string>
   <string name="title_activity_add_pressure">Engadir presión arterial</string>
   <string name="fab_weight">Peso corporal</string>
-  <string name="fab_ketonest">Cetonas</string>
+  <string name="fab_ketones">Cetonas</string>
   <string name="fab_pressure">Presión arterial</string>
   <string name="fab_cholesterol">Nivel de colesterol</string>
   <string name="fab_HB1AC">Rexistro de HB1AC</string>

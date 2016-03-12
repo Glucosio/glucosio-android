@@ -39,6 +39,7 @@
   <string name="dialog_add_type_5">Before dinner</string>
   <string name="dialog_add_type_6">After dinner</string>
   <string name="dialog_add_type_9">Night</string>
+  <string name="dialog_add_type_12">Other</string>
   <string name="dialog_add_cancel">CANCEL</string>
   <string name="dialog_add_add">ADD</string>
   <string name="dialog_error2">Please enter a valid value.</string>
@@ -114,4 +115,9 @@
   <string name="title_activity_backup">Backup</string>
   <string name="preferences_privacy">Privacy</string>
   <string name="helloactivity_textview_tos">By using Glucosio, you are agreeing to the</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
+  <!-- Food Entry Labels -->
+  <!-- About Glucosio Strings -->
+  <string name="dialog_add_weight">Weight</string>
 </resources>

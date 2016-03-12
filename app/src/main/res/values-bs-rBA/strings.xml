@@ -38,6 +38,7 @@
   <string name="dialog_add_type_5">Prije večere</string>
   <string name="dialog_add_type_6">Nakon večere</string>
   <string name="dialog_add_type_9">Noć</string>
+  <string name="dialog_add_type_12">Drugo</string>
   <string name="dialog_add_cancel">OTKAŽI</string>
   <string name="dialog_add_add">DODAJ</string>
   <string name="dialog_error2">Molimo da unesete valjanu vrijednost.</string>
@@ -106,4 +107,9 @@
   <string name="helloactivity_spinner_preferred_range_4">Zaseban raspon</string>
   <string name="helloactivity_preferred_range_min">Min. vrijednost</string>
   <string name="helloactivity_preferred_range_max">Max. vrijednost</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
+  <!-- Food Entry Labels -->
+  <!-- About Glucosio Strings -->
+  <string name="dialog_add_weight">Težina</string>
 </resources>

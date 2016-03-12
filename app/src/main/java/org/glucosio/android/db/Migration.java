@@ -16,71 +16,71 @@ public class Migration implements RealmMigration {
         RealmSchema schema = realm.getSchema();
 
         /************************************************
-         // Version 0
-         class GlucoseReading
-             @PrimaryKey
-             long id;
-
-             int reading;
-             String reading_type;
-             String notes;
-             int user_id;
-             Date created;
-         ************************************************/
-
-
-        if (oldVersion == 0) {
-            /************************************************
-             // Version 1
+            Current Database Schema
+             
+            class User
+                @PrimaryKey
+                int id;
+                String name;
+                String preferred_language;
+                String country;
+                int age;
+                String gender;
+                int d_type;
+                String preferred_unit;
+                String preferred_range;
+                int custom_range_min;
+                int custom_range_max;
+        
              class CholesterolReading
                  @PrimaryKey
                  long id;
-
+        
                  int totalReading;
                  int LDLReading;
                  int HDLReading;
                  Date created;
-
+        
              class GlucoseReading
                  @PrimaryKey
                  long id;
-
+        
                  int reading;
                  String reading_type;
                  String notes;
                  int user_id;
                  Date created;
-
+        
              class KetoneReading
                  @PrimaryKey
                  long id;
-
+        
                  double reading;
                  Date created;
-
+        
              class PressureReading
                  @PrimaryKey
                  long id;
-
+        
                  int minReading;
                  int maxReading;
                  Date created;
-
+        
              class WeightReading
                  @PrimaryKey
                  long id;
-
+        
                  int reading;
                  Date created;
-
-             class HB1ACReading
+        
+                 class HB1ACReading
                  @PrimaryKey
                  long id;
-                 int reading;
+                 double reading; <-- Convert from int to double
                  Date created;
-             ************************************************/
+         ************************************************/
 
-
+        if (oldVersion == 0) {
             RealmObjectSchema weightSchema = schema.create("WeightReading")
                     .addField("id", Long.class, FieldAttribute.PRIMARY_KEY, FieldAttribute.REQUIRED)
                     .addField("created", Date.class)
@@ -112,55 +112,6 @@ public class Migration implements RealmMigration {
         }
 
         if (oldVersion == 1) {
-            /************************************************
-             // Version 2
-             class CholesterolReading
-             @PrimaryKey
-             long id;
-
-             int totalReading;
-             int LDLReading;
-             int HDLReading;
-             Date created;
-
-             class GlucoseReading
-             @PrimaryKey
-             long id;
-
-             int reading;
-             String reading_type;
-             String notes;
-             int user_id;
-             Date created;
-
-             class KetoneReading
-             @PrimaryKey
-             long id;
-
-             double reading;
-             Date created;
-
-             class PressureReading
-             @PrimaryKey
-             long id;
-
-             int minReading;
-             int maxReading;
-             Date created;
-
-             class WeightReading
-             @PrimaryKey
-             long id;
-
-             int reading;
-             Date created;
-
-             class HB1ACReading
-             @PrimaryKey
-             long id;
-             double reading; <-- Convert from int to double
-             Date created;
-             ************************************************/
             // Change HB1AC reading from int to double
             schema.get("HB1ACReading")
                     .addField("reading_tmp", Double.class, FieldAttribute.REQUIRED)

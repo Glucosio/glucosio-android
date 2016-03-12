@@ -142,7 +142,7 @@
             app:fab_colorNormal="@color/glucosio_fab_ketonest"
             app:fab_colorPressed="@color/glucosio_fab_ketonest"
             app:fab_size="mini"
-            app:fab_label="@string/fab_ketonest" />
+            app:fab_label="@string/fab_ketones" />
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/fab_pressure"
             android:layout_width="wrap_content"

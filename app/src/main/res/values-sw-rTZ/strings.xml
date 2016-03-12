@@ -38,6 +38,7 @@
   <string name="dialog_add_type_5">Kabla ya chakula cha jioni</string>
   <string name="dialog_add_type_6">Baada ya chakula cha jioni</string>
   <string name="dialog_add_type_9">Usiku</string>
+  <string name="dialog_add_type_12">Nyingine</string>
   <string name="dialog_add_cancel">BATILISHA</string>
   <string name="dialog_add_add">ONGEZA</string>
   <string name="dialog_error2">Tafadhali ingiza thamani halali.</string>
@@ -106,4 +107,9 @@
   <string name="helloactivity_spinner_preferred_range_4">Kiwango maalum</string>
   <string name="helloactivity_preferred_range_min">Thamani ya chini</string>
   <string name="helloactivity_preferred_range_max">Thamani ya juu</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
+  <!-- Food Entry Labels -->
+  <!-- About Glucosio Strings -->
+  <string name="dialog_add_weight">Uzito</string>
 </resources>

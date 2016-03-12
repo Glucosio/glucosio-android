@@ -23,4 +23,8 @@
   <string name="preferences_version">Verziun</string>
   <string name="glucose_reading_type">Sorta</string>
   <string name="assistant">Axhutor</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
+  <!-- Food Entry Labels -->
+  <!-- About Glucosio Strings -->
 </resources>

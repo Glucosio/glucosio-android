@@ -38,6 +38,7 @@
   <string name="dialog_add_type_5">Bago mag-hapunan</string>
   <string name="dialog_add_type_6">Matapos maghapunan</string>
   <string name="dialog_add_type_9">Gabi</string>
+  <string name="dialog_add_type_12">Iba pa</string>
   <string name="dialog_add_cancel">Kanselahin</string>
   <string name="dialog_add_add">Idagdag</string>
   <string name="dialog_error2">Mangyaring ilagay ang tamang value.</string>
@@ -76,4 +77,8 @@
     <item>Visiting your doctor once a year and having regular communication throughout the year is important for diabetics to prevent any sudden onset of associated health problems.</item>
     <item>Take your medicine as prescribed by your doctor even small lapses in your medicine can impact your blood glucose level and cause other side effects. If having difficulty remembering ask your doctor about medication management and reminder options.</item>
   </string-array>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
+  <!-- Food Entry Labels -->
+  <!-- About Glucosio Strings -->
 </resources>

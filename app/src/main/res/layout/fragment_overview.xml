@@ -21,14 +21,29 @@
             android:orientation="horizontal">
 
         <Spinner
-            android:id="@+id/chart_spinner"
+            android:id="@+id/chart_spinner_range"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:spinnerMode="dropdown"
+            android:dropDownWidth="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="16dp" />
+            <Spinner
+                android:id="@+id/chart_spinner_metrics"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:spinnerMode="dropdown"
+                android:dropDownWidth="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="16dp" />
+
 
             <TextView
                 android:layout_weight="1"
@@ -59,135 +74,8 @@
             android:layout_marginTop="16dp"
             android:background="#DADADA" />
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingTop="16dp">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_marginRight="4dp"
-                    android:background="@drawable/circle_hypo" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/glucosio_reading_hypo"
-                    android:paddingTop="2px"
-                    android:paddingRight="8dp"
-                    android:text="@string/reading_hypo" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_marginRight="4dp"
-                    android:background="@drawable/circle_low" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:paddingTop="2px"
-                    android:textColor="@color/glucosio_reading_low"
-                    android:paddingRight="8dp"
-                    android:text="@string/reading_low" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_marginRight="4dp"
-                    android:background="@drawable/circle_ok" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/glucosio_reading_ok"
-                    android:textStyle="bold"
-                    android:paddingRight="8dp"
-                    android:paddingTop="2px"
-                    android:textSize="12sp"
-                    android:text="@string/reading_ok" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_marginRight="4dp"
-                    android:background="@drawable/circle_high" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/glucosio_reading_high"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:paddingTop="2px"
-                    android:paddingRight="8dp"
-                    android:text="@string/reading_high" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_marginRight="4dp"
-                    android:background="@drawable/circle_hyper" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/glucosio_reading_hyper"
-                    android:textStyle="bold"
-                    android:textSize="12sp"
-                    android:paddingTop="2px"
-                    android:paddingRight="8dp"
-                    android:text="@string/reading_hyper" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="2px"
-            android:layout_marginTop="16dp"
-            android:background="#DADADA" />
 
         <LinearLayout
             android:layout_width="fill_parent"

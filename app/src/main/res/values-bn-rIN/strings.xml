@@ -39,6 +39,7 @@
   <string name="dialog_add_type_5">রাতের খাবারের আগে</string>
   <string name="dialog_add_type_6">রাতের খাবারের  পরে</string>
   <string name="dialog_add_type_9">রাত</string>
+  <string name="dialog_add_type_12">অন্যান্য</string>
   <string name="dialog_add_cancel">বাতিল করুন</string>
   <string name="dialog_add_add">যোগ করুন</string>
   <string name="dialog_error2">অনুগ্রহ করে একটি বৈধ মান দিন।</string>
@@ -112,4 +113,9 @@
   <string name="helloactivity_preferred_range_max">সর্বোচ্চ মান</string>
   <string name="helloactivity_language">ভাষা</string>
   <string name="invitation_title">অন্যান্য মানুষদের আমন্ত্রণ করুন</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
+  <!-- Food Entry Labels -->
+  <!-- About Glucosio Strings -->
+  <string name="dialog_add_weight">ওজন</string>
 </resources>

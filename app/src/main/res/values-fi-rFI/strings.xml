@@ -37,6 +37,7 @@
   <string name="dialog_add_type_4">Lounaan jälkeen</string>
   <string name="dialog_add_type_5">Ennen illallista</string>
   <string name="dialog_add_type_6">Illallisen jälkeen</string>
+  <string name="dialog_add_type_12">Muu</string>
   <string name="dialog_add_cancel">PERUUTA</string>
   <string name="dialog_add_add">LISÄÄ</string>
   <string name="dialog_error">Täytä kaikki kentät.</string>
@@ -52,4 +53,8 @@
   <string name="glucose_reading_type">Tyyppi</string>
   <string name="assistant_action_reading">LISÄÄ LUKEMA</string>
   <string name="assistant_reading_title">Lisää lukema</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
+  <!-- Food Entry Labels -->
+  <!-- About Glucosio Strings -->
 </resources>

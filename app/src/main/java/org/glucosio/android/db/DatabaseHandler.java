@@ -78,6 +78,28 @@ public class DatabaseHandler {
         }
     }
 
+    public void addNGlucoseReadings(int n) {
+        for (int i=0; i<n; i++){
+            Calendar calendar = Calendar.getInstance();
+            GlucoseReading gReading = new GlucoseReading(50+i, "Debug reading", calendar.getTime(), "");
+
+            int year = calendar.get(Calendar.YEAR);
+            int month = calendar.get(Calendar.MONTH);
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+            int hours = calendar.get(Calendar.HOUR_OF_DAY);
+            int minutes = calendar.get(Calendar.MINUTE);
+            String id = "" + year + month + day + hours + minutes + gReading.getReading();
+
+            // Check for duplicates
+            if (getGlucoseReadingById(Long.parseLong(id)) == null) {
+                realm.beginTransaction();
+                gReading.setId(Long.parseLong(id));
+                realm.copyToRealm(gReading);
+                realm.commitTransaction();
+            }
+        }
+    }
+
     public void deleteGlucoseReadings(GlucoseReading reading) {
         realm.beginTransaction();
         reading.removeFromRealm();
@@ -197,7 +219,7 @@ public class DatabaseHandler {
         gReadings = GlucoseReading.getGlucoseReadings(whereString);
         int i;
         for (i=0; i < gReadings.size(); i++){
-            readings.add(gReadings.get(i).getReading());
+            readings.add(gReadings.get(i).getGlucoseReading());
         }
 
         return readings;
@@ -332,6 +354,10 @@ public class DatabaseHandler {
                 .findFirst();
     }
 
+    public RealmResults<HB1ACReading> getrHB1ACRawReadings() {
+        return realm.where(HB1ACReading.class)
+                        .findAllSorted("created", Sort.DESCENDING);
+    }
 
     public ArrayList<HB1ACReading> getHB1ACReadings() {
         RealmResults<HB1ACReading> results =
@@ -388,6 +414,11 @@ public class DatabaseHandler {
         }
 
         return datetimeArray;
+    }
+
+    public RealmResults<KetoneReading> getRawKetoneReadings() {
+        return realm.where(KetoneReading.class)
+                .findAllSorted("created", Sort.DESCENDING);
     }
 
     public void addKetoneReading(KetoneReading reading) {

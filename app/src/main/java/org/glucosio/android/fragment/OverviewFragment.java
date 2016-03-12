@@ -10,6 +10,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -26,6 +27,7 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import org.glucosio.android.R;
 import org.glucosio.android.presenter.OverviewPresenter;
@@ -48,7 +50,8 @@ public class OverviewFragment extends Fragment {
     private TextView HB1ACTextView;
     private TextView HB1ACDateTextView;
     private ImageButton graphExport;
-    private Spinner graphSpinner;
+    private Spinner graphSpinnerRange;
+    private Spinner graphSpinnerMetric;
     private OverviewPresenter presenter;
     private View mFragmentView;
 
@@ -79,35 +82,54 @@ public class OverviewFragment extends Fragment {
         mFragmentView = inflater.inflate(R.layout.fragment_overview, container, false);
 
         chart = (LineChart) mFragmentView.findViewById(R.id.chart);
+        disableTouchTheft(chart);
         Legend legend = chart.getLegend();
 
         if (!presenter.isdbEmpty()) {
-            Collections.reverse(presenter.getReading());
-            Collections.reverse(presenter.getDatetime());
-            Collections.reverse(presenter.getType());
+            Collections.reverse(presenter.getGlucoseReading());
+            Collections.reverse(presenter.getGlucoseDatetime());
+            Collections.reverse(presenter.getGlucoseType());
         }
 
         lastReadingTextView = (TextView) mFragmentView.findViewById(R.id.item_history_reading);
         lastDateTextView = (TextView) mFragmentView.findViewById(R.id.fragment_overview_last_date);
         trendTextView = (TextView) mFragmentView.findViewById(R.id.item_history_trend);
         tipTextView = (TextView) mFragmentView.findViewById(R.id.random_tip_textview);
-        graphSpinner = (Spinner) mFragmentView.findViewById(R.id.chart_spinner);
+        graphSpinnerRange = (Spinner) mFragmentView.findViewById(R.id.chart_spinner_range);
+        graphSpinnerMetric = (Spinner) mFragmentView.findViewById(R.id.chart_spinner_metrics);
         graphExport = (ImageButton) mFragmentView.findViewById(R.id.fragment_overview_graph_export);
         HB1ACTextView = (TextView) mFragmentView.findViewById(R.id.fragment_overview_hb1ac);
         HB1ACDateTextView = (TextView) mFragmentView.findViewById(R.id.fragment_overview_hb1ac_date);
 
-        // Set array and adapter for graphSpinner
-        String[] selectorArray = getActivity().getResources().getStringArray(R.array.fragment_overview_selector);
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, selectorArray);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        graphSpinner.setAdapter(dataAdapter);
+        // Set array and adapter for graphSpinnerRange
+        String[] selectorRangeArray = getActivity().getResources().getStringArray(R.array.fragment_overview_selector_range);
+        String[] selectorMetricArray = getActivity().getResources().getStringArray(R.array.fragment_overview_selector_metric);
+        ArrayAdapter<String> dataRangeAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, selectorRangeArray);
+        ArrayAdapter<String> dataMetricAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, selectorMetricArray);
+        dataRangeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        dataMetricAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        graphSpinnerRange.setAdapter(dataRangeAdapter);
+        graphSpinnerMetric.setAdapter(dataMetricAdapter);
 
-        graphSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        graphSpinnerRange.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (!presenter.isdbEmpty()) {
                     setData();
-                    chart.invalidate();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        graphSpinnerRange.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (!presenter.isdbEmpty()) {
+                    setData();
                 }
             }
 
@@ -211,25 +233,26 @@ public class OverviewFragment extends Fragment {
     }
 
     private void setData() {
-
+        // int metricSpinnerPosition = graphSpinnerMetric.getSelectedItemPosition();
+        // if (metricSpinnerPosition == 0) {
         ArrayList<String> xVals = new ArrayList<String>();
 
-        if (graphSpinner.getSelectedItemPosition() == 0) {
+        if (graphSpinnerRange.getSelectedItemPosition() == 0) {
             // Day view
-            for (int i = 0; i < presenter.getDatetime().size(); i++) {
-                String date = presenter.convertDate(presenter.getDatetime().get(i));
+            for (int i = 0; i < presenter.getGlucoseDatetime().size(); i++) {
+                String date = presenter.convertDate(presenter.getGlucoseDatetime().get(i));
                 xVals.add(date + "");
             }
-        } else if (graphSpinner.getSelectedItemPosition() == 1){
+        } else if (graphSpinnerRange.getSelectedItemPosition() == 1){
             // Week view
-            for (int i = 0; i < presenter.getReadingsWeek().size(); i++) {
-                String date = presenter.convertDate(presenter.getDatetimeWeek().get(i));
+            for (int i = 0; i < presenter.getGlucoseReadingsWeek().size(); i++) {
+                String date = presenter.convertDate(presenter.getGlucoseDatetimeWeek().get(i));
                 xVals.add(date + "");
             }
         } else {
             // Month view
-            for (int i = 0; i < presenter.getReadingsMonth().size(); i++) {
-                String date = presenter.convertDateToMonth(presenter.getDatetimeMonth().get(i));
+            for (int i = 0; i < presenter.getGlucoseReadingsMonth().size(); i++) {
+                String date = presenter.convertDateToMonth(presenter.getGlucoseDatetimeMonth().get(i));
                 xVals.add(date + "");
             }
         }
@@ -239,56 +262,84 @@ public class OverviewFragment extends Fragment {
         ArrayList<Entry> yVals = new ArrayList<Entry>();
         ArrayList<Integer> colors = new ArrayList<>();
 
-        if (graphSpinner.getSelectedItemPosition() == 0) {
-            // Day view
-            for (int i = 0; i < presenter.getReading().size(); i++) {
-                if (presenter.getUnitMeasuerement().equals("mg/dL")) {
-                    float val = Float.parseFloat(presenter.getReading().get(i).toString());
-                    yVals.add(new Entry(val, i));
-                } else {
-                    double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getReading().get(i).toString()));
-                    float converted = (float) val;
-                    yVals.add(new Entry(converted, i));
+            if (graphSpinnerRange.getSelectedItemPosition() == 0) {
+                // Day view
+                for (int i = 0; i < presenter.getGlucoseReading().size(); i++) {
+                    if (presenter.getUnitMeasuerement().equals("mg/dL")) {
+                        float val = Float.parseFloat(presenter.getGlucoseReading().get(i).toString());
+                        yVals.add(new Entry(val, i));
+                    } else {
+                        double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getGlucoseReading().get(i).toString()));
+                        float converted = (float) val;
+                        yVals.add(new Entry(converted, i));
+                    }
+                    GlucoseRanges ranges = new GlucoseRanges(getActivity().getApplicationContext());
+                    colors.add(ranges.stringToColor(ranges.colorFromReading(presenter.getGlucoseReading().get(i))));
                 }
-                GlucoseRanges ranges = new GlucoseRanges(getActivity().getApplicationContext());
-                colors.add(ranges.stringToColor(ranges.colorFromReading(presenter.getReading().get(i))));
-            }
-        } else if (graphSpinner.getSelectedItemPosition() == 1){
-            // Week view
-            for (int i = 0; i < presenter.getReadingsWeek().size(); i++) {
-                if (presenter.getUnitMeasuerement().equals("mg/dL")) {
-                    float val = Float.parseFloat(presenter.getReadingsWeek().get(i)+"");
-                    yVals.add(new Entry(val, i));
-                } else {
-                    double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getReadingsWeek().get(i)+""));
-                    float converted = (float) val;
-                    yVals.add(new Entry(converted, i));
+            } else if (graphSpinnerRange.getSelectedItemPosition() == 1){
+                // Week view
+                for (int i = 0; i < presenter.getGlucoseReadingsWeek().size(); i++) {
+                    if (presenter.getUnitMeasuerement().equals("mg/dL")) {
+                        float val = Float.parseFloat(presenter.getGlucoseReadingsWeek().get(i)+"");
+                        yVals.add(new Entry(val, i));
+                    } else {
+                        double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getGlucoseReadingsWeek().get(i)+""));
+                        float converted = (float) val;
+                        yVals.add(new Entry(converted, i));
+                    }
                 }
+                colors.add(getResources().getColor(R.color.glucosio_pink));
+            } else {
+                // Month view
+                for (int i = 0; i < presenter.getGlucoseReadingsMonth().size(); i++) {
+                    if (presenter.getUnitMeasuerement().equals("mg/dL")) {
+                        float val = Float.parseFloat(presenter.getGlucoseReadingsMonth().get(i)+"");
+                        yVals.add(new Entry(val, i));
+                    } else {
+                        double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getGlucoseReadingsMonth().get(i)+""));
+                        float converted = (float) val;
+                        yVals.add(new Entry(converted, i));
+                    }
+                }
+                colors.add(getResources().getColor(R.color.glucosio_pink));
             }
-            colors.add(getResources().getColor(R.color.glucosio_pink));
+        /*} else if (metricSpinnerPosition == 1){
+            // A1C
+            ArrayList<String> xVals = new ArrayList<String>();
+
+            for (int i = 0; i < presenter.getGlucoseDatetime().size(); i++) {
+                String date = presenter.convertDate(presenter.getGlucoseDatetime().get(i));
+                xVals.add(date + "");
+            }
+
+            ArrayList<Entry> yVals = new ArrayList<Entry>();
+
+
+            for (int i = 0; i < presenter.getGlucoseReading().size(); i++) {
+                float val = Float.parseFloat(presenter.getGlucoseReading().get(i).toString());
+                yVals.add(new Entry(val, i));
+            }
+
+        } else if (metricSpinnerPosition == 2){
+            // Cholesterol
+
+        } else if (metricSpinnerPosition == 3){
+            // Pressure
+
+        } else if (metricSpinnerPosition == 4){
+            // Ketones
+
         } else {
-            // Month view
-            for (int i = 0; i < presenter.getReadingsMonth().size(); i++) {
-                if (presenter.getUnitMeasuerement().equals("mg/dL")) {
-                    float val = Float.parseFloat(presenter.getReadingsMonth().get(i)+"");
-                    yVals.add(new Entry(val, i));
-                } else {
-                    double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getReadingsMonth().get(i)+""));
-                    float converted = (float) val;
-                    yVals.add(new Entry(converted, i));
-                }
-            }
-            colors.add(getResources().getColor(R.color.glucosio_pink));
-        }
+            // Weight
+        }*/
 
         // create a dataset and give it a type
         LineDataSet set1 = new LineDataSet(yVals, "");
-        // set the line to be drawn like this "- - - - - -"
         set1.setColor(getResources().getColor(R.color.glucosio_pink));
-        set1.setCircleColors(colors);
-        set1.setLineWidth(0f);
-        set1.setCircleSize(2.8f);
-        set1.setDrawCircleHole(false);
+        set1.setLineWidth(2.5f);
+        set1.setCircleColor(getResources().getColor(R.color.glucosio_pink));
+        set1.setCircleSize(4f);
+        set1.setDrawCircleHole(true);
         set1.disableDashedLine();
         set1.setFillAlpha(255);
         set1.setDrawFilled(true);
@@ -305,9 +356,9 @@ public class OverviewFragment extends Fragment {
 
 //        set1.setDrawFilled(true);
         // set1.setShader(new LinearGradient(0, 0, 0, mChart.getHeight(),
-        // Color.BLACK, Color.WHITE, Shader.TileMode.MIRROR));
+        // Color.BLACK, Color.WHITE, Shader.TileMode.MIRROR));I
 
-        ArrayList<LineDataSet> dataSets = new ArrayList<LineDataSet>();
+        ArrayList<ILineDataSet> dataSets = new ArrayList<ILineDataSet>();
         dataSets.add(set1); // add the datasets
 
         // create a data object with the datasets
@@ -318,6 +369,11 @@ public class OverviewFragment extends Fragment {
         chart.setPinchZoom(true);
         chart.setHardwareAccelerationEnabled(true);
         chart.animateY(1000, Easing.EasingOption.EaseOutCubic);
+        chart.invalidate();
+        chart.notifyDataSetChanged();
+        chart.fitScreen();
+        chart.setVisibleXRangeMaximum(20);
+        chart.moveViewToX(data.getXValCount());
     }
 
     private void loadHB1AC(){
@@ -367,6 +423,21 @@ public class OverviewFragment extends Fragment {
     public String convertDateToMonth(String date){
         FormatDateTime dateTime = new FormatDateTime((getActivity().getApplication()));
         return dateTime.convertDateToMonthOverview(date);
+    }
+
+    public static void disableTouchTheft(View view) {
+        view.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                view.getParent().requestDisallowInterceptTouchEvent(true);
+                switch (motionEvent.getAction() & MotionEvent.ACTION_MASK) {
+                    case MotionEvent.ACTION_UP:
+                        view.getParent().requestDisallowInterceptTouchEvent(false);
+                        break;
+                }
+                return false;
+            }
+        });
     }
 
     @Override

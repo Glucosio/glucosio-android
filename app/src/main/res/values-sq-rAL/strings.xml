@@ -129,6 +129,8 @@
   <string name="reading_low">Ulët</string>
   <string name="reading_high">Lartë</string>
   <string name="reading_hyper">Hipoglicemia</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
   <string name="dialog_add_exercisetype_1">Të ecurit ngadalë</string>
   <string name="dialog_add_exercisetype_2">Të ecurit shpejtë</string>
   <string name="dialog_add_exercisetype_3">Vrapim me ecje të shpejtuar</string>
@@ -154,10 +156,12 @@
   <string name="dialog_add_exercisetype_23">Mundje</string>
   <string name="dialog_add_exercisetype_24">Udhëtim i gjetë në këmbë</string>
   <string name="dialog_add_exercisetype_25">Punë në kopsht</string>
+  <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">Karbohidrate:</string>
   <string name="dialog_addfood_protein">Proteina:</string>
   <string name="dialog_addfood_sugars">Sheqernat:</string>
   <string name="dialog_addfood_fat">Kalori:</string>
+  <!-- About Glucosio Strings -->
   <string name="about_credits">Kreditet</string>
   <string name="about_contribute">Kontribuoni</string>
   <string name="about_contributel10n">Kontribuoni për Përkthimin</string>
@@ -172,4 +176,5 @@
   <string name="title_activity_export">Eksporto të Dhëna</string>
   <string name="share_using">Ndani përdorimin</string>
   <string name="share_subject">Të dhënat e Glucosio</string>
+  <string name="dialog_add_weight">Pesha</string>
 </resources>

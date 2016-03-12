@@ -31,10 +31,15 @@
   <string name="dialog_add_type_5">Trước khi ăn tối</string>
   <string name="dialog_add_type_6">Sau khi ăn tối</string>
   <string name="dialog_add_type_9">Buổi tối</string>
+  <string name="dialog_add_type_12">Khác</string>
   <string name="dialog_add_cancel">HỦY BỎ</string>
   <string name="dialog_add_add">THÊM</string>
   <string name="dialog_error2">Vui lòng nhập một giá trị hợp lệ.</string>
   <string name="dialog_error">Xin vui lòng điền vào tất cả các mục.</string>
   <string name="dialog_delete">Xoá</string>
   <string name="fragment_history_snackbar_action">HOÀN TÁC</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
+  <!-- Food Entry Labels -->
+  <!-- About Glucosio Strings -->
 </resources>

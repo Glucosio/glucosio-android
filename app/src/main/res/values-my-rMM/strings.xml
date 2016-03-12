@@ -134,6 +134,8 @@
   <string name="reading_low">နိမ့်</string>
   <string name="reading_high">မြင့်</string>
   <string name="reading_hyper">သွေးထဲရှိ သကြားဓါတ် လွန်ကဲခြင်း</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
   <string name="dialog_add_exercisetype_1">အေးဆေးသက်သာစွာ လမ်းလျှောက်ခြင်း</string>
   <string name="dialog_add_exercisetype_2">အ​လျှောက်မြန်</string>
   <string name="dialog_add_exercisetype_3">အနှေးလျှောက်ခြင်း</string>
@@ -159,10 +161,12 @@
   <string name="dialog_add_exercisetype_23">နပန်း</string>
   <string name="dialog_add_exercisetype_24">ခရီး​ဝေးလမ်း​လျှောက်ခြင်း</string>
   <string name="dialog_add_exercisetype_25">ခြံရှင်းအလုပ်</string>
+  <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">ကစီဓါတ်ပါ​သော အစာများ</string>
   <string name="dialog_addfood_protein">အသားဓါတ်</string>
   <string name="dialog_addfood_sugars">သကြား</string>
   <string name="dialog_addfood_fat">အဆီ</string>
+  <!-- About Glucosio Strings -->
   <string name="about_credits">မှတ်တမ်းတင်လွှာ</string>
   <string name="about_contribute">ဝိုင်းဝန်းကူညီပါ</string>
   <string name="about_contributel10n">ဘာသာပြန်ခြင်းကို ကူညီပါ</string>
@@ -202,7 +206,7 @@
   <string name="title_activity_add_ketone">Ketone များ ထည့်ရန်</string>
   <string name="title_activity_add_pressure">သွေးဖိအား မှတ်သားချက် ထည့်ရန်</string>
   <string name="fab_weight">ခန္ဓာကိုယ် အလေးချိန်</string>
-  <string name="fab_ketonest">Ketone များ</string>
+  <string name="fab_ketones">Ketone များ</string>
   <string name="fab_pressure">သွေးပေါင်ချိန်</string>
   <string name="fab_cholesterol">ကိုလက်စထရော အဆင့်</string>
   <string name="fab_HB1AC">HB1AC မှတ်သားချက်</string>
@@ -214,4 +218,7 @@
   <string name="dialog_add_glucose_freestylelibre">FreeStyle Libre® မှ ထည့်ပါ</string>
   <string name="overview_hb1ac_error_no_data">HBA1C တွက်ရန် အချက်အလက် မလုံလောက်ပါ</string>
   <string name="overview_hb1ac">HBA1C:</string>
+  <string name="activity_converter_a1c">A1C</string>
+  <string name="activity_converter_title">A1C တွက်စက်</string>
+  <string name="activity_converter_save">သိမ်းရန်</string>
 </resources>

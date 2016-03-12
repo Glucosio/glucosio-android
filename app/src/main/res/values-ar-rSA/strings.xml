@@ -40,6 +40,7 @@
   <string name="dialog_add_type_5">قبل العشاء</string>
   <string name="dialog_add_type_6">بعد العشاء</string>
   <string name="dialog_add_type_9">ليل</string>
+  <string name="dialog_add_type_12">غير ذلك</string>
   <string name="dialog_add_cancel">ألغِ</string>
   <string name="dialog_add_add">أضِف</string>
   <string name="dialog_error2">الرجاء إدخال قيمة صحيحة.</string>
@@ -115,4 +116,9 @@
   <string name="title_activity_backup">نسخة احتياطية</string>
   <string name="preferences_privacy">الخصوصية</string>
   <string name="helloactivity_textview_tos">باستخدام جلوكوسيو، فإنك توافق على</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
+  <!-- Food Entry Labels -->
+  <!-- About Glucosio Strings -->
+  <string name="dialog_add_weight">الوزن</string>
 </resources>

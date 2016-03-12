@@ -68,7 +68,7 @@
     <item>Eet meer vers, onverwerkt voedsel om inname van koolhydraten en suikers te verminderen.</item>
     <item>Lees het voedingslabel op voorverpakt voedsel en drinkwaren om inname van suikers en koolhydraten te beheersen.</item>
     <item>Als u buiten de deur eet, vraag dan om vis of vlees dat zonder extra boter of olie is gebakken.</item>
-    <item>Als u buiten de deur eet, vraag dan om zoutarme schotels.</item>
+    <item>Als u buiten de deur eet, vraag dan om natriumarme schotels.</item>
     <item>Als u buiten de deur eet, hanteer dan dezelfde portiegroottes als dat u thuis zou doen en neem mee wat over is.</item>
     <item>Als u buiten de deur eet, vraag dan om items met weinig calorieën, zoals saladedressings, zelfs als ze niet op het menu staan.</item>
     <item>Als u buiten de deur eet, vraag dan om vervangingen. Vraag in plaats van patat om een dubbele portie van iets vegetarisch, zoals salade, sperziebonen of broccoli.</item>
@@ -110,7 +110,7 @@
   <string name="assistant_reading_title">Een uitlezing toevoegen</string>
   <string name="assistant_reading_desc">Zorg ervoor dat u regelmatig uw glucose-uitlezingen toevoegt, zodat we kunnen helpen uw glucosegehalten in de loop der tijd bij te houden.</string>
   <string name="assistant_export_title">Uw gegevens exporteren</string>
-  <string name="assistant_export_desc">Deel uw gegevens met uw arts of plaats een back-up ervan op Google Drive via de exporteerfunctie.</string>
+  <string name="assistant_export_desc">Deel uw gegevens met uw arts of plaats een back-up ervan op Google Drive via de exportfunctie.</string>
   <string name="assistant_calculator_a1c_title">A1C berekenen</string>
   <string name="assistant_calculator_a1c_desc">Glucosio’s ingebouwde A1C-calculator is nu in de zijbalk beschikbaar. Voer uw gemiddelde bloedsuikerspiegel in en sla direct de berekende A1C-waarde op.</string>
   <string name="helloactivity_spinner_preferred_range">Voorkeursbereik</string>
@@ -138,6 +138,8 @@
   <string name="reading_low">Laag</string>
   <string name="reading_high">Hoog</string>
   <string name="reading_hyper">Hyperglykemie</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
   <string name="dialog_add_exercisetype_1">Ontspannen wandelen</string>
   <string name="dialog_add_exercisetype_2">Snelwandelen</string>
   <string name="dialog_add_exercisetype_3">Joggen</string>
@@ -163,10 +165,12 @@
   <string name="dialog_add_exercisetype_23">Worstelen</string>
   <string name="dialog_add_exercisetype_24">Wandelen</string>
   <string name="dialog_add_exercisetype_25">Tuinieren</string>
+  <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">Koolhydraten:</string>
   <string name="dialog_addfood_protein">Proteïnen:</string>
   <string name="dialog_addfood_sugars">Suikers:</string>
   <string name="dialog_addfood_fat">Vet:</string>
+  <!-- About Glucosio Strings -->
   <string name="about_credits">Credits</string>
   <string name="about_contribute">Meewerken</string>
   <string name="about_contributel10n">Meewerken aan vertaling</string>
@@ -176,7 +180,7 @@
   <string name="assistant_archived">GEARCHIVEERDE TIPS</string>
   <string name="dialog_export_title">Gegevens exporteren</string>
   <string name="activity_export_date_from">Van:</string>
-  <string name="dialog_export_date_to">Naar:</string>
+  <string name="dialog_export_date_to">Tot:</string>
   <string name="dialog_export_today">Vandaag kiezen</string>
   <string name="dialog_export_button">EXPORTEREN</string>
   <string name="title_activity_export">Gegevens exporteren</string>
@@ -188,7 +192,7 @@
   <string name="fragment_overview_permission_storage">Glucosio heeft een opslagmachtiging nodig om een schermafbeelding op te slaan</string>
   <string name="fragment_overview_graph_export_true">Schermafbeelding opgeslagen naar galerij</string>
   <string name="fragment_overview_graph_export_false">Fout bij opslaan van schermafbeelding naar galerij</string>
-  <string name="dialog_export_range">Bereik exporteren</string>
+  <string name="dialog_export_range">Exportbereik</string>
   <string name="activity_export_no_readings_snackbar">Geen uitlezingen te exporteren.</string>
   <string name="wear_new_reading">Nieuwe uitlezing toegevoegd</string>
   <string name="dialog_add_weight">Gewicht</string>
@@ -206,7 +210,7 @@
   <string name="title_activity_add_ketone">Ketonen toevoegen</string>
   <string name="title_activity_add_pressure">Bloeddruk toevoegen</string>
   <string name="fab_weight">Lichaamsgewicht</string>
-  <string name="fab_ketonest">Ketonen</string>
+  <string name="fab_ketones">Ketonen</string>
   <string name="fab_pressure">Bloeddruk</string>
   <string name="fab_cholesterol">Cholesterolspiegel</string>
   <string name="fab_HB1AC">HB1AC-uitlezing</string>
@@ -225,4 +229,11 @@
   <string name="activity_converter_a1c">A1C</string>
   <string name="activity_converter_title">A1C-calculator</string>
   <string name="activity_converter_save">OPSLAAN</string>
+  <string name="menu_support">Ondersteuning</string>
+  <string name="menu_support_title">Hoe kunnen we u helpen?</string>
+  <string name="menu_support_email">E-mail</string>
+  <string name="menu_support_live">Livechat</string>
+  <string name="menu_support_forum">Ondersteuningsforum</string>
+  <string name="notification_reminder_glucose">Het is tijd om uw bloedsuikerspiegel vast te leggen!</string>
+  <string name="notification_reminder_medication">Het is tijd voor uw medicatie!</string>
 </resources>

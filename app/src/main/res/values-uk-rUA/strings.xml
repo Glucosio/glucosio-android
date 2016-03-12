@@ -118,6 +118,8 @@
   <string name="reading_low">Низький</string>
   <string name="reading_high">Високий</string>
   <string name="reading_hyper">Гіперглікемія</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
   <string name="dialog_add_exercisetype_4">Біг</string>
   <string name="dialog_add_exercisetype_5">Плавання</string>
   <string name="dialog_add_exercisetype_6">Танці</string>
@@ -140,10 +142,12 @@
   <string name="dialog_add_exercisetype_23">Боротьба</string>
   <string name="dialog_add_exercisetype_24">Піші прогулянки</string>
   <string name="dialog_add_exercisetype_25">Роботу у дворі</string>
+  <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">Вуглеводи:</string>
   <string name="dialog_addfood_protein">Протеїн:</string>
   <string name="dialog_addfood_sugars">Цукри:</string>
   <string name="dialog_addfood_fat">Жир:</string>
+  <!-- About Glucosio Strings -->
   <string name="about_credits">Подяки</string>
   <string name="about_contribute">Зробити внесок</string>
   <string name="about_contributel10n">Допомогти з перекладом</string>
@@ -157,4 +161,5 @@
   <string name="title_activity_export">Експорт даних</string>
   <string name="share_using">Надіслати за допомогою</string>
   <string name="share_subject">Дані Glucosio</string>
+  <string name="dialog_add_weight">Вага</string>
 </resources>

@@ -38,6 +38,7 @@
   <string name="dialog_add_type_5">ਰਾਤ ਦੇ ਖਾਣੇ ਤੋਂ ਪਹਿਲਾਂ</string>
   <string name="dialog_add_type_6">ਰਾਤ ਦੇ ਖਾਣੇ ਤੋਂ ਬਾਅਦ</string>
   <string name="dialog_add_type_9">ਰਾਤ</string>
+  <string name="dialog_add_type_12">ਹੋਰ</string>
   <string name="dialog_add_cancel">ਰੱਦ ਕਰੋ</string>
   <string name="dialog_add_add">ਸ਼ਾਮਲ ਕਰੋ</string>
   <string name="dialog_error2">ਕਿਰਪਾ ਕਰਕੇ ਇੱਕ ਸਹੀ ਮੁੱਲ ਦਰਜ ਕਰੋ।</string>
@@ -105,4 +106,9 @@
   <string name="helloactivity_spinner_preferred_range_4">ਮਨਪਸੰਦ ਸੀਮਾ</string>
   <string name="helloactivity_preferred_range_min">ਘੱਟੋ-ਘਂੱਟ ਮੁੱਲ</string>
   <string name="helloactivity_preferred_range_max">ਵੱਧੋ-ਵੱਧ ਮੁੱਲ</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
+  <!-- Food Entry Labels -->
+  <!-- About Glucosio Strings -->
+  <string name="dialog_add_weight">ਭਾਰ</string>
 </resources>
