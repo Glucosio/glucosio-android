@@ -9,8 +9,6 @@ import android.preference.PreferenceFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
-import com.instabug.library.Instabug;
-
 import org.glucosio.android.R;
 
 import java.util.Locale;
@@ -83,7 +81,7 @@ public class AboutActivity extends AppCompatActivity {
             feedbackPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
-                    Instabug.invoke();
+                    ((MainActivity)getActivity()).openSupportDialog();
 
                     return false;
                 }

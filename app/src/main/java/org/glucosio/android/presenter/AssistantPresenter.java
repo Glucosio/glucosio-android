@@ -17,10 +17,6 @@ public class AssistantPresenter {
         fragment.addReading();
     }
 
-    public void openGitty() {
-        fragment.openGitty();
-    }
-
     public void startExportActivity() {
         fragment.startExportActivity();
     }

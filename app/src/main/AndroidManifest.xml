@@ -2,15 +2,22 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.glucosio.android">
 
-    <uses-permission android:name="android.permission.NFC" android:required="false"/>
-    <uses-feature android:name="android.hardware.nfc" android:required="false" />
+    <uses-permission
+        android:name="android.permission.NFC"
+        android:required="false" />
+
+    <uses-feature
+        android:name="android.hardware.nfc"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!-- Required for Instabug -->
-    <uses-permission android:name="${applicationId}.permission.C2D_MESSAGE"/>
+    <uses-permission android:name="${applicationId}.permission.C2D_MESSAGE" />
+
     <permission
         android:name="${applicationId}.permission.C2D_MESSAGE"
-        android:protectionLevel="signature"/>
+        android:protectionLevel="signature" />
 
     <application
         android:name=".GlucosioApplication"
@@ -105,8 +112,8 @@
         <activity
             android:name=".activity.AddGlucoseActivity"
             android:label="@string/title_activity_add_glucose"
-            android:windowSoftInputMode="stateVisible"
-            android:parentActivityName=".activity.MainActivity">
+            android:parentActivityName=".activity.MainActivity"
+            android:windowSoftInputMode="stateVisible">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.glucosio.android.activity.MainActivity" />
@@ -114,8 +121,8 @@
         <activity
             android:name=".activity.AddWeightActivity"
             android:label="@string/title_activity_add_weight"
-            android:windowSoftInputMode="stateVisible"
-            android:parentActivityName=".activity.MainActivity">
+            android:parentActivityName=".activity.MainActivity"
+            android:windowSoftInputMode="stateVisible">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.glucosio.android.activity.MainActivity" />
@@ -123,8 +130,8 @@
         <activity
             android:name=".activity.AddCholesterolActivity"
             android:label="@string/title_activity_add_cholesterol"
-            android:windowSoftInputMode="stateVisible"
-            android:parentActivityName=".activity.MainActivity">
+            android:parentActivityName=".activity.MainActivity"
+            android:windowSoftInputMode="stateVisible">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.glucosio.android.activity.MainActivity" />
@@ -132,8 +139,8 @@
         <activity
             android:name=".activity.AddKetoneActivity"
             android:label="@string/title_activity_add_ketone"
-            android:windowSoftInputMode="stateVisible"
-            android:parentActivityName=".activity.MainActivity">
+            android:parentActivityName=".activity.MainActivity"
+            android:windowSoftInputMode="stateVisible">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.glucosio.android.activity.MainActivity" />
@@ -141,8 +148,8 @@
         <activity
             android:name=".activity.AddPressureActivity"
             android:label="@string/title_activity_add_pressure"
-            android:windowSoftInputMode="stateVisible"
-            android:parentActivityName=".activity.MainActivity">
+            android:parentActivityName=".activity.MainActivity"
+            android:windowSoftInputMode="stateVisible">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.glucosio.android.activity.MainActivity" />
@@ -150,29 +157,37 @@
         <activity
             android:name=".activity.AddHB1ACActivity"
             android:label="@string/title_activity_add_hb1ac"
-            android:windowSoftInputMode="stateVisible"
-            android:parentActivityName=".activity.MainActivity">
+            android:parentActivityName=".activity.MainActivity"
+            android:windowSoftInputMode="stateVisible">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.glucosio.android.activity.MainActivity" />
         </activity>
         <activity android:name=".activity.FreestyleLibre">
+
             <!-- NFC for FreeStyle -->
             <intent-filter>
                 <action android:name="android.nfc.action.TECH_DISCOVERED" />
-                <category android:name="android.intent.category.DEFAULT"/>
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-            <meta-data android:name="android.nfc.action.TECH_DISCOVERED" android:resource="@xml/nfc_tech_filter" />
+
+            <meta-data
+                android:name="android.nfc.action.TECH_DISCOVERED"
+                android:resource="@xml/nfc_tech_filter" />
         </activity>
-        <activity android:name=".activity.A1Calculator"
+        <activity
+            android:name=".activity.A1Calculator"
             android:label="@string/activity_converter_title"
-            android:windowSoftInputMode="stateVisible"
+            android:parentActivityName=".activity.MainActivity"
             android:screenOrientation="portrait"
-            android:parentActivityName=".activity.MainActivity">
+            android:windowSoftInputMode="stateVisible">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.glucosio.android.activity.MainActivity" />
         </activity>
+        <activity android:name=".activity.HSActivity"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"/>
     </application>
 
 </manifest>

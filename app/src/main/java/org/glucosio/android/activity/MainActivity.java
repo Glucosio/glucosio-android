@@ -3,7 +3,9 @@ package org.glucosio.android.activity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.Dialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -13,6 +15,8 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -23,6 +27,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
@@ -31,13 +36,12 @@ import com.google.android.gms.analytics.Tracker;
 import com.google.android.gms.appinvite.AppInviteInvitation;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.instabug.library.Instabug;
-import com.instabug.library.compat.InstabugAppCompatActivity;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
+import com.tenmiles.helpstack.HSHelpStack;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 
 import org.glucosio.android.GlucosioApplication;
@@ -51,7 +55,7 @@ import java.util.Calendar;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
-public class MainActivity extends InstabugAppCompatActivity implements DatePickerDialog.OnDateSetListener{
+public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
 
     ExportPresenter exportPresenter;
     private RadioButton exportRangeButton;
@@ -180,7 +184,7 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
                             startAboutActivity();
                         } else if (drawerItem.equals(itemFeedback)) {
                             // Feedback
-                            Instabug.invoke();
+                            openSupportDialog();
                         } else if (drawerItem.equals(itemInvite)) {
                             // Invite
                             showInviteDialog();
@@ -230,6 +234,47 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
         Log.i("MainActivity", "Setting screen name: " + "main");
         mTracker.setScreenName("Main Activity");
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+    }
+
+    public void openSupportDialog() {
+        final AppCompatActivity activity = this;
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(getResources().getString(R.string.menu_support_title));
+        builder.setItems(getResources().getStringArray(R.array.menu_support_options), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (which == 0){
+                    // Email
+                    Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:hello@glucosio.org"));
+                    boolean activityExists = emailIntent.resolveActivityInfo(getPackageManager(), 0) != null;
+
+                    if (activityExists){
+                        startActivity(emailIntent);
+                    } else {
+                        showSnackBar(getResources().getString(R.string.menu_support_error1), Snackbar.LENGTH_LONG);
+                    }
+                } else if (which == 1){
+                    // Live Chat
+                    Intent intent = new Intent(getApplicationContext(), HSActivity.class);
+                    startActivity(intent);
+                } else {
+                    // Forum
+                    String url = "http://community.glucosio.org/";
+                    Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    i.setPackage("com.android.chrome");
+                    try {
+                        startActivity(i);
+                    } catch (ActivityNotFoundException e) {
+                        // Chrome is probably not installed
+                        // Try with the default browser
+                        i.setPackage(null);
+                        startActivity(i);
+                    }
+                }
+            }
+        });
+        builder.show();
     }
 
     private void openA1CCalculator() {
@@ -393,7 +438,7 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
                     exportPresenter.onExportClicked(exportAllButton.isChecked());
                     exportDialog.dismiss();
                 } else {
-                    showSnackBar(getResources().getString(R.string.dialog_error));
+                    showSnackBar(getResources().getString(R.string.dialog_error), Snackbar.LENGTH_SHORT);
                 }
             }
         });
@@ -538,9 +583,9 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
         Snackbar.make(rootLayout, getString(R.string.activity_export_no_readings_snackbar), Snackbar.LENGTH_SHORT).show();
     }
 
-    private void showSnackBar(String text) {
+    private void showSnackBar(String text, int lenght) {
         View rootLayout = findViewById(android.R.id.content);
-        Snackbar.make(rootLayout, text, Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(rootLayout, text, lenght).show();
     }
 
     public void showShareDialog(Uri uri) {
