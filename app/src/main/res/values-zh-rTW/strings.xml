@@ -210,7 +210,7 @@
   <string name="title_activity_add_ketone">新增酮類讀數</string>
   <string name="title_activity_add_pressure">新增血壓讀數</string>
   <string name="fab_weight">體重</string>
-  <string name="fab_ketonest">酮類</string>
+  <string name="fab_ketones">酮類</string>
   <string name="fab_pressure">血壓</string>
   <string name="fab_cholesterol">膽固醇水準</string>
   <string name="fab_HB1AC">糖化血色素（HbA1c）讀數</string>

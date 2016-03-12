@@ -88,5 +88,9 @@
   <string name="helloactivity_spinner_preferred_range_4">ช่วงที่กำหนดเอง</string>
   <string name="helloactivity_preferred_range_min">ค่าต่ำสุด</string>
   <string name="helloactivity_preferred_range_max">ค่าสูงสุด</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
+  <!-- Food Entry Labels -->
+  <!-- About Glucosio Strings -->
   <string name="dialog_add_weight">น้ำหนัก</string>
 </resources>

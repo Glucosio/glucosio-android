@@ -131,6 +131,8 @@
   <string name="reading_low">Íseal</string>
   <string name="reading_high">Ard</string>
   <string name="reading_hyper">Hipirglicéime</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
   <string name="dialog_add_exercisetype_1">Siúlóid ar do shocair</string>
   <string name="dialog_add_exercisetype_2">Siúlóid thapa</string>
   <string name="dialog_add_exercisetype_3">Bogshodar</string>
@@ -156,10 +158,12 @@
   <string name="dialog_add_exercisetype_23">Iomrascáil</string>
   <string name="dialog_add_exercisetype_24">Cnocadóireacht</string>
   <string name="dialog_add_exercisetype_25">Garraíodóireacht</string>
+  <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">Carbaihiodráití:</string>
   <string name="dialog_addfood_protein">Próitéin:</string>
   <string name="dialog_addfood_sugars">Siúcra:</string>
   <string name="dialog_addfood_fat">Saill:</string>
+  <!-- About Glucosio Strings -->
   <string name="about_credits">Admhálacha</string>
   <string name="about_contribute">Rannpháirtíocht</string>
   <string name="about_contributel10n">Aistriúchán</string>
@@ -199,7 +203,7 @@
   <string name="title_activity_add_ketone">Cuir isteach céatóin</string>
   <string name="title_activity_add_pressure">Cuir isteach brú fola</string>
   <string name="fab_weight">Meáchan Coirp</string>
-  <string name="fab_ketonest">Céatóin</string>
+  <string name="fab_ketones">Céatóin</string>
   <string name="fab_pressure">Brú Fola</string>
   <string name="fab_cholesterol">Leibhéal Colaistéaróil</string>
   <string name="fab_HB1AC">Leibhéal HB1AC</string>

@@ -184,7 +184,7 @@
   <string name="title_activity_add_ketone">Keton Ekle</string>
   <string name="title_activity_add_pressure">Kan Basıncını Ekle</string>
   <string name="fab_weight">Vücut Ağırlığı</string>
-  <string name="fab_ketonest">Ketonlar</string>
+  <string name="fab_ketones">Ketonlar</string>
   <string name="fab_pressure">Kan Basıncı</string>
   <string name="fab_cholesterol">Kolesterol Düzeyi</string>
   <string name="fab_HB1AC">HBA1C Okunuyor</string>

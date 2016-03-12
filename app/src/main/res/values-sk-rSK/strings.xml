@@ -107,5 +107,9 @@
   <string name="title_activity_backup">Zálohovanie</string>
   <string name="preferences_privacy">Súkromie</string>
   <string name="helloactivity_textview_tos">Používaním Glucosio sa zaväzujete, že</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
+  <!-- Food Entry Labels -->
+  <!-- About Glucosio Strings -->
   <string name="dialog_add_weight">Váha</string>
 </resources>

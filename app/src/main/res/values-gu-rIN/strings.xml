@@ -30,4 +30,8 @@
   <string name="assistant_action_ok">હમમ, સમજાઈ ગયું</string>
   <string name="assistant_action_feedback">પ્રતિક્રિયા મોકલો</string>
   <string name="assistant_feedback_title">પ્રતિક્રિયા મોકલો </string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
+  <!-- Food Entry Labels -->
+  <!-- About Glucosio Strings -->
 </resources>

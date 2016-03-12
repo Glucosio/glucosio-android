@@ -104,5 +104,9 @@
   <string name="helloactivity_spinner_preferred_range">Kisaran yang diinginkan</string>
   <string name="helloactivity_preferred_range_min">Nilai minimal</string>
   <string name="helloactivity_preferred_range_max">Nilai maksimal</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
+  <!-- Food Entry Labels -->
+  <!-- About Glucosio Strings -->
   <string name="dialog_add_weight">Berat</string>
 </resources>

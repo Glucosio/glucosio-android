@@ -97,5 +97,9 @@
   <string name="helloactivity_spinner_preferred_range_4">कस्टम श्रेणी</string>
   <string name="helloactivity_preferred_range_min">न्यूनतम मूल्य</string>
   <string name="helloactivity_preferred_range_max">अधिकतम मूल्य</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
+  <!-- Food Entry Labels -->
+  <!-- About Glucosio Strings -->
   <string name="dialog_add_weight">वजन</string>
 </resources>

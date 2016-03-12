@@ -138,6 +138,8 @@
   <string name="reading_low">低い</string>
   <string name="reading_high">高い</string>
   <string name="reading_hyper">高血糖</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
   <string name="dialog_add_exercisetype_1">のんびり歩く</string>
   <string name="dialog_add_exercisetype_2">早歩き</string>
   <string name="dialog_add_exercisetype_3">ジョギング</string>
@@ -163,10 +165,12 @@
   <string name="dialog_add_exercisetype_23">レスリング</string>
   <string name="dialog_add_exercisetype_24">ハイキング</string>
   <string name="dialog_add_exercisetype_25">庭仕事</string>
+  <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">炭水化物:</string>
   <string name="dialog_addfood_protein">タンパク質:</string>
   <string name="dialog_addfood_sugars">糖:</string>
   <string name="dialog_addfood_fat">脂肪:</string>
+  <!-- About Glucosio Strings -->
   <string name="about_credits">クレジット</string>
   <string name="about_contribute">貢献</string>
   <string name="about_contributel10n">翻訳に貢献</string>
@@ -206,7 +210,7 @@
   <string name="title_activity_add_ketone">ケトンを追加</string>
   <string name="title_activity_add_pressure">血圧を追加</string>
   <string name="fab_weight">体重</string>
-  <string name="fab_ketonest">ケトン</string>
+  <string name="fab_ketones">ケトン</string>
   <string name="fab_pressure">血圧</string>
   <string name="fab_cholesterol">コレステロール値</string>
   <string name="fab_HB1AC">HB1AC 測定値</string>

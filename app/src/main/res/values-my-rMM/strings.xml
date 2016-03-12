@@ -206,7 +206,7 @@
   <string name="title_activity_add_ketone">Ketone များ ထည့်ရန်</string>
   <string name="title_activity_add_pressure">သွေးဖိအား မှတ်သားချက် ထည့်ရန်</string>
   <string name="fab_weight">ခန္ဓာကိုယ် အလေးချိန်</string>
-  <string name="fab_ketonest">Ketone များ</string>
+  <string name="fab_ketones">Ketone များ</string>
   <string name="fab_pressure">သွေးပေါင်ချိန်</string>
   <string name="fab_cholesterol">ကိုလက်စထရော အဆင့်</string>
   <string name="fab_HB1AC">HB1AC မှတ်သားချက်</string>

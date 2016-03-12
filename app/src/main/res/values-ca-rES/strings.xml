@@ -131,6 +131,8 @@
   <string name="reading_low">Baix</string>
   <string name="reading_high">Alt</string>
   <string name="reading_hyper">Hiperglucèmia</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
   <string name="dialog_add_exercisetype_1">Caminada d\'esbarjo</string>
   <string name="dialog_add_exercisetype_2">Caminada ràpida</string>
   <string name="dialog_add_exercisetype_3">Fúting</string>
@@ -156,10 +158,12 @@
   <string name="dialog_add_exercisetype_23">Lluita lliure</string>
   <string name="dialog_add_exercisetype_24">Senderisme</string>
   <string name="dialog_add_exercisetype_25">Feines de jardí</string>
+  <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">Carbohidrats:</string>
   <string name="dialog_addfood_protein">Proteïnes:</string>
   <string name="dialog_addfood_sugars">Sucres:</string>
   <string name="dialog_addfood_fat">Greixos:</string>
+  <!-- About Glucosio Strings -->
   <string name="about_credits">Crèdits</string>
   <string name="about_contribute">Contribueix</string>
   <string name="about_contributel10n">Contribueix a la traducció</string>
@@ -199,7 +203,7 @@
   <string name="title_activity_add_ketone">Afegeix cetones</string>
   <string name="title_activity_add_pressure">Afegeix la pressió arterial</string>
   <string name="fab_weight">Pes corporal</string>
-  <string name="fab_ketonest">Cetones</string>
+  <string name="fab_ketones">Cetones</string>
   <string name="fab_pressure">Pressió arterial</string>
   <string name="fab_cholesterol">Nivell de colesterol</string>
   <string name="fab_HB1AC">Lectura del HB1AC</string>

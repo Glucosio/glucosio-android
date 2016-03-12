@@ -53,4 +53,8 @@
   <string name="glucose_reading_type">Tyyppi</string>
   <string name="assistant_action_reading">LISÄÄ LUKEMA</string>
   <string name="assistant_reading_title">Lisää lukema</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
+  <!-- Food Entry Labels -->
+  <!-- About Glucosio Strings -->
 </resources>

@@ -138,6 +138,8 @@
   <string name="reading_low">Низкий</string>
   <string name="reading_high">Высокий</string>
   <string name="reading_hyper">Повышенное содержание сахара в крови</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
   <string name="dialog_add_exercisetype_1">Медленная прогулка</string>
   <string name="dialog_add_exercisetype_2">Быстрая ходьба</string>
   <string name="dialog_add_exercisetype_3">Бег на месте</string>
@@ -163,10 +165,12 @@
   <string name="dialog_add_exercisetype_23">Борьба</string>
   <string name="dialog_add_exercisetype_24">Пешие прогулки</string>
   <string name="dialog_add_exercisetype_25">Работа во дворе</string>
+  <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">Углеводы:</string>
   <string name="dialog_addfood_protein">Белок:</string>
   <string name="dialog_addfood_sugars">Сахара:</string>
   <string name="dialog_addfood_fat">Жиры:</string>
+  <!-- About Glucosio Strings -->
   <string name="about_credits">Создатели</string>
   <string name="about_contribute">Внести вклад</string>
   <string name="about_contributel10n">Помочь в переводе</string>
@@ -206,7 +210,7 @@
   <string name="title_activity_add_ketone">Добавить кетоны</string>
   <string name="title_activity_add_pressure">Добавить уровень кровяного давления</string>
   <string name="fab_weight">Вес</string>
-  <string name="fab_ketonest">Кетоны</string>
+  <string name="fab_ketones">Кетоны</string>
   <string name="fab_pressure">Кровяное давление</string>
   <string name="fab_cholesterol">Уровень холестерина</string>
   <string name="fab_HB1AC">Показания HB1AC</string>

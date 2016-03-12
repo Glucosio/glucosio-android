@@ -107,5 +107,9 @@
   <string name="helloactivity_spinner_preferred_range_4">Şəxsi aralıq</string>
   <string name="helloactivity_preferred_range_min">Minimum dəyər</string>
   <string name="helloactivity_preferred_range_max">Maksimum dəyər</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
+  <!-- Food Entry Labels -->
+  <!-- About Glucosio Strings -->
   <string name="dialog_add_weight">Çəki</string>
 </resources>

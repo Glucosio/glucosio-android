@@ -103,9 +103,9 @@
   <string name="assistant_research_title">Actualizar tu aprobación de compartir datos</string>
   <string name="assistant_research_desc">Siempre se puede aceptar o optar por no compartir la investigación de la diabetes, pero recuerda que todos los datos compartidos son totalmente anónimos. Solamente compartimos datos demográficos y las tendencias de los niveles de glucosa.</string>
   <string name="assistant_categories_title">Crear categorías</string>
-  <string name="assistant_categories_desc">Glucosio tiene categorías predeterminadas para la entrada de glucosa. Aunque puedes configurar categorías personalizadas para que coincida con tus necesidades particulares.</string>
+  <string name="assistant_categories_desc">Glucosio tiene categorías predeterminadas para la entrada de glucosa, pero puede crear categorías personalizadas en la configuración para que coincida con sus necesidades particulares.</string>
   <string name="assistant_check_title">Revise esto a menudo</string>
-  <string name="assistant_check_desc">Asistente de Glucosio ofrece consejos regulares que se actualizan para mejorar. Así que revísalo siempre para que sepas cómo mejorar tu experiencia con Glucosio y leer otros consejos útiles.</string>
+  <string name="assistant_check_desc">Asistente de Glucosio ofrece consejos regulares y seguirá mejorando, así que siempre revisa aquí para ver lo que puede hacer para mejorar su experiencia con Glucosio y por otros consejos útiles.</string>
   <string name="assistant_feedback_title">Enviar Comentarios </string>
   <string name="assistant_feedback_desc">Si encuentra cualquier problema técnico o desea comentar sobre Glucosio, envíenos sus comentarios en el menú de configuración para que mejoremos Glucosio.</string>
   <string name="assistant_reading_title">Añadir Lectura</string>
@@ -211,7 +211,7 @@
   <string name="title_activity_add_ketone">Añadir cetonas</string>
   <string name="title_activity_add_pressure">Añadir presión arterial</string>
   <string name="fab_weight">Peso Corporal</string>
-  <string name="fab_ketonest">Cetonas</string>
+  <string name="fab_ketones">Cetonas</string>
   <string name="fab_pressure">Presión arterial</string>
   <string name="fab_cholesterol">Nivel de colesterol</string>
   <string name="fab_HB1AC">Nivel de HB1AC</string>

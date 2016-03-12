@@ -116,5 +116,9 @@
   <string name="title_activity_backup">نسخة احتياطية</string>
   <string name="preferences_privacy">الخصوصية</string>
   <string name="helloactivity_textview_tos">باستخدام جلوكوسيو، فإنك توافق على</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
+  <!-- Food Entry Labels -->
+  <!-- About Glucosio Strings -->
   <string name="dialog_add_weight">الوزن</string>
 </resources>

@@ -41,4 +41,8 @@
   <string name="fragment_overview_last_reading">Gwiriadur diwezhañ:</string>
   <string name="fragment_overview_trend">Feur tremenet ar miz paseet:</string>
   <string name="fragment_overview_trend_positive">en reizh an yec\'hed</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
+  <!-- Food Entry Labels -->
+  <!-- About Glucosio Strings -->
 </resources>

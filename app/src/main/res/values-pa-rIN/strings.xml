@@ -106,5 +106,9 @@
   <string name="helloactivity_spinner_preferred_range_4">ਮਨਪਸੰਦ ਸੀਮਾ</string>
   <string name="helloactivity_preferred_range_min">ਘੱਟੋ-ਘਂੱਟ ਮੁੱਲ</string>
   <string name="helloactivity_preferred_range_max">ਵੱਧੋ-ਵੱਧ ਮੁੱਲ</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Exercise Types -->
+  <!-- Food Entry Labels -->
+  <!-- About Glucosio Strings -->
   <string name="dialog_add_weight">ਭਾਰ</string>
 </resources>
