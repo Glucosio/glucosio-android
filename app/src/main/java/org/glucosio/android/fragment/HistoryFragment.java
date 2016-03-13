@@ -166,7 +166,9 @@ public class HistoryFragment extends Fragment {
         if (mAdapter!=null) {
             if (mLayoutManager.findLastCompletelyVisibleItemPosition() == mAdapter.getItemCount() - 1) {
                 isToolbarScrolling = false;
-                ((MainActivity) getActivity()).turnOffToolbarScrolling();
+                if (getActivity()!=null) {
+                    ((MainActivity) getActivity()).turnOffToolbarScrolling();
+                }
             } else {
                 if (!isToolbarScrolling) {
                     isToolbarScrolling = true;
