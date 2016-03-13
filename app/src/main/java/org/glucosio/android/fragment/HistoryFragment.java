@@ -186,7 +186,9 @@ public class HistoryFragment extends Fragment {
     }
 
     public void reloadFragmentAdapter(){
-        ((MainActivity)getActivity()).reloadFragmentAdapter();
-        ((MainActivity)getActivity()).checkIfEmptyLayout();
+        if (getActivity()!= null) {
+            ((MainActivity) getActivity()).reloadFragmentAdapter();
+            ((MainActivity) getActivity()).checkIfEmptyLayout();
+        }
     }
 }

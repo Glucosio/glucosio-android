@@ -433,21 +433,17 @@ public class OverviewFragment extends Fragment {
         // create a dataset and give it a type
         LineDataSet set1 = new LineDataSet(yVals, label);
         set1.setColor(color);
-        set1.setLineWidth(2.5f);
+        set1.setDrawFilled(false);
+        set1.setLineWidth(1f);
         set1.setCircleColor(color);
         set1.setCircleSize(4f);
         set1.setDrawCircleHole(true);
         set1.disableDashedLine();
-        set1.setDrawFilled(false);
+        set1.setDrawCubic(true);
+        set1.setCubicIntensity(0.2f);
         set1.setValueTextSize(0);
         set1.setValueTextColor(Color.parseColor("#FFFFFF"));
 
-        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.JELLY_BEAN_MR2){
-            set1.setDrawFilled(false);
-            set1.setLineWidth(3f);
-            set1.setCircleSize(4.5f);
-            set1.setDrawCircleHole(true);
-        }
         return  set1;
     }
 

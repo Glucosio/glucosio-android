@@ -39,7 +39,7 @@
                     android:layout_width="8dp"
                     android:layout_height="8dp"
                     android:layout_marginRight="4dp"
-                    android:background="@drawable/circle_hypo" />
+                    android:background="@drawable/circle_hypo_filled" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -62,7 +62,7 @@
                     android:layout_width="8dp"
                     android:layout_height="8dp"
                     android:layout_marginRight="4dp"
-                    android:background="@drawable/circle_low" />
+                    android:background="@drawable/circle_low_filled" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -85,7 +85,7 @@
                     android:layout_width="8dp"
                     android:layout_height="8dp"
                     android:layout_marginRight="4dp"
-                    android:background="@drawable/circle_ok" />
+                    android:background="@drawable/circle_ok_filled" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -108,7 +108,7 @@
                     android:layout_width="8dp"
                     android:layout_height="8dp"
                     android:layout_marginRight="4dp"
-                    android:background="@drawable/circle_high" />
+                    android:background="@drawable/circle_high_filled" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -131,7 +131,7 @@
                     android:layout_width="8dp"
                     android:layout_height="8dp"
                     android:layout_marginRight="4dp"
-                    android:background="@drawable/circle_hyper" />
+                    android:background="@drawable/circle_hyper_filled" />
 
                 <TextView
                     android:layout_width="wrap_content"

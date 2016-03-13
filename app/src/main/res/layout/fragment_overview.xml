@@ -74,9 +74,103 @@
             android:layout_marginTop="16dp"
             android:background="#DADADA" />
 
+        <LinearLayout
+            android:id="@+id/fragment_history_legend"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="16dp">
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+            </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginRight="4dp"
+                    android:background="@drawable/circle_low" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:paddingTop="2px"
+                    android:textColor="@color/glucosio_reading_low"
+                    android:paddingRight="8dp"
+                    android:text="@string/reading_low" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginRight="4dp"
+                    android:background="@drawable/circle_ok" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/glucosio_reading_ok"
+                    android:textStyle="bold"
+                    android:paddingRight="8dp"
+                    android:paddingTop="2px"
+                    android:textSize="12sp"
+                    android:text="@string/reading_ok" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginRight="4dp"
+                    android:background="@drawable/circle_high" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/glucosio_reading_high"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:paddingTop="2px"
+                    android:paddingRight="8dp"
+                    android:text="@string/reading_high" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+            </LinearLayout>
+        </LinearLayout>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="2px"
+            android:layout_marginTop="16dp"
+            android:background="#DADADA" />
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -106,28 +200,16 @@
                     android:layout_marginTop="16dp"
                     android:text="100 mg/dL"
                     android:textColor="@color/glucosio_text" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    fontPath="fonts/lato-bold.ttf"
-                    android:visibility="invisible"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="@string/fragment_overview_last_reading" />
                 <TextView
                     fontPath="fonts/lato.ttf"
                     android:id="@+id/fragment_overview_last_date"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginLeft="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/glucosio_text_light"
                     android:text="Thu, 22 dic 2016"/>
-                </LinearLayout>
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -203,10 +285,12 @@
                     android:layout_marginTop="4dp"
                     android:text="@string/dialog_add_hb1ac" />
                 <TextView
+                    android:visibility="visible"
                     fontPath="fonts/lato.ttf"
                     android:id="@+id/fragment_overview_hb1ac_date"
                     android:layout_marginTop="4dp"
                     android:layout_marginLeft="8dp"
+                    android:layout_marginBottom="16dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/glucosio_text_light"
@@ -217,7 +301,6 @@
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="2px"
-            android:layout_marginTop="16dp"
             android:background="#DADADA" />
 
         <TextView
