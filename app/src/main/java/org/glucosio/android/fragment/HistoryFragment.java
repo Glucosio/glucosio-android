@@ -180,7 +180,7 @@ public class HistoryFragment extends Fragment {
 
     public String convertDate(String date){
         FormatDateTime dateTime = new FormatDateTime(getActivity().getApplicationContext());
-        return dateTime.convertDate(date);
+        return dateTime.convertDateTime(date);
     }
 
     public void notifyAdapter(){

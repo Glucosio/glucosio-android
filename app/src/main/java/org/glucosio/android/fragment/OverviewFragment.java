@@ -3,7 +3,6 @@ package org.glucosio.android.fragment;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
@@ -18,7 +17,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.LineChart;
@@ -377,7 +375,7 @@ public class OverviewFragment extends Fragment {
             ArrayList<String> xVals = new ArrayList<String>();
 
             for (int i = 0; i < presenter.getGlucoseDatetime().size(); i++) {
-                String date = presenter.convertDate(presenter.getGlucoseDatetime().get(i));
+                String date = presenter.convertDateTime(presenter.getGlucoseDatetime().get(i));
                 xVals.add(date + "");
             }
 
@@ -468,7 +466,7 @@ public class OverviewFragment extends Fragment {
 
             FormatDateTime dateTime = new FormatDateTime(getActivity().getApplicationContext());
 
-            lastDateTextView.setText(dateTime.convertDate(presenter.getLastDateTime()));
+            lastDateTextView.setText(dateTime.convertDateTime(presenter.getLastDateTime()));
             GlucoseRanges ranges = new GlucoseRanges(getActivity().getApplicationContext());
             String color = ranges.colorFromReading(Integer.parseInt(presenter.getLastReading()));
             lastReadingTextView.setTextColor(ranges.stringToColor(color));
@@ -488,7 +486,7 @@ public class OverviewFragment extends Fragment {
 
     public String convertDate(String date){
         FormatDateTime dateTime = new FormatDateTime(getActivity().getApplicationContext());
-        return dateTime.convertDate(date);
+        return dateTime.convertDateTime(date);
     }
 
     public String convertDateToMonth(String date){

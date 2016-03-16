@@ -219,8 +219,9 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
         presenter.setReadingMonth(df.format(monthOfYear + 1));
         presenter.setReadingDay(df.format(dayOfMonth));
 
-        String date = +dayOfMonth + "/" + presenter.getReadingMonth() + "/" + presenter.getReadingYear();
-        addDate.setText(date);
+        FormatDateTime formatDateTime = new FormatDateTime(getApplicationContext());
+        String date = presenter.getReadingYear()+"-"+presenter.getReadingMonth()+"-"+dayOfMonth;
+        addDate.setText(formatDateTime.convertDate(date));
     }
 
     @Override
