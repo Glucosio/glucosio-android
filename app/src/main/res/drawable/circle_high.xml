@@ -4,4 +4,6 @@ android:shape="oval">
 <corners android:radius="10dip"/>
 <stroke android:color="@color/glucosio_reading_high" android:width="2dip"/>
 <solid android:color="@android:color/transparent"/>
+    <size android:width="8dp"
+        android:height="8dp" />
 </shape>
