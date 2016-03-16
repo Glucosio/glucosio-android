@@ -17,7 +17,7 @@ public class FormatDateTime {
         this.context= mContext;
     }
 
-    public String convertDate(String date) {
+    public String convertDateTime(String date) {
         java.text.DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         java.text.DateFormat finalDataFormat = DateFormat.getDateInstance(DateFormat.SHORT);
         java.text.DateFormat finalTimeFormat;
@@ -61,6 +61,22 @@ public class FormatDateTime {
         return finalData + " ";
     }
 
+
+    public String convertDate(String datetime) {
+        java.text.DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
+        java.text.DateFormat finalDataFormat = DateFormat.getDateInstance(DateFormat.SHORT);
+
+        Date parsed = null;
+        try {
+            parsed = inputFormat.parse(datetime);
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        String finalData = finalDataFormat.format(parsed);
+        return finalData + "";
+    }
+
     public String convertRawDate(String datetime) {
         java.text.DateFormat inputFormat = new SimpleDateFormat("EEE MMM d HH:mm:ss zzz yyyy");
         java.text.DateFormat finalDataFormat = DateFormat.getDateInstance(DateFormat.SHORT);
@@ -102,11 +118,8 @@ public class FormatDateTime {
 
         java.text.DateFormat finalTimeFormat;
 
-        if (android.text.format.DateFormat.is24HourFormat(context)) {
-            finalTimeFormat = new SimpleDateFormat("HH:mm");
-        } else {
-            finalTimeFormat = new SimpleDateFormat("hh:mm a");
-        }
+        finalTimeFormat = DateFormat.getTimeInstance(DateFormat.SHORT);
+
 
         String finalTime = finalTimeFormat.format(cal.getTime());
         return finalTime + "";
@@ -124,11 +137,8 @@ public class FormatDateTime {
     public String getTime(Calendar cal){
         java.text.DateFormat finalTimeFormat;
 
-        if (android.text.format.DateFormat.is24HourFormat(context)) {
-            finalTimeFormat = new SimpleDateFormat("HH:mm");
-        } else {
-            finalTimeFormat = new SimpleDateFormat("hh:mm a");
-        }
+        finalTimeFormat = DateFormat.getTimeInstance(DateFormat.SHORT);
+
 
         String finalTime = finalTimeFormat.format(cal.getTime());
         return finalTime + "";
