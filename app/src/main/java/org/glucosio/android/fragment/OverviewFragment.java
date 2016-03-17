@@ -276,7 +276,6 @@ public class OverviewFragment extends Fragment {
         okDataSet = createLineDataSet(yValsNormal, getResources().getColor(R.color.glucosio_reading_ok), "normal");
         highDataSet = createLineDataSet(yValsHigh, getResources().getColor(R.color.glucosio_reading_high), "high");
         allDataSet = createLineDataSet(yValsAll, getResources().getColor(R.color.glucosio_pink), "all");
-        allDataSet.enableDashedLine(10f, 10f, 1f);
 
         XAxis xAxis = chart.getXAxis();
         xAxis.setDrawGridLines(false);
@@ -304,6 +303,7 @@ public class OverviewFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     dataSet.add(lowDataSet);
+                    allDataSet.enableDashedLine(10f, 10f, 1f);
                     setData();
                     chart.notifyDataSetChanged();
                 } else {
@@ -318,6 +318,7 @@ public class OverviewFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     dataSet.add(okDataSet);
+                    allDataSet.enableDashedLine(10f, 10f, 1f);
                     chart.notifyDataSetChanged();
                     setData();
                 } else {
@@ -348,8 +349,7 @@ public class OverviewFragment extends Fragment {
                 if (ContextCompat.checkSelfPermission(getActivity(),
                         Manifest.permission.WRITE_EXTERNAL_STORAGE)
                         != PackageManager.PERMISSION_GRANTED) {
-                    // If we don't have permission, ask the user
-
+                        // If we don't have permission, ask the user
                         ActivityCompat.requestPermissions(getActivity(),
                                 new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
                                 PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE);
@@ -411,6 +411,13 @@ public class OverviewFragment extends Fragment {
 
 
         dataSet.add(allDataSet);
+
+        // If other metrics are active, make pink line dashed
+        if (dataSet.contains(lowDataSet)||dataSet.contains(okDataSet)||dataSet.contains(highDataSet)){
+            allDataSet.enableDashedLine(10f, 10f, 1f);
+        } else {
+            allDataSet.disableDashedLine();
+        }
 
         // create a data object with the datasets
         LineData data = new LineData(xVals, dataSet);
