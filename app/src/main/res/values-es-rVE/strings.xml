@@ -59,6 +59,7 @@
   <string name="fragment_overview_selector_day">Día</string>
   <string name="fragment_overview_selector_week">Semana</string>
   <string name="preferences_about">Acerca de</string>
+  <string name="preferences_experimental">Estas características son experimentales y pueden no funcionar correctamente, están disponibles para que los usuarios las prueben. Recuerda que puedes agitar tu teléfono para enviarnos comentarios.</string>
   <string name="preferences_version">Versión</string>
   <string name="preferences_terms">Términos de uso</string>
   <string name="glucose_reading_type">Tipo</string>
@@ -111,6 +112,8 @@
   <string name="assistant_reading_desc">Asegúrese de añadir regularmente sus lecturas de glucosa para que podamos ayudarle a seguir sus niveles de glucosa a lo largo del tiempo.</string>
   <string name="assistant_export_title">Exportar datos</string>
   <string name="assistant_export_desc">Comparte los datos con tu médico o haz una copia de seguridad en Google Drive usando la función de exportar.</string>
+  <string name="assistant_calculator_a1c_title">Calcular A1C</string>
+  <string name="assistant_calculator_a1c_desc">La calculadora integrada de A1C está ahora disponible desde el panel de navegación. Introduce tu media de glucosa en sangre y podrás guardar el valor calculado de A1C al instante.</string>
   <string name="helloactivity_spinner_preferred_range">Rango preferido</string>
   <string name="helloactivity_spinner_preferred_range_4">Rango a medida</string>
   <string name="helloactivity_preferred_range_min">Valor mínimo</string>
@@ -126,6 +129,10 @@
   <string name="preferences_about_glucosio">Sobre Glucosio</string>
   <string name="preferences_rate">Puntúa Glucosio</string>
   <string name="preferences_licences_open">Licencias de código abierto</string>
+  <string name="preferences_freestyle_libre">Habilitar soporte para FreeStyle Libre®</string>
+  <string name="preferences_freestyle_libre_experimental">EXPERIMENTAL: Habilitar soporte para FreeStyle Libre®</string>
+  <string name="preferences_font_dyslexia_experimental">EXPERIMENTAL: Mejorar legibilidad para usuarios con dislexia</string>
+  <string name="preferences_font_dyslexia">Mejorar legibilidad para usuarios con dislexia</string>
   <string name="about_donate">Donar a Glucosio</string>
   <string name="reading_ok">Bien</string>
   <string name="reading_hypo">Hipoglucemia</string>
@@ -210,4 +217,17 @@
   <string name="fab_HB1AC">Lectura de HB1AC</string>
   <string name="fab_glucose">Nivel de glucosa en sangre</string>
   <string name="dialog_error_duplicate">Ya tienes una entrada en esa hora. Quítelo antes de añadir una corrección.</string>
+  <string name="freestylelibre_nfc_ready">Por favor, coloca el teléfono sobre el sensor y no lo muevas hasta que vibre.</string>
+  <string name="freestylelibre_nfc_not_supported">Este dispositivo no soporta NFC.</string>
+  <string name="freestylelibre_nfc_not_enabled">NFC está deshabilitado.</string>
+  <string name="dialog_add_glucose_freestylelibre">Añadir desde FreeStyle Libre®</string>
+  <string name="freestylelibre_nfc_error">¡Se produjo un error al establecer la conexión NFC!</string>
+  <string name="dialog_add_glucose_freestylelibre_success">Lectura añadida con éxito desde FreeStyle Libre®</string>
+  <string name="overview_hb1ac_error_no_data">Todavía no hay datos suficientes para el cálculo de HBA1C</string>
+  <string name="overview_hb1ac">HBA1C:</string>
+  <string name="dialog_add_glucose_freestylelibre_added">Añadido desde tu FreeStyle Libre®</string>
+  <string name="activity_converter_a1c_glucose">NIVEL MEDIO DE GLUCOSA</string>
+  <string name="activity_converter_a1c">A1C</string>
+  <string name="activity_converter_title">Calculador de A1C</string>
+  <string name="activity_converter_save">GUARDAR</string>
 </resources>
