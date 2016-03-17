@@ -40,6 +40,7 @@ import org.glucosio.android.tools.TipsManager;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Objects;
 
 public class OverviewFragment extends Fragment {
 
@@ -408,7 +409,6 @@ public class OverviewFragment extends Fragment {
                 xVals.add(date + "");
             }
         }
-
 
         dataSet.add(allDataSet);
 

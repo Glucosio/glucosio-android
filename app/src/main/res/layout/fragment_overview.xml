@@ -237,10 +237,17 @@
                     fontPath="fonts/lato-bold.ttf"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="16dp"
                     android:text="6.5%"
                     android:textColor="@color/glucosio_text_light" />
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/ic_expand_less_black_24dp"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -257,6 +264,7 @@
                     android:visibility="visible"
                     fontPath="fonts/lato.ttf"
                     android:id="@+id/fragment_overview_hb1ac_date"
+                    android:layout_weight="1"
                     android:layout_marginTop="4dp"
                     android:layout_marginLeft="8dp"
                     android:layout_marginBottom="16dp"
@@ -264,6 +272,11 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/glucosio_text_light"
                     android:text="December - March"/>
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:src="@drawable/ic_expand_more_black_24dp"/>
             </LinearLayout>
         </LinearLayout>
 
