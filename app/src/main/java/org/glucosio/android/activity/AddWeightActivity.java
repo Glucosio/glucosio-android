@@ -24,7 +24,7 @@ import java.util.Calendar;
 
 public class AddWeightActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
-    AddWeightPresenter presenter;
+    private AddWeightPresenter presenter;
     private FloatingActionButton doneFAB;
     private TextView addTimeTextView;
     private TextView addDateTextView;

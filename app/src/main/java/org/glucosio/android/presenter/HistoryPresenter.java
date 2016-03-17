@@ -56,6 +56,8 @@ public class HistoryPresenter {
                 dB.deleteWeightReading(dB.getWeightReading(idToDelete));
                 fragment.reloadFragmentAdapter();
                 break;
+            default:
+                break;
         }
         fragment.notifyAdapter();
         fragment.updateToolbarBehaviour();

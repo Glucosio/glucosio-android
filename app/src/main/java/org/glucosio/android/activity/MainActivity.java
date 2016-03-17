@@ -53,7 +53,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends InstabugAppCompatActivity implements DatePickerDialog.OnDateSetListener{
 
-    ExportPresenter exportPresenter;
+    private ExportPresenter exportPresenter;
     private RadioButton exportRangeButton;
     private HomePagerAdapter homePagerAdapter;
     private MainPresenter presenter;
@@ -66,8 +66,8 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
     private Tracker mTracker;
     private FloatingActionButton fabGlucoseEmpty;
 
-    Toolbar toolbar;
-    TabLayout tabLayout;
+    private Toolbar toolbar;
+    private TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

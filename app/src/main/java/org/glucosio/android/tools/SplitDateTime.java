@@ -1,14 +1,13 @@
 package org.glucosio.android.tools;
 
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class SplitDateTime {
 
-    Date origDateTime; // Example "yyyy-MM-dd HH:mm"
-    DateFormat inputFormat;
+    private Date origDateTime; // Example "yyyy-MM-dd HH:mm"
+    private DateFormat inputFormat;
 
     public SplitDateTime(Date origDatetime, DateFormat origDateFormat) {
         this.origDateTime = origDatetime;

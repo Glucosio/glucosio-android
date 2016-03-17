@@ -24,7 +24,7 @@ import java.util.Calendar;
 
 public class AddHB1ACActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
-    AddHB1ACPresenter presenter;
+    private AddHB1ACPresenter presenter;
     private FloatingActionButton doneFAB;
     private TextView addTimeTextView;
     private TextView addDateTextView;

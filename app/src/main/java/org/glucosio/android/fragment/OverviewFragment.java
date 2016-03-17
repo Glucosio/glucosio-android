@@ -164,15 +164,15 @@ public class OverviewFragment extends Fragment {
         if (graphSpinnerRange.getSelectedItemPosition() == 0) {
             // Day view
             for (int i = 0; i < presenter.getGlucoseReading().size(); i++) {
-                if (presenter.getUnitMeasuerement().equals("mg/dL")) {
+                if ("mg/dL".equals(presenter.getUnitMeasuerement())) {
                     float val = Float.parseFloat(presenter.getGlucoseReading().get(i).toString());
                     String range = ranges.colorFromReading(presenter.getGlucoseReading().get(i));
                     yValsAll.add(new Entry(val, i));
 
-                    if (range.equals("purple") || range.equals("blue")){
+                    if ("purple".equals(range) || "blue".equals(range)){
                         // low
                         yValsLow.add(new Entry(val, i));
-                    } else if (range.equals("red") || range.equals("orange")){
+                    } else if ("red".equals(range) || "orange".equals(range)){
                         // high
                         yValsHigh.add(new Entry(val, i));
                     } else {
@@ -185,10 +185,10 @@ public class OverviewFragment extends Fragment {
                     String range = ranges.colorFromReading(presenter.getGlucoseReading().get(i));
                     yValsAll.add(new Entry(converted, i));
 
-                    if (range.equals("purple") || range.equals("blue")){
+                    if ("purple".equals(range) || "blue".equals(range)){
                         // low
                         yValsLow.add(new Entry(converted, i));
-                    } else if (range.equals("red") || range.equals("orange")){
+                    } else if ("red".equals(range) || "orange".equals(range)){
                         // high
                         yValsHigh.add(new Entry(converted, i));
                     } else {
@@ -200,15 +200,15 @@ public class OverviewFragment extends Fragment {
         } else if (graphSpinnerRange.getSelectedItemPosition() == 1){
             // Week view
             for (int i = 0; i < presenter.getGlucoseReadingsWeek().size(); i++) {
-                if (presenter.getUnitMeasuerement().equals("mg/dL")) {
+                if ("mg/dL".equals(presenter.getUnitMeasuerement())) {
                     float val = Float.parseFloat(presenter.getGlucoseReadingsWeek().get(i)+"");
                     String range = ranges.colorFromReading(presenter.getGlucoseReadingsWeek().get(i));
                     yValsAll.add(new Entry(val, i));
 
-                    if (range.equals("purple") || range.equals("blue")){
+                    if ("purple".equals(range) || "blue".equals(range)){
                         // low
                         yValsLow.add(new Entry(val, i));
-                    } else if (range.equals("red") || range.equals("orange")){
+                    } else if ("red".equals(range) || "orange".equals(range)){
                         // high
                         yValsHigh.add(new Entry(val, i));
                     } else {
@@ -222,10 +222,10 @@ public class OverviewFragment extends Fragment {
                     String range = ranges.colorFromReading(presenter.getGlucoseReadingsWeek().get(i));
                     yValsAll.add(new Entry(converted, i));
 
-                    if (range.equals("purple") && range.equals("blue")){
+                    if ("purple".equals(range) && "blue".equals(range)){
                         // low
                         yValsLow.add(new Entry(converted, i));
-                    } else if (range.equals("red") && range.equals("orange")){
+                    } else if ("red".equals(range) && "orange".equals(range)){
                         // high
                         yValsHigh.add(new Entry(converted, i));
                     } else {
@@ -241,10 +241,10 @@ public class OverviewFragment extends Fragment {
                     String range = ranges.colorFromReading(presenter.getGlucoseReadingsMonth().get(i));
                     yValsAll.add(new Entry(val, i));
 
-                    if (range.equals("purple") && range.equals("blue")){
+                    if ("purple".equals(range) && "blue".equals(range)){
                         // low
                         yValsLow.add(new Entry(val, i));
-                    } else if (range.equals("red") && range.equals("orange")){
+                    } else if ("red".equals(range) && "orange".equals(range)){
                         // high
                         yValsHigh.add(new Entry(val, i));
                     } else {
@@ -257,10 +257,10 @@ public class OverviewFragment extends Fragment {
                     String range = ranges.colorFromReading(presenter.getGlucoseReadingsWeek().get(i));
                     yValsAll.add(new Entry(converted, i));
 
-                    if (range.equals("purple") && range.equals("blue")){
+                    if ("purple".equals(range) && "blue".equals(range)){
                         // low
                         yValsLow.add(new Entry(converted, i));
-                    } else if (range.equals("red") && range.equals("orange")){
+                    } else if ("red".equals(range) && "orange".equals(range)){
                         // high
                         yValsHigh.add(new Entry(converted, i));
                     } else {
@@ -463,7 +463,7 @@ public class OverviewFragment extends Fragment {
 
     private void loadLastReading(){
         if (!presenter.isdbEmpty()) {
-            if (presenter.getUnitMeasuerement().equals("mg/dL")) {
+            if ("mg/dL".equals(presenter.getUnitMeasuerement())) {
                 lastReadingTextView.setText(presenter.getLastReading() + " mg/dL");
             } else {
                 GlucoseConverter converter = new GlucoseConverter();
@@ -509,6 +509,8 @@ public class OverviewFragment extends Fragment {
                     case MotionEvent.ACTION_UP:
                         view.getParent().requestDisallowInterceptTouchEvent(false);
                         break;
+                    default:
+                        break;
                 }
                 return false;
             }
@@ -528,7 +530,10 @@ public class OverviewFragment extends Fragment {
                 } else {
                     Snackbar.make(mFragmentView, R.string.fragment_overview_permission_storage, Snackbar.LENGTH_LONG).show();
                 }
+                break;
             }
+            default:
+                break;
         }
     }
 }

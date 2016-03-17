@@ -29,7 +29,7 @@ import java.util.Calendar;
 
 public class AddGlucoseActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
-    AddGlucosePresenter presenter;
+    private AddGlucosePresenter presenter;
     private FloatingActionButton doneFAB;
     private TextView addTimeTextView;
     private TextView addDateTextView;
@@ -240,6 +240,8 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
+                break;
+            default:
                 break;
         }
         return true;

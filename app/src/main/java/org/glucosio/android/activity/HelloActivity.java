@@ -84,7 +84,7 @@ public class HelloActivity extends AppCompatActivity {
         // Get locale country name and set the spinner
         String localCountry = getApplicationContext().getResources().getConfiguration().locale.getDisplayCountry();
 
-        if (!localCountry.equals(null)) {
+        if (localCountry != null) {
             countrySpinner.setSelection(((ArrayAdapter) countrySpinner.getSpinner().getAdapter()).getPosition(localCountry));
         }
 

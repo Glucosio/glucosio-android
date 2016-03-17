@@ -17,9 +17,9 @@ import java.util.ArrayList;
 
 public class AssistantAdapter extends RecyclerView.Adapter<AssistantAdapter.ViewHolder> {
     private Context mContext;
-    ArrayList<ActionTip> actionTips;
+    private ArrayList<ActionTip> actionTips;
     private AssistantPresenter presenter;
-    Resources res;
+    private Resources res;
 
 
     // Provide a reference to the views for each data item

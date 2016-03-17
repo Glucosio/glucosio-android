@@ -2,8 +2,6 @@ package org.glucosio.android.tools;
 
 import android.content.Context;
 
-import org.joda.time.DateTime;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

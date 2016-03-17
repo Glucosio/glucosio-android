@@ -21,9 +21,9 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class A1Calculator extends AppCompatActivity {
 
-    A1CCalculatorPresenter presenter;
-    TextView glucoseUnit;
-    double convertedA1C = 0;
+    private A1CCalculatorPresenter presenter;
+    private TextView glucoseUnit;
+    private double convertedA1C = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

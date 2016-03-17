@@ -113,7 +113,7 @@ public class PreferencesActivity extends AppCompatActivity {
             minRangePref.setDefaultValue(user.getCustom_range_min() + "");
             maxRangePref.setDefaultValue(user.getCustom_range_max() + "");
 
-            if (!rangePref.equals("custom")){
+            if (!"custom".equals(rangePref)){
                 minRangePref.setEnabled(false);
                 maxRangePref.setEnabled(false);
             } else {

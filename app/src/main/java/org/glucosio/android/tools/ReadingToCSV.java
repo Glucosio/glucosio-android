@@ -45,7 +45,7 @@ public class ReadingToCSV {
 
             FormatDateTime dateTool = new FormatDateTime(context);
 
-            if (um.equals("mg/dL")) {
+            if ("mg/dL".equals(um)) {
                 for (int i = 0; i < readings.size(); i++) {
 
                     osw.append(readings.get(i).getReading() + "mg/dL");

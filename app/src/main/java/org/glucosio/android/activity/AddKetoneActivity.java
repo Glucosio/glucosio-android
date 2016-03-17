@@ -24,7 +24,7 @@ import java.util.Calendar;
 
 public class AddKetoneActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
-    AddKetonePresenter presenter;
+    private AddKetonePresenter presenter;
     private FloatingActionButton doneFAB;
     private TextView addTimeTextView;
     private TextView addDateTextView;

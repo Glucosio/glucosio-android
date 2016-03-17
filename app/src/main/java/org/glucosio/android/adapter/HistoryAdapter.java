@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHolder> {
+    private Context mContext;
     private final int metricId;
     private ArrayList<String> weightDataTime;
     private ArrayList<Long> weightIdArray;
@@ -35,7 +36,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     private ArrayList<String> hb1acDateTimeArray;
     private ArrayList<Double> hb1acReadingArray;
     private ArrayList<Long> hb1acIdArray;
-    Context mContext;
     private HistoryPresenter presenter;
     private GlucoseConverter converter;
     private ArrayList<Long> glucoseIdArray;

@@ -24,7 +24,7 @@ import java.util.Calendar;
 
 public class AddCholesterolActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
-    AddCholesterolPresenter presenter;
+    private AddCholesterolPresenter presenter;
     private FloatingActionButton doneFAB;
     private TextView addTimeTextView;
     private TextView addDateTextView;
@@ -152,6 +152,8 @@ public class AddCholesterolActivity extends AppCompatActivity implements TimePic
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
+                break;
+            default:
                 break;
         }
         return true;

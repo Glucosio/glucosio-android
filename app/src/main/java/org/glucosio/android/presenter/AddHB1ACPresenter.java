@@ -55,7 +55,7 @@ public class AddHB1ACPresenter {
     }
 
     private boolean validateEmpty(String time){
-        return !time.equals("");
+        return !"".equals(time);
     }
 
     // Getters and Setters

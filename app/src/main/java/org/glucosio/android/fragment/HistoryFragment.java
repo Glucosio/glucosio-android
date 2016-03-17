@@ -130,6 +130,8 @@ public class HistoryFragment extends Fragment {
                                     case Snackbar.Callback.DISMISS_EVENT_TIMEOUT:
                                         presenter.onDeleteClicked(idToDelete, historySpinner.getSelectedItemPosition());
                                         break;
+                                    default:
+                                        break;
                                 }
                             }
 

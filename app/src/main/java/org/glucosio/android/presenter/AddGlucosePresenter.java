@@ -71,7 +71,7 @@ public class AddGlucosePresenter {
             cal.set(Integer.parseInt(readingYear), Integer.parseInt(readingMonth)-1, Integer.parseInt(readingDay), Integer.parseInt(readingHour), Integer.parseInt(readingMinute));
             Date finalDateTime = cal.getTime();
             boolean isReadingAdded;
-            if (getUnitMeasuerement().equals("mg/dL")) {
+            if ("mg/dL".equals(getUnitMeasuerement())) {
                 int finalReading = Integer.parseInt(reading);
                 GlucoseReading gReading = new GlucoseReading(finalReading, type, finalDateTime, "");
                 isReadingAdded = dB.addGlucoseReading(gReading);
@@ -92,18 +92,18 @@ public class AddGlucosePresenter {
     }
 
     private boolean validateTime(String time){
-        return !time.equals("");
+        return !"".equals(time);
     }
     private boolean validateDate(String date){
-        return !date.equals("");
+        return !"".equals(date);
     }
     private boolean validateType(String type){
-        return !type.equals("");
+        return !"".equals(type);
     }
 
     private boolean validateReading(String reading) {
         if (!reading.equals("")) {
-            if (getUnitMeasuerement().equals("mg/dL")) {
+            if ("mg/dL".equals(getUnitMeasuerement())) {
                 // We store data in db in mg/dl
                 try {
                     Integer readingValue = Integer.parseInt(reading);

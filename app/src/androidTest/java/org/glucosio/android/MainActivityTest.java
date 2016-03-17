@@ -25,7 +25,7 @@ public class MainActivityTest {
     @Rule
     public ActivityTestRule<MainActivity> mRule = new ActivityTestRule<>(MainActivity.class);
 
-    HelloActivityTest previousTest = new HelloActivityTest();
+    private HelloActivityTest previousTest = new HelloActivityTest();
 
     private void goThroughHelloActivity() throws InterruptedException {
         previousTest.check_004_IfICanEnterMyAgeUsingHelloAgeEditText();

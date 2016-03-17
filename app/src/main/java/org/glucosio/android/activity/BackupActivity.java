@@ -20,9 +20,9 @@ import org.glucosio.android.R;
 
 public class BackupActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
-    GoogleBackup googleBackupDriver;
-    GoogleApiClient mClient;
-    PreferenceFragment fragment;
+    private GoogleBackup googleBackupDriver;
+    private GoogleApiClient mClient;
+    private PreferenceFragment fragment;
 
     @Override
     public void onCreate(final Bundle savedInstanceState) {
@@ -99,7 +99,7 @@ public class BackupActivity extends AppCompatActivity implements GoogleApiClient
 
     public static class MyPreferenceFragment extends PreferenceFragment {
 
-        CheckBoxPreference driveBackup;
+        private CheckBoxPreference driveBackup;
 
         @Override
         public void onCreate(final Bundle savedInstanceState) {

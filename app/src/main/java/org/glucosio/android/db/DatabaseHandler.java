@@ -22,8 +22,8 @@ import io.realm.Sort;
 
 public class DatabaseHandler {
 
-    Context mContext;
-    Realm realm;
+    private Context mContext;
+    private Realm realm;
     private static RealmConfiguration mRealmConfig;
 
     public DatabaseHandler(Context context) {
