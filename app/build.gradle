@@ -19,6 +19,7 @@
  */
 
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 23
@@ -32,14 +33,14 @@ android {
         versionCode 14
         versionName '0.10.2'
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
     }
     buildTypes {
         debug {
             minifyEnabled false
             debuggable true
 
-            buildConfigField "String", "GOOGLE_ANALYTICS_TRACKER", '"UA-68882401-2"'
+            buildConfigField 'String', 'GOOGLE_ANALYTICS_TRACKER', '"UA-68882401-2"'
 
             applicationIdSuffix '.daily'
             versionNameSuffix '-DEVEL'
@@ -49,7 +50,7 @@ android {
             minifyEnabled true
             shrinkResources true
             zipAlignEnabled true
-            buildConfigField "String", "GOOGLE_ANALYTICS_TRACKER", '"UA-68882401-2"'
+            buildConfigField 'String', 'GOOGLE_ANALYTICS_TRACKER', '"UA-68882401-2"'
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -60,8 +61,8 @@ android {
 
 repositories {
     mavenCentral()
-    maven { url "https://jitpack.io" }
-    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    maven { url 'https://jitpack.io' }
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
 }
 
 dependencies {
@@ -110,5 +111,3 @@ configurations.all {
     resolutionStrategy.force 'com.android.support:design:23.2.1'
     resolutionStrategy.force 'com.android.support:appcompat-v7:23.2.1'
 }
-
-apply plugin: 'com.google.gms.google-services'
