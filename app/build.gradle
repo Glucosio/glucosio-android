@@ -19,7 +19,6 @@
  */
 
 apply plugin: 'com.android.application'
-apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 23
@@ -111,3 +110,5 @@ configurations.all {
     resolutionStrategy.force 'com.android.support:design:23.2.1'
     resolutionStrategy.force 'com.android.support:appcompat-v7:23.2.1'
 }
+
+apply plugin: 'com.google.gms.google-services'
