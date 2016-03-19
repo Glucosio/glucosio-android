@@ -6,9 +6,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import org.glucosio.android.R;
+import org.glucosio.android.fragment.AssistantFragment;
 import org.glucosio.android.fragment.HistoryFragment;
 import org.glucosio.android.fragment.OverviewFragment;
-import org.glucosio.android.fragment.AssistantFragment;
 
 public class HomePagerAdapter extends FragmentPagerAdapter {
 

@@ -15,10 +15,10 @@ public class HB1ACReading extends RealmObject {
     public HB1ACReading() {
     }
 
-    public HB1ACReading(double reading,Date created) {
+    public HB1ACReading(double reading, Date created) {
         // %
-        this.reading=reading;
-        this.created=created;
+        this.reading = reading;
+        this.created = created;
     }
 
     public double getReading() {

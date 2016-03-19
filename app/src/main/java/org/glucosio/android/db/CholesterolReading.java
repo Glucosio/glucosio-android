@@ -4,7 +4,6 @@ import java.util.Date;
 
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
-import io.realm.annotations.Required;
 
 public class CholesterolReading extends RealmObject {
     @PrimaryKey
@@ -21,10 +20,10 @@ public class CholesterolReading extends RealmObject {
     public CholesterolReading(int totalReading, int LDLReading, int HDLReading, Date created) {
         // mg/dL
         // 0-200
-        this.totalReading=totalReading;
+        this.totalReading = totalReading;
         this.LDLReading = LDLReading;
         this.HDLReading = HDLReading;
-        this.created=created;
+        this.created = created;
     }
 
     public int getTotalReading() {

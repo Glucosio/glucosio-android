@@ -97,6 +97,11 @@ public class BackupActivity extends AppCompatActivity implements GoogleApiClient
         }
     }
 
+    public boolean onOptionsItemSelected(MenuItem item) {
+        finish();
+        return true;
+    }
+
     public static class MyPreferenceFragment extends PreferenceFragment {
 
         private CheckBoxPreference driveBackup;
@@ -126,11 +131,6 @@ public class BackupActivity extends AppCompatActivity implements GoogleApiClient
         public void setCheckboxChecked(boolean value) {
             driveBackup.setChecked(value);
         }
-    }
-
-    public boolean onOptionsItemSelected(MenuItem item){
-        finish();
-        return true;
     }
 }
 

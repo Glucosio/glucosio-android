@@ -28,7 +28,7 @@ public class AddGlucosePresenter {
 
 
     public AddGlucosePresenter(AddGlucoseActivity addGlucoseActivity) {
-        this.activity= addGlucoseActivity;
+        this.activity = addGlucoseActivity;
         dB = new DatabaseHandler(addGlucoseActivity.getApplicationContext());
     }
 
@@ -37,7 +37,7 @@ public class AddGlucosePresenter {
         activity.updateSpinnerTypeTime(timeToSpinnerType());
     }
 
-    public void getCurrentTime(){
+    public void getCurrentTime() {
         DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         Date formatted = Calendar.getInstance().getTime();
 
@@ -60,15 +60,15 @@ public class AddGlucosePresenter {
         return hourToSpinnerType(hour);
     }
 
-    public int hourToSpinnerType(int hour){
+    public int hourToSpinnerType(int hour) {
         rTools = new ReadingTools();
         return rTools.hourToSpinnerType(hour);
     }
 
-    public void dialogOnAddButtonPressed(String time, String date, String reading, String type){
+    public void dialogOnAddButtonPressed(String time, String date, String reading, String type) {
         if (validateDate(date) && validateTime(time) && validateReading(reading) && validateType(type)) {
             Calendar cal = Calendar.getInstance();
-            cal.set(Integer.parseInt(readingYear), Integer.parseInt(readingMonth)-1, Integer.parseInt(readingDay), Integer.parseInt(readingHour), Integer.parseInt(readingMinute));
+            cal.set(Integer.parseInt(readingYear), Integer.parseInt(readingMonth) - 1, Integer.parseInt(readingDay), Integer.parseInt(readingHour), Integer.parseInt(readingMinute));
             Date finalDateTime = cal.getTime();
             boolean isReadingAdded;
             if ("mg/dL".equals(getUnitMeasuerement())) {
@@ -81,7 +81,7 @@ public class AddGlucosePresenter {
                 GlucoseReading gReading = new GlucoseReading(convertedReading, type, finalDateTime, "");
                 isReadingAdded = dB.addGlucoseReading(gReading);
             }
-            if (!isReadingAdded){
+            if (!isReadingAdded) {
                 activity.showDuplicateErrorMessage();
             } else {
                 activity.finishActivity();
@@ -91,13 +91,15 @@ public class AddGlucosePresenter {
         }
     }
 
-    private boolean validateTime(String time){
+    private boolean validateTime(String time) {
         return !"".equals(time);
     }
-    private boolean validateDate(String date){
+
+    private boolean validateDate(String date) {
         return !"".equals(date);
     }
-    private boolean validateType(String type){
+
+    private boolean validateType(String type) {
         return !"".equals(type);
     }
 
@@ -140,12 +142,12 @@ public class AddGlucosePresenter {
 
     // Getters and Setters
 
-    public boolean isFreeStyleLibreEnabled(){
+    public boolean isFreeStyleLibreEnabled() {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
         return sharedPref.getBoolean("pref_freestyle_libre", false);
     }
 
-    public String getUnitMeasuerement(){
+    public String getUnitMeasuerement() {
         return dB.getUser(1).getPreferred_unit();
     }
 
@@ -153,20 +155,20 @@ public class AddGlucosePresenter {
         return readingYear;
     }
 
-    public String getReadingMonth() {
-        return readingMonth;
-    }
-
-    public String getReadingDay() {
-        return readingDay;
-    }
-
     public void setReadingYear(String readingYear) {
         this.readingYear = readingYear;
     }
 
+    public String getReadingMonth() {
+        return readingMonth;
+    }
+
     public void setReadingMonth(String readingMonth) {
         this.readingMonth = readingMonth;
+    }
+
+    public String getReadingDay() {
+        return readingDay;
     }
 
     public void setReadingDay(String readingDay) {

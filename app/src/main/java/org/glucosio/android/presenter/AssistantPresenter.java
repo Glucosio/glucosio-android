@@ -9,7 +9,7 @@ public class AssistantPresenter {
 
 
     public AssistantPresenter(AssistantFragment assistantFragment) {
-        this.fragment= assistantFragment;
+        this.fragment = assistantFragment;
         dB = new DatabaseHandler(assistantFragment.getContext());
     }
 

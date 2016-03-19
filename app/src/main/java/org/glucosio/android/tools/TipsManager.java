@@ -17,11 +17,11 @@ public class TipsManager {
     }
 
 
-    public ArrayList<String> getTips(){
+    public ArrayList<String> getTips() {
         ArrayList<String> finalTips = new ArrayList<>();
         String[] allTips = mContext.getResources().getStringArray(R.array.tips_all);
         String[] plus40Tips = mContext.getResources().getStringArray(R.array.tips_all_age_plus_40);
-        if (userAge >= 40){
+        if (userAge >= 40) {
             Collections.addAll(finalTips, allTips);
             Collections.addAll(finalTips, plus40Tips);
         } else {

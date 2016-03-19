@@ -15,9 +15,9 @@ public class WeightReading extends RealmObject {
     public WeightReading() {
     }
 
-    public WeightReading(int reading,Date created) {
-        this.reading=reading;
-        this.created=created;
+    public WeightReading(int reading, Date created) {
+        this.reading = reading;
+        this.created = created;
     }
 
     public int getReading() {

@@ -4,15 +4,6 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 public class GlucoseConverter {
-    public int glucoseToMgDl(double mmolL){
-        double converted = mmolL * 18;
-        return (int) converted;
-    }
-
-    public double glucoseToMmolL(double mgDl){
-        return round(mgDl / 18.0, 1);
-    }
-
     public static double round(double value, int places) {
         if (places < 0) throw new IllegalArgumentException();
 
@@ -21,8 +12,17 @@ public class GlucoseConverter {
         return bd.doubleValue();
     }
 
-    public double glucoseToA1C(double mgDl){
+    public int glucoseToMgDl(double mmolL) {
+        double converted = mmolL * 18;
+        return (int) converted;
+    }
+
+    public double glucoseToMmolL(double mgDl) {
+        return round(mgDl / 18.0, 1);
+    }
+
+    public double glucoseToA1C(double mgDl) {
         // A1C = (Average glucose + 46.7) / 28.7
-        return round((mgDl+46.7)/28.7, 2);
+        return round((mgDl + 46.7) / 28.7, 2);
     }
 }

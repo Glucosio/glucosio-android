@@ -13,11 +13,11 @@ public class A1CCalculatorPresenter {
 
 
     public A1CCalculatorPresenter(A1Calculator a1Calculator) {
-        this.activity= a1Calculator;
+        this.activity = a1Calculator;
         dB = new DatabaseHandler(a1Calculator.getApplicationContext());
     }
 
-    public double calculateA1C(String glucose){
+    public double calculateA1C(String glucose) {
         GlucoseConverter converter = new GlucoseConverter();
         if (dB.getUser(1).getPreferred_unit().equals("mg/dL")) {
             return converter.glucoseToA1C(Double.parseDouble(glucose));
@@ -26,13 +26,13 @@ public class A1CCalculatorPresenter {
         }
     }
 
-    public void checkUnit(){
-        if (!dB.getUser(1).getPreferred_unit().equals("mg/dL")){
+    public void checkUnit() {
+        if (!dB.getUser(1).getPreferred_unit().equals("mg/dL")) {
             activity.setMmol();
         }
     }
 
-    public void saveA1C(double a1c){
+    public void saveA1C(double a1c) {
         HB1ACReading a1cReading = new HB1ACReading(a1c, Calendar.getInstance().getTime());
         dB.addHB1ACReading(a1cReading);
         activity.finish();

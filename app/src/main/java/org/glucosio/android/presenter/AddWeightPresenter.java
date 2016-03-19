@@ -21,12 +21,12 @@ public class AddWeightPresenter {
 
 
     public AddWeightPresenter(AddWeightActivity addWeightActivity) {
-        this.activity= addWeightActivity;
+        this.activity = addWeightActivity;
         dB = new DatabaseHandler(addWeightActivity.getApplicationContext());
     }
 
 
-    public void getCurrentTime(){
+    public void getCurrentTime() {
         DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         Date formatted = Calendar.getInstance().getTime();
 
@@ -39,10 +39,10 @@ public class AddWeightPresenter {
         this.readingMinute = addSplitDateTime.getMinute();
     }
 
-    public void dialogOnAddButtonPressed(String time, String date, String reading){
+    public void dialogOnAddButtonPressed(String time, String date, String reading) {
         if (validateEmpty(date) && validateEmpty(time) && validateEmpty(reading)) {
             Calendar cal = Calendar.getInstance();
-            cal.set(Integer.parseInt(readingYear), Integer.parseInt(readingMonth)-1, Integer.parseInt(readingDay), Integer.parseInt(readingHour), Integer.parseInt(readingMinute));
+            cal.set(Integer.parseInt(readingYear), Integer.parseInt(readingMonth) - 1, Integer.parseInt(readingDay), Integer.parseInt(readingHour), Integer.parseInt(readingMinute));
             Date finalDateTime = cal.getTime();
             int finalReading = Integer.parseInt(reading);
             WeightReading wReading = new WeightReading(finalReading, finalDateTime);
@@ -54,13 +54,13 @@ public class AddWeightPresenter {
         }
     }
 
-    private boolean validateEmpty(String time){
+    private boolean validateEmpty(String time) {
         return !time.equals("");
     }
 
     // Getters and Setters
 
-    public String getUnitMeasuerement(){
+    public String getUnitMeasuerement() {
         return dB.getUser(1).getPreferred_unit();
     }
 
@@ -68,12 +68,12 @@ public class AddWeightPresenter {
         return readingYear;
     }
 
-    public String getReadingMonth() {
-        return readingMonth;
-    }
-
     public void setReadingYear(String readingYear) {
         this.readingYear = readingYear;
+    }
+
+    public String getReadingMonth() {
+        return readingMonth;
     }
 
     public void setReadingMonth(String readingMonth) {

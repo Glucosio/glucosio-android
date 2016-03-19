@@ -51,7 +51,7 @@ import java.util.Calendar;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
-public class MainActivity extends InstabugAppCompatActivity implements DatePickerDialog.OnDateSetListener{
+public class MainActivity extends InstabugAppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     private ExportPresenter exportPresenter;
     private RadioButton exportRangeButton;
@@ -134,7 +134,7 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
             @Override
             public void onMenuToggle(boolean opened) {
                 // When Fab Menu is opened, dim the main view.
-                if (opened){
+                if (opened) {
                     if (!presenter.isdbEmpty()) {
                         AlphaAnimation alpha = new AlphaAnimation(1F, 0.2F);
                         alpha.setDuration(600);
@@ -190,7 +190,7 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
                         } else if (drawerItem.equals(itemDonate)) {
                             // Donate
                             openDonateIntent();
-                        } else if (drawerItem.equals(itemA1C)){
+                        } else if (drawerItem.equals(itemA1C)) {
                             openA1CCalculator();
                         }
                         return false;
@@ -389,7 +389,7 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
         exportButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (validateExportDialog()){
+                if (validateExportDialog()) {
                     exportPresenter.onExportClicked(exportAllButton.isChecked());
                     exportDialog.dismiss();
                 } else {
@@ -533,7 +533,7 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
         Snackbar.make(rootLayout, getString(R.string.activity_export_snackbar_1) + " " + nReadings + " " + getString(R.string.activity_export_snackbar_2), Snackbar.LENGTH_SHORT).show();
     }
 
-    public void showNoReadingsSnackBar(){
+    public void showNoReadingsSnackBar() {
         View rootLayout = findViewById(android.R.id.content);
         Snackbar.make(rootLayout, getString(R.string.activity_export_no_readings_snackbar), Snackbar.LENGTH_SHORT).show();
     }

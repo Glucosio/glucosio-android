@@ -14,27 +14,27 @@ public class SplitDateTime {
         this.inputFormat = origDateFormat;
     }
 
-    public String getHour(){
+    public String getHour() {
         DateFormat finalFormat = new SimpleDateFormat("HH");
         return finalFormat.format(origDateTime);
     }
 
-    public String getMinute(){
+    public String getMinute() {
         DateFormat finalFormat = new SimpleDateFormat("mm");
         return finalFormat.format(origDateTime);
     }
 
-    public String getYear(){
+    public String getYear() {
         DateFormat finalFormat = new SimpleDateFormat("yyyy");
         return finalFormat.format(origDateTime);
     }
 
-    public String getMonth(){
+    public String getMonth() {
         DateFormat finalFormat = new SimpleDateFormat("MM");
         return finalFormat.format(origDateTime);
     }
 
-    public String getDay(){
+    public String getDay() {
         DateFormat finalFormat = new SimpleDateFormat("dd");
         return finalFormat.format(origDateTime);
     }

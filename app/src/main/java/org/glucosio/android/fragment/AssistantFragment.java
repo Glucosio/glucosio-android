@@ -43,14 +43,14 @@ public class AssistantFragment extends Fragment {
     private String[] actionTipDescriptions;
     private String[] actionTipActions;
 
+    public AssistantFragment() {
+        // Required empty public constructor
+    }
+
     public static AssistantFragment newInstance() {
         AssistantFragment fragment = new AssistantFragment();
 
         return fragment;
-    }
-
-    public AssistantFragment() {
-        // Required empty public constructor
     }
 
     @Override
@@ -119,7 +119,7 @@ public class AssistantFragment extends Fragment {
         itemTouchHelper.attachToRecyclerView(tipsRecycler);
 
         // If there aren't dismissed tips, don't show archive button
-        if (actionTipTitles.length == adapter.getItemCount()){
+        if (actionTipTitles.length == adapter.getItemCount()) {
             archivedButton.setVisibility(View.GONE);
         }
 
@@ -154,9 +154,9 @@ public class AssistantFragment extends Fragment {
         return mView;
     }
 
-    private void popolateWithNewTips(){
+    private void popolateWithNewTips() {
         actionTips.clear();
-        for (int i=0; i<actionTipTitles.length; i++){
+        for (int i = 0; i < actionTipTitles.length; i++) {
             String actionTipTitle = actionTipTitles[i];
             String actionTipDescription = actionTipDescriptions[i];
             String actionTipAction = actionTipActions[i];
@@ -173,9 +173,9 @@ public class AssistantFragment extends Fragment {
         }
     }
 
-    private void popolateWithArchivedTips(){
+    private void popolateWithArchivedTips() {
         actionTips.clear();
-        for (int i=0; i<actionTipTitles.length; i++){
+        for (int i = 0; i < actionTipTitles.length; i++) {
             String actionTipTitle = actionTipTitles[i];
             String actionTipDescription = actionTipDescriptions[i];
             String actionTipAction = actionTipActions[i];
@@ -192,28 +192,28 @@ public class AssistantFragment extends Fragment {
         }
     }
 
-    private void addPreference(String key){
+    private void addPreference(String key) {
         editor.putBoolean(key, true);
         editor.commit();
     }
 
-    private void removePreference(String key){
+    private void removePreference(String key) {
         editor.putBoolean(key, false);
         editor.commit();
     }
 
-    public void addReading(){
+    public void addReading() {
         Intent intent = new Intent(getActivity(), AddGlucoseActivity.class);
         startActivity(intent);
         getActivity().finish();
     }
 
-    public void openGitty(){
+    public void openGitty() {
         Instabug.getInstance().invoke();
     }
 
     public void startExportActivity() {
-        ((MainActivity)getActivity()).showExportDialog();
+        ((MainActivity) getActivity()).showExportDialog();
     }
 
     public void startA1CCalculatorActivity() {

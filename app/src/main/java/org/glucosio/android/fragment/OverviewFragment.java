@@ -19,9 +19,7 @@ import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
@@ -40,7 +38,6 @@ import org.glucosio.android.tools.TipsManager;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Objects;
 
 public class OverviewFragment extends Fragment {
 
@@ -67,6 +64,10 @@ public class OverviewFragment extends Fragment {
     private LineDataSet allDataSet;
 
 
+    public OverviewFragment() {
+        // Required empty public constructor
+    }
+
     public static HistoryFragment newInstance() {
         HistoryFragment fragment = new HistoryFragment();
 
@@ -74,8 +75,21 @@ public class OverviewFragment extends Fragment {
         return fragment;
     }
 
-    public OverviewFragment() {
-        // Required empty public constructor
+    public static void disableTouchTheft(View view) {
+        view.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                view.getParent().requestDisallowInterceptTouchEvent(true);
+                switch (motionEvent.getAction() & MotionEvent.ACTION_MASK) {
+                    case MotionEvent.ACTION_UP:
+                        view.getParent().requestDisallowInterceptTouchEvent(false);
+                        break;
+                    default:
+                        break;
+                }
+                return false;
+            }
+        });
     }
 
     public void onCreate(Bundle savedInstanceState) {
@@ -169,10 +183,10 @@ public class OverviewFragment extends Fragment {
                     String range = ranges.colorFromReading(presenter.getGlucoseReading().get(i));
                     yValsAll.add(new Entry(val, i));
 
-                    if ("purple".equals(range) || "blue".equals(range)){
+                    if ("purple".equals(range) || "blue".equals(range)) {
                         // low
                         yValsLow.add(new Entry(val, i));
-                    } else if ("red".equals(range) || "orange".equals(range)){
+                    } else if ("red".equals(range) || "orange".equals(range)) {
                         // high
                         yValsHigh.add(new Entry(val, i));
                     } else {
@@ -185,10 +199,10 @@ public class OverviewFragment extends Fragment {
                     String range = ranges.colorFromReading(presenter.getGlucoseReading().get(i));
                     yValsAll.add(new Entry(converted, i));
 
-                    if ("purple".equals(range) || "blue".equals(range)){
+                    if ("purple".equals(range) || "blue".equals(range)) {
                         // low
                         yValsLow.add(new Entry(converted, i));
-                    } else if ("red".equals(range) || "orange".equals(range)){
+                    } else if ("red".equals(range) || "orange".equals(range)) {
                         // high
                         yValsHigh.add(new Entry(converted, i));
                     } else {
@@ -197,18 +211,18 @@ public class OverviewFragment extends Fragment {
                     }
                 }
             }
-        } else if (graphSpinnerRange.getSelectedItemPosition() == 1){
+        } else if (graphSpinnerRange.getSelectedItemPosition() == 1) {
             // Week view
             for (int i = 0; i < presenter.getGlucoseReadingsWeek().size(); i++) {
                 if ("mg/dL".equals(presenter.getUnitMeasuerement())) {
-                    float val = Float.parseFloat(presenter.getGlucoseReadingsWeek().get(i)+"");
+                    float val = Float.parseFloat(presenter.getGlucoseReadingsWeek().get(i) + "");
                     String range = ranges.colorFromReading(presenter.getGlucoseReadingsWeek().get(i));
                     yValsAll.add(new Entry(val, i));
 
-                    if ("purple".equals(range) || "blue".equals(range)){
+                    if ("purple".equals(range) || "blue".equals(range)) {
                         // low
                         yValsLow.add(new Entry(val, i));
-                    } else if ("red".equals(range) || "orange".equals(range)){
+                    } else if ("red".equals(range) || "orange".equals(range)) {
                         // high
                         yValsHigh.add(new Entry(val, i));
                     } else {
@@ -217,34 +231,35 @@ public class OverviewFragment extends Fragment {
                     }
 
                 } else {
-                    double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getGlucoseReadingsWeek().get(i)+""));
+                    double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getGlucoseReadingsWeek().get(i) + ""));
                     float converted = (float) val;
                     String range = ranges.colorFromReading(presenter.getGlucoseReadingsWeek().get(i));
                     yValsAll.add(new Entry(converted, i));
 
-                    if ("purple".equals(range) && "blue".equals(range)){
+                    if ("purple".equals(range) && "blue".equals(range)) {
                         // low
                         yValsLow.add(new Entry(converted, i));
-                    } else if ("red".equals(range) && "orange".equals(range)){
+                    } else if ("red".equals(range) && "orange".equals(range)) {
                         // high
                         yValsHigh.add(new Entry(converted, i));
                     } else {
                         // normal
                         yValsNormal.add(new Entry(converted, i));
-                    }                    }
+                    }
+                }
             }
         } else {
             // Month view
             for (int i = 0; i < presenter.getGlucoseReadingsMonth().size(); i++) {
                 if (presenter.getUnitMeasuerement().equals("mg/dL")) {
-                    float val = Float.parseFloat(presenter.getGlucoseReadingsMonth().get(i)+"");
+                    float val = Float.parseFloat(presenter.getGlucoseReadingsMonth().get(i) + "");
                     String range = ranges.colorFromReading(presenter.getGlucoseReadingsMonth().get(i));
                     yValsAll.add(new Entry(val, i));
 
-                    if ("purple".equals(range) && "blue".equals(range)){
+                    if ("purple".equals(range) && "blue".equals(range)) {
                         // low
                         yValsLow.add(new Entry(val, i));
-                    } else if ("red".equals(range) && "orange".equals(range)){
+                    } else if ("red".equals(range) && "orange".equals(range)) {
                         // high
                         yValsHigh.add(new Entry(val, i));
                     } else {
@@ -252,15 +267,15 @@ public class OverviewFragment extends Fragment {
                         yValsNormal.add(new Entry(val, i));
                     }
                 } else {
-                    double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getGlucoseReadingsMonth().get(i)+""));
+                    double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getGlucoseReadingsMonth().get(i) + ""));
                     float converted = (float) val;
                     String range = ranges.colorFromReading(presenter.getGlucoseReadingsWeek().get(i));
                     yValsAll.add(new Entry(converted, i));
 
-                    if ("purple".equals(range) && "blue".equals(range)){
+                    if ("purple".equals(range) && "blue".equals(range)) {
                         // low
                         yValsLow.add(new Entry(converted, i));
-                    } else if ("red".equals(range) && "orange".equals(range)){
+                    } else if ("red".equals(range) && "orange".equals(range)) {
                         // high
                         yValsHigh.add(new Entry(converted, i));
                     } else {
@@ -350,10 +365,10 @@ public class OverviewFragment extends Fragment {
                 if (ContextCompat.checkSelfPermission(getActivity(),
                         Manifest.permission.WRITE_EXTERNAL_STORAGE)
                         != PackageManager.PERMISSION_GRANTED) {
-                        // If we don't have permission, ask the user
-                        ActivityCompat.requestPermissions(getActivity(),
-                                new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                                PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE);
+                    // If we don't have permission, ask the user
+                    ActivityCompat.requestPermissions(getActivity(),
+                            new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                            PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE);
 
                     Snackbar.make(mFragmentView, getString(R.string.fragment_overview_permission_storage), Snackbar.LENGTH_SHORT).show();
                 } else {
@@ -374,8 +389,8 @@ public class OverviewFragment extends Fragment {
     }
 
     private void exportGraphToGallery() {
-        long timestamp = System.currentTimeMillis()/1000;
-        boolean saved = chart.saveToGallery("glucosio_" + timestamp , 50);
+        long timestamp = System.currentTimeMillis() / 1000;
+        boolean saved = chart.saveToGallery("glucosio_" + timestamp, 50);
         if (saved) {
             Snackbar.make(mFragmentView, R.string.fragment_overview_graph_export_true, Snackbar.LENGTH_SHORT).show();
         } else {
@@ -394,9 +409,9 @@ public class OverviewFragment extends Fragment {
             // Day view
             for (int i = 0; i < presenter.getGlucoseDatetime().size(); i++) {
                 String date = presenter.convertDate(presenter.getGlucoseDatetime().get(i));
-                    xVals.add(date + "");
+                xVals.add(date + "");
             }
-        } else if (graphSpinnerRange.getSelectedItemPosition() == 1){
+        } else if (graphSpinnerRange.getSelectedItemPosition() == 1) {
             // Week view
             for (int i = 0; i < presenter.getGlucoseReadingsWeek().size(); i++) {
                 String date = presenter.convertDate(presenter.getGlucoseDatetimeWeek().get(i));
@@ -413,7 +428,7 @@ public class OverviewFragment extends Fragment {
         dataSet.add(allDataSet);
 
         // If other metrics are active, make pink line dashed
-        if (dataSet.contains(lowDataSet)||dataSet.contains(okDataSet)||dataSet.contains(highDataSet)){
+        if (dataSet.contains(lowDataSet) || dataSet.contains(okDataSet) || dataSet.contains(highDataSet)) {
             allDataSet.enableDashedLine(10f, 10f, 1f);
         } else {
             allDataSet.disableDashedLine();
@@ -448,20 +463,26 @@ public class OverviewFragment extends Fragment {
         set1.setValueTextSize(0);
         set1.setValueTextColor(Color.parseColor("#FFFFFF"));
 
-        return  set1;
+        return set1;
     }
 
-    private void loadHB1AC(){
-        if (!presenter.isdbEmpty()){
+    private void loadHB1AC() {
+        if (!presenter.isdbEmpty()) {
             HB1ACTextView.setText(presenter.getHB1AC());
             HB1ACDateTextView.setText(presenter.getH1ACMonth());
-            if (HB1ACDateTextView.getText().equals(" ")){
+            if (HB1ACDateTextView.getText().equals(" ")) {
                 HB1ACDateTextView.setVisibility(View.GONE);
             }
         }
     }
 
-    private void loadLastReading(){
+/*    private void loadGlucoseTrend(){
+        if (!presenter.isdbEmpty()) {
+            trendTextView.setText(presenter.getGlucoseTrend() + "");
+        }
+    }*/
+
+    private void loadLastReading() {
         if (!presenter.isdbEmpty()) {
             if ("mg/dL".equals(presenter.getUnitMeasuerement())) {
                 lastReadingTextView.setText(presenter.getLastReading() + " mg/dL");
@@ -479,42 +500,19 @@ public class OverviewFragment extends Fragment {
         }
     }
 
-/*    private void loadGlucoseTrend(){
-        if (!presenter.isdbEmpty()) {
-            trendTextView.setText(presenter.getGlucoseTrend() + "");
-        }
-    }*/
-
-    private void loadRandomTip(){
+    private void loadRandomTip() {
         TipsManager tipsManager = new TipsManager(getActivity().getApplicationContext(), presenter.getUserAge());
         tipTextView.setText(presenter.getRandomTip(tipsManager));
     }
 
-    public String convertDate(String date){
+    public String convertDate(String date) {
         FormatDateTime dateTime = new FormatDateTime(getActivity().getApplicationContext());
         return dateTime.convertDateTime(date);
     }
 
-    public String convertDateToMonth(String date){
+    public String convertDateToMonth(String date) {
         FormatDateTime dateTime = new FormatDateTime((getActivity().getApplication()));
         return dateTime.convertDateToMonthOverview(date);
-    }
-
-    public static void disableTouchTheft(View view) {
-        view.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                view.getParent().requestDisallowInterceptTouchEvent(true);
-                switch (motionEvent.getAction() & MotionEvent.ACTION_MASK) {
-                    case MotionEvent.ACTION_UP:
-                        view.getParent().requestDisallowInterceptTouchEvent(false);
-                        break;
-                    default:
-                        break;
-                }
-                return false;
-            }
-        });
     }
 
     @Override

@@ -12,6 +12,7 @@ public class NotDismissableEditText extends EditText {
         super(context, attrs);
         // TODO Auto-generated constructor stub
     }
+
     @Override
     public boolean onKeyPreIme(int keyCode, KeyEvent event) {
         // TODO Auto-generated method stub

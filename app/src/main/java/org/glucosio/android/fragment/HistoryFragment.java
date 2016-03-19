@@ -37,15 +37,15 @@ public class HistoryFragment extends Fragment {
     private Spinner historySpinner;
     private Boolean isToolbarScrolling = true;
 
+    public HistoryFragment() {
+        // Required empty public constructor
+    }
+
     public static HistoryFragment newInstance() {
         HistoryFragment fragment = new HistoryFragment();
 
 
         return fragment;
-    }
-
-    public HistoryFragment() {
-        // Required empty public constructor
     }
 
     public void onCreate(Bundle savedInstanceState) {
@@ -84,7 +84,7 @@ public class HistoryFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (!presenter.isdbEmpty()) {
                     int metricId = position;
-                    if (position != 0){
+                    if (position != 0) {
                         glucoseLegend.setVisibility(View.GONE);
                     } else {
                         glucoseLegend.setVisibility(View.VISIBLE);
@@ -164,11 +164,11 @@ public class HistoryFragment extends Fragment {
         return mFragmentView;
     }
 
-    public void updateToolbarBehaviour(){
-        if (mAdapter!=null) {
+    public void updateToolbarBehaviour() {
+        if (mAdapter != null) {
             if (mLayoutManager.findLastCompletelyVisibleItemPosition() == mAdapter.getItemCount() - 1) {
                 isToolbarScrolling = false;
-                if (getActivity()!=null) {
+                if (getActivity() != null) {
                     ((MainActivity) getActivity()).turnOffToolbarScrolling();
                 }
             } else {
@@ -180,17 +180,17 @@ public class HistoryFragment extends Fragment {
         }
     }
 
-    public String convertDate(String date){
+    public String convertDate(String date) {
         FormatDateTime dateTime = new FormatDateTime(getActivity().getApplicationContext());
         return dateTime.convertDateTime(date);
     }
 
-    public void notifyAdapter(){
+    public void notifyAdapter() {
         mAdapter.notifyDataSetChanged();
     }
 
-    public void reloadFragmentAdapter(){
-        if (getActivity()!= null) {
+    public void reloadFragmentAdapter() {
+        if (getActivity() != null) {
             ((MainActivity) getActivity()).reloadFragmentAdapter();
             ((MainActivity) getActivity()).checkIfEmptyLayout();
         }

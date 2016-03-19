@@ -24,8 +24,8 @@ public class MainPresenter {
     public MainPresenter(MainActivity mainActivity) {
         this.mainActivity = mainActivity;
         dB = new DatabaseHandler(mainActivity.getApplicationContext());
-        Log.i("msg::","initiated db object");
-        if (dB.getUser(1) == null){
+        Log.i("msg::", "initiated db object");
+        if (dB.getUser(1) == null) {
             // if user doesn't exists start hello activity
             mainActivity.startHelloActivity();
         } else {
@@ -38,7 +38,7 @@ public class MainPresenter {
         }
     }
 
-    public boolean isdbEmpty(){
+    public boolean isdbEmpty() {
         return dB.getGlucoseReadings().size() == 0;
     }
 }

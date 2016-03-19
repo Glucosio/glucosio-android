@@ -61,7 +61,7 @@ public class GlucosioApplication extends Application {
         }
     }
 
-    private void setFont(String font){
+    private void setFont(String font) {
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
                 .setDefaultFontPath(font)
                 .setFontAttrId(R.attr.fontPath)

@@ -22,9 +22,9 @@ public class DataLayerListenerService extends WearableListenerService {
     @Override
     public void onMessageReceived(MessageEvent messageEvent) {
         super.onMessageReceived(messageEvent);
-        if("/GLUCOSIO_READING_WEAR".equals(messageEvent.getPath())) {
+        if ("/GLUCOSIO_READING_WEAR".equals(messageEvent.getPath())) {
 
-                // Convert data to String
+            // Convert data to String
             String finalString = null;
             try {
                 finalString = new String(messageEvent.getData(), "UTF-8");
@@ -34,7 +34,7 @@ public class DataLayerListenerService extends WearableListenerService {
 
             // Split string in glucose value and reading type
             String[] finalArray = finalString.split(", ");
-            Log.i(getPackageName(), "New reading from wear " + finalArray[0] + ", " + finalArray [1]);
+            Log.i(getPackageName(), "New reading from wear " + finalArray[0] + ", " + finalArray[1]);
 
             showNotification(finalArray[0], finalArray[1]);
             addToDatabase(finalArray[0], finalArray[1]);
@@ -42,7 +42,7 @@ public class DataLayerListenerService extends WearableListenerService {
         }
     }
 
-    private void addToDatabase(String reading, String readingType){
+    private void addToDatabase(String reading, String readingType) {
         int glucoseValue = Integer.parseInt(reading);
         Calendar cal = Calendar.getInstance();
         DatabaseHandler dB = new DatabaseHandler(this);
@@ -50,7 +50,7 @@ public class DataLayerListenerService extends WearableListenerService {
         dB.addGlucoseReading(gReading);
     }
 
-    private void showNotification(String reading, String readingType){
+    private void showNotification(String reading, String readingType) {
         PendingIntent contentIntent =
                 PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), 0);
 

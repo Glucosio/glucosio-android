@@ -59,45 +59,43 @@ public class A1Calculator extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
                 if (!s.toString().equals("")) {
                     convertedA1C = presenter.calculateA1C(s.toString());
-                    A1CTextView.setText(convertedA1C+"");
+                    A1CTextView.setText(convertedA1C + "");
                 }
             }
         });
 
         glucoseEditText.setOnEditorActionListener(
-            new TextView.OnEditorActionListener() {
+                new TextView.OnEditorActionListener() {
 
-                public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                    if (actionId == EditorInfo.IME_ACTION_DONE) {
-                        // your additional processing...
-                        return true;
-                    } else {
-                        return false;
+                    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                        if (actionId == EditorInfo.IME_ACTION_DONE) {
+                            // your additional processing...
+                            return true;
+                        } else {
+                            return false;
+                        }
                     }
-                }
-            });
+                });
         glucoseEditText.setFocusable(true);
     }
 
-    public void setMmol(){
+    public void setMmol() {
         glucoseUnit.setText("mmol/L");
     }
 
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK)
-        {
-            ((InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE)).toggleSoftInput
-                    (InputMethodManager.SHOW_FORCED,InputMethodManager.HIDE_IMPLICIT_ONLY);
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE)).toggleSoftInput
+                    (InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
         }
         return super.onKeyUp(keyCode, event);
     }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK)
-        {
-            ((InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE)).toggleSoftInput
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE)).toggleSoftInput
                     (InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
         }
         return super.onKeyDown(keyCode, event);

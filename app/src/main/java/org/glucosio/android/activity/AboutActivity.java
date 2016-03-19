@@ -31,6 +31,16 @@ public class AboutActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(getString(R.string.preferences_about_glucosio));
     }
 
+    public boolean onOptionsItemSelected(MenuItem item) {
+        finish();
+        return true;
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
     public static class MyPreferenceFragment extends PreferenceFragment {
 
         @Override
@@ -49,7 +59,7 @@ public class AboutActivity extends AppCompatActivity {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
                     Intent intent = new Intent(getActivity(), LicenceActivity.class);
-                    Bundle bundle= new Bundle();
+                    Bundle bundle = new Bundle();
                     bundle.putString("key", "terms");
                     intent.putExtras(bundle);
                     startActivity(intent);
@@ -62,7 +72,7 @@ public class AboutActivity extends AppCompatActivity {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
                     Intent intent = new Intent(getActivity(), LicenceActivity.class);
-                    Bundle bundle= new Bundle();
+                    Bundle bundle = new Bundle();
                     bundle.putString("key", "open_source");
                     intent.putExtras(bundle);
                     startActivity(intent);
@@ -93,7 +103,7 @@ public class AboutActivity extends AppCompatActivity {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
                     Intent intent = new Intent(getActivity(), LicenceActivity.class);
-                    Bundle bundle= new Bundle();
+                    Bundle bundle = new Bundle();
                     bundle.putString("key", "privacy");
                     intent.putExtras(bundle);
                     startActivity(intent);
@@ -121,15 +131,5 @@ public class AboutActivity extends AppCompatActivity {
             });
 
         }
-    }
-
-    public boolean onOptionsItemSelected(MenuItem item){
-        finish();
-        return true;
-    }
-
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

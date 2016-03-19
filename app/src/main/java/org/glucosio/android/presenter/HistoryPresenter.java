@@ -15,16 +15,16 @@ public class HistoryPresenter {
         dB = new DatabaseHandler(historyFragment.getContext());
     }
 
-    public boolean isdbEmpty(){
+    public boolean isdbEmpty() {
         return dB.getGlucoseReadings().size() == 0;
     }
 
 
-    public String convertDate(String date){
+    public String convertDate(String date) {
         return fragment.convertDate(date);
     }
 
-    public void onDeleteClicked(long idToDelete, int metricID){
+    public void onDeleteClicked(long idToDelete, int metricID) {
         switch (metricID) {
             // Glucose
             case 0:
@@ -64,7 +64,7 @@ public class HistoryPresenter {
     }
 
     // Getters
-    public String getUnitMeasuerement(){
+    public String getUnitMeasuerement() {
         return dB.getUser(1).getPreferred_unit();
     }
 
@@ -84,7 +84,7 @@ public class HistoryPresenter {
         return dB.getGlucoseDateTimeAsArray();
     }
 
-    public int getGlucoseReadingsNumber(){
+    public int getGlucoseReadingsNumber() {
         return dB.getGlucoseReadingAsArray().size();
     }
 
@@ -100,7 +100,7 @@ public class HistoryPresenter {
         return dB.getKetoneIdAsArray();
     }
 
-    public int getKetoneReadingsNumber(){
+    public int getKetoneReadingsNumber() {
         return dB.getKetoneDateTimeAsArray().size();
     }
 
@@ -140,11 +140,11 @@ public class HistoryPresenter {
         return dB.getHB1ACReadingAsArray();
     }
 
-    public int getHB1ACReadingsNumber(){
+    public int getHB1ACReadingsNumber() {
         return dB.getHB1ACReadingAsArray().size();
     }
 
-    public int getPressureReadings(){
+    public int getPressureReadings() {
         return dB.getPressureReadings().size();
     }
 
@@ -164,11 +164,11 @@ public class HistoryPresenter {
         return dB.getMaxPressureReadingAsArray();
     }
 
-    public int getPressureReadingsNumber(){
+    public int getPressureReadingsNumber() {
         return dB.getPressureIdAsArray().size();
     }
 
-    public ArrayList<Integer> getWeightReadings(){
+    public ArrayList<Integer> getWeightReadings() {
         return dB.getWeightReadingAsArray();
     }
 

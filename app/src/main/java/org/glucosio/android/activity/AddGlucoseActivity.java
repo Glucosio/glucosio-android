@@ -145,13 +145,13 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
             // If yes, first convert the decimal value from Freestyle to Integer
             double d = Double.parseDouble(reading);
             int glucoseValue = (int) d;
-            readingTextView.setText(glucoseValue+"");
+            readingTextView.setText(glucoseValue + "");
             readingInputLayout.setErrorEnabled(true);
             readingInputLayout.setError(getResources().getString(R.string.dialog_add_glucose_freestylelibre_added));
             addFreeStyleButton.setVisibility(View.GONE);
         } else {
             // Check if FreeStyle support is enabled in Preferences
-            if (presenter.isFreeStyleLibreEnabled()){
+            if (presenter.isFreeStyleLibreEnabled()) {
                 addFreeStyleButton.setVisibility(View.VISIBLE);
             }
         }
@@ -188,7 +188,7 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
         readingTypeSpinner.setSelection(presenter.hourToSpinnerType(hour));
     }
 
-    public void finishActivity(){
+    public void finishActivity() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
@@ -220,12 +220,12 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
         presenter.setReadingDay(df.format(dayOfMonth));
 
         FormatDateTime formatDateTime = new FormatDateTime(getApplicationContext());
-        String date = presenter.getReadingYear()+"-"+presenter.getReadingMonth()+"-"+dayOfMonth;
+        String date = presenter.getReadingYear() + "-" + presenter.getReadingMonth() + "-" + dayOfMonth;
         addDate.setText(formatDateTime.convertDate(date));
     }
 
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event)  {
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (Integer.parseInt(android.os.Build.VERSION.SDK) > 5
                 && keyCode == KeyEvent.KEYCODE_BACK
                 && event.getRepeatCount() == 0) {

@@ -15,9 +15,9 @@ public class KetoneReading extends RealmObject {
     public KetoneReading() {
     }
 
-    public KetoneReading(double reading,Date created) {
-        this.reading=reading;
-        this.created=created;
+    public KetoneReading(double reading, Date created) {
+        this.reading = reading;
+        this.created = created;
     }
 
     public double getReading() {

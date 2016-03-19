@@ -22,18 +22,6 @@ public class AssistantAdapter extends RecyclerView.Adapter<AssistantAdapter.View
     private Resources res;
 
 
-    // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        // each data item is just a string in this case
-        public View mView;
-        public ViewHolder(View v) {
-            super(v);
-            mView = v;
-        }
-    }
-
     // Provide a suitable constructor (depends on the kind of dataset)
     public AssistantAdapter(Context context, AssistantPresenter assistantPresenter, ArrayList<ActionTip> tips) {
         this.mContext = context;
@@ -45,7 +33,7 @@ public class AssistantAdapter extends RecyclerView.Adapter<AssistantAdapter.View
     // Create new views (invoked by the layout manager)
     @Override
     public AssistantAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                        int viewType) {
+                                                          int viewType) {
 
         // create a new view
         View v = LayoutInflater.from(parent.getContext())
@@ -81,7 +69,7 @@ public class AssistantAdapter extends RecyclerView.Adapter<AssistantAdapter.View
                     presenter.startExportActivity();
                 }
             };
-        } else if (actionTipTitleString.equals(res.getString(R.string.assistant_calculator_a1c_title))){
+        } else if (actionTipTitleString.equals(res.getString(R.string.assistant_calculator_a1c_title))) {
             actionListener = new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -104,5 +92,18 @@ public class AssistantAdapter extends RecyclerView.Adapter<AssistantAdapter.View
     @Override
     public int getItemCount() {
         return actionTips.size();
+    }
+
+    // Provide a reference to the views for each data item
+    // Complex data items may need more than one view per item, and
+    // you provide access to all the views for a data item in a view holder
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        // each data item is just a string in this case
+        public View mView;
+
+        public ViewHolder(View v) {
+            super(v);
+            mView = v;
+        }
     }
 }

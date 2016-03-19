@@ -16,8 +16,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHolder> {
-    private Context mContext;
     private final int metricId;
+    private Context mContext;
     private ArrayList<String> weightDataTime;
     private ArrayList<Long> weightIdArray;
     private ArrayList<Integer> weightReadingArray;
@@ -42,18 +42,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     private ArrayList<Integer> glucoseReadingArray;
     private ArrayList<String> glucoseDateTime;
     private ArrayList<String> glucoseReadingType;
-
-    // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        // each data item is just a string in this case
-        public View mView;
-        public ViewHolder(View v) {
-            super(v);
-            mView = v;
-        }
-    }
 
     // Provide a suitable constructor (depends on the kind of dataset)
     public HistoryAdapter(Context context, HistoryPresenter presenter, int metricId) {
@@ -113,7 +101,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     // Create new views (invoked by the layout manager)
     @Override
     public HistoryAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                   int viewType) {
+                                                        int viewType) {
 
         // create a new view
         View v = LayoutInflater.from(parent.getContext())
@@ -164,7 +152,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
                 idTextView.setText(cholesterolIdArray.get(position).toString());
                 readingTextView.setText(cholesterolTotalArray.get(position).toString() + " mg/dL");
                 datetimeTextView.setText(presenter.convertDate(cholesterolDateTimeArray.get(position)));
-                typeTextView.setText("LDL: "+ cholesterolLDLArray.get(position) + " - " + "HDL: " + cholesterolHDLArray.get(position));
+                typeTextView.setText("LDL: " + cholesterolLDLArray.get(position) + " - " + "HDL: " + cholesterolHDLArray.get(position));
                 readingTextView.setTextColor(mContext.getResources().getColor(R.color.glucosio_text_dark));
                 break;
             // Pressure
@@ -221,6 +209,19 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
                 return weightIdArray.size();
             default:
                 return 0;
+        }
+    }
+
+    // Provide a reference to the views for each data item
+    // Complex data items may need more than one view per item, and
+    // you provide access to all the views for a data item in a view holder
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        // each data item is just a string in this case
+        public View mView;
+
+        public ViewHolder(View v) {
+            super(v);
+            mView = v;
         }
     }
 }

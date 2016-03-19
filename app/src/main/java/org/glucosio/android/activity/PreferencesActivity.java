@@ -56,13 +56,35 @@ public class PreferencesActivity extends AppCompatActivity {
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        return true;
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
     public static class MyPreferenceFragment extends PreferenceFragment {
         private DatabaseHandler dB;
         private User user;
         private ListPreference languagePref;
-/*
-        private Preference backupPref;
-*/
+        /*
+                private Preference backupPref;
+        */
         private ListPreference countryPref;
         private ListPreference genderPref;
         private ListPreference diabetesTypePref;
@@ -86,7 +108,7 @@ public class PreferencesActivity extends AppCompatActivity {
 
             dB = new DatabaseHandler(getActivity().getApplicationContext());
             user = dB.getUser(1);
-            updatedUser = new User(user.getId(),user.getName(),user.getPreferred_language(),user.getCountry(),user.getAge(),user.getGender(),user.getD_type(),user.getPreferred_unit(),user.getPreferred_range(),user.getCustom_range_min(),user.getCustom_range_max());
+            updatedUser = new User(user.getId(), user.getName(), user.getPreferred_language(), user.getCountry(), user.getAge(), user.getGender(), user.getD_type(), user.getPreferred_unit(), user.getPreferred_range(), user.getCustom_range_min(), user.getCustom_range_max());
             agePref = (EditTextPreference) findPreference("pref_age");
             countryPref = (ListPreference) findPreference("pref_country");
             // languagePref = (ListPreference) findPreference("pref_language");
@@ -113,7 +135,7 @@ public class PreferencesActivity extends AppCompatActivity {
             minRangePref.setDefaultValue(user.getCustom_range_min() + "");
             maxRangePref.setDefaultValue(user.getCustom_range_max() + "");
 
-            if (!"custom".equals(rangePref)){
+            if (!"custom".equals(rangePref)) {
                 minRangePref.setEnabled(false);
                 maxRangePref.setEnabled(false);
             } else {
@@ -228,7 +250,7 @@ public class PreferencesActivity extends AppCompatActivity {
             freestyleLibrePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    if(!((SwitchPreference) preference).isChecked()) {
+                    if (!((SwitchPreference) preference).isChecked()) {
                         // EXPERIMENTAL PREFERENCE
                         // Display Alert
                         showExperimentalDialog(false);
@@ -255,13 +277,13 @@ public class PreferencesActivity extends AppCompatActivity {
             minEditText.setFilters(new InputFilter[]{new InputFilterMinMax(1, 1500)});
             maxEditText.setFilters(new InputFilter[]{new InputFilterMinMax(1, 1500)});
 
-                // Get countries list from locale
+            // Get countries list from locale
             ArrayList<String> countriesArray = new ArrayList<String>();
             Locale[] locales = Locale.getAvailableLocales();
 
             for (Locale locale : locales) {
                 String country = locale.getDisplayCountry();
-                if (country.trim().length()>0 && !countriesArray.contains(country)) {
+                if (country.trim().length() > 0 && !countriesArray.contains(country)) {
                     countriesArray.add(country);
                 }
             }
@@ -321,7 +343,7 @@ public class PreferencesActivity extends AppCompatActivity {
             unitPref.setValue(user.getPreferred_unit());
             rangePref.setValue(user.getPreferred_range());
 
-            if (!user.getPreferred_range().equals("Custom range")){
+            if (!user.getPreferred_range().equals("Custom range")) {
                 minRangePref.setEnabled(false);
                 maxRangePref.setEnabled(false);
             } else {
@@ -330,13 +352,13 @@ public class PreferencesActivity extends AppCompatActivity {
             }
         }
 
-        private void showExperimentalDialog(final boolean restartRequired){
+        private void showExperimentalDialog(final boolean restartRequired) {
             new AlertDialog.Builder(getActivity())
                     .setTitle(getResources().getString(R.string.preferences_experimental_title))
                     .setMessage(R.string.preferences_experimental)
                     .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                            if (restartRequired){
+                            if (restartRequired) {
                                 rebootApp();
                             }
                         }
@@ -344,35 +366,13 @@ public class PreferencesActivity extends AppCompatActivity {
                     .show();
         }
 
-        private void rebootApp(){
+        private void rebootApp() {
             Intent mStartActivity = new Intent(getActivity().getApplicationContext(), MainActivity.class);
             int mPendingIntentId = 123456;
-            PendingIntent mPendingIntent = PendingIntent.getActivity(getActivity().getApplicationContext(), mPendingIntentId,    mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT);
-            AlarmManager mgr = (AlarmManager)getActivity().getApplicationContext().getSystemService(Context.ALARM_SERVICE);
+            PendingIntent mPendingIntent = PendingIntent.getActivity(getActivity().getApplicationContext(), mPendingIntentId, mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT);
+            AlarmManager mgr = (AlarmManager) getActivity().getApplicationContext().getSystemService(Context.ALARM_SERVICE);
             mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
             System.exit(0);
         }
-    }
-
-    @Override
-    public void onBackPressed() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() ==  android.R.id.home) {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
-        return true;
-    }
-
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

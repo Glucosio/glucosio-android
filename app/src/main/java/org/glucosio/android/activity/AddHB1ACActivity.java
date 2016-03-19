@@ -90,15 +90,15 @@ public class AddHB1ACActivity extends AppCompatActivity implements TimePickerDia
     }
 
     private void dialogOnAddButtonPressed() {
-            presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
-                    addDateTextView.getText().toString(), readingTextView.getText().toString());
+        presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
+                addDateTextView.getText().toString(), readingTextView.getText().toString());
     }
 
     public void showErrorMessage() {
         Toast.makeText(getApplicationContext(), getString(R.string.dialog_error2), Toast.LENGTH_SHORT).show();
     }
 
-    public void finishActivity(){
+    public void finishActivity() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
@@ -133,7 +133,7 @@ public class AddHB1ACActivity extends AppCompatActivity implements TimePickerDia
     }
 
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event)  {
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (Integer.parseInt(android.os.Build.VERSION.SDK) > 5
                 && keyCode == KeyEvent.KEYCODE_BACK
                 && event.getRepeatCount() == 0) {

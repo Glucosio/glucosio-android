@@ -11,8 +11,9 @@ import java.util.Date;
 public class FormatDateTime {
 
     private Context context;
-    public FormatDateTime(Context mContext){
-        this.context= mContext;
+
+    public FormatDateTime(Context mContext) {
+        this.context = mContext;
     }
 
     public String convertDateTime(String date) {
@@ -111,7 +112,7 @@ public class FormatDateTime {
         return finalTime + "";
     }
 
-    public String getCurrentTime(){
+    public String getCurrentTime() {
         Calendar cal = Calendar.getInstance();
 
         java.text.DateFormat finalTimeFormat;
@@ -123,7 +124,7 @@ public class FormatDateTime {
         return finalTime + "";
     }
 
-    public String getCurrentDate(){
+    public String getCurrentDate() {
         Calendar cal = Calendar.getInstance();
 
         java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(context);
@@ -132,7 +133,7 @@ public class FormatDateTime {
         return finalTime + "";
     }
 
-    public String getTime(Calendar cal){
+    public String getTime(Calendar cal) {
         java.text.DateFormat finalTimeFormat;
 
         finalTimeFormat = DateFormat.getTimeInstance(DateFormat.SHORT);

@@ -17,7 +17,7 @@ public class ReadingToCSV {
 
     Context context;
 
-    public ReadingToCSV(Context mContext){
+    public ReadingToCSV(Context mContext) {
         this.context = mContext;
     }
 
@@ -65,7 +65,7 @@ public class ReadingToCSV {
 
                 for (int i = 0; i < readings.size(); i++) {
 
-                    osw.append(converter.glucoseToMmolL(readings.get(i).getReading())+ "mmol/L");
+                    osw.append(converter.glucoseToMmolL(readings.get(i).getReading()) + "mmol/L");
                     osw.append(',');
 
                     osw.append(dateTool.convertRawDate(readings.get(i).getCreated() + ""));
@@ -77,7 +77,7 @@ public class ReadingToCSV {
             }
 
             osw.close();
-            Log.i("Glucosio", "Done exporting readings" );
+            Log.i("Glucosio", "Done exporting readings");
 
         } catch (Exception e) {
             e.printStackTrace();

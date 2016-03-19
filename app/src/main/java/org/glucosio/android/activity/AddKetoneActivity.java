@@ -90,15 +90,15 @@ public class AddKetoneActivity extends AppCompatActivity implements TimePickerDi
     }
 
     private void dialogOnAddButtonPressed() {
-            presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
-                    addDateTextView.getText().toString(), readingTextView.getText().toString().trim());
+        presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
+                addDateTextView.getText().toString(), readingTextView.getText().toString().trim());
     }
 
     public void showErrorMessage() {
         Toast.makeText(getApplicationContext(), getString(R.string.dialog_error2), Toast.LENGTH_SHORT).show();
     }
 
-    public void finishActivity(){
+    public void finishActivity() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
@@ -133,7 +133,7 @@ public class AddKetoneActivity extends AppCompatActivity implements TimePickerDi
     }
 
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event)  {
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (Integer.parseInt(android.os.Build.VERSION.SDK) > 5
                 && keyCode == KeyEvent.KEYCODE_BACK
                 && event.getRepeatCount() == 0) {

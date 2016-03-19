@@ -1,7 +1,5 @@
 package org.glucosio.android;
 
-import android.content.Context;
-
 /**
  * Created by paolo on 24/10/15.
  */

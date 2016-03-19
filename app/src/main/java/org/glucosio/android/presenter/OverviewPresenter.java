@@ -14,7 +14,7 @@ public class OverviewPresenter {
 
     private DatabaseHandler dB;
     private ArrayList<Integer> glucoseReading;
-    private ArrayList <String> glucoseType;
+    private ArrayList<String> glucoseType;
     private ArrayList<String> glucoseDatetime;
     private List<Integer> glucoseReadingsWeek;
     private List<Integer> glucoseReadingsMonth;
@@ -28,7 +28,7 @@ public class OverviewPresenter {
         this.fragment = overviewFragment;
     }
 
-    public boolean isdbEmpty(){
+    public boolean isdbEmpty() {
         return dB.getGlucoseReadings().size() == 0;
     }
 
@@ -50,34 +50,34 @@ public class OverviewPresenter {
         return dB.getAverageGlucoseReadingForLastMonth();
     }*/
 
-    public String getHB1AC(){
+    public String getHB1AC() {
         // Check if last month is available first
-        if (getGlucoseReadingsMonth().size()>1) {
+        if (getGlucoseReadingsMonth().size() > 1) {
             GlucoseConverter converter = new GlucoseConverter();
-            return converter.glucoseToA1C(getGlucoseReadingsMonth().get(getGlucoseReadingsMonth().size()-2))+" %";
+            return converter.glucoseToA1C(getGlucoseReadingsMonth().get(getGlucoseReadingsMonth().size() - 2)) + " %";
         } else {
             return fragment.getResources().getString(R.string.overview_hb1ac_error_no_data);
         }
     }
 
-    public String getH1ACMonth(){
+    public String getH1ACMonth() {
         // Check if last month is available first
-        if (getGlucoseReadingsMonth().size()>1) {
-            return convertDateToMonth(getGlucoseDatetimeMonth().get(getGlucoseDatetimeMonth().size()-2))+"";
+        if (getGlucoseReadingsMonth().size() > 1) {
+            return convertDateToMonth(getGlucoseDatetimeMonth().get(getGlucoseDatetimeMonth().size() - 2)) + "";
         } else {
             return " ";
         }
     }
 
-    public String getLastReading(){
+    public String getLastReading() {
         return getGlucoseReading().get(getGlucoseReading().size() - 1) + "";
     }
 
-    public String getLastDateTime(){
+    public String getLastDateTime() {
         return getGlucoseDatetime().get(getGlucoseDatetime().size() - 1) + "";
     }
 
-    public String getRandomTip(TipsManager manager){
+    public String getRandomTip(TipsManager manager) {
         ArrayList<String> tips = manager.getTips();
 
         // Get random tip from array
@@ -85,11 +85,11 @@ public class OverviewPresenter {
         return tips.get(randomNumber);
     }
 
-    public String getUnitMeasuerement(){
+    public String getUnitMeasuerement() {
         return dB.getUser(1).getPreferred_unit();
     }
 
-    public int getUserAge(){
+    public int getUserAge() {
         return dB.getUser(1).getAge();
     }
 

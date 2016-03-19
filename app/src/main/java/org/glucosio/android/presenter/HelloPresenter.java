@@ -24,13 +24,13 @@ public class HelloPresenter {
         dB = new DatabaseHandler(helloActivity.getApplicationContext());
     }
 
-    public void loadDatabase(){
+    public void loadDatabase() {
         id = 1; // Id is always 1. We don't support multi-user (for now :D).
         name = "Test Account"; //TODO: add input for name in Tips;
     }
 
-    public void onNextClicked(String age, String gender, String language, String country, int type, String unit){
-        if (validateAge(age)){
+    public void onNextClicked(String age, String gender, String language, String country, int type, String unit) {
+        if (validateAge(age)) {
             this.age = Integer.parseInt(age);
             this.gender = gender;
             this.language = language;
@@ -45,9 +45,9 @@ public class HelloPresenter {
     }
 
     private boolean validateAge(String age) {
-        if (TextUtils.isEmpty(age)){
+        if (TextUtils.isEmpty(age)) {
             return false;
-        } else if (!TextUtils.isDigitsOnly(age)){
+        } else if (!TextUtils.isDigitsOnly(age)) {
             return false;
         } else {
             int finalAge = Integer.parseInt(age);
@@ -55,7 +55,7 @@ public class HelloPresenter {
         }
     }
 
-    public void saveToDatabase(){
+    public void saveToDatabase() {
         dB.addUser(new User(id, name, language, country, age, gender, diabetesType, unitMeasurement, "ADA", 70, 180)); // We use ADA range by default
         helloActivity.closeHelloActivity();
     }

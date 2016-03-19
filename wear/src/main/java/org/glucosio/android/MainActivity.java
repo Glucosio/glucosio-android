@@ -23,9 +23,10 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends Activity implements
-        DelayedConfirmationView.DelayedConfirmationListener, WearableListView.ClickListener{
+        DelayedConfirmationView.DelayedConfirmationListener, WearableListView.ClickListener {
 
     private static final int SPEECH_REQUEST_CODE = 0;
+    private static final long CONNECTION_TIME_OUT_MS = 10000;
     private String spokenText;
     private DelayedConfirmationView mDelayedView;
     private String[] typeArray;
@@ -33,10 +34,17 @@ public class MainActivity extends Activity implements
     private FrameLayout confirmFrame;
     private TextView confirmTextView;
     private String finalString;
-
-    private static final long CONNECTION_TIME_OUT_MS = 10000;
     private GoogleApiClient client;
     private String nodeId;
+
+    public static boolean isNumeric(String str) {
+        try {
+            double d = Double.parseDouble(str);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +82,7 @@ public class MainActivity extends Activity implements
 
     /**
      * Returns a GoogleApiClient that can access the Wear API.
+     *
      * @param context
      * @return A GoogleApiClient that can make calls to the Wear API
      */
@@ -82,7 +91,6 @@ public class MainActivity extends Activity implements
                 .addApi(Wearable.API)
                 .build();
     }
-
 
     /**
      * Connects to the GoogleApiClient and retrieves the connected device's Node ID. If there are
@@ -169,19 +177,8 @@ public class MainActivity extends Activity implements
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
                 RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-    // Start the activity, the intent will be populated with the speech text
+        // Start the activity, the intent will be populated with the speech text
         startActivityForResult(intent, SPEECH_REQUEST_CODE);
-    }
-
-    public static boolean isNumeric(String str) {
-        try {
-            double d = Double.parseDouble(str);
-        }
-        catch(NumberFormatException nfe)
-        {
-            return false;
-        }
-        return true;
     }
 
     // This callback is invoked when the Speech Recognizer returns.
@@ -193,7 +190,7 @@ public class MainActivity extends Activity implements
             List<String> results = data.getStringArrayListExtra(
                     RecognizerIntent.EXTRA_RESULTS);
             spokenText = results.get(0);
-            if (!isNumeric(spokenText)){
+            if (!isNumeric(spokenText)) {
                 Toast.makeText(getApplicationContext(), getResources().getString(R.string.reading_invalid), Toast.LENGTH_SHORT).show();
                 finish();
             }
