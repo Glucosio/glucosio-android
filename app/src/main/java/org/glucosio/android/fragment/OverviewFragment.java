@@ -195,112 +195,114 @@ public class OverviewFragment extends Fragment {
         GlucoseConverter converter = new GlucoseConverter();
         GlucoseRanges ranges = new GlucoseRanges(getActivity().getApplicationContext());
 
-        if (graphSpinnerRange.getSelectedItemPosition() == 0) {
-            // Day view
-            for (int i = 0; i < presenter.getGlucoseReading().size(); i++) {
-                if ("mg/dL".equals(presenter.getUnitMeasuerement())) {
-                    float val = Float.parseFloat(presenter.getGlucoseReading().get(i).toString());
-                    String range = ranges.colorFromReading(presenter.getGlucoseReading().get(i));
-                    yValsAll.add(new Entry(val, i));
+        if (!presenter.isdbEmpty()) {
+            if (graphSpinnerRange.getSelectedItemPosition() == 0) {
+                // Day view
+                for (int i = 0; i < presenter.getGlucoseReading().size(); i++) {
+                    if ("mg/dL".equals(presenter.getUnitMeasuerement())) {
+                        float val = Float.parseFloat(presenter.getGlucoseReading().get(i).toString());
+                        String range = ranges.colorFromReading(presenter.getGlucoseReading().get(i));
+                        yValsAll.add(new Entry(val, i));
 
-                    if ("purple".equals(range) || "blue".equals(range)) {
-                        // low
-                        yValsLow.add(new Entry(val, i));
-                    } else if ("red".equals(range) || "orange".equals(range)) {
-                        // high
-                        yValsHigh.add(new Entry(val, i));
+                        if ("purple".equals(range) || "blue".equals(range)) {
+                            // low
+                            yValsLow.add(new Entry(val, i));
+                        } else if ("red".equals(range) || "orange".equals(range)) {
+                            // high
+                            yValsHigh.add(new Entry(val, i));
+                        } else {
+                            // normal
+                            yValsNormal.add(new Entry(val, i));
+                        }
                     } else {
-                        // normal
-                        yValsNormal.add(new Entry(val, i));
-                    }
-                } else {
-                    double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getGlucoseReading().get(i).toString()));
-                    float converted = (float) val;
-                    String range = ranges.colorFromReading(presenter.getGlucoseReading().get(i));
-                    yValsAll.add(new Entry(converted, i));
+                        double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getGlucoseReading().get(i).toString()));
+                        float converted = (float) val;
+                        String range = ranges.colorFromReading(presenter.getGlucoseReading().get(i));
+                        yValsAll.add(new Entry(converted, i));
 
-                    if ("purple".equals(range) || "blue".equals(range)) {
-                        // low
-                        yValsLow.add(new Entry(converted, i));
-                    } else if ("red".equals(range) || "orange".equals(range)) {
-                        // high
-                        yValsHigh.add(new Entry(converted, i));
-                    } else {
-                        // normal
-                        yValsNormal.add(new Entry(converted, i));
-                    }
-                }
-            }
-        } else if (graphSpinnerRange.getSelectedItemPosition() == 1) {
-            // Week view
-            for (int i = 0; i < presenter.getGlucoseReadingsWeek().size(); i++) {
-                if ("mg/dL".equals(presenter.getUnitMeasuerement())) {
-                    float val = Float.parseFloat(presenter.getGlucoseReadingsWeek().get(i) + "");
-                    String range = ranges.colorFromReading(presenter.getGlucoseReadingsWeek().get(i));
-                    yValsAll.add(new Entry(val, i));
-
-                    if ("purple".equals(range) || "blue".equals(range)) {
-                        // low
-                        yValsLow.add(new Entry(val, i));
-                    } else if ("red".equals(range) || "orange".equals(range)) {
-                        // high
-                        yValsHigh.add(new Entry(val, i));
-                    } else {
-                        // normal
-                        yValsNormal.add(new Entry(val, i));
-                    }
-
-                } else {
-                    double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getGlucoseReadingsWeek().get(i) + ""));
-                    float converted = (float) val;
-                    String range = ranges.colorFromReading(presenter.getGlucoseReadingsWeek().get(i));
-                    yValsAll.add(new Entry(converted, i));
-
-                    if ("purple".equals(range) && "blue".equals(range)) {
-                        // low
-                        yValsLow.add(new Entry(converted, i));
-                    } else if ("red".equals(range) && "orange".equals(range)) {
-                        // high
-                        yValsHigh.add(new Entry(converted, i));
-                    } else {
-                        // normal
-                        yValsNormal.add(new Entry(converted, i));
+                        if ("purple".equals(range) || "blue".equals(range)) {
+                            // low
+                            yValsLow.add(new Entry(converted, i));
+                        } else if ("red".equals(range) || "orange".equals(range)) {
+                            // high
+                            yValsHigh.add(new Entry(converted, i));
+                        } else {
+                            // normal
+                            yValsNormal.add(new Entry(converted, i));
+                        }
                     }
                 }
-            }
-        } else {
-            // Month view
-            for (int i = 0; i < presenter.getGlucoseReadingsMonth().size(); i++) {
-                if (presenter.getUnitMeasuerement().equals("mg/dL")) {
-                    float val = Float.parseFloat(presenter.getGlucoseReadingsMonth().get(i) + "");
-                    String range = ranges.colorFromReading(presenter.getGlucoseReadingsMonth().get(i));
-                    yValsAll.add(new Entry(val, i));
+            } else if (graphSpinnerRange.getSelectedItemPosition() == 1) {
+                // Week view
+                for (int i = 0; i < presenter.getGlucoseReadingsWeek().size(); i++) {
+                    if ("mg/dL".equals(presenter.getUnitMeasuerement())) {
+                        float val = Float.parseFloat(presenter.getGlucoseReadingsWeek().get(i) + "");
+                        String range = ranges.colorFromReading(presenter.getGlucoseReadingsWeek().get(i));
+                        yValsAll.add(new Entry(val, i));
 
-                    if ("purple".equals(range) && "blue".equals(range)) {
-                        // low
-                        yValsLow.add(new Entry(val, i));
-                    } else if ("red".equals(range) && "orange".equals(range)) {
-                        // high
-                        yValsHigh.add(new Entry(val, i));
+                        if ("purple".equals(range) || "blue".equals(range)) {
+                            // low
+                            yValsLow.add(new Entry(val, i));
+                        } else if ("red".equals(range) || "orange".equals(range)) {
+                            // high
+                            yValsHigh.add(new Entry(val, i));
+                        } else {
+                            // normal
+                            yValsNormal.add(new Entry(val, i));
+                        }
+
                     } else {
-                        // normal
-                        yValsNormal.add(new Entry(val, i));
+                        double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getGlucoseReadingsWeek().get(i) + ""));
+                        float converted = (float) val;
+                        String range = ranges.colorFromReading(presenter.getGlucoseReadingsWeek().get(i));
+                        yValsAll.add(new Entry(converted, i));
+
+                        if ("purple".equals(range) && "blue".equals(range)) {
+                            // low
+                            yValsLow.add(new Entry(converted, i));
+                        } else if ("red".equals(range) && "orange".equals(range)) {
+                            // high
+                            yValsHigh.add(new Entry(converted, i));
+                        } else {
+                            // normal
+                            yValsNormal.add(new Entry(converted, i));
+                        }
                     }
-                } else {
-                    double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getGlucoseReadingsMonth().get(i) + ""));
-                    float converted = (float) val;
-                    String range = ranges.colorFromReading(presenter.getGlucoseReadingsWeek().get(i));
-                    yValsAll.add(new Entry(converted, i));
+                }
+            } else {
+                // Month view
+                for (int i = 0; i < presenter.getGlucoseReadingsMonth().size(); i++) {
+                    if (presenter.getUnitMeasuerement().equals("mg/dL")) {
+                        float val = Float.parseFloat(presenter.getGlucoseReadingsMonth().get(i) + "");
+                        String range = ranges.colorFromReading(presenter.getGlucoseReadingsMonth().get(i));
+                        yValsAll.add(new Entry(val, i));
 
-                    if ("purple".equals(range) && "blue".equals(range)) {
-                        // low
-                        yValsLow.add(new Entry(converted, i));
-                    } else if ("red".equals(range) && "orange".equals(range)) {
-                        // high
-                        yValsHigh.add(new Entry(converted, i));
+                        if ("purple".equals(range) && "blue".equals(range)) {
+                            // low
+                            yValsLow.add(new Entry(val, i));
+                        } else if ("red".equals(range) && "orange".equals(range)) {
+                            // high
+                            yValsHigh.add(new Entry(val, i));
+                        } else {
+                            // normal
+                            yValsNormal.add(new Entry(val, i));
+                        }
                     } else {
-                        // normal
-                        yValsNormal.add(new Entry(converted, i));
+                        double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getGlucoseReadingsMonth().get(i) + ""));
+                        float converted = (float) val;
+                        String range = ranges.colorFromReading(presenter.getGlucoseReadingsWeek().get(i));
+                        yValsAll.add(new Entry(converted, i));
+
+                        if ("purple".equals(range) && "blue".equals(range)) {
+                            // low
+                            yValsLow.add(new Entry(converted, i));
+                        } else if ("red".equals(range) && "orange".equals(range)) {
+                            // high
+                            yValsHigh.add(new Entry(converted, i));
+                        } else {
+                            // normal
+                            yValsNormal.add(new Entry(converted, i));
+                        }
                     }
                 }
             }
