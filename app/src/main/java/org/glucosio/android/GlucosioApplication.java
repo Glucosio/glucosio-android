@@ -10,6 +10,9 @@ import com.google.android.gms.analytics.Tracker;
 import com.instabug.library.IBGInvocationEvent;
 import com.instabug.library.Instabug;
 
+import org.glucosio.android.backup.Backup;
+import org.glucosio.android.backup.DummyBackup;
+
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 public class GlucosioApplication extends Application {
@@ -61,10 +64,14 @@ public class GlucosioApplication extends Application {
         }
     }
 
-    private void setFont(String font){
+    private void setFont(String font) {
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
                 .setDefaultFontPath(font)
                 .setFontAttrId(R.attr.fontPath)
                 .build());
+    }
+
+    public Backup getBackup() {
+        return new DummyBackup();
     }
 }
