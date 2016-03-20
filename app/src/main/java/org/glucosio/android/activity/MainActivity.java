@@ -46,7 +46,6 @@ import android.widget.TextView;
 
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
-import com.google.android.gms.appinvite.AppInviteInvitation;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.instabug.library.Instabug;
@@ -62,6 +61,7 @@ import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.adapter.HomePagerAdapter;
 import org.glucosio.android.analytics.Analytics;
+import org.glucosio.android.invitations.Invitation;
 import org.glucosio.android.presenter.ExportPresenter;
 import org.glucosio.android.presenter.MainPresenter;
 
@@ -507,11 +507,8 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
     }
 
     public void showInviteDialog() {
-        Intent intent = new AppInviteInvitation.IntentBuilder(getString(R.string.invitation_title))
-                .setMessage(getString(R.string.invitation_message))
-                .setCallToActionText(getString(R.string.invitation_cta))
-                .build();
-        startActivityForResult(intent, 0);
+        final Invitation invitation = ((GlucosioApplication) getApplication()).getInvitation();
+        invitation.invite(this, getString(R.string.invitation_title), this.getString(R.string.invitation_message), this.getString(R.string.invitation_cta));
     }
 
     public void checkIfEmptyLayout() {
