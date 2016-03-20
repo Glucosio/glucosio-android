@@ -21,9 +21,7 @@
 package org.glucosio.android.activity;
 
 import android.content.Intent;
-import android.content.IntentSender;
 import android.os.Bundle;
-import android.os.Handler;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
@@ -31,18 +29,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GoogleApiAvailability;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.drive.Drive;
-
+import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
+import org.glucosio.android.backup.Backup;
 
-public class BackupActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
+public class BackupActivity extends AppCompatActivity {
 
-    private GoogleBackup googleBackupDriver;
-    private GoogleApiClient mClient;
-    private PreferenceFragment fragment;
+    Backup backup;
 
     @Override
     public void onCreate(final Bundle savedInstanceState) {
@@ -56,62 +49,25 @@ public class BackupActivity extends AppCompatActivity implements GoogleApiClient
         getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_backup));
 
 
-        final Runnable googleBackupThread = new Runnable() {
-            @Override
-            public void run() {
-                Log.v("test", "running background task");
-                GoogleBackup.handler.postDelayed(this, 1000);
-            }
-        };
-
-        mClient = new GoogleApiClient.Builder(this)
-                .addApi(Drive.API)
-                .addScope(Drive.SCOPE_APPFOLDER)
-                .addConnectionCallbacks(new GoogleApiClient.ConnectionCallbacks() {
-                    @Override
-                    public void onConnected(Bundle bundle) {
-                        googleBackupDriver = new GoogleBackup(googleBackupThread, 1000);
-                    }
-
-                    @Override
-                    public void onConnectionSuspended(int i) {
-
-                    }
-                })
-                .addOnConnectionFailedListener(this)
-                .build();
+        backup = ((GlucosioApplication) getApplicationContext()).getBackup();
+        backup.init(this);
     }
 
     public void connectClient() {
-        mClient.connect();
+        backup.start();
     }
 
     public void disconnectClient() {
-        mClient.disconnect();
+        backup.stop();
     }
 
-    @Override
-    public void onConnectionFailed(ConnectionResult result) {
-        Log.i("Connection Failed", "GoogleApiClient connection failed: " + result.toString());
-        if (result.hasResolution()) {
-            // show the localized error dialog.
-            try {
-                result.startResolutionForResult(this, 1);
-            } catch (IntentSender.SendIntentException e) {
-                e.printStackTrace();
-            }
-            GoogleApiAvailability.getInstance().getErrorDialog(this, result.getErrorCode(), 0).show();
-            return;
-        } else
-            Log.d("error", "cannot resolve connection issue");
-    }
 
     @Override
     protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
         switch (requestCode) {
             case 1:
                 if (resultCode == RESULT_OK) {
-                    mClient.connect();
+                    backup.start();
                 }
                 break;
         }
@@ -147,20 +103,5 @@ public class BackupActivity extends AppCompatActivity implements GoogleApiClient
                 }
             });
         }
-
-        public void setCheckboxChecked(boolean value) {
-            driveBackup.setChecked(value);
-        }
-    }
-}
-
-class GoogleBackup {
-    static Handler handler = new Handler();
-    Runnable task;
-
-    GoogleBackup(Runnable task, long time) {
-        this.task = task;
-        handler.removeCallbacks(task);
-        handler.postDelayed(task, time);
     }
 }
