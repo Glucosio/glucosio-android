@@ -6,6 +6,8 @@ import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.analytics.GoogleAnalytics;
 import org.glucosio.android.backup.Backup;
 import org.glucosio.android.backup.GoogleDriveBackup;
+import org.glucosio.android.invitation.GoogleInvitation;
+import org.glucosio.android.invitations.Invitation;
 
 public class GoogleGlucosioApplication extends GlucosioApplication {
     private Analytics analytics;
@@ -25,5 +27,11 @@ public class GoogleGlucosioApplication extends GlucosioApplication {
         }
 
         return analytics;
+    }
+
+    @Override
+    @NonNull
+    public Invitation getInvitation() {
+        return new GoogleInvitation();
     }
 }

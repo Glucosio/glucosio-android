@@ -12,6 +12,8 @@ import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.analytics.DummyAnalytics;
 import org.glucosio.android.backup.Backup;
 import org.glucosio.android.backup.DummyBackup;
+import org.glucosio.android.invitations.DummyInvitation;
+import org.glucosio.android.invitations.Invitation;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
@@ -56,5 +58,10 @@ public class GlucosioApplication extends Application {
     @NonNull
     public Analytics getAnalytics() {
         return new DummyAnalytics();
+    }
+
+    @NonNull
+    public Invitation getInvitation() {
+        return new DummyInvitation();
     }
 }
