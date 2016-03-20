@@ -28,7 +28,6 @@ public class BackupActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_backup));
 
-
         backup = ((GlucosioApplication) getApplicationContext()).getBackup();
         backup.init(this);
     }
