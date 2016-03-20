@@ -46,8 +46,6 @@ import android.widget.TextView;
 
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
 import com.google.android.gms.appinvite.AppInviteInvitation;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -63,6 +61,7 @@ import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.adapter.HomePagerAdapter;
+import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.presenter.ExportPresenter;
 import org.glucosio.android.presenter.MainPresenter;
 
@@ -83,7 +82,6 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
     private TextView exportDialogDateTo;
 
     private FloatingActionMenu fabMenu;
-    private Tracker mTracker;
     private FloatingActionButton fabGlucoseEmpty;
 
     private Toolbar toolbar;
@@ -246,10 +244,9 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
 
         // Obtain the Analytics shared Tracker instance.
         GlucosioApplication application = (GlucosioApplication) getApplication();
-        mTracker = application.getDefaultTracker();
+        Analytics analytics = application.getAnalytics();
         Log.i("MainActivity", "Setting screen name: " + "main");
-        mTracker.setScreenName("Main Activity");
-        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+        analytics.reportScreen("Main Activity");
     }
 
     private void openA1CCalculator() {
