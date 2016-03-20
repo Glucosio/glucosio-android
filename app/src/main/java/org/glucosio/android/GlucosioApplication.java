@@ -24,6 +24,7 @@ import android.app.Application;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
+import android.support.annotation.VisibleForTesting;
 
 import com.instabug.library.IBGInvocationEvent;
 import com.instabug.library.Instabug;
@@ -32,6 +33,7 @@ import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.analytics.DummyAnalytics;
 import org.glucosio.android.backup.Backup;
 import org.glucosio.android.backup.DummyBackup;
+import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.invitations.DummyInvitation;
 import org.glucosio.android.invitations.Invitation;
 
@@ -52,6 +54,11 @@ public class GlucosioApplication extends Application {
             setFont("fonts/lato.ttf");
         }
 
+        initInstabug();
+    }
+
+    @VisibleForTesting
+    protected void initInstabug() {
         if (BuildConfig.DEBUG) {
             new Instabug.Builder(this, "b2226aa30fec24f6f4bed6ad68964e9b")
                     .setInvocationEvent(IBGInvocationEvent.IBGInvocationEventShake)
@@ -83,5 +90,10 @@ public class GlucosioApplication extends Application {
     @NonNull
     public Invitation getInvitation() {
         return new DummyInvitation();
+    }
+
+    @NonNull
+    public DatabaseHandler getDBHandler() {
+        return new DatabaseHandler(getApplicationContext());
     }
 }

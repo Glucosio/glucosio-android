@@ -42,10 +42,10 @@ android {
             minifyEnabled false
             debuggable true
 
-            buildConfigField 'String', 'GOOGLE_ANALYTICS_TRACKER', '"UA-68882401-2"'
-
-            applicationIdSuffix '.daily'
             versionNameSuffix '-DEVEL'
+            applicationIdSuffix '.daily'
+
+            buildConfigField 'String', 'GOOGLE_ANALYTICS_TRACKER', '"UA-68882401-2"'
         }
 
         release {
@@ -53,6 +53,7 @@ android {
             minifyEnabled true
             shrinkResources true
             zipAlignEnabled true
+
             buildConfigField 'String', 'GOOGLE_ANALYTICS_TRACKER', '"UA-68882401-2"'
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -83,6 +84,7 @@ dependencies {
     compile "com.android.support:cardview-v7:${androidSupportVer}"
     compile "com.android.support:recyclerview-v7:${androidSupportVer}"
     compile "com.android.support:percent:${androidSupportVer}"
+
     compile 'com.google.android.support:wearable:1.3.0'
 
     // Google Play Services
@@ -101,7 +103,24 @@ dependencies {
     compile('com.mikepenz:materialdrawer:5.0.5@aar') {
         transitive = true
     }
-    compile 'com.instabug.library:instabugcompat:2.1.1'
+    compile('com.instabug.library:instabugcompat:2.1.1') {
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+
+    testCompile "junit:junit:${junitVer}"
+    testCompile "org.mockito:mockito-all:${mockitoVer}"
+    testCompile("com.squareup.assertj:assertj-android:${androidAssertJVer}") {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+    testCompile("org.robolectric:robolectric:${robolectricVer}") {
+        exclude group: 'commons-logging', module: 'commons-logging'
+        exclude group: 'org.apache.httpcomponents', module: 'httpclient'
+    }
+    testCompile("org.robolectric:shadows-support-v4:${robolectricVer}") {
+        exclude group: 'commons-logging', module: 'commons-logging'
+        exclude group: 'org.apache.httpcomponents', module: 'httpclient'
+    }
 
     wearApp project(':wear')
 
