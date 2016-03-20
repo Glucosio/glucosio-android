@@ -1,6 +1,7 @@
 package org.glucosio.android;
 
 import org.glucosio.android.analytics.Analytics;
+import org.glucosio.android.backup.Backup;
 import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.robolectric.RuntimeEnvironment;
@@ -12,5 +13,9 @@ import org.robolectric.annotation.Config;
 public abstract class RobolectricTest {
     protected Analytics getAnalytics() {
         return ((TestGlucosioApplication) RuntimeEnvironment.application).getAnalytics();
+    }
+
+    protected Backup getBackup() {
+        return ((TestGlucosioApplication) RuntimeEnvironment.application).getBackup();
     }
 }
