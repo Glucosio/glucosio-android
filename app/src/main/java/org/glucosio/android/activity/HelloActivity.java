@@ -18,6 +18,7 @@ import android.widget.Toast;
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.analytics.Analytics;
+import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.presenter.HelloPresenter;
 import org.glucosio.android.tools.LabelledSpinner;
 
@@ -48,7 +49,8 @@ public class HelloActivity extends AppCompatActivity {
         // Prevent SoftKeyboard to pop up on start
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
-        presenter = new HelloPresenter(this);
+        GlucosioApplication application = (GlucosioApplication) getApplication();
+        presenter = new HelloPresenter(this, application.getDBHandler());
         presenter.loadDatabase();
 
         countrySpinner = (LabelledSpinner) findViewById(R.id.activity_hello_spinner_country);
@@ -101,11 +103,9 @@ public class HelloActivity extends AppCompatActivity {
             }
         });
 
-        // Obtain the Analytics shared Tracker instance.
-        GlucosioApplication application = (GlucosioApplication) getApplication();
         Analytics analytics = application.getAnalytics();
-        Log.i("MainActivity", "Setting screen name: main");
         analytics.reportScreen("Hello Activity");
+        Log.i("MainActivity", "Setting screen name: main");
     }
 
     public void onStartClicked(View v) {
