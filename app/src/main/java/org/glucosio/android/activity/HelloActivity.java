@@ -15,11 +15,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
-
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
+import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.presenter.HelloPresenter;
 import org.glucosio.android.tools.LabelledSpinner;
 
@@ -40,8 +38,7 @@ public class HelloActivity extends AppCompatActivity {
     private Button startButton;
     private TextView ageTextView;
     private HelloPresenter presenter;
-    private TextView termsTextView ;
-    private Tracker mTracker;
+    private TextView termsTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,7 +89,7 @@ public class HelloActivity extends AppCompatActivity {
         unitSpinner.setItemsArray(R.array.helloactivity_preferred_unit);
         typeSpinner.setItemsArray(R.array.helloactivity_diabetes_type);
 
-        final Drawable pinkArrow = getApplicationContext().getResources().getDrawable( R.drawable.ic_navigate_next_pink_24px );
+        final Drawable pinkArrow = getApplicationContext().getResources().getDrawable(R.drawable.ic_navigate_next_pink_24px);
         pinkArrow.setBounds(0, 0, 60, 60);
         startButton.setCompoundDrawables(null, null, pinkArrow, null);
 
@@ -106,13 +103,12 @@ public class HelloActivity extends AppCompatActivity {
 
         // Obtain the Analytics shared Tracker instance.
         GlucosioApplication application = (GlucosioApplication) getApplication();
-        mTracker = application.getDefaultTracker();
-        Log.i("MainActivity", "Setting screen name: " + "main");
-        mTracker.setScreenName("Hello Activity");
-        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+        Analytics analytics = application.getAnalytics();
+        Log.i("MainActivity", "Setting screen name: main");
+        analytics.reportScreen("Hello Activity");
     }
 
-    public void onStartClicked(View v){
+    public void onStartClicked(View v) {
         presenter.onNextClicked(ageTextView.getText().toString(),
                 genderSpinner.getSpinner().getSelectedItem().toString(),
                 Locale.getDefault().getDisplayLanguage(),
@@ -121,17 +117,17 @@ public class HelloActivity extends AppCompatActivity {
                 unitSpinner.getSpinner().getSelectedItem().toString());
     }
 
-    public void displayErrorMessage(){
+    public void displayErrorMessage() {
         Toast.makeText(getApplicationContext(), getString(R.string.helloactivity_age_invalid), Toast.LENGTH_SHORT).show();
     }
 
-    public void closeHelloActivity(){
+    public void closeHelloActivity() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
     }
 
-    public void showToast(String text){
+    public void showToast(String text) {
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }
 

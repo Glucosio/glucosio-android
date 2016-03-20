@@ -26,8 +26,6 @@ import android.widget.TextView;
 
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
 import com.google.android.gms.appinvite.AppInviteInvitation;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -43,6 +41,7 @@ import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.adapter.HomePagerAdapter;
+import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.presenter.ExportPresenter;
 import org.glucosio.android.presenter.MainPresenter;
 
@@ -51,9 +50,9 @@ import java.util.Calendar;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
-public class MainActivity extends InstabugAppCompatActivity implements DatePickerDialog.OnDateSetListener{
+public class MainActivity extends InstabugAppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
-    ExportPresenter exportPresenter;
+    private ExportPresenter exportPresenter;
     private RadioButton exportRangeButton;
     private HomePagerAdapter homePagerAdapter;
     private MainPresenter presenter;
@@ -63,7 +62,6 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
     private TextView exportDialogDateTo;
 
     private FloatingActionMenu fabMenu;
-    private Tracker mTracker;
     private FloatingActionButton fabGlucoseEmpty;
 
     Toolbar toolbar;
@@ -134,7 +132,7 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
             @Override
             public void onMenuToggle(boolean opened) {
                 // When Fab Menu is opened, dim the main view.
-                if (opened){
+                if (opened) {
                     if (!presenter.isdbEmpty()) {
                         AlphaAnimation alpha = new AlphaAnimation(1F, 0.2F);
                         alpha.setDuration(600);
@@ -190,7 +188,7 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
                         } else if (drawerItem.equals(itemDonate)) {
                             // Donate
                             openDonateIntent();
-                        } else if (drawerItem.equals(itemA1C)){
+                        } else if (drawerItem.equals(itemA1C)) {
                             openA1CCalculator();
                         }
                         return false;
@@ -226,10 +224,9 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
 
         // Obtain the Analytics shared Tracker instance.
         GlucosioApplication application = (GlucosioApplication) getApplication();
-        mTracker = application.getDefaultTracker();
+        Analytics analytics = application.getAnalytics();
         Log.i("MainActivity", "Setting screen name: " + "main");
-        mTracker.setScreenName("Main Activity");
-        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+        analytics.reportScreen("Main Activity");
     }
 
     private void openA1CCalculator() {
@@ -389,7 +386,7 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
         exportButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (validateExportDialog()){
+                if (validateExportDialog()) {
                     exportPresenter.onExportClicked(exportAllButton.isChecked());
                     exportDialog.dismiss();
                 } else {
@@ -533,7 +530,7 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
         Snackbar.make(rootLayout, getString(R.string.activity_export_snackbar_1) + " " + nReadings + " " + getString(R.string.activity_export_snackbar_2), Snackbar.LENGTH_SHORT).show();
     }
 
-    public void showNoReadingsSnackBar(){
+    public void showNoReadingsSnackBar() {
         View rootLayout = findViewById(android.R.id.content);
         Snackbar.make(rootLayout, getString(R.string.activity_export_no_readings_snackbar), Snackbar.LENGTH_SHORT).show();
     }

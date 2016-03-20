@@ -18,11 +18,9 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.EditText;
 
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
-
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
+import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.User;
 import org.glucosio.android.tools.InputFilterMinMax;
@@ -34,8 +32,6 @@ import java.util.Locale;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class PreferencesActivity extends AppCompatActivity {
-
-    private Tracker mTracker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,19 +46,18 @@ public class PreferencesActivity extends AppCompatActivity {
 
         // Obtain the Analytics shared Tracker instance.
         GlucosioApplication application = (GlucosioApplication) getApplication();
-        mTracker = application.getDefaultTracker();
+        Analytics analytics = application.getAnalytics();
         Log.i("MainActivity", "Setting screen name: " + "main");
-        mTracker.setScreenName("Preferences");
-        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+        analytics.reportScreen("Preferences");
     }
 
     public static class MyPreferenceFragment extends PreferenceFragment {
         private DatabaseHandler dB;
         private User user;
         private ListPreference languagePref;
-/*
-        private Preference backupPref;
-*/
+        /*
+                private Preference backupPref;
+        */
         private ListPreference countryPref;
         private ListPreference genderPref;
         private ListPreference diabetesTypePref;
@@ -86,7 +81,7 @@ public class PreferencesActivity extends AppCompatActivity {
 
             dB = new DatabaseHandler(getActivity().getApplicationContext());
             user = dB.getUser(1);
-            updatedUser = new User(user.getId(),user.getName(),user.getPreferred_language(),user.getCountry(),user.getAge(),user.getGender(),user.getD_type(),user.getPreferred_unit(),user.getPreferred_range(),user.getCustom_range_min(),user.getCustom_range_max());
+            updatedUser = new User(user.getId(), user.getName(), user.getPreferred_language(), user.getCountry(), user.getAge(), user.getGender(), user.getD_type(), user.getPreferred_unit(), user.getPreferred_range(), user.getCustom_range_min(), user.getCustom_range_max());
             agePref = (EditTextPreference) findPreference("pref_age");
             countryPref = (ListPreference) findPreference("pref_country");
             // languagePref = (ListPreference) findPreference("pref_language");
@@ -113,7 +108,7 @@ public class PreferencesActivity extends AppCompatActivity {
             minRangePref.setDefaultValue(user.getCustom_range_min() + "");
             maxRangePref.setDefaultValue(user.getCustom_range_max() + "");
 
-            if (!rangePref.equals("custom")){
+            if (!rangePref.equals("custom")) {
                 minRangePref.setEnabled(false);
                 maxRangePref.setEnabled(false);
             } else {
@@ -228,7 +223,7 @@ public class PreferencesActivity extends AppCompatActivity {
             freestyleLibrePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    if(!((SwitchPreference) preference).isChecked()) {
+                    if (!((SwitchPreference) preference).isChecked()) {
                         // EXPERIMENTAL PREFERENCE
                         // Display Alert
                         showExperimentalDialog(false);
@@ -255,13 +250,13 @@ public class PreferencesActivity extends AppCompatActivity {
             minEditText.setFilters(new InputFilter[]{new InputFilterMinMax(1, 1500)});
             maxEditText.setFilters(new InputFilter[]{new InputFilterMinMax(1, 1500)});
 
-                // Get countries list from locale
+            // Get countries list from locale
             ArrayList<String> countriesArray = new ArrayList<String>();
             Locale[] locales = Locale.getAvailableLocales();
 
             for (Locale locale : locales) {
                 String country = locale.getDisplayCountry();
-                if (country.trim().length()>0 && !countriesArray.contains(country)) {
+                if (country.trim().length() > 0 && !countriesArray.contains(country)) {
                     countriesArray.add(country);
                 }
             }
@@ -321,7 +316,7 @@ public class PreferencesActivity extends AppCompatActivity {
             unitPref.setValue(user.getPreferred_unit());
             rangePref.setValue(user.getPreferred_range());
 
-            if (!user.getPreferred_range().equals("Custom range")){
+            if (!user.getPreferred_range().equals("Custom range")) {
                 minRangePref.setEnabled(false);
                 maxRangePref.setEnabled(false);
             } else {
@@ -330,13 +325,13 @@ public class PreferencesActivity extends AppCompatActivity {
             }
         }
 
-        private void showExperimentalDialog(final boolean restartRequired){
+        private void showExperimentalDialog(final boolean restartRequired) {
             new AlertDialog.Builder(getActivity())
                     .setTitle(getResources().getString(R.string.preferences_experimental_title))
                     .setMessage(R.string.preferences_experimental)
                     .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                            if (restartRequired){
+                            if (restartRequired) {
                                 rebootApp();
                             }
                         }
@@ -344,11 +339,11 @@ public class PreferencesActivity extends AppCompatActivity {
                     .show();
         }
 
-        private void rebootApp(){
+        private void rebootApp() {
             Intent mStartActivity = new Intent(getActivity().getApplicationContext(), MainActivity.class);
             int mPendingIntentId = 123456;
-            PendingIntent mPendingIntent = PendingIntent.getActivity(getActivity().getApplicationContext(), mPendingIntentId,    mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT);
-            AlarmManager mgr = (AlarmManager)getActivity().getApplicationContext().getSystemService(Context.ALARM_SERVICE);
+            PendingIntent mPendingIntent = PendingIntent.getActivity(getActivity().getApplicationContext(), mPendingIntentId, mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT);
+            AlarmManager mgr = (AlarmManager) getActivity().getApplicationContext().getSystemService(Context.ALARM_SERVICE);
             mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
             System.exit(0);
         }
@@ -363,7 +358,7 @@ public class PreferencesActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() ==  android.R.id.home) {
+        if (item.getItemId() == android.R.id.home) {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();
