@@ -2,6 +2,7 @@ package org.glucosio.android.activity;
 
 import android.view.MotionEvent;
 
+import org.glucosio.android.R;
 import org.glucosio.android.RobolectricTest;
 import org.junit.Before;
 import org.junit.Test;
@@ -63,5 +64,14 @@ public class MainActivityTest extends RobolectricTest {
         activity.dispatchTouchEvent(motionEventMock);
 
         verify(getInstaDelegate()).dispatchTouchEvent(motionEventMock);
+    }
+
+    @Test
+    public void ShouldDelegateInvitation_WhenAsked() throws Exception {
+
+        activity.showInviteDialog();
+
+        verify(getInvitation()).invite(activity, activity.getString(R.string.invitation_title),
+                activity.getString(R.string.invitation_message), activity.getString(R.string.invitation_cta));
     }
 }
