@@ -13,8 +13,10 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -29,7 +31,7 @@ import com.github.clans.fab.FloatingActionMenu;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.instabug.library.Instabug;
-import com.instabug.library.compat.InstabugAppCompatActivity;
+import com.instabug.library.InstabugActivityDelegate;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
@@ -41,6 +43,7 @@ import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.adapter.HomePagerAdapter;
 import org.glucosio.android.analytics.Analytics;
+import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.invitations.Invitation;
 import org.glucosio.android.presenter.ExportPresenter;
 import org.glucosio.android.presenter.MainPresenter;
@@ -50,7 +53,7 @@ import java.util.Calendar;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
-public class MainActivity extends InstabugAppCompatActivity implements DatePickerDialog.OnDateSetListener {
+public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     private ExportPresenter exportPresenter;
     private RadioButton exportRangeButton;
@@ -67,12 +70,17 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
     Toolbar toolbar;
     TabLayout tabLayout;
 
+    private InstabugActivityDelegate instabugDelegate;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        GlucosioApplication application = (GlucosioApplication) getApplication();
+        instabugDelegate = application.createInstabugDelegate(this);
+
         setContentView(R.layout.activity_main);
-        presenter = new MainPresenter(this);
-        exportPresenter = new ExportPresenter(this);
+        initPresenters(application);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         tabLayout = (TabLayout) findViewById(R.id.tab_layout);
@@ -222,11 +230,15 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
 
         checkIfEmptyLayout();
 
-        // Obtain the Analytics shared Tracker instance.
-        GlucosioApplication application = (GlucosioApplication) getApplication();
         Analytics analytics = application.getAnalytics();
         Log.i("MainActivity", "Setting screen name: " + "main");
         analytics.reportScreen("Main Activity");
+    }
+
+    private void initPresenters(GlucosioApplication application) {
+        final DatabaseHandler dbHandler = application.getDBHandler();
+        presenter = new MainPresenter(this, dbHandler);
+        exportPresenter = new ExportPresenter(this, dbHandler);
     }
 
     private void openA1CCalculator() {
@@ -237,6 +249,31 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
     private void openDonateIntent() {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.glucosio.org/donate/"));
         startActivity(browserIntent);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        instabugDelegate.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        instabugDelegate.onPause();
+        super.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        instabugDelegate.onDestroy();
+        instabugDelegate = null;
+        super.onDestroy();
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        instabugDelegate.dispatchTouchEvent(ev);
+        return super.dispatchTouchEvent(ev);
     }
 
     public void startExportActivity() {

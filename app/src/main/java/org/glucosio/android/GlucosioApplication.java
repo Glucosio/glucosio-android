@@ -1,5 +1,6 @@
 package org.glucosio.android;
 
+import android.app.Activity;
 import android.app.Application;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -8,6 +9,7 @@ import android.support.annotation.VisibleForTesting;
 
 import com.instabug.library.IBGInvocationEvent;
 import com.instabug.library.Instabug;
+import com.instabug.library.InstabugActivityDelegate;
 
 import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.analytics.DummyAnalytics;
@@ -75,5 +77,10 @@ public class GlucosioApplication extends Application {
     @NonNull
     public DatabaseHandler getDBHandler() {
         return new DatabaseHandler(getApplicationContext());
+    }
+
+    @NonNull
+    public InstabugActivityDelegate createInstabugDelegate(@NonNull final Activity activity) {
+        return new InstabugActivityDelegate(activity);
     }
 }

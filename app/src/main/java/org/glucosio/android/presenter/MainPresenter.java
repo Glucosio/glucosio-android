@@ -21,11 +21,11 @@ public class MainPresenter {
     private String readingHour;
     private String readingMinute;
 
-    public MainPresenter(MainActivity mainActivity) {
+    public MainPresenter(MainActivity mainActivity, DatabaseHandler databaseHandler) {
         this.mainActivity = mainActivity;
-        dB = new DatabaseHandler(mainActivity.getApplicationContext());
-        Log.i("msg::","initiated db object");
-        if (dB.getUser(1) == null){
+        dB = databaseHandler;
+        Log.i("msg::", "initiated db object");
+        if (dB.getUser(1) == null) {
             // if user doesn't exists start hello activity
             mainActivity.startHelloActivity();
         } else {
@@ -38,7 +38,7 @@ public class MainPresenter {
         }
     }
 
-    public boolean isdbEmpty(){
+    public boolean isdbEmpty() {
         return dB.getGlucoseReadings().size() == 0;
     }
 }
