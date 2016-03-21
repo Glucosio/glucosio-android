@@ -47,7 +47,7 @@ public class PreferencesActivity extends AppCompatActivity {
         // Obtain the Analytics shared Tracker instance.
         GlucosioApplication application = (GlucosioApplication) getApplication();
         Analytics analytics = application.getAnalytics();
-        Log.i("MainActivity", "Setting screen name: " + "main");
+        Log.i("PreferencesActivity", "Setting screen name: preferences");
         analytics.reportScreen("Preferences");
     }
 
@@ -79,7 +79,7 @@ public class PreferencesActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.preferences);
 
-            dB = new DatabaseHandler(getActivity().getApplicationContext());
+            dB = ((GlucosioApplication) getActivity().getApplicationContext()).getDBHandler();
             user = dB.getUser(1);
             updatedUser = new User(user.getId(), user.getName(), user.getPreferred_language(), user.getCountry(), user.getAge(), user.getGender(), user.getD_type(), user.getPreferred_unit(), user.getPreferred_range(), user.getCustom_range_min(), user.getCustom_range_max());
             agePref = (EditTextPreference) findPreference("pref_age");
