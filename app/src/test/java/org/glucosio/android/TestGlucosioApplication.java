@@ -1,6 +1,9 @@
 package org.glucosio.android;
 
+import android.app.Activity;
 import android.support.annotation.NonNull;
+
+import com.instabug.library.InstabugActivityDelegate;
 
 import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.backup.Backup;
@@ -22,6 +25,9 @@ public class TestGlucosioApplication extends GlucosioApplication {
 
     @Mock
     private DatabaseHandler dbHandlerMock;
+
+    @Mock
+    private InstabugActivityDelegate instaDelegateMock;
 
     @Override
     public void onCreate() {
@@ -56,5 +62,11 @@ public class TestGlucosioApplication extends GlucosioApplication {
     @Override
     public DatabaseHandler getDBHandler() {
         return dbHandlerMock;
+    }
+
+    @NonNull
+    @Override
+    public InstabugActivityDelegate createInstabugDelegate(@NonNull Activity activity) {
+        return instaDelegateMock;
     }
 }
