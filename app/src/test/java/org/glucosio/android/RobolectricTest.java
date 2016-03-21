@@ -1,5 +1,7 @@
 package org.glucosio.android;
 
+import com.instabug.library.InstabugActivityDelegate;
+
 import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.backup.Backup;
 import org.junit.Ignore;
@@ -17,5 +19,11 @@ public abstract class RobolectricTest {
 
     protected Backup getBackup() {
         return ((TestGlucosioApplication) RuntimeEnvironment.application).getBackup();
+    }
+
+
+    protected InstabugActivityDelegate getInstaDelegate() {
+        //noinspection ConstantConditions
+        return ((TestGlucosioApplication) RuntimeEnvironment.application).createInstabugDelegate(null);
     }
 }
