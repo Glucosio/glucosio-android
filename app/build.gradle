@@ -114,14 +114,11 @@ dependencies {
     }
     compile('com.instabug.library:instabugcompat:2.1.1') {
         exclude group: 'com.android.support', module: 'support-v4'
-        exclude group: 'com.android.support', module: 'support-annotations'
     }
 
     testCompile "junit:junit:${junitVer}"
     testCompile "org.mockito:mockito-all:${mockitoVer}"
-    testCompile("com.squareup.assertj:assertj-android:${androidAssertJVer}") {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    }
+    testCompile "com.squareup.assertj:assertj-android:${androidAssertJVer}"
     testCompile("org.robolectric:robolectric:${robolectricVer}") {
         exclude group: 'commons-logging', module: 'commons-logging'
         exclude group: 'org.apache.httpcomponents', module: 'httpclient'
@@ -144,8 +141,8 @@ dependencies {
 }
 
 configurations.all {
-    resolutionStrategy.force 'com.android.support:support-annotations:23.2.1'
-    resolutionStrategy.force 'com.android.support:design:23.2.1'
-    resolutionStrategy.force 'com.android.support:appcompat-v7:23.2.1'
+    resolutionStrategy.force "com.android.support:support-annotations:${androidSupportVer}"
+    resolutionStrategy.force "com.android.support:design:${androidSupportVer}"
+    resolutionStrategy.force "com.android.support:appcompat-v7:${androidSupportVer}"
 }
 apply plugin: 'com.google.gms.google-services'

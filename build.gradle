@@ -40,7 +40,7 @@ allprojects {
         jcenter()
     }
 
-    ext.androidSupportVer = '23.2.0'
+    ext.androidSupportVer = '23.2.1'
     ext.googlePlayServicesVer = '8.4.0'
 
     ext.junitVer = '4.12'
