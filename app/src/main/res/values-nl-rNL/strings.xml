@@ -106,7 +106,7 @@
   <string name="assistant_check_title">Kijk hier regelmatig</string>
   <string name="assistant_check_desc">Glucosio-assistent levert regelmatig tips en wordt continu verbeterd, dus kijk altijd hier voor nuttige acties die u kunt nemen om uw Glucosio-ervaring te verbeteren en voor andere nuttige tips.</string>
   <string name="assistant_feedback_title">Feedback indienen </string>
-  <string name="assistant_feedback_desc">Als u technische problemen tegenkomt of feedback over Glucosio hebt, zien we graag dat u deze indient in het instellingenmenu om Glucosio te helpen verbeteren.</string>
+  <string name="assistant_feedback_desc">Als u technische problemen tegenkomt of feedback over Glucosio hebt, zien we graag dat u deze indient om Glucosio te helpen verbeteren.</string>
   <string name="assistant_reading_title">Een uitlezing toevoegen</string>
   <string name="assistant_reading_desc">Zorg ervoor dat u regelmatig uw glucose-uitlezingen toevoegt, zodat we kunnen helpen uw glucosegehalten in de loop der tijd bij te houden.</string>
   <string name="assistant_export_title">Uw gegevens exporteren</string>
