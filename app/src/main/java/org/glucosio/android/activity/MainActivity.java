@@ -23,6 +23,7 @@ package org.glucosio.android.activity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.Dialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -175,7 +176,7 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
         final PrimaryDrawerItem itemSettings = new PrimaryDrawerItem().withName(R.string.action_settings).withIcon(R.drawable.ic_settings_black_24dp).withSelectable(false);
         final PrimaryDrawerItem itemExport = new PrimaryDrawerItem().withName(R.string.title_activity_export).withIcon(R.drawable.ic_share_black_24dp).withSelectable(false);
         final PrimaryDrawerItem itemAbout = new PrimaryDrawerItem().withName(R.string.preferences_about_glucosio).withIcon(R.drawable.ic_info_black_24dp).withSelectable(false);
-        final PrimaryDrawerItem itemFeedback = new PrimaryDrawerItem().withName(R.string.action_feedback).withIcon(R.drawable.ic_feedback_black_24dp).withSelectable(false);
+        final PrimaryDrawerItem itemFeedback = new PrimaryDrawerItem().withName(R.string.menu_support).withIcon(R.drawable.ic_feedback_black_24dp).withSelectable(false);
         final PrimaryDrawerItem itemInvite = new PrimaryDrawerItem().withName(R.string.action_invite).withIcon(R.drawable.ic_face_black_24dp).withSelectable(false);
         final PrimaryDrawerItem itemDonate = new PrimaryDrawerItem().withName(R.string.about_donate).withIcon(R.drawable.ic_favorite_black_24dp).withSelectable(false);
         final PrimaryDrawerItem itemA1C = new PrimaryDrawerItem().withName(R.string.activity_converter_title).withIcon(R.drawable.ic_drawer_calculator_a1c).withSelectable(false);
@@ -202,7 +203,7 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
                             startAboutActivity();
                         } else if (drawerItem.equals(itemFeedback)) {
                             // Feedback
-                            Instabug.invoke();
+                            openSupportDialog();
                         } else if (drawerItem.equals(itemInvite)) {
                             // Invite
                             showInviteDialog();
@@ -334,6 +335,46 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
         viewPager.startAnimation(alpha);
     }
 
+    public void openSupportDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(getResources().getString(R.string.menu_support_title));
+        builder.setItems(getResources().getStringArray(R.array.menu_support_options), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (which == 0){
+                    // Email
+                    Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:hello@glucosio.org"));
+                    boolean activityExists = emailIntent.resolveActivityInfo(getPackageManager(), 0) != null;
+
+                    if (activityExists){
+                        startActivity(emailIntent);
+                    } else {
+                        showSnackBar(getResources().getString(R.string.menu_support_error1), Snackbar.LENGTH_LONG);
+                    }
+                } else if (which == 1){
+                    // Live Chat
+/*                    Intent intent = new Intent(getApplicationContext(), HSActivity.class);
+                    startActivity(intent);*/
+                } else {
+                    // Forum
+                    String url = "http://community.glucosio.org/";
+                    Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    i.setPackage("com.android.chrome");
+                    try {
+                        startActivity(i);
+                    } catch (ActivityNotFoundException e) {
+                        // Chrome is probably not installed
+                        // Try with the default browser
+                        i.setPackage(null);
+                        startActivity(i);
+                    }
+                }
+            }
+        });
+        builder.show();
+    }
+
     public void showExportDialog() {
         final Dialog exportDialog = new Dialog(MainActivity.this, R.style.GlucosioTheme);
 
@@ -415,7 +456,7 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
                     exportPresenter.onExportClicked(exportAllButton.isChecked());
                     exportDialog.dismiss();
                 } else {
-                    showSnackBar(getResources().getString(R.string.dialog_error));
+                    showSnackBar(getResources().getString(R.string.dialog_error), Snackbar.LENGTH_LONG);
                 }
             }
         });
@@ -560,9 +601,9 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
         Snackbar.make(rootLayout, getString(R.string.activity_export_no_readings_snackbar), Snackbar.LENGTH_SHORT).show();
     }
 
-    private void showSnackBar(String text) {
+    private void showSnackBar(String text, int lengthLong) {
         View rootLayout = findViewById(android.R.id.content);
-        Snackbar.make(rootLayout, text, Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(rootLayout, text, lengthLong).show();
     }
 
     public void showShareDialog(Uri uri) {

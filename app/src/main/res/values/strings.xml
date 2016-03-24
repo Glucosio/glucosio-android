@@ -230,6 +230,12 @@
         <item>@string/helloactivity_spinner_preferred_range_3</item>
         <item>@string/helloactivity_spinner_preferred_range_4</item>
     </string-array>
+    <string name="menu_support_error1">There isn\'t an email app installed. Please send a mail to hello@glucosio.org</string>
+    <string-array name="menu_support_options" translatable="false">
+        <item>@string/menu_support_email</item>
+        <item>@string/menu_support_live</item>
+        <item>@string/menu_support_forum</item>
+    </string-array>
 
     <string name="invitation_title">Invite other people</string>
     <string name="invitation_message">Try Glucosio, an open source app for diabetes management and research.</string>

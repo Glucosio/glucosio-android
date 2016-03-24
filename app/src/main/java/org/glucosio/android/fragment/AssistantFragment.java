@@ -228,10 +228,6 @@ public class AssistantFragment extends Fragment {
         getActivity().finish();
     }
 
-    public void openGitty() {
-        Instabug.getInstance().invoke();
-    }
-
     public void startExportActivity() {
         ((MainActivity) getActivity()).showExportDialog();
     }
@@ -239,5 +235,9 @@ public class AssistantFragment extends Fragment {
     public void startA1CCalculatorActivity() {
         Intent intent = new Intent(getActivity(), A1Calculator.class);
         startActivity(intent);
+    }
+
+    public void openSupportDialog() {
+        ((MainActivity)getActivity()).openSupportDialog();
     }
 }

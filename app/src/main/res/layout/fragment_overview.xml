@@ -185,6 +185,15 @@
                     android:layout_marginTop="16dp"
                     android:text="@string/overview_hb1ac"
                     android:textColor="@color/glucosio_text" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginBottom="4dp"
+                    android:onClick="onA1cInfoClicked"
+                    android:src="@drawable/ic_error_outline_black_24dp"/>
 
                 <TextView
                     android:id="@+id/fragment_overview_hb1ac"
@@ -194,34 +203,13 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="16dp"
                     android:text="6.5%"
-                    android:textColor="@color/glucosio_text_light" />
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginRight="4dp"
-                    android:layout_marginLeft="4dp"
-                    android:layout_marginBottom="4dp"
-                    android:onClick="onA1cInfoClicked"
-                    android:src="@drawable/ic_error_outline_black_24dp"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    fontPath="fonts/lato-bold.ttf"
-                    android:visibility="invisible"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="@string/dialog_add_hb1ac" />
+                    android:textColor="@color/glucosio_text" />
                 <TextView
                     android:visibility="visible"
                     fontPath="fonts/lato.ttf"
                     android:id="@+id/fragment_overview_hb1ac_date"
                     android:layout_weight="1"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginLeft="8dp"
                     android:layout_marginBottom="16dp"
                     android:layout_width="match_parent"
