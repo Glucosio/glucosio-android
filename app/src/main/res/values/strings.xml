@@ -359,6 +359,7 @@
     <string name="menu_support_forum">Support Forum</string>
     <string name="notification_reminder_glucose">It is time to log your blood glucose level!</string>
     <string name="notification_reminder_medication">It is time to take your medication!</string>
+    <string name="overview_hb1ac_info">This is just an estimate and is calculated using the averages of the last month of readings. While this estimate uses a widely accepted formula for HbA1C estimation we encourage users to only use this as an estimate.</string>
 
     <string-array name="fragment_history_selector" translatable="false">
         <item>@string/fab_glucose</item>

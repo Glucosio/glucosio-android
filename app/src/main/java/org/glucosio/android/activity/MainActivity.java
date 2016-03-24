@@ -24,6 +24,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -33,6 +34,7 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -632,6 +634,17 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
             Log.d("STATUS", "Error connecting with Google Play services. Code: " + String.valueOf(status));
             return false;
         }
+    }
+
+    public void onA1cInfoClicked(View view) {
+        new AlertDialog.Builder(MainActivity.this)
+                .setMessage(getString(R.string.overview_hb1ac_info))
+                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // continue with delete
+                    }
+                })
+                .show();
     }
 
     @Override

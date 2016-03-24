@@ -191,11 +191,19 @@
                     fontPath="fonts/lato-bold.ttf"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="16dp"
                     android:text="6.5%"
                     android:textColor="@color/glucosio_text_light" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:onClick="onA1cInfoClicked"
+                    android:src="@drawable/ic_error_outline_black_24dp"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="fill_parent"

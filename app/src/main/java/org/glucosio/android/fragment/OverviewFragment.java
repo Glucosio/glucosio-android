@@ -358,7 +358,7 @@ public class OverviewFragment extends Fragment {
         // create a dataset and give it a type
         LineDataSet set1 = new LineDataSet(yVals, "");
         set1.setColor(getResources().getColor(R.color.glucosio_pink));
-        set1.setLineWidth(2.5f);
+        set1.setLineWidth(2f);
         set1.setCircleColor(getResources().getColor(R.color.glucosio_pink));
         set1.setCircleSize(4f);
         set1.setDrawCircleHole(true);
