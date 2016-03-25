@@ -30,7 +30,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 23
         versionCode 15
-        versionName '0.10.3-beta'
+        versionName '0.10.3'
     }
     buildTypes {
         debug {
