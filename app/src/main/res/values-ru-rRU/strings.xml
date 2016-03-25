@@ -113,7 +113,6 @@
   <string name="assistant">Помощник</string>
   <string name="assistant_action_update">ОБНОВИТЬ СЕЙЧАС</string>
   <string name="assistant_action_ok">ХОРОШО, Я ПОНЯЛ</string>
-  <string name="assistant_action_feedback">ОТПРАВИТЬ ОТЗЫВ</string>
   <string name="assistant_action_reading">ДОБАВИТЬ ДАННЫЕ</string>
   <string name="assistant_action_try">ПОПРОБОВАТЬ ПРЯМО СЕЙЧАС</string>
   <string name="assistant_weight_title">Обновите свой вес</string>

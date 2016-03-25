@@ -114,7 +114,6 @@
   <string name="assistant">Asistente</string>
   <string name="assistant_action_update">ACTUALIZAR AHORA</string>
   <string name="assistant_action_ok">OK, LO CONSIGUIÓ</string>
-  <string name="assistant_action_feedback">ENVIAR COMENTARIOS</string>
   <string name="assistant_action_reading">AGREGE UNA LECTURA</string>
   <string name="assistant_action_try">PRUÉBELO AHORA</string>
   <string name="assistant_weight_title">Actualizar su peso</string>

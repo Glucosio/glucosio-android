@@ -113,7 +113,6 @@
   <string name="assistant">Asistent</string>
   <string name="assistant_action_update">AŽURIRAJ</string>
   <string name="assistant_action_ok">OK, RAZUMIO SAM</string>
-  <string name="assistant_action_feedback">POŠALJI POVRATNU INFORMACIJU</string>
   <string name="assistant_action_reading">DODAJ OČITANJA</string>
   <string name="assistant_action_try">ISPROBAJ ODMAH</string>
   <string name="assistant_weight_title">Ažurirajte vašu težinu</string>
