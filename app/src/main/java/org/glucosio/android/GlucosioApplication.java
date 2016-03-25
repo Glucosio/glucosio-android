@@ -27,9 +27,8 @@ import android.util.Log;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
-import com.instabug.library.IBGInvocationEvent;
-import com.instabug.library.Instabug;
 
+import io.smooch.core.Smooch;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 public class GlucosioApplication extends Application {
@@ -56,9 +55,16 @@ public class GlucosioApplication extends Application {
         return mTracker;
     }
 
+    public Tracker getAnalyticsTracker(){
+        return mTracker;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
+
+        // Initialize Smooch
+        Smooch.init(this, "dxopifgi0mylv4invg5lrb66r");
 
         // Get Dyslexia preference and adjust font
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
@@ -68,16 +74,6 @@ public class GlucosioApplication extends Application {
             setFont("fonts/opendyslexic.otf");
         } else {
             setFont("fonts/lato.ttf");
-        }
-
-        if (BuildConfig.DEBUG) {
-            new Instabug.Builder(this, "b2226aa30fec24f6f4bed6ad68964e9b")
-                    .setInvocationEvent(IBGInvocationEvent.IBGInvocationEventShake)
-                    .build();
-        } else {
-            new Instabug.Builder(this, "820ee7db3118d03fd5f4249b5a73672e")
-                    .setInvocationEvent(IBGInvocationEvent.IBGInvocationEventShake)
-                    .build();
         }
     }
 

@@ -25,7 +25,7 @@
 
     <color name="glucosio_pink">#E84579</color>
     <color name="glucosio_pink_light">#ec6a93</color>
-    <color name="glucosio_pink_graph_2">#FCE2EA</color>
+    <color name="glucosio_pink_graph_2">#99FCE2EA</color>
     <color name="glucosio_pink_graph_1">#80FCE2EA</color>
     <color name="glucosio_pink_a1c_converter">#e95374</color>
     <color name="glucosio_pink_dark">#C23965</color>
@@ -51,4 +51,8 @@
     <color name="glucosio_reading_low">#4B8DDB</color>
     <color name="glucosio_reading_high">#E7B85D</color>
     <color name="glucosio_reading_hypo">#6F4EAB</color>
+
+    <color name="Smooch_accent">@color/glucosio_pink</color>
+    <color name="Smooch_accentDark">@color/glucosio_pink_dark</color>
+    <color name="Smooch_accentLight">@color/glucosio_pink_light</color>
 </resources>

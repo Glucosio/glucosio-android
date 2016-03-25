@@ -31,7 +31,6 @@ import android.widget.TextView;
 
 import org.glucosio.android.ActionTip;
 import org.glucosio.android.R;
-import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.presenter.AssistantPresenter;
 
 import java.util.ArrayList;
@@ -80,7 +79,7 @@ public class AssistantAdapter extends RecyclerView.Adapter<AssistantAdapter.View
             actionListener = new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    presenter.openSupportDialog();
+                    presenter.openLiveChat();
 
                 }
             };

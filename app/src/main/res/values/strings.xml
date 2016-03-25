@@ -172,7 +172,7 @@
     <string name="assistant">Assistant</string>.
     <string name="assistant_action_update">UPDATE NOW</string>
     <string name="assistant_action_ok">OK, GOT IT</string>
-    <string name="assistant_action_feedback">SUBMIT FEEDBACK</string>
+    <string name="assistant_action_feedback">LIVE CHAT</string>
     <string name="assistant_action_reading">ADD READING</string>
     <string name="assistant_action_try">TRY IT NOW</string>
     <string name="assistant_weight_title">Update your weight</string>

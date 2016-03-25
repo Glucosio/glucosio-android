@@ -26,6 +26,8 @@ import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.google.android.gms.wearable.MessageEvent;
 import com.google.android.gms.wearable.WearableListenerService;
 
@@ -58,7 +60,6 @@ public class DataLayerListenerService extends WearableListenerService {
 
             showNotification(finalArray[0], finalArray[1]);
             addToDatabase(finalArray[0], finalArray[1]);
-
         }
     }
 

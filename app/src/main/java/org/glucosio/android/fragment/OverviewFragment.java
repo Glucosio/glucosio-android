@@ -184,10 +184,10 @@ public class OverviewFragment extends Fragment {
             ll2 = new LimitLine((float)converter.glucoseToMmolL(minGlucoseValue), getString(R.string.reading_low));
         }
 
-        ll1.setLineWidth(0.5f);
+        ll1.setLineWidth(0.8f);
         ll1.setLineColor(getResources().getColor(R.color.glucosio_reading_low));
 
-        ll2.setLineWidth(0.5f);
+        ll2.setLineWidth(0.8f);
         ll2.setLineColor(getResources().getColor(R.color.glucosio_reading_high));
 
         YAxis leftAxis = chart.getAxisLeft();
@@ -368,13 +368,14 @@ public class OverviewFragment extends Fragment {
         set1.setValueTextSize(0);
         set1.setValueTextColor(Color.parseColor("#FFFFFF"));
         set1.setFillDrawable(getResources().getDrawable(R.drawable.graph_gradient));
+        set1.setHighLightColor(getResources().getColor(R.color.glucosio_gray_light));
         set1.setCubicIntensity(0.2f);
         set1.setDrawCubic(true);
 
         if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.JELLY_BEAN_MR2){
             set1.setDrawFilled(false);
-            set1.setLineWidth(3f);
-            set1.setCircleSize(4.5f);
+            set1.setLineWidth(2f);
+            set1.setCircleSize(4f);
             set1.setDrawCircleHole(true);
         }
 
@@ -404,9 +405,6 @@ public class OverviewFragment extends Fragment {
         if (!presenter.isdbEmpty()){
             HB1ACTextView.setText(presenter.getHB1AC());
             HB1ACDateTextView.setText(presenter.getH1ACMonth());
-            if (HB1ACDateTextView.getText().equals(" ")){
-                HB1ACDateTextView.setVisibility(View.GONE);
-            }
         }
     }
 

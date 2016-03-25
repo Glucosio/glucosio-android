@@ -20,7 +20,6 @@
 
 package org.glucosio.android.presenter;
 
-import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.fragment.AssistantFragment;
 
@@ -46,7 +45,7 @@ public class AssistantPresenter {
         fragment.startA1CCalculatorActivity();
     }
 
-    public void openSupportDialog() {
-        fragment.openSupportDialog();
+    public void openLiveChat() {
+        fragment.openLiveChat();
     }
 }

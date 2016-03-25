@@ -35,9 +35,6 @@ import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.instabug.library.Instabug;
-
 import org.glucosio.android.ActionTip;
 import org.glucosio.android.R;
 import org.glucosio.android.activity.A1Calculator;
@@ -48,6 +45,8 @@ import org.glucosio.android.presenter.AssistantPresenter;
 
 import java.util.ArrayList;
 
+import io.smooch.ui.ConversationActivity;
+
 public class AssistantFragment extends Fragment {
 
     SharedPreferences sharedPref;
@@ -55,7 +54,6 @@ public class AssistantFragment extends Fragment {
 
     private RecyclerView tipsRecycler;
     private AssistantAdapter adapter;
-    private AssistantPresenter presenter;
     private LinearLayout archivedButton;
     private LinearLayout archivedDismissButton;
     private ArrayList<ActionTip> actionTips;
@@ -83,7 +81,7 @@ public class AssistantFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        presenter = new AssistantPresenter(this);
+        AssistantPresenter presenter = new AssistantPresenter(this);
         actionTips = new ArrayList<>();
 
         actionTipTitles = getResources().getStringArray(R.array.assistant_titles);
@@ -237,7 +235,7 @@ public class AssistantFragment extends Fragment {
         startActivity(intent);
     }
 
-    public void openSupportDialog() {
-        ((MainActivity)getActivity()).openSupportDialog();
+    public void openLiveChat() {
+        ConversationActivity.show(getActivity());
     }
 }
