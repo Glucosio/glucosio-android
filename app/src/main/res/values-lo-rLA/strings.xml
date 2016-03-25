@@ -108,7 +108,6 @@
   <string name="assistant">ຜູ້ຊ່ວຍ</string>
   <string name="assistant_action_update">ອັບເດດຕອນນີ້ເລີຍ</string>
   <string name="assistant_action_ok">Ok, ເຂົ້າໃຈແລ້ວ</string>
-  <string name="assistant_action_feedback">ສົ່ງຄໍາຄິດເຫັນ</string>
   <string name="assistant_action_reading">ເພີ່ມການອ່ານ</string>
   <string name="assistant_action_try">ລອງໃຊ້ດຽວນີ້ເລີຍ</string>
   <string name="assistant_weight_title">ອັບເດດນ້ຳຫນັກຂອງທ່ານ</string>

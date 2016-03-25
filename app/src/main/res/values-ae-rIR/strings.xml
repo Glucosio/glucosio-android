@@ -95,7 +95,6 @@
   <string name="assistant">دستیار</string>
   <string name="assistant_action_update">بروزرسانی همین حالا</string>
   <string name="assistant_action_ok">متوجه شدم</string>
-  <string name="assistant_action_feedback">ارسال بازخورد</string>
   <string name="assistant_weight_title">بروزرسانی وزن</string>
   <string name="assistant_feedback_title">ارسال بازخورد </string>
   <!-- Future Strings Baked In Early For l10n -->

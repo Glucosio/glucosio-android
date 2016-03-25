@@ -113,7 +113,6 @@
   <string name="assistant">小幫手</string>
   <string name="assistant_action_update">立刻更新</string>
   <string name="assistant_action_ok">好，收到！</string>
-  <string name="assistant_action_feedback">送出意見回饋</string>
   <string name="assistant_action_reading">新增測量讀數</string>
   <string name="assistant_action_try">立刻試試</string>
   <string name="assistant_weight_title">更新您的體重</string>

@@ -105,7 +105,6 @@
   <string name="assistant">Asistent</string>
   <string name="assistant_action_update">AKTUALIZOVAŤ TERAZ</string>
   <string name="assistant_action_ok">OK, ROZUMIEM</string>
-  <string name="assistant_action_feedback">ODOSLAŤ SPÄTNÚ VÄZBU</string>
   <string name="assistant_action_reading">PRIDAŤ MERANIE</string>
   <string name="assistant_action_try">VYSKÚŠAJTE TO</string>
   <string name="assistant_weight_title">Aktualizujte vašu hmotnosť</string>

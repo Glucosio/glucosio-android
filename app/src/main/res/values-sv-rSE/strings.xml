@@ -112,7 +112,6 @@
   <string name="assistant">Assistent</string>
   <string name="assistant_action_update">Uppdatera nu</string>
   <string name="assistant_action_ok">Ok, fick den</string>
-  <string name="assistant_action_feedback">Skicka in feedback</string>
   <string name="assistant_action_reading">Lägg till värden</string>
   <string name="assistant_action_try">Prova det nu</string>
   <string name="assistant_weight_title">Uppdatera din vikt</string>

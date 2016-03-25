@@ -104,7 +104,6 @@
   <string name="assistant">Msaidizi</string>
   <string name="assistant_action_update">Sasisha sasa</string>
   <string name="assistant_action_ok">SAWA, NIMEIPATA</string>
-  <string name="assistant_action_feedback">WASILISHA MAONI</string>
   <string name="assistant_action_reading">ONGEZA KUSOMA</string>
   <string name="assistant_weight_title">Sasisha uzito wako</string>
   <!-- Future Strings Baked In Early For l10n -->

@@ -113,7 +113,6 @@
   <string name="assistant">Assistent</string>
   <string name="assistant_action_update">NU BIJWERKEN</string>
   <string name="assistant_action_ok">OK, BEGREPEN</string>
-  <string name="assistant_action_feedback">FEEDBACK INDIENEN</string>
   <string name="assistant_action_reading">UITLEZING TOEVOEGEN</string>
   <string name="assistant_action_try">NU PROBEREN</string>
   <string name="assistant_weight_title">Uw gewicht bijwerken</string>
@@ -255,4 +254,5 @@
   <string name="menu_support_forum">Ondersteuningsforum</string>
   <string name="notification_reminder_glucose">Het is tijd om uw bloedsuikerspiegel vast te leggen!</string>
   <string name="notification_reminder_medication">Het is tijd voor uw medicatie!</string>
+  <string name="overview_hb1ac_info">Dit is slechts een schatting en is berekend op basis van de gemiddelden van uitlezingen in de afgelopen maand. Hoewel deze schatting een algemeen erkende formule voor HbA1C-schatting gebruikt, raden we gebruikers aan om dit alleen als een schatting te gebruiken.</string>
 </resources>

@@ -107,7 +107,6 @@
   <string name="assistant">Pomočnik</string>
   <string name="assistant_action_update">POSODOBI ZDAJ</string>
   <string name="assistant_action_ok">V REDU</string>
-  <string name="assistant_action_feedback">POŠLJI POVRATNO INFORMACIJO</string>
   <string name="assistant_action_reading">DODAJ MERITEV</string>
   <string name="assistant_action_try">Preizkusite</string>
   <string name="assistant_weight_title">Posodobite svojo težo</string>

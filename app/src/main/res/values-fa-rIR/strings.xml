@@ -108,7 +108,6 @@
   <string name="assistant">دستیار</string>
   <string name="assistant_action_update">اکنون به روز رسانی شود</string>
   <string name="assistant_action_ok">خوب، فهمیدم</string>
-  <string name="assistant_action_feedback">ارسال بازخورد</string>
   <string name="assistant_action_reading">اضافه کردن اندازه گیری</string>
   <string name="assistant_action_try">الان امتحان کنید</string>
   <string name="assistant_weight_title">وزن خود را به روز رسانی کنید</string>
