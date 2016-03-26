@@ -27,16 +27,16 @@ public class GoogleAnalytics implements Analytics {
     }
 
     @Override
-    public void reportScreen(@NonNull String screenName) {
-        mTracker.setScreenName(screenName);
+    public void reportScreen(@NonNull String name) {
+        mTracker.setScreenName(name);
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
 
     @Override
-    public void sendEvent(@NonNull String category, @NonNull String action) {
+    public void reportAction(@NonNull String category, @NonNull String name) {
         mTracker.send(new HitBuilders.EventBuilder()
                 .setCategory(category)
-                .setAction(action)
+                .setAction(name)
                 .build());
     }
 }

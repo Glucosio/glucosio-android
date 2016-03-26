@@ -162,7 +162,7 @@ public class AboutActivity extends AppCompatActivity {
         private void addTermsAnalyticsEvent(String action) {
             Analytics analytics = ((GlucosioApplication) getActivity().getApplication()).getAnalytics();
 
-            analytics.sendEvent("Preferences", action);
+            analytics.reportAction("Preferences", action);
         }
     }
 }

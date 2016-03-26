@@ -183,7 +183,7 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
 
     private void addAnalyticsEvent() {
         Analytics analytics = ((GlucosioApplication) getApplication()).getAnalytics();
-        analytics.sendEvent("FreeStyle Libre", "New reading added");
+        analytics.reportAction("FreeStyle Libre", "New reading added");
     }
 
     private void dialogOnAddButtonPressed() {

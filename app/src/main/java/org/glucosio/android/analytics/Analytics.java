@@ -6,7 +6,7 @@ import android.support.annotation.NonNull;
 public interface Analytics {
     void init(@NonNull final Context context);
 
-    void reportScreen(@NonNull final String screenName);
+    void reportScreen(@NonNull final String name);
 
-    void sendEvent(@NonNull final String category, @NonNull final String action);
+    void reportAction(@NonNull final String category, @NonNull final String name);
 }

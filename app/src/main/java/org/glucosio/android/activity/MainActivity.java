@@ -694,7 +694,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
     private void addA1cAnalyticsEvent() {
         Analytics analytics = ((GlucosioApplication) getApplication()).getAnalytics();
-        analytics.sendEvent("A1C", "A1C disclaimer opened");
+        analytics.reportAction("A1C", "A1C disclaimer opened");
     }
 
     @Override
