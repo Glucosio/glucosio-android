@@ -40,6 +40,8 @@ public class OverviewPresenter {
     private List<Integer> glucoseReadingsMonth;
     private List<String> glucoseDatetimeWeek;
     private List<String> glucoseDatetimeMonth;
+    private int glucoseMinValue = 0;
+    private int glucoseMaxValue = 0;
     private OverviewFragment fragment;
 
 
@@ -60,6 +62,8 @@ public class OverviewPresenter {
         this.glucoseDatetimeMonth = dB.getGlucoseDatetimesByMonth();
         this.glucoseType = dB.getGlucoseTypeAsArray();
         this.glucoseDatetime = dB.getGlucoseDateTimeAsArray();
+        this.glucoseMaxValue = dB.getUser(1).getCustom_range_max();
+        this.glucoseMinValue = dB.getUser(1).getCustom_range_min();
     }
 
     public String convertDate(String date) {
@@ -143,5 +147,13 @@ public class OverviewPresenter {
 
     public String convertDateToMonth(String s) {
         return fragment.convertDateToMonth(s);
+    }
+
+    public int getGlucoseMinValue() {
+        return glucoseMinValue;
+    }
+
+    public int getGlucoseMaxValue() {
+        return glucoseMaxValue;
     }
 }

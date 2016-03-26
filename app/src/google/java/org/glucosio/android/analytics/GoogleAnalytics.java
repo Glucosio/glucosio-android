@@ -31,4 +31,12 @@ public class GoogleAnalytics implements Analytics {
         mTracker.setScreenName(screenName);
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
+
+    @Override
+    public void sendEvent(@NonNull String category, @NonNull String action) {
+        mTracker.send(new HitBuilders.EventBuilder()
+                .setCategory(category)
+                .setAction(action)
+                .build());
+    }
 }

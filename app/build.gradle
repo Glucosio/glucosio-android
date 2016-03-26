@@ -31,8 +31,8 @@ android {
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 23
-        versionCode 14
-        versionName '0.10.2'
+        versionCode 15
+        versionName '0.10.3'
 
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
     }
@@ -80,6 +80,7 @@ android {
 
 repositories {
     mavenCentral()
+    jcenter()
     maven { url 'https://jitpack.io' }
     maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
 }
@@ -101,6 +102,13 @@ dependencies {
     googleCompile "com.google.android.gms:play-services-analytics:${googlePlayServicesVer}"
     googleCompile "com.google.android.gms:play-services-drive:${googlePlayServicesVer}"
     googleCompile "com.google.android.gms:play-services-wearable:${googlePlayServicesVer}"
+    compile 'com.google.android.gms:play-services-gcm:8.4.0'
+
+    // Smooch
+    compile 'com.google.code.gson:gson:2.4'
+    compile 'com.squareup.okhttp:okhttp:2.4.0'
+    compile 'io.smooch:core:latest.release'
+    compile 'io.smooch:ui:latest.release'
 
     // Other libraries
     compile 'io.realm:realm-android:0.87.5'
@@ -111,9 +119,6 @@ dependencies {
     compile 'net.danlew:android.joda:2.9.2'
     compile('com.mikepenz:materialdrawer:5.0.5@aar') {
         transitive = true
-    }
-    compile('com.instabug.library:instabugcompat:2.1.1') {
-        exclude group: 'com.android.support', module: 'support-v4'
     }
 
     testCompile "junit:junit:${junitVer}"

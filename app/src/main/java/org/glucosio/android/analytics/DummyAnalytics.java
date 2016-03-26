@@ -13,4 +13,9 @@ public class DummyAnalytics implements Analytics {
     public void reportScreen(@NonNull String screenName) {
 
     }
+
+    @Override
+    public void sendEvent(@NonNull String category, @NonNull String action) {
+
+    }
 }

@@ -23,7 +23,9 @@ package org.glucosio.android.activity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.Dialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -33,10 +35,10 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -50,8 +52,6 @@ import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.instabug.library.Instabug;
-import com.instabug.library.InstabugActivityDelegate;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
@@ -70,6 +70,7 @@ import org.glucosio.android.presenter.MainPresenter;
 
 import java.util.Calendar;
 
+import io.smooch.ui.ConversationActivity;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
@@ -90,14 +91,11 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private Toolbar toolbar;
     private TabLayout tabLayout;
 
-    private InstabugActivityDelegate instabugDelegate;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         GlucosioApplication application = (GlucosioApplication) getApplication();
-        instabugDelegate = application.createInstabugDelegate(this);
 
         setContentView(R.layout.activity_main);
         initPresenters(application);
@@ -179,7 +177,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         final PrimaryDrawerItem itemSettings = new PrimaryDrawerItem().withName(R.string.action_settings).withIcon(R.drawable.ic_settings_black_24dp).withSelectable(false);
         final PrimaryDrawerItem itemExport = new PrimaryDrawerItem().withName(R.string.title_activity_export).withIcon(R.drawable.ic_share_black_24dp).withSelectable(false);
         final PrimaryDrawerItem itemAbout = new PrimaryDrawerItem().withName(R.string.preferences_about_glucosio).withIcon(R.drawable.ic_info_black_24dp).withSelectable(false);
-        final PrimaryDrawerItem itemFeedback = new PrimaryDrawerItem().withName(R.string.action_feedback).withIcon(R.drawable.ic_feedback_black_24dp).withSelectable(false);
+        final PrimaryDrawerItem itemFeedback = new PrimaryDrawerItem().withName(R.string.menu_support).withIcon(R.drawable.ic_feedback_black_24dp).withSelectable(false);
         final PrimaryDrawerItem itemInvite = new PrimaryDrawerItem().withName(R.string.action_invite).withIcon(R.drawable.ic_face_black_24dp).withSelectable(false);
         final PrimaryDrawerItem itemDonate = new PrimaryDrawerItem().withName(R.string.about_donate).withIcon(R.drawable.ic_favorite_black_24dp).withSelectable(false);
         final PrimaryDrawerItem itemA1C = new PrimaryDrawerItem().withName(R.string.activity_converter_title).withIcon(R.drawable.ic_drawer_calculator_a1c).withSelectable(false);
@@ -206,7 +204,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                             startAboutActivity();
                         } else if (drawerItem.equals(itemFeedback)) {
                             // Feedback
-                            Instabug.invoke();
+                            openSupportDialog();
                         } else if (drawerItem.equals(itemInvite)) {
                             // Invite
                             showInviteDialog();
@@ -269,31 +267,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private void openDonateIntent() {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.glucosio.org/donate/"));
         startActivity(browserIntent);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        instabugDelegate.onResume();
-    }
-
-    @Override
-    protected void onPause() {
-        instabugDelegate.onPause();
-        super.onPause();
-    }
-
-    @Override
-    protected void onDestroy() {
-        instabugDelegate.onDestroy();
-        instabugDelegate = null;
-        super.onDestroy();
-    }
-
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent ev) {
-        instabugDelegate.dispatchTouchEvent(ev);
-        return super.dispatchTouchEvent(ev);
     }
 
     public void startExportActivity() {
@@ -364,6 +337,47 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         alpha.setDuration(0);
         alpha.setFillAfter(true);
         viewPager.startAnimation(alpha);
+    }
+
+    public void openSupportDialog() {
+        final Context mContext = this;
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(getResources().getString(R.string.menu_support_title));
+        builder.setItems(getResources().getStringArray(R.array.menu_support_options), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (which == 0){
+                    // Email
+                    Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:hello@glucosio.org"));
+                    boolean activityExists = emailIntent.resolveActivityInfo(getPackageManager(), 0) != null;
+
+                    if (activityExists){
+                        startActivity(emailIntent);
+                    } else {
+                        showSnackBar(getResources().getString(R.string.menu_support_error1), Snackbar.LENGTH_LONG);
+                    }
+                } else if (which == 1){
+                    // Live Chat
+                    // Open Smooth
+                    ConversationActivity.show(mContext);
+                } else {
+                    // Forum
+                    String url = "http://community.glucosio.org/";
+                    Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    i.setPackage("com.android.chrome");
+                    try {
+                        startActivity(i);
+                    } catch (ActivityNotFoundException e) {
+                        // Chrome is probably not installed
+                        // Try with the default browser
+                        i.setPackage(null);
+                        startActivity(i);
+                    }
+                }
+            }
+        });
+        builder.show();
     }
 
     public void showExportDialog() {
@@ -447,7 +461,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                     exportPresenter.onExportClicked(exportAllButton.isChecked());
                     exportDialog.dismiss();
                 } else {
-                    showSnackBar(getResources().getString(R.string.dialog_error));
+                    showSnackBar(getResources().getString(R.string.dialog_error), Snackbar.LENGTH_LONG);
                 }
             }
         });
@@ -589,9 +603,9 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         Snackbar.make(rootLayout, getString(R.string.activity_export_no_readings_snackbar), Snackbar.LENGTH_SHORT).show();
     }
 
-    private void showSnackBar(String text) {
+    private void showSnackBar(String text, int lengthLong) {
         View rootLayout = findViewById(android.R.id.content);
-        Snackbar.make(rootLayout, text, Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(rootLayout, text, lengthLong).show();
     }
 
     public void showShareDialog(Uri uri) {
@@ -663,6 +677,24 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             Log.d("STATUS", "Error connecting with Google Play services. Code: " + String.valueOf(status));
             return false;
         }
+    }
+
+    public void onA1cInfoClicked(View view) {
+        new AlertDialog.Builder(MainActivity.this)
+                .setMessage(getString(R.string.overview_hb1ac_info))
+                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // continue with delete
+                    }
+                })
+                .show();
+
+        addA1cAnalyticsEvent();
+    }
+
+    private void addA1cAnalyticsEvent() {
+        Analytics analytics = ((GlucosioApplication) getApplication()).getAnalytics();
+        analytics.sendEvent("A1C", "A1C disclaimer opened");
     }
 
     @Override

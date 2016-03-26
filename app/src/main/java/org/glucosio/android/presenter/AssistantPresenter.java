@@ -37,15 +37,15 @@ public class AssistantPresenter {
         fragment.addReading();
     }
 
-    public void openGitty() {
-        fragment.openGitty();
-    }
-
     public void startExportActivity() {
         fragment.startExportActivity();
     }
 
     public void startA1CCalculatorActivity() {
         fragment.startA1CCalculatorActivity();
+    }
+
+    public void openLiveChat() {
+        fragment.openLiveChat();
     }
 }

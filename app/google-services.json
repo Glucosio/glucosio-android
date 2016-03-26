@@ -11,7 +11,8 @@
         "client_id": "android:org.glucosio.android",
         "client_type": 1,
         "android_client_info": {
-          "package_name": "org.glucosio.android"
+          "package_name": "org.glucosio.android",
+          "certificate_hash": []
         }
       },
       "oauth_client": [
@@ -54,7 +55,8 @@
         "client_id": "android:org.glucosio.android.daily",
         "client_type": 1,
         "android_client_info": {
-          "package_name": "org.glucosio.android.daily"
+          "package_name": "org.glucosio.android.daily",
+          "certificate_hash": []
         }
       },
       "oauth_client": [

@@ -39,7 +39,9 @@ import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
+import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
+import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.presenter.AddGlucosePresenter;
 import org.glucosio.android.tools.FormatDateTime;
 import org.glucosio.android.tools.LabelledSpinner;
@@ -169,12 +171,19 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
             readingInputLayout.setErrorEnabled(true);
             readingInputLayout.setError(getResources().getString(R.string.dialog_add_glucose_freestylelibre_added));
             addFreeStyleButton.setVisibility(View.GONE);
+
+            addAnalyticsEvent();
         } else {
             // Check if FreeStyle support is enabled in Preferences
             if (presenter.isFreeStyleLibreEnabled()) {
                 addFreeStyleButton.setVisibility(View.VISIBLE);
             }
         }
+    }
+
+    private void addAnalyticsEvent() {
+        Analytics analytics = ((GlucosioApplication) getApplication()).getAnalytics();
+        analytics.sendEvent("FreeStyle Libre", "New reading added");
     }
 
     private void dialogOnAddButtonPressed() {

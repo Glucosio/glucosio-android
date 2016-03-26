@@ -35,38 +35,6 @@ public class MainActivityTest extends RobolectricTest {
     }
 
     @Test
-    public void ShouldDelegateToInstabug_WhenOnResumeIsCalled() throws Exception {
-
-        activityController.resume();
-
-        verify(getInstaDelegate()).onResume();
-    }
-
-    @Test
-    public void ShouldDelegateToInstabug_WhenOnPauseIsCalled() throws Exception {
-
-        activityController.pause();
-
-        verify(getInstaDelegate()).onPause();
-    }
-
-    @Test
-    public void ShouldDelegateToInstabug_WhenOnDestroyIsCalled() throws Exception {
-
-        activityController.destroy();
-
-        verify(getInstaDelegate()).onDestroy();
-    }
-
-    @Test
-    public void ShouldDelegateToInstabug_WhenDispatchTouchEventIsCalled() throws Exception {
-
-        activity.dispatchTouchEvent(motionEventMock);
-
-        verify(getInstaDelegate()).dispatchTouchEvent(motionEventMock);
-    }
-
-    @Test
     public void ShouldDelegateInvitation_WhenAsked() throws Exception {
 
         activity.showInviteDialog();

@@ -79,7 +79,8 @@ public class AssistantAdapter extends RecyclerView.Adapter<AssistantAdapter.View
             actionListener = new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    presenter.openGitty();
+                    presenter.openLiveChat();
+
                 }
             };
         } else if (actionTipTitleString.equals(res.getString(R.string.assistant_export_title))) {

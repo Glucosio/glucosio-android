@@ -29,9 +29,9 @@ import android.preference.PreferenceFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
-import com.instabug.library.Instabug;
-
+import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
+import org.glucosio.android.analytics.Analytics;
 
 import java.util.Locale;
 
@@ -75,6 +75,7 @@ public class AboutActivity extends AppCompatActivity {
             final Preference termsPref = (Preference) findPreference("preference_terms");
             final Preference versionPref = (Preference) findPreference("preference_version");
 
+
             termsPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
@@ -83,6 +84,8 @@ public class AboutActivity extends AppCompatActivity {
                     bundle.putString("key", "terms");
                     intent.putExtras(bundle);
                     startActivity(intent);
+
+                    addTermsAnalyticsEvent("Glucosio Terms opened");
 
                     return false;
                 }
@@ -96,6 +99,8 @@ public class AboutActivity extends AppCompatActivity {
                     bundle.putString("key", "open_source");
                     intent.putExtras(bundle);
                     startActivity(intent);
+
+                    addTermsAnalyticsEvent("Glucosio Licence opened");
                     return false;
                 }
             });
@@ -113,7 +118,7 @@ public class AboutActivity extends AppCompatActivity {
             feedbackPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
-                    Instabug.invoke();
+                    ((MainActivity) getActivity()).openSupportDialog();
 
                     return false;
                 }
@@ -127,6 +132,8 @@ public class AboutActivity extends AppCompatActivity {
                     bundle.putString("key", "privacy");
                     intent.putExtras(bundle);
                     startActivity(intent);
+
+                    addTermsAnalyticsEvent("Glucosio Privacy opened");
 
                     return false;
                 }
@@ -150,6 +157,12 @@ public class AboutActivity extends AppCompatActivity {
                 }
             });
 
+        }
+
+        private void addTermsAnalyticsEvent(String action) {
+            Analytics analytics = ((GlucosioApplication) getActivity().getApplication()).getAnalytics();
+
+            analytics.sendEvent("Preferences", action);
         }
     }
 }

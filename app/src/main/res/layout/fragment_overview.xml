@@ -95,72 +95,6 @@
             android:background="#DADADA" />
 
         <LinearLayout
-            android:id="@+id/fragment_history_legend"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingTop="16dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-            </LinearLayout>
-
-            <CheckBox
-                android:id="@+id/fragment_overview_checkbox_low"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/reading_low"
-                android:textSize="12sp"
-                android:button="@drawable/selector_checkbox_low"
-                android:drawableLeft="@android:color/transparent"
-                android:drawablePadding="4dp"
-                android:textStyle="bold"
-                android:textColor="@color/glucosio_reading_low" />
-
-            <CheckBox
-                android:id="@+id/fragment_overview_checkbox_ok"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/reading_ok"
-                android:textSize="12sp"
-                android:button="@drawable/selector_checkbox_ok"
-                android:drawableLeft="@android:color/transparent"
-                android:layout_marginLeft="8dp"
-                android:drawablePadding="4dp"
-                android:textStyle="bold"
-                android:textColor="@color/glucosio_reading_ok" />
-
-            <CheckBox
-                android:id="@+id/fragment_overview_checkbox_high"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/reading_high"
-                android:textSize="12sp"
-                android:button="@drawable/selector_checkbox_high"
-                android:drawableLeft="@android:color/transparent"
-                android:layout_marginLeft="8dp"
-                android:drawablePadding="4dp"
-                android:textStyle="bold"
-                android:textColor="@color/glucosio_reading_high" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-            </LinearLayout>
-        </LinearLayout>
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="2px"
-            android:layout_marginTop="16dp"
-            android:background="#DADADA" />
-        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -251,52 +185,37 @@
                     android:layout_marginTop="16dp"
                     android:text="@string/overview_hb1ac"
                     android:textColor="@color/glucosio_text" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginBottom="4dp"
+                    android:onClick="onA1cInfoClicked"
+                    android:src="@drawable/ic_error_outline_black_24dp"/>
 
                 <TextView
                     android:id="@+id/fragment_overview_hb1ac"
                     fontPath="fonts/lato-bold.ttf"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="16dp"
                     android:text="6.5%"
-                    android:textColor="@color/glucosio_text_light" />
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="?android:attr/selectableItemBackground"
-                    android:layout_marginTop="8dp"
-                    android:src="@drawable/ic_expand_less_black_24dp"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    fontPath="fonts/lato-bold.ttf"
-                    android:visibility="invisible"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="@string/dialog_add_hb1ac" />
+                    android:textColor="@color/glucosio_text" />
                 <TextView
                     android:visibility="visible"
                     fontPath="fonts/lato.ttf"
                     android:id="@+id/fragment_overview_hb1ac_date"
                     android:layout_weight="1"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginLeft="8dp"
                     android:layout_marginBottom="16dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/glucosio_text_light"
                     android:text="December - March"/>
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="?android:attr/selectableItemBackground"
-                    android:src="@drawable/ic_expand_more_black_24dp"/>
             </LinearLayout>
         </LinearLayout>
 

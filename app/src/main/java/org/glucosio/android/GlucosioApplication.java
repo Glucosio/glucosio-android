@@ -20,16 +20,10 @@
 
 package org.glucosio.android;
 
-import android.app.Activity;
 import android.app.Application;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
-import android.support.annotation.VisibleForTesting;
-
-import com.instabug.library.IBGInvocationEvent;
-import com.instabug.library.Instabug;
-import com.instabug.library.InstabugActivityDelegate;
 
 import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.analytics.DummyAnalytics;
@@ -39,12 +33,16 @@ import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.invitations.DummyInvitation;
 import org.glucosio.android.invitations.Invitation;
 
+import io.smooch.core.Smooch;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 public class GlucosioApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        // Initialize Smooch
+        Smooch.init(this, "dxopifgi0mylv4invg5lrb66r");
 
         // Get Dyslexia preference and adjust font
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
@@ -54,21 +52,6 @@ public class GlucosioApplication extends Application {
             setFont("fonts/opendyslexic.otf");
         } else {
             setFont("fonts/lato.ttf");
-        }
-
-        initInstabug();
-    }
-
-    @VisibleForTesting
-    protected void initInstabug() {
-        if (BuildConfig.DEBUG) {
-            new Instabug.Builder(this, "b2226aa30fec24f6f4bed6ad68964e9b")
-                    .setInvocationEvent(IBGInvocationEvent.IBGInvocationEventShake)
-                    .build();
-        } else {
-            new Instabug.Builder(this, "820ee7db3118d03fd5f4249b5a73672e")
-                    .setInvocationEvent(IBGInvocationEvent.IBGInvocationEventShake)
-                    .build();
         }
     }
 
@@ -97,10 +80,5 @@ public class GlucosioApplication extends Application {
     @NonNull
     public DatabaseHandler getDBHandler() {
         return new DatabaseHandler(getApplicationContext());
-    }
-
-    @NonNull
-    public InstabugActivityDelegate createInstabugDelegate(@NonNull final Activity activity) {
-        return new InstabugActivityDelegate(activity);
     }
 }
