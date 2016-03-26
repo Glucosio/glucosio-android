@@ -29,11 +29,9 @@ import android.preference.PreferenceFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
-
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
+import org.glucosio.android.analytics.Analytics;
 
 import java.util.Locale;
 
@@ -120,7 +118,7 @@ public class AboutActivity extends AppCompatActivity {
             feedbackPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
-                    ((MainActivity)getActivity()).openSupportDialog();
+                    ((MainActivity) getActivity()).openSupportDialog();
 
                     return false;
                 }
@@ -162,14 +160,9 @@ public class AboutActivity extends AppCompatActivity {
         }
 
         private void addTermsAnalyticsEvent(String action) {
-            // Get tracker.
-            Tracker t = ((GlucosioApplication) getActivity().getApplication()).getAnalyticsTracker();
+            Analytics analytics = ((GlucosioApplication) getActivity().getApplication()).getAnalytics();
 
-            // Build and send an Event.
-            t.send(new HitBuilders.EventBuilder()
-                    .setCategory("Preferences")
-                    .setAction(action)
-                    .build());
+            analytics.sendEvent("Preferences", action);
         }
     }
 }

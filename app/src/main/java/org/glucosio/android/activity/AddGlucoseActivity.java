@@ -35,14 +35,13 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
+import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.presenter.AddGlucosePresenter;
 import org.glucosio.android.tools.FormatDateTime;
 import org.glucosio.android.tools.LabelledSpinner;
@@ -183,14 +182,8 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
     }
 
     private void addAnalyticsEvent() {
-        // Get tracker.
-        Tracker t = ((GlucosioApplication) getApplication()).getAnalyticsTracker();
-
-        // Build and send an Event.
-        t.send(new HitBuilders.EventBuilder()
-                .setCategory("FreeStyle Libre")
-                .setAction("New reading added")
-                .build());
+        Analytics analytics = ((GlucosioApplication) getApplication()).getAnalytics();
+        analytics.sendEvent("FreeStyle Libre", "New reading added");
     }
 
     private void dialogOnAddButtonPressed() {

@@ -1,0 +1,31 @@
+package org.glucosio.android;
+
+import org.glucosio.android.analytics.Analytics;
+import org.glucosio.android.backup.Backup;
+import org.glucosio.android.db.DatabaseHandler;
+import org.glucosio.android.invitations.Invitation;
+import org.junit.Ignore;
+import org.junit.runner.RunWith;
+import org.robolectric.RuntimeEnvironment;
+import org.robolectric.annotation.Config;
+
+@Ignore
+@RunWith(GlucosioTestRunner.class)
+@Config(constants = BuildConfig.class, sdk = 21, packageName = "org.glucosio.android")
+public abstract class RobolectricTest {
+    protected Analytics getAnalytics() {
+        return ((TestGlucosioApplication) RuntimeEnvironment.application).getAnalytics();
+    }
+
+    protected Backup getBackup() {
+        return ((TestGlucosioApplication) RuntimeEnvironment.application).getBackup();
+    }
+
+    protected DatabaseHandler getDBHandler() {
+        return ((TestGlucosioApplication) RuntimeEnvironment.application).getDBHandler();
+    }
+
+    protected Invitation getInvitation() {
+        return ((TestGlucosioApplication) RuntimeEnvironment.application).getInvitation();
+    }
+}

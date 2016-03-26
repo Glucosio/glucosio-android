@@ -39,9 +39,9 @@ public class HelloPresenter {
     private String unitMeasurement;
     private String language;
 
-    public HelloPresenter(HelloActivity helloActivity) {
+    public HelloPresenter(HelloActivity helloActivity, DatabaseHandler dbHandler) {
         this.helloActivity = helloActivity;
-        dB = new DatabaseHandler(helloActivity.getApplicationContext());
+        dB = dbHandler;
     }
 
     public void loadDatabase() {

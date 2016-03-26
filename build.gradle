@@ -25,6 +25,7 @@ buildscript {
     repositories {
         jcenter()
     }
+
     dependencies {
         classpath 'com.android.tools.build:gradle:2.1.0-alpha4'
         classpath 'com.google.gms:google-services:2.0.0-beta6'
@@ -38,4 +39,12 @@ allprojects {
     repositories {
         jcenter()
     }
+
+    ext.androidSupportVer = '23.2.1'
+    ext.googlePlayServicesVer = '8.4.0'
+
+    ext.junitVer = '4.12'
+    ext.mockitoVer = '1.10.17'
+    ext.androidAssertJVer = '1.1.1'
+    ext.robolectricVer = '3.0'
 }

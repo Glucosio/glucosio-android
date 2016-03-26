@@ -23,64 +23,85 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 23
     buildToolsVersion '23.0.2'
+
     lintOptions {
         abortOnError false
     }
+
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 23
         versionCode 15
         versionName '0.10.3'
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
     }
+
     buildTypes {
         debug {
             minifyEnabled false
             debuggable true
 
-            buildConfigField "String", "GOOGLE_ANALYTICS_TRACKER", '"UA-68882401-2"'
-
-            applicationIdSuffix '.daily'
             versionNameSuffix '-DEVEL'
+            applicationIdSuffix '.daily'
+
+            buildConfigField 'String', 'GOOGLE_ANALYTICS_TRACKER', '"UA-68882401-2"'
         }
+
         release {
             debuggable false
             minifyEnabled true
             shrinkResources true
             zipAlignEnabled true
-            buildConfigField "String", "GOOGLE_ANALYTICS_TRACKER", '"UA-68882401-2"'
+
+            buildConfigField 'String', 'GOOGLE_ANALYTICS_TRACKER', '"UA-68882401-2"'
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    productFlavors {
+        google
+        amazon
+    }
+
     lintOptions {
         abortOnError false
+    }
+
+    testOptions {
+        unitTests {
+            all {
+                // configure the test JVM arguments
+                jvmArgs '-noverify'
+            }
+        }
     }
 }
 
 repositories {
     mavenCentral()
     jcenter()
-    maven { url "https://jitpack.io" }
-    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    maven { url 'https://jitpack.io' }
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
 
     // Android Support libraries
-    compile 'com.android.support:appcompat-v7:23.2.1'
-    compile 'com.android.support:design:23.2.1'
-    compile 'com.android.support:cardview-v7:23.2.1'
-    compile 'com.android.support:recyclerview-v7:23.2.1'
-    compile 'com.android.support:percent:23.2.1'
+    compile "com.android.support:appcompat-v7:${androidSupportVer}"
+    compile "com.android.support:design:${androidSupportVer}"
+    compile "com.android.support:cardview-v7:${androidSupportVer}"
+    compile "com.android.support:recyclerview-v7:${androidSupportVer}"
+    compile "com.android.support:percent:${androidSupportVer}"
+
     compile 'com.google.android.support:wearable:1.3.0'
 
     // Google Play Services
-    compile 'com.google.android.gms:play-services-appinvite:8.4.0'
-    compile 'com.google.android.gms:play-services-analytics:8.4.0'
-    compile 'com.google.android.gms:play-services-drive:8.4.0'
-    compile 'com.google.android.gms:play-services-wearable:8.4.0'
+    googleCompile "com.google.android.gms:play-services-appinvite:${googlePlayServicesVer}"
+    googleCompile "com.google.android.gms:play-services-analytics:${googlePlayServicesVer}"
+    googleCompile "com.google.android.gms:play-services-drive:${googlePlayServicesVer}"
+    googleCompile "com.google.android.gms:play-services-wearable:${googlePlayServicesVer}"
     compile 'com.google.android.gms:play-services-gcm:8.4.0'
 
     // Smooch
@@ -100,22 +121,33 @@ dependencies {
         transitive = true
     }
 
+    testCompile "junit:junit:${junitVer}"
+    testCompile "org.mockito:mockito-all:${mockitoVer}"
+    testCompile "com.squareup.assertj:assertj-android:${androidAssertJVer}"
+    testCompile("org.robolectric:robolectric:${robolectricVer}") {
+        exclude group: 'commons-logging', module: 'commons-logging'
+        exclude group: 'org.apache.httpcomponents', module: 'httpclient'
+    }
+    testCompile("org.robolectric:shadows-support-v4:${robolectricVer}") {
+        exclude group: 'commons-logging', module: 'commons-logging'
+        exclude group: 'org.apache.httpcomponents', module: 'httpclient'
+    }
+
     wearApp project(':wear')
 
     // Testing libraries
     androidTestCompile 'com.android.support.test:rules:0.4.1'
     androidTestCompile 'com.android.support.test:runner:0.4.1'
-    androidTestCompile 'com.android.support:recyclerview-v7:23.2.1'
+    androidTestCompile "com.android.support:support-annotations:${androidSupportVer}"
+    androidTestCompile "com.android.support:recyclerview-v7:${androidSupportVer}"
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
     androidTestCompile 'com.android.support.test.espresso:espresso-intents:2.2.2'
     androidTestCompile 'com.android.support.test.espresso:espresso-contrib:2.2.2'
-    androidTestCompile 'com.android.support:support-annotations:23.2.1'
 }
 
 configurations.all {
-    resolutionStrategy.force 'com.android.support:support-annotations:23.2.1'
-    resolutionStrategy.force 'com.android.support:design:23.2.1'
-    resolutionStrategy.force 'com.android.support:appcompat-v7:23.2.1'
+    resolutionStrategy.force "com.android.support:support-annotations:${androidSupportVer}"
+    resolutionStrategy.force "com.android.support:design:${androidSupportVer}"
+    resolutionStrategy.force "com.android.support:appcompat-v7:${androidSupportVer}"
 }
-
 apply plugin: 'com.google.gms.google-services'

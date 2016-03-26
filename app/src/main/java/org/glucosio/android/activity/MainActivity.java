@@ -50,9 +50,6 @@ import android.widget.TextView;
 
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
-import com.google.android.gms.appinvite.AppInviteInvitation;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
@@ -65,6 +62,9 @@ import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.adapter.HomePagerAdapter;
+import org.glucosio.android.analytics.Analytics;
+import org.glucosio.android.db.DatabaseHandler;
+import org.glucosio.android.invitations.Invitation;
 import org.glucosio.android.presenter.ExportPresenter;
 import org.glucosio.android.presenter.MainPresenter;
 
@@ -86,7 +86,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private TextView exportDialogDateTo;
 
     private FloatingActionMenu fabMenu;
-    private Tracker mTracker;
     private FloatingActionButton fabGlucoseEmpty;
 
     private Toolbar toolbar;
@@ -95,9 +94,11 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        GlucosioApplication application = (GlucosioApplication) getApplication();
+
         setContentView(R.layout.activity_main);
-        presenter = new MainPresenter(this);
-        exportPresenter = new ExportPresenter(this);
+        initPresenters(application);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         tabLayout = (TabLayout) findViewById(R.id.tab_layout);
@@ -247,12 +248,15 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
         checkIfEmptyLayout();
 
-        // Obtain the Analytics shared Tracker instance.
-        GlucosioApplication application = (GlucosioApplication) getApplication();
-        mTracker = application.getDefaultTracker();
+        Analytics analytics = application.getAnalytics();
         Log.i("MainActivity", "Setting screen name: " + "main");
-        mTracker.setScreenName("Main Activity");
-        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+        analytics.reportScreen("Main Activity");
+    }
+
+    private void initPresenters(GlucosioApplication application) {
+        final DatabaseHandler dbHandler = application.getDBHandler();
+        presenter = new MainPresenter(this, dbHandler);
+        exportPresenter = new ExportPresenter(this, dbHandler);
     }
 
     private void openA1CCalculator() {
@@ -554,11 +558,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     public void showInviteDialog() {
-        Intent intent = new AppInviteInvitation.IntentBuilder(getString(R.string.invitation_title))
-                .setMessage(getString(R.string.invitation_message))
-                .setCallToActionText(getString(R.string.invitation_cta))
-                .build();
-        startActivityForResult(intent, 0);
+        final Invitation invitation = ((GlucosioApplication) getApplication()).getInvitation();
+        invitation.invite(this, getString(R.string.invitation_title), this.getString(R.string.invitation_message), this.getString(R.string.invitation_cta));
     }
 
     public void checkIfEmptyLayout() {
@@ -692,14 +693,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     private void addA1cAnalyticsEvent() {
-        // Get tracker.
-        Tracker t = ((GlucosioApplication) getApplication()).getAnalyticsTracker();
-
-        // Build and send an Event.
-        t.send(new HitBuilders.EventBuilder()
-                .setCategory("A1C")
-                .setAction("A1C disclaimer opened")
-                .build());
+        Analytics analytics = ((GlucosioApplication) getApplication()).getAnalytics();
+        analytics.sendEvent("A1C", "A1C disclaimer opened");
     }
 
     @Override
