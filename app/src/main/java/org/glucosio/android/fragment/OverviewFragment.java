@@ -370,7 +370,10 @@ public class OverviewFragment extends Fragment {
         set1.setFillDrawable(getResources().getDrawable(R.drawable.graph_gradient));
         set1.setHighLightColor(getResources().getColor(R.color.glucosio_gray_light));
         set1.setCubicIntensity(0.2f);
-        set1.setDrawCubic(true);
+
+        // TODO: Change this to true when a fix is available
+        // https://github.com/PhilJay/MPAndroidChart/issues/1541
+        set1.setDrawCubic(false);
 
         if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.JELLY_BEAN_MR2){
             set1.setDrawFilled(false);

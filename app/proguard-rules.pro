@@ -1,3 +1,35 @@
+-optimizationpasses 5
+-dump class_files.txt
+-printseeds seeds.txt
+-printusage unused.txt
+-printmapping mapping.txt
+-optimizations !code/simplification/arithmetic,!field/*,!class/merging*/
+-allowaccessmodification
+-repackageclasses ''
+
+-keep public class * extends android.app.Activity
+-keep public class * extends android.app.Application
+-keep public class * extends android.app.MapActivity
+-keep public class * extends android.app.Service
+-keep public class * extends android.content.BroadcastReceiver
+-keep public class * extends android.content.ContentProvider
+
+-keep public class org.apache.commons.io.**
+-keep public class com.google.gson.**
+-keep public class com.google.gson.** {public private protected *;}
+
+##---------------Begin: proguard configuration for Gson ----------
+-keepattributes *Annotation*,Signature
+-keep class org.glucosio.android.ActivityMonitor.ClassMultiPoints.** { *; }
+-keep public class org.glucosio.android.ActivityMonitor$ClassMultiPoints     { public protected *; }
+-keep public class org.glucosio.android.ActivityMonitor$ClassMultiPoints$ClassPoints { public protected *; }
+-keep public class org.glucosio.android.ActivityMonitor$ClassMultiPoints$ClassPoints$ClassPoint { public protected *; }
+-keepclassmembers enum * { *; }
+
+##---------------End: proguard configuration for Gson ----------
+
+
+
 # MPAndoridChart
 -keep class com.github.mikephil.charting.** { *; }
 
@@ -11,13 +43,6 @@
 -keep @io.realm.internal.Keep class * { *; }
 -dontwarn javax.**
 -dontwarn io.realm.**
-
-## Instabug
--dontwarn org.apache.http.**
--dontwarn android.net.http.AndroidHttpClient
--dontwarn com.google.android.gms.**
--dontwarn com.android.volley.toolbox.**
--dontwarn com.instabug.**
 
 ## AppCompat
 -keep public class android.support.v7.widget.** { *; }
@@ -49,6 +74,9 @@
 
 ## Smooch
 -dontwarn okio.**
+-keep class okio.**
+-keep class com.google.gson.**
+
 
 -keep class * extends java.util.ListResourceBundle {
     protected java.lang.Object[][] getContents();
@@ -69,4 +97,12 @@
 # Needed for Parcelable/SafeParcelable Creators to not get stripped
 -keepnames class * implements android.os.Parcelable {
     public static final ** CREATOR;
+}
+
+#  Needed by google-api-client to keep generic types and @Key annotations accessed via reflection
+
+-keepattributes Signature,RuntimeVisibleAnnotations,AnnotationDefault
+
+-keepclassmembers class * {
+   @com.google.api.client.util.Key <fields>;
 }
