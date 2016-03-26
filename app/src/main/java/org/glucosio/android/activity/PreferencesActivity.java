@@ -38,11 +38,9 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.EditText;
 
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
-
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
+import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.User;
 import org.glucosio.android.tools.InputFilterMinMax;
@@ -54,8 +52,6 @@ import java.util.Locale;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class PreferencesActivity extends AppCompatActivity {
-
-    private Tracker mTracker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,10 +66,9 @@ public class PreferencesActivity extends AppCompatActivity {
 
         // Obtain the Analytics shared Tracker instance.
         GlucosioApplication application = (GlucosioApplication) getApplication();
-        mTracker = application.getDefaultTracker();
-        Log.i("MainActivity", "Setting screen name: " + "main");
-        mTracker.setScreenName("Preferences");
-        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+        Analytics analytics = application.getAnalytics();
+        Log.i("PreferencesActivity", "Setting screen name: preferences");
+        analytics.reportScreen("Preferences");
     }
 
     @Override
@@ -126,7 +121,7 @@ public class PreferencesActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.preferences);
 
-            dB = new DatabaseHandler(getActivity().getApplicationContext());
+            dB = ((GlucosioApplication) getActivity().getApplicationContext()).getDBHandler();
             user = dB.getUser(1);
             updatedUser = new User(user.getId(), user.getName(), user.getPreferred_language(), user.getCountry(), user.getAge(), user.getGender(), user.getD_type(), user.getPreferred_unit(), user.getPreferred_range(), user.getCustom_range_min(), user.getCustom_range_max());
             agePref = (EditTextPreference) findPreference("pref_age");

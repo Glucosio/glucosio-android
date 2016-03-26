@@ -35,11 +35,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
-
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
+import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.presenter.HelloPresenter;
 import org.glucosio.android.tools.LabelledSpinner;
 
@@ -61,7 +59,6 @@ public class HelloActivity extends AppCompatActivity {
     private TextView ageTextView;
     private HelloPresenter presenter;
     private TextView termsTextView;
-    private Tracker mTracker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +68,8 @@ public class HelloActivity extends AppCompatActivity {
         // Prevent SoftKeyboard to pop up on start
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
-        presenter = new HelloPresenter(this);
+        GlucosioApplication application = (GlucosioApplication) getApplication();
+        presenter = new HelloPresenter(this, application.getDBHandler());
         presenter.loadDatabase();
 
         countrySpinner = (LabelledSpinner) findViewById(R.id.activity_hello_spinner_country);
@@ -124,12 +122,9 @@ public class HelloActivity extends AppCompatActivity {
             }
         });
 
-        // Obtain the Analytics shared Tracker instance.
-        GlucosioApplication application = (GlucosioApplication) getApplication();
-        mTracker = application.getDefaultTracker();
-        Log.i("MainActivity", "Setting screen name: " + "main");
-        mTracker.setScreenName("Hello Activity");
-        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+        Analytics analytics = application.getAnalytics();
+        analytics.reportScreen("Hello Activity");
+        Log.i("MainActivity", "Setting screen name: main");
     }
 
     public void onStartClicked(View v) {

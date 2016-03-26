@@ -42,9 +42,9 @@ public class ExportPresenter {
     private MainActivity activity;
 
 
-    public ExportPresenter(MainActivity exportActivity) {
+    public ExportPresenter(MainActivity exportActivity, DatabaseHandler dbHandler) {
         this.activity = exportActivity;
-        dB = new DatabaseHandler(exportActivity.getApplicationContext());
+        dB = dbHandler;
     }
 
     public void onExportClicked(Boolean all) {

@@ -23,41 +23,23 @@ package org.glucosio.android;
 import android.app.Application;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.util.Log;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-import com.google.android.gms.analytics.GoogleAnalytics;
-import com.google.android.gms.analytics.Tracker;
+import org.glucosio.android.analytics.Analytics;
+import org.glucosio.android.analytics.GoogleAnalytics;
+import org.glucosio.android.backup.Backup;
+import org.glucosio.android.backup.GoogleDriveBackup;
+import org.glucosio.android.db.DatabaseHandler;
+import org.glucosio.android.invitations.GoogleInvitation;
+import org.glucosio.android.invitations.Invitation;
 
 import io.smooch.core.Smooch;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 public class GlucosioApplication extends Application {
-
-    private Tracker mTracker;
-
-    /**
-     * Gets the default {@link Tracker} for this {@link Application}.
-     *
-     * @return tracker
-     */
-    synchronized public Tracker getDefaultTracker() {
-        if (mTracker == null) {
-            GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
-            // To enable debug logging use: adb shell setprop log.tag.GAv4 DEBUG
-            mTracker = analytics.newTracker(BuildConfig.GOOGLE_ANALYTICS_TRACKER);
-            mTracker.enableAdvertisingIdCollection(true);
-
-            if (BuildConfig.DEBUG) {
-                GoogleAnalytics.getInstance(this).setAppOptOut(true);
-                Log.i("Glucosio", "DEBUG BUILD: ANALYTICS IS DISABLED");
-            }
-        }
-        return mTracker;
-    }
-
-    public Tracker getAnalyticsTracker(){
-        return mTracker;
-    }
+    @Nullable
+    private Analytics analytics;
 
     @Override
     public void onCreate() {
@@ -82,5 +64,30 @@ public class GlucosioApplication extends Application {
                 .setDefaultFontPath(font)
                 .setFontAttrId(R.attr.fontPath)
                 .build());
+    }
+
+    @NonNull
+    public Backup getBackup() {
+        return new GoogleDriveBackup();
+    }
+
+    @NonNull
+    public Analytics getAnalytics() {
+        if (analytics == null) {
+            analytics = new GoogleAnalytics();
+            analytics.init(this);
+        }
+
+        return analytics;
+    }
+
+    @NonNull
+    public Invitation getInvitation() {
+        return new GoogleInvitation();
+    }
+
+    @NonNull
+    public DatabaseHandler getDBHandler() {
+        return new DatabaseHandler(getApplicationContext());
     }
 }
