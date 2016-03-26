@@ -26,8 +26,6 @@ import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
 import com.google.android.gms.wearable.MessageEvent;
 import com.google.android.gms.wearable.WearableListenerService;
 
@@ -87,7 +85,7 @@ public class DataLayerListenerService extends WearableListenerService {
 
         // Sets an ID for the notification
         int mNotificationId = 001;
-        // Gets an instance of the NotificationManager service
+        // Gets an instance of the NotificationManager org.glucosio.android.service
         NotificationManager mNotifyMgr =
                 (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         // Builds the notification and issues it.

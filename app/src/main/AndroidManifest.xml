@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2016 Glucosio Foundation
   ~
   ~ This file is part of Glucosio.
@@ -18,24 +17,26 @@
   ~
   ~
   -->
-
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="org.glucosio.android">
 
-    <uses-permission android:name="android.permission.NFC" android:required="false"/>
-    <uses-feature android:name="android.hardware.nfc" android:required="false" />
+    <uses-permission
+        android:name="android.permission.NFC"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.nfc"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <!-- Required for Google Cloud Messaging -->
-    <uses-permission android:name="${applicationId}.permission.C2D_MESSAGE"/>
+    <uses-permission android:name="${applicationId}.permission.C2D_MESSAGE" />
     <permission
         android:name="${applicationId}.permission.C2D_MESSAGE"
-        android:protectionLevel="signature"/>
+        android:protectionLevel="signature" />
 
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
-    <uses-permission android:name="${applicationId}.permission.C2D_MESSAGE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:name=".GlucosioApplication"
@@ -91,8 +92,8 @@
         <activity
             android:name=".activity.AddGlucoseActivity"
             android:label="@string/title_activity_add_glucose"
-            android:windowSoftInputMode="stateVisible"
-            android:parentActivityName=".activity.MainActivity">
+            android:parentActivityName=".activity.MainActivity"
+            android:windowSoftInputMode="stateVisible">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.glucosio.android.activity.MainActivity" />
@@ -100,8 +101,8 @@
         <activity
             android:name=".activity.AddWeightActivity"
             android:label="@string/title_activity_add_weight"
-            android:windowSoftInputMode="stateVisible"
-            android:parentActivityName=".activity.MainActivity">
+            android:parentActivityName=".activity.MainActivity"
+            android:windowSoftInputMode="stateVisible">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.glucosio.android.activity.MainActivity" />
@@ -109,8 +110,8 @@
         <activity
             android:name=".activity.AddCholesterolActivity"
             android:label="@string/title_activity_add_cholesterol"
-            android:windowSoftInputMode="stateVisible"
-            android:parentActivityName=".activity.MainActivity">
+            android:parentActivityName=".activity.MainActivity"
+            android:windowSoftInputMode="stateVisible">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.glucosio.android.activity.MainActivity" />
@@ -118,8 +119,8 @@
         <activity
             android:name=".activity.AddKetoneActivity"
             android:label="@string/title_activity_add_ketone"
-            android:windowSoftInputMode="stateVisible"
-            android:parentActivityName=".activity.MainActivity">
+            android:parentActivityName=".activity.MainActivity"
+            android:windowSoftInputMode="stateVisible">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.glucosio.android.activity.MainActivity" />
@@ -127,8 +128,8 @@
         <activity
             android:name=".activity.AddPressureActivity"
             android:label="@string/title_activity_add_pressure"
-            android:windowSoftInputMode="stateVisible"
-            android:parentActivityName=".activity.MainActivity">
+            android:parentActivityName=".activity.MainActivity"
+            android:windowSoftInputMode="stateVisible">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.glucosio.android.activity.MainActivity" />
@@ -136,8 +137,8 @@
         <activity
             android:name=".activity.AddHB1ACActivity"
             android:label="@string/title_activity_add_hb1ac"
-            android:windowSoftInputMode="stateVisible"
-            android:parentActivityName=".activity.MainActivity">
+            android:parentActivityName=".activity.MainActivity"
+            android:windowSoftInputMode="stateVisible">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.glucosio.android.activity.MainActivity" />
@@ -146,29 +147,54 @@
             <!-- NFC for FreeStyle -->
             <intent-filter>
                 <action android:name="android.nfc.action.TECH_DISCOVERED" />
-                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-            <meta-data android:name="android.nfc.action.TECH_DISCOVERED" android:resource="@xml/nfc_tech_filter" />
+            <meta-data
+                android:name="android.nfc.action.TECH_DISCOVERED"
+                android:resource="@xml/nfc_tech_filter" />
         </activity>
-        <activity android:name=".activity.A1Calculator"
+        <activity
+            android:name=".activity.A1Calculator"
             android:label="@string/activity_converter_title"
-            android:windowSoftInputMode="stateVisible"
+            android:parentActivityName=".activity.MainActivity"
             android:screenOrientation="portrait"
-            android:parentActivityName=".activity.MainActivity">
+            android:windowSoftInputMode="stateVisible">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.glucosio.android.activity.MainActivity" />
         </activity>
+
+        <!--
+            Google Cloud Messaging receiver
+         -->
+        <receiver
+            android:name="com.google.android.gms.gcm.GcmReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <category android:name="${applicationId}" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+            </intent-filter>
+        </receiver>
 
         <service android:name=".service.DataLayerListenerService">
             <intent-filter>
                 <action android:name="com.google.android.gms.wearable.BIND_LISTENER" />
             </intent-filter>
         </service>
+
         <!--
          Register AnalyticsReceiver and AnalyticsService to support background
          dispatching on non-Google Play devices
         -->
+        <service
+            android:name="com.google.android.gms.analytics.AnalyticsService"
+            android:enabled="true"
+            android:exported="false" />
+
         <receiver
             android:name="com.google.android.gms.analytics.AnalyticsReceiver"
             android:enabled="true">
@@ -177,10 +203,6 @@
             </intent-filter>
         </receiver>
 
-        <service
-            android:name="com.google.android.gms.analytics.AnalyticsService"
-            android:enabled="true"
-            android:exported="false" />
         <!--
          Register CampaignTrackingReceiver and CampaignTrackingService to enable
          installation campaign reporting
@@ -193,23 +215,12 @@
             </intent-filter>
         </receiver>
 
-        <!--
-            Google Cloud Messaging receiver
-         -->
-        <receiver
-            android:name="com.google.android.gms.gcm.GcmReceiver"
-            android:exported="true"
-            android:permission="com.google.android.c2dm.permission.SEND">
-            <intent-filter>
-                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
-                <category android:name="${applicationId}"/>
-            </intent-filter>
-            <intent-filter>
-                <action android:name="com.google.android.c2dm.intent.REGISTRATION"/>
-            </intent-filter>
-        </receiver>
-
         <service android:name="com.google.android.gms.analytics.CampaignTrackingService" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
     </application>
 
 </manifest>

@@ -24,19 +24,23 @@ import android.app.Application;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import org.glucosio.android.analytics.Analytics;
-import org.glucosio.android.analytics.DummyAnalytics;
+import org.glucosio.android.analytics.GoogleAnalytics;
 import org.glucosio.android.backup.Backup;
-import org.glucosio.android.backup.DummyBackup;
+import org.glucosio.android.backup.GoogleDriveBackup;
 import org.glucosio.android.db.DatabaseHandler;
-import org.glucosio.android.invitations.DummyInvitation;
+import org.glucosio.android.invitations.GoogleInvitation;
 import org.glucosio.android.invitations.Invitation;
 
 import io.smooch.core.Smooch;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 public class GlucosioApplication extends Application {
+    @Nullable
+    private Analytics analytics;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -64,17 +68,22 @@ public class GlucosioApplication extends Application {
 
     @NonNull
     public Backup getBackup() {
-        return new DummyBackup();
+        return new GoogleDriveBackup();
     }
 
     @NonNull
     public Analytics getAnalytics() {
-        return new DummyAnalytics();
+        if (analytics == null) {
+            analytics = new GoogleAnalytics();
+            analytics.init(this);
+        }
+
+        return analytics;
     }
 
     @NonNull
     public Invitation getInvitation() {
-        return new DummyInvitation();
+        return new GoogleInvitation();
     }
 
     @NonNull

@@ -1,12 +1,10 @@
-package org.glucosio.android.invitation;
+package org.glucosio.android.invitations;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 
 import com.google.android.gms.appinvite.AppInviteInvitation;
-
-import org.glucosio.android.invitations.Invitation;
 
 public class GoogleInvitation implements Invitation {
     @Override

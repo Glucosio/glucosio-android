@@ -59,11 +59,6 @@ android {
         }
     }
 
-    productFlavors {
-        google
-        amazon
-    }
-
     lintOptions {
         abortOnError false
     }
@@ -98,11 +93,11 @@ dependencies {
     compile 'com.google.android.support:wearable:1.3.0'
 
     // Google Play Services
-    googleCompile "com.google.android.gms:play-services-appinvite:${googlePlayServicesVer}"
-    googleCompile "com.google.android.gms:play-services-analytics:${googlePlayServicesVer}"
-    googleCompile "com.google.android.gms:play-services-drive:${googlePlayServicesVer}"
-    googleCompile "com.google.android.gms:play-services-wearable:${googlePlayServicesVer}"
-    compile 'com.google.android.gms:play-services-gcm:8.4.0'
+    compile "com.google.android.gms:play-services-appinvite:${googlePlayServicesVer}"
+    compile "com.google.android.gms:play-services-analytics:${googlePlayServicesVer}"
+    compile "com.google.android.gms:play-services-drive:${googlePlayServicesVer}"
+    compile "com.google.android.gms:play-services-wearable:${googlePlayServicesVer}"
+    compile "com.google.android.gms:play-services-gcm:${googlePlayServicesVer}"
 
     // Smooch
     compile 'com.google.code.gson:gson:2.4'
