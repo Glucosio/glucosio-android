@@ -81,6 +81,8 @@ repositories {
 }
 
 dependencies {
+    wearApp project(':wear')
+
     compile fileTree(include: ['*.jar'], dir: 'libs')
 
     // Android Support libraries
@@ -127,8 +129,7 @@ dependencies {
         exclude group: 'commons-logging', module: 'commons-logging'
         exclude group: 'org.apache.httpcomponents', module: 'httpclient'
     }
-
-    wearApp project(':wear')
+    testCompile 'io.reactivex:rxjava:1.1.0'
 
     // Testing libraries
     androidTestCompile 'com.android.support.test:rules:0.4.1'
