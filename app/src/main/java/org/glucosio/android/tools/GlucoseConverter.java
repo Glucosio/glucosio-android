@@ -45,4 +45,9 @@ public class GlucoseConverter {
         // A1C = (Average glucose + 46.7) / 28.7
         return round((mgDl + 46.7) / 28.7, 2);
     }
+
+    public double a1cToGlucose(double a1c) {
+        // Average glucose = (A1C * 28.7) -46.7
+        return round((a1c*28.7)-46.7, 2);
+    }
 }

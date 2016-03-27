@@ -21,6 +21,7 @@
 package org.glucosio.android.fragment;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
@@ -33,9 +34,13 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -54,6 +59,7 @@ import com.github.mikephil.charting.interfaces.dataprovider.LineDataProvider;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import org.glucosio.android.R;
+import org.glucosio.android.adapter.A1cEstimateAdapter;
 import org.glucosio.android.presenter.OverviewPresenter;
 import org.glucosio.android.tools.FormatDateTime;
 import org.glucosio.android.tools.GlucoseConverter;
@@ -78,6 +84,8 @@ public class OverviewFragment extends Fragment {
     private Spinner graphSpinnerMetric;
     private OverviewPresenter presenter;
     private View mFragmentView;
+    ImageButton HB1ACMoreButton;
+
 
     public static HistoryFragment newInstance() {
         HistoryFragment fragment = new HistoryFragment();
@@ -124,7 +132,14 @@ public class OverviewFragment extends Fragment {
         graphExport = (ImageButton) mFragmentView.findViewById(R.id.fragment_overview_graph_export);
         HB1ACTextView = (TextView) mFragmentView.findViewById(R.id.fragment_overview_hb1ac);
         HB1ACDateTextView = (TextView) mFragmentView.findViewById(R.id.fragment_overview_hb1ac_date);
+        HB1ACMoreButton = (ImageButton) mFragmentView.findViewById(R.id.fragment_overview_a1c_more);
 
+        HB1ACMoreButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showA1cDialog();
+            }
+        });
         // Set array and adapter for graphSpinnerRange
         String[] selectorRangeArray = getActivity().getResources().getStringArray(R.array.fragment_overview_selector_range);
         String[] selectorMetricArray = getActivity().getResources().getStringArray(R.array.fragment_overview_selector_metric);
@@ -404,10 +419,34 @@ public class OverviewFragment extends Fragment {
         chart.moveViewToX(data.getXValCount());
     }
 
+    private void showA1cDialog(){
+        final Dialog a1CDialog = new Dialog(getActivity(), R.style.GlucosioTheme);
+
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(a1CDialog.getWindow().getAttributes());
+        a1CDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        a1CDialog.setContentView(R.layout.dialog_a1c);
+        a1CDialog.getWindow().setAttributes(lp);
+        a1CDialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+        a1CDialog.getWindow().setDimAmount(0.5f);
+        a1CDialog.show();
+
+        ListView a1cListView = (ListView) a1CDialog.findViewById(R.id.dialog_a1c_listview);
+        A1cEstimateAdapter customAdapter = new A1cEstimateAdapter(
+                getActivity(), R.layout.dialog_a1c_item, presenter.getA1cEstimateList());
+
+        a1cListView.setAdapter(customAdapter);
+    }
+
     private void loadHB1AC(){
         if (!presenter.isdbEmpty()){
             HB1ACTextView.setText(presenter.getHB1AC());
             HB1ACDateTextView.setText(presenter.getH1ACMonth());
+            if (!presenter.isA1cAvailable()){
+                HB1ACMoreButton.setVisibility(View.GONE);
+            }
         }
     }
 

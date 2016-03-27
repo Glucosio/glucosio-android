@@ -215,7 +215,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/glucosio_text_light"
-                    android:text="December - March"/>
+                    android:text="December"/>
+                <ImageButton
+                    android:id="@+id/fragment_overview_a1c_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:src="@drawable/ic_unfold_more_black_24dp" />
             </LinearLayout>
         </LinearLayout>
 

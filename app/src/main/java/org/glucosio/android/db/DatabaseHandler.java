@@ -343,7 +343,7 @@ public class DatabaseHandler {
 
         ArrayList<String> finalMonths = new ArrayList<String>();
 
-        // The number of months is at least 1 since we do have average for the current week even if incomplete
+        // The number of months is at least 1 because current month is incomplete
         int monthsNumber = Months.monthsBetween(minDateTime, maxDateTime).getMonths() + 1;
 
         DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");

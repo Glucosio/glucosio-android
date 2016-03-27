@@ -23,10 +23,13 @@ package org.glucosio.android.presenter;
 import org.glucosio.android.R;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.fragment.OverviewFragment;
+import org.glucosio.android.object.A1cEstimate;
 import org.glucosio.android.tools.GlucoseConverter;
 import org.glucosio.android.tools.TipsManager;
+import org.joda.time.DateTime;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -82,6 +85,24 @@ public class OverviewPresenter {
         } else {
             return fragment.getResources().getString(R.string.overview_hb1ac_error_no_data);
         }
+    }
+
+    public boolean isA1cAvailable(){
+        return getGlucoseReadingsMonth().size()>1;
+    }
+
+    public ArrayList<A1cEstimate> getA1cEstimateList(){
+        GlucoseConverter converter = new GlucoseConverter();
+        ArrayList<A1cEstimate> a1cEstimateList = new ArrayList<>();
+
+        // We don't take this month because A1C is incomplete
+        for (int i=0; i<getGlucoseReadingsMonth().size()-1; i++){
+            double value = converter.glucoseToA1C(getGlucoseReadingsMonth().get(i));
+            String month = convertDateToMonth(getGlucoseDatetimeMonth().get(i));
+            a1cEstimateList.add(new A1cEstimate(value, month));
+        }
+        Collections.reverse(a1cEstimateList);
+        return a1cEstimateList;
     }
 
     public String getH1ACMonth() {
