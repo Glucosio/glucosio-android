@@ -425,15 +425,17 @@ public class OverviewFragment extends Fragment {
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
         lp.copyFrom(a1CDialog.getWindow().getAttributes());
         a1CDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
         a1CDialog.setContentView(R.layout.dialog_a1c);
         a1CDialog.getWindow().setAttributes(lp);
         a1CDialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
         a1CDialog.getWindow().setDimAmount(0.5f);
+        a1CDialog.setCanceledOnTouchOutside(true);
         a1CDialog.show();
 
         ListView a1cListView = (ListView) a1CDialog.findViewById(R.id.dialog_a1c_listview);
+
         A1cEstimateAdapter customAdapter = new A1cEstimateAdapter(
                 getActivity(), R.layout.dialog_a1c_item, presenter.getA1cEstimateList());
 
