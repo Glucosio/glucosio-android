@@ -87,8 +87,8 @@ public class OverviewPresenter {
         }
     }
 
-    public boolean isA1cAvailable(){
-        return getGlucoseReadingsMonth().size()>1;
+    public boolean isA1cAvailable(int depth){
+        return getGlucoseReadingsMonth().size()>depth;
     }
 
     public ArrayList<A1cEstimate> getA1cEstimateList(){

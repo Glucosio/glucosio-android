@@ -446,7 +446,8 @@ public class OverviewFragment extends Fragment {
         if (!presenter.isdbEmpty()){
             HB1ACTextView.setText(presenter.getHB1AC());
             HB1ACDateTextView.setText(presenter.getH1ACMonth());
-            if (!presenter.isA1cAvailable()){
+            // We show the A1C more button only if 2 or more A1C estimates are available
+            if (!presenter.isA1cAvailable(2)){
                 HB1ACMoreButton.setVisibility(View.GONE);
             }
         }
