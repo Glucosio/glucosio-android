@@ -101,13 +101,15 @@ dependencies {
     compile "com.google.android.gms:play-services-wearable:${googlePlayServicesVer}"
     compile "com.google.android.gms:play-services-gcm:${googlePlayServicesVer}"
 
-    // Smooch
+    //Smooch
     compile 'com.google.code.gson:gson:2.4'
     compile 'com.squareup.okhttp:okhttp:2.4.0'
     compile 'io.smooch:core:latest.release'
     compile 'io.smooch:ui:latest.release'
 
+
     // Other libraries
+    compile 'com.instabug.library:instabugcompat:2.3.1'
     compile 'io.realm:realm-android:0.87.5'
     compile 'com.github.clans:fab:1.6.2'
     compile 'com.wdullaer:materialdatetimepicker:2.2.0'
@@ -129,7 +131,7 @@ dependencies {
         exclude group: 'commons-logging', module: 'commons-logging'
         exclude group: 'org.apache.httpcomponents', module: 'httpclient'
     }
-    testCompile 'io.reactivex:rxjava:1.1.0'
+    testCompile 'io.reactivex:rxjava:1.0.13'
 
     // Testing libraries
     androidTestCompile 'com.android.support.test:rules:0.4.1'

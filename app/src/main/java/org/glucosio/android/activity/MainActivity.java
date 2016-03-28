@@ -52,6 +52,8 @@ import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.instabug.library.Instabug;
+import com.instabug.library.compat.InstabugAppCompatActivity;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
@@ -74,7 +76,7 @@ import io.smooch.ui.ConversationActivity;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
-public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+public class MainActivity extends InstabugAppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     private ExportPresenter exportPresenter;
     private RadioButton exportRangeButton;
@@ -176,8 +178,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         // Add Nav Drawer
         final PrimaryDrawerItem itemSettings = new PrimaryDrawerItem().withName(R.string.action_settings).withIcon(R.drawable.ic_settings_black_24dp).withSelectable(false);
         final PrimaryDrawerItem itemExport = new PrimaryDrawerItem().withName(R.string.title_activity_export).withIcon(R.drawable.ic_share_black_24dp).withSelectable(false);
-        final PrimaryDrawerItem itemAbout = new PrimaryDrawerItem().withName(R.string.preferences_about_glucosio).withIcon(R.drawable.ic_info_black_24dp).withSelectable(false);
         final PrimaryDrawerItem itemFeedback = new PrimaryDrawerItem().withName(R.string.menu_support).withIcon(R.drawable.ic_feedback_black_24dp).withSelectable(false);
+        final PrimaryDrawerItem itemAbout = new PrimaryDrawerItem().withName(R.string.preferences_about_glucosio).withIcon(R.drawable.ic_info_black_24dp).withSelectable(false);
         final PrimaryDrawerItem itemInvite = new PrimaryDrawerItem().withName(R.string.action_invite).withIcon(R.drawable.ic_face_black_24dp).withSelectable(false);
         final PrimaryDrawerItem itemDonate = new PrimaryDrawerItem().withName(R.string.about_donate).withIcon(R.drawable.ic_favorite_black_24dp).withSelectable(false);
         final PrimaryDrawerItem itemA1C = new PrimaryDrawerItem().withName(R.string.activity_converter_title).withIcon(R.drawable.ic_drawer_calculator_a1c).withSelectable(false);
@@ -226,8 +228,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                     itemA1C,
                     itemExport,
                     itemSettings,
-                    itemAbout,
                     itemFeedback,
+                    itemAbout,
                     itemDonate,
                     itemInvite
             )
@@ -238,8 +240,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                     itemA1C,
                     itemExport,
                     itemSettings,
-                    itemAbout,
                     itemFeedback,
+                    itemAbout,
                     itemDonate
             )
                     .withSelectedItem(-1)
@@ -357,9 +359,10 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                         showSnackBar(getResources().getString(R.string.menu_support_error1), Snackbar.LENGTH_LONG);
                     }
                 } else if (which == 1){
-                    // Live Chat
-                    // Open Smooth
-                    ConversationActivity.show(mContext);
+                    // Report Feedback
+                    // Open Instabug
+                    Instabug.invoke();
+                    // ConversationActivity.show(mContext);
                 } else {
                     // Forum
                     String url = "http://community.glucosio.org/";

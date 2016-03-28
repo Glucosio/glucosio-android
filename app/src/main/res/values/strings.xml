@@ -172,7 +172,8 @@
     <string name="assistant">Assistant</string>.
     <string name="assistant_action_update">UPDATE NOW</string>
     <string name="assistant_action_ok">OK, GOT IT</string>
-    <string name="assistant_action_feedback">LIVE CHAT</string>
+    <string name="assistant_action_feedback">SEND FEEDBACK</string>
+    <string name="assistant_action_live_chat">LIVE CHAT</string>
     <string name="assistant_action_reading">ADD READING</string>
     <string name="assistant_action_try">TRY IT NOW</string>
     <string name="assistant_weight_title">Update your weight</string>
@@ -233,7 +234,7 @@
     <string name="menu_support_error1">There isn\'t an email app installed. Please send a mail to hello@glucosio.org</string>
     <string-array name="menu_support_options" translatable="false">
         <item>@string/menu_support_email</item>
-        <item>@string/menu_support_live</item>
+        <item>@string/action_feedback</item>
         <item>@string/menu_support_forum</item>
     </string-array>
 

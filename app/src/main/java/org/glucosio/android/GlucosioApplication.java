@@ -26,6 +26,9 @@ import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import com.instabug.library.IBGInvocationEvent;
+import com.instabug.library.Instabug;
+
 import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.analytics.GoogleAnalytics;
 import org.glucosio.android.backup.Backup;
@@ -47,6 +50,18 @@ public class GlucosioApplication extends Application {
 
         // Initialize Smooch
         Smooch.init(this, "dxopifgi0mylv4invg5lrb66r");
+
+        // Initialize Instabug
+
+        if (BuildConfig.DEBUG) {
+            new Instabug.Builder(this, "b2226aa30fec24f6f4bed6ad68964e9b")
+                    .setInvocationEvent(IBGInvocationEvent.IBGInvocationEventShake)
+                    .build();
+        } else {
+            new Instabug.Builder(this, "820ee7db3118d03fd5f4249b5a73672e")
+                    .setInvocationEvent(IBGInvocationEvent.IBGInvocationEventShake)
+                    .build();
+        }
 
         // Get Dyslexia preference and adjust font
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
