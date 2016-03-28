@@ -72,6 +72,13 @@
     public static final ** CREATOR;
 }
 
+## Instabug
+-dontwarn org.apache.http.**
+-dontwarn android.net.http.AndroidHttpClient
+-dontwarn com.google.android.gms.**
+-dontwarn com.android.volley.toolbox.**
+-dontwarn com.instabug.**
+
 ## Smooch
 -dontwarn okio.**
 -keep class okio.**
