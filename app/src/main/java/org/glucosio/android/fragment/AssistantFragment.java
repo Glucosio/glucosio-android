@@ -1,3 +1,23 @@
+/*
+ * Copyright (C) 2016 Glucosio Foundation
+ *
+ * This file is part of Glucosio.
+ *
+ * Glucosio is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, version 3.
+ *
+ * Glucosio is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Glucosio.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ *
+ */
+
 package org.glucosio.android.fragment;
 
 import android.content.Context;
@@ -28,6 +48,8 @@ import org.glucosio.android.presenter.AssistantPresenter;
 
 import java.util.ArrayList;
 
+import io.smooch.ui.ConversationActivity;
+
 public class AssistantFragment extends Fragment {
 
     SharedPreferences sharedPref;
@@ -35,7 +57,6 @@ public class AssistantFragment extends Fragment {
 
     private RecyclerView tipsRecycler;
     private AssistantAdapter adapter;
-    private AssistantPresenter presenter;
     private LinearLayout archivedButton;
     private LinearLayout archivedDismissButton;
     private ArrayList<ActionTip> actionTips;
@@ -43,14 +64,14 @@ public class AssistantFragment extends Fragment {
     private String[] actionTipDescriptions;
     private String[] actionTipActions;
 
+    public AssistantFragment() {
+        // Required empty public constructor
+    }
+
     public static AssistantFragment newInstance() {
         AssistantFragment fragment = new AssistantFragment();
 
         return fragment;
-    }
-
-    public AssistantFragment() {
-        // Required empty public constructor
     }
 
     @Override
@@ -63,7 +84,7 @@ public class AssistantFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        presenter = new AssistantPresenter(this);
+        AssistantPresenter presenter = new AssistantPresenter(this);
         actionTips = new ArrayList<>();
 
         actionTipTitles = getResources().getStringArray(R.array.assistant_titles);
@@ -119,7 +140,7 @@ public class AssistantFragment extends Fragment {
         itemTouchHelper.attachToRecyclerView(tipsRecycler);
 
         // If there aren't dismissed tips, don't show archive button
-        if (actionTipTitles.length == adapter.getItemCount()){
+        if (actionTipTitles.length == adapter.getItemCount()) {
             archivedButton.setVisibility(View.GONE);
         }
 
@@ -154,9 +175,9 @@ public class AssistantFragment extends Fragment {
         return mView;
     }
 
-    private void popolateWithNewTips(){
+    private void popolateWithNewTips() {
         actionTips.clear();
-        for (int i=0; i<actionTipTitles.length; i++){
+        for (int i = 0; i < actionTipTitles.length; i++) {
             String actionTipTitle = actionTipTitles[i];
             String actionTipDescription = actionTipDescriptions[i];
             String actionTipAction = actionTipActions[i];
@@ -173,9 +194,9 @@ public class AssistantFragment extends Fragment {
         }
     }
 
-    private void popolateWithArchivedTips(){
+    private void popolateWithArchivedTips() {
         actionTips.clear();
-        for (int i=0; i<actionTipTitles.length; i++){
+        for (int i = 0; i < actionTipTitles.length; i++) {
             String actionTipTitle = actionTipTitles[i];
             String actionTipDescription = actionTipDescriptions[i];
             String actionTipAction = actionTipActions[i];
@@ -192,32 +213,34 @@ public class AssistantFragment extends Fragment {
         }
     }
 
-    private void addPreference(String key){
+    private void addPreference(String key) {
         editor.putBoolean(key, true);
         editor.commit();
     }
 
-    private void removePreference(String key){
+    private void removePreference(String key) {
         editor.putBoolean(key, false);
         editor.commit();
     }
 
-    public void addReading(){
+    public void addReading() {
         Intent intent = new Intent(getActivity(), AddGlucoseActivity.class);
         startActivity(intent);
         getActivity().finish();
     }
 
-    public void openGitty(){
-        Instabug.getInstance().invoke();
-    }
-
     public void startExportActivity() {
-        ((MainActivity)getActivity()).showExportDialog();
+        ((MainActivity) getActivity()).showExportDialog();
     }
 
     public void startA1CCalculatorActivity() {
         Intent intent = new Intent(getActivity(), A1Calculator.class);
         startActivity(intent);
+    }
+
+    public void openLiveChat() {
+        // We're using Instabug for now until a fix for Smooch is available
+        // ConversationActivity.show(getActivity());
+        Instabug.invoke();
     }
 }

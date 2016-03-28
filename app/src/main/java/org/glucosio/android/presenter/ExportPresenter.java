@@ -1,3 +1,23 @@
+/*
+ * Copyright (C) 2016 Glucosio Foundation
+ *
+ * This file is part of Glucosio.
+ *
+ * Glucosio is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, version 3.
+ *
+ * Glucosio is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Glucosio.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ *
+ */
+
 package org.glucosio.android.presenter;
 
 import android.net.Uri;
@@ -22,15 +42,15 @@ public class ExportPresenter {
     private MainActivity activity;
 
 
-    public ExportPresenter(MainActivity exportActivity) {
-        this.activity= exportActivity;
-        dB = new DatabaseHandler(exportActivity.getApplicationContext());
+    public ExportPresenter(MainActivity exportActivity, DatabaseHandler dbHandler) {
+        this.activity = exportActivity;
+        dB = dbHandler;
     }
 
-    public void onExportClicked(Boolean all){
+    public void onExportClicked(Boolean all) {
         ArrayList<GlucoseReading> readings;
 
-        if (all){
+        if (all) {
             readings = dB.getGlucoseReadings();
         } else {
             Calendar fromDate = Calendar.getInstance();
@@ -45,7 +65,7 @@ public class ExportPresenter {
             readings = dB.getGlucoseReadings(fromDate.getTime(), toDate.getTime());
         }
 
-        if (readings.size()!=0) {
+        if (readings.size() != 0) {
             activity.showExportedSnackBar(readings.size());
             ReadingToCSV csv = new ReadingToCSV(activity.getApplicationContext());
             Uri csvUri = csv.createCSV(readings, dB.getUser(1).getPreferred_unit());

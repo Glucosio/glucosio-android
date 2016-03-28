@@ -1,3 +1,23 @@
+/*
+ * Copyright (C) 2016 Glucosio Foundation
+ *
+ * This file is part of Glucosio.
+ *
+ * Glucosio is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, version 3.
+ *
+ * Glucosio is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Glucosio.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ *
+ */
+
 package org.glucosio.android.db;
 
 import android.content.Context;
@@ -22,9 +42,9 @@ import io.realm.Sort;
 
 public class DatabaseHandler {
 
-    Context mContext;
-    Realm realm;
     private static RealmConfiguration mRealmConfig;
+    private Context mContext;
+    private Realm realm;
 
     public DatabaseHandler(Context context) {
         this.mContext = context;
@@ -64,10 +84,10 @@ public class DatabaseHandler {
         int day = calendar.get(Calendar.DAY_OF_MONTH);
         int hours = calendar.get(Calendar.HOUR_OF_DAY);
         int minutes = calendar.get(Calendar.MINUTE);
-        String id = "" + year+month+day+hours+minutes+reading.getReading();
+        String id = "" + year + month + day + hours + minutes + reading.getReading();
 
         // Check for duplicates
-        if (getGlucoseReadingById(Long.parseLong(id)) != null){
+        if (getGlucoseReadingById(Long.parseLong(id)) != null) {
             return false;
         } else {
             realm.beginTransaction();
@@ -79,9 +99,9 @@ public class DatabaseHandler {
     }
 
     public void addNGlucoseReadings(int n) {
-        for (int i=0; i<n; i++){
+        for (int i = 0; i < n; i++) {
             Calendar calendar = Calendar.getInstance();
-            GlucoseReading gReading = new GlucoseReading(50+i, "Debug reading", calendar.getTime(), "");
+            GlucoseReading gReading = new GlucoseReading(50 + i, "Debug reading", calendar.getTime(), "");
 
             int year = calendar.get(Calendar.YEAR);
             int month = calendar.get(Calendar.MONTH);
@@ -111,7 +131,7 @@ public class DatabaseHandler {
                 realm.where(GlucoseReading.class)
                         .findAllSorted("created", Sort.DESCENDING);
         ArrayList<GlucoseReading> readingList = new ArrayList<>();
-        for (int i=0; i < results.size(); i++){
+        for (int i = 0; i < results.size(); i++) {
             readingList.add(results.get(i));
         }
         return readingList;
@@ -120,10 +140,10 @@ public class DatabaseHandler {
     public ArrayList<GlucoseReading> getGlucoseReadings(Date from, Date to) {
         RealmResults<GlucoseReading> results =
                 realm.where(GlucoseReading.class)
-                .between("created", from, to)
-                .findAllSorted("created", Sort.DESCENDING);
+                        .between("created", from, to)
+                        .findAllSorted("created", Sort.DESCENDING);
         ArrayList<GlucoseReading> readingList = new ArrayList<>();
-        for (int i=0; i < results.size(); i++){
+        for (int i = 0; i < results.size(); i++) {
             readingList.add(results.get(i));
         }
         return readingList;
@@ -135,14 +155,14 @@ public class DatabaseHandler {
                 .findFirst();
     }
 
-    public ArrayList<Long> getGlucoseIdAsArray(){
+    public ArrayList<Long> getGlucoseIdAsArray() {
         List<GlucoseReading> glucoseReading = getGlucoseReadings();
         ArrayList<Long> idArray = new ArrayList<Long>();
         int i;
 
-        for (i = 0; i < glucoseReading.size(); i++){
+        for (i = 0; i < glucoseReading.size(); i++) {
             long id;
-            GlucoseReading singleReading= glucoseReading.get(i);
+            GlucoseReading singleReading = glucoseReading.get(i);
             id = singleReading.getId();
             idArray.add(id);
         }
@@ -150,14 +170,14 @@ public class DatabaseHandler {
         return idArray;
     }
 
-    public ArrayList<Integer> getGlucoseReadingAsArray(){
+    public ArrayList<Integer> getGlucoseReadingAsArray() {
         List<GlucoseReading> glucoseReading = getGlucoseReadings();
         ArrayList<Integer> readingArray = new ArrayList<Integer>();
         int i;
 
-        for (i = 0; i < glucoseReading.size(); i++){
+        for (i = 0; i < glucoseReading.size(); i++) {
             int reading;
-            GlucoseReading singleReading= glucoseReading.get(i);
+            GlucoseReading singleReading = glucoseReading.get(i);
             reading = singleReading.getReading();
             readingArray.add(reading);
         }
@@ -165,14 +185,14 @@ public class DatabaseHandler {
         return readingArray;
     }
 
-    public ArrayList<String> getGlucoseTypeAsArray(){
+    public ArrayList<String> getGlucoseTypeAsArray() {
         List<GlucoseReading> glucoseReading = getGlucoseReadings();
         ArrayList<String> typeArray = new ArrayList<String>();
         int i;
 
-        for (i = 0; i < glucoseReading.size(); i++){
+        for (i = 0; i < glucoseReading.size(); i++) {
             String reading;
-            GlucoseReading singleReading= glucoseReading.get(i);
+            GlucoseReading singleReading = glucoseReading.get(i);
             reading = singleReading.getReading_type();
             typeArray.add(reading);
         }
@@ -180,15 +200,15 @@ public class DatabaseHandler {
         return typeArray;
     }
 
-    public ArrayList<String> getGlucoseDateTimeAsArray(){
+    public ArrayList<String> getGlucoseDateTimeAsArray() {
         List<GlucoseReading> glucoseReading = getGlucoseReadings();
         ArrayList<String> datetimeArray = new ArrayList<String>();
         int i;
         DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
-        for (i = 0; i < glucoseReading.size(); i++){
+        for (i = 0; i < glucoseReading.size(); i++) {
             String reading;
-            GlucoseReading singleReading= glucoseReading.get(i);
+            GlucoseReading singleReading = glucoseReading.get(i);
             reading = inputFormat.format(singleReading.getCreated());
             datetimeArray.add(reading);
         }
@@ -196,7 +216,7 @@ public class DatabaseHandler {
         return datetimeArray;
     }
 
-    public GlucoseReading getGlucoseReadingById(long id){
+    public GlucoseReading getGlucoseReadingById(long id) {
         return getGlucoseReading(id);
     }
 
@@ -239,7 +259,7 @@ public class DatabaseHandler {
         }
     }*/
 
-    public List<Integer> getAverageGlucoseReadingsByWeek(){
+    public List<Integer> getAverageGlucoseReadingsByWeek() {
         JodaTimeAndroid.init(mContext);
 
         DateTime maxDateTime = new DateTime(realm.where(GlucoseReading.class).maximumDate("created").getTime());
@@ -250,21 +270,21 @@ public class DatabaseHandler {
 
         ArrayList<Integer> averageReadings = new ArrayList<Integer>();
 
-	// The number of weeks is at least 1 since we do have average for the current week even if incomplete
+        // The number of weeks is at least 1 since we do have average for the current week even if incomplete
         int weeksNumber = Weeks.weeksBetween(minDateTime, maxDateTime).getWeeks() + 1;
 
-        for (int i=0; i<weeksNumber; i++) {
+        for (int i = 0; i < weeksNumber; i++) {
             newDateTime = currentDateTime.plusWeeks(1);
             RealmResults<GlucoseReading> readings = realm.where(GlucoseReading.class)
                     .between("created", currentDateTime.toDate(), newDateTime.toDate())
                     .findAll();
-            averageReadings.add(((int)readings.average("reading")));
+            averageReadings.add(((int) readings.average("reading")));
             currentDateTime = newDateTime;
         }
         return averageReadings;
     }
 
-    public List<String> getGlucoseDatetimesByWeek(){
+    public List<String> getGlucoseDatetimesByWeek() {
         JodaTimeAndroid.init(mContext);
 
         DateTime maxDateTime = new DateTime(realm.where(GlucoseReading.class).maximumDate("created").getTime());
@@ -275,11 +295,11 @@ public class DatabaseHandler {
 
         ArrayList<String> finalWeeks = new ArrayList<String>();
 
-	// The number of weeks is at least 1 since we do have average for the current week even if incomplete
+        // The number of weeks is at least 1 since we do have average for the current week even if incomplete
         int weeksNumber = Weeks.weeksBetween(minDateTime, maxDateTime).getWeeks() + 1;
 
         DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        for (int i=0; i<weeksNumber; i++) {
+        for (int i = 0; i < weeksNumber; i++) {
             newDateTime = currentDateTime.plusWeeks(1);
             finalWeeks.add(inputFormat.format(newDateTime.toDate()));
             currentDateTime = newDateTime;
@@ -287,7 +307,7 @@ public class DatabaseHandler {
         return finalWeeks;
     }
 
-    public List<Integer> getAverageGlucoseReadingsByMonth(){
+    public List<Integer> getAverageGlucoseReadingsByMonth() {
         JodaTimeAndroid.init(mContext);
 
         DateTime maxDateTime = new DateTime(realm.where(GlucoseReading.class).maximumDate("created").getTime());
@@ -301,18 +321,18 @@ public class DatabaseHandler {
         // The number of months is at least 1 since we do have average for the current week even if incomplete
         int monthsNumber = Months.monthsBetween(minDateTime, maxDateTime).getMonths() + 1;
 
-        for (int i=0; i<monthsNumber; i++) {
+        for (int i = 0; i < monthsNumber; i++) {
             newDateTime = currentDateTime.plusMonths(1);
             RealmResults<GlucoseReading> readings = realm.where(GlucoseReading.class)
                     .between("created", currentDateTime.toDate(), newDateTime.toDate())
                     .findAll();
-            averageReadings.add(((int)readings.average("reading")));
+            averageReadings.add(((int) readings.average("reading")));
             currentDateTime = newDateTime;
         }
         return averageReadings;
     }
 
-    public List<String> getGlucoseDatetimesByMonth(){
+    public List<String> getGlucoseDatetimesByMonth() {
         JodaTimeAndroid.init(mContext);
 
         DateTime maxDateTime = new DateTime(realm.where(GlucoseReading.class).maximumDate("created").getTime());
@@ -323,11 +343,11 @@ public class DatabaseHandler {
 
         ArrayList<String> finalMonths = new ArrayList<String>();
 
-        // The number of months is at least 1 since we do have average for the current week even if incomplete
+        // The number of months is at least 1 because current month is incomplete
         int monthsNumber = Months.monthsBetween(minDateTime, maxDateTime).getMonths() + 1;
 
         DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        for (int i=0; i<monthsNumber; i++) {
+        for (int i = 0; i < monthsNumber; i++) {
             newDateTime = currentDateTime.plusMonths(1);
             finalMonths.add(inputFormat.format(newDateTime.toDate()));
             currentDateTime = newDateTime;
@@ -356,7 +376,7 @@ public class DatabaseHandler {
 
     public RealmResults<HB1ACReading> getrHB1ACRawReadings() {
         return realm.where(HB1ACReading.class)
-                        .findAllSorted("created", Sort.DESCENDING);
+                .findAllSorted("created", Sort.DESCENDING);
     }
 
     public ArrayList<HB1ACReading> getHB1ACReadings() {
@@ -364,20 +384,20 @@ public class DatabaseHandler {
                 realm.where(HB1ACReading.class)
                         .findAllSorted("created", Sort.DESCENDING);
         ArrayList<HB1ACReading> readingList = new ArrayList<>();
-        for (int i=0; i < results.size(); i++){
+        for (int i = 0; i < results.size(); i++) {
             readingList.add(results.get(i));
         }
         return readingList;
     }
 
-    public ArrayList<Long> getHB1ACIdAsArray(){
+    public ArrayList<Long> getHB1ACIdAsArray() {
         List<HB1ACReading> readings = getHB1ACReadings();
         ArrayList<Long> idArray = new ArrayList<Long>();
         int i;
 
-        for (i = 0; i < readings.size(); i++){
+        for (i = 0; i < readings.size(); i++) {
             long id;
-            HB1ACReading singleReading= readings.get(i);
+            HB1ACReading singleReading = readings.get(i);
             id = singleReading.getId();
             idArray.add(id);
         }
@@ -385,14 +405,14 @@ public class DatabaseHandler {
         return idArray;
     }
 
-    public ArrayList<Double> getHB1ACReadingAsArray(){
+    public ArrayList<Double> getHB1ACReadingAsArray() {
         List<HB1ACReading> readings = getHB1ACReadings();
         ArrayList<Double> readingArray = new ArrayList<Double>();
         int i;
 
-        for (i = 0; i < readings.size(); i++){
+        for (i = 0; i < readings.size(); i++) {
             double reading;
-            HB1ACReading singleReading= readings.get(i);
+            HB1ACReading singleReading = readings.get(i);
             reading = singleReading.getReading();
             readingArray.add(reading);
         }
@@ -400,15 +420,15 @@ public class DatabaseHandler {
         return readingArray;
     }
 
-    public ArrayList<String> getHB1ACDateTimeAsArray(){
+    public ArrayList<String> getHB1ACDateTimeAsArray() {
         List<HB1ACReading> readings = getHB1ACReadings();
         ArrayList<String> datetimeArray = new ArrayList<String>();
         int i;
         DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
-        for (i = 0; i < readings.size(); i++){
+        for (i = 0; i < readings.size(); i++) {
             String reading;
-            HB1ACReading singleReading= readings.get(i);
+            HB1ACReading singleReading = readings.get(i);
             reading = inputFormat.format(singleReading.getCreated());
             datetimeArray.add(reading);
         }
@@ -445,20 +465,20 @@ public class DatabaseHandler {
                 realm.where(KetoneReading.class)
                         .findAllSorted("created", Sort.DESCENDING);
         ArrayList<KetoneReading> readingList = new ArrayList<>();
-        for (int i=0; i < results.size(); i++){
+        for (int i = 0; i < results.size(); i++) {
             readingList.add(results.get(i));
         }
         return readingList;
     }
 
-    public ArrayList<Long> getKetoneIdAsArray(){
+    public ArrayList<Long> getKetoneIdAsArray() {
         List<KetoneReading> readings = getKetoneReadings();
         ArrayList<Long> idArray = new ArrayList<Long>();
         int i;
 
-        for (i = 0; i < readings.size(); i++){
+        for (i = 0; i < readings.size(); i++) {
             long id;
-            KetoneReading singleReading= readings.get(i);
+            KetoneReading singleReading = readings.get(i);
             id = singleReading.getId();
             idArray.add(id);
         }
@@ -466,12 +486,12 @@ public class DatabaseHandler {
         return idArray;
     }
 
-    public ArrayList<Double> getKetoneReadingAsArray(){
+    public ArrayList<Double> getKetoneReadingAsArray() {
         List<KetoneReading> readings = getKetoneReadings();
         ArrayList<Double> readingArray = new ArrayList<Double>();
         int i;
 
-        for (i = 0; i < readings.size(); i++){
+        for (i = 0; i < readings.size(); i++) {
             double reading;
             KetoneReading singleReading = readings.get(i);
             reading = singleReading.getReading();
@@ -481,15 +501,15 @@ public class DatabaseHandler {
         return readingArray;
     }
 
-    public ArrayList<String> getKetoneDateTimeAsArray(){
+    public ArrayList<String> getKetoneDateTimeAsArray() {
         List<KetoneReading> readings = getKetoneReadings();
         ArrayList<String> datetimeArray = new ArrayList<String>();
         int i;
         DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
-        for (i = 0; i < readings.size(); i++){
+        for (i = 0; i < readings.size(); i++) {
             String reading;
-            KetoneReading singleReading= readings.get(i);
+            KetoneReading singleReading = readings.get(i);
             reading = inputFormat.format(singleReading.getCreated());
             datetimeArray.add(reading);
         }
@@ -521,20 +541,20 @@ public class DatabaseHandler {
                 realm.where(PressureReading.class)
                         .findAllSorted("created", Sort.DESCENDING);
         ArrayList<PressureReading> readingList = new ArrayList<>();
-        for (int i=0; i < results.size(); i++){
+        for (int i = 0; i < results.size(); i++) {
             readingList.add(results.get(i));
         }
         return readingList;
     }
 
-    public ArrayList<Long> getPressureIdAsArray(){
+    public ArrayList<Long> getPressureIdAsArray() {
         List<PressureReading> readings = getPressureReadings();
         ArrayList<Long> idArray = new ArrayList<Long>();
         int i;
 
-        for (i = 0; i < readings.size(); i++){
+        for (i = 0; i < readings.size(); i++) {
             long id;
-            PressureReading singleReading= readings.get(i);
+            PressureReading singleReading = readings.get(i);
             id = singleReading.getId();
             idArray.add(id);
         }
@@ -542,14 +562,14 @@ public class DatabaseHandler {
         return idArray;
     }
 
-    public ArrayList<Integer> getMinPressureReadingAsArray(){
+    public ArrayList<Integer> getMinPressureReadingAsArray() {
         List<PressureReading> readings = getPressureReadings();
         ArrayList<Integer> readingArray = new ArrayList<Integer>();
         int i;
 
-        for (i = 0; i < readings.size(); i++){
+        for (i = 0; i < readings.size(); i++) {
             int reading;
-            PressureReading singleReading= readings.get(i);
+            PressureReading singleReading = readings.get(i);
             reading = singleReading.getMinReading();
             readingArray.add(reading);
         }
@@ -557,14 +577,14 @@ public class DatabaseHandler {
         return readingArray;
     }
 
-    public ArrayList<Integer> getMaxPressureReadingAsArray(){
+    public ArrayList<Integer> getMaxPressureReadingAsArray() {
         List<PressureReading> readings = getPressureReadings();
         ArrayList<Integer> readingArray = new ArrayList<Integer>();
         int i;
 
-        for (i = 0; i < readings.size(); i++){
+        for (i = 0; i < readings.size(); i++) {
             int reading;
-            PressureReading singleReading= readings.get(i);
+            PressureReading singleReading = readings.get(i);
             reading = singleReading.getMaxReading();
             readingArray.add(reading);
         }
@@ -572,15 +592,15 @@ public class DatabaseHandler {
         return readingArray;
     }
 
-    public ArrayList<String> getPressureDateTimeAsArray(){
+    public ArrayList<String> getPressureDateTimeAsArray() {
         List<PressureReading> readings = getPressureReadings();
         ArrayList<String> datetimeArray = new ArrayList<String>();
         int i;
         DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
-        for (i = 0; i < readings.size(); i++){
+        for (i = 0; i < readings.size(); i++) {
             String reading;
-            PressureReading singleReading= readings.get(i);
+            PressureReading singleReading = readings.get(i);
             reading = inputFormat.format(singleReading.getCreated());
             datetimeArray.add(reading);
         }
@@ -612,20 +632,20 @@ public class DatabaseHandler {
                 realm.where(WeightReading.class)
                         .findAllSorted("created", Sort.DESCENDING);
         ArrayList<WeightReading> readingList = new ArrayList<>();
-        for (int i=0; i < results.size(); i++){
+        for (int i = 0; i < results.size(); i++) {
             readingList.add(results.get(i));
         }
         return readingList;
     }
 
-    public ArrayList<Long> getWeightIdAsArray(){
+    public ArrayList<Long> getWeightIdAsArray() {
         List<WeightReading> readings = getWeightReadings();
         ArrayList<Long> idArray = new ArrayList<Long>();
         int i;
 
-        for (i = 0; i < readings.size(); i++){
+        for (i = 0; i < readings.size(); i++) {
             long id;
-            WeightReading singleReading= readings.get(i);
+            WeightReading singleReading = readings.get(i);
             id = singleReading.getId();
             idArray.add(id);
         }
@@ -633,14 +653,14 @@ public class DatabaseHandler {
         return idArray;
     }
 
-    public ArrayList<Integer> getWeightReadingAsArray(){
+    public ArrayList<Integer> getWeightReadingAsArray() {
         List<WeightReading> readings = getWeightReadings();
         ArrayList<Integer> readingArray = new ArrayList<Integer>();
         int i;
 
-        for (i = 0; i < readings.size(); i++){
+        for (i = 0; i < readings.size(); i++) {
             int reading;
-            WeightReading singleReading= readings.get(i);
+            WeightReading singleReading = readings.get(i);
             reading = singleReading.getReading();
             readingArray.add(reading);
         }
@@ -648,15 +668,15 @@ public class DatabaseHandler {
         return readingArray;
     }
 
-    public ArrayList<String> getWeightReadingDateTimeAsArray(){
+    public ArrayList<String> getWeightReadingDateTimeAsArray() {
         List<WeightReading> readings = getWeightReadings();
         ArrayList<String> datetimeArray = new ArrayList<String>();
         int i;
         DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
-        for (i = 0; i < readings.size(); i++){
+        for (i = 0; i < readings.size(); i++) {
             String reading;
-            WeightReading singleReading= readings.get(i);
+            WeightReading singleReading = readings.get(i);
             reading = inputFormat.format(singleReading.getCreated());
             datetimeArray.add(reading);
         }
@@ -688,20 +708,20 @@ public class DatabaseHandler {
                 realm.where(CholesterolReading.class)
                         .findAllSorted("created", Sort.DESCENDING);
         ArrayList<CholesterolReading> readingList = new ArrayList<>();
-        for (int i=0; i < results.size(); i++){
+        for (int i = 0; i < results.size(); i++) {
             readingList.add(results.get(i));
         }
         return readingList;
     }
 
-    public ArrayList<Long> getCholesterolIdAsArray(){
+    public ArrayList<Long> getCholesterolIdAsArray() {
         List<CholesterolReading> readings = getCholesterolReadings();
         ArrayList<Long> idArray = new ArrayList<Long>();
         int i;
 
-        for (i = 0; i < readings.size(); i++){
+        for (i = 0; i < readings.size(); i++) {
             long id;
-            CholesterolReading singleReading= readings.get(i);
+            CholesterolReading singleReading = readings.get(i);
             id = singleReading.getId();
             idArray.add(id);
         }
@@ -709,14 +729,14 @@ public class DatabaseHandler {
         return idArray;
     }
 
-    public ArrayList<Integer> getHDLCholesterolReadingAsArray(){
+    public ArrayList<Integer> getHDLCholesterolReadingAsArray() {
         List<CholesterolReading> readings = getCholesterolReadings();
         ArrayList<Integer> readingArray = new ArrayList<Integer>();
         int i;
 
-        for (i = 0; i < readings.size(); i++){
+        for (i = 0; i < readings.size(); i++) {
             int reading;
-            CholesterolReading singleReading= readings.get(i);
+            CholesterolReading singleReading = readings.get(i);
             reading = singleReading.getHDLReading();
             readingArray.add(reading);
         }
@@ -724,14 +744,14 @@ public class DatabaseHandler {
         return readingArray;
     }
 
-    public ArrayList<Integer> getLDLCholesterolReadingAsArray(){
+    public ArrayList<Integer> getLDLCholesterolReadingAsArray() {
         List<CholesterolReading> readings = getCholesterolReadings();
         ArrayList<Integer> readingArray = new ArrayList<Integer>();
         int i;
 
-        for (i = 0; i < readings.size(); i++){
+        for (i = 0; i < readings.size(); i++) {
             int reading;
-            CholesterolReading singleReading= readings.get(i);
+            CholesterolReading singleReading = readings.get(i);
             reading = singleReading.getLDLReading();
             readingArray.add(reading);
         }
@@ -739,14 +759,14 @@ public class DatabaseHandler {
         return readingArray;
     }
 
-    public ArrayList<Integer> getTotalCholesterolReadingAsArray(){
+    public ArrayList<Integer> getTotalCholesterolReadingAsArray() {
         List<CholesterolReading> readings = getCholesterolReadings();
         ArrayList<Integer> readingArray = new ArrayList<Integer>();
         int i;
 
-        for (i = 0; i < readings.size(); i++){
+        for (i = 0; i < readings.size(); i++) {
             int reading;
-            CholesterolReading singleReading= readings.get(i);
+            CholesterolReading singleReading = readings.get(i);
             reading = singleReading.getTotalReading();
             readingArray.add(reading);
         }
@@ -754,15 +774,15 @@ public class DatabaseHandler {
         return readingArray;
     }
 
-    public ArrayList<String> getCholesterolDateTimeAsArray(){
+    public ArrayList<String> getCholesterolDateTimeAsArray() {
         List<CholesterolReading> readings = getCholesterolReadings();
         ArrayList<String> datetimeArray = new ArrayList<String>();
         int i;
         DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
-        for (i = 0; i < readings.size(); i++){
+        for (i = 0; i < readings.size(); i++) {
             String reading;
-            CholesterolReading singleReading= readings.get(i);
+            CholesterolReading singleReading = readings.get(i);
             reading = inputFormat.format(singleReading.getCreated());
             datetimeArray.add(reading);
         }
@@ -798,10 +818,10 @@ public class DatabaseHandler {
                         .max("id");
                 break;
         }
-        if (maxId == null){
+        if (maxId == null) {
             return 0;
         } else {
-            return Long.parseLong(maxId.toString())+1;
+            return Long.parseLong(maxId.toString()) + 1;
         }
     }
 }

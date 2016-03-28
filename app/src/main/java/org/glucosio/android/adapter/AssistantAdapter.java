@@ -1,3 +1,23 @@
+/*
+ * Copyright (C) 2016 Glucosio Foundation
+ *
+ * This file is part of Glucosio.
+ *
+ * Glucosio is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, version 3.
+ *
+ * Glucosio is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Glucosio.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ *
+ */
+
 package org.glucosio.android.adapter;
 
 import android.content.Context;
@@ -17,22 +37,10 @@ import java.util.ArrayList;
 
 public class AssistantAdapter extends RecyclerView.Adapter<AssistantAdapter.ViewHolder> {
     private Context mContext;
-    ArrayList<ActionTip> actionTips;
+    private ArrayList<ActionTip> actionTips;
     private AssistantPresenter presenter;
-    Resources res;
+    private Resources res;
 
-
-    // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        // each data item is just a string in this case
-        public View mView;
-        public ViewHolder(View v) {
-            super(v);
-            mView = v;
-        }
-    }
 
     // Provide a suitable constructor (depends on the kind of dataset)
     public AssistantAdapter(Context context, AssistantPresenter assistantPresenter, ArrayList<ActionTip> tips) {
@@ -45,7 +53,7 @@ public class AssistantAdapter extends RecyclerView.Adapter<AssistantAdapter.View
     // Create new views (invoked by the layout manager)
     @Override
     public AssistantAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                        int viewType) {
+                                                          int viewType) {
 
         // create a new view
         View v = LayoutInflater.from(parent.getContext())
@@ -71,7 +79,8 @@ public class AssistantAdapter extends RecyclerView.Adapter<AssistantAdapter.View
             actionListener = new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    presenter.openGitty();
+                    presenter.openLiveChat();
+
                 }
             };
         } else if (actionTipTitleString.equals(res.getString(R.string.assistant_export_title))) {
@@ -81,7 +90,7 @@ public class AssistantAdapter extends RecyclerView.Adapter<AssistantAdapter.View
                     presenter.startExportActivity();
                 }
             };
-        } else if (actionTipTitleString.equals(res.getString(R.string.assistant_calculator_a1c_title))){
+        } else if (actionTipTitleString.equals(res.getString(R.string.assistant_calculator_a1c_title))) {
             actionListener = new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -104,5 +113,18 @@ public class AssistantAdapter extends RecyclerView.Adapter<AssistantAdapter.View
     @Override
     public int getItemCount() {
         return actionTips.size();
+    }
+
+    // Provide a reference to the views for each data item
+    // Complex data items may need more than one view per item, and
+    // you provide access to all the views for a data item in a view holder
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        // each data item is just a string in this case
+        public View mView;
+
+        public ViewHolder(View v) {
+            super(v);
+            mView = v;
+        }
     }
 }

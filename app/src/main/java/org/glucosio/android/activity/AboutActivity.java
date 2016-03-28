@@ -1,3 +1,23 @@
+/*
+ * Copyright (C) 2016 Glucosio Foundation
+ *
+ * This file is part of Glucosio.
+ *
+ * Glucosio is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, version 3.
+ *
+ * Glucosio is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Glucosio.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ *
+ */
+
 package org.glucosio.android.activity;
 
 import android.content.Context;
@@ -11,7 +31,9 @@ import android.view.MenuItem;
 
 import com.instabug.library.Instabug;
 
+import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
+import org.glucosio.android.analytics.Analytics;
 
 import java.util.Locale;
 
@@ -31,6 +53,16 @@ public class AboutActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(getString(R.string.preferences_about_glucosio));
     }
 
+    public boolean onOptionsItemSelected(MenuItem item) {
+        finish();
+        return true;
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
     public static class MyPreferenceFragment extends PreferenceFragment {
 
         @Override
@@ -45,14 +77,17 @@ public class AboutActivity extends AppCompatActivity {
             final Preference termsPref = (Preference) findPreference("preference_terms");
             final Preference versionPref = (Preference) findPreference("preference_version");
 
+
             termsPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
                     Intent intent = new Intent(getActivity(), LicenceActivity.class);
-                    Bundle bundle= new Bundle();
+                    Bundle bundle = new Bundle();
                     bundle.putString("key", "terms");
                     intent.putExtras(bundle);
                     startActivity(intent);
+
+                    addTermsAnalyticsEvent("Glucosio Terms opened");
 
                     return false;
                 }
@@ -62,10 +97,12 @@ public class AboutActivity extends AppCompatActivity {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
                     Intent intent = new Intent(getActivity(), LicenceActivity.class);
-                    Bundle bundle= new Bundle();
+                    Bundle bundle = new Bundle();
                     bundle.putString("key", "open_source");
                     intent.putExtras(bundle);
                     startActivity(intent);
+
+                    addTermsAnalyticsEvent("Glucosio Licence opened");
                     return false;
                 }
             });
@@ -93,10 +130,12 @@ public class AboutActivity extends AppCompatActivity {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
                     Intent intent = new Intent(getActivity(), LicenceActivity.class);
-                    Bundle bundle= new Bundle();
+                    Bundle bundle = new Bundle();
                     bundle.putString("key", "privacy");
                     intent.putExtras(bundle);
                     startActivity(intent);
+
+                    addTermsAnalyticsEvent("Glucosio Privacy opened");
 
                     return false;
                 }
@@ -121,15 +160,11 @@ public class AboutActivity extends AppCompatActivity {
             });
 
         }
-    }
 
-    public boolean onOptionsItemSelected(MenuItem item){
-        finish();
-        return true;
-    }
+        private void addTermsAnalyticsEvent(String action) {
+            Analytics analytics = ((GlucosioApplication) getActivity().getApplication()).getAnalytics();
 
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+            analytics.reportAction("Preferences", action);
+        }
     }
 }

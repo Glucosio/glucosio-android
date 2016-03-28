@@ -1,3 +1,23 @@
+/*
+ * Copyright (C) 2016 Glucosio Foundation
+ *
+ * This file is part of Glucosio.
+ *
+ * Glucosio is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, version 3.
+ *
+ * Glucosio is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Glucosio.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ *
+ */
+
 package org.glucosio.android.fragment;
 
 
@@ -37,15 +57,15 @@ public class HistoryFragment extends Fragment {
     private Spinner historySpinner;
     private Boolean isToolbarScrolling = true;
 
+    public HistoryFragment() {
+        // Required empty public constructor
+    }
+
     public static HistoryFragment newInstance() {
         HistoryFragment fragment = new HistoryFragment();
 
 
         return fragment;
-    }
-
-    public HistoryFragment() {
-        // Required empty public constructor
     }
 
     public void onCreate(Bundle savedInstanceState) {
@@ -84,7 +104,7 @@ public class HistoryFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (!presenter.isdbEmpty()) {
                     int metricId = position;
-                    if (position != 0){
+                    if (position != 0) {
                         glucoseLegend.setVisibility(View.GONE);
                     } else {
                         glucoseLegend.setVisibility(View.VISIBLE);
@@ -130,6 +150,8 @@ public class HistoryFragment extends Fragment {
                                     case Snackbar.Callback.DISMISS_EVENT_TIMEOUT:
                                         presenter.onDeleteClicked(idToDelete, historySpinner.getSelectedItemPosition());
                                         break;
+                                    default:
+                                        break;
                                 }
                             }
 
@@ -162,11 +184,11 @@ public class HistoryFragment extends Fragment {
         return mFragmentView;
     }
 
-    public void updateToolbarBehaviour(){
-        if (mAdapter!=null) {
+    public void updateToolbarBehaviour() {
+        if (mAdapter != null) {
             if (mLayoutManager.findLastCompletelyVisibleItemPosition() == mAdapter.getItemCount() - 1) {
                 isToolbarScrolling = false;
-                if (getActivity()!=null) {
+                if (getActivity() != null) {
                     ((MainActivity) getActivity()).turnOffToolbarScrolling();
                 }
             } else {
@@ -178,17 +200,17 @@ public class HistoryFragment extends Fragment {
         }
     }
 
-    public String convertDate(String date){
+    public String convertDate(String date) {
         FormatDateTime dateTime = new FormatDateTime(getActivity().getApplicationContext());
-        return dateTime.convertDate(date);
+        return dateTime.convertDateTime(date);
     }
 
-    public void notifyAdapter(){
+    public void notifyAdapter() {
         mAdapter.notifyDataSetChanged();
     }
 
-    public void reloadFragmentAdapter(){
-        if (getActivity()!= null) {
+    public void reloadFragmentAdapter() {
+        if (getActivity() != null) {
             ((MainActivity) getActivity()).reloadFragmentAdapter();
             ((MainActivity) getActivity()).checkIfEmptyLayout();
         }

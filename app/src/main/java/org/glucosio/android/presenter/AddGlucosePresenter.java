@@ -1,3 +1,23 @@
+/*
+ * Copyright (C) 2016 Glucosio Foundation
+ *
+ * This file is part of Glucosio.
+ *
+ * Glucosio is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, version 3.
+ *
+ * Glucosio is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Glucosio.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ *
+ */
+
 package org.glucosio.android.presenter;
 
 import android.content.SharedPreferences;
@@ -28,7 +48,7 @@ public class AddGlucosePresenter {
 
 
     public AddGlucosePresenter(AddGlucoseActivity addGlucoseActivity) {
-        this.activity= addGlucoseActivity;
+        this.activity = addGlucoseActivity;
         dB = new DatabaseHandler(addGlucoseActivity.getApplicationContext());
     }
 
@@ -37,7 +57,7 @@ public class AddGlucosePresenter {
         activity.updateSpinnerTypeTime(timeToSpinnerType());
     }
 
-    public void getCurrentTime(){
+    public void getCurrentTime() {
         DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         Date formatted = Calendar.getInstance().getTime();
 
@@ -60,18 +80,18 @@ public class AddGlucosePresenter {
         return hourToSpinnerType(hour);
     }
 
-    public int hourToSpinnerType(int hour){
+    public int hourToSpinnerType(int hour) {
         rTools = new ReadingTools();
         return rTools.hourToSpinnerType(hour);
     }
 
-    public void dialogOnAddButtonPressed(String time, String date, String reading, String type){
+    public void dialogOnAddButtonPressed(String time, String date, String reading, String type) {
         if (validateDate(date) && validateTime(time) && validateReading(reading) && validateType(type)) {
             Calendar cal = Calendar.getInstance();
-            cal.set(Integer.parseInt(readingYear), Integer.parseInt(readingMonth)-1, Integer.parseInt(readingDay), Integer.parseInt(readingHour), Integer.parseInt(readingMinute));
+            cal.set(Integer.parseInt(readingYear), Integer.parseInt(readingMonth) - 1, Integer.parseInt(readingDay), Integer.parseInt(readingHour), Integer.parseInt(readingMinute));
             Date finalDateTime = cal.getTime();
             boolean isReadingAdded;
-            if (getUnitMeasuerement().equals("mg/dL")) {
+            if ("mg/dL".equals(getUnitMeasuerement())) {
                 int finalReading = Integer.parseInt(reading);
                 GlucoseReading gReading = new GlucoseReading(finalReading, type, finalDateTime, "");
                 isReadingAdded = dB.addGlucoseReading(gReading);
@@ -81,7 +101,7 @@ public class AddGlucosePresenter {
                 GlucoseReading gReading = new GlucoseReading(convertedReading, type, finalDateTime, "");
                 isReadingAdded = dB.addGlucoseReading(gReading);
             }
-            if (!isReadingAdded){
+            if (!isReadingAdded) {
                 activity.showDuplicateErrorMessage();
             } else {
                 activity.finishActivity();
@@ -91,19 +111,21 @@ public class AddGlucosePresenter {
         }
     }
 
-    private boolean validateTime(String time){
-        return !time.equals("");
+    private boolean validateTime(String time) {
+        return !"".equals(time);
     }
-    private boolean validateDate(String date){
-        return !date.equals("");
+
+    private boolean validateDate(String date) {
+        return !"".equals(date);
     }
-    private boolean validateType(String type){
-        return !type.equals("");
+
+    private boolean validateType(String type) {
+        return !"".equals(type);
     }
 
     private boolean validateReading(String reading) {
         if (!reading.equals("")) {
-            if (getUnitMeasuerement().equals("mg/dL")) {
+            if ("mg/dL".equals(getUnitMeasuerement())) {
                 // We store data in db in mg/dl
                 try {
                     Integer readingValue = Integer.parseInt(reading);
@@ -140,12 +162,12 @@ public class AddGlucosePresenter {
 
     // Getters and Setters
 
-    public boolean isFreeStyleLibreEnabled(){
+    public boolean isFreeStyleLibreEnabled() {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
         return sharedPref.getBoolean("pref_freestyle_libre", false);
     }
 
-    public String getUnitMeasuerement(){
+    public String getUnitMeasuerement() {
         return dB.getUser(1).getPreferred_unit();
     }
 
@@ -153,20 +175,20 @@ public class AddGlucosePresenter {
         return readingYear;
     }
 
-    public String getReadingMonth() {
-        return readingMonth;
-    }
-
-    public String getReadingDay() {
-        return readingDay;
-    }
-
     public void setReadingYear(String readingYear) {
         this.readingYear = readingYear;
     }
 
+    public String getReadingMonth() {
+        return readingMonth;
+    }
+
     public void setReadingMonth(String readingMonth) {
         this.readingMonth = readingMonth;
+    }
+
+    public String getReadingDay() {
+        return readingDay;
     }
 
     public void setReadingDay(String readingDay) {

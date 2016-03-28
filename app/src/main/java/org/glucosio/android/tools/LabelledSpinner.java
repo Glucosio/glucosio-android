@@ -1,17 +1,21 @@
 /*
- * Copyright 2015 Farbod Salamat-Zadeh
+ * Copyright (C) 2016 Glucosio Foundation
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * This file is part of Glucosio.
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * Glucosio is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, version 3.
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Glucosio is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Glucosio.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ *
  */
 
 package org.glucosio.android.tools;
@@ -142,6 +146,10 @@ public class LabelledSpinner extends LinearLayout implements AdapterView.OnItemS
         mLabel.setText(labelText);
     }
 
+    public CharSequence getLabelText() {
+        return mLabel.getText();
+    }
+
     /**
      * Sets the text the label is to display.
      *
@@ -154,8 +162,8 @@ public class LabelledSpinner extends LinearLayout implements AdapterView.OnItemS
         mLabel.setText(getResources().getString(labelTextId));
     }
 
-    public CharSequence getLabelText() {
-        return mLabel.getText();
+    public int getColor() {
+        return mWidgetColor;
     }
 
     /**
@@ -168,10 +176,6 @@ public class LabelledSpinner extends LinearLayout implements AdapterView.OnItemS
     public void setColor(@ColorRes int colorRes) {
         mLabel.setTextColor(getResources().getColor(colorRes));
         mDivider.setBackgroundColor(getResources().getColor(colorRes));
-    }
-
-    public int getColor() {
-        return mWidgetColor;
     }
 
     /**
@@ -248,40 +252,8 @@ public class LabelledSpinner extends LinearLayout implements AdapterView.OnItemS
         mSpinner.setSelection(position);
     }
 
-
-    /**
-     * Interface definition for a callback to be invoked when an item in this
-     * LabelledSpinner's Spinner view has been selected.
-     */
-    public interface OnItemChosenListener {
-
-        /**
-         * Callback method to be invoked when an item in this LabelledSpinner's
-         * spinner view has been selected. This callback is invoked only when
-         * the newly selected position is different from the previously selected
-         * position or if there was no selected item.
-         *
-         * @param labelledSpinner The LabelledSpinner where the selection
-         *                        happened. This view contains the AdapterView.
-         * @param adapterView     The AdapterView where the selection happened. Note
-         *                        that this AdapterView is part of the LabelledSpinner
-         *                        component.
-         * @param itemView        The view within the AdapterView that was clicked.
-         * @param position        The position of the view in the adapter.
-         * @param id              The row id of the item that is selected.
-         */
-        void onItemChosen(View labelledSpinner, AdapterView<?> adapterView, View itemView, int position, long id);
-
-        /**
-         * Callback method to be invoked when the selection disappears from this
-         * view. The selection can disappear for instance when touch is activated
-         * or when the adapter becomes empty.
-         *
-         * @param labelledSpinner The LabelledSpinner view that contains the
-         *                        AdapterView.
-         * @param adapterView     The AdapterView that now contains no selected item.
-         */
-        void onNothingChosen(View labelledSpinner, AdapterView<?> adapterView);
+    public OnItemChosenListener getOnItemChosenListener() {
+        return mOnItemChosenListener;
     }
 
     /**
@@ -294,10 +266,6 @@ public class LabelledSpinner extends LinearLayout implements AdapterView.OnItemS
      */
     public void setOnItemChosenListener(OnItemChosenListener onItemChosenListener) {
         mOnItemChosenListener = onItemChosenListener;
-    }
-
-    public OnItemChosenListener getOnItemChosenListener() {
-        return mOnItemChosenListener;
     }
 
     /**
@@ -321,7 +289,6 @@ public class LabelledSpinner extends LinearLayout implements AdapterView.OnItemS
             mOnItemChosenListener.onNothingChosen(this, parent);
         }
     }
-
 
     /**
      * Adds a 4dp left margin to the label and divider line underneath so that
@@ -369,7 +336,6 @@ public class LabelledSpinner extends LinearLayout implements AdapterView.OnItemS
         mDivider.setLayoutParams(dividerParams);
     }
 
-
     /**
      * A helper method responsible for the conversion of dp/dip (density-independent
      * pixel) values to pixels, so that they can be used when setting layout
@@ -384,5 +350,41 @@ public class LabelledSpinner extends LinearLayout implements AdapterView.OnItemS
         }
         final float scale = getResources().getDisplayMetrics().density;
         return (int) (dps * scale + 0.5f);
+    }
+
+
+    /**
+     * Interface definition for a callback to be invoked when an item in this
+     * LabelledSpinner's Spinner view has been selected.
+     */
+    public interface OnItemChosenListener {
+
+        /**
+         * Callback method to be invoked when an item in this LabelledSpinner's
+         * spinner view has been selected. This callback is invoked only when
+         * the newly selected position is different from the previously selected
+         * position or if there was no selected item.
+         *
+         * @param labelledSpinner The LabelledSpinner where the selection
+         *                        happened. This view contains the AdapterView.
+         * @param adapterView     The AdapterView where the selection happened. Note
+         *                        that this AdapterView is part of the LabelledSpinner
+         *                        component.
+         * @param itemView        The view within the AdapterView that was clicked.
+         * @param position        The position of the view in the adapter.
+         * @param id              The row id of the item that is selected.
+         */
+        void onItemChosen(View labelledSpinner, AdapterView<?> adapterView, View itemView, int position, long id);
+
+        /**
+         * Callback method to be invoked when the selection disappears from this
+         * view. The selection can disappear for instance when touch is activated
+         * or when the adapter becomes empty.
+         *
+         * @param labelledSpinner The LabelledSpinner view that contains the
+         *                        AdapterView.
+         * @param adapterView     The AdapterView that now contains no selected item.
+         */
+        void onNothingChosen(View labelledSpinner, AdapterView<?> adapterView);
     }
 }

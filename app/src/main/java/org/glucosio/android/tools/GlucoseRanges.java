@@ -1,3 +1,23 @@
+/*
+ * Copyright (C) 2016 Glucosio Foundation
+ *
+ * This file is part of Glucosio.
+ *
+ * Glucosio is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, version 3.
+ *
+ * Glucosio is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Glucosio.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ *
+ */
+
 package org.glucosio.android.tools;
 
 import android.content.Context;
@@ -13,11 +33,11 @@ public class GlucoseRanges {
     private int customMin;
     private int customMax;
 
-    public GlucoseRanges(Context context){
+    public GlucoseRanges(Context context) {
         this.mContext = context;
         dB = new DatabaseHandler(mContext);
         this.preferredRange = dB.getUser(1).getPreferred_range();
-        if (preferredRange.equals("Custom range")){
+        if (preferredRange.equals("Custom range")) {
             this.customMin = dB.getUser(1).getCustom_range_min();
             this.customMax = dB.getUser(1).getCustom_range_max();
         }
@@ -27,9 +47,9 @@ public class GlucoseRanges {
         // Check for Hypo/Hyperglycemia
         if (reading < 70) {
             return "purple";
-        } else if (reading > 200){
+        } else if (reading > 200) {
             return "red";
-        } else if (reading > 70 | reading < 200 ) {
+        } else if (reading > 70 | reading < 200) {
             // if not check with custom ranges
             switch (preferredRange) {
                 case "ADA":
@@ -37,7 +57,7 @@ public class GlucoseRanges {
                         return "green";
                     } else if (reading < 70) {
                         return "blue";
-                    } else if (reading > 180){
+                    } else if (reading > 180) {
                         return "orange";
                     }
                 case "AACE":
@@ -45,7 +65,7 @@ public class GlucoseRanges {
                         return "green";
                     } else if (reading < 110) {
                         return "blue";
-                    } else if (reading > 140){
+                    } else if (reading > 140) {
                         return "orange";
                     }
                 case "UK NICE":
@@ -53,7 +73,7 @@ public class GlucoseRanges {
                         return "green";
                     } else if (reading < 72) {
                         return "blue";
-                    } else if (reading > 153){
+                    } else if (reading > 153) {
                         return "orange";
                     }
                 default:
@@ -61,15 +81,15 @@ public class GlucoseRanges {
                         return "green";
                     } else if (reading < customMin) {
                         return "blue";
-                    } else if (reading > customMax){
+                    } else if (reading > customMax) {
                         return "orange";
                     }
             }
         }
-    return "red";
+        return "red";
     }
 
-    public int stringToColor (String color){
+    public int stringToColor(String color) {
         switch (color) {
             case "green":
                 return mContext.getResources().getColor(R.color.glucosio_reading_ok);
@@ -82,5 +102,7 @@ public class GlucoseRanges {
             default:
                 return mContext.getResources().getColor(R.color.glucosio_reading_hypo);
         }
-    };
+    }
+
+    ;
 }

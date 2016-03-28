@@ -1,8 +1,26 @@
+/*
+ * Copyright (C) 2016 Glucosio Foundation
+ *
+ * This file is part of Glucosio.
+ *
+ * Glucosio is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, version 3.
+ *
+ * Glucosio is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Glucosio.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ *
+ */
+
 package org.glucosio.android.tools;
 
 import android.content.Context;
-
-import org.joda.time.DateTime;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -13,11 +31,12 @@ import java.util.Date;
 public class FormatDateTime {
 
     private Context context;
-    public FormatDateTime(Context mContext){
-        this.context= mContext;
+
+    public FormatDateTime(Context mContext) {
+        this.context = mContext;
     }
 
-    public String convertDate(String date) {
+    public String convertDateTime(String date) {
         java.text.DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         java.text.DateFormat finalDataFormat = DateFormat.getDateInstance(DateFormat.SHORT);
         java.text.DateFormat finalTimeFormat;
@@ -61,6 +80,22 @@ public class FormatDateTime {
         return finalData + " ";
     }
 
+
+    public String convertDate(String datetime) {
+        java.text.DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
+        java.text.DateFormat finalDataFormat = DateFormat.getDateInstance(DateFormat.SHORT);
+
+        Date parsed = null;
+        try {
+            parsed = inputFormat.parse(datetime);
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        String finalData = finalDataFormat.format(parsed);
+        return finalData + "";
+    }
+
     public String convertRawDate(String datetime) {
         java.text.DateFormat inputFormat = new SimpleDateFormat("EEE MMM d HH:mm:ss zzz yyyy");
         java.text.DateFormat finalDataFormat = DateFormat.getDateInstance(DateFormat.SHORT);
@@ -97,22 +132,19 @@ public class FormatDateTime {
         return finalTime + "";
     }
 
-    public String getCurrentTime(){
+    public String getCurrentTime() {
         Calendar cal = Calendar.getInstance();
 
         java.text.DateFormat finalTimeFormat;
 
-        if (android.text.format.DateFormat.is24HourFormat(context)) {
-            finalTimeFormat = new SimpleDateFormat("HH:mm");
-        } else {
-            finalTimeFormat = new SimpleDateFormat("hh:mm a");
-        }
+        finalTimeFormat = DateFormat.getTimeInstance(DateFormat.SHORT);
+
 
         String finalTime = finalTimeFormat.format(cal.getTime());
         return finalTime + "";
     }
 
-    public String getCurrentDate(){
+    public String getCurrentDate() {
         Calendar cal = Calendar.getInstance();
 
         java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(context);
@@ -121,14 +153,11 @@ public class FormatDateTime {
         return finalTime + "";
     }
 
-    public String getTime(Calendar cal){
+    public String getTime(Calendar cal) {
         java.text.DateFormat finalTimeFormat;
 
-        if (android.text.format.DateFormat.is24HourFormat(context)) {
-            finalTimeFormat = new SimpleDateFormat("HH:mm");
-        } else {
-            finalTimeFormat = new SimpleDateFormat("hh:mm a");
-        }
+        finalTimeFormat = DateFormat.getTimeInstance(DateFormat.SHORT);
+
 
         String finalTime = finalTimeFormat.format(cal.getTime());
         return finalTime + "";

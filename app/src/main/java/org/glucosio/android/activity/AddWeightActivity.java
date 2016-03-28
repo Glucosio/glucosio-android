@@ -1,3 +1,23 @@
+/*
+ * Copyright (C) 2016 Glucosio Foundation
+ *
+ * This file is part of Glucosio.
+ *
+ * Glucosio is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, version 3.
+ *
+ * Glucosio is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Glucosio.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ *
+ */
+
 package org.glucosio.android.activity;
 
 import android.content.Intent;
@@ -24,7 +44,7 @@ import java.util.Calendar;
 
 public class AddWeightActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
-    AddWeightPresenter presenter;
+    private AddWeightPresenter presenter;
     private FloatingActionButton doneFAB;
     private TextView addTimeTextView;
     private TextView addDateTextView;
@@ -90,15 +110,15 @@ public class AddWeightActivity extends AppCompatActivity implements TimePickerDi
     }
 
     private void dialogOnAddButtonPressed() {
-            presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
-                    addDateTextView.getText().toString(), readingTextView.getText().toString());
+        presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
+                addDateTextView.getText().toString(), readingTextView.getText().toString());
     }
 
     public void showErrorMessage() {
         Toast.makeText(getApplicationContext(), getString(R.string.dialog_error2), Toast.LENGTH_SHORT).show();
     }
 
-    public void finishActivity(){
+    public void finishActivity() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
@@ -133,7 +153,7 @@ public class AddWeightActivity extends AppCompatActivity implements TimePickerDi
     }
 
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event)  {
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (Integer.parseInt(android.os.Build.VERSION.SDK) > 5
                 && keyCode == KeyEvent.KEYCODE_BACK
                 && event.getRepeatCount() == 0) {

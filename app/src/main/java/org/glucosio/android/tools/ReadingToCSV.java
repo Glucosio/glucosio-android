@@ -1,3 +1,23 @@
+/*
+ * Copyright (C) 2016 Glucosio Foundation
+ *
+ * This file is part of Glucosio.
+ *
+ * Glucosio is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, version 3.
+ *
+ * Glucosio is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Glucosio.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ *
+ */
+
 package org.glucosio.android.tools;
 
 import android.content.Context;
@@ -17,7 +37,7 @@ public class ReadingToCSV {
 
     Context context;
 
-    public ReadingToCSV(Context mContext){
+    public ReadingToCSV(Context mContext) {
         this.context = mContext;
     }
 
@@ -45,7 +65,7 @@ public class ReadingToCSV {
 
             FormatDateTime dateTool = new FormatDateTime(context);
 
-            if (um.equals("mg/dL")) {
+            if ("mg/dL".equals(um)) {
                 for (int i = 0; i < readings.size(); i++) {
 
                     osw.append(readings.get(i).getReading() + "mg/dL");
@@ -65,7 +85,7 @@ public class ReadingToCSV {
 
                 for (int i = 0; i < readings.size(); i++) {
 
-                    osw.append(converter.glucoseToMmolL(readings.get(i).getReading())+ "mmol/L");
+                    osw.append(converter.glucoseToMmolL(readings.get(i).getReading()) + "mmol/L");
                     osw.append(',');
 
                     osw.append(dateTool.convertRawDate(readings.get(i).getCreated() + ""));
@@ -77,7 +97,7 @@ public class ReadingToCSV {
             }
 
             osw.close();
-            Log.i("Glucosio", "Done exporting readings" );
+            Log.i("Glucosio", "Done exporting readings");
 
         } catch (Exception e) {
             e.printStackTrace();

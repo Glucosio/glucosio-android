@@ -1,3 +1,23 @@
+/*
+ * Copyright (C) 2016 Glucosio Foundation
+ *
+ * This file is part of Glucosio.
+ *
+ * Glucosio is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, version 3.
+ *
+ * Glucosio is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Glucosio.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ *
+ */
+
 package org.glucosio.android.activity;
 
 import android.content.Intent;
@@ -19,7 +39,9 @@ import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
+import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
+import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.presenter.AddGlucosePresenter;
 import org.glucosio.android.tools.FormatDateTime;
 import org.glucosio.android.tools.LabelledSpinner;
@@ -29,7 +51,7 @@ import java.util.Calendar;
 
 public class AddGlucoseActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
-    AddGlucosePresenter presenter;
+    private AddGlucosePresenter presenter;
     private FloatingActionButton doneFAB;
     private TextView addTimeTextView;
     private TextView addDateTextView;
@@ -145,16 +167,23 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
             // If yes, first convert the decimal value from Freestyle to Integer
             double d = Double.parseDouble(reading);
             int glucoseValue = (int) d;
-            readingTextView.setText(glucoseValue+"");
+            readingTextView.setText(glucoseValue + "");
             readingInputLayout.setErrorEnabled(true);
             readingInputLayout.setError(getResources().getString(R.string.dialog_add_glucose_freestylelibre_added));
             addFreeStyleButton.setVisibility(View.GONE);
+
+            addAnalyticsEvent();
         } else {
             // Check if FreeStyle support is enabled in Preferences
-            if (presenter.isFreeStyleLibreEnabled()){
+            if (presenter.isFreeStyleLibreEnabled()) {
                 addFreeStyleButton.setVisibility(View.VISIBLE);
             }
         }
+    }
+
+    private void addAnalyticsEvent() {
+        Analytics analytics = ((GlucosioApplication) getApplication()).getAnalytics();
+        analytics.reportAction("FreeStyle Libre", "New reading added");
     }
 
     private void dialogOnAddButtonPressed() {
@@ -188,7 +217,7 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
         readingTypeSpinner.setSelection(presenter.hourToSpinnerType(hour));
     }
 
-    public void finishActivity(){
+    public void finishActivity() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
@@ -219,12 +248,13 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
         presenter.setReadingMonth(df.format(monthOfYear + 1));
         presenter.setReadingDay(df.format(dayOfMonth));
 
-        String date = +dayOfMonth + "/" + presenter.getReadingMonth() + "/" + presenter.getReadingYear();
-        addDate.setText(date);
+        FormatDateTime formatDateTime = new FormatDateTime(getApplicationContext());
+        String date = presenter.getReadingYear() + "-" + presenter.getReadingMonth() + "-" + dayOfMonth;
+        addDate.setText(formatDateTime.convertDate(date));
     }
 
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event)  {
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (Integer.parseInt(android.os.Build.VERSION.SDK) > 5
                 && keyCode == KeyEvent.KEYCODE_BACK
                 && event.getRepeatCount() == 0) {
@@ -239,6 +269,8 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
+                break;
+            default:
                 break;
         }
         return true;

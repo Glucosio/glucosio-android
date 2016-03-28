@@ -1,3 +1,23 @@
+<!--
+  ~ Copyright (C) 2016 Glucosio Foundation
+  ~
+  ~ This file is part of Glucosio.
+  ~
+  ~ Glucosio is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, version 3.
+  ~
+  ~ Glucosio is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Glucosio.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  ~
+  -->
+
 <vector android:height="24dp" android:viewportHeight="128.0"
     android:viewportWidth="128.0" android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
     <path android:fillColor="#FFFFFF" android:pathData="M32.27,79.87c0,17.52 14.21,31.73 31.73,31.73S95.73,97.39 95.73,79.87C95.73,60.03 64,16.4 64,16.4S32.27,60.03 32.27,79.87zM75.68,75.9c0,-2.31 1.87,-4.19 4.19,-4.19c2.31,0 4.19,1.87 4.19,4.19c0,13.24 -10.77,24.02 -24.02,24.02c-2.31,0 -4.19,-1.87 -4.19,-4.19c0,-2.31 1.87,-4.19 4.19,-4.19C68.66,91.54 75.68,84.53 75.68,75.9z"/>

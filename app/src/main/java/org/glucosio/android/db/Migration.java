@@ -1,3 +1,23 @@
+/*
+ * Copyright (C) 2016 Glucosio Foundation
+ *
+ * This file is part of Glucosio.
+ *
+ * Glucosio is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, version 3.
+ *
+ * Glucosio is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Glucosio.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ *
+ */
+
 package org.glucosio.android.db;
 
 import java.util.Date;
@@ -16,68 +36,61 @@ public class Migration implements RealmMigration {
         RealmSchema schema = realm.getSchema();
 
         /************************************************
-            Current Database Schema
-             
-            class User
-                @PrimaryKey
-                int id;
-                String name;
-                String preferred_language;
-                String country;
-                int age;
-                String gender;
-                int d_type;
-                String preferred_unit;
-                String preferred_range;
-                int custom_range_min;
-                int custom_range_max;
-        
-             class CholesterolReading
-                 @PrimaryKey
-                 long id;
-        
-                 int totalReading;
-                 int LDLReading;
-                 int HDLReading;
-                 Date created;
-        
-             class GlucoseReading
-                 @PrimaryKey
-                 long id;
-        
-                 int reading;
-                 String reading_type;
-                 String notes;
-                 int user_id;
-                 Date created;
-        
-             class KetoneReading
-                 @PrimaryKey
-                 long id;
-        
-                 double reading;
-                 Date created;
-        
-             class PressureReading
-                 @PrimaryKey
-                 long id;
-        
-                 int minReading;
-                 int maxReading;
-                 Date created;
-        
-             class WeightReading
-                 @PrimaryKey
-                 long id;
-        
-                 int reading;
-                 Date created;
-        
-                 class HB1ACReading
-                 @PrimaryKey
-                 long id;
-                 double reading; <-- Convert from int to double
-                 Date created;
+         Current Database Schema
+
+         class User
+         @PrimaryKey int id;
+         String name;
+         String preferred_language;
+         String country;
+         int age;
+         String gender;
+         int d_type;
+         String preferred_unit;
+         String preferred_range;
+         int custom_range_min;
+         int custom_range_max;
+
+         class CholesterolReading
+         @PrimaryKey long id;
+
+         int totalReading;
+         int LDLReading;
+         int HDLReading;
+         Date created;
+
+         class GlucoseReading
+         @PrimaryKey long id;
+
+         int reading;
+         String reading_type;
+         String notes;
+         int user_id;
+         Date created;
+
+         class KetoneReading
+         @PrimaryKey long id;
+
+         double reading;
+         Date created;
+
+         class PressureReading
+         @PrimaryKey long id;
+
+         int minReading;
+         int maxReading;
+         Date created;
+
+         class WeightReading
+         @PrimaryKey long id;
+
+         int reading;
+         Date created;
+
+         class HB1ACReading
+         @PrimaryKey long id;
+         double reading; <-- Convert from int to double
+         Date created;
          ************************************************/
 
         if (oldVersion == 0) {
@@ -119,7 +132,7 @@ public class Migration implements RealmMigration {
                         @Override
                         public void apply(DynamicRealmObject obj) {
                             int oldType = obj.getInt("reading");
-                            obj.setDouble("reading_tmp", Double.parseDouble(oldType+""));
+                            obj.setDouble("reading_tmp", Double.parseDouble(oldType + ""));
                         }
                     })
                     .removeField("reading")

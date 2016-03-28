@@ -1,6 +1,27 @@
+/*
+ * Copyright (C) 2016 Glucosio Foundation
+ *
+ * This file is part of Glucosio.
+ *
+ * Glucosio is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, version 3.
+ *
+ * Glucosio is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Glucosio.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ *
+ */
+
 package org.glucosio.android.fragment;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
@@ -13,9 +34,13 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,14 +48,18 @@ import android.widget.Toast;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.LimitLine;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.FillFormatter;
+import com.github.mikephil.charting.interfaces.dataprovider.LineDataProvider;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import org.glucosio.android.R;
+import org.glucosio.android.adapter.A1cEstimateAdapter;
 import org.glucosio.android.presenter.OverviewPresenter;
 import org.glucosio.android.tools.FormatDateTime;
 import org.glucosio.android.tools.GlucoseConverter;
@@ -55,6 +84,8 @@ public class OverviewFragment extends Fragment {
     private Spinner graphSpinnerMetric;
     private OverviewPresenter presenter;
     private View mFragmentView;
+    ImageButton HB1ACMoreButton;
+
 
     public static HistoryFragment newInstance() {
         HistoryFragment fragment = new HistoryFragment();
@@ -101,7 +132,14 @@ public class OverviewFragment extends Fragment {
         graphExport = (ImageButton) mFragmentView.findViewById(R.id.fragment_overview_graph_export);
         HB1ACTextView = (TextView) mFragmentView.findViewById(R.id.fragment_overview_hb1ac);
         HB1ACDateTextView = (TextView) mFragmentView.findViewById(R.id.fragment_overview_hb1ac_date);
+        HB1ACMoreButton = (ImageButton) mFragmentView.findViewById(R.id.fragment_overview_a1c_more);
 
+        HB1ACMoreButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showA1cDialog();
+            }
+        });
         // Set array and adapter for graphSpinnerRange
         String[] selectorRangeArray = getActivity().getResources().getStringArray(R.array.fragment_overview_selector_range);
         String[] selectorMetricArray = getActivity().getResources().getStringArray(R.array.fragment_overview_selector_metric);
@@ -145,31 +183,29 @@ public class OverviewFragment extends Fragment {
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setTextColor(getResources().getColor(R.color.glucosio_text_light));
         xAxis.setAvoidFirstLastClipping(true);
+        GlucoseConverter converter = new GlucoseConverter();
 
-      /*  LimitLine ll1 = new LimitLine(130f, "High");
-        ll1.setLineWidth(1f);
-        ll1.setLineColor(getResources().getColor(R.color.glucosio_gray_light));
-        ll1.setTextColor(getResources().getColor(R.color.glucosio_text));
+        int minGlucoseValue = presenter.getGlucoseMinValue();
+        int maxGlucoseValue = presenter.getGlucoseMaxValue();
 
-        LimitLine ll2 = new LimitLine(70f, "Low");
-        ll2.setLineWidth(1f);
-        ll2.setLineColor(getResources().getColor(R.color.glucosio_gray_light));
-        ll2.setTextColor(getResources().getColor(R.color.glucosio_text));
+        LimitLine ll1;
+        LimitLine ll2;
 
-        LimitLine ll3 = new LimitLine(200f, "Hyper");
-        ll3.setLineWidth(1f);
-        ll3.enableDashedLine(10, 10, 10);
-        ll3.setLineColor(getResources().getColor(R.color.glucosio_gray_light));
-        ll3.setTextColor(getResources().getColor(R.color.glucosio_text));
+        if (("mg/dL").equals(presenter.getUnitMeasuerement())) {
+            ll1 = new LimitLine(minGlucoseValue);
+            ll2 = new LimitLine(maxGlucoseValue);
+        } else {
+            ll1 = new LimitLine((float)converter.glucoseToMmolL(maxGlucoseValue), getString(R.string.reading_high));
+            ll2 = new LimitLine((float)converter.glucoseToMmolL(minGlucoseValue), getString(R.string.reading_low));
+        }
 
-        LimitLine ll4 = new LimitLine(50f, "Hypo");
-        ll4.setLineWidth(1f);
-        ll4.enableDashedLine(10, 10, 10);
-        ll4.setLineColor(getResources().getColor(R.color.glucosio_gray_light));
-        ll4.setTextColor(getResources().getColor(R.color.glucosio_text));*/
+        ll1.setLineWidth(0.8f);
+        ll1.setLineColor(getResources().getColor(R.color.glucosio_reading_low));
+
+        ll2.setLineWidth(0.8f);
+        ll2.setLineColor(getResources().getColor(R.color.glucosio_reading_high));
 
         YAxis leftAxis = chart.getAxisLeft();
-        leftAxis.removeAllLimitLines(); // reset all limit lines to avoid overlapping lines
 /*        leftAxis.addLimitLine(ll1);
         leftAxis.addLimitLine(ll2);
         leftAxis.addLimitLine(ll3);
@@ -179,8 +215,8 @@ public class OverviewFragment extends Fragment {
         //leftAxis.setYOffset(20f);
         leftAxis.disableGridDashedLine();
         leftAxis.setDrawGridLines(false);
-
-        // limit lines are drawn behind data (and not on top)
+        leftAxis.addLimitLine(ll1);
+        leftAxis.addLimitLine(ll2);
         leftAxis.setDrawLimitLinesBehindData(true);
 
         chart.getAxisRight().setEnabled(false);
@@ -201,9 +237,9 @@ public class OverviewFragment extends Fragment {
                         != PackageManager.PERMISSION_GRANTED) {
                     // If we don't have permission, ask the user
 
-                        ActivityCompat.requestPermissions(getActivity(),
-                                new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                                PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE);
+                    ActivityCompat.requestPermissions(getActivity(),
+                            new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                            PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE);
 
                     Snackbar.make(mFragmentView, getString(R.string.fragment_overview_permission_storage), Snackbar.LENGTH_SHORT).show();
                 } else {
@@ -234,17 +270,15 @@ public class OverviewFragment extends Fragment {
     }
 
     private void setData() {
-        // TODO: Refactor all this mess ASAP! -- @paolorotolo
         // int metricSpinnerPosition = graphSpinnerMetric.getSelectedItemPosition();
         // if (metricSpinnerPosition == 0) {
         ArrayList<String> xVals = new ArrayList<String>();
-
 
         if (graphSpinnerRange.getSelectedItemPosition() == 0) {
             // Day view
             for (int i = 0; i < presenter.getGlucoseDatetime().size(); i++) {
                 String date = presenter.convertDate(presenter.getGlucoseDatetime().get(i));
-                    xVals.add(date + "");
+                xVals.add(date + "");
             }
         } else if (graphSpinnerRange.getSelectedItemPosition() == 1){
             // Week view
@@ -261,117 +295,51 @@ public class OverviewFragment extends Fragment {
         }
 
         GlucoseConverter converter = new GlucoseConverter();
-        GlucoseRanges ranges = new GlucoseRanges(getActivity().getApplicationContext());
 
-
-        ArrayList<Entry> yValsLow = new ArrayList<Entry>();
-        ArrayList<Entry> yValsNormal = new ArrayList<Entry>();
-        ArrayList<Entry> yValsHigh = new ArrayList<Entry>();
-
+        ArrayList<Entry> yVals = new ArrayList<Entry>();
+        ArrayList<Integer> colors = new ArrayList<>();
 
         if (graphSpinnerRange.getSelectedItemPosition() == 0) {
-                // Day view
-                for (int i = 0; i < presenter.getGlucoseReading().size(); i++) {
-                    if (presenter.getUnitMeasuerement().equals("mg/dL")) {
-                        float val = Float.parseFloat(presenter.getGlucoseReading().get(i).toString());
-                        String range = ranges.colorFromReading(presenter.getGlucoseReading().get(i));
-
-                        if (range.equals("purple") || range.equals("blue")){
-                            // low
-                            yValsLow.add(new Entry(val, i));
-                        } else if (range.equals("red") || range.equals("orange")){
-                            // high
-                            yValsHigh.add(new Entry(val, i));
-                        } else {
-                            // normal
-                            yValsNormal.add(new Entry(val, i));
-                        }
-                    } else {
-                        double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getGlucoseReading().get(i).toString()));
-                        float converted = (float) val;
-                        String range = ranges.colorFromReading(presenter.getGlucoseReading().get(i));
-
-                        if (range.equals("purple") || range.equals("blue")){
-                            // low
-                            yValsLow.add(new Entry(converted, i));
-                        } else if (range.equals("red") || range.equals("orange")){
-                            // high
-                            yValsHigh.add(new Entry(converted, i));
-                        } else {
-                            // normal
-                            yValsNormal.add(new Entry(converted, i));
-                        }
-                    }
+            // Day view
+            for (int i = 0; i < presenter.getGlucoseReading().size(); i++) {
+                if (presenter.getUnitMeasuerement().equals("mg/dL")) {
+                    float val = Float.parseFloat(presenter.getGlucoseReading().get(i).toString());
+                    yVals.add(new Entry(val, i));
+                } else {
+                    double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getGlucoseReading().get(i).toString()));
+                    float converted = (float) val;
+                    yVals.add(new Entry(converted, i));
                 }
-            } else if (graphSpinnerRange.getSelectedItemPosition() == 1){
-                // Week view
-                for (int i = 0; i < presenter.getGlucoseReadingsWeek().size(); i++) {
-                    if (presenter.getUnitMeasuerement().equals("mg/dL")) {
-                        float val = Float.parseFloat(presenter.getGlucoseReadingsWeek().get(i)+"");
-                        String range = ranges.colorFromReading(presenter.getGlucoseReadingsWeek().get(i));
-
-                        if (range.equals("purple") || range.equals("blue")){
-                            // low
-                            yValsLow.add(new Entry(val, i));
-                        } else if (range.equals("red") || range.equals("orange")){
-                            // high
-                            yValsHigh.add(new Entry(val, i));
-                        } else {
-                            // normal
-                            yValsNormal.add(new Entry(val, i));
-                        }
-
-                    } else {
-                        double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getGlucoseReadingsWeek().get(i)+""));
-                        float converted = (float) val;
-                        String range = ranges.colorFromReading(presenter.getGlucoseReadingsWeek().get(i));
-
-                        if (range.equals("purple") && range.equals("blue")){
-                            // low
-                            yValsLow.add(new Entry(converted, i));
-                        } else if (range.equals("red") && range.equals("orange")){
-                            // high
-                            yValsHigh.add(new Entry(converted, i));
-                        } else {
-                            // normal
-                            yValsNormal.add(new Entry(converted, i));
-                        }                    }
-                }
-            } else {
-                // Month view
-                for (int i = 0; i < presenter.getGlucoseReadingsMonth().size(); i++) {
-                    if (presenter.getUnitMeasuerement().equals("mg/dL")) {
-                        float val = Float.parseFloat(presenter.getGlucoseReadingsMonth().get(i)+"");
-                        String range = ranges.colorFromReading(presenter.getGlucoseReadingsMonth().get(i));
-
-                        if (range.equals("purple") && range.equals("blue")){
-                            // low
-                            yValsLow.add(new Entry(val, i));
-                        } else if (range.equals("red") && range.equals("orange")){
-                            // high
-                            yValsHigh.add(new Entry(val, i));
-                        } else {
-                            // normal
-                            yValsNormal.add(new Entry(val, i));
-                        }
-                    } else {
-                        double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getGlucoseReadingsMonth().get(i)+""));
-                        float converted = (float) val;
-                        String range = ranges.colorFromReading(presenter.getGlucoseReadingsWeek().get(i));
-
-                        if (range.equals("purple") && range.equals("blue")){
-                            // low
-                            yValsLow.add(new Entry(converted, i));
-                        } else if (range.equals("red") && range.equals("orange")){
-                            // high
-                            yValsHigh.add(new Entry(converted, i));
-                        } else {
-                            // normal
-                            yValsNormal.add(new Entry(converted, i));
-                        }
-                    }
+                GlucoseRanges ranges = new GlucoseRanges(getActivity().getApplicationContext());
+                colors.add(ranges.stringToColor(ranges.colorFromReading(presenter.getGlucoseReading().get(i))));
+            }
+        } else if (graphSpinnerRange.getSelectedItemPosition() == 1){
+            // Week view
+            for (int i = 0; i < presenter.getGlucoseReadingsWeek().size(); i++) {
+                if (presenter.getUnitMeasuerement().equals("mg/dL")) {
+                    float val = Float.parseFloat(presenter.getGlucoseReadingsWeek().get(i)+"");
+                    yVals.add(new Entry(val, i));
+                } else {
+                    double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getGlucoseReadingsWeek().get(i)+""));
+                    float converted = (float) val;
+                    yVals.add(new Entry(converted, i));
                 }
             }
+            colors.add(getResources().getColor(R.color.glucosio_pink));
+        } else {
+            // Month view
+            for (int i = 0; i < presenter.getGlucoseReadingsMonth().size(); i++) {
+                if (presenter.getUnitMeasuerement().equals("mg/dL")) {
+                    float val = Float.parseFloat(presenter.getGlucoseReadingsMonth().get(i)+"");
+                    yVals.add(new Entry(val, i));
+                } else {
+                    double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getGlucoseReadingsMonth().get(i)+""));
+                    float converted = (float) val;
+                    yVals.add(new Entry(converted, i));
+                }
+            }
+            colors.add(getResources().getColor(R.color.glucosio_pink));
+        }
         /*} else if (metricSpinnerPosition == 1){
             // A1C
             ArrayList<String> xVals = new ArrayList<String>();
@@ -402,20 +370,42 @@ public class OverviewFragment extends Fragment {
             // Weight
         }*/
 
+        // create a dataset and give it a type
+        LineDataSet set1 = new LineDataSet(yVals, "");
+        set1.setColor(getResources().getColor(R.color.glucosio_pink));
+        set1.setLineWidth(2f);
+        set1.setCircleColor(getResources().getColor(R.color.glucosio_pink));
+        set1.setCircleSize(4f);
+        set1.setDrawCircleHole(true);
+        set1.disableDashedLine();
+        set1.setFillAlpha(255);
+        set1.setDrawFilled(true);
+        set1.setValueTextSize(0);
+        set1.setValueTextColor(Color.parseColor("#FFFFFF"));
+        set1.setFillDrawable(getResources().getDrawable(R.drawable.graph_gradient));
+        set1.setHighLightColor(getResources().getColor(R.color.glucosio_gray_light));
+        set1.setCubicIntensity(0.2f);
+
+        // TODO: Change this to true when a fix is available
+        // https://github.com/PhilJay/MPAndroidChart/issues/1541
+        set1.setDrawCubic(false);
+
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.JELLY_BEAN_MR2){
+            set1.setDrawFilled(false);
+            set1.setLineWidth(2f);
+            set1.setCircleSize(4f);
+            set1.setDrawCircleHole(true);
+        }
+
 //        set1.setDrawFilled(true);
         // set1.setShader(new LinearGradient(0, 0, 0, mChart.getHeight(),
         // Color.BLACK, Color.WHITE, Shader.TileMode.MIRROR));I
 
-        // add the datasets
-        ArrayList<ILineDataSet> dataSet = new ArrayList<ILineDataSet>();
-
-        dataSet.add(createLineDataSet(yValsLow, getResources().getColor(R.color.glucosio_reading_low), "low"));
-        dataSet.add(createLineDataSet(yValsNormal, getResources().getColor(R.color.glucosio_reading_ok), "normal"));
-        dataSet.add(createLineDataSet(yValsHigh, getResources().getColor(R.color.glucosio_reading_high), "high"));
-
+        ArrayList<ILineDataSet> dataSets = new ArrayList<ILineDataSet>();
+        dataSets.add(set1); // add the datasets
 
         // create a data object with the datasets
-        LineData data = new LineData(xVals, dataSet);
+        LineData data = new LineData(xVals, dataSets);
 
         // set data
         chart.setData(data);
@@ -429,30 +419,36 @@ public class OverviewFragment extends Fragment {
         chart.moveViewToX(data.getXValCount());
     }
 
-    private LineDataSet createLineDataSet(ArrayList<Entry> yVals, int color, String label) {
-        // create a dataset and give it a type
-        LineDataSet set1 = new LineDataSet(yVals, label);
-        set1.setColor(color);
-        set1.setDrawFilled(false);
-        set1.setLineWidth(1f);
-        set1.setCircleColor(color);
-        set1.setCircleSize(4f);
-        set1.setDrawCircleHole(true);
-        set1.disableDashedLine();
-        set1.setDrawCubic(true);
-        set1.setCubicIntensity(0.2f);
-        set1.setValueTextSize(0);
-        set1.setValueTextColor(Color.parseColor("#FFFFFF"));
+    private void showA1cDialog(){
+        final Dialog a1CDialog = new Dialog(getActivity(), R.style.GlucosioTheme);
 
-        return  set1;
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(a1CDialog.getWindow().getAttributes());
+        a1CDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        a1CDialog.setContentView(R.layout.dialog_a1c);
+        a1CDialog.getWindow().setAttributes(lp);
+        a1CDialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+        a1CDialog.getWindow().setDimAmount(0.5f);
+        a1CDialog.setCanceledOnTouchOutside(true);
+        a1CDialog.show();
+
+        ListView a1cListView = (ListView) a1CDialog.findViewById(R.id.dialog_a1c_listview);
+
+        A1cEstimateAdapter customAdapter = new A1cEstimateAdapter(
+                getActivity(), R.layout.dialog_a1c_item, presenter.getA1cEstimateList());
+
+        a1cListView.setAdapter(customAdapter);
     }
 
     private void loadHB1AC(){
         if (!presenter.isdbEmpty()){
             HB1ACTextView.setText(presenter.getHB1AC());
             HB1ACDateTextView.setText(presenter.getH1ACMonth());
-            if (HB1ACDateTextView.getText().equals(" ")){
-                HB1ACDateTextView.setVisibility(View.GONE);
+            // We show the A1C more button only if 2 or more A1C estimates are available
+            if (!presenter.isA1cAvailable(2)){
+                HB1ACMoreButton.setVisibility(View.GONE);
             }
         }
     }

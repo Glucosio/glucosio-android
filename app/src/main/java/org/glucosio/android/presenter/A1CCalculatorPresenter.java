@@ -1,3 +1,23 @@
+/*
+ * Copyright (C) 2016 Glucosio Foundation
+ *
+ * This file is part of Glucosio.
+ *
+ * Glucosio is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, version 3.
+ *
+ * Glucosio is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Glucosio.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ *
+ */
+
 package org.glucosio.android.presenter;
 
 import org.glucosio.android.activity.A1Calculator;
@@ -13,11 +33,11 @@ public class A1CCalculatorPresenter {
 
 
     public A1CCalculatorPresenter(A1Calculator a1Calculator) {
-        this.activity= a1Calculator;
+        this.activity = a1Calculator;
         dB = new DatabaseHandler(a1Calculator.getApplicationContext());
     }
 
-    public double calculateA1C(String glucose){
+    public double calculateA1C(String glucose) {
         GlucoseConverter converter = new GlucoseConverter();
         if (dB.getUser(1).getPreferred_unit().equals("mg/dL")) {
             return converter.glucoseToA1C(Double.parseDouble(glucose));
@@ -26,13 +46,13 @@ public class A1CCalculatorPresenter {
         }
     }
 
-    public void checkUnit(){
-        if (!dB.getUser(1).getPreferred_unit().equals("mg/dL")){
+    public void checkUnit() {
+        if (!dB.getUser(1).getPreferred_unit().equals("mg/dL")) {
             activity.setMmol();
         }
     }
 
-    public void saveA1C(double a1c){
+    public void saveA1C(double a1c) {
         HB1ACReading a1cReading = new HB1ACReading(a1c, Calendar.getInstance().getTime());
         dB.addHB1ACReading(a1cReading);
         activity.finish();

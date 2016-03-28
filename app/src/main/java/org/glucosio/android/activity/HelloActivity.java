@@ -1,3 +1,23 @@
+/*
+ * Copyright (C) 2016 Glucosio Foundation
+ *
+ * This file is part of Glucosio.
+ *
+ * Glucosio is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, version 3.
+ *
+ * Glucosio is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Glucosio.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ *
+ */
+
 package org.glucosio.android.activity;
 
 import android.content.Context;
@@ -15,11 +35,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
-
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
+import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.presenter.HelloPresenter;
 import org.glucosio.android.tools.LabelledSpinner;
 
@@ -40,8 +58,7 @@ public class HelloActivity extends AppCompatActivity {
     private Button startButton;
     private TextView ageTextView;
     private HelloPresenter presenter;
-    private TextView termsTextView ;
-    private Tracker mTracker;
+    private TextView termsTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +68,8 @@ public class HelloActivity extends AppCompatActivity {
         // Prevent SoftKeyboard to pop up on start
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
-        presenter = new HelloPresenter(this);
+        GlucosioApplication application = (GlucosioApplication) getApplication();
+        presenter = new HelloPresenter(this, application.getDBHandler());
         presenter.loadDatabase();
 
         countrySpinner = (LabelledSpinner) findViewById(R.id.activity_hello_spinner_country);
@@ -84,7 +102,7 @@ public class HelloActivity extends AppCompatActivity {
         // Get locale country name and set the spinner
         String localCountry = getApplicationContext().getResources().getConfiguration().locale.getDisplayCountry();
 
-        if (!localCountry.equals(null)) {
+        if (localCountry != null) {
             countrySpinner.setSelection(((ArrayAdapter) countrySpinner.getSpinner().getAdapter()).getPosition(localCountry));
         }
 
@@ -92,7 +110,7 @@ public class HelloActivity extends AppCompatActivity {
         unitSpinner.setItemsArray(R.array.helloactivity_preferred_unit);
         typeSpinner.setItemsArray(R.array.helloactivity_diabetes_type);
 
-        final Drawable pinkArrow = getApplicationContext().getResources().getDrawable( R.drawable.ic_navigate_next_pink_24px );
+        final Drawable pinkArrow = getApplicationContext().getResources().getDrawable(R.drawable.ic_navigate_next_pink_24px);
         pinkArrow.setBounds(0, 0, 60, 60);
         startButton.setCompoundDrawables(null, null, pinkArrow, null);
 
@@ -104,15 +122,12 @@ public class HelloActivity extends AppCompatActivity {
             }
         });
 
-        // Obtain the Analytics shared Tracker instance.
-        GlucosioApplication application = (GlucosioApplication) getApplication();
-        mTracker = application.getDefaultTracker();
-        Log.i("MainActivity", "Setting screen name: " + "main");
-        mTracker.setScreenName("Hello Activity");
-        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+        Analytics analytics = application.getAnalytics();
+        analytics.reportScreen("Hello Activity");
+        Log.i("MainActivity", "Setting screen name: main");
     }
 
-    public void onStartClicked(View v){
+    public void onStartClicked(View v) {
         presenter.onNextClicked(ageTextView.getText().toString(),
                 genderSpinner.getSpinner().getSelectedItem().toString(),
                 Locale.getDefault().getDisplayLanguage(),
@@ -121,17 +136,17 @@ public class HelloActivity extends AppCompatActivity {
                 unitSpinner.getSpinner().getSelectedItem().toString());
     }
 
-    public void displayErrorMessage(){
+    public void displayErrorMessage() {
         Toast.makeText(getApplicationContext(), getString(R.string.helloactivity_age_invalid), Toast.LENGTH_SHORT).show();
     }
 
-    public void closeHelloActivity(){
+    public void closeHelloActivity() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
     }
 
-    public void showToast(String text){
+    public void showToast(String text) {
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }
 

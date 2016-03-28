@@ -1,3 +1,23 @@
+/*
+ * Copyright (C) 2016 Glucosio Foundation
+ *
+ * This file is part of Glucosio.
+ *
+ * Glucosio is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, version 3.
+ *
+ * Glucosio is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Glucosio.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ *
+ */
+
 package org.glucosio.android.activity;
 
 import android.content.Context;
@@ -21,9 +41,9 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class A1Calculator extends AppCompatActivity {
 
-    A1CCalculatorPresenter presenter;
-    TextView glucoseUnit;
-    double convertedA1C = 0;
+    private A1CCalculatorPresenter presenter;
+    private TextView glucoseUnit;
+    private double convertedA1C = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,45 +79,43 @@ public class A1Calculator extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
                 if (!s.toString().equals("")) {
                     convertedA1C = presenter.calculateA1C(s.toString());
-                    A1CTextView.setText(convertedA1C+"");
+                    A1CTextView.setText(convertedA1C + "");
                 }
             }
         });
 
         glucoseEditText.setOnEditorActionListener(
-            new TextView.OnEditorActionListener() {
+                new TextView.OnEditorActionListener() {
 
-                public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                    if (actionId == EditorInfo.IME_ACTION_DONE) {
-                        // your additional processing...
-                        return true;
-                    } else {
-                        return false;
+                    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                        if (actionId == EditorInfo.IME_ACTION_DONE) {
+                            // your additional processing...
+                            return true;
+                        } else {
+                            return false;
+                        }
                     }
-                }
-            });
+                });
         glucoseEditText.setFocusable(true);
     }
 
-    public void setMmol(){
+    public void setMmol() {
         glucoseUnit.setText("mmol/L");
     }
 
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK)
-        {
-            ((InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE)).toggleSoftInput
-                    (InputMethodManager.SHOW_FORCED,InputMethodManager.HIDE_IMPLICIT_ONLY);
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE)).toggleSoftInput
+                    (InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
         }
         return super.onKeyUp(keyCode, event);
     }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK)
-        {
-            ((InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE)).toggleSoftInput
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE)).toggleSoftInput
                     (InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
         }
         return super.onKeyDown(keyCode, event);

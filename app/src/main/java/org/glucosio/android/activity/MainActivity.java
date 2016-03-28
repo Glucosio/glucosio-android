@@ -1,9 +1,31 @@
+/*
+ * Copyright (C) 2016 Glucosio Foundation
+ *
+ * This file is part of Glucosio.
+ *
+ * Glucosio is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, version 3.
+ *
+ * Glucosio is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Glucosio.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ *
+ */
+
 package org.glucosio.android.activity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.Dialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -13,6 +35,8 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -26,9 +50,6 @@ import android.widget.TextView;
 
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
-import com.google.android.gms.appinvite.AppInviteInvitation;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.instabug.library.Instabug;
@@ -43,17 +64,21 @@ import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.adapter.HomePagerAdapter;
+import org.glucosio.android.analytics.Analytics;
+import org.glucosio.android.db.DatabaseHandler;
+import org.glucosio.android.invitations.Invitation;
 import org.glucosio.android.presenter.ExportPresenter;
 import org.glucosio.android.presenter.MainPresenter;
 
 import java.util.Calendar;
 
+import io.smooch.ui.ConversationActivity;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
-public class MainActivity extends InstabugAppCompatActivity implements DatePickerDialog.OnDateSetListener{
+public class MainActivity extends InstabugAppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
-    ExportPresenter exportPresenter;
+    private ExportPresenter exportPresenter;
     private RadioButton exportRangeButton;
     private HomePagerAdapter homePagerAdapter;
     private MainPresenter presenter;
@@ -63,18 +88,19 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
     private TextView exportDialogDateTo;
 
     private FloatingActionMenu fabMenu;
-    private Tracker mTracker;
     private FloatingActionButton fabGlucoseEmpty;
 
-    Toolbar toolbar;
-    TabLayout tabLayout;
+    private Toolbar toolbar;
+    private TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        GlucosioApplication application = (GlucosioApplication) getApplication();
+
         setContentView(R.layout.activity_main);
-        presenter = new MainPresenter(this);
-        exportPresenter = new ExportPresenter(this);
+        initPresenters(application);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         tabLayout = (TabLayout) findViewById(R.id.tab_layout);
@@ -134,7 +160,7 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
             @Override
             public void onMenuToggle(boolean opened) {
                 // When Fab Menu is opened, dim the main view.
-                if (opened){
+                if (opened) {
                     if (!presenter.isdbEmpty()) {
                         AlphaAnimation alpha = new AlphaAnimation(1F, 0.2F);
                         alpha.setDuration(600);
@@ -152,8 +178,8 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
         // Add Nav Drawer
         final PrimaryDrawerItem itemSettings = new PrimaryDrawerItem().withName(R.string.action_settings).withIcon(R.drawable.ic_settings_black_24dp).withSelectable(false);
         final PrimaryDrawerItem itemExport = new PrimaryDrawerItem().withName(R.string.title_activity_export).withIcon(R.drawable.ic_share_black_24dp).withSelectable(false);
+        final PrimaryDrawerItem itemFeedback = new PrimaryDrawerItem().withName(R.string.menu_support).withIcon(R.drawable.ic_feedback_black_24dp).withSelectable(false);
         final PrimaryDrawerItem itemAbout = new PrimaryDrawerItem().withName(R.string.preferences_about_glucosio).withIcon(R.drawable.ic_info_black_24dp).withSelectable(false);
-        final PrimaryDrawerItem itemFeedback = new PrimaryDrawerItem().withName(R.string.action_feedback).withIcon(R.drawable.ic_feedback_black_24dp).withSelectable(false);
         final PrimaryDrawerItem itemInvite = new PrimaryDrawerItem().withName(R.string.action_invite).withIcon(R.drawable.ic_face_black_24dp).withSelectable(false);
         final PrimaryDrawerItem itemDonate = new PrimaryDrawerItem().withName(R.string.about_donate).withIcon(R.drawable.ic_favorite_black_24dp).withSelectable(false);
         final PrimaryDrawerItem itemA1C = new PrimaryDrawerItem().withName(R.string.activity_converter_title).withIcon(R.drawable.ic_drawer_calculator_a1c).withSelectable(false);
@@ -180,7 +206,7 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
                             startAboutActivity();
                         } else if (drawerItem.equals(itemFeedback)) {
                             // Feedback
-                            Instabug.invoke();
+                            openSupportDialog();
                         } else if (drawerItem.equals(itemInvite)) {
                             // Invite
                             showInviteDialog();
@@ -190,7 +216,7 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
                         } else if (drawerItem.equals(itemDonate)) {
                             // Donate
                             openDonateIntent();
-                        } else if (drawerItem.equals(itemA1C)){
+                        } else if (drawerItem.equals(itemA1C)) {
                             openA1CCalculator();
                         }
                         return false;
@@ -202,8 +228,8 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
                     itemA1C,
                     itemExport,
                     itemSettings,
-                    itemAbout,
                     itemFeedback,
+                    itemAbout,
                     itemDonate,
                     itemInvite
             )
@@ -214,8 +240,8 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
                     itemA1C,
                     itemExport,
                     itemSettings,
-                    itemAbout,
                     itemFeedback,
+                    itemAbout,
                     itemDonate
             )
                     .withSelectedItem(-1)
@@ -224,12 +250,15 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
 
         checkIfEmptyLayout();
 
-        // Obtain the Analytics shared Tracker instance.
-        GlucosioApplication application = (GlucosioApplication) getApplication();
-        mTracker = application.getDefaultTracker();
+        Analytics analytics = application.getAnalytics();
         Log.i("MainActivity", "Setting screen name: " + "main");
-        mTracker.setScreenName("Main Activity");
-        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+        analytics.reportScreen("Main Activity");
+    }
+
+    private void initPresenters(GlucosioApplication application) {
+        final DatabaseHandler dbHandler = application.getDBHandler();
+        presenter = new MainPresenter(this, dbHandler);
+        exportPresenter = new ExportPresenter(this, dbHandler);
     }
 
     private void openA1CCalculator() {
@@ -312,6 +341,48 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
         viewPager.startAnimation(alpha);
     }
 
+    public void openSupportDialog() {
+        final Context mContext = this;
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(getResources().getString(R.string.menu_support_title));
+        builder.setItems(getResources().getStringArray(R.array.menu_support_options), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (which == 0){
+                    // Email
+                    Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:hello@glucosio.org"));
+                    boolean activityExists = emailIntent.resolveActivityInfo(getPackageManager(), 0) != null;
+
+                    if (activityExists){
+                        startActivity(emailIntent);
+                    } else {
+                        showSnackBar(getResources().getString(R.string.menu_support_error1), Snackbar.LENGTH_LONG);
+                    }
+                } else if (which == 1){
+                    // Report Feedback
+                    // Open Instabug
+                    Instabug.invoke();
+                    // ConversationActivity.show(mContext);
+                } else {
+                    // Forum
+                    String url = "http://community.glucosio.org/";
+                    Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    i.setPackage("com.android.chrome");
+                    try {
+                        startActivity(i);
+                    } catch (ActivityNotFoundException e) {
+                        // Chrome is probably not installed
+                        // Try with the default browser
+                        i.setPackage(null);
+                        startActivity(i);
+                    }
+                }
+            }
+        });
+        builder.show();
+    }
+
     public void showExportDialog() {
         final Dialog exportDialog = new Dialog(MainActivity.this, R.style.GlucosioTheme);
 
@@ -389,11 +460,11 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
         exportButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (validateExportDialog()){
+                if (validateExportDialog()) {
                     exportPresenter.onExportClicked(exportAllButton.isChecked());
                     exportDialog.dismiss();
                 } else {
-                    showSnackBar(getResources().getString(R.string.dialog_error));
+                    showSnackBar(getResources().getString(R.string.dialog_error), Snackbar.LENGTH_LONG);
                 }
             }
         });
@@ -490,11 +561,8 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
     }
 
     public void showInviteDialog() {
-        Intent intent = new AppInviteInvitation.IntentBuilder(getString(R.string.invitation_title))
-                .setMessage(getString(R.string.invitation_message))
-                .setCallToActionText(getString(R.string.invitation_cta))
-                .build();
-        startActivityForResult(intent, 0);
+        final Invitation invitation = ((GlucosioApplication) getApplication()).getInvitation();
+        invitation.invite(this, getString(R.string.invitation_title), this.getString(R.string.invitation_message), this.getString(R.string.invitation_cta));
     }
 
     public void checkIfEmptyLayout() {
@@ -533,14 +601,14 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
         Snackbar.make(rootLayout, getString(R.string.activity_export_snackbar_1) + " " + nReadings + " " + getString(R.string.activity_export_snackbar_2), Snackbar.LENGTH_SHORT).show();
     }
 
-    public void showNoReadingsSnackBar(){
+    public void showNoReadingsSnackBar() {
         View rootLayout = findViewById(android.R.id.content);
         Snackbar.make(rootLayout, getString(R.string.activity_export_no_readings_snackbar), Snackbar.LENGTH_SHORT).show();
     }
 
-    private void showSnackBar(String text) {
+    private void showSnackBar(String text, int lengthLong) {
         View rootLayout = findViewById(android.R.id.content);
-        Snackbar.make(rootLayout, text, Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(rootLayout, text, lengthLong).show();
     }
 
     public void showShareDialog(Uri uri) {
@@ -612,6 +680,24 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
             Log.d("STATUS", "Error connecting with Google Play services. Code: " + String.valueOf(status));
             return false;
         }
+    }
+
+    public void onA1cInfoClicked(View view) {
+        new AlertDialog.Builder(MainActivity.this)
+                .setMessage(getString(R.string.overview_hb1ac_info))
+                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // continue with delete
+                    }
+                })
+                .show();
+
+        addA1cAnalyticsEvent();
+    }
+
+    private void addA1cAnalyticsEvent() {
+        Analytics analytics = ((GlucosioApplication) getApplication()).getAnalytics();
+        analytics.reportAction("A1C", "A1C disclaimer opened");
     }
 
     @Override
