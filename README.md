@@ -1,7 +1,7 @@
 [![Crowdin](https://d322cqt584bo4o.cloudfront.net/glucosio/localized.png)](https://crowdin.com/project/glucosio)
 [![Build Status](https://travis-ci.org/Glucosio/glucosio-android.svg)](https://travis-ci.org/Glucosio/glucosio-android)
 [![Codacy](https://img.shields.io/codacy/e27821fb6289410b8f58338c7e0bc686.svg)]()
-[![Stories in Ready](https://badge.waffle.io/Glucosio/android.svg?label=ready&title=Ready)](http://waffle.io/Glucosio/android)
+[![Coverage Status](https://coveralls.io/repos/github/Glucosio/glucosio-android/badge.svg?branch=develop)](https://coveralls.io/github/Glucosio/glucosio-android?branch=develop)
 # Glucosio for Android
 Glucosio for Android, an user centered free and open source app for Diabetes management and research for Android.
 
