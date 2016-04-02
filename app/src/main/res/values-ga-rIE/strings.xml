@@ -40,7 +40,7 @@
   <string name="helloactivity_spinner_diabetes_type">Cineál diaibéitis</string>
   <string name="helloactivity_spinner_diabetes_type_1">Cineál 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Cineál 2</string>
-  <string name="helloactivity_spinner_preferred_unit">Do rogha aonaid</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit">Do rogha aonaid</string>
   <string name="helloactivity_share_data">Comhroinn sonraí gan ainm le haghaidh taighde.</string>
   <string name="helloactivity_hint_settings">Is féidir leat iad seo a athrú ar ball sna socruithe.</string>
   <string name="helloactivity_button_next">AR AGHAIDH</string>

@@ -55,13 +55,31 @@
         <item>@string/helloactivity_spinner_diabetes_type_2</item>
     </string-array>
 
-    <string name="helloactivity_spinner_preferred_unit">Preferred unit</string>
-    <string name="helloactivity_spinner_preferred_unit_1" translatable="false">mg/dL</string>
-    <string name="helloactivity_spinner_preferred_unit_2" translatable="false">mmol/L</string>
+    <string name="helloactivity_spinner_preferred_glucose_unit">Preferred Glucose unit</string>
+    <string name="helloactivity_spinner_preferred_glucose_unit_1" translatable="false">mg/dL</string>
+    <string name="helloactivity_spinner_preferred_glucose_unit_2" translatable="false">mmol/L</string>
 
-    <string-array name="helloactivity_preferred_unit" translatable="false">
-        <item>@string/helloactivity_spinner_preferred_unit_1</item>
-        <item>@string/helloactivity_spinner_preferred_unit_2</item>
+    <string-array name="helloactivity_preferred_glucose_unit" translatable="false">
+        <item>@string/helloactivity_spinner_preferred_glucose_unit_1</item>
+        <item>@string/helloactivity_spinner_preferred_glucose_unit_2</item>
+    </string-array>
+
+    <string name="preferences_spinner_preferred_a1c_unit">Preferred A1C unit</string>
+    <string name="preferences_spinner_preferred_a1c_unit_1" translatable="false">%</string>
+    <string name="preferences_spinner_preferred_a1c_unit_2" translatable="false">mmol/mol</string>
+
+    <string-array name="preferences_preferred_a1c_unit" translatable="false">
+        <item>@string/preferences_spinner_preferred_a1c_unit_1</item>
+        <item>@string/preferences_spinner_preferred_a1c_unit_2</item>
+    </string-array>
+
+    <string name="preferences_spinner_preferred_weight_unit">Preferred Weight unit</string>
+    <string name="preferences_spinner_preferred_weight_unit_1">kilograms</string>
+    <string name="preferences_spinner_preferred_weight_unit_2">pounds</string>
+
+    <string-array name="preferences_preferred_weight_unit" translatable="false">
+        <item>@string/preferences_spinner_preferred_weight_unit_1</item>
+        <item>@string/preferences_spinner_preferred_weight_unit_2</item>
     </string-array>
 
     <string name="helloactivity_share_data">Share anonymous data for research.</string>

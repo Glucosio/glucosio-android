@@ -39,7 +39,7 @@
   <string name="helloactivity_spinner_diabetes_type">ডায়াবেটিসের ধরণ</string>
   <string name="helloactivity_spinner_diabetes_type_1">১ নং ধরণ</string>
   <string name="helloactivity_spinner_diabetes_type_2">২ নং ধরণ</string>
-  <string name="helloactivity_spinner_preferred_unit">পছন্দের ইউনিট</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit">পছন্দের ইউনিট</string>
   <string name="helloactivity_share_data">গবেষণার জন্য বেনামী তথ্য শেয়ার করুন।</string>
   <string name="helloactivity_hint_settings">আপনি এগুলি সেটিংসে গিয়ে পরেও বদলাতে পারেন।</string>
   <string name="helloactivity_button_next">পরবর্তী</string>

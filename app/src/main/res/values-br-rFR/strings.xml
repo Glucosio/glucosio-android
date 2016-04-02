@@ -36,7 +36,7 @@
   <string name="helloactivity_spinner_diabetes_type">Diabetoù seurt</string>
   <string name="helloactivity_spinner_diabetes_type_1">Seurt 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Seurt 2</string>
-  <string name="helloactivity_spinner_preferred_unit">Unanenn muiañ plijet</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit">Unanenn muiañ plijet</string>
   <string name="helloactivity_share_data">Rannañ roadennoù dizanv evit an enklask.</string>
   <string name="helloactivity_hint_settings">Gallout a rit kemmañ an dra-se diwezhatoc\'h.</string>
   <string name="dialog_add_title">Ouzhpenn ul Live Gwad Glukoz</string>

@@ -40,7 +40,7 @@
   <string name="helloactivity_spinner_diabetes_type">Тип диабет</string>
   <string name="helloactivity_spinner_diabetes_type_1">Тип 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Тип 2</string>
-  <string name="helloactivity_spinner_preferred_unit">Предпочитана единица</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit">Предпочитана единица</string>
   <string name="helloactivity_share_data">Споделете анонимни данни за проучване.</string>
   <string name="helloactivity_hint_settings">Можете да промените тези настройки по-късно.</string>
   <string name="helloactivity_button_next">СЛЕДВАЩА</string>

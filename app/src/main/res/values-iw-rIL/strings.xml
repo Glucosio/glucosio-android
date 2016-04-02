@@ -40,7 +40,7 @@
   <string name="helloactivity_spinner_diabetes_type">סוג סוכרת</string>
   <string name="helloactivity_spinner_diabetes_type_1">סוכרת סוג 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">סוכרת סוג 2</string>
-  <string name="helloactivity_spinner_preferred_unit">יחידת מדידה מעודפת</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit">יחידת מדידה מעודפת</string>
   <string name="helloactivity_share_data">שתף מידע אנונימי למחקר.</string>
   <string name="helloactivity_hint_settings">תוכלו לשנות את ההגדרות האלו מאוחר יותר.</string>
   <string name="helloactivity_button_next">הבא</string>

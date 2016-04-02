@@ -40,7 +40,7 @@
   <string name="helloactivity_spinner_diabetes_type">糖尿病の型</string>
   <string name="helloactivity_spinner_diabetes_type_1">1 型</string>
   <string name="helloactivity_spinner_diabetes_type_2">2 型</string>
-  <string name="helloactivity_spinner_preferred_unit">使用する単位</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit">使用する単位</string>
   <string name="helloactivity_share_data">研究の匿名データを共有します。</string>
   <string name="helloactivity_hint_settings">後でこれらの設定を変更できます。</string>
   <string name="helloactivity_button_next">次へ</string>

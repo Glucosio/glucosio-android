@@ -39,7 +39,7 @@
   <string name="helloactivity_spinner_diabetes_type">டயபிடிஸ் வகை</string>
   <string name="helloactivity_spinner_diabetes_type_1">வகை 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">வகை 2</string>
-  <string name="helloactivity_spinner_preferred_unit">விருப்பமான அலகு</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit">விருப்பமான அலகு</string>
   <string name="helloactivity_button_next">அடுத்து</string>
   <string name="dialog_add_date">தேதி</string>
   <string name="dialog_add_time">நேரம்</string>

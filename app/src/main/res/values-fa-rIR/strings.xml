@@ -40,7 +40,7 @@
   <string name="helloactivity_spinner_diabetes_type">نوع دیابت</string>
   <string name="helloactivity_spinner_diabetes_type_1">نوع 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">نوع 2</string>
-  <string name="helloactivity_spinner_preferred_unit">واحد اندازه گیری ترجیحی</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit">واحد اندازه گیری ترجیحی</string>
   <string name="helloactivity_share_data">داده های ناشناس برای تحقیقات به اشتراک بگذارید.</string>
   <string name="helloactivity_hint_settings">شما بعد میتوانید این تنظیمات را تغییر دهید.</string>
   <string name="helloactivity_button_next">بعدی</string>

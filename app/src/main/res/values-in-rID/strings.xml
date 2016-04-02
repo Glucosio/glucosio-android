@@ -39,7 +39,7 @@
   <string name="helloactivity_spinner_diabetes_type">Tipe diabetes</string>
   <string name="helloactivity_spinner_diabetes_type_1">Tipe 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Tipe 2</string>
-  <string name="helloactivity_spinner_preferred_unit">Unit utama</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit">Unit utama</string>
   <string name="helloactivity_share_data">Berbagi data anonim untuk riset.</string>
   <string name="helloactivity_hint_settings">Anda dapat mengganti ini nanti di pengaturan.</string>
   <string name="helloactivity_button_next">BERIKUTNYA</string>

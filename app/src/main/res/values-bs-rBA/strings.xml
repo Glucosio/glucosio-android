@@ -40,7 +40,7 @@
   <string name="helloactivity_spinner_diabetes_type">Tip dijabetesa</string>
   <string name="helloactivity_spinner_diabetes_type_1">Tip 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Tip 2</string>
-  <string name="helloactivity_spinner_preferred_unit">Preferirana jedinica</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit">Preferirana jedinica</string>
   <string name="helloactivity_share_data">Podijeli anonimne podatke zarad istraživanja.</string>
   <string name="helloactivity_hint_settings">Ove postavke možete promijeniti kasnije.</string>
   <string name="helloactivity_button_next">DALJE</string>

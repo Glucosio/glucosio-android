@@ -40,7 +40,7 @@
   <string name="helloactivity_spinner_diabetes_type">Typ cukrovky</string>
   <string name="helloactivity_spinner_diabetes_type_1">Typ 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Typ 2</string>
-  <string name="helloactivity_spinner_preferred_unit">Preferovaná jednotka</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit">Preferovaná jednotka</string>
   <string name="helloactivity_share_data">Sdílet anonymní data pro výzkum.</string>
   <string name="helloactivity_hint_settings">Tato nastavení můžete později změnit v kartě nastavení.</string>
   <string name="helloactivity_button_next">DALŠÍ</string>

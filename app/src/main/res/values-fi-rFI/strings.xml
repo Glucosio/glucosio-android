@@ -39,7 +39,7 @@
   <string name="helloactivity_spinner_diabetes_type">Diabetestyyppi</string>
   <string name="helloactivity_spinner_diabetes_type_1">Tyyppi 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Tyyppi 2</string>
-  <string name="helloactivity_spinner_preferred_unit">Yksikkö</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit">Yksikkö</string>
   <string name="helloactivity_share_data">Jaa tietoja nimettömästi tutkimustarkoituksiin.</string>
   <string name="helloactivity_hint_settings">Voit muuttaa näitä myöhemmin asetuksista.</string>
   <string name="helloactivity_button_next">SEURAAVA</string>

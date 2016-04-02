@@ -121,7 +121,7 @@
                 android:layout_marginTop="-17dp"
                 android:layout_weight="1"
                 android:textSize="@dimen/abc_text_size_body_2_material"
-                custom:labelText="@string/helloactivity_spinner_preferred_unit"
+                custom:labelText="@string/helloactivity_spinner_preferred_glucose_unit"
                 custom:widgetColor="@color/glucosio_pink" />
         </LinearLayout>
 

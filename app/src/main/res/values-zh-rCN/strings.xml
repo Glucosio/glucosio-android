@@ -41,7 +41,7 @@
   <string name="helloactivity_spinner_diabetes_type">糖尿病类型</string>
   <string name="helloactivity_spinner_diabetes_type_1">1型糖尿病</string>
   <string name="helloactivity_spinner_diabetes_type_2">2型糖尿病</string>
-  <string name="helloactivity_spinner_preferred_unit">首选单位</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit">首选单位</string>
   <string name="helloactivity_share_data">分享匿名数据供研究用途。</string>
   <string name="helloactivity_hint_settings">您可以在以后更改这些设置。</string>
   <string name="helloactivity_button_next">下一步</string>

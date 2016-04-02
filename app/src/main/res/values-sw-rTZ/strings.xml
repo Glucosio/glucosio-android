@@ -39,7 +39,7 @@
   <string name="helloactivity_spinner_diabetes_type">Aina ya ugonjwa wa kisukari</string>
   <string name="helloactivity_spinner_diabetes_type_1">Aina ya kwanza</string>
   <string name="helloactivity_spinner_diabetes_type_2">Aina ya pili</string>
-  <string name="helloactivity_spinner_preferred_unit">Kipimo kilichopendekezwa</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit">Kipimo kilichopendekezwa</string>
   <string name="helloactivity_share_data">Tushirikishe data bila jina kwa ajili ya utafiti.</string>
   <string name="helloactivity_hint_settings">Unaweza kubadilisha haya kwenye mpangilio hapo baadaye.</string>
   <string name="helloactivity_button_next">IFUATAYO</string>
