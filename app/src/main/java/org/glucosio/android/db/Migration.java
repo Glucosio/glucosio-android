@@ -21,6 +21,7 @@
 package org.glucosio.android.db;
 
 import java.util.Date;
+import java.util.StringTokenizer;
 
 import io.realm.DynamicRealm;
 import io.realm.DynamicRealmObject;
@@ -28,6 +29,7 @@ import io.realm.FieldAttribute;
 import io.realm.RealmMigration;
 import io.realm.RealmObjectSchema;
 import io.realm.RealmSchema;
+import io.realm.annotations.Required;
 
 public class Migration implements RealmMigration {
 
@@ -47,6 +49,8 @@ public class Migration implements RealmMigration {
          String gender;
          int d_type;
          String preferred_unit;
+         String preferred_unit_a1c;
+         String preferred_unit_weight;
          String preferred_range;
          int custom_range_min;
          int custom_range_max;
@@ -89,7 +93,7 @@ public class Migration implements RealmMigration {
 
          class HB1ACReading
          @PrimaryKey long id;
-         double reading; <-- Convert from int to double
+         double reading;
          Date created;
          ************************************************/
 
@@ -137,6 +141,25 @@ public class Migration implements RealmMigration {
                     })
                     .removeField("reading")
                     .renameField("reading_tmp", "reading");
+            oldVersion++;
+        }
+
+        if (oldVersion == 2) {
+            // Add 2 new fields in User:
+            // String preferred_unit_a1c
+            // String preferred_unit_weight
+            // and populate them with default values (% and kilograms)
+
+            schema.get("User")
+                    .addField("preferred_unit_a1c", String.class, FieldAttribute.REQUIRED)
+                    .addField("preferred_unit_weight", String.class, FieldAttribute.REQUIRED)
+                    .transform(new RealmObjectSchema.Function() {
+                        @Override
+                        public void apply(DynamicRealmObject obj) {
+                            obj.set("preferred_unit_a1c", "percentage");
+                            obj.set("preferred_unit_weight", "kilograms");
+                        }
+                    });
             oldVersion++;
         }
     }

@@ -22,6 +22,7 @@ package org.glucosio.android.db;
 
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
+import io.realm.annotations.Required;
 
 public class User extends RealmObject {
 
@@ -34,6 +35,10 @@ public class User extends RealmObject {
     private String gender;
     private int d_type;
     private String preferred_unit;
+    @Required
+    private String preferred_unit_a1c;
+    @Required
+    private String preferred_unit_weight;
     private String preferred_range;
     private int custom_range_min;
     private int custom_range_max;
@@ -42,7 +47,11 @@ public class User extends RealmObject {
 
     }
 
-    public User(int id, String name, String preferred_language, String country, int age, String gender, int dType, String pUnit, String pRange, int minRange, int maxRange) {
+    public int getD_type() {
+        return this.d_type;
+    }
+
+    public User(int id, String name, String preferred_language, String country, int age, String gender, int dType, String pUnit, String a1cUnit, String weightUnit, String pRange, int minRange, int maxRange) {
         this.id = id;
         this.name = name;
         this.preferred_language = preferred_language;
@@ -51,13 +60,11 @@ public class User extends RealmObject {
         this.gender = gender;
         this.d_type = dType;
         this.preferred_unit = pUnit;
+        this.preferred_unit_a1c = a1cUnit;
+        this.preferred_unit_weight = weightUnit;
         this.preferred_range = pRange;
         this.custom_range_max = maxRange;
         this.custom_range_min = minRange;
-    }
-
-    public int getD_type() {
-        return this.d_type;
     }
 
     public void setD_type(int dType) {
@@ -142,5 +149,21 @@ public class User extends RealmObject {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getPreferred_unit_a1c() {
+        return preferred_unit_a1c;
+    }
+
+    public void setPreferred_unit_a1c(String preferred_unit_a1c) {
+        this.preferred_unit_a1c = preferred_unit_a1c;
+    }
+
+    public String getPreferred_unit_weight() {
+        return preferred_unit_weight;
+    }
+
+    public void setPreferred_unit_weight(String preferred_unit_weight) {
+        this.preferred_unit_weight = preferred_unit_weight;
     }
 }

@@ -51,7 +51,7 @@ public class DatabaseHandler {
 
         if (mRealmConfig == null) {
             mRealmConfig = new RealmConfiguration.Builder(context)
-                    .schemaVersion(2)
+                    .schemaVersion(3)
                     .migration(new Migration())
                     .build();
         }

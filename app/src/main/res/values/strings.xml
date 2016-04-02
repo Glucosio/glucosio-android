@@ -65,7 +65,7 @@
     </string-array>
 
     <string name="preferences_spinner_preferred_a1c_unit">Preferred A1C unit</string>
-    <string name="preferences_spinner_preferred_a1c_unit_1" translatable="false">%</string>
+    <string name="preferences_spinner_preferred_a1c_unit_1">percentage</string>
     <string name="preferences_spinner_preferred_a1c_unit_2" translatable="false">mmol/mol</string>
 
     <string-array name="preferences_preferred_a1c_unit" translatable="false">
