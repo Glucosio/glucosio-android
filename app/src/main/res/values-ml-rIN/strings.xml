@@ -38,7 +38,6 @@
   <string name="helloactivity_spinner_diabetes_type">പ്രമേഹത്തിന്റെ വിധം</string>
   <string name="helloactivity_spinner_diabetes_type_1">ടൈപ്പു് 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">ടൈപ്പു് 2</string>
-  <string name="helloactivity_spinner_preferred_glucose_unit">ഉപയോഗിക്കേണ്ട ഏകകം</string>
   <string name="helloactivity_share_data">നിരീക്ഷണത്തിനായി വിവരങ്ങൾ നൽകുക.</string>
   <string name="helloactivity_hint_settings">ഇത് പിന്നീട് മാറ്റാവുന്നതാണു്.</string>
   <string name="helloactivity_button_next">അടുത്തത്</string>

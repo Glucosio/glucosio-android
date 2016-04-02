@@ -40,7 +40,6 @@
   <string name="helloactivity_spinner_diabetes_type">Tipul diabetului</string>
   <string name="helloactivity_spinner_diabetes_type_1">Tip 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Tip 2</string>
-  <string name="helloactivity_spinner_preferred_glucose_unit">Unitatea preferată</string>
   <string name="helloactivity_share_data">Partajează date în mod anonim pentru cercetare.</string>
   <string name="helloactivity_hint_settings">Poți schimba aceste setări mai târziu.</string>
   <string name="helloactivity_button_next">URMĂTORUL</string>

@@ -40,7 +40,6 @@
   <string name="helloactivity_spinner_diabetes_type">Triba de diabetes</string>
   <string name="helloactivity_spinner_diabetes_type_1">Tipu 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Tipu 2</string>
-  <string name="helloactivity_spinner_preferred_glucose_unit">Unidá preferida</string>
   <string name="helloactivity_share_data">Compartir datos anónimos pa investigación.</string>
   <string name="helloactivity_hint_settings">Sero pues camudar esto n\'axustes.</string>
   <string name="helloactivity_button_next">SIGUIENTE</string>

@@ -40,7 +40,6 @@
   <string name="helloactivity_spinner_diabetes_type">Diabetestyp</string>
   <string name="helloactivity_spinner_diabetes_type_1">Typ 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Typ 2</string>
-  <string name="helloactivity_spinner_preferred_glucose_unit">Önskad enhet</string>
   <string name="helloactivity_share_data">Dela anonym data för forskning.</string>
   <string name="helloactivity_hint_settings">Du kan ändra detta i inställningar senare.</string>
   <string name="helloactivity_button_next">Nästa</string>

@@ -37,7 +37,6 @@
   <string name="helloactivity_spinner_diabetes_type">Diabetestype</string>
   <string name="helloactivity_spinner_diabetes_type_1">Type 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Type 2</string>
-  <string name="helloactivity_spinner_preferred_glucose_unit">Foarkarsienheid</string>
   <string name="helloactivity_button_next">FOLGJENDE</string>
   <string name="helloactivity_button_start">OAN DE SLACH</string>
   <string name="dialog_add_title">Bloedsûkerspegel tafoegje</string>

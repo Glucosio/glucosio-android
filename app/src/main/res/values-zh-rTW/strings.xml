@@ -40,7 +40,6 @@
   <string name="helloactivity_spinner_diabetes_type">糖尿病類型</string>
   <string name="helloactivity_spinner_diabetes_type_1">第一型</string>
   <string name="helloactivity_spinner_diabetes_type_2">第二型</string>
-  <string name="helloactivity_spinner_preferred_glucose_unit">偏好單位</string>
   <string name="helloactivity_share_data">匿名地分享資料提供研究。</string>
   <string name="helloactivity_hint_settings">您以後可以更改這些設定。</string>
   <string name="helloactivity_button_next">下一步</string>

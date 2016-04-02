@@ -40,7 +40,6 @@
   <string name="helloactivity_spinner_diabetes_type">ປະເພດຂອງພະຍາດເບົາຫວານ</string>
   <string name="helloactivity_spinner_diabetes_type_1">ປະເພດທີ່ 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">ປະເພດທີ່ 2</string>
-  <string name="helloactivity_spinner_preferred_glucose_unit">ຫົວຫນ່ວຍທີ່ທ່ານມັກ</string>
   <string name="helloactivity_share_data">ແບ່ງປັນຂໍ້ມູນທີ່ບໍລະບູຊືສໍາລັບການຄົ້ນຄວ້າ.</string>
   <string name="helloactivity_hint_settings">ທ່ານສາມາດປ່ຽນແປງໃນການຕັ້ງຄ່າຕາມຫລັງ.</string>
   <string name="helloactivity_button_next">ຕໍ່ໄປ</string>

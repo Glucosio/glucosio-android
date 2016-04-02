@@ -39,7 +39,6 @@
   <string name="helloactivity_spinner_diabetes_type">मधुमेह टाइप</string>
   <string name="helloactivity_spinner_diabetes_type_1">श्रेणी 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">श्रेणी 2</string>
-  <string name="helloactivity_spinner_preferred_glucose_unit">पसंदीदा इकाई</string>
   <string name="helloactivity_share_data">अनुसंधान के लिए गुमनाम डेटा साझा करें.</string>
   <string name="helloactivity_hint_settings">आप बाद में सेटिंग में इन बदल सकते हैं.</string>
   <string name="helloactivity_button_next">अगला</string>

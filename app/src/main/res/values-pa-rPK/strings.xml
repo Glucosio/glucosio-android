@@ -39,7 +39,6 @@
   <string name="helloactivity_spinner_diabetes_type">ਸ਼ੂਗਰ ਦੀ ਕਿਸਮ</string>
   <string name="helloactivity_spinner_diabetes_type_1">ਕਿਸਮ 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">ਕਿਸਮ 2</string>
-  <string name="helloactivity_spinner_preferred_glucose_unit">ਤਰਜੀਹੀ ਇਕਾਈ</string>
   <string name="helloactivity_share_data">ਖੋਜ ਲਈ ਗੁਮਨਾਮ ਡਾਟਾ ਸਾਂਝਾ ਕਰੋ।</string>
   <string name="helloactivity_hint_settings">ਬਾਅਦ ਵਿੱਚ ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਤੁਸੀਂ ਇਸ ਨੂੰ ਬਦਲ ਸਕਦੇ ਹੋ।</string>
   <string name="helloactivity_button_next">ਅੱਗੇ</string>

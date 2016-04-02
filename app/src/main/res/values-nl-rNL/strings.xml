@@ -40,7 +40,6 @@
   <string name="helloactivity_spinner_diabetes_type">Type diabetes</string>
   <string name="helloactivity_spinner_diabetes_type_1">Type 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Type 2</string>
-  <string name="helloactivity_spinner_preferred_glucose_unit">Voorkeurseenheid</string>
   <string name="helloactivity_share_data">Anonieme gegevens delen voor onderzoek</string>
   <string name="helloactivity_hint_settings">U kunt dit later wijzigen in de instellingen.</string>
   <string name="helloactivity_button_next">VOLGENDE</string>
@@ -92,7 +91,7 @@
     <item>Als u buiten de deur eet, vraag dan om items met weinig calorieën, zoals saladedressings, zelfs als ze niet op het menu staan.</item>
     <item>Als u buiten de deur eet, vraag dan om vervangingen. Vraag in plaats van patat om een dubbele portie van iets vegetarisch, zoals salade, sperziebonen of broccoli.</item>
     <item>Als u buiten de deur eet, bestel dan voedsel dat niet is gepaneerd of gebakken.</item>
-    <item>Als u buiten de deur eet, vraag dan om sauzen, jus en saladedressings \'aan de zijkant\'.</item>
+    <item>Als u buiten de deur eet, vraag dan om ‘wat extra’ sauzen, jus en saladedressings.</item>
     <item>Suikervrij betekent niet echt suikervrij. Het betekent 0,5 gram (g) suiker per portie, dus voorkom dat u zich met te veel suikervrije items verwent.</item>
     <item>Streven naar een gezond gewicht helpt bloedsuikers te beheersen. Uw arts, een diëtist en een fitnesstrainer kunnen u op weg helpen met een schema dat voor u werkt.</item>
     <item>Twee maal per dag controleren en bijhouden van uw bloedspiegel in een app als Glucosio helpt u bewust te worden van resultaten van keuzes in voedsel en levensstijl.</item>
@@ -130,7 +129,7 @@
   <string name="assistant_export_title">Uw gegevens exporteren</string>
   <string name="assistant_export_desc">Deel uw gegevens met uw arts of plaats een back-up ervan op Google Drive via de exportfunctie.</string>
   <string name="assistant_calculator_a1c_title">A1C berekenen</string>
-  <string name="assistant_calculator_a1c_desc">Glucosio’s ingebouwde A1C-calculator is nu in de zijbalk beschikbaar. Voer uw gemiddelde bloedsuikerspiegel in en sla direct de berekende A1C-waarde op.</string>
+  <string name="assistant_calculator_a1c_desc">Glucosio’s ingebouwde A1C-calculator is nu in het zijmenu beschikbaar. Voer uw gemiddelde bloedsuikerspiegel in en sla direct de berekende A1C-waarde op.</string>
   <string name="helloactivity_spinner_preferred_range">Voorkeursbereik</string>
   <string name="helloactivity_spinner_preferred_range_4">Aangepast bereik</string>
   <string name="helloactivity_preferred_range_min">Min. waarde</string>
