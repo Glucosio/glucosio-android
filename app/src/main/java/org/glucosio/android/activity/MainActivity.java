@@ -346,17 +346,17 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
         builder.setItems(getResources().getStringArray(R.array.menu_support_options), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                if (which == 0){
+                if (which == 0) {
                     // Email
                     Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:hello@glucosio.org"));
                     boolean activityExists = emailIntent.resolveActivityInfo(getPackageManager(), 0) != null;
 
-                    if (activityExists){
+                    if (activityExists) {
                         startActivity(emailIntent);
                     } else {
                         showSnackBar(getResources().getString(R.string.menu_support_error1), Snackbar.LENGTH_LONG);
                     }
-                } else if (which == 1){
+                } else if (which == 1) {
                     // Report Feedback
                     // Open Instabug
                     Instabug.invoke();

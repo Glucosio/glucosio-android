@@ -47,10 +47,6 @@ public class User extends RealmObject {
 
     }
 
-    public int getD_type() {
-        return this.d_type;
-    }
-
     public User(int id, String name, String preferred_language, String country, int age, String gender, int dType, String pUnit, String a1cUnit, String weightUnit, String pRange, int minRange, int maxRange) {
         this.id = id;
         this.name = name;
@@ -65,6 +61,10 @@ public class User extends RealmObject {
         this.preferred_range = pRange;
         this.custom_range_max = maxRange;
         this.custom_range_min = minRange;
+    }
+
+    public int getD_type() {
+        return this.d_type;
     }
 
     public void setD_type(int dType) {

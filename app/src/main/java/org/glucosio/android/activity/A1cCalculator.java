@@ -63,7 +63,7 @@ public class A1cCalculator extends AppCompatActivity {
         glucoseUnit = (TextView) findViewById(R.id.activity_converter_a1c_glucose_unit);
         final TextView A1CTextView = (TextView) findViewById(R.id.activity_converter_a1c_a1c);
         TextView A1cUnitTextView = (TextView) findViewById(R.id.activity_converter_a1c_a1c_unit);
-        if (!"percentage".equals(presenter.getA1cUnit())){
+        if (!"percentage".equals(presenter.getA1cUnit())) {
             A1cUnitTextView.setText("mmol/mol");
         }
 

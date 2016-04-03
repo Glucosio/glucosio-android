@@ -88,11 +88,11 @@ public class HistoryPresenter {
         return dB.getUser(1).getPreferred_unit();
     }
 
-    public String getWeightUnitMeasurement(){
+    public String getWeightUnitMeasurement() {
         return dB.getUser(1).getPreferred_unit_weight();
     }
 
-    public String getA1cUnitMeasurement(){
+    public String getA1cUnitMeasurement() {
         return dB.getUser(1).getPreferred_unit_a1c();
     }
 

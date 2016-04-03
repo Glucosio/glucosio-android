@@ -72,7 +72,7 @@ public class AddWeightActivity extends AppCompatActivity implements TimePickerDi
         readingTextView = (TextView) findViewById(R.id.weight_add_value);
         unitTextView = (TextView) findViewById(R.id.weight_add_unit_measurement);
 
-        if (!"kilograms".equals(presenter.getWeightUnitMeasuerement())){
+        if (!"kilograms".equals(presenter.getWeightUnitMeasuerement())) {
             unitTextView.setText("lbs");
         }
 

@@ -33,7 +33,7 @@ public class A1CCalculatorPresenter {
     private A1cCalculator activity;
 
 
-    public A1CCalculatorPresenter(A1cCalculator a1CCalculator){
+    public A1CCalculatorPresenter(A1cCalculator a1CCalculator) {
         this.activity = a1CCalculator;
         dB = new DatabaseHandler(a1CCalculator.getApplicationContext());
     }
@@ -43,12 +43,12 @@ public class A1CCalculatorPresenter {
         double convertedA1C;
         User user = dB.getUser(1);
 
-        if ("mg/dL".equals(user.getPreferred_unit())){
+        if ("mg/dL".equals(user.getPreferred_unit())) {
             convertedA1C = converter.glucoseToA1C(Double.parseDouble(glucose));
         } else {
             convertedA1C = converter.glucoseToA1C(converter.glucoseToMgDl(Double.parseDouble(glucose)));
         }
-        if (!"percentage".equals(user.getPreferred_unit_a1c())){
+        if (!"percentage".equals(user.getPreferred_unit_a1c())) {
             return converter.a1cNgspToIfcc(convertedA1C);
         } else {
             return convertedA1C;
@@ -67,7 +67,7 @@ public class A1CCalculatorPresenter {
         activity.finish();
     }
 
-    public String getA1cUnit(){
+    public String getA1cUnit() {
         return dB.getUser(1).getPreferred_unit_a1c();
     }
 

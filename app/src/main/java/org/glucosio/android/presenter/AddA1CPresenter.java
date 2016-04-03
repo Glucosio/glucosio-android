@@ -68,7 +68,7 @@ public class AddA1CPresenter {
             Date finalDateTime = cal.getTime();
 
             double finalReading;
-            if("percentage".equals(getA1CUnitMeasuerement())) {
+            if ("percentage".equals(getA1CUnitMeasuerement())) {
                 finalReading = Double.parseDouble(reading);
             } else {
                 GlucosioConverter converter = new GlucosioConverter();

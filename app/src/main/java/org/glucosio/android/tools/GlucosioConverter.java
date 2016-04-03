@@ -48,26 +48,26 @@ public class GlucosioConverter {
 
     public double a1cToGlucose(double a1c) {
         // Average glucose = (A1C * 28.7) -46.7
-        return round((a1c*28.7)-46.7, 2);
+        return round((a1c * 28.7) - 46.7, 2);
     }
 
     public int kgToLb(int kg) {
-        Double d = kg*2.20462;
+        Double d = kg * 2.20462;
         return d.intValue();
     }
 
-    public int lbToKg(int lb){
-        Double d = lb/2.20462;
+    public int lbToKg(int lb) {
+        Double d = lb / 2.20462;
         return d.intValue();
     }
 
-    public double a1cNgspToIfcc(double ngsp){
+    public double a1cNgspToIfcc(double ngsp) {
         // percentage to mmol/mol
         // [NGSP - 2.152] / 0.09148
-        return round((ngsp - 2.152)/0.09148, 2);
+        return round((ngsp - 2.152) / 0.09148, 2);
     }
 
-    public double a1cIfccToNgsp(double ifcc){
+    public double a1cIfccToNgsp(double ifcc) {
         // mmol/mol to percentage
         // [0.09148 * IFCC] + 2.152
         return round((0.09148 * ifcc) + 2.152, 2);

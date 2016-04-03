@@ -26,12 +26,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.glucosio.android.R;
 import org.glucosio.android.presenter.HistoryPresenter;
-import org.glucosio.android.tools.GlucosioConverter;
 import org.glucosio.android.tools.GlucoseRanges;
+import org.glucosio.android.tools.GlucosioConverter;
 
 import java.util.ArrayList;
 import java.util.Collections;

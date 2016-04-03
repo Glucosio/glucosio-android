@@ -6,7 +6,7 @@ public class A1cEstimate {
     private double value;
     private String month;
 
-    public A1cEstimate(double value, String month){
+    public A1cEstimate(double value, String month) {
         this.value = value;
         this.month = month;
     }
@@ -27,7 +27,7 @@ public class A1cEstimate {
         this.month = month;
     }
 
-    public String getGlucoseAverage(){
+    public String getGlucoseAverage() {
         GlucosioConverter conveter = new GlucosioConverter();
         return conveter.a1cToGlucose(value) + "";
     }

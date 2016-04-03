@@ -38,7 +38,6 @@ import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 import org.glucosio.android.R;
 import org.glucosio.android.presenter.AddA1CPresenter;
 import org.glucosio.android.tools.FormatDateTime;
-import org.w3c.dom.Text;
 
 import java.text.DecimalFormat;
 import java.util.Calendar;
@@ -73,7 +72,7 @@ public class AddA1CActivity extends AppCompatActivity implements TimePickerDialo
         readingTextView = (TextView) findViewById(R.id.hb1ac_add_value);
         unitTextView = (TextView) findViewById(R.id.hb1ac_unit);
 
-        if (!"percentage".equals(presenter.getA1CUnitMeasuerement())){
+        if (!"percentage".equals(presenter.getA1CUnitMeasuerement())) {
             unitTextView.setText("mmol/mol");
         }
 
