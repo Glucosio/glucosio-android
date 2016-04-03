@@ -23,7 +23,7 @@ package org.glucosio.android.tools;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public class GlucoseConverter {
+public class GlucosioConverter {
     public static double round(double value, int places) {
         if (places < 0) throw new IllegalArgumentException();
 
@@ -49,5 +49,15 @@ public class GlucoseConverter {
     public double a1cToGlucose(double a1c) {
         // Average glucose = (A1C * 28.7) -46.7
         return round((a1c*28.7)-46.7, 2);
+    }
+
+    public int kgToLb(int kg) {
+        Double d = kg*2.20462;
+        return d.intValue();
+    }
+
+    public int lbToKg(int lb){
+        Double d = lb/2.20462;
+        return d.intValue();
     }
 }

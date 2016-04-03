@@ -38,12 +38,10 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.LineChart;
@@ -54,15 +52,13 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.formatter.FillFormatter;
-import com.github.mikephil.charting.interfaces.dataprovider.LineDataProvider;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import org.glucosio.android.R;
 import org.glucosio.android.adapter.A1cEstimateAdapter;
 import org.glucosio.android.presenter.OverviewPresenter;
 import org.glucosio.android.tools.FormatDateTime;
-import org.glucosio.android.tools.GlucoseConverter;
+import org.glucosio.android.tools.GlucosioConverter;
 import org.glucosio.android.tools.GlucoseRanges;
 import org.glucosio.android.tools.TipsManager;
 
@@ -183,7 +179,7 @@ public class OverviewFragment extends Fragment {
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setTextColor(getResources().getColor(R.color.glucosio_text_light));
         xAxis.setAvoidFirstLastClipping(true);
-        GlucoseConverter converter = new GlucoseConverter();
+        GlucosioConverter converter = new GlucosioConverter();
 
         int minGlucoseValue = presenter.getGlucoseMinValue();
         int maxGlucoseValue = presenter.getGlucoseMaxValue();
@@ -294,7 +290,7 @@ public class OverviewFragment extends Fragment {
             }
         }
 
-        GlucoseConverter converter = new GlucoseConverter();
+        GlucosioConverter converter = new GlucosioConverter();
 
         ArrayList<Entry> yVals = new ArrayList<Entry>();
         ArrayList<Integer> colors = new ArrayList<>();
@@ -458,7 +454,7 @@ public class OverviewFragment extends Fragment {
             if (presenter.getUnitMeasuerement().equals("mg/dL")) {
                 lastReadingTextView.setText(presenter.getLastReading() + " mg/dL");
             } else {
-                GlucoseConverter converter = new GlucoseConverter();
+                GlucosioConverter converter = new GlucosioConverter();
                 lastReadingTextView.setText(converter.glucoseToMmolL(Double.parseDouble(presenter.getLastReading().toString())) + " mmol/L");
             }
 

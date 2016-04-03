@@ -26,7 +26,7 @@ import android.preference.PreferenceManager;
 import org.glucosio.android.activity.AddGlucoseActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
-import org.glucosio.android.tools.GlucoseConverter;
+import org.glucosio.android.tools.GlucosioConverter;
 import org.glucosio.android.tools.ReadingTools;
 import org.glucosio.android.tools.SplitDateTime;
 
@@ -39,7 +39,7 @@ public class AddGlucosePresenter {
     private DatabaseHandler dB;
     private AddGlucoseActivity activity;
     private ReadingTools rTools;
-    private GlucoseConverter converter;
+    private GlucosioConverter converter;
     private String readingYear;
     private String readingMonth;
     private String readingDay;
@@ -96,7 +96,7 @@ public class AddGlucosePresenter {
                 GlucoseReading gReading = new GlucoseReading(finalReading, type, finalDateTime, "");
                 isReadingAdded = dB.addGlucoseReading(gReading);
             } else {
-                converter = new GlucoseConverter();
+                converter = new GlucosioConverter();
                 int convertedReading = converter.glucoseToMgDl(Double.parseDouble(reading));
                 GlucoseReading gReading = new GlucoseReading(convertedReading, type, finalDateTime, "");
                 isReadingAdded = dB.addGlucoseReading(gReading);

@@ -81,7 +81,7 @@ public class ReadingToCSV {
                     osw.append('\n');
                 }
             } else {
-                GlucoseConverter converter = new GlucoseConverter();
+                GlucosioConverter converter = new GlucosioConverter();
 
                 for (int i = 0; i < readings.size(); i++) {
 

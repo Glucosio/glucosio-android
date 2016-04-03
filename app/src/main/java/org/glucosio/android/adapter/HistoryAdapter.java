@@ -29,7 +29,7 @@ import android.widget.TextView;
 
 import org.glucosio.android.R;
 import org.glucosio.android.presenter.HistoryPresenter;
-import org.glucosio.android.tools.GlucoseConverter;
+import org.glucosio.android.tools.GlucosioConverter;
 import org.glucosio.android.tools.GlucoseRanges;
 
 import java.util.ArrayList;
@@ -57,7 +57,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     private ArrayList<Double> hb1acReadingArray;
     private ArrayList<Long> hb1acIdArray;
     private HistoryPresenter presenter;
-    private GlucoseConverter converter;
+    private GlucosioConverter converter;
     private ArrayList<Long> glucoseIdArray;
     private ArrayList<Integer> glucoseReadingArray;
     private ArrayList<String> glucoseDateTime;
@@ -127,7 +127,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.fragment_history_item, parent, false);
 
-        converter = new GlucoseConverter();
+        converter = new GlucosioConverter();
 
         ViewHolder vh = new ViewHolder(v);
         return vh;
@@ -196,7 +196,14 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
             // Weight
             case 5:
                 idTextView.setText(weightIdArray.get(position).toString());
-                readingTextView.setText(weightReadingArray.get(position).toString() + " kg");
+
+                if ("kilograms".equals(presenter.getWeightUnitMeasurement())) {
+                    readingTextView.setText(weightReadingArray.get(position) + " kg");
+                } else {
+                    GlucosioConverter converter = new GlucosioConverter();
+                    readingTextView.setText(converter.kgToLb(weightReadingArray.get(position)) + " lbs");
+                }
+
                 datetimeTextView.setText(presenter.convertDate(weightDataTime.get(position)));
                 typeTextView.setText("");
                 typeTextView.setVisibility(View.GONE);

@@ -23,6 +23,7 @@ package org.glucosio.android.presenter;
 import org.glucosio.android.activity.AddWeightActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.WeightReading;
+import org.glucosio.android.tools.GlucosioConverter;
 import org.glucosio.android.tools.SplitDateTime;
 
 import java.text.DateFormat;
@@ -64,7 +65,16 @@ public class AddWeightPresenter {
             Calendar cal = Calendar.getInstance();
             cal.set(Integer.parseInt(readingYear), Integer.parseInt(readingMonth) - 1, Integer.parseInt(readingDay), Integer.parseInt(readingHour), Integer.parseInt(readingMinute));
             Date finalDateTime = cal.getTime();
-            int finalReading = Integer.parseInt(reading);
+
+            int finalReading;
+
+            if ("kilograms".equals(getWeightUnitMeasuerement())) {
+                finalReading = Integer.parseInt(reading);
+            } else {
+                GlucosioConverter converter = new GlucosioConverter();
+                finalReading = converter.lbToKg(Integer.parseInt(reading));
+            }
+
             WeightReading wReading = new WeightReading(finalReading, finalDateTime);
 
             dB.addWeightReading(wReading);
@@ -80,8 +90,8 @@ public class AddWeightPresenter {
 
     // Getters and Setters
 
-    public String getUnitMeasuerement() {
-        return dB.getUser(1).getPreferred_unit();
+    public String getWeightUnitMeasuerement() {
+        return dB.getUser(1).getPreferred_unit_weight();
     }
 
     public String getReadingYear() {

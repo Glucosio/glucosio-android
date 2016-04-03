@@ -24,9 +24,8 @@ import org.glucosio.android.R;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.fragment.OverviewFragment;
 import org.glucosio.android.object.A1cEstimate;
-import org.glucosio.android.tools.GlucoseConverter;
+import org.glucosio.android.tools.GlucosioConverter;
 import org.glucosio.android.tools.TipsManager;
-import org.joda.time.DateTime;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -80,7 +79,7 @@ public class OverviewPresenter {
     public String getHB1AC() {
         // Check if last month is available first
         if (getGlucoseReadingsMonth().size() > 1) {
-            GlucoseConverter converter = new GlucoseConverter();
+            GlucosioConverter converter = new GlucosioConverter();
             return converter.glucoseToA1C(getGlucoseReadingsMonth().get(getGlucoseReadingsMonth().size() - 2)) + " %";
         } else {
             return fragment.getResources().getString(R.string.overview_hb1ac_error_no_data);
@@ -92,7 +91,7 @@ public class OverviewPresenter {
     }
 
     public ArrayList<A1cEstimate> getA1cEstimateList(){
-        GlucoseConverter converter = new GlucoseConverter();
+        GlucosioConverter converter = new GlucosioConverter();
         ArrayList<A1cEstimate> a1cEstimateList = new ArrayList<>();
 
         // We don't take this month because A1C is incomplete

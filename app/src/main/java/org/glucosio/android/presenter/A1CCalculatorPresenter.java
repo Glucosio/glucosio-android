@@ -23,7 +23,7 @@ package org.glucosio.android.presenter;
 import org.glucosio.android.activity.A1Calculator;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.HB1ACReading;
-import org.glucosio.android.tools.GlucoseConverter;
+import org.glucosio.android.tools.GlucosioConverter;
 
 import java.util.Calendar;
 
@@ -38,7 +38,7 @@ public class A1CCalculatorPresenter {
     }
 
     public double calculateA1C(String glucose) {
-        GlucoseConverter converter = new GlucoseConverter();
+        GlucosioConverter converter = new GlucosioConverter();
         if (dB.getUser(1).getPreferred_unit().equals("mg/dL")) {
             return converter.glucoseToA1C(Double.parseDouble(glucose));
         } else {

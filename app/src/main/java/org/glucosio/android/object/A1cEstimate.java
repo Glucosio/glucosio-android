@@ -1,6 +1,6 @@
 package org.glucosio.android.object;
 
-import org.glucosio.android.tools.GlucoseConverter;
+import org.glucosio.android.tools.GlucosioConverter;
 
 public class A1cEstimate {
     private double value;
@@ -28,7 +28,7 @@ public class A1cEstimate {
     }
 
     public String getGlucoseAverage(){
-        GlucoseConverter conveter = new GlucoseConverter();
+        GlucosioConverter conveter = new GlucosioConverter();
         return conveter.a1cToGlucose(value) + "";
     }
 }

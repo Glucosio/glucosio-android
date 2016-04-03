@@ -24,7 +24,7 @@ import android.util.Log;
 
 import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.db.DatabaseHandler;
-import org.glucosio.android.tools.GlucoseConverter;
+import org.glucosio.android.tools.GlucosioConverter;
 import org.glucosio.android.tools.ReadingTools;
 
 public class MainPresenter {
@@ -33,7 +33,7 @@ public class MainPresenter {
 
     private DatabaseHandler dB;
     private ReadingTools rTools;
-    private GlucoseConverter converter;
+    private GlucosioConverter converter;
 
     private String readingYear;
     private String readingMonth;
@@ -51,7 +51,7 @@ public class MainPresenter {
         } else {
             //creating  a new user
             rTools = new ReadingTools();
-            converter = new GlucoseConverter();
+            converter = new GlucosioConverter();
 
             // DEBUG METHODS
             // dB.addNGlucoseReadings();
