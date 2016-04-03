@@ -36,7 +36,6 @@ import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -72,7 +71,6 @@ import org.glucosio.android.presenter.MainPresenter;
 
 import java.util.Calendar;
 
-import io.smooch.ui.ConversationActivity;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
@@ -262,7 +260,7 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
     }
 
     private void openA1CCalculator() {
-        Intent calculatorIntent = new Intent(this, A1Calculator.class);
+        Intent calculatorIntent = new Intent(this, A1cCalculator.class);
         startActivity(calculatorIntent);
     }
 
@@ -315,7 +313,7 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
 
     public void onHB1ACFabClicked(View v) {
         fabMenu.toggle(false);
-        Intent intent = new Intent(this, AddHB1ACActivity.class);
+        Intent intent = new Intent(this, AddA1CActivity.class);
         startActivity(intent);
         finish();
     }

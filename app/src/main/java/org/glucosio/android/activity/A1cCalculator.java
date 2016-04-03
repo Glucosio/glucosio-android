@@ -39,7 +39,7 @@ import org.glucosio.android.presenter.A1CCalculatorPresenter;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class A1Calculator extends AppCompatActivity {
+public class A1cCalculator extends AppCompatActivity {
 
     private A1CCalculatorPresenter presenter;
     private TextView glucoseUnit;
@@ -62,27 +62,33 @@ public class A1Calculator extends AppCompatActivity {
         EditText glucoseEditText = (EditText) findViewById(R.id.activity_converter_a1c_glucose);
         glucoseUnit = (TextView) findViewById(R.id.activity_converter_a1c_glucose_unit);
         final TextView A1CTextView = (TextView) findViewById(R.id.activity_converter_a1c_a1c);
+        TextView A1cUnitTextView = (TextView) findViewById(R.id.activity_converter_a1c_a1c_unit);
+        if (!"percentage".equals(presenter.getA1cUnit())){
+            A1cUnitTextView.setText("mmol/mol");
+        }
 
-        presenter.checkUnit();
-        glucoseEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        presenter.checkGlucoseUnit();
+        if (glucoseEditText != null) {
+            glucoseEditText.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (!s.toString().equals("")) {
-                    convertedA1C = presenter.calculateA1C(s.toString());
-                    A1CTextView.setText(convertedA1C + "");
                 }
-            }
-        });
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    if (!s.toString().equals("")) {
+                        convertedA1C = presenter.calculateA1C(s.toString());
+                        A1CTextView.setText(convertedA1C + "");
+                    }
+                }
+            });
+        }
 
         glucoseEditText.setOnEditorActionListener(
                 new TextView.OnEditorActionListener() {

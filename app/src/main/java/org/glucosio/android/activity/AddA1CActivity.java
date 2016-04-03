@@ -36,19 +36,21 @@ import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import org.glucosio.android.R;
-import org.glucosio.android.presenter.AddHB1ACPresenter;
+import org.glucosio.android.presenter.AddA1CPresenter;
 import org.glucosio.android.tools.FormatDateTime;
+import org.w3c.dom.Text;
 
 import java.text.DecimalFormat;
 import java.util.Calendar;
 
-public class AddHB1ACActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
+public class AddA1CActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
-    private AddHB1ACPresenter presenter;
+    private AddA1CPresenter presenter;
     private FloatingActionButton doneFAB;
     private TextView addTimeTextView;
     private TextView addDateTextView;
     private TextView readingTextView;
+    private TextView unitTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,13 +64,18 @@ public class AddHB1ACActivity extends AppCompatActivity implements TimePickerDia
             getSupportActionBar().setElevation(2);
         }
 
-        presenter = new AddHB1ACPresenter(this);
+        presenter = new AddA1CPresenter(this);
         presenter.getCurrentTime();
 
         doneFAB = (FloatingActionButton) findViewById(R.id.done_fab);
         addTimeTextView = (TextView) findViewById(R.id.dialog_add_time);
         addDateTextView = (TextView) findViewById(R.id.dialog_add_date);
         readingTextView = (TextView) findViewById(R.id.hb1ac_add_value);
+        unitTextView = (TextView) findViewById(R.id.hb1ac_unit);
+
+        if (!"percentage".equals(presenter.getA1CUnitMeasuerement())){
+            unitTextView.setText("mmol/mol");
+        }
 
         FormatDateTime formatDateTime = new FormatDateTime(getApplicationContext());
         addDateTextView.setText(formatDateTime.getCurrentDate());
@@ -78,7 +85,7 @@ public class AddHB1ACActivity extends AppCompatActivity implements TimePickerDia
             public void onClick(View v) {
                 Calendar now = Calendar.getInstance();
                 DatePickerDialog dpd = DatePickerDialog.newInstance(
-                        AddHB1ACActivity.this,
+                        AddA1CActivity.this,
                         now.get(Calendar.YEAR),
                         now.get(Calendar.MONTH),
                         now.get(Calendar.DAY_OF_MONTH)
@@ -93,10 +100,10 @@ public class AddHB1ACActivity extends AppCompatActivity implements TimePickerDia
             public void onClick(View v) {
                 Calendar now = Calendar.getInstance();
                 if (android.text.format.DateFormat.is24HourFormat(getApplicationContext())) {
-                    TimePickerDialog tpd = TimePickerDialog.newInstance(AddHB1ACActivity.this, now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), true);
+                    TimePickerDialog tpd = TimePickerDialog.newInstance(AddA1CActivity.this, now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), true);
                     tpd.show(getFragmentManager(), "Timepickerdialog");
                 } else {
-                    TimePickerDialog tpd = TimePickerDialog.newInstance(AddHB1ACActivity.this, now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), false);
+                    TimePickerDialog tpd = TimePickerDialog.newInstance(AddA1CActivity.this, now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), false);
                     tpd.show(getFragmentManager(), "Timepickerdialog");
                 }
             }

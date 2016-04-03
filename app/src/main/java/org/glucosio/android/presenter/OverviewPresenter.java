@@ -24,6 +24,7 @@ import org.glucosio.android.R;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.fragment.OverviewFragment;
 import org.glucosio.android.object.A1cEstimate;
+import org.glucosio.android.tools.GlucoseRanges;
 import org.glucosio.android.tools.GlucosioConverter;
 import org.glucosio.android.tools.TipsManager;
 
@@ -80,7 +81,11 @@ public class OverviewPresenter {
         // Check if last month is available first
         if (getGlucoseReadingsMonth().size() > 1) {
             GlucosioConverter converter = new GlucosioConverter();
-            return converter.glucoseToA1C(getGlucoseReadingsMonth().get(getGlucoseReadingsMonth().size() - 2)) + " %";
+            if ("percentage".equals(dB.getUser(1).getPreferred_unit_a1c())) {
+                return converter.glucoseToA1C(getGlucoseReadingsMonth().get(getGlucoseReadingsMonth().size() - 2)) + " %";
+            } else {
+                return converter.a1cNgspToIfcc(converter.glucoseToA1C(getGlucoseReadingsMonth().get(getGlucoseReadingsMonth().size() - 2))) + " mmol/mol";
+            }
         } else {
             return fragment.getResources().getString(R.string.overview_hb1ac_error_no_data);
         }
@@ -104,7 +109,7 @@ public class OverviewPresenter {
         return a1cEstimateList;
     }
 
-    public String getH1ACMonth() {
+    public String getA1cMonth() {
         // Check if last month is available first
         if (getGlucoseReadingsMonth().size() > 1) {
             return convertDateToMonth(getGlucoseDatetimeMonth().get(getGlucoseDatetimeMonth().size() - 2)) + "";

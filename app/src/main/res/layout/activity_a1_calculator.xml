@@ -25,7 +25,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.glucosio.android.activity.A1Calculator">
+    tools:context=".activity.A1cCalculator">
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -120,6 +120,7 @@
                         android:textColor="@color/glucosio_text_dark"
                         android:text="00"/>
                     <TextView
+                        android:id="@+id/activity_converter_a1c_a1c_unit"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingTop="8dp"

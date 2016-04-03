@@ -232,7 +232,11 @@ public class PreferencesActivity extends AppCompatActivity {
             unitPrefA1c.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    updatedUser.setPreferred_unit_a1c(newValue.toString());
+                    if (newValue.toString().equals(getResources().getString(R.string.preferences_spinner_preferred_a1c_unit_1))) {
+                        updatedUser.setPreferred_unit_a1c("percentage");
+                    } else {
+                        updatedUser.setPreferred_unit_a1c("mmol/mol");
+                    }
                     updateDB();
                     return true;
                 }
@@ -240,7 +244,11 @@ public class PreferencesActivity extends AppCompatActivity {
             unitPrefWeight.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    updatedUser.setPreferred_unit_weight(newValue.toString());
+                    if (newValue.toString().equals(getResources().getString(R.string.preferences_spinner_preferred_weight_unit_1))) {
+                        updatedUser.setPreferred_unit_weight("kilograms");
+                    } else {
+                        updatedUser.setPreferred_unit_weight("pounds");
+                    }
                     updateDB();
                     return true;
                 }

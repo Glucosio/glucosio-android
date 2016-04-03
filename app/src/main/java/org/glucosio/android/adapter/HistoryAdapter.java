@@ -26,6 +26,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.glucosio.android.R;
 import org.glucosio.android.presenter.HistoryPresenter;
@@ -158,10 +159,15 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
                 datetimeTextView.setText(presenter.convertDate(glucoseDateTime.get(position)));
                 typeTextView.setText(glucoseReadingType.get(position));
                 break;
-            // HB1AC
+            // A1C
             case 1:
                 idTextView.setText(hb1acIdArray.get(position).toString());
-                readingTextView.setText(hb1acReadingArray.get(position).toString() + " %");
+                if ("percentage".equals(presenter.getA1cUnitMeasurement())) {
+                    readingTextView.setText(hb1acReadingArray.get(position).toString() + " %");
+                } else {
+                    GlucosioConverter converter = new GlucosioConverter();
+                    readingTextView.setText(converter.a1cNgspToIfcc(hb1acReadingArray.get(position)) + " mmol/mol");
+                }
                 datetimeTextView.setText(presenter.convertDate(hb1acDateTimeArray.get(position)));
                 typeTextView.setText("");
                 typeTextView.setVisibility(View.GONE);

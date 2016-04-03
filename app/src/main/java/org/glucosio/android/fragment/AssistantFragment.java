@@ -40,15 +40,13 @@ import com.instabug.library.Instabug;
 
 import org.glucosio.android.ActionTip;
 import org.glucosio.android.R;
-import org.glucosio.android.activity.A1Calculator;
+import org.glucosio.android.activity.A1cCalculator;
 import org.glucosio.android.activity.AddGlucoseActivity;
 import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.adapter.AssistantAdapter;
 import org.glucosio.android.presenter.AssistantPresenter;
 
 import java.util.ArrayList;
-
-import io.smooch.ui.ConversationActivity;
 
 public class AssistantFragment extends Fragment {
 
@@ -234,7 +232,7 @@ public class AssistantFragment extends Fragment {
     }
 
     public void startA1CCalculatorActivity() {
-        Intent intent = new Intent(getActivity(), A1Calculator.class);
+        Intent intent = new Intent(getActivity(), A1cCalculator.class);
         startActivity(intent);
     }
 

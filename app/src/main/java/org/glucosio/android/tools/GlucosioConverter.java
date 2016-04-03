@@ -60,4 +60,16 @@ public class GlucosioConverter {
         Double d = lb/2.20462;
         return d.intValue();
     }
+
+    public double a1cNgspToIfcc(double ngsp){
+        // percentage to mmol/mol
+        // [NGSP - 2.152] / 0.09148
+        return round((ngsp - 2.152)/0.09148, 2);
+    }
+
+    public double a1cIfccToNgsp(double ifcc){
+        // mmol/mol to percentage
+        // [0.09148 * IFCC] + 2.152
+        return round((0.09148 * ifcc) + 2.152, 2);
+    }
 }

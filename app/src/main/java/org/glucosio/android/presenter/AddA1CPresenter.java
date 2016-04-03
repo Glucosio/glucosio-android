@@ -20,9 +20,10 @@
 
 package org.glucosio.android.presenter;
 
-import org.glucosio.android.activity.AddHB1ACActivity;
+import org.glucosio.android.activity.AddA1CActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.HB1ACReading;
+import org.glucosio.android.tools.GlucosioConverter;
 import org.glucosio.android.tools.SplitDateTime;
 
 import java.text.DateFormat;
@@ -30,9 +31,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class AddHB1ACPresenter {
+public class AddA1CPresenter {
     private DatabaseHandler dB;
-    private AddHB1ACActivity activity;
+    private AddA1CActivity activity;
     private String readingYear;
     private String readingMonth;
     private String readingDay;
@@ -40,9 +41,9 @@ public class AddHB1ACPresenter {
     private String readingMinute;
 
 
-    public AddHB1ACPresenter(AddHB1ACActivity addHB1ACActivity) {
-        this.activity = addHB1ACActivity;
-        dB = new DatabaseHandler(addHB1ACActivity.getApplicationContext());
+    public AddA1CPresenter(AddA1CActivity addA1CActivity) {
+        this.activity = addA1CActivity;
+        dB = new DatabaseHandler(addA1CActivity.getApplicationContext());
     }
 
 
@@ -62,9 +63,18 @@ public class AddHB1ACPresenter {
     public void dialogOnAddButtonPressed(String time, String date, String reading) {
         if (validateEmpty(date) && validateEmpty(time) && validateEmpty(reading)) {
             Calendar cal = Calendar.getInstance();
-            cal.set(Integer.parseInt(readingYear), Integer.parseInt(readingMonth) - 1, Integer.parseInt(readingDay), Integer.parseInt(readingHour), Integer.parseInt(readingMinute));
+            cal.set(Integer.parseInt(readingYear), Integer.parseInt(readingMonth) - 1,
+                    Integer.parseInt(readingDay), Integer.parseInt(readingHour), Integer.parseInt(readingMinute));
             Date finalDateTime = cal.getTime();
-            double finalReading = Double.parseDouble(reading);
+
+            double finalReading;
+            if("percentage".equals(getA1CUnitMeasuerement())) {
+                finalReading = Double.parseDouble(reading);
+            } else {
+                GlucosioConverter converter = new GlucosioConverter();
+                finalReading = converter.a1cIfccToNgsp(Double.parseDouble(reading));
+            }
+
             HB1ACReading hReading = new HB1ACReading(finalReading, finalDateTime);
 
             dB.addHB1ACReading(hReading);
@@ -80,8 +90,8 @@ public class AddHB1ACPresenter {
 
     // Getters and Setters
 
-    public String getUnitMeasuerement() {
-        return dB.getUser(1).getPreferred_unit();
+    public String getA1CUnitMeasuerement() {
+        return dB.getUser(1).getPreferred_unit_a1c();
     }
 
     public String getReadingYear() {

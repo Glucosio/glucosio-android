@@ -92,6 +92,10 @@ public class HistoryPresenter {
         return dB.getUser(1).getPreferred_unit_weight();
     }
 
+    public String getA1cUnitMeasurement(){
+        return dB.getUser(1).getPreferred_unit_a1c();
+    }
+
     public ArrayList<Long> getGlucoseId() {
         return dB.getGlucoseIdAsArray();
     }
