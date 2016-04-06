@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2016 Glucosio Foundation
   ~
   ~ This file is part of Glucosio.
@@ -88,6 +87,19 @@
                     android:visibility="gone" />
             </LinearLayout>
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/item_history_notes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="16dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="8dp"
+            android:text="The way I see it, every life is a pile of good things and bad things. The good things don’t always soften the bad things, but vice versa, the bad things don’t always spoil the good things and make them unimportant."
+            android:textColor="@color/glucosio_text_light"
+            android:textSize="12sp"
+            android:visibility="gone" />
 
         <TextView
             android:layout_width="fill_parent"

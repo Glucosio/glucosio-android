@@ -31,6 +31,7 @@ import org.glucosio.android.R;
 import org.glucosio.android.presenter.HistoryPresenter;
 import org.glucosio.android.tools.GlucoseRanges;
 import org.glucosio.android.tools.GlucosioConverter;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -59,6 +60,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     private HistoryPresenter presenter;
     private GlucosioConverter converter;
     private ArrayList<Long> glucoseIdArray;
+    private ArrayList<String> glucoseNotes;
     private ArrayList<Integer> glucoseReadingArray;
     private ArrayList<String> glucoseDateTime;
     private ArrayList<String> glucoseReadingType;
@@ -77,10 +79,12 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
                 Collections.addAll(presenter.getGlucoseDateTime());
                 Collections.addAll(presenter.getGlucoseReadingType());
                 Collections.addAll(presenter.getGlucoseId());
+                Collections.addAll(presenter.getGlucoseNotes());
                 glucoseReadingArray = presenter.getGlucoseReading();
                 glucoseDateTime = presenter.getGlucoseDateTime();
                 glucoseReadingType = presenter.getGlucoseReadingType();
                 glucoseIdArray = presenter.getGlucoseId();
+                glucoseNotes = presenter.getGlucoseNotes();
                 break;
             // HB1AC
             case 1:
@@ -140,6 +144,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         TextView datetimeTextView = (TextView) holder.mView.findViewById(R.id.item_history_time);
         TextView typeTextView = (TextView) holder.mView.findViewById(R.id.item_history_type);
         TextView idTextView = (TextView) holder.mView.findViewById(R.id.item_history_id);
+        TextView notesTextView = (TextView) holder.mView.findViewById(R.id.item_history_notes);
 
         switch (metricId) {
             // Glucose
@@ -157,6 +162,11 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
                 readingTextView.setTextColor(ranges.stringToColor(color));
                 datetimeTextView.setText(presenter.convertDate(glucoseDateTime.get(position)));
                 typeTextView.setText(glucoseReadingType.get(position));
+                String notes = glucoseNotes.get(position);
+                if (!notes.isEmpty()) {
+                    notesTextView.setText(glucoseNotes.get(position));
+                    notesTextView.setVisibility(View.VISIBLE);
+                }
                 break;
             // A1C
             case 1:

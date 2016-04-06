@@ -85,7 +85,7 @@ public class AddGlucosePresenter {
         return rTools.hourToSpinnerType(hour);
     }
 
-    public void dialogOnAddButtonPressed(String time, String date, String reading, String type) {
+    public void dialogOnAddButtonPressed(String time, String date, String reading, String type, String notes) {
         if (validateDate(date) && validateTime(time) && validateReading(reading) && validateType(type)) {
             Calendar cal = Calendar.getInstance();
             cal.set(Integer.parseInt(readingYear), Integer.parseInt(readingMonth) - 1, Integer.parseInt(readingDay), Integer.parseInt(readingHour), Integer.parseInt(readingMinute));
@@ -93,12 +93,13 @@ public class AddGlucosePresenter {
             boolean isReadingAdded;
             if ("mg/dL".equals(getUnitMeasuerement())) {
                 int finalReading = Integer.parseInt(reading);
-                GlucoseReading gReading = new GlucoseReading(finalReading, type, finalDateTime, "");
+                GlucoseReading gReading = new GlucoseReading(finalReading, type, finalDateTime, notes);
                 isReadingAdded = dB.addGlucoseReading(gReading);
             } else {
                 converter = new GlucosioConverter();
                 int convertedReading = converter.glucoseToMgDl(Double.parseDouble(reading));
-                GlucoseReading gReading = new GlucoseReading(convertedReading, type, finalDateTime, "");
+                GlucoseReading gReading = new GlucoseReading(convertedReading, type, finalDateTime, notes);
+
                 isReadingAdded = dB.addGlucoseReading(gReading);
             }
             if (!isReadingAdded) {

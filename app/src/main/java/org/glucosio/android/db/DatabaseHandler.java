@@ -200,6 +200,21 @@ public class DatabaseHandler {
         return typeArray;
     }
 
+    public ArrayList<String> getGlucoseNotesAsArray() {
+        List<GlucoseReading> glucoseReading = getGlucoseReadings();
+        ArrayList<String> notesArray = new ArrayList<String>();
+        int i;
+
+        for (i = 0; i < glucoseReading.size(); i++) {
+            String reading;
+            GlucoseReading singleReading = glucoseReading.get(i);
+            reading = singleReading.getNotes();
+            notesArray.add(reading);
+        }
+
+        return notesArray;
+    }
+
     public ArrayList<String> getGlucoseDateTimeAsArray() {
         List<GlucoseReading> glucoseReading = getGlucoseReadings();
         ArrayList<String> datetimeArray = new ArrayList<String>();

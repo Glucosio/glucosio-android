@@ -57,6 +57,7 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
     private TextView addDateTextView;
     private TextView readingTextView;
     private EditText typeCustomEditText;
+    private EditText notesEditText;
     private AppCompatButton addFreeStyleButton;
     private TextInputLayout readingInputLayout;
     private LabelledSpinner readingTypeSpinner;
@@ -86,6 +87,7 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
         typeCustomEditText = (EditText) findViewById(R.id.glucose_type_custom);
         readingInputLayout = (TextInputLayout) findViewById(R.id.glucose_add_concentration_layout);
         addFreeStyleButton = (AppCompatButton) findViewById(R.id.glucose_add_freestyle_button);
+        notesEditText = (EditText) findViewById(R.id.glucose_add_notes);
 
         presenter.updateSpinnerTypeTime();
         this.isCustomType = false;
@@ -190,11 +192,11 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
         if (isCustomType) {
             presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
                     addDateTextView.getText().toString(), readingTextView.getText().toString(),
-                    typeCustomEditText.getText().toString());
+                    typeCustomEditText.getText().toString(), notesEditText.getText().toString());
         } else {
             presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
                     addDateTextView.getText().toString(), readingTextView.getText().toString(),
-                    readingTypeSpinner.getSpinner().getSelectedItem().toString());
+                    readingTypeSpinner.getSpinner().getSelectedItem().toString(), notesEditText.getText().toString());
         }
     }
 

@@ -104,6 +104,10 @@ public class HistoryPresenter {
         return dB.getGlucoseTypeAsArray();
     }
 
+    public ArrayList<String> getGlucoseNotes() {
+        return dB.getGlucoseNotesAsArray();
+    }
+
     public ArrayList<Integer> getGlucoseReading() {
         return dB.getGlucoseReadingAsArray();
     }
