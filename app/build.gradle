@@ -19,6 +19,7 @@
  */
 
 apply plugin: 'com.android.application'
+apply plugin: 'realm-android'
 
 android {
     compileSdkVersion 23
@@ -110,7 +111,6 @@ dependencies {
 
     // Other libraries
     compile 'com.instabug.library:instabugcompat:2.3.1'
-    compile 'io.realm:realm-android:0.87.5'
     compile 'com.github.clans:fab:1.6.2'
     compile 'com.wdullaer:materialdatetimepicker:2.2.0'
     compile 'com.github.PhilJay:MPAndroidChart:v2.2.3'
