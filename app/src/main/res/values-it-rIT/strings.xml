@@ -264,4 +264,5 @@
   <string name="notification_reminder_glucose">È ora di registrare la tua glicemia!</string>
   <string name="notification_reminder_medication">È ora di prendere le medicine!</string>
   <string name="overview_hb1ac_info">Questa è solamente una stima, calcolata usando la media delle letture dello scorso mese. Sebbene il valore sia calcolato con una formula largamente utilizzata per l\'emoglobina glicata, invitiamo gli utenti a considerarlo solamente una stima.</string>
+  <string name="dialog_add_notes">Note</string>
 </resources>
