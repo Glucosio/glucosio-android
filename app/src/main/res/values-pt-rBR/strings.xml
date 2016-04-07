@@ -40,6 +40,12 @@
   <string name="helloactivity_spinner_diabetes_type">Tipo de diabetes</string>
   <string name="helloactivity_spinner_diabetes_type_1">Tipo 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Tipo 2</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit">Unidade de glicose preferida</string>
+  <string name="preferences_spinner_preferred_a1c_unit">Unidade de A1C preferida</string>
+  <string name="preferences_spinner_preferred_a1c_unit_1">percentagem</string>
+  <string name="preferences_spinner_preferred_weight_unit">Unidade de peso preferida</string>
+  <string name="preferences_spinner_preferred_weight_unit_1">quilos</string>
+  <string name="preferences_spinner_preferred_weight_unit_2">libras</string>
   <string name="helloactivity_share_data">Compartilhar dados anônimos para pesquisa.</string>
   <string name="helloactivity_hint_settings">Você pode fazer alterações em Configurações depois.</string>
   <string name="helloactivity_button_next">PRÓXIMO</string>
@@ -112,6 +118,8 @@
   <string name="assistant">Assistente</string>
   <string name="assistant_action_update">ATUALIZAR AGORA</string>
   <string name="assistant_action_ok">OK, ENTENDI</string>
+  <string name="assistant_action_feedback">ENVIAR COMENTÁRIOS</string>
+  <string name="assistant_action_live_chat">CHAT AO VIVO</string>
   <string name="assistant_action_reading">ADICIONAR LEITURA</string>
   <string name="assistant_action_try">EXPERIMENTE AGORA</string>
   <string name="assistant_weight_title">Atualize seu peso</string>
@@ -135,6 +143,7 @@
   <string name="helloactivity_preferred_range_min">Valor mínimo</string>
   <string name="helloactivity_preferred_range_max">Valor máximo</string>
   <string name="helloactivity_language">Idioma</string>
+  <string name="menu_support_error1">Não há um aplicativo de e-mail instalado. Por favor, envie um e-mail para hello@glucosio.org</string>
   <string name="invitation_title">Convidar outras pessoas</string>
   <string name="invitation_message">Experimente o Glucosio, um aplicativo de código-aberto para o controle da diabetes e pesquisas.</string>
   <string name="invitation_cta">Experimente o Glucosio</string>
@@ -253,4 +262,6 @@
   <string name="menu_support_forum">Fórum de suporte</string>
   <string name="notification_reminder_glucose">Está na hora de registrar o seu nível de glicose no sangue!</string>
   <string name="notification_reminder_medication">Está na hora de tomar sua medicação!</string>
+  <string name="overview_hb1ac_info">Isto é apenas uma previsão e é calculado utilizando as médias do último mês de leituras. Embora esta previsão use uma fórmula amplamente aceita para estimativa de HbA1C, recomendamos aos usuários utilizarem-no somente como uma previsão.</string>
+  <string name="dialog_add_notes">Anotações</string>
 </resources>

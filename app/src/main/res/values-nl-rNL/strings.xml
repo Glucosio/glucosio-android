@@ -40,6 +40,12 @@
   <string name="helloactivity_spinner_diabetes_type">Type diabetes</string>
   <string name="helloactivity_spinner_diabetes_type_1">Type 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Type 2</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit">Glucose-eenheid van voorkeur</string>
+  <string name="preferences_spinner_preferred_a1c_unit">A1C-eenheid van voorkeur</string>
+  <string name="preferences_spinner_preferred_a1c_unit_1">percentage</string>
+  <string name="preferences_spinner_preferred_weight_unit">Gewichtseenheid van voorkeur</string>
+  <string name="preferences_spinner_preferred_weight_unit_1">kilogram</string>
+  <string name="preferences_spinner_preferred_weight_unit_2">pond</string>
   <string name="helloactivity_share_data">Anonieme gegevens delen voor onderzoek</string>
   <string name="helloactivity_hint_settings">U kunt dit later wijzigen in de instellingen.</string>
   <string name="helloactivity_button_next">VOLGENDE</string>
@@ -112,6 +118,8 @@
   <string name="assistant">Assistent</string>
   <string name="assistant_action_update">NU BIJWERKEN</string>
   <string name="assistant_action_ok">OK, BEGREPEN</string>
+  <string name="assistant_action_feedback">FEEDBACK VERZENDEN</string>
+  <string name="assistant_action_live_chat">LIVECHAT</string>
   <string name="assistant_action_reading">UITLEZING TOEVOEGEN</string>
   <string name="assistant_action_try">NU PROBEREN</string>
   <string name="assistant_weight_title">Uw gewicht bijwerken</string>
@@ -135,6 +143,7 @@
   <string name="helloactivity_preferred_range_min">Min. waarde</string>
   <string name="helloactivity_preferred_range_max">Max. waarde</string>
   <string name="helloactivity_language">Taal</string>
+  <string name="menu_support_error1">Er is geen e-mail-app geïnstalleerd. Stuur een e-mail naar hello@glucosio.org</string>
   <string name="invitation_title">Anderen uitnodigen</string>
   <string name="invitation_message">Probeer Glucosio, een opensource-app voor diabetesbeheer en -onderzoek.</string>
   <string name="invitation_cta">Glucosio proberen</string>
@@ -254,4 +263,5 @@
   <string name="notification_reminder_glucose">Het is tijd om uw bloedsuikerspiegel vast te leggen!</string>
   <string name="notification_reminder_medication">Het is tijd voor uw medicatie!</string>
   <string name="overview_hb1ac_info">Dit is slechts een schatting en is berekend op basis van de gemiddelden van uitlezingen in de afgelopen maand. Hoewel deze schatting een algemeen erkende formule voor HbA1C-schatting gebruikt, raden we gebruikers aan om dit alleen als een schatting te gebruiken.</string>
+  <string name="dialog_add_notes">Notities</string>
 </resources>

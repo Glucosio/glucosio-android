@@ -40,6 +40,12 @@
   <string name="helloactivity_spinner_diabetes_type">Tipo de diabete</string>
   <string name="helloactivity_spinner_diabetes_type_1">Tipo 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Tipo 2</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit">Unidade de glicosa preferida</string>
+  <string name="preferences_spinner_preferred_a1c_unit">Unidade de A1C preferida</string>
+  <string name="preferences_spinner_preferred_a1c_unit_1">porcentaxe</string>
+  <string name="preferences_spinner_preferred_weight_unit">Unidade de peso preferida</string>
+  <string name="preferences_spinner_preferred_weight_unit_1">quilogramos</string>
+  <string name="preferences_spinner_preferred_weight_unit_2">libras</string>
   <string name="helloactivity_share_data">Compartir os datos de xeito anónimo para a investigación.</string>
   <string name="helloactivity_hint_settings">Podes cambiar estes axustes máis tarde.</string>
   <string name="helloactivity_button_next">SEGUINTE</string>
@@ -112,6 +118,8 @@
   <string name="assistant">Asistente</string>
   <string name="assistant_action_update">ACTUALIZAR AGORA</string>
   <string name="assistant_action_ok">DE ACORDO</string>
+  <string name="assistant_action_feedback">ENVIAR COMENTARIOS</string>
+  <string name="assistant_action_live_chat">CHAT</string>
   <string name="assistant_action_reading">ENGADIR REXISTRO</string>
   <string name="assistant_action_try">PROBAR AGORA</string>
   <string name="assistant_weight_title">Actualiza o teu peso</string>
@@ -135,6 +143,7 @@
   <string name="helloactivity_preferred_range_min">Valor mínimo</string>
   <string name="helloactivity_preferred_range_max">Valor máximo</string>
   <string name="helloactivity_language">Idioma</string>
+  <string name="menu_support_error1">Non hai unha aplicación de correo electrónico instalada. Envía un correo a hello@glucosio.org</string>
   <string name="invitation_title">Convidar a outras persoas</string>
   <string name="invitation_message">Proba Glucosio, unha aplicación de código aberto para xestionar a diabete e de utilidade para a súa investigación.</string>
   <string name="invitation_cta">Probar Glucosio</string>
@@ -253,4 +262,6 @@
   <string name="menu_support_forum">Foro de soporte</string>
   <string name="notification_reminder_glucose">É a hora de rexistrares o teu nivel de glicosa en sangue!</string>
   <string name="notification_reminder_medication">É a hora de tomares a túa medicación!</string>
+  <string name="overview_hb1ac_info">Isto é simplemente unha previsión que se calcula con base nos rexistros do último mes. Aínda que se realiza cunha fórmula amplamente aceptada á hora de estimar a HbA1C, recomendamos aos usuarios utilizárena só como unha previsión.</string>
+  <string name="dialog_add_notes">Notas</string>
 </resources>

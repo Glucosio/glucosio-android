@@ -40,6 +40,12 @@
   <string name="helloactivity_spinner_diabetes_type">Tipul diabetului</string>
   <string name="helloactivity_spinner_diabetes_type_1">Tip 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Tip 2</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit">Unitate de glucoză preferată</string>
+  <string name="preferences_spinner_preferred_a1c_unit">Unitate A1C preferată</string>
+  <string name="preferences_spinner_preferred_a1c_unit_1">procentaj</string>
+  <string name="preferences_spinner_preferred_weight_unit">Unitate de greutate preferată</string>
+  <string name="preferences_spinner_preferred_weight_unit_1">kilograme</string>
+  <string name="preferences_spinner_preferred_weight_unit_2">livre</string>
   <string name="helloactivity_share_data">Partajează date în mod anonim pentru cercetare.</string>
   <string name="helloactivity_hint_settings">Poți schimba aceste setări mai târziu.</string>
   <string name="helloactivity_button_next">URMĂTORUL</string>
@@ -112,6 +118,8 @@
   <string name="assistant">Asistent</string>
   <string name="assistant_action_update">Actualizaţi acum</string>
   <string name="assistant_action_ok">OK, AM ÎNȚELES</string>
+  <string name="assistant_action_feedback">TRIMITE FEEDBACK</string>
+  <string name="assistant_action_live_chat">CHAT LIVE</string>
   <string name="assistant_action_reading">ADAUGĂ ÎNREGISTRARE</string>
   <string name="assistant_action_try">ÎNCEARCĂ ACUM</string>
   <string name="assistant_weight_title">Actualizați greutatea dumneavoastră</string>
@@ -135,6 +143,7 @@
   <string name="helloactivity_preferred_range_min">Valoare minimă</string>
   <string name="helloactivity_preferred_range_max">Valoare maximă</string>
   <string name="helloactivity_language">Limba</string>
+  <string name="menu_support_error1">Nicio aplicație de e-mail nu este instalată. Te rugăm să trimiți un e-mail la hello@glucosio.org</string>
   <string name="invitation_title">Invită alte persoane</string>
   <string name="invitation_message">Încearcă Glucosio, o aplicație cu sursă deschisă pentru gestionarea diabetului și cercetare.</string>
   <string name="invitation_cta">Încearcă Glucosio</string>
@@ -253,4 +262,6 @@
   <string name="menu_support_forum">Forum de asistență</string>
   <string name="notification_reminder_glucose">Este timpul să înregistrezi nivelul de glucoză!</string>
   <string name="notification_reminder_medication">Este timpul să iei medicația!</string>
+  <string name="overview_hb1ac_info">Aceasta este doar o estimare și este calculată folosind mediile citirilor din luna trecută. Această estimare este o formulă larg acceptată pentru HbA1C, dar încurajăm utilizatorii să considere această valoare doar ca o estimare.</string>
+  <string name="dialog_add_notes">Note</string>
 </resources>
