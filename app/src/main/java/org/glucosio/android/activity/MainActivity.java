@@ -36,6 +36,7 @@ import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -51,8 +52,6 @@ import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.instabug.library.Instabug;
-import com.instabug.library.compat.InstabugAppCompatActivity;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
@@ -71,10 +70,11 @@ import org.glucosio.android.presenter.MainPresenter;
 
 import java.util.Calendar;
 
+import io.smooch.ui.ConversationActivity;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
-public class MainActivity extends InstabugAppCompatActivity implements DatePickerDialog.OnDateSetListener {
+public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     private ExportPresenter exportPresenter;
     private RadioButton exportRangeButton;
@@ -359,8 +359,8 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
                 } else if (which == 1) {
                     // Report Feedback
                     // Open Instabug
-                    Instabug.invoke();
-                    // ConversationActivity.show(mContext);
+                    // Instabug.invoke();
+                     ConversationActivity.show(mContext);
                 } else {
                     // Forum
                     String url = "http://community.glucosio.org/";
