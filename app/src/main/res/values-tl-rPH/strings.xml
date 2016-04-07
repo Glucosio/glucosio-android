@@ -39,7 +39,6 @@
   <string name="helloactivity_spinner_diabetes_type">Uri ng Diabetes</string>
   <string name="helloactivity_spinner_diabetes_type_1">Type 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Type 2</string>
-  <string name="helloactivity_spinner_preferred_unit">Ninanais na unit</string>
   <string name="helloactivity_share_data">Ibahagi ang mga anonymous data para sa pananaliksik.</string>
   <string name="helloactivity_hint_settings">Maaring palitang ang settings sa paglaon.</string>
   <string name="helloactivity_button_next">SUSUNOD</string>

@@ -36,11 +36,9 @@ import android.view.animation.TranslateAnimation;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.instabug.library.Instabug;
-
 import org.glucosio.android.ActionTip;
 import org.glucosio.android.R;
-import org.glucosio.android.activity.A1Calculator;
+import org.glucosio.android.activity.A1cCalculator;
 import org.glucosio.android.activity.AddGlucoseActivity;
 import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.adapter.AssistantAdapter;
@@ -234,13 +232,11 @@ public class AssistantFragment extends Fragment {
     }
 
     public void startA1CCalculatorActivity() {
-        Intent intent = new Intent(getActivity(), A1Calculator.class);
+        Intent intent = new Intent(getActivity(), A1cCalculator.class);
         startActivity(intent);
     }
 
     public void openLiveChat() {
-        // We're using Instabug for now until a fix for Smooch is available
-        // ConversationActivity.show(getActivity());
-        Instabug.invoke();
+        ConversationActivity.show(getActivity());
     }
 }

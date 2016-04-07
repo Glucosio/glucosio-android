@@ -38,7 +38,6 @@
   <string name="helloactivity_spinner_diabetes_type">मधुमेह</string>
   <string name="helloactivity_spinner_diabetes_type_1">प्रकार १</string>
   <string name="helloactivity_spinner_diabetes_type_2">प्रकार २</string>
-  <string name="helloactivity_spinner_preferred_unit">एककाचे प्राधान्य</string>
   <string name="helloactivity_hint_settings">आपण नंतर ह्या सेटिंग्स मधे बदलु शकता.</string>
   <string name="helloactivity_button_next">पुढे</string>
   <string name="helloactivity_button_start">सुरुवात करा</string>

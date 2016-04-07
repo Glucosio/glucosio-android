@@ -20,33 +20,42 @@
 
 package org.glucosio.android.presenter;
 
-import org.glucosio.android.activity.A1Calculator;
+import org.glucosio.android.activity.A1cCalculator;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.HB1ACReading;
-import org.glucosio.android.tools.GlucoseConverter;
+import org.glucosio.android.db.User;
+import org.glucosio.android.tools.GlucosioConverter;
 
 import java.util.Calendar;
 
 public class A1CCalculatorPresenter {
     private DatabaseHandler dB;
-    private A1Calculator activity;
+    private A1cCalculator activity;
 
 
-    public A1CCalculatorPresenter(A1Calculator a1Calculator) {
-        this.activity = a1Calculator;
-        dB = new DatabaseHandler(a1Calculator.getApplicationContext());
+    public A1CCalculatorPresenter(A1cCalculator a1CCalculator) {
+        this.activity = a1CCalculator;
+        dB = new DatabaseHandler(a1CCalculator.getApplicationContext());
     }
 
     public double calculateA1C(String glucose) {
-        GlucoseConverter converter = new GlucoseConverter();
-        if (dB.getUser(1).getPreferred_unit().equals("mg/dL")) {
-            return converter.glucoseToA1C(Double.parseDouble(glucose));
+        GlucosioConverter converter = new GlucosioConverter();
+        double convertedA1C;
+        User user = dB.getUser(1);
+
+        if ("mg/dL".equals(user.getPreferred_unit())) {
+            convertedA1C = converter.glucoseToA1C(Double.parseDouble(glucose));
         } else {
-            return converter.glucoseToA1C(converter.glucoseToMgDl(Double.parseDouble(glucose)));
+            convertedA1C = converter.glucoseToA1C(converter.glucoseToMgDl(Double.parseDouble(glucose)));
+        }
+        if (!"percentage".equals(user.getPreferred_unit_a1c())) {
+            return converter.a1cNgspToIfcc(convertedA1C);
+        } else {
+            return convertedA1C;
         }
     }
 
-    public void checkUnit() {
+    public void checkGlucoseUnit() {
         if (!dB.getUser(1).getPreferred_unit().equals("mg/dL")) {
             activity.setMmol();
         }
@@ -56,6 +65,10 @@ public class A1CCalculatorPresenter {
         HB1ACReading a1cReading = new HB1ACReading(a1c, Calendar.getInstance().getTime());
         dB.addHB1ACReading(a1cReading);
         activity.finish();
+    }
+
+    public String getA1cUnit() {
+        return dB.getUser(1).getPreferred_unit_a1c();
     }
 
 }

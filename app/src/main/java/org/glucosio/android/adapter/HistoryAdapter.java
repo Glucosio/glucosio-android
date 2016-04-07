@@ -29,8 +29,9 @@ import android.widget.TextView;
 
 import org.glucosio.android.R;
 import org.glucosio.android.presenter.HistoryPresenter;
-import org.glucosio.android.tools.GlucoseConverter;
 import org.glucosio.android.tools.GlucoseRanges;
+import org.glucosio.android.tools.GlucosioConverter;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -57,8 +58,9 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     private ArrayList<Double> hb1acReadingArray;
     private ArrayList<Long> hb1acIdArray;
     private HistoryPresenter presenter;
-    private GlucoseConverter converter;
+    private GlucosioConverter converter;
     private ArrayList<Long> glucoseIdArray;
+    private ArrayList<String> glucoseNotes;
     private ArrayList<Integer> glucoseReadingArray;
     private ArrayList<String> glucoseDateTime;
     private ArrayList<String> glucoseReadingType;
@@ -77,10 +79,12 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
                 Collections.addAll(presenter.getGlucoseDateTime());
                 Collections.addAll(presenter.getGlucoseReadingType());
                 Collections.addAll(presenter.getGlucoseId());
+                Collections.addAll(presenter.getGlucoseNotes());
                 glucoseReadingArray = presenter.getGlucoseReading();
                 glucoseDateTime = presenter.getGlucoseDateTime();
                 glucoseReadingType = presenter.getGlucoseReadingType();
                 glucoseIdArray = presenter.getGlucoseId();
+                glucoseNotes = presenter.getGlucoseNotes();
                 break;
             // HB1AC
             case 1:
@@ -127,7 +131,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.fragment_history_item, parent, false);
 
-        converter = new GlucoseConverter();
+        converter = new GlucosioConverter();
 
         ViewHolder vh = new ViewHolder(v);
         return vh;
@@ -140,6 +144,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         TextView datetimeTextView = (TextView) holder.mView.findViewById(R.id.item_history_time);
         TextView typeTextView = (TextView) holder.mView.findViewById(R.id.item_history_type);
         TextView idTextView = (TextView) holder.mView.findViewById(R.id.item_history_id);
+        TextView notesTextView = (TextView) holder.mView.findViewById(R.id.item_history_notes);
 
         switch (metricId) {
             // Glucose
@@ -157,11 +162,21 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
                 readingTextView.setTextColor(ranges.stringToColor(color));
                 datetimeTextView.setText(presenter.convertDate(glucoseDateTime.get(position)));
                 typeTextView.setText(glucoseReadingType.get(position));
+                String notes = glucoseNotes.get(position);
+                if (!notes.isEmpty()) {
+                    notesTextView.setText(glucoseNotes.get(position));
+                    notesTextView.setVisibility(View.VISIBLE);
+                }
                 break;
-            // HB1AC
+            // A1C
             case 1:
                 idTextView.setText(hb1acIdArray.get(position).toString());
-                readingTextView.setText(hb1acReadingArray.get(position).toString() + " %");
+                if ("percentage".equals(presenter.getA1cUnitMeasurement())) {
+                    readingTextView.setText(hb1acReadingArray.get(position).toString() + " %");
+                } else {
+                    GlucosioConverter converter = new GlucosioConverter();
+                    readingTextView.setText(converter.a1cNgspToIfcc(hb1acReadingArray.get(position)) + " mmol/mol");
+                }
                 datetimeTextView.setText(presenter.convertDate(hb1acDateTimeArray.get(position)));
                 typeTextView.setText("");
                 typeTextView.setVisibility(View.GONE);
@@ -196,7 +211,14 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
             // Weight
             case 5:
                 idTextView.setText(weightIdArray.get(position).toString());
-                readingTextView.setText(weightReadingArray.get(position).toString() + " kg");
+
+                if ("kilograms".equals(presenter.getWeightUnitMeasurement())) {
+                    readingTextView.setText(weightReadingArray.get(position) + " kg");
+                } else {
+                    GlucosioConverter converter = new GlucosioConverter();
+                    readingTextView.setText(converter.kgToLb(weightReadingArray.get(position)) + " lbs");
+                }
+
                 datetimeTextView.setText(presenter.convertDate(weightDataTime.get(position)));
                 typeTextView.setText("");
                 typeTextView.setVisibility(View.GONE);

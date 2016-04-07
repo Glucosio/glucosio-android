@@ -41,7 +41,6 @@
   <string name="helloactivity_spinner_diabetes_type">نوع داء السكر</string>
   <string name="helloactivity_spinner_diabetes_type_1">نوع 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">نوع 2</string>
-  <string name="helloactivity_spinner_preferred_unit">الوحدة المفضلة</string>
   <string name="helloactivity_share_data">شارك البيانات بطريقة مجهولة للبحوث.</string>
   <string name="helloactivity_hint_settings">يمكنك تغيير هذه الإعدادات في وقت لاحق.</string>
   <string name="helloactivity_button_next">التالي</string>

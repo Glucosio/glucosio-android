@@ -11,7 +11,7 @@ import android.widget.TextView;
 import org.glucosio.android.R;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.object.A1cEstimate;
-import org.glucosio.android.tools.GlucoseConverter;
+import org.glucosio.android.tools.GlucosioConverter;
 
 import java.util.List;
 
@@ -47,19 +47,25 @@ public class A1cEstimateAdapter extends ArrayAdapter<A1cEstimate> {
             TextView glucoseAverage = (TextView) v.findViewById(R.id.dialog_a1c_item_glucose_value);
 
             if (value != null) {
-                String stringValue = p.getValue() + " %";
-                value.setText(stringValue);
+                if ("percentage".equals(db.getUser(1).getPreferred_unit_a1c())) {
+                    String stringValue = p.getValue() + " %";
+                    value.setText(stringValue);
+                } else {
+                    GlucosioConverter converter = new GlucosioConverter();
+                    String stringValue = converter.a1cNgspToIfcc(p.getValue()) + " mmol/mol";
+                    value.setText(stringValue);
+                }
             }
 
             if (month != null) {
                 month.setText(p.getMonth());
             }
 
-            if (glucoseAverage != null){
+            if (glucoseAverage != null) {
                 if ("mg/dL".equals(db.getUser(1).getPreferred_unit())) {
                     glucoseAverage.setText(p.getGlucoseAverage() + " mg/dL");
                 } else {
-                    GlucoseConverter converter = new GlucoseConverter();
+                    GlucosioConverter converter = new GlucosioConverter();
                     glucoseAverage.setText(converter.glucoseToMgDl(Double.parseDouble(p.getGlucoseAverage())) + " mmol/L");
                 }
             }

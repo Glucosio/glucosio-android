@@ -52,8 +52,6 @@ import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.instabug.library.Instabug;
-import com.instabug.library.compat.InstabugAppCompatActivity;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
@@ -76,7 +74,7 @@ import io.smooch.ui.ConversationActivity;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
-public class MainActivity extends InstabugAppCompatActivity implements DatePickerDialog.OnDateSetListener {
+public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     private ExportPresenter exportPresenter;
     private RadioButton exportRangeButton;
@@ -262,7 +260,7 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
     }
 
     private void openA1CCalculator() {
-        Intent calculatorIntent = new Intent(this, A1Calculator.class);
+        Intent calculatorIntent = new Intent(this, A1cCalculator.class);
         startActivity(calculatorIntent);
     }
 
@@ -315,7 +313,7 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
 
     public void onHB1ACFabClicked(View v) {
         fabMenu.toggle(false);
-        Intent intent = new Intent(this, AddHB1ACActivity.class);
+        Intent intent = new Intent(this, AddA1CActivity.class);
         startActivity(intent);
         finish();
     }
@@ -348,21 +346,21 @@ public class MainActivity extends InstabugAppCompatActivity implements DatePicke
         builder.setItems(getResources().getStringArray(R.array.menu_support_options), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                if (which == 0){
+                if (which == 0) {
                     // Email
                     Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:hello@glucosio.org"));
                     boolean activityExists = emailIntent.resolveActivityInfo(getPackageManager(), 0) != null;
 
-                    if (activityExists){
+                    if (activityExists) {
                         startActivity(emailIntent);
                     } else {
                         showSnackBar(getResources().getString(R.string.menu_support_error1), Snackbar.LENGTH_LONG);
                     }
-                } else if (which == 1){
+                } else if (which == 1) {
                     // Report Feedback
                     // Open Instabug
-                    Instabug.invoke();
-                    // ConversationActivity.show(mContext);
+                    // Instabug.invoke();
+                     ConversationActivity.show(mContext);
                 } else {
                     // Forum
                     String url = "http://community.glucosio.org/";

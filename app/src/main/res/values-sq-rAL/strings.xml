@@ -40,7 +40,6 @@
   <string name="helloactivity_spinner_diabetes_type">Lloji i diabetit</string>
   <string name="helloactivity_spinner_diabetes_type_1">Lloji 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Lloji 2</string>
-  <string name="helloactivity_spinner_preferred_unit">Njësia e preferuar</string>
   <string name="helloactivity_share_data">Kontribo me të dhëna anonime për kërkime shkencore.</string>
   <string name="helloactivity_hint_settings">Mund t\'i ndryshoni këto në parametrat më vonë.</string>
   <string name="helloactivity_button_next">Tjetri</string>

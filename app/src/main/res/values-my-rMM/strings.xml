@@ -40,7 +40,6 @@
   <string name="helloactivity_spinner_diabetes_type">ဆီးချို အမျိုးအစား</string>
   <string name="helloactivity_spinner_diabetes_type_1">အမျိုးအစား ၁</string>
   <string name="helloactivity_spinner_diabetes_type_2">အမျိုးအစား ၂</string>
-  <string name="helloactivity_spinner_preferred_unit">အသုံးပြုလိုသော အတိုင်းအတာ</string>
   <string name="helloactivity_share_data">သုတေသနအတွက် အချက်အလက်ကို မျှဝေပါ (အမျိုးအမည် မဖော်ပြပါ)။</string>
   <string name="helloactivity_hint_settings">သင် ဒီအရာကို အပြင်အဆင်များထဲတွင် ပြောင်းလဲနိုင်သည်။</string>
   <string name="helloactivity_button_next">ရှေ့သို့</string>

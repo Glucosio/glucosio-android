@@ -25,7 +25,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
-    tools:context="org.glucosio.android.activity.AddHB1ACActivity">
+    tools:context=".activity.AddA1CActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -92,6 +92,7 @@
                 </android.support.design.widget.TextInputLayout>
 
                 <TextView
+                    android:id="@+id/hb1ac_unit"
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:layout_marginBottom="8dp"

@@ -39,7 +39,6 @@
   <string name="helloactivity_spinner_diabetes_type">मधुमेहको प्रकार</string>
   <string name="helloactivity_spinner_diabetes_type_1">प्रकार १</string>
   <string name="helloactivity_spinner_diabetes_type_2">प्रकार २</string>
-  <string name="helloactivity_spinner_preferred_unit">रुचाइएको एकाइ</string>
   <string name="helloactivity_share_data">अनुसन्धानको लागी अनाम डाटा साझेदारी गर्नुहोस्।</string>
   <string name="helloactivity_button_next">अर्को</string>
   <string name="helloactivity_button_start">शुरुवात गर्नुहोस्।</string>

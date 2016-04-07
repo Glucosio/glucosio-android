@@ -39,7 +39,6 @@
   <string name="helloactivity_spinner_diabetes_type">Sladkorna bolezen tipa</string>
   <string name="helloactivity_spinner_diabetes_type_1">Tip 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Tip 2</string>
-  <string name="helloactivity_spinner_preferred_unit">Želena enota</string>
   <string name="helloactivity_share_data">Delite anonimne podatke za raziskave.</string>
   <string name="helloactivity_hint_settings">Spremenite lahko spremenite kasneje.</string>
   <string name="helloactivity_button_next">NASLEDNJI</string>

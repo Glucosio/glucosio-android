@@ -38,7 +38,6 @@
   <string name="helloactivity_spinner_diabetes_type">ชนิดของโรคเบาหวาน</string>
   <string name="helloactivity_spinner_diabetes_type_1">ชนิดที่ 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">ชนิดที่ 2</string>
-  <string name="helloactivity_spinner_preferred_unit">หน่วยที่ต้องการ</string>
   <string name="helloactivity_share_data">แบ่งปันข้อมูลนิรนามเพิ่อการวิจัย</string>
   <string name="helloactivity_hint_settings">คุณสามารถเปลี่ยนการตั้งค่าเหล่านี้ในภายหลัง</string>
   <string name="helloactivity_button_next">ถัดไป</string>

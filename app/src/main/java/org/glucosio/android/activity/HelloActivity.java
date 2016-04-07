@@ -107,7 +107,7 @@ public class HelloActivity extends AppCompatActivity {
         }
 
         genderSpinner.setItemsArray(R.array.helloactivity_gender_list);
-        unitSpinner.setItemsArray(R.array.helloactivity_preferred_unit);
+        unitSpinner.setItemsArray(R.array.helloactivity_preferred_glucose_unit);
         typeSpinner.setItemsArray(R.array.helloactivity_diabetes_type);
 
         final Drawable pinkArrow = getApplicationContext().getResources().getDrawable(R.drawable.ic_navigate_next_pink_24px);

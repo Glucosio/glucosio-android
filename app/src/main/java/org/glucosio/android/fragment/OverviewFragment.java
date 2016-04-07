@@ -38,12 +38,10 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.LineChart;
@@ -54,16 +52,14 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.formatter.FillFormatter;
-import com.github.mikephil.charting.interfaces.dataprovider.LineDataProvider;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import org.glucosio.android.R;
 import org.glucosio.android.adapter.A1cEstimateAdapter;
 import org.glucosio.android.presenter.OverviewPresenter;
 import org.glucosio.android.tools.FormatDateTime;
-import org.glucosio.android.tools.GlucoseConverter;
 import org.glucosio.android.tools.GlucoseRanges;
+import org.glucosio.android.tools.GlucosioConverter;
 import org.glucosio.android.tools.TipsManager;
 
 import java.util.ArrayList;
@@ -72,6 +68,7 @@ import java.util.Collections;
 public class OverviewFragment extends Fragment {
 
     private static final int PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 0;
+    ImageButton HB1ACMoreButton;
     private LineChart chart;
     private TextView lastReadingTextView;
     private TextView lastDateTextView;
@@ -84,8 +81,11 @@ public class OverviewFragment extends Fragment {
     private Spinner graphSpinnerMetric;
     private OverviewPresenter presenter;
     private View mFragmentView;
-    ImageButton HB1ACMoreButton;
 
+
+    public OverviewFragment() {
+        // Required empty public constructor
+    }
 
     public static HistoryFragment newInstance() {
         HistoryFragment fragment = new HistoryFragment();
@@ -94,8 +94,19 @@ public class OverviewFragment extends Fragment {
         return fragment;
     }
 
-    public OverviewFragment() {
-        // Required empty public constructor
+    public static void disableTouchTheft(View view) {
+        view.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                view.getParent().requestDisallowInterceptTouchEvent(true);
+                switch (motionEvent.getAction() & MotionEvent.ACTION_MASK) {
+                    case MotionEvent.ACTION_UP:
+                        view.getParent().requestDisallowInterceptTouchEvent(false);
+                        break;
+                }
+                return false;
+            }
+        });
     }
 
     public void onCreate(Bundle savedInstanceState) {
@@ -183,7 +194,7 @@ public class OverviewFragment extends Fragment {
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setTextColor(getResources().getColor(R.color.glucosio_text_light));
         xAxis.setAvoidFirstLastClipping(true);
-        GlucoseConverter converter = new GlucoseConverter();
+        GlucosioConverter converter = new GlucosioConverter();
 
         int minGlucoseValue = presenter.getGlucoseMinValue();
         int maxGlucoseValue = presenter.getGlucoseMaxValue();
@@ -195,8 +206,8 @@ public class OverviewFragment extends Fragment {
             ll1 = new LimitLine(minGlucoseValue);
             ll2 = new LimitLine(maxGlucoseValue);
         } else {
-            ll1 = new LimitLine((float)converter.glucoseToMmolL(maxGlucoseValue), getString(R.string.reading_high));
-            ll2 = new LimitLine((float)converter.glucoseToMmolL(minGlucoseValue), getString(R.string.reading_low));
+            ll1 = new LimitLine((float) converter.glucoseToMmolL(maxGlucoseValue), getString(R.string.reading_high));
+            ll2 = new LimitLine((float) converter.glucoseToMmolL(minGlucoseValue), getString(R.string.reading_low));
         }
 
         ll1.setLineWidth(0.8f);
@@ -260,8 +271,8 @@ public class OverviewFragment extends Fragment {
     }
 
     private void exportGraphToGallery() {
-        long timestamp = System.currentTimeMillis()/1000;
-        boolean saved = chart.saveToGallery("glucosio_" + timestamp , 50);
+        long timestamp = System.currentTimeMillis() / 1000;
+        boolean saved = chart.saveToGallery("glucosio_" + timestamp, 50);
         if (saved) {
             Snackbar.make(mFragmentView, R.string.fragment_overview_graph_export_true, Snackbar.LENGTH_SHORT).show();
         } else {
@@ -280,7 +291,7 @@ public class OverviewFragment extends Fragment {
                 String date = presenter.convertDate(presenter.getGlucoseDatetime().get(i));
                 xVals.add(date + "");
             }
-        } else if (graphSpinnerRange.getSelectedItemPosition() == 1){
+        } else if (graphSpinnerRange.getSelectedItemPosition() == 1) {
             // Week view
             for (int i = 0; i < presenter.getGlucoseReadingsWeek().size(); i++) {
                 String date = presenter.convertDate(presenter.getGlucoseDatetimeWeek().get(i));
@@ -294,7 +305,7 @@ public class OverviewFragment extends Fragment {
             }
         }
 
-        GlucoseConverter converter = new GlucoseConverter();
+        GlucosioConverter converter = new GlucosioConverter();
 
         ArrayList<Entry> yVals = new ArrayList<Entry>();
         ArrayList<Integer> colors = new ArrayList<>();
@@ -313,14 +324,14 @@ public class OverviewFragment extends Fragment {
                 GlucoseRanges ranges = new GlucoseRanges(getActivity().getApplicationContext());
                 colors.add(ranges.stringToColor(ranges.colorFromReading(presenter.getGlucoseReading().get(i))));
             }
-        } else if (graphSpinnerRange.getSelectedItemPosition() == 1){
+        } else if (graphSpinnerRange.getSelectedItemPosition() == 1) {
             // Week view
             for (int i = 0; i < presenter.getGlucoseReadingsWeek().size(); i++) {
                 if (presenter.getUnitMeasuerement().equals("mg/dL")) {
-                    float val = Float.parseFloat(presenter.getGlucoseReadingsWeek().get(i)+"");
+                    float val = Float.parseFloat(presenter.getGlucoseReadingsWeek().get(i) + "");
                     yVals.add(new Entry(val, i));
                 } else {
-                    double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getGlucoseReadingsWeek().get(i)+""));
+                    double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getGlucoseReadingsWeek().get(i) + ""));
                     float converted = (float) val;
                     yVals.add(new Entry(converted, i));
                 }
@@ -330,10 +341,10 @@ public class OverviewFragment extends Fragment {
             // Month view
             for (int i = 0; i < presenter.getGlucoseReadingsMonth().size(); i++) {
                 if (presenter.getUnitMeasuerement().equals("mg/dL")) {
-                    float val = Float.parseFloat(presenter.getGlucoseReadingsMonth().get(i)+"");
+                    float val = Float.parseFloat(presenter.getGlucoseReadingsMonth().get(i) + "");
                     yVals.add(new Entry(val, i));
                 } else {
-                    double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getGlucoseReadingsMonth().get(i)+""));
+                    double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getGlucoseReadingsMonth().get(i) + ""));
                     float converted = (float) val;
                     yVals.add(new Entry(converted, i));
                 }
@@ -390,7 +401,7 @@ public class OverviewFragment extends Fragment {
         // https://github.com/PhilJay/MPAndroidChart/issues/1541
         set1.setDrawCubic(false);
 
-        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.JELLY_BEAN_MR2){
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.JELLY_BEAN_MR2) {
             set1.setDrawFilled(false);
             set1.setLineWidth(2f);
             set1.setCircleSize(4f);
@@ -419,7 +430,7 @@ public class OverviewFragment extends Fragment {
         chart.moveViewToX(data.getXValCount());
     }
 
-    private void showA1cDialog(){
+    private void showA1cDialog() {
         final Dialog a1CDialog = new Dialog(getActivity(), R.style.GlucosioTheme);
 
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
@@ -442,23 +453,29 @@ public class OverviewFragment extends Fragment {
         a1cListView.setAdapter(customAdapter);
     }
 
-    private void loadHB1AC(){
-        if (!presenter.isdbEmpty()){
+    private void loadHB1AC() {
+        if (!presenter.isdbEmpty()) {
             HB1ACTextView.setText(presenter.getHB1AC());
-            HB1ACDateTextView.setText(presenter.getH1ACMonth());
+            HB1ACDateTextView.setText(presenter.getA1cMonth());
             // We show the A1C more button only if 2 or more A1C estimates are available
-            if (!presenter.isA1cAvailable(2)){
+            if (!presenter.isA1cAvailable(2)) {
                 HB1ACMoreButton.setVisibility(View.GONE);
             }
         }
     }
 
-    private void loadLastReading(){
+/*    private void loadGlucoseTrend(){
+        if (!presenter.isdbEmpty()) {
+            trendTextView.setText(presenter.getGlucoseTrend() + "");
+        }
+    }*/
+
+    private void loadLastReading() {
         if (!presenter.isdbEmpty()) {
             if (presenter.getUnitMeasuerement().equals("mg/dL")) {
                 lastReadingTextView.setText(presenter.getLastReading() + " mg/dL");
             } else {
-                GlucoseConverter converter = new GlucoseConverter();
+                GlucosioConverter converter = new GlucosioConverter();
                 lastReadingTextView.setText(converter.glucoseToMmolL(Double.parseDouble(presenter.getLastReading().toString())) + " mmol/L");
             }
 
@@ -471,40 +488,19 @@ public class OverviewFragment extends Fragment {
         }
     }
 
-/*    private void loadGlucoseTrend(){
-        if (!presenter.isdbEmpty()) {
-            trendTextView.setText(presenter.getGlucoseTrend() + "");
-        }
-    }*/
-
-    private void loadRandomTip(){
+    private void loadRandomTip() {
         TipsManager tipsManager = new TipsManager(getActivity().getApplicationContext(), presenter.getUserAge());
         tipTextView.setText(presenter.getRandomTip(tipsManager));
     }
 
-    public String convertDate(String date){
+    public String convertDate(String date) {
         FormatDateTime dateTime = new FormatDateTime(getActivity().getApplicationContext());
         return dateTime.convertDate(date);
     }
 
-    public String convertDateToMonth(String date){
+    public String convertDateToMonth(String date) {
         FormatDateTime dateTime = new FormatDateTime((getActivity().getApplication()));
         return dateTime.convertDateToMonthOverview(date);
-    }
-
-    public static void disableTouchTheft(View view) {
-        view.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                view.getParent().requestDisallowInterceptTouchEvent(true);
-                switch (motionEvent.getAction() & MotionEvent.ACTION_MASK) {
-                    case MotionEvent.ACTION_UP:
-                        view.getParent().requestDisallowInterceptTouchEvent(false);
-                        break;
-                }
-                return false;
-            }
-        });
     }
 
     @Override

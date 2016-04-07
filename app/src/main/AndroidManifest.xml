@@ -135,7 +135,7 @@
                 android:value="org.glucosio.android.activity.MainActivity" />
         </activity>
         <activity
-            android:name=".activity.AddHB1ACActivity"
+            android:name=".activity.AddA1CActivity"
             android:label="@string/title_activity_add_hb1ac"
             android:parentActivityName=".activity.MainActivity"
             android:windowSoftInputMode="stateVisible">
@@ -154,7 +154,7 @@
                 android:resource="@xml/nfc_tech_filter" />
         </activity>
         <activity
-            android:name=".activity.A1Calculator"
+            android:name=".activity.A1cCalculator"
             android:label="@string/activity_converter_title"
             android:parentActivityName=".activity.MainActivity"
             android:screenOrientation="portrait"

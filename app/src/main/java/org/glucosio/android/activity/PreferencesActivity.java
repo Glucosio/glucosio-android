@@ -103,7 +103,9 @@ public class PreferencesActivity extends AppCompatActivity {
         private ListPreference countryPref;
         private ListPreference genderPref;
         private ListPreference diabetesTypePref;
-        private ListPreference unitPref;
+        private ListPreference unitPrefGlucose;
+        private ListPreference unitPrefA1c;
+        private ListPreference unitPrefWeight;
         private ListPreference rangePref;
         private EditText ageEditText;
         private EditText minEditText;
@@ -123,14 +125,16 @@ public class PreferencesActivity extends AppCompatActivity {
 
             dB = ((GlucosioApplication) getActivity().getApplicationContext()).getDBHandler();
             user = dB.getUser(1);
-            updatedUser = new User(user.getId(), user.getName(), user.getPreferred_language(), user.getCountry(), user.getAge(), user.getGender(), user.getD_type(), user.getPreferred_unit(), user.getPreferred_range(), user.getCustom_range_min(), user.getCustom_range_max());
+            updatedUser = new User(user.getId(), user.getName(), user.getPreferred_language(), user.getCountry(), user.getAge(), user.getGender(), user.getD_type(), user.getPreferred_unit(), user.getPreferred_unit_a1c(), user.getPreferred_unit_weight(), user.getPreferred_range(), user.getCustom_range_min(), user.getCustom_range_max());
             agePref = (EditTextPreference) findPreference("pref_age");
             countryPref = (ListPreference) findPreference("pref_country");
             // languagePref = (ListPreference) findPreference("pref_language");
             // backupPref = (Preference) findPreference("backup_settings");
             genderPref = (ListPreference) findPreference("pref_gender");
             diabetesTypePref = (ListPreference) findPreference("pref_diabetes_type");
-            unitPref = (ListPreference) findPreference("pref_unit");
+            unitPrefGlucose = (ListPreference) findPreference("pref_unit_glucose");
+            unitPrefA1c = (ListPreference) findPreference("pref_unit_a1c");
+            unitPrefWeight = (ListPreference) findPreference("pref_unit_weight");
             rangePref = (ListPreference) findPreference("pref_range");
             minRangePref = (EditTextPreference) findPreference("pref_range_min");
             maxRangePref = (EditTextPreference) findPreference("pref_range_max");
@@ -142,7 +146,9 @@ public class PreferencesActivity extends AppCompatActivity {
             // languagePref.setValue(user.getPreferred_language());
             genderPref.setValue(user.getGender());
             diabetesTypePref.setValue(user.getD_type() + "");
-            unitPref.setValue(user.getPreferred_unit());
+            unitPrefGlucose.setValue(user.getPreferred_unit());
+            unitPrefA1c.setValue(user.getPreferred_unit_a1c());
+            unitPrefWeight.setValue(user.getPreferred_unit_weight());
             rangePref.setValue(user.getPreferred_range());
 
             minRangePref.setDefaultValue(user.getCustom_range_min() + "");
@@ -215,10 +221,34 @@ public class PreferencesActivity extends AppCompatActivity {
                     return true;
                 }
             });
-            unitPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            unitPrefGlucose.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
                     updatedUser.setPreferred_unit(newValue.toString());
+                    updateDB();
+                    return true;
+                }
+            });
+            unitPrefA1c.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    if (newValue.toString().equals(getResources().getString(R.string.preferences_spinner_preferred_a1c_unit_1))) {
+                        updatedUser.setPreferred_unit_a1c("percentage");
+                    } else {
+                        updatedUser.setPreferred_unit_a1c("mmol/mol");
+                    }
+                    updateDB();
+                    return true;
+                }
+            });
+            unitPrefWeight.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    if (newValue.toString().equals(getResources().getString(R.string.preferences_spinner_preferred_weight_unit_1))) {
+                        updatedUser.setPreferred_unit_weight("kilograms");
+                    } else {
+                        updatedUser.setPreferred_unit_weight("pounds");
+                    }
                     updateDB();
                     return true;
                 }
@@ -338,7 +368,9 @@ public class PreferencesActivity extends AppCompatActivity {
             agePref.setSummary(user.getAge() + "");
             genderPref.setSummary(user.getGender() + "");
             diabetesTypePref.setSummary(getResources().getString(R.string.glucose_reading_type) + " " + user.getD_type());
-            unitPref.setSummary(user.getPreferred_unit() + "");
+            unitPrefGlucose.setSummary(user.getPreferred_unit() + "");
+            unitPrefA1c.setSummary(user.getPreferred_unit_a1c() + "");
+            unitPrefWeight.setSummary(user.getPreferred_unit_weight() + "");
             countryPref.setSummary(user.getCountry());
 /*
             languagePref.setSummary(user.getPreferred_language());
@@ -353,9 +385,9 @@ public class PreferencesActivity extends AppCompatActivity {
 */
             genderPref.setValue(user.getGender());
             diabetesTypePref.setValue(user.getD_type() + "");
-            unitPref.setValue(user.getPreferred_unit());
+            unitPrefGlucose.setValue(user.getPreferred_unit());
             genderPref.setValue(user.getGender());
-            unitPref.setValue(user.getPreferred_unit());
+            unitPrefGlucose.setValue(user.getPreferred_unit());
             rangePref.setValue(user.getPreferred_range());
 
             if (!user.getPreferred_range().equals("Custom range")) {

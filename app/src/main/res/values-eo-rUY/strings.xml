@@ -38,7 +38,6 @@
   <string name="helloactivity_spinner_diabetes_type">Diabettipo</string>
   <string name="helloactivity_spinner_diabetes_type_1">Tipo 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Tipo 2</string>
-  <string name="helloactivity_spinner_preferred_unit">Preferata unuo</string>
   <string name="helloactivity_button_next">SEKVA</string>
   <string name="helloactivity_button_start">KOMENCIĜI</string>
   <string name="dialog_add_title">Aldoni sangoglukozonivelon</string>

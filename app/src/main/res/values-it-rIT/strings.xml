@@ -41,7 +41,12 @@
   <string name="helloactivity_spinner_diabetes_type">Tipo di diabete</string>
   <string name="helloactivity_spinner_diabetes_type_1">Tipo 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Tipo 2</string>
-  <string name="helloactivity_spinner_preferred_unit">Unità preferita</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit">Unità di misura Glucosio</string>
+  <string name="preferences_spinner_preferred_a1c_unit">Unità di misura glicata</string>
+  <string name="preferences_spinner_preferred_a1c_unit_1">percentuale</string>
+  <string name="preferences_spinner_preferred_weight_unit">Unità di misura peso</string>
+  <string name="preferences_spinner_preferred_weight_unit_1">kilogrammi</string>
+  <string name="preferences_spinner_preferred_weight_unit_2">libbre</string>
   <string name="helloactivity_share_data">Condividi i dati anonimi per la ricerca.</string>
   <string name="helloactivity_hint_settings">Puoi cambiare queste impostazioni dopo.</string>
   <string name="helloactivity_button_next">SUCCESSIVO</string>
@@ -114,7 +119,8 @@
   <string name="assistant">Assistente</string>
   <string name="assistant_action_update">AGGIORNA ORA</string>
   <string name="assistant_action_ok">OK, CAPITO</string>
-  <string name="assistant_action_feedback">LIVE CHAT</string>
+  <string name="assistant_action_feedback">INVIA FEEDBACK</string>
+  <string name="assistant_action_live_chat">LIVE CHAT</string>
   <string name="assistant_action_reading">AGGIUNGI UNA MISURAZIONE</string>
   <string name="assistant_action_try">PROVALO ORA</string>
   <string name="assistant_weight_title">Aggiorna il tuo peso</string>
@@ -258,4 +264,5 @@
   <string name="notification_reminder_glucose">È ora di registrare la tua glicemia!</string>
   <string name="notification_reminder_medication">È ora di prendere le medicine!</string>
   <string name="overview_hb1ac_info">Questa è solamente una stima, calcolata usando la media delle letture dello scorso mese. Sebbene il valore sia calcolato con una formula largamente utilizzata per l\'emoglobina glicata, invitiamo gli utenti a considerarlo solamente una stima.</string>
+  <string name="dialog_add_notes">Note</string>
 </resources>

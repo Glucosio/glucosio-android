@@ -40,7 +40,6 @@
   <string name="helloactivity_spinner_diabetes_type">Tipus de diabetis</string>
   <string name="helloactivity_spinner_diabetes_type_1">Tipus 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Tipus 2</string>
-  <string name="helloactivity_spinner_preferred_unit">Unitat preferida</string>
   <string name="helloactivity_share_data">Compartiu dades anònimes per a la recerca.</string>
   <string name="helloactivity_hint_settings">Podeu canviar-ho més tard a les preferències.</string>
   <string name="helloactivity_button_next">SEGÜENT</string>

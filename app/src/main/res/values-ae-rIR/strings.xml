@@ -39,7 +39,6 @@
   <string name="helloactivity_spinner_diabetes_type">نوع دیابت</string>
   <string name="helloactivity_spinner_diabetes_type_1">نوع ۱</string>
   <string name="helloactivity_spinner_diabetes_type_2">نوع۲</string>
-  <string name="helloactivity_spinner_preferred_unit">واحد مورد نظر</string>
   <string name="helloactivity_share_data">به اشتراک گذاشتن داده ها به صورت ناشناس جهت تحقیقات.</string>
   <string name="helloactivity_hint_settings">شما می توانید این را بعدا در تنظیمات تغییر دهید.</string>
   <string name="helloactivity_button_next">بعدی</string>

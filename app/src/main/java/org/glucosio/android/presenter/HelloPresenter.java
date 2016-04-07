@@ -76,7 +76,7 @@ public class HelloPresenter {
     }
 
     public void saveToDatabase() {
-        dB.addUser(new User(id, name, language, country, age, gender, diabetesType, unitMeasurement, "ADA", 70, 180)); // We use ADA range by default
+        dB.addUser(new User(id, name, language, country, age, gender, diabetesType, unitMeasurement, "percentage", "kilograms", "ADA", 70, 180)); // We use ADA range by default
         helloActivity.closeHelloActivity();
     }
 }

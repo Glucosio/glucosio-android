@@ -181,6 +181,21 @@
                 android:textColorHighlight="@color/glucosio_pink"
                 android:textSize="@dimen/abc_text_size_body_2_material"
                 android:visibility="gone" />
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/glucose_add_notes_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="16dp">
+
+                <EditText
+                    android:id="@+id/glucose_add_notes"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/dialog_add_notes"
+                    android:textColorHighlight="@color/glucosio_pink"
+                    android:textIsSelectable="false"
+                    android:textSize="@dimen/abc_text_size_body_2_material" />
+            </android.support.design.widget.TextInputLayout>
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

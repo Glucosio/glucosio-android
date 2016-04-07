@@ -29,14 +29,13 @@ import android.preference.PreferenceFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
-import com.instabug.library.Instabug;
-
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.analytics.Analytics;
 
 import java.util.Locale;
 
+import io.smooch.ui.ConversationActivity;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class AboutActivity extends AppCompatActivity {
@@ -120,7 +119,7 @@ public class AboutActivity extends AppCompatActivity {
             feedbackPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
-                    Instabug.invoke();
+                    ConversationActivity.show(getActivity());
 
                     return false;
                 }

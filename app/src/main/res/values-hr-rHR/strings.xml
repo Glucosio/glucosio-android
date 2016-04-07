@@ -40,7 +40,12 @@
   <string name="helloactivity_spinner_diabetes_type">Tip dijabetesa</string>
   <string name="helloactivity_spinner_diabetes_type_1">Tip 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Tip 2</string>
-  <string name="helloactivity_spinner_preferred_unit">Preferirana jedinica</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit">Preferirana jedinica glukoze</string>
+  <string name="preferences_spinner_preferred_a1c_unit">Preferirana A1C jedinica</string>
+  <string name="preferences_spinner_preferred_a1c_unit_1">postotak</string>
+  <string name="preferences_spinner_preferred_weight_unit">Preferirana jedinica težine</string>
+  <string name="preferences_spinner_preferred_weight_unit_1">kilogrami</string>
+  <string name="preferences_spinner_preferred_weight_unit_2">funti</string>
   <string name="helloactivity_share_data">Podijelite anonimne podatke za istraživanje.</string>
   <string name="helloactivity_hint_settings">Ove postavke možete promijeniti kasnije.</string>
   <string name="helloactivity_button_next">DALJE</string>
@@ -113,6 +118,8 @@
   <string name="assistant">Asistent</string>
   <string name="assistant_action_update">AŽURIRAJ</string>
   <string name="assistant_action_ok">OK, RAZUMIO SAM</string>
+  <string name="assistant_action_feedback">POŠALJITE POVRATNE INFORMACIJE</string>
+  <string name="assistant_action_live_chat">LIVE CHAT</string>
   <string name="assistant_action_reading">DODAJ OČITANJA</string>
   <string name="assistant_action_try">ISPROBAJ ODMAH</string>
   <string name="assistant_weight_title">Ažurirajte vašu težinu</string>
@@ -136,6 +143,7 @@
   <string name="helloactivity_preferred_range_min">Min. vrijednost</string>
   <string name="helloactivity_preferred_range_max">Max. vrijednost</string>
   <string name="helloactivity_language">Jezik</string>
+  <string name="menu_support_error1">Čini se da nemate aplikaciju za e-poštu. Molimo vas, pošaljite nam e-mail na hello@glucosio.org</string>
   <string name="invitation_title">Preporuči ostalima</string>
   <string name="invitation_message">Isprobajte Glucosio aplikaciju otvorenog koda za upravljanje i istraživanje dijabetesa.</string>
   <string name="invitation_cta">Isprobajte Glucosio</string>
@@ -204,6 +212,7 @@
   <string name="title_activity_export">Izvezi podatke</string>
   <string name="dialog_export_all">Izvezi sve</string>
   <string name="share_using">Podijelite pomoću</string>
+  <string name="share_subject">Glucosio podatci</string>
   <string name="activity_export_snackbar_1">"Izvoz u tijeku"</string>
   <string name="activity_export_snackbar_2">očitanja</string>
   <string name="fragment_overview_permission_storage">Glucosio traži dozvolu za spremanje sliku zaslona</string>
@@ -253,4 +262,6 @@
   <string name="menu_support_forum">Forum za podršku</string>
   <string name="notification_reminder_glucose">Vrijeme je za zapisivanje vaše razine glukoze u krvi!</string>
   <string name="notification_reminder_medication">Vrijeme je da uzmete svoje lijekove!</string>
+  <string name="overview_hb1ac_info">Ovo je samo procjena i izračunava se pomoću prosjeka posljednjih mjesec dana očitanja. Iako ova procjena koristi široko prihvaćenu formulu za HbA1c procjenu, korisnicima preporučujemo da koriste to samo za procjenu.</string>
+  <string name="dialog_add_notes">Bilješke</string>
 </resources>

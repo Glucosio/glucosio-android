@@ -40,7 +40,12 @@
   <string name="helloactivity_spinner_diabetes_type">Type diabetes</string>
   <string name="helloactivity_spinner_diabetes_type_1">Type 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Type 2</string>
-  <string name="helloactivity_spinner_preferred_unit">Voorkeurseenheid</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit">Glucose-eenheid van voorkeur</string>
+  <string name="preferences_spinner_preferred_a1c_unit">A1C-eenheid van voorkeur</string>
+  <string name="preferences_spinner_preferred_a1c_unit_1">percentage</string>
+  <string name="preferences_spinner_preferred_weight_unit">Gewichtseenheid van voorkeur</string>
+  <string name="preferences_spinner_preferred_weight_unit_1">kilogram</string>
+  <string name="preferences_spinner_preferred_weight_unit_2">pond</string>
   <string name="helloactivity_share_data">Anonieme gegevens delen voor onderzoek</string>
   <string name="helloactivity_hint_settings">U kunt dit later wijzigen in de instellingen.</string>
   <string name="helloactivity_button_next">VOLGENDE</string>
@@ -92,7 +97,7 @@
     <item>Als u buiten de deur eet, vraag dan om items met weinig calorieën, zoals saladedressings, zelfs als ze niet op het menu staan.</item>
     <item>Als u buiten de deur eet, vraag dan om vervangingen. Vraag in plaats van patat om een dubbele portie van iets vegetarisch, zoals salade, sperziebonen of broccoli.</item>
     <item>Als u buiten de deur eet, bestel dan voedsel dat niet is gepaneerd of gebakken.</item>
-    <item>Als u buiten de deur eet, vraag dan om sauzen, jus en saladedressings \'aan de zijkant\'.</item>
+    <item>Als u buiten de deur eet, vraag dan om ‘wat extra’ sauzen, jus en saladedressings.</item>
     <item>Suikervrij betekent niet echt suikervrij. Het betekent 0,5 gram (g) suiker per portie, dus voorkom dat u zich met te veel suikervrije items verwent.</item>
     <item>Streven naar een gezond gewicht helpt bloedsuikers te beheersen. Uw arts, een diëtist en een fitnesstrainer kunnen u op weg helpen met een schema dat voor u werkt.</item>
     <item>Twee maal per dag controleren en bijhouden van uw bloedspiegel in een app als Glucosio helpt u bewust te worden van resultaten van keuzes in voedsel en levensstijl.</item>
@@ -113,6 +118,8 @@
   <string name="assistant">Assistent</string>
   <string name="assistant_action_update">NU BIJWERKEN</string>
   <string name="assistant_action_ok">OK, BEGREPEN</string>
+  <string name="assistant_action_feedback">FEEDBACK VERZENDEN</string>
+  <string name="assistant_action_live_chat">LIVECHAT</string>
   <string name="assistant_action_reading">UITLEZING TOEVOEGEN</string>
   <string name="assistant_action_try">NU PROBEREN</string>
   <string name="assistant_weight_title">Uw gewicht bijwerken</string>
@@ -130,12 +137,13 @@
   <string name="assistant_export_title">Uw gegevens exporteren</string>
   <string name="assistant_export_desc">Deel uw gegevens met uw arts of plaats een back-up ervan op Google Drive via de exportfunctie.</string>
   <string name="assistant_calculator_a1c_title">A1C berekenen</string>
-  <string name="assistant_calculator_a1c_desc">Glucosio’s ingebouwde A1C-calculator is nu in de zijbalk beschikbaar. Voer uw gemiddelde bloedsuikerspiegel in en sla direct de berekende A1C-waarde op.</string>
+  <string name="assistant_calculator_a1c_desc">Glucosio’s ingebouwde A1C-calculator is nu in het zijmenu beschikbaar. Voer uw gemiddelde bloedsuikerspiegel in en sla direct de berekende A1C-waarde op.</string>
   <string name="helloactivity_spinner_preferred_range">Voorkeursbereik</string>
   <string name="helloactivity_spinner_preferred_range_4">Aangepast bereik</string>
   <string name="helloactivity_preferred_range_min">Min. waarde</string>
   <string name="helloactivity_preferred_range_max">Max. waarde</string>
   <string name="helloactivity_language">Taal</string>
+  <string name="menu_support_error1">Er is geen e-mail-app geïnstalleerd. Stuur een e-mail naar hello@glucosio.org</string>
   <string name="invitation_title">Anderen uitnodigen</string>
   <string name="invitation_message">Probeer Glucosio, een opensource-app voor diabetesbeheer en -onderzoek.</string>
   <string name="invitation_cta">Glucosio proberen</string>
@@ -255,4 +263,5 @@
   <string name="notification_reminder_glucose">Het is tijd om uw bloedsuikerspiegel vast te leggen!</string>
   <string name="notification_reminder_medication">Het is tijd voor uw medicatie!</string>
   <string name="overview_hb1ac_info">Dit is slechts een schatting en is berekend op basis van de gemiddelden van uitlezingen in de afgelopen maand. Hoewel deze schatting een algemeen erkende formule voor HbA1C-schatting gebruikt, raden we gebruikers aan om dit alleen als een schatting te gebruiken.</string>
+  <string name="dialog_add_notes">Notities</string>
 </resources>

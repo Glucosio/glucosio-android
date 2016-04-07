@@ -49,6 +49,7 @@ public class AddWeightActivity extends AppCompatActivity implements TimePickerDi
     private TextView addTimeTextView;
     private TextView addDateTextView;
     private TextView readingTextView;
+    private TextView unitTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +70,11 @@ public class AddWeightActivity extends AppCompatActivity implements TimePickerDi
         addTimeTextView = (TextView) findViewById(R.id.dialog_add_time);
         addDateTextView = (TextView) findViewById(R.id.dialog_add_date);
         readingTextView = (TextView) findViewById(R.id.weight_add_value);
+        unitTextView = (TextView) findViewById(R.id.weight_add_unit_measurement);
+
+        if (!"kilograms".equals(presenter.getWeightUnitMeasuerement())) {
+            unitTextView.setText("lbs");
+        }
 
         FormatDateTime formatDateTime = new FormatDateTime(getApplicationContext());
         addDateTextView.setText(formatDateTime.getCurrentDate());

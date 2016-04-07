@@ -51,7 +51,7 @@ public class DatabaseHandler {
 
         if (mRealmConfig == null) {
             mRealmConfig = new RealmConfiguration.Builder(context)
-                    .schemaVersion(2)
+                    .schemaVersion(3)
                     .migration(new Migration())
                     .build();
         }
@@ -198,6 +198,21 @@ public class DatabaseHandler {
         }
 
         return typeArray;
+    }
+
+    public ArrayList<String> getGlucoseNotesAsArray() {
+        List<GlucoseReading> glucoseReading = getGlucoseReadings();
+        ArrayList<String> notesArray = new ArrayList<String>();
+        int i;
+
+        for (i = 0; i < glucoseReading.size(); i++) {
+            String reading;
+            GlucoseReading singleReading = glucoseReading.get(i);
+            reading = singleReading.getNotes();
+            notesArray.add(reading);
+        }
+
+        return notesArray;
     }
 
     public ArrayList<String> getGlucoseDateTimeAsArray() {

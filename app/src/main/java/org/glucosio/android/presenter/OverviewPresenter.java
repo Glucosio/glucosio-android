@@ -24,9 +24,8 @@ import org.glucosio.android.R;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.fragment.OverviewFragment;
 import org.glucosio.android.object.A1cEstimate;
-import org.glucosio.android.tools.GlucoseConverter;
+import org.glucosio.android.tools.GlucosioConverter;
 import org.glucosio.android.tools.TipsManager;
-import org.joda.time.DateTime;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -80,23 +79,27 @@ public class OverviewPresenter {
     public String getHB1AC() {
         // Check if last month is available first
         if (getGlucoseReadingsMonth().size() > 1) {
-            GlucoseConverter converter = new GlucoseConverter();
-            return converter.glucoseToA1C(getGlucoseReadingsMonth().get(getGlucoseReadingsMonth().size() - 2)) + " %";
+            GlucosioConverter converter = new GlucosioConverter();
+            if ("percentage".equals(dB.getUser(1).getPreferred_unit_a1c())) {
+                return converter.glucoseToA1C(getGlucoseReadingsMonth().get(getGlucoseReadingsMonth().size() - 2)) + " %";
+            } else {
+                return converter.a1cNgspToIfcc(converter.glucoseToA1C(getGlucoseReadingsMonth().get(getGlucoseReadingsMonth().size() - 2))) + " mmol/mol";
+            }
         } else {
             return fragment.getResources().getString(R.string.overview_hb1ac_error_no_data);
         }
     }
 
-    public boolean isA1cAvailable(int depth){
-        return getGlucoseReadingsMonth().size()>depth;
+    public boolean isA1cAvailable(int depth) {
+        return getGlucoseReadingsMonth().size() > depth;
     }
 
-    public ArrayList<A1cEstimate> getA1cEstimateList(){
-        GlucoseConverter converter = new GlucoseConverter();
+    public ArrayList<A1cEstimate> getA1cEstimateList() {
+        GlucosioConverter converter = new GlucosioConverter();
         ArrayList<A1cEstimate> a1cEstimateList = new ArrayList<>();
 
         // We don't take this month because A1C is incomplete
-        for (int i=0; i<getGlucoseReadingsMonth().size()-1; i++){
+        for (int i = 0; i < getGlucoseReadingsMonth().size() - 1; i++) {
             double value = converter.glucoseToA1C(getGlucoseReadingsMonth().get(i));
             String month = convertDateToMonth(getGlucoseDatetimeMonth().get(i));
             a1cEstimateList.add(new A1cEstimate(value, month));
@@ -105,7 +108,7 @@ public class OverviewPresenter {
         return a1cEstimateList;
     }
 
-    public String getH1ACMonth() {
+    public String getA1cMonth() {
         // Check if last month is available first
         if (getGlucoseReadingsMonth().size() > 1) {
             return convertDateToMonth(getGlucoseDatetimeMonth().get(getGlucoseDatetimeMonth().size() - 2)) + "";
