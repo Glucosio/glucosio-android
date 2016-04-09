@@ -22,6 +22,7 @@ package org.glucosio.android.tools;
 
 import android.content.Context;
 import android.net.Uri;
+import android.os.Environment;
 import android.support.v4.content.FileProvider;
 import android.util.Log;
 
@@ -43,7 +44,7 @@ public class ReadingToCSV {
 
     public Uri createCSV(final ArrayList<GlucoseReading> readings, String um) {
 
-        final File file = new File(context.getFilesDir(), "glucosio_exported_data.csv"); //Getting a file within the dir.
+        final File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "glucosio_exported_data.csv"); //Getting a file within the dir.
         file.delete();
 
 
