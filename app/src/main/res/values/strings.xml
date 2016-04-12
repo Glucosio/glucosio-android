@@ -256,11 +256,17 @@
         <item>@string/menu_support_forum</item>
     </string-array>
 
+    <string-array name="menu_backup_options" translatable="false">
+        <item>@string/menu_backup_backup</item>
+        <item>@string/menu_backup_restore</item>
+        <item>@string/menu_backup_csv</item>
+    </string-array>
+
     <string name="invitation_title">Invite other people</string>
     <string name="invitation_message">Try Glucosio, an open source app for diabetes management and research.</string>
     <string name="invitation_cta">Try Glucosio</string>
 
-    <string name="title_activity_backup">Backup</string>
+    <string name="title_activity_backup">Export data</string>
     <string name="preferences_privacy">Privacy</string>
     <string name="helloactivity_textview_tos">By using Glucosio, you are agreeing to the</string>
     <string name="preferences_backup_google_drive">Google Drive</string>
@@ -386,6 +392,9 @@
     <string name="notification_reminder_medication">It is time to take your medication!</string>
     <string name="overview_hb1ac_info">This is just an estimate and is calculated using the averages of the last month of readings. While this estimate uses a widely accepted formula for HbA1C estimation we encourage users to only use this as an estimate.</string>
     <string name="dialog_add_notes">Notes</string>
+    <string name="menu_backup_backup">Backup</string>
+    <string name="menu_backup_restore">Restore</string>
+    <string name="menu_backup_csv">CSV export</string>
 
     <string-array name="fragment_history_selector" translatable="false">
         <item>@string/fab_glucose</item>

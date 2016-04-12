@@ -22,6 +22,7 @@ package org.glucosio.android.activity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -67,6 +68,7 @@ import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.invitations.Invitation;
 import org.glucosio.android.presenter.ExportPresenter;
 import org.glucosio.android.presenter.MainPresenter;
+import org.glucosio.android.tools.RealmBackupRestore;
 
 import java.util.Calendar;
 
@@ -270,7 +272,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     public void startExportActivity() {
-        showExportDialog();
+        openBackupDialog();
     }
 
     private void startAboutActivity() {
@@ -381,7 +383,32 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         builder.show();
     }
 
-    public void showExportDialog() {
+    public void openBackupDialog() {
+        final Activity activity = this;
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(getResources().getString(R.string.title_activity_backup));
+        builder.setItems(getResources().getStringArray(R.array.menu_backup_options), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (which == 0) {
+                    // Backup
+                    RealmBackupRestore realmBackupRestore = new RealmBackupRestore(activity);
+                    realmBackupRestore.backup();
+
+                } else if (which == 1) {
+                    // Restore
+                    RealmBackupRestore realmBackupRestore = new RealmBackupRestore(activity);
+                    realmBackupRestore.restore();
+                } else {
+                    // Export to CSV
+                    showExportCsvDialog();
+                }
+            }
+        });
+        builder.show();
+    }
+
+    public void showExportCsvDialog() {
         final Dialog exportDialog = new Dialog(MainActivity.this, R.style.GlucosioTheme);
 
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();

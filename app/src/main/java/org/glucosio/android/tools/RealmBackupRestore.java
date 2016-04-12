@@ -1,7 +1,10 @@
 package org.glucosio.android.tools;
 
-import android.content.Context;
+import android.Manifest;
+import android.app.Activity;
+import android.content.pm.PackageManager;
 import android.os.Environment;
+import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -18,64 +21,97 @@ public class RealmBackupRestore {
 
     private File EXPORT_REALM_PATH = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
     private String EXPORT_REALM_FILE_NAME = "glucosio.realm";
-    private String IMPORT_REALM_FILE_NAME = "default.realm";
+    private String IMPORT_REALM_FILE_NAME = "default.realm"; // Eventually replace this if you're using a custom db name
 
     private final static String TAG = RealmBackupRestore.class.getName();
 
-    private Context context;
+    private Activity activity;
     private Realm realm;
 
-    public RealmBackupRestore(Context context) {
-        this.realm = new DatabaseHandler(context).getRealmIstance();
-        this.context = context;
+    // Storage Permissions
+    private static final int REQUEST_EXTERNAL_STORAGE = 1;
+    private static String[] PERMISSIONS_STORAGE = {
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+    };
+    private int permissionAskCounter;
+
+
+    public RealmBackupRestore(Activity activity) {
+        this.realm = new DatabaseHandler(activity.getApplicationContext()).getRealmIstance();
+        this.activity = activity;
     }
 
     public void backup() {
+        // First check if we have storage permissions
+        if (hasStoragePermissions(activity)) {
+            File exportRealmFile;
 
-        File exportRealmFile = null;
+            Log.d(TAG, "Realm DB Path = " + realm.getPath());
 
-        Log.d(TAG, "Realm DB Path = "+realm.getPath());
+            try {
+                EXPORT_REALM_PATH.mkdirs();
 
-        try {
-            // create a backup file
-            exportRealmFile = new File(EXPORT_REALM_PATH, EXPORT_REALM_FILE_NAME);
+                // create a backup file
+                exportRealmFile = new File(EXPORT_REALM_PATH, EXPORT_REALM_FILE_NAME);
 
-            // if backup file already exists, delete it
-            exportRealmFile.delete();
+                // if backup file already exists, delete it
+                exportRealmFile.delete();
 
-            // copy current realm to backup file
-            realm.writeCopyTo(exportRealmFile);
+                // copy current realm to backup file
+                realm.writeCopyTo(exportRealmFile);
 
-        } catch (IOException e) {
-            e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            String msg = "File exported to Path: " + EXPORT_REALM_PATH + "/" + EXPORT_REALM_FILE_NAME;
+            Toast.makeText(activity.getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+            Log.d(TAG, msg);
+
+
+            realm.close();
+        } else {
+            // Try to get permissions for 3 times
+            // if they're not available, show an error message
+            if (permissionAskCounter < 3) {
+                askStoragePermissions(activity);
+                backup();
+                permissionAskCounter++;
+            } else {
+                Toast.makeText(activity.getApplicationContext(), "Unable to get storage permissions.", Toast.LENGTH_SHORT).show();
+            }
         }
-
-        String msg =  "File exported to Path: "+ context.getExternalFilesDir(null);
-        Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
-        Log.d(TAG, msg);
-
-
-        realm.close();
-
     }
 
     public void restore() {
+        // First check if we have storage permissions
+        if (hasStoragePermissions(activity)) {
 
-        //Restore
-        String restoreFilePath = EXPORT_REALM_PATH + "/" + EXPORT_REALM_FILE_NAME;
+            //Restore
+            String restoreFilePath = EXPORT_REALM_PATH + "/" + EXPORT_REALM_FILE_NAME;
 
-        Log.d(TAG, "oldFilePath = " + restoreFilePath);
+            Log.d(TAG, "oldFilePath = " + restoreFilePath);
 
-        copyBundledRealmFile(restoreFilePath, IMPORT_REALM_FILE_NAME);
-        Log.d(TAG, "Data restore is done");
+            copyBundledRealmFile(restoreFilePath, IMPORT_REALM_FILE_NAME);
+            Log.d(TAG, "Data restore is done");
+        } else {
+            // Try to get permissions for 3 times
+            // if they're not available, show an error message
+            if (permissionAskCounter < 3) {
+                askStoragePermissions(activity);
+                restore();
+            } else {
+                Toast.makeText(activity.getApplicationContext(), "Unable to get storage permissions.", Toast.LENGTH_SHORT).show();
+            }
+        }
 
     }
 
     private String copyBundledRealmFile(String oldFilePath, String outFileName) {
         try {
-            File file = new File(context.getFilesDir(), outFileName);
+            File file = new File(activity.getApplicationContext().getFilesDir(), outFileName);
 
-            Log.d(TAG, "context.getFilesDir() = " + context.getFilesDir().toString());
             FileOutputStream outputStream = new FileOutputStream(file);
 
             FileInputStream inputStream = new FileInputStream(new File(oldFilePath));
@@ -91,6 +127,21 @@ public class RealmBackupRestore {
             e.printStackTrace();
         }
         return null;
+    }
+
+    private boolean hasStoragePermissions(Activity activity) {
+        // Check if we have write permission
+        int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+        return permission == PackageManager.PERMISSION_GRANTED;
+    }
+
+    private void askStoragePermissions(Activity activity){
+        ActivityCompat.requestPermissions(
+                activity,
+                PERMISSIONS_STORAGE,
+                REQUEST_EXTERNAL_STORAGE
+        );
     }
 
     private String dbPath(){

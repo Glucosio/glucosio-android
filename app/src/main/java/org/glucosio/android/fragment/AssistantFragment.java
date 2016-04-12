@@ -228,7 +228,7 @@ public class AssistantFragment extends Fragment {
     }
 
     public void startExportActivity() {
-        ((MainActivity) getActivity()).showExportDialog();
+        ((MainActivity) getActivity()).showExportCsvDialog();
     }
 
     public void startA1CCalculatorActivity() {
