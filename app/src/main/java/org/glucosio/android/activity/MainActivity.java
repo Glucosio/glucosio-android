@@ -23,7 +23,9 @@ package org.glucosio.android.activity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.Dialog;
+import android.app.PendingIntent;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -48,6 +50,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
@@ -394,11 +397,12 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                     // Backup
                     RealmBackupRestore realmBackupRestore = new RealmBackupRestore(activity);
                     realmBackupRestore.backup();
-
                 } else if (which == 1) {
                     // Restore
                     RealmBackupRestore realmBackupRestore = new RealmBackupRestore(activity);
                     realmBackupRestore.restore();
+                    // We need to reboot Glucosio to apply the new database
+                    rebootApp();
                 } else {
                     // Export to CSV
                     showExportCsvDialog();
@@ -646,33 +650,13 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         startActivity(Intent.createChooser(shareIntent, getResources().getString(R.string.share_using)));
     }
 
-
-    public int typeStringToInt(String typeString) {
-        //TODO refactor this ugly mess
-        int typeInt;
-        if (typeString.equals(getString(R.string.dialog_add_type_1))) {
-            typeInt = 0;
-        } else if (typeString.equals(getString(R.string.dialog_add_type_2))) {
-            typeInt = 1;
-        } else if (typeString.equals(getString(R.string.dialog_add_type_3))) {
-            typeInt = 2;
-        } else if (typeString.equals(getString(R.string.dialog_add_type_4))) {
-            typeInt = 3;
-        } else if (typeString.equals(getString(R.string.dialog_add_type_5))) {
-            typeInt = 4;
-        } else if (typeString.equals(getString(R.string.dialog_add_type_6))) {
-            typeInt = 5;
-        } else if (typeString.equals(getString(R.string.dialog_add_type_7))) {
-            typeInt = 6;
-        } else if (typeString.equals(getString(R.string.dialog_add_type_8))) {
-            typeInt = 7;
-        } else if (typeString.equals(getString(R.string.dialog_add_type_9))) {
-            typeInt = 8;
-        } else {
-            typeInt = 9;
-        }
-
-        return typeInt;
+    private void rebootApp() {
+        Intent mStartActivity = new Intent(getApplicationContext(), MainActivity.class);
+        int mPendingIntentId = 123456;
+        PendingIntent mPendingIntent = PendingIntent.getActivity(getApplicationContext(), mPendingIntentId, mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT);
+        AlarmManager mgr = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
+        mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
+        System.exit(0);
     }
 
     @Override

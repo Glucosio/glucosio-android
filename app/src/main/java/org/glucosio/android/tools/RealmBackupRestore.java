@@ -34,8 +34,6 @@ public class RealmBackupRestore {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
-    private int permissionAskCounter;
-
 
     public RealmBackupRestore(Activity activity) {
         this.realm = new DatabaseHandler(activity.getApplicationContext()).getRealmIstance();
@@ -44,68 +42,43 @@ public class RealmBackupRestore {
 
     public void backup() {
         // First check if we have storage permissions
-        if (hasStoragePermissions(activity)) {
-            File exportRealmFile;
+        checkStoragePermissions(activity);
+        File exportRealmFile;
 
-            Log.d(TAG, "Realm DB Path = " + realm.getPath());
+        Log.d(TAG, "Realm DB Path = " + realm.getPath());
 
-            try {
-                EXPORT_REALM_PATH.mkdirs();
+        try {
+            EXPORT_REALM_PATH.mkdirs();
 
-                // create a backup file
-                exportRealmFile = new File(EXPORT_REALM_PATH, EXPORT_REALM_FILE_NAME);
+            // create a backup file
+            exportRealmFile = new File(EXPORT_REALM_PATH, EXPORT_REALM_FILE_NAME);
 
-                // if backup file already exists, delete it
-                exportRealmFile.delete();
+            // if backup file already exists, delete it
+            exportRealmFile.delete();
 
-                // copy current realm to backup file
-                realm.writeCopyTo(exportRealmFile);
+            // copy current realm to backup file
+            realm.writeCopyTo(exportRealmFile);
 
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            String msg = "File exported to Path: " + EXPORT_REALM_PATH + "/" + EXPORT_REALM_FILE_NAME;
-            Toast.makeText(activity.getApplicationContext(), msg, Toast.LENGTH_LONG).show();
-            Log.d(TAG, msg);
-
-
-            realm.close();
-        } else {
-            // Try to get permissions for 3 times
-            // if they're not available, show an error message
-            if (permissionAskCounter < 3) {
-                askStoragePermissions(activity);
-                backup();
-                permissionAskCounter++;
-            } else {
-                Toast.makeText(activity.getApplicationContext(), "Unable to get storage permissions.", Toast.LENGTH_SHORT).show();
-            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
+        String msg = "File exported to Path: " + EXPORT_REALM_PATH + "/" + EXPORT_REALM_FILE_NAME;
+        Toast.makeText(activity.getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+        Log.d(TAG, msg);
+
+        realm.close();
     }
 
     public void restore() {
-        // First check if we have storage permissions
-        if (hasStoragePermissions(activity)) {
+        checkStoragePermissions(activity);
+        //Restore
+        String restoreFilePath = EXPORT_REALM_PATH + "/" + EXPORT_REALM_FILE_NAME;
 
-            //Restore
-            String restoreFilePath = EXPORT_REALM_PATH + "/" + EXPORT_REALM_FILE_NAME;
+        Log.d(TAG, "oldFilePath = " + restoreFilePath);
 
-            Log.d(TAG, "oldFilePath = " + restoreFilePath);
-
-            copyBundledRealmFile(restoreFilePath, IMPORT_REALM_FILE_NAME);
-            Log.d(TAG, "Data restore is done");
-        } else {
-            // Try to get permissions for 3 times
-            // if they're not available, show an error message
-            if (permissionAskCounter < 3) {
-                askStoragePermissions(activity);
-                restore();
-            } else {
-                Toast.makeText(activity.getApplicationContext(), "Unable to get storage permissions.", Toast.LENGTH_SHORT).show();
-            }
-        }
-
+        copyBundledRealmFile(restoreFilePath, IMPORT_REALM_FILE_NAME);
+        Log.d(TAG, "Data restore is done");
     }
 
     private String copyBundledRealmFile(String oldFilePath, String outFileName) {
@@ -129,21 +102,18 @@ public class RealmBackupRestore {
         return null;
     }
 
-    private boolean hasStoragePermissions(Activity activity) {
+    private void checkStoragePermissions(Activity activity) {
         // Check if we have write permission
         int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
-        return permission == PackageManager.PERMISSION_GRANTED;
+        if(permission != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(
+                    activity,
+                    PERMISSIONS_STORAGE,
+                    REQUEST_EXTERNAL_STORAGE
+            );
+        }
     }
-
-    private void askStoragePermissions(Activity activity){
-        ActivityCompat.requestPermissions(
-                activity,
-                PERMISSIONS_STORAGE,
-                REQUEST_EXTERNAL_STORAGE
-        );
-    }
-
     private String dbPath(){
         return realm.getPath();
     }
