@@ -396,11 +396,13 @@
     <string name="menu_backup_backup">Backup</string>
     <string name="menu_backup_restore">Restore</string>
     <string name="menu_backup_csv">CSV export</string>
-    <string name="activity_backup_drive_desc">Sync Glucosio's database in the cloud with Google Drive. You'll be able to restore all your readings if you lost or change phone or sync Glucosio's data between your devices.</string>
+    <string name="activity_backup_drive_desc">Sync Glucosio\'s database in the cloud with Google Drive. You\'ll be able to restore all your readings if you lost or change phone or sync Glucosio\'s data between your devices.</string>
     <string name="activity_backup_drive_success">Database correctly uploaded on Drive</string>
+    <string name="activity_backup_drive_restore_success">Correctly restored database from Drive</string>
     <string name="activity_backup_drive_failed">Something went wrong. Please try again :/</string>
     <string name="activity_backup_drive_button_backup">Backup now</string>
     <string name="activity_backup_drive_button_restore">Restore from Drive</string>
+    <string name="activity_backup_drive_error_restore">Unable to find a valid backup to restore from Drive</string>
 
     <string-array name="fragment_history_selector" translatable="false">
         <item>@string/fab_glucose</item>
