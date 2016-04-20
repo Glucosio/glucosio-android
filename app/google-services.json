@@ -23,6 +23,10 @@
             "package_name": "org.glucosio.android",
             "certificate_hash": "A18AA65A6EFE7F0DE3BA409A02EA6703E21CFEFD"
           }
+        },
+        {
+          "client_id": "45702392997-75lumfd1jtpvd7n2q7sac4ebrsjfcbp6.apps.googleusercontent.com",
+          "client_type": 3
         }
       ],
       "api_key": [],
@@ -39,10 +43,15 @@
         },
         "appinvite_service": {
           "status": 2,
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "45702392997-75lumfd1jtpvd7n2q7sac4ebrsjfcbp6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "google_signin_service": {
-          "status": 1
+          "status": 2
         },
         "ads_service": {
           "status": 1
@@ -67,6 +76,10 @@
             "package_name": "org.glucosio.android.daily",
             "certificate_hash": "9DF65CBC6293EB82523180CAF03912C6CC301FBD"
           }
+        },
+        {
+          "client_id": "45702392997-75lumfd1jtpvd7n2q7sac4ebrsjfcbp6.apps.googleusercontent.com",
+          "client_type": 3
         }
       ],
       "api_key": [],
@@ -80,7 +93,12 @@
         },
         "appinvite_service": {
           "status": 2,
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "45702392997-75lumfd1jtpvd7n2q7sac4ebrsjfcbp6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "google_signin_service": {
           "status": 1

@@ -67,6 +67,7 @@ import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.adapter.HomePagerAdapter;
 import org.glucosio.android.analytics.Analytics;
+import org.glucosio.android.backup.Backup;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.invitations.Invitation;
 import org.glucosio.android.presenter.ExportPresenter;
@@ -180,7 +181,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
         // Add Nav Drawer
         final PrimaryDrawerItem itemSettings = new PrimaryDrawerItem().withName(R.string.action_settings).withIcon(R.drawable.ic_settings_black_24dp).withSelectable(false);
-        final PrimaryDrawerItem itemExport = new PrimaryDrawerItem().withName(R.string.title_activity_export).withIcon(R.drawable.ic_share_black_24dp).withSelectable(false);
+        final PrimaryDrawerItem itemExport = new PrimaryDrawerItem().withName(R.string.sidebar_backup_export).withIcon(R.drawable.ic_share_black_24dp).withSelectable(false);
         final PrimaryDrawerItem itemFeedback = new PrimaryDrawerItem().withName(R.string.menu_support).withIcon(R.drawable.ic_feedback_black_24dp).withSelectable(false);
         final PrimaryDrawerItem itemAbout = new PrimaryDrawerItem().withName(R.string.preferences_about_glucosio).withIcon(R.drawable.ic_info_black_24dp).withSelectable(false);
         final PrimaryDrawerItem itemInvite = new PrimaryDrawerItem().withName(R.string.action_invite).withIcon(R.drawable.ic_face_black_24dp).withSelectable(false);
@@ -395,8 +396,10 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             public void onClick(DialogInterface dialog, int which) {
                 if (which == 0) {
                     // Backup
-                    RealmBackupRestore realmBackupRestore = new RealmBackupRestore(activity);
-                    realmBackupRestore.backup();
+/*                    RealmBackupRestore realmBackupRestore = new RealmBackupRestore(activity);
+                    realmBackupRestore.backup();*/
+                    Intent intent = new Intent(getApplicationContext(), BackupActivity.class);
+                    startActivity(intent);
                 } else if (which == 1) {
                     // Restore
                     RealmBackupRestore realmBackupRestore = new RealmBackupRestore(activity);

@@ -23,20 +23,10 @@ public class GoogleDriveBackup implements Backup, GoogleApiClient.OnConnectionFa
     @Nullable
     private WeakReference<Activity> activityRef;
 
-    private Handler handler = new Handler(Looper.getMainLooper());
-    private Runnable task;
 
     @Override
     public void init(@NonNull final Activity activity) {
         this.activityRef = new WeakReference<>(activity);
-
-        final Runnable googleBackupTask = new Runnable() {
-            @Override
-            public void run() {
-                Log.v("test", "running background task");
-                handler.postDelayed(this, 1000);
-            }
-        };
 
         googleApiClient = new GoogleApiClient.Builder(activity)
                 .addApi(Drive.API)
@@ -44,7 +34,7 @@ public class GoogleDriveBackup implements Backup, GoogleApiClient.OnConnectionFa
                 .addConnectionCallbacks(new GoogleApiClient.ConnectionCallbacks() {
                     @Override
                     public void onConnected(Bundle bundle) {
-                        setupTask(googleBackupTask, 1000);
+                        // Do nothing
                     }
 
                     @Override
@@ -55,6 +45,11 @@ public class GoogleDriveBackup implements Backup, GoogleApiClient.OnConnectionFa
                 .addOnConnectionFailedListener(this)
                 .build();
 
+    }
+
+    @Override
+    public GoogleApiClient getClient(){
+        return googleApiClient;
     }
 
     @Override
@@ -75,15 +70,10 @@ public class GoogleDriveBackup implements Backup, GoogleApiClient.OnConnectionFa
         }
     }
 
-    private void setupTask(Runnable backupTask, int delay) {
-        handler.removeCallbacks(task);
-        task = backupTask;
-        handler.postDelayed(task, delay);
-    }
-
     @Override
     public void onConnectionFailed(@NonNull final ConnectionResult result) {
         Log.i("Connection Failed", "GoogleApiClient connection failed: " + result.toString());
+
         if (result.hasResolution() && activityRef != null && activityRef.get() != null) {
             Activity a = activityRef.get();
             // show the localized error dialog.
@@ -91,9 +81,10 @@ public class GoogleDriveBackup implements Backup, GoogleApiClient.OnConnectionFa
                 result.startResolutionForResult(a, 1);
             } catch (IntentSender.SendIntentException e) {
                 e.printStackTrace();
+                GoogleApiAvailability.getInstance().getErrorDialog(a, result.getErrorCode(), 0).show();
             }
-            GoogleApiAvailability.getInstance().getErrorDialog(a, result.getErrorCode(), 0).show();
-        } else
+        } else {
             Log.d("error", "cannot resolve connection issue");
+        }
     }
 }
