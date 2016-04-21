@@ -162,7 +162,7 @@ public class BackupActivity extends AppCompatActivity {
                 });
     }
 
-    private void restoreFromDrive(){
+    private void restoreFromDrive() {
         // First we search for plain text file named glucosio.realm
         Query query = new Query.Builder()
                 .addFilter(Filters.eq(SearchableField.TITLE, "glucosio.realm"))
@@ -174,77 +174,83 @@ public class BackupActivity extends AppCompatActivity {
 
                     @Override
                     public void onResult(DriveApi.MetadataBufferResult result) {
+                        Log.e(TAG, "Problem while retrieving results");
+
                         if (!result.getStatus().isSuccess()) {
                             Log.e(TAG, "Problem while retrieving results");
                             return;
                         }
-                        Log.e(TAG,result.toString());
-                        Log.e(TAG, result.getMetadataBuffer().getCount()+"");
-                        // Pick the first file in App Folder
-                        if (result.getMetadataBuffer().get(0).isInAppFolder()){
-                            restoredFile = result.getMetadataBuffer().get(0).getDriveId().asDriveFile();
-                            result.release();
-                        }
+                        if (result.getMetadataBuffer().getCount() != 0) {
+                            // Pick the first file in App Folder
+                            if (result.getMetadataBuffer().get(0).isInAppFolder()) {
+                                restoredFile = result.getMetadataBuffer().get(0).getDriveId().asDriveFile();
+                            }
 
-                        if (restoredFile != null) {
-                            // Now get the file from the id
-                            restoredFile.open(mGoogleApiClient, DriveFile.MODE_READ_ONLY, null)
-                                    .setResultCallback(new ResultCallback<DriveApi.DriveContentsResult>() {
-                                        @Override
-                                        public void onResult(DriveApi.DriveContentsResult result) {
-                                            if (!result.getStatus().isSuccess()) {
-                                                showErrorDialog();
-                                                return;
-                                            }
+                            if (restoredFile != null) {
+                                // Now get the file from the id
+                                restoredFile.open(mGoogleApiClient, DriveFile.MODE_READ_ONLY, null)
+                                        .setResultCallback(new ResultCallback<DriveApi.DriveContentsResult>() {
+                                            @Override
+                                            public void onResult(DriveApi.DriveContentsResult result) {
+                                                if (!result.getStatus().isSuccess()) {
+                                                    showErrorDialog();
+                                                    return;
+                                                }
 
-                                            // DriveContents object contains pointers
-                                            // to the actual byte stream
-                                            DriveContents contents = result.getDriveContents();
-                                            InputStream input = contents.getInputStream();
+                                                // DriveContents object contains pointers
+                                                // to the actual byte stream
+                                                DriveContents contents = result.getDriveContents();
+                                                InputStream input = contents.getInputStream();
 
-                                            try {
-                                                File file = new File(realm.getPath(), "default.realm");
-                                                OutputStream output = new FileOutputStream(file);
                                                 try {
+                                                    File file = new File(realm.getPath());
+                                                    OutputStream output = new FileOutputStream(file);
                                                     try {
-                                                        byte[] buffer = new byte[4 * 1024]; // or other buffer size
-                                                        int read;
+                                                        try {
+                                                            byte[] buffer = new byte[4 * 1024]; // or other buffer size
+                                                            int read;
 
-                                                        while ((read = input.read(buffer)) != -1) {
-                                                            output.write(buffer, 0, read);
+                                                            while ((read = input.read(buffer)) != -1) {
+                                                                output.write(buffer, 0, read);
+                                                            }
+                                                            output.flush();
+                                                        } finally {
+                                                            output.close();
                                                         }
-                                                        output.flush();
-                                                    } finally {
-                                                        output.close();
+                                                    } catch (Exception e) {
+                                                        e.printStackTrace();
                                                     }
-                                                } catch (Exception e) {
+                                                } catch (FileNotFoundException e) {
                                                     e.printStackTrace();
-                                                }
-                                            } catch (FileNotFoundException e) {
-                                                e.printStackTrace();
-                                            } finally {
-                                                try {
-                                                    input.close();
-                                                } catch (IOException e) {
-                                                    e.printStackTrace();
+                                                } finally {
+                                                    try {
+                                                        input.close();
+                                                    } catch (IOException e) {
+                                                        e.printStackTrace();
+                                                    }
                                                 }
                                             }
-                                        }
-                                    });
+                                        });
 
-                            // Reboot app
-                            Intent mStartActivity = new Intent(getApplicationContext(), MainActivity.class);
-                            int mPendingIntentId = 123456;
-                            PendingIntent mPendingIntent = PendingIntent.getActivity(getApplicationContext(), mPendingIntentId, mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT);
-                            AlarmManager mgr = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
-                            mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
-                            System.exit(0);
+                                result.release();
+
+                                // Reboot app
+                                Intent mStartActivity = new Intent(getApplicationContext(), MainActivity.class);
+                                int mPendingIntentId = 123456;
+                                PendingIntent mPendingIntent = PendingIntent.getActivity(getApplicationContext(), mPendingIntentId, mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT);
+                                AlarmManager mgr = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
+                                mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
+                                System.exit(0);
+                            } else {
+                                showErrorDialogRestore();
+                                result.release();
+                            }
                         } else {
                             showErrorDialogRestore();
+                            result.release();
                         }
                     }
                 });
-
     }
 
     private void showErrorDialogRestore() {
