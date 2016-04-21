@@ -147,7 +147,7 @@
   <string name="invitation_title">Convidar outras pessoas</string>
   <string name="invitation_message">Experimente o Glucosio, um aplicativo de código-aberto para o controle da diabetes e pesquisas.</string>
   <string name="invitation_cta">Experimente o Glucosio</string>
-  <string name="title_activity_backup">Backup</string>
+  <string name="title_activity_backup_drive">Backup</string>
   <string name="preferences_privacy">Privacidade</string>
   <string name="helloactivity_textview_tos">Ao usar o Glucosio, você concorda com os</string>
   <string name="preferences_backup_google_drive">Google Drive</string>

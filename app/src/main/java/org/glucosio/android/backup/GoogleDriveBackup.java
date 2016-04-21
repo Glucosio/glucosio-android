@@ -28,7 +28,7 @@ public class GoogleDriveBackup implements Backup, GoogleApiClient.OnConnectionFa
 
         googleApiClient = new GoogleApiClient.Builder(activity)
                 .addApi(Drive.API)
-                .addScope(Drive.SCOPE_APPFOLDER)
+                .addScope(Drive.SCOPE_FILE)
                 .addConnectionCallbacks(new GoogleApiClient.ConnectionCallbacks() {
                     @Override
                     public void onConnected(Bundle bundle) {

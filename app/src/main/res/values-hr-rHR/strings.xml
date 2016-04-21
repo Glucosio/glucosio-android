@@ -147,7 +147,7 @@
   <string name="invitation_title">Preporuči ostalima</string>
   <string name="invitation_message">Isprobajte Glucosio aplikaciju otvorenog koda za upravljanje i istraživanje dijabetesa.</string>
   <string name="invitation_cta">Isprobajte Glucosio</string>
-  <string name="title_activity_backup">Sigurnosna kopija</string>
+  <string name="title_activity_backup_drive">Sigurnosna kopija</string>
   <string name="preferences_privacy">Privatnost</string>
   <string name="helloactivity_textview_tos">Korištenjem Glucosio, suglasni ste</string>
   <string name="preferences_backup_google_drive">Google disk</string>

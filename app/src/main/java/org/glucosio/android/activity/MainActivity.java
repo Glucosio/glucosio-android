@@ -50,7 +50,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
@@ -67,7 +66,6 @@ import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.adapter.HomePagerAdapter;
 import org.glucosio.android.analytics.Analytics;
-import org.glucosio.android.backup.Backup;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.invitations.Invitation;
 import org.glucosio.android.presenter.ExportPresenter;
@@ -390,7 +388,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     public void openBackupDialog() {
         final Activity activity = this;
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(getResources().getString(R.string.title_activity_backup));
+        builder.setTitle(getResources().getString(R.string.title_activity_backup_drive));
         builder.setItems(getResources().getStringArray(R.array.menu_backup_options), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

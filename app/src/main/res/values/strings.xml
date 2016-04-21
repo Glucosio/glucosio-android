@@ -266,7 +266,7 @@
     <string name="invitation_message">Try Glucosio, an open source app for diabetes management and research.</string>
     <string name="invitation_cta">Try Glucosio</string>
 
-    <string name="title_activity_backup">Export data</string>
+    <string name="title_activity_backup_drive">Google Drive Backup</string>
     <string name="preferences_privacy">Privacy</string>
     <string name="helloactivity_textview_tos">By using Glucosio, you are agreeing to the</string>
     <string name="preferences_backup_google_drive">Google Drive</string>
@@ -396,7 +396,8 @@
     <string name="menu_backup_backup">Backup</string>
     <string name="menu_backup_restore">Restore</string>
     <string name="menu_backup_csv">CSV export</string>
-    <string name="activity_backup_drive_desc">Sync Glucosio\'s database in the cloud with Google Drive. You\'ll be able to restore all your readings if you lost or change phone or sync Glucosio\'s data between your devices.</string>
+    <string name="activity_backup_drive_desc_1">Sync Glucosio\'s database in the cloud with Google Drive.</string>
+    <string name="activity_backup_drive_desc_2">You\'ll be able to restore all your readings if you lost or change phone or sync Glucosio\'s data between your devices.</string>
     <string name="activity_backup_drive_success">Database correctly uploaded on Drive</string>
     <string name="activity_backup_drive_restore_success">Correctly restored database from Drive</string>
     <string name="activity_backup_drive_failed">Something went wrong. Please try again :/</string>

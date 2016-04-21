@@ -147,7 +147,7 @@
   <string name="invitation_title">Invită alte persoane</string>
   <string name="invitation_message">Încearcă Glucosio, o aplicație cu sursă deschisă pentru gestionarea diabetului și cercetare.</string>
   <string name="invitation_cta">Încearcă Glucosio</string>
-  <string name="title_activity_backup">Copie de siguranță</string>
+  <string name="title_activity_backup_drive">Copie de siguranță</string>
   <string name="preferences_privacy">Confidențialitate</string>
   <string name="helloactivity_textview_tos">Folosind Glucosio, ești de acord cu</string>
   <string name="preferences_backup_google_drive">Google Drive</string>

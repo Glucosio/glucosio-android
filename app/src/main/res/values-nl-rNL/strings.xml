@@ -147,7 +147,7 @@
   <string name="invitation_title">Anderen uitnodigen</string>
   <string name="invitation_message">Probeer Glucosio, een opensource-app voor diabetesbeheer en -onderzoek.</string>
   <string name="invitation_cta">Glucosio proberen</string>
-  <string name="title_activity_backup">Back-up maken</string>
+  <string name="title_activity_backup_drive">Back-up maken</string>
   <string name="preferences_privacy">Privacy</string>
   <string name="helloactivity_textview_tos">Door Glucosio te gebruiken, gaat u akkoord met de</string>
   <string name="preferences_backup_google_drive">Google Drive</string>

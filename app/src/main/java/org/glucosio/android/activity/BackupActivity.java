@@ -24,8 +24,8 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
@@ -42,6 +42,7 @@ import com.google.android.gms.drive.DriveFile;
 import com.google.android.gms.drive.DriveFolder;
 import com.google.android.gms.drive.DriveId;
 import com.google.android.gms.drive.MetadataChangeSet;
+import com.google.android.gms.drive.OpenFileActivityBuilder;
 import com.google.android.gms.drive.query.Filters;
 import com.google.android.gms.drive.query.Query;
 import com.google.android.gms.drive.query.SearchableField;
@@ -51,7 +52,6 @@ import org.glucosio.android.R;
 import org.glucosio.android.backup.Backup;
 import org.glucosio.android.db.DatabaseHandler;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -59,8 +59,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
 
 import io.realm.Realm;
 
@@ -69,8 +67,10 @@ public class BackupActivity extends AppCompatActivity {
     private Backup backup;
     private GoogleApiClient mGoogleApiClient;
     private String TAG = "glucosio_drive_backup";
+    private int REQUEST_CODE_PICKER = 2;
     private Button backupButton;
     private Button restoreButton;
+    private IntentSender intentPicker;
     private DriveFile restoredFile;
     private Realm realm;
 
@@ -83,7 +83,7 @@ public class BackupActivity extends AppCompatActivity {
         realm = new DatabaseHandler(getApplicationContext()).getRealmIstance();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_backup));
+        getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_backup_drive));
 
         backup = ((GlucosioApplication) getApplicationContext()).getBackup();
         backup.init(this);
@@ -96,7 +96,7 @@ public class BackupActivity extends AppCompatActivity {
         backupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                uploadToDrive(new File(realm.getPath()));
+                openFolderPicker();
             }
         });
 
@@ -108,58 +108,26 @@ public class BackupActivity extends AppCompatActivity {
         });
     }
 
-    private void uploadToDrive(final File file) {
-        Drive.DriveApi.newDriveContents(mGoogleApiClient)
-                .setResultCallback(new ResultCallback<DriveApi.DriveContentsResult>() {
+    private void openFolderPicker() {
+        try {
+            if (mGoogleApiClient!=null && mGoogleApiClient.isConnected()){
+                if (intentPicker==null)
+                    intentPicker = buildIntent();
+                //Start the picker to choose a folder
+                startIntentSenderForResult(
+                        intentPicker, REQUEST_CODE_PICKER, null, 0, 0, 0);
+            }
+        } catch (IntentSender.SendIntentException e) {
+            Log.e(TAG, "Unable to send intent", e);
+            showErrorDialog();
+        }
+    }
 
-                    @Override
-                    public void onResult(DriveApi.DriveContentsResult result) {
-                        if (!result.getStatus().isSuccess()) {
-                            Log.e(TAG, "Error while trying to create new file contents");
-                            return;
-                        }
-                        final DriveContents driveContents = result.getDriveContents();
-
-                        // Perform I/O off the UI thread.
-                        new Thread() {
-                            @Override
-                            public void run() {
-                                // write content to DriveContents
-                                OutputStream outputStream = driveContents.getOutputStream();
-
-                                FileInputStream inputStream = null;
-                                try {
-                                    inputStream = new FileInputStream(file);
-                                } catch (FileNotFoundException e) {
-                                    e.printStackTrace();
-                                }
-
-                                byte[] buf = new byte[1024];
-                                int bytesRead;
-                                try {
-                                    if (inputStream != null) {
-                                        while ((bytesRead = inputStream.read(buf)) > 0) {
-                                                outputStream.write(buf, 0, bytesRead);
-                                        }
-                                    }
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                }
-
-
-                                MetadataChangeSet changeSet = new MetadataChangeSet.Builder()
-                                        .setTitle("glucosio.realm")
-                                        .setMimeType("text/plain")
-                                        .build();
-
-                                // create a file on app folder
-                                Drive.DriveApi.getAppFolder(mGoogleApiClient)
-                                        .createFile(mGoogleApiClient, changeSet, driveContents)
-                                        .setResultCallback(fileCallback);
-                            }
-                        }.start();
-                    }
-                });
+    private IntentSender buildIntent(){
+        return Drive.DriveApi
+                .newOpenFileActivityBuilder()
+                .setMimeType(new String[]{DriveFolder.MIME_TYPE})
+                .build(mGoogleApiClient);
     }
 
     private void restoreFromDrive() {
@@ -296,6 +264,73 @@ public class BackupActivity extends AppCompatActivity {
             case 1:
                 if (resultCode == RESULT_OK) {
                     backup.start();
+                }
+                break;
+            // REQUEST_CODE_PICKER
+            case 2:
+                intentPicker = null;
+
+                if (resultCode == RESULT_OK) {
+                    //Get the folder drive id
+                    DriveId mFolderDriveId = (DriveId) data.getParcelableExtra(
+                            OpenFileActivityBuilder.EXTRA_RESPONSE_DRIVE_ID);
+
+                    if (mFolderDriveId != null) {
+                        //Create the file on GDrive
+                        final DriveFolder folder = mFolderDriveId.asDriveFolder();
+                        Drive.DriveApi.newDriveContents(mGoogleApiClient)
+                                .setResultCallback(new ResultCallback<DriveApi.DriveContentsResult>() {
+                                    @Override
+                                    public void onResult(DriveApi.DriveContentsResult result) {
+                                        if (!result.getStatus().isSuccess()) {
+                                            Log.e(TAG, "Error while trying to create new file contents");
+                                            showErrorDialog();
+                                            return;
+                                        }
+                                        final DriveContents driveContents = result.getDriveContents();
+
+                                        // Perform I/O off the UI thread.
+                                        new Thread() {
+                                            @Override
+                                            public void run() {
+                                                // write content to DriveContents
+                                                OutputStream outputStream = driveContents.getOutputStream();
+
+                                                FileInputStream inputStream = null;
+                                                try {
+                                                    inputStream = new FileInputStream(new File(realm.getPath()));
+                                                } catch (FileNotFoundException e) {
+                                                    showErrorDialog();
+                                                    e.printStackTrace();
+                                                }
+
+                                                byte[] buf = new byte[1024];
+                                                int bytesRead;
+                                                try {
+                                                    if (inputStream != null) {
+                                                        while ((bytesRead = inputStream.read(buf)) > 0) {
+                                                            outputStream.write(buf, 0, bytesRead);
+                                                        }
+                                                    }
+                                                } catch (IOException e) {
+                                                    showErrorDialog();
+                                                    e.printStackTrace();
+                                                }
+
+
+                                                MetadataChangeSet changeSet = new MetadataChangeSet.Builder()
+                                                        .setTitle("glucosio.realm")
+                                                        .setMimeType("text/plain")
+                                                        .build();
+
+                                                // create a file on app folder
+                                                folder.createFile(mGoogleApiClient, changeSet, driveContents)
+                                                        .setResultCallback(fileCallback);
+                                            }
+                                        }.start();
+                                    }
+                                });
+                    }
                 }
                 break;
         }

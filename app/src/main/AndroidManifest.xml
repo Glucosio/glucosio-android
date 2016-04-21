@@ -71,7 +71,7 @@
             android:theme="@style/GlucosioSettings" />
         <activity
             android:name=".activity.BackupActivity"
-            android:label="@string/title_activity_backup"
+            android:label="@string/title_activity_backup_drive"
             android:parentActivityName=".activity.PreferencesActivity"
             android:theme="@style/GlucosioSettings">
             <meta-data
