@@ -135,7 +135,6 @@
   <string name="invitation_title">Bjud in andra personer</string>
   <string name="invitation_message">Prova Glucosio, en app med öppen källkod för diabetesbehandling och forskning.</string>
   <string name="invitation_cta">Prova Glucosio</string>
-  <string name="title_activity_backup">Exportera data</string>
   <string name="preferences_privacy">Sekretess</string>
   <string name="helloactivity_textview_tos">Genom att använda Glucosio, godkänner du</string>
   <string name="preferences_backup_google_drive">Google Drive</string>
@@ -229,5 +228,4 @@
   <string name="freestylelibre_nfc_not_supported">Enheter stöder inte NFC.</string>
   <string name="freestylelibre_nfc_not_enabled">NFC är inaktiverat.</string>
   <string name="freestylelibre_nfc_error">Ett fel uppstod när NFC-anslutning skulle öppnas!</string>
-  <string name="menu_backup_backup">Säkerhetskopiera</string>
 </resources>

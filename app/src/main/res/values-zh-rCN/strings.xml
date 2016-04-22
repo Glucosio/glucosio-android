@@ -140,7 +140,6 @@
   <string name="invitation_title">邀请其他人</string>
   <string name="invitation_message">试试 Glucosio，一个糖尿病管理和研究的开放源码应用程序。</string>
   <string name="invitation_cta">试试 Glucosio</string>
-  <string name="title_activity_backup">导出数据</string>
   <string name="preferences_privacy">隐私政策</string>
   <string name="helloactivity_textview_tos">使用 Glucosio 即代表您同意</string>
   <string name="preferences_backup_google_drive">Google 云端硬盘</string>
@@ -254,5 +253,4 @@
   <string name="menu_support_forum">支持论坛</string>
   <string name="notification_reminder_glucose">该记录您的血糖水平了！</string>
   <string name="notification_reminder_medication">现在是您的服药时间！</string>
-  <string name="menu_backup_backup">备份</string>
 </resources>

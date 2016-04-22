@@ -148,7 +148,6 @@
   <string name="invitation_title">Invitar a otras personas</string>
   <string name="invitation_message">Probar Glucosio, una aplicación de fuente libre para la investigación y manejo de la diabetes.</string>
   <string name="invitation_cta">Probar Glucosio</string>
-  <string name="title_activity_backup">Exportar datos</string>
   <string name="preferences_privacy">Privacidad</string>
   <string name="helloactivity_textview_tos">Al usar Glucosio, acepta a los</string>
   <string name="preferences_backup_google_drive">Google Drive</string>
@@ -264,5 +263,4 @@
   <string name="notification_reminder_medication">¡Es hora de tomar tu medicamento!</string>
   <string name="overview_hb1ac_info">Esto es sólo un cálculo aproximado obtenido de los promedios de las lecturas del último mes. Pese a que es una fórmula para HbA1C que goza de un amplio consenso, recomendamos que los usuarios la usen sólo como un cálculo aproximado.</string>
   <string name="dialog_add_notes">Observaciones</string>
-  <string name="menu_backup_backup">Hacer copia de respaldo</string>
 </resources>

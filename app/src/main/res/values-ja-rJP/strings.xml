@@ -147,7 +147,6 @@
   <string name="invitation_title">他の人を招待</string>
   <string name="invitation_message">糖尿病の管理と研究のためのオープンソース アプリ Glucosio を試してください。</string>
   <string name="invitation_cta">Glucosio を試してください</string>
-  <string name="title_activity_backup">データをエクスポート</string>
   <string name="preferences_privacy">プライバシー</string>
   <string name="helloactivity_textview_tos">Glucosio の使用に関して、以下に同意します</string>
   <string name="preferences_backup_google_drive">Google ドライブ</string>
@@ -263,5 +262,4 @@
   <string name="notification_reminder_medication">薬を服用する時間です!</string>
   <string name="overview_hb1ac_info">これはただの推定値で、測定値の先月の平均値を使用して計算されます。この推定値は、広く受け入れられている HbA1C の公式を使用していますが、推定値としてのみ使用することをおすすめします。</string>
   <string name="dialog_add_notes">メモ</string>
-  <string name="menu_backup_backup">バックアップ</string>
 </resources>

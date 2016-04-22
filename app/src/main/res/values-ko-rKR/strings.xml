@@ -92,7 +92,6 @@
   <string name="helloactivity_spinner_preferred_range">선호 범위</string>
   <string name="helloactivity_spinner_preferred_range_4">사용자 정의 범위</string>
   <string name="helloactivity_preferred_range_min">최소값</string>
-  <string name="title_activity_backup">데이터 내보내기</string>
   <string name="preferences_freestyle_libre">FreeStyle Libre® 지원 활성화</string>
   <string name="preferences_freestyle_libre_experimental">실험 기능: FreeStyle Libre® 지원 활성화</string>
   <string name="preferences_font_dyslexia_experimental">실험 기능: 읽기 어려운 사용자에 대한 가독성 증가</string>

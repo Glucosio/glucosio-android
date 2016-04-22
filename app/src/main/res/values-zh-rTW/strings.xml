@@ -147,7 +147,6 @@
   <string name="invitation_title">邀請其他人</string>
   <string name="invitation_message">試試 Glucosio，一套開放原始碼的糖尿病管理與研究程式。</string>
   <string name="invitation_cta">試試 Glucosio</string>
-  <string name="title_activity_backup">匯出資料</string>
   <string name="preferences_privacy">隱私權</string>
   <string name="helloactivity_textview_tos">使用 Glucosio，代表您同意</string>
   <string name="preferences_backup_google_drive">Google 雲端硬碟</string>
@@ -263,5 +262,4 @@
   <string name="notification_reminder_medication">是時候來吃藥了！</string>
   <string name="overview_hb1ac_info">這只是依照上個月的讀數計算出的估計值。雖然這個 HbA1C 數值是依照普遍被接受的公式所計算出的，但我們還是建議使用者只將這個數字看作估計值。</string>
   <string name="dialog_add_notes">備註</string>
-  <string name="menu_backup_backup">備份</string>
 </resources>

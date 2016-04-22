@@ -201,5 +201,4 @@
   <string name="menu_support_forum">Forum za podršku</string>
   <string name="notification_reminder_glucose">Vrijeme je za zapisivanje vašeg nivoa šećera u krvi!</string>
   <string name="notification_reminder_medication">Vrijeme je da uzmete svoje lijekove!</string>
-  <string name="menu_backup_backup">Backup</string>
 </resources>

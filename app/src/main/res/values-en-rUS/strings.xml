@@ -129,7 +129,6 @@
   <string name="helloactivity_spinner_preferred_range_4">Custom range</string>
   <string name="helloactivity_preferred_range_min">Min value</string>
   <string name="helloactivity_preferred_range_max">Max value</string>
-  <string name="title_activity_backup">Export data</string>
   <!-- Future Strings Baked In Early For l10n -->
   <!-- Exercise Types -->
   <string name="dialog_add_exercisetype_25">Yard work</string>

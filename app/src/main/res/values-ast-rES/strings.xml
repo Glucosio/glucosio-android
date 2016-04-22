@@ -134,7 +134,6 @@
   <string name="invitation_title">Convidar a otra xente</string>
   <string name="invitation_message">Prueba Glucosio, una aplicación de códigu llibre pa la xestión ya investigación de la diabetes.</string>
   <string name="invitation_cta">Prueba Glucosio</string>
-  <string name="title_activity_backup">Esportar datos</string>
   <string name="preferences_privacy">Privacidá</string>
   <string name="helloactivity_textview_tos">Usando Glucosio tas acordies colos</string>
   <string name="preferences_backup_google_drive">Google Drive</string>
@@ -226,5 +225,4 @@
   <string name="menu_support_forum">Foru de sofitu</string>
   <string name="notification_reminder_glucose">¡Ye hora de rexistrar el to nivel sanguineu de glucosa!</string>
   <string name="notification_reminder_medication">¡Ye hora de tomar les tos melecines!</string>
-  <string name="menu_backup_backup">Copies de seguranza</string>
 </resources>

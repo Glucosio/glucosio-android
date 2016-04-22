@@ -138,7 +138,6 @@
   <string name="invitation_title">Пригласить других людей</string>
   <string name="invitation_message">Попробовать Glucosio, приложение с открытым исходным кодом для исследований и отслеживания диабета.</string>
   <string name="invitation_cta">Попробовать Glucosio</string>
-  <string name="title_activity_backup">Экспорт данных</string>
   <string name="preferences_privacy">Приватность</string>
   <string name="helloactivity_textview_tos">Используя Glucosio, вы соглашаетесь с</string>
   <string name="preferences_backup_google_drive">Google Диск</string>
@@ -252,5 +251,4 @@
   <string name="menu_support_forum">Форум поддержки</string>
   <string name="notification_reminder_glucose">Пришло время для входа глюкозы в вашу кровь!</string>
   <string name="notification_reminder_medication">Настало время принять лекарство!</string>
-  <string name="menu_backup_backup">Резервное копирование</string>
 </resources>

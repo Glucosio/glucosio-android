@@ -135,7 +135,6 @@
   <string name="helloactivity_language">ພາສາ</string>
   <string name="invitation_title">ເຊີນສ່ວນຫມູ່ເພື່ອນຄົນອື່ນໆ</string>
   <string name="invitation_cta">ທົດລອງໃຊ້ Glucosio</string>
-  <string name="title_activity_backup">ນຳເອົາຂໍ້ມູນອອກ</string>
   <string name="preferences_privacy">ຄວາມເປັນສ່ວນຕົວ</string>
   <string name="preferences_backup_google_drive">Google Drive</string>
   <string name="preferences_about_glucosio">ກ່ຽວກັບ Glucosio</string>
@@ -236,5 +235,4 @@
   <string name="menu_support_forum">ຟໍລຳໃຫ້ຂໍ້ມູນການສະຫນັບສະຫນູນ</string>
   <string name="notification_reminder_medication">ມັນຮອດເວລາທີ່ຈະໃຊ້ຢາຂອງທ່ານແລ້ວ!</string>
   <string name="dialog_add_notes">ຫມາຍເຫດ</string>
-  <string name="menu_backup_backup">ການສຳຮອງຂໍ້ມູນ</string>
 </resources>

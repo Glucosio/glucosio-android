@@ -136,7 +136,6 @@
   <string name="invitation_title">အခြားသူများကို ဖိတ်ခေါ်ပါ</string>
   <string name="invitation_message">ဆီးချိုရောဂါဆိုင်ရာ စီမံခန့်ခွဲမှုနှင့် သုတေသနအတွက် ပွင့်လင်းရင်းမြစ် အက်ပ် Glucosio ကို စမ်းသုံးကြည့်ပါ။</string>
   <string name="invitation_cta">Glucosio ကို စမ်းသုံးကြည့်ပါ။</string>
-  <string name="title_activity_backup">အချက်အလက် ထုတ်ယူရန်</string>
   <string name="preferences_privacy">ကိုယ်​ရေးလုံခြုံမှု</string>
   <string name="helloactivity_textview_tos">Glucosio ကို အသုံးပြုခြင်းဖြင့် သင် ​အောက်ပါအ​ကြောင်းအရာကို သ​ဘောတူပြီး ဖြစ်သည်။</string>
   <string name="preferences_backup_google_drive">ဂူဂဲလ် ဒရိုက်ဖ်</string>
@@ -237,5 +236,4 @@
   <string name="activity_converter_a1c">A1C</string>
   <string name="activity_converter_title">A1C တွက်စက်</string>
   <string name="activity_converter_save">သိမ်းရန်</string>
-  <string name="menu_backup_backup">သိမ်းဆည်းပါ</string>
 </resources>

@@ -147,7 +147,6 @@
   <string name="invitation_title">Convidar a outras persoas</string>
   <string name="invitation_message">Proba Glucosio, unha aplicación de código aberto para xestionar a diabete e de utilidade para a súa investigación.</string>
   <string name="invitation_cta">Probar Glucosio</string>
-  <string name="title_activity_backup">Exportar datos</string>
   <string name="preferences_privacy">Privacidade</string>
   <string name="helloactivity_textview_tos">Ao usares Glucioa, acepta as</string>
   <string name="preferences_backup_google_drive">Google Drive</string>
@@ -263,5 +262,4 @@
   <string name="notification_reminder_medication">É a hora de tomares a túa medicación!</string>
   <string name="overview_hb1ac_info">Isto é simplemente unha previsión que se calcula con base nos rexistros do último mes. Aínda que se realiza cunha fórmula amplamente aceptada á hora de estimar a HbA1C, recomendamos aos usuarios utilizárena só como unha previsión.</string>
   <string name="dialog_add_notes">Notas</string>
-  <string name="menu_backup_backup">Copia de seguranza</string>
 </resources>

@@ -129,7 +129,6 @@
   <string name="helloactivity_language">Dil Seç</string>
   <string name="invitation_title">Başka kişileri davet edin</string>
   <string name="invitation_cta">Glucosio deneyin</string>
-  <string name="title_activity_backup">Verileri dışarı aktar</string>
   <string name="preferences_privacy">Gizlilik</string>
   <string name="preferences_backup_google_drive">Google Drive</string>
   <string name="preferences_about_glucosio">Glucosio hakkında</string>
@@ -214,5 +213,4 @@
   <string name="menu_support_email">E-posta</string>
   <string name="menu_support_live">Canlı Sohbet</string>
   <string name="menu_support_forum">Destek Forumu</string>
-  <string name="menu_backup_backup">Yedek alma</string>
 </resources>

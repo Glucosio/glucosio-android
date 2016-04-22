@@ -132,7 +132,6 @@
   <string name="invitation_title">Empfehle Glucosio weiter</string>
   <string name="invitation_message">Teste Glucosio, ein Open Source Programm für Diabetes-Managment und Forschung.</string>
   <string name="invitation_cta">Teste Glucosio</string>
-  <string name="title_activity_backup">Daten exportieren</string>
   <string name="preferences_privacy">Datenschutz</string>
   <string name="helloactivity_textview_tos">Durch die Verwendung von Glucosio akzeptierst du die</string>
   <string name="preferences_backup_google_drive">Google Drive</string>
@@ -247,5 +246,4 @@
   <string name="notification_reminder_glucose">Es ist Zeit ihren Blutzuckerspiegel zu messen!</string>
   <string name="notification_reminder_medication">Es ist Zeit ihre Medikamente zu nehmen!</string>
   <string name="overview_hb1ac_info">Dies ist nur eine Schätzung und errechnet sich aus dem Durchschnitt des letzten Monats der Messungen. Während diese Schätzung eine weithin akzeptierte Formel für die Abschätzung des HbA1C ist, appellieren wir an die User dies nur als Schätzung zu verwenden.</string>
-  <string name="menu_backup_backup">Programmdaten sichern</string>
 </resources>

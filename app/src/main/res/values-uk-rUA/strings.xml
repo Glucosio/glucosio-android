@@ -124,7 +124,6 @@
   <string name="helloactivity_language">Мова</string>
   <string name="invitation_title">Запросити інших користувачів</string>
   <string name="invitation_cta">Спробуйте Glucosio</string>
-  <string name="title_activity_backup">Експорт даних</string>
   <string name="preferences_privacy">Приватність</string>
   <string name="preferences_backup_google_drive">Google Drive</string>
   <string name="preferences_about_glucosio">Про Glucosio</string>
@@ -178,5 +177,4 @@
   <string name="share_using">Надіслати за допомогою</string>
   <string name="share_subject">Дані Glucosio</string>
   <string name="dialog_add_weight">Вага</string>
-  <string name="menu_backup_backup">Резервна копія</string>
 </resources>

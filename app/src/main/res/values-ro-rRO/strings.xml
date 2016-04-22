@@ -147,7 +147,6 @@
   <string name="invitation_title">Invită alte persoane</string>
   <string name="invitation_message">Încearcă Glucosio, o aplicație cu sursă deschisă pentru gestionarea diabetului și cercetare.</string>
   <string name="invitation_cta">Încearcă Glucosio</string>
-  <string name="title_activity_backup">Export de date</string>
   <string name="preferences_privacy">Confidențialitate</string>
   <string name="helloactivity_textview_tos">Folosind Glucosio, ești de acord cu</string>
   <string name="preferences_backup_google_drive">Google Drive</string>
@@ -263,5 +262,4 @@
   <string name="notification_reminder_medication">Este timpul să iei medicația!</string>
   <string name="overview_hb1ac_info">Aceasta este doar o estimare și este calculată folosind mediile citirilor din luna trecută. Această estimare este o formulă larg acceptată pentru HbA1C, dar încurajăm utilizatorii să considere această valoare doar ca o estimare.</string>
   <string name="dialog_add_notes">Note</string>
-  <string name="menu_backup_backup">Copie de siguranță</string>
 </resources>
