@@ -33,6 +33,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.drive.Drive;
 import com.google.android.gms.drive.DriveApi;
@@ -40,6 +41,8 @@ import com.google.android.gms.drive.DriveContents;
 import com.google.android.gms.drive.DriveFile;
 import com.google.android.gms.drive.DriveFolder;
 import com.google.android.gms.drive.DriveId;
+import com.google.android.gms.drive.DriveResource;
+import com.google.android.gms.drive.Metadata;
 import com.google.android.gms.drive.MetadataChangeSet;
 import com.google.android.gms.drive.OpenFileActivityBuilder;
 import com.google.android.gms.drive.query.Filters;
@@ -59,11 +62,12 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 public class BackupActivity extends AppCompatActivity {
+    private int REQUEST_CODE_PICKER = 2;
+    private int REQUEST_CODE_SELECT = 3;
 
     private Backup backup;
     private GoogleApiClient mGoogleApiClient;
     private String TAG = "glucosio_drive_backup";
-    private int REQUEST_CODE_PICKER = 2;
     private Button backupButton;
     private Button restoreButton;
     private IntentSender intentPicker;
@@ -100,9 +104,25 @@ public class BackupActivity extends AppCompatActivity {
         restoreButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                restoreFromDrive();
+                openFilePicker();
             }
         });
+    }
+
+    private void openFilePicker() {
+        //        build an intent that we'll use to start the open file activity
+        IntentSender intentSender = Drive.DriveApi
+                .newOpenFileActivityBuilder()
+//                these mimetypes enable these folders/files types to be selected
+                .setMimeType(new String[] { DriveFolder.MIME_TYPE, "text/plain"})
+                .build(mGoogleApiClient);
+        try {
+            startIntentSenderForResult(
+                    intentSender, REQUEST_CODE_SELECT, null, 0, 0, 0);
+        } catch (IntentSender.SendIntentException e) {
+            Log.e(TAG, "Unable to send intent", e);
+            showErrorDialog();
+        }
     }
 
     private void openFolderPicker() {
@@ -125,97 +145,6 @@ public class BackupActivity extends AppCompatActivity {
                 .newOpenFileActivityBuilder()
                 .setMimeType(new String[]{DriveFolder.MIME_TYPE})
                 .build(mGoogleApiClient);
-    }
-
-    private void restoreFromDrive() {
-        // First we search for plain text file named glucosio.realm
-        Query query = new Query.Builder()
-                .addFilter(Filters.eq(SearchableField.TITLE, "glucosio.realm"))
-                .addFilter(Filters.eq(SearchableField.MIME_TYPE, "text/plain"))
-                .build();
-
-        Drive.DriveApi.query(mGoogleApiClient, query)
-                .setResultCallback(new ResultCallback<DriveApi.MetadataBufferResult>() {
-
-                    @Override
-                    public void onResult(DriveApi.MetadataBufferResult result) {
-                        Log.e(TAG, "Problem while retrieving results");
-
-                        if (!result.getStatus().isSuccess()) {
-                            Log.e(TAG, "Problem while retrieving results");
-                            return;
-                        }
-                        if (result.getMetadataBuffer().getCount() != 0) {
-                            // Pick the first file in App Folder
-                            if (result.getMetadataBuffer().get(0).isInAppFolder()) {
-                                restoredFile = result.getMetadataBuffer().get(0).getDriveId().asDriveFile();
-                            }
-
-                            if (restoredFile != null) {
-                                // Now get the file from the id
-                                restoredFile.open(mGoogleApiClient, DriveFile.MODE_READ_ONLY, null)
-                                        .setResultCallback(new ResultCallback<DriveApi.DriveContentsResult>() {
-                                            @Override
-                                            public void onResult(DriveApi.DriveContentsResult result) {
-                                                if (!result.getStatus().isSuccess()) {
-                                                    showErrorDialog();
-                                                    return;
-                                                }
-
-                                                // DriveContents object contains pointers
-                                                // to the actual byte stream
-                                                DriveContents contents = result.getDriveContents();
-                                                InputStream input = contents.getInputStream();
-
-                                                try {
-                                                    File file = new File(realm.getPath());
-                                                    OutputStream output = new FileOutputStream(file);
-                                                    try {
-                                                        try {
-                                                            byte[] buffer = new byte[4 * 1024]; // or other buffer size
-                                                            int read;
-
-                                                            while ((read = input.read(buffer)) != -1) {
-                                                                output.write(buffer, 0, read);
-                                                            }
-                                                            output.flush();
-                                                        } finally {
-                                                            output.close();
-                                                        }
-                                                    } catch (Exception e) {
-                                                        e.printStackTrace();
-                                                    }
-                                                } catch (FileNotFoundException e) {
-                                                    e.printStackTrace();
-                                                } finally {
-                                                    try {
-                                                        input.close();
-                                                    } catch (IOException e) {
-                                                        e.printStackTrace();
-                                                    }
-                                                }
-                                            }
-                                        });
-
-                                result.release();
-
-                                // Reboot app
-                                Intent mStartActivity = new Intent(getApplicationContext(), MainActivity.class);
-                                int mPendingIntentId = 123456;
-                                PendingIntent mPendingIntent = PendingIntent.getActivity(getApplicationContext(), mPendingIntentId, mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT);
-                                AlarmManager mgr = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
-                                mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
-                                System.exit(0);
-                            } else {
-                                showErrorDialogRestore();
-                                result.release();
-                            }
-                        } else {
-                            showErrorDialogRestore();
-                            result.release();
-                        }
-                    }
-                });
     }
 
     private void showErrorDialogRestore() {
@@ -320,7 +249,7 @@ public class BackupActivity extends AppCompatActivity {
                                                         .setMimeType("text/plain")
                                                         .build();
 
-                                                // create a file on app folder
+                                                // create a file in selected folder
                                                 folder.createFile(mGoogleApiClient, changeSet, driveContents)
                                                         .setResultCallback(fileCallback);
                                             }
@@ -330,6 +259,75 @@ public class BackupActivity extends AppCompatActivity {
                     }
                 }
                 break;
+
+            // REQUEST_CODE_SELECT
+            case 3:
+                if (resultCode == RESULT_OK) {
+                    // get the selected item's ID
+                    DriveId driveId = (DriveId) data.getParcelableExtra(
+                            OpenFileActivityBuilder.EXTRA_RESPONSE_DRIVE_ID);
+                    Log.i(TAG, "Selected folder's ID: " + driveId.encodeToString());
+                    Log.i(TAG, "Selected folder's Resource ID: " + driveId.getResourceId());
+
+                    DriveFile file = driveId.asDriveFile();
+                    file.open(mGoogleApiClient, DriveFile.MODE_READ_ONLY, null)
+                            .setResultCallback(new ResultCallback<DriveApi.DriveContentsResult>() {
+                                @Override
+                                public void onResult(DriveApi.DriveContentsResult result) {
+                                    if (!result.getStatus().isSuccess()) {
+                                        showErrorDialog();
+                                        return;
+                                    }
+
+                                    // DriveContents object contains pointers
+                                    // to the actual byte stream
+                                    DriveContents contents = result.getDriveContents();
+                                    InputStream input = contents.getInputStream();
+
+                                    try {
+                                        File file = new File(realm.getPath());
+                                        OutputStream output = new FileOutputStream(file);
+                                        try {
+                                            try {
+                                                byte[] buffer = new byte[4 * 1024]; // or other buffer size
+                                                int read;
+
+                                                while ((read = input.read(buffer)) != -1) {
+                                                    output.write(buffer, 0, read);
+                                                }
+                                                output.flush();
+                                            } finally {
+                                                output.close();
+                                            }
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
+                                    } catch (FileNotFoundException e) {
+                                        e.printStackTrace();
+                                    } finally {
+                                        try {
+                                            input.close();
+                                        } catch (IOException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+
+
+                                    // Reboot app
+                                    Intent mStartActivity = new Intent(getApplicationContext(), MainActivity.class);
+                                    int mPendingIntentId = 123456;
+                                    PendingIntent mPendingIntent = PendingIntent.getActivity(getApplicationContext(), mPendingIntentId, mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT);
+                                    AlarmManager mgr = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
+                                    mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
+                                    System.exit(0);
+                                }
+                            });
+                } else {
+                    showErrorDialog();
+                }
+                finish();
+                break;
+
         }
     }
 
