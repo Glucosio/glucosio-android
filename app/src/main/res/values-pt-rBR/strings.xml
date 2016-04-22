@@ -147,13 +147,12 @@
   <string name="invitation_title">Convidar outras pessoas</string>
   <string name="invitation_message">Experimente o Glucosio, um aplicativo de código-aberto para o controle da diabetes e pesquisas.</string>
   <string name="invitation_cta">Experimente o Glucosio</string>
-  <string name="title_activity_backup_drive">Backup</string>
+  <string name="title_activity_backup">Exportar dados</string>
   <string name="preferences_privacy">Privacidade</string>
   <string name="helloactivity_textview_tos">Ao usar o Glucosio, você concorda com os</string>
   <string name="preferences_backup_google_drive">Google Drive</string>
   <string name="preferences_about_glucosio">Sobre Glucosio</string>
   <string name="preferences_rate">Avalie Glucosio</string>
-  <string name="preferences_licences_open">Licenças de código aberto</string>
   <string name="preferences_freestyle_libre">Habilitar suporte ao FreeStyle Libre®</string>
   <string name="preferences_freestyle_libre_experimental">EXPERIMENTAL: Habilitar suporte ao FreeStyle Libre®</string>
   <string name="preferences_font_dyslexia_experimental">EXPERIMENTAL: Aumentar a legibilidade para os usuários com dislexia</string>
@@ -264,4 +263,5 @@
   <string name="notification_reminder_medication">Está na hora de tomar sua medicação!</string>
   <string name="overview_hb1ac_info">Isto é apenas uma previsão e é calculado utilizando as médias do último mês de leituras. Embora esta previsão use uma fórmula amplamente aceita para estimativa de HbA1C, recomendamos aos usuários utilizarem-no somente como uma previsão.</string>
   <string name="dialog_add_notes">Anotações</string>
+  <string name="menu_backup_backup">Backup</string>
 </resources>

@@ -122,13 +122,11 @@
   <string name="invitation_title">دعوت سایر افراد</string>
   <string name="invitation_message">Glucosio نرم افزار منبع باز برای مدیریت دیابت و تحقیقات را امتحان کنید.</string>
   <string name="invitation_cta">Glucosio را امتحان کنید</string>
-  <string name="title_activity_backup">پشتیبان گیری</string>
   <string name="preferences_privacy">حریم خصوصی</string>
   <string name="helloactivity_textview_tos">با استفاده از Glucosio شما موافق هستید با</string>
   <string name="preferences_backup_google_drive">گوگل درایو</string>
   <string name="preferences_about_glucosio">درباره Glucosio</string>
   <string name="preferences_rate">امتیاز دهی به Glucosio</string>
-  <string name="preferences_licences_open">مجوزهای متن باز</string>
   <string name="about_donate">کمک مالی به Glucosio</string>
   <string name="reading_ok">خب</string>
   <string name="reading_hypo">هیپوگلیسمی</string>
@@ -176,4 +174,5 @@
   <string name="about_maillist">در لیست ایمیلهای ما مشترک شوید</string>
   <string name="assistant_archived">آرشیو نکات</string>
   <string name="dialog_add_weight">وزن</string>
+  <string name="menu_backup_backup">پشتیبان گیری</string>
 </resources>

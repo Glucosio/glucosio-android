@@ -88,12 +88,11 @@
   <string name="invitation_title">Inviti aliajn personojn</string>
   <string name="invitation_message">Provu Glukozion, malfermitkoda aplikaĵo por administrado kaj esplorado de diabeto.</string>
   <string name="invitation_cta">Provu Glukozion</string>
-  <string name="title_activity_backup">Savkopii</string>
+  <string name="title_activity_backup">Eksporti datumojn</string>
   <string name="preferences_privacy">Privateco</string>
   <string name="preferences_backup_google_drive">Google Drive</string>
   <string name="preferences_about_glucosio">Pri Glukozio</string>
   <string name="preferences_rate">Recenzu Glukozion</string>
-  <string name="preferences_licences_open">Malfermitkodaj permesiloj</string>
   <string name="about_donate">Donacu al Glukozio</string>
   <string name="reading_ok">Bone</string>
   <string name="reading_hypo">Hipoglikemio</string>
@@ -150,4 +149,5 @@
   <string name="fab_cholesterol">Kolesterolnivelo</string>
   <string name="fab_HB1AC">HB1AC-legado</string>
   <string name="fab_glucose">Sangoglukozonivelo</string>
+  <string name="menu_backup_backup">Savkopii</string>
 </resources>

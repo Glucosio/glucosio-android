@@ -135,13 +135,12 @@
   <string name="invitation_title">הזמנת אנשים אחרים</string>
   <string name="invitation_message">נסו את Glucosio, אפליקציית פתוחת קוד לטיפול בסכרת ומחקר.</string>
   <string name="invitation_cta">נסו את Glucosio</string>
-  <string name="title_activity_backup">גיבוי</string>
+  <string name="title_activity_backup">ייצוא נתונים</string>
   <string name="preferences_privacy">פרטיות</string>
   <string name="helloactivity_textview_tos">בשימוש ב-Glucosio, אתם מסכימים ל-</string>
   <string name="preferences_backup_google_drive">Google Drive</string>
   <string name="preferences_about_glucosio">אודות Glucosio</string>
   <string name="preferences_rate">דרגו את Glucosio</string>
-  <string name="preferences_licences_open">רישיונות קוד פתוח</string>
   <string name="about_donate">תרמו ל-Glucosio</string>
   <string name="reading_ok">אישור</string>
   <string name="reading_hypo">היפוגליקמיה</string>
@@ -224,4 +223,5 @@
   <string name="fab_cholesterol">רמת הכולסטרול</string>
   <string name="fab_HB1AC">קריאת HB1AC</string>
   <string name="fab_glucose">רמת סוכר בדם</string>
+  <string name="menu_backup_backup">גיבוי</string>
 </resources>

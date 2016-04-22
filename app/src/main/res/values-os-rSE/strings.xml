@@ -20,8 +20,26 @@
   ~
   -->
 <resources>
+  <string name="tab_history">Истори</string>
+  <string name="title_activity_hello">Салам.</string>
+  <string name="helloactivity_headline">Салам.</string>
+  <string name="helloactivity_age">Кар</string>
+  <string name="helloactivity_gender_list_1">Æрд</string>
+  <string name="helloactivity_gender_list_2">Сылгоймаг</string>
+  <string name="helloactivity_spinner_diabetes_type_1">Тип 1</string>
+  <string name="helloactivity_spinner_diabetes_type_2">Тип 2</string>
+  <string name="helloactivity_button_next">ДАРДДÆР</string>
+  <string name="dialog_add_date">Датæ</string>
+  <string name="dialog_add_time">Рæстæг</string>
+  <string name="dialog_add_type_1">Онг аходæн</string>
+  <string name="dialog_add_type_2">Стæй аходæн</string>
+  <string name="dialog_add_type_9">Æхсæв</string>
+  <string name="dialog_delete">Адде кæнын</string>
+  <string name="helloactivity_language">Æвзаг</string>
+  <string name="reading_ok">ОК</string>
   <!-- Future Strings Baked In Early For l10n -->
   <!-- Exercise Types -->
   <!-- Food Entry Labels -->
   <!-- About Glucosio Strings -->
+  <string name="menu_support_email">Email</string>
 </resources>

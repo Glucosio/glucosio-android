@@ -40,6 +40,12 @@
   <string name="helloactivity_spinner_diabetes_type">糖尿病類型</string>
   <string name="helloactivity_spinner_diabetes_type_1">第一型</string>
   <string name="helloactivity_spinner_diabetes_type_2">第二型</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit">偏好的血糖值單位</string>
+  <string name="preferences_spinner_preferred_a1c_unit">偏好的糖化血色素 (HbA1c) 單位</string>
+  <string name="preferences_spinner_preferred_a1c_unit_1">百分比</string>
+  <string name="preferences_spinner_preferred_weight_unit">偏好的重量單位</string>
+  <string name="preferences_spinner_preferred_weight_unit_1">公斤</string>
+  <string name="preferences_spinner_preferred_weight_unit_2">磅</string>
   <string name="helloactivity_share_data">匿名地分享資料提供研究。</string>
   <string name="helloactivity_hint_settings">您以後可以更改這些設定。</string>
   <string name="helloactivity_button_next">下一步</string>
@@ -112,6 +118,8 @@
   <string name="assistant">小幫手</string>
   <string name="assistant_action_update">立刻更新</string>
   <string name="assistant_action_ok">好，收到！</string>
+  <string name="assistant_action_feedback">傳送意見回饋</string>
+  <string name="assistant_action_live_chat">線上聊天</string>
   <string name="assistant_action_reading">新增測量讀數</string>
   <string name="assistant_action_try">立刻試試</string>
   <string name="assistant_weight_title">更新您的體重</string>
@@ -135,16 +143,16 @@
   <string name="helloactivity_preferred_range_min">最小值</string>
   <string name="helloactivity_preferred_range_max">最大值</string>
   <string name="helloactivity_language">語言</string>
+  <string name="menu_support_error1">並未安裝郵件程式。請寄送郵件到 hello@glucosio.org</string>
   <string name="invitation_title">邀請其他人</string>
   <string name="invitation_message">試試 Glucosio，一套開放原始碼的糖尿病管理與研究程式。</string>
   <string name="invitation_cta">試試 Glucosio</string>
-  <string name="title_activity_backup">備份</string>
+  <string name="title_activity_backup">匯出資料</string>
   <string name="preferences_privacy">隱私權</string>
   <string name="helloactivity_textview_tos">使用 Glucosio，代表您同意</string>
   <string name="preferences_backup_google_drive">Google 雲端硬碟</string>
   <string name="preferences_about_glucosio">關於 Glucosio</string>
   <string name="preferences_rate">幫 Glucosio 打分數</string>
-  <string name="preferences_licences_open">開放原始碼授權</string>
   <string name="preferences_freestyle_libre">開啟 FreeStyle Libre® 支援</string>
   <string name="preferences_freestyle_libre_experimental">實驗中: 開啟 FreeStyle Libre® 支援</string>
   <string name="preferences_font_dyslexia_experimental">實驗中: 為有讀寫困難的使用者增加可讀性</string>
@@ -253,4 +261,7 @@
   <string name="menu_support_forum">技術支援討論區</string>
   <string name="notification_reminder_glucose">是時候來記錄血糖值了！</string>
   <string name="notification_reminder_medication">是時候來吃藥了！</string>
+  <string name="overview_hb1ac_info">這只是依照上個月的讀數計算出的估計值。雖然這個 HbA1C 數值是依照普遍被接受的公式所計算出的，但我們還是建議使用者只將這個數字看作估計值。</string>
+  <string name="dialog_add_notes">備註</string>
+  <string name="menu_backup_backup">備份</string>
 </resources>

@@ -130,12 +130,11 @@
   <string name="helloactivity_language">Jazyk</string>
   <string name="invitation_title">Pozvat další osoby</string>
   <string name="invitation_cta">Zkuste Glucosio</string>
-  <string name="title_activity_backup">Zálohovat</string>
+  <string name="title_activity_backup">Exportovat data</string>
   <string name="preferences_privacy">Soukromí</string>
   <string name="preferences_backup_google_drive">Google Drive</string>
   <string name="preferences_about_glucosio">O aplikaci Glucosio</string>
   <string name="preferences_rate">Hodnotit Glucosio</string>
-  <string name="preferences_licences_open">Open source licence</string>
   <string name="about_donate">Podpořit Glucosio</string>
   <string name="reading_ok">OK</string>
   <string name="reading_hypo">Hypoglykémie</string>
@@ -206,4 +205,5 @@
   <string name="fab_cholesterol">Hladina cholesterolu</string>
   <string name="fab_HB1AC">Hodnota HB1AC</string>
   <string name="fab_glucose">Hladina glukózy v krvi</string>
+  <string name="menu_backup_backup">Zálohovat</string>
 </resources>

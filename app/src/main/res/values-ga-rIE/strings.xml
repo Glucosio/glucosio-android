@@ -135,13 +135,12 @@
   <string name="invitation_title">Tabhair cuirí do dhaoine eile</string>
   <string name="invitation_message">Bain triail as Glucosio, aip oscailte le haghaidh bainistíocht agus taighde ar dhiaibéiteas.</string>
   <string name="invitation_cta">Bain triail as Glucosio</string>
-  <string name="title_activity_backup">Cúltaca</string>
+  <string name="title_activity_backup">Easpórtáil sonraí</string>
   <string name="preferences_privacy">Príobháideachas</string>
   <string name="helloactivity_textview_tos">Trí Glucosio a úsáid, glacann tú leis na</string>
   <string name="preferences_backup_google_drive">Google Drive</string>
   <string name="preferences_about_glucosio">Maidir le Glucosio</string>
   <string name="preferences_rate">Rátáil Glucosio</string>
-  <string name="preferences_licences_open">Ceadúnais foinse oscailte</string>
   <string name="about_donate">Tabhair deontas do Glucosio</string>
   <string name="reading_ok">OK</string>
   <string name="reading_hypo">Hipiglicéime</string>
@@ -226,4 +225,5 @@
   <string name="fab_HB1AC">Leibhéal HB1AC</string>
   <string name="fab_glucose">Leibhéal Glúcós Fola</string>
   <string name="dialog_error_duplicate">Tá iontráil agat ag an am seo cheana. Caithfidh tú é a scriosadh sular féidir ceann nua a chur leis.</string>
+  <string name="menu_backup_backup">Cúltaca</string>
 </resources>

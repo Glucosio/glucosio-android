@@ -135,13 +135,12 @@
   <string name="invitation_title">Convideu altres persones</string>
   <string name="invitation_message">Proveu Glucosio, una applicació de codi obert per a la recerca i la gestió de la diabetis.</string>
   <string name="invitation_cta">Proveu Glucosio</string>
-  <string name="title_activity_backup">Còpia de seguretat</string>
+  <string name="title_activity_backup">Exporta les dades</string>
   <string name="preferences_privacy">Privacitat</string>
   <string name="helloactivity_textview_tos">En utilitzar Glucosio, accepteu la</string>
   <string name="preferences_backup_google_drive">Google Drive</string>
   <string name="preferences_about_glucosio">Quant a Glucosio</string>
   <string name="preferences_rate">Qualifica Glucosio</string>
-  <string name="preferences_licences_open">Llicències de codi obert</string>
   <string name="about_donate">Dona a Glucosio</string>
   <string name="reading_ok">OK</string>
   <string name="reading_hypo">Hipoglucèmia</string>
@@ -226,4 +225,5 @@
   <string name="fab_HB1AC">Lectura del HB1AC</string>
   <string name="fab_glucose">Nivell de glucosa en sang</string>
   <string name="dialog_error_duplicate">Ja heu inserit aquesta lectura anteriorment. Suprimiu-la si voleu fer qualsevol correcció.</string>
+  <string name="menu_backup_backup">Còpia de seguretat</string>
 </resources>

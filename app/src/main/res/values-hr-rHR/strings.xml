@@ -147,13 +147,12 @@
   <string name="invitation_title">Preporuči ostalima</string>
   <string name="invitation_message">Isprobajte Glucosio aplikaciju otvorenog koda za upravljanje i istraživanje dijabetesa.</string>
   <string name="invitation_cta">Isprobajte Glucosio</string>
-  <string name="title_activity_backup_drive">Sigurnosna kopija</string>
+  <string name="title_activity_backup">Izvezi podatke</string>
   <string name="preferences_privacy">Privatnost</string>
   <string name="helloactivity_textview_tos">Korištenjem Glucosio, suglasni ste</string>
   <string name="preferences_backup_google_drive">Google disk</string>
   <string name="preferences_about_glucosio">O Glucosio</string>
   <string name="preferences_rate">Ocijenite Glucosio</string>
-  <string name="preferences_licences_open">Licence otvorenog koda</string>
   <string name="preferences_freestyle_libre">Omogućite FreeStyle LibreⓇ podršku</string>
   <string name="preferences_freestyle_libre_experimental">PROBNO: Omogućite FreeStyle Libre ® podršku</string>
   <string name="preferences_font_dyslexia_experimental">PROBNO: Povećajte čitljivost za korisnike s disleksijom</string>
@@ -264,4 +263,5 @@
   <string name="notification_reminder_medication">Vrijeme je da uzmete svoje lijekove!</string>
   <string name="overview_hb1ac_info">Ovo je samo procjena i izračunava se pomoću prosjeka posljednjih mjesec dana očitanja. Iako ova procjena koristi široko prihvaćenu formulu za HbA1c procjenu, korisnicima preporučujemo da koriste to samo za procjenu.</string>
   <string name="dialog_add_notes">Bilješke</string>
+  <string name="menu_backup_backup">Sigurnosna kopija</string>
 </resources>

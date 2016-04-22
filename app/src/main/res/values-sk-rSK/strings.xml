@@ -121,7 +121,6 @@
   <string name="invitation_title">Pozvať ďalšie osoby</string>
   <string name="invitation_message">Vyskúšajte Glucosio, open source aplikáciu pre výskum a správu cukrovky.</string>
   <string name="invitation_cta">Vyskúšať Glucosio</string>
-  <string name="title_activity_backup">Zálohovanie</string>
   <string name="preferences_privacy">Súkromie</string>
   <string name="helloactivity_textview_tos">Používaním Glucosio sa zaväzujete, že</string>
   <!-- Future Strings Baked In Early For l10n -->
@@ -129,4 +128,5 @@
   <!-- Food Entry Labels -->
   <!-- About Glucosio Strings -->
   <string name="dialog_add_weight">Váha</string>
+  <string name="menu_backup_backup">Zálohovanie</string>
 </resources>
