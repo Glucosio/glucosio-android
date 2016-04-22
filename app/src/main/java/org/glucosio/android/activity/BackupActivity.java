@@ -32,7 +32,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.drive.Drive;
@@ -46,11 +45,10 @@ import com.google.android.gms.drive.OpenFileActivityBuilder;
 import com.google.android.gms.drive.query.Filters;
 import com.google.android.gms.drive.query.Query;
 import com.google.android.gms.drive.query.SearchableField;
-
+import io.realm.Realm;
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.backup.Backup;
-import org.glucosio.android.db.DatabaseHandler;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -59,8 +57,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-
-import io.realm.Realm;
 
 public class BackupActivity extends AppCompatActivity {
 
@@ -80,12 +76,13 @@ public class BackupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.backup_drive_activity);
 
-        realm = new DatabaseHandler(getApplicationContext()).getRealmIstance();
+        GlucosioApplication glucosioApplication = (GlucosioApplication) getApplicationContext();
+        realm = glucosioApplication.getDBHandler().getRealmIstance();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_backup_drive));
 
-        backup = ((GlucosioApplication) getApplicationContext()).getBackup();
+        backup = glucosioApplication.getBackup();
         backup.init(this);
         connectClient();
         mGoogleApiClient = backup.getClient();
