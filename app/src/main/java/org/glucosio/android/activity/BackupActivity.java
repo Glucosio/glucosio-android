@@ -32,8 +32,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.drive.Drive;
 import com.google.android.gms.drive.DriveApi;
@@ -41,14 +41,9 @@ import com.google.android.gms.drive.DriveContents;
 import com.google.android.gms.drive.DriveFile;
 import com.google.android.gms.drive.DriveFolder;
 import com.google.android.gms.drive.DriveId;
-import com.google.android.gms.drive.DriveResource;
-import com.google.android.gms.drive.Metadata;
 import com.google.android.gms.drive.MetadataChangeSet;
 import com.google.android.gms.drive.OpenFileActivityBuilder;
-import com.google.android.gms.drive.query.Filters;
-import com.google.android.gms.drive.query.Query;
-import com.google.android.gms.drive.query.SearchableField;
-import io.realm.Realm;
+
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.backup.Backup;
@@ -61,6 +56,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import io.realm.Realm;
+
 public class BackupActivity extends AppCompatActivity {
     private int REQUEST_CODE_PICKER = 2;
     private int REQUEST_CODE_SELECT = 3;
@@ -71,7 +68,6 @@ public class BackupActivity extends AppCompatActivity {
     private Button backupButton;
     private Button restoreButton;
     private IntentSender intentPicker;
-    private DriveFile restoredFile;
     private Realm realm;
 
 
@@ -114,7 +110,7 @@ public class BackupActivity extends AppCompatActivity {
         IntentSender intentSender = Drive.DriveApi
                 .newOpenFileActivityBuilder()
 //                these mimetypes enable these folders/files types to be selected
-                .setMimeType(new String[] { DriveFolder.MIME_TYPE, "text/plain"})
+                .setMimeType(new String[]{DriveFolder.MIME_TYPE, "text/plain"})
                 .build(mGoogleApiClient);
         try {
             startIntentSenderForResult(
@@ -127,8 +123,8 @@ public class BackupActivity extends AppCompatActivity {
 
     private void openFolderPicker() {
         try {
-            if (mGoogleApiClient!=null && mGoogleApiClient.isConnected()){
-                if (intentPicker==null)
+            if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
+                if (intentPicker == null)
                     intentPicker = buildIntent();
                 //Start the picker to choose a folder
                 startIntentSenderForResult(
@@ -140,49 +136,139 @@ public class BackupActivity extends AppCompatActivity {
         }
     }
 
-    private IntentSender buildIntent(){
+    private IntentSender buildIntent() {
         return Drive.DriveApi
                 .newOpenFileActivityBuilder()
                 .setMimeType(new String[]{DriveFolder.MIME_TYPE})
                 .build(mGoogleApiClient);
     }
 
-    private void showErrorDialogRestore() {
-        Toast.makeText(getApplicationContext(), R.string.activity_backup_drive_error_restore,Toast.LENGTH_SHORT).show();
-    }
+    private void downloadFromDrive(DriveFile file) {
+        file.open(mGoogleApiClient, DriveFile.MODE_READ_ONLY, null)
+                .setResultCallback(new ResultCallback<DriveApi.DriveContentsResult>() {
+                    @Override
+                    public void onResult(DriveApi.DriveContentsResult result) {
+                        if (!result.getStatus().isSuccess()) {
+                            showErrorDialog();
+                            return;
+                        }
 
-    final private ResultCallback<DriveFolder.DriveFileResult> fileCallback = new
-            ResultCallback<DriveFolder.DriveFileResult>() {
-                @Override
-                public void onResult(DriveFolder.DriveFileResult result) {
-                    if (!result.getStatus().isSuccess()) {
-                        Log.d(TAG, "Error while trying to create the file");
-                        showErrorDialog();
-                        finish();
-                        return;
+                        // DriveContents object contains pointers
+                        // to the actual byte stream
+                        DriveContents contents = result.getDriveContents();
+                        InputStream input = contents.getInputStream();
+
+                        try {
+                            File file = new File(realm.getPath());
+                            OutputStream output = new FileOutputStream(file);
+                            try {
+                                try {
+                                    byte[] buffer = new byte[4 * 1024]; // or other buffer size
+                                    int read;
+
+                                    while ((read = input.read(buffer)) != -1) {
+                                        output.write(buffer, 0, read);
+                                    }
+                                    output.flush();
+                                } finally {
+                                    output.close();
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        } catch (FileNotFoundException e) {
+                            e.printStackTrace();
+                        } finally {
+                            try {
+                                input.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                        Toast.makeText(getApplicationContext(), R.string.activity_backup_drive_message_restart, Toast.LENGTH_LONG).show();
+
+                        // Reboot app
+                        Intent mStartActivity = new Intent(getApplicationContext(), MainActivity.class);
+                        int mPendingIntentId = 123456;
+                        PendingIntent mPendingIntent = PendingIntent.getActivity(getApplicationContext(), mPendingIntentId, mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT);
+                        AlarmManager mgr = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
+                        mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
+                        System.exit(0);
                     }
-                    showSuccessDialog();
-                    finish();
-                }
-            };
-
-
-    private void showSuccessDialog() {
-        Toast.makeText(getApplicationContext(), R.string.activity_backup_drive_success, Toast.LENGTH_SHORT).show();
+                });
     }
 
-    private void showErrorDialog() {
-        Toast.makeText(getApplicationContext(), R.string.activity_backup_drive_failed, Toast.LENGTH_SHORT).show();
-    }
+    private void uploadToDrive(DriveId mFolderDriveId) {
+        if (mFolderDriveId != null) {
+            //Create the file on GDrive
+            final DriveFolder folder = mFolderDriveId.asDriveFolder();
+            Drive.DriveApi.newDriveContents(mGoogleApiClient)
+                    .setResultCallback(new ResultCallback<DriveApi.DriveContentsResult>() {
+                        @Override
+                        public void onResult(DriveApi.DriveContentsResult result) {
+                            if (!result.getStatus().isSuccess()) {
+                                Log.e(TAG, "Error while trying to create new file contents");
+                                showErrorDialog();
+                                return;
+                            }
+                            final DriveContents driveContents = result.getDriveContents();
 
-    public void connectClient() {
-        backup.start();
-    }
+                            // Perform I/O off the UI thread.
+                            new Thread() {
+                                @Override
+                                public void run() {
+                                    // write content to DriveContents
+                                    OutputStream outputStream = driveContents.getOutputStream();
 
-    public void disconnectClient() {
-        backup.stop();
-    }
+                                    FileInputStream inputStream = null;
+                                    try {
+                                        inputStream = new FileInputStream(new File(realm.getPath()));
+                                    } catch (FileNotFoundException e) {
+                                        showErrorDialog();
+                                        e.printStackTrace();
+                                    }
 
+                                    byte[] buf = new byte[1024];
+                                    int bytesRead;
+                                    try {
+                                        if (inputStream != null) {
+                                            while ((bytesRead = inputStream.read(buf)) > 0) {
+                                                outputStream.write(buf, 0, bytesRead);
+                                            }
+                                        }
+                                    } catch (IOException e) {
+                                        showErrorDialog();
+                                        e.printStackTrace();
+                                    }
+
+
+                                    MetadataChangeSet changeSet = new MetadataChangeSet.Builder()
+                                            .setTitle("glucosio.realm")
+                                            .setMimeType("text/plain")
+                                            .build();
+
+                                    // create a file in selected folder
+                                    folder.createFile(mGoogleApiClient, changeSet, driveContents)
+                                            .setResultCallback(new ResultCallback<DriveFolder.DriveFileResult>() {
+                                                @Override
+                                                public void onResult(DriveFolder.DriveFileResult result) {
+                                                    if (!result.getStatus().isSuccess()) {
+                                                        Log.d(TAG, "Error while trying to create the file");
+                                                        showErrorDialog();
+                                                        finish();
+                                                        return;
+                                                    }
+                                                    showSuccessDialog();
+                                                    finish();
+                                                }
+                                            });
+                                }
+                            }.start();
+                        }
+                    });
+        }
+    }
 
     @Override
     protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
@@ -198,65 +284,10 @@ public class BackupActivity extends AppCompatActivity {
 
                 if (resultCode == RESULT_OK) {
                     //Get the folder drive id
-                    DriveId mFolderDriveId = (DriveId) data.getParcelableExtra(
+                    DriveId mFolderDriveId = data.getParcelableExtra(
                             OpenFileActivityBuilder.EXTRA_RESPONSE_DRIVE_ID);
 
-                    if (mFolderDriveId != null) {
-                        //Create the file on GDrive
-                        final DriveFolder folder = mFolderDriveId.asDriveFolder();
-                        Drive.DriveApi.newDriveContents(mGoogleApiClient)
-                                .setResultCallback(new ResultCallback<DriveApi.DriveContentsResult>() {
-                                    @Override
-                                    public void onResult(DriveApi.DriveContentsResult result) {
-                                        if (!result.getStatus().isSuccess()) {
-                                            Log.e(TAG, "Error while trying to create new file contents");
-                                            showErrorDialog();
-                                            return;
-                                        }
-                                        final DriveContents driveContents = result.getDriveContents();
-
-                                        // Perform I/O off the UI thread.
-                                        new Thread() {
-                                            @Override
-                                            public void run() {
-                                                // write content to DriveContents
-                                                OutputStream outputStream = driveContents.getOutputStream();
-
-                                                FileInputStream inputStream = null;
-                                                try {
-                                                    inputStream = new FileInputStream(new File(realm.getPath()));
-                                                } catch (FileNotFoundException e) {
-                                                    showErrorDialog();
-                                                    e.printStackTrace();
-                                                }
-
-                                                byte[] buf = new byte[1024];
-                                                int bytesRead;
-                                                try {
-                                                    if (inputStream != null) {
-                                                        while ((bytesRead = inputStream.read(buf)) > 0) {
-                                                            outputStream.write(buf, 0, bytesRead);
-                                                        }
-                                                    }
-                                                } catch (IOException e) {
-                                                    showErrorDialog();
-                                                    e.printStackTrace();
-                                                }
-
-
-                                                MetadataChangeSet changeSet = new MetadataChangeSet.Builder()
-                                                        .setTitle("glucosio.realm")
-                                                        .setMimeType("text/plain")
-                                                        .build();
-
-                                                // create a file in selected folder
-                                                folder.createFile(mGoogleApiClient, changeSet, driveContents)
-                                                        .setResultCallback(fileCallback);
-                                            }
-                                        }.start();
-                                    }
-                                });
-                    }
+                    uploadToDrive(mFolderDriveId);
                 }
                 break;
 
@@ -264,64 +295,12 @@ public class BackupActivity extends AppCompatActivity {
             case 3:
                 if (resultCode == RESULT_OK) {
                     // get the selected item's ID
-                    DriveId driveId = (DriveId) data.getParcelableExtra(
+                    DriveId driveId = data.getParcelableExtra(
                             OpenFileActivityBuilder.EXTRA_RESPONSE_DRIVE_ID);
-                    Log.i(TAG, "Selected folder's ID: " + driveId.encodeToString());
-                    Log.i(TAG, "Selected folder's Resource ID: " + driveId.getResourceId());
 
                     DriveFile file = driveId.asDriveFile();
-                    file.open(mGoogleApiClient, DriveFile.MODE_READ_ONLY, null)
-                            .setResultCallback(new ResultCallback<DriveApi.DriveContentsResult>() {
-                                @Override
-                                public void onResult(DriveApi.DriveContentsResult result) {
-                                    if (!result.getStatus().isSuccess()) {
-                                        showErrorDialog();
-                                        return;
-                                    }
+                    downloadFromDrive(file);
 
-                                    // DriveContents object contains pointers
-                                    // to the actual byte stream
-                                    DriveContents contents = result.getDriveContents();
-                                    InputStream input = contents.getInputStream();
-
-                                    try {
-                                        File file = new File(realm.getPath());
-                                        OutputStream output = new FileOutputStream(file);
-                                        try {
-                                            try {
-                                                byte[] buffer = new byte[4 * 1024]; // or other buffer size
-                                                int read;
-
-                                                while ((read = input.read(buffer)) != -1) {
-                                                    output.write(buffer, 0, read);
-                                                }
-                                                output.flush();
-                                            } finally {
-                                                output.close();
-                                            }
-                                        } catch (Exception e) {
-                                            e.printStackTrace();
-                                        }
-                                    } catch (FileNotFoundException e) {
-                                        e.printStackTrace();
-                                    } finally {
-                                        try {
-                                            input.close();
-                                        } catch (IOException e) {
-                                            e.printStackTrace();
-                                        }
-                                    }
-
-
-                                    // Reboot app
-                                    Intent mStartActivity = new Intent(getApplicationContext(), MainActivity.class);
-                                    int mPendingIntentId = 123456;
-                                    PendingIntent mPendingIntent = PendingIntent.getActivity(getApplicationContext(), mPendingIntentId, mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT);
-                                    AlarmManager mgr = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
-                                    mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
-                                    System.exit(0);
-                                }
-                            });
                 } else {
                     showErrorDialog();
                 }
@@ -329,6 +308,23 @@ public class BackupActivity extends AppCompatActivity {
                 break;
 
         }
+    }
+
+    private void showSuccessDialog() {
+        Toast.makeText(getApplicationContext(), R.string.activity_backup_drive_success, Toast.LENGTH_SHORT).show();
+    }
+
+    private void showErrorDialog() {
+        Toast.makeText(getApplicationContext(), R.string.activity_backup_drive_failed, Toast.LENGTH_SHORT).show();
+    }
+
+
+    public void connectClient() {
+        backup.start();
+    }
+
+    public void disconnectClient() {
+        backup.stop();
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {

@@ -258,7 +258,6 @@
 
     <string-array name="menu_backup_options" translatable="false">
         <item>@string/menu_backup_backup</item>
-        <item>@string/menu_backup_restore</item>
         <item>@string/menu_backup_csv</item>
     </string-array>
 
@@ -393,9 +392,10 @@
     <string name="overview_hb1ac_info">This is just an estimate and is calculated using the averages of the last month of readings. While this estimate uses a widely accepted formula for HbA1C estimation we encourage users to only use this as an estimate.</string>
     <string name="dialog_add_notes">Notes</string>
     <string name="sidebar_backup_export">Backup &amp; Export</string>
-    <string name="menu_backup_backup">Backup</string>
+    <string name="menu_backup_backup">Backup on Google Drive</string>
     <string name="menu_backup_restore">Restore</string>
     <string name="menu_backup_csv">CSV export</string>
+    <string name="activity_backup_drive_message_restart">Restarting to apply changes...</string>
     <string name="activity_backup_drive_desc_1">Sync Glucosio\'s database in the cloud with Google Drive.</string>
     <string name="activity_backup_drive_desc_2">You\'ll be able to restore all your readings if you lost or change phone or sync Glucosio\'s data between your devices.</string>
     <string name="activity_backup_drive_success">Database correctly uploaded on Drive</string>

@@ -393,17 +393,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 if (which == 0) {
-                    // Backup
-/*                    RealmBackupRestore realmBackupRestore = new RealmBackupRestore(activity);
-                    realmBackupRestore.backup();*/
                     Intent intent = new Intent(getApplicationContext(), BackupActivity.class);
                     startActivity(intent);
-                } else if (which == 1) {
-                    // Restore
-                    RealmBackupRestore realmBackupRestore = new RealmBackupRestore(activity);
-                    realmBackupRestore.restore();
-                    // We need to reboot Glucosio to apply the new database
-                    rebootApp();
                 } else {
                     // Export to CSV
                     showExportCsvDialog();
