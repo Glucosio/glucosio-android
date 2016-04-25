@@ -50,10 +50,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
@@ -386,15 +388,18 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     public void openBackupDialog() {
-        final Activity activity = this;
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(getResources().getString(R.string.title_activity_backup_drive));
         builder.setItems(getResources().getStringArray(R.array.menu_backup_options), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 if (which == 0) {
-                    Intent intent = new Intent(getApplicationContext(), BackupActivity.class);
-                    startActivity(intent);
+                    if (checkPlayServices()) {
+                        Intent intent = new Intent(getApplicationContext(), BackupActivity.class);
+                        startActivity(intent);
+                    } else {
+                        dialog.dismiss();
+                    }
                 } else {
                     // Export to CSV
                     showExportCsvDialog();
@@ -699,6 +704,31 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private void addA1cAnalyticsEvent() {
         Analytics analytics = ((GlucosioApplication) getApplication()).getAnalytics();
         analytics.reportAction("A1C", "A1C disclaimer opened");
+    }
+
+    /**
+     * Check the device to make sure it has the Google Play Services APK. If
+     * it doesn't, display a dialog that allows users to download the APK from
+     * the Google Play Store or enable it in the device's system settings.
+     */
+    private boolean checkPlayServices() {
+        GoogleApiAvailability apiAvailability = GoogleApiAvailability.getInstance();
+        int resultCode = apiAvailability.isGooglePlayServicesAvailable(this);
+        if (resultCode != ConnectionResult.SUCCESS) {
+            if (apiAvailability.isUserResolvableError(resultCode)) {
+                apiAvailability.getErrorDialog(this, resultCode, 9000)
+                        .show();
+            } else {
+                Log.i("Glucosio", "This device is not supported.");
+                showErrorDialogPlayServices();
+            }
+            return false;
+        }
+        return true;
+    }
+
+    private void showErrorDialogPlayServices() {
+        Toast.makeText(getApplicationContext(), R.string.activity_main_error_play_services, Toast.LENGTH_SHORT).show();
     }
 
     @Override
