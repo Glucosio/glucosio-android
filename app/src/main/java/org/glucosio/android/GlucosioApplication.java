@@ -34,7 +34,6 @@ import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.invitations.GoogleInvitation;
 import org.glucosio.android.invitations.Invitation;
 
-import io.smooch.core.Smooch;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 public class GlucosioApplication extends Application {
@@ -44,9 +43,6 @@ public class GlucosioApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
-        // Initialize Smooch
-        Smooch.init(this, "dxopifgi0mylv4invg5lrb66r");
 
         // Get Dyslexia preference and adjust font
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);

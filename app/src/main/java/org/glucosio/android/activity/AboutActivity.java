@@ -28,6 +28,7 @@ import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
@@ -35,7 +36,6 @@ import org.glucosio.android.analytics.Analytics;
 
 import java.util.Locale;
 
-import io.smooch.ui.ConversationActivity;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class AboutActivity extends AppCompatActivity {
@@ -119,7 +119,15 @@ public class AboutActivity extends AppCompatActivity {
             feedbackPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
-                    ConversationActivity.show(getActivity());
+                    // Open email intent
+                    Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:hello@glucosio.org"));
+                    boolean activityExists = emailIntent.resolveActivityInfo(getActivity().getPackageManager(), 0) != null;
+
+                    if (activityExists) {
+                        startActivity(emailIntent);
+                    } else {
+                        Toast.makeText(getActivity().getApplicationContext(),getResources().getString(R.string.menu_support_error1), Toast.LENGTH_LONG).show();
+                    }
 
                     return false;
                 }

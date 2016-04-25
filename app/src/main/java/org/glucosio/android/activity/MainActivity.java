@@ -76,7 +76,6 @@ import org.glucosio.android.tools.RealmBackupRestore;
 
 import java.util.Calendar;
 
-import io.smooch.ui.ConversationActivity;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
@@ -362,11 +361,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                     } else {
                         showSnackBar(getResources().getString(R.string.menu_support_error1), Snackbar.LENGTH_LONG);
                     }
-                } else if (which == 1) {
-                    // Report Feedback
-                    // Open Instabug
-                    // Instabug.invoke();
-                     ConversationActivity.show(mContext);
                 } else {
                     // Forum
                     String url = "http://community.glucosio.org/";

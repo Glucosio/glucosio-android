@@ -46,8 +46,6 @@ import org.glucosio.android.presenter.AssistantPresenter;
 
 import java.util.ArrayList;
 
-import io.smooch.ui.ConversationActivity;
-
 public class AssistantFragment extends Fragment {
 
     SharedPreferences sharedPref;
@@ -237,6 +235,6 @@ public class AssistantFragment extends Fragment {
     }
 
     public void openLiveChat() {
-        ConversationActivity.show(getActivity());
+        ((MainActivity)getActivity()).openSupportDialog();
     }
 }

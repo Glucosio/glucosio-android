@@ -103,13 +103,6 @@ dependencies {
     compile "com.google.android.gms:play-services-wearable:${googlePlayServicesVer}"
     compile "com.google.android.gms:play-services-gcm:${googlePlayServicesVer}"
 
-    //Smooch
-    compile 'com.google.code.gson:gson:2.4'
-    compile 'com.squareup.okhttp:okhttp:2.4.0'
-    compile 'io.smooch:core:latest.release'
-    compile 'io.smooch:ui:latest.release'
-
-
     // Other libraries
     compile 'com.github.clans:fab:1.6.2'
     compile 'com.wdullaer:materialdatetimepicker:2.2.0'
