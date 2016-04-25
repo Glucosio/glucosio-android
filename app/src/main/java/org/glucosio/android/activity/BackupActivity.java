@@ -106,15 +106,21 @@ public class BackupActivity extends AppCompatActivity {
     }
 
     private void openFilePicker() {
-        //        build an intent that we'll use to start the open file activity
-        IntentSender intentSender = Drive.DriveApi
-                .newOpenFileActivityBuilder()
+        IntentSender intentSender = null;
+        // check if client is connected first
+        if (mGoogleApiClient.isConnected()) {
+            // build an intent that we'll use to start the open file activity
+            intentSender = Drive.DriveApi
+                    .newOpenFileActivityBuilder()
 //                these mimetypes enable these folders/files types to be selected
-                .setMimeType(new String[]{DriveFolder.MIME_TYPE, "text/plain"})
-                .build(mGoogleApiClient);
+                    .setMimeType(new String[]{DriveFolder.MIME_TYPE, "text/plain"})
+                    .build(mGoogleApiClient);
+        }
         try {
-            startIntentSenderForResult(
-                    intentSender, REQUEST_CODE_SELECT, null, 0, 0, 0);
+            if (intentSender != null) {
+                startIntentSenderForResult(
+                        intentSender, REQUEST_CODE_SELECT, null, 0, 0, 0);
+            }
         } catch (IntentSender.SendIntentException e) {
             Log.e(TAG, "Unable to send intent", e);
             showErrorDialog();
