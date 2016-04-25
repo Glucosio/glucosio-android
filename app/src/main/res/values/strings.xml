@@ -404,7 +404,6 @@
     <string name="activity_backup_drive_button_backup">Backup now</string>
     <string name="activity_backup_drive_button_restore">Restore from Drive</string>
     <string name="activity_backup_drive_error_restore">Unable to find a valid backup to restore from Drive</string>
-    <string name="activity_csv_export_success">File correctly uploaded to Drive</string>
 
     <string-array name="fragment_history_selector" translatable="false">
         <item>@string/fab_glucose</item>

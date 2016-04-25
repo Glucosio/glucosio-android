@@ -20,7 +20,7 @@
 
 package org.glucosio.android.presenter;
 
-import com.google.android.gms.drive.DriveId;
+import android.net.Uri;
 
 import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.db.DatabaseHandler;
@@ -40,7 +40,6 @@ public class ExportPresenter {
     private int toYear;
     private DatabaseHandler dB;
     private MainActivity activity;
-    private ReadingToCSV csvExporter;
 
 
     public ExportPresenter(MainActivity exportActivity, DatabaseHandler dbHandler) {
@@ -49,7 +48,7 @@ public class ExportPresenter {
     }
 
     public void onExportClicked(Boolean all) {
-        final ArrayList<GlucoseReading> readings;
+        ArrayList<GlucoseReading> readings;
 
         if (all) {
             readings = dB.getGlucoseReadings();
@@ -68,18 +67,14 @@ public class ExportPresenter {
 
         if (readings.size() != 0) {
             activity.showExportedSnackBar(readings.size());
-            csvExporter = new ReadingToCSV(activity);
-            csvExporter.shareCsv(readings, dB.getUser(1).getPreferred_unit());
+            ReadingToCSV csv = new ReadingToCSV(activity.getApplicationContext());
+            Uri csvUri = csv.createCSV(readings, dB.getUser(1).getPreferred_unit());
+            activity.showShareDialog(csvUri);
         } else {
             activity.showNoReadingsSnackBar();
         }
     }
 
-    public void uploadToDrive(DriveId folderDriveId){
-        if (csvExporter!=null){
-            csvExporter.uploadToDrive(folderDriveId);
-        }
-    }
 
     public int getFromDay() {
         return fromDay;

@@ -30,7 +30,6 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentSender;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -56,8 +55,6 @@ import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.google.android.gms.drive.DriveId;
-import com.google.android.gms.drive.OpenFileActivityBuilder;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
@@ -635,6 +632,15 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         Snackbar.make(rootLayout, text, lengthLong).show();
     }
 
+    public void showShareDialog(Uri uri) {
+        Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
+        shareIntent.setData(uri);
+        shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        shareIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+        shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
+        shareIntent.setType("*/*");
+        startActivity(Intent.createChooser(shareIntent, getResources().getString(R.string.share_using)));
+    }
 
     private void rebootApp() {
         Intent mStartActivity = new Intent(getApplicationContext(), MainActivity.class);
@@ -693,26 +699,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private void addA1cAnalyticsEvent() {
         Analytics analytics = ((GlucosioApplication) getApplication()).getAnalytics();
         analytics.reportAction("A1C", "A1C disclaimer opened");
-    }
-
-    @Override
-    protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
-        switch (requestCode) {
-            // REQUEST_CODE_PICKER
-            case 2:
-                IntentSender intentPicker;
-                intentPicker = null;
-
-                if (resultCode == RESULT_OK) {
-                    //Get the folder drive id
-                    DriveId mFolderDriveId = data.getParcelableExtra(
-                            OpenFileActivityBuilder.EXTRA_RESPONSE_DRIVE_ID);
-
-                    exportPresenter.uploadToDrive(mFolderDriveId);
-                }
-                break;
-
-        }
     }
 
     @Override
