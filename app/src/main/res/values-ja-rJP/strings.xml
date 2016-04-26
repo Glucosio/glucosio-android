@@ -147,11 +147,13 @@
   <string name="invitation_title">他の人を招待</string>
   <string name="invitation_message">糖尿病の管理と研究のためのオープンソース アプリ Glucosio を試してください。</string>
   <string name="invitation_cta">Glucosio を試してください</string>
+  <string name="title_activity_backup_drive">GoogleDriveバックアップ</string>
   <string name="preferences_privacy">プライバシー</string>
   <string name="helloactivity_textview_tos">Glucosio の使用に関して、以下に同意します</string>
   <string name="preferences_backup_google_drive">Google ドライブ</string>
   <string name="preferences_about_glucosio">Glucosio について</string>
   <string name="preferences_rate">Glucosio を評価</string>
+  <string name="preferences_licences_open">オープンソース ライセンス</string>
   <string name="preferences_freestyle_libre">FreeStyle Libre® サポートを有効にする</string>
   <string name="preferences_freestyle_libre_experimental">実験的: FreeStyle Libre® サポートを有効にする</string>
   <string name="preferences_font_dyslexia_experimental">実験的: 難読症のユーザー向けに可読性を向上します</string>
@@ -262,4 +264,17 @@
   <string name="notification_reminder_medication">薬を服用する時間です!</string>
   <string name="overview_hb1ac_info">これはただの推定値で、測定値の先月の平均値を使用して計算されます。この推定値は、広く受け入れられている HbA1C の公式を使用していますが、推定値としてのみ使用することをおすすめします。</string>
   <string name="dialog_add_notes">メモ</string>
+  <string name="sidebar_backup_export">バックアップ &amp; 復元</string>
+  <string name="menu_backup_backup">Google ドライブでバックアップ</string>
+  <string name="menu_backup_restore">復元</string>
+  <string name="menu_backup_csv">CSVエクスポート</string>
+  <string name="activity_backup_drive_message_restart">変更を適用するために再起動しています...</string>
+  <string name="activity_backup_drive_desc_1">Google ドライブを使用してクラウドの Glucosio データベースを同期します。</string>
+  <string name="activity_backup_drive_desc_2">携帯電話を無くしたり変更した場合、すべての測定値を復元することができます。あるいはお使いのデバイス間で Glucosio のデータを同期することができます。</string>
+  <string name="activity_backup_drive_success">ドライブにデータベースを正しくアップロードしました</string>
+  <string name="activity_backup_drive_restore_success">ドライブからデータベースを正しく復元しました</string>
+  <string name="activity_backup_drive_failed">何か問題が起きたようです。後でもう一度やり直してください :/</string>
+  <string name="activity_backup_drive_button_backup">今すぐバックアップ</string>
+  <string name="activity_backup_drive_button_restore">ドライブから復元</string>
+  <string name="activity_backup_drive_error_restore">ドライブから復元するための有効なバックアップが見つかりません</string>
 </resources>

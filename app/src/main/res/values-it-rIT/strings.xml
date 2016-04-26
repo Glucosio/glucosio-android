@@ -148,11 +148,13 @@
   <string name="invitation_title">Invita altre persone</string>
   <string name="invitation_message">Prova Glucosio, un\'app open source per la gestione del diabete e per la ricerca.</string>
   <string name="invitation_cta">Prova Glucosio</string>
+  <string name="title_activity_backup_drive">Google Drive Backup</string>
   <string name="preferences_privacy">Privacy</string>
   <string name="helloactivity_textview_tos">Usando Glucosio, accetti le</string>
   <string name="preferences_backup_google_drive">Google Drive</string>
   <string name="preferences_about_glucosio">Info su Glucosio</string>
   <string name="preferences_rate">Valuta Glucosio</string>
+  <string name="preferences_licences_open">Licenze Open Source</string>
   <string name="preferences_freestyle_libre">Abilita supporto a FreeStyle Libre®</string>
   <string name="preferences_freestyle_libre_experimental">BETA: Abilita supporto a FreeStyle Libre®</string>
   <string name="preferences_font_dyslexia_experimental">BETA: Aumenta leggibilità per utenti dislessici</string>
@@ -263,4 +265,16 @@
   <string name="notification_reminder_medication">È ora di prendere le medicine!</string>
   <string name="overview_hb1ac_info">Questa è solamente una stima, calcolata usando la media delle letture dello scorso mese. Sebbene il valore sia calcolato con una formula largamente utilizzata per l\'emoglobina glicata, invitiamo gli utenti a considerarlo solamente una stima.</string>
   <string name="dialog_add_notes">Note</string>
+  <string name="sidebar_backup_export">Backup &amp; esportazione</string>
+  <string name="menu_backup_backup">Backup su Google Drive</string>
+  <string name="menu_backup_restore">Ripristino</string>
+  <string name="menu_backup_csv">Esportazione CSV</string>
+  <string name="activity_backup_drive_message_restart">Riavvio per applicare le modifiche...</string>
+  <string name="activity_backup_drive_desc_1">Sincronizza il database di Glucosio nel cloud con Google Drive.</string>
+  <string name="activity_backup_drive_success">Database correttamente caricato sull\'unità</string>
+  <string name="activity_backup_drive_restore_success">Database ripristinato correttamente da Drive</string>
+  <string name="activity_backup_drive_failed">Qualcosa è andato storto. Per favore, riprova :/</string>
+  <string name="activity_backup_drive_button_backup">Esegui backup adesso</string>
+  <string name="activity_backup_drive_button_restore">Ripristina da Drive</string>
+  <string name="activity_backup_drive_error_restore">Impossibile trovare un backup valido da ripristinare da Drive</string>
 </resources>

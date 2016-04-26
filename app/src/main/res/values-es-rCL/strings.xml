@@ -153,6 +153,7 @@
   <string name="preferences_backup_google_drive">Google Drive</string>
   <string name="preferences_about_glucosio">Sobre Glucosio</string>
   <string name="preferences_rate">Puntúa Glucosio</string>
+  <string name="preferences_licences_open">Licencias de software libre</string>
   <string name="preferences_freestyle_libre">Habilitar la compatibilidad con FreeStyle Libre®</string>
   <string name="preferences_freestyle_libre_experimental">EXPERIMENTAL: Habilitar compatibilidad con FreeStyle Libre®</string>
   <string name="preferences_font_dyslexia_experimental">EXPERIMENTAL: Aumentar la legibilidad para los usuarios con dislexia</string>
@@ -263,4 +264,13 @@
   <string name="notification_reminder_medication">¡Es hora de tomar tu medicamento!</string>
   <string name="overview_hb1ac_info">Esto es sólo un cálculo aproximado obtenido de los promedios de las lecturas del último mes. Pese a que es una fórmula para HbA1C que goza de un amplio consenso, recomendamos que los usuarios la usen sólo como un cálculo aproximado.</string>
   <string name="dialog_add_notes">Observaciones</string>
+  <string name="sidebar_backup_export">Copia de seguridad &amp; exportar</string>
+  <string name="menu_backup_restore">Restaurar</string>
+  <string name="menu_backup_csv">Exportar CSV</string>
+  <string name="activity_backup_drive_success">Base de datos subida correctamente a Drive</string>
+  <string name="activity_backup_drive_restore_success">Base de datos correctamente restaurada desde Drive</string>
+  <string name="activity_backup_drive_failed">Algo salió mal. Por favor, inténtelo de nuevo :/</string>
+  <string name="activity_backup_drive_button_backup">Hacer copia ahora</string>
+  <string name="activity_backup_drive_button_restore">Restaurar desde Drive</string>
+  <string name="activity_backup_drive_error_restore">No es posible encontrar una copia de seguridad válida para restaurar desde Drive</string>
 </resources>
