@@ -20,6 +20,47 @@
   ~
   -->
 <resources>
+  <string name="action_settings">ಸೆಟ್ಟಿಂಗ್ಗಳು</string>
+  <string name="action_invite">ಸ್ನೇಹಿತರನ್ನು ಆಮಂತ್ರಿಸಿ</string>
+  <string name="tab_overview">ಪಕ್ಷಿನೋಟ</string>
+  <string name="tab_history">ಇತಿಹಾಸ</string>
+  <string name="tab_tips">ಸಲಹೆಗಳು</string>
+  <string name="title_activity_hello">ಶುಭಾಶಯ.</string>
+  <string name="helloactivity_headline">ಶುಭಾಶಯ.</string>
+  <string name="helloactivity_terms">ಬಳಕೆಯ ನಿಯಮಗಳು</string>
+  <string name="helloactivity_subhead">ಶುರು ಮಾಡುವ ಮೊದಲು ಕೆಳಗಿನ ಮಾಹಿತಿಗಳನ್ನು ದಯವಿಟ್ಟು ನಮೂದಿಸಿ.</string>
+  <string name="helloactivity_country">ದೇಶ</string>
+  <string name="helloactivity_age">ವಯಸ್ಸು</string>
+  <string name="helloactivity_age_invalid">ದಯವಿಟ್ಟು ಸರಿಯಾದ ವಯಸ್ಸನ್ನು ನಮೂದಿಸಿ.</string>
+  <string name="helloactivity_gender">ಲಿಂಗ</string>
+  <string name="helloactivity_gender_list_1">ಪುರುಷ</string>
+  <string name="helloactivity_gender_list_2">ಸ್ತ್ರೀ</string>
+  <string name="helloactivity_gender_list_3">ಇತರೆ</string>
+  <string name="helloactivity_spinner_diabetes_type">ಮಧುಮೇಹ</string>
+  <string name="helloactivity_spinner_diabetes_type_1">ಟೈಪ್ 1</string>
+  <string name="helloactivity_spinner_diabetes_type_2">ಟೈಪ್ 2</string>
+  <string name="helloactivity_share_data">ಸಂಶೋಧನೆಗೆ ಅನಾಮಧೇಯ ಡೇಟಾವನ್ನು ಹಂಚಿಕೊಳ್ಳಿ.</string>
+  <string name="helloactivity_hint_settings">ನೀವಿದನ್ನು ನಂತರ ಸೆಟ್ಟಿಂಗ್ಗಳಲ್ಲಿ ಬದಲಾಯಿಸಬಹುದು.</string>
+  <string name="helloactivity_button_next">ಮುಂದಿನ</string>
+  <string name="helloactivity_button_start">ಸರಿ ಪ್ರಾರಂಬಿಸೋಣ</string>
+  <string name="fragment_empty_text">ಇನ್ನೂ ಯಾವುದೇ ಮಾಹಿತಿ ಲಭ್ಯವಿಲ್ಲ. \n ಇಲ್ಲಿ ನಿಮ್ಮ ಮೊದಲ ರೀಡಿಂಗ್ ಸೇರಿಸಿ.</string>
+  <string name="dialog_add_date">ದಿನಾಂಕ</string>
+  <string name="dialog_add_time">ಸಮಯ</string>
+  <string name="dialog_add_type_1">ಬೆಳಗಿನ ತಿಂಡಿ ಸೇವಿಸುವ ಮೊದಲು</string>
+  <string name="dialog_add_type_2">ಬೆಳಗಿನ ತಿಂಡಿ ಸೇವಿಸಿದ ನಂತರ</string>
+  <string name="dialog_add_type_3">ಮಧ್ಯಾನ್ನದ ಊಟದ ಮೊದಲು</string>
+  <string name="dialog_add_type_4">ಮಧ್ಯಾನ್ನದ ಊಟದ ನಂತರ</string>
+  <string name="dialog_add_type_5">ರಾತ್ರಿ ಊಟದ ಮೊದಲು</string>
+  <string name="dialog_add_type_6">ರಾತ್ರಿ ಊಟದ ನಂತರ</string>
+  <string name="dialog_add_type_7">ಲಘು ಆಹಾರ</string>
+  <string name="dialog_add_type_8">ಮಲಗುವ ವೆಳೆ</string>
+  <string name="dialog_add_type_9">ರಾತ್ರಿ</string>
+  <string name="dialog_add_type_10">ಉಪವಾಸವಿರುವಗದ ಗ್ಲುಕೋಸ್</string>
+  <string name="dialog_add_type_11">ಪುನಃ ಪರೀಕ್ಷಿಸು</string>
+  <string name="dialog_add_type_12">ಇತರೆ</string>
+  <string name="dialog_delete">ಅಳಿಸು</string>
+  <string name="fragment_history_snackbar_text">1 ರೀಡಿಂಗನ್ನು ಅಳಿಸಲಾಯಿತು</string>
+  <string name="fragment_history_snackbar_action">ರದ್ದು ಮಾಡು</string>
   <!-- Future Strings Baked In Early For l10n -->
   <!-- Exercise Types -->
   <!-- Food Entry Labels -->

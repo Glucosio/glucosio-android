@@ -135,13 +135,11 @@
   <string name="invitation_title">Bjud in andra personer</string>
   <string name="invitation_message">Prova Glucosio, en app med öppen källkod för diabetesbehandling och forskning.</string>
   <string name="invitation_cta">Prova Glucosio</string>
-  <string name="title_activity_backup">Säkerhetskopiera</string>
   <string name="preferences_privacy">Sekretess</string>
   <string name="helloactivity_textview_tos">Genom att använda Glucosio, godkänner du</string>
   <string name="preferences_backup_google_drive">Google Drive</string>
   <string name="preferences_about_glucosio">Om Glucosio</string>
   <string name="preferences_rate">Betygsätt Glucosio</string>
-  <string name="preferences_licences_open">Öppna källkodslicenser</string>
   <string name="about_donate">Donera till Glucosio</string>
   <string name="reading_ok">Ok</string>
   <string name="reading_hypo">Hypoglykemi</string>

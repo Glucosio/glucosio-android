@@ -32,8 +32,9 @@ android {
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 23
-        versionCode 19
-        versionName '0.11.0'
+        versionCode 20
+        versionName '0.12.0'
+        applicationId "org.glucosio.android"
 
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
     }
@@ -102,20 +103,13 @@ dependencies {
     compile "com.google.android.gms:play-services-wearable:${googlePlayServicesVer}"
     compile "com.google.android.gms:play-services-gcm:${googlePlayServicesVer}"
 
-    //Smooch
-    compile 'com.google.code.gson:gson:2.4'
-    compile 'com.squareup.okhttp:okhttp:2.4.0'
-    compile 'io.smooch:core:latest.release'
-    compile 'io.smooch:ui:latest.release'
-
-
     // Other libraries
-    compile 'com.github.clans:fab:1.6.2'
-    compile 'com.wdullaer:materialdatetimepicker:2.2.0'
-    compile 'com.github.PhilJay:MPAndroidChart:v2.2.3'
+    compile 'com.github.clans:fab:1.6.3'
+    compile 'com.wdullaer:materialdatetimepicker:2.3.0'
+    compile 'com.github.PhilJay:MPAndroidChart:v2.2.4'
     compile 'uk.co.chrisjenx:calligraphy:2.1.0'
-    compile 'net.danlew:android.joda:2.9.2'
-    compile('com.mikepenz:materialdrawer:5.0.5@aar') {
+    compile 'net.danlew:android.joda:2.9.3'
+    compile('com.mikepenz:materialdrawer:5.2.1@aar') {
         transitive = true
     }
 

@@ -134,13 +134,11 @@
   <string name="invitation_title">Convidar a otra xente</string>
   <string name="invitation_message">Prueba Glucosio, una aplicación de códigu llibre pa la xestión ya investigación de la diabetes.</string>
   <string name="invitation_cta">Prueba Glucosio</string>
-  <string name="title_activity_backup">Copies de seguranza</string>
   <string name="preferences_privacy">Privacidá</string>
   <string name="helloactivity_textview_tos">Usando Glucosio tas acordies colos</string>
   <string name="preferences_backup_google_drive">Google Drive</string>
   <string name="preferences_about_glucosio">Tocante a Glucosio</string>
   <string name="preferences_rate">Valorar Glucosio</string>
-  <string name="preferences_licences_open">Llicencies de códigu abiertu</string>
   <string name="about_donate">Donar a Glucosio</string>
   <string name="reading_ok">Perfeuto</string>
   <string name="reading_hypo">Hipoglucemia</string>
@@ -221,4 +219,10 @@
   <string name="freestylelibre_nfc_not_supported">Esti preséu nun sofita NFC.</string>
   <string name="freestylelibre_nfc_not_enabled">Ta deshabilitáu\'l NFC.</string>
   <string name="freestylelibre_nfc_error">¡Fallu abriendo la conexón NFC!</string>
+  <string name="menu_support_title">¿Cómo podemos ayudate?</string>
+  <string name="menu_support_email">Corréu</string>
+  <string name="menu_support_live">Charra en direuto</string>
+  <string name="menu_support_forum">Foru de sofitu</string>
+  <string name="notification_reminder_glucose">¡Ye hora de rexistrar el to nivel sanguineu de glucosa!</string>
+  <string name="notification_reminder_medication">¡Ye hora de tomar les tos melecines!</string>
 </resources>

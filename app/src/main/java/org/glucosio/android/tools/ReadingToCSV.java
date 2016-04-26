@@ -21,7 +21,9 @@
 package org.glucosio.android.tools;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
+import android.os.Environment;
 import android.support.v4.content.FileProvider;
 import android.util.Log;
 
@@ -43,9 +45,7 @@ public class ReadingToCSV {
 
     public Uri createCSV(final ArrayList<GlucoseReading> readings, String um) {
 
-        final File file = new File(context.getFilesDir(), "glucosio_exported_data.csv"); //Getting a file within the dir.
-        file.delete();
-
+        File file = new File(context.getFilesDir().getAbsolutePath(), "glucosio_exported_data.csv"); //Getting a file within the dir.
 
         try {
             FileOutputStream fileOutputStream = new FileOutputStream(file);
@@ -96,12 +96,16 @@ public class ReadingToCSV {
                 }
             }
 
+            osw.flush();
             osw.close();
             Log.i("Glucosio", "Done exporting readings");
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return FileProvider.getUriForFile(context, context.getPackageName() + ".provider.fileprovider", file);
+
+        context.grantUriPermission(context.getPackageName(), Uri.parse(file.getAbsolutePath()), Intent.FLAG_GRANT_WRITE_URI_PERMISSION | Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+        return FileProvider.getUriForFile(context, context.getPackageName() + ".provider.fileprovider", file.getAbsoluteFile());
     }
 }

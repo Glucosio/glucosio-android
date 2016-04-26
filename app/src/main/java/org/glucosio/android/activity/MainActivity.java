@@ -22,7 +22,10 @@ package org.glucosio.android.activity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.Dialog;
+import android.app.PendingIntent;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -47,10 +50,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
@@ -67,10 +72,10 @@ import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.invitations.Invitation;
 import org.glucosio.android.presenter.ExportPresenter;
 import org.glucosio.android.presenter.MainPresenter;
+import org.glucosio.android.tools.RealmBackupRestore;
 
 import java.util.Calendar;
 
-import io.smooch.ui.ConversationActivity;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
@@ -175,7 +180,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
         // Add Nav Drawer
         final PrimaryDrawerItem itemSettings = new PrimaryDrawerItem().withName(R.string.action_settings).withIcon(R.drawable.ic_settings_black_24dp).withSelectable(false);
-        final PrimaryDrawerItem itemExport = new PrimaryDrawerItem().withName(R.string.title_activity_export).withIcon(R.drawable.ic_share_black_24dp).withSelectable(false);
+        final PrimaryDrawerItem itemExport = new PrimaryDrawerItem().withName(R.string.sidebar_backup_export).withIcon(R.drawable.ic_share_black_24dp).withSelectable(false);
         final PrimaryDrawerItem itemFeedback = new PrimaryDrawerItem().withName(R.string.menu_support).withIcon(R.drawable.ic_feedback_black_24dp).withSelectable(false);
         final PrimaryDrawerItem itemAbout = new PrimaryDrawerItem().withName(R.string.preferences_about_glucosio).withIcon(R.drawable.ic_info_black_24dp).withSelectable(false);
         final PrimaryDrawerItem itemInvite = new PrimaryDrawerItem().withName(R.string.action_invite).withIcon(R.drawable.ic_face_black_24dp).withSelectable(false);
@@ -270,7 +275,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     public void startExportActivity() {
-        showExportDialog();
+        openBackupDialog();
     }
 
     private void startAboutActivity() {
@@ -356,11 +361,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                     } else {
                         showSnackBar(getResources().getString(R.string.menu_support_error1), Snackbar.LENGTH_LONG);
                     }
-                } else if (which == 1) {
-                    // Report Feedback
-                    // Open Instabug
-                    // Instabug.invoke();
-                     ConversationActivity.show(mContext);
                 } else {
                     // Forum
                     String url = "http://community.glucosio.org/";
@@ -381,7 +381,31 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         builder.show();
     }
 
-    public void showExportDialog() {
+    public void openBackupDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(getResources().getString(R.string.title_activity_backup_drive));
+        builder.setItems(getResources().getStringArray(R.array.menu_backup_options), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (which == 0) {
+                    if (checkPlayServices()) {
+                        // TODO: Finish backup in next release
+                        /*Intent intent = new Intent(getApplicationContext(), BackupActivity.class);
+                        startActivity(intent);*/
+                        Toast.makeText(getApplicationContext(), R.string.preferences_coming_soon, Toast.LENGTH_SHORT).show();
+                    } else {
+                        dialog.dismiss();
+                    }
+                } else {
+                    // Export to CSV
+                    showExportCsvDialog();
+                }
+            }
+        });
+        builder.show();
+    }
+
+    public void showExportCsvDialog() {
         final Dialog exportDialog = new Dialog(MainActivity.this, R.style.GlucosioTheme);
 
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
@@ -619,33 +643,13 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         startActivity(Intent.createChooser(shareIntent, getResources().getString(R.string.share_using)));
     }
 
-
-    public int typeStringToInt(String typeString) {
-        //TODO refactor this ugly mess
-        int typeInt;
-        if (typeString.equals(getString(R.string.dialog_add_type_1))) {
-            typeInt = 0;
-        } else if (typeString.equals(getString(R.string.dialog_add_type_2))) {
-            typeInt = 1;
-        } else if (typeString.equals(getString(R.string.dialog_add_type_3))) {
-            typeInt = 2;
-        } else if (typeString.equals(getString(R.string.dialog_add_type_4))) {
-            typeInt = 3;
-        } else if (typeString.equals(getString(R.string.dialog_add_type_5))) {
-            typeInt = 4;
-        } else if (typeString.equals(getString(R.string.dialog_add_type_6))) {
-            typeInt = 5;
-        } else if (typeString.equals(getString(R.string.dialog_add_type_7))) {
-            typeInt = 6;
-        } else if (typeString.equals(getString(R.string.dialog_add_type_8))) {
-            typeInt = 7;
-        } else if (typeString.equals(getString(R.string.dialog_add_type_9))) {
-            typeInt = 8;
-        } else {
-            typeInt = 9;
-        }
-
-        return typeInt;
+    private void rebootApp() {
+        Intent mStartActivity = new Intent(getApplicationContext(), MainActivity.class);
+        int mPendingIntentId = 123456;
+        PendingIntent mPendingIntent = PendingIntent.getActivity(getApplicationContext(), mPendingIntentId, mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT);
+        AlarmManager mgr = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
+        mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
+        System.exit(0);
     }
 
     @Override
@@ -696,6 +700,31 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private void addA1cAnalyticsEvent() {
         Analytics analytics = ((GlucosioApplication) getApplication()).getAnalytics();
         analytics.reportAction("A1C", "A1C disclaimer opened");
+    }
+
+    /**
+     * Check the device to make sure it has the Google Play Services APK. If
+     * it doesn't, display a dialog that allows users to download the APK from
+     * the Google Play Store or enable it in the device's system settings.
+     */
+    private boolean checkPlayServices() {
+        GoogleApiAvailability apiAvailability = GoogleApiAvailability.getInstance();
+        int resultCode = apiAvailability.isGooglePlayServicesAvailable(this);
+        if (resultCode != ConnectionResult.SUCCESS) {
+            if (apiAvailability.isUserResolvableError(resultCode)) {
+                apiAvailability.getErrorDialog(this, resultCode, 9000)
+                        .show();
+            } else {
+                Log.i("Glucosio", "This device is not supported.");
+                showErrorDialogPlayServices();
+            }
+            return false;
+        }
+        return true;
+    }
+
+    private void showErrorDialogPlayServices() {
+        Toast.makeText(getApplicationContext(), R.string.activity_main_error_play_services, Toast.LENGTH_SHORT).show();
     }
 
     @Override

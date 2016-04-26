@@ -40,6 +40,12 @@
   <string name="helloactivity_spinner_diabetes_type">ປະເພດຂອງພະຍາດເບົາຫວານ</string>
   <string name="helloactivity_spinner_diabetes_type_1">ປະເພດທີ່ 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">ປະເພດທີ່ 2</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit">ມັກຫົວຫນ່ວຍແບບ Glucose</string>
+  <string name="preferences_spinner_preferred_a1c_unit">ມັກຫົວຫນ່ວຍແບບ A1C</string>
+  <string name="preferences_spinner_preferred_a1c_unit_1">ເປີເຊັນ</string>
+  <string name="preferences_spinner_preferred_weight_unit">ມັກຫົວຫນ່ວຍແບບຫນໍ້ານັກ</string>
+  <string name="preferences_spinner_preferred_weight_unit_1">ກິໂລກຼາມ</string>
+  <string name="preferences_spinner_preferred_weight_unit_2">ປອນ</string>
   <string name="helloactivity_share_data">ແບ່ງປັນຂໍ້ມູນທີ່ບໍລະບູຊືສໍາລັບການຄົ້ນຄວ້າ.</string>
   <string name="helloactivity_hint_settings">ທ່ານສາມາດປ່ຽນແປງໃນການຕັ້ງຄ່າຕາມຫລັງ.</string>
   <string name="helloactivity_button_next">ຕໍ່ໄປ</string>
@@ -76,6 +82,7 @@
   <string name="fragment_overview_selector_day">ມື້</string>
   <string name="fragment_overview_selector_week">ອາທິດ</string>
   <string name="preferences_about">ກ່ຽວກັບ</string>
+  <string name="preferences_experimental">ຟີວເຈີນີ້ແມ່ນກຳລັງຢູ່ໃນຊ່ວງທົດລອງຢູ່ ແລະ ມັນອາດຈະເຮັດວຽກບໍ່ໄດ້ເຕັມເມັດເຕັມຫນ່ວຍ ແລະ ມັນກຳລັງຢູ່ໃນຊ່ວງທົດສອບໂດຍຜູ້ໃຊ້ທົ່ວໄປ. ຈືໄວ້ວ່າທ່ານສາມາດສົ່ງຄຳຄິດຄຳເຫັນຂອງທ່ານມາຫາພວກເຮົາໄດ້ໂດຍການສັ່ນໂທລະສັບຂອງທ່ານ.</string>
   <string name="preferences_version">ຫລູ້ນ</string>
   <string name="preferences_terms">ເງື່ອນໄຂການໃຊ້</string>
   <string name="glucose_reading_type">ປະເພດ</string>
@@ -107,15 +114,20 @@
   <string name="assistant">ຜູ້ຊ່ວຍ</string>
   <string name="assistant_action_update">ອັບເດດຕອນນີ້ເລີຍ</string>
   <string name="assistant_action_ok">Ok, ເຂົ້າໃຈແລ້ວ</string>
+  <string name="assistant_action_feedback">ສົ່ງຄຳຄິດຄຳເຫັນ</string>
+  <string name="assistant_action_live_chat">ແຊັດອອນໄລນ໌</string>
   <string name="assistant_action_reading">ເພີ່ມການອ່ານ</string>
   <string name="assistant_action_try">ລອງໃຊ້ດຽວນີ້ເລີຍ</string>
   <string name="assistant_weight_title">ອັບເດດນ້ຳຫນັກຂອງທ່ານ</string>
+  <string name="assistant_research_title">ອັບເດດການຄົ້ນຫາ opt-in ຂອງທ່ານ</string>
   <string name="assistant_categories_title">ສ້າງປະເພດ</string>
+  <string name="assistant_check_title">ໃຫ້ເຂົ້າມາກວດເບິງຢູ່ນີ້ຢ່າງເປັນປົກກະຕິ</string>
   <string name="assistant_feedback_title">ສົ່ງຄໍາຄິດເຫັນ </string>
   <string name="assistant_feedback_desc">ເພື່ອເປັນການຊ່ວຍໃຫ້ເຮົາສາມາດປັບປຸງ Glucosio ໃຫ້ດີຂື້ນ ຫາກວ່າທ່ານພົບເຫັນບັນຫາທາງເຕັກນິກ ຫລື ຄຳແນະນຳໃດໆ ທ່ານສາມາດສົ່ງຂໍ້ມູນມາໃຫ້ພວກເຮົາໄດ້ໃນເມນູການຕັ້ງຄ່າ.</string>
   <string name="assistant_reading_title">ເພີ່ມການອ່ານ</string>
   <string name="assistant_reading_desc">ກວດສອບເບິງໃຫ້ແນ່ໃຈວ່າໄດ້ບັນທຶກລະດັບນ້ຳຕານກລູໂຄສເປັນປະຈຳ ເພື່ອທີ່ພວກເຮົາຈະສາມາດຊ່ວຍທ່ານຕິດຕາມລະດັບນ້ຳຕານກລູໂຄສຕະລອດເວລາ.</string>
   <string name="assistant_export_title">ນຳເອົາຂໍ້ມູນຂອງທ່ານອອກໄປ</string>
+  <string name="assistant_calculator_a1c_title">ຄິດໄລ່ A1C</string>
   <string name="helloactivity_spinner_preferred_range">ຊ່ວງທີ່ຕ້ອງການ</string>
   <string name="helloactivity_spinner_preferred_range_4">ຊ່ວງທີ່ກຳນົດເອງ</string>
   <string name="helloactivity_preferred_range_min">ຄ່າຕຳສຸດ</string>
@@ -123,17 +135,19 @@
   <string name="helloactivity_language">ພາສາ</string>
   <string name="invitation_title">ເຊີນສ່ວນຫມູ່ເພື່ອນຄົນອື່ນໆ</string>
   <string name="invitation_cta">ທົດລອງໃຊ້ Glucosio</string>
-  <string name="title_activity_backup">ການສຳຮອງຂໍ້ມູນ</string>
   <string name="preferences_privacy">ຄວາມເປັນສ່ວນຕົວ</string>
   <string name="preferences_backup_google_drive">Google Drive</string>
   <string name="preferences_about_glucosio">ກ່ຽວກັບ Glucosio</string>
-  <string name="preferences_licences_open">ໃບອະນຸຍາດ Open source</string>
+  <string name="preferences_rate">ເພີ່ມດາວໃຫ້ Glucosio</string>
   <string name="about_donate">ບໍລິຈາກໃຫ້ກັບ Glucosio</string>
   <string name="reading_ok">ຕົກລົງ</string>
+  <string name="reading_hypo">Hypoglycemia</string>
   <string name="reading_low">ຕຳ</string>
   <string name="reading_high">ສູງ</string>
+  <string name="reading_hyper">Hyperglycemia</string>
   <!-- Future Strings Baked In Early For l10n -->
   <!-- Exercise Types -->
+  <string name="dialog_add_exercisetype_1">ຍ່າງຫລີ້ນ</string>
   <string name="dialog_add_exercisetype_2">ຢ່າງໄວຂື້ນ</string>
   <string name="dialog_add_exercisetype_3">ການແລ່ນອອກກຳລັງກາຍ</string>
   <string name="dialog_add_exercisetype_4">ແລ່ນ</string>
@@ -177,11 +191,14 @@
   <string name="dialog_export_button">ນຳອອກ</string>
   <string name="title_activity_export">ນຳເອົາຂໍ້ມູນອອກ</string>
   <string name="dialog_export_all">ນຳອອກທຸກສິ່ງທຸກຢ່າງ</string>
+  <string name="share_using">ແບ່ງປັນການນຳໃຊ້</string>
   <string name="share_subject">ຂໍ້ມູນກ່ຽວກັບນໍ້າຕານ</string>
   <string name="activity_export_snackbar_1">"ການນຳອອກ"</string>
   <string name="activity_export_snackbar_2">ການອ່ານ</string>
+  <string name="fragment_overview_permission_storage">Glucosio ຕ້ອງໄດ້ຮັບການອະນຸຍາດກ່ອນທີ່ຈະສາມາດບັນທຶກພາບຫນ້າຈໍນີ້ໄດ້</string>
   <string name="fragment_overview_graph_export_true">ພາບຫນ້າຈໍໄດ້ຖືກບັນທຶກໄປໄວ້ຢູ່ໃນຄັງຮູບພາບ</string>
   <string name="fragment_overview_graph_export_false">ພາບຫນ້າຈໍທີ່ມີຂໍ້ຜິດພາດໄດ້ຖືກບັນທຶກໄປໄວ້ຢູ່ໃນຄັງຮູບພາບ</string>
+  <string name="wear_new_reading">ເພີ່ມລາຍການອ່ານໃຫມ່ແລ້ວ</string>
   <string name="dialog_add_weight">ນໍ້າໜັກ</string>
   <string name="dialog_add_ketones">ຄີໂຕນ</string>
   <string name="dialog_add_pressure_min">ຄວາມດັນຕຳສຸດ</string>
@@ -190,6 +207,7 @@
   <string name="dialog_add_cholesterol_ldl">LDL Cholesterol</string>
   <string name="dialog_add_cholesterol_hdl">HDL Cholesterol</string>
   <string name="dialog_add_hb1ac">HB1AC</string>
+  <string name="title_activity_add_glucose">ເພີ່ມການອ່ານ Glucose</string>
   <string name="title_activity_add_weight">ເພີ່ມນໍ້າໜັກ</string>
   <string name="title_activity_add_cholesterol">ເພີ່ມລະດັບ Cholesterol</string>
   <string name="title_activity_add_hb1ac">ເພີ່ມ HB1AC</string>
@@ -201,4 +219,20 @@
   <string name="fab_cholesterol">ລະດັບ Cholesterol</string>
   <string name="fab_HB1AC">ການອ່ານ HB1AC</string>
   <string name="fab_glucose">ລະດັບນໍ້າຕານໃນເລືອດ</string>
+  <string name="freestylelibre_nfc_not_supported">ອຸປະກອນນີ້ບໍ່ສະຫນັບສະຫນູນ NFC.</string>
+  <string name="freestylelibre_nfc_not_enabled">NFC ໄດ້ຖືກປິດນຳໃຊ້.</string>
+  <string name="freestylelibre_nfc_error">ເກີດມີຂໍ້ຜິດພາດໃນການເປີດການເຊື່ອມຕໍ່ NFC!</string>
+  <string name="overview_hb1ac_error_no_data">ບໍ່ມີຂໍ້ມູນພຽງພໍສຳລັບການຄຳນວນ HBA1C</string>
+  <string name="overview_hb1ac">HBA1C:</string>
+  <string name="activity_converter_a1c_glucose">ລະດັບນໍ້າຕານໃນເລືອດໂດຍສະເລ່ຍ</string>
+  <string name="activity_converter_a1c">A1C</string>
+  <string name="activity_converter_title">ເຄື່ອງຄິດໄລ່ A1C</string>
+  <string name="activity_converter_save">ບັນທຶກ</string>
+  <string name="menu_support">ສະຫນັບສະຫນູນ</string>
+  <string name="menu_support_title">ພວກເຮົາສາມາດຊ່ວຍທ່ານໄດ້ແນວໃດແດ່?</string>
+  <string name="menu_support_email">ອີເມຣ</string>
+  <string name="menu_support_live">ແຊັດອອນໄລນ໌</string>
+  <string name="menu_support_forum">ຟໍລຳໃຫ້ຂໍ້ມູນການສະຫນັບສະຫນູນ</string>
+  <string name="notification_reminder_medication">ມັນຮອດເວລາທີ່ຈະໃຊ້ຢາຂອງທ່ານແລ້ວ!</string>
+  <string name="dialog_add_notes">ຫມາຍເຫດ</string>
 </resources>

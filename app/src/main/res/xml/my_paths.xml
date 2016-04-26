@@ -19,5 +19,5 @@
   -->
 
 <paths xmlns:android="http://schemas.android.com/apk/res/android">
-    <files-path name="files" path="." />
+    <files-path name="glucosio_exported_data" path="." />
 </paths>

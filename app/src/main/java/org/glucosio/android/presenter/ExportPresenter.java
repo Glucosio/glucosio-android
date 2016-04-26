@@ -20,7 +20,12 @@
 
 package org.glucosio.android.presenter;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.support.v4.app.ActivityCompat;
+import android.util.Log;
 
 import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.db.DatabaseHandler;
@@ -41,6 +46,12 @@ public class ExportPresenter {
     private DatabaseHandler dB;
     private MainActivity activity;
 
+    // Storage Permissions
+    private static final int REQUEST_EXTERNAL_STORAGE = 1;
+    private static String[] PERMISSIONS_STORAGE = {
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+    };
 
     public ExportPresenter(MainActivity exportActivity, DatabaseHandler dbHandler) {
         this.activity = exportActivity;
@@ -66,15 +77,33 @@ public class ExportPresenter {
         }
 
         if (readings.size() != 0) {
-            activity.showExportedSnackBar(readings.size());
+            if (hasStoragePermissions(activity)) {
+                activity.showExportedSnackBar(readings.size());
             ReadingToCSV csv = new ReadingToCSV(activity.getApplicationContext());
             Uri csvUri = csv.createCSV(readings, dB.getUser(1).getPreferred_unit());
-            activity.showShareDialog(csvUri);
+                activity.showShareDialog(csvUri);
+            }
         } else {
             activity.showNoReadingsSnackBar();
         }
     }
 
+    private boolean hasStoragePermissions(Activity activity) {
+        // Check if we have write permission
+        int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        Log.i("Glucosio", "Storage permissions granted.");
+
+        if(permission != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(
+                    activity,
+                    PERMISSIONS_STORAGE,
+                    REQUEST_EXTERNAL_STORAGE
+            );
+            return false;
+        } else {
+            return true;
+        }
+    }
 
     public int getFromDay() {
         return fromDay;

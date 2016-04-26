@@ -133,13 +133,11 @@
   <string name="invitation_title">Ftoni njerëz të tjerë</string>
   <string name="invitation_message">Provoni Glucosio, një aplikacion me kod burimi të hapur për menaxhimin e diabetit dhe kërkimin rreth tij.</string>
   <string name="invitation_cta">Provoni Glucosio</string>
-  <string name="title_activity_backup">Kopje rezervë</string>
   <string name="preferences_privacy">Privatësia</string>
   <string name="helloactivity_textview_tos">Duke përdorur Glucosio, ju po jeni dakort me</string>
   <string name="preferences_backup_google_drive">Google Drive</string>
   <string name="preferences_about_glucosio">Rreth Glucosio</string>
   <string name="preferences_rate">Vlerësoni Glucosion</string>
-  <string name="preferences_licences_open">Liçensë për softuerë me kod burimi të hapur</string>
   <string name="about_donate">Dhuroni për Glucosion</string>
   <string name="reading_ok">Dakort</string>
   <string name="reading_hypo">Hipoglicemia</string>

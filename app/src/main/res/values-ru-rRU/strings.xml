@@ -138,13 +138,11 @@
   <string name="invitation_title">Пригласить других людей</string>
   <string name="invitation_message">Попробовать Glucosio, приложение с открытым исходным кодом для исследований и отслеживания диабета.</string>
   <string name="invitation_cta">Попробовать Glucosio</string>
-  <string name="title_activity_backup">Резервное копирование</string>
   <string name="preferences_privacy">Приватность</string>
   <string name="helloactivity_textview_tos">Используя Glucosio, вы соглашаетесь с</string>
   <string name="preferences_backup_google_drive">Google Диск</string>
   <string name="preferences_about_glucosio">О Glucosio</string>
   <string name="preferences_rate">Оценить Glucosio</string>
-  <string name="preferences_licences_open">Лицензии на ПО с открытым исходным кодом</string>
   <string name="preferences_freestyle_libre">Включить поддержку FreeStyle LibreⓇ</string>
   <string name="preferences_freestyle_libre_experimental">ЭКСПЕРИМЕНТАЛЬНОЕ: Включить поддержку FreeStyle LibreⓇ</string>
   <string name="preferences_font_dyslexia_experimental">ЭКСПЕРИМЕНТАЛЬНОЕ: Улучшить читаемость для пользователей с дислексией</string>
@@ -246,4 +244,11 @@
   <string name="activity_converter_a1c">A1C</string>
   <string name="activity_converter_title">Калькулятор A1C</string>
   <string name="activity_converter_save">СОХРАНИТЬ</string>
+  <string name="menu_support">Служба поддержки</string>
+  <string name="menu_support_title">Как мы можем вам помочь?</string>
+  <string name="menu_support_email">Эл. почта</string>
+  <string name="menu_support_live">Чат</string>
+  <string name="menu_support_forum">Форум поддержки</string>
+  <string name="notification_reminder_glucose">Пришло время для входа глюкозы в вашу кровь!</string>
+  <string name="notification_reminder_medication">Настало время принять лекарство!</string>
 </resources>

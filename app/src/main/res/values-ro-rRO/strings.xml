@@ -147,13 +147,13 @@
   <string name="invitation_title">Invită alte persoane</string>
   <string name="invitation_message">Încearcă Glucosio, o aplicație cu sursă deschisă pentru gestionarea diabetului și cercetare.</string>
   <string name="invitation_cta">Încearcă Glucosio</string>
-  <string name="title_activity_backup">Copie de siguranță</string>
+  <string name="title_activity_backup_drive">Backup Google Drive</string>
   <string name="preferences_privacy">Confidențialitate</string>
   <string name="helloactivity_textview_tos">Folosind Glucosio, ești de acord cu</string>
   <string name="preferences_backup_google_drive">Google Drive</string>
   <string name="preferences_about_glucosio">Despre Glucosio</string>
   <string name="preferences_rate">Apreciază Glucosio</string>
-  <string name="preferences_licences_open">Licențe de sursă deschisă</string>
+  <string name="preferences_licences_open">Licențe cu sursă deschisă</string>
   <string name="preferences_freestyle_libre">Permite suport pentru FreeStyle Libre®</string>
   <string name="preferences_freestyle_libre_experimental">EXPERIMENTAL: permite suport pentru FreeStyle Libre®</string>
   <string name="preferences_font_dyslexia_experimental">EXPERIMENTAL: crește capacitatea de citire pentru utilizatori cu dislexie</string>
@@ -264,4 +264,17 @@
   <string name="notification_reminder_medication">Este timpul să iei medicația!</string>
   <string name="overview_hb1ac_info">Aceasta este doar o estimare și este calculată folosind mediile citirilor din luna trecută. Această estimare este o formulă larg acceptată pentru HbA1C, dar încurajăm utilizatorii să considere această valoare doar ca o estimare.</string>
   <string name="dialog_add_notes">Note</string>
+  <string name="sidebar_backup_export">Copie de siguranță și exportare</string>
+  <string name="menu_backup_backup">Backup pe Google Drive</string>
+  <string name="menu_backup_restore">Restaurare</string>
+  <string name="menu_backup_csv">Export CSV</string>
+  <string name="activity_backup_drive_message_restart">Se repornește pentru a aplica modificările...</string>
+  <string name="activity_backup_drive_desc_1">Sincronizează baza de date Glucosio în cloud cu Google Drive.</string>
+  <string name="activity_backup_drive_desc_2">Pentru a restabili toate citirile dacă ai pierdut sau schimbat telefonul, sau pentru a sincroniza datele Glucosio între dispozitive.</string>
+  <string name="activity_backup_drive_success">Baza de date încărcată corect pe Drive</string>
+  <string name="activity_backup_drive_restore_success">Baza de date restaurată corect de pe Drive</string>
+  <string name="activity_backup_drive_failed">Ceva nu a funcționat. Te rugăm să reîncerci :/</string>
+  <string name="activity_backup_drive_button_backup">Fă o copie acum</string>
+  <string name="activity_backup_drive_button_restore">Restaurează de pe Drive</string>
+  <string name="activity_backup_drive_error_restore">Nu s-a putut găsi o copie validă pentru a restaura de pe Drive</string>
 </resources>

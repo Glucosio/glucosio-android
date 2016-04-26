@@ -130,12 +130,10 @@
   <string name="helloactivity_language">Jazyk</string>
   <string name="invitation_title">Pozvat další osoby</string>
   <string name="invitation_cta">Zkuste Glucosio</string>
-  <string name="title_activity_backup">Zálohovat</string>
   <string name="preferences_privacy">Soukromí</string>
   <string name="preferences_backup_google_drive">Google Drive</string>
   <string name="preferences_about_glucosio">O aplikaci Glucosio</string>
   <string name="preferences_rate">Hodnotit Glucosio</string>
-  <string name="preferences_licences_open">Open source licence</string>
   <string name="about_donate">Podpořit Glucosio</string>
   <string name="reading_ok">OK</string>
   <string name="reading_hypo">Hypoglykémie</string>

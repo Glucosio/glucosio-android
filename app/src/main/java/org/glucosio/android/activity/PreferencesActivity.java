@@ -307,7 +307,7 @@ public class PreferencesActivity extends AppCompatActivity {
 /*            backupPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
-                    Intent backupActivity = new Intent(getActivity(), BackupActivity.class);
+                    Intent backupActivity = new Intent(getActivity(), RealmBackupActivity.class);
                     getActivity().startActivity(backupActivity);
                     return false;
                 }
@@ -347,7 +347,7 @@ public class PreferencesActivity extends AppCompatActivity {
 
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
-                    Intent backupActivity = new Intent(getActivity(), BackupActivity.class);
+                    Intent backupActivity = new Intent(getActivity(), RealmBackupActivity.class);
                     getActivity().startActivity(backupActivity);
                     return false;
                 }

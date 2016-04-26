@@ -40,6 +40,12 @@
   <string name="helloactivity_spinner_diabetes_type">糖尿病の型</string>
   <string name="helloactivity_spinner_diabetes_type_1">1 型</string>
   <string name="helloactivity_spinner_diabetes_type_2">2 型</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit">使用する血糖値単位</string>
+  <string name="preferences_spinner_preferred_a1c_unit">使用する A1C 単位</string>
+  <string name="preferences_spinner_preferred_a1c_unit_1">パーセント</string>
+  <string name="preferences_spinner_preferred_weight_unit">使用する体重の単位</string>
+  <string name="preferences_spinner_preferred_weight_unit_1">キログラム</string>
+  <string name="preferences_spinner_preferred_weight_unit_2">ポンド</string>
   <string name="helloactivity_share_data">研究の匿名データを共有します。</string>
   <string name="helloactivity_hint_settings">後でこれらの設定を変更できます。</string>
   <string name="helloactivity_button_next">次へ</string>
@@ -112,6 +118,8 @@
   <string name="assistant">アシスタント</string>
   <string name="assistant_action_update">今すぐ更新</string>
   <string name="assistant_action_ok">OK、取得する</string>
+  <string name="assistant_action_feedback">フィードバックを送信</string>
+  <string name="assistant_action_live_chat">ライブ チャット</string>
   <string name="assistant_action_reading">測定値を追加</string>
   <string name="assistant_action_try">今すぐ試す</string>
   <string name="assistant_weight_title">あなたの体重を更新</string>
@@ -135,10 +143,11 @@
   <string name="helloactivity_preferred_range_min">最小値</string>
   <string name="helloactivity_preferred_range_max">最大値</string>
   <string name="helloactivity_language">言語</string>
+  <string name="menu_support_error1">メール アプリがインストールされていません。hello@glucosio.org にメールを送ってください。</string>
   <string name="invitation_title">他の人を招待</string>
   <string name="invitation_message">糖尿病の管理と研究のためのオープンソース アプリ Glucosio を試してください。</string>
   <string name="invitation_cta">Glucosio を試してください</string>
-  <string name="title_activity_backup">バックアップ</string>
+  <string name="title_activity_backup_drive">GoogleDriveバックアップ</string>
   <string name="preferences_privacy">プライバシー</string>
   <string name="helloactivity_textview_tos">Glucosio の使用に関して、以下に同意します</string>
   <string name="preferences_backup_google_drive">Google ドライブ</string>
@@ -253,4 +262,19 @@
   <string name="menu_support_forum">サポート フォーラム</string>
   <string name="notification_reminder_glucose">血糖値を記録する時間です!</string>
   <string name="notification_reminder_medication">薬を服用する時間です!</string>
+  <string name="overview_hb1ac_info">これはただの推定値で、測定値の先月の平均値を使用して計算されます。この推定値は、広く受け入れられている HbA1C の公式を使用していますが、推定値としてのみ使用することをおすすめします。</string>
+  <string name="dialog_add_notes">メモ</string>
+  <string name="sidebar_backup_export">バックアップ &amp; 復元</string>
+  <string name="menu_backup_backup">Google ドライブでバックアップ</string>
+  <string name="menu_backup_restore">復元</string>
+  <string name="menu_backup_csv">CSVエクスポート</string>
+  <string name="activity_backup_drive_message_restart">変更を適用するために再起動しています...</string>
+  <string name="activity_backup_drive_desc_1">Google ドライブを使用してクラウドの Glucosio データベースを同期します。</string>
+  <string name="activity_backup_drive_desc_2">携帯電話を無くしたり変更した場合、すべての測定値を復元することができます。あるいはお使いのデバイス間で Glucosio のデータを同期することができます。</string>
+  <string name="activity_backup_drive_success">ドライブにデータベースを正しくアップロードしました</string>
+  <string name="activity_backup_drive_restore_success">ドライブからデータベースを正しく復元しました</string>
+  <string name="activity_backup_drive_failed">何か問題が起きたようです。後でもう一度やり直してください :/</string>
+  <string name="activity_backup_drive_button_backup">今すぐバックアップ</string>
+  <string name="activity_backup_drive_button_restore">ドライブから復元</string>
+  <string name="activity_backup_drive_error_restore">ドライブから復元するための有効なバックアップが見つかりません</string>
 </resources>

@@ -58,6 +58,10 @@ public class DatabaseHandler {
         this.realm = Realm.getInstance(mRealmConfig); // Automatically run migration if needed
     }
 
+    public Realm getRealmIstance(){
+        return realm;
+    }
+
     public void addUser(User user) {
         realm.beginTransaction();
         realm.copyToRealm(user);

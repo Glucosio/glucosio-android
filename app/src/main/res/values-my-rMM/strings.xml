@@ -136,13 +136,11 @@
   <string name="invitation_title">အခြားသူများကို ဖိတ်ခေါ်ပါ</string>
   <string name="invitation_message">ဆီးချိုရောဂါဆိုင်ရာ စီမံခန့်ခွဲမှုနှင့် သုတေသနအတွက် ပွင့်လင်းရင်းမြစ် အက်ပ် Glucosio ကို စမ်းသုံးကြည့်ပါ။</string>
   <string name="invitation_cta">Glucosio ကို စမ်းသုံးကြည့်ပါ။</string>
-  <string name="title_activity_backup">သိမ်းဆည်းပါ</string>
   <string name="preferences_privacy">ကိုယ်​ရေးလုံခြုံမှု</string>
   <string name="helloactivity_textview_tos">Glucosio ကို အသုံးပြုခြင်းဖြင့် သင် ​အောက်ပါအ​ကြောင်းအရာကို သ​ဘောတူပြီး ဖြစ်သည်။</string>
   <string name="preferences_backup_google_drive">ဂူဂဲလ် ဒရိုက်ဖ်</string>
   <string name="preferences_about_glucosio">Glucosio အ​ကြောင်း</string>
   <string name="preferences_rate">Glucosio ကို အဆင့်သတ်မှတ်​ပေးပါ</string>
-  <string name="preferences_licences_open">ပွင့်လင်းရင်းမြစ်ဆိုင်ရာ အသုံးပြုခွင့်မူဝါဒ</string>
   <string name="preferences_freestyle_libre">FreeStyleLibre® ၏ အထောက်အပံ့ အကူအညီကို ဖွင့်ပါ</string>
   <string name="preferences_freestyle_libre_experimental">စမ်းသပ်အဆင့်: FreeStyle Libre® ၏ အထောက်အပံ့ အကူအညီကို ဖွင့်ပါ</string>
   <string name="about_donate">Glucosio သို့ လှူဒါန်းပါ</string>

@@ -129,12 +129,10 @@
   <string name="helloactivity_language">Dil Seç</string>
   <string name="invitation_title">Başka kişileri davet edin</string>
   <string name="invitation_cta">Glucosio deneyin</string>
-  <string name="title_activity_backup">Yedek alma</string>
   <string name="preferences_privacy">Gizlilik</string>
   <string name="preferences_backup_google_drive">Google Drive</string>
   <string name="preferences_about_glucosio">Glucosio hakkında</string>
   <string name="preferences_rate">Glucosio\'yu Değerlendir</string>
-  <string name="preferences_licences_open">Açık Kaynak Lisansları</string>
   <string name="about_donate">Glucosio\'ya bağış yap</string>
   <string name="reading_ok">OK</string>
   <string name="reading_hypo">Hipoglisemi</string>
@@ -208,4 +206,11 @@
   <string name="freestylelibre_nfc_not_enabled">NFC devre dışı.</string>
   <string name="overview_hb1ac_error_no_data">HBA1C hesaplamak için yeterli veri yok</string>
   <string name="overview_hb1ac">HBA1C:</string>
+  <string name="activity_converter_a1c">A1C</string>
+  <string name="activity_converter_save">KAYDET</string>
+  <string name="menu_support">Destek</string>
+  <string name="menu_support_title">Size nasıl yardımcı olabiliriz?</string>
+  <string name="menu_support_email">E-posta</string>
+  <string name="menu_support_live">Canlı Sohbet</string>
+  <string name="menu_support_forum">Destek Forumu</string>
 </resources>

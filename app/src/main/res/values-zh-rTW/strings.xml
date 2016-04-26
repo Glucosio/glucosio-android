@@ -40,6 +40,12 @@
   <string name="helloactivity_spinner_diabetes_type">糖尿病類型</string>
   <string name="helloactivity_spinner_diabetes_type_1">第一型</string>
   <string name="helloactivity_spinner_diabetes_type_2">第二型</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit">偏好的血糖值單位</string>
+  <string name="preferences_spinner_preferred_a1c_unit">偏好的糖化血色素 (HbA1c) 單位</string>
+  <string name="preferences_spinner_preferred_a1c_unit_1">百分比</string>
+  <string name="preferences_spinner_preferred_weight_unit">偏好的重量單位</string>
+  <string name="preferences_spinner_preferred_weight_unit_1">公斤</string>
+  <string name="preferences_spinner_preferred_weight_unit_2">磅</string>
   <string name="helloactivity_share_data">匿名地分享資料提供研究。</string>
   <string name="helloactivity_hint_settings">您以後可以更改這些設定。</string>
   <string name="helloactivity_button_next">下一步</string>
@@ -112,6 +118,8 @@
   <string name="assistant">小幫手</string>
   <string name="assistant_action_update">立刻更新</string>
   <string name="assistant_action_ok">好，收到！</string>
+  <string name="assistant_action_feedback">傳送意見回饋</string>
+  <string name="assistant_action_live_chat">線上聊天</string>
   <string name="assistant_action_reading">新增測量讀數</string>
   <string name="assistant_action_try">立刻試試</string>
   <string name="assistant_weight_title">更新您的體重</string>
@@ -135,10 +143,11 @@
   <string name="helloactivity_preferred_range_min">最小值</string>
   <string name="helloactivity_preferred_range_max">最大值</string>
   <string name="helloactivity_language">語言</string>
+  <string name="menu_support_error1">並未安裝郵件程式。請寄送郵件到 hello@glucosio.org</string>
   <string name="invitation_title">邀請其他人</string>
   <string name="invitation_message">試試 Glucosio，一套開放原始碼的糖尿病管理與研究程式。</string>
   <string name="invitation_cta">試試 Glucosio</string>
-  <string name="title_activity_backup">備份</string>
+  <string name="title_activity_backup_drive">Google Drive 備份</string>
   <string name="preferences_privacy">隱私權</string>
   <string name="helloactivity_textview_tos">使用 Glucosio，代表您同意</string>
   <string name="preferences_backup_google_drive">Google 雲端硬碟</string>
@@ -253,4 +262,19 @@
   <string name="menu_support_forum">技術支援討論區</string>
   <string name="notification_reminder_glucose">是時候來記錄血糖值了！</string>
   <string name="notification_reminder_medication">是時候來吃藥了！</string>
+  <string name="overview_hb1ac_info">這只是依照上個月的讀數計算出的估計值。雖然這個 HbA1C 數值是依照普遍被接受的公式所計算出的，但我們還是建議使用者只將這個數字看作估計值。</string>
+  <string name="dialog_add_notes">備註</string>
+  <string name="sidebar_backup_export">備份與匯出</string>
+  <string name="menu_backup_backup">Google Drive 上的備份</string>
+  <string name="menu_backup_restore">還原</string>
+  <string name="menu_backup_csv">匯出成 CSV</string>
+  <string name="activity_backup_drive_message_restart">正在重新啟動以套用變更…</string>
+  <string name="activity_backup_drive_desc_1">將 Glucosio 的資料庫同步到 Google Drive。</string>
+  <string name="activity_backup_drive_desc_2">若您搞丟手機或換新手機，就可以還原所有數據；或是可將 Glucosio 同步到您所有裝置上。</string>
+  <string name="activity_backup_drive_success">已正確上傳資料庫到 Drive</string>
+  <string name="activity_backup_drive_restore_success">已從 Drive 正確還原資料庫</string>
+  <string name="activity_backup_drive_failed">有些東西怪怪的，請再試一次 :/</string>
+  <string name="activity_backup_drive_button_backup">立刻備份</string>
+  <string name="activity_backup_drive_button_restore">從 Drive 還原</string>
+  <string name="activity_backup_drive_error_restore">無法在 Drive 當中找到有效的備份</string>
 </resources>

@@ -94,14 +94,14 @@
     <item>Wenn Sie essen gehen, fragen Sie ob die Küche die Soße oder das Salatdressing an der Seite oder in einem Schälchen, anstatt auf dem Essen, beistellen kann.</item>
     <item>\"Zuckerfrei\" bedeutet nicht, dass das Produkt auch wirklich ohne Zucker ist. Mindestmengen von 0,5 Gramm pro 100g sind deklarationsfrei. Außerdem kann das Produkt Zuckerersatzstoffe enthalten.</item>
     <item>Ein gesundes Körpergewicht hilft den Blutzucker zu stabilisieren. Ihr Arzt, ein Ernährungsberater oder Fitnesstrainer kann ihnen helfen.</item>
-    <item>Checking your blood level and tracking it in an app like Glucosio twice a day will help you be aware of outcomes from food and lifestyle choices.</item>
-    <item>Get A1c blood tests to find out your average blood sugar for the past 2 to 3 months. Your doctor should tell you how frequently this test will be needed to be performed.</item>
+    <item>Ihren Blutzucker mittels einer App wie Glucosio zwei Mal täglich zu überprüfen und zu verfolgen, wird ihnen dabei helfen, den Ergebnissen von Ernährung und des Lebensstils bewusst zu werden.</item>
+    <item>Verwenden sie A1c Tests um ihren durchschnittlichen Blutzucker der vergangenen 2 bis 3 Monate zu bestimmen. Ihr Arzt sollte ihnen mitteilen, wie oft sie diesen durchführen müssen.</item>
     <item>Tracking how many carbohydrates you consume can be just as important as checking blood levels since carbohydrates influence blood glucose levels. Talk to your doctor or a dietician about carbohydrate intake.</item>
-    <item>Controlling blood pressure, cholesterol, and triglyceride levels is important since diabetics are susceptible to heart disease.</item>
+    <item>Kontrolle von Blutdruck, Cholesterin und Triglyzeride ist wichtig, da Diabetiker anfälliger für Herzerkrankungen sind.</item>
     <item>There are several diet approaches you can take to eating healthier and helping improve your diabetes outcomes. Seek advice from a dietician on what will work best for you and your budget.</item>
     <item>Working on getting regular exercise is especially important for those with diabetes and can help you maintain a healthy weight. Talk to your doctor about exercises that will be appropriate for you.</item>
     <item>Being sleep-deprived can make you eat more especially things like junk food and as a result can negatively impact your health. Be sure to get a good night sleep and consult a sleep specialist if you are having difficulty.</item>
-    <item>Stress can have a negative impact on diabetes. Talk to your doctor or other health care professional about coping with stress.</item>
+    <item>Stress kann einen negativen Einfluss auf Diabetes haben. Befragen Sie Ihren Arzt oder andere Professionelle zu Umgang mit Stress.</item>
     <item>Visiting your doctor once a year and having regular communication throughout the year is important for diabetics to prevent any sudden onset of associated health problems.</item>
     <item>Take your medicine as prescribed by your doctor even small lapses in your medicine can impact your blood glucose level and cause other side effects. If having difficulty remembering ask your doctor about medication management and reminder options.</item>
   </string-array>
@@ -112,10 +112,17 @@
   <string name="assistant_action_try">PROBIEREN SIE ES JETZT</string>
   <string name="assistant_weight_title">Aktualisiere dein Gewicht</string>
   <string name="assistant_weight_desc">Vergessen Sie nicht ihr Gewicht zu aktualisien damit Glucosio die reale Situation wiedergeben kann.</string>
+  <string name="assistant_research_title">Aktualisieren sie ihre Forschung opt-in</string>
   <string name="assistant_categories_title">Kategorie erstellen</string>
+  <string name="assistant_categories_desc">Glucosio kommt mit Standardkategorien für Zuckereingabe, aber sie können benutzerdefinierte Kategorien in Einstellungen entsprechend ihren speziellen Anforderungen erstellen.</string>
+  <string name="assistant_check_title">Kommen sie öfter wieder</string>
+  <string name="assistant_check_desc">Glucosio-Assistent bietet regelmäßige Tipps und wird laufend verbessert. Also kommen sie regelmäßig hierhin zurück für sinnvolle Maßnahmen, die sie ergreifen können, um ihr Glucosio-Erlebnis zu verbessern und andere nützliche Tipps.</string>
   <string name="assistant_feedback_title">Feedback geben </string>
+  <string name="assistant_feedback_desc">Wenn sie technische Probleme finden oder Feedback über Glucosio abgeben möchten, empfehlen wir ihnen dies im Menü \"Einstellungen\" einzugeben, um Glucosio zu verbessern.</string>
   <string name="assistant_reading_title">Messwert hinzufügen</string>
+  <string name="assistant_reading_desc">Achten Sie darauf, regelmäßig Ihre Glukose-Messungen hinzuzufügen, damit wir helfen können, Ihren Blutzuckerspiegel im Laufe der Zeit zu verfolgen.</string>
   <string name="assistant_export_title">Daten exportieren</string>
+  <string name="assistant_export_desc">Teilen sie ihre Daten mit Ihrem Arzt oder sichern sie diese auf Google Drive mit der Exportfunktion.</string>
   <string name="assistant_calculator_a1c_title">Berechne A1C</string>
   <string name="helloactivity_spinner_preferred_range">Empfohlener Bereich</string>
   <string name="helloactivity_spinner_preferred_range_4">Individueller Bereich</string>
@@ -125,13 +132,11 @@
   <string name="invitation_title">Empfehle Glucosio weiter</string>
   <string name="invitation_message">Teste Glucosio, ein Open Source Programm für Diabetes-Managment und Forschung.</string>
   <string name="invitation_cta">Teste Glucosio</string>
-  <string name="title_activity_backup">Programmdaten sichern</string>
   <string name="preferences_privacy">Datenschutz</string>
   <string name="helloactivity_textview_tos">Durch die Verwendung von Glucosio akzeptierst du die</string>
   <string name="preferences_backup_google_drive">Google Drive</string>
   <string name="preferences_about_glucosio">Über Glucosio</string>
   <string name="preferences_rate">Bewerte Glucosio</string>
-  <string name="preferences_licences_open">Open Source Lizenz</string>
   <string name="preferences_freestyle_libre">Aktiviere FreeStyle Libre® Unterstützung</string>
   <string name="preferences_freestyle_libre_experimental">EXPERIMENTELL: Aktiviere FreeStyle Libre® Unterstützung</string>
   <string name="preferences_font_dyslexia_experimental">EXPERIMENTELL: Erhöht die Lesbarkeit für Benutzer mit Dyslexie</string>
@@ -185,6 +190,7 @@
   <string name="dialog_export_title">Daten exportieren</string>
   <string name="activity_export_date_from">Startdatum:</string>
   <string name="dialog_export_date_to">Enddatum:</string>
+  <string name="dialog_export_today">Wählen Sie heute</string>
   <string name="dialog_export_button">Export</string>
   <string name="title_activity_export">Daten exportieren</string>
   <string name="dialog_export_all">Alles exportieren</string>
@@ -232,4 +238,12 @@
   <string name="activity_converter_a1c">A1C</string>
   <string name="activity_converter_title">A1C Rechner</string>
   <string name="activity_converter_save">Speichern</string>
+  <string name="menu_support">Support</string>
+  <string name="menu_support_title">Wie können wir ihnen helfen?</string>
+  <string name="menu_support_email">Email</string>
+  <string name="menu_support_live">Live Chat</string>
+  <string name="menu_support_forum">Support Forum</string>
+  <string name="notification_reminder_glucose">Es ist Zeit ihren Blutzuckerspiegel zu messen!</string>
+  <string name="notification_reminder_medication">Es ist Zeit ihre Medikamente zu nehmen!</string>
+  <string name="overview_hb1ac_info">Dies ist nur eine Schätzung und errechnet sich aus dem Durchschnitt des letzten Monats der Messungen. Während diese Schätzung eine weithin akzeptierte Formel für die Abschätzung des HbA1C ist, appellieren wir an die User dies nur als Schätzung zu verwenden.</string>
 </resources>

@@ -130,7 +130,6 @@
   <string name="invitation_title">ادعو أشخاص آخرين</string>
   <string name="invitation_message">جرِّب جلوكوسيو، تطبيق مصدر مفتوح لإدارة مرض السكري والبحث.</string>
   <string name="invitation_cta">جرِّب جلوكوسيو</string>
-  <string name="title_activity_backup">نسخة احتياطية</string>
   <string name="preferences_privacy">الخصوصية</string>
   <string name="helloactivity_textview_tos">باستخدام جلوكوسيو، فإنك توافق على</string>
   <!-- Future Strings Baked In Early For l10n -->

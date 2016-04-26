@@ -136,13 +136,11 @@
   <string name="invitation_title">Inviter d\'autres personnes</string>
   <string name="invitation_message">Essayer Glucosio, une application open-source pour la gestion du diabète et la recherche associée.</string>
   <string name="invitation_cta">Essayer Glucosio</string>
-  <string name="title_activity_backup">Sauvegardes</string>
   <string name="preferences_privacy">Politique de confidentialité</string>
   <string name="helloactivity_textview_tos">En utilisant Glucosio, vous acceptez les</string>
   <string name="preferences_backup_google_drive">Google Drive</string>
   <string name="preferences_about_glucosio">À propos de Glucosio</string>
   <string name="preferences_rate">Noter Glucosio</string>
-  <string name="preferences_licences_open">Licences open-source</string>
   <string name="about_donate">Don à Glucosio</string>
   <string name="reading_ok">Ok</string>
   <string name="reading_hypo">Hypoglycémie</string>

@@ -153,8 +153,9 @@
     <string name="preferences_about">About</string>
     <string translatable="false" name="preferences_experimental_title">Here be dragons :/</string>
     <string name="preferences_experimental">These features are experimental and may not fully work and are for early testing by users. Remember that you can shake your phone to send us feedback.</string>
-    <string name="version" translatable="false">0.11.0 (Imli)</string>
+    <string name="version" translatable="false">0.12.0 (Imli)</string>
     <string name="preferences_version">Version</string>
+    <string name="preferences_coming_soon">Coming soon...</string>
     <string name="preferences_terms">Terms of use</string>
     <string name="glucose_reading_type">Type</string>
     <string name="weight">Weight</string>
@@ -228,7 +229,7 @@
 
     <string-array name="assistant_actions" translatable="false">
         <item>@string/assistant_action_try</item>
-        <item>@string/assistant_action_live_chat</item>
+        <item>@string/assistant_action_feedback</item>
         <item>@string/assistant_action_reading</item>
         <item>@string/assistant_action_try</item>
         <item>@string/dialog_export_button</item>
@@ -252,15 +253,19 @@
     <string name="menu_support_error1">There isn\'t an email app installed. Please send a mail to hello@glucosio.org</string>
     <string-array name="menu_support_options" translatable="false">
         <item>@string/menu_support_email</item>
-        <item>@string/menu_support_live</item>
         <item>@string/menu_support_forum</item>
+    </string-array>
+
+    <string-array name="menu_backup_options" translatable="false">
+        <item>@string/menu_backup_backup</item>
+        <item>@string/menu_backup_csv</item>
     </string-array>
 
     <string name="invitation_title">Invite other people</string>
     <string name="invitation_message">Try Glucosio, an open source app for diabetes management and research.</string>
     <string name="invitation_cta">Try Glucosio</string>
 
-    <string name="title_activity_backup">Backup</string>
+    <string name="title_activity_backup_drive">Google Drive Backup</string>
     <string name="preferences_privacy">Privacy</string>
     <string name="helloactivity_textview_tos">By using Glucosio, you are agreeing to the</string>
     <string name="preferences_backup_google_drive">Google Drive</string>
@@ -386,6 +391,31 @@
     <string name="notification_reminder_medication">It is time to take your medication!</string>
     <string name="overview_hb1ac_info">This is just an estimate and is calculated using the averages of the last month of readings. While this estimate uses a widely accepted formula for HbA1C estimation we encourage users to only use this as an estimate.</string>
     <string name="dialog_add_notes">Notes</string>
+    <string name="sidebar_backup_export">Backup &amp; Export</string>
+    <string name="menu_backup_backup">Backup on Google Drive</string>
+    <string name="menu_backup_restore">Restore</string>
+    <string name="menu_backup_csv">CSV export</string>
+    <string name="activity_backup_drive_automatic">Automatic backup</string>
+    <string name="activity_backup_drive_desc">Backing up your data to Google Drive allows you to restore all your readings in case you lost or change your phone.</string>
+    <string name="activity_backup_drive_message_restart">Restarting to apply changes...</string>
+    <string name="activity_backup_drive_desc_1">Sync Glucosio\'s database in the cloud with Google Drive.</string>
+    <string name="activity_backup_drive_desc_2">You\'ll be able to restore all your readings if you lost or change phone or sync Glucosio\'s data between your devices.</string>
+    <string name="activity_backup_drive_success">Database correctly uploaded on Drive</string>
+    <string name="activity_backup_drive_restore_success">Correctly restored database from Drive</string>
+    <string name="activity_backup_drive_failed">Something went wrong. Please try again :/</string>
+    <string name="activity_backup_drive_last">Last backup:</string>
+    <string name="activity_backup_drive_folder">Backup folder</string>
+    <string name="activity_backup_drive_button_backup">Backup now</string>
+    <string name="activity_backup_drive_recent">Recent backups</string>
+    <string name="activity_backup_drive_more">See more Backups</string>
+    <string name="activity_backup_drive_dialog_restore_title">Revert to previous version</string>
+    <string name="activity_backup_drive_dialog_restore_desc">Restoring the backup will overwrite all the existing data with the backup.</string>
+    <string name="activity_backup_drive_dialog_restore_details">Backup details</string>
+    <string name="activity_backup_drive_dialog_restore_button_cancel">Cancel</string>
+    <string name="activity_backup_drive_dialog_restore_button_restore">Restore backup</string>
+    <string name="activity_backup_drive_button_restore">Restore from Drive</string>
+    <string name="activity_backup_drive_error_restore">Unable to find a valid backup to restore from Drive</string>
+    <string name="activity_main_error_play_services">Glucosio needs Play Services to enable Google Drive backup.</string>
 
     <string-array name="fragment_history_selector" translatable="false">
         <item>@string/fab_glucose</item>
