@@ -389,8 +389,10 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             public void onClick(DialogInterface dialog, int which) {
                 if (which == 0) {
                     if (checkPlayServices()) {
-                        Intent intent = new Intent(getApplicationContext(), BackupActivity.class);
-                        startActivity(intent);
+                        // TODO: Finish backup in next release
+                        /*Intent intent = new Intent(getApplicationContext(), BackupActivity.class);
+                        startActivity(intent);*/
+                        Toast.makeText(getApplicationContext(), R.string.preferences_coming_soon, Toast.LENGTH_SHORT).show();
                     } else {
                         dialog.dismiss();
                     }
