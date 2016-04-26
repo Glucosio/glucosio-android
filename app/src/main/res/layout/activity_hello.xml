@@ -166,7 +166,6 @@
             android:background="?android:attr/selectableItemBackground"
             android:drawableEnd="@drawable/ic_navigate_next_pink_24px"
             android:drawableRight="@drawable/ic_navigate_next_pink_24px"
-            android:onClick="onStartClicked"
             android:padding="8dp"
             android:text="@string/helloactivity_button_start"
             android:textColor="@color/glucosio_pink"

@@ -122,12 +122,19 @@ public class HelloActivity extends AppCompatActivity {
             }
         });
 
+        startButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onStartClicked();
+            }
+        });
+
         Analytics analytics = application.getAnalytics();
         analytics.reportScreen("Hello Activity");
         Log.i("MainActivity", "Setting screen name: main");
     }
 
-    public void onStartClicked(View v) {
+    public void onStartClicked() {
         presenter.onNextClicked(ageTextView.getText().toString(),
                 genderSpinner.getSpinner().getSelectedItem().toString(),
                 Locale.getDefault().getDisplayLanguage(),
