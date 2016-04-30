@@ -270,7 +270,7 @@
   <string name="menu_backup_csv">CSV exporteren</string>
   <string name="activity_backup_drive_message_restart">Herstarten om wijzigingen toe te passen...</string>
   <string name="activity_backup_drive_desc_1">Synchroniseer Glucosio’s database in de cloud met Google Drive.</string>
-  <string name="activity_backup_drive_desc_2">Zo kunt u alle uitlezingen terugzetten als u uw telefoon hebt verloren of vervangen, of Glucosio’s gegevens tussen uw apparaten synchroniseren.</string>
+  <string name="activity_backup_drive_desc_2">Zo kunt u al uw uitlezingen terugzetten als u uw telefoon hebt verloren of vervangen, of Glucosio’s gegevens tussen uw apparaten synchroniseren.</string>
   <string name="activity_backup_drive_success">Database met succes geüpload naar Drive</string>
   <string name="activity_backup_drive_restore_success">Database met succes teruggezet vanaf Drive</string>
   <string name="activity_backup_drive_failed">Er ging iets mis. Probeer het opnieuw. :/</string>
