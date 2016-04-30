@@ -34,6 +34,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
@@ -61,6 +62,7 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
     private AppCompatButton addFreeStyleButton;
     private TextInputLayout readingInputLayout;
     private LabelledSpinner readingTypeSpinner;
+    private int pagerPosition = 0;
     private boolean isCustomType;
 
     @Override
@@ -73,6 +75,12 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
             setSupportActionBar(toolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setElevation(2);
+        }
+
+
+        Bundle b = getIntent().getExtras();
+        if (b!=null) {
+            pagerPosition = b.getInt("pager");
         }
 
         presenter = new AddGlucosePresenter(this);
@@ -166,15 +174,17 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
 
             p = getIntent().getExtras();
             reading = p.getString("reading");
-            // If yes, first convert the decimal value from Freestyle to Integer
-            double d = Double.parseDouble(reading);
-            int glucoseValue = (int) d;
-            readingTextView.setText(glucoseValue + "");
-            readingInputLayout.setErrorEnabled(true);
-            readingInputLayout.setError(getResources().getString(R.string.dialog_add_glucose_freestylelibre_added));
-            addFreeStyleButton.setVisibility(View.GONE);
+            if (reading!=null) {
+                // If yes, first convert the decimal value from Freestyle to Integer
+                double d = Double.parseDouble(reading);
+                int glucoseValue = (int) d;
+                readingTextView.setText(glucoseValue + "");
+                readingInputLayout.setErrorEnabled(true);
+                readingInputLayout.setError(getResources().getString(R.string.dialog_add_glucose_freestylelibre_added));
+                addFreeStyleButton.setVisibility(View.GONE);
 
-            addAnalyticsEvent();
+                addAnalyticsEvent();
+            }
         } else {
             // Check if FreeStyle support is enabled in Preferences
             if (presenter.isFreeStyleLibreEnabled()) {
@@ -221,6 +231,10 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
 
     public void finishActivity() {
         Intent intent = new Intent(this, MainActivity.class);
+        // Pass pager position to open it again later
+        Bundle b = new Bundle();
+        b.putInt("pager", pagerPosition);
+        intent.putExtras(b);
         startActivity(intent);
         finish();
     }

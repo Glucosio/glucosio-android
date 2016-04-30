@@ -51,6 +51,7 @@ public class AddCholesterolActivity extends AppCompatActivity implements TimePic
     private TextView totalChoTextView;
     private TextView LDLChoTextView;
     private TextView HDLChoTextView;
+    private int pagerPosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +63,11 @@ public class AddCholesterolActivity extends AppCompatActivity implements TimePic
             setSupportActionBar(toolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setElevation(2);
+        }
+
+        Bundle b = getIntent().getExtras();
+        if (b!=null) {
+            pagerPosition = b.getInt("pager");
         }
 
         presenter = new AddCholesterolPresenter(this);
@@ -124,6 +130,10 @@ public class AddCholesterolActivity extends AppCompatActivity implements TimePic
 
     public void finishActivity() {
         Intent intent = new Intent(this, MainActivity.class);
+        // Pass pager position to open it again later
+        Bundle b = new Bundle();
+        b.putInt("pager", pagerPosition);
+        intent.putExtras(b);
         startActivity(intent);
         finish();
     }

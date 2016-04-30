@@ -251,6 +251,12 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                     .build();
         }
 
+        // Restore pager position
+        Bundle b = getIntent().getExtras();
+        if (b!=null) {
+            viewPager.setCurrentItem(b.getInt("pager"));
+        }
+
         checkIfEmptyLayout();
 
         Analytics analytics = application.getAnalytics();
@@ -298,6 +304,10 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     public void onGlucoseFabClicked(View v) {
         fabMenu.toggle(false);
         Intent intent = new Intent(this, AddGlucoseActivity.class);
+        // Pass pager position to open it again later
+        Bundle b = new Bundle();
+        b.putInt("pager", viewPager.getCurrentItem());
+        intent.putExtras(b);
         startActivity(intent);
         finish();
     }
@@ -305,6 +315,10 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     public void onKetoneFabClicked(View v) {
         fabMenu.toggle(false);
         Intent intent = new Intent(this, AddKetoneActivity.class);
+        // Pass pager position to open it again later
+        Bundle b = new Bundle();
+        b.putInt("pager", viewPager.getCurrentItem());
+        intent.putExtras(b);
         startActivity(intent);
         finish();
     }
@@ -312,6 +326,10 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     public void onPressureFabClicked(View v) {
         fabMenu.toggle(false);
         Intent intent = new Intent(this, AddPressureActivity.class);
+        // Pass pager position to open it again later
+        Bundle b = new Bundle();
+        b.putInt("pager", viewPager.getCurrentItem());
+        intent.putExtras(b);
         startActivity(intent);
         finish();
     }
@@ -319,6 +337,10 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     public void onHB1ACFabClicked(View v) {
         fabMenu.toggle(false);
         Intent intent = new Intent(this, AddA1CActivity.class);
+        // Pass pager position to open it again later
+        Bundle b = new Bundle();
+        b.putInt("pager", viewPager.getCurrentItem());
+        intent.putExtras(b);
         startActivity(intent);
         finish();
     }
@@ -326,6 +348,10 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     public void onCholesterolFabClicked(View v) {
         fabMenu.toggle(false);
         Intent intent = new Intent(this, AddCholesterolActivity.class);
+        // Pass pager position to open it again later
+        Bundle b = new Bundle();
+        b.putInt("pager", viewPager.getCurrentItem());
+        intent.putExtras(b);
         startActivity(intent);
         finish();
     }
@@ -333,6 +359,10 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     public void onWeightFabClicked(View v) {
         fabMenu.toggle(false);
         Intent intent = new Intent(this, AddWeightActivity.class);
+        // Pass pager position to open it again later
+        Bundle b = new Bundle();
+        b.putInt("pager", viewPager.getCurrentItem());
+        intent.putExtras(b);
         startActivity(intent);
         finish();
     }
