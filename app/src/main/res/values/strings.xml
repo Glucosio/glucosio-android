@@ -266,6 +266,7 @@
     <string name="invitation_cta">Try Glucosio</string>
 
     <string name="title_activity_backup_drive">Google Drive Backup</string>
+    <string name="activity_main_dialog_backup_export_title">Backup &amp; Export</string>
     <string name="preferences_privacy">Privacy</string>
     <string name="helloactivity_textview_tos">By using Glucosio, you are agreeing to the</string>
     <string name="preferences_backup_google_drive">Google Drive</string>
@@ -416,6 +417,7 @@
     <string name="activity_backup_drive_button_restore">Restore from Drive</string>
     <string name="activity_backup_drive_error_restore">Unable to find a valid backup to restore from Drive</string>
     <string name="activity_main_error_play_services">Glucosio needs Play Services to enable Google Drive backup.</string>
+    <string name="activity_main_dialog_csv_title">Export to CSV file</string>
 
     <string-array name="fragment_history_selector" translatable="false">
         <item>@string/fab_glucose</item>

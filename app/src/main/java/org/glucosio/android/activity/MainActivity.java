@@ -22,7 +22,6 @@ package org.glucosio.android.activity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.Dialog;
 import android.app.PendingIntent;
@@ -43,7 +42,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
@@ -72,7 +70,6 @@ import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.invitations.Invitation;
 import org.glucosio.android.presenter.ExportPresenter;
 import org.glucosio.android.presenter.MainPresenter;
-import org.glucosio.android.tools.RealmBackupRestore;
 
 import java.util.Calendar;
 
@@ -413,16 +410,15 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
     public void openBackupDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(getResources().getString(R.string.title_activity_backup_drive));
+        builder.setTitle(getResources().getString(R.string.activity_main_dialog_backup_export_title));
         builder.setItems(getResources().getStringArray(R.array.menu_backup_options), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 if (which == 0) {
                     if (checkPlayServices()) {
                         // TODO: Finish backup in next release
-                        /*Intent intent = new Intent(getApplicationContext(), BackupActivity.class);
-                        startActivity(intent);*/
-                        Toast.makeText(getApplicationContext(), R.string.preferences_coming_soon, Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(), BackupActivity.class);
+                        startActivity(intent);
                     } else {
                         dialog.dismiss();
                     }
@@ -440,7 +436,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
         lp.copyFrom(exportDialog.getWindow().getAttributes());
-        exportDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
         exportDialog.setContentView(R.layout.dialog_export);
