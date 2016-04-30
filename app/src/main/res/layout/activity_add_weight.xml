@@ -19,131 +19,136 @@
   ~
   -->
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
-    tools:context="org.glucosio.android.activity.AddWeightActivity">
+    tools:context="org.glucosio.android.activity.AddPressureActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="128dp"
-        android:background="@color/glucosio_pink"
-        android:gravity="bottom"
-        android:paddingBottom="16dp"
-        android:minHeight="?android:attr/actionBarSize"
-        app:contentInsetLeft="0dp"
-        app:contentInsetStart="0dp"
-        app:titleTextAppearance="@style/Toolbar.WhiteText" />
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="128dp"
+            android:background="@color/glucosio_pink"
+            android:gravity="bottom"
+            android:paddingBottom="16dp"
+            android:minHeight="?android:attr/actionBarSize"
+            app:contentInsetLeft="0dp"
+            app:contentInsetStart="0dp"
+            app:titleTextAppearance="@style/Toolbar.WhiteText" />
 
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/done_fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignBottom="@id/toolbar"
-        android:layout_marginBottom="-32dp"
-        android:layout_marginRight="20dp"
-        android:onClick="onFabClicked"
-        android:src="@drawable/ic_done_black_24dp"
-        app:backgroundTint="@color/glucosio_accent" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar"
-        android:layout_margin="16dp"
-        android:orientation="vertical">
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/done_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignBottom="@id/toolbar"
+            android:layout_marginBottom="-32dp"
+            android:layout_marginRight="20dp"
+            android:onClick="onFabClicked"
+            android:src="@drawable/ic_done_black_24dp"
+            app:backgroundTint="@color/glucosio_accent" />
 
         <LinearLayout
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_below="@id/toolbar"
+            android:layout_margin="16dp"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
-
-                    <EditText
-                        android:id="@+id/weight_add_value"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/dialog_add_weight"
-                        android:digits="1234567890"
-                        android:inputType="numberDecimal"
-                        android:singleLine="true"
-                        android:textColorHighlight="@color/glucosio_pink"
-                        android:textIsSelectable="false"
-                        android:textSize="@dimen/abc_text_size_body_2_material" />
-                </android.support.design.widget.TextInputLayout>
-
-                <TextView
-                    android:id="@+id/weight_add_unit_measurement"
-                    android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
-                    android:layout_marginBottom="8dp"
-                    android:gravity="bottom"
-                    android:text="kg"
-                    android:textSize="@dimen/abc_text_size_body_2_material"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:layout_marginTop="16dp"
-                android:orientation="horizontal"
-                android:weightSum="2">
+                android:orientation="vertical">
 
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="1">
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-                    <EditText
-                        android:id="@+id/dialog_add_date"
-                        android:layout_width="fill_parent"
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <EditText
+                            android:id="@+id/weight_add_value"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/dialog_add_weight"
+                            android:digits="1234567890"
+                            android:inputType="numberDecimal"
+                            android:singleLine="true"
+                            android:textColorHighlight="@color/glucosio_pink"
+                            android:textIsSelectable="false"
+                            android:textSize="@dimen/abc_text_size_body_2_material" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <TextView
+                        android:id="@+id/weight_add_unit_measurement"
+                        android:layout_width="wrap_content"
                         android:layout_height="fill_parent"
-                        android:clickable="false"
-                        android:cursorVisible="false"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
-                        android:hint="@string/dialog_add_date"
-                        android:singleLine="true"
-                        android:textSize="@dimen/abc_text_size_body_2_material" />
-                </android.support.design.widget.TextInputLayout>
+                        android:layout_marginBottom="8dp"
+                        android:gravity="bottom"
+                        android:text="kg"
+                        android:textSize="@dimen/abc_text_size_body_2_material"
+                        android:textStyle="bold" />
+                </LinearLayout>
 
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="1">
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
 
-                    <EditText
-                        android:id="@+id/dialog_add_time"
-                        android:layout_width="fill_parent"
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="0dp"
                         android:layout_height="fill_parent"
-                        android:clickable="false"
-                        android:cursorVisible="false"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
-                        android:hint="@string/dialog_add_time"
-                        android:singleLine="true"
-                        android:textSize="@dimen/abc_text_size_body_2_material" />
-                </android.support.design.widget.TextInputLayout>
+                        android:layout_weight="1">
+
+                        <EditText
+                            android:id="@+id/dialog_add_date"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:clickable="false"
+                            android:cursorVisible="false"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:hint="@string/dialog_add_date"
+                            android:singleLine="true"
+                            android:textSize="@dimen/abc_text_size_body_2_material" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1">
+
+                        <EditText
+                            android:id="@+id/dialog_add_time"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:clickable="false"
+                            android:cursorVisible="false"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:hint="@string/dialog_add_time"
+                            android:singleLine="true"
+                            android:textSize="@dimen/abc_text_size_body_2_material" />
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-</RelativeLayout>
+    </RelativeLayout>
+</ScrollView>
