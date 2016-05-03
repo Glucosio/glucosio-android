@@ -148,6 +148,7 @@
   <string name="invitation_message">Încearcă Glucosio, o aplicație cu sursă deschisă pentru gestionarea diabetului și cercetare.</string>
   <string name="invitation_cta">Încearcă Glucosio</string>
   <string name="title_activity_backup_drive">Backup Google Drive</string>
+  <string name="activity_main_dialog_backup_export_title">Copie de siguranță și exportare</string>
   <string name="preferences_privacy">Confidențialitate</string>
   <string name="helloactivity_textview_tos">Folosind Glucosio, ești de acord cu</string>
   <string name="preferences_backup_google_drive">Google Drive</string>

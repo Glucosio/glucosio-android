@@ -148,6 +148,7 @@
   <string name="invitation_message">糖尿病の管理と研究のためのオープンソース アプリ Glucosio を試してください。</string>
   <string name="invitation_cta">Glucosio を試してください</string>
   <string name="title_activity_backup_drive">GoogleDriveバックアップ</string>
+  <string name="activity_main_dialog_backup_export_title">バックアップ &amp; 復元</string>
   <string name="preferences_privacy">プライバシー</string>
   <string name="helloactivity_textview_tos">Glucosio の使用に関して、以下に同意します</string>
   <string name="preferences_backup_google_drive">Google ドライブ</string>

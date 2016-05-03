@@ -148,6 +148,7 @@
   <string name="invitation_message">試試 Glucosio，一套開放原始碼的糖尿病管理與研究程式。</string>
   <string name="invitation_cta">試試 Glucosio</string>
   <string name="title_activity_backup_drive">Google Drive 備份</string>
+  <string name="activity_main_dialog_backup_export_title">備份與匯出</string>
   <string name="preferences_privacy">隱私權</string>
   <string name="helloactivity_textview_tos">使用 Glucosio，代表您同意</string>
   <string name="preferences_backup_google_drive">Google 雲端硬碟</string>

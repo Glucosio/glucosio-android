@@ -149,6 +149,7 @@
   <string name="invitation_message">Prova Glucosio, un\'app open source per la gestione del diabete e per la ricerca.</string>
   <string name="invitation_cta">Prova Glucosio</string>
   <string name="title_activity_backup_drive">Google Drive Backup</string>
+  <string name="activity_main_dialog_backup_export_title">Backup &amp; esportazione</string>
   <string name="preferences_privacy">Privacy</string>
   <string name="helloactivity_textview_tos">Usando Glucosio, accetti le</string>
   <string name="preferences_backup_google_drive">Google Drive</string>

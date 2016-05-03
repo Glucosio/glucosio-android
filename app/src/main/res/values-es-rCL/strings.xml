@@ -148,6 +148,7 @@
   <string name="invitation_title">Invitar a otras personas</string>
   <string name="invitation_message">Probar Glucosio, una aplicación de fuente libre para la investigación y manejo de la diabetes.</string>
   <string name="invitation_cta">Probar Glucosio</string>
+  <string name="activity_main_dialog_backup_export_title">Copia de seguridad &amp; exportar</string>
   <string name="preferences_privacy">Privacidad</string>
   <string name="helloactivity_textview_tos">Al usar Glucosio, aceptas los</string>
   <string name="preferences_backup_google_drive">Google Drive</string>
