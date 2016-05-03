@@ -95,7 +95,7 @@
                             android:textSize="@dimen/abc_text_size_body_2_material" />
                     </android.support.design.widget.TextInputLayout>
 
-                    <TextView
+                    <TextView fontPath="fonts/lato-bold.ttf"
                         android:layout_width="wrap_content"
                         android:layout_height="fill_parent"
                         android:layout_marginBottom="8dp"
@@ -146,7 +146,7 @@
                             android:textSize="@dimen/abc_text_size_body_2_material" />
                     </android.support.design.widget.TextInputLayout>
 
-                    <TextView
+                    <TextView fontPath="fonts/lato-bold.ttf"
                         android:layout_width="wrap_content"
                         android:layout_height="fill_parent"
                         android:layout_marginBottom="8dp"

@@ -20,6 +20,7 @@
 
 package org.glucosio.android.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -41,6 +42,8 @@ import org.glucosio.android.tools.FormatDateTime;
 
 import java.text.DecimalFormat;
 import java.util.Calendar;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class AddWeightActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
@@ -192,5 +195,10 @@ public class AddWeightActivity extends AppCompatActivity implements TimePickerDi
     @Override
     public void onBackPressed() {
         finishActivity();
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

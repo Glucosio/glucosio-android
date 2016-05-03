@@ -20,6 +20,7 @@
 
 package org.glucosio.android.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -49,6 +50,8 @@ import org.glucosio.android.tools.LabelledSpinner;
 
 import java.text.DecimalFormat;
 import java.util.Calendar;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class AddGlucoseActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
@@ -300,5 +303,10 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
     public void startLibreActivity(View view) {
         Intent intent = new Intent(this, FreestyleLibre.class);
         startActivity(intent);
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

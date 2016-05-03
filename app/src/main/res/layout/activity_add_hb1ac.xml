@@ -93,7 +93,7 @@
                             android:textSize="@dimen/abc_text_size_body_2_material" />
                     </android.support.design.widget.TextInputLayout>
 
-                    <TextView
+                    <TextView fontPath="fonts/lato-bold.ttf"
                         android:id="@+id/hb1ac_unit"
                         android:layout_width="wrap_content"
                         android:layout_height="fill_parent"
