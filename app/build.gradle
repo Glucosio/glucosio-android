@@ -104,6 +104,7 @@ dependencies {
     compile "com.google.android.gms:play-services-gcm:${googlePlayServicesVer}"
 
     // Other libraries
+    compile 'com.github.paolorotolo:expandableheightlistview:1.0.0'
     compile 'com.github.clans:fab:1.6.3'
     compile 'com.wdullaer:materialdatetimepicker:2.3.0'
     compile 'com.github.PhilJay:MPAndroidChart:v2.2.4'
