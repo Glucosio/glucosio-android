@@ -14,14 +14,14 @@ public class BackupActivityTest extends RobolectricTest {
 
     private BackupActivity activity;
 
-/*    @Before
+    @Before
     public void setUp() throws Exception {
         initMocks(this);
 
         activity = Robolectric.buildActivity(BackupActivity.class).create().get();
     }
 
-    @Test
+    /*@Test
     public void ShouldInitBack_WhenCreated() throws Exception {
 
         verify(getBackup()).init(activity);
