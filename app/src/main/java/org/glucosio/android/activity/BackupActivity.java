@@ -88,7 +88,9 @@ public class BackupActivity extends AppCompatActivity {
         mGoogleApiClient = backup.getClient();
 
         backupButton = (Button) findViewById(R.id.activity_backup_drive_button_backup);
+/*
         restoreButton = (Button) findViewById(R.id.activity_backup_drive_button_restore);
+*/
 
         backupButton.setOnClickListener(new View.OnClickListener() {
             @Override

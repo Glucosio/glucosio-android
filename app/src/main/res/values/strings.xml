@@ -136,12 +136,12 @@
     <string name="fragment_overview_selector_day">Day</string>
     <string name="fragment_overview_selector_week">Week</string>
 
-    <string-array translatable="false" name="fragment_overview_selector_range">
+    <string-array name="fragment_overview_selector_range" translatable="false">
         <item>@string/fragment_overview_selector_day</item>
         <item>@string/fragment_overview_selector_week</item>
         <item>@string/fragment_overview_selector_month</item>
     </string-array>
-    <string-array translatable="false" name="fragment_overview_selector_metric">
+    <string-array name="fragment_overview_selector_metric" translatable="false">
         <item>@string/fab_glucose</item>
         <item>@string/fab_HB1AC</item>
         <item>@string/fab_cholesterol</item>
@@ -151,7 +151,7 @@
     </string-array>
     <string name="tip_example" translatable="false">Use less cheese in your recipes and meals. Fresh mozzarella packed in water and Swiss cheese are usually lower in sodium.</string>
     <string name="preferences_about">About</string>
-    <string translatable="false" name="preferences_experimental_title">Here be dragons :/</string>
+    <string name="preferences_experimental_title" translatable="false">Here be dragons :/</string>
     <string name="preferences_experimental">These features are experimental and may not fully work and are for early testing by users. Remember that you can shake your phone to send us feedback.</string>
     <string name="version" translatable="false">0.12.0 (Imli)</string>
     <string name="preferences_version">Version</string>
@@ -427,4 +427,5 @@
         <item>@string/fab_ketones</item>
         <item>@string/fab_weight</item>
     </string-array>
+    <string name="title_activity_splash">SplashActivity</string>
 </resources>
