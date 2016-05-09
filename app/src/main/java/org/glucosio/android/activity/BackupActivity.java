@@ -32,7 +32,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.drive.Drive;
@@ -43,7 +42,7 @@ import com.google.android.gms.drive.DriveFolder;
 import com.google.android.gms.drive.DriveId;
 import com.google.android.gms.drive.MetadataChangeSet;
 import com.google.android.gms.drive.OpenFileActivityBuilder;
-
+import io.realm.Realm;
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.backup.Backup;
@@ -55,8 +54,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-
-import io.realm.Realm;
 
 public class BackupActivity extends AppCompatActivity {
     private int REQUEST_CODE_PICKER = 2;
@@ -99,13 +96,13 @@ public class BackupActivity extends AppCompatActivity {
             }
         });
 
-        restoreButton.setOnClickListener(new View.OnClickListener() {
+/*        restoreButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openFilePicker();
             }
         });
-    }
+*/    }
 
     private void openFilePicker() {
         IntentSender intentSender = null;
