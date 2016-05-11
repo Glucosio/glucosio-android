@@ -20,6 +20,47 @@
   ~
   -->
 <resources>
+  <string name="action_settings">პარამეტრები</string>
+  <string name="action_feedback">უკუკავშირი</string>
+  <string name="action_invite">მეგობრის დაპატიჟება</string>
+  <string name="tab_overview">მიმოხილვა</string>
+  <string name="tab_history">ისტორია</string>
+  <string name="tab_tips">რჩევები</string>
+  <string name="title_activity_hello">გამარჯობა.</string>
+  <string name="helloactivity_headline">გამარჯობა.</string>
+  <string name="helloactivity_terms">გამოყენების პირობები</string>
+  <string name="helloactivity_country">ქვეყანა</string>
+  <string name="helloactivity_age">ასაკი</string>
+  <string name="helloactivity_age_invalid">გთხოვთ დაწეროთ სწორი ასაკი.</string>
+  <string name="helloactivity_gender">სქესი</string>
+  <string name="helloactivity_gender_list_1">კაცი</string>
+  <string name="helloactivity_gender_list_2">ქალი</string>
+  <string name="helloactivity_gender_list_3">სხვა</string>
+  <string name="helloactivity_spinner_diabetes_type">დიაბეტის ტიპი</string>
+  <string name="helloactivity_spinner_diabetes_type_1">ტიპი 1</string>
+  <string name="helloactivity_spinner_diabetes_type_2">ტიპი 2</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit">სასურველი გლუკოზის ერთეული</string>
+  <string name="preferences_spinner_preferred_a1c_unit">სასურველი A1C ერთეული</string>
+  <string name="preferences_spinner_preferred_a1c_unit_1">პროცენტი</string>
+  <string name="preferences_spinner_preferred_weight_unit">სასურველი წონის ერთეული</string>
+  <string name="preferences_spinner_preferred_weight_unit_1">კილოგრამი</string>
+  <string name="preferences_spinner_preferred_weight_unit_2">გირვანქა</string>
+  <string name="helloactivity_share_data">გააზიარეთ ანონიმური მონაცემები კვლევისთვის.</string>
+  <string name="helloactivity_hint_settings">ამის შეცვლა შეგიძლიათ მოგვიანებით პარამეტრებში.</string>
+  <string name="helloactivity_button_next">შემდეგი</string>
+  <string name="helloactivity_button_start">დაწყება</string>
+  <string name="dialog_add_concentration">კონცენტრაცია</string>
+  <string name="dialog_add_date">თარიღი</string>
+  <string name="dialog_add_time">დრო</string>
+  <string name="dialog_add_measured">გაზომილია</string>
+  <string name="dialog_add_type_1">საუზმის წინ</string>
+  <string name="dialog_add_type_2">საუზმის შემდეგ</string>
+  <string name="dialog_add_type_3">ლანჩის წინ</string>
+  <string name="dialog_add_type_4">ლანჩის შემდეგ</string>
+  <string name="dialog_add_type_5">სადილის წინ</string>
+  <string name="dialog_add_type_6">სადილის შემდეგ</string>
+  <string name="dialog_add_type_12">სხვა</string>
+  <string name="assistant_action_ok">კაი, გავიგე</string>
   <!-- Future Strings Baked In Early For l10n -->
   <!-- Exercise Types -->
   <!-- Food Entry Labels -->

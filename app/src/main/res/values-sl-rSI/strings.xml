@@ -129,4 +129,5 @@
   <!-- Food Entry Labels -->
   <!-- About Glucosio Strings -->
   <string name="dialog_add_weight">Teža</string>
+  <string name="title_activity_add_glucose">Dodaj vrednost izmerjene glukoze</string>
 </resources>

@@ -84,6 +84,7 @@
   <string name="preferences_about">アプリについて</string>
   <string name="preferences_experimental">これらの機能は実験的で完全には動作しないことがあり、ユーザーによる早期テスト用です。お使いの携帯電話を振って、フィードバックを送信することができることを覚えておいてください。</string>
   <string name="preferences_version">バージョン</string>
+  <string name="preferences_coming_soon">近日登場...</string>
   <string name="preferences_terms">利用規約</string>
   <string name="glucose_reading_type">型</string>
   <string name="weight">体重</string>
@@ -269,13 +270,26 @@
   <string name="menu_backup_backup">Google ドライブでバックアップ</string>
   <string name="menu_backup_restore">復元</string>
   <string name="menu_backup_csv">CSVエクスポート</string>
+  <string name="activity_backup_drive_automatic">自動バックアップ</string>
+  <string name="activity_backup_drive_desc">データを Google ドライブにバックアップして、お使いの携帯電話を失くしたり、変更した場合に測定値を復元することができます。</string>
   <string name="activity_backup_drive_message_restart">変更を適用するために再起動しています...</string>
   <string name="activity_backup_drive_desc_1">Google ドライブを使用してクラウドの Glucosio データベースを同期します。</string>
   <string name="activity_backup_drive_desc_2">携帯電話を無くしたり変更した場合、すべての測定値を復元することができます。あるいはお使いのデバイス間で Glucosio のデータを同期することができます。</string>
   <string name="activity_backup_drive_success">ドライブにデータベースを正しくアップロードしました</string>
   <string name="activity_backup_drive_restore_success">ドライブからデータベースを正しく復元しました</string>
   <string name="activity_backup_drive_failed">何か問題が起きたようです。後でもう一度やり直してください :/</string>
+  <string name="activity_backup_drive_last">前回のバックアップ:</string>
+  <string name="activity_backup_drive_folder">バックアップ フォルダー</string>
   <string name="activity_backup_drive_button_backup">今すぐバックアップ</string>
+  <string name="activity_backup_drive_recent">最新のバックアップ</string>
+  <string name="activity_backup_drive_more">さらにバックアップを表示</string>
+  <string name="activity_backup_drive_dialog_restore_title">以前のバージョンに戻す</string>
+  <string name="activity_backup_drive_dialog_restore_desc">バックアップを復元すると、既存のデータがすべてバックアップで上書きされます。</string>
+  <string name="activity_backup_drive_dialog_restore_details">バックアップの詳細</string>
+  <string name="activity_backup_drive_dialog_restore_button_cancel">キャンセル</string>
+  <string name="activity_backup_drive_dialog_restore_button_restore">バックアップを復元</string>
   <string name="activity_backup_drive_button_restore">ドライブから復元</string>
   <string name="activity_backup_drive_error_restore">ドライブから復元するための有効なバックアップが見つかりません</string>
+  <string name="activity_main_error_play_services">Glucosio は、Google ドライブ バックアップを利用するために Play サービスが必要です。</string>
+  <string name="activity_main_dialog_csv_title">CSVファイルのエクスポート</string>
 </resources>
