@@ -108,9 +108,9 @@ dependencies {
     compile 'com.github.clans:fab:1.6.3'
     compile 'com.wdullaer:materialdatetimepicker:2.3.0'
     compile 'com.github.PhilJay:MPAndroidChart:v2.2.4'
-    compile 'uk.co.chrisjenx:calligraphy:2.1.0'
+    compile 'uk.co.chrisjenx:calligraphy:2.2.0'
     compile 'net.danlew:android.joda:2.9.3'
-    compile('com.mikepenz:materialdrawer:5.2.1@aar') {
+    compile('com.mikepenz:materialdrawer:5.2.6@aar') {
         transitive = true
     }
 
