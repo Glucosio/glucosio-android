@@ -285,10 +285,12 @@
   <string name="activity_backup_drive_recent">Últimas copias de seguridad</string>
   <string name="activity_backup_drive_more">Ver más copias de seguridad</string>
   <string name="activity_backup_drive_dialog_restore_title">Volver a la versión anterior</string>
+  <string name="activity_backup_drive_dialog_restore_desc">Restaurar la copia de seguridad, va a sobrescribir todos los datos existentes con la copia de seguridad.</string>
   <string name="activity_backup_drive_dialog_restore_details">Detalles de la copia de seguridad</string>
   <string name="activity_backup_drive_dialog_restore_button_cancel">Cancelar</string>
   <string name="activity_backup_drive_dialog_restore_button_restore">Restaurar la copia de seguridad</string>
   <string name="activity_backup_drive_button_restore">Restaurar desde Drive</string>
   <string name="activity_backup_drive_error_restore">No es posible encontrar una copia de seguridad válida para restaurar desde Drive</string>
   <string name="activity_main_error_play_services">Glucosio necesita Play Services para habilitar la copia de seguridad en Google Drive.</string>
+  <string name="activity_main_dialog_csv_title">Exportar en fichero CSV</string>
 </resources>
