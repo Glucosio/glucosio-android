@@ -25,12 +25,15 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.SurfaceHolder;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
@@ -64,9 +67,13 @@ public class BackupActivity extends AppCompatActivity {
     private String TAG = "glucosio_drive_backup";
     private Button backupButton;
     private Button restoreButton;
+    private TextView folderTextView;
     private IntentSender intentPicker;
     private Realm realm;
+    private String backupFolder;
+    private String BACKUP_FOLDER_KEY = "backup_folder";
 
+    private SharedPreferences sharedPref;
 
     @Override
     public void onCreate(final Bundle savedInstanceState) {
@@ -74,6 +81,7 @@ public class BackupActivity extends AppCompatActivity {
         setContentView(R.layout.backup_drive_activity);
 
         GlucosioApplication glucosioApplication = (GlucosioApplication) getApplicationContext();
+        sharedPref = getPreferences(Context.MODE_PRIVATE);
         realm = glucosioApplication.getDBHandler().getRealmIstance();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -85,6 +93,7 @@ public class BackupActivity extends AppCompatActivity {
         mGoogleApiClient = backup.getClient();
 
         backupButton = (Button) findViewById(R.id.activity_backup_drive_button_backup);
+        folderTextView = (TextView) findViewById(R.id.activity_backup_drive_textview_folder);
 /*
         restoreButton = (Button) findViewById(R.id.activity_backup_drive_button_restore);
 */
@@ -102,7 +111,15 @@ public class BackupActivity extends AppCompatActivity {
                 openFilePicker();
             }
         });
-*/    }
+
+*/
+
+        // Show backup folder, if exists
+        backupFolder = sharedPref.getString(BACKUP_FOLDER_KEY, "");
+        if (!("").equals(backupFolder)){
+            folderTextView.setText(DriveId.decodeFromString(backupFolder).toString());
+        }
+    }
 
     private void openFilePicker() {
         IntentSender intentSender = null;
@@ -127,17 +144,22 @@ public class BackupActivity extends AppCompatActivity {
     }
 
     private void openFolderPicker() {
-        try {
-            if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
-                if (intentPicker == null)
-                    intentPicker = buildIntent();
-                //Start the picker to choose a folder
-                startIntentSenderForResult(
-                        intentPicker, REQUEST_CODE_PICKER, null, 0, 0, 0);
+        // First we check if a backup folder is set
+        if ("".equals(backupFolder)) {
+            try {
+                if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
+                    if (intentPicker == null)
+                        intentPicker = buildIntent();
+                    //Start the picker to choose a folder
+                    startIntentSenderForResult(
+                            intentPicker, REQUEST_CODE_PICKER, null, 0, 0, 0);
+                }
+            } catch (IntentSender.SendIntentException e) {
+                Log.e(TAG, "Unable to send intent", e);
+                showErrorDialog();
             }
-        } catch (IntentSender.SendIntentException e) {
-            Log.e(TAG, "Unable to send intent", e);
-            showErrorDialog();
+        } else {
+            uploadToDrive(DriveId.decodeFromString(backupFolder));
         }
     }
 
@@ -292,6 +314,8 @@ public class BackupActivity extends AppCompatActivity {
                     DriveId mFolderDriveId = data.getParcelableExtra(
                             OpenFileActivityBuilder.EXTRA_RESPONSE_DRIVE_ID);
 
+                    saveBackupFolder(mFolderDriveId.encodeToString());
+
                     uploadToDrive(mFolderDriveId);
                 }
                 break;
@@ -313,6 +337,12 @@ public class BackupActivity extends AppCompatActivity {
                 break;
 
         }
+    }
+
+    private void saveBackupFolder(String folderPath) {
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString(BACKUP_FOLDER_KEY, folderPath);
+        editor.apply();
     }
 
     private void showSuccessDialog() {
