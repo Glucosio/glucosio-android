@@ -40,6 +40,8 @@
   <string name="helloactivity_spinner_diabetes_type">Тип диабета</string>
   <string name="helloactivity_spinner_diabetes_type_1">Тип 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Тип 2</string>
+  <string name="preferences_spinner_preferred_weight_unit_1">килограммы</string>
+  <string name="preferences_spinner_preferred_weight_unit_2">фунты</string>
   <string name="helloactivity_share_data">Поделиться анонимными данными для исследований.</string>
   <string name="helloactivity_hint_settings">Позже вы можете изменить свои настройки.</string>
   <string name="helloactivity_button_next">ДАЛЬШЕ</string>
@@ -78,6 +80,7 @@
   <string name="preferences_about">О нас</string>
   <string name="preferences_experimental">Эти возможности экспериментальны, они могут не работать и предназначены для тестирования. Помните, что для того, чтобы отправить отзыв, достаточно потрести телефон.</string>
   <string name="preferences_version">Версия</string>
+  <string name="preferences_coming_soon">Скоро...</string>
   <string name="preferences_terms">Условия использования</string>
   <string name="glucose_reading_type">Тип</string>
   <string name="weight">Вес</string>
@@ -112,6 +115,8 @@
   <string name="assistant">Помощник</string>
   <string name="assistant_action_update">ОБНОВИТЬ СЕЙЧАС</string>
   <string name="assistant_action_ok">ХОРОШО, Я ПОНЯЛ</string>
+  <string name="assistant_action_feedback">ОТПРАВИТЬ ОТЗЫВ</string>
+  <string name="assistant_action_live_chat">ЧАТ</string>
   <string name="assistant_action_reading">ДОБАВИТЬ ДАННЫЕ</string>
   <string name="assistant_action_try">ПОПРОБОВАТЬ ПРЯМО СЕЙЧАС</string>
   <string name="assistant_weight_title">Обновите свой вес</string>
@@ -251,4 +256,12 @@
   <string name="menu_support_forum">Форум поддержки</string>
   <string name="notification_reminder_glucose">Пришло время для входа глюкозы в вашу кровь!</string>
   <string name="notification_reminder_medication">Настало время принять лекарство!</string>
+  <string name="dialog_add_notes">Заметки</string>
+  <string name="menu_backup_restore">Восстановить</string>
+  <string name="activity_backup_drive_automatic">Автоматическое резервное копирование</string>
+  <string name="activity_backup_drive_last">Последнее резервное копирование:</string>
+  <string name="activity_backup_drive_folder">Папка резервного копирования</string>
+  <string name="activity_backup_drive_button_backup">Создать резервную копию</string>
+  <string name="activity_backup_drive_dialog_restore_button_cancel">Отмена</string>
+  <string name="activity_backup_drive_dialog_restore_button_restore">Восстановить конфигурацию</string>
 </resources>
