@@ -30,11 +30,12 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.SurfaceHolder;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.drive.Drive;
@@ -43,9 +44,11 @@ import com.google.android.gms.drive.DriveContents;
 import com.google.android.gms.drive.DriveFile;
 import com.google.android.gms.drive.DriveFolder;
 import com.google.android.gms.drive.DriveId;
+import com.google.android.gms.drive.DriveResource;
+import com.google.android.gms.drive.Metadata;
 import com.google.android.gms.drive.MetadataChangeSet;
 import com.google.android.gms.drive.OpenFileActivityBuilder;
-import io.realm.Realm;
+
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.backup.Backup;
@@ -58,9 +61,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import io.realm.Realm;
+
 public class BackupActivity extends AppCompatActivity {
     private int REQUEST_CODE_PICKER = 2;
     private int REQUEST_CODE_SELECT = 3;
+    private int REQUEST_CODE_PICKER_FOLDER = 4;
 
     private Backup backup;
     private GoogleApiClient mGoogleApiClient;
@@ -71,6 +77,7 @@ public class BackupActivity extends AppCompatActivity {
     private IntentSender intentPicker;
     private Realm realm;
     private String backupFolder;
+    private LinearLayout selectFolderButton;
     private String BACKUP_FOLDER_KEY = "backup_folder";
 
     private SharedPreferences sharedPref;
@@ -94,6 +101,7 @@ public class BackupActivity extends AppCompatActivity {
 
         backupButton = (Button) findViewById(R.id.activity_backup_drive_button_backup);
         folderTextView = (TextView) findViewById(R.id.activity_backup_drive_textview_folder);
+        selectFolderButton = (LinearLayout) findViewById(R.id.activity_backup_drive_button_folder);
 /*
         restoreButton = (Button) findViewById(R.id.activity_backup_drive_button_restore);
 */
@@ -101,7 +109,20 @@ public class BackupActivity extends AppCompatActivity {
         backupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openFolderPicker();
+                // Open Folder picker, then upload the file on Drive
+                openFolderPicker(true);
+            }
+        });
+
+        selectFolderButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Check first if a folder is already selected
+                if (!"".equals(backupFolder)) {
+                    //Start the picker to choose a folder
+                    //False because we don't want to upload the backup on drive then
+                    openFolderPicker(false);
+                }
             }
         });
 
@@ -116,9 +137,25 @@ public class BackupActivity extends AppCompatActivity {
 
         // Show backup folder, if exists
         backupFolder = sharedPref.getString(BACKUP_FOLDER_KEY, "");
-        if (!("").equals(backupFolder)){
-            folderTextView.setText(DriveId.decodeFromString(backupFolder).toString());
+        if (!("").equals(backupFolder)) {
+            setBackupFolderTitle(DriveId.decodeFromString(backupFolder));
         }
+    }
+
+    private void setBackupFolderTitle(DriveId id) {
+        id.asDriveFolder().getMetadata((mGoogleApiClient)).setResultCallback(
+                new ResultCallback<DriveResource.MetadataResult>() {
+                    @Override
+                    public void onResult(DriveResource.MetadataResult result) {
+                        if (!result.getStatus().isSuccess()) {
+                            showErrorDialog();
+                            return;
+                        }
+                        Metadata metadata = result.getMetadata();
+                        folderTextView.setText(metadata.getTitle());
+                    }
+                }
+        );
     }
 
     private void openFilePicker() {
@@ -143,23 +180,39 @@ public class BackupActivity extends AppCompatActivity {
         }
     }
 
-    private void openFolderPicker() {
-        // First we check if a backup folder is set
-        if ("".equals(backupFolder)) {
+    private void openFolderPicker(boolean uploadToDrive) {
+        if (uploadToDrive) {
+            // First we check if a backup folder is set
+            if ("".equals(backupFolder)) {
+                try {
+                    if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
+                        if (intentPicker == null)
+                            intentPicker = buildIntent();
+                        //Start the picker to choose a folder
+                        startIntentSenderForResult(
+                                intentPicker, REQUEST_CODE_PICKER, null, 0, 0, 0);
+                    }
+                } catch (IntentSender.SendIntentException e) {
+                    Log.e(TAG, "Unable to send intent", e);
+                    showErrorDialog();
+                }
+            } else {
+                uploadToDrive(DriveId.decodeFromString(backupFolder));
+            }
+        } else {
             try {
+                intentPicker = null;
                 if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
                     if (intentPicker == null)
                         intentPicker = buildIntent();
                     //Start the picker to choose a folder
                     startIntentSenderForResult(
-                            intentPicker, REQUEST_CODE_PICKER, null, 0, 0, 0);
+                            intentPicker, REQUEST_CODE_PICKER_FOLDER, null, 0, 0, 0);
                 }
             } catch (IntentSender.SendIntentException e) {
                 Log.e(TAG, "Unable to send intent", e);
                 showErrorDialog();
             }
-        } else {
-            uploadToDrive(DriveId.decodeFromString(backupFolder));
         }
     }
 
@@ -335,7 +388,17 @@ public class BackupActivity extends AppCompatActivity {
                 }
                 finish();
                 break;
+            // REQUEST_CODE_PICKER_FOLDER
+            case 4:
+                if (resultCode == RESULT_OK) {
+                    //Get the folder drive id
+                    DriveId mFolderDriveId = data.getParcelableExtra(
+                            OpenFileActivityBuilder.EXTRA_RESPONSE_DRIVE_ID);
 
+                    saveBackupFolder(mFolderDriveId.encodeToString());
+                    setBackupFolderTitle(mFolderDriveId);
+                }
+                break;
         }
     }
 
