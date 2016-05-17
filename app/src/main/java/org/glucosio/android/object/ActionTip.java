@@ -18,16 +18,16 @@
  *
  */
 
-package org.glucosio.android;
+package org.glucosio.android.object;
 
 /**
  * Created by paolo on 24/10/15.
  */
 public class ActionTip {
 
-    String tipTitle;
-    String tipDescription;
-    String tipAction;
+    private String tipTitle;
+    private String tipDescription;
+    private String tipAction;
 
     public String getTipTitle() {
         return tipTitle;

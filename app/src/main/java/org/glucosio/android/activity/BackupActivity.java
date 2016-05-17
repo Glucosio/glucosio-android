@@ -28,14 +28,17 @@ import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.ListViewCompat;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.paolorotolo.expandableheightlistview.ExpandableHeightListView;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.drive.Drive;
@@ -46,12 +49,20 @@ import com.google.android.gms.drive.DriveFolder;
 import com.google.android.gms.drive.DriveId;
 import com.google.android.gms.drive.DriveResource;
 import com.google.android.gms.drive.Metadata;
+import com.google.android.gms.drive.MetadataBuffer;
 import com.google.android.gms.drive.MetadataChangeSet;
 import com.google.android.gms.drive.OpenFileActivityBuilder;
+import com.google.android.gms.drive.query.Filters;
+import com.google.android.gms.drive.query.Query;
+import com.google.android.gms.drive.query.SearchableField;
+import com.google.android.gms.drive.query.SortOrder;
+import com.google.android.gms.drive.query.SortableField;
 
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
+import org.glucosio.android.adapter.BackupAdapter;
 import org.glucosio.android.backup.Backup;
+import org.glucosio.android.object.GlucosioBackup;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -60,6 +71,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.Date;
 
 import io.realm.Realm;
 
@@ -77,6 +90,7 @@ public class BackupActivity extends AppCompatActivity {
     private IntentSender intentPicker;
     private Realm realm;
     private String backupFolder;
+    private ExpandableHeightListView backupListView;
     private LinearLayout selectFolderButton;
     private String BACKUP_FOLDER_KEY = "backup_folder";
 
@@ -102,9 +116,9 @@ public class BackupActivity extends AppCompatActivity {
         backupButton = (Button) findViewById(R.id.activity_backup_drive_button_backup);
         folderTextView = (TextView) findViewById(R.id.activity_backup_drive_textview_folder);
         selectFolderButton = (LinearLayout) findViewById(R.id.activity_backup_drive_button_folder);
-/*
-        restoreButton = (Button) findViewById(R.id.activity_backup_drive_button_restore);
-*/
+        backupListView = (ExpandableHeightListView) findViewById(R.id.activity_backup_drive_listview_restore);
+
+        backupListView.setExpanded(true);
 
         backupButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,19 +140,15 @@ public class BackupActivity extends AppCompatActivity {
             }
         });
 
-/*        restoreButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openFilePicker();
-            }
-        });
-
-*/
-
         // Show backup folder, if exists
         backupFolder = sharedPref.getString(BACKUP_FOLDER_KEY, "");
         if (!("").equals(backupFolder)) {
             setBackupFolderTitle(DriveId.decodeFromString(backupFolder));
+        }
+
+        // Populate backup list
+        if (!("").equals(backupFolder)) {
+            getBackupsFromDrive(DriveId.decodeFromString(backupFolder).asDriveFolder());
         }
     }
 
@@ -221,6 +231,36 @@ public class BackupActivity extends AppCompatActivity {
                 .newOpenFileActivityBuilder()
                 .setMimeType(new String[]{DriveFolder.MIME_TYPE})
                 .build(mGoogleApiClient);
+    }
+
+    private void getBackupsFromDrive(DriveFolder folder){
+        SortOrder sortOrder = new SortOrder.Builder()
+                .addSortDescending(SortableField.MODIFIED_DATE).build();
+        Query query = new Query.Builder()
+                .addFilter(Filters.eq(SearchableField.TITLE, "glucosio.realm"))
+                .addFilter(Filters.eq(SearchableField.TRASHED, false))
+                .setSortOrder(sortOrder)
+                .build();
+        folder.queryChildren(mGoogleApiClient, query)
+                .setResultCallback(new ResultCallback<DriveApi.MetadataBufferResult>() {
+
+                    private ArrayList<GlucosioBackup> backupsArray = new ArrayList<GlucosioBackup>();
+
+                    @Override
+                    public void onResult(DriveApi.MetadataBufferResult result) {
+                        MetadataBuffer buffer = result.getMetadataBuffer();
+                        int size = buffer.getCount();
+                        for (int i=0; i<size; i++){
+                            Metadata metadata = buffer.get(i);
+                            DriveId driveId = metadata.getDriveId();
+                            Date modifiedDate = metadata.getModifiedDate();
+                            long backupSize = metadata.getFileSize();
+                            backupsArray.add(new GlucosioBackup(driveId, modifiedDate, backupSize));
+                            backupListView.setAdapter(new BackupAdapter(getApplicationContext(), R.layout.preferences_backup, backupsArray));
+                        }
+
+                    }
+                });
     }
 
     private void downloadFromDrive(DriveFile file) {
