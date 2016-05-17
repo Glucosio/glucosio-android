@@ -396,7 +396,10 @@ public class BackupActivity extends AppCompatActivity {
                             OpenFileActivityBuilder.EXTRA_RESPONSE_DRIVE_ID);
 
                     saveBackupFolder(mFolderDriveId.encodeToString());
-                    setBackupFolderTitle(mFolderDriveId);
+                    // Restart activity to apply changes
+                    Intent intent = getIntent();
+                    finish();
+                    startActivity(intent);
                 }
                 break;
         }
