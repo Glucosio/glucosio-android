@@ -150,7 +150,6 @@
   <string name="invitation_message">Probar Glucosio, una aplicación de fuente libre para la investigación y manejo de la diabetes.</string>
   <string name="invitation_cta">Probar Glucosio</string>
   <string name="title_activity_backup_drive">Copia de seguridad en Google Drive</string>
-  <string name="activity_main_dialog_backup_export_title">Copia de seguridad &amp; exportar</string>
   <string name="preferences_privacy">Privacidad</string>
   <string name="helloactivity_textview_tos">Al usar Glucioa, acepta a los</string>
   <string name="preferences_backup_google_drive">Google Drive</string>
