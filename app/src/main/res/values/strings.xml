@@ -49,10 +49,14 @@
     <string name="helloactivity_spinner_diabetes_type">Diabetes type</string>
     <string name="helloactivity_spinner_diabetes_type_1">Type 1</string>
     <string name="helloactivity_spinner_diabetes_type_2">Type 2</string>
+        <string name="helloactivity_spinner_diabetes_gdm">Gestational</string>
+    <string name="helloactivity_spinner_diabetes_lada">LADA</string>
 
     <string-array name="helloactivity_diabetes_type" translatable="false">
         <item>@string/helloactivity_spinner_diabetes_type_1</item>
         <item>@string/helloactivity_spinner_diabetes_type_2</item>
+           <item>@string/helloactivity_spinner_diabetes_gdm</item>
+        <item>@string/helloactivity_spinner_diabetes_lada</item>
     </string-array>
 
     <string name="helloactivity_spinner_preferred_glucose_unit">Preferred Glucose unit</string>
