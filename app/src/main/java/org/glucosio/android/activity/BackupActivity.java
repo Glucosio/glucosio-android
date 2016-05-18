@@ -20,6 +20,7 @@
 
 package org.glucosio.android.activity;
 
+import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -234,6 +235,7 @@ public class BackupActivity extends AppCompatActivity {
     }
 
     private void getBackupsFromDrive(DriveFolder folder){
+        final Activity activity = this;
         SortOrder sortOrder = new SortOrder.Builder()
                 .addSortDescending(SortableField.MODIFIED_DATE).build();
         Query query = new Query.Builder()
@@ -256,14 +258,14 @@ public class BackupActivity extends AppCompatActivity {
                             Date modifiedDate = metadata.getModifiedDate();
                             long backupSize = metadata.getFileSize();
                             backupsArray.add(new GlucosioBackup(driveId, modifiedDate, backupSize));
-                            backupListView.setAdapter(new BackupAdapter(getApplicationContext(), R.layout.preferences_backup, backupsArray));
+                            backupListView.setAdapter(new BackupAdapter(activity, R.layout.preferences_backup, backupsArray));
                         }
 
                     }
                 });
     }
 
-    private void downloadFromDrive(DriveFile file) {
+    public void downloadFromDrive(DriveFile file) {
         file.open(mGoogleApiClient, DriveFile.MODE_READ_ONLY, null)
                 .setResultCallback(new ResultCallback<DriveApi.DriveContentsResult>() {
                     @Override
