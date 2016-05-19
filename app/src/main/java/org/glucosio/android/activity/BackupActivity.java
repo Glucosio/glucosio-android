@@ -27,6 +27,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ListViewCompat;
@@ -64,6 +65,7 @@ import org.glucosio.android.R;
 import org.glucosio.android.adapter.BackupAdapter;
 import org.glucosio.android.backup.Backup;
 import org.glucosio.android.object.GlucosioBackup;
+import org.w3c.dom.Text;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -86,7 +88,7 @@ public class BackupActivity extends AppCompatActivity {
     private GoogleApiClient mGoogleApiClient;
     private String TAG = "glucosio_drive_backup";
     private Button backupButton;
-    private Button restoreButton;
+    private TextView manageButton;
     private TextView folderTextView;
     private IntentSender intentPicker;
     private Realm realm;
@@ -115,6 +117,7 @@ public class BackupActivity extends AppCompatActivity {
         mGoogleApiClient = backup.getClient();
 
         backupButton = (Button) findViewById(R.id.activity_backup_drive_button_backup);
+        manageButton = (TextView) findViewById(R.id.activity_backup_drive_button_manage_drive);
         folderTextView = (TextView) findViewById(R.id.activity_backup_drive_textview_folder);
         selectFolderButton = (LinearLayout) findViewById(R.id.activity_backup_drive_button_folder);
         backupListView = (ExpandableHeightListView) findViewById(R.id.activity_backup_drive_listview_restore);
@@ -141,10 +144,21 @@ public class BackupActivity extends AppCompatActivity {
             }
         });
 
+        manageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url = "intent://drive.google.com/drive/u/0/mobile/folders/" + DriveId.decodeFromString(backupFolder).toString();
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
+            }
+        });
+
         // Show backup folder, if exists
         backupFolder = sharedPref.getString(BACKUP_FOLDER_KEY, "");
         if (!("").equals(backupFolder)) {
             setBackupFolderTitle(DriveId.decodeFromString(backupFolder));
+            manageButton.setVisibility(View.VISIBLE);
         }
 
         // Populate backup list
@@ -460,7 +474,6 @@ public class BackupActivity extends AppCompatActivity {
     private void showErrorDialog() {
         Toast.makeText(getApplicationContext(), R.string.activity_backup_drive_failed, Toast.LENGTH_SHORT).show();
     }
-
 
     public void connectClient() {
         backup.start();
