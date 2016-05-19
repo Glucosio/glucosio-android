@@ -1,5 +1,9 @@
 language: android
-sudo: required
+
+addons:
+  apt:
+    packages:
+      - oracle-java8-installer
 
 android:
   components:
