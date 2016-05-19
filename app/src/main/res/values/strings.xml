@@ -405,8 +405,8 @@
     <string name="activity_backup_drive_message_restart">Restarting to apply changes...</string>
     <string name="activity_backup_drive_desc_1">Sync Glucosio\'s database in the cloud with Google Drive.</string>
     <string name="activity_backup_drive_desc_2">You\'ll be able to restore all your readings if you lost or change phone or sync Glucosio\'s data between your devices.</string>
-    <string name="activity_backup_drive_success">Database correctly uploaded on Drive</string>
-    <string name="activity_backup_drive_restore_success">Correctly restored database from Drive</string>
+    <string name="activity_backup_drive_success">Database successfully backed up to Drive</string>
+    <string name="activity_backup_drive_restore_success">Successfully restored database from Drive</string>
     <string name="activity_backup_drive_failed">Something went wrong. Please try again :/</string>
     <string name="activity_backup_drive_last">Last backup:</string>
     <string name="activity_backup_drive_folder">Backup folder</string>
