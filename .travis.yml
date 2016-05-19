@@ -1,9 +1,7 @@
 language: android
 
-addons:
-  apt:
-    packages:
-      - oracle-java8-installer
+jdk:
+  - oraclejdk8
 
 android:
   components:
@@ -18,6 +16,8 @@ android:
 
 before_install:
  - chmod +x gradlew
+ - export JAVA8_HOME=/usr/lib/jvm/java-8-oracle
+ - export JAVA_HOME=$JAVA8_HOME
 
 after_success:
  - chmod +x ./upload-gh-pages.sh
