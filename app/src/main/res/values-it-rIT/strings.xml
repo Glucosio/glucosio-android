@@ -41,6 +41,7 @@
   <string name="helloactivity_spinner_diabetes_type">Tipo di diabete</string>
   <string name="helloactivity_spinner_diabetes_type_1">Tipo 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Tipo 2</string>
+  <string name="helloactivity_spinner_diabetes_gdm">Gestazionale</string>
   <string name="helloactivity_spinner_preferred_glucose_unit">Unità di misura Glucosio</string>
   <string name="preferences_spinner_preferred_a1c_unit">Unità di misura glicata</string>
   <string name="preferences_spinner_preferred_a1c_unit_1">percentuale</string>
@@ -293,4 +294,5 @@
   <string name="activity_backup_drive_error_restore">Impossibile trovare un backup valido da ripristinare da Drive</string>
   <string name="activity_main_error_play_services">Glucosio ha bisogno di Play Services per abilitare il backup su Google Drive.</string>
   <string name="activity_main_dialog_csv_title">Esporta file CSV</string>
+  <string name="activity_backup_drive_button_open_drive">Organizza su Drive</string>
 </resources>
