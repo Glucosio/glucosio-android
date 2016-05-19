@@ -147,10 +147,7 @@ public class BackupActivity extends AppCompatActivity {
         manageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String url = "intent://drive.google.com/drive/u/0/mobile/folders/" + DriveId.decodeFromString(backupFolder).toString();
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(url));
-                startActivity(i);
+                openOnDrive(DriveId.decodeFromString(backupFolder));
             }
         });
 
@@ -404,6 +401,25 @@ public class BackupActivity extends AppCompatActivity {
                         }
                     });
         }
+    }
+
+    private void openOnDrive(DriveId driveId){
+        driveId.asDriveFolder().getMetadata((mGoogleApiClient)).setResultCallback(
+                new ResultCallback<DriveResource.MetadataResult>() {
+                    @Override
+                    public void onResult(DriveResource.MetadataResult result) {
+                        if (!result.getStatus().isSuccess()) {
+                            showErrorDialog();
+                            return;
+                        }
+                        Metadata metadata = result.getMetadata();
+                        String url = metadata.getAlternateLink();
+                        Intent i = new Intent(Intent.ACTION_VIEW);
+                        i.setData(Uri.parse(url));
+                        startActivity(i);
+                    }
+                }
+        );
     }
 
     @Override
