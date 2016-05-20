@@ -61,6 +61,21 @@ public class FormatDateTime {
         return finalData + " " + finalTime;
     }
 
+    public String formatDate(Date date) {
+        java.text.DateFormat finalDataFormat = DateFormat.getDateInstance(DateFormat.SHORT);
+        java.text.DateFormat finalTimeFormat;
+
+        if (android.text.format.DateFormat.is24HourFormat(context)) {
+            finalTimeFormat = new SimpleDateFormat("HH:mm");
+        } else {
+            finalTimeFormat = new SimpleDateFormat("hh:mm a");
+        }
+
+        String finalData = finalDataFormat.format(date);
+        String finalTime = finalTimeFormat.format(date);
+        return finalData + " " + finalTime;
+    }
+
     public String convertDateToMonthOverview(String date) {
         java.text.DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         java.text.DateFormat finalDataFormat = new SimpleDateFormat("MMMM");

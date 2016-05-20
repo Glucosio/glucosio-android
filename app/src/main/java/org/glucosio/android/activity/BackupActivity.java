@@ -198,7 +198,6 @@ public class BackupActivity extends AppCompatActivity {
                         intentSender, REQUEST_CODE_SELECT, null, 0, 0, 0);
             }
         } catch (IntentSender.SendIntentException e) {
-            reportToFirebase(e, "Error opening drive file picker");
             Log.e(TAG, "Unable to send intent", e);
             showErrorDialog();
         }
@@ -217,7 +216,6 @@ public class BackupActivity extends AppCompatActivity {
                                 intentPicker, REQUEST_CODE_PICKER, null, 0, 0, 0);
                     }
                 } catch (IntentSender.SendIntentException e) {
-                    reportToFirebase(e, "Error opening drive file picker");
                     Log.e(TAG, "Unable to send intent", e);
                     showErrorDialog();
                 }
@@ -235,7 +233,6 @@ public class BackupActivity extends AppCompatActivity {
                             intentPicker, REQUEST_CODE_PICKER_FOLDER, null, 0, 0, 0);
                 }
             } catch (IntentSender.SendIntentException e) {
-                reportToFirebase(e, "Error opening drive file picker");
                 Log.e(TAG, "Unable to send intent", e);
                 showErrorDialog();
             }
@@ -365,7 +362,7 @@ public class BackupActivity extends AppCompatActivity {
                                     try {
                                         inputStream = new FileInputStream(new File(realm.getPath()));
                                     } catch (FileNotFoundException e) {
-                                        reportToFirebase(e, "Error uploading backup to drive, file not found");
+                                        reportToFirebase(e, "Error uploading backup from drive, file not found");
                                         showErrorDialog();
                                         e.printStackTrace();
                                     }
@@ -379,7 +376,7 @@ public class BackupActivity extends AppCompatActivity {
                                             }
                                         }
                                     } catch (IOException e) {
-                                        reportToFirebase(e, "Error uploading backup to drive");
+
                                         showErrorDialog();
                                         e.printStackTrace();
                                     }
