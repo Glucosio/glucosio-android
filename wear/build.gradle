@@ -29,7 +29,7 @@ android {
         applicationId "org.glucosio.android"
         minSdkVersion 21
         targetSdkVersion 23
-        versionCode 21
+        versionCode 22
         versionName '1.0.0'
     }
     buildTypes {
