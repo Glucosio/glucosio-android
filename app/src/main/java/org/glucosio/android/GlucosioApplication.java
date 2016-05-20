@@ -31,8 +31,6 @@ import org.glucosio.android.analytics.GoogleAnalytics;
 import org.glucosio.android.backup.Backup;
 import org.glucosio.android.backup.GoogleDriveBackup;
 import org.glucosio.android.db.DatabaseHandler;
-import org.glucosio.android.invitations.GoogleInvitation;
-import org.glucosio.android.invitations.Invitation;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
@@ -75,11 +73,6 @@ public class GlucosioApplication extends Application {
         }
 
         return analytics;
-    }
-
-    @NonNull
-    public Invitation getInvitation() {
-        return new GoogleInvitation();
     }
 
     @NonNull

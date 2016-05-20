@@ -59,6 +59,7 @@ import com.google.android.gms.drive.query.Query;
 import com.google.android.gms.drive.query.SearchableField;
 import com.google.android.gms.drive.query.SortOrder;
 import com.google.android.gms.drive.query.SortableField;
+import com.google.firebase.crash.FirebaseCrash;
 
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
@@ -197,6 +198,7 @@ public class BackupActivity extends AppCompatActivity {
                         intentSender, REQUEST_CODE_SELECT, null, 0, 0, 0);
             }
         } catch (IntentSender.SendIntentException e) {
+            reportToFirebase(e, "Error opening drive file picker");
             Log.e(TAG, "Unable to send intent", e);
             showErrorDialog();
         }
@@ -215,6 +217,7 @@ public class BackupActivity extends AppCompatActivity {
                                 intentPicker, REQUEST_CODE_PICKER, null, 0, 0, 0);
                     }
                 } catch (IntentSender.SendIntentException e) {
+                    reportToFirebase(e, "Error opening drive file picker");
                     Log.e(TAG, "Unable to send intent", e);
                     showErrorDialog();
                 }
@@ -232,6 +235,7 @@ public class BackupActivity extends AppCompatActivity {
                             intentPicker, REQUEST_CODE_PICKER_FOLDER, null, 0, 0, 0);
                 }
             } catch (IntentSender.SendIntentException e) {
+                reportToFirebase(e, "Error opening drive file picker");
                 Log.e(TAG, "Unable to send intent", e);
                 showErrorDialog();
             }
@@ -307,14 +311,17 @@ public class BackupActivity extends AppCompatActivity {
                                     output.close();
                                 }
                             } catch (Exception e) {
+                                reportToFirebase(e, "Error downloading backup from drive");
                                 e.printStackTrace();
                             }
                         } catch (FileNotFoundException e) {
+                            reportToFirebase(e, "Error downloading backup from drive, file not found");
                             e.printStackTrace();
                         } finally {
                             try {
                                 input.close();
                             } catch (IOException e) {
+                                reportToFirebase(e, "Error downloading backup from drive, IO Exception");
                                 e.printStackTrace();
                             }
                         }
@@ -358,6 +365,7 @@ public class BackupActivity extends AppCompatActivity {
                                     try {
                                         inputStream = new FileInputStream(new File(realm.getPath()));
                                     } catch (FileNotFoundException e) {
+                                        reportToFirebase(e, "Error uploading backup to drive, file not found");
                                         showErrorDialog();
                                         e.printStackTrace();
                                     }
@@ -371,6 +379,7 @@ public class BackupActivity extends AppCompatActivity {
                                             }
                                         }
                                     } catch (IOException e) {
+                                        reportToFirebase(e, "Error uploading backup to drive");
                                         showErrorDialog();
                                         e.printStackTrace();
                                     }
@@ -489,6 +498,11 @@ public class BackupActivity extends AppCompatActivity {
 
     private void showErrorDialog() {
         Toast.makeText(getApplicationContext(), R.string.activity_backup_drive_failed, Toast.LENGTH_SHORT).show();
+    }
+
+    private void reportToFirebase(Exception e, String message){
+        FirebaseCrash.log(message);
+        FirebaseCrash.report(e);
     }
 
     public void connectClient() {

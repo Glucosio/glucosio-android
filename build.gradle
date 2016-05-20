@@ -28,7 +28,7 @@ buildscript {
 
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.0-alpha1'
-        classpath 'com.google.gms:google-services:2.0.0-beta6'
+        classpath 'com.google.gms:google-services:3.0.0'
         classpath 'io.realm:realm-gradle-plugin:0.90.1'
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -42,7 +42,7 @@ allprojects {
     }
 
     ext.androidSupportVer = '23.4.0'
-    ext.googlePlayServicesVer = '8.4.0'
+    ext.googlePlayServicesVer = '9.0.0'
 
     ext.junitVer = '4.12'
     ext.mockitoVer = '1.10.17'

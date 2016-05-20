@@ -22,6 +22,8 @@ package org.glucosio.android.tools;
 
 import android.content.Context;
 
+import com.google.firebase.crash.FirebaseCrash;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -51,7 +53,7 @@ public class FormatDateTime {
         try {
             parsed = inputFormat.parse(date);
         } catch (ParseException e) {
-            // TODO Auto-generated catch block
+            reportToFirebase(e);
             e.printStackTrace();
         }
         String finalData = finalDataFormat.format(parsed);
@@ -73,7 +75,7 @@ public class FormatDateTime {
             cal.add(Calendar.MONTH, -1);
             parsed = cal.getTime();
         } catch (ParseException e) {
-            // TODO Auto-generated catch block
+            reportToFirebase(e);
             e.printStackTrace();
         }
         String finalData = finalDataFormat.format(parsed);
@@ -89,7 +91,7 @@ public class FormatDateTime {
         try {
             parsed = inputFormat.parse(datetime);
         } catch (ParseException e) {
-            // TODO Auto-generated catch block
+            reportToFirebase(e);
             e.printStackTrace();
         }
         String finalData = finalDataFormat.format(parsed);
@@ -104,7 +106,7 @@ public class FormatDateTime {
         try {
             parsed = inputFormat.parse(datetime);
         } catch (ParseException e) {
-            // TODO Auto-generated catch block
+            reportToFirebase(e);
             e.printStackTrace();
         }
         String finalData = finalDataFormat.format(parsed);
@@ -125,7 +127,7 @@ public class FormatDateTime {
         try {
             parsed = inputFormat.parse(datetime);
         } catch (ParseException e) {
-            // TODO Auto-generated catch block
+            reportToFirebase(e);
             e.printStackTrace();
         }
         String finalTime = finalTimeFormat.format(parsed);
@@ -161,5 +163,10 @@ public class FormatDateTime {
 
         String finalTime = finalTimeFormat.format(cal.getTime());
         return finalTime + "";
+    }
+
+    private void reportToFirebase(Exception e){
+        FirebaseCrash.log("Error converting date");
+        FirebaseCrash.report(e);
     }
 }
