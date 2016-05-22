@@ -53,7 +53,7 @@
             android:layout_marginBottom="-32dp"
             android:layout_marginRight="20dp"
             android:onClick="onFabClicked"
-            android:src="@drawable/ic_done_black_24dp"
+            app:srcCompat="@drawable/ic_done_black_24dp"
             app:backgroundTint="@color/glucosio_accent" />
 
         <LinearLayout

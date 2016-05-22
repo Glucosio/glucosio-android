@@ -32,10 +32,11 @@ android {
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 23
-        versionCode 22
+        versionCode 23
         versionName '1.0.0'
         applicationId "org.glucosio.android"
 
+        vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
     }
 
