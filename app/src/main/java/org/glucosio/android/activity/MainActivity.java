@@ -90,7 +90,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
     private FloatingActionMenu fabMenu;
     private FloatingActionButton fabGlucoseEmpty;
-
     private Toolbar toolbar;
     private TabLayout tabLayout;
 
