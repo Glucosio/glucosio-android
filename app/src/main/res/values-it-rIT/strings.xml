@@ -41,6 +41,7 @@
   <string name="helloactivity_spinner_diabetes_type">Tipo di diabete</string>
   <string name="helloactivity_spinner_diabetes_type_1">Tipo 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Tipo 2</string>
+  <string name="helloactivity_spinner_diabetes_gdm">Gestazionale</string>
   <string name="helloactivity_spinner_preferred_glucose_unit">Unità di misura Glucosio</string>
   <string name="preferences_spinner_preferred_a1c_unit">Unità di misura glicata</string>
   <string name="preferences_spinner_preferred_a1c_unit_1">percentuale</string>
@@ -85,6 +86,7 @@
   <string name="preferences_about">Informazioni</string>
   <string name="preferences_experimental">Queste funzioni sono sperimentali e potrebbero non funzionare correttamente. Ricorda che puoi scuotere il dispositivo per inviarci suggerimenti e problemi relative ad esse.</string>
   <string name="preferences_version">Versione</string>
+  <string name="preferences_coming_soon">Coming soon...</string>
   <string name="preferences_terms">Termini di utilizzo</string>
   <string name="glucose_reading_type">Tipo</string>
   <string name="weight">Peso</string>
@@ -149,6 +151,7 @@
   <string name="invitation_message">Prova Glucosio, un\'app open source per la gestione del diabete e per la ricerca.</string>
   <string name="invitation_cta">Prova Glucosio</string>
   <string name="title_activity_backup_drive">Google Drive Backup</string>
+  <string name="activity_main_dialog_backup_export_title">Backup &amp; esportazione</string>
   <string name="preferences_privacy">Privacy</string>
   <string name="helloactivity_textview_tos">Usando Glucosio, accetti le</string>
   <string name="preferences_backup_google_drive">Google Drive</string>
@@ -269,12 +272,27 @@
   <string name="menu_backup_backup">Backup su Google Drive</string>
   <string name="menu_backup_restore">Ripristino</string>
   <string name="menu_backup_csv">Esportazione CSV</string>
+  <string name="activity_backup_drive_automatic">Backup automatico</string>
+  <string name="activity_backup_drive_desc">Il backup dei tuoi dati su Google Drive ti consente di ripristinare tutte le tue letture se perdi o cambi il tuo telefono.</string>
   <string name="activity_backup_drive_message_restart">Riavvio per applicare le modifiche...</string>
   <string name="activity_backup_drive_desc_1">Sincronizza il database di Glucosio nel cloud con Google Drive.</string>
+  <string name="activity_backup_drive_desc_2">Sarai in grado di ripristinare tutte le tue letture se perdi o cambi il tuo telefono e sincronizzare i dati fra i tuoi dispositivi.</string>
   <string name="activity_backup_drive_success">Database correttamente caricato sull\'unità</string>
   <string name="activity_backup_drive_restore_success">Database ripristinato correttamente da Drive</string>
   <string name="activity_backup_drive_failed">Qualcosa è andato storto. Per favore, riprova :/</string>
+  <string name="activity_backup_drive_last">Ultimo backup:</string>
+  <string name="activity_backup_drive_folder">Cartella per il Backup</string>
   <string name="activity_backup_drive_button_backup">Esegui backup adesso</string>
+  <string name="activity_backup_drive_recent">Backup recenti</string>
+  <string name="activity_backup_drive_more">Mostra più backup</string>
+  <string name="activity_backup_drive_dialog_restore_title">Torna a versione precedente</string>
+  <string name="activity_backup_drive_dialog_restore_desc">Se ripristini il tuo backup sovrascriverai tutti i dati non salvati fin ora.</string>
+  <string name="activity_backup_drive_dialog_restore_details">Dettagli backup</string>
+  <string name="activity_backup_drive_dialog_restore_button_cancel">Annulla</string>
+  <string name="activity_backup_drive_dialog_restore_button_restore">Ripristina backup</string>
   <string name="activity_backup_drive_button_restore">Ripristina da Drive</string>
   <string name="activity_backup_drive_error_restore">Impossibile trovare un backup valido da ripristinare da Drive</string>
+  <string name="activity_main_error_play_services">Glucosio ha bisogno di Play Services per abilitare il backup su Google Drive.</string>
+  <string name="activity_main_dialog_csv_title">Esporta file CSV</string>
+  <string name="activity_backup_drive_button_open_drive">Organizza su Drive</string>
 </resources>

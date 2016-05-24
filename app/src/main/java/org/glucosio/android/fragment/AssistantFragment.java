@@ -36,7 +36,7 @@ import android.view.animation.TranslateAnimation;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import org.glucosio.android.ActionTip;
+import org.glucosio.android.object.ActionTip;
 import org.glucosio.android.R;
 import org.glucosio.android.activity.A1cCalculator;
 import org.glucosio.android.activity.AddGlucoseActivity;

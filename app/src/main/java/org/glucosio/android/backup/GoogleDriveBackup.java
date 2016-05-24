@@ -11,6 +11,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.drive.Drive;
+import com.google.firebase.crash.FirebaseCrash;
 
 import java.lang.ref.WeakReference;
 
@@ -78,6 +79,8 @@ public class GoogleDriveBackup implements Backup, GoogleApiClient.OnConnectionFa
             try {
                 result.startResolutionForResult(a, 1);
             } catch (IntentSender.SendIntentException e) {
+                FirebaseCrash.log("Drive connection failed");
+                FirebaseCrash.report(e);
                 e.printStackTrace();
                 GoogleApiAvailability.getInstance().getErrorDialog(a, result.getErrorCode(), 0).show();
             }

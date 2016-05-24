@@ -213,4 +213,9 @@
   <string name="menu_support_email">E-posta</string>
   <string name="menu_support_live">Canlı Sohbet</string>
   <string name="menu_support_forum">Destek Forumu</string>
+  <string name="dialog_add_notes">Notlar</string>
+  <string name="menu_backup_restore">Geri Yükle</string>
+  <string name="activity_backup_drive_failed">Hatalı birşeyler var. Lütfen tekrar deneyin :/</string>
+  <string name="activity_backup_drive_button_backup">Şimdi yedekle</string>
+  <string name="activity_backup_drive_button_restore">Sürücüden geri yükle</string>
 </resources>

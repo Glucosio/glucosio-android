@@ -36,7 +36,7 @@
         android:orientation="vertical"
         android:paddingTop="16dp">
 
-        <TextView
+        <TextView fontPath="fonts/lato-bold.ttf"
             android:id="@+id/fragment_assistant_item_title"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"

@@ -1,18 +1,16 @@
 {
   "project_info": {
-    "project_id": "glucosio-15798",
     "project_number": "45702392997",
-    "name": "Glucosio"
+    "firebase_url": "https://glucosio-15798.firebaseio.com",
+    "project_id": "glucosio-15798",
+    "storage_bucket": "glucosio-15798.appspot.com"
   },
   "client": [
     {
       "client_info": {
         "mobilesdk_app_id": "1:45702392997:android:f3028c79631bec51",
-        "client_id": "android:org.glucosio.android",
-        "client_type": 1,
         "android_client_info": {
-          "package_name": "org.glucosio.android",
-          "certificate_hash": []
+          "package_name": "org.glucosio.android"
         }
       },
       "oauth_client": [
@@ -25,11 +23,19 @@
           }
         },
         {
+          "client_id": "45702392997-8gb1fse9kp6leslqp2jil5hfqs5ls033.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
           "client_id": "45702392997-75lumfd1jtpvd7n2q7sac4ebrsjfcbp6.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
-      "api_key": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXgRfFDiHPOB0fI8tJXWavDb3y51urRsI"
+        }
+      ],
       "services": {
         "analytics_service": {
           "status": 2,
@@ -37,21 +43,14 @@
             "tracking_id": "UA-68882401-2"
           }
         },
-        "cloud_messaging_service": {
-          "status": 2,
-          "apns_config": []
-        },
         "appinvite_service": {
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "45702392997-75lumfd1jtpvd7n2q7sac4ebrsjfcbp6.apps.googleusercontent.com",
+              "client_id": "45702392997-8gb1fse9kp6leslqp2jil5hfqs5ls033.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
-        },
-        "google_signin_service": {
-          "status": 2
         },
         "ads_service": {
           "status": 1
@@ -61,14 +60,19 @@
     {
       "client_info": {
         "mobilesdk_app_id": "1:45702392997:android:e595132614f4ec2a",
-        "client_id": "android:org.glucosio.android.daily",
-        "client_type": 1,
         "android_client_info": {
-          "package_name": "org.glucosio.android.daily",
-          "certificate_hash": []
+          "package_name": "org.glucosio.android.daily"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "45702392997-riuobp0po7qf98ktcdcva39s2bhbpk49.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.glucosio.android.daily",
+            "certificate_hash": "AB3309F7EB2D25BF7B007C54AF59A3D096F1C50E"
+          }
+        },
         {
           "client_id": "45702392997-le0hot86nfci96j5dn6lnlnahn6lg80e.apps.googleusercontent.com",
           "client_type": 1,
@@ -78,30 +82,31 @@
           }
         },
         {
+          "client_id": "45702392997-8gb1fse9kp6leslqp2jil5hfqs5ls033.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
           "client_id": "45702392997-75lumfd1jtpvd7n2q7sac4ebrsjfcbp6.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
-      "api_key": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWcm8BiItil81kEEl3t3zwKnUvyR6yvJ4"
+        }
+      ],
       "services": {
         "analytics_service": {
           "status": 1
-        },
-        "cloud_messaging_service": {
-          "status": 1,
-          "apns_config": []
         },
         "appinvite_service": {
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "45702392997-75lumfd1jtpvd7n2q7sac4ebrsjfcbp6.apps.googleusercontent.com",
+              "client_id": "45702392997-8gb1fse9kp6leslqp2jil5hfqs5ls033.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
-        },
-        "google_signin_service": {
-          "status": 1
         },
         "ads_service": {
           "status": 1
@@ -109,6 +114,5 @@
       }
     }
   ],
-  "client_info": [],
-  "ARTIFACT_VERSION": "1"
+  "configuration_version": "1"
 }

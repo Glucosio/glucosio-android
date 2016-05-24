@@ -22,7 +22,6 @@ package org.glucosio.android.activity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.Dialog;
 import android.app.PendingIntent;
@@ -43,7 +42,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
@@ -54,6 +52,7 @@ import android.widget.Toast;
 
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
+import com.google.android.gms.appinvite.AppInviteInvitation;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -69,10 +68,8 @@ import org.glucosio.android.R;
 import org.glucosio.android.adapter.HomePagerAdapter;
 import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.db.DatabaseHandler;
-import org.glucosio.android.invitations.Invitation;
 import org.glucosio.android.presenter.ExportPresenter;
 import org.glucosio.android.presenter.MainPresenter;
-import org.glucosio.android.tools.RealmBackupRestore;
 
 import java.util.Calendar;
 
@@ -81,6 +78,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
+    private static final int REQUEST_INVITE = 1;
     private ExportPresenter exportPresenter;
     private RadioButton exportRangeButton;
     private HomePagerAdapter homePagerAdapter;
@@ -92,7 +90,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
     private FloatingActionMenu fabMenu;
     private FloatingActionButton fabGlucoseEmpty;
-
     private Toolbar toolbar;
     private TabLayout tabLayout;
 
@@ -179,13 +176,13 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         });
 
         // Add Nav Drawer
-        final PrimaryDrawerItem itemSettings = new PrimaryDrawerItem().withName(R.string.action_settings).withIcon(R.drawable.ic_settings_black_24dp).withSelectable(false);
-        final PrimaryDrawerItem itemExport = new PrimaryDrawerItem().withName(R.string.sidebar_backup_export).withIcon(R.drawable.ic_share_black_24dp).withSelectable(false);
-        final PrimaryDrawerItem itemFeedback = new PrimaryDrawerItem().withName(R.string.menu_support).withIcon(R.drawable.ic_feedback_black_24dp).withSelectable(false);
-        final PrimaryDrawerItem itemAbout = new PrimaryDrawerItem().withName(R.string.preferences_about_glucosio).withIcon(R.drawable.ic_info_black_24dp).withSelectable(false);
-        final PrimaryDrawerItem itemInvite = new PrimaryDrawerItem().withName(R.string.action_invite).withIcon(R.drawable.ic_face_black_24dp).withSelectable(false);
-        final PrimaryDrawerItem itemDonate = new PrimaryDrawerItem().withName(R.string.about_donate).withIcon(R.drawable.ic_favorite_black_24dp).withSelectable(false);
-        final PrimaryDrawerItem itemA1C = new PrimaryDrawerItem().withName(R.string.activity_converter_title).withIcon(R.drawable.ic_drawer_calculator_a1c).withSelectable(false);
+        final PrimaryDrawerItem itemSettings = new PrimaryDrawerItem().withName(R.string.action_settings).withIcon(R.drawable.ic_settings_grey_24dp).withSelectable(false);
+        final PrimaryDrawerItem itemExport = new PrimaryDrawerItem().withName(R.string.sidebar_backup_export).withIcon(R.drawable.ic_backup_grey_24dp).withSelectable(false);
+        final PrimaryDrawerItem itemFeedback = new PrimaryDrawerItem().withName(R.string.menu_support).withIcon(R.drawable.ic_announcement_grey_24dp).withSelectable(false);
+        final PrimaryDrawerItem itemAbout = new PrimaryDrawerItem().withName(R.string.preferences_about_glucosio).withIcon(R.drawable.ic_info_grey_24dp).withSelectable(false);
+        final PrimaryDrawerItem itemInvite = new PrimaryDrawerItem().withName(R.string.action_invite).withIcon(R.drawable.ic_face_grey_24dp).withSelectable(false);
+        final PrimaryDrawerItem itemDonate = new PrimaryDrawerItem().withName(R.string.about_donate).withIcon(R.drawable.ic_favorite_grey_24dp).withSelectable(false);
+        final PrimaryDrawerItem itemA1C = new PrimaryDrawerItem().withName(R.string.activity_converter_title).withIcon(R.drawable.ic_calculator_a1c_grey_24dp).withSelectable(false);
 
 
         DrawerBuilder drawerBuilder = new DrawerBuilder()
@@ -251,6 +248,12 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                     .build();
         }
 
+        // Restore pager position
+        Bundle b = getIntent().getExtras();
+        if (b!=null) {
+            viewPager.setCurrentItem(b.getInt("pager"));
+        }
+
         checkIfEmptyLayout();
 
         Analytics analytics = application.getAnalytics();
@@ -298,6 +301,10 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     public void onGlucoseFabClicked(View v) {
         fabMenu.toggle(false);
         Intent intent = new Intent(this, AddGlucoseActivity.class);
+        // Pass pager position to open it again later
+        Bundle b = new Bundle();
+        b.putInt("pager", viewPager.getCurrentItem());
+        intent.putExtras(b);
         startActivity(intent);
         finish();
     }
@@ -305,6 +312,10 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     public void onKetoneFabClicked(View v) {
         fabMenu.toggle(false);
         Intent intent = new Intent(this, AddKetoneActivity.class);
+        // Pass pager position to open it again later
+        Bundle b = new Bundle();
+        b.putInt("pager", viewPager.getCurrentItem());
+        intent.putExtras(b);
         startActivity(intent);
         finish();
     }
@@ -312,6 +323,10 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     public void onPressureFabClicked(View v) {
         fabMenu.toggle(false);
         Intent intent = new Intent(this, AddPressureActivity.class);
+        // Pass pager position to open it again later
+        Bundle b = new Bundle();
+        b.putInt("pager", viewPager.getCurrentItem());
+        intent.putExtras(b);
         startActivity(intent);
         finish();
     }
@@ -319,6 +334,10 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     public void onHB1ACFabClicked(View v) {
         fabMenu.toggle(false);
         Intent intent = new Intent(this, AddA1CActivity.class);
+        // Pass pager position to open it again later
+        Bundle b = new Bundle();
+        b.putInt("pager", viewPager.getCurrentItem());
+        intent.putExtras(b);
         startActivity(intent);
         finish();
     }
@@ -326,6 +345,10 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     public void onCholesterolFabClicked(View v) {
         fabMenu.toggle(false);
         Intent intent = new Intent(this, AddCholesterolActivity.class);
+        // Pass pager position to open it again later
+        Bundle b = new Bundle();
+        b.putInt("pager", viewPager.getCurrentItem());
+        intent.putExtras(b);
         startActivity(intent);
         finish();
     }
@@ -333,6 +356,10 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     public void onWeightFabClicked(View v) {
         fabMenu.toggle(false);
         Intent intent = new Intent(this, AddWeightActivity.class);
+        // Pass pager position to open it again later
+        Bundle b = new Bundle();
+        b.putInt("pager", viewPager.getCurrentItem());
+        intent.putExtras(b);
         startActivity(intent);
         finish();
     }
@@ -383,16 +410,15 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
     public void openBackupDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(getResources().getString(R.string.title_activity_backup_drive));
+        builder.setTitle(getResources().getString(R.string.activity_main_dialog_backup_export_title));
         builder.setItems(getResources().getStringArray(R.array.menu_backup_options), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 if (which == 0) {
                     if (checkPlayServices()) {
                         // TODO: Finish backup in next release
-                        /*Intent intent = new Intent(getApplicationContext(), BackupActivity.class);
-                        startActivity(intent);*/
-                        Toast.makeText(getApplicationContext(), R.string.preferences_coming_soon, Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(), BackupActivity.class);
+                        startActivity(intent);
                     } else {
                         dialog.dismiss();
                     }
@@ -410,7 +436,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
         lp.copyFrom(exportDialog.getWindow().getAttributes());
-        exportDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
         exportDialog.setContentView(R.layout.dialog_export);
@@ -583,8 +608,11 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     public void showInviteDialog() {
-        final Invitation invitation = ((GlucosioApplication) getApplication()).getInvitation();
-        invitation.invite(this, getString(R.string.invitation_title), this.getString(R.string.invitation_message), this.getString(R.string.invitation_cta));
+        Intent intent = new AppInviteInvitation.IntentBuilder(getString(R.string.invitation_title))
+                .setMessage(getString(R.string.invitation_message))
+                .setCallToActionText(getString(R.string.invitation_cta))
+                .build();
+        startActivityForResult(intent, REQUEST_INVITE);
     }
 
     public void checkIfEmptyLayout() {

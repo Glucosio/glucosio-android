@@ -3,7 +3,6 @@ package org.glucosio.android;
 import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.backup.Backup;
 import org.glucosio.android.db.DatabaseHandler;
-import org.glucosio.android.invitations.Invitation;
 import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.robolectric.RuntimeEnvironment;
@@ -23,9 +22,5 @@ public abstract class RobolectricTest {
 
     protected DatabaseHandler getDBHandler() {
         return ((TestGlucosioApplication) RuntimeEnvironment.application).getDBHandler();
-    }
-
-    protected Invitation getInvitation() {
-        return ((TestGlucosioApplication) RuntimeEnvironment.application).getInvitation();
     }
 }

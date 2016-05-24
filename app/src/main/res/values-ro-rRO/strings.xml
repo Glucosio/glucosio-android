@@ -84,6 +84,7 @@
   <string name="preferences_about">Despre</string>
   <string name="preferences_experimental">Aceste funcții sunt experimentale, s-ar putea să nu funcționeze complet și sunt intenționate doar pentru testare. Puteți scutura telefonul pentru a ne trimite feedback.</string>
   <string name="preferences_version">Versiunea</string>
+  <string name="preferences_coming_soon">În curând...</string>
   <string name="preferences_terms">Termeni de folosire</string>
   <string name="glucose_reading_type">Tip</string>
   <string name="weight">Greutate</string>
@@ -148,6 +149,7 @@
   <string name="invitation_message">Încearcă Glucosio, o aplicație cu sursă deschisă pentru gestionarea diabetului și cercetare.</string>
   <string name="invitation_cta">Încearcă Glucosio</string>
   <string name="title_activity_backup_drive">Backup Google Drive</string>
+  <string name="activity_main_dialog_backup_export_title">Copie de siguranță și exportare</string>
   <string name="preferences_privacy">Confidențialitate</string>
   <string name="helloactivity_textview_tos">Folosind Glucosio, ești de acord cu</string>
   <string name="preferences_backup_google_drive">Google Drive</string>
@@ -268,13 +270,26 @@
   <string name="menu_backup_backup">Backup pe Google Drive</string>
   <string name="menu_backup_restore">Restaurare</string>
   <string name="menu_backup_csv">Export CSV</string>
+  <string name="activity_backup_drive_automatic">Backup automat</string>
+  <string name="activity_backup_drive_desc">Copierea datelor pe Google Drive permite să restaurezi toate citirile în cazul în care pierzi telefonul.</string>
   <string name="activity_backup_drive_message_restart">Se repornește pentru a aplica modificările...</string>
   <string name="activity_backup_drive_desc_1">Sincronizează baza de date Glucosio în cloud cu Google Drive.</string>
   <string name="activity_backup_drive_desc_2">Pentru a restabili toate citirile dacă ai pierdut sau schimbat telefonul, sau pentru a sincroniza datele Glucosio între dispozitive.</string>
   <string name="activity_backup_drive_success">Baza de date încărcată corect pe Drive</string>
   <string name="activity_backup_drive_restore_success">Baza de date restaurată corect de pe Drive</string>
   <string name="activity_backup_drive_failed">Ceva nu a funcționat. Te rugăm să reîncerci :/</string>
+  <string name="activity_backup_drive_last">Ultimul backup:</string>
+  <string name="activity_backup_drive_folder">Dosar de backup</string>
   <string name="activity_backup_drive_button_backup">Fă o copie acum</string>
+  <string name="activity_backup_drive_recent">Copii recente</string>
+  <string name="activity_backup_drive_more">Vezi mai multe copii de siguranță</string>
+  <string name="activity_backup_drive_dialog_restore_title">Revino la versiunea anterioară</string>
+  <string name="activity_backup_drive_dialog_restore_desc">Restaurarea copiei de siguranță va suprascrie toate datele existente cu cele din backup.</string>
+  <string name="activity_backup_drive_dialog_restore_details">Detalii backup</string>
+  <string name="activity_backup_drive_dialog_restore_button_cancel">Renunță</string>
+  <string name="activity_backup_drive_dialog_restore_button_restore">Restaurează copia de siguranță</string>
   <string name="activity_backup_drive_button_restore">Restaurează de pe Drive</string>
   <string name="activity_backup_drive_error_restore">Nu s-a putut găsi o copie validă pentru a restaura de pe Drive</string>
+  <string name="activity_main_error_play_services">Glucosio are nevoie de Play Services pentru a activa backup Google Drive.</string>
+  <string name="activity_main_dialog_csv_title">Exportă ca fișier CSV</string>
 </resources>

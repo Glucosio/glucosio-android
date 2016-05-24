@@ -33,13 +33,4 @@ public class MainActivityTest extends RobolectricTest {
 
         verify(getAnalytics()).reportScreen("Main Activity");
     }
-
-    @Test
-    public void ShouldDelegateInvitation_WhenAsked() throws Exception {
-
-        activity.showInviteDialog();
-
-        verify(getInvitation()).invite(activity, activity.getString(R.string.invitation_title),
-                activity.getString(R.string.invitation_message), activity.getString(R.string.invitation_cta));
-    }
 }

@@ -41,6 +41,12 @@
   <string name="helloactivity_spinner_diabetes_type">Type de diabète</string>
   <string name="helloactivity_spinner_diabetes_type_1">Type 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Type 2</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit">Unité de Glucose préférée</string>
+  <string name="preferences_spinner_preferred_a1c_unit">Unité d\'A1C préférée</string>
+  <string name="preferences_spinner_preferred_a1c_unit_1">pourcentage</string>
+  <string name="preferences_spinner_preferred_weight_unit">Unité de poids préférée</string>
+  <string name="preferences_spinner_preferred_weight_unit_1">kilogrammes</string>
+  <string name="preferences_spinner_preferred_weight_unit_2">livres</string>
   <string name="helloactivity_share_data">Partager des données anonymes pour la recherche.</string>
   <string name="helloactivity_hint_settings">Vous pouvez modifier ces réglages plus tard.</string>
   <string name="helloactivity_button_next">SUIVANT</string>
@@ -78,6 +84,7 @@
   <string name="fragment_overview_selector_week">Semaine</string>
   <string name="preferences_about">A propos</string>
   <string name="preferences_version">Version</string>
+  <string name="preferences_coming_soon">Bientôt disponible...</string>
   <string name="preferences_terms">Conditions d\'utilisation</string>
   <string name="glucose_reading_type">Type</string>
   <string name="weight">Poids</string>
@@ -112,6 +119,8 @@
   <string name="assistant">Assistant</string>
   <string name="assistant_action_update">METTRE A JOUR</string>
   <string name="assistant_action_ok">OK, COMPRIS</string>
+  <string name="assistant_action_feedback">ENVOYEZ VOS COMMENTAIRES</string>
+  <string name="assistant_action_live_chat">CHAT EN DIRECT</string>
   <string name="assistant_action_reading">AJOUTER LECTURE</string>
   <string name="assistant_action_try">Essayez Maintenant</string>
   <string name="assistant_weight_title">Mise à jour de votre poids</string>
@@ -136,6 +145,7 @@
   <string name="invitation_title">Inviter d\'autres personnes</string>
   <string name="invitation_message">Essayer Glucosio, une application open-source pour la gestion du diabète et la recherche associée.</string>
   <string name="invitation_cta">Essayer Glucosio</string>
+  <string name="title_activity_backup_drive">Sauvegarde Google Drive</string>
   <string name="preferences_privacy">Politique de confidentialité</string>
   <string name="helloactivity_textview_tos">En utilisant Glucosio, vous acceptez les</string>
   <string name="preferences_backup_google_drive">Google Drive</string>

@@ -20,6 +20,7 @@
 
 package org.glucosio.android.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -42,6 +43,8 @@ import org.glucosio.android.tools.FormatDateTime;
 import java.text.DecimalFormat;
 import java.util.Calendar;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 public class AddPressureActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
     private AddPressurePresenter presenter;
@@ -50,6 +53,7 @@ public class AddPressureActivity extends AppCompatActivity implements TimePicker
     private TextView addDateTextView;
     private TextView minPressureTextView;
     private TextView maxPressureTextView;
+    private int pagerPosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +65,11 @@ public class AddPressureActivity extends AppCompatActivity implements TimePicker
             setSupportActionBar(toolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setElevation(2);
+        }
+
+        Bundle b = getIntent().getExtras();
+        if (b!=null) {
+            pagerPosition = b.getInt("pager");
         }
 
         presenter = new AddPressurePresenter(this);
@@ -122,6 +131,10 @@ public class AddPressureActivity extends AppCompatActivity implements TimePicker
 
     public void finishActivity() {
         Intent intent = new Intent(this, MainActivity.class);
+        // Pass pager position to open it again later
+        Bundle b = new Bundle();
+        b.putInt("pager", pagerPosition);
+        intent.putExtras(b);
         startActivity(intent);
         finish();
     }
@@ -180,5 +193,10 @@ public class AddPressureActivity extends AppCompatActivity implements TimePicker
     @Override
     public void onBackPressed() {
         finishActivity();
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

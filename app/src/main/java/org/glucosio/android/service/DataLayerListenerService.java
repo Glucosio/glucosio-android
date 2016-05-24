@@ -28,6 +28,7 @@ import android.util.Log;
 
 import com.google.android.gms.wearable.MessageEvent;
 import com.google.android.gms.wearable.WearableListenerService;
+import com.google.firebase.crash.FirebaseCrash;
 
 import org.glucosio.android.R;
 import org.glucosio.android.activity.MainActivity;
@@ -49,6 +50,8 @@ public class DataLayerListenerService extends WearableListenerService {
             try {
                 finalString = new String(messageEvent.getData(), "UTF-8");
             } catch (UnsupportedEncodingException e) {
+                FirebaseCrash.log("Unsupported Encoding from Wear");
+                FirebaseCrash.report(e);
                 e.printStackTrace();
             }
 

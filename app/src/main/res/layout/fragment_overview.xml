@@ -23,6 +23,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginBottom="16dp"
     android:layout_marginTop="16dp"
     android:background="#ffffff"
@@ -193,7 +194,7 @@
                     android:layout_marginLeft="2dp"
                     android:layout_marginBottom="4dp"
                     android:onClick="onA1cInfoClicked"
-                    android:src="@drawable/ic_error_outline_black_24dp"/>
+                    app:srcCompat="@drawable/ic_error_outline_black_24dp"/>
 
                 <TextView
                     android:id="@+id/fragment_overview_hb1ac"
@@ -221,7 +222,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:background="?android:attr/selectableItemBackground"
-                    android:src="@drawable/ic_unfold_more_black_24dp" />
+                    app:srcCompat="@drawable/ic_unfold_more_black_24dp" />
             </LinearLayout>
         </LinearLayout>
 

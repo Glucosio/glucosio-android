@@ -5,7 +5,6 @@ import android.support.annotation.NonNull;
 import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.backup.Backup;
 import org.glucosio.android.db.DatabaseHandler;
-import org.glucosio.android.invitations.Invitation;
 import org.mockito.Mock;
 
 import static org.mockito.MockitoAnnotations.initMocks;
@@ -16,9 +15,6 @@ public class TestGlucosioApplication extends GlucosioApplication {
 
     @Mock
     private Analytics analyticsMock;
-
-    @Mock
-    private Invitation invitationMock;
 
     @Mock
     private DatabaseHandler dbHandlerMock;
@@ -40,12 +36,6 @@ public class TestGlucosioApplication extends GlucosioApplication {
     @Override
     public Analytics getAnalytics() {
         return analyticsMock;
-    }
-
-    @NonNull
-    @Override
-    public Invitation getInvitation() {
-        return invitationMock;
     }
 
     @NonNull
