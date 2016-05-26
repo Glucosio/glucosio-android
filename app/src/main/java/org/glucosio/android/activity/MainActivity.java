@@ -268,7 +268,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     private void openA1CCalculator() {
-        Intent calculatorIntent = new Intent(this, A1cCalculator.class);
+        Intent calculatorIntent = new Intent(this, A1cCalculatorActivity.class);
         startActivity(calculatorIntent);
     }
 

@@ -20,7 +20,7 @@
 
 package org.glucosio.android.presenter;
 
-import org.glucosio.android.activity.A1cCalculator;
+import org.glucosio.android.activity.A1cCalculatorActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.HB1ACReading;
 import org.glucosio.android.db.User;
@@ -30,12 +30,12 @@ import java.util.Calendar;
 
 public class A1CCalculatorPresenter {
     private DatabaseHandler dB;
-    private A1cCalculator activity;
+    private A1cCalculatorActivity activity;
 
 
-    public A1CCalculatorPresenter(A1cCalculator a1CCalculator) {
-        this.activity = a1CCalculator;
-        dB = new DatabaseHandler(a1CCalculator.getApplicationContext());
+    public A1CCalculatorPresenter(A1cCalculatorActivity a1CCalculatorActivity) {
+        this.activity = a1CCalculatorActivity;
+        dB = new DatabaseHandler(a1CCalculatorActivity.getApplicationContext());
     }
 
     public double calculateA1C(String glucose) {

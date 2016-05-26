@@ -38,7 +38,7 @@ import android.widget.TextView;
 
 import org.glucosio.android.object.ActionTip;
 import org.glucosio.android.R;
-import org.glucosio.android.activity.A1cCalculator;
+import org.glucosio.android.activity.A1cCalculatorActivity;
 import org.glucosio.android.activity.AddGlucoseActivity;
 import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.adapter.AssistantAdapter;
@@ -230,7 +230,7 @@ public class AssistantFragment extends Fragment {
     }
 
     public void startA1CCalculatorActivity() {
-        Intent intent = new Intent(getActivity(), A1cCalculator.class);
+        Intent intent = new Intent(getActivity(), A1cCalculatorActivity.class);
         startActivity(intent);
     }
 
