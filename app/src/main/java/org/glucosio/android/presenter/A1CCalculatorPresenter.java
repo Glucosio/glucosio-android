@@ -62,12 +62,9 @@ public class A1CCalculatorPresenter {
     }
 
     public void saveA1C(double a1c) {
-        if(!a1c.equals(""){
         HB1ACReading a1cReading = new HB1ACReading(a1c, Calendar.getInstance().getTime());
         dB.addHB1ACReading(a1cReading);
         activity.finish();
-} else {
-// Do nothing}
     }
 
     public String getA1cUnit() {

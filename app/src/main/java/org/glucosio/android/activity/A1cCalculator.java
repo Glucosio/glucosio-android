@@ -82,7 +82,7 @@ public class A1cCalculator extends AppCompatActivity {
 
                 @Override
                 public void afterTextChanged(Editable s) {
-                    if (!s.toString().equals("")) {
+                    if (!s.toString().equals("") && !s.toString().equals(".")) {
                         convertedA1C = presenter.calculateA1C(s.toString());
                         A1CTextView.setText(convertedA1C + "");
                     }
