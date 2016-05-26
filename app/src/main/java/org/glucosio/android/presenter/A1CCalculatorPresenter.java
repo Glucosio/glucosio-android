@@ -20,28 +20,30 @@
 
 package org.glucosio.android.presenter;
 
+import android.support.annotation.NonNull;
+
 import org.glucosio.android.activity.A1cCalculatorActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.HB1ACReading;
 import org.glucosio.android.db.User;
 import org.glucosio.android.tools.GlucosioConverter;
 
-import java.util.Calendar;
+import java.util.Date;
 
 public class A1CCalculatorPresenter {
-    private DatabaseHandler dB;
-    private A1cCalculatorActivity activity;
+    private final DatabaseHandler dbHandler;
+    private final A1cCalculatorActivity activity;
 
-
-    public A1CCalculatorPresenter(A1cCalculatorActivity a1CCalculatorActivity) {
-        this.activity = a1CCalculatorActivity;
-        dB = new DatabaseHandler(a1CCalculatorActivity.getApplicationContext());
+    public A1CCalculatorPresenter(@NonNull final A1cCalculatorActivity activity,
+                                  @NonNull final DatabaseHandler dbHandler) {
+        this.activity = activity;
+        this.dbHandler = dbHandler;
     }
 
     public double calculateA1C(String glucose) {
         GlucosioConverter converter = new GlucosioConverter();
         double convertedA1C;
-        User user = dB.getUser(1);
+        User user = dbHandler.getUser(1);
 
         if ("mg/dL".equals(user.getPreferred_unit())) {
             convertedA1C = converter.glucoseToA1C(Double.parseDouble(glucose));
@@ -56,19 +58,19 @@ public class A1CCalculatorPresenter {
     }
 
     public void checkGlucoseUnit() {
-        if (!dB.getUser(1).getPreferred_unit().equals("mg/dL")) {
+        if (!dbHandler.getUser(1).getPreferred_unit().equals("mg/dL")) {
             activity.setMmol();
         }
     }
 
     public void saveA1C(double a1c) {
-        HB1ACReading a1cReading = new HB1ACReading(a1c, Calendar.getInstance().getTime());
-        dB.addHB1ACReading(a1cReading);
+        HB1ACReading a1cReading = new HB1ACReading(a1c, new Date());
+        dbHandler.addHB1ACReading(a1cReading);
         activity.finish();
     }
 
     public String getA1cUnit() {
-        return dB.getUser(1).getPreferred_unit_a1c();
+        return dbHandler.getUser(1).getPreferred_unit_a1c();
     }
 
 }

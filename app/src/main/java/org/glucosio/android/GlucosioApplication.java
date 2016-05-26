@@ -26,11 +26,13 @@ import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import org.glucosio.android.activity.A1cCalculatorActivity;
 import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.analytics.GoogleAnalytics;
 import org.glucosio.android.backup.Backup;
 import org.glucosio.android.backup.GoogleDriveBackup;
 import org.glucosio.android.db.DatabaseHandler;
+import org.glucosio.android.presenter.A1CCalculatorPresenter;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
@@ -78,5 +80,10 @@ public class GlucosioApplication extends Application {
     @NonNull
     public DatabaseHandler getDBHandler() {
         return new DatabaseHandler(getApplicationContext());
+    }
+
+    @NonNull
+    public A1CCalculatorPresenter createA1cCalculatorPresenter(@NonNull final A1cCalculatorActivity activity) {
+        return new A1CCalculatorPresenter(activity, getDBHandler());
     }
 }

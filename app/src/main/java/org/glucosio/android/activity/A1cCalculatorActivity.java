@@ -34,6 +34,7 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
+import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.presenter.A1CCalculatorPresenter;
 
@@ -66,7 +67,8 @@ public class A1cCalculatorActivity extends AppCompatActivity {
 
         initActionBar();
 
-        presenter = new A1CCalculatorPresenter(this);
+        GlucosioApplication application = (GlucosioApplication) getApplication();
+        presenter = application.createA1cCalculatorPresenter(this);
 
         if (!"percentage".equals(presenter.getA1cUnit())) {
             A1cUnitTextView.setText(getString(R.string.mmol_mol));
