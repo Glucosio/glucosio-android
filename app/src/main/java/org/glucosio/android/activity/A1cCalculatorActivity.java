@@ -80,7 +80,7 @@ public class A1cCalculatorActivity extends AppCompatActivity {
     @OnTextChanged(value = R.id.activity_converter_a1c_glucose, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
     void glucoseValueChanged(@NonNull final Editable s) {
         String value = s.toString();
-        if (!TextUtils.isEmpty(value)) {
+        if (!TextUtils.isEmpty(value) && !",".equals(value)) {
             convertedA1C = presenter.calculateA1C(value);
             A1CTextView.setText(String.valueOf(convertedA1C));
         }
