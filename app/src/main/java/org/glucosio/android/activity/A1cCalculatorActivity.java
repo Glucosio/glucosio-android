@@ -78,15 +78,8 @@ public class A1cCalculatorActivity extends AppCompatActivity {
 
     @OnTextChanged(value = R.id.activity_converter_a1c_glucose, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
     void glucoseValueChanged(@NonNull final Editable s) {
-        String value = s.toString();
-        if (isValidDouble(value)) {
-            convertedA1C = presenter.calculateA1C(value);
-            A1CTextView.setText(String.valueOf(convertedA1C));
-        }
-    }
-
-    private boolean isValidDouble(String value) {
-        return value.length() > 1 || (value.length() == 1 && Character.isDigit(value.charAt(0)));
+        convertedA1C = presenter.calculateA1C(s.toString());
+        A1CTextView.setText(String.valueOf(convertedA1C));
     }
 
     @SuppressWarnings("UnusedParameters")

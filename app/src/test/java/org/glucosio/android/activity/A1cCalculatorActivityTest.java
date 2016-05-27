@@ -15,8 +15,6 @@ import org.robolectric.RuntimeEnvironment;
 
 import static org.assertj.android.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Matchers.anyString;
-import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
@@ -68,36 +66,6 @@ public class A1cCalculatorActivityTest extends RobolectricTest {
         activity.glucoseValueChanged(editableMock);
 
         verify(getA1cCalculatorPresenter()).calculateA1C(value);
-    }
-
-    @Test
-    public void DoNotNotifyPresenter_WhenGlucoseValueChangedToEmptyString() throws Exception {
-        String value = "";
-        when(editableMock.toString()).thenReturn(value);
-
-        activity.glucoseValueChanged(editableMock);
-
-        verify(getA1cCalculatorPresenter(), never()).calculateA1C(anyString());
-    }
-
-    @Test
-    public void DoNotNotifyPresenter_WhenGlucoseValueChangedToDecimalSeparatorString() throws Exception {
-        String value = ",";
-        when(editableMock.toString()).thenReturn(value);
-
-        activity.glucoseValueChanged(editableMock);
-
-        verify(getA1cCalculatorPresenter(), never()).calculateA1C(anyString());
-    }
-
-    @Test
-    public void DoNotNotifyPresenter_WhenGlucoseValueChangedToAnotherDecimalSeparatorString() throws Exception {
-        String value = ".";
-        when(editableMock.toString()).thenReturn(value);
-
-        activity.glucoseValueChanged(editableMock);
-
-        verify(getA1cCalculatorPresenter(), never()).calculateA1C(anyString());
     }
 
     @Test

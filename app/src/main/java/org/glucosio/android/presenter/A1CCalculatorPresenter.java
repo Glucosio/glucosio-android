@@ -41,6 +41,10 @@ public class A1CCalculatorPresenter {
     }
 
     public double calculateA1C(String glucose) {
+        if (isInvalidDouble(glucose)) {
+            return 0;
+        }
+
         GlucosioConverter converter = new GlucosioConverter();
         double convertedA1C;
         User user = dbHandler.getUser(1);
@@ -55,6 +59,10 @@ public class A1CCalculatorPresenter {
         } else {
             return convertedA1C;
         }
+    }
+
+    private boolean isInvalidDouble(String value) {
+        return value == null || value.length() == 0 || (value.length() == 1 && !Character.isDigit(value.charAt(0)));
     }
 
     public void checkGlucoseUnit() {
