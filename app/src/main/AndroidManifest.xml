@@ -154,7 +154,7 @@
                 android:resource="@xml/nfc_tech_filter" />
         </activity>
         <activity
-            android:name=".activity.A1cCalculator"
+            android:name=".activity.A1cCalculatorActivity"
             android:label="@string/activity_converter_title"
             android:parentActivityName=".activity.MainActivity"
             android:screenOrientation="portrait"
