@@ -91,6 +91,16 @@ public class A1cCalculatorActivityTest extends RobolectricTest {
     }
 
     @Test
+    public void DoNotNotifyPresenter_WhenGlucoseValueChangedToAnotherDecimalSeparatorString() throws Exception {
+        String value = ".";
+        when(editableMock.toString()).thenReturn(value);
+
+        activity.glucoseValueChanged(editableMock);
+
+        verify(getA1cCalculatorPresenter(), never()).calculateA1C(anyString());
+    }
+
+    @Test
     public void ReturnTrue_WhenKeyboardActionDone() throws Exception {
         assertThat(activity.editorAction(null, EditorInfo.IME_ACTION_DONE, null)).isTrue();
     }
