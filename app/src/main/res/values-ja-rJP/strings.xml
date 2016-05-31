@@ -40,6 +40,8 @@
   <string name="helloactivity_spinner_diabetes_type">糖尿病の型</string>
   <string name="helloactivity_spinner_diabetes_type_1">1 型</string>
   <string name="helloactivity_spinner_diabetes_type_2">2 型</string>
+  <string name="helloactivity_spinner_diabetes_gdm">妊娠</string>
+  <string name="helloactivity_spinner_diabetes_lada">LADA</string>
   <string name="helloactivity_spinner_preferred_glucose_unit">使用する血糖値単位</string>
   <string name="preferences_spinner_preferred_a1c_unit">使用する A1C 単位</string>
   <string name="preferences_spinner_preferred_a1c_unit_1">パーセント</string>
@@ -292,4 +294,5 @@
   <string name="activity_backup_drive_error_restore">ドライブから復元するための有効なバックアップが見つかりません</string>
   <string name="activity_main_error_play_services">Glucosio は、Google ドライブ バックアップを利用するために Play サービスが必要です。</string>
   <string name="activity_main_dialog_csv_title">CSVファイルのエクスポート</string>
+  <string name="activity_backup_drive_button_open_drive">ドライブで管理</string>
 </resources>

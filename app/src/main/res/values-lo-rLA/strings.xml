@@ -84,6 +84,7 @@
   <string name="preferences_about">ກ່ຽວກັບ</string>
   <string name="preferences_experimental">ຟີວເຈີນີ້ແມ່ນກຳລັງຢູ່ໃນຊ່ວງທົດລອງຢູ່ ແລະ ມັນອາດຈະເຮັດວຽກບໍ່ໄດ້ເຕັມເມັດເຕັມຫນ່ວຍ ແລະ ມັນກຳລັງຢູ່ໃນຊ່ວງທົດສອບໂດຍຜູ້ໃຊ້ທົ່ວໄປ. ຈືໄວ້ວ່າທ່ານສາມາດສົ່ງຄຳຄິດຄຳເຫັນຂອງທ່ານມາຫາພວກເຮົາໄດ້ໂດຍການສັ່ນໂທລະສັບຂອງທ່ານ.</string>
   <string name="preferences_version">ຫລູ້ນ</string>
+  <string name="preferences_coming_soon">ໄວໆນີ້...</string>
   <string name="preferences_terms">ເງື່ອນໄຂການໃຊ້</string>
   <string name="glucose_reading_type">ປະເພດ</string>
   <string name="weight">ນ້ຳໜັກ</string>
@@ -135,10 +136,15 @@
   <string name="helloactivity_language">ພາສາ</string>
   <string name="invitation_title">ເຊີນສ່ວນຫມູ່ເພື່ອນຄົນອື່ນໆ</string>
   <string name="invitation_cta">ທົດລອງໃຊ້ Glucosio</string>
+  <string name="title_activity_backup_drive">ແບັກອັບໄວ້ໃນ Google Drive</string>
+  <string name="activity_main_dialog_backup_export_title">ແບັກອັບ &amp; ນຳອອກ</string>
   <string name="preferences_privacy">ຄວາມເປັນສ່ວນຕົວ</string>
   <string name="preferences_backup_google_drive">Google Drive</string>
   <string name="preferences_about_glucosio">ກ່ຽວກັບ Glucosio</string>
   <string name="preferences_rate">ເພີ່ມດາວໃຫ້ Glucosio</string>
+  <string name="preferences_licences_open">ໃບອະນຸຍາດ Open source</string>
+  <string name="preferences_freestyle_libre">ເປີດນຳໃຊ້ການສະຫນັບສະຫນູນ FreeStyle Libre®</string>
+  <string name="preferences_freestyle_libre_experimental">ການທົດລອງ: ເປີດນຳໃຊ້ການສະຫນັບສະຫນູນ FreeStyle Libre®</string>
   <string name="about_donate">ບໍລິຈາກໃຫ້ກັບ Glucosio</string>
   <string name="reading_ok">ຕົກລົງ</string>
   <string name="reading_hypo">Hypoglycemia</string>
@@ -198,6 +204,7 @@
   <string name="fragment_overview_permission_storage">Glucosio ຕ້ອງໄດ້ຮັບການອະນຸຍາດກ່ອນທີ່ຈະສາມາດບັນທຶກພາບຫນ້າຈໍນີ້ໄດ້</string>
   <string name="fragment_overview_graph_export_true">ພາບຫນ້າຈໍໄດ້ຖືກບັນທຶກໄປໄວ້ຢູ່ໃນຄັງຮູບພາບ</string>
   <string name="fragment_overview_graph_export_false">ພາບຫນ້າຈໍທີ່ມີຂໍ້ຜິດພາດໄດ້ຖືກບັນທຶກໄປໄວ້ຢູ່ໃນຄັງຮູບພາບ</string>
+  <string name="activity_export_no_readings_snackbar">ບໍ່ມີການອ່ານທີ່ຕ້ອງການນຳອອກ.</string>
   <string name="wear_new_reading">ເພີ່ມລາຍການອ່ານໃຫມ່ແລ້ວ</string>
   <string name="dialog_add_weight">ນໍ້າໜັກ</string>
   <string name="dialog_add_ketones">ຄີໂຕນ</string>
@@ -221,6 +228,7 @@
   <string name="fab_glucose">ລະດັບນໍ້າຕານໃນເລືອດ</string>
   <string name="freestylelibre_nfc_not_supported">ອຸປະກອນນີ້ບໍ່ສະຫນັບສະຫນູນ NFC.</string>
   <string name="freestylelibre_nfc_not_enabled">NFC ໄດ້ຖືກປິດນຳໃຊ້.</string>
+  <string name="dialog_add_glucose_freestylelibre">ເພີ່ມເຂົ້າມາຈາກ FreeStyle Libre®</string>
   <string name="freestylelibre_nfc_error">ເກີດມີຂໍ້ຜິດພາດໃນການເປີດການເຊື່ອມຕໍ່ NFC!</string>
   <string name="overview_hb1ac_error_no_data">ບໍ່ມີຂໍ້ມູນພຽງພໍສຳລັບການຄຳນວນ HBA1C</string>
   <string name="overview_hb1ac">HBA1C:</string>
@@ -235,4 +243,19 @@
   <string name="menu_support_forum">ຟໍລຳໃຫ້ຂໍ້ມູນການສະຫນັບສະຫນູນ</string>
   <string name="notification_reminder_medication">ມັນຮອດເວລາທີ່ຈະໃຊ້ຢາຂອງທ່ານແລ້ວ!</string>
   <string name="dialog_add_notes">ຫມາຍເຫດ</string>
+  <string name="menu_backup_backup">ແບັກອັບໄວ້ໃນ Google Drive</string>
+  <string name="menu_backup_restore">ກູ້ຄືນ</string>
+  <string name="menu_backup_csv">ນຳອອກ CSV</string>
+  <string name="activity_backup_drive_automatic">ແບັກອັບອັດຕະໂນມັດ</string>
+  <string name="activity_backup_drive_message_restart">ມອດແລ້ວເປີດໃຫມ່ເພື່ອນຳໃຊ້ສິ່ງທີ່ມີການປ່ຽນແປງ...</string>
+  <string name="activity_backup_drive_last">ແບັກອັບຄັ້ງຫລ້າສຸດ:</string>
+  <string name="activity_backup_drive_folder">ໂຟຣເດີສຳລັບແບັກອັບ</string>
+  <string name="activity_backup_drive_button_backup">ແບັກອັບໄວ້ດຽວນີ້ເລີຍ</string>
+  <string name="activity_backup_drive_dialog_restore_title">ກັບໄປນຳໃຊ້ເວີຊັນກ່ອນຫນ້ານີ້</string>
+  <string name="activity_backup_drive_dialog_restore_details">ລາຍລະອຽດການແບັກອັບ</string>
+  <string name="activity_backup_drive_dialog_restore_button_cancel">ຍົກເລີກ</string>
+  <string name="activity_backup_drive_dialog_restore_button_restore">ກູ້ຄືນການແບັກອັບ</string>
+  <string name="activity_backup_drive_button_restore">ກູ້ຄືນຈາກບ່ອນເກັບຂໍ້ມູນ</string>
+  <string name="activity_backup_drive_error_restore">ບໍ່ສາມາດຊອກຟາຍແບັກອັບເພື່ອກູ້ຂ້ມູນຄືນຈາກບ່ອນເກັບຂໍ້ມູນໄດ້</string>
+  <string name="activity_main_dialog_csv_title">ນຳອອກໄປເປັນຟາຍຂໍ້ມູນ CSV</string>
 </resources>

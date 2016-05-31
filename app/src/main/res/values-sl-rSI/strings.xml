@@ -40,6 +40,8 @@
   <string name="helloactivity_spinner_diabetes_type">Sladkorna bolezen tipa</string>
   <string name="helloactivity_spinner_diabetes_type_1">Tip 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Tip 2</string>
+  <string name="helloactivity_spinner_diabetes_gdm">Nosečnostna</string>
+  <string name="helloactivity_spinner_diabetes_lada">LADA</string>
   <string name="helloactivity_spinner_preferred_glucose_unit">Želena enota za glukozo</string>
   <string name="preferences_spinner_preferred_a1c_unit">Želena enota za A1C</string>
   <string name="preferences_spinner_preferred_a1c_unit_1">odstotek</string>
@@ -209,6 +211,7 @@
   <string name="dialog_export_title">Izvozi podatke</string>
   <string name="activity_export_date_from">Od:</string>
   <string name="dialog_export_date_to">Za:</string>
+  <string name="dialog_export_today">Izberi današnji dan</string>
   <string name="dialog_export_button">IZVOZ</string>
   <string name="title_activity_export">Izvozi podatke</string>
   <string name="dialog_export_all">Izvozi vse</string>
@@ -291,4 +294,5 @@
   <string name="activity_backup_drive_error_restore">Veljavne varnostne kopije za obnovitev iz Googla Drive ni mogoče najti</string>
   <string name="activity_main_error_play_services">Glucosio za omogočanje varnostnega kopiranja v Google Drive potrebuje Storitve Play.</string>
   <string name="activity_main_dialog_csv_title">Izvozi v datoteko CSV</string>
+  <string name="activity_backup_drive_button_open_drive">Upravljaj v Driveu</string>
 </resources>
