@@ -30,7 +30,7 @@ Read more about contributing to Glucosio [here](http://www.glucosio.org/contribu
 ## Join Beta Testing
 Join our [Community on Google+](https://plus.google.com/communities/117048486613219870727), then [click here](https://play.google.com/apps/testing/org.glucosio.android).
 
-## Test Drive Glucosio Daily
+## Test Drive Glucosio Daily (Testing Only)
 http://daily.glucosio.org
 
 
