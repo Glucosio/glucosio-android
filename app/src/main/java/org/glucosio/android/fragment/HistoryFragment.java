@@ -24,6 +24,9 @@ package org.glucosio.android.fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomSheetBehavior;
+import android.support.design.widget.BottomSheetDialog;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -55,6 +58,8 @@ public class HistoryFragment extends Fragment {
     private HistoryPresenter presenter;
     private LinearLayout glucoseLegend;
     private Spinner historySpinner;
+    private BottomSheetDialog mBottomSheetDialog;
+    private BottomSheetBehavior behavior;
     private Boolean isToolbarScrolling = true;
 
     public HistoryFragment() {
@@ -129,9 +134,9 @@ public class HistoryFragment extends Fragment {
 
             @Override
             public void onItemLongClick(final View view, final int position) {
-                CharSequence items[] = new CharSequence[]{getResources().getString(R.string.dialog_delete)};
+                showBottomSheetDialog();
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                /*AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setItems(items, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -169,7 +174,7 @@ public class HistoryFragment extends Fragment {
                         }).setActionTextColor(getResources().getColor(R.color.glucosio_accent)).show();
                     }
                 });
-                builder.show();
+                builder.show();*/
             }
         }));
 
@@ -182,6 +187,22 @@ public class HistoryFragment extends Fragment {
         });
 
         return mFragmentView;
+    }
+
+    private void showBottomSheetDialog() {
+        mBottomSheetDialog = new BottomSheetDialog(getActivity());
+        View view = getActivity().getLayoutInflater().inflate(R.layout.fragment_history_bottom_sheet, null);
+        LinearLayout edit = (LinearLayout) view.findViewById(R.id.fragment_history_bottom_sheet_edit);
+        LinearLayout delete = (LinearLayout) view.findViewById(R.id.)
+
+        mBottomSheetDialog.setContentView(view);
+        mBottomSheetDialog.show();
+        mBottomSheetDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                mBottomSheetDialog = null;
+            }
+        });
     }
 
     public void updateToolbarBehaviour() {

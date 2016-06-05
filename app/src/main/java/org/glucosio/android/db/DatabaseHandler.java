@@ -124,11 +124,19 @@ public class DatabaseHandler {
         }
     }
 
-    public void deleteGlucoseReadings(GlucoseReading reading) {
+    public void editGlucoseReading(long oldId, GlucoseReading reading) {
+        // First delete the old reading
+        deleteGlucoseReading(getGlucoseReadingById(oldId));
+        // then save the new one
+        addGlucoseReading(reading);
+    }
+
+    public void deleteGlucoseReading(GlucoseReading reading) {
         realm.beginTransaction();
         reading.removeFromRealm();
         realm.commitTransaction();
     }
+
 
     public ArrayList<GlucoseReading> getGlucoseReadings() {
         RealmResults<GlucoseReading> results =
