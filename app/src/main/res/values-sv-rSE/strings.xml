@@ -218,7 +218,6 @@
   <string name="title_activity_add_ketone">Lägg till ketoner</string>
   <string name="title_activity_add_pressure">Lägg till blodtryck</string>
   <string name="fab_weight">Kroppsvikt</string>
-  <string name="fab_ketones">Ketoner</string>
   <string name="fab_pressure">Blodtryck</string>
   <string name="fab_cholesterol">Kolesterolnivå</string>
   <string name="fab_HB1AC">HB1AC värden</string>

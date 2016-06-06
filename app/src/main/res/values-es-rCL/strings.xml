@@ -274,12 +274,9 @@
   <string name="menu_backup_restore">Restaurar</string>
   <string name="menu_backup_csv">Exportar a CSV</string>
   <string name="activity_backup_drive_automatic">Copia de seguridad automática</string>
-  <string name="activity_backup_drive_desc">Al respaldar tus datos en Google Drive guardarás tus lecturas si es que se pierden o cambiaste de celular.</string>
   <string name="activity_backup_drive_message_restart">Reiniciar para aplicar los cambios...</string>
   <string name="activity_backup_drive_desc_1">Sincroniza la base de datos de Glucosio en Google Drive.</string>
   <string name="activity_backup_drive_desc_2">Podrás restaurar todas las lecturas que pierdas o si cambiaste de celular, o sincronizar los datos de Glucosio entre tus dispositivos.</string>
-  <string name="activity_backup_drive_success">Base de datos subida correctamente a Drive</string>
-  <string name="activity_backup_drive_restore_success">Base de datos correctamente restaurada desde Drive</string>
   <string name="activity_backup_drive_failed">Algo salió mal. Inténtelo de nuevo :/</string>
   <string name="activity_backup_drive_last">Última copia de seguridad:</string>
   <string name="activity_backup_drive_folder">Carpeta de las copias de seguridad</string>
@@ -287,13 +284,14 @@
   <string name="activity_backup_drive_recent">Últimas copias de seguridad</string>
   <string name="activity_backup_drive_more">Ver más copias de seguridad</string>
   <string name="activity_backup_drive_dialog_restore_title">Volver a la versión anterior</string>
-  <string name="activity_backup_drive_dialog_restore_desc">Restaurar la copia de seguridad, va a sobrescribir todos los datos existentes con la copia de seguridad.</string>
+  <string name="activity_backup_drive_dialog_restore_desc">Si restaura la copia de seguridad, sobrescribirá todos los datos existentes con la copia de seguridad.</string>
   <string name="activity_backup_drive_dialog_restore_details">Detalles de la copia de seguridad</string>
   <string name="activity_backup_drive_dialog_restore_button_cancel">Cancelar</string>
   <string name="activity_backup_drive_dialog_restore_button_restore">Restaurar la copia de seguridad</string>
   <string name="activity_backup_drive_button_restore">Restaurar desde Drive</string>
   <string name="activity_backup_drive_error_restore">No es posible encontrar una copia de seguridad válida para restaurar desde Drive</string>
   <string name="activity_main_error_play_services">Glucosio necesita Play Services para habilitar la copia de seguridad en Google Drive.</string>
-  <string name="activity_main_dialog_csv_title">Exportar en fichero CSV</string>
+  <string name="activity_main_dialog_csv_title">Exportar a CSV</string>
   <string name="activity_backup_drive_button_open_drive">Gestionar en Drive</string>
+  <string name="mmol_L">mmol/L</string>
 </resources>

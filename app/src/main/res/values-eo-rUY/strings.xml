@@ -133,7 +133,6 @@
   <string name="activity_export_snackbar_1">"Eksportado"</string>
   <string name="activity_export_snackbar_2">legadoj</string>
   <string name="wear_new_reading">Novaj legadoj aldonitaj</string>
-  <string name="dialog_add_weight">Pezo</string>
   <string name="dialog_add_ketones">Ketonoj</string>
   <string name="dialog_add_cholesterol_ldl">LDL-kolesterolo</string>
   <string name="dialog_add_cholesterol_hdl">HDL-kolesterolo</string>
@@ -143,7 +142,6 @@
   <string name="title_activity_add_hb1ac">Aldoni HB1AC</string>
   <string name="title_activity_add_ketone">Aldoni ketonojn</string>
   <string name="fab_weight">Korpopezo</string>
-  <string name="fab_ketones">Ketonoj</string>
   <string name="fab_pressure">Sangtensio</string>
   <string name="fab_cholesterol">Kolesterolnivelo</string>
   <string name="fab_HB1AC">HB1AC-legado</string>

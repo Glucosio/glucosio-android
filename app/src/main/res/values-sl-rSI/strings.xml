@@ -273,12 +273,9 @@
   <string name="menu_backup_restore">Obnovi</string>
   <string name="menu_backup_csv">Izvoz v CSV</string>
   <string name="activity_backup_drive_automatic">Samodejna varnostna kopija</string>
-  <string name="activity_backup_drive_desc">Varnostno kopiranje podatkov v Google Drive vam omogoča obnovitev vseh vaših meritev v primeru, da izgubite ali zamenjate telefon.</string>
   <string name="activity_backup_drive_message_restart">Ponovno zaganjanje za uporabo sprememb …</string>
   <string name="activity_backup_drive_desc_1">Sinhronizirajte Glucosievo podatkovno zbirko v oblaku z Googlom Drive.</string>
   <string name="activity_backup_drive_desc_2">Svoje meritve boste lahko obnovili, če izgubite ali zamenjate telefon, ali sinhronizirali podatke v Glucosiu med napravami.</string>
-  <string name="activity_backup_drive_success">Podatkovna zbirka pravilno prenesena v Google Drive</string>
-  <string name="activity_backup_drive_restore_success">Podatkovna zbirka pravilno obnovljena z Googla Drive</string>
   <string name="activity_backup_drive_failed">Nekaj je šlo narobe. Prosimo poizkusite znova :/</string>
   <string name="activity_backup_drive_last">Zadnja var. kop.: %s</string>
   <string name="activity_backup_drive_folder">Mapa z var. kopijami</string>
@@ -295,4 +292,5 @@
   <string name="activity_main_error_play_services">Glucosio za omogočanje varnostnega kopiranja v Google Drive potrebuje Storitve Play.</string>
   <string name="activity_main_dialog_csv_title">Izvozi v datoteko CSV</string>
   <string name="activity_backup_drive_button_open_drive">Upravljaj v Driveu</string>
+  <string name="mmol_L">mmol/l</string>
 </resources>

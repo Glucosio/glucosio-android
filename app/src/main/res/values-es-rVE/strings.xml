@@ -70,7 +70,7 @@
   <string name="dialog_add_type_9">Noche</string>
   <string name="dialog_add_type_10">Glucosa en ayunas</string>
   <string name="dialog_add_type_11">Volver a verficar</string>
-  <string name="dialog_add_type_12">Otro</string>
+  <string name="dialog_add_type_12">Otros</string>
   <string name="dialog_add_cancel">Cancelar</string>
   <string name="dialog_add_add">Añadir</string>
   <string name="dialog_error2">Por favor, ingrese un valor válido.</string>
@@ -171,7 +171,7 @@
   <string name="reading_hyper">Hiperglucemia</string>
   <!-- Future Strings Baked In Early For l10n -->
   <!-- Exercise Types -->
-  <string name="dialog_add_exercisetype_1">Camina sin prisa</string>
+  <string name="dialog_add_exercisetype_1">Caminar sin prisa</string>
   <string name="dialog_add_exercisetype_2">Caminar rápido</string>
   <string name="dialog_add_exercisetype_3">Trotando</string>
   <string name="dialog_add_exercisetype_4">Corriendo</string>
@@ -198,7 +198,7 @@
   <string name="dialog_add_exercisetype_25">Trabajo de jardinería</string>
   <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">Carbohidratos:</string>
-  <string name="dialog_addfood_protein">Proteínas:</string>
+  <string name="dialog_addfood_protein">Proteína:</string>
   <string name="dialog_addfood_sugars">Azúcares:</string>
   <string name="dialog_addfood_fat">Grasa:</string>
   <!-- About Glucosio Strings -->
@@ -206,9 +206,9 @@
   <string name="about_contribute">Contribuye</string>
   <string name="about_contributel10n">Contribuye en la traducción</string>
   <string name="about_contributedev">Contribuye en el desarrollo</string>
-  <string name="about_discussion">Únete en nuestra comunidad de debate</string>
+  <string name="about_discussion">Únete a nuestra comunidad de debate</string>
   <string name="about_maillist">Suscríbete a nuestra lista de correo</string>
-  <string name="assistant_archived">CONSEJOS ARCHIVADOS</string>
+  <string name="assistant_archived">SUGERENCIAS ARCHIVADAS</string>
   <string name="dialog_export_title">Exportar datos</string>
   <string name="activity_export_date_from">De:</string>
   <string name="dialog_export_date_to">Para:</string>
@@ -216,11 +216,11 @@
   <string name="dialog_export_button">EXPORTAR</string>
   <string name="title_activity_export">Exportar datos</string>
   <string name="dialog_export_all">Exportar todo</string>
-  <string name="share_using">Compartir con</string>
+  <string name="share_using">Compartir</string>
   <string name="share_subject">Datos de Glucosio</string>
   <string name="activity_export_snackbar_1">"Exportando"</string>
   <string name="activity_export_snackbar_2">lecturas</string>
-  <string name="fragment_overview_permission_storage">Glucosio necesita permisos de almacenamiento para guardar una captura de pantalla</string>
+  <string name="fragment_overview_permission_storage">Glucosio necesita permiso de almacenamiento para guardar una captura de pantalla</string>
   <string name="fragment_overview_graph_export_true">Captura de pantalla guardada en la galería</string>
   <string name="fragment_overview_graph_export_false">Error al guardar la captura de pantalla en la galería</string>
   <string name="dialog_export_range">Exportar rango</string>
@@ -247,7 +247,7 @@
   <string name="fab_HB1AC">Lectura de HbA1c</string>
   <string name="fab_glucose">Nivel de glucosa en sangre</string>
   <string name="dialog_error_duplicate">Ya tienes una entrada en esa hora. Quítelo antes de añadir una corrección.</string>
-  <string name="freestylelibre_nfc_ready">Por favor, coloca el teléfono sobre el sensor y no lo muevas hasta que vibre.</string>
+  <string name="freestylelibre_nfc_ready">Por favor, coloca el teléfono sobre el sensor y no lo mueva hasta que vibre.</string>
   <string name="freestylelibre_nfc_not_supported">Este dispositivo no soporta NFC.</string>
   <string name="freestylelibre_nfc_not_enabled">NFC está deshabilitado.</string>
   <string name="dialog_add_glucose_freestylelibre">Añadir desde FreeStyle Libre®</string>
@@ -256,34 +256,31 @@
   <string name="overview_hb1ac_error_no_data">Todavía no hay datos suficientes para el cálculo de HBA1C</string>
   <string name="overview_hb1ac">HBA1C:</string>
   <string name="dialog_add_glucose_freestylelibre_added">Añadido desde tu FreeStyle Libre®</string>
-  <string name="activity_converter_a1c_glucose">NIVEL MEDIO DE GLUCOSA</string>
+  <string name="activity_converter_a1c_glucose">NIVEL PROMEDIO DE GLUCOSA EN SANGRE</string>
   <string name="activity_converter_a1c">A1C</string>
   <string name="activity_converter_title">Calculador de A1C</string>
   <string name="activity_converter_save">GUARDAR</string>
   <string name="menu_support">Asistencia técnica</string>
-  <string name="menu_support_title">¿En qué podemos ayudarte?</string>
-  <string name="menu_support_email">Correo electrónico</string>
+  <string name="menu_support_title">¿Cómo podemos ayudarte?</string>
+  <string name="menu_support_email">Email</string>
   <string name="menu_support_live">Chat en vivo</string>
   <string name="menu_support_forum">Foro de asistencia técnica</string>
-  <string name="notification_reminder_glucose">¡Inicia sesión para ver tu nivel de glucemia!</string>
+  <string name="notification_reminder_glucose">Es hora de registrar su nivel de glucosa en sangre!</string>
   <string name="notification_reminder_medication">¡Es hora de tomar tu medicamento!</string>
   <string name="overview_hb1ac_info">Esto es sólo un cálculo aproximado obtenido de los promedios de las lecturas del último mes. Pese a que es una fórmula para HbA1C que goza de un amplio consenso, recomendamos que los usuarios la usen sólo como un cálculo aproximado.</string>
-  <string name="dialog_add_notes">Observaciones</string>
-  <string name="sidebar_backup_export">Copia de seguridad &amp; exportar</string>
+  <string name="dialog_add_notes">Notas</string>
+  <string name="sidebar_backup_export">Respaldar &amp; exportar</string>
   <string name="menu_backup_backup">Copia de seguridad en Google Drive</string>
   <string name="menu_backup_restore">Restaurar</string>
   <string name="menu_backup_csv">Exportar CSV</string>
   <string name="activity_backup_drive_automatic">Copia de seguridad automática</string>
-  <string name="activity_backup_drive_desc">Respaldar tus datos en Google Drive te permite recuperar todas las mediciones en caso de cambio o perdida del teléfono móvil.</string>
-  <string name="activity_backup_drive_message_restart">Reiniciar para aplicar los cambios...</string>
+  <string name="activity_backup_drive_message_restart">Reiniciando para aplicar los cambios...</string>
   <string name="activity_backup_drive_desc_1">Sincronizar la base de datos de Glucosio en la nube con Google Drive.</string>
   <string name="activity_backup_drive_desc_2">Usted será capaz de restaurar todas las lecturas si ha perdido o cambiado de móvil o en caso de sincronizar los datos de Glucosio entre dispositivos.</string>
-  <string name="activity_backup_drive_success">Base de datos subida correctamente a Drive</string>
-  <string name="activity_backup_drive_restore_success">Base de datos correctamente restaurada desde Drive</string>
   <string name="activity_backup_drive_failed">Algo salió mal. Por favor, inténtelo de nuevo :/</string>
   <string name="activity_backup_drive_last">Última copia de seguridad:</string>
   <string name="activity_backup_drive_folder">Carpeta de las copias de seguridad</string>
-  <string name="activity_backup_drive_button_backup">Hacer copia ahora</string>
+  <string name="activity_backup_drive_button_backup">Hacer copia de seguridad ahora</string>
   <string name="activity_backup_drive_recent">Respaldos recientes</string>
   <string name="activity_backup_drive_more">Ver más copias de seguridad</string>
   <string name="activity_backup_drive_dialog_restore_title">Volver a la versión anterior</string>
@@ -294,6 +291,7 @@
   <string name="activity_backup_drive_button_restore">Restaurar desde Drive</string>
   <string name="activity_backup_drive_error_restore">No es posible encontrar una copia de seguridad válida para restaurar desde Drive</string>
   <string name="activity_main_error_play_services">Glucosio necesita Play Services para habilitar la copia de seguridad en Google Drive.</string>
-  <string name="activity_main_dialog_csv_title">Exportar en fichero CSV</string>
+  <string name="activity_main_dialog_csv_title">Exportar a archivo CSV</string>
   <string name="activity_backup_drive_button_open_drive">Gestionar en Drive</string>
+  <string name="mmol_L">mmol/L</string>
 </resources>

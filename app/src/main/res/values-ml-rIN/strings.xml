@@ -55,7 +55,6 @@
   <string name="dialog_add_type_5">അത്താഴത്തിനു് മുമ്പു്</string>
   <string name="dialog_add_type_6">അത്താഴത്തിനു് ശേഷം</string>
   <string name="dialog_add_type_9">രാത്രി</string>
-  <string name="dialog_add_type_12">മറ്റുള്ളവ</string>
   <string name="dialog_add_cancel">വേണ്ട</string>
   <string name="dialog_add_add">ചേര്‍ക്കൂ</string>
   <string name="dialog_error2">ഒരു സാധുതയുള്ള മൂല്യം ചേർക്കുക.</string>
@@ -77,5 +76,4 @@
   <!-- Exercise Types -->
   <!-- Food Entry Labels -->
   <!-- About Glucosio Strings -->
-  <string name="dialog_add_weight">തൂക്കം</string>
 </resources>

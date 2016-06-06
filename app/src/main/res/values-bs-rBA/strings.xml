@@ -61,7 +61,6 @@
   <string name="dialog_add_type_9">Noć</string>
   <string name="dialog_add_type_10">Glukoza u postu</string>
   <string name="dialog_add_type_11">Ponovo provjeri</string>
-  <string name="dialog_add_type_12">Drugo</string>
   <string name="dialog_add_cancel">OTKAŽI</string>
   <string name="dialog_add_add">DODAJ</string>
   <string name="dialog_error2">Molimo da unesete valjanu vrijednost.</string>
@@ -176,7 +175,6 @@
   <string name="dialog_add_exercisetype_19">Tenis</string>
   <!-- Food Entry Labels -->
   <!-- About Glucosio Strings -->
-  <string name="dialog_add_weight">Težina</string>
   <string name="fab_cholesterol">Nivo holesterola</string>
   <string name="fab_HB1AC">HBA1C očitanje</string>
   <string name="fab_glucose">Nivo šećera u krvi</string>

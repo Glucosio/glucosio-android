@@ -149,7 +149,6 @@
   <string name="invitation_message">Proveu Glucosio, una applicació de codi obert per a la recerca i la gestió de la diabetis.</string>
   <string name="invitation_cta">Proveu Glucosio</string>
   <string name="title_activity_backup_drive">Còpia de seguretat al Google Drive</string>
-  <string name="activity_main_dialog_backup_export_title">Còpia de seguretat i exportació</string>
   <string name="preferences_privacy">Privacitat</string>
   <string name="helloactivity_textview_tos">En utilitzar Glucosio, accepteu la</string>
   <string name="preferences_backup_google_drive">Google Drive</string>
@@ -238,7 +237,6 @@
   <string name="title_activity_add_ketone">Afegeix cetones</string>
   <string name="title_activity_add_pressure">Afegeix la pressió arterial</string>
   <string name="fab_weight">Pes corporal</string>
-  <string name="fab_ketones">Cetones</string>
   <string name="fab_pressure">Pressió arterial</string>
   <string name="fab_cholesterol">Nivell de colesterol</string>
   <string name="fab_HB1AC">Lectura del HB1AC</string>
@@ -271,12 +269,9 @@
   <string name="menu_backup_restore">Restaura</string>
   <string name="menu_backup_csv">Exportació CSV</string>
   <string name="activity_backup_drive_automatic">Copia de seguretat automàtica</string>
-  <string name="activity_backup_drive_desc">Si feu còpia de seguretat de les vostres dades al Google Drive podreu restaurar totes les lectures en cas que perdeu o canvieu el telèfon.</string>
   <string name="activity_backup_drive_message_restart">S\'està reiniciant per a aplicar els canvis...</string>
   <string name="activity_backup_drive_desc_1">Sincronitza la base de dades de Glucosio amb el núvol del Google Drive.</string>
   <string name="activity_backup_drive_desc_2">Podreu recuperar totes les lectures, si perdeu o canvieu el telèfon o sincronitzeu les dades de Glucosio entre diferents aparells.</string>
-  <string name="activity_backup_drive_success">La base de dades s\'ha penjat correctament al Drive</string>
-  <string name="activity_backup_drive_restore_success">La base de dades s\'ha restaurat correctament des del Drive</string>
   <string name="activity_backup_drive_failed">Alguna cosa ha anat malament. Torneu a provar-ho més tard :/</string>
   <string name="activity_backup_drive_last">Última còpia de seguretat:</string>
   <string name="activity_backup_drive_folder">Carpeta de còpies de seguretat</string>
@@ -292,4 +287,5 @@
   <string name="activity_backup_drive_error_restore">No s\'ha pogut trobar al Drive cap còpia de seguretat per a recuperar</string>
   <string name="activity_main_error_play_services">Glucosio requereix els Serveis del Play per a activar la còpia al Google Drive.</string>
   <string name="activity_main_dialog_csv_title">Exporta a un fitxer CSV</string>
+  <string name="mmol_L">mmol/L</string>
 </resources>

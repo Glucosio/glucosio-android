@@ -128,6 +128,7 @@
   <string name="assistant_reading_title">ເພີ່ມການອ່ານ</string>
   <string name="assistant_reading_desc">ກວດສອບເບິງໃຫ້ແນ່ໃຈວ່າໄດ້ບັນທຶກລະດັບນ້ຳຕານກລູໂຄສເປັນປະຈຳ ເພື່ອທີ່ພວກເຮົາຈະສາມາດຊ່ວຍທ່ານຕິດຕາມລະດັບນ້ຳຕານກລູໂຄສຕະລອດເວລາ.</string>
   <string name="assistant_export_title">ນຳເອົາຂໍ້ມູນຂອງທ່ານອອກໄປ</string>
+  <string name="assistant_export_desc">ແບ່ງປັນຂໍ້ມູນກັບທ່ານຫມໍຂອງທ່ານ ຫລື ສຳຮອງຂໍ້ມູນຂອງທ່ານໄວ້ໃນ Google Drive ໂດຍການໃຊ້ຄູນສົມບັດການນຳອອກ.</string>
   <string name="assistant_calculator_a1c_title">ຄິດໄລ່ A1C</string>
   <string name="helloactivity_spinner_preferred_range">ຊ່ວງທີ່ຕ້ອງການ</string>
   <string name="helloactivity_spinner_preferred_range_4">ຊ່ວງທີ່ກຳນົດເອງ</string>
@@ -243,6 +244,7 @@
   <string name="menu_support_forum">ຟໍລຳໃຫ້ຂໍ້ມູນການສະຫນັບສະຫນູນ</string>
   <string name="notification_reminder_medication">ມັນຮອດເວລາທີ່ຈະໃຊ້ຢາຂອງທ່ານແລ້ວ!</string>
   <string name="dialog_add_notes">ຫມາຍເຫດ</string>
+  <string name="sidebar_backup_export">ແບັກອັບ &amp; ນຳອອກ</string>
   <string name="menu_backup_backup">ແບັກອັບໄວ້ໃນ Google Drive</string>
   <string name="menu_backup_restore">ກູ້ຄືນ</string>
   <string name="menu_backup_csv">ນຳອອກ CSV</string>
@@ -258,4 +260,5 @@
   <string name="activity_backup_drive_button_restore">ກູ້ຄືນຈາກບ່ອນເກັບຂໍ້ມູນ</string>
   <string name="activity_backup_drive_error_restore">ບໍ່ສາມາດຊອກຟາຍແບັກອັບເພື່ອກູ້ຂ້ມູນຄືນຈາກບ່ອນເກັບຂໍ້ມູນໄດ້</string>
   <string name="activity_main_dialog_csv_title">ນຳອອກໄປເປັນຟາຍຂໍ້ມູນ CSV</string>
+  <string name="mmol_L">mmol/L</string>
 </resources>

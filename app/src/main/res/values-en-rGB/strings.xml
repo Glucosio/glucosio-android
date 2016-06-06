@@ -57,6 +57,7 @@
   <string name="dialog_add_type_5">Before dinner</string>
   <string name="dialog_add_type_6">After dinner</string>
   <string name="dialog_add_type_9">Night</string>
+  <string name="dialog_add_type_11">Recheck</string>
   <string name="dialog_add_type_12">Other</string>
   <string name="dialog_add_cancel">CANCEL</string>
   <string name="dialog_add_add">ADD</string>
@@ -107,6 +108,7 @@
   <string name="assistant">Assistant</string>
   <string name="assistant_action_update">UPDATE NOW</string>
   <string name="assistant_action_ok">OK, GOT IT</string>
+  <string name="assistant_action_live_chat">LIVE CHAT</string>
   <string name="assistant_action_reading">ADD READING</string>
   <string name="assistant_action_try">TRY IT NOW</string>
   <string name="assistant_weight_title">Update your weight</string>
@@ -135,5 +137,11 @@
   <!-- Exercise Types -->
   <!-- Food Entry Labels -->
   <!-- About Glucosio Strings -->
+  <string name="activity_export_date_from">From:</string>
   <string name="dialog_add_weight">Weight</string>
+  <string name="dialog_add_ketones">Ketones</string>
+  <string name="fab_ketones">Ketones</string>
+  <string name="menu_support_email">Email</string>
+  <string name="activity_backup_drive_dialog_restore_button_cancel">Cancel</string>
+  <string name="mmol_L">mmol/L</string>
 </resources>

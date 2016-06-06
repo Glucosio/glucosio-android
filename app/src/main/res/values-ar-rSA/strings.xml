@@ -171,6 +171,7 @@
   <string name="reading_hyper">فرط سكر الدم</string>
   <!-- Future Strings Baked In Early For l10n -->
   <!-- Exercise Types -->
+  <string name="dialog_add_exercisetype_1">المشي على مهل</string>
   <string name="dialog_add_exercisetype_2">مشي سريع</string>
   <string name="dialog_add_exercisetype_3">هرولة</string>
   <string name="dialog_add_exercisetype_4">جري</string>
@@ -191,6 +192,7 @@
   <string name="dialog_add_exercisetype_19">كرة المضرب</string>
   <string name="dialog_add_exercisetype_20">تنس الطاولة</string>
   <string name="dialog_add_exercisetype_21">ألعاب الدفاع عن النفس</string>
+  <string name="dialog_add_exercisetype_22">تسلق الصخور</string>
   <string name="dialog_add_exercisetype_23">المصارعة</string>
   <string name="dialog_add_exercisetype_24">المشي لمسافات طويلة (تجوال)</string>
   <string name="dialog_add_exercisetype_25">أعمال الحديقة المنزلية</string>
@@ -210,6 +212,7 @@
   <string name="dialog_export_title">تصدير البيانات</string>
   <string name="activity_export_date_from">من:</string>
   <string name="dialog_export_date_to">إلى:</string>
+  <string name="dialog_export_today">اختيار اليوم</string>
   <string name="dialog_export_button">تصدير</string>
   <string name="title_activity_export">تصدير البيانات</string>
   <string name="dialog_export_all">تصدير كل شيء</string>
@@ -264,18 +267,16 @@
   <string name="menu_support_forum">منتدى الدعم الفني</string>
   <string name="notification_reminder_glucose">لقد حان الوقت لتسجيل مستوى الجلوكوز في دمِك !</string>
   <string name="notification_reminder_medication">لقد حان الوقت لأخذ الدواء !</string>
+  <string name="overview_hb1ac_info">هذا تقدير فقط ، تم حسابه باستخدام متوسطات قراءات آخر شهر.  بالرغم من أن معادلة حساب هذا التقدير مقبولة على نطاق واسع لتقدير HbA1C إلا أننا نشجع استخدام هذا الرقم على أنه تقدير لا أكثر.</string>
   <string name="dialog_add_notes">ملاحظات</string>
   <string name="sidebar_backup_export">النسخ الاحتياطي &amp; الاستعادة</string>
   <string name="menu_backup_backup">النسخ الاحتياطي على Google Drive</string>
   <string name="menu_backup_restore">استعادة</string>
   <string name="menu_backup_csv">تصدير CSV</string>
   <string name="activity_backup_drive_automatic">نسخ احتياطي تلقائي</string>
-  <string name="activity_backup_drive_desc">النسخ الاحتياطي لبياناتك إلى Google Drive يسمح لك باستعادة جميع القراءات الخاصة بك في حال كنت فقدت أو غيّرت هاتفك.</string>
   <string name="activity_backup_drive_message_restart">إعادة التشغيل جارية لتطبيق التغييرات...</string>
   <string name="activity_backup_drive_desc_1">مزامنة قاعدة بيانات جلوكوزيو مع سحابة Google Drive.</string>
   <string name="activity_backup_drive_desc_2">سوف تتمكن من استعادة كافة القراءات الخاصة بك إذا كنت فقدت جوالك أو غيّرته أو قمت بمزامنة بيانات جلوكوزيو بين الأجهزة الخاصة بك.</string>
-  <string name="activity_backup_drive_success">تم تحميل قاعدة البيانات إلى Google Drive</string>
-  <string name="activity_backup_drive_restore_success">تمت استعادة قاعدة البيانات من Google Drive</string>
   <string name="activity_backup_drive_failed">حدث خطأ ما. الرجاء المحاولة ثانيةً :/</string>
   <string name="activity_backup_drive_last">آخر نسخ احتياطي:</string>
   <string name="activity_backup_drive_folder">مجلد النسخ الإحتياطي</string>
@@ -292,4 +293,5 @@
   <string name="activity_main_error_play_services">جلوكوزيو يحتاج إلى \"خدمات Play\" لتمكين النسخ الاحتياطي إلى خدمة Google Drive.</string>
   <string name="activity_main_dialog_csv_title">تصدير إلى ملف CSV</string>
   <string name="activity_backup_drive_button_open_drive">الإدارة على Drive</string>
+  <string name="mmol_L">م.مول/ل</string>
 </resources>
