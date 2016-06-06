@@ -26,7 +26,9 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialog;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -37,6 +39,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import org.glucosio.android.R;
 import org.glucosio.android.activity.MainActivity;
@@ -129,47 +132,7 @@ public class HistoryFragment extends Fragment {
 
             @Override
             public void onItemLongClick(final View view, final int position) {
-                showBottomSheetDialog();
-
-                /*AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setItems(items, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // DELETE
-                        TextView idTextView = (TextView) view.findViewById(R.id.item_history_id);
-                        final long idToDelete = Long.parseLong(idTextView.getText().toString());
-                        final CardView item = (CardView) view.findViewById(R.id.item_history);
-                        item.animate().alpha(0.0f).setDuration(2000);
-                        Snackbar.make(((MainActivity) getActivity()).getFabView(), R.string.fragment_history_snackbar_text, Snackbar.LENGTH_SHORT).setCallback(new Snackbar.Callback() {
-                            @Override
-                            public void onDismissed(Snackbar snackbar, int event) {
-                                switch (event) {
-                                    case Snackbar.Callback.DISMISS_EVENT_ACTION:
-                                        // Do nothing, see Undo onClickListener
-                                        break;
-                                    case Snackbar.Callback.DISMISS_EVENT_TIMEOUT:
-                                        presenter.onDeleteClicked(idToDelete, historySpinner.getSelectedItemPosition());
-                                        break;
-                                    default:
-                                        break;
-                                }
-                            }
-
-                            @Override
-                            public void onShown(Snackbar snackbar) {
-                                // Do nothing
-                            }
-                        }).setAction("UNDO", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                item.clearAnimation();
-                                item.setAlpha(1.0f);
-                                mAdapter.notifyDataSetChanged();
-                            }
-                        }).setActionTextColor(getResources().getColor(R.color.glucosio_accent)).show();
-                    }
-                });
-                builder.show();*/
+                showBottomSheetDialog(view, position);
             }
         }));
 
@@ -184,13 +147,59 @@ public class HistoryFragment extends Fragment {
         return mFragmentView;
     }
 
-    private void showBottomSheetDialog() {
+    private void showBottomSheetDialog(final View itemView, int itemPosition) {
         mBottomSheetDialog = new BottomSheetDialog(getActivity());
-        View view = getActivity().getLayoutInflater().inflate(R.layout.fragment_history_bottom_sheet, null);
-        LinearLayout edit = (LinearLayout) view.findViewById(R.id.fragment_history_bottom_sheet_edit);
-        LinearLayout delete = (LinearLayout) view.findViewById(R.id.fragment_history_bottom_sheet_delete);
+        View sheetView = getActivity().getLayoutInflater().inflate(R.layout.fragment_history_bottom_sheet, null);
+        LinearLayout edit = (LinearLayout) sheetView.findViewById(R.id.fragment_history_bottom_sheet_edit);
+        LinearLayout delete = (LinearLayout) sheetView.findViewById(R.id.fragment_history_bottom_sheet_delete);
 
-        mBottomSheetDialog.setContentView(view);
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mBottomSheetDialog.dismiss();
+                TextView idTextView = (TextView) itemView.findViewById(R.id.item_history_id);
+                final long idToDelete = Long.parseLong(idTextView.getText().toString());
+                final CardView item = (CardView) itemView.findViewById(R.id.item_history);
+                item.animate().alpha(0.0f).setDuration(2000);
+                Snackbar.make(((MainActivity) getActivity()).getFabView(), R.string.fragment_history_snackbar_text, Snackbar.LENGTH_SHORT).setCallback(new Snackbar.Callback() {
+                    @Override
+                    public void onDismissed(Snackbar snackbar, int event) {
+                        switch (event) {
+                            case Snackbar.Callback.DISMISS_EVENT_ACTION:
+                                // Do nothing, see Undo onClickListener
+                                break;
+                            case Snackbar.Callback.DISMISS_EVENT_TIMEOUT:
+                                presenter.onDeleteClicked(idToDelete, historySpinner.getSelectedItemPosition());
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+
+                    @Override
+                    public void onShown(Snackbar snackbar) {
+                        // Do nothing
+                    }
+                }).setAction("UNDO", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        item.clearAnimation();
+                        item.setAlpha(1.0f);
+                        mAdapter.notifyDataSetChanged();
+                    }
+                }).setActionTextColor(getResources().getColor(R.color.glucosio_accent)).show();
+
+            }
+        });
+
+        mBottomSheetDialog.setContentView(sheetView);
         mBottomSheetDialog.show();
         mBottomSheetDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
