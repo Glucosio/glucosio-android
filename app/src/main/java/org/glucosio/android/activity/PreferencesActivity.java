@@ -20,13 +20,11 @@
 
 package org.glucosio.android.activity;
 
-import android.annotation.TargetApi;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
@@ -48,6 +46,7 @@ import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.User;
 import org.glucosio.android.tools.InputFilterMinMax;
+import org.glucosio.android.tools.LocaleHelper;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -105,9 +104,6 @@ public class PreferencesActivity extends AppCompatActivity {
         private DatabaseHandler dB;
         private User user;
         private ListPreference languagePref;
-        /*
-                private Preference backupPref;
-        */
         private ListPreference countryPref;
         private ListPreference genderPref;
         private ListPreference diabetesTypePref;
@@ -124,6 +120,7 @@ public class PreferencesActivity extends AppCompatActivity {
         private SwitchPreference dyslexiaModePref;
         private SwitchPreference freestyleLibrePref;
         private User updatedUser;
+        private LocaleHelper localeHelper;
 
 
         @Override
@@ -131,7 +128,9 @@ public class PreferencesActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.preferences);
 
-            dB = ((GlucosioApplication) getActivity().getApplicationContext()).getDBHandler();
+            final GlucosioApplication app = (GlucosioApplication) getActivity().getApplicationContext();
+            dB = app.getDBHandler();
+            localeHelper = app.getLocaleHelper();
             user = dB.getUser(1);
             updatedUser = new User(user.getId(), user.getName(), user.getPreferred_language(),
                     user.getCountry(), user.getAge(), user.getGender(), user.getD_type(),
@@ -154,10 +153,6 @@ public class PreferencesActivity extends AppCompatActivity {
 
             agePref.setDefaultValue(user.getAge());
             countryPref.setValue(user.getCountry());
-            String languageValue = user.getPreferred_language();
-            if (languageValue != null) {
-                languagePref.setSummary(getDisplayLanguage(languageValue));
-            }
             genderPref.setValue(user.getGender());
             diabetesTypePref.setValue(user.getD_type() + "");
             unitPrefGlucose.setValue(user.getPreferred_unit());
@@ -185,8 +180,13 @@ public class PreferencesActivity extends AppCompatActivity {
 
                     String language = (String) newValue;
                     updatedUser.setPreferred_language(language);
-                    languagePref.setSummary(getDisplayLanguage(language));
+                    languagePref.setSummary(localeHelper.getDisplayLanguage(language));
+                    languagePref.setValue(language);
+
                     updateDB();
+
+                    localeHelper.updateLanguage(getActivity(), language);
+                    getActivity().recreate();
 
                     return true;
                 }
@@ -340,18 +340,8 @@ public class PreferencesActivity extends AppCompatActivity {
             countryPref.setEntryValues(countries);
             countryPref.setEntries(countries);
 
-            String[] languages = getActivity().getAssets().getLocales();
-            List<String> valuesLanguages = new ArrayList<>(languages.length);
-            List<String> displayLanguages = new ArrayList<>(languages.length);
-            for (String language : languages) {
-                if (language.length() > 0) {
-                    valuesLanguages.add(language);
-                    String languageTag = language.replace("_", "-");
-                    displayLanguages.add(getDisplayLanguage(languageTag));
-                }
-            }
-            languagePref.setEntryValues(getEntryValues(valuesLanguages));
-            languagePref.setEntries(getEntryValues(displayLanguages));
+            initLanguagePreference();
+
             updateDB();
 
             aboutPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
@@ -364,25 +354,24 @@ public class PreferencesActivity extends AppCompatActivity {
             });
         }
 
-        private String getDisplayLanguage(String languageTag) {
-            Locale locale = getLocale(languageTag);
-            return locale.getDisplayLanguage();
-        }
-
-        @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-        private Locale getLocale(String languageTag) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                return Locale.forLanguageTag(languageTag);
-            } else {
-                String[] values = languageTag.split("-");
-                switch (values.length) {
-                    case 3:
-                        return new Locale(values[0], values[1], values[2]);
-                    case 2:
-                        return new Locale(values[0], values[1]);
-                    default:
-                        return new Locale(values[0]);
+        private void initLanguagePreference() {
+            String[] languages = getActivity().getAssets().getLocales();
+            List<String> valuesLanguages = new ArrayList<>(languages.length);
+            List<String> displayLanguages = new ArrayList<>(languages.length);
+            for (String language : languages) {
+                if (language.length() > 0) {
+                    valuesLanguages.add(language);
+                    displayLanguages.add(localeHelper.getDisplayLanguage(language));
                 }
+            }
+            languagePref.setEntryValues(getEntryValues(valuesLanguages));
+            languagePref.setEntries(getEntryValues(displayLanguages));
+
+            String languageValue = user.getPreferred_language();
+            if (languageValue != null) {
+                languagePref.setValue(languageValue);
+                String displayLanguage = localeHelper.getDisplayLanguage(languageValue);
+                languagePref.setSummary(displayLanguage);
             }
         }
 
@@ -395,17 +384,10 @@ public class PreferencesActivity extends AppCompatActivity {
             unitPrefA1c.setSummary(user.getPreferred_unit_a1c() + "");
             unitPrefWeight.setSummary(user.getPreferred_unit_weight() + "");
             countryPref.setSummary(user.getCountry());
-/*
-            languagePref.setSummary(user.getPreferred_language());
-*/
-            rangePref.setSummary(user.getPreferred_range() + "");
             minRangePref.setSummary(user.getCustom_range_min() + "");
             maxRangePref.setSummary(user.getCustom_range_max() + "");
 
             countryPref.setValue(user.getCountry());
-/*
-            languagePref.setValue(user.getPreferred_language());
-*/
             genderPref.setValue(user.getGender());
             diabetesTypePref.setValue(user.getD_type() + "");
             unitPrefGlucose.setValue(user.getPreferred_unit());

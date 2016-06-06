@@ -32,13 +32,18 @@ import org.glucosio.android.analytics.GoogleAnalytics;
 import org.glucosio.android.backup.Backup;
 import org.glucosio.android.backup.GoogleDriveBackup;
 import org.glucosio.android.db.DatabaseHandler;
+import org.glucosio.android.db.User;
 import org.glucosio.android.presenter.A1CCalculatorPresenter;
+import org.glucosio.android.tools.LocaleHelper;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 public class GlucosioApplication extends Application {
     @Nullable
     private Analytics analytics;
+
+    @Nullable
+    private LocaleHelper localeHelper;
 
     @Override
     public void onCreate() {
@@ -52,6 +57,12 @@ public class GlucosioApplication extends Application {
             setFont("fonts/opendyslexic.otf");
         } else {
             setFont("fonts/lato.ttf");
+        }
+
+        User user = getDBHandler().getUser(1);
+        String languageTag = user.getPreferred_language();
+        if (languageTag != null) {
+            getLocaleHelper().updateLanguage(this, languageTag);
         }
     }
 
@@ -85,5 +96,13 @@ public class GlucosioApplication extends Application {
     @NonNull
     public A1CCalculatorPresenter createA1cCalculatorPresenter(@NonNull final A1cCalculatorActivity activity) {
         return new A1CCalculatorPresenter(activity, getDBHandler());
+    }
+
+    @NonNull
+    public LocaleHelper getLocaleHelper() {
+        if (localeHelper == null) {
+            localeHelper = new LocaleHelper();
+        }
+        return localeHelper;
     }
 }
