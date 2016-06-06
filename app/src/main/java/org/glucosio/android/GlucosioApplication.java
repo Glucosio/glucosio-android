@@ -25,6 +25,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.VisibleForTesting;
 
 import org.glucosio.android.activity.A1cCalculatorActivity;
 import org.glucosio.android.analytics.Analytics;
@@ -59,6 +60,11 @@ public class GlucosioApplication extends Application {
             setFont("fonts/lato.ttf");
         }
 
+        initLanguage();
+    }
+
+    @VisibleForTesting
+    protected void initLanguage() {
         User user = getDBHandler().getUser(1);
         String languageTag = user.getPreferred_language();
         if (languageTag != null) {
