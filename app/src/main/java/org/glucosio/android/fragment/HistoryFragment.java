@@ -24,13 +24,9 @@ package org.glucosio.android.fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialog;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -41,7 +37,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import org.glucosio.android.R;
 import org.glucosio.android.activity.MainActivity;
@@ -193,7 +188,7 @@ public class HistoryFragment extends Fragment {
         mBottomSheetDialog = new BottomSheetDialog(getActivity());
         View view = getActivity().getLayoutInflater().inflate(R.layout.fragment_history_bottom_sheet, null);
         LinearLayout edit = (LinearLayout) view.findViewById(R.id.fragment_history_bottom_sheet_edit);
-        LinearLayout delete = (LinearLayout) view.findViewById(R.id.)
+        LinearLayout delete = (LinearLayout) view.findViewById(R.id.fragment_history_bottom_sheet_delete);
 
         mBottomSheetDialog.setContentView(view);
         mBottomSheetDialog.show();
