@@ -20,17 +20,21 @@
 
 package org.glucosio.android.activity;
 
+import android.annotation.TargetApi;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.SwitchPreference;
+import android.support.annotation.NonNull;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputFilter;
@@ -47,6 +51,7 @@ import org.glucosio.android.tools.InputFilterMinMax;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Locale;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
@@ -61,8 +66,11 @@ public class PreferencesActivity extends AppCompatActivity {
         getFragmentManager().beginTransaction()
                 .replace(R.id.preferencesFrame, new MyPreferenceFragment()).commit();
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(getString(R.string.action_settings));
+        ActionBar supportActionBar = getSupportActionBar();
+        if (supportActionBar != null) {
+            supportActionBar.setDisplayHomeAsUpEnabled(true);
+            supportActionBar.setTitle(getString(R.string.action_settings));
+        }
 
         // Obtain the Analytics shared Tracker instance.
         GlucosioApplication application = (GlucosioApplication) getApplication();
@@ -125,11 +133,14 @@ public class PreferencesActivity extends AppCompatActivity {
 
             dB = ((GlucosioApplication) getActivity().getApplicationContext()).getDBHandler();
             user = dB.getUser(1);
-            updatedUser = new User(user.getId(), user.getName(), user.getPreferred_language(), user.getCountry(), user.getAge(), user.getGender(), user.getD_type(), user.getPreferred_unit(), user.getPreferred_unit_a1c(), user.getPreferred_unit_weight(), user.getPreferred_range(), user.getCustom_range_min(), user.getCustom_range_max());
+            updatedUser = new User(user.getId(), user.getName(), user.getPreferred_language(),
+                    user.getCountry(), user.getAge(), user.getGender(), user.getD_type(),
+                    user.getPreferred_unit(), user.getPreferred_unit_a1c(),
+                    user.getPreferred_unit_weight(), user.getPreferred_range(),
+                    user.getCustom_range_min(), user.getCustom_range_max());
             agePref = (EditTextPreference) findPreference("pref_age");
             countryPref = (ListPreference) findPreference("pref_country");
-            // languagePref = (ListPreference) findPreference("pref_language");
-            // backupPref = (Preference) findPreference("backup_settings");
+            languagePref = (ListPreference) findPreference("pref_language");
             genderPref = (ListPreference) findPreference("pref_gender");
             diabetesTypePref = (ListPreference) findPreference("pref_diabetes_type");
             unitPrefGlucose = (ListPreference) findPreference("pref_unit_glucose");
@@ -143,7 +154,10 @@ public class PreferencesActivity extends AppCompatActivity {
 
             agePref.setDefaultValue(user.getAge());
             countryPref.setValue(user.getCountry());
-            // languagePref.setValue(user.getPreferred_language());
+            String languageValue = user.getPreferred_language();
+            if (languageValue != null) {
+                languagePref.setSummary(getDisplayLanguage(languageValue));
+            }
             genderPref.setValue(user.getGender());
             diabetesTypePref.setValue(user.getD_type() + "");
             unitPrefGlucose.setValue(user.getPreferred_unit());
@@ -156,7 +170,7 @@ public class PreferencesActivity extends AppCompatActivity {
             minRangePref.setDefaultValue(user.getCustom_range_min() + "");
             maxRangePref.setDefaultValue(user.getCustom_range_max() + "");
 
-            if (!"custom".equals(rangePref)) {
+            if (!"custom".equals(rangePref.getValue())) {
                 minRangePref.setEnabled(false);
                 maxRangePref.setEnabled(false);
             } else {
@@ -164,22 +178,19 @@ public class PreferencesActivity extends AppCompatActivity {
                 maxRangePref.setEnabled(true);
             }
 
-/*
-            final Preference backupPref = (Preference) findPreference("backup_settings");
-*/
-            final Preference aboutPref = (Preference) findPreference("about_settings");
-            /*languagePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            final Preference aboutPref = findPreference("about_settings");
+            languagePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
 
-                    int position = languagePref.findIndexOfValue(newValue.toString());
-                    String lang_code = getResources().getStringArray(R.array.array_languages_code)[position];
-
-                    updatedUser.setPreferred_language(lang_code);
+                    String language = (String) newValue;
+                    updatedUser.setPreferred_language(language);
+                    languagePref.setSummary(getDisplayLanguage(language));
                     updateDB();
+
                     return true;
                 }
-            });*/
+            });
             countryPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -304,15 +315,6 @@ public class PreferencesActivity extends AppCompatActivity {
                     return true;
                 }
             });
-/*            backupPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-                @Override
-                public boolean onPreferenceClick(Preference preference) {
-                    Intent backupActivity = new Intent(getActivity(), RealmBackupActivity.class);
-                    getActivity().startActivity(backupActivity);
-                    return false;
-                }
-            });*/
-
 
             ageEditText = agePref.getEditText();
             minEditText = minRangePref.getEditText();
@@ -323,7 +325,7 @@ public class PreferencesActivity extends AppCompatActivity {
             maxEditText.setFilters(new InputFilter[]{new InputFilterMinMax(1, 1500)});
 
             // Get countries list from locale
-            ArrayList<String> countriesArray = new ArrayList<String>();
+            ArrayList<String> countriesArray = new ArrayList<>();
             Locale[] locales = Locale.getAvailableLocales();
 
             for (Locale locale : locales) {
@@ -338,20 +340,19 @@ public class PreferencesActivity extends AppCompatActivity {
             countryPref.setEntryValues(countries);
             countryPref.setEntries(countries);
 
-/*            CharSequence[] languages = getActivity().getResources().getStringArray(R.array.array_languages_name);
-            languagePref.setEntryValues(languages);
-            languagePref.setEntries(languages);*/
-            updateDB();
-
-/*            backupPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-
-                @Override
-                public boolean onPreferenceClick(Preference preference) {
-                    Intent backupActivity = new Intent(getActivity(), RealmBackupActivity.class);
-                    getActivity().startActivity(backupActivity);
-                    return false;
+            String[] languages = getActivity().getAssets().getLocales();
+            List<String> valuesLanguages = new ArrayList<>(languages.length);
+            List<String> displayLanguages = new ArrayList<>(languages.length);
+            for (String language : languages) {
+                if (language.length() > 0) {
+                    valuesLanguages.add(language);
+                    String languageTag = language.replace("_", "-");
+                    displayLanguages.add(getDisplayLanguage(languageTag));
                 }
-            });*/
+            }
+            languagePref.setEntryValues(getEntryValues(valuesLanguages));
+            languagePref.setEntries(getEntryValues(displayLanguages));
+            updateDB();
 
             aboutPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
@@ -361,6 +362,28 @@ public class PreferencesActivity extends AppCompatActivity {
                     return false;
                 }
             });
+        }
+
+        private String getDisplayLanguage(String languageTag) {
+            Locale locale = getLocale(languageTag);
+            return locale.getDisplayLanguage();
+        }
+
+        @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+        private Locale getLocale(String languageTag) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                return Locale.forLanguageTag(languageTag);
+            } else {
+                String[] values = languageTag.split("-");
+                switch (values.length) {
+                    case 3:
+                        return new Locale(values[0], values[1], values[2]);
+                    case 2:
+                        return new Locale(values[0], values[1]);
+                    default:
+                        return new Locale(values[0]);
+                }
+            }
         }
 
         private void updateDB() {
@@ -421,5 +444,11 @@ public class PreferencesActivity extends AppCompatActivity {
             mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
             System.exit(0);
         }
+    }
+
+    @NonNull
+    private static String[] getEntryValues(List<String> list) {
+        String[] result = new String[list.size()];
+        return list.toArray(result);
     }
 }
