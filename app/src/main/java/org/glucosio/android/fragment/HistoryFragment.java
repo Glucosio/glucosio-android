@@ -23,6 +23,7 @@ package org.glucosio.android.fragment;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialog;
@@ -42,6 +43,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import org.glucosio.android.R;
+import org.glucosio.android.activity.AddGlucoseActivity;
 import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.adapter.HistoryAdapter;
 import org.glucosio.android.listener.RecyclerItemClickListener;
@@ -147,16 +149,21 @@ public class HistoryFragment extends Fragment {
         return mFragmentView;
     }
 
-    private void showBottomSheetDialog(final View itemView, int itemPosition) {
+    private void showBottomSheetDialog(final View itemView, final int itemPosition) {
         mBottomSheetDialog = new BottomSheetDialog(getActivity());
         View sheetView = getActivity().getLayoutInflater().inflate(R.layout.fragment_history_bottom_sheet, null);
         LinearLayout edit = (LinearLayout) sheetView.findViewById(R.id.fragment_history_bottom_sheet_edit);
         LinearLayout delete = (LinearLayout) sheetView.findViewById(R.id.fragment_history_bottom_sheet_delete);
+        final TextView idTextView = (TextView) itemView.findViewById(R.id.item_history_id);
 
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getActivity(), AddGlucoseActivity.class);
+                intent.putExtra("edit_id", Long.parseLong(idTextView.getText().toString()));
+                startActivity(intent);
+                mBottomSheetDialog.dismiss();
+                getActivity().finish();
             }
         });
 

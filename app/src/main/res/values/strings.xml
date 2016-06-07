@@ -362,6 +362,7 @@
     <string name="dialog_add_cholesterol_hdl">HDL Cholesterol</string>
     <string name="dialog_add_hb1ac">HBA1C</string>
     <string name="title_activity_add_glucose">Add Glucose reading</string>
+    <string name="title_activity_add_glucose_edit">Edit Glucose reading</string>
     <string name="title_activity_add_weight">Add Body Weight</string>
     <string name="title_activity_add_cholesterol">Add Cholesterol Level</string>
     <string name="title_activity_add_hb1ac">Add HBA1C</string>

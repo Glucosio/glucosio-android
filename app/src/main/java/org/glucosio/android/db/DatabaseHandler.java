@@ -124,11 +124,11 @@ public class DatabaseHandler {
         }
     }
 
-    public void editGlucoseReading(long oldId, GlucoseReading reading) {
+    public boolean editGlucoseReading(long oldId, GlucoseReading reading) {
         // First delete the old reading
         deleteGlucoseReading(getGlucoseReadingById(oldId));
         // then save the new one
-        addGlucoseReading(reading);
+        return addGlucoseReading(reading);
     }
 
     public void deleteGlucoseReading(GlucoseReading reading) {
