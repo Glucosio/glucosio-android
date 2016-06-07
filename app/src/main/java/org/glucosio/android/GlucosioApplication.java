@@ -66,9 +66,11 @@ public class GlucosioApplication extends Application {
     @VisibleForTesting
     protected void initLanguage() {
         User user = getDBHandler().getUser(1);
-        String languageTag = user.getPreferred_language();
-        if (languageTag != null) {
-            getLocaleHelper().updateLanguage(this, languageTag);
+        if (user != null) {
+            String languageTag = user.getPreferred_language();
+            if (languageTag != null) {
+                getLocaleHelper().updateLanguage(this, languageTag);
+            }
         }
     }
 
