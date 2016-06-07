@@ -174,23 +174,6 @@ public class PreferencesActivity extends AppCompatActivity {
             }
 
             final Preference aboutPref = findPreference("about_settings");
-            languagePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                @Override
-                public boolean onPreferenceChange(Preference preference, Object newValue) {
-
-                    String language = (String) newValue;
-                    updatedUser.setPreferred_language(language);
-                    languagePref.setSummary(localeHelper.getDisplayLanguage(language));
-                    languagePref.setValue(language);
-
-                    updateDB();
-
-                    localeHelper.updateLanguage(getActivity(), language);
-                    getActivity().recreate();
-
-                    return true;
-                }
-            });
             countryPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -373,6 +356,24 @@ public class PreferencesActivity extends AppCompatActivity {
                 String displayLanguage = localeHelper.getDisplayLanguage(languageValue);
                 languagePref.setSummary(displayLanguage);
             }
+
+            languagePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+
+                    String language = (String) newValue;
+                    updatedUser.setPreferred_language(language);
+                    languagePref.setSummary(localeHelper.getDisplayLanguage(language));
+                    languagePref.setValue(language);
+
+                    updateDB();
+
+                    localeHelper.updateLanguage(getActivity(), language);
+                    getActivity().recreate();
+
+                    return true;
+                }
+            });
         }
 
         private void updateDB() {
