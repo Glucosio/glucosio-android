@@ -236,6 +236,7 @@
   <string name="dialog_add_cholesterol_hdl">Colesterolo HDL</string>
   <string name="dialog_add_hb1ac">HB1AC</string>
   <string name="title_activity_add_glucose">Aggiungi Glicemia</string>
+  <string name="title_activity_add_glucose_edit">Modifica Glicemia</string>
   <string name="title_activity_add_weight">Aggiungi Peso Corporeo</string>
   <string name="title_activity_add_cholesterol">Aggiungi Colesterolo</string>
   <string name="title_activity_add_hb1ac">Aggiungi Emoglobina glicata</string>
