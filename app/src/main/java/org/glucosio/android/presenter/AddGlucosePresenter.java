@@ -192,13 +192,6 @@ public class AddGlucosePresenter {
         }
     }
 
-    // Getters and Setters
-
-    public boolean isFreeStyleLibreEnabled() {
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
-        return sharedPref.getBoolean("pref_freestyle_libre", false);
-    }
-
     public String getUnitMeasuerement() {
         return dB.getUser(1).getPreferred_unit();
     }
