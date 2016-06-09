@@ -113,6 +113,7 @@
   <string name="assistant_weight_title">Aktualisiere dein Gewicht</string>
   <string name="assistant_weight_desc">Vergessen Sie nicht ihr Gewicht zu aktualisien damit Glucosio die reale Situation wiedergeben kann.</string>
   <string name="assistant_research_title">Aktualisieren sie ihre Forschung opt-in</string>
+  <string name="assistant_research_desc">Sie können immer opt-in oder opt-out zur Diabetes Forschung auswählen, aber denken sie daran, das alle Daten und die Laufzeit völlig anonym sind. Wir teilen nur demografische und Zuckerwert-Tendenzen.</string>
   <string name="assistant_categories_title">Kategorie erstellen</string>
   <string name="assistant_categories_desc">Glucosio kommt mit Standardkategorien für Zuckereingabe, aber sie können benutzerdefinierte Kategorien in Einstellungen entsprechend ihren speziellen Anforderungen erstellen.</string>
   <string name="assistant_check_title">Kommen sie öfter wieder</string>
@@ -246,4 +247,5 @@
   <string name="notification_reminder_glucose">Es ist Zeit ihren Blutzuckerspiegel zu messen!</string>
   <string name="notification_reminder_medication">Es ist Zeit ihre Medikamente zu nehmen!</string>
   <string name="overview_hb1ac_info">Dies ist nur eine Schätzung und errechnet sich aus dem Durchschnitt des letzten Monats der Messungen. Während diese Schätzung eine weithin akzeptierte Formel für die Abschätzung des HbA1C ist, appellieren wir an die User dies nur als Schätzung zu verwenden.</string>
+  <string name="mmol_L">mmol/L</string>
 </resources>

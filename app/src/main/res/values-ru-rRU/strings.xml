@@ -230,7 +230,6 @@
   <string name="title_activity_add_ketone">Добавить кетоны</string>
   <string name="title_activity_add_pressure">Добавить уровень кровяного давления</string>
   <string name="fab_weight">Вес</string>
-  <string name="fab_ketones">Кетоны</string>
   <string name="fab_pressure">Кровяное давление</string>
   <string name="fab_cholesterol">Уровень холестерина</string>
   <string name="fab_HB1AC">Показания HB1AC</string>

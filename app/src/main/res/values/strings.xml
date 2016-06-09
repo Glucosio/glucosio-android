@@ -128,6 +128,7 @@
     <string name="dialog_add_add">ADD</string>
     <string name="dialog_error2">Please enter a valid value.</string>
     <string name="dialog_error">Please fill all the fields.</string>
+    <string name="dialog_edit">Edit</string>
     <string name="dialog_delete">Delete</string>
 
     <string name="fragment_history_snackbar_text">1 reading deleted</string>
@@ -157,7 +158,7 @@
     <string name="preferences_about">About</string>
     <string name="preferences_experimental_title" translatable="false">Here be dragons :/</string>
     <string name="preferences_experimental">These features are experimental and may not fully work and are for early testing by users. Remember that you can shake your phone to send us feedback.</string>
-    <string name="version" translatable="false">1.0.0 (Shega)</string>
+    <string name="version" translatable="false">1.0.2 (Shega)</string>
     <string name="preferences_version">Version</string>
     <string name="preferences_coming_soon">Coming soon...</string>
     <string name="preferences_terms">Terms of use</string>
@@ -361,6 +362,7 @@
     <string name="dialog_add_cholesterol_hdl">HDL Cholesterol</string>
     <string name="dialog_add_hb1ac">HBA1C</string>
     <string name="title_activity_add_glucose">Add Glucose reading</string>
+    <string name="title_activity_add_glucose_edit">Edit Glucose reading</string>
     <string name="title_activity_add_weight">Add Body Weight</string>
     <string name="title_activity_add_cholesterol">Add Cholesterol Level</string>
     <string name="title_activity_add_hb1ac">Add HBA1C</string>
@@ -433,4 +435,6 @@
     </string-array>
     <string translatable="false" name="title_activity_splash">SplashActivity</string>
     <string name="activity_backup_drive_button_open_drive">Manage on Drive</string>
+    <string name="mmol_mol">mmol/mol</string>
+    <string name="mmol_L">mmol/L</string>
 </resources>

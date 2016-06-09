@@ -20,14 +20,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.glucosio.android">
 
-    <uses-permission
-        android:name="android.permission.NFC"
-        android:required="false" />
-
-    <uses-feature
-        android:name="android.hardware.nfc"
-        android:required="false" />
-
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
@@ -140,21 +132,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.glucosio.android.activity.MainActivity" />
         </activity>
-        <activity android:name=".activity.FreestyleLibre">
-
-            <!-- NFC for FreeStyle -->
-            <intent-filter>
-                <action android:name="android.nfc.action.TECH_DISCOVERED" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.nfc.action.TECH_DISCOVERED"
-                android:resource="@xml/nfc_tech_filter" />
-        </activity>
         <activity
-            android:name=".activity.A1cCalculator"
+            android:name=".activity.A1cCalculatorActivity"
             android:label="@string/activity_converter_title"
             android:parentActivityName=".activity.MainActivity"
             android:screenOrientation="portrait"

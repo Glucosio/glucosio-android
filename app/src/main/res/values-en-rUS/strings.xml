@@ -111,6 +111,7 @@
   <string name="assistant">Assistant</string>
   <string name="assistant_action_update">UPDATE NOW</string>
   <string name="assistant_action_ok">OK, GOT IT</string>
+  <string name="assistant_action_live_chat">LIVE CHAT</string>
   <string name="assistant_action_reading">ADD READING</string>
   <string name="assistant_action_try">TRY IT NOW</string>
   <string name="assistant_weight_title">Update your weight</string>
@@ -146,6 +147,7 @@
   <string name="about_maillist">Subscribe to our mailing list</string>
   <string name="assistant_archived">ARCHIVED TIPS</string>
   <string name="dialog_export_title">Export data</string>
+  <string name="activity_export_date_from">From:</string>
   <string name="dialog_export_date_to">To:</string>
   <string name="dialog_export_today">Pick today</string>
   <string name="dialog_export_button">EXPORT</string>
@@ -153,4 +155,9 @@
   <string name="share_using">Share using</string>
   <string name="share_subject">Glucosio data</string>
   <string name="dialog_add_weight">Weight</string>
+  <string name="dialog_add_ketones">Ketones</string>
+  <string name="fab_ketones">Ketones</string>
+  <string name="menu_support_email">Email</string>
+  <string name="activity_backup_drive_dialog_restore_button_cancel">Cancel</string>
+  <string name="mmol_L">mmol/L</string>
 </resources>

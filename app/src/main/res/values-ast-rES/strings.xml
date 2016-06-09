@@ -198,7 +198,6 @@
   <string name="dialog_export_range">Esportar rangu</string>
   <string name="activity_export_no_readings_snackbar">Nun hai llectures pa esportar.</string>
   <string name="wear_new_reading">Amestóse la llectura nueva</string>
-  <string name="dialog_add_weight">Pesu</string>
   <string name="dialog_add_pressure_min">Presión mínima</string>
   <string name="dialog_add_pressure_max">Presión máxima</string>
   <string name="dialog_add_cholesterol_total">Colesterol total</string>
@@ -225,4 +224,5 @@
   <string name="menu_support_forum">Foru de sofitu</string>
   <string name="notification_reminder_glucose">¡Ye hora de rexistrar el to nivel sanguineu de glucosa!</string>
   <string name="notification_reminder_medication">¡Ye hora de tomar les tos melecines!</string>
+  <string name="mmol_L">mmol/L</string>
 </resources>

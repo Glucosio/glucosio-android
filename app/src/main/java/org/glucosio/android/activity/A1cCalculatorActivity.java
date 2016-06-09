@@ -22,91 +22,85 @@ package org.glucosio.android.activity;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
 import android.widget.TextView;
 
+import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.presenter.A1CCalculatorPresenter;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnEditorAction;
+import butterknife.OnTextChanged;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class A1cCalculator extends AppCompatActivity {
+public class A1cCalculatorActivity extends AppCompatActivity {
 
-    private A1CCalculatorPresenter presenter;
-    private TextView glucoseUnit;
+    @BindView(R.id.activity_converter_a1c_glucose_unit)
+    TextView glucoseUnit;
+
+    @BindView(R.id.activity_converter_a1c_a1c)
+    TextView A1CTextView;
+
+    @BindView(R.id.activity_converter_a1c_a1c_unit)
+    TextView A1cUnitTextView;
+
     private double convertedA1C = 0;
+    private A1CCalculatorPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_a1_calculator);
+        ButterKnife.bind(this);
+
+        initActionBar();
+
+        GlucosioApplication application = (GlucosioApplication) getApplication();
+        presenter = application.createA1cCalculatorPresenter(this);
+
+        if (!"percentage".equals(presenter.getA1cUnit())) {
+            A1cUnitTextView.setText(getString(R.string.mmol_mol));
+        }
+
+        presenter.checkGlucoseUnit();
+    }
+
+    @OnTextChanged(value = R.id.activity_converter_a1c_glucose, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
+    void glucoseValueChanged(@NonNull final Editable s) {
+        convertedA1C = presenter.calculateA1C(s.toString());
+        A1CTextView.setText(String.valueOf(convertedA1C));
+    }
+
+    @SuppressWarnings("UnusedParameters")
+    @OnEditorAction(R.id.activity_converter_a1c_glucose)
+    boolean editorAction(TextView view, int actionId, KeyEvent event) {
+        return actionId == EditorInfo.IME_ACTION_DONE;
+    }
+
+    private void initActionBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         if (toolbar != null) {
             setSupportActionBar(toolbar);
+            //noinspection ConstantConditions
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setElevation(2);
         }
-
-        presenter = new A1CCalculatorPresenter(this);
-
-        EditText glucoseEditText = (EditText) findViewById(R.id.activity_converter_a1c_glucose);
-        glucoseUnit = (TextView) findViewById(R.id.activity_converter_a1c_glucose_unit);
-        final TextView A1CTextView = (TextView) findViewById(R.id.activity_converter_a1c_a1c);
-        TextView A1cUnitTextView = (TextView) findViewById(R.id.activity_converter_a1c_a1c_unit);
-        if (!"percentage".equals(presenter.getA1cUnit())) {
-            A1cUnitTextView.setText("mmol/mol");
-        }
-
-        presenter.checkGlucoseUnit();
-        if (glucoseEditText != null) {
-            glucoseEditText.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-                    if (!s.toString().equals("")) {
-                        convertedA1C = presenter.calculateA1C(s.toString());
-                        A1CTextView.setText(convertedA1C + "");
-                    }
-                }
-            });
-        }
-
-        glucoseEditText.setOnEditorActionListener(
-                new TextView.OnEditorActionListener() {
-
-                    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                        if (actionId == EditorInfo.IME_ACTION_DONE) {
-                            // your additional processing...
-                            return true;
-                        } else {
-                            return false;
-                        }
-                    }
-                });
-        glucoseEditText.setFocusable(true);
     }
 
     public void setMmol() {
-        glucoseUnit.setText("mmol/L");
+        glucoseUnit.setText(getString(R.string.mmol_L));
     }
 
     @Override

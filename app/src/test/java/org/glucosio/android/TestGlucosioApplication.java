@@ -2,9 +2,11 @@ package org.glucosio.android;
 
 import android.support.annotation.NonNull;
 
+import org.glucosio.android.activity.A1cCalculatorActivity;
 import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.backup.Backup;
 import org.glucosio.android.db.DatabaseHandler;
+import org.glucosio.android.presenter.A1CCalculatorPresenter;
 import org.mockito.Mock;
 
 import static org.mockito.MockitoAnnotations.initMocks;
@@ -18,6 +20,9 @@ public class TestGlucosioApplication extends GlucosioApplication {
 
     @Mock
     private DatabaseHandler dbHandlerMock;
+
+    @Mock
+    private A1CCalculatorPresenter presenterMock;
 
     @Override
     public void onCreate() {
@@ -42,5 +47,11 @@ public class TestGlucosioApplication extends GlucosioApplication {
     @Override
     public DatabaseHandler getDBHandler() {
         return dbHandlerMock;
+    }
+
+    @NonNull
+    @Override
+    public A1CCalculatorPresenter createA1cCalculatorPresenter(@NonNull A1cCalculatorActivity activity) {
+        return presenterMock;
     }
 }

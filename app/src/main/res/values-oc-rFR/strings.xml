@@ -38,6 +38,10 @@
   <string name="helloactivity_spinner_diabetes_type">Tipe de diabèt</string>
   <string name="helloactivity_spinner_diabetes_type_1">Tipe 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Tipe 2</string>
+  <string name="dialog_add_type_7">Vespralhar</string>
+  <string name="dialog_add_type_8">Al colcar</string>
+  <string name="dialog_add_type_9">Pendent la nuèch</string>
+  <string name="dialog_add_type_11">Contraròtle</string>
   <string name="dialog_add_type_12">Autre</string>
   <!-- Future Strings Baked In Early For l10n -->
   <!-- Exercise Types -->

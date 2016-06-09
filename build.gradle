@@ -27,9 +27,10 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.1.0'
+        classpath 'com.android.tools.build:gradle:2.1.2'
         classpath 'com.google.gms:google-services:3.0.0'
         classpath 'io.realm:realm-gradle-plugin:0.90.1'
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -41,8 +42,12 @@ allprojects {
         jcenter()
     }
 
+    ext.buildToolsVer = '23.0.3'
+
     ext.androidSupportVer = '23.4.0'
-    ext.googlePlayServicesVer = '9.0.0'
+    ext.googlePlayServicesVer = '9.0.2'
+
+    ext.butterKnifeVer = '8.0.1'
 
     ext.junitVer = '4.12'
     ext.mockitoVer = '1.10.17'

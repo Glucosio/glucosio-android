@@ -92,6 +92,9 @@
   <string name="helloactivity_spinner_preferred_range">선호 범위</string>
   <string name="helloactivity_spinner_preferred_range_4">사용자 정의 범위</string>
   <string name="helloactivity_preferred_range_min">최소값</string>
+  <string name="helloactivity_preferred_range_max">최대값</string>
+  <string name="helloactivity_language">언어</string>
+  <string name="invitation_title">다른 사람 초대</string>
   <string name="preferences_freestyle_libre">FreeStyle Libre® 지원 활성화</string>
   <string name="preferences_freestyle_libre_experimental">실험 기능: FreeStyle Libre® 지원 활성화</string>
   <string name="preferences_font_dyslexia_experimental">실험 기능: 읽기 어려운 사용자에 대한 가독성 증가</string>
@@ -155,4 +158,5 @@
   <string name="dialog_add_weight">체중</string>
   <string name="title_activity_add_glucose">포도 당 독서를 추가</string>
   <string name="overview_hb1ac">HBA1C:</string>
+  <string name="mmol_L">mmol/L</string>
 </resources>

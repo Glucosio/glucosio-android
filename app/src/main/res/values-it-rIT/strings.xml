@@ -42,6 +42,7 @@
   <string name="helloactivity_spinner_diabetes_type_1">Tipo 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Tipo 2</string>
   <string name="helloactivity_spinner_diabetes_gdm">Gestazionale</string>
+  <string name="helloactivity_spinner_diabetes_lada">LADA</string>
   <string name="helloactivity_spinner_preferred_glucose_unit">Unità di misura Glucosio</string>
   <string name="preferences_spinner_preferred_a1c_unit">Unità di misura glicata</string>
   <string name="preferences_spinner_preferred_a1c_unit_1">percentuale</string>
@@ -74,6 +75,7 @@
   <string name="dialog_add_add">AGGIUNGI</string>
   <string name="dialog_error2">Inserisci un valore valido.</string>
   <string name="dialog_error">Per favore compila tutti i campi.</string>
+  <string name="dialog_edit">Modifica</string>
   <string name="dialog_delete">Cancella</string>
   <string name="fragment_history_snackbar_text">1 lettura cancellata</string>
   <string name="fragment_history_snackbar_action">ANNULLA</string>
@@ -234,6 +236,7 @@
   <string name="dialog_add_cholesterol_hdl">Colesterolo HDL</string>
   <string name="dialog_add_hb1ac">HB1AC</string>
   <string name="title_activity_add_glucose">Aggiungi Glicemia</string>
+  <string name="title_activity_add_glucose_edit">Modifica Glicemia</string>
   <string name="title_activity_add_weight">Aggiungi Peso Corporeo</string>
   <string name="title_activity_add_cholesterol">Aggiungi Colesterolo</string>
   <string name="title_activity_add_hb1ac">Aggiungi Emoglobina glicata</string>
@@ -273,12 +276,12 @@
   <string name="menu_backup_restore">Ripristino</string>
   <string name="menu_backup_csv">Esportazione CSV</string>
   <string name="activity_backup_drive_automatic">Backup automatico</string>
-  <string name="activity_backup_drive_desc">Il backup dei tuoi dati su Google Drive ti consente di ripristinare tutte le tue letture se perdi o cambi il tuo telefono.</string>
+  <string name="activity_backup_drive_desc">Il backup dei tuoi dati su Google Drive ti consente di ripristinare tutte le tue letture se perdi o cambi telefono.</string>
   <string name="activity_backup_drive_message_restart">Riavvio per applicare le modifiche...</string>
   <string name="activity_backup_drive_desc_1">Sincronizza il database di Glucosio nel cloud con Google Drive.</string>
   <string name="activity_backup_drive_desc_2">Sarai in grado di ripristinare tutte le tue letture se perdi o cambi il tuo telefono e sincronizzare i dati fra i tuoi dispositivi.</string>
-  <string name="activity_backup_drive_success">Database correttamente caricato sull\'unità</string>
-  <string name="activity_backup_drive_restore_success">Database ripristinato correttamente da Drive</string>
+  <string name="activity_backup_drive_success">Dati caricati con successo su Drive</string>
+  <string name="activity_backup_drive_restore_success">Dati ripristinati con successo da Drive</string>
   <string name="activity_backup_drive_failed">Qualcosa è andato storto. Per favore, riprova :/</string>
   <string name="activity_backup_drive_last">Ultimo backup:</string>
   <string name="activity_backup_drive_folder">Cartella per il Backup</string>
@@ -295,4 +298,6 @@
   <string name="activity_main_error_play_services">Glucosio ha bisogno di Play Services per abilitare il backup su Google Drive.</string>
   <string name="activity_main_dialog_csv_title">Esporta file CSV</string>
   <string name="activity_backup_drive_button_open_drive">Organizza su Drive</string>
+  <string name="mmol_mol">mmol/mol</string>
+  <string name="mmol_L">mmol/L</string>
 </resources>

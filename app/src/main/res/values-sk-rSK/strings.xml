@@ -55,7 +55,6 @@
   <string name="dialog_add_type_5">Pred večerou</string>
   <string name="dialog_add_type_6">Po večeri</string>
   <string name="dialog_add_type_9">Noc</string>
-  <string name="dialog_add_type_12">Iné</string>
   <string name="dialog_add_cancel">ZRUŠIŤ</string>
   <string name="dialog_add_add">PRIDAŤ</string>
   <string name="dialog_error2">Prosím, zadajte platnú hodnotu.</string>
@@ -127,5 +126,4 @@
   <!-- Exercise Types -->
   <!-- Food Entry Labels -->
   <!-- About Glucosio Strings -->
-  <string name="dialog_add_weight">Váha</string>
 </resources>

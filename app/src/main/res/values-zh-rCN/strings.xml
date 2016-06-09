@@ -150,7 +150,6 @@
   <string name="invitation_message">试试 Glucosio，一个糖尿病管理和研究的开放源码应用程序。</string>
   <string name="invitation_cta">试试 Glucosio</string>
   <string name="title_activity_backup_drive">Google Drive 备份</string>
-  <string name="activity_main_dialog_backup_export_title">备份和导出</string>
   <string name="preferences_privacy">隐私政策</string>
   <string name="helloactivity_textview_tos">使用 Glucosio 即代表您同意</string>
   <string name="preferences_backup_google_drive">Google 云端硬盘</string>
@@ -239,7 +238,6 @@
   <string name="title_activity_add_ketone">添加酮体</string>
   <string name="title_activity_add_pressure">添加血压</string>
   <string name="fab_weight">体重</string>
-  <string name="fab_ketones">酮体</string>
   <string name="fab_pressure">血压</string>
   <string name="fab_cholesterol">胆固醇水平</string>
   <string name="fab_HB1AC">糖化血红蛋白指数</string>
@@ -272,10 +270,9 @@
   <string name="activity_backup_drive_message_restart">重启以应用更改...</string>
   <string name="activity_backup_drive_desc_1">用 Google Drive 云同步 Glucosio 的数据库。</string>
   <string name="activity_backup_drive_desc_2">如果您丢失或者变更手机，或者在您的设备之间同步 Glucosio 的数据，将可以恢复您的所有读数。</string>
-  <string name="activity_backup_drive_success">数据库已正确上传到 Drive</string>
-  <string name="activity_backup_drive_restore_success">驱动器从 Drive 已正确还原</string>
   <string name="activity_backup_drive_failed">出现错误。请重试。</string>
   <string name="activity_backup_drive_button_backup">立即备份</string>
   <string name="activity_backup_drive_button_restore">从 Drive 恢复</string>
   <string name="activity_backup_drive_error_restore">无法在 Drive 找到有效的备份以恢复</string>
+  <string name="mmol_L">毫摩尔/升</string>
 </resources>
