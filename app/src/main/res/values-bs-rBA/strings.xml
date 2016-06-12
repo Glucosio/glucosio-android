@@ -65,6 +65,7 @@
   <string name="dialog_add_add">DODAJ</string>
   <string name="dialog_error2">Molimo da unesete valjanu vrijednost.</string>
   <string name="dialog_error">Molimo da popunite sva polja.</string>
+  <string name="dialog_edit">Uredi</string>
   <string name="dialog_delete">Obriši</string>
   <string name="fragment_history_snackbar_text">1 čitanje obrisano</string>
   <string name="fragment_history_snackbar_action">PONIŠTI</string>

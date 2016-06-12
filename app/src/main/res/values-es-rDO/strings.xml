@@ -75,6 +75,7 @@
   <string name="dialog_add_add">Agregar</string>
   <string name="dialog_error2">Por favor, ingrese un valor válido.</string>
   <string name="dialog_error">Por favor, rellena todos los campos.</string>
+  <string name="dialog_edit">Editar</string>
   <string name="dialog_delete">Eliminar</string>
   <string name="fragment_history_snackbar_text">1 lectura eliminada</string>
   <string name="fragment_history_snackbar_action">Deshacer</string>
@@ -235,6 +236,7 @@
   <string name="dialog_add_cholesterol_hdl">Colesterol HDL</string>
   <string name="dialog_add_hb1ac">HB1AC</string>
   <string name="title_activity_add_glucose">Añadir lectura de glucosa</string>
+  <string name="title_activity_add_glucose_edit">Editar lectura de glucosa</string>
   <string name="title_activity_add_weight">Añadir peso corporal</string>
   <string name="title_activity_add_cholesterol">Añadir nivel de colesterol</string>
   <string name="title_activity_add_hb1ac">Añadir HB1AC</string>
@@ -274,9 +276,12 @@
   <string name="menu_backup_restore">Restaurar</string>
   <string name="menu_backup_csv">Exportar CSV</string>
   <string name="activity_backup_drive_automatic">Copia de seguridad automática</string>
+  <string name="activity_backup_drive_desc">Si guardas tus datos en Google Drive podrás recuperar todas tus mediciones en caso de que pierdas o cambies de dispositivo.</string>
   <string name="activity_backup_drive_message_restart">Reiniciar para aplicar los cambios...</string>
   <string name="activity_backup_drive_desc_1">Sincronizar la base de datos de Glucosio en la nube con Google Drive.</string>
   <string name="activity_backup_drive_desc_2">Usted será capaz de restaurar todas las lecturas si ha perdido o cambiado de móvil o en caso de sincronizar los datos de Glucosio entre dispositivos.</string>
+  <string name="activity_backup_drive_success">Base de datos guardada correctamente en Drive</string>
+  <string name="activity_backup_drive_restore_success">Base de datos restaurada correctamente desde Drive</string>
   <string name="activity_backup_drive_failed">Algo salió mal. Por favor, inténtelo de nuevo :/</string>
   <string name="activity_backup_drive_last">Última copia de seguridad:</string>
   <string name="activity_backup_drive_folder">Carpeta de las copias de seguridad</string>

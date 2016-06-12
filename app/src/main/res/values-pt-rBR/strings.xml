@@ -72,6 +72,7 @@
   <string name="dialog_add_add">ADICIONAR</string>
   <string name="dialog_error2">Por favor, insira um valor válido.</string>
   <string name="dialog_error">Por favor, preencha todos os campos.</string>
+  <string name="dialog_edit">Editar</string>
   <string name="dialog_delete">Excluir</string>
   <string name="fragment_history_snackbar_text">1 leitura eliminada</string>
   <string name="fragment_history_snackbar_action">DESFAZER</string>

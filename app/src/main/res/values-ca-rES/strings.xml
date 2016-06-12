@@ -72,6 +72,7 @@
   <string name="dialog_add_add">AFEGEIX</string>
   <string name="dialog_error2">Si us plau, introduïu un valor vàlid.</string>
   <string name="dialog_error">Si us plau, empleneu tots els camps.</string>
+  <string name="dialog_edit">Edita</string>
   <string name="dialog_delete">Suprimeix</string>
   <string name="fragment_history_snackbar_text">S\'ha suprimit 1 lectura</string>
   <string name="fragment_history_snackbar_action">DESFÉS</string>
@@ -149,6 +150,7 @@
   <string name="invitation_message">Proveu Glucosio, una applicació de codi obert per a la recerca i la gestió de la diabetis.</string>
   <string name="invitation_cta">Proveu Glucosio</string>
   <string name="title_activity_backup_drive">Còpia de seguretat al Google Drive</string>
+  <string name="activity_main_dialog_backup_export_title">Còpia de seguretat i exportació</string>
   <string name="preferences_privacy">Privacitat</string>
   <string name="helloactivity_textview_tos">En utilitzar Glucosio, accepteu la</string>
   <string name="preferences_backup_google_drive">Google Drive</string>
@@ -237,6 +239,7 @@
   <string name="title_activity_add_ketone">Afegeix cetones</string>
   <string name="title_activity_add_pressure">Afegeix la pressió arterial</string>
   <string name="fab_weight">Pes corporal</string>
+  <string name="fab_ketones">Cetones</string>
   <string name="fab_pressure">Pressió arterial</string>
   <string name="fab_cholesterol">Nivell de colesterol</string>
   <string name="fab_HB1AC">Lectura del HB1AC</string>

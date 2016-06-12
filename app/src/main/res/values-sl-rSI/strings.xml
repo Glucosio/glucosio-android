@@ -74,6 +74,7 @@
   <string name="dialog_add_add">DODAJ</string>
   <string name="dialog_error2">Vnesite veljavno vrednost.</string>
   <string name="dialog_error">Prosimo, izpolnite vsa polja.</string>
+  <string name="dialog_edit">Uredi</string>
   <string name="dialog_delete">Izbriši</string>
   <string name="fragment_history_snackbar_text">1 meritev je bila izbrisana</string>
   <string name="fragment_history_snackbar_action">RAZVELJAVI</string>
@@ -234,6 +235,7 @@
   <string name="dialog_add_cholesterol_hdl">Holesterol HDL</string>
   <string name="dialog_add_hb1ac">HBA1C</string>
   <string name="title_activity_add_glucose">Dodaj vrednost izmerjene glukoze</string>
+  <string name="title_activity_add_glucose_edit">Uredi vrednost izmerjene glukoze</string>
   <string name="title_activity_add_weight">Dodaj telesno težo</string>
   <string name="title_activity_add_cholesterol">Dodaj raven holesterola</string>
   <string name="title_activity_add_hb1ac">Dodaj HBA1C</string>
@@ -273,9 +275,12 @@
   <string name="menu_backup_restore">Obnovi</string>
   <string name="menu_backup_csv">Izvoz v CSV</string>
   <string name="activity_backup_drive_automatic">Samodejna varnostna kopija</string>
+  <string name="activity_backup_drive_desc">Varnostno kopiranje podatkov v Google Drive vam omogoča obnovitev vseh vaših meritev v primeru, da izgubite ali zamenjate napravo.</string>
   <string name="activity_backup_drive_message_restart">Ponovno zaganjanje za uporabo sprememb …</string>
   <string name="activity_backup_drive_desc_1">Sinhronizirajte Glucosievo podatkovno zbirko v oblaku z Googlom Drive.</string>
   <string name="activity_backup_drive_desc_2">Svoje meritve boste lahko obnovili, če izgubite ali zamenjate telefon, ali sinhronizirali podatke v Glucosiu med napravami.</string>
+  <string name="activity_backup_drive_success">Podatkovna zbirka uspešno varnostno kopirana v Google Drive</string>
+  <string name="activity_backup_drive_restore_success">Podatkovna zbirka uspešno obnovljena z Googla Drive</string>
   <string name="activity_backup_drive_failed">Nekaj je šlo narobe. Prosimo poizkusite znova :/</string>
   <string name="activity_backup_drive_last">Zadnja var. kop.: %s</string>
   <string name="activity_backup_drive_folder">Mapa z var. kopijami</string>
@@ -292,5 +297,6 @@
   <string name="activity_main_error_play_services">Glucosio za omogočanje varnostnega kopiranja v Google Drive potrebuje Storitve Play.</string>
   <string name="activity_main_dialog_csv_title">Izvozi v datoteko CSV</string>
   <string name="activity_backup_drive_button_open_drive">Upravljaj v Driveu</string>
+  <string name="mmol_mol">mmol/mol</string>
   <string name="mmol_L">mmol/l</string>
 </resources>

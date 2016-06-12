@@ -72,6 +72,7 @@
   <string name="dialog_add_add">ເພີ່ມ</string>
   <string name="dialog_error2">ກະລຸນາໃສ່ຄ່າຂໍ້ມູນທີ່ຖືກຕ້ອງ.</string>
   <string name="dialog_error">ກະລຸນາຕື່ມໃສ່ໃຫ້ຄົບທຸກຫ້ອງ.</string>
+  <string name="dialog_edit">ແກ້ໄຂ</string>
   <string name="dialog_delete">ລຶບ</string>
   <string name="fragment_history_snackbar_text">ລົບ 1 ການອ່ານ</string>
   <string name="fragment_history_snackbar_action">ເອົາກັບຄືນ</string>
@@ -120,8 +121,10 @@
   <string name="assistant_action_reading">ເພີ່ມການອ່ານ</string>
   <string name="assistant_action_try">ລອງໃຊ້ດຽວນີ້ເລີຍ</string>
   <string name="assistant_weight_title">ອັບເດດນ້ຳຫນັກຂອງທ່ານ</string>
+  <string name="assistant_weight_desc">ຫມັ້ນໃຈວ່າໄດ້ອັບເດດນໍ້າຫນັກຂອງທ່ານແລ້ວບໍ່ ສະນັ້ນ Glucosio ຈະໃຫ້ຂໍ້ມູນທີຖືກຕ້ອງທີ່ສຸດ.</string>
   <string name="assistant_research_title">ອັບເດດການຄົ້ນຫາ opt-in ຂອງທ່ານ</string>
   <string name="assistant_categories_title">ສ້າງປະເພດ</string>
+  <string name="assistant_categories_desc">Glucosio ມາພ້ອມກັບປະເພດກລູໂຄສແບບພື້ນຖານ ແຕ່ວ່າທ່ານສາມາດສ້າງຂື້ນມາໃຫມ່ໃນກາານຕັ້ງຄ່າເພື່ອໃຫ້ເຫມາະສົມກັບຄວາມຕ້ອງການຂອງທ່ານ.</string>
   <string name="assistant_check_title">ໃຫ້ເຂົ້າມາກວດເບິງຢູ່ນີ້ຢ່າງເປັນປົກກະຕິ</string>
   <string name="assistant_feedback_title">ສົ່ງຄໍາຄິດເຫັນ </string>
   <string name="assistant_feedback_desc">ເພື່ອເປັນການຊ່ວຍໃຫ້ເຮົາສາມາດປັບປຸງ Glucosio ໃຫ້ດີຂື້ນ ຫາກວ່າທ່ານພົບເຫັນບັນຫາທາງເຕັກນິກ ຫລື ຄຳແນະນຳໃດໆ ທ່ານສາມາດສົ່ງຂໍ້ມູນມາໃຫ້ພວກເຮົາໄດ້ໃນເມນູການຕັ້ງຄ່າ.</string>

@@ -60,6 +60,7 @@
   <string name="dialog_add_add">Idagdag</string>
   <string name="dialog_error2">Mangyaring ilagay ang tamang value.</string>
   <string name="dialog_error">Paki-punan ang lahat ng kahon.</string>
+  <string name="dialog_edit">Baguhin</string>
   <string name="dialog_delete">Burahin</string>
   <string name="fragment_history_snackbar_text">1 reading ang binura</string>
   <string name="fragment_history_snackbar_action">Ibalik</string>

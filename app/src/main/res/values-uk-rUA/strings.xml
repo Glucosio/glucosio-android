@@ -64,6 +64,7 @@
   <string name="dialog_add_add">ДОДАТИ</string>
   <string name="dialog_error2">Будь ласка, введіть припустиме значення.</string>
   <string name="dialog_error">Будь ласка, заповніть всі поля.</string>
+  <string name="dialog_edit">Редагувати</string>
   <string name="dialog_delete">Вилучити</string>
   <string name="fragment_history_snackbar_text">1 читання видалено</string>
   <string name="fragment_history_snackbar_action">СКАСУВАТИ</string>
@@ -171,9 +172,11 @@
   <string name="about_maillist">Підпишіться на нашу розсилку</string>
   <string name="assistant_archived">ЗААРХІВОВАНІ ПОРАДИ</string>
   <string name="dialog_export_title">Експорт даних</string>
+  <string name="activity_export_date_from">Від кого:</string>
   <string name="dialog_export_date_to">Кому:</string>
   <string name="dialog_export_button">ЕКСПОРТ</string>
   <string name="title_activity_export">Експорт даних</string>
   <string name="share_using">Надіслати за допомогою</string>
   <string name="share_subject">Дані Glucosio</string>
+  <string name="dialog_add_weight">Вага</string>
 </resources>

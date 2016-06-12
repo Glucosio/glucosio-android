@@ -40,6 +40,7 @@
   <string name="helloactivity_spinner_diabetes_type">Тип диабета</string>
   <string name="helloactivity_spinner_diabetes_type_1">Тип 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Тип 2</string>
+  <string name="helloactivity_spinner_diabetes_lada">LADA</string>
   <string name="preferences_spinner_preferred_weight_unit_1">килограммы</string>
   <string name="preferences_spinner_preferred_weight_unit_2">фунты</string>
   <string name="helloactivity_share_data">Поделиться анонимными данными для исследований.</string>
@@ -68,6 +69,7 @@
   <string name="dialog_add_add">ДОБАВИТЬ</string>
   <string name="dialog_error2">Введите корректное значение.</string>
   <string name="dialog_error">Пожалуйста, заполните все поля.</string>
+  <string name="dialog_edit">Правка</string>
   <string name="dialog_delete">Удалить</string>
   <string name="fragment_history_snackbar_text">1 запись удалена</string>
   <string name="fragment_history_snackbar_action">ОТМЕНИТЬ</string>
@@ -230,6 +232,7 @@
   <string name="title_activity_add_ketone">Добавить кетоны</string>
   <string name="title_activity_add_pressure">Добавить уровень кровяного давления</string>
   <string name="fab_weight">Вес</string>
+  <string name="fab_ketones">Кетоны</string>
   <string name="fab_pressure">Кровяное давление</string>
   <string name="fab_cholesterol">Уровень холестерина</string>
   <string name="fab_HB1AC">Показания HB1AC</string>

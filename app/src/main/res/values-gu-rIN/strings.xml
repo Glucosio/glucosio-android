@@ -40,6 +40,7 @@
   <string name="helloactivity_spinner_diabetes_type_2">પ્રકાર 2</string>
   <string name="dialog_error2">કૃપા કરી સાચી માહિતી ભરો.</string>
   <string name="dialog_error">કૃપા કરી બધી વિગતો ભરો.</string>
+  <string name="dialog_edit">ફેરફાર કરો</string>
   <string name="dialog_delete">રદ કરવું</string>
   <string name="fragment_history_snackbar_text">1 વાંચેલું કાઢ્યું</string>
   <string name="fragment_history_snackbar_action">પહેલા હતી એવી સ્થિતિ</string>

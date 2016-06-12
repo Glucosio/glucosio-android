@@ -73,6 +73,7 @@
   <string name="dialog_add_add">添加</string>
   <string name="dialog_error2">请输入有效的值。</string>
   <string name="dialog_error">请填写所有字段。</string>
+  <string name="dialog_edit">编辑</string>
   <string name="dialog_delete">删除</string>
   <string name="fragment_history_snackbar_text">1 读删除</string>
   <string name="fragment_history_snackbar_action">撤销</string>
@@ -150,6 +151,7 @@
   <string name="invitation_message">试试 Glucosio，一个糖尿病管理和研究的开放源码应用程序。</string>
   <string name="invitation_cta">试试 Glucosio</string>
   <string name="title_activity_backup_drive">Google Drive 备份</string>
+  <string name="activity_main_dialog_backup_export_title">备份和导出</string>
   <string name="preferences_privacy">隐私政策</string>
   <string name="helloactivity_textview_tos">使用 Glucosio 即代表您同意</string>
   <string name="preferences_backup_google_drive">Google 云端硬盘</string>
@@ -238,6 +240,7 @@
   <string name="title_activity_add_ketone">添加酮体</string>
   <string name="title_activity_add_pressure">添加血压</string>
   <string name="fab_weight">体重</string>
+  <string name="fab_ketones">酮体</string>
   <string name="fab_pressure">血压</string>
   <string name="fab_cholesterol">胆固醇水平</string>
   <string name="fab_HB1AC">糖化血红蛋白指数</string>

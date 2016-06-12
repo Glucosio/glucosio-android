@@ -74,6 +74,7 @@
   <string name="dialog_add_add">新增</string>
   <string name="dialog_error2">請輸入有效的值。</string>
   <string name="dialog_error">請輸入所有欄位。</string>
+  <string name="dialog_edit">編輯</string>
   <string name="dialog_delete">刪除</string>
   <string name="fragment_history_snackbar_text">已刪除一筆紀錄</string>
   <string name="fragment_history_snackbar_action">還原</string>
@@ -273,9 +274,12 @@
   <string name="menu_backup_restore">還原</string>
   <string name="menu_backup_csv">匯出成 CSV</string>
   <string name="activity_backup_drive_automatic">自動備份</string>
+  <string name="activity_backup_drive_desc">備份您的資料到 Google Drive 後，即可在您搞丟裝置或換手機時還原所有資料。</string>
   <string name="activity_backup_drive_message_restart">正在重新啟動以套用變更…</string>
   <string name="activity_backup_drive_desc_1">將 Glucosio 的資料庫同步到 Google Drive。</string>
   <string name="activity_backup_drive_desc_2">若您搞丟手機或換新手機，就可以還原所有數據；或是可將 Glucosio 同步到您所有裝置上。</string>
+  <string name="activity_backup_drive_success">已成功備份資料庫至 Drive</string>
+  <string name="activity_backup_drive_restore_success">已成功從 Drive 還原資料庫</string>
   <string name="activity_backup_drive_failed">有些東西怪怪的，請再試一次 :/</string>
   <string name="activity_backup_drive_last">上次備份：</string>
   <string name="activity_backup_drive_folder">備份資料夾</string>
@@ -292,5 +296,6 @@
   <string name="activity_main_error_play_services">Glucosio 需要 Play Services 才能備份至 Google Drive。</string>
   <string name="activity_main_dialog_csv_title">匯出成 CSV 檔案</string>
   <string name="activity_backup_drive_button_open_drive">到 Drive 管理</string>
+  <string name="mmol_mol">mmol/mol</string>
   <string name="mmol_L">mmol/L</string>
 </resources>

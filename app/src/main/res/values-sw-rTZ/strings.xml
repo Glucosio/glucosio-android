@@ -60,6 +60,7 @@
   <string name="dialog_add_add">ONGEZA</string>
   <string name="dialog_error2">Tafadhali ingiza thamani halali.</string>
   <string name="dialog_error">Tafadhali jaza maeneo yote.</string>
+  <string name="dialog_edit">Hariri</string>
   <string name="dialog_delete">Futa</string>
   <string name="fragment_history_snackbar_text">Usomi mmoja umefutwa</string>
   <string name="fragment_history_snackbar_action">TENDUA</string>

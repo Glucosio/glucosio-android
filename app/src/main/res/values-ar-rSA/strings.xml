@@ -75,6 +75,7 @@
   <string name="dialog_add_add">أضِف</string>
   <string name="dialog_error2">الرجاء إدخال قيمة صحيحة.</string>
   <string name="dialog_error">الرجاء تعبئة كافة الحقول.</string>
+  <string name="dialog_edit">عدِّل</string>
   <string name="dialog_delete">احذف</string>
   <string name="fragment_history_snackbar_text">حُذِفت قراءة واحدة</string>
   <string name="fragment_history_snackbar_action">التراجع عن</string>
@@ -235,6 +236,7 @@
   <string name="dialog_add_cholesterol_hdl">الكوليسترول الجيّد (في البروتين الشحمي مرتفع الكثافة)</string>
   <string name="dialog_add_hb1ac">HBA1C</string>
   <string name="title_activity_add_glucose">أضف قراءة غلوكوز</string>
+  <string name="title_activity_add_glucose_edit">تحرير قراءة الجلوكوز</string>
   <string name="title_activity_add_weight">إضافة وزن الجسم</string>
   <string name="title_activity_add_cholesterol">إضافة مستوى الكوليسترول</string>
   <string name="title_activity_add_hb1ac">إضافة HBA1C</string>
@@ -274,9 +276,12 @@
   <string name="menu_backup_restore">استعادة</string>
   <string name="menu_backup_csv">تصدير CSV</string>
   <string name="activity_backup_drive_automatic">نسخ احتياطي تلقائي</string>
+  <string name="activity_backup_drive_desc">النسخ الاحتياطي لبياناتك إلى Google Drive يتيح لك استعادة كل قراءاتك في حال فقدتها أو غيّرت الجهاز.</string>
   <string name="activity_backup_drive_message_restart">إعادة التشغيل جارية لتطبيق التغييرات...</string>
   <string name="activity_backup_drive_desc_1">مزامنة قاعدة بيانات جلوكوزيو مع سحابة Google Drive.</string>
   <string name="activity_backup_drive_desc_2">سوف تتمكن من استعادة كافة القراءات الخاصة بك إذا كنت فقدت جوالك أو غيّرته أو قمت بمزامنة بيانات جلوكوزيو بين الأجهزة الخاصة بك.</string>
+  <string name="activity_backup_drive_success">لقد نجح النسخ الاحتياطي لقاعدة البيانات إلى Drive</string>
+  <string name="activity_backup_drive_restore_success">نجحت استعادة قاعدة البيانات من Drive</string>
   <string name="activity_backup_drive_failed">حدث خطأ ما. الرجاء المحاولة ثانيةً :/</string>
   <string name="activity_backup_drive_last">آخر نسخ احتياطي:</string>
   <string name="activity_backup_drive_folder">مجلد النسخ الإحتياطي</string>
@@ -293,5 +298,6 @@
   <string name="activity_main_error_play_services">جلوكوزيو يحتاج إلى \"خدمات Play\" لتمكين النسخ الاحتياطي إلى خدمة Google Drive.</string>
   <string name="activity_main_dialog_csv_title">تصدير إلى ملف CSV</string>
   <string name="activity_backup_drive_button_open_drive">الإدارة على Drive</string>
+  <string name="mmol_mol">ميللي مول/مول</string>
   <string name="mmol_L">م.مول/ل</string>
 </resources>

@@ -61,6 +61,7 @@
   <string name="dialog_add_add">ONGEZA</string>
   <string name="dialog_error2">Tafadhali ingiza thamani hakika.</string>
   <string name="dialog_error">Tafadhali jaza maeneo yote.</string>
+  <string name="dialog_edit">Hariri</string>
   <string name="dialog_delete">Futa</string>
   <string name="fragment_history_snackbar_text">usomaji 1 imefutwa</string>
   <string name="fragment_history_snackbar_action">Tengua</string>

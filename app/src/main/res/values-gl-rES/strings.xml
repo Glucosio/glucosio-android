@@ -74,6 +74,7 @@
   <string name="dialog_add_add">ENGADIR</string>
   <string name="dialog_error2">Por favor, insire un valor válido.</string>
   <string name="dialog_error">Por favor, cubre todos os campos.</string>
+  <string name="dialog_edit">Editar</string>
   <string name="dialog_delete">Eliminar</string>
   <string name="fragment_history_snackbar_text">1 rexistro eliminado</string>
   <string name="fragment_history_snackbar_action">DESFACER</string>
@@ -234,6 +235,7 @@
   <string name="dialog_add_cholesterol_hdl">Colesterol HDL</string>
   <string name="dialog_add_hb1ac">HB1AC</string>
   <string name="title_activity_add_glucose">Engadir rexistro de glicosa</string>
+  <string name="title_activity_add_glucose_edit">Editar rexistro de glicosa</string>
   <string name="title_activity_add_weight">Engadir peso corporal</string>
   <string name="title_activity_add_cholesterol">Engadir nivel de colesterol</string>
   <string name="title_activity_add_hb1ac">Engadir HB1AC</string>
@@ -273,9 +275,12 @@
   <string name="menu_backup_restore">Restaurar</string>
   <string name="menu_backup_csv">Exportar CSV</string>
   <string name="activity_backup_drive_automatic">Copia de seguranza automática</string>
+  <string name="activity_backup_drive_desc">Facer copia de seguranza dos teus datos en Google Drive permíteche restaurar todos os teus rexistros en caso de perda ou cambio de dispositivo.</string>
   <string name="activity_backup_drive_message_restart">Reiniciando para aplicar os cambios...</string>
   <string name="activity_backup_drive_desc_1">Sincroniza a base de datos de Glucosio na nube con Google Drive.</string>
   <string name="activity_backup_drive_desc_2">Poderás recuperar todos os teus rexistros no caso de perda ou cambio de teléfono ou sincronizar a base de datos de Glucosio entre dispositivos.</string>
+  <string name="activity_backup_drive_success">Base de datos copiada satisfactoriamente en Drive</string>
+  <string name="activity_backup_drive_restore_success">Base de datos restaurada satisfactoriamente desde Drive</string>
   <string name="activity_backup_drive_failed">Algo foi mal. Téntao de novo, por favor :/</string>
   <string name="activity_backup_drive_last">Última copia de seguranza:</string>
   <string name="activity_backup_drive_folder">Cartafol das copias de seguranza</string>
@@ -292,5 +297,6 @@
   <string name="activity_main_error_play_services">Glucosio necesita Play Services para activar a copia de seguranza en Google Drive.</string>
   <string name="activity_main_dialog_csv_title">Exportar a un ficheiro CSV</string>
   <string name="activity_backup_drive_button_open_drive">Xestionar no Drive</string>
+  <string name="mmol_mol">mmol/mol</string>
   <string name="mmol_L">mmol/L</string>
 </resources>

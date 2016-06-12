@@ -74,6 +74,7 @@
   <string name="dialog_add_add">追加</string>
   <string name="dialog_error2">有効な値を入力してください。</string>
   <string name="dialog_error">すべてのフィールドを記入してください。</string>
+  <string name="dialog_edit">編集</string>
   <string name="dialog_delete">削除</string>
   <string name="fragment_history_snackbar_text">1 つ測定値を削除しました</string>
   <string name="fragment_history_snackbar_action">元に戻す</string>
@@ -234,6 +235,7 @@
   <string name="dialog_add_cholesterol_hdl">HDL コレステロール</string>
   <string name="dialog_add_hb1ac">HB1AC</string>
   <string name="title_activity_add_glucose">血糖の測定値を追加</string>
+  <string name="title_activity_add_glucose_edit">血糖の測定値を編集</string>
   <string name="title_activity_add_weight">体重を追加</string>
   <string name="title_activity_add_cholesterol">コレステ ロール値を追加</string>
   <string name="title_activity_add_hb1ac">HB1AC を追加</string>
@@ -273,9 +275,12 @@
   <string name="menu_backup_restore">復元</string>
   <string name="menu_backup_csv">CSVエクスポート</string>
   <string name="activity_backup_drive_automatic">自動バックアップ</string>
+  <string name="activity_backup_drive_desc">データを Google ドライブにバックアップして、デバイスを失くしたり、変更した場合に測定値を復元することができます。</string>
   <string name="activity_backup_drive_message_restart">変更を適用するために再起動しています...</string>
   <string name="activity_backup_drive_desc_1">Google ドライブを使用してクラウドの Glucosio データベースを同期します。</string>
   <string name="activity_backup_drive_desc_2">携帯電話を無くしたり変更した場合、すべての測定値を復元することができます。あるいはお使いのデバイス間で Glucosio のデータを同期することができます。</string>
+  <string name="activity_backup_drive_success">データベースをドライブに正常にバックアップしました</string>
+  <string name="activity_backup_drive_restore_success">ドライブからデータベースを正常に復元しました</string>
   <string name="activity_backup_drive_failed">何か問題が起きたようです。後でもう一度やり直してください :/</string>
   <string name="activity_backup_drive_last">前回のバックアップ:</string>
   <string name="activity_backup_drive_folder">バックアップ フォルダー</string>
@@ -292,5 +297,6 @@
   <string name="activity_main_error_play_services">Glucosio は、Google ドライブ バックアップを利用するために Play サービスが必要です。</string>
   <string name="activity_main_dialog_csv_title">CSVファイルのエクスポート</string>
   <string name="activity_backup_drive_button_open_drive">ドライブで管理</string>
+  <string name="mmol_mol">mmol/mol</string>
   <string name="mmol_L">mmol/L</string>
 </resources>

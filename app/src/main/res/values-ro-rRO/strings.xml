@@ -74,6 +74,7 @@
   <string name="dialog_add_add">ADAUGĂ</string>
   <string name="dialog_error2">Te rog introdu o valoare validă.</string>
   <string name="dialog_error">Te rog completează toate câmpurile.</string>
+  <string name="dialog_edit">Modifică</string>
   <string name="dialog_delete">Șterge</string>
   <string name="fragment_history_snackbar_text">O înregistrare ștearsă</string>
   <string name="fragment_history_snackbar_action">ANULEAZĂ</string>
@@ -234,6 +235,7 @@
   <string name="dialog_add_cholesterol_hdl">Colesterol HDL</string>
   <string name="dialog_add_hb1ac">HB1AC</string>
   <string name="title_activity_add_glucose">Adaugă citire a glucozei</string>
+  <string name="title_activity_add_glucose_edit">Editează citirea glucozei</string>
   <string name="title_activity_add_weight">Adaugă greutatea corporală</string>
   <string name="title_activity_add_cholesterol">Adaugă nivelul de colesterol</string>
   <string name="title_activity_add_hb1ac">Adaugă HB1AC</string>
@@ -273,9 +275,12 @@
   <string name="menu_backup_restore">Restaurare</string>
   <string name="menu_backup_csv">Export CSV</string>
   <string name="activity_backup_drive_automatic">Backup automat</string>
+  <string name="activity_backup_drive_desc">Salvarea datelor pe Google Drive permite recuperarea citirilor în cazul pierderii sau schimbării telefonului.</string>
   <string name="activity_backup_drive_message_restart">Se repornește pentru a aplica modificările...</string>
   <string name="activity_backup_drive_desc_1">Sincronizează baza de date Glucosio în cloud cu Google Drive.</string>
   <string name="activity_backup_drive_desc_2">Pentru a restabili toate citirile dacă ai pierdut sau schimbat telefonul, sau pentru a sincroniza datele Glucosio între dispozitive.</string>
+  <string name="activity_backup_drive_success">Baza de date a fost salvată cu succes pe Drive</string>
+  <string name="activity_backup_drive_restore_success">Baza de date a fost recuperată cu succes de pe Drive</string>
   <string name="activity_backup_drive_failed">Ceva nu a funcționat. Te rugăm să reîncerci :/</string>
   <string name="activity_backup_drive_last">Ultimul backup:</string>
   <string name="activity_backup_drive_folder">Dosar de backup</string>
@@ -292,5 +297,6 @@
   <string name="activity_main_error_play_services">Glucosio are nevoie de Play Services pentru a activa backup Google Drive.</string>
   <string name="activity_main_dialog_csv_title">Exportă ca fișier CSV</string>
   <string name="activity_backup_drive_button_open_drive">Gestionează în Drive</string>
+  <string name="mmol_mol">mmol/mol</string>
   <string name="mmol_L">mmol/L</string>
 </resources>

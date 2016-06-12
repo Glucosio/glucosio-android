@@ -66,6 +66,7 @@
   <string name="dialog_add_add">EKLE</string>
   <string name="dialog_error2">Lütfen geçerli bir değer girin.</string>
   <string name="dialog_error">Lütfen tüm boşlukları doldurun.</string>
+  <string name="dialog_edit">Düzenle</string>
   <string name="dialog_delete">Sil</string>
   <string name="fragment_history_snackbar_text">1 okuma silindi</string>
   <string name="fragment_history_snackbar_action">GERİ AL</string>

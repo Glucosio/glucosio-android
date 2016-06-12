@@ -59,6 +59,7 @@
   <string name="dialog_add_add">اضافه</string>
   <string name="dialog_error2">لطفا یک مقدار معتبر وارد کنید.</string>
   <string name="dialog_error">لطفا تمامی بخش ها را پر کنید.</string>
+  <string name="dialog_edit">ویرایش</string>
   <string name="dialog_delete">حذف</string>
   <string name="fragment_history_snackbar_action">برگردان</string>
   <string name="fragment_overview_last_reading">اخرین بررسی:</string>

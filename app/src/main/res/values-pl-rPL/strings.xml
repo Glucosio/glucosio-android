@@ -66,6 +66,7 @@
   <string name="dialog_add_add">Dodaj</string>
   <string name="dialog_error2">Podaj prawidłową wartość.</string>
   <string name="dialog_error">Proszę wypełnić wszystkie pola.</string>
+  <string name="dialog_edit">Edytuj</string>
   <string name="dialog_delete">Usuń</string>
   <string name="fragment_history_snackbar_text">1 czytanie usunięte</string>
   <!-- Future Strings Baked In Early For l10n -->

@@ -73,6 +73,7 @@
   <string name="dialog_add_add">AJOUTER</string>
   <string name="dialog_error2">Merci d\'entrer une valeur valide.</string>
   <string name="dialog_error">Veuillez saisir tous les champs.</string>
+  <string name="dialog_edit">Éditer</string>
   <string name="dialog_delete">Supprimer</string>
   <string name="fragment_history_snackbar_text">1 enregistrement supprimé</string>
   <string name="fragment_history_snackbar_action">Annuler</string>

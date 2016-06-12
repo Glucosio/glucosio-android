@@ -58,6 +58,7 @@
   <string name="dialog_add_add">GATAKO</string>
   <string name="dialog_error2">Tusaba oyingizemu enukutta entufu.</string>
   <string name="dialog_error">Tusaba ojuzzemu amabanga gona.</string>
+  <string name="dialog_edit">Kyuusa</string>
   <string name="dialog_delete">Sazamu</string>
   <string name="fragment_overview_selector_month">Omwezi</string>
   <string name="fragment_overview_selector_day">Olunaku</string>

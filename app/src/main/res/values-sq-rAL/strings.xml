@@ -73,6 +73,7 @@
   <string name="dialog_add_add">SHTO</string>
   <string name="dialog_error2">Ju lutemi shtoni një vlerë të vlefshme.</string>
   <string name="dialog_error">Ju lutem plotësoni të gjitha fushat.</string>
+  <string name="dialog_edit">Edito</string>
   <string name="dialog_delete">Fshij</string>
   <string name="fragment_history_snackbar_text">1 lexim u fshi</string>
   <string name="fragment_history_snackbar_action">RIKTHE</string>
