@@ -60,7 +60,6 @@
   <string name="dialog_add_type_8">सोने से पहले</string>
   <string name="dialog_add_type_9">रात</string>
   <string name="dialog_add_type_11">पुनः जाँच</string>
-  <string name="dialog_add_type_12">अन्य</string>
   <string name="dialog_add_cancel">रद्द</string>
   <string name="dialog_add_add">जोड़ें</string>
   <string name="dialog_error2">कृपया कोई मान्य मान दर्ज करें.</string>
@@ -122,5 +121,4 @@
   <!-- Exercise Types -->
   <!-- Food Entry Labels -->
   <!-- About Glucosio Strings -->
-  <string name="dialog_add_weight">वजन</string>
 </resources>

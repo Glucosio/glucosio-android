@@ -180,6 +180,13 @@ public class FormatDateTime {
         return finalTime + "";
     }
 
+    public String getDate(Calendar cal) {
+        java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(context);
+
+        String finalTime = dateFormat.format(cal.getTime());
+        return finalTime + "";
+    }
+
     private void reportToFirebase(Exception e){
         FirebaseCrash.log("Error converting date");
         FirebaseCrash.report(e);

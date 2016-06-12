@@ -54,7 +54,6 @@
   <string name="dialog_add_type_5">Nga tonalya ky\'eggulo</string>
   <string name="dialog_add_type_6">Ng\'omazze okulya eky\'eggulo</string>
   <string name="dialog_add_type_9">Ekiro</string>
-  <string name="dialog_add_type_12">Endala</string>
   <string name="dialog_add_cancel">SAZAMU</string>
   <string name="dialog_add_add">GATAKO</string>
   <string name="dialog_error2">Tusaba oyingizemu enukutta entufu.</string>
@@ -70,6 +69,5 @@
   <!-- Exercise Types -->
   <!-- Food Entry Labels -->
   <!-- About Glucosio Strings -->
-  <string name="dialog_add_weight">Obuzito</string>
   <string name="fab_pressure">Entunnmuusi</string>
 </resources>

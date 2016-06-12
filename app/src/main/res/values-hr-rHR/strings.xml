@@ -27,7 +27,6 @@
   <string name="tab_history">Povijest</string>
   <string name="tab_tips">Savjeti</string>
   <string name="title_activity_hello">Dobro došli.</string>
-  <string name="helloactivity_headline">Dobro došli.</string>
   <string name="helloactivity_terms">Uvjeti korištenja</string>
   <string name="helloactivity_subhead">Potrebno nam je par brzih stvari prije nego što započnete.</string>
   <string name="helloactivity_country">Država</string>
@@ -67,7 +66,6 @@
   <string name="dialog_add_type_9">Noću</string>
   <string name="dialog_add_type_10">Natašte</string>
   <string name="dialog_add_type_11">Ponovna provjera</string>
-  <string name="dialog_add_type_12">Ostalo</string>
   <string name="dialog_add_cancel">OTKAŽI</string>
   <string name="dialog_add_add">DODAJ</string>
   <string name="dialog_error2">Molimo unesite valjanu vrijednost.</string>
@@ -219,7 +217,6 @@
   <string name="dialog_export_range">Izvoz raspon</string>
   <string name="activity_export_no_readings_snackbar">Nema očitanja za izvoz.</string>
   <string name="wear_new_reading">Novo očitanje dodano</string>
-  <string name="dialog_add_weight">Težina</string>
   <string name="dialog_add_ketones">Ketoni</string>
   <string name="dialog_add_pressure_min">Min krvni tlak</string>
   <string name="dialog_add_pressure_max">Max krvni tlak</string>
@@ -234,7 +231,6 @@
   <string name="title_activity_add_ketone">Dodajte ketone</string>
   <string name="title_activity_add_pressure">Dodajte krvni tlak</string>
   <string name="fab_weight">Tjelesna težina</string>
-  <string name="fab_ketones">Ketoni</string>
   <string name="fab_pressure">Krvni tlak</string>
   <string name="fab_cholesterol">Razina kolesterola</string>
   <string name="fab_HB1AC">HB1AC očitanja</string>
@@ -262,4 +258,5 @@
   <string name="notification_reminder_medication">Vrijeme je da uzmete svoje lijekove!</string>
   <string name="overview_hb1ac_info">Ovo je samo procjena i izračunava se pomoću prosjeka posljednjih mjesec dana očitanja. Iako ova procjena koristi široko prihvaćenu formulu za HbA1c procjenu, korisnicima preporučujemo da koriste to samo za procjenu.</string>
   <string name="dialog_add_notes">Bilješke</string>
+  <string name="mmol_L">mmol/L</string>
 </resources>

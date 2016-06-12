@@ -44,11 +44,14 @@ import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.analytics.Analytics;
+import org.glucosio.android.db.GlucoseReading;
 import org.glucosio.android.presenter.AddGlucosePresenter;
 import org.glucosio.android.tools.FormatDateTime;
 import org.glucosio.android.tools.LabelledSpinner;
+import org.glucosio.android.tools.SplitDateTime;
 
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
@@ -62,10 +65,10 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
     private TextView readingTextView;
     private EditText typeCustomEditText;
     private EditText notesEditText;
-    private AppCompatButton addFreeStyleButton;
     private TextInputLayout readingInputLayout;
     private LabelledSpinner readingTypeSpinner;
     private int pagerPosition = 0;
+    private long editId = 0;
     private boolean isCustomType;
 
     @Override
@@ -84,6 +87,7 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
         Bundle b = getIntent().getExtras();
         if (b!=null) {
             pagerPosition = b.getInt("pager");
+            editId = b.getLong("edit_id");
         }
 
         presenter = new AddGlucosePresenter(this);
@@ -97,7 +101,6 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
         readingTextView = (TextView) findViewById(R.id.glucose_add_concentration);
         typeCustomEditText = (EditText) findViewById(R.id.glucose_type_custom);
         readingInputLayout = (TextInputLayout) findViewById(R.id.glucose_add_concentration_layout);
-        addFreeStyleButton = (AppCompatButton) findViewById(R.id.glucose_add_freestyle_button);
         notesEditText = (EditText) findViewById(R.id.glucose_add_notes);
 
         presenter.updateSpinnerTypeTime();
@@ -170,29 +173,23 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
             unitM.setText("mmol/L");
         }
 
-        // Check if activity was started from a NFC sensor
-        if (getIntent().getExtras() != null) {
-            Bundle p;
-            String reading;
-
-            p = getIntent().getExtras();
-            reading = p.getString("reading");
-            if (reading!=null) {
-                // If yes, first convert the decimal value from Freestyle to Integer
-                double d = Double.parseDouble(reading);
-                int glucoseValue = (int) d;
-                readingTextView.setText(glucoseValue + "");
-                readingInputLayout.setErrorEnabled(true);
-                readingInputLayout.setError(getResources().getString(R.string.dialog_add_glucose_freestylelibre_added));
-                addFreeStyleButton.setVisibility(View.GONE);
-
-                addAnalyticsEvent();
-            }
-        } else {
-            // Check if FreeStyle support is enabled in Preferences
-            if (presenter.isFreeStyleLibreEnabled()) {
-                addFreeStyleButton.setVisibility(View.VISIBLE);
-            }
+        // If an id is passed, open the activity in edit mode
+        if (editId != 0){
+            FormatDateTime dateTime = new FormatDateTime(getApplicationContext());
+            setTitle(R.string.title_activity_add_glucose_edit);
+            GlucoseReading readingToEdit = presenter.getGlucoseReadingById(editId);
+            readingTextView.setText(readingToEdit.getReading()+"");
+            notesEditText.setText(readingToEdit.getNotes());
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(readingToEdit.getCreated());
+            addDateTextView.setText(dateTime.getDate(cal));
+            addTimeTextView.setText(dateTime.getTime(cal));
+            SplitDateTime splitDateTime = new SplitDateTime(readingToEdit.getCreated(), new SimpleDateFormat("yyyy-MM-dd"));
+            presenter.setReadingDay(splitDateTime.getDay());
+            presenter.setReadingHour(splitDateTime.getHour());
+            presenter.setReadingMinute(splitDateTime.getMinute());
+            presenter.setReadingYear(splitDateTime.getYear());
+            presenter.setReadingMonth(splitDateTime.getMonth());
         }
     }
 
@@ -202,14 +199,27 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
     }
 
     private void dialogOnAddButtonPressed() {
+        boolean isEdited = editId!=0;
         if (isCustomType) {
-            presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
-                    addDateTextView.getText().toString(), readingTextView.getText().toString(),
-                    typeCustomEditText.getText().toString(), notesEditText.getText().toString());
+            if (isEdited) {
+                presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
+                        addDateTextView.getText().toString(), readingTextView.getText().toString(),
+                        typeCustomEditText.getText().toString(), notesEditText.getText().toString(), editId);
+            } else {
+                presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
+                        addDateTextView.getText().toString(), readingTextView.getText().toString(),
+                        typeCustomEditText.getText().toString(), notesEditText.getText().toString());
+            }
         } else {
-            presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
-                    addDateTextView.getText().toString(), readingTextView.getText().toString(),
-                    readingTypeSpinner.getSpinner().getSelectedItem().toString(), notesEditText.getText().toString());
+            if (isEdited) {
+                presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
+                        addDateTextView.getText().toString(), readingTextView.getText().toString(),
+                        readingTypeSpinner.getSpinner().getSelectedItem().toString(), notesEditText.getText().toString(), editId);
+            } else {
+                presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
+                        addDateTextView.getText().toString(), readingTextView.getText().toString(),
+                        readingTypeSpinner.getSpinner().getSelectedItem().toString(), notesEditText.getText().toString());
+            }
         }
     }
 
@@ -298,11 +308,6 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
     @Override
     public void onBackPressed() {
         finishActivity();
-    }
-
-    public void startLibreActivity(View view) {
-        Intent intent = new Intent(this, FreestyleLibre.class);
-        startActivity(intent);
     }
 
     @Override

@@ -83,6 +83,7 @@
   <string name="fragment_overview_selector_day">Jour</string>
   <string name="fragment_overview_selector_week">Semaine</string>
   <string name="preferences_about">A propos</string>
+  <string name="preferences_experimental">Ces fonctionnalités sont expérimentales et ne peuvent ne pas fonctionner pleinement et sont pour une phase de test par les utilisateurs. N\'oubliez pas que vous pouvez secouer votre téléphone afin de nous envoyer vos commentaires.</string>
   <string name="preferences_version">Version</string>
   <string name="preferences_coming_soon">Bientôt disponible...</string>
   <string name="preferences_terms">Conditions d\'utilisation</string>
@@ -151,6 +152,10 @@
   <string name="preferences_backup_google_drive">Google Drive</string>
   <string name="preferences_about_glucosio">À propos de Glucosio</string>
   <string name="preferences_rate">Noter Glucosio</string>
+  <string name="preferences_freestyle_libre">Activer le support de FreeStyle Libre®</string>
+  <string name="preferences_freestyle_libre_experimental">EXPERIMENTAL: Activer le support de FreeStyle Libre®</string>
+  <string name="preferences_font_dyslexia_experimental">EXPÉRIMENTAL : Augmenter la lisibilité pour les utilisateurs souffrant de dyslexie</string>
+  <string name="preferences_font_dyslexia">Augmenter la lisibilité pour les utilisateurs souffrant de dyslexie</string>
   <string name="about_donate">Don à Glucosio</string>
   <string name="reading_ok">Ok</string>
   <string name="reading_hypo">Hypoglycémie</string>
@@ -242,4 +247,5 @@
   <string name="overview_hb1ac_error_no_data">Données insuffisantes pour le calcul de l\'Hb1AC</string>
   <string name="overview_hb1ac">Hb1AC :</string>
   <string name="dialog_add_glucose_freestylelibre_added">Ajoutées depuis votre compte FreeStyle Libre®</string>
+  <string name="mmol_L">mmol/L</string>
 </resources>

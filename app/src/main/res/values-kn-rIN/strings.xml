@@ -57,7 +57,6 @@
   <string name="dialog_add_type_9">ರಾತ್ರಿ</string>
   <string name="dialog_add_type_10">ಉಪವಾಸವಿರುವಗದ ಗ್ಲುಕೋಸ್</string>
   <string name="dialog_add_type_11">ಪುನಃ ಪರೀಕ್ಷಿಸು</string>
-  <string name="dialog_add_type_12">ಇತರೆ</string>
   <string name="dialog_delete">ಅಳಿಸು</string>
   <string name="fragment_history_snackbar_text">1 ರೀಡಿಂಗನ್ನು ಅಳಿಸಲಾಯಿತು</string>
   <string name="fragment_history_snackbar_action">ರದ್ದು ಮಾಡು</string>
@@ -66,4 +65,5 @@
   <!-- Food Entry Labels -->
   <!-- About Glucosio Strings -->
   <string name="title_activity_add_glucose">ಗ್ಲುಕೋಸ್ ರೀಡಿಂಗ್ ನಮೂದಿಸಿ</string>
+  <string name="mmol_L">mmol/L</string>
 </resources>

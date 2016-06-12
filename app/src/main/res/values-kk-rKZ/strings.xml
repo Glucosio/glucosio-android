@@ -20,8 +20,77 @@
   ~
   -->
 <resources>
+  <string name="action_settings">Баптаулар</string>
+  <string name="action_feedback">Пікір жіберу</string>
+  <string name="tab_history">Тарих</string>
+  <string name="title_activity_hello">Сəлем.</string>
+  <string name="helloactivity_headline">Сəлем.</string>
+  <string name="helloactivity_terms">Қолдану ережелері</string>
+  <string name="helloactivity_country">Ел</string>
+  <string name="helloactivity_age">Жасы</string>
+  <string name="helloactivity_gender_list_1">Еркек</string>
+  <string name="helloactivity_gender_list_2">Əйел</string>
+  <string name="helloactivity_gender_list_3">Басқа</string>
+  <string name="helloactivity_spinner_diabetes_type">Диабеттер түрі</string>
+  <string name="helloactivity_spinner_diabetes_type_1">1 түр</string>
+  <string name="helloactivity_spinner_diabetes_type_2">2 түр</string>
+  <string name="helloactivity_spinner_diabetes_lada">ЛАДА</string>
+  <string name="preferences_spinner_preferred_weight_unit_1">килограммдар</string>
+  <string name="helloactivity_button_next">ƏРІ ҚАРАЙ</string>
+  <string name="dialog_add_type_1">Асқа дейін</string>
+  <string name="dialog_add_type_2">Астан кейін</string>
+  <string name="dialog_add_type_3">Əбетке дейін</string>
+  <string name="dialog_add_type_4">Əбеттен кейін</string>
+  <string name="dialog_add_type_5">Кешкі асқа дейін</string>
+  <string name="dialog_add_type_6">Кешкі астан кейін</string>
+  <string name="dialog_add_type_7">Тамақтану</string>
+  <string name="dialog_add_type_8">Ұйықтау уақыты</string>
+  <string name="dialog_add_type_9">Түн</string>
+  <string name="dialog_add_type_10">Глюкозаның қанда бардығы</string>
+  <string name="dialog_add_type_11">Қайта тексеру</string>
+  <string name="dialog_add_type_12">Басқа</string>
+  <string name="dialog_add_cancel">БОЛДЫРМАУ</string>
+  <string name="dialog_add_add">ҚОСУ</string>
+  <string name="dialog_delete">Жою</string>
+  <string name="fragment_history_snackbar_action">БОЛДЫРМАУ</string>
+  <string name="fragment_overview_selector_day">Күн</string>
+  <string name="preferences_about">Біз туралы</string>
+  <string name="glucose_reading_type">Түрі</string>
+  <string name="helloactivity_language">Тіл</string>
+  <string name="preferences_backup_google_drive">Google Диск</string>
+  <string name="preferences_about_glucosio">Glucosio туралы</string>
+  <string name="preferences_rate">Glucosio-ны бағалау</string>
+  <string name="preferences_freestyle_libre">FreeStyle Libre® қолдауын қосу</string>
+  <string name="preferences_freestyle_libre_experimental">ЭКСПЕРИМЕНТАЛДЫ: FreeStyle Libre® қолдауын қосу</string>
+  <string name="about_donate">Glucosio-ны қолдау</string>
+  <string name="reading_ok">ОК</string>
+  <string name="reading_hypo">Қанттың қанда төмендеуі</string>
+  <string name="reading_low">Төмен</string>
   <!-- Future Strings Baked In Early For l10n -->
   <!-- Exercise Types -->
+  <string name="dialog_add_exercisetype_9">Гольф</string>
+  <string name="dialog_add_exercisetype_10">Софтбол</string>
+  <string name="dialog_add_exercisetype_11">Бадминтон</string>
+  <string name="dialog_add_exercisetype_12">Футбол</string>
+  <string name="dialog_add_exercisetype_13">Баскетбол</string>
+  <string name="dialog_add_exercisetype_14">Волейбол</string>
+  <string name="dialog_add_exercisetype_15">Крикет</string>
+  <string name="dialog_add_exercisetype_16">Фрисби</string>
+  <string name="dialog_add_exercisetype_17">Шаңғы тебу</string>
+  <string name="dialog_add_exercisetype_18">Бокс</string>
+  <string name="dialog_add_exercisetype_19">Теннис</string>
+  <string name="dialog_add_exercisetype_20">Стөлді теннис</string>
+  <string name="dialog_add_exercisetype_21">Жауынгерлік өнер</string>
+  <string name="dialog_add_exercisetype_22">өрмелеу</string>
+  <string name="dialog_add_exercisetype_23">Күрес</string>
+  <string name="dialog_add_exercisetype_25">Аулада жұмыс істеу</string>
   <!-- Food Entry Labels -->
+  <string name="dialog_addfood_sugars">Қанты:</string>
+  <string name="dialog_addfood_fat">Майлылығы:</string>
   <!-- About Glucosio Strings -->
+  <string name="about_credits">Жасаушылар</string>
+  <string name="about_contributel10n">Аудармаға Көмек</string>
+  <string name="dialog_add_ketones">Кетондар</string>
+  <string name="title_activity_add_glucose">Глюкозаның мөлшері туралы ақпарат қосу</string>
+  <string name="fab_ketones">Кетондар</string>
 </resources>

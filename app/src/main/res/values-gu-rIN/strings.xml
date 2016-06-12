@@ -38,7 +38,6 @@
   <string name="helloactivity_spinner_diabetes_type">મધુપ્રમેહનો પ્રકાર</string>
   <string name="helloactivity_spinner_diabetes_type_1">પ્રકાર 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">પ્રકાર 2</string>
-  <string name="dialog_add_type_12">અન્ય</string>
   <string name="dialog_error2">કૃપા કરી સાચી માહિતી ભરો.</string>
   <string name="dialog_error">કૃપા કરી બધી વિગતો ભરો.</string>
   <string name="dialog_delete">રદ કરવું</string>

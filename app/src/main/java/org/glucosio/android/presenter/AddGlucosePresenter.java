@@ -72,7 +72,7 @@ public class AddGlucosePresenter {
         this.readingMinute = addSplitDateTime.getMinute();
     }
 
-    public int timeToSpinnerType() {
+    private int timeToSpinnerType() {
         DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         Date formatted = Calendar.getInstance().getTime();
 
@@ -103,6 +103,33 @@ public class AddGlucosePresenter {
                 GlucoseReading gReading = new GlucoseReading(convertedReading, type, finalDateTime, notes);
 
                 isReadingAdded = dB.addGlucoseReading(gReading);
+            }
+            if (!isReadingAdded) {
+                activity.showDuplicateErrorMessage();
+            } else {
+                activity.finishActivity();
+            }
+        } else {
+            activity.showErrorMessage();
+        }
+    }
+
+    public void dialogOnAddButtonPressed(String time, String date, String reading, String type, String notes, long oldId) {
+        if (validateDate(date) && validateTime(time) && validateReading(reading) && validateType(type)) {
+            Calendar cal = Calendar.getInstance();
+            cal.set(Integer.parseInt(readingYear), Integer.parseInt(readingMonth) - 1, Integer.parseInt(readingDay), Integer.parseInt(readingHour), Integer.parseInt(readingMinute));
+            Date finalDateTime = cal.getTime();
+            boolean isReadingAdded;
+            if ("mg/dL".equals(getUnitMeasuerement())) {
+                int finalReading = Integer.parseInt(reading);
+                GlucoseReading gReading = new GlucoseReading(finalReading, type, finalDateTime, notes);
+                isReadingAdded = dB.editGlucoseReading(oldId, gReading);
+            } else {
+                converter = new GlucosioConverter();
+                int convertedReading = converter.glucoseToMgDl(Double.parseDouble(reading));
+                GlucoseReading gReading = new GlucoseReading(convertedReading, type, finalDateTime, notes);
+
+                isReadingAdded = dB.editGlucoseReading(oldId, gReading);
             }
             if (!isReadingAdded) {
                 activity.showDuplicateErrorMessage();
@@ -165,13 +192,6 @@ public class AddGlucosePresenter {
         }
     }
 
-    // Getters and Setters
-
-    public boolean isFreeStyleLibreEnabled() {
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
-        return sharedPref.getBoolean("pref_freestyle_libre", false);
-    }
-
     public String getUnitMeasuerement() {
         return dB.getUser(1).getPreferred_unit();
     }
@@ -208,4 +228,7 @@ public class AddGlucosePresenter {
         this.readingMinute = readingMinute;
     }
 
+    public GlucoseReading getGlucoseReadingById(Long id) {
+        return dB.getGlucoseReadingById(id);
+    }
 }

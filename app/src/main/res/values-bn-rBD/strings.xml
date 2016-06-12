@@ -56,6 +56,7 @@
   <string name="dialog_add_type_5">রাতে খাওয়ার আগে</string>
   <string name="dialog_add_type_6">রাতে খাওয়ার পরে</string>
   <string name="dialog_add_type_9">রাত</string>
+  <string name="dialog_add_type_11">পুনঃপরীক্ষা</string>
   <string name="dialog_add_type_12">অন্যান্য</string>
   <string name="dialog_add_cancel">বাতিল</string>
   <string name="dialog_add_add">যোগ</string>
