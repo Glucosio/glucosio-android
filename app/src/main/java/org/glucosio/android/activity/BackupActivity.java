@@ -30,13 +30,11 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.ListViewCompat;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -66,7 +64,6 @@ import org.glucosio.android.R;
 import org.glucosio.android.adapter.BackupAdapter;
 import org.glucosio.android.backup.Backup;
 import org.glucosio.android.object.GlucosioBackup;
-import org.w3c.dom.Text;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -107,7 +104,7 @@ public class BackupActivity extends AppCompatActivity {
 
         GlucosioApplication glucosioApplication = (GlucosioApplication) getApplicationContext();
         sharedPref = getPreferences(Context.MODE_PRIVATE);
-        realm = glucosioApplication.getDBHandler().getRealmIstance();
+        realm = glucosioApplication.getDBHandler().getRealmInstance();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_backup_drive));

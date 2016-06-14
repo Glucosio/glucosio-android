@@ -36,7 +36,7 @@ public class RealmBackupRestore {
     };
 
     public RealmBackupRestore(Activity activity) {
-        this.realm = new DatabaseHandler(activity.getApplicationContext()).getRealmIstance();
+        this.realm = new DatabaseHandler(activity.getApplicationContext()).getRealmInstance();
         this.activity = activity;
     }
 

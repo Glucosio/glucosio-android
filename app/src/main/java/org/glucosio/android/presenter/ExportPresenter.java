@@ -22,18 +22,26 @@ package org.glucosio.android.presenter;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.FileProvider;
+import android.support.v7.app.NotificationCompat;
 import android.util.Log;
 
+import org.glucosio.android.R;
 import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
 import org.glucosio.android.tools.ReadingToCSV;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Calendar;
+
+import io.realm.Realm;
 
 public class ExportPresenter {
 
@@ -58,8 +66,8 @@ public class ExportPresenter {
         dB = dbHandler;
     }
 
-    public void onExportClicked(Boolean all) {
-        ArrayList<GlucoseReading> readings;
+    public void onExportClicked(final Boolean all) {
+        final ArrayList<GlucoseReading> readings;
 
         if (all) {
             readings = dB.getGlucoseReadings();
@@ -79,9 +87,46 @@ public class ExportPresenter {
         if (readings.size() != 0) {
             if (hasStoragePermissions(activity)) {
                 activity.showExportedSnackBar(readings.size());
-            ReadingToCSV csv = new ReadingToCSV(activity.getApplicationContext());
-            Uri csvUri = csv.createCSV(readings, dB.getUser(1).getPreferred_unit());
-                activity.showShareDialog(csvUri);
+                final ReadingToCSV csv = new ReadingToCSV(activity.getApplicationContext());
+                final String preferredUnit = dB.getUser(1).getPreferred_unit();
+
+                new AsyncTask<Void, Void, String>() {
+                    @Override
+                    protected String doInBackground(Void... params) {
+                        final ArrayList<GlucoseReading> readingsToExport;
+                        Realm realm = dB.getNewRealmInstance();
+
+                        if (all) {
+                            readingsToExport = dB.getGlucoseReadings(realm);
+                        } else {
+                            Calendar fromDate = Calendar.getInstance();
+                            fromDate.set(Calendar.YEAR, fromYear);
+                            fromDate.set(Calendar.MONTH, fromMonth);
+                            fromDate.set(Calendar.DAY_OF_MONTH, fromDay);
+
+                            Calendar toDate = Calendar.getInstance();
+                            toDate.set(Calendar.YEAR, toYear);
+                            toDate.set(Calendar.MONTH, toMonth);
+                            toDate.set(Calendar.DAY_OF_MONTH, toDay);
+                            readingsToExport = dB.getGlucoseReadings(realm, fromDate.getTime(), toDate.getTime());
+                        }
+
+                        return csv.createCSVFile(realm, readingsToExport, preferredUnit);
+                    }
+
+                    @Override
+                    protected void onPostExecute(String filename) {
+                        super.onPostExecute(filename);
+                        if (filename!=null) {
+                            Uri uri = FileProvider.getUriForFile(activity.getApplicationContext(),
+                                    activity.getApplicationContext().getPackageName() + ".provider.fileprovider", new File(filename));
+                            activity.showShareDialog(uri);
+                        } else {
+                            //TODO: Show error SnackBar
+                            activity.showNoReadingsSnackBar();
+                        }
+                    }
+                }.execute();
             }
         } else {
             activity.showNoReadingsSnackBar();

@@ -49,16 +49,20 @@ public class DatabaseHandler {
     public DatabaseHandler(Context context) {
         this.mContext = context;
 
+        this.realm = getNewRealmInstance();
+    }
+
+    public Realm getNewRealmInstance(){
         if (mRealmConfig == null) {
-            mRealmConfig = new RealmConfiguration.Builder(context)
+            mRealmConfig = new RealmConfiguration.Builder(mContext)
                     .schemaVersion(3)
                     .migration(new Migration())
                     .build();
         }
-        this.realm = Realm.getInstance(mRealmConfig); // Automatically run migration if needed
+        return Realm.getInstance(mRealmConfig); // Automatically run migration if needed
     }
 
-    public Realm getRealmIstance(){
+    public Realm getRealmInstance(){
         return realm;
     }
 
@@ -69,6 +73,12 @@ public class DatabaseHandler {
     }
 
     public User getUser(long id) {
+        return realm.where(User.class)
+                .equalTo("id", id)
+                .findFirst();
+    }
+
+    public User getUser(Realm realm, long id) {
         return realm.where(User.class)
                 .equalTo("id", id)
                 .findFirst();
@@ -149,7 +159,30 @@ public class DatabaseHandler {
         return readingList;
     }
 
+    public ArrayList<GlucoseReading> getGlucoseReadings(Realm realm) {
+        RealmResults<GlucoseReading> results =
+                realm.where(GlucoseReading.class)
+                        .findAllSorted("created", Sort.DESCENDING);
+        ArrayList<GlucoseReading> readingList = new ArrayList<>();
+        for (int i = 0; i < results.size(); i++) {
+            readingList.add(results.get(i));
+        }
+        return readingList;
+    }
+
     public ArrayList<GlucoseReading> getGlucoseReadings(Date from, Date to) {
+        RealmResults<GlucoseReading> results =
+                realm.where(GlucoseReading.class)
+                        .between("created", from, to)
+                        .findAllSorted("created", Sort.DESCENDING);
+        ArrayList<GlucoseReading> readingList = new ArrayList<>();
+        for (int i = 0; i < results.size(); i++) {
+            readingList.add(results.get(i));
+        }
+        return readingList;
+    }
+
+    public ArrayList<GlucoseReading> getGlucoseReadings(Realm realm, Date from, Date to) {
         RealmResults<GlucoseReading> results =
                 realm.where(GlucoseReading.class)
                         .between("created", from, to)
