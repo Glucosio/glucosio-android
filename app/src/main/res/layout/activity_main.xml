@@ -159,8 +159,8 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_fab_ketones"
             android:onClick="onKetoneFabClicked"
-            app:fab_colorNormal="@color/glucosio_fab_ketonest"
-            app:fab_colorPressed="@color/glucosio_fab_ketonest"
+            app:fab_colorNormal="@color/glucosio_fab_ketones"
+            app:fab_colorPressed="@color/glucosio_fab_ketones"
             app:fab_size="mini"
             app:fab_label="@string/fab_ketones" />
         <com.github.clans.fab.FloatingActionButton

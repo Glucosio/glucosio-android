@@ -20,6 +20,8 @@
 
 package org.glucosio.android.presenter;
 
+import android.content.Intent;
+
 import org.glucosio.android.R;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.fragment.OverviewFragment;
@@ -139,6 +141,14 @@ public class OverviewPresenter {
 
     public int getUserAge() {
         return dB.getUser(1).getAge();
+    }
+
+    public ArrayList<Integer> getWeightReadings(){
+        return dB.getWeightReadingAsArray();
+    }
+
+    public ArrayList<String> getWeightDatetimes(){
+        return dB.getWeightReadingDateTimeAsArray();
     }
 
     public ArrayList<Integer> getGlucoseReading() {

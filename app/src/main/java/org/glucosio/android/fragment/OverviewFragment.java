@@ -38,7 +38,9 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -80,6 +82,14 @@ public class OverviewFragment extends Fragment {
     private Spinner graphSpinnerRange;
     private Spinner graphSpinnerMetric;
     private OverviewPresenter presenter;
+
+    private CheckBox graphCheckboxGlucose;
+    private CheckBox graphCheckboxKetones;
+    private CheckBox graphCheckboxCholesterol;
+    private CheckBox graphCheckboxA1c;
+    private CheckBox graphCheckboxWeight;
+    private CheckBox graphCheckboxPressure;
+
     private View mFragmentView;
 
 
@@ -144,6 +154,12 @@ public class OverviewFragment extends Fragment {
         HB1ACTextView = (TextView) mFragmentView.findViewById(R.id.fragment_overview_hb1ac);
         HB1ACDateTextView = (TextView) mFragmentView.findViewById(R.id.fragment_overview_hb1ac_date);
         HB1ACMoreButton = (ImageButton) mFragmentView.findViewById(R.id.fragment_overview_a1c_more);
+        graphCheckboxGlucose = (CheckBox) mFragmentView.findViewById(R.id.fragment_overview_graph_glucose);
+        graphCheckboxKetones = (CheckBox) mFragmentView.findViewById(R.id.fragment_overview_graph_ketones);
+        graphCheckboxCholesterol = (CheckBox) mFragmentView.findViewById(R.id.fragment_overview_graph_cholesterol);
+        graphCheckboxA1c = (CheckBox) mFragmentView.findViewById(R.id.fragment_overview_graph_a1c);
+        graphCheckboxWeight = (CheckBox) mFragmentView.findViewById(R.id.fragment_overview_graph_weight);
+        graphCheckboxPressure = (CheckBox) mFragmentView.findViewById(R.id.fragment_overview_graph_pressure);
 
         HB1ACMoreButton.setOnClickListener(new View.OnClickListener() {
             @Override
