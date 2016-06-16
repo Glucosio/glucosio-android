@@ -6,13 +6,13 @@ jdk:
 android:
   components:
     - tools
-    - build-tools-23.0.3
-    - android-23
+    - build-tools-24.0.0
+    - android-24
     - extra-android-support
     - extra-google-google_play_services
     - extra-android-m2repository
     - extra-google-m2repository
-    - addon-google_apis-google-23
+    - addon-google_apis-google-24
 
 before_install:
  - chmod +x gradlew
