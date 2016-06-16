@@ -26,6 +26,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
@@ -55,6 +56,7 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
+import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.adapter.A1cEstimateAdapter;
 import org.glucosio.android.presenter.OverviewPresenter;
@@ -66,7 +68,7 @@ import org.glucosio.android.tools.TipsManager;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class OverviewFragment extends Fragment {
+public class OverviewFragment extends Fragment implements OverviewView {
 
     private static final int PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 0;
     ImageButton HB1ACMoreButton;
@@ -126,7 +128,8 @@ public class OverviewFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        presenter = new OverviewPresenter(this);
+        GlucosioApplication app = (GlucosioApplication) getActivity().getApplicationContext();
+        presenter = new OverviewPresenter(this, app.getDBHandler());
         if (!presenter.isdbEmpty()) {
             presenter.loadDatabase();
         }
@@ -470,12 +473,14 @@ public class OverviewFragment extends Fragment {
         tipTextView.setText(presenter.getRandomTip(tipsManager));
     }
 
-    public String convertDate(String date) {
+    @NonNull
+    public String convertDate(@NonNull final String date) {
         FormatDateTime dateTime = new FormatDateTime(getActivity().getApplicationContext());
         return dateTime.convertDate(date);
     }
 
-    public String convertDateToMonth(String date) {
+    @NonNull
+    public String convertDateToMonth(@NonNull final String date) {
         FormatDateTime dateTime = new FormatDateTime((getActivity().getApplication()));
         return dateTime.convertDateToMonthOverview(date);
     }
