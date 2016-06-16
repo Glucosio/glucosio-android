@@ -24,7 +24,6 @@ import android.content.Context;
 
 import net.danlew.android.joda.JodaTimeAndroid;
 
-import org.glucosio.android.tools.GlucoseRanges;
 import org.joda.time.DateTime;
 import org.joda.time.Months;
 import org.joda.time.Weeks;
@@ -149,7 +148,7 @@ public class DatabaseHandler {
     }
 
 
-    public ArrayList<GlucoseReading> getGlucoseReadings() {
+    public List<GlucoseReading> getGlucoseReadings() {
         RealmResults<GlucoseReading> results =
                 realm.where(GlucoseReading.class)
                         .findAllSorted("created", Sort.DESCENDING);

@@ -20,13 +20,10 @@
 
 package org.glucosio.android.presenter;
 
-import android.content.Intent;
-import android.util.Log;
-
 import org.glucosio.android.R;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
-import org.glucosio.android.fragment.OverviewFragment;
+import org.glucosio.android.fragment.OverviewView;
 import org.glucosio.android.object.A1cEstimate;
 import org.glucosio.android.object.GlucoseGraphObject;
 import org.glucosio.android.tools.GlucosioConverter;
@@ -36,35 +33,29 @@ import org.joda.time.Days;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
-import java.lang.reflect.Array;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collections;
-import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
 public class OverviewPresenter {
 
     private DatabaseHandler dB;
+    private OverviewView view;
+
     private ArrayList<String> glucoseType;
     private List<Integer> glucoseReadingsWeek;
     private List<Integer> glucoseReadingsMonth;
     private List<String> glucoseDatetimeWeek;
     private List<String> glucoseDatetimeMonth;
-    private ArrayList<GlucoseReading> glucoseReadings;
-    private ArrayList<GlucoseGraphObject> glucoseGraphObjects;
+    private List<GlucoseReading> glucoseReadings;
+    private List<GlucoseGraphObject> glucoseGraphObjects;
     private int glucoseMinValue = 0;
     private int glucoseMaxValue = 0;
-    private OverviewFragment fragment;
 
-
-    public OverviewPresenter(OverviewFragment overviewFragment) {
-        dB = new DatabaseHandler(overviewFragment.getContext());
-        this.fragment = overviewFragment;
+    public OverviewPresenter(OverviewView view, DatabaseHandler dB) {
+        this.dB = dB;
+        this.view = view;
     }
 
     public boolean isdbEmpty() {
@@ -84,7 +75,7 @@ public class OverviewPresenter {
     }
 
     public String convertDate(String date) {
-        return fragment.convertDate(date);
+        return view.convertDate(date);
     }
 
 /*    public int getGlucoseTrend(){
@@ -101,7 +92,7 @@ public class OverviewPresenter {
                 return converter.a1cNgspToIfcc(converter.glucoseToA1C(getGlucoseReadingsMonth().get(getGlucoseReadingsMonth().size() - 2))) + " mmol/mol";
             }
         } else {
-            return fragment.getResources().getString(R.string.overview_hb1ac_error_no_data);
+            return view.getString(R.string.overview_hb1ac_error_no_data);
         }
     }
 
@@ -156,9 +147,8 @@ public class OverviewPresenter {
         return dB.getUser(1).getAge();
     }
 
-    public ArrayList<Integer> getGlucoseReadings() {
+    public List<Integer> getGlucoseReadings() {
 
-        DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm");
         ArrayList<Integer> glucoseReadings = new ArrayList<>();
         for (int i=0; i<glucoseGraphObjects.size(); i++) {
             glucoseReadings.add(glucoseGraphObjects.get(i).getReading());
@@ -167,66 +157,40 @@ public class OverviewPresenter {
         return glucoseReadings;
     }
 
-    private ArrayList<GlucoseGraphObject> generateGlucoseGraphPoints() {
-        ArrayList<GlucoseReading> glucoseReadings = dB.getGlucoseReadings();
+    private List<GlucoseGraphObject> generateGlucoseGraphPoints() {
+        final List<GlucoseReading> glucoseReadings = dB.getGlucoseReadings();
 
-        DateTime firstDate = new DateTime(dB.getFirstGlucoseDateTime());
-        DateTime lastDate = DateTime.now();
-        int daysBetween = Days.daysBetween(firstDate, lastDate).getDays();
-        // This will contain empty values for each day of the week
-        ArrayList<GlucoseGraphObject> emptyGlucoseGraphObjects = new ArrayList<>();
-        // This will contain values from our database
-        ArrayList<GlucoseGraphObject> storedGlucoseGraphObject = new ArrayList<>();
+        DateTime startDate = glucoseReadings.size() > 0 ?
+                new DateTime(glucoseReadings.get(0).getCreated()) :
+                DateTime.now();
         // This will contain final values
-        ArrayList<GlucoseGraphObject> finalGlucoseGraphObjects = new ArrayList<>();
-        // For each day, add a zero value in "empty" ArrayList
-        for (int i=0; i<=daysBetween; i++){
-            // Constructor is GlucoseGraphObject(DateTime dateTime, int readingValue)
-            emptyGlucoseGraphObjects.add(new GlucoseGraphObject(firstDate.plusDays(i), 0));
-        }
+        final ArrayList<GlucoseGraphObject> finalGlucoseGraphObjects = new ArrayList<>();
         // Transfer values from database to ArrayList as GlucoseGraphObjects
         for (int i=0; i<glucoseReadings.size(); i++){
-            GlucoseReading reading = glucoseReadings.get(i);
-            storedGlucoseGraphObject.add(
-                    new GlucoseGraphObject(new DateTime(reading.getCreated()), reading.getReading())
+            final GlucoseReading reading = glucoseReadings.get(i);
+            final DateTime createdDate = new DateTime(reading.getCreated());
+            //add zero values between current value and last added value
+            addReadings(finalGlucoseGraphObjects, startDate, createdDate);
+            //add new value
+            finalGlucoseGraphObjects.add(
+                    new GlucoseGraphObject(createdDate, reading.getReading())
             );
+            //update start date
+            startDate = createdDate;
         }
-        // Check which days the user added glucose readings
-        for (int i=0; i<glucoseReadings.size(); i++){
-            GlucoseReading reading = glucoseReadings.get(i);
-            DateTime created = new DateTime(reading.getCreated());
-            ArrayList<GlucoseGraphObject> resultArrayList = getReadingsByDateTime(
-                    emptyGlucoseGraphObjects, created);
-
-            // Remove 0 values for days we already have
-            for (int n=0; n<resultArrayList.size();n++){
-                if (emptyGlucoseGraphObjects.get(n).getReading()==0) {
-                    emptyGlucoseGraphObjects.remove(resultArrayList.get(n));
-                }
-            }
-        }
-        // Merge empty ArrayList with data from our dB
-        finalGlucoseGraphObjects.addAll(emptyGlucoseGraphObjects);
-        finalGlucoseGraphObjects.addAll(storedGlucoseGraphObject);
-        // Sort the final array by Date
-        Collections.sort(finalGlucoseGraphObjects, new Comparator<GlucoseGraphObject>() {
-            public int compare(GlucoseGraphObject o1, GlucoseGraphObject o2) {
-                return o1.getCreated().compareTo(o2.getCreated());
-            }
-        });
+        //add last zeros till now
+        addReadings(finalGlucoseGraphObjects, startDate, DateTime.now());
 
         return finalGlucoseGraphObjects;
     }
 
-    public ArrayList<GlucoseGraphObject> getReadingsByDateTime(ArrayList<GlucoseGraphObject> glucoseGraphObjects, DateTime dateTime){
-        ArrayList<GlucoseGraphObject> result = new ArrayList<>();
-        for (int i=0; i<glucoseGraphObjects.size(); i++){
-            if (glucoseGraphObjects.get(i).getCreated().withTimeAtStartOfDay()
-                    .equals(dateTime.withTimeAtStartOfDay())){
-                result.add(glucoseGraphObjects.get(i));
-            }
+    private void addReadings(final ArrayList<GlucoseGraphObject> graphObjects,
+                             final DateTime firstDate,
+                             final DateTime lastDate) {
+        int daysBetween = Days.daysBetween(firstDate, lastDate).getDays();
+        for (int i = 1; i < daysBetween; i++) {
+            graphObjects.add(new GlucoseGraphObject(firstDate.plusDays(i), 0));
         }
-        return result;
     }
 
     public ArrayList<String> getGlucoseType() {
@@ -264,7 +228,7 @@ public class OverviewPresenter {
     }
 
     public String convertDateToMonth(String s) {
-        return fragment.convertDateToMonth(s);
+        return view.convertDateToMonth(s);
     }
 
     public int getGlucoseMinValue() {

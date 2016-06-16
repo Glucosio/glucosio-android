@@ -22,16 +22,13 @@ package org.glucosio.android.presenter;
 
 import android.Manifest;
 import android.app.Activity;
-import android.content.Context;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.FileProvider;
-import android.support.v7.app.NotificationCompat;
 import android.util.Log;
 
-import org.glucosio.android.R;
 import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
@@ -40,6 +37,7 @@ import org.glucosio.android.tools.ReadingToCSV;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import io.realm.Realm;
 
@@ -67,7 +65,7 @@ public class ExportPresenter {
     }
 
     public void onExportClicked(final Boolean all) {
-        final ArrayList<GlucoseReading> readings;
+        final List<GlucoseReading> readings;
 
         if (all) {
             readings = dB.getGlucoseReadings();
