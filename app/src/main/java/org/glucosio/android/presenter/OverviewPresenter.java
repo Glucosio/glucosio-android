@@ -35,6 +35,7 @@ import org.joda.time.format.DateTimeFormatter;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
@@ -180,6 +181,12 @@ public class OverviewPresenter {
         }
         //add last zeros till now
         addReadings(finalGlucoseGraphObjects, startDate, DateTime.now());
+
+        Collections.sort(finalGlucoseGraphObjects, new Comparator<GlucoseGraphObject>() {
+            public int compare(GlucoseGraphObject o1, GlucoseGraphObject o2) {
+                return o1.getCreated().compareTo(o2.getCreated());
+            }
+        });
 
         return finalGlucoseGraphObjects;
     }
