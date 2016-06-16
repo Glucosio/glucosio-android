@@ -42,9 +42,9 @@ allprojects {
         jcenter()
     }
 
-    ext.buildToolsVer = '23.0.3'
+    ext.buildToolsVer = '24.0.0'
 
-    ext.androidSupportVer = '23.4.0'
+    ext.androidSupportVer = '24.0.0'
     ext.googlePlayServicesVer = '9.0.2'
 
     ext.butterKnifeVer = '8.0.1'
