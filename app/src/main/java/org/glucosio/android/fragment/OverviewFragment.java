@@ -40,6 +40,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -67,6 +68,7 @@ import org.glucosio.android.tools.TipsManager;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class OverviewFragment extends Fragment implements OverviewView {
 
@@ -161,6 +163,13 @@ public class OverviewFragment extends Fragment implements OverviewView {
         graphCheckboxA1c = (CheckBox) mFragmentView.findViewById(R.id.fragment_overview_graph_a1c);
         graphCheckboxWeight = (CheckBox) mFragmentView.findViewById(R.id.fragment_overview_graph_weight);
         graphCheckboxPressure = (CheckBox) mFragmentView.findViewById(R.id.fragment_overview_graph_pressure);
+
+        graphCheckboxGlucose.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                setData();
+            }
+        });
 
         HB1ACMoreButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -293,6 +302,7 @@ public class OverviewFragment extends Fragment implements OverviewView {
 
     private void setData() {
         ArrayList<String> xVals = new ArrayList<String>();
+        ArrayList<ILineDataSet> dataSets = new ArrayList<ILineDataSet>();
 
         if (graphSpinnerRange.getSelectedItemPosition() == 0) {
             // Day view
@@ -314,10 +324,31 @@ public class OverviewFragment extends Fragment implements OverviewView {
             }
         }
 
-        GlucosioConverter converter = new GlucosioConverter();
+        if (graphCheckboxGlucose.isChecked()) {
 
+            dataSets.add(generateGlucoseDateSet());
+        }
+
+        // create a data object with the datasets
+        LineData data = new LineData(xVals, dataSets);
+
+        // set data
+        chart.setData(data);
+        chart.setPinchZoom(true);
+        chart.setHardwareAccelerationEnabled(true);
+        chart.animateY(1000, Easing.EasingOption.EaseOutCubic);
+        chart.invalidate();
+        chart.notifyDataSetChanged();
+        chart.fitScreen();
+        chart.setVisibleXRangeMaximum(20);
+        chart.moveViewToX(data.getXValCount());
+    }
+
+    private ILineDataSet generateGlucoseDateSet() {
         ArrayList<Entry> yVals = new ArrayList<Entry>();
         ArrayList<Integer> colors = new ArrayList<>();
+        GlucosioConverter converter = new GlucosioConverter();
+
 
         if (graphSpinnerRange.getSelectedItemPosition() == 0) {
             // Day view
@@ -359,13 +390,18 @@ public class OverviewFragment extends Fragment implements OverviewView {
                 }
             }
             colors.add(getResources().getColor(R.color.glucosio_pink));
+
         }
 
+        return generateLineDataSet(yVals, getResources().getColor(R.color.glucosio_pink));
+    }
+
+    private LineDataSet generateLineDataSet(ArrayList<Entry> yVals, int color) {
         // create a dataset and give it a type
         LineDataSet set1 = new LineDataSet(yVals, "");
-        set1.setColor(getResources().getColor(R.color.glucosio_pink));
+        set1.setColor(color);
+        set1.setCircleColor(color);
         set1.setLineWidth(2f);
-        set1.setCircleColor(getResources().getColor(R.color.glucosio_pink));
         set1.setCircleSize(4f);
         set1.setDrawCircleHole(true);
         set1.disableDashedLine();
@@ -388,26 +424,7 @@ public class OverviewFragment extends Fragment implements OverviewView {
             set1.setDrawCircleHole(true);
         }
 
-//        set1.setDrawFilled(true);
-        // set1.setShader(new LinearGradient(0, 0, 0, mChart.getHeight(),
-        // Color.BLACK, Color.WHITE, Shader.TileMode.MIRROR));I
-
-        ArrayList<ILineDataSet> dataSets = new ArrayList<ILineDataSet>();
-        dataSets.add(set1); // add the datasets
-
-        // create a data object with the datasets
-        LineData data = new LineData(xVals, dataSets);
-
-        // set data
-        chart.setData(data);
-        chart.setPinchZoom(true);
-        chart.setHardwareAccelerationEnabled(true);
-        chart.animateY(1000, Easing.EasingOption.EaseOutCubic);
-        chart.invalidate();
-        chart.notifyDataSetChanged();
-        chart.fitScreen();
-        chart.setVisibleXRangeMaximum(20);
-        chart.moveViewToX(data.getXValCount());
+        return set1;
     }
 
     private void showA1cDialog() {
