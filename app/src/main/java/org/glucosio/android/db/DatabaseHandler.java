@@ -24,6 +24,7 @@ import android.content.Context;
 
 import net.danlew.android.joda.JodaTimeAndroid;
 
+import org.glucosio.android.tools.GlucoseRanges;
 import org.joda.time.DateTime;
 import org.joda.time.Months;
 import org.joda.time.Weeks;
@@ -274,6 +275,14 @@ public class DatabaseHandler {
         }
 
         return datetimeArray;
+    }
+
+    public Date getFirstGlucoseDateTime() {
+        return realm.where(GlucoseReading.class).minimumDate("created");
+    }
+
+    public Date getLastGlucoseDateTime() {
+        return realm.where(GlucoseReading.class).maximumDate("created");
     }
 
     public GlucoseReading getGlucoseReadingById(long id) {

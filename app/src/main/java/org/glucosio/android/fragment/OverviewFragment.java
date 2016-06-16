@@ -40,7 +40,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -139,7 +138,6 @@ public class OverviewFragment extends Fragment {
         Legend legend = chart.getLegend();
 
         if (!presenter.isdbEmpty()) {
-            Collections.reverse(presenter.getGlucoseReading());
             Collections.reverse(presenter.getGlucoseDatetime());
             Collections.reverse(presenter.getGlucoseType());
         }
@@ -233,13 +231,8 @@ public class OverviewFragment extends Fragment {
         ll2.setLineColor(getResources().getColor(R.color.glucosio_reading_high));
 
         YAxis leftAxis = chart.getAxisLeft();
-/*        leftAxis.addLimitLine(ll1);
-        leftAxis.addLimitLine(ll2);
-        leftAxis.addLimitLine(ll3);
-        leftAxis.addLimitLine(ll4);*/
         leftAxis.setTextColor(getResources().getColor(R.color.glucosio_text_light));
         leftAxis.setStartAtZero(false);
-        //leftAxis.setYOffset(20f);
         leftAxis.disableGridDashedLine();
         leftAxis.setDrawGridLines(false);
         leftAxis.addLimitLine(ll1);
@@ -254,7 +247,6 @@ public class OverviewFragment extends Fragment {
             setData();
         }
         legend.setEnabled(false);
-
 
         graphExport.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -297,14 +289,12 @@ public class OverviewFragment extends Fragment {
     }
 
     private void setData() {
-        // int metricSpinnerPosition = graphSpinnerMetric.getSelectedItemPosition();
-        // if (metricSpinnerPosition == 0) {
         ArrayList<String> xVals = new ArrayList<String>();
 
         if (graphSpinnerRange.getSelectedItemPosition() == 0) {
             // Day view
-            for (int i = 0; i < presenter.getGlucoseDatetime().size(); i++) {
-                String date = presenter.convertDate(presenter.getGlucoseDatetime().get(i));
+            for (int i = 0; i < presenter.getGraphGlucoseDateTime().size(); i++) {
+                String date = presenter.convertDate(presenter.getGraphGlucoseDateTime().get(i));
                 xVals.add(date + "");
             }
         } else if (graphSpinnerRange.getSelectedItemPosition() == 1) {
@@ -328,17 +318,17 @@ public class OverviewFragment extends Fragment {
 
         if (graphSpinnerRange.getSelectedItemPosition() == 0) {
             // Day view
-            for (int i = 0; i < presenter.getGlucoseReading().size(); i++) {
+            for (int i = 0; i < presenter.getGlucoseReadings().size(); i++) {
                 if (presenter.getUnitMeasuerement().equals("mg/dL")) {
-                    float val = Float.parseFloat(presenter.getGlucoseReading().get(i).toString());
+                    float val = Float.parseFloat(presenter.getGlucoseReadings().get(i).toString());
                     yVals.add(new Entry(val, i));
                 } else {
-                    double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getGlucoseReading().get(i).toString()));
+                    double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getGlucoseReadings().get(i).toString()));
                     float converted = (float) val;
                     yVals.add(new Entry(converted, i));
                 }
                 GlucoseRanges ranges = new GlucoseRanges(getActivity().getApplicationContext());
-                colors.add(ranges.stringToColor(ranges.colorFromReading(presenter.getGlucoseReading().get(i))));
+                colors.add(ranges.stringToColor(ranges.colorFromReading(presenter.getGlucoseReadings().get(i))));
             }
         } else if (graphSpinnerRange.getSelectedItemPosition() == 1) {
             // Week view
@@ -367,35 +357,6 @@ public class OverviewFragment extends Fragment {
             }
             colors.add(getResources().getColor(R.color.glucosio_pink));
         }
-        /*} else if (metricSpinnerPosition == 1){
-            // A1C
-            ArrayList<String> xVals = new ArrayList<String>();
-
-            for (int i = 0; i < presenter.getGlucoseDatetime().size(); i++) {
-                String date = presenter.convertDate(presenter.getGlucoseDatetime().get(i));
-                xVals.add(date + "");
-            }
-
-            ArrayList<Entry> yVals = new ArrayList<Entry>();
-
-
-            for (int i = 0; i < presenter.getGlucoseReading().size(); i++) {
-                float val = Float.parseFloat(presenter.getGlucoseReading().get(i).toString());
-                yVals.add(new Entry(val, i));
-            }
-
-        } else if (metricSpinnerPosition == 2){
-            // Cholesterol
-
-        } else if (metricSpinnerPosition == 3){
-            // Pressure
-
-        } else if (metricSpinnerPosition == 4){
-            // Ketones
-
-        } else {
-            // Weight
-        }*/
 
         // create a dataset and give it a type
         LineDataSet set1 = new LineDataSet(yVals, "");
