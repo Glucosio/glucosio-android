@@ -68,7 +68,6 @@ import org.glucosio.android.tools.TipsManager;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 public class OverviewFragment extends Fragment implements OverviewView {
 
@@ -165,6 +164,13 @@ public class OverviewFragment extends Fragment implements OverviewView {
         graphCheckboxPressure = (CheckBox) mFragmentView.findViewById(R.id.fragment_overview_graph_pressure);
 
         graphCheckboxGlucose.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                setData();
+            }
+        });
+
+        graphCheckboxA1c.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 setData();
@@ -325,8 +331,11 @@ public class OverviewFragment extends Fragment implements OverviewView {
         }
 
         if (graphCheckboxGlucose.isChecked()) {
+            dataSets.add(generateGlucoseDataSet());
+        }
 
-            dataSets.add(generateGlucoseDateSet());
+        if (graphCheckboxA1c.isChecked()){
+            dataSets.add(generateA1cDataSet());
         }
 
         // create a data object with the datasets
@@ -344,7 +353,17 @@ public class OverviewFragment extends Fragment implements OverviewView {
         chart.moveViewToX(data.getXValCount());
     }
 
-    private ILineDataSet generateGlucoseDateSet() {
+    private ILineDataSet generateA1cDataSet() {
+        ArrayList<Entry> yVals = new ArrayList<Entry>();
+
+        for (int i = 0; i < presenter.getA1cReadings().size(); i++) {
+                float val = Float.parseFloat(presenter.getA1cReadings().get(i).toString());
+                yVals.add(new Entry(val, i));
+        }
+        return generateLineDataSet(yVals, getResources().getColor(R.color.glucosio_fab_HB1AC));
+    }
+
+    private ILineDataSet generateGlucoseDataSet() {
         ArrayList<Entry> yVals = new ArrayList<Entry>();
         ArrayList<Integer> colors = new ArrayList<>();
         GlucosioConverter converter = new GlucosioConverter();

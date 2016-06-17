@@ -2,16 +2,19 @@ package org.glucosio.android.object;
 
 import org.joda.time.DateTime;
 
-import java.util.ArrayList;
-import java.util.Date;
-
-public class GlucoseGraphObject {
+public class GraphObject {
     private DateTime created;
     private int reading;
+    private double doubleReading;
 
-    public GlucoseGraphObject(DateTime created, int reading){
+    public GraphObject(DateTime created, int reading){
         this.created = created;
         this.reading = reading;
+    }
+
+    public GraphObject(DateTime created, double reading){
+        this.created = created;
+        this.doubleReading = reading;
     }
 
     public DateTime getCreated() {
@@ -24,6 +27,10 @@ public class GlucoseGraphObject {
 
     public int getReading() {
         return reading;
+    }
+
+    public double getDoubleReading() {
+        return doubleReading;
     }
 
     public void setReading(int reading) {
