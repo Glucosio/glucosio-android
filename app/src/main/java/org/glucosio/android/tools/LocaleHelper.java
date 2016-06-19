@@ -24,7 +24,7 @@ public class LocaleHelper {
     public String getDisplayLanguage(String language) {
         String languageTag = language.replace("_", "-");
         Locale locale = getLocale(languageTag);
-        return locale.getDisplayLanguage(locale);
+        return locale.getDisplayName(locale);
     }
 
     public void updateLanguage(@NonNull final Context context, @NonNull final String language) {

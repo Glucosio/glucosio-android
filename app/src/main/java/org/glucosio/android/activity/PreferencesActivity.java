@@ -40,6 +40,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.EditText;
 
+import org.glucosio.android.BuildConfig;
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.analytics.Analytics;
@@ -49,6 +50,7 @@ import org.glucosio.android.tools.InputFilterMinMax;
 import org.glucosio.android.tools.LocaleHelper;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
@@ -324,7 +326,8 @@ public class PreferencesActivity extends AppCompatActivity {
         }
 
         private void initLanguagePreference() {
-            String[] languages = getActivity().getAssets().getLocales();
+            String[] languages = BuildConfig.TRANSLATION_ARRAY;
+            Arrays.sort(languages);
             List<String> valuesLanguages = new ArrayList<>(languages.length);
             List<String> displayLanguages = new ArrayList<>(languages.length);
             for (String language : languages) {
