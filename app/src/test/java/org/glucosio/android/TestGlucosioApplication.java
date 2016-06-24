@@ -54,4 +54,9 @@ public class TestGlucosioApplication extends GlucosioApplication {
     public A1CCalculatorPresenter createA1cCalculatorPresenter(@NonNull A1cCalculatorActivity activity) {
         return presenterMock;
     }
+
+    @Override
+    protected void initLanguage() {
+        //nothing
+    }
 }

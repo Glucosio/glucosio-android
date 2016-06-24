@@ -25,29 +25,40 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.SwitchPreference;
+import android.support.annotation.NonNull;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputFilter;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import org.glucosio.android.BuildConfig;
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.User;
 import org.glucosio.android.tools.InputFilterMinMax;
+import org.glucosio.android.tools.LocaleHelper;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -61,8 +72,11 @@ public class PreferencesActivity extends AppCompatActivity {
         getFragmentManager().beginTransaction()
                 .replace(R.id.preferencesFrame, new MyPreferenceFragment()).commit();
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(getString(R.string.action_settings));
+        ActionBar supportActionBar = getSupportActionBar();
+        if (supportActionBar != null) {
+            supportActionBar.setDisplayHomeAsUpEnabled(true);
+            supportActionBar.setTitle(getString(R.string.action_settings));
+        }
 
         // Obtain the Analytics shared Tracker instance.
         GlucosioApplication application = (GlucosioApplication) getApplication();
@@ -97,9 +111,6 @@ public class PreferencesActivity extends AppCompatActivity {
         private DatabaseHandler dB;
         private User user;
         private ListPreference languagePref;
-        /*
-                private Preference backupPref;
-        */
         private ListPreference countryPref;
         private ListPreference genderPref;
         private ListPreference diabetesTypePref;
@@ -115,6 +126,7 @@ public class PreferencesActivity extends AppCompatActivity {
         private EditTextPreference maxRangePref;
         private SwitchPreference dyslexiaModePref;
         private User updatedUser;
+        private LocaleHelper localeHelper;
 
 
         @Override
@@ -122,13 +134,18 @@ public class PreferencesActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.preferences);
 
-            dB = ((GlucosioApplication) getActivity().getApplicationContext()).getDBHandler();
+            final GlucosioApplication app = (GlucosioApplication) getActivity().getApplicationContext();
+            dB = app.getDBHandler();
+            localeHelper = app.getLocaleHelper();
             user = dB.getUser(1);
-            updatedUser = new User(user.getId(), user.getName(), user.getPreferred_language(), user.getCountry(), user.getAge(), user.getGender(), user.getD_type(), user.getPreferred_unit(), user.getPreferred_unit_a1c(), user.getPreferred_unit_weight(), user.getPreferred_range(), user.getCustom_range_min(), user.getCustom_range_max());
+            updatedUser = new User(user.getId(), user.getName(), user.getPreferred_language(),
+                    user.getCountry(), user.getAge(), user.getGender(), user.getD_type(),
+                    user.getPreferred_unit(), user.getPreferred_unit_a1c(),
+                    user.getPreferred_unit_weight(), user.getPreferred_range(),
+                    user.getCustom_range_min(), user.getCustom_range_max());
             agePref = (EditTextPreference) findPreference("pref_age");
             countryPref = (ListPreference) findPreference("pref_country");
-            // languagePref = (ListPreference) findPreference("pref_language");
-            // backupPref = (Preference) findPreference("backup_settings");
+            languagePref = (ListPreference) findPreference("pref_language");
             genderPref = (ListPreference) findPreference("pref_gender");
             diabetesTypePref = (ListPreference) findPreference("pref_diabetes_type");
             unitPrefGlucose = (ListPreference) findPreference("pref_unit_glucose");
@@ -141,7 +158,6 @@ public class PreferencesActivity extends AppCompatActivity {
 
             agePref.setDefaultValue(user.getAge());
             countryPref.setValue(user.getCountry());
-            // languagePref.setValue(user.getPreferred_language());
             genderPref.setValue(user.getGender());
             diabetesTypePref.setValue(user.getD_type() + "");
             unitPrefGlucose.setValue(user.getPreferred_unit());
@@ -154,7 +170,7 @@ public class PreferencesActivity extends AppCompatActivity {
             minRangePref.setDefaultValue(user.getCustom_range_min() + "");
             maxRangePref.setDefaultValue(user.getCustom_range_max() + "");
 
-            if (!"custom".equals(rangePref)) {
+            if (!"custom".equals(rangePref.getValue())) {
                 minRangePref.setEnabled(false);
                 maxRangePref.setEnabled(false);
             } else {
@@ -162,22 +178,7 @@ public class PreferencesActivity extends AppCompatActivity {
                 maxRangePref.setEnabled(true);
             }
 
-/*
-            final Preference backupPref = (Preference) findPreference("backup_settings");
-*/
-            final Preference aboutPref = (Preference) findPreference("about_settings");
-            /*languagePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                @Override
-                public boolean onPreferenceChange(Preference preference, Object newValue) {
-
-                    int position = languagePref.findIndexOfValue(newValue.toString());
-                    String lang_code = getResources().getStringArray(R.array.array_languages_code)[position];
-
-                    updatedUser.setPreferred_language(lang_code);
-                    updateDB();
-                    return true;
-                }
-            });*/
+            final Preference aboutPref = findPreference("about_settings");
             countryPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -290,15 +291,6 @@ public class PreferencesActivity extends AppCompatActivity {
                     return true;
                 }
             });
-/*            backupPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-                @Override
-                public boolean onPreferenceClick(Preference preference) {
-                    Intent backupActivity = new Intent(getActivity(), RealmBackupActivity.class);
-                    getActivity().startActivity(backupActivity);
-                    return false;
-                }
-            });*/
-
 
             ageEditText = agePref.getEditText();
             minEditText = minRangePref.getEditText();
@@ -309,7 +301,7 @@ public class PreferencesActivity extends AppCompatActivity {
             maxEditText.setFilters(new InputFilter[]{new InputFilterMinMax(1, 1500)});
 
             // Get countries list from locale
-            ArrayList<String> countriesArray = new ArrayList<String>();
+            ArrayList<String> countriesArray = new ArrayList<>();
             Locale[] locales = Locale.getAvailableLocales();
 
             for (Locale locale : locales) {
@@ -324,20 +316,9 @@ public class PreferencesActivity extends AppCompatActivity {
             countryPref.setEntryValues(countries);
             countryPref.setEntries(countries);
 
-/*            CharSequence[] languages = getActivity().getResources().getStringArray(R.array.array_languages_name);
-            languagePref.setEntryValues(languages);
-            languagePref.setEntries(languages);*/
+            initLanguagePreference();
+
             updateDB();
-
-/*            backupPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-
-                @Override
-                public boolean onPreferenceClick(Preference preference) {
-                    Intent backupActivity = new Intent(getActivity(), RealmBackupActivity.class);
-                    getActivity().startActivity(backupActivity);
-                    return false;
-                }
-            });*/
 
             aboutPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
@@ -345,6 +326,78 @@ public class PreferencesActivity extends AppCompatActivity {
                     Intent aboutActivity = new Intent(getActivity(), AboutActivity.class);
                     getActivity().startActivity(aboutActivity);
                     return false;
+                }
+            });
+        }
+
+        private void initLanguagePreference() {
+            String[] languages = BuildConfig.TRANSLATION_ARRAY;
+            Set<String> availableLanguagesSet = new HashSet<>();
+            // We always support english
+            availableLanguagesSet.add("en");
+
+            // Get example string from english locale
+            String englishString = getResources().getString(R.string.title_activity_add_glucose);
+
+            for (String localString : languages) {
+                // For each locale, check if we have translations
+                Resources res = getResources();
+                Configuration conf = res.getConfiguration();
+                Locale savedLocale = conf.locale;
+                conf.locale = localeHelper.getLocale(localString);
+                res.updateConfiguration(conf, null);
+
+                // Retrieve an example string from this locale
+                String localizedString = res.getString(R.string.title_activity_add_glucose);
+
+                if (!englishString.equals(localizedString)){
+                    // if english string is not the same of localized one
+                    // a translation is available
+                    availableLanguagesSet.add(localString);
+                }
+
+                // restore original locale
+                conf.locale = savedLocale;
+                res.updateConfiguration(conf, null);
+            }
+
+            List<String> availableLanguagesList = new ArrayList(availableLanguagesSet);
+            Collections.sort(availableLanguagesList);
+
+            List<String> valuesLanguages = new ArrayList<>(availableLanguagesList.size());
+            List<String> displayLanguages = new ArrayList<>(availableLanguagesList.size());
+            for (String language : availableLanguagesList) {
+                if (language.length() > 0) {
+                    valuesLanguages.add(language);
+                    displayLanguages.add(localeHelper.getDisplayLanguage(language));
+                }
+            }
+
+            languagePref.setEntryValues(getEntryValues(valuesLanguages));
+            languagePref.setEntries(getEntryValues(displayLanguages));
+
+            String languageValue = user.getPreferred_language();
+            if (languageValue != null) {
+                languagePref.setValue(languageValue);
+                String displayLanguage = localeHelper.getDisplayLanguage(languageValue);
+                languagePref.setSummary(displayLanguage);
+            }
+
+            languagePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+
+                    String language = (String) newValue;
+                    updatedUser.setPreferred_language(language);
+                    languagePref.setSummary(localeHelper.getDisplayLanguage(language));
+                    languagePref.setValue(language);
+
+                    updateDB();
+
+                    localeHelper.updateLanguage(getActivity(), language);
+                    getActivity().recreate();
+
+                    return true;
                 }
             });
         }
@@ -358,17 +411,10 @@ public class PreferencesActivity extends AppCompatActivity {
             unitPrefA1c.setSummary(user.getPreferred_unit_a1c() + "");
             unitPrefWeight.setSummary(user.getPreferred_unit_weight() + "");
             countryPref.setSummary(user.getCountry());
-/*
-            languagePref.setSummary(user.getPreferred_language());
-*/
-            rangePref.setSummary(user.getPreferred_range() + "");
             minRangePref.setSummary(user.getCustom_range_min() + "");
             maxRangePref.setSummary(user.getCustom_range_max() + "");
 
             countryPref.setValue(user.getCountry());
-/*
-            languagePref.setValue(user.getPreferred_language());
-*/
             genderPref.setValue(user.getGender());
             diabetesTypePref.setValue(user.getD_type() + "");
             unitPrefGlucose.setValue(user.getPreferred_unit());
@@ -407,5 +453,11 @@ public class PreferencesActivity extends AppCompatActivity {
             mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
             System.exit(0);
         }
+    }
+
+    @NonNull
+    private static String[] getEntryValues(List<String> list) {
+        String[] result = new String[list.size()];
+        return list.toArray(result);
     }
 }

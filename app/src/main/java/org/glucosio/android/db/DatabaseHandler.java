@@ -145,7 +145,7 @@ public class DatabaseHandler {
 
     public void deleteGlucoseReading(GlucoseReading reading) {
         realm.beginTransaction();
-        reading.removeFromRealm();
+        reading.deleteFromRealm();
         realm.commitTransaction();
     }
 
@@ -453,7 +453,7 @@ public class DatabaseHandler {
 
     public void deleteHB1ACReadingReading(HB1ACReading reading) {
         realm.beginTransaction();
-        reading.removeFromRealm();
+        reading.deleteFromRealm();
         realm.commitTransaction();
     }
 
@@ -545,7 +545,7 @@ public class DatabaseHandler {
 
     public void deleteKetoneReading(KetoneReading reading) {
         realm.beginTransaction();
-        reading.removeFromRealm();
+        reading.deleteFromRealm();
         realm.commitTransaction();
     }
 
@@ -621,7 +621,7 @@ public class DatabaseHandler {
 
     public void deletePressureReading(PressureReading reading) {
         realm.beginTransaction();
-        reading.removeFromRealm();
+        reading.deleteFromRealm();
         realm.commitTransaction();
     }
 
@@ -712,7 +712,7 @@ public class DatabaseHandler {
 
     public void deleteWeightReading(WeightReading reading) {
         realm.beginTransaction();
-        reading.removeFromRealm();
+        reading.deleteFromRealm();
         realm.commitTransaction();
     }
 
@@ -788,7 +788,7 @@ public class DatabaseHandler {
 
     public void deleteCholesterolReading(CholesterolReading reading) {
         realm.beginTransaction();
-        reading.removeFromRealm();
+        reading.deleteFromRealm();
         realm.commitTransaction();
     }
 
