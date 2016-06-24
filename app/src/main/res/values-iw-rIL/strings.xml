@@ -40,6 +40,13 @@
   <string name="helloactivity_spinner_diabetes_type">סוג סוכרת</string>
   <string name="helloactivity_spinner_diabetes_type_1">סוכרת סוג 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">סוכרת סוג 2</string>
+  <string name="helloactivity_spinner_diabetes_gdm">הריונית</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit">יחידת סוכר מועדפת</string>
+  <string name="preferences_spinner_preferred_a1c_unit">יחידת A1C מעודפת</string>
+  <string name="preferences_spinner_preferred_a1c_unit_1">אחוז</string>
+  <string name="preferences_spinner_preferred_weight_unit">יחידת משקל מועדפת</string>
+  <string name="preferences_spinner_preferred_weight_unit_1">קילוגרם</string>
+  <string name="preferences_spinner_preferred_weight_unit_2">פאונד</string>
   <string name="helloactivity_share_data">שתף מידע אנונימי למחקר.</string>
   <string name="helloactivity_hint_settings">תוכלו לשנות את ההגדרות האלו מאוחר יותר.</string>
   <string name="helloactivity_button_next">הבא</string>
@@ -78,6 +85,7 @@
   <string name="fragment_overview_selector_week">שבוע</string>
   <string name="preferences_about">אודות</string>
   <string name="preferences_version">גרסה</string>
+  <string name="preferences_coming_soon">בקרוב...</string>
   <string name="preferences_terms">תנאי שימוש</string>
   <string name="glucose_reading_type">סוג</string>
   <string name="weight">משקל</string>
@@ -112,6 +120,7 @@
   <string name="assistant">מסייע</string>
   <string name="assistant_action_update">עדכון</string>
   <string name="assistant_action_ok">אוקיי</string>
+  <string name="assistant_action_feedback">שליחת משוב</string>
   <string name="assistant_action_reading">הוסף מדידה</string>
   <string name="assistant_action_try">נסה זאת עכשיו</string>
   <string name="assistant_weight_title">עדכן את משקלך</string>
@@ -128,6 +137,7 @@
   <string name="assistant_reading_desc">הקפד להוסיף באופן קבוע את מדידות רמת הסוכר בדם שלך כדי שנוכל לעזור לך לעקוב אחר רמות הסוכר שלך לאורך זמן.</string>
   <string name="assistant_export_title">ייצוא הנתונים שלכם</string>
   <string name="assistant_export_desc">שתפו את הנתונים שלכם עם הרופא שלכם או גבו את הנתונים שלכם ל-Google Drive באמצעות אפשרות הייצוא.</string>
+  <string name="assistant_calculator_a1c_title">חישוב A1C</string>
   <string name="helloactivity_spinner_preferred_range">טווח מועדף</string>
   <string name="helloactivity_spinner_preferred_range_4">טווח מותאם אישית</string>
   <string name="helloactivity_preferred_range_min">ערך מינימום</string>
@@ -136,11 +146,13 @@
   <string name="invitation_title">הזמנת אנשים אחרים</string>
   <string name="invitation_message">נסו את Glucosio, אפליקציית פתוחת קוד לטיפול בסכרת ומחקר.</string>
   <string name="invitation_cta">נסו את Glucosio</string>
+  <string name="title_activity_backup_drive">גיבוי Google Drive</string>
   <string name="preferences_privacy">פרטיות</string>
   <string name="helloactivity_textview_tos">בשימוש ב-Glucosio, אתם מסכימים ל-</string>
   <string name="preferences_backup_google_drive">Google Drive</string>
   <string name="preferences_about_glucosio">אודות Glucosio</string>
   <string name="preferences_rate">דרגו את Glucosio</string>
+  <string name="preferences_licences_open">רשיונות קוד פתוח</string>
   <string name="about_donate">תרמו ל-Glucosio</string>
   <string name="reading_ok">אישור</string>
   <string name="reading_hypo">היפוגליקמיה</string>
@@ -213,6 +225,7 @@
   <string name="dialog_add_cholesterol_hdl">כולסטרול HDL</string>
   <string name="dialog_add_hb1ac">HB1AC</string>
   <string name="title_activity_add_glucose">הוספת קריאת סוכר</string>
+  <string name="title_activity_add_glucose_edit">עריכת קריאת סוכר</string>
   <string name="title_activity_add_weight">הוספת משקל גוף</string>
   <string name="title_activity_add_cholesterol">הוספת רמת כולסטרול</string>
   <string name="title_activity_add_hb1ac">הוספת HB1AC</string>
@@ -223,4 +236,11 @@
   <string name="fab_cholesterol">רמת הכולסטרול</string>
   <string name="fab_HB1AC">קריאת HB1AC</string>
   <string name="fab_glucose">רמת סוכר בדם</string>
+  <string name="activity_converter_save">שמירה</string>
+  <string name="menu_support">תמיכה</string>
+  <string name="menu_support_title">איך נוכל לעזור לך?</string>
+  <string name="menu_support_email">דוא\"ל</string>
+  <string name="menu_support_forum">פורום תמיכה</string>
+  <string name="dialog_add_notes">הערות</string>
+  <string name="menu_backup_restore">שחזור</string>
 </resources>
