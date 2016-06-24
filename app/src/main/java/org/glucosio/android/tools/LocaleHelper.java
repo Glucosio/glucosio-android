@@ -9,7 +9,7 @@ import android.util.DisplayMetrics;
 import java.util.Locale;
 
 public class LocaleHelper {
-    private Locale getLocale(String languageTag) {
+    public Locale getLocale(String languageTag) {
         String[] values = languageTag.split("-");
         switch (values.length) {
             case 3:
