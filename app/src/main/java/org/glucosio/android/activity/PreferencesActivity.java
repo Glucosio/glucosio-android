@@ -41,7 +41,6 @@ import android.text.InputFilter;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import org.glucosio.android.BuildConfig;
 import org.glucosio.android.GlucosioApplication;
@@ -53,7 +52,6 @@ import org.glucosio.android.tools.InputFilterMinMax;
 import org.glucosio.android.tools.LocaleHelper;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -336,8 +334,10 @@ public class PreferencesActivity extends AppCompatActivity {
             // We always support english
             availableLanguagesSet.add("en");
 
-            // Get example string from english locale
-            String englishString = getResources().getString(R.string.title_activity_add_glucose);
+            // Get english string to confront
+            // I know, it's a weird workaround
+            // Sorry :/
+            String englishString = "Automatic backup";
 
             for (String localString : languages) {
                 // For each locale, check if we have translations
@@ -348,7 +348,7 @@ public class PreferencesActivity extends AppCompatActivity {
                 res.updateConfiguration(conf, null);
 
                 // Retrieve an example string from this locale
-                String localizedString = res.getString(R.string.title_activity_add_glucose);
+                String localizedString = res.getString(R.string.activity_backup_drive_automatic);
 
                 if (!englishString.equals(localizedString)){
                     // if english string is not the same of localized one

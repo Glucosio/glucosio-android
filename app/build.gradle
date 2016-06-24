@@ -50,7 +50,7 @@ android {
             applicationIdSuffix '.daily'
 
             buildConfigField 'String', 'GOOGLE_ANALYTICS_TRACKER', '"UA-68882401-2"'
-            buildConfigField "String[]", "TRANSLATION_ARRAY", "new String[]{}"
+            buildConfigField "String[]", "TRANSLATION_ARRAY", getAllLocales()
         }
 
         release {
