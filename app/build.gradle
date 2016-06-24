@@ -33,8 +33,8 @@ android {
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 24
-        versionCode 26
-        versionName '1.0.2'
+        versionCode 27
+        versionName '1.1.0'
         applicationId "org.glucosio.android"
 
         vectorDrawables.useSupportLibrary = true
@@ -50,7 +50,7 @@ android {
             applicationIdSuffix '.daily'
 
             buildConfigField 'String', 'GOOGLE_ANALYTICS_TRACKER', '"UA-68882401-2"'
-            buildConfigField "String[]", "TRANSLATION_ARRAY", getAllLocales()
+            buildConfigField "String[]", "TRANSLATION_ARRAY", "new String[]{}"
         }
 
         release {
