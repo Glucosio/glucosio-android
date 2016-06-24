@@ -55,7 +55,6 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
@@ -91,7 +90,6 @@ public class OverviewFragment extends Fragment implements OverviewView {
     private CheckBox graphCheckboxA1c;
     private CheckBox graphCheckboxWeight;
     private CheckBox graphCheckboxPressure;
-
     private View mFragmentView;
 
 
@@ -167,6 +165,13 @@ public class OverviewFragment extends Fragment implements OverviewView {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 setData();
+                graphCheckboxWeight.setChecked(false);
+                graphCheckboxCholesterol.setChecked(false);
+                graphCheckboxKetones.setChecked(false);
+                graphCheckboxPressure.setChecked(false);
+                graphCheckboxWeight.setChecked(false);
+                graphCheckboxA1c.setChecked(false);
+                graphCheckboxGlucose.setChecked(b);
             }
         });
 
@@ -174,6 +179,74 @@ public class OverviewFragment extends Fragment implements OverviewView {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 setData();
+                graphCheckboxGlucose.setChecked(false);
+                graphCheckboxWeight.setChecked(false);
+                graphCheckboxCholesterol.setChecked(false);
+                graphCheckboxKetones.setChecked(false);
+                graphCheckboxPressure.setChecked(false);
+                graphCheckboxWeight.setChecked(false);
+                graphSpinnerRange.setEnabled(!b);
+                graphCheckboxA1c.setChecked(b);
+            }
+        });
+
+        graphCheckboxKetones.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                setData();
+                graphCheckboxGlucose.setChecked(false);
+                graphCheckboxWeight.setChecked(false);
+                graphCheckboxCholesterol.setChecked(false);
+                graphCheckboxPressure.setChecked(false);
+                graphCheckboxWeight.setChecked(false);
+                graphCheckboxA1c.setChecked(false);
+                graphSpinnerRange.setEnabled(!b);
+                graphCheckboxKetones.setChecked(b);
+            }
+        });
+
+        graphCheckboxWeight.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                setData();
+                graphCheckboxGlucose.setChecked(false);
+                graphCheckboxWeight.setChecked(false);
+                graphCheckboxCholesterol.setChecked(false);
+                graphCheckboxKetones.setChecked(false);
+                graphCheckboxPressure.setChecked(false);
+                graphCheckboxA1c.setChecked(false);
+                graphSpinnerRange.setEnabled(!b);
+                graphCheckboxWeight.setChecked(b);
+            }
+        });
+
+        graphCheckboxPressure.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                setData();
+                graphCheckboxGlucose.setChecked(false);
+                graphCheckboxWeight.setChecked(false);
+                graphCheckboxCholesterol.setChecked(false);
+                graphCheckboxKetones.setChecked(false);
+                graphCheckboxWeight.setChecked(false);
+                graphCheckboxA1c.setChecked(false);
+                graphSpinnerRange.setEnabled(!b);
+                graphCheckboxPressure.setChecked(b);
+            }
+        });
+
+        graphCheckboxCholesterol.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                setData();
+                graphCheckboxGlucose.setChecked(false);
+                graphCheckboxWeight.setChecked(false);
+                graphCheckboxKetones.setChecked(false);
+                graphCheckboxPressure.setChecked(false);
+                graphCheckboxWeight.setChecked(false);
+                graphCheckboxA1c.setChecked(false);
+                graphSpinnerRange.setEnabled(!b);
+                graphCheckboxCholesterol.setChecked(b);
             }
         });
 
@@ -288,9 +361,6 @@ public class OverviewFragment extends Fragment implements OverviewView {
 
         loadLastReading();
         loadHB1AC();
-/*
-        loadGlucoseTrend();
-*/
         loadRandomTip();
 
         return mFragmentView;
@@ -307,42 +377,31 @@ public class OverviewFragment extends Fragment implements OverviewView {
     }
 
     private void setData() {
-        ArrayList<String> xVals = new ArrayList<String>();
-        ArrayList<ILineDataSet> dataSets = new ArrayList<ILineDataSet>();
-
-        if (graphSpinnerRange.getSelectedItemPosition() == 0) {
-            // Day view
-            for (int i = 0; i < presenter.getGraphGlucoseDateTime().size(); i++) {
-                String date = presenter.convertDate(presenter.getGraphGlucoseDateTime().get(i));
-                xVals.add(date + "");
-            }
-        } else if (graphSpinnerRange.getSelectedItemPosition() == 1) {
-            // Week view
-            for (int i = 0; i < presenter.getGlucoseReadingsWeek().size(); i++) {
-                String date = presenter.convertDate(presenter.getGlucoseDatetimeWeek().get(i));
-                xVals.add(date + "");
-            }
-        } else {
-            // Month view
-            for (int i = 0; i < presenter.getGlucoseReadingsMonth().size(); i++) {
-                String date = presenter.convertDateToMonth(presenter.getGlucoseDatetimeMonth().get(i));
-                xVals.add(date + "");
-            }
-        }
-
+        LineData data = new LineData();
         if (graphCheckboxGlucose.isChecked()) {
-            dataSets.add(generateGlucoseDataSet());
+            chart.setData(generateGlucoseData());
         }
 
         if (graphCheckboxA1c.isChecked()){
-            dataSets.add(generateA1cDataSet());
+            chart.setData(generateA1cData());
         }
 
-        // create a data object with the datasets
-        LineData data = new LineData(xVals, dataSets);
+        if (graphCheckboxKetones.isChecked()){
+            chart.setData(generateKetonesData());
+        }
 
-        // set data
-        chart.setData(data);
+        if (graphCheckboxWeight.isChecked()){
+            chart.setData(generateWeightData());
+        }
+
+        if (graphCheckboxPressure.isChecked()){
+            chart.setData(generatePressureData());
+        }
+
+        if (graphCheckboxCholesterol.isChecked()){
+            chart.setData(generateCholesterolData());
+        }
+
         chart.setPinchZoom(true);
         chart.setHardwareAccelerationEnabled(true);
         chart.animateY(1000, Easing.EasingOption.EaseOutCubic);
@@ -353,17 +412,8 @@ public class OverviewFragment extends Fragment implements OverviewView {
         chart.moveViewToX(data.getXValCount());
     }
 
-    private ILineDataSet generateA1cDataSet() {
-        ArrayList<Entry> yVals = new ArrayList<Entry>();
-
-        for (int i = 0; i < presenter.getA1cReadings().size(); i++) {
-                float val = Float.parseFloat(presenter.getA1cReadings().get(i).toString());
-                yVals.add(new Entry(val, i));
-        }
-        return generateLineDataSet(yVals, getResources().getColor(R.color.glucosio_fab_HB1AC));
-    }
-
-    private ILineDataSet generateGlucoseDataSet() {
+    private LineData generateGlucoseData() {
+        ArrayList<String> xVals = new ArrayList<String>();
         ArrayList<Entry> yVals = new ArrayList<Entry>();
         ArrayList<Integer> colors = new ArrayList<>();
         GlucosioConverter converter = new GlucosioConverter();
@@ -412,7 +462,136 @@ public class OverviewFragment extends Fragment implements OverviewView {
 
         }
 
-        return generateLineDataSet(yVals, getResources().getColor(R.color.glucosio_pink));
+        if (graphSpinnerRange.getSelectedItemPosition() == 0) {
+            // Day view
+            for (int i = 0; i < presenter.getGraphGlucoseDateTime().size(); i++) {
+                String date = presenter.convertDate(presenter.getGraphGlucoseDateTime().get(i));
+                xVals.add(date + "");
+            }
+        } else if (graphSpinnerRange.getSelectedItemPosition() == 1) {
+            // Week view
+            for (int i = 0; i < presenter.getGlucoseReadingsWeek().size(); i++) {
+                String date = presenter.convertDate(presenter.getGlucoseDatetimeWeek().get(i));
+                xVals.add(date + "");
+            }
+        } else {
+            // Month view
+            for (int i = 0; i < presenter.getGlucoseReadingsMonth().size(); i++) {
+                String date = presenter.convertDateToMonth(presenter.getGlucoseDatetimeMonth().get(i));
+                xVals.add(date + "");
+            }
+        }
+
+        return new LineData(xVals,
+                generateLineDataSet(yVals, getResources().getColor(R.color.glucosio_pink)));
+    }
+
+    private LineData generateA1cData() {
+        ArrayList<String> xVals = new ArrayList<String>();
+        ArrayList<Entry> yVals = new ArrayList<Entry>();
+
+        for (int i = 0; i < presenter.getA1cReadings().size(); i++) {
+            float val = Float.parseFloat(presenter.getA1cReadings().get(i).toString());
+            yVals.add(new Entry(val, i));
+        }
+
+        xVals.clear();
+        for (int i=0; i< presenter.getA1cReadingsDateTime().size(); i++){
+            String date = presenter.convertDate(presenter.getA1cReadingsDateTime().get(i));
+            xVals.add(date + "");
+        }
+
+        // create a data object with the datasets
+        return new LineData(xVals,
+                generateLineDataSet(yVals, getResources().getColor(R.color.glucosio_fab_HB1AC)));
+    }
+
+    private LineData generateKetonesData() {
+        ArrayList<String> xVals = new ArrayList<String>();
+        ArrayList<Entry> yVals = new ArrayList<Entry>();
+
+        for (int i = 0; i < presenter.getKetonesReadings().size(); i++) {
+            float val = Float.parseFloat(presenter.getKetonesReadings().get(i).toString());
+            yVals.add(new Entry(val, i));
+        }
+
+        xVals.clear();
+        for (int i=0; i< presenter.getKetonesReadingsDateTime().size(); i++){
+            String date = presenter.convertDate(presenter.getKetonesReadingsDateTime().get(i));
+            xVals.add(date + "");
+        }
+
+        // create a data object with the datasets
+        return new LineData(xVals,
+                generateLineDataSet(yVals, getResources().getColor(R.color.glucosio_fab_ketones)));
+    }
+
+    private LineData generateWeightData() {
+        ArrayList<String> xVals = new ArrayList<String>();
+        ArrayList<Entry> yVals = new ArrayList<Entry>();
+
+        for (int i = 0; i < presenter.getWeightReadings().size(); i++) {
+            float val = Float.parseFloat(presenter.getWeightReadings().get(i).toString());
+            yVals.add(new Entry(val, i));
+        }
+
+        xVals.clear();
+        for (int i=0; i< presenter.getWeightReadingsDateTime().size(); i++){
+            String date = presenter.convertDate(presenter.getWeightReadingsDateTime().get(i));
+            xVals.add(date + "");
+        }
+
+        // create a data object with the datasets
+        return new LineData(xVals,
+                generateLineDataSet(yVals, getResources().getColor(R.color.glucosio_fab_weight)));
+    }
+
+    private LineData generatePressureData() {
+        ArrayList<String> xVals = new ArrayList<String>();
+        ArrayList<Entry> yValsMax = new ArrayList<Entry>();
+        ArrayList<Entry> yValsMin = new ArrayList<Entry>();
+
+        for (int i = 0; i < presenter.getMaxPressureReadings().size(); i++) {
+            float val = Float.parseFloat(presenter.getMaxPressureReadings().get(i).toString());
+            yValsMax.add(new Entry(val, i));
+        }
+
+        for (int i = 0; i < presenter.getMinPressureReadings().size(); i++) {
+            float val = Float.parseFloat(presenter.getMinPressureReadings().get(i).toString());
+            yValsMin.add(new Entry(val, i));
+        }
+
+        xVals.clear();
+        for (int i=0; i< presenter.getPressureReadingsDateTime().size(); i++){
+            String date = presenter.convertDate(presenter.getPressureReadingsDateTime().get(i));
+            xVals.add(date + "");
+        }
+
+        LineData data = new LineData(xVals,
+                generateLineDataSet(yValsMax, getResources().getColor(R.color.glucosio_fab_pressure)));
+        data.addDataSet(generateLineDataSet(yValsMin, getResources().getColor(R.color.glucosio_fab_pressure)));
+        // create a data object with the datasets
+        return data;
+    }
+
+    private LineData generateCholesterolData() {
+        ArrayList<String> xVals = new ArrayList<String>();
+        ArrayList<Entry> yVals = new ArrayList<Entry>();
+
+        for (int i = 0; i < presenter.getCholesterolReadings().size(); i++) {
+            float val = Float.parseFloat(presenter.getCholesterolReadings().get(i).toString());
+            yVals.add(new Entry(val, i));
+        }
+
+        xVals.clear();
+        for (int i=0; i< presenter.getCholesterolReadingsDateTime().size(); i++){
+            String date = presenter.convertDate(presenter.getCholesterolReadingsDateTime().get(i));
+            xVals.add(date + "");
+        }
+
+        // create a data object with the datasets
+        return new LineData(xVals,
+                generateLineDataSet(yVals, getResources().getColor(R.color.glucosio_fab_cholesterol)));
     }
 
     private LineDataSet generateLineDataSet(ArrayList<Entry> yVals, int color) {

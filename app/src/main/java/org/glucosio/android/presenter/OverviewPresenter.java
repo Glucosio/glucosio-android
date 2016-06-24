@@ -21,9 +21,13 @@
 package org.glucosio.android.presenter;
 
 import org.glucosio.android.R;
+import org.glucosio.android.db.CholesterolReading;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
 import org.glucosio.android.db.HB1ACReading;
+import org.glucosio.android.db.KetoneReading;
+import org.glucosio.android.db.PressureReading;
+import org.glucosio.android.db.WeightReading;
 import org.glucosio.android.fragment.OverviewView;
 import org.glucosio.android.object.A1cEstimate;
 import org.glucosio.android.object.DoubleGraphObject;
@@ -160,42 +164,78 @@ public class OverviewPresenter {
         return glucoseReadings;
     }
 
-    public List<Double> getA1cReadings(){
+    public ArrayList<Double> getA1cReadings(){
         final List<HB1ACReading> a1cReadings = dB.getHB1ACReadings();
-
-        DateTime startDate = a1cReadings.size() > 0 ?
-                new DateTime(dB.getFirstReadingDate()) :
-                DateTime.now();
-        // This will contain final values
-        final ArrayList<DoubleGraphObject> finalA1cGraphObjects = new ArrayList<>();
-        // Transfer values from database to ArrayList as GlucoseGraphObjects
+        ArrayList<Double> finalArrayList = new ArrayList<>();
         for (int i=0; i<a1cReadings.size(); i++){
-            final HB1ACReading reading = a1cReadings.get(i);
-            final DateTime createdDate = new DateTime(reading.getCreated());
-            //add zero values between current value and last added value
-            addDoubleReadings(finalA1cGraphObjects, startDate, createdDate);
-            //add new value
-            finalA1cGraphObjects.add(
-                    new DoubleGraphObject(createdDate, reading.getReading())
-            );
-            //update start date
-            startDate = createdDate;
+            finalArrayList.add(a1cReadings.get(i).getReading());
         }
-        //add last zeros till now
-        addDoubleReadings(finalA1cGraphObjects, startDate, DateTime.now());
+        return finalArrayList;
+    }
 
-        Collections.sort(finalA1cGraphObjects, new Comparator<DoubleGraphObject>() {
-            public int compare(DoubleGraphObject o1, DoubleGraphObject o2) {
-                return o1.getCreated().compareTo(o2.getCreated());
-            }
-        });
+    public ArrayList<String> getA1cReadingsDateTime(){
+        return dB.getHB1ACDateTimeAsArray();
+    }
 
-        ArrayList<Double> finalA1cReadings = new ArrayList<>();
-        for (int i = 0; i< finalA1cGraphObjects.size(); i++) {
-            finalA1cReadings.add(finalA1cGraphObjects.get(i).getReading());
+    public ArrayList<Double> getKetonesReadings(){
+        final List<KetoneReading> ketoneReadings = dB.getKetoneReadings();
+        ArrayList<Double> finalArrayList = new ArrayList<>();
+        for (int i=0; i<ketoneReadings.size(); i++){
+            finalArrayList.add(ketoneReadings.get(i).getReading());
         }
+        return finalArrayList;
+    }
 
-        return finalA1cReadings;
+    public ArrayList<String> getKetonesReadingsDateTime(){
+        return dB.getKetoneDateTimeAsArray();
+    }
+
+    public ArrayList<Integer> getWeightReadings(){
+        final List<WeightReading> weightReadings = dB.getWeightReadings();
+        ArrayList<Integer> finalArrayList = new ArrayList<>();
+        for (int i=0; i<weightReadings.size(); i++){
+            finalArrayList.add(weightReadings.get(i).getReading());
+        }
+        return finalArrayList;
+    }
+
+    public ArrayList<String> getWeightReadingsDateTime(){
+        return dB.getWeightReadingDateTimeAsArray();
+    }
+
+    public ArrayList<Integer> getMinPressureReadings(){
+        final List<PressureReading> pressureReadings = dB.getPressureReadings();
+        ArrayList<Integer> finalArrayList = new ArrayList<>();
+        for (int i=0; i<pressureReadings.size(); i++){
+            finalArrayList.add(pressureReadings.get(i).getMinReading());
+        }
+        return finalArrayList;
+    }
+
+    public ArrayList<Integer> getMaxPressureReadings(){
+        final List<PressureReading> pressureReadings = dB.getPressureReadings();
+        ArrayList<Integer> finalArrayList = new ArrayList<>();
+        for (int i=0; i<pressureReadings.size(); i++){
+            finalArrayList.add(pressureReadings.get(i).getMaxReading());
+        }
+        return finalArrayList;
+    }
+
+    public ArrayList<String> getPressureReadingsDateTime(){
+        return dB.getPressureDateTimeAsArray();
+    }
+
+    public ArrayList<Integer> getCholesterolReadings(){
+        final List<CholesterolReading> cholesterolReadings = dB.getCholesterolReadings();
+        ArrayList<Integer> finalArrayList = new ArrayList<>();
+        for (int i=0; i<cholesterolReadings.size(); i++){
+            finalArrayList.add(cholesterolReadings.get(i).getTotalReading());
+        }
+        return finalArrayList;
+    }
+
+    public ArrayList<String> getCholesterolReadingsDateTime(){
+        return dB.getCholesterolDateTimeAsArray();
     }
 
     private List<IntGraphObject> generateGlucoseGraphPoints() {
