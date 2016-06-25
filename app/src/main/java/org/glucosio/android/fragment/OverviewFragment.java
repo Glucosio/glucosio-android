@@ -598,8 +598,20 @@ public class OverviewFragment extends Fragment implements OverviewView {
     private LineDataSet generateLineDataSet(ArrayList<Entry> yVals, int color) {
         // create a dataset and give it a type
         LineDataSet set1 = new LineDataSet(yVals, "");
+        ArrayList<Integer> colors = new ArrayList<>();
+
+        if (color == getResources().getColor(R.color.glucosio_pink)) {
+            for (Entry yVal : yVals) {
+                if (yVal.getVal() == (0)) {
+                    colors.add(Color.TRANSPARENT);
+                } else {
+                    colors.add(color);
+                }
+            }
+        }
+
         set1.setColor(color);
-        set1.setCircleColor(color);
+        set1.setCircleColors(colors);
         set1.setLineWidth(2f);
         set1.setCircleSize(4f);
         set1.setDrawCircleHole(true);
