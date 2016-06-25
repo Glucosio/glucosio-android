@@ -5,6 +5,7 @@ import org.glucosio.android.db.GlucoseReading;
 import org.glucosio.android.db.User;
 import org.glucosio.android.fragment.OverviewView;
 import org.joda.time.DateTime;
+import org.joda.time.Days;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -41,7 +42,7 @@ public class OverviewPresenterTest {
     public void ShouldAddZerosBetweenReadings_WhenAsked() throws Exception {
         DateTime now = DateTime.now();
         DateTime fiveDaysAgo = now.minusDays(5);
-        when(dbMock.getGlucoseReadings()).thenReturn(
+        when(dbMock.getLastMonthGlucoseReadings()).thenReturn(
                 Arrays.asList(
                         new GlucoseReading(12, "test", fiveDaysAgo.toDate(), ""),
                         new GlucoseReading(21, "test", now.toDate(), ""))
@@ -50,7 +51,24 @@ public class OverviewPresenterTest {
         presenter.loadDatabase();
 
         final List<Integer> readings = presenter.getGlucoseReadings();
-        assertThat(readings).hasSize(6);
+        DateTime minDateTime = DateTime.now().minusMonths(1).minusDays(15);
+        assertThat(readings).hasSize(Days.daysBetween(minDateTime, now).getDays());
         assertThat(readings).containsSequence(12, 0, 0, 0, 0, 21);
+    }
+
+    @Test
+    public void ShouldSortReadingsChronologically_WhenAsked() throws Exception {
+        DateTime now = DateTime.now();
+        DateTime twoDaysAgo = now.minusDays(2);
+        when(dbMock.getLastMonthGlucoseReadings()).thenReturn(
+                Arrays.asList(
+                        new GlucoseReading(33, "test", now.toDate(), ""),
+                        new GlucoseReading(11, "test", twoDaysAgo.toDate(), ""))
+        );
+
+        presenter.loadDatabase();
+
+        final List<Integer> readings = presenter.getGlucoseReadings();
+        assertThat(readings).containsSequence(11, 0, 33);
     }
 }

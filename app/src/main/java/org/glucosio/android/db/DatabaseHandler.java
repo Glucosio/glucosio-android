@@ -429,7 +429,7 @@ public class DatabaseHandler {
         return finalMonths;
     }
 
-    public ArrayList<GlucoseReading> getLastMonthGlucoseReadings(){
+    public List<GlucoseReading> getLastMonthGlucoseReadings(){
         JodaTimeAndroid.init(mContext);
 
         DateTime todayDateTime = DateTime.now();

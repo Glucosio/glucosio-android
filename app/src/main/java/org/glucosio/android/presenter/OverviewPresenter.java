@@ -30,7 +30,6 @@ import org.glucosio.android.db.PressureReading;
 import org.glucosio.android.db.WeightReading;
 import org.glucosio.android.fragment.OverviewView;
 import org.glucosio.android.object.A1cEstimate;
-import org.glucosio.android.object.DoubleGraphObject;
 import org.glucosio.android.object.IntGraphObject;
 import org.glucosio.android.tools.GlucosioConverter;
 import org.glucosio.android.tools.TipsManager;
@@ -245,6 +244,12 @@ public class OverviewPresenter {
         DateTime minDateTime = DateTime.now().minusMonths(1).minusDays(15);
         final List<GlucoseReading> glucoseReadings = dB.getLastMonthGlucoseReadings();
 
+        Collections.sort(glucoseReadings, new Comparator<GlucoseReading>() {
+            public int compare(GlucoseReading o1, GlucoseReading o2) {
+                return o1.getCreated().compareTo(o2.getCreated());
+            }
+        });
+
         DateTime startDate = glucoseReadings.size() > 0 ?
                 minDateTime : DateTime.now();
         // This will contain final values
@@ -254,7 +259,7 @@ public class OverviewPresenter {
             final GlucoseReading reading = glucoseReadings.get(i);
             final DateTime createdDate = new DateTime(reading.getCreated());
             //add zero values between current value and last added value
-            addIntReadings(finalGraphObjects, startDate, createdDate);
+            addZeroReadings(finalGraphObjects, startDate, createdDate);
             //add new value
             finalGraphObjects.add(
                     new IntGraphObject(createdDate, reading.getReading())
@@ -263,32 +268,17 @@ public class OverviewPresenter {
             startDate = createdDate;
         }
         //add last zeros till now
-        addIntReadings(finalGraphObjects, startDate, DateTime.now());
-
-        Collections.sort(finalGraphObjects, new Comparator<IntGraphObject>() {
-            public int compare(IntGraphObject o1, IntGraphObject o2) {
-                return o1.getCreated().compareTo(o2.getCreated());
-            }
-        });
+        addZeroReadings(finalGraphObjects, startDate, DateTime.now());
 
         return finalGraphObjects;
     }
 
-    private void addIntReadings(final ArrayList<IntGraphObject> graphObjects,
-                                final DateTime firstDate,
-                                final DateTime lastDate) {
+    private void addZeroReadings(final ArrayList<IntGraphObject> graphObjects,
+                                 final DateTime firstDate,
+                                 final DateTime lastDate) {
         int daysBetween = Days.daysBetween(firstDate, lastDate).getDays();
         for (int i = 1; i < daysBetween; i++) {
             graphObjects.add(new IntGraphObject(firstDate.plusDays(i), 0));
-        }
-    }
-
-    private void addDoubleReadings(final ArrayList<DoubleGraphObject> graphObjects,
-                                final DateTime firstDate,
-                                final DateTime lastDate) {
-        int daysBetween = Days.daysBetween(firstDate, lastDate).getDays();
-        for (int i = 1; i < daysBetween; i++) {
-            graphObjects.add(new DoubleGraphObject(firstDate.plusDays(i), 0));
         }
     }
 
