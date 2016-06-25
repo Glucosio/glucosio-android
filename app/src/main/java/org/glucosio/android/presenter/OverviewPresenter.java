@@ -239,11 +239,11 @@ public class OverviewPresenter {
     }
 
     private List<IntGraphObject> generateGlucoseGraphPoints() {
-        final List<GlucoseReading> glucoseReadings = dB.getGlucoseReadings();
+        DateTime minDateTime = DateTime.now().minusMonths(1).minusDays(15);
+        final List<GlucoseReading> glucoseReadings = dB.getLastMonthGlucoseReadings();
 
         DateTime startDate = glucoseReadings.size() > 0 ?
-                new DateTime(dB.getFirstReadingDate()) :
-                DateTime.now();
+                minDateTime : DateTime.now();
         // This will contain final values
         final ArrayList<IntGraphObject> finalGraphObjects = new ArrayList<>();
         // Transfer values from database to ArrayList as GlucoseGraphObjects

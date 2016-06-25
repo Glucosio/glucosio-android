@@ -444,6 +444,15 @@ public class DatabaseHandler {
         return finalMonths;
     }
 
+    public ArrayList<GlucoseReading> getLastMonthGlucoseReadings(){
+        JodaTimeAndroid.init(mContext);
+
+        DateTime todayDateTime = DateTime.now();
+        DateTime minDateTime = DateTime.now().minusMonths(1).minusDays(15);
+
+        return getGlucoseReadings(minDateTime.toDate(), todayDateTime.toDate());
+    }
+
     public void addHB1ACReading(HB1ACReading reading) {
         realm.beginTransaction();
         reading.setId(getNextKey("hb1ac"));

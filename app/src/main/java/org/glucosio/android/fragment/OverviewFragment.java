@@ -379,29 +379,30 @@ public class OverviewFragment extends Fragment implements OverviewView {
     private void setData() {
         LineData data = new LineData();
         if (graphCheckboxGlucose.isChecked()) {
-            chart.setData(generateGlucoseData());
+            data = generateGlucoseData();
         }
 
         if (graphCheckboxA1c.isChecked()){
-            chart.setData(generateA1cData());
+            data = generateA1cData();
         }
 
         if (graphCheckboxKetones.isChecked()){
-            chart.setData(generateKetonesData());
+            data = generateKetonesData();
         }
 
         if (graphCheckboxWeight.isChecked()){
-            chart.setData(generateWeightData());
+            data = generateWeightData();
         }
 
         if (graphCheckboxPressure.isChecked()){
-            chart.setData(generatePressureData());
+            data = generatePressureData();
         }
 
         if (graphCheckboxCholesterol.isChecked()){
-            chart.setData(generateCholesterolData());
+            data = generateCholesterolData();
         }
 
+        chart.setData(data);
         chart.setPinchZoom(true);
         chart.setHardwareAccelerationEnabled(true);
         chart.animateY(1000, Easing.EasingOption.EaseOutCubic);
