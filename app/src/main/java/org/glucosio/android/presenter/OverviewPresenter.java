@@ -39,6 +39,7 @@ import org.joda.time.Days;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -131,11 +132,13 @@ public class OverviewPresenter {
     }
 
     public String getLastReading() {
-        return glucoseReadings.get(glucoseReadings.size() - 1).getReading() + "";
+        return dB.getLastGlucoseReading().getReading() + "";
     }
 
     public String getLastDateTime() {
-        return getGlucoseDatetime().get(getGlucoseDatetime().size() - 1) + "";
+        java.text.DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        return inputFormat.format(dB.getLastGlucoseReading().getCreated());
     }
 
     public String getRandomTip(TipsManager manager) {

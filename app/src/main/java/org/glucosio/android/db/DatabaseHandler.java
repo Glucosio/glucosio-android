@@ -34,8 +34,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.SortedSet;
-import java.util.TreeSet;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
@@ -149,24 +147,11 @@ public class DatabaseHandler {
         realm.commitTransaction();
     }
 
-    public Date getFirstReadingDate(){
-        SortedSet<Date> sortedDates = new TreeSet<Date>();
-        ArrayList<Date> dates = new ArrayList<>();
-        dates.add(realm.where(GlucoseReading.class).minimumDate("created"));
-        dates.add(realm.where(HB1ACReading.class).minimumDate("created"));
-        dates.add(realm.where(CholesterolReading.class).minimumDate("created"));
-        dates.add(realm.where(KetoneReading.class).minimumDate("created"));
-        dates.add(realm.where(WeightReading.class).minimumDate("created"));
-        dates.add(realm.where(PressureReading.class).minimumDate("created"));
-
-        for (Date date: dates){
-            if (date!=null){
-                sortedDates.add(date);
-            }
-        }
-
-        return sortedDates.first();
-
+    public GlucoseReading getLastGlucoseReading(){
+        RealmResults<GlucoseReading> results =
+                realm.where(GlucoseReading.class)
+                        .findAllSorted("created", Sort.DESCENDING);
+        return results.get(0);
     }
 
     public List<GlucoseReading> getGlucoseReadings() {
