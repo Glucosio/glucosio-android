@@ -20,6 +20,7 @@ before_install:
  - export JAVA_HOME=$JAVA8_HOME
 
 after_success:
+- ./gradlew coveralls
  - chmod +x ./upload-gh-pages.sh
  - chmod +x ./import-translations-github.sh
  - ./import-translations-github.sh
@@ -27,7 +28,7 @@ after_success:
 
 script:
  - cd $TRAVIS_BUILD_DIR/
- - ./gradlew testDebugUnitTest assembleDebug
+ - ./gradlew testDebugUnitTest assembleDebug jacocoTestReport
  
 notifications:
   slack: glucosio:uk2xb9sAxOaVedj7zePyuBqa
