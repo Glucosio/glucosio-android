@@ -21,6 +21,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'realm-android'
 apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'jacoco'
 
 android {
     compileSdkVersion 24
@@ -35,7 +36,7 @@ android {
         targetSdkVersion 24
         versionCode 29
         versionName '1.1.0'
-        applicationId "org.glucosio.android"
+        applicationId 'org.glucosio.android'
 
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
@@ -48,6 +49,8 @@ android {
 
             versionNameSuffix '-DEVEL'
             applicationIdSuffix '.daily'
+
+            testCoverageEnabled true
 
             buildConfigField 'String', 'GOOGLE_ANALYTICS_TRACKER', '"UA-68882401-2"'
             buildConfigField "String[]", "TRANSLATION_ARRAY", "new String[]{}"
@@ -70,11 +73,14 @@ android {
     }
 
     testOptions {
-        unitTests {
-            all {
-                // configure the test JVM arguments
-                jvmArgs '-noverify'
+        unitTests.returnDefaultValues = true
+
+        unitTests.all {
+            jacoco {
+                includeNoLocationClasses = true
             }
+            // configure the test JVM arguments
+            jvmArgs '-noverify'
         }
     }
 }
@@ -174,3 +180,36 @@ def getAllLocales() {
 }
 
 apply plugin: 'com.google.gms.google-services'
+
+def coverageSourceDirs = ['src/main/java']
+
+task jacocoTestReport(type: JacocoReport, dependsOn: 'testDebugUnitTest') {
+    group = 'Reporting'
+
+    description = 'Generate Jacoco coverage reports'
+
+    classDirectories = fileTree(dir: 'build/intermediates/classes/debug',
+            excludes: ['**/R.class',
+                       '**/R$*.class',
+                       '**/*$ViewBinder*.*',
+                       '**/*$InjectAdapter.*',
+                       '**/BuildConfig.*',
+                       '**/Manifest*.*',])
+
+    additionalSourceDirs = files(coverageSourceDirs)
+    sourceDirectories = files(coverageSourceDirs)
+    executionData = files('build/jacoco/testDebugUnitTest.exec')
+
+    reports {
+        xml.enabled = true
+        html.enabled = true
+        csv.enabled = false
+    }
+}
+
+apply plugin: 'com.github.kt3k.coveralls'
+
+coveralls {
+    sourceDirs = files(['src/main/java']).files.absolutePath
+    jacocoReportPath = 'build/reports/jacoco/jacocoTestReport/jacocoTestReport.xml'
+}
