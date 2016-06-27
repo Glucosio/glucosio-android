@@ -236,6 +236,8 @@
   <string name="fab_cholesterol">רמת הכולסטרול</string>
   <string name="fab_HB1AC">קריאת HB1AC</string>
   <string name="fab_glucose">רמת סוכר בדם</string>
+  <string name="freestylelibre_nfc_not_enabled">NFC מנוטרל.</string>
+  <string name="freestylelibre_nfc_error">שגיאה בפתיחת חיבור NFC!</string>
   <string name="activity_converter_save">שמירה</string>
   <string name="menu_support">תמיכה</string>
   <string name="menu_support_title">איך נוכל לעזור לך?</string>
@@ -243,4 +245,7 @@
   <string name="menu_support_forum">פורום תמיכה</string>
   <string name="dialog_add_notes">הערות</string>
   <string name="menu_backup_restore">שחזור</string>
+  <string name="activity_backup_drive_dialog_restore_button_cancel">ביטול</string>
+  <string name="activity_backup_drive_dialog_restore_button_restore">שחזור גיבוי</string>
+  <string name="activity_backup_drive_button_restore">שחזור מ-Drive</string>
 </resources>

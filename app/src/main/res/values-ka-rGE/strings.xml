@@ -106,6 +106,7 @@
   <string name="helloactivity_language">ენა</string>
   <string name="preferences_privacy">კონფედენციალურობა</string>
   <string name="preferences_backup_google_drive">Google Drive</string>
+  <string name="reading_ok">კაი</string>
   <string name="reading_low">დაბალი</string>
   <string name="reading_high">მაღალი</string>
   <string name="reading_hyper">ჰიპერგლიკემია</string>
@@ -119,8 +120,14 @@
   <string name="dialog_add_exercisetype_13">კალათბურთი</string>
   <string name="dialog_add_exercisetype_14">ფრენბურთი</string>
   <string name="dialog_add_exercisetype_15">კრიკეტი</string>
+  <string name="dialog_add_exercisetype_19">ტენისი</string>
   <!-- Food Entry Labels -->
+  <string name="dialog_addfood_fat">ცხიმი:</string>
   <!-- About Glucosio Strings -->
   <string name="dialog_export_title">მონაცემთა ექსპორტირება</string>
   <string name="dialog_add_weight">წონა</string>
+  <string name="activity_converter_save">შენახვა</string>
+  <string name="menu_support_email">ელ-ფოსტა</string>
+  <string name="menu_backup_restore">აღდგენა</string>
+  <string name="activity_backup_drive_dialog_restore_button_cancel">გაუქმება</string>
 </resources>
