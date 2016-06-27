@@ -608,10 +608,12 @@ public class OverviewFragment extends Fragment implements OverviewView {
                     colors.add(color);
                 }
             }
+            set1.setCircleColors(colors);
+        } else {
+            set1.setCircleColor(color);
         }
 
         set1.setColor(color);
-        set1.setCircleColors(colors);
         set1.setLineWidth(2f);
         set1.setCircleSize(4f);
         set1.setDrawCircleHole(true);
