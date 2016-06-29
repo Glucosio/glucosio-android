@@ -1,0 +1,26 @@
+package org.glucosio.android.tools;
+
+import android.animation.Animator;
+import android.annotation.TargetApi;
+import android.os.Build;
+import android.view.View;
+import android.view.ViewAnimationUtils;
+
+public class AnimationTools {
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public void startCircularReveal(View view) {
+        // get Fab's center
+        int cx = view.getWidth() / 2;
+        int cy = view.getHeight() / 2;
+
+        // get the final radius for the clipping circle
+        float finalRadius = (float) Math.hypot(cx, cy);
+
+        // create the animator for this view (the start radius is zero)
+        Animator anim = ViewAnimationUtils.createCircularReveal(view, cx, cy, 0, finalRadius);
+        // make the view visible and start the animation
+        view.setVisibility(View.VISIBLE);
+        anim.setDuration(500);
+        anim.start();
+    }
+}

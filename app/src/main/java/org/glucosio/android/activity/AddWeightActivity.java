@@ -38,6 +38,7 @@ import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import org.glucosio.android.R;
 import org.glucosio.android.presenter.AddWeightPresenter;
+import org.glucosio.android.tools.AnimationTools;
 import org.glucosio.android.tools.FormatDateTime;
 
 import java.text.DecimalFormat;
@@ -122,6 +123,15 @@ public class AddWeightActivity extends AppCompatActivity implements TimePickerDi
                 dialogOnAddButtonPressed();
             }
         });
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            doneFAB.post(new Runnable() {
+                @Override
+                public void run() {
+                    doneFAB.setVisibility(View.INVISIBLE);
+                    new AnimationTools().startCircularReveal(doneFAB);
+                }
+            });
+        }
     }
 
     private void dialogOnAddButtonPressed() {
