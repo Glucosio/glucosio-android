@@ -215,7 +215,7 @@
     <string name="assistant_export_title">Export your data</string>
     <string name="assistant_export_desc">Share your data with your doctor or backup your data to Google Drive using the export feature.</string>
     <string name="assistant_calculator_a1c_title">Calculate A1C</string>
-    <string name="assistant_calculator_a1c_desc">Glucosio\'s built–in A1C calculator is now available to use in navigation drawer. Enter your average blood glucose and save the calculated A1C value instantly.</string>
+    <string name="assistant_calculator_a1c_desc">Glucosio\'s built–in A1C calculator is now available to use in the navigation drawer. Enter your average blood glucose and save the calculated A1C value instantly.</string>
 
     <string-array name="assistant_titles" translatable="false">
         <item>@string/assistant_calculator_a1c_title</item>
