@@ -361,7 +361,7 @@ public class PreferencesActivity extends AppCompatActivity {
                 res.updateConfiguration(conf, null);
             }
 
-            List<String> availableLanguagesList = new ArrayList(availableLanguagesSet);
+            List<String> availableLanguagesList = new ArrayList<>(availableLanguagesSet);
             Collections.sort(availableLanguagesList);
 
             List<String> valuesLanguages = new ArrayList<>(availableLanguagesList.size());
