@@ -36,6 +36,7 @@ import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.User;
 import org.glucosio.android.presenter.A1CCalculatorPresenter;
 import org.glucosio.android.tools.LocaleHelper;
+import org.glucosio.android.tools.Preferences;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
@@ -46,10 +47,20 @@ public class GlucosioApplication extends Application {
     @Nullable
     private LocaleHelper localeHelper;
 
+    @Nullable
+    private Preferences preferences;
+
     @Override
     public void onCreate() {
         super.onCreate();
 
+        initFont();
+        initLanguage();
+    }
+
+    @VisibleForTesting
+    protected void initFont() {
+        //TODO: convert of using new introduced class Preferences
         // Get Dyslexia preference and adjust font
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         boolean isDyslexicModeOn = sharedPref.getBoolean("pref_font_dyslexia", false);
@@ -59,18 +70,30 @@ public class GlucosioApplication extends Application {
         } else {
             setFont("fonts/lato.ttf");
         }
-
-        initLanguage();
     }
 
     @VisibleForTesting
     protected void initLanguage() {
         User user = getDBHandler().getUser(1);
         if (user != null) {
+            checkBadLocale(user);
+
             String languageTag = user.getPreferred_language();
             if (languageTag != null) {
                 getLocaleHelper().updateLanguage(this, languageTag);
             }
+        }
+    }
+
+    private void checkBadLocale(User user) {
+        Preferences preferences = getPreferences();
+        boolean cleanLocaleDone = preferences.isLocaleCleaned();
+
+        if (!cleanLocaleDone) {
+            user.setPreferred_language(null);
+            //TODO: is it long operation? should we move it to separate thread?
+            getDBHandler().updateUser(user);
+            preferences.saveLocaleCleaned();
         }
     }
 
@@ -113,4 +136,15 @@ public class GlucosioApplication extends Application {
         }
         return localeHelper;
     }
+
+    @NonNull
+    public Preferences getPreferences() {
+        if (preferences == null) {
+            preferences = new Preferences(this);
+        }
+
+        return preferences;
+    }
+
+
 }
