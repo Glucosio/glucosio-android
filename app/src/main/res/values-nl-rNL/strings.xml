@@ -271,7 +271,7 @@
   <string name="overview_hb1ac_info">Dit is slechts een schatting en is berekend op basis van de gemiddelden van uitlezingen in de afgelopen maand. Hoewel deze schatting een algemeen erkende formule voor HbA1C-schatting gebruikt, raden we gebruikers aan om dit alleen als een schatting te gebruiken.</string>
   <string name="dialog_add_notes">Notities</string>
   <string name="sidebar_backup_export">Back-up maken en exporteren</string>
-  <string name="menu_backup_backup">Back-up op Google Drive</string>
+  <string name="menu_backup_backup">Back-up maken op Google Drive</string>
   <string name="menu_backup_restore">Terugzetten</string>
   <string name="menu_backup_csv">CSV exporteren</string>
   <string name="activity_backup_drive_automatic">Automatische back-up</string>
