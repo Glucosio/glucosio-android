@@ -117,15 +117,13 @@ public class AddKetoneActivity extends AppCompatActivity implements TimePickerDi
                 dialogOnAddButtonPressed();
             }
         });
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-            doneFAB.post(new Runnable() {
-                @Override
-                public void run() {
-                    doneFAB.setVisibility(View.INVISIBLE);
-                    new AnimationTools().startCircularReveal(doneFAB);
-                }
-            });
-        }
+        doneFAB.post(new Runnable() {
+            @Override
+            public void run() {
+                doneFAB.setVisibility(View.INVISIBLE);
+                AnimationTools.startCircularReveal(doneFAB);
+            }
+        });
     }
 
     private void dialogOnAddButtonPressed() {
