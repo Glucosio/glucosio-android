@@ -28,6 +28,7 @@ import android.support.annotation.Nullable;
 import android.support.annotation.VisibleForTesting;
 
 import org.glucosio.android.activity.A1cCalculatorActivity;
+import org.glucosio.android.activity.HelloActivity;
 import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.analytics.GoogleAnalytics;
 import org.glucosio.android.backup.Backup;
@@ -35,6 +36,7 @@ import org.glucosio.android.backup.GoogleDriveBackup;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.User;
 import org.glucosio.android.presenter.A1CCalculatorPresenter;
+import org.glucosio.android.presenter.HelloPresenter;
 import org.glucosio.android.tools.LocaleHelper;
 import org.glucosio.android.tools.Preferences;
 
@@ -146,5 +148,8 @@ public class GlucosioApplication extends Application {
         return preferences;
     }
 
-
+    @NonNull
+    public HelloPresenter createHelloPresenter(@NonNull final HelloActivity activity) {
+        return new HelloPresenter(activity, getDBHandler());
+    }
 }

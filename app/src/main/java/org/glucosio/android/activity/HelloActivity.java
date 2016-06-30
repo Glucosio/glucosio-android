@@ -84,7 +84,7 @@ public class HelloActivity extends AppCompatActivity {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         GlucosioApplication application = (GlucosioApplication) getApplication();
-        presenter = new HelloPresenter(this, application.getDBHandler());
+        presenter = application.createHelloPresenter(this);
         presenter.loadDatabase();
 
         initCountrySpinner();
@@ -141,7 +141,7 @@ public class HelloActivity extends AppCompatActivity {
     void onStartClicked() {
         presenter.onNextClicked(ageTextView.getText().toString(),
                 genderSpinner.getSpinner().getSelectedItem().toString(),
-                Locale.getDefault().getDisplayLanguage(),
+                null,
                 countrySpinner.getSpinner().getSelectedItem().toString(),
                 typeSpinner.getSpinner().getSelectedItemPosition() + 1,
                 unitSpinner.getSpinner().getSelectedItem().toString());
