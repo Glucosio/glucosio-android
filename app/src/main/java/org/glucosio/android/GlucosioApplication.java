@@ -92,9 +92,14 @@ public class GlucosioApplication extends Application {
         boolean cleanLocaleDone = preferences.isLocaleCleaned();
 
         if (!cleanLocaleDone) {
-            user.setPreferred_language(null);
+            User updatedUser = new User(user.getId(), user.getName(), user.getPreferred_language(),
+                    user.getCountry(), user.getAge(), user.getGender(), user.getD_type(),
+                    user.getPreferred_unit(), user.getPreferred_unit_a1c(),
+                    user.getPreferred_unit_weight(), user.getPreferred_range(),
+                    user.getCustom_range_min(), user.getCustom_range_max());
+            updatedUser.setPreferred_language(null);
             //TODO: is it long operation? should we move it to separate thread?
-            getDBHandler().updateUser(user);
+            getDBHandler().updateUser(updatedUser);
             preferences.saveLocaleCleaned();
         }
     }
