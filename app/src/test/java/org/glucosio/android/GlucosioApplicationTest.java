@@ -7,10 +7,13 @@ import org.glucosio.android.db.User;
 import org.glucosio.android.tools.Preferences;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -29,14 +32,17 @@ public class GlucosioApplicationTest {
     @Mock
     private User userMock;
 
+    @Captor
+    private ArgumentCaptor<User> userCaptor;
+
     @Test
     public void ShouldClearLanguage_WhenSetFromHelloActivityAndNotFixedYet() throws Exception {
         when(databaseHandlerMock.getUser(1)).thenReturn(userMock);
 
         application.onCreate();
 
-        verify(userMock).setPreferred_language(null);
-        verify(databaseHandlerMock).updateUser(userMock);
+        verify(databaseHandlerMock).updateUser(userCaptor.capture());
+        assertThat(userCaptor.getValue().getPreferred_language()).isNull();
     }
 
     @Test
