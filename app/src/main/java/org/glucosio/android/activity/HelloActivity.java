@@ -149,6 +149,7 @@ public class HelloActivity extends AppCompatActivity implements HelloView {
     }
 
     public void displayErrorWrongAge() {
+        //Why toast and not error in edit box or dialog
         Toast.makeText(getApplicationContext(), getString(R.string.helloactivity_age_invalid), Toast.LENGTH_SHORT).show();
     }
 
