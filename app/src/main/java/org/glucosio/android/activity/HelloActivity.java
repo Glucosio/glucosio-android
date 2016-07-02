@@ -38,6 +38,7 @@ import org.glucosio.android.R;
 import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.presenter.HelloPresenter;
 import org.glucosio.android.tools.LabelledSpinner;
+import org.glucosio.android.view.HelloView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -48,7 +49,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class HelloActivity extends AppCompatActivity {
+public class HelloActivity extends AppCompatActivity implements HelloView {
 
     @BindView(R.id.activity_hello_spinner_country)
     LabelledSpinner countrySpinner;
@@ -147,11 +148,11 @@ public class HelloActivity extends AppCompatActivity {
                 unitSpinner.getSpinner().getSelectedItem().toString());
     }
 
-    public void displayErrorMessage() {
+    public void displayErrorWrongAge() {
         Toast.makeText(getApplicationContext(), getString(R.string.helloactivity_age_invalid), Toast.LENGTH_SHORT).show();
     }
 
-    public void closeHelloActivity() {
+    public void startMainView() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
