@@ -56,6 +56,7 @@ public class AddCholesterolActivity extends AppCompatActivity implements TimePic
     private TextView LDLChoTextView;
     private TextView HDLChoTextView;
     private int pagerPosition;
+    private Runnable fabAnimationRunnable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,12 +122,14 @@ public class AddCholesterolActivity extends AppCompatActivity implements TimePic
                 dialogOnAddButtonPressed();
             }
         });
-        doneFAB.post(new Runnable() {
+        fabAnimationRunnable = new Runnable() {
             @Override
             public void run() {
                 AnimationTools.startCircularReveal(doneFAB);
             }
-        });
+        };
+
+        doneFAB.postDelayed(fabAnimationRunnable, 600);
     }
 
     private void dialogOnAddButtonPressed() {
@@ -207,5 +210,11 @@ public class AddCholesterolActivity extends AppCompatActivity implements TimePic
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        doneFAB.removeCallbacks(fabAnimationRunnable);
     }
 }

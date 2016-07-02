@@ -51,6 +51,7 @@ public class AddA1CActivity extends AppCompatActivity implements TimePickerDialo
     private TextView addDateTextView;
     private TextView readingTextView;
     private TextView unitTextView;
+    private Runnable fabAnimationRunnable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,12 +115,14 @@ public class AddA1CActivity extends AppCompatActivity implements TimePickerDialo
                 dialogOnAddButtonPressed();
             }
         });
-            doneFAB.post(new Runnable() {
+        fabAnimationRunnable = new Runnable() {
             @Override
             public void run() {
                 AnimationTools.startCircularReveal(doneFAB);
             }
-        });
+        };
+
+        doneFAB.postDelayed(fabAnimationRunnable, 600);
     }
 
     private void dialogOnAddButtonPressed() {
@@ -189,5 +192,11 @@ public class AddA1CActivity extends AppCompatActivity implements TimePickerDialo
     @Override
     public void onBackPressed() {
         finishActivity();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        doneFAB.removeCallbacks(fabAnimationRunnable);
     }
 }
