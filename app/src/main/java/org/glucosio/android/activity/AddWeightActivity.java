@@ -38,6 +38,7 @@ import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import org.glucosio.android.R;
 import org.glucosio.android.presenter.AddWeightPresenter;
+import org.glucosio.android.tools.AnimationTools;
 import org.glucosio.android.tools.FormatDateTime;
 
 import java.text.DecimalFormat;
@@ -54,6 +55,7 @@ public class AddWeightActivity extends AppCompatActivity implements TimePickerDi
     private TextView readingTextView;
     private TextView unitTextView;
     private int pagerPosition;
+    private Runnable fabAnimationRunnable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,6 +124,15 @@ public class AddWeightActivity extends AppCompatActivity implements TimePickerDi
                 dialogOnAddButtonPressed();
             }
         });
+
+        fabAnimationRunnable = new Runnable() {
+            @Override
+            public void run() {
+                AnimationTools.startCircularReveal(doneFAB);
+            }
+        };
+
+        doneFAB.postDelayed(fabAnimationRunnable, 600);
     }
 
     private void dialogOnAddButtonPressed() {
@@ -200,5 +211,11 @@ public class AddWeightActivity extends AppCompatActivity implements TimePickerDi
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        doneFAB.removeCallbacks(fabAnimationRunnable);
     }
 }

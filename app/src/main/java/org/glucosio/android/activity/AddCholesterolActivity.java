@@ -38,6 +38,7 @@ import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import org.glucosio.android.R;
 import org.glucosio.android.presenter.AddCholesterolPresenter;
+import org.glucosio.android.tools.AnimationTools;
 import org.glucosio.android.tools.FormatDateTime;
 
 import java.text.DecimalFormat;
@@ -55,6 +56,7 @@ public class AddCholesterolActivity extends AppCompatActivity implements TimePic
     private TextView LDLChoTextView;
     private TextView HDLChoTextView;
     private int pagerPosition;
+    private Runnable fabAnimationRunnable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,6 +122,14 @@ public class AddCholesterolActivity extends AppCompatActivity implements TimePic
                 dialogOnAddButtonPressed();
             }
         });
+        fabAnimationRunnable = new Runnable() {
+            @Override
+            public void run() {
+                AnimationTools.startCircularReveal(doneFAB);
+            }
+        };
+
+        doneFAB.postDelayed(fabAnimationRunnable, 600);
     }
 
     private void dialogOnAddButtonPressed() {
@@ -200,5 +210,11 @@ public class AddCholesterolActivity extends AppCompatActivity implements TimePic
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        doneFAB.removeCallbacks(fabAnimationRunnable);
     }
 }

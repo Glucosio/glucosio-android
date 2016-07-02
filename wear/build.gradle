@@ -29,8 +29,8 @@ android {
         applicationId "org.glucosio.android"
         minSdkVersion 21
         targetSdkVersion 24
-        versionCode 30
-        versionName '1.1.0'
+        versionCode 32
+        versionName '1.1.1'
     }
     buildTypes {
         debug {

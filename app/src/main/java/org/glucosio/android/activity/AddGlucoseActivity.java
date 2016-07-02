@@ -27,7 +27,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.MenuItem;
@@ -35,7 +34,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
@@ -46,6 +44,7 @@ import org.glucosio.android.R;
 import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.db.GlucoseReading;
 import org.glucosio.android.presenter.AddGlucosePresenter;
+import org.glucosio.android.tools.AnimationTools;
 import org.glucosio.android.tools.FormatDateTime;
 import org.glucosio.android.tools.LabelledSpinner;
 import org.glucosio.android.tools.SplitDateTime;
@@ -67,6 +66,7 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
     private EditText notesEditText;
     private TextInputLayout readingInputLayout;
     private LabelledSpinner readingTypeSpinner;
+    private Runnable fabAnimationRunnable;
     private int pagerPosition = 0;
     private long editId = 0;
     private boolean isCustomType;
@@ -191,6 +191,15 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
             presenter.setReadingYear(splitDateTime.getYear());
             presenter.setReadingMonth(splitDateTime.getMonth());
         }
+
+        fabAnimationRunnable = new Runnable() {
+            @Override
+            public void run() {
+                AnimationTools.startCircularReveal(doneFAB);
+            }
+        };
+
+        doneFAB.postDelayed(fabAnimationRunnable, 600);
     }
 
     private void addAnalyticsEvent() {
@@ -313,5 +322,11 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        doneFAB.removeCallbacks(fabAnimationRunnable);
     }
 }
