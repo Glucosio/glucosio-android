@@ -127,7 +127,6 @@ public class AddWeightActivity extends AppCompatActivity implements TimePickerDi
         doneFAB.post(new Runnable() {
             @Override
             public void run() {
-                doneFAB.setVisibility(View.INVISIBLE);
                 AnimationTools.startCircularReveal(doneFAB);
             }
         });

@@ -122,7 +122,6 @@ public class AddPressureActivity extends AppCompatActivity implements TimePicker
         doneFAB.post(new Runnable() {
             @Override
             public void run() {
-                doneFAB.setVisibility(View.INVISIBLE);
                 AnimationTools.startCircularReveal(doneFAB);
             }
         });

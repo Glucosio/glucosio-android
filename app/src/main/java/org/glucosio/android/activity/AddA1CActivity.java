@@ -117,7 +117,6 @@ public class AddA1CActivity extends AppCompatActivity implements TimePickerDialo
             doneFAB.post(new Runnable() {
             @Override
             public void run() {
-                doneFAB.setVisibility(View.INVISIBLE);
                 AnimationTools.startCircularReveal(doneFAB);
             }
         });

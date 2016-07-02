@@ -195,7 +195,6 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
         doneFAB.post(new Runnable() {
             @Override
             public void run() {
-                doneFAB.setVisibility(View.INVISIBLE);
                 AnimationTools.startCircularReveal(doneFAB);
             }
         });
