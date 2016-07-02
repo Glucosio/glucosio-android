@@ -3,7 +3,7 @@ package org.glucosio.android.presenter;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
 import org.glucosio.android.db.User;
-import org.glucosio.android.fragment.OverviewView;
+import org.glucosio.android.view.OverviewView;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
 import org.junit.Before;

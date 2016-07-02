@@ -28,7 +28,7 @@ import org.glucosio.android.db.HB1ACReading;
 import org.glucosio.android.db.KetoneReading;
 import org.glucosio.android.db.PressureReading;
 import org.glucosio.android.db.WeightReading;
-import org.glucosio.android.fragment.OverviewView;
+import org.glucosio.android.view.OverviewView;
 import org.glucosio.android.object.A1cEstimate;
 import org.glucosio.android.object.IntGraphObject;
 import org.glucosio.android.tools.GlucosioConverter;

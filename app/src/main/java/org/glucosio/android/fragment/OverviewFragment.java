@@ -64,6 +64,7 @@ import org.glucosio.android.tools.FormatDateTime;
 import org.glucosio.android.tools.GlucoseRanges;
 import org.glucosio.android.tools.GlucosioConverter;
 import org.glucosio.android.tools.TipsManager;
+import org.glucosio.android.view.OverviewView;
 
 import java.util.ArrayList;
 import java.util.Collections;
