@@ -54,6 +54,9 @@ public class HelloActivity extends AppCompatActivity implements HelloView {
     @BindView(R.id.activity_hello_spinner_country)
     LabelledSpinner countrySpinner;
 
+    @BindView(R.id.activity_hello_spinner_language)
+    LabelledSpinner languageSpinner;
+
     @BindView(R.id.activity_hello_spinner_gender)
     LabelledSpinner genderSpinner;
 

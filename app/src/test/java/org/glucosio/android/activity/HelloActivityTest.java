@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.robolectric.Robolectric;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Matchers.isNull;
@@ -29,5 +30,14 @@ public class HelloActivityTest extends RobolectricTest {
         activity.onStartClicked();
 
         verify(getHelloPresenter()).onNextClicked(anyString(), anyString(), isNull(String.class), anyString(), anyInt(), anyString());
+    }
+
+    @Test
+    public void ShouldBindView_WhenCreated() throws Exception {
+        assertThat(activity.languageSpinner).isNotNull();
+        assertThat(activity.countrySpinner).isNotNull();
+        assertThat(activity.ageTextView).isNotNull();
+        assertThat(activity.genderSpinner).isNotNull();
+        assertThat(activity.startButton).isNotNull();
     }
 }
