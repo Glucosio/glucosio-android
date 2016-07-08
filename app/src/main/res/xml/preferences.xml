@@ -23,10 +23,6 @@
         android:dialogTitle="@string/helloactivity_country"
         android:key="pref_country"
         android:title="@string/helloactivity_country" />
-    <ListPreference
-        android:dialogTitle="@string/helloactivity_language"
-        android:key="pref_language"
-        android:title="@string/helloactivity_language" />
     <EditTextPreference
         android:dialogTitle="@string/helloactivity_age"
         android:inputType="number"
@@ -79,6 +75,11 @@
         android:key="pref_range_max"
         android:title="@string/helloactivity_preferred_range_max" />
     <SwitchPreference
+        android:id="@+id/preferences_graph_old"
+        android:defaultValue="false"
+        android:key="pref_graph_old"
+        android:title="@string/preferences_graph_old" />
+    <SwitchPreference
         android:id="@+id/preferences_font_dyslexia"
         android:defaultValue="false"
         android:key="pref_font_dyslexia"
@@ -89,4 +90,8 @@
     <Preference
         android:key="about_settings"
         android:title="@string/preferences_about_glucosio" />
+    <ListPreference
+        android:dialogTitle="@string/helloactivity_language"
+        android:key="pref_language"
+        android:title="@string/helloactivity_language" />
 </PreferenceScreen>

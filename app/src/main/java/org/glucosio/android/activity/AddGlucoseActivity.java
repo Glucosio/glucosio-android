@@ -66,6 +66,7 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
     private EditText notesEditText;
     private TextInputLayout readingInputLayout;
     private LabelledSpinner readingTypeSpinner;
+    private Runnable fabAnimationRunnable;
     private int pagerPosition = 0;
     private long editId = 0;
     private boolean isCustomType;
@@ -191,13 +192,14 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
             presenter.setReadingMonth(splitDateTime.getMonth());
         }
 
-
-        doneFAB.post(new Runnable() {
+        fabAnimationRunnable = new Runnable() {
             @Override
             public void run() {
                 AnimationTools.startCircularReveal(doneFAB);
             }
-        });
+        };
+
+        doneFAB.postDelayed(fabAnimationRunnable, 600);
     }
 
     private void addAnalyticsEvent() {
@@ -320,5 +322,11 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        doneFAB.removeCallbacks(fabAnimationRunnable);
     }
 }

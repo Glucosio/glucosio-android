@@ -67,6 +67,8 @@ public class PreferencesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.preferences);
 
+
+
         getFragmentManager().beginTransaction()
                 .replace(R.id.preferencesFrame, new MyPreferenceFragment()).commit();
 

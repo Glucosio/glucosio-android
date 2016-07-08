@@ -22,10 +22,12 @@ package org.glucosio.android.fragment;
 
 import android.Manifest;
 import android.app.Dialog;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
@@ -131,7 +133,7 @@ public class OverviewFragment extends Fragment implements OverviewView {
         GlucosioApplication app = (GlucosioApplication) getActivity().getApplicationContext();
         presenter = new OverviewPresenter(this, app.getDBHandler());
         if (!presenter.isdbEmpty()) {
-            presenter.loadDatabase();
+            presenter.loadDatabase(isNewGraphEnabled());
         }
 
         mFragmentView = inflater.inflate(R.layout.fragment_overview, container, false);
@@ -139,11 +141,6 @@ public class OverviewFragment extends Fragment implements OverviewView {
         chart = (LineChart) mFragmentView.findViewById(R.id.chart);
         disableTouchTheft(chart);
         Legend legend = chart.getLegend();
-
-        if (!presenter.isdbEmpty()) {
-            Collections.reverse(presenter.getGlucoseDatetime());
-            Collections.reverse(presenter.getGlucoseType());
-        }
 
         lastReadingTextView = (TextView) mFragmentView.findViewById(R.id.item_history_reading);
         lastDateTextView = (TextView) mFragmentView.findViewById(R.id.fragment_overview_last_date);
@@ -702,6 +699,11 @@ public class OverviewFragment extends Fragment implements OverviewView {
     private void loadRandomTip() {
         TipsManager tipsManager = new TipsManager(getActivity().getApplicationContext(), presenter.getUserAge());
         tipTextView.setText(presenter.getRandomTip(tipsManager));
+    }
+
+    private boolean isNewGraphEnabled(){
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+        return !sharedPref.getBoolean("pref_graph_old", false);
     }
 
     @NonNull

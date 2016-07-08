@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2016 Glucosio Foundation
   ~
   ~ This file is part of Glucosio.
@@ -21,10 +20,10 @@
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:custom="http://schemas.android.com/apk/res-auto"
     tools:context="org.glucosio.android.activity.AddCholesterolActivity">
 
     <RelativeLayout
@@ -37,24 +36,26 @@
             android:layout_height="128dp"
             android:background="@color/glucosio_pink"
             android:gravity="bottom"
-            android:paddingBottom="16dp"
             android:minHeight="?android:attr/actionBarSize"
+            android:paddingBottom="16dp"
             app:contentInsetLeft="0dp"
             app:contentInsetStart="0dp"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:titleTextAppearance="@style/Toolbar.WhiteText" />
 
 
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/done_fab"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignBottom="@id/toolbar"
-                android:layout_marginBottom="-32dp"
-                android:layout_marginRight="20dp"
-                android:onClick="onFabClicked"
-                app:srcCompat="@drawable/ic_done_black_24dp"
-                app:backgroundTint="@color/glucosio_accent" />
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/done_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/toolbar"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="-32dp"
+            android:layout_marginRight="20dp"
+            android:onClick="onFabClicked"
+            android:visibility="invisible"
+            app:backgroundTint="@color/glucosio_accent"
+            app:srcCompat="@drawable/ic_done_black_24dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -96,8 +97,9 @@
                             android:textSize="@dimen/abc_text_size_body_2_material" />
                     </android.support.design.widget.TextInputLayout>
 
-                    <TextView fontPath="fonts/lato-bold.ttf"
+                    <TextView
                         android:id="@+id/glucose_add_unit_measurement"
+                        fontPath="fonts/lato-bold.ttf"
                         android:layout_width="wrap_content"
                         android:layout_height="fill_parent"
                         android:layout_marginBottom="8dp"
@@ -156,8 +158,8 @@
                     android:id="@+id/glucose_add_reading_type"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:focusableInTouchMode="false"
                     android:layout_marginTop="16dp"
+                    android:focusableInTouchMode="false"
                     custom:labelText="@string/dialog_add_measured"
                     custom:widgetColor="@color/glucosio_pink" />
 
@@ -171,6 +173,7 @@
                     android:textColorHighlight="@color/glucosio_pink"
                     android:textSize="@dimen/abc_text_size_body_2_material"
                     android:visibility="gone" />
+
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/glucose_add_notes_layout"
                     android:layout_width="match_parent"

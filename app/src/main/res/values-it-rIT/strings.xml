@@ -300,4 +300,5 @@
   <string name="activity_backup_drive_button_open_drive">Organizza su Drive</string>
   <string name="mmol_mol">mmol/mol</string>
   <string name="mmol_L">mmol/L</string>
+  <string name="preferences_graph_old">Ritorna al vecchio grafico</string>
 </resources>

@@ -35,6 +35,7 @@
         android:minHeight="?android:attr/actionBarSize"
         app:contentInsetLeft="0dp"
         app:contentInsetStart="0dp"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:titleTextAppearance="@style/Toolbar.WhiteText" />
 
     <ScrollView

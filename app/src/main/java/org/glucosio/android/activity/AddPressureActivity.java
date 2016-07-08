@@ -55,6 +55,7 @@ public class AddPressureActivity extends AppCompatActivity implements TimePicker
     private TextView minPressureTextView;
     private TextView maxPressureTextView;
     private int pagerPosition;
+    private Runnable fabAnimationRunnable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,12 +120,14 @@ public class AddPressureActivity extends AppCompatActivity implements TimePicker
                 dialogOnAddButtonPressed();
             }
         });
-        doneFAB.post(new Runnable() {
+        fabAnimationRunnable = new Runnable() {
             @Override
             public void run() {
                 AnimationTools.startCircularReveal(doneFAB);
             }
-        });
+        };
+
+        doneFAB.postDelayed(fabAnimationRunnable, 600);
     }
 
     private void dialogOnAddButtonPressed() {
@@ -205,5 +208,11 @@ public class AddPressureActivity extends AppCompatActivity implements TimePicker
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        doneFAB.removeCallbacks(fabAnimationRunnable);
     }
 }
