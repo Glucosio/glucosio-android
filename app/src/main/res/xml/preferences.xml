@@ -20,6 +20,10 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <ListPreference
+        android:dialogTitle="@string/helloactivity_language"
+        android:key="pref_language"
+        android:title="@string/helloactivity_language" />
+    <ListPreference
         android:dialogTitle="@string/helloactivity_country"
         android:key="pref_country"
         android:title="@string/helloactivity_country" />
@@ -90,8 +94,4 @@
     <Preference
         android:key="about_settings"
         android:title="@string/preferences_about_glucosio" />
-    <ListPreference
-        android:dialogTitle="@string/helloactivity_language"
-        android:key="pref_language"
-        android:title="@string/helloactivity_language" />
 </PreferenceScreen>
