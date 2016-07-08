@@ -48,7 +48,7 @@ public class OverviewPresenterTest {
                         new GlucoseReading(21, "test", now.toDate(), ""))
         );
 
-        presenter.loadDatabase();
+        presenter.loadDatabase(true);
 
         final List<Integer> readings = presenter.getGlucoseReadings();
         DateTime minDateTime = DateTime.now().minusMonths(1).minusDays(15);
@@ -66,7 +66,7 @@ public class OverviewPresenterTest {
                         new GlucoseReading(11, "test", twoDaysAgo.toDate(), ""))
         );
 
-        presenter.loadDatabase();
+        presenter.loadDatabase(true);
 
         final List<Integer> readings = presenter.getGlucoseReadings();
         assertThat(readings).containsSequence(11, 0, 33);

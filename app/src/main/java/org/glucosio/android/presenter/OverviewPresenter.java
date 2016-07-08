@@ -69,9 +69,9 @@ public class OverviewPresenter {
         return dB.getGlucoseReadings().size() == 0;
     }
 
-    public void loadDatabase() {
+    public void loadDatabase(boolean isNewGraphEnabled) {
         this.glucoseReadings = dB.getGlucoseReadings();
-        this.glucoseGraphObjects = generateGlucoseGraphPoints();
+        this.glucoseGraphObjects = generateGlucoseGraphPoints(isNewGraphEnabled);
         this.glucoseReadingsMonth = dB.getAverageGlucoseReadingsByMonth();
         this.glucoseReadingsWeek = dB.getAverageGlucoseReadingsByWeek();
         this.glucoseDatetimeWeek = dB.getGlucoseDatetimesByWeek();
@@ -240,35 +240,46 @@ public class OverviewPresenter {
         return dB.getCholesterolDateTimeAsArray();
     }
 
-    private List<IntGraphObject> generateGlucoseGraphPoints() {
-        DateTime minDateTime = DateTime.now().minusMonths(1).minusDays(15);
-        final List<GlucoseReading> glucoseReadings = dB.getLastMonthGlucoseReadings();
-
-        Collections.sort(glucoseReadings, new Comparator<GlucoseReading>() {
-            public int compare(GlucoseReading o1, GlucoseReading o2) {
-                return o1.getCreated().compareTo(o2.getCreated());
-            }
-        });
-
-        DateTime startDate = glucoseReadings.size() > 0 ?
-                minDateTime : DateTime.now();
-        // This will contain final values
+    private List<IntGraphObject> generateGlucoseGraphPoints(boolean isNewGraphEnabled) {
         final ArrayList<IntGraphObject> finalGraphObjects = new ArrayList<>();
-        // Transfer values from database to ArrayList as GlucoseGraphObjects
-        for (int i=0; i<glucoseReadings.size(); i++){
-            final GlucoseReading reading = glucoseReadings.get(i);
-            final DateTime createdDate = new DateTime(reading.getCreated());
-            //add zero values between current value and last added value
-            addZeroReadings(finalGraphObjects, startDate, createdDate);
-            //add new value
-            finalGraphObjects.add(
-                    new IntGraphObject(createdDate, reading.getReading())
-            );
-            //update start date
-            startDate = createdDate;
+        if (isNewGraphEnabled) {
+            DateTime minDateTime = DateTime.now().minusMonths(1).minusDays(15);
+            final List<GlucoseReading> glucoseReadings = dB.getLastMonthGlucoseReadings();
+
+            Collections.sort(glucoseReadings, new Comparator<GlucoseReading>() {
+                public int compare(GlucoseReading o1, GlucoseReading o2) {
+                    return o1.getCreated().compareTo(o2.getCreated());
+                }
+            });
+
+            DateTime startDate = glucoseReadings.size() > 0 ?
+                    minDateTime : DateTime.now();
+            // Transfer values from database to ArrayList as GlucoseGraphObjects
+            for (int i = 0; i < glucoseReadings.size(); i++) {
+                final GlucoseReading reading = glucoseReadings.get(i);
+                final DateTime createdDate = new DateTime(reading.getCreated());
+                //add zero values between current value and last added value
+                addZeroReadings(finalGraphObjects, startDate, createdDate);
+                //add new value
+                finalGraphObjects.add(
+                        new IntGraphObject(createdDate, reading.getReading())
+                );
+                //update start date
+                startDate = createdDate;
+            }
+            //add last zeros till now
+            addZeroReadings(finalGraphObjects, startDate, DateTime.now());
+        } else {
+            Collections.sort(glucoseReadings, new Comparator<GlucoseReading>() {
+                public int compare(GlucoseReading o1, GlucoseReading o2) {
+                    return o1.getCreated().compareTo(o2.getCreated());
+                }
+            });
+            for (int i = 0; i < glucoseReadings.size(); i++){
+                GlucoseReading glucoseReading = glucoseReadings.get(i);
+                finalGraphObjects.add(new IntGraphObject(new DateTime(glucoseReading.getCreated()), glucoseReading.getReading()));
+            }
         }
-        //add last zeros till now
-        addZeroReadings(finalGraphObjects, startDate, DateTime.now());
 
         return finalGraphObjects;
     }
@@ -280,14 +291,6 @@ public class OverviewPresenter {
         for (int i = 1; i < daysBetween; i++) {
             graphObjects.add(new IntGraphObject(firstDate.plusDays(i), 0));
         }
-    }
-
-    public ArrayList<String> getGlucoseType() {
-        return glucoseType;
-    }
-
-    public ArrayList<String> getGlucoseDatetime() {
-        return dB.getGlucoseDateTimeAsArray();
     }
 
     public ArrayList<String> getGraphGlucoseDateTime(){

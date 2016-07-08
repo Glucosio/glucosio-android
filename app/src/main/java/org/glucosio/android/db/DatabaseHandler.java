@@ -310,7 +310,7 @@ public class DatabaseHandler {
         List<GlucoseReading> gReadings;
         ArrayList<Integer> readings = new ArrayList<Integer>();
 
-        gReadings = GlucoseReading.getGlucoseReadings(whereString);
+        gReadings = GlucoseReading.getGlucoseReadingsWithZeros(whereString);
         int i;
         for (i=0; i < gReadings.size(); i++){
             readings.add(gReadings.get(i).getGlucoseReading());
