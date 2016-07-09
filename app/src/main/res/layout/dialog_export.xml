@@ -45,7 +45,7 @@
                 android:id="@+id/activity_export_range"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Export range" />
+                android:text="@string/dialog_export_range" />
 
             <LinearLayout
                 android:layout_width="match_parent"
