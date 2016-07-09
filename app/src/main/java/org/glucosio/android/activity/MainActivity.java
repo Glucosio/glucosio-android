@@ -52,7 +52,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.clans.fab.FloatingActionButton;
-import com.google.android.gms.appinvite.AppInviteInvitation;
+import com.github.clans.fab.FloatingActionMenu;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -66,7 +66,6 @@ import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.adapter.HomePagerAdapter;
-import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.presenter.ExportPresenter;
 import org.glucosio.android.presenter.MainPresenter;
@@ -171,7 +170,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         final PrimaryDrawerItem itemExport = new PrimaryDrawerItem().withName(R.string.sidebar_backup_export).withIcon(R.drawable.ic_backup_grey_24dp).withSelectable(false).withTypeface(Typeface.DEFAULT_BOLD);
         final PrimaryDrawerItem itemFeedback = new PrimaryDrawerItem().withName(R.string.menu_support).withIcon(R.drawable.ic_announcement_grey_24dp).withSelectable(false).withTypeface(Typeface.DEFAULT_BOLD);
         final PrimaryDrawerItem itemAbout = new PrimaryDrawerItem().withName(R.string.preferences_about_glucosio).withIcon(R.drawable.ic_info_grey_24dp).withSelectable(false).withTypeface(Typeface.DEFAULT_BOLD);
-        final PrimaryDrawerItem itemInvite = new PrimaryDrawerItem().withName(R.string.action_invite).withIcon(R.drawable.ic_face_grey_24dp).withSelectable(false).withTypeface(Typeface.DEFAULT_BOLD);
         final PrimaryDrawerItem itemDonate = new PrimaryDrawerItem().withName(R.string.about_donate).withIcon(R.drawable.ic_favorite_grey_24dp).withSelectable(false).withTypeface(Typeface.DEFAULT_BOLD);
         final PrimaryDrawerItem itemA1C = new PrimaryDrawerItem().withName(R.string.activity_converter_title).withIcon(R.drawable.ic_calculator_a1c_grey_24dp).withSelectable(false).withTypeface(Typeface.DEFAULT_BOLD);
 
@@ -198,9 +196,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                         } else if (drawerItem.equals(itemFeedback)) {
                             // Feedback
                             openSupportDialog();
-                        } else if (drawerItem.equals(itemInvite)) {
-                            // Invite
-                            showInviteDialog();
                         } else if (drawerItem.equals(itemExport)) {
                             // Export
                             startExportActivity();
@@ -221,8 +216,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                     itemSettings,
                     itemFeedback,
                     itemAbout,
-                    itemDonate,
-                    itemInvite
+                    itemDonate
             )
                     .withSelectedItem(-1)
                     .build();
@@ -249,10 +243,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         bottomSheetAddDialog.setContentView(bottomSheetAddDialogView);
         bottomSheetBehavior = BottomSheetBehavior.from((View) bottomSheetAddDialogView.getParent());
         bottomSheetBehavior.setHideable(false);
-
-        Analytics analytics = application.getAnalytics();
-        Log.i("MainActivity", "Setting screen name: " + "main");
-        analytics.reportScreen("Main Activity");
     }
 
     private void initPresenters(GlucosioApplication application) {
@@ -378,13 +368,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 if (which == 0) {
-                    if (checkPlayServices()) {
-                        // TODO: Finish backup in next release
-                        Intent intent = new Intent(getApplicationContext(), BackupActivity.class);
-                        startActivity(intent);
-                    } else {
-                        dialog.dismiss();
-                    }
+                    // Play Services are not present, show an error message
+                    Toast.makeText(getApplicationContext(), R.string.common_google_play_services_unsupported_text, Toast.LENGTH_SHORT).show();
                 } else {
                     // Export to CSV
                     showExportCsvDialog();
@@ -570,14 +555,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         }
     }
 
-    public void showInviteDialog() {
-        Intent intent = new AppInviteInvitation.IntentBuilder(getString(R.string.invitation_title))
-                .setMessage(getString(R.string.invitation_message))
-                .setCallToActionText(getString(R.string.invitation_cta))
-                .build();
-        startActivityForResult(intent, REQUEST_INVITE);
-    }
-
     public void checkIfEmptyLayout() {
         LinearLayout emptyLayout = (LinearLayout) findViewById(R.id.activity_main_empty_layout);
         ViewPager pager = (ViewPager) findViewById(R.id.activity_main_pager);
@@ -673,13 +650,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                     }
                 })
                 .show();
-
-        addA1cAnalyticsEvent();
-    }
-
-    private void addA1cAnalyticsEvent() {
-        Analytics analytics = ((GlucosioApplication) getApplication()).getAnalytics();
-        analytics.reportAction("A1C", "A1C disclaimer opened");
     }
 
     /**

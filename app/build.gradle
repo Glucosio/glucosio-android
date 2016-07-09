@@ -34,8 +34,8 @@ android {
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 24
-        versionCode 34
-        versionName '1.2.0'
+        versionCode 33
+        versionName '1.1.2-FOSS'
         applicationId 'org.glucosio.android'
 
         vectorDrawables.useSupportLibrary = true
@@ -106,31 +106,16 @@ dependencies {
     compile "com.android.support:recyclerview-v7:${androidSupportVer}"
     compile "com.android.support:percent:${androidSupportVer}"
 
-    // Google Play Services
-    compile "com.google.android.gms:play-services-analytics:${googlePlayServicesVer}"
-    compile "com.google.android.gms:play-services-drive:${googlePlayServicesVer}"
-    compile "com.google.android.gms:play-services-wearable:${googlePlayServicesVer}"
-    compile "com.google.android.gms:play-services-gcm:${googlePlayServicesVer}"
-
-    // Firebase
-    compile "com.google.firebase:firebase-core:${googlePlayServicesVer}"
-    compile "com.google.firebase:firebase-crash:${googlePlayServicesVer}"
-    compile "com.google.firebase:firebase-invites:${googlePlayServicesVer}"
-    compile "com.google.firebase:firebase-messaging:${googlePlayServicesVer}"
-
     // Other libraries
     compile 'com.github.paolorotolo:expandableheightlistview:1.0.0'
     compile 'com.github.clans:fab:1.6.4'
-    compile 'com.wdullaer:materialdatetimepicker:2.4.0'
+    compile 'com.wdullaer:materialdatetimepicker:2.3.0'
     compile 'com.github.PhilJay:MPAndroidChart:v2.2.5'
     compile 'uk.co.chrisjenx:calligraphy:2.2.0'
-    compile 'net.danlew:android.joda:2.9.4.1'
-    compile('com.mikepenz:materialdrawer:5.4.0@aar') {
+    compile 'net.danlew:android.joda:2.9.3.1'
+    compile('com.mikepenz:materialdrawer:5.3.0@aar') {
         transitive = true
     }
-
-    // https://mvnrepository.com/artifact/org.apache.commons/commons-math3
-    compile files('libs/commons-math3-3.6.jar')
 
     // Butterknife
     compile "com.jakewharton:butterknife:${butterKnifeVer}"
@@ -147,16 +132,7 @@ dependencies {
         exclude group: 'commons-logging', module: 'commons-logging'
         exclude group: 'org.apache.httpcomponents', module: 'httpclient'
     }
-    testCompile 'io.reactivex:rxjava:1.1.8'
-
-    // Testing libraries
-    androidTestCompile 'com.android.support.test:rules:0.4.1'
-    androidTestCompile 'com.android.support.test:runner:0.4.1'
-    androidTestCompile "com.android.support:support-annotations:${androidSupportVer}"
-    androidTestCompile "com.android.support:recyclerview-v7:${androidSupportVer}"
-    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
-    androidTestCompile 'com.android.support.test.espresso:espresso-intents:2.2.2'
-    androidTestCompile 'com.android.support.test.espresso:espresso-contrib:2.2.2'
+    testCompile 'io.reactivex:rxjava:1.0.13'
 }
 
 configurations.all {

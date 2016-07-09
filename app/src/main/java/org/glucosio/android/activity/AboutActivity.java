@@ -30,9 +30,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
-import org.glucosio.android.analytics.Analytics;
 
 import java.util.Locale;
 
@@ -69,12 +67,12 @@ public class AboutActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.about_preference);
 
-            final Preference licencesPref = (Preference) findPreference("preference_licences");
-            final Preference ratePref = (Preference) findPreference("preference_rate");
-            final Preference feedbackPref = (Preference) findPreference("preference_feedback");
-            final Preference privacyPref = (Preference) findPreference("preference_privacy");
-            final Preference termsPref = (Preference) findPreference("preference_terms");
-            final Preference versionPref = (Preference) findPreference("preference_version");
+            final Preference licencesPref = findPreference("preference_licences");
+            final Preference ratePref = findPreference("preference_rate");
+            final Preference feedbackPref = findPreference("preference_feedback");
+            final Preference privacyPref = findPreference("preference_privacy");
+            final Preference termsPref = findPreference("preference_terms");
+            final Preference versionPref = findPreference("preference_version");
 
 
             termsPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
@@ -85,8 +83,6 @@ public class AboutActivity extends AppCompatActivity {
                     bundle.putString("key", "terms");
                     intent.putExtras(bundle);
                     startActivity(intent);
-
-                    addTermsAnalyticsEvent("Glucosio Terms opened");
 
                     return false;
                 }
@@ -101,7 +97,6 @@ public class AboutActivity extends AppCompatActivity {
                     intent.putExtras(bundle);
                     startActivity(intent);
 
-                    addTermsAnalyticsEvent("Glucosio Licence opened");
                     return false;
                 }
             });
@@ -142,8 +137,6 @@ public class AboutActivity extends AppCompatActivity {
                     intent.putExtras(bundle);
                     startActivity(intent);
 
-                    addTermsAnalyticsEvent("Glucosio Privacy opened");
-
                     return false;
                 }
             });
@@ -166,12 +159,6 @@ public class AboutActivity extends AppCompatActivity {
                 }
             });
 
-        }
-
-        private void addTermsAnalyticsEvent(String action) {
-            Analytics analytics = ((GlucosioApplication) getActivity().getApplication()).getAnalytics();
-
-            analytics.reportAction("Preferences", action);
         }
     }
 }
