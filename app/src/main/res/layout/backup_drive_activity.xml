@@ -47,7 +47,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="8dp"
-                        android:text="N/A"/>
+                        android:text="Not set"/>
                 </LinearLayout>
                 <TextView
                     android:layout_width="match_parent"
@@ -78,7 +78,7 @@
                         android:layout_margin="8dp"
                         android:paddingRight="16dp"
                         android:gravity="right"
-                        android:text="N/A"/>
+                        android:text="@string/activity_backup_drive_folder_not_set"/>
                 </LinearLayout>
                 <TextView
                     android:id="@+id/activity_backup_drive_button_manage_drive"

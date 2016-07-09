@@ -79,6 +79,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import io.realm.Realm;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class BackupActivity extends AppCompatActivity {
     private int REQUEST_CODE_PICKER = 2;
@@ -513,5 +514,9 @@ public class BackupActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         finish();
         return true;
+    }
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }
