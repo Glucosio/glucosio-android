@@ -35,7 +35,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 24
         versionCode 33
-        versionName '1.1.2'
+        versionName '1.1.2-FOSS'
         applicationId 'org.glucosio.android'
 
         vectorDrawables.useSupportLibrary = true
@@ -106,18 +106,6 @@ dependencies {
     compile "com.android.support:recyclerview-v7:${androidSupportVer}"
     compile "com.android.support:percent:${androidSupportVer}"
 
-    // Google Play Services
-    compile "com.google.android.gms:play-services-analytics:${googlePlayServicesVer}"
-    compile "com.google.android.gms:play-services-drive:${googlePlayServicesVer}"
-    compile "com.google.android.gms:play-services-wearable:${googlePlayServicesVer}"
-    compile "com.google.android.gms:play-services-gcm:${googlePlayServicesVer}"
-
-    // Firebase
-    compile "com.google.firebase:firebase-core:${googlePlayServicesVer}"
-    compile "com.google.firebase:firebase-crash:${googlePlayServicesVer}"
-    compile "com.google.firebase:firebase-invites:${googlePlayServicesVer}"
-    compile "com.google.firebase:firebase-messaging:${googlePlayServicesVer}"
-
     // Other libraries
     compile 'com.github.paolorotolo:expandableheightlistview:1.0.0'
     compile 'com.github.clans:fab:1.6.4'
@@ -145,15 +133,6 @@ dependencies {
         exclude group: 'org.apache.httpcomponents', module: 'httpclient'
     }
     testCompile 'io.reactivex:rxjava:1.0.13'
-
-    // Testing libraries
-    androidTestCompile 'com.android.support.test:rules:0.4.1'
-    androidTestCompile 'com.android.support.test:runner:0.4.1'
-    androidTestCompile "com.android.support:support-annotations:${androidSupportVer}"
-    androidTestCompile "com.android.support:recyclerview-v7:${androidSupportVer}"
-    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
-    androidTestCompile 'com.android.support.test.espresso:espresso-intents:2.2.2'
-    androidTestCompile 'com.android.support.test.espresso:espresso-contrib:2.2.2'
 }
 
 configurations.all {

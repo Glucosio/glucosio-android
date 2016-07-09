@@ -39,9 +39,7 @@ import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
-import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
-import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.db.GlucoseReading;
 import org.glucosio.android.presenter.AddGlucosePresenter;
 import org.glucosio.android.tools.AnimationTools;
@@ -200,11 +198,6 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
         };
 
         doneFAB.postDelayed(fabAnimationRunnable, 600);
-    }
-
-    private void addAnalyticsEvent() {
-        Analytics analytics = ((GlucosioApplication) getApplication()).getAnalytics();
-        analytics.reportAction("FreeStyle Libre", "New reading added");
     }
 
     private void dialogOnAddButtonPressed() {

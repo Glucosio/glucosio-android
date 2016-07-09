@@ -29,10 +29,6 @@ import android.support.annotation.VisibleForTesting;
 
 import org.glucosio.android.activity.A1cCalculatorActivity;
 import org.glucosio.android.activity.HelloActivity;
-import org.glucosio.android.analytics.Analytics;
-import org.glucosio.android.analytics.GoogleAnalytics;
-import org.glucosio.android.backup.Backup;
-import org.glucosio.android.backup.GoogleDriveBackup;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.User;
 import org.glucosio.android.presenter.A1CCalculatorPresenter;
@@ -43,9 +39,6 @@ import org.glucosio.android.tools.Preferences;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 public class GlucosioApplication extends Application {
-    @Nullable
-    private Analytics analytics;
-
     @Nullable
     private LocaleHelper localeHelper;
 
@@ -109,21 +102,6 @@ public class GlucosioApplication extends Application {
                 .setDefaultFontPath(font)
                 .setFontAttrId(R.attr.fontPath)
                 .build());
-    }
-
-    @NonNull
-    public Backup getBackup() {
-        return new GoogleDriveBackup();
-    }
-
-    @NonNull
-    public Analytics getAnalytics() {
-        if (analytics == null) {
-            analytics = new GoogleAnalytics();
-            analytics.init(this);
-        }
-
-        return analytics;
     }
 
     @NonNull
