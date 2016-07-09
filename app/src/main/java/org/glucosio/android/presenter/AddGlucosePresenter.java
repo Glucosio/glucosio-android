@@ -23,8 +23,6 @@ package org.glucosio.android.presenter;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import com.google.firebase.crash.FirebaseCrash;
-
 import org.glucosio.android.activity.AddGlucoseActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
@@ -152,8 +150,6 @@ public class AddGlucosePresenter extends AddReadingPresenter {
                     // TODO: Convert range in mmol/L
                     return readingValue > 19 && readingValue < 601;
                 } catch (Exception e) {
-                    FirebaseCrash.log("Exception during reading validation");
-                    FirebaseCrash.report(e);
                     return false;
                 }
             } else {

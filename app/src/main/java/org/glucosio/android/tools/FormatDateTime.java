@@ -22,8 +22,6 @@ package org.glucosio.android.tools;
 
 import android.content.Context;
 
-import com.google.firebase.crash.FirebaseCrash;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -189,7 +187,6 @@ public class FormatDateTime {
     }
 
     private void reportToFirebase(Exception e) {
-        FirebaseCrash.log("Error converting date");
-        FirebaseCrash.report(e);
+        // FOSS only, do not report to Firebase
     }
 }

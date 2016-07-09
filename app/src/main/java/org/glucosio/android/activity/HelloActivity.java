@@ -26,7 +26,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -35,7 +34,6 @@ import android.widget.Toast;
 
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
-import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.presenter.HelloPresenter;
 import org.glucosio.android.tools.LabelledSpinner;
 import org.glucosio.android.tools.LocaleHelper;
@@ -101,10 +99,6 @@ public class HelloActivity extends AppCompatActivity implements HelloView {
         typeSpinner.setItemsArray(R.array.helloactivity_diabetes_type);
 
         initStartButton();
-
-        Analytics analytics = application.getAnalytics();
-        analytics.reportScreen("Hello Activity");
-        Log.i("HelloActivity", "Setting screen name: hello");
     }
 
     private void initLanguageSpinner(final LocaleHelper localeHelper) {

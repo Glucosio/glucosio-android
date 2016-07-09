@@ -33,9 +33,7 @@ import android.widget.TextView;
 
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 
-import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
-import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.db.GlucoseReading;
 import org.glucosio.android.presenter.AddGlucosePresenter;
 import org.glucosio.android.tools.FormatDateTime;
@@ -162,8 +160,6 @@ public class AddGlucoseActivity extends AddReadingActivity {
                 readingInputLayout.setErrorEnabled(true);
                 readingInputLayout.setError(getResources().getString(R.string.dialog_add_glucose_freestylelibre_added));
                 addFreeStyleButton.setVisibility(View.GONE);
-
-                addAnalyticsEvent();
             }
         }
 
@@ -177,11 +173,6 @@ public class AddGlucoseActivity extends AddReadingActivity {
                 }
             });
         }
-    }
-
-    private void addAnalyticsEvent() {
-        Analytics analytics = ((GlucosioApplication) getApplication()).getAnalytics();
-        analytics.reportAction("FreeStyle Libre", "New reading added");
     }
 
     @Override

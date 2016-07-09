@@ -27,6 +27,7 @@
     <color name="glucosio_pink_light">#ec6a93</color>
     <color name="glucosio_pink_graph_2">#99FCE2EA</color>
     <color name="glucosio_pink_graph_1">#80FCE2EA</color>
+    <color name="glucosio_light_grey">#888888</color>
     <color name="glucosio_pink_dark">#C23965</color>
     <color name="glucosio_accent">#F0D04C</color>
     <color name="glucosio_fab_glucose">#E84579</color>

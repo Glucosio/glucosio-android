@@ -38,13 +38,11 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputFilter;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.EditText;
 
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
-import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.User;
 import org.glucosio.android.tools.InputFilterMinMax;
@@ -82,9 +80,6 @@ public class PreferencesActivity extends AppCompatActivity {
 
         // Obtain the Analytics shared Tracker instance.
         GlucosioApplication application = (GlucosioApplication) getApplication();
-        Analytics analytics = application.getAnalytics();
-        Log.i("PreferencesActivity", "Setting screen name: preferences");
-        analytics.reportScreen("Preferences");
     }
 
     @Override
