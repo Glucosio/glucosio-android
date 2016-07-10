@@ -412,6 +412,7 @@
     <string name="activity_backup_drive_failed">Something went wrong. Please try again :/</string>
     <string name="activity_backup_drive_last">Last backup:</string>
     <string name="activity_backup_drive_folder">Backup folder</string>
+    <string name="activity_backup_drive_folder_not_set">Not set</string>
     <string name="activity_backup_drive_button_backup">Backup now</string>
     <string name="activity_backup_drive_recent">Recent backups</string>
     <string name="activity_backup_drive_more">See more Backups</string>
