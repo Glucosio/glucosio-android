@@ -24,11 +24,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,11 +39,14 @@ import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import org.glucosio.android.R;
+import org.glucosio.android.db.WeightReading;
 import org.glucosio.android.presenter.AddWeightPresenter;
 import org.glucosio.android.tools.AnimationTools;
 import org.glucosio.android.tools.FormatDateTime;
+import org.glucosio.android.tools.SplitDateTime;
 
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
@@ -54,8 +59,10 @@ public class AddWeightActivity extends AppCompatActivity implements TimePickerDi
     private TextView addDateTextView;
     private TextView readingTextView;
     private TextView unitTextView;
+    private TextInputLayout readingInputLayout;
     private int pagerPosition;
     private Runnable fabAnimationRunnable;
+    private long editId = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +79,7 @@ public class AddWeightActivity extends AppCompatActivity implements TimePickerDi
         Bundle b = getIntent().getExtras();
         if (b!=null) {
             pagerPosition = b.getInt("pager");
+            editId = b.getLong("edit_id");
         }
 
         presenter = new AddWeightPresenter(this);
@@ -82,6 +90,7 @@ public class AddWeightActivity extends AppCompatActivity implements TimePickerDi
         addDateTextView = (TextView) findViewById(R.id.dialog_add_date);
         readingTextView = (TextView) findViewById(R.id.weight_add_value);
         unitTextView = (TextView) findViewById(R.id.weight_add_unit_measurement);
+        readingInputLayout = (TextInputLayout) findViewById(R.id.weight_add_concentration_layout);
 
         if (!"kilograms".equals(presenter.getWeightUnitMeasuerement())) {
             unitTextView.setText("lbs");
@@ -125,6 +134,24 @@ public class AddWeightActivity extends AppCompatActivity implements TimePickerDi
             }
         });
 
+        // If an id is passed, open the activity in edit mode
+        if (editId != 0){
+            FormatDateTime dateTime = new FormatDateTime(getApplicationContext());
+            setTitle(R.string.title_activity_add_weight_edit);
+            WeightReading readingToEdit = presenter.getWeightReadingById(editId);
+            readingTextView.setText(readingToEdit.getReading()+"");
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(readingToEdit.getCreated());
+            addDateTextView.setText(dateTime.getDate(cal));
+            addTimeTextView.setText(dateTime.getTime(cal));
+            SplitDateTime splitDateTime = new SplitDateTime(readingToEdit.getCreated(), new SimpleDateFormat("yyyy-MM-dd"));
+            presenter.setReadingDay(splitDateTime.getDay());
+            presenter.setReadingHour(splitDateTime.getHour());
+            presenter.setReadingMinute(splitDateTime.getMinute());
+            presenter.setReadingYear(splitDateTime.getYear());
+            presenter.setReadingMonth(splitDateTime.getMonth());
+        }
+
         fabAnimationRunnable = new Runnable() {
             @Override
             public void run() {
@@ -136,8 +163,15 @@ public class AddWeightActivity extends AppCompatActivity implements TimePickerDi
     }
 
     private void dialogOnAddButtonPressed() {
-        presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
-                addDateTextView.getText().toString(), readingTextView.getText().toString());
+        boolean isEdited = editId!=0;
+        if (isEdited) {
+            presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
+                    addDateTextView.getText().toString(), readingTextView.getText().toString(), editId);
+        } else {
+            presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
+                    addDateTextView.getText().toString(), readingTextView.getText().toString());
+
+        }
     }
 
     public void showErrorMessage() {

@@ -84,6 +84,30 @@ public class AddWeightPresenter {
         }
     }
 
+    public void dialogOnAddButtonPressed(String time, String date, String reading, long oldId) {
+        if (validateEmpty(date) && validateEmpty(time) && validateEmpty(reading)) {
+            Calendar cal = Calendar.getInstance();
+            cal.set(Integer.parseInt(readingYear), Integer.parseInt(readingMonth) - 1, Integer.parseInt(readingDay), Integer.parseInt(readingHour), Integer.parseInt(readingMinute));
+            Date finalDateTime = cal.getTime();
+
+            int finalReading;
+
+            if ("kilograms".equals(getWeightUnitMeasuerement())) {
+                finalReading = Integer.parseInt(reading);
+            } else {
+                GlucosioConverter converter = new GlucosioConverter();
+                finalReading = converter.lbToKg(Integer.parseInt(reading));
+            }
+
+            WeightReading wReading = new WeightReading(finalReading, finalDateTime);
+
+            dB.editWeightReading(oldId, wReading);
+            activity.finishActivity();
+        } else {
+            activity.showErrorMessage();
+        }
+    }
+
     private boolean validateEmpty(String time) {
         return !time.equals("");
     }
@@ -120,6 +144,10 @@ public class AddWeightPresenter {
 
     public void setReadingMinute(String readingMinute) {
         this.readingMinute = readingMinute;
+    }
+
+    public WeightReading getWeightReadingById(Long id) {
+        return dB.getWeightReadingById(id);
     }
 
 }
