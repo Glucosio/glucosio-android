@@ -46,7 +46,6 @@ public class HelloPresenter {
 
     public void onNextClicked(String age, String gender, String language, String country, int type, String unit) {
         if (validateAge(age)) {
-
             saveToDatabase(id, name, language, country, Integer.parseInt(age), gender, type, unit);
             helloView.startMainView();
         } else {

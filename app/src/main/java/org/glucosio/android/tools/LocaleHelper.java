@@ -18,14 +18,18 @@ import java.util.Set;
 
 public class LocaleHelper {
     private Locale getLocale(String languageTag) {
-        String[] values = languageTag.split("-");
-        switch (values.length) {
-            case 3:
-                return new Locale(values[0], values[1], values[2]);
-            case 2:
-                return new Locale(values[0], values[1]);
-            default:
-                return new Locale(values[0]);
+        if (languageTag == null) {
+            return Resources.getSystem().getConfiguration().locale;
+        } else {
+            String[] values = languageTag.split("-");
+            switch (values.length) {
+                case 3:
+                    return new Locale(values[0], values[1], values[2]);
+                case 2:
+                    return new Locale(values[0], values[1]);
+                default:
+                    return new Locale(values[0]);
+            }
         }
     }
 

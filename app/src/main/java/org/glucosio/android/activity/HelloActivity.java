@@ -92,8 +92,22 @@ public class HelloActivity extends AppCompatActivity implements HelloView {
         presenter = application.createHelloPresenter(this);
         presenter.loadDatabase();
 
+        final LocaleHelper localeHelper = application.getLocaleHelper();
         initCountrySpinner();
-        initLanguageSpinner(application.getLocaleHelper());
+        initLanguageSpinner(localeHelper);
+
+//        languageSpinner.setOnItemChosenListener(new LabelledSpinner.OnItemChosenListener() {
+//            @Override
+//            public void onItemChosen(View labelledSpinner, AdapterView<?> adapterView, View itemView, int position, long id) {
+//                localeHelper.updateLanguage(HelloActivity.this, localesWithTranslation.get(position));
+//                recreate();
+//            }
+//
+//            @Override
+//            public void onNothingChosen(View labelledSpinner, AdapterView<?> adapterView) {
+//
+//            }
+//        });
 
         genderSpinner.setItemsArray(R.array.helloactivity_gender_list);
         unitSpinner.setItemsArray(R.array.helloactivity_preferred_glucose_unit);
@@ -116,6 +130,7 @@ public class HelloActivity extends AppCompatActivity implements HelloView {
                 displayLanguages.add(localeHelper.getDisplayLanguage(language));
             }
         }
+        localesWithTranslation.add(0, null);
 
         languageSpinner.setItemsArray(displayLanguages);
     }
@@ -160,7 +175,7 @@ public class HelloActivity extends AppCompatActivity implements HelloView {
     void onStartClicked() {
         presenter.onNextClicked(ageTextView.getText().toString(),
                 genderSpinner.getSpinner().getSelectedItem().toString(),
-                null,
+                localesWithTranslation.get(languageSpinner.getSpinner().getSelectedItemPosition()),
                 countrySpinner.getSpinner().getSelectedItem().toString(),
                 typeSpinner.getSpinner().getSelectedItemPosition() + 1,
                 unitSpinner.getSpinner().getSelectedItem().toString());
