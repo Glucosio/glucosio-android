@@ -24,9 +24,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -72,9 +72,6 @@ public class HelloActivity extends AppCompatActivity implements HelloView {
     @BindView(R.id.activity_hello_age)
     TextView ageTextView;
 
-    @BindView(R.id.helloactivity_textview_terms)
-    TextView termsTextView;
-
     private HelloPresenter presenter;
 
     @Override
@@ -97,21 +94,20 @@ public class HelloActivity extends AppCompatActivity implements HelloView {
         unitSpinner.setItemsArray(R.array.helloactivity_preferred_glucose_unit);
         typeSpinner.setItemsArray(R.array.helloactivity_diabetes_type);
 
-        final Drawable pinkArrow = getApplicationContext().getResources().getDrawable(R.drawable.ic_navigate_next_pink_24px);
-        pinkArrow.setBounds(0, 0, 60, 60);
-        startButton.setCompoundDrawables(null, null, pinkArrow, null);
-
-        termsTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HelloActivity.this, LicenceActivity.class);
-                startActivity(intent);
-            }
-        });
+        initStartButton();
 
         Analytics analytics = application.getAnalytics();
         analytics.reportScreen("Hello Activity");
         Log.i("HelloActivity", "Setting screen name: hello");
+    }
+
+    private void initStartButton() {
+        final Drawable pinkArrow = ResourcesCompat.getDrawable(getResources(),
+                R.drawable.ic_navigate_next_pink_24px, null);
+        if (pinkArrow != null) {
+            pinkArrow.setBounds(0, 0, 60, 60);
+            startButton.setCompoundDrawables(null, null, pinkArrow, null);
+        }
     }
 
     private void initCountrySpinner() {
@@ -149,6 +145,12 @@ public class HelloActivity extends AppCompatActivity implements HelloView {
                 countrySpinner.getSpinner().getSelectedItem().toString(),
                 typeSpinner.getSpinner().getSelectedItemPosition() + 1,
                 unitSpinner.getSpinner().getSelectedItem().toString());
+    }
+
+    @OnClick(R.id.helloactivity_textview_terms)
+    void onTermsAndConditionClick() {
+        Intent intent = new Intent(HelloActivity.this, LicenceActivity.class);
+        startActivity(intent);
     }
 
     public void displayErrorWrongAge() {
