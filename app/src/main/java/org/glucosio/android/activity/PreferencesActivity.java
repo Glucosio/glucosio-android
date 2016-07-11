@@ -325,13 +325,11 @@ public class PreferencesActivity extends AppCompatActivity {
         }
 
         private void initLanguagePreference() {
-            List<String> availableLanguagesList = localeHelper.getLocalesWithTranslation(getResources());
+            List<String> valuesLanguages = localeHelper.getLocalesWithTranslation(getResources());
 
-            List<String> valuesLanguages = new ArrayList<>(availableLanguagesList.size());
-            List<String> displayLanguages = new ArrayList<>(availableLanguagesList.size());
-            for (String language : availableLanguagesList) {
+            List<String> displayLanguages = new ArrayList<>(valuesLanguages.size());
+            for (String language : valuesLanguages) {
                 if (language.length() > 0) {
-                    valuesLanguages.add(language);
                     displayLanguages.add(localeHelper.getDisplayLanguage(language));
                 }
             }

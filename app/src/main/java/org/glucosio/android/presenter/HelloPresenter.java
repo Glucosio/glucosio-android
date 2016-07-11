@@ -28,12 +28,13 @@ import org.glucosio.android.view.HelloView;
 
 
 public class HelloPresenter {
-    private DatabaseHandler dB;
-    private HelloView helloView;
+    private final DatabaseHandler dB;
+    private final HelloView helloView;
+
     private int id;
     private String name;
 
-    public HelloPresenter(HelloView helloView, DatabaseHandler dbHandler) {
+    public HelloPresenter(final HelloView helloView, final DatabaseHandler dbHandler) {
         this.helloView = helloView;
         dB = dbHandler;
     }

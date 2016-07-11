@@ -38,10 +38,12 @@ import org.glucosio.android.R;
 import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.presenter.HelloPresenter;
 import org.glucosio.android.tools.LabelledSpinner;
+import org.glucosio.android.tools.LocaleHelper;
 import org.glucosio.android.view.HelloView;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Locale;
 
 import butterknife.BindView;
@@ -74,6 +76,8 @@ public class HelloActivity extends AppCompatActivity implements HelloView {
 
     private HelloPresenter presenter;
 
+    private List<String> localesWithTranslation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,6 +93,7 @@ public class HelloActivity extends AppCompatActivity implements HelloView {
         presenter.loadDatabase();
 
         initCountrySpinner();
+        initLanguageSpinner(application.getLocaleHelper());
 
         genderSpinner.setItemsArray(R.array.helloactivity_gender_list);
         unitSpinner.setItemsArray(R.array.helloactivity_preferred_glucose_unit);
@@ -99,6 +104,20 @@ public class HelloActivity extends AppCompatActivity implements HelloView {
         Analytics analytics = application.getAnalytics();
         analytics.reportScreen("Hello Activity");
         Log.i("HelloActivity", "Setting screen name: hello");
+    }
+
+    private void initLanguageSpinner(final LocaleHelper localeHelper) {
+        localesWithTranslation = localeHelper.getLocalesWithTranslation(getResources());
+
+        List<String> displayLanguages = new ArrayList<>(localesWithTranslation.size() + 1);
+        displayLanguages.add(getString(R.string.default_language));
+        for (String language : localesWithTranslation) {
+            if (language.length() > 0) {
+                displayLanguages.add(localeHelper.getDisplayLanguage(language));
+            }
+        }
+
+        languageSpinner.setItemsArray(displayLanguages);
     }
 
     private void initStartButton() {
