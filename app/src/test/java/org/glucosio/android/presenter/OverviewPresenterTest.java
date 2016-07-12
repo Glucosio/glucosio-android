@@ -5,7 +5,9 @@ import org.glucosio.android.db.GlucoseReading;
 import org.glucosio.android.db.User;
 import org.glucosio.android.view.OverviewView;
 import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 import org.joda.time.Days;
+import org.joda.time.tz.UTCProvider;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -34,6 +36,9 @@ public class OverviewPresenterTest {
 
     @Before
     public void setUp() throws Exception {
+        //to remove joda error printing
+        DateTimeZone.setProvider(new UTCProvider());
+
         presenter = new OverviewPresenter(viewMock, dbMock);
         when(dbMock.getUser(anyLong())).thenReturn(userMock);
     }
