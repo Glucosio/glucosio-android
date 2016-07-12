@@ -388,8 +388,9 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 if (which == 0) {
-                    // Play Services are not present, show an error message
-                    Toast.makeText(getApplicationContext(), R.string.common_google_play_services_unsupported_text, Toast.LENGTH_SHORT).show();
+                    // Service not available on FOSS only build
+                    // Show an error message
+                    showErrorDialogFossOnly();
                 } else {
                     // Export to CSV
                     showExportCsvDialog();
@@ -673,14 +674,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                 .show();
     }
 
-    /**
-     * Check the device to make sure it has the Google Play Services APK. If
-     * it doesn't, display a dialog that allows users to download the APK from
-     * the Google Play Store or enable it in the device's system settings.
-     */
-
-    private void showErrorDialogPlayServices() {
-        Toast.makeText(getApplicationContext(), R.string.activity_main_error_play_services, Toast.LENGTH_SHORT).show();
+    private void showErrorDialogFossOnly() {
+        Toast.makeText(getApplicationContext(), R.string.activity_main_error_foss, Toast.LENGTH_LONG).show();
     }
 
     @Override

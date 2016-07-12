@@ -438,4 +438,5 @@
     <string name="mmol_mol">mmol/mol</string>
     <string name="mmol_L">mmol/L</string>
     <string name="preferences_graph_old">Revert to old graph</string>
+    <string name="activity_main_error_foss">This feature is not available on Glucosio\'s FOSS only build.</string>
 </resources>
