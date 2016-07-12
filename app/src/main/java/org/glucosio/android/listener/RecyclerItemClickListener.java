@@ -69,9 +69,9 @@ public class RecyclerItemClickListener implements RecyclerView.OnItemTouchListen
     public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
     }
 
-    public static interface OnItemClickListener {
-        public void onItemClick(View view, int position);
+    public interface OnItemClickListener {
+        void onItemClick(View view, int position);
 
-        public void onItemLongClick(View view, int position);
+        void onItemLongClick(View view, int position);
     }
 }

@@ -41,7 +41,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
@@ -53,9 +52,6 @@ import android.widget.Toast;
 
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GoogleApiAvailability;
-import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
@@ -218,29 +214,16 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                     }
                 });
 
-        if (isPlayServicesAvailable()) {
-            drawerBuilder.addDrawerItems(
-                    itemA1C,
-                    itemExport,
-                    itemSettings,
-                    itemFeedback,
-                    itemAbout,
-                    itemDonate
-            )
-                    .withSelectedItem(-1)
-                    .build();
-        } else {
-            drawerBuilder.addDrawerItems(
-                    itemA1C,
-                    itemExport,
-                    itemSettings,
-                    itemFeedback,
-                    itemAbout,
-                    itemDonate
-            )
-                    .withSelectedItem(-1)
-                    .build();
-        }
+        drawerBuilder.addDrawerItems(
+                itemA1C,
+                itemExport,
+                itemSettings,
+                itemFeedback,
+                itemAbout,
+                itemDonate
+        )
+                .withSelectedItem(-1)
+                .build();
 
         // Restore pager position
         Bundle b = getIntent().getExtras();
@@ -679,16 +662,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         }
     }
 
-    private boolean isPlayServicesAvailable() {
-        int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext());
-        if (status == ConnectionResult.SUCCESS)
-            return true;
-        else {
-            Log.d("STATUS", "Error connecting with Google Play services. Code: " + String.valueOf(status));
-            return false;
-        }
-    }
-
     public void onA1cInfoClicked(View view) {
         new AlertDialog.Builder(MainActivity.this)
                 .setMessage(getString(R.string.overview_hb1ac_info))
@@ -705,21 +678,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
      * it doesn't, display a dialog that allows users to download the APK from
      * the Google Play Store or enable it in the device's system settings.
      */
-    private boolean checkPlayServices() {
-        GoogleApiAvailability apiAvailability = GoogleApiAvailability.getInstance();
-        int resultCode = apiAvailability.isGooglePlayServicesAvailable(this);
-        if (resultCode != ConnectionResult.SUCCESS) {
-            if (apiAvailability.isUserResolvableError(resultCode)) {
-                apiAvailability.getErrorDialog(this, resultCode, 9000)
-                        .show();
-            } else {
-                Log.i("Glucosio", "This device is not supported.");
-                showErrorDialogPlayServices();
-            }
-            return false;
-        }
-        return true;
-    }
 
     private void showErrorDialogPlayServices() {
         Toast.makeText(getApplicationContext(), R.string.activity_main_error_play_services, Toast.LENGTH_SHORT).show();
