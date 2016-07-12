@@ -9,6 +9,7 @@ import org.glucosio.android.backup.Backup;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.presenter.A1CCalculatorPresenter;
 import org.glucosio.android.presenter.HelloPresenter;
+import org.glucosio.android.tools.LocaleHelper;
 import org.mockito.Mock;
 
 import static org.mockito.MockitoAnnotations.initMocks;
@@ -28,6 +29,9 @@ public class TestGlucosioApplication extends GlucosioApplication {
 
     @Mock
     private HelloPresenter helloPresenterMock;
+
+    @Mock
+    private LocaleHelper localeHelperMock;
 
     @Override
     public void onCreate() {
@@ -69,5 +73,11 @@ public class TestGlucosioApplication extends GlucosioApplication {
     @Override
     public HelloPresenter createHelloPresenter(@NonNull final HelloActivity activity) {
         return helloPresenterMock;
+    }
+
+    @NonNull
+    @Override
+    public LocaleHelper getLocaleHelper() {
+        return localeHelperMock;
     }
 }
