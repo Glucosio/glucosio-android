@@ -24,18 +24,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.TextInputLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
-import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import org.glucosio.android.R;
@@ -45,24 +41,22 @@ import org.glucosio.android.tools.AnimationTools;
 import org.glucosio.android.tools.FormatDateTime;
 import org.glucosio.android.tools.SplitDateTime;
 
-import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class AddWeightActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
+public class AddWeightActivity extends AddReadingActivity {
 
-    private AddWeightPresenter presenter;
     private FloatingActionButton doneFAB;
     private TextView addTimeTextView;
     private TextView addDateTextView;
     private TextView readingTextView;
     private TextView unitTextView;
-    private TextInputLayout readingInputLayout;
     private int pagerPosition;
     private Runnable fabAnimationRunnable;
     private long editId = 0;
+    private boolean editing = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,9 +74,11 @@ public class AddWeightActivity extends AppCompatActivity implements TimePickerDi
         if (b!=null) {
             pagerPosition = b.getInt("pager");
             editId = b.getLong("edit_id");
+            editing = b.getBoolean("editing");
         }
 
-        presenter = new AddWeightPresenter(this);
+        AddWeightPresenter presenter = new AddWeightPresenter(this);
+        this.setPresenter(presenter);
         presenter.getCurrentTime();
 
         doneFAB = (FloatingActionButton) findViewById(R.id.done_fab);
@@ -90,7 +86,6 @@ public class AddWeightActivity extends AppCompatActivity implements TimePickerDi
         addDateTextView = (TextView) findViewById(R.id.dialog_add_date);
         readingTextView = (TextView) findViewById(R.id.weight_add_value);
         unitTextView = (TextView) findViewById(R.id.weight_add_unit_measurement);
-        readingInputLayout = (TextInputLayout) findViewById(R.id.weight_add_concentration_layout);
 
         if (!"kilograms".equals(presenter.getWeightUnitMeasuerement())) {
             unitTextView.setText("lbs");
@@ -135,7 +130,7 @@ public class AddWeightActivity extends AppCompatActivity implements TimePickerDi
         });
 
         // If an id is passed, open the activity in edit mode
-        if (editId != 0){
+        if (editing){
             FormatDateTime dateTime = new FormatDateTime(getApplicationContext());
             setTitle(R.string.title_activity_add_weight_edit);
             WeightReading readingToEdit = presenter.getWeightReadingById(editId);
@@ -163,8 +158,8 @@ public class AddWeightActivity extends AppCompatActivity implements TimePickerDi
     }
 
     private void dialogOnAddButtonPressed() {
-        boolean isEdited = editId!=0;
-        if (isEdited) {
+        AddWeightPresenter presenter = (AddWeightPresenter) this.getPresenter();
+        if (editing) {
             presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
                     addDateTextView.getText().toString(), readingTextView.getText().toString(), editId);
         } else {
@@ -186,34 +181,6 @@ public class AddWeightActivity extends AppCompatActivity implements TimePickerDi
         intent.putExtras(b);
         startActivity(intent);
         finish();
-    }
-
-    @Override
-    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int seconds) {
-        TextView addTime = (TextView) findViewById(R.id.dialog_add_time);
-        DecimalFormat df = new DecimalFormat("00");
-
-        presenter.setReadingHour(df.format(hourOfDay));
-        presenter.setReadingMinute(df.format(minute));
-
-        Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.HOUR_OF_DAY, hourOfDay);
-        cal.set(Calendar.MINUTE, minute);
-        FormatDateTime formatDateTime = new FormatDateTime(getApplicationContext());
-        addTime.setText(formatDateTime.getTime(cal));
-    }
-
-    @Override
-    public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-        TextView addDate = (TextView) findViewById(R.id.dialog_add_date);
-        DecimalFormat df = new DecimalFormat("00");
-
-        presenter.setReadingYear(year + "");
-        presenter.setReadingMonth(df.format(monthOfYear + 1));
-        presenter.setReadingDay(df.format(dayOfMonth));
-
-        String date = +dayOfMonth + "/" + presenter.getReadingMonth() + "/" + presenter.getReadingYear();
-        addDate.setText(date);
     }
 
     @Override

@@ -178,6 +178,7 @@ public class HistoryFragment extends Fragment {
                 }
 
                 intent.putExtra("edit_id", Long.parseLong(idTextView.getText().toString()));
+                intent.putExtra("editing", true);
                 startActivity(intent);
                 mBottomSheetDialog.dismiss();
                 getActivity().finish();
