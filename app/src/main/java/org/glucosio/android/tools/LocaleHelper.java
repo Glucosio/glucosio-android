@@ -19,7 +19,7 @@ import java.util.Set;
 public class LocaleHelper {
     private Locale getLocale(String languageTag) {
         if (languageTag == null) {
-            return Resources.getSystem().getConfiguration().locale;
+            return getDeviceLocale();
         } else {
             String[] values = languageTag.split("-");
             switch (values.length) {
@@ -88,5 +88,9 @@ public class LocaleHelper {
         List<String> availableLanguagesList = new ArrayList<>(availableLanguagesSet);
         Collections.sort(availableLanguagesList);
         return availableLanguagesList;
+    }
+
+    public Locale getDeviceLocale() {
+        return Resources.getSystem().getConfiguration().locale;
     }
 }
