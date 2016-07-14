@@ -31,14 +31,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class AddWeightPresenter {
+public class AddWeightPresenter extends AddReadingPresenter {
     private DatabaseHandler dB;
     private AddWeightActivity activity;
-    private String readingYear;
-    private String readingMonth;
-    private String readingDay;
-    private String readingHour;
-    private String readingMinute;
 
 
     public AddWeightPresenter(AddWeightActivity addWeightActivity) {
@@ -46,25 +41,9 @@ public class AddWeightPresenter {
         dB = new DatabaseHandler(addWeightActivity.getApplicationContext());
     }
 
-
-    public void getCurrentTime() {
-        DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        Date formatted = Calendar.getInstance().getTime();
-
-        SplitDateTime addSplitDateTime = new SplitDateTime(formatted, inputFormat);
-
-        this.readingYear = addSplitDateTime.getYear();
-        this.readingMonth = addSplitDateTime.getMonth();
-        this.readingDay = addSplitDateTime.getDay();
-        this.readingHour = addSplitDateTime.getHour();
-        this.readingMinute = addSplitDateTime.getMinute();
-    }
-
     public void dialogOnAddButtonPressed(String time, String date, String reading) {
         if (validateEmpty(date) && validateEmpty(time) && validateEmpty(reading)) {
-            Calendar cal = Calendar.getInstance();
-            cal.set(Integer.parseInt(readingYear), Integer.parseInt(readingMonth) - 1, Integer.parseInt(readingDay), Integer.parseInt(readingHour), Integer.parseInt(readingMinute));
-            Date finalDateTime = cal.getTime();
+            Date finalDateTime = getCurrentTimeBis();
 
             int finalReading;
 
@@ -78,6 +57,30 @@ public class AddWeightPresenter {
             WeightReading wReading = new WeightReading(finalReading, finalDateTime);
 
             dB.addWeightReading(wReading);
+
+            activity.finishActivity();
+        } else {
+            activity.showErrorMessage();
+        }
+    }
+
+    public void dialogOnAddButtonPressed(String time, String date, String reading, long oldId) {
+        if (validateEmpty(date) && validateEmpty(time) && validateEmpty(reading)) {
+            Date finalDateTime = getCurrentTimeBis();
+
+            int finalReading;
+
+            if ("kilograms".equals(getWeightUnitMeasuerement())) {
+                finalReading = Integer.parseInt(reading);
+            } else {
+                GlucosioConverter converter = new GlucosioConverter();
+                finalReading = converter.lbToKg(Integer.parseInt(reading));
+            }
+
+            WeightReading wReading = new WeightReading(finalReading, finalDateTime);
+
+            dB.editWeightReading(oldId, wReading);
+
             activity.finishActivity();
         } else {
             activity.showErrorMessage();
@@ -94,32 +97,8 @@ public class AddWeightPresenter {
         return dB.getUser(1).getPreferred_unit_weight();
     }
 
-    public String getReadingYear() {
-        return readingYear;
-    }
-
-    public void setReadingYear(String readingYear) {
-        this.readingYear = readingYear;
-    }
-
-    public String getReadingMonth() {
-        return readingMonth;
-    }
-
-    public void setReadingMonth(String readingMonth) {
-        this.readingMonth = readingMonth;
-    }
-
-    public void setReadingDay(String readingDay) {
-        this.readingDay = readingDay;
-    }
-
-    public void setReadingHour(String readingHour) {
-        this.readingHour = readingHour;
-    }
-
-    public void setReadingMinute(String readingMinute) {
-        this.readingMinute = readingMinute;
+    public WeightReading getWeightReadingById(Long id) {
+        return dB.getWeightReadingById(id);
     }
 
 }

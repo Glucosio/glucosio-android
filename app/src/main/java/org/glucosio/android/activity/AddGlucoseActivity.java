@@ -25,7 +25,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
@@ -64,7 +63,6 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
     private TextView readingTextView;
     private EditText typeCustomEditText;
     private EditText notesEditText;
-    private TextInputLayout readingInputLayout;
     private LabelledSpinner readingTypeSpinner;
     private Runnable fabAnimationRunnable;
     private int pagerPosition = 0;
@@ -100,7 +98,6 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
         addDateTextView = (TextView) findViewById(R.id.glucose_add_date);
         readingTextView = (TextView) findViewById(R.id.glucose_add_concentration);
         typeCustomEditText = (EditText) findViewById(R.id.glucose_type_custom);
-        readingInputLayout = (TextInputLayout) findViewById(R.id.glucose_add_concentration_layout);
         notesEditText = (EditText) findViewById(R.id.glucose_add_notes);
 
         presenter.updateSpinnerTypeTime();

@@ -91,14 +91,8 @@ public class DatabaseHandler {
     }
 
     public boolean addGlucoseReading(GlucoseReading reading) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(reading.getCreated());
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
-        int hours = calendar.get(Calendar.HOUR_OF_DAY);
-        int minutes = calendar.get(Calendar.MINUTE);
-        String id = "" + year + month + day + hours + minutes + reading.getReading();
+        // generate record Id
+        String id = generateIdFromDate(reading.getCreated(), reading.getReading());
 
         // Check for duplicates
         if (getGlucoseReadingById(Long.parseLong(id)) != null) {
@@ -110,6 +104,17 @@ public class DatabaseHandler {
             realm.commitTransaction();
             return true;
         }
+    }
+
+    private String generateIdFromDate(Date created, int readingId) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(created);
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        int hours = calendar.get(Calendar.HOUR_OF_DAY);
+        int minutes = calendar.get(Calendar.MINUTE);
+        return "" + year + month + day + hours + minutes + readingId;
     }
 
     public void addNGlucoseReadings(int n) {
@@ -698,6 +703,13 @@ public class DatabaseHandler {
         realm.commitTransaction();
     }
 
+    public void editWeightReading(long oldId, WeightReading reading) {
+        // First delete the old reading
+        deleteWeightReading(getWeightReadingById(oldId));
+        // then save the new one
+        addWeightReading(reading);
+    }
+
     public WeightReading getWeightReading(long id) {
         return realm.where(WeightReading.class)
                 .equalTo("id", id)
@@ -765,6 +777,10 @@ public class DatabaseHandler {
         }
 
         return datetimeArray;
+    }
+
+    public WeightReading getWeightReadingById(long id) {
+        return getWeightReading(id);
     }
 
     public void addCholesterolReading(CholesterolReading reading) {
