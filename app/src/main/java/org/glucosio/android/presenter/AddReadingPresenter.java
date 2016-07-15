@@ -15,7 +15,7 @@ public class AddReadingPresenter {
     private String readingHour;
     private String readingMinute;
 
-    public void getCurrentTime() {
+    public void setCurrentTime() {
         DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         Date formatted = Calendar.getInstance().getTime();
 
@@ -28,7 +28,7 @@ public class AddReadingPresenter {
         this.readingMinute = addSplitDateTime.getMinute();
     }
 
-    public Date getCurrentTimeBis() {
+    public Date getCurrentTime() {
         Calendar cal = Calendar.getInstance();
         cal.set(Integer.parseInt(readingYear), Integer.parseInt(readingMonth) - 1, Integer.parseInt(readingDay), Integer.parseInt(readingHour), Integer.parseInt(readingMinute));
         return cal.getTime();

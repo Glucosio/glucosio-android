@@ -24,64 +24,54 @@ import org.glucosio.android.activity.AddA1CActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.HB1ACReading;
 import org.glucosio.android.tools.GlucosioConverter;
-import org.glucosio.android.tools.SplitDateTime;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
-public class AddA1CPresenter {
+public class AddA1CPresenter extends AddReadingPresenter {
     private DatabaseHandler dB;
     private AddA1CActivity activity;
-    private String readingYear;
-    private String readingMonth;
-    private String readingDay;
-    private String readingHour;
-    private String readingMinute;
-
 
     public AddA1CPresenter(AddA1CActivity addA1CActivity) {
         this.activity = addA1CActivity;
         dB = new DatabaseHandler(addA1CActivity.getApplicationContext());
     }
 
-
-    public void getCurrentTime() {
-        DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        Date formatted = Calendar.getInstance().getTime();
-
-        SplitDateTime addSplitDateTime = new SplitDateTime(formatted, inputFormat);
-
-        this.readingYear = addSplitDateTime.getYear();
-        this.readingMonth = addSplitDateTime.getMonth();
-        this.readingDay = addSplitDateTime.getDay();
-        this.readingHour = addSplitDateTime.getHour();
-        this.readingMinute = addSplitDateTime.getMinute();
-    }
-
     public void dialogOnAddButtonPressed(String time, String date, String reading) {
         if (validateEmpty(date) && validateEmpty(time) && validateEmpty(reading)) {
-            Calendar cal = Calendar.getInstance();
-            cal.set(Integer.parseInt(readingYear), Integer.parseInt(readingMonth) - 1,
-                    Integer.parseInt(readingDay), Integer.parseInt(readingHour), Integer.parseInt(readingMinute));
-            Date finalDateTime = cal.getTime();
 
-            double finalReading;
-            if ("percentage".equals(getA1CUnitMeasuerement())) {
-                finalReading = Double.parseDouble(reading);
-            } else {
-                GlucosioConverter converter = new GlucosioConverter();
-                finalReading = converter.a1cIfccToNgsp(Double.parseDouble(reading));
-            }
-
-            HB1ACReading hReading = new HB1ACReading(finalReading, finalDateTime);
-
+            HB1ACReading hReading = generateHB1ACReading (reading);
             dB.addHB1ACReading(hReading);
+
             activity.finishActivity();
         } else {
             activity.showErrorMessage();
         }
+    }
+
+    public void dialogOnAddButtonPressed(String time, String date, String reading, long oldId) {
+        if (validateEmpty(date) && validateEmpty(time) && validateEmpty(reading)) {
+
+            HB1ACReading hReading = generateHB1ACReading (reading);
+            dB.editHB1ACReading(oldId, hReading);
+
+            activity.finishActivity();
+        } else {
+            activity.showErrorMessage();
+        }
+    }
+
+    private HB1ACReading generateHB1ACReading (String reading) {
+        Date finalDateTime = getCurrentTime();
+
+        double finalReading;
+        if ("percentage".equals(getA1CUnitMeasuerement())) {
+            finalReading = Double.parseDouble(reading);
+        } else {
+            GlucosioConverter converter = new GlucosioConverter();
+            finalReading = converter.a1cIfccToNgsp(Double.parseDouble(reading));
+        }
+
+        return new HB1ACReading(finalReading, finalDateTime);
     }
 
     private boolean validateEmpty(String time) {
@@ -94,32 +84,7 @@ public class AddA1CPresenter {
         return dB.getUser(1).getPreferred_unit_a1c();
     }
 
-    public String getReadingYear() {
-        return readingYear;
+    public HB1ACReading getHB1ACReadingById(Long id) {
+        return dB.getHB1ACReadingById(id);
     }
-
-    public void setReadingYear(String readingYear) {
-        this.readingYear = readingYear;
-    }
-
-    public String getReadingMonth() {
-        return readingMonth;
-    }
-
-    public void setReadingMonth(String readingMonth) {
-        this.readingMonth = readingMonth;
-    }
-
-    public void setReadingDay(String readingDay) {
-        this.readingDay = readingDay;
-    }
-
-    public void setReadingHour(String readingHour) {
-        this.readingHour = readingHour;
-    }
-
-    public void setReadingMinute(String readingMinute) {
-        this.readingMinute = readingMinute;
-    }
-
 }

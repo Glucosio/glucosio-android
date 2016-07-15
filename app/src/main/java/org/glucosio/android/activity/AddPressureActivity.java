@@ -24,7 +24,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.MenuItem;
@@ -33,7 +32,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
-import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import org.glucosio.android.R;
@@ -41,14 +39,12 @@ import org.glucosio.android.presenter.AddPressurePresenter;
 import org.glucosio.android.tools.AnimationTools;
 import org.glucosio.android.tools.FormatDateTime;
 
-import java.text.DecimalFormat;
 import java.util.Calendar;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class AddPressureActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
+public class AddPressureActivity extends AddReadingActivity {
 
-    private AddPressurePresenter presenter;
     private FloatingActionButton doneFAB;
     private TextView addTimeTextView;
     private TextView addDateTextView;
@@ -74,8 +70,9 @@ public class AddPressureActivity extends AppCompatActivity implements TimePicker
             pagerPosition = b.getInt("pager");
         }
 
-        presenter = new AddPressurePresenter(this);
-        presenter.getCurrentTime();
+        AddPressurePresenter presenter = new AddPressurePresenter(this);
+        setPresenter(presenter);
+        presenter.setCurrentTime();
 
         doneFAB = (FloatingActionButton) findViewById(R.id.done_fab);
         addTimeTextView = (TextView) findViewById(R.id.dialog_add_time);
@@ -131,6 +128,7 @@ public class AddPressureActivity extends AppCompatActivity implements TimePicker
     }
 
     private void dialogOnAddButtonPressed() {
+        AddPressurePresenter presenter = (AddPressurePresenter) getPresenter();
         presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
                 addDateTextView.getText().toString(), minPressureTextView.getText().toString(), maxPressureTextView.getText().toString());
     }
@@ -147,34 +145,6 @@ public class AddPressureActivity extends AppCompatActivity implements TimePicker
         intent.putExtras(b);
         startActivity(intent);
         finish();
-    }
-
-    @Override
-    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int seconds) {
-        TextView addTime = (TextView) findViewById(R.id.dialog_add_time);
-        DecimalFormat df = new DecimalFormat("00");
-
-        presenter.setReadingHour(df.format(hourOfDay));
-        presenter.setReadingMinute(df.format(minute));
-
-        Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.HOUR_OF_DAY, hourOfDay);
-        cal.set(Calendar.MINUTE, minute);
-        FormatDateTime formatDateTime = new FormatDateTime(getApplicationContext());
-        addTime.setText(formatDateTime.getTime(cal));
-    }
-
-    @Override
-    public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-        TextView addDate = (TextView) findViewById(R.id.dialog_add_date);
-        DecimalFormat df = new DecimalFormat("00");
-
-        presenter.setReadingYear(year + "");
-        presenter.setReadingMonth(df.format(monthOfYear + 1));
-        presenter.setReadingDay(df.format(dayOfMonth));
-
-        String date = +dayOfMonth + "/" + presenter.getReadingMonth() + "/" + presenter.getReadingYear();
-        addDate.setText(date);
     }
 
     @Override

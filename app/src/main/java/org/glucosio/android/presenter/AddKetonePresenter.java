@@ -23,56 +23,46 @@ package org.glucosio.android.presenter;
 import org.glucosio.android.activity.AddKetoneActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.KetoneReading;
-import org.glucosio.android.tools.SplitDateTime;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
-public class AddKetonePresenter {
+public class AddKetonePresenter extends AddReadingPresenter {
     private DatabaseHandler dB;
     private AddKetoneActivity activity;
-    private String readingYear;
-    private String readingMonth;
-    private String readingDay;
-    private String readingHour;
-    private String readingMinute;
-
 
     public AddKetonePresenter(AddKetoneActivity addKetoneActivity) {
         this.activity = addKetoneActivity;
         dB = new DatabaseHandler(addKetoneActivity.getApplicationContext());
     }
 
-
-    public void getCurrentTime() {
-        DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        Date formatted = Calendar.getInstance().getTime();
-
-        SplitDateTime addSplitDateTime = new SplitDateTime(formatted, inputFormat);
-
-        this.readingYear = addSplitDateTime.getYear();
-        this.readingMonth = addSplitDateTime.getMonth();
-        this.readingDay = addSplitDateTime.getDay();
-        this.readingHour = addSplitDateTime.getHour();
-        this.readingMinute = addSplitDateTime.getMinute();
-    }
-
     public void dialogOnAddButtonPressed(String time, String date, String reading) {
         if (validateEmpty(date) && validateEmpty(time) && validateEmpty(reading)) {
 
-            Calendar cal = Calendar.getInstance();
-            cal.set(Integer.parseInt(readingYear), Integer.parseInt(readingMonth) - 1, Integer.parseInt(readingDay), Integer.parseInt(readingHour), Integer.parseInt(readingMinute));
-            Date finalDateTime = cal.getTime();
-            double finalReading = Double.parseDouble(reading);
-            KetoneReading kReading = new KetoneReading(finalReading, finalDateTime);
-
+            KetoneReading kReading = generateKetoneReading(reading);
             dB.addKetoneReading(kReading);
+
             activity.finishActivity();
         } else {
             activity.showErrorMessage();
         }
+    }
+
+    public void dialogOnAddButtonPressed(String time, String date, String reading, long oldId) {
+        if (validateEmpty(date) && validateEmpty(time) && validateEmpty(reading)) {
+
+            KetoneReading kReading = generateKetoneReading(reading);
+            dB.editKetoneReading(oldId, kReading);
+
+            activity.finishActivity();
+        } else {
+            activity.showErrorMessage();
+        }
+    }
+
+    private KetoneReading generateKetoneReading(String reading) {
+        Date finalDateTime = getCurrentTime();
+        double finalReading = Double.parseDouble(reading);
+        return new KetoneReading(finalReading, finalDateTime);
     }
 
     private boolean validateEmpty(String time) {
@@ -85,32 +75,7 @@ public class AddKetonePresenter {
         return dB.getUser(1).getPreferred_unit();
     }
 
-    public String getReadingYear() {
-        return readingYear;
+    public KetoneReading getKetoneReadingById(Long id) {
+        return dB.getKetoneReadingById(id);
     }
-
-    public void setReadingYear(String readingYear) {
-        this.readingYear = readingYear;
-    }
-
-    public String getReadingMonth() {
-        return readingMonth;
-    }
-
-    public void setReadingMonth(String readingMonth) {
-        this.readingMonth = readingMonth;
-    }
-
-    public void setReadingDay(String readingDay) {
-        this.readingDay = readingDay;
-    }
-
-    public void setReadingHour(String readingHour) {
-        this.readingHour = readingHour;
-    }
-
-    public void setReadingMinute(String readingMinute) {
-        this.readingMinute = readingMinute;
-    }
-
 }

@@ -24,11 +24,7 @@ import org.glucosio.android.activity.AddWeightActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.WeightReading;
 import org.glucosio.android.tools.GlucosioConverter;
-import org.glucosio.android.tools.SplitDateTime;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 public class AddWeightPresenter extends AddReadingPresenter {
@@ -43,19 +39,8 @@ public class AddWeightPresenter extends AddReadingPresenter {
 
     public void dialogOnAddButtonPressed(String time, String date, String reading) {
         if (validateEmpty(date) && validateEmpty(time) && validateEmpty(reading)) {
-            Date finalDateTime = getCurrentTimeBis();
 
-            int finalReading;
-
-            if ("kilograms".equals(getWeightUnitMeasuerement())) {
-                finalReading = Integer.parseInt(reading);
-            } else {
-                GlucosioConverter converter = new GlucosioConverter();
-                finalReading = converter.lbToKg(Integer.parseInt(reading));
-            }
-
-            WeightReading wReading = new WeightReading(finalReading, finalDateTime);
-
+            WeightReading wReading = generateWeightReading(reading);
             dB.addWeightReading(wReading);
 
             activity.finishActivity();
@@ -66,25 +51,29 @@ public class AddWeightPresenter extends AddReadingPresenter {
 
     public void dialogOnAddButtonPressed(String time, String date, String reading, long oldId) {
         if (validateEmpty(date) && validateEmpty(time) && validateEmpty(reading)) {
-            Date finalDateTime = getCurrentTimeBis();
 
-            int finalReading;
-
-            if ("kilograms".equals(getWeightUnitMeasuerement())) {
-                finalReading = Integer.parseInt(reading);
-            } else {
-                GlucosioConverter converter = new GlucosioConverter();
-                finalReading = converter.lbToKg(Integer.parseInt(reading));
-            }
-
-            WeightReading wReading = new WeightReading(finalReading, finalDateTime);
-
+            WeightReading wReading = generateWeightReading(reading);
             dB.editWeightReading(oldId, wReading);
 
             activity.finishActivity();
         } else {
             activity.showErrorMessage();
         }
+    }
+
+    private WeightReading generateWeightReading (String reading) {
+        Date finalDateTime = getCurrentTime();
+
+        int finalReading;
+
+        if ("kilograms".equals(getWeightUnitMeasuerement())) {
+            finalReading = Integer.parseInt(reading);
+        } else {
+            GlucosioConverter converter = new GlucosioConverter();
+            finalReading = converter.lbToKg(Integer.parseInt(reading));
+        }
+
+        return new WeightReading(finalReading, finalDateTime);
     }
 
     private boolean validateEmpty(String time) {

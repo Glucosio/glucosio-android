@@ -23,7 +23,6 @@ package org.glucosio.android.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.MenuItem;
@@ -32,26 +31,29 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
-import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import org.glucosio.android.R;
+import org.glucosio.android.db.HB1ACReading;
 import org.glucosio.android.presenter.AddA1CPresenter;
 import org.glucosio.android.tools.AnimationTools;
 import org.glucosio.android.tools.FormatDateTime;
+import org.glucosio.android.tools.SplitDateTime;
 
-import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class AddA1CActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
+public class AddA1CActivity extends AddReadingActivity {
 
-    private AddA1CPresenter presenter;
     private FloatingActionButton doneFAB;
     private TextView addTimeTextView;
     private TextView addDateTextView;
     private TextView readingTextView;
     private TextView unitTextView;
     private Runnable fabAnimationRunnable;
+    private int pagerPosition;
+    private long editId = 0;
+    private boolean editing = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,8 +67,16 @@ public class AddA1CActivity extends AppCompatActivity implements TimePickerDialo
             getSupportActionBar().setElevation(2);
         }
 
-        presenter = new AddA1CPresenter(this);
-        presenter.getCurrentTime();
+        Bundle b = getIntent().getExtras();
+        if (b!=null) {
+            pagerPosition = b.getInt("pager");
+            editId = b.getLong("edit_id");
+            editing = b.getBoolean("editing");
+        }
+
+        setPresenter(new AddA1CPresenter(this));
+        AddA1CPresenter presenter = (AddA1CPresenter) getPresenter();
+        presenter.setCurrentTime();
 
         doneFAB = (FloatingActionButton) findViewById(R.id.done_fab);
         addTimeTextView = (TextView) findViewById(R.id.dialog_add_time);
@@ -109,6 +119,7 @@ public class AddA1CActivity extends AppCompatActivity implements TimePickerDialo
                 }
             }
         });
+
         doneFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,12 +133,36 @@ public class AddA1CActivity extends AppCompatActivity implements TimePickerDialo
             }
         };
 
+        // If an id is passed, open the activity in edit mode
+        if (editing){
+            FormatDateTime dateTime = new FormatDateTime(getApplicationContext());
+            setTitle(R.string.title_activity_add_hb1ac_edit);
+            HB1ACReading readingToEdit = presenter.getHB1ACReadingById(editId);
+            readingTextView.setText(readingToEdit.getReading()+"");
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(readingToEdit.getCreated());
+            addDateTextView.setText(dateTime.getDate(cal));
+            addTimeTextView.setText(dateTime.getTime(cal));
+            SplitDateTime splitDateTime = new SplitDateTime(readingToEdit.getCreated(), new SimpleDateFormat("yyyy-MM-dd"));
+            presenter.setReadingDay(splitDateTime.getDay());
+            presenter.setReadingHour(splitDateTime.getHour());
+            presenter.setReadingMinute(splitDateTime.getMinute());
+            presenter.setReadingYear(splitDateTime.getYear());
+            presenter.setReadingMonth(splitDateTime.getMonth());
+        }
+
         doneFAB.postDelayed(fabAnimationRunnable, 600);
     }
 
     private void dialogOnAddButtonPressed() {
-        presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
-                addDateTextView.getText().toString(), readingTextView.getText().toString());
+        AddA1CPresenter presenter = (AddA1CPresenter) getPresenter();
+        if (editing) {
+            presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
+                    addDateTextView.getText().toString(), readingTextView.getText().toString(), editId);
+        } else {
+            presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
+                    addDateTextView.getText().toString(), readingTextView.getText().toString());
+        }
     }
 
     public void showErrorMessage() {
@@ -136,36 +171,12 @@ public class AddA1CActivity extends AppCompatActivity implements TimePickerDialo
 
     public void finishActivity() {
         Intent intent = new Intent(this, MainActivity.class);
+        // Pass pager position to open it again later
+        Bundle b = new Bundle();
+        b.putInt("pager", pagerPosition);
+        intent.putExtras(b);
         startActivity(intent);
         finish();
-    }
-
-    @Override
-    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int seconds) {
-        TextView addTime = (TextView) findViewById(R.id.dialog_add_time);
-        DecimalFormat df = new DecimalFormat("00");
-
-        presenter.setReadingHour(df.format(hourOfDay));
-        presenter.setReadingMinute(df.format(minute));
-
-        Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.HOUR_OF_DAY, hourOfDay);
-        cal.set(Calendar.MINUTE, minute);
-        FormatDateTime formatDateTime = new FormatDateTime(getApplicationContext());
-        addTime.setText(formatDateTime.getTime(cal));
-    }
-
-    @Override
-    public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-        TextView addDate = (TextView) findViewById(R.id.dialog_add_date);
-        DecimalFormat df = new DecimalFormat("00");
-
-        presenter.setReadingYear(year + "");
-        presenter.setReadingMonth(df.format(monthOfYear + 1));
-        presenter.setReadingDay(df.format(dayOfMonth));
-
-        String date = +dayOfMonth + "/" + presenter.getReadingMonth() + "/" + presenter.getReadingYear();
-        addDate.setText(date);
     }
 
     @Override

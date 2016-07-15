@@ -46,6 +46,8 @@ public class AddReadingActivity extends AppCompatActivity implements TimePickerD
         addDate.setText(date);
     }
 
+
+
     public void setPresenter (AddReadingPresenter newPresenter) {
         this.presenter = newPresenter;
     }
