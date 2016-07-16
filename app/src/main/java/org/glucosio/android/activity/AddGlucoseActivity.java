@@ -25,7 +25,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.MenuItem;
@@ -63,6 +65,8 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
     private TextView readingTextView;
     private EditText typeCustomEditText;
     private EditText notesEditText;
+    private AppCompatButton addFreeStyleButton;
+    private TextInputLayout readingInputLayout;
     private LabelledSpinner readingTypeSpinner;
     private Runnable fabAnimationRunnable;
     private int pagerPosition = 0;
@@ -98,6 +102,8 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
         addDateTextView = (TextView) findViewById(R.id.glucose_add_date);
         readingTextView = (TextView) findViewById(R.id.glucose_add_concentration);
         typeCustomEditText = (EditText) findViewById(R.id.glucose_type_custom);
+        readingInputLayout = (TextInputLayout) findViewById(R.id.glucose_add_concentration_layout);
+        addFreeStyleButton = (AppCompatButton) findViewById(R.id.glucose_add_freestyle_button);
         notesEditText = (EditText) findViewById(R.id.glucose_add_notes);
 
         presenter.updateSpinnerTypeTime();
@@ -170,7 +176,7 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
             unitM.setText("mmol/L");
         }
 
-        // If an id is passed, open the activity in edit mode
+        // If an id was passed, open the activity in edit mode
         if (editId != 0){
             FormatDateTime dateTime = new FormatDateTime(getApplicationContext());
             setTitle(R.string.title_activity_add_glucose_edit);
@@ -197,6 +203,37 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
         };
 
         doneFAB.postDelayed(fabAnimationRunnable, 600);
+
+        // Check if activity was started from a NFC sensor
+        if (getIntent().getExtras() != null) {
+            Bundle p;
+            String reading;
+
+            p = getIntent().getExtras();
+            reading = p.getString("reading");
+            if (reading!=null) {
+                // If yes, first convert the decimal value from Freestyle to Integer
+                double d = Double.parseDouble(reading);
+                int glucoseValue = (int) d;
+                readingTextView.setText(glucoseValue + "");
+                readingInputLayout.setErrorEnabled(true);
+                readingInputLayout.setError(getResources().getString(R.string.dialog_add_glucose_freestylelibre_added));
+                addFreeStyleButton.setVisibility(View.GONE);
+
+                addAnalyticsEvent();
+            }
+        }
+
+        // Check if FreeStyle support is enabled in Preferences
+        if (presenter.isFreeStyleLibreEnabled()) {
+            addFreeStyleButton.setVisibility(View.VISIBLE);
+            addFreeStyleButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startLibreActivity();
+                }
+            });
+        }
     }
 
     private void addAnalyticsEvent() {
@@ -314,6 +351,11 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
     @Override
     public void onBackPressed() {
         finishActivity();
+    }
+
+    public void startLibreActivity() {
+        Intent intent = new Intent(this, FreestyleLibre.class);
+        startActivity(intent);
     }
 
     @Override
