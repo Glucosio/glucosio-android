@@ -3,7 +3,6 @@ package org.glucosio.android.tools;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
-import org.apache.commons.math3.stat.regression.SimpleRegression;
 import org.glucosio.android.object.GlucoseData;
 import org.glucosio.android.object.PredictionData;
 import org.glucosio.android.object.ReadingData;
@@ -161,13 +160,13 @@ public class AlgorithmUtil {
     @NonNull
     private static PredictionData getPredictionData(int attempt, String tagId, ArrayList<GlucoseData> trendList) {
         PredictionData predictedGlucose = new PredictionData();
-        SimpleRegression regression = new SimpleRegression();
+/*        SimpleRegression regression = new SimpleRegression();
         for (int i = 0; i < trendList.size(); i++) {
             regression.addData(trendList.size() - i, (trendList.get(i)).glucoseLevel);
         }
         predictedGlucose.glucoseLevel = (int)regression.predict(15 + PREDICTION_TIME);
         predictedGlucose.trend = regression.getSlope();
-        predictedGlucose.confidence = regression.getSlopeConfidenceInterval();
+        predictedGlucose.confidence = regression.getSlopeConfidenceInterval();*/
         predictedGlucose.errorCode = PredictionData.Result.OK;
         predictedGlucose.realDate = trendList.get(0).realDate;
         predictedGlucose.sensorId = tagId;

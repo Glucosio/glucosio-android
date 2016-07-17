@@ -19,22 +19,51 @@
   ~
   -->
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp">
+    android:orientation="vertical"
+    tools:context=".activity.A1cCalculatorActivity">
 
-    <ScrollView
-        android:id="@+id/scrollView1"
-        android:layout_width="fill_parent"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true" >
+        android:layout_marginBottom="16dp"
+        android:background="@color/glucosio_pink"
+        android:minHeight="?android:attr/actionBarSize"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:titleTextAppearance="@style/Toolbar.WhiteText" />
+
+    <LinearLayout
+        android:id="@+id/activity_freestyle_intro"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="visible"
+        android:padding="20dp">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/ic_freestylelibre"/>
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/result"
+            android:textColor="@color/glucosio_text"
+            android:layout_marginTop="16dp"
+            android:textSize="18sp"
+            android:gravity="center"
             android:text="@string/freestylelibre_nfc_ready" />
-    </ScrollView>
-
-</RelativeLayout>
+    </LinearLayout>
+    <ListView
+        android:id="@+id/activity_freestyle_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+</LinearLayout>

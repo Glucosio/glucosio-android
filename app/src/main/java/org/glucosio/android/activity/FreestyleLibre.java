@@ -33,6 +33,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import org.glucosio.android.R;
+import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.object.PredictionData;
 import org.glucosio.android.object.ReadingData;
 import org.glucosio.android.tools.AlgorithmUtil;
@@ -171,7 +172,22 @@ public class FreestyleLibre extends Activity {
         WearableApi.sendMessage(mGoogleApiClient, WearableApi.GLUCOSE, new Gson().toJson(transferObject), mMessageListener);
         mMessagesBeingSent++;
         mFinishAfterSentMessages = true;*/
-        Toast.makeText(getApplicationContext(), mResult.prediction.glucose(false), Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), mResult.history.get(mResult.history.size()-1).glucose(false), Toast.LENGTH_LONG).show();
+
+        DatabaseHandler dB = new DatabaseHandler(getApplicationContext());
+        if (dB.getUser(1) != null) {
+            // Start AddGlucose Activity passing the reading value
+            Intent intent = new Intent(getApplicationContext(), AddGlucoseActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("reading", currentGlucose + "");
+            intent.putExtras(bundle);
+            startActivity(intent);
+            FreestyleLibre.this.finish();
+        } else {
+            Intent intent = new Intent(getApplicationContext(), HelloActivity.class);
+            startActivity(intent);
+        }
+
     }
 
     private class NfcVReaderTask extends AsyncTask<Tag, Void, Tag> {
