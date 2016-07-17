@@ -29,12 +29,13 @@ import android.nfc.Tag;
 import android.nfc.tech.NfcV;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Vibrator;
 import android.util.Log;
 import android.widget.Toast;
 
 import org.glucosio.android.R;
-import org.glucosio.android.db.DatabaseHandler;
+import org.glucosio.android.object.PredictionData;
+import org.glucosio.android.object.ReadingData;
+import org.glucosio.android.tools.AlgorithmUtil;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -43,6 +44,7 @@ public class FreestyleLibre extends Activity {
 
     public static final String MIME_TEXT_PLAIN = "text/plain";
     final protected static char[] hexArray = "0123456789ABCDEF".toCharArray();
+    private static final String TAG = "FreestyleLibre";
     private NfcAdapter mNfcAdapter;
     private String lectura, buffer;
     private float currentGlucose = 0f;
@@ -76,15 +78,7 @@ public class FreestyleLibre extends Activity {
         adapter.disableForegroundDispatch(activity);
     }
 
-    public static String bytesToHex(byte[] bytes) {
-        char[] hexChars = new char[bytes.length * 2];
-        for (int j = 0; j < bytes.length; j++) {
-            int v = bytes[j] & 0xFF;
-            hexChars[j * 2] = hexArray[v >>> 4];
-            hexChars[j * 2 + 1] = hexArray[v & 0x0F];
-        }
-        return new String(hexChars);
-    }
+    private ReadingData mResult = new ReadingData(PredictionData.Result.ERROR_NO_NFC);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -169,184 +163,86 @@ public class FreestyleLibre extends Activity {
         return Float.valueOf(Float.valueOf((val & bitmask) / 6) - 37);
     }
 
-    /**
-     * Background task for reading the data. Do not block the UI thread while reading.
-     */
-    private class NfcVReaderTask extends AsyncTask<Tag, Void, String> {
+    private void sendResultAndFinish() {
+/*        SimpleDatabase database = new SimpleDatabase(this);
+        long id = database.saveMessage(mResult);
+        ReadingData.TransferObject transferObject = new ReadingData.TransferObject(id, mResult);
+        database.close();
+        WearableApi.sendMessage(mGoogleApiClient, WearableApi.GLUCOSE, new Gson().toJson(transferObject), mMessageListener);
+        mMessagesBeingSent++;
+        mFinishAfterSentMessages = true;*/
+        Toast.makeText(getApplicationContext(), mResult.prediction.glucose(false), Toast.LENGTH_LONG).show();
+    }
+
+    private class NfcVReaderTask extends AsyncTask<Tag, Void, Tag> {
+
+        private byte[] data = new byte[360];
 
         @Override
-        protected void onPostExecute(String result) {
-            Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
-            vibrator.vibrate(1000);
-
-            if (currentGlucose != 0f) {
-                DatabaseHandler dB = new DatabaseHandler(getApplicationContext());
-
-                if (dB.getUser(1) != null) {
-                    // Start AddGlucose Activity passing the reading value
-                    Intent intent = new Intent(getApplicationContext(), AddGlucoseActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putString("reading", currentGlucose + "");
-                    intent.putExtras(bundle);
-                    startActivity(intent);
-                    FreestyleLibre.this.finish();
-                } else {
-                    Intent intent = new Intent(getApplicationContext(), HelloActivity.class);
-                    startActivity(intent);
-                }
-            } else {
-                FreestyleLibre.this.finish();
-            }
+        protected void onPostExecute(Tag tag) {
+            if (tag == null) return;
+            String tagId = bytesToHexString(tag.getId());
+            int attempt = 1;
+            mResult = AlgorithmUtil.parseData(attempt, tagId, data);
+            sendResultAndFinish();
         }
 
         @Override
-        protected String doInBackground(Tag... params) {
+        protected Tag doInBackground(Tag... params) {
             Tag tag = params[0];
-
             NfcV nfcvTag = NfcV.get(tag);
-            Log.d("glucosio", "Enter NdefReaderTask: " + nfcvTag.toString());
-
-            Log.d("glucosio", "Tag ID: " + tag.getId());
-
-
             try {
                 nfcvTag.connect();
-            } catch (IOException e) {
-                final IOException ex = e;
-                FreestyleLibre.this.runOnUiThread(new Runnable() {
-                    public void run() {
-                        Log.e("Glucosio", ex.toString());
-                        Toast.makeText(getApplicationContext(), R.string.freestylelibre_nfc_error, Toast.LENGTH_SHORT).show();
+                final byte[] uid = tag.getId();
+                for(int i=0; i <= 40; i++) {
+                    byte[] cmd = new byte[]{0x60, 0x20, 0, 0, 0, 0, 0, 0, 0, 0, (byte)i, 0};
+                    System.arraycopy(uid, 0, cmd, 2, 8);
+                    byte[] oneBlock;
+                    Long time = System.currentTimeMillis();
+                    while (true) {
+                        try {
+                            oneBlock = nfcvTag.transceive(cmd);
+                            break;
+                        } catch (IOException e) {
+                            if ((System.currentTimeMillis() > time + 2000)) {
+                                Log.e(TAG, "tag read timeout");
+                                return null;
+                            }
+                        }
                     }
-                });
 
+                    oneBlock = Arrays.copyOfRange(oneBlock, 2, oneBlock.length);
+                    System.arraycopy(oneBlock, 0, data, i*8, 8);
+                }
+
+            } catch (Exception e) {
+                Log.i(TAG, e.toString());
                 return null;
+            } finally {
+                try {
+                    nfcvTag.close();
+                } catch (Exception e) {
+                    Log.e(TAG, "Error closing tag!");
+                }
             }
 
-            lectura = "";
-
-            byte[][] bloques = new byte[40][8];
-            byte[] allBlocks = new byte[40 * 8];
-
-
-            Log.d("glucosio", "---------------------------------------------------------------");
-            //Log.d("glucosio", "nfcvTag ID: "+nfcvTag.getDsfId());
-
-            //Log.d("glucosio", "getMaxTransceiveLength: "+nfcvTag.getMaxTransceiveLength());
-            try {
-
-                // Get system information (0x2B)
-                byte[] cmd = new byte[]{
-                        (byte) 0x00, // Flags
-                        (byte) 0x2B // Command: Get system information
-                };
-                byte[] systeminfo = nfcvTag.transceive(cmd);
-
-                //Log.d("glucosio", "systeminfo: "+systeminfo.toString()+" - "+systeminfo.length);
-                //Log.d("glucosio", "systeminfo HEX: "+bytesToHex(systeminfo));
-
-                systeminfo = Arrays.copyOfRange(systeminfo, 2, systeminfo.length - 1);
-
-                byte[] memorySize = {systeminfo[6], systeminfo[5]};
-                Log.d("glucosio", "Memory Size: " + bytesToHex(memorySize) + " / " + Integer.parseInt(bytesToHex(memorySize).trim(), 16));
-
-                byte[] blocks = {systeminfo[8]};
-                Log.d("glucosio", "blocks: " + bytesToHex(blocks) + " / " + Integer.parseInt(bytesToHex(blocks).trim(), 16));
-
-                int totalBlocks = Integer.parseInt(bytesToHex(blocks).trim(), 16);
-
-                for (int i = 3; i <= 40; i++) { // Leer solo los bloques que nos interesan
-                    /*
-                    cmd = new byte[] {
-	                    (byte)0x00, // Flags
-	                    (byte)0x23, // Command: Read multiple blocks
-	                    (byte)i, // First block (offset)
-	                    (byte)0x01  // Number of blocks
-	                };
-	                */
-                    // Read single block
-                    cmd = new byte[]{
-                            (byte) 0x00, // Flags
-                            (byte) 0x20, // Command: Read multiple blocks
-                            (byte) i // block (offset)
-                    };
-
-                    byte[] oneBlock = nfcvTag.transceive(cmd);
-                    Log.d("glucosio", "userdata: " + oneBlock.toString() + " - " + oneBlock.length);
-                    oneBlock = Arrays.copyOfRange(oneBlock, 1, oneBlock.length);
-                    bloques[i - 3] = Arrays.copyOf(oneBlock, 8);
-
-
-                    Log.d("glucosio", "userdata HEX: " + bytesToHex(oneBlock));
-
-                    lectura = lectura + bytesToHex(oneBlock) + "\r\n";
-                }
-
-                String s = "";
-                for (int i = 0; i < 40; i++) {
-                    Log.d("glucosio", bytesToHex(bloques[i]));
-                    s = s + bytesToHex(bloques[i]);
-                }
-
-                Log.d("glucosio", "S: " + s);
-
-                Log.d("glucosio", "Next read: " + s.substring(4, 6));
-                int current = Integer.parseInt(s.substring(4, 6), 16);
-                Log.d("glucosio", "Next read: " + current);
-                Log.d("glucosio", "Next historic read " + s.substring(6, 8));
-
-                String[] bloque1 = new String[16];
-                String[] bloque2 = new String[32];
-                Log.d("glucosio", "--------------------------------------------------");
-                int ii = 0;
-                for (int i = 8; i < 8 + 15 * 12; i += 12) {
-                    Log.d("glucosio", s.substring(i, i + 12));
-                    bloque1[ii] = s.substring(i, i + 12);
-
-                    final String g = s.substring(i + 2, i + 4) + s.substring(i, i + 2);
-
-                    if (current == ii) {
-                        currentGlucose = glucoseReading(Integer.parseInt(g, 16));
-                    }
-                    ii++;
-
-
-                }
-                Log.d("glucosio", "Current approximate glucose " + currentGlucose);
-
-                Log.d("glucosio", "--------------------------------------------------");
-                ii = 0;
-                for (int i = 188; i < 188 + 31 * 12; i += 12) {
-                    Log.d("glucosio", s.substring(i, i + 12));
-                    bloque2[ii] = s.substring(i, i + 12);
-                    ii++;
-                }
-                Log.d("glucosio", "--------------------------------------------------");
-            } catch (IOException e) {
-                final IOException ex = e;
-                FreestyleLibre.this.runOnUiThread(new Runnable() {
-                    public void run() {
-                        Log.e("Glucosio", ex.toString());
-                        Toast.makeText(getApplicationContext(), R.string.freestylelibre_nfc_error, Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-                return null;
-            }
-
-            try {
-                nfcvTag.close();
-            } catch (IOException e) {
-                /*
-                Abbott.this.runOnUiThread(new Runnable() {
-                    public void run() {
-                        Toast.makeText(getApplicationContext(), "Error closing NFC connection!", Toast.LENGTH_SHORT).show();
-                    }
-                });
-                return null;
-                */
-            }
-            return null;
+            return tag;
         }
+    }
+
+    private String bytesToHexString(byte[] src) {
+        StringBuilder builder = new StringBuilder("");
+        if (src == null || src.length <= 0) {
+            return "";
+        }
+
+        char[] buffer = new char[2];
+        for (byte b : src) {
+            buffer[0] = Character.forDigit((b >>> 4) & 0x0F, 16);
+            buffer[1] = Character.forDigit(b & 0x0F, 16);
+            builder.append(buffer);
+        }
+
+        return builder.toString();
     }
 }
