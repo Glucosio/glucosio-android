@@ -122,7 +122,7 @@
                         android:layout_weight="1">
 
                         <EditText
-                            android:id="@+id/glucose_add_date"
+                            android:id="@+id/dialog_add_date"
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:clickable="false"
@@ -140,7 +140,7 @@
                         android:layout_weight="1">
 
                         <EditText
-                            android:id="@+id/glucose_add_time"
+                            android:id="@+id/dialog_add_time"
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:clickable="false"

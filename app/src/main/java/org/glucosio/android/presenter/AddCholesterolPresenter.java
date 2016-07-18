@@ -37,18 +37,31 @@ public class AddCholesterolPresenter extends AddReadingPresenter {
 
     public void dialogOnAddButtonPressed(String time, String date, String totalCho, String LDLCho, String HDLCho) {
         if (validateEmpty(date) && validateEmpty(time) && validateEmpty(totalCho) && validateEmpty(LDLCho) && validateEmpty(HDLCho)) {
-
-            Date finalDateTime = getCurrentTime();
-            int totalChoFinal = Integer.parseInt(totalCho);
-            int LDLChoFinal = Integer.parseInt(LDLCho);
-            int HDLChoFinal = Integer.parseInt(HDLCho);
-
-            CholesterolReading cReading = new CholesterolReading(totalChoFinal, LDLChoFinal, HDLChoFinal, finalDateTime);
+            CholesterolReading cReading = generateCholesterolReading(totalCho, LDLCho, HDLCho);
             dB.addCholesterolReading(cReading);
             activity.finishActivity();
         } else {
             activity.showErrorMessage();
         }
+    }
+
+    public void dialogOnAddButtonPressed(String time, String date, String totalCho, String LDLCho, String HDLCho, long oldId) {
+        if (validateEmpty(date) && validateEmpty(time) && validateEmpty(totalCho) && validateEmpty(LDLCho) && validateEmpty(HDLCho)) {
+            CholesterolReading cReading = generateCholesterolReading(totalCho, LDLCho, HDLCho);
+            dB.editCholesterolReading(oldId, cReading);
+            activity.finishActivity();
+        } else {
+            activity.showErrorMessage();
+
+        }
+    }
+
+    private CholesterolReading generateCholesterolReading(String totalCho, String LDLCho, String HDLCho) {
+        Date finalDateTime = getReadingTime();
+        int totalChoFinal = Integer.parseInt(totalCho);
+        int LDLChoFinal = Integer.parseInt(LDLCho);
+        int HDLChoFinal = Integer.parseInt(HDLCho);
+        return new CholesterolReading(totalChoFinal, LDLChoFinal, HDLChoFinal, finalDateTime);
     }
 
     private boolean validateEmpty(String time) {
@@ -58,5 +71,9 @@ public class AddCholesterolPresenter extends AddReadingPresenter {
 
     public String getUnitMeasuerement() {
         return dB.getUser(1).getPreferred_unit();
+    }
+
+    public CholesterolReading getCholesterolReadingById(Long id) {
+        return dB.getCholesterolReading(id);
     }
 }

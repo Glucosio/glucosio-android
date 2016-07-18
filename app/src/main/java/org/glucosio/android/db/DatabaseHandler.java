@@ -642,6 +642,13 @@ public class DatabaseHandler {
         realm.commitTransaction();
     }
 
+    public void editPressureReading(long oldId, PressureReading reading) {
+        // First delete the old reading
+        deletePressureReading(getPressureReading(oldId));
+        // then save the new one
+        addPressureReading(reading);
+    }
+
     public ArrayList<PressureReading> getPressureReadings() {
         RealmResults<PressureReading> results =
                 realm.where(PressureReading.class)
@@ -806,6 +813,13 @@ public class DatabaseHandler {
         reading.setId(getNextKey("cholesterol"));
         realm.copyToRealm(reading);
         realm.commitTransaction();
+    }
+
+    public void editCholesterolReading(long oldId, CholesterolReading reading) {
+        // First delete the old reading
+        deleteCholesterolReading(getCholesterolReading(oldId));
+        // then save the new one
+        addCholesterolReading(reading);
     }
 
     public CholesterolReading getCholesterolReading(long id) {

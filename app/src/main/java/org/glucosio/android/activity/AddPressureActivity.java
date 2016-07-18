@@ -35,6 +35,7 @@ import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import org.glucosio.android.R;
+import org.glucosio.android.db.PressureReading;
 import org.glucosio.android.presenter.AddPressurePresenter;
 import org.glucosio.android.tools.AnimationTools;
 import org.glucosio.android.tools.FormatDateTime;
@@ -52,6 +53,8 @@ public class AddPressureActivity extends AddReadingActivity {
     private TextView maxPressureTextView;
     private int pagerPosition;
     private Runnable fabAnimationRunnable;
+    private long editId = 0;
+    private boolean editing = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,13 +69,15 @@ public class AddPressureActivity extends AddReadingActivity {
         }
 
         Bundle b = getIntent().getExtras();
-        if (b!=null) {
+        if (b != null) {
             pagerPosition = b.getInt("pager");
+            editId = b.getLong("edit_id");
+            editing = b.getBoolean("editing");
         }
 
         AddPressurePresenter presenter = new AddPressurePresenter(this);
         setPresenter(presenter);
-        presenter.setCurrentTime();
+        presenter.setReadingTimeNow();
 
         doneFAB = (FloatingActionButton) findViewById(R.id.done_fab);
         addTimeTextView = (TextView) findViewById(R.id.dialog_add_time);
@@ -80,9 +85,30 @@ public class AddPressureActivity extends AddReadingActivity {
         minPressureTextView = (TextView) findViewById(R.id.pressure_add_value_min);
         maxPressureTextView = (TextView) findViewById(R.id.pressure_add_value_max);
 
-        FormatDateTime formatDateTime = new FormatDateTime(getApplicationContext());
-        addDateTextView.setText(formatDateTime.getCurrentDate());
-        addTimeTextView.setText(formatDateTime.getCurrentTime());
+        // Initialize value
+        if (editing) {
+            // set edit title
+            setTitle(R.string.title_activity_add_pressure_edit);
+            PressureReading readingToEdit = presenter.getPressureReadingById(editId);
+
+            // set reading values
+            minPressureTextView.setText(readingToEdit.getMinReading() + "");
+            maxPressureTextView.setText(readingToEdit.getMaxReading() + "");
+
+            // set reading time
+            FormatDateTime dateTime = new FormatDateTime(getApplicationContext());
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(readingToEdit.getCreated());
+            addDateTextView.setText(dateTime.getDate(cal));
+            addTimeTextView.setText(dateTime.getTime(cal));
+            presenter.setReadingTime(readingToEdit.getCreated());
+        } else {
+            FormatDateTime formatDateTime = new FormatDateTime(getApplicationContext());
+            addDateTextView.setText(formatDateTime.getCurrentDate());
+            addTimeTextView.setText(formatDateTime.getCurrentTime());
+        }
+
+        // set Listenner
         addDateTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,7 +123,6 @@ public class AddPressureActivity extends AddReadingActivity {
                 dpd.setMaxDate(now);
             }
         });
-
         addTimeTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -129,8 +154,14 @@ public class AddPressureActivity extends AddReadingActivity {
 
     private void dialogOnAddButtonPressed() {
         AddPressurePresenter presenter = (AddPressurePresenter) getPresenter();
-        presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
-                addDateTextView.getText().toString(), minPressureTextView.getText().toString(), maxPressureTextView.getText().toString());
+        // If an id is passed, open the activity in edit mode
+        if (editing) {
+            presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
+                    addDateTextView.getText().toString(), minPressureTextView.getText().toString(), maxPressureTextView.getText().toString(), editId);
+        } else {
+            presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
+                    addDateTextView.getText().toString(), minPressureTextView.getText().toString(), maxPressureTextView.getText().toString());
+        }
     }
 
     public void showErrorMessage() {

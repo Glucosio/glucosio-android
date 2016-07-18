@@ -61,7 +61,7 @@ public class AddA1CPresenter extends AddReadingPresenter {
     }
 
     private HB1ACReading generateHB1ACReading (String reading) {
-        Date finalDateTime = getCurrentTime();
+        Date finalDateTime = getReadingTime();
 
         double finalReading;
         if ("percentage".equals(getA1CUnitMeasuerement())) {

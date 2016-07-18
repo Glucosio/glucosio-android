@@ -79,7 +79,7 @@ public class AddWeightActivity extends AddReadingActivity {
 
         AddWeightPresenter presenter = new AddWeightPresenter(this);
         this.setPresenter(presenter);
-        presenter.setCurrentTime();
+        presenter.setReadingTimeNow();
 
         doneFAB = (FloatingActionButton) findViewById(R.id.done_fab);
         addTimeTextView = (TextView) findViewById(R.id.dialog_add_time);

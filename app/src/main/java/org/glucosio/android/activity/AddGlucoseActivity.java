@@ -50,13 +50,15 @@ import org.glucosio.android.tools.SplitDateTime;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class AddGlucoseActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
+public class AddGlucoseActivity extends AddReadingActivity {
 
-    private AddGlucosePresenter presenter;
     private FloatingActionButton doneFAB;
     private TextView addTimeTextView;
     private TextView addDateTextView;
@@ -88,20 +90,19 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
             editId = b.getLong("edit_id");
         }
 
-        presenter = new AddGlucosePresenter(this);
+        AddGlucosePresenter presenter = new AddGlucosePresenter(this);
+        setPresenter(presenter);
+        presenter.setReadingTimeNow();
 
         readingTypeSpinner = (LabelledSpinner) findViewById(R.id.glucose_add_reading_type);
         readingTypeSpinner.setItemsArray(R.array.dialog_add_measured_list);
 
         doneFAB = (FloatingActionButton) findViewById(R.id.done_fab);
-        addTimeTextView = (TextView) findViewById(R.id.glucose_add_time);
-        addDateTextView = (TextView) findViewById(R.id.glucose_add_date);
+        addTimeTextView = (TextView) findViewById(R.id.dialog_add_time);
+        addDateTextView = (TextView) findViewById(R.id.dialog_add_date);
         readingTextView = (TextView) findViewById(R.id.glucose_add_concentration);
         typeCustomEditText = (EditText) findViewById(R.id.glucose_type_custom);
         notesEditText = (EditText) findViewById(R.id.glucose_add_notes);
-
-        presenter.updateSpinnerTypeTime();
-        this.isCustomType = false;
 
         readingTypeSpinner.setOnItemChosenListener(new LabelledSpinner.OnItemChosenListener() {
             @Override
@@ -187,6 +188,17 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
             presenter.setReadingMinute(splitDateTime.getMinute());
             presenter.setReadingYear(splitDateTime.getYear());
             presenter.setReadingMonth(splitDateTime.getMonth());
+            // retrive spinner reading to set the registered one
+            String measuredTypeText = readingToEdit.getReading_type();
+            int mesuredId = presenter.retriveSpinnerID(measuredTypeText, Arrays.asList(getResources().getStringArray(R.array.dialog_add_measured_list)));
+            readingTypeSpinner.setSelection(mesuredId);
+            this.isCustomType = mesuredId == 11; // if other, it a custom type
+            if(this.isCustomType) {
+                typeCustomEditText.setText(measuredTypeText);
+            }
+        } else {
+            presenter.updateSpinnerTypeTime();
+            this.isCustomType = false;
         }
 
         fabAnimationRunnable = new Runnable() {
@@ -205,6 +217,7 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
     }
 
     private void dialogOnAddButtonPressed() {
+        AddGlucosePresenter presenter = (AddGlucosePresenter) getPresenter();
         boolean isEdited = editId!=0;
         if (isCustomType) {
             if (isEdited) {
@@ -245,6 +258,7 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
     }
 
     private void updateSpinnerTypeHour(int hour) {
+        AddGlucosePresenter presenter = (AddGlucosePresenter) getPresenter();
         readingTypeSpinner.setSelection(presenter.hourToSpinnerType(hour));
     }
 
@@ -260,32 +274,9 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
 
     @Override
     public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int seconds) {
-        TextView addTime = (TextView) findViewById(R.id.glucose_add_time);
+        super.onTimeSet(view, hourOfDay, minute, seconds);
         DecimalFormat df = new DecimalFormat("00");
-
-        presenter.setReadingHour(df.format(hourOfDay));
-        presenter.setReadingMinute(df.format(minute));
-
-        Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.HOUR_OF_DAY, hourOfDay);
-        cal.set(Calendar.MINUTE, minute);
-        FormatDateTime formatDateTime = new FormatDateTime(getApplicationContext());
-        addTime.setText(formatDateTime.getTime(cal));
         updateSpinnerTypeHour(Integer.parseInt(df.format(hourOfDay)));
-    }
-
-    @Override
-    public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-        TextView addDate = (TextView) findViewById(R.id.glucose_add_date);
-        DecimalFormat df = new DecimalFormat("00");
-
-        presenter.setReadingYear(year + "");
-        presenter.setReadingMonth(df.format(monthOfYear + 1));
-        presenter.setReadingDay(df.format(dayOfMonth));
-
-        FormatDateTime formatDateTime = new FormatDateTime(getApplicationContext());
-        String date = presenter.getReadingYear() + "-" + presenter.getReadingMonth() + "-" + dayOfMonth;
-        addDate.setText(formatDateTime.convertDate(date));
     }
 
     @Override

@@ -62,7 +62,7 @@ public class AddWeightPresenter extends AddReadingPresenter {
     }
 
     private WeightReading generateWeightReading (String reading) {
-        Date finalDateTime = getCurrentTime();
+        Date finalDateTime = getReadingTime();
 
         int finalReading;
 

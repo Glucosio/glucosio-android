@@ -76,7 +76,7 @@ public class AddA1CActivity extends AddReadingActivity {
 
         setPresenter(new AddA1CPresenter(this));
         AddA1CPresenter presenter = (AddA1CPresenter) getPresenter();
-        presenter.setCurrentTime();
+        presenter.setReadingTimeNow();
 
         doneFAB = (FloatingActionButton) findViewById(R.id.done_fab);
         addTimeTextView = (TextView) findViewById(R.id.dialog_add_time);

@@ -60,7 +60,7 @@ public class AddKetonePresenter extends AddReadingPresenter {
     }
 
     private KetoneReading generateKetoneReading(String reading) {
-        Date finalDateTime = getCurrentTime();
+        Date finalDateTime = getReadingTime();
         double finalReading = Double.parseDouble(reading);
         return new KetoneReading(finalReading, finalDateTime);
     }

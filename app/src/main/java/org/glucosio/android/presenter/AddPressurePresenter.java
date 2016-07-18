@@ -38,16 +38,29 @@ public class AddPressurePresenter extends AddReadingPresenter {
 
     public void dialogOnAddButtonPressed(String time, String date, String minReading, String maxReading) {
         if (validateEmpty(date) && validateEmpty(time) && validateEmpty(minReading) && validateEmpty(maxReading)) {
-            Date finalDateTime = getCurrentTime();
-            int minFinalReading = Integer.parseInt(minReading);
-            int maxFinalReading = Integer.parseInt(maxReading);
-            PressureReading pReading = new PressureReading(minFinalReading, maxFinalReading, finalDateTime);
-
+            PressureReading pReading = generatePressureReading(minReading, maxReading);
             dB.addPressureReading(pReading);
             activity.finishActivity();
         } else {
             activity.showErrorMessage();
         }
+    }
+
+    public void dialogOnAddButtonPressed(String time, String date, String minReading, String maxReading, long oldId) {
+        if (validateEmpty(date) && validateEmpty(time) && validateEmpty(minReading) && validateEmpty(maxReading)) {
+            PressureReading pReading = generatePressureReading(minReading, maxReading);
+            dB.editPressureReading(oldId, pReading);
+            activity.finishActivity();
+        } else {
+            activity.showErrorMessage();
+        }
+    }
+
+    private PressureReading generatePressureReading(String minReading, String maxReading) {
+        Date finalDateTime = getReadingTime();
+        int minFinalReading = Integer.parseInt(minReading);
+        int maxFinalReading = Integer.parseInt(maxReading);
+        return new PressureReading(minFinalReading, maxFinalReading, finalDateTime);
     }
 
     private boolean validateEmpty(String time) {
@@ -58,5 +71,9 @@ public class AddPressurePresenter extends AddReadingPresenter {
 
     public String getUnitMeasuerement() {
         return dB.getUser(1).getPreferred_unit();
+    }
+
+    public PressureReading getPressureReadingById(long editId) {
+        return dB.getPressureReading(editId);
     }
 }

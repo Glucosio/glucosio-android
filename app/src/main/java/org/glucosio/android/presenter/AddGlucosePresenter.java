@@ -33,6 +33,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class AddGlucosePresenter extends AddReadingPresenter {
     private DatabaseHandler dB;
@@ -46,7 +47,7 @@ public class AddGlucosePresenter extends AddReadingPresenter {
     }
 
     public void updateSpinnerTypeTime() {
-        setCurrentTime();
+        setReadingTimeNow();
         activity.updateSpinnerTypeTime(timeToSpinnerType());
     }
 
@@ -67,7 +68,7 @@ public class AddGlucosePresenter extends AddReadingPresenter {
 
     public void dialogOnAddButtonPressed(String time, String date, String reading, String type, String notes) {
         if (validateDate(date) && validateTime(time) && validateReading(reading) && validateType(type)) {
-            Date finalDateTime = getCurrentTime();
+            Date finalDateTime = getReadingTime();
             boolean isReadingAdded;
             if ("mg/dL".equals(getUnitMeasuerement())) {
                 int finalReading = Integer.parseInt(reading);
@@ -92,7 +93,7 @@ public class AddGlucosePresenter extends AddReadingPresenter {
 
     public void dialogOnAddButtonPressed(String time, String date, String reading, String type, String notes, long oldId) {
         if (validateDate(date) && validateTime(time) && validateReading(reading) && validateType(type)) {
-            Date finalDateTime = getCurrentTime();
+            Date finalDateTime = getReadingTime();
             boolean isReadingAdded;
             if ("mg/dL".equals(getUnitMeasuerement())) {
                 int finalReading = Integer.parseInt(reading);
@@ -113,6 +114,20 @@ public class AddGlucosePresenter extends AddReadingPresenter {
         } else {
             activity.showErrorMessage();
         }
+    }
+
+    public int retriveSpinnerID (String measuredTypeText, List<String> measuredTypelist) {
+        int mesuredId = 0;
+        boolean isCustomType = true;
+        for (String measuredType : measuredTypelist) {
+            if (measuredType.equals(measuredTypeText)) {
+                isCustomType = false;
+                break;
+            }
+            mesuredId++;
+        }
+        // if it's a custom type, type = other(12)
+        return isCustomType ? 11 : mesuredId;
     }
 
     private boolean validateTime(String time) {

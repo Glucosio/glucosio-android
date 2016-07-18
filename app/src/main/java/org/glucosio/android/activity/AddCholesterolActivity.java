@@ -35,10 +35,13 @@ import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import org.glucosio.android.R;
+import org.glucosio.android.db.CholesterolReading;
 import org.glucosio.android.presenter.AddCholesterolPresenter;
 import org.glucosio.android.tools.AnimationTools;
 import org.glucosio.android.tools.FormatDateTime;
+import org.glucosio.android.tools.SplitDateTime;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
@@ -53,6 +56,8 @@ public class AddCholesterolActivity extends AddReadingActivity {
     private TextView HDLChoTextView;
     private int pagerPosition;
     private Runnable fabAnimationRunnable;
+    private long editId = 0;
+    private boolean editing = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,11 +74,13 @@ public class AddCholesterolActivity extends AddReadingActivity {
         Bundle b = getIntent().getExtras();
         if (b!=null) {
             pagerPosition = b.getInt("pager");
+            editId = b.getLong("edit_id");
+            editing = b.getBoolean("editing");
         }
 
         AddCholesterolPresenter presenter = new AddCholesterolPresenter(this);
         setPresenter(presenter);
-        presenter.setCurrentTime();
+        presenter.setReadingTimeNow();
 
         doneFAB = (FloatingActionButton) findViewById(R.id.done_fab);
         addTimeTextView = (TextView) findViewById(R.id.dialog_add_time);
@@ -119,6 +126,26 @@ public class AddCholesterolActivity extends AddReadingActivity {
                 dialogOnAddButtonPressed();
             }
         });
+
+        // If an id is passed, open the activity in edit mode
+        if (editing){
+            FormatDateTime dateTime = new FormatDateTime(getApplicationContext());
+            setTitle(R.string.title_activity_add_cholesterol_edit);
+            CholesterolReading readingToEdit = presenter.getCholesterolReadingById(editId);
+            totalChoTextView.setText(readingToEdit.getTotalReading()+"");
+            LDLChoTextView.setText(readingToEdit.getLDLReading()+"");
+            HDLChoTextView.setText(readingToEdit.getHDLReading()+"");
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(readingToEdit.getCreated());
+            addDateTextView.setText(dateTime.getDate(cal));
+            addTimeTextView.setText(dateTime.getTime(cal));
+            SplitDateTime splitDateTime = new SplitDateTime(readingToEdit.getCreated(), new SimpleDateFormat("yyyy-MM-dd"));
+            presenter.setReadingDay(splitDateTime.getDay());
+            presenter.setReadingHour(splitDateTime.getHour());
+            presenter.setReadingMinute(splitDateTime.getMinute());
+            presenter.setReadingYear(splitDateTime.getYear());
+            presenter.setReadingMonth(splitDateTime.getMonth());
+        }
         fabAnimationRunnable = new Runnable() {
             @Override
             public void run() {
@@ -131,8 +158,13 @@ public class AddCholesterolActivity extends AddReadingActivity {
 
     private void dialogOnAddButtonPressed() {
         AddCholesterolPresenter presenter = (AddCholesterolPresenter) getPresenter();
-        presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
-                addDateTextView.getText().toString(), totalChoTextView.getText().toString(), LDLChoTextView.getText().toString(), HDLChoTextView.getText().toString());
+        if (editing) {
+            presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
+                    addDateTextView.getText().toString(), totalChoTextView.getText().toString(), LDLChoTextView.getText().toString(), HDLChoTextView.getText().toString(), editId);
+        } else {
+            presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
+                    addDateTextView.getText().toString(), totalChoTextView.getText().toString(), LDLChoTextView.getText().toString(), HDLChoTextView.getText().toString());
+        }
     }
 
     public void showErrorMessage() {
