@@ -30,6 +30,9 @@ import android.nfc.tech.NfcV;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.glucosio.android.R;
@@ -37,18 +40,19 @@ import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.object.PredictionData;
 import org.glucosio.android.object.ReadingData;
 import org.glucosio.android.tools.AlgorithmUtil;
+import org.glucosio.android.tools.AnimationTools;
 
 import java.io.IOException;
 import java.util.Arrays;
 
 public class FreestyleLibre extends Activity {
 
-    public static final String MIME_TEXT_PLAIN = "text/plain";
-    final protected static char[] hexArray = "0123456789ABCDEF".toCharArray();
-    private static final String TAG = "FreestyleLibre";
+    private static final String TAG = "Glucosio:FreestyleLibre";
     private NfcAdapter mNfcAdapter;
-    private String lectura, buffer;
-    private float currentGlucose = 0f;
+    private TextView readingTextView;
+    private TextView unitTextView;
+    private Button historyButton;
+    private Button saveButton;
 
     /**
      * @param activity The corresponding {@link Activity} requesting the foreground dispatch.
@@ -87,6 +91,17 @@ public class FreestyleLibre extends Activity {
         setContentView(R.layout.activity_freestyle_libre);
 
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
+        readingTextView = (TextView) findViewById(R.id.activity_freestyle_textview_reading);
+        unitTextView = (TextView) findViewById(R.id.activity_freestyle_textview_unit);
+        historyButton = (Button) findViewById(R.id.activity_freestyle_button_history);
+        saveButton = (Button) findViewById(R.id.activity_freestyle_button_save);
+
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openAddGlucoseActivity();
+            }
+        });
 
         if (mNfcAdapter == null) {
             // Stop here, we definitely need NFC
@@ -150,21 +165,7 @@ public class FreestyleLibre extends Activity {
         }
     }
 
-    private void GetTime(Long minutes) {
-        Long t3 = minutes;
-        Long t4 = t3 / 1440;
-        Long t5 = t3 - (t4 * 1440);
-        Long t6 = (t5 / 60);
-        Long t7 = t5 - (t6 * 60);
-    }
-
-    private float glucoseReading(int val) {
-        // ((0x4531 & 0xFFF) / 6) - 37;
-        int bitmask = 0x0FFF;
-        return Float.valueOf(Float.valueOf((val & bitmask) / 6) - 37);
-    }
-
-    private void sendResultAndFinish() {
+    private void showReadingLayout() {
 /*        SimpleDatabase database = new SimpleDatabase(this);
         long id = database.saveMessage(mResult);
         ReadingData.TransferObject transferObject = new ReadingData.TransferObject(id, mResult);
@@ -172,13 +173,30 @@ public class FreestyleLibre extends Activity {
         WearableApi.sendMessage(mGoogleApiClient, WearableApi.GLUCOSE, new Gson().toJson(transferObject), mMessageListener);
         mMessagesBeingSent++;
         mFinishAfterSentMessages = true;*/
-        Toast.makeText(getApplicationContext(), mResult.history.get(mResult.history.size()-1).glucose(false), Toast.LENGTH_LONG).show();
 
+        // Apply values in TextViews
+        // TODO: Add check for mmol/L
+        readingTextView.setText(mResult.history.get(mResult.history.size()-1).glucose(false));
+
+        new Runnable() {
+            @Override
+            public void run() {
+                View view = findViewById(R.id.activity_freestyle_reading);
+                view.setVisibility(View.INVISIBLE);
+                AnimationTools.startCircularReveal(view);
+            }
+        }.run();
+        // Reveal ReadingLayout
+
+    }
+
+    private void openAddGlucoseActivity() {
         DatabaseHandler dB = new DatabaseHandler(getApplicationContext());
         if (dB.getUser(1) != null) {
             // Start AddGlucose Activity passing the reading value
             Intent intent = new Intent(getApplicationContext(), AddGlucoseActivity.class);
             Bundle bundle = new Bundle();
+            String currentGlucose = mResult.history.get(mResult.history.size()-1).glucose(false);
             bundle.putString("reading", currentGlucose + "");
             intent.putExtras(bundle);
             startActivity(intent);
@@ -187,7 +205,6 @@ public class FreestyleLibre extends Activity {
             Intent intent = new Intent(getApplicationContext(), HelloActivity.class);
             startActivity(intent);
         }
-
     }
 
     private class NfcVReaderTask extends AsyncTask<Tag, Void, Tag> {
@@ -200,7 +217,7 @@ public class FreestyleLibre extends Activity {
             String tagId = bytesToHexString(tag.getId());
             int attempt = 1;
             mResult = AlgorithmUtil.parseData(attempt, tagId, data);
-            sendResultAndFinish();
+            showReadingLayout();
         }
 
         @Override
