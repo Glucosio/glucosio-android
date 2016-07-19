@@ -25,7 +25,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.MenuItem;
@@ -46,14 +45,10 @@ import org.glucosio.android.presenter.AddGlucosePresenter;
 import org.glucosio.android.tools.AnimationTools;
 import org.glucosio.android.tools.FormatDateTime;
 import org.glucosio.android.tools.LabelledSpinner;
-import org.glucosio.android.tools.SplitDateTime;
 
 import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
-import java.util.List;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -182,12 +177,7 @@ public class AddGlucoseActivity extends AddReadingActivity {
             cal.setTime(readingToEdit.getCreated());
             addDateTextView.setText(dateTime.getDate(cal));
             addTimeTextView.setText(dateTime.getTime(cal));
-            SplitDateTime splitDateTime = new SplitDateTime(readingToEdit.getCreated(), new SimpleDateFormat("yyyy-MM-dd"));
-            presenter.setReadingDay(splitDateTime.getDay());
-            presenter.setReadingHour(splitDateTime.getHour());
-            presenter.setReadingMinute(splitDateTime.getMinute());
-            presenter.setReadingYear(splitDateTime.getYear());
-            presenter.setReadingMonth(splitDateTime.getMonth());
+            presenter.updateReadingSplitDateTime(readingToEdit.getCreated());
             // retrive spinner reading to set the registered one
             String measuredTypeText = readingToEdit.getReading_type();
             int mesuredId = presenter.retriveSpinnerID(measuredTypeText, Arrays.asList(getResources().getStringArray(R.array.dialog_add_measured_list)));

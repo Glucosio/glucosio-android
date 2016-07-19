@@ -101,7 +101,7 @@ public class AddPressureActivity extends AddReadingActivity {
             cal.setTime(readingToEdit.getCreated());
             addDateTextView.setText(dateTime.getDate(cal));
             addTimeTextView.setText(dateTime.getTime(cal));
-            presenter.setReadingTime(readingToEdit.getCreated());
+            presenter.updateReadingSplitDateTime(readingToEdit.getCreated());
         } else {
             FormatDateTime formatDateTime = new FormatDateTime(getApplicationContext());
             addDateTextView.setText(formatDateTime.getCurrentDate());

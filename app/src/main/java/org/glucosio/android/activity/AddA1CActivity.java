@@ -38,9 +38,7 @@ import org.glucosio.android.db.HB1ACReading;
 import org.glucosio.android.presenter.AddA1CPresenter;
 import org.glucosio.android.tools.AnimationTools;
 import org.glucosio.android.tools.FormatDateTime;
-import org.glucosio.android.tools.SplitDateTime;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class AddA1CActivity extends AddReadingActivity {
@@ -143,12 +141,7 @@ public class AddA1CActivity extends AddReadingActivity {
             cal.setTime(readingToEdit.getCreated());
             addDateTextView.setText(dateTime.getDate(cal));
             addTimeTextView.setText(dateTime.getTime(cal));
-            SplitDateTime splitDateTime = new SplitDateTime(readingToEdit.getCreated(), new SimpleDateFormat("yyyy-MM-dd"));
-            presenter.setReadingDay(splitDateTime.getDay());
-            presenter.setReadingHour(splitDateTime.getHour());
-            presenter.setReadingMinute(splitDateTime.getMinute());
-            presenter.setReadingYear(splitDateTime.getYear());
-            presenter.setReadingMonth(splitDateTime.getMonth());
+            presenter.updateReadingSplitDateTime(readingToEdit.getCreated());
         }
 
         doneFAB.postDelayed(fabAnimationRunnable, 600);
