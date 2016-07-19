@@ -37,7 +37,7 @@ public class AddPressurePresenter extends AddReadingPresenter {
     }
 
     public void dialogOnAddButtonPressed(String time, String date, String minReading, String maxReading) {
-        if (validateEmpty(date) && validateEmpty(time) && validateEmpty(minReading) && validateEmpty(maxReading)) {
+        if (validateDate(date) && validateTime(time) && validatePressure(minReading) && validatePressure(maxReading)) {
             PressureReading pReading = generatePressureReading(minReading, maxReading);
             dB.addPressureReading(pReading);
             activity.finishActivity();
@@ -47,7 +47,7 @@ public class AddPressurePresenter extends AddReadingPresenter {
     }
 
     public void dialogOnAddButtonPressed(String time, String date, String minReading, String maxReading, long oldId) {
-        if (validateEmpty(date) && validateEmpty(time) && validateEmpty(minReading) && validateEmpty(maxReading)) {
+        if (validateDate(date) && validateTime(time) && validatePressure(minReading) && validatePressure(maxReading)) {
             PressureReading pReading = generatePressureReading(minReading, maxReading);
             dB.editPressureReading(oldId, pReading);
             activity.finishActivity();
@@ -63,10 +63,6 @@ public class AddPressurePresenter extends AddReadingPresenter {
         return new PressureReading(minFinalReading, maxFinalReading, finalDateTime);
     }
 
-    private boolean validateEmpty(String time) {
-        return !time.equals("");
-    }
-
     // Getters and Setters
 
     public String getUnitMeasuerement() {
@@ -75,5 +71,10 @@ public class AddPressurePresenter extends AddReadingPresenter {
 
     public PressureReading getPressureReadingById(long editId) {
         return dB.getPressureReading(editId);
+    }
+
+    // Validator
+    private boolean validatePressure(String reading) {
+        return validateText(reading);
     }
 }

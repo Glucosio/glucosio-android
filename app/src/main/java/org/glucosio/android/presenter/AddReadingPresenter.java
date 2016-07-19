@@ -1,5 +1,7 @@
 package org.glucosio.android.presenter;
 
+import android.text.TextUtils;
+
 import org.glucosio.android.tools.SplitDateTime;
 
 import java.text.DateFormat;
@@ -73,5 +75,20 @@ public class AddReadingPresenter {
 
     public void setReadingMinute(String readingMinute) {
         this.readingMinute = readingMinute;
+    }
+
+    protected boolean validateText(String text) {
+        return !TextUtils.isEmpty(text);
+    }
+
+    // Validator
+    protected boolean validateTime(String time) {
+        //TODO check if it can be empty or not valid in other way in different sdk
+        return !TextUtils.isEmpty(time);
+    }
+
+    protected boolean validateDate(String date) {
+        //TODO check if it can be empty or not valid in other way in different sdk
+        return !TextUtils.isEmpty(date);
     }
 }

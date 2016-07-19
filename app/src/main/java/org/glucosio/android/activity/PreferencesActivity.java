@@ -38,6 +38,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputFilter;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -263,7 +264,7 @@ public class PreferencesActivity extends AppCompatActivity {
             minRangePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    if (newValue.toString().trim().equals("")) {
+                    if (TextUtils.isEmpty(newValue.toString().trim())) {
                         return false;
                     }
                     updatedUser.setCustom_range_min(Integer.parseInt(newValue.toString()));
@@ -274,7 +275,7 @@ public class PreferencesActivity extends AppCompatActivity {
             maxRangePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    if (newValue.toString().trim().equals("")) {
+                    if (TextUtils.isEmpty(newValue.toString().trim())) {
                         return false;
                     }
                     updatedUser.setCustom_range_max(Integer.parseInt(newValue.toString()));

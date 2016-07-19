@@ -36,7 +36,7 @@ public class AddKetonePresenter extends AddReadingPresenter {
     }
 
     public void dialogOnAddButtonPressed(String time, String date, String reading) {
-        if (validateEmpty(date) && validateEmpty(time) && validateEmpty(reading)) {
+        if (validateDate(date) && validateTime(time) && validateKetone(reading)) {
 
             KetoneReading kReading = generateKetoneReading(reading);
             dB.addKetoneReading(kReading);
@@ -48,7 +48,7 @@ public class AddKetonePresenter extends AddReadingPresenter {
     }
 
     public void dialogOnAddButtonPressed(String time, String date, String reading, long oldId) {
-        if (validateEmpty(date) && validateEmpty(time) && validateEmpty(reading)) {
+        if (validateDate(date) && validateTime(time) && validateText(reading)) {
 
             KetoneReading kReading = generateKetoneReading(reading);
             dB.editKetoneReading(oldId, kReading);
@@ -65,17 +65,16 @@ public class AddKetonePresenter extends AddReadingPresenter {
         return new KetoneReading(finalReading, finalDateTime);
     }
 
-    private boolean validateEmpty(String time) {
-        return !time.equals("");
-    }
-
-    // Getters and Setters
-
     public String getUnitMeasuerement() {
         return dB.getUser(1).getPreferred_unit();
     }
 
     public KetoneReading getKetoneReadingById(Long id) {
         return dB.getKetoneReadingById(id);
+    }
+
+    // Validator
+    private boolean validateKetone(String reading) {
+        return validateText(reading);
     }
 }

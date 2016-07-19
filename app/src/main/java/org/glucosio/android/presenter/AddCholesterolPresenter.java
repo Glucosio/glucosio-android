@@ -36,7 +36,7 @@ public class AddCholesterolPresenter extends AddReadingPresenter {
     }
 
     public void dialogOnAddButtonPressed(String time, String date, String totalCho, String LDLCho, String HDLCho) {
-        if (validateEmpty(date) && validateEmpty(time) && validateEmpty(totalCho) && validateEmpty(LDLCho) && validateEmpty(HDLCho)) {
+        if (validateDate(date) && validateTime(time) && validateCholesterol(totalCho) && validateCholesterol(LDLCho) && validateCholesterol(HDLCho)) {
             CholesterolReading cReading = generateCholesterolReading(totalCho, LDLCho, HDLCho);
             dB.addCholesterolReading(cReading);
             activity.finishActivity();
@@ -46,7 +46,7 @@ public class AddCholesterolPresenter extends AddReadingPresenter {
     }
 
     public void dialogOnAddButtonPressed(String time, String date, String totalCho, String LDLCho, String HDLCho, long oldId) {
-        if (validateEmpty(date) && validateEmpty(time) && validateEmpty(totalCho) && validateEmpty(LDLCho) && validateEmpty(HDLCho)) {
+        if (validateDate(date) && validateTime(time) && validateCholesterol(totalCho) && validateCholesterol(LDLCho) && validateCholesterol(HDLCho)) {
             CholesterolReading cReading = generateCholesterolReading(totalCho, LDLCho, HDLCho);
             dB.editCholesterolReading(oldId, cReading);
             activity.finishActivity();
@@ -64,16 +64,16 @@ public class AddCholesterolPresenter extends AddReadingPresenter {
         return new CholesterolReading(totalChoFinal, LDLChoFinal, HDLChoFinal, finalDateTime);
     }
 
-    private boolean validateEmpty(String time) {
-        return !time.equals("");
-    }
-    // Getters and Setters
-
     public String getUnitMeasuerement() {
         return dB.getUser(1).getPreferred_unit();
     }
 
     public CholesterolReading getCholesterolReadingById(Long id) {
         return dB.getCholesterolReading(id);
+    }
+
+    // Validator
+    private boolean validateCholesterol(String reading) {
+        return validateText(reading);
     }
 }

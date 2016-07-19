@@ -37,7 +37,7 @@ public class AddA1CPresenter extends AddReadingPresenter {
     }
 
     public void dialogOnAddButtonPressed(String time, String date, String reading) {
-        if (validateEmpty(date) && validateEmpty(time) && validateEmpty(reading)) {
+        if (validateDate(date) && validateTime(time) && validateA1C(reading)) {
 
             HB1ACReading hReading = generateHB1ACReading (reading);
             dB.addHB1ACReading(hReading);
@@ -49,7 +49,7 @@ public class AddA1CPresenter extends AddReadingPresenter {
     }
 
     public void dialogOnAddButtonPressed(String time, String date, String reading, long oldId) {
-        if (validateEmpty(date) && validateEmpty(time) && validateEmpty(reading)) {
+        if (validateDate(date) && validateTime(time) && validateText(reading)) {
 
             HB1ACReading hReading = generateHB1ACReading (reading);
             dB.editHB1ACReading(oldId, hReading);
@@ -74,17 +74,16 @@ public class AddA1CPresenter extends AddReadingPresenter {
         return new HB1ACReading(finalReading, finalDateTime);
     }
 
-    private boolean validateEmpty(String time) {
-        return !"".equals(time);
-    }
-
-    // Getters and Setters
-
     public String getA1CUnitMeasuerement() {
         return dB.getUser(1).getPreferred_unit_a1c();
     }
 
     public HB1ACReading getHB1ACReadingById(Long id) {
         return dB.getHB1ACReadingById(id);
+    }
+
+    // Validator
+    private boolean validateA1C(String reading) {
+        return validateText(reading);
     }
 }

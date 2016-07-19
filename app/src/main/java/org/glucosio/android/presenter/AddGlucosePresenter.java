@@ -67,7 +67,7 @@ public class AddGlucosePresenter extends AddReadingPresenter {
     }
 
     public void dialogOnAddButtonPressed(String time, String date, String reading, String type, String notes) {
-        if (validateDate(date) && validateTime(time) && validateReading(reading) && validateType(type)) {
+        if (validateDate(date) && validateTime(time) && validateGlucose(reading) && validateType(type)) {
             Date finalDateTime = getReadingTime();
             boolean isReadingAdded;
             if ("mg/dL".equals(getUnitMeasuerement())) {
@@ -92,7 +92,7 @@ public class AddGlucosePresenter extends AddReadingPresenter {
     }
 
     public void dialogOnAddButtonPressed(String time, String date, String reading, String type, String notes, long oldId) {
-        if (validateDate(date) && validateTime(time) && validateReading(reading) && validateType(type)) {
+        if (validateDate(date) && validateTime(time) && validateGlucose(reading) && validateType(type)) {
             Date finalDateTime = getReadingTime();
             boolean isReadingAdded;
             if ("mg/dL".equals(getUnitMeasuerement())) {
@@ -130,20 +130,17 @@ public class AddGlucosePresenter extends AddReadingPresenter {
         return isCustomType ? 11 : mesuredId;
     }
 
-    private boolean validateTime(String time) {
-        return !"".equals(time);
+    public String getUnitMeasuerement() {
+        return dB.getUser(1).getPreferred_unit();
     }
 
-    private boolean validateDate(String date) {
-        return !"".equals(date);
+    public GlucoseReading getGlucoseReadingById(Long id) {
+        return dB.getGlucoseReadingById(id);
     }
 
-    private boolean validateType(String type) {
-        return !"".equals(type);
-    }
-
-    private boolean validateReading(String reading) {
-        if (!reading.equals("")) {
+    // Validator
+    private boolean validateGlucose(String reading) {
+        if (validateText(reading)) {
             if ("mg/dL".equals(getUnitMeasuerement())) {
                 // We store data in db in mg/dl
                 try {
@@ -181,11 +178,7 @@ public class AddGlucosePresenter extends AddReadingPresenter {
         }
     }
 
-    public String getUnitMeasuerement() {
-        return dB.getUser(1).getPreferred_unit();
-    }
-
-    public GlucoseReading getGlucoseReadingById(Long id) {
-        return dB.getGlucoseReadingById(id);
+    private boolean validateType(String type) {
+        return validateText(type);
     }
 }

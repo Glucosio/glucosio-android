@@ -38,7 +38,7 @@ public class AddWeightPresenter extends AddReadingPresenter {
     }
 
     public void dialogOnAddButtonPressed(String time, String date, String reading) {
-        if (validateEmpty(date) && validateEmpty(time) && validateEmpty(reading)) {
+        if (validateDate(date) && validateTime(time) && validateWeight(reading)) {
 
             WeightReading wReading = generateWeightReading(reading);
             dB.addWeightReading(wReading);
@@ -50,7 +50,7 @@ public class AddWeightPresenter extends AddReadingPresenter {
     }
 
     public void dialogOnAddButtonPressed(String time, String date, String reading, long oldId) {
-        if (validateEmpty(date) && validateEmpty(time) && validateEmpty(reading)) {
+        if (validateDate(date) && validateTime(time) && validateWeight(reading)) {
 
             WeightReading wReading = generateWeightReading(reading);
             dB.editWeightReading(oldId, wReading);
@@ -76,10 +76,6 @@ public class AddWeightPresenter extends AddReadingPresenter {
         return new WeightReading(finalReading, finalDateTime);
     }
 
-    private boolean validateEmpty(String time) {
-        return !time.equals("");
-    }
-
     // Getters and Setters
 
     public String getWeightUnitMeasuerement() {
@@ -88,6 +84,11 @@ public class AddWeightPresenter extends AddReadingPresenter {
 
     public WeightReading getWeightReadingById(Long id) {
         return dB.getWeightReadingById(id);
+    }
+
+    // Validator
+    private boolean validateWeight(String reading) {
+        return validateText(reading);
     }
 
 }
