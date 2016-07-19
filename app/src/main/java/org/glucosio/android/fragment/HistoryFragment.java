@@ -44,6 +44,7 @@ import android.widget.TextView;
 
 import org.glucosio.android.R;
 import org.glucosio.android.activity.AddGlucoseActivity;
+import org.glucosio.android.activity.AddWeightActivity;
 import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.adapter.HistoryAdapter;
 import org.glucosio.android.listener.RecyclerItemClickListener;
@@ -134,7 +135,11 @@ public class HistoryFragment extends Fragment {
 
             @Override
             public void onItemLongClick(final View view, final int position) {
-                showBottomSheetDialog(view, position);
+                int historyTypePosition = (int) historySpinner.getSelectedItemId();
+                // if touch Glucose or weight item
+                if (historyTypePosition == 0 || historyTypePosition == 5) {
+                    showBottomSheetDialog(view, position);
+                }
             }
         }));
 
@@ -159,8 +164,21 @@ public class HistoryFragment extends Fragment {
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), AddGlucoseActivity.class);
+                int historyTypePosition = (int) historySpinner.getSelectedItemId();
+                Intent intent;
+                switch(historyTypePosition) {
+                    // Weight
+                    case 5 :
+                        intent = new Intent(getActivity(), AddWeightActivity.class);
+                        break;
+                    // Glucose
+                    default:
+                        intent = new Intent(getActivity(), AddGlucoseActivity.class);
+                        break;
+                }
+
                 intent.putExtra("edit_id", Long.parseLong(idTextView.getText().toString()));
+                intent.putExtra("editing", true);
                 startActivity(intent);
                 mBottomSheetDialog.dismiss();
                 getActivity().finish();
