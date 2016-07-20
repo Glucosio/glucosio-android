@@ -50,10 +50,7 @@ public class AddKetoneActivity extends AddReadingActivity {
     private TextView addTimeTextView;
     private TextView addDateTextView;
     private TextView readingTextView;
-    private int pagerPosition;
     private Runnable fabAnimationRunnable;
-    private long editId = 0;
-    private boolean editing = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,12 +64,7 @@ public class AddKetoneActivity extends AddReadingActivity {
             getSupportActionBar().setElevation(2);
         }
 
-        Bundle b = getIntent().getExtras();
-        if (b!=null) {
-            pagerPosition = b.getInt("pager");
-            editId = b.getLong("edit_id");
-            editing = b.getBoolean("editing");
-        }
+        this.retrieveExtra();
 
         AddKetonePresenter presenter = new AddKetonePresenter(this);
         setPresenter(presenter);
@@ -130,10 +122,10 @@ public class AddKetoneActivity extends AddReadingActivity {
 
 
         // If an id is passed, open the activity in edit mode
-        if (editing){
+        if (this.isEditing()){
             FormatDateTime dateTime = new FormatDateTime(getApplicationContext());
             setTitle(R.string.title_activity_add_ketone_edit);
-            KetoneReading readingToEdit = presenter.getKetoneReadingById(editId);
+            KetoneReading readingToEdit = presenter.getKetoneReadingById(this.getEditId());
             readingTextView.setText(readingToEdit.getReading()+"");
             Calendar cal = Calendar.getInstance();
             cal.setTime(readingToEdit.getCreated());
@@ -147,9 +139,9 @@ public class AddKetoneActivity extends AddReadingActivity {
 
     private void dialogOnAddButtonPressed() {
         AddKetonePresenter presenter = (AddKetonePresenter) getPresenter();
-        if(editing) {
+        if(this.isEditing()) {
             presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
-                    addDateTextView.getText().toString(), readingTextView.getText().toString().trim(), editId);
+                    addDateTextView.getText().toString(), readingTextView.getText().toString().trim(), this.getEditId());
         } else {
             presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
                     addDateTextView.getText().toString(), readingTextView.getText().toString().trim());
@@ -158,16 +150,6 @@ public class AddKetoneActivity extends AddReadingActivity {
 
     public void showErrorMessage() {
         Toast.makeText(getApplicationContext(), getString(R.string.dialog_error2), Toast.LENGTH_SHORT).show();
-    }
-
-    public void finishActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
-        // Pass pager position to open it again later
-        Bundle b = new Bundle();
-        b.putInt("pager", pagerPosition);
-        intent.putExtras(b);
-        startActivity(intent);
-        finish();
     }
 
     @Override

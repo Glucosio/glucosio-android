@@ -1,5 +1,7 @@
 package org.glucosio.android.activity;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
@@ -17,6 +19,29 @@ import java.util.Calendar;
 public class AddReadingActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
     private AddReadingPresenter presenter;
+
+    private int pagerPosition;
+    private long editId = 0;
+    private boolean editing = false;
+
+    protected void retrieveExtra() {
+        Bundle b = getIntent().getExtras();
+        if (b!=null) {
+            pagerPosition = b.getInt("pager");
+            editId = b.getLong("edit_id");
+            editing = b.getBoolean("editing");
+        }
+    }
+
+    public void finishActivity() {
+        Intent intent = new Intent(this, MainActivity.class);
+        // Pass pager position to open it again later
+        Bundle b = new Bundle();
+        b.putInt("pager", this.getPagerPosition());
+        intent.putExtras(b);
+        startActivity(intent);
+        finish();
+    }
 
     @Override
     public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int seconds) {
@@ -53,5 +78,18 @@ public class AddReadingActivity extends AppCompatActivity implements TimePickerD
 
     public AddReadingPresenter getPresenter() {
         return this.presenter;
+    }
+
+
+    public int getPagerPosition() {
+        return pagerPosition;
+    }
+
+    public long getEditId() {
+        return editId;
+    }
+
+    public boolean isEditing() {
+        return editing;
     }
 }

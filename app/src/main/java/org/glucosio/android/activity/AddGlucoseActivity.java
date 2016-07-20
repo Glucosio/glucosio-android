@@ -62,8 +62,6 @@ public class AddGlucoseActivity extends AddReadingActivity {
     private EditText notesEditText;
     private LabelledSpinner readingTypeSpinner;
     private Runnable fabAnimationRunnable;
-    private int pagerPosition = 0;
-    private long editId = 0;
     private boolean isCustomType;
 
     @Override
@@ -78,12 +76,7 @@ public class AddGlucoseActivity extends AddReadingActivity {
             getSupportActionBar().setElevation(2);
         }
 
-
-        Bundle b = getIntent().getExtras();
-        if (b!=null) {
-            pagerPosition = b.getInt("pager");
-            editId = b.getLong("edit_id");
-        }
+        this.retrieveExtra();
 
         AddGlucosePresenter presenter = new AddGlucosePresenter(this);
         setPresenter(presenter);
@@ -167,10 +160,10 @@ public class AddGlucoseActivity extends AddReadingActivity {
         }
 
         // If an id is passed, open the activity in edit mode
-        if (editId != 0){
+        if (this.isEditing()){
             FormatDateTime dateTime = new FormatDateTime(getApplicationContext());
             setTitle(R.string.title_activity_add_glucose_edit);
-            GlucoseReading readingToEdit = presenter.getGlucoseReadingById(editId);
+            GlucoseReading readingToEdit = presenter.getGlucoseReadingById(this.getEditId());
             readingTextView.setText(readingToEdit.getReading()+"");
             notesEditText.setText(readingToEdit.getNotes());
             Calendar cal = Calendar.getInstance();
@@ -208,22 +201,21 @@ public class AddGlucoseActivity extends AddReadingActivity {
 
     private void dialogOnAddButtonPressed() {
         AddGlucosePresenter presenter = (AddGlucosePresenter) getPresenter();
-        boolean isEdited = editId!=0;
         if (isCustomType) {
-            if (isEdited) {
+            if (this.isEditing()) {
                 presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
                         addDateTextView.getText().toString(), readingTextView.getText().toString(),
-                        typeCustomEditText.getText().toString(), notesEditText.getText().toString(), editId);
+                        typeCustomEditText.getText().toString(), notesEditText.getText().toString(), this.getEditId());
             } else {
                 presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
                         addDateTextView.getText().toString(), readingTextView.getText().toString(),
                         typeCustomEditText.getText().toString(), notesEditText.getText().toString());
             }
         } else {
-            if (isEdited) {
+            if (this.isEditing()) {
                 presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
                         addDateTextView.getText().toString(), readingTextView.getText().toString(),
-                        readingTypeSpinner.getSpinner().getSelectedItem().toString(), notesEditText.getText().toString(), editId);
+                        readingTypeSpinner.getSpinner().getSelectedItem().toString(), notesEditText.getText().toString(), this.getEditId());
             } else {
                 presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
                         addDateTextView.getText().toString(), readingTextView.getText().toString(),
@@ -250,16 +242,6 @@ public class AddGlucoseActivity extends AddReadingActivity {
     private void updateSpinnerTypeHour(int hour) {
         AddGlucosePresenter presenter = (AddGlucosePresenter) getPresenter();
         readingTypeSpinner.setSelection(presenter.hourToSpinnerType(hour));
-    }
-
-    public void finishActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
-        // Pass pager position to open it again later
-        Bundle b = new Bundle();
-        b.putInt("pager", pagerPosition);
-        intent.putExtras(b);
-        startActivity(intent);
-        finish();
     }
 
     @Override

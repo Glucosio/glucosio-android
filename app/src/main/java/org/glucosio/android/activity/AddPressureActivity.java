@@ -51,10 +51,7 @@ public class AddPressureActivity extends AddReadingActivity {
     private TextView addDateTextView;
     private TextView minPressureTextView;
     private TextView maxPressureTextView;
-    private int pagerPosition;
     private Runnable fabAnimationRunnable;
-    private long editId = 0;
-    private boolean editing = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,12 +65,7 @@ public class AddPressureActivity extends AddReadingActivity {
             getSupportActionBar().setElevation(2);
         }
 
-        Bundle b = getIntent().getExtras();
-        if (b != null) {
-            pagerPosition = b.getInt("pager");
-            editId = b.getLong("edit_id");
-            editing = b.getBoolean("editing");
-        }
+        this.retrieveExtra();
 
         AddPressurePresenter presenter = new AddPressurePresenter(this);
         setPresenter(presenter);
@@ -86,10 +78,10 @@ public class AddPressureActivity extends AddReadingActivity {
         maxPressureTextView = (TextView) findViewById(R.id.pressure_add_value_max);
 
         // Initialize value
-        if (editing) {
+        if (this.isEditing()) {
             // set edit title
             setTitle(R.string.title_activity_add_pressure_edit);
-            PressureReading readingToEdit = presenter.getPressureReadingById(editId);
+            PressureReading readingToEdit = presenter.getPressureReadingById(this.getEditId());
 
             // set reading values
             minPressureTextView.setText(readingToEdit.getMinReading() + "");
@@ -155,9 +147,9 @@ public class AddPressureActivity extends AddReadingActivity {
     private void dialogOnAddButtonPressed() {
         AddPressurePresenter presenter = (AddPressurePresenter) getPresenter();
         // If an id is passed, open the activity in edit mode
-        if (editing) {
+        if (this.isEditing()) {
             presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
-                    addDateTextView.getText().toString(), minPressureTextView.getText().toString(), maxPressureTextView.getText().toString(), editId);
+                    addDateTextView.getText().toString(), minPressureTextView.getText().toString(), maxPressureTextView.getText().toString(), this.getEditId());
         } else {
             presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
                     addDateTextView.getText().toString(), minPressureTextView.getText().toString(), maxPressureTextView.getText().toString());
@@ -166,16 +158,6 @@ public class AddPressureActivity extends AddReadingActivity {
 
     public void showErrorMessage() {
         Toast.makeText(getApplicationContext(), getString(R.string.dialog_error2), Toast.LENGTH_SHORT).show();
-    }
-
-    public void finishActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
-        // Pass pager position to open it again later
-        Bundle b = new Bundle();
-        b.putInt("pager", pagerPosition);
-        intent.putExtras(b);
-        startActivity(intent);
-        finish();
     }
 
     @Override

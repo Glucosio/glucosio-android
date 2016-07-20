@@ -52,10 +52,7 @@ public class AddCholesterolActivity extends AddReadingActivity {
     private TextView totalChoTextView;
     private TextView LDLChoTextView;
     private TextView HDLChoTextView;
-    private int pagerPosition;
     private Runnable fabAnimationRunnable;
-    private long editId = 0;
-    private boolean editing = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,12 +66,7 @@ public class AddCholesterolActivity extends AddReadingActivity {
             getSupportActionBar().setElevation(2);
         }
 
-        Bundle b = getIntent().getExtras();
-        if (b!=null) {
-            pagerPosition = b.getInt("pager");
-            editId = b.getLong("edit_id");
-            editing = b.getBoolean("editing");
-        }
+        this.retrieveExtra();
 
         AddCholesterolPresenter presenter = new AddCholesterolPresenter(this);
         setPresenter(presenter);
@@ -126,10 +118,10 @@ public class AddCholesterolActivity extends AddReadingActivity {
         });
 
         // If an id is passed, open the activity in edit mode
-        if (editing){
+        if (this.isEditing()){
             FormatDateTime dateTime = new FormatDateTime(getApplicationContext());
             setTitle(R.string.title_activity_add_cholesterol_edit);
-            CholesterolReading readingToEdit = presenter.getCholesterolReadingById(editId);
+            CholesterolReading readingToEdit = presenter.getCholesterolReadingById(this.getEditId());
             totalChoTextView.setText(readingToEdit.getTotalReading()+"");
             LDLChoTextView.setText(readingToEdit.getLDLReading()+"");
             HDLChoTextView.setText(readingToEdit.getHDLReading()+"");
@@ -151,9 +143,9 @@ public class AddCholesterolActivity extends AddReadingActivity {
 
     private void dialogOnAddButtonPressed() {
         AddCholesterolPresenter presenter = (AddCholesterolPresenter) getPresenter();
-        if (editing) {
+        if (this.isEditing()) {
             presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
-                    addDateTextView.getText().toString(), totalChoTextView.getText().toString(), LDLChoTextView.getText().toString(), HDLChoTextView.getText().toString(), editId);
+                    addDateTextView.getText().toString(), totalChoTextView.getText().toString(), LDLChoTextView.getText().toString(), HDLChoTextView.getText().toString(), this.getEditId());
         } else {
             presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
                     addDateTextView.getText().toString(), totalChoTextView.getText().toString(), LDLChoTextView.getText().toString(), HDLChoTextView.getText().toString());
@@ -162,16 +154,6 @@ public class AddCholesterolActivity extends AddReadingActivity {
 
     public void showErrorMessage() {
         Toast.makeText(getApplicationContext(), getString(R.string.dialog_error2), Toast.LENGTH_SHORT).show();
-    }
-
-    public void finishActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
-        // Pass pager position to open it again later
-        Bundle b = new Bundle();
-        b.putInt("pager", pagerPosition);
-        intent.putExtras(b);
-        startActivity(intent);
-        finish();
     }
 
     @Override

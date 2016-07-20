@@ -49,9 +49,6 @@ public class AddA1CActivity extends AddReadingActivity {
     private TextView readingTextView;
     private TextView unitTextView;
     private Runnable fabAnimationRunnable;
-    private int pagerPosition;
-    private long editId = 0;
-    private boolean editing = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,15 +62,10 @@ public class AddA1CActivity extends AddReadingActivity {
             getSupportActionBar().setElevation(2);
         }
 
-        Bundle b = getIntent().getExtras();
-        if (b!=null) {
-            pagerPosition = b.getInt("pager");
-            editId = b.getLong("edit_id");
-            editing = b.getBoolean("editing");
-        }
+        this.retrieveExtra();
 
-        setPresenter(new AddA1CPresenter(this));
-        AddA1CPresenter presenter = (AddA1CPresenter) getPresenter();
+        AddA1CPresenter presenter = new AddA1CPresenter(this);
+        setPresenter(presenter);
         presenter.setReadingTimeNow();
 
         doneFAB = (FloatingActionButton) findViewById(R.id.done_fab);
@@ -132,10 +124,10 @@ public class AddA1CActivity extends AddReadingActivity {
         };
 
         // If an id is passed, open the activity in edit mode
-        if (editing){
+        if (this.isEditing()){
             FormatDateTime dateTime = new FormatDateTime(getApplicationContext());
             setTitle(R.string.title_activity_add_hb1ac_edit);
-            HB1ACReading readingToEdit = presenter.getHB1ACReadingById(editId);
+            HB1ACReading readingToEdit = presenter.getHB1ACReadingById(getEditId());
             readingTextView.setText(readingToEdit.getReading()+"");
             Calendar cal = Calendar.getInstance();
             cal.setTime(readingToEdit.getCreated());
@@ -149,9 +141,9 @@ public class AddA1CActivity extends AddReadingActivity {
 
     private void dialogOnAddButtonPressed() {
         AddA1CPresenter presenter = (AddA1CPresenter) getPresenter();
-        if (editing) {
+        if (this.isEditing()) {
             presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
-                    addDateTextView.getText().toString(), readingTextView.getText().toString(), editId);
+                    addDateTextView.getText().toString(), readingTextView.getText().toString(), this.getEditId());
         } else {
             presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
                     addDateTextView.getText().toString(), readingTextView.getText().toString());
@@ -160,16 +152,6 @@ public class AddA1CActivity extends AddReadingActivity {
 
     public void showErrorMessage() {
         Toast.makeText(getApplicationContext(), getString(R.string.dialog_error2), Toast.LENGTH_SHORT).show();
-    }
-
-    public void finishActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
-        // Pass pager position to open it again later
-        Bundle b = new Bundle();
-        b.putInt("pager", pagerPosition);
-        intent.putExtras(b);
-        startActivity(intent);
-        finish();
     }
 
     @Override
