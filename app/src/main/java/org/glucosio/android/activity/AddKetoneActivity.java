@@ -67,8 +67,8 @@ public class AddKetoneActivity extends AddReadingActivity {
         this.retrieveExtra();
 
         AddKetonePresenter presenter = new AddKetonePresenter(this);
-        setPresenter(presenter);
-        getPresenter().setReadingTimeNow();
+        this.setPresenter(presenter);
+        presenter.setReadingTimeNow();
 
         doneFAB = (FloatingActionButton) findViewById(R.id.done_fab);
         addTimeTextView = (TextView) findViewById(R.id.dialog_add_time);
