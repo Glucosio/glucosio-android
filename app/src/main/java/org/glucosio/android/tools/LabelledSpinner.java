@@ -207,7 +207,19 @@ public class LabelledSpinner extends LinearLayout implements AdapterView.OnItemS
                 android.R.layout.simple_spinner_item,
                 list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        setAdapter(adapter);
+    }
+
+    private void setAdapter(ArrayAdapter<?> adapter) {
+        //remove listener to avoid firing item selection
+        mSpinner.setOnItemSelectedListener(null);
+
         mSpinner.setAdapter(adapter);
+        //solution from http://stackoverflow.com/questions/2562248/how-to-keep-onitemselected-from-firing-off-on-a-newly-instantiated-spinner
+        mSpinner.setSelection(0, false);
+        //return back listener
+        mSpinner.setOnItemSelectedListener(this);
     }
 
     /**
@@ -229,7 +241,8 @@ public class LabelledSpinner extends LinearLayout implements AdapterView.OnItemS
                 arrayResId,
                 spinnerItemRes);
         adapter.setDropDownViewResource(dropdownViewRes);
-        mSpinner.setAdapter(adapter);
+
+        setAdapter(adapter);
     }
 
     /**
