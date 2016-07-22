@@ -27,7 +27,9 @@ import android.os.Bundle;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
@@ -121,18 +123,18 @@ public class HelloActivity extends AppCompatActivity implements HelloView {
 
         languageSpinner.setItemsArray(displayLanguages);
 
-//        languageSpinner.setOnItemChosenListener(new LabelledSpinner.OnItemChosenListener() {
-//            @Override
-//            public void onItemChosen(View labelledSpinner, AdapterView<?> adapterView, View itemView, int position, long id) {
-//                localeHelper.updateLanguage(HelloActivity.this, localesWithTranslation.get(position));
-//                recreate();
-//            }
-//
-//            @Override
-//            public void onNothingChosen(View labelledSpinner, AdapterView<?> adapterView) {
-//
-//            }
-//        });
+        languageSpinner.setOnItemChosenListener(new LabelledSpinner.OnItemChosenListener() {
+            @Override
+            public void onItemChosen(View labelledSpinner, AdapterView<?> adapterView, View itemView, int position, long id) {
+                localeHelper.updateLanguage(HelloActivity.this, localesWithTranslation.get(position));
+                recreate();
+            }
+
+            @Override
+            public void onNothingChosen(View labelledSpinner, AdapterView<?> adapterView) {
+
+            }
+        });
     }
 
     private void initStartButton() {

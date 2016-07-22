@@ -103,7 +103,7 @@ public class HelloActivityTest extends RobolectricTest {
         when(getLocaleHelper().getLocalesWithTranslation(any(Resources.class))).
                 thenReturn(Lists.newArrayList("nl"));
         when(getLocaleHelper().getDisplayLanguage("nl")).thenReturn("Nederlandse");
-        activity = Robolectric.buildActivity(HelloActivity.class).create().get();
+        TestHelloActivity activity = Robolectric.buildActivity(TestHelloActivity.class).create().get();
         activity.countrySpinner.getSpinner().setSelection(0);
         activity.languageSpinner.setSelection(1);
 
@@ -112,5 +112,32 @@ public class HelloActivityTest extends RobolectricTest {
         verify(getHelloPresenter()).onNextClicked(anyString(), anyString(), stringCaptor.capture(),
                 anyString(), anyInt(), anyString());
         assertThat(stringCaptor.getValue()).isEqualTo("nl");
+    }
+
+    @Test
+    public void ShouldUpdateAppLanguage_WhenSpinnerSelected() throws Exception {
+        when(getLocaleHelper().getLocalesWithTranslation(any(Resources.class))).
+                thenReturn(Lists.newArrayList("nl"));
+        when(getLocaleHelper().getDisplayLanguage("nl")).thenReturn("Nederlandse");
+        TestHelloActivity activity = Robolectric.buildActivity(TestHelloActivity.class).create().get();
+        activity.countrySpinner.getSpinner().setSelection(0);
+
+        activity.languageSpinner.setSelection(1);
+
+        verify(getLocaleHelper()).getDisplayLanguage("nl");
+        assertThat(activity.isRecreated()).isTrue();
+    }
+
+    public static class TestHelloActivity extends HelloActivity {
+        private boolean recreated;
+
+        @Override
+        public void recreate() {
+            recreated = true;
+        }
+
+        public boolean isRecreated() {
+            return recreated;
+        }
     }
 }
