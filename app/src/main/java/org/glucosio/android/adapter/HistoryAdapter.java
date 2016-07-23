@@ -31,7 +31,6 @@ import org.glucosio.android.R;
 import org.glucosio.android.presenter.HistoryPresenter;
 import org.glucosio.android.tools.GlucoseRanges;
 import org.glucosio.android.tools.GlucosioConverter;
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -889,7 +889,7 @@ public class DatabaseHandler {
         return datetimeArray;
     }
 
-    public long getNextKey(String where) {
+    private long getNextKey(String where) {
         Number maxId = null;
         switch (where) {
             case "glucose":

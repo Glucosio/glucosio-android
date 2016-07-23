@@ -71,7 +71,7 @@ public class AddWeightActivity extends AddReadingActivity {
         }
 
         Bundle b = getIntent().getExtras();
-        if (b!=null) {
+        if (b != null) {
             pagerPosition = b.getInt("pager");
             editId = b.getLong("edit_id");
             editing = b.getBoolean("editing");
@@ -130,11 +130,11 @@ public class AddWeightActivity extends AddReadingActivity {
         });
 
         // If an id is passed, open the activity in edit mode
-        if (editing){
+        if (editing) {
             FormatDateTime dateTime = new FormatDateTime(getApplicationContext());
             setTitle(R.string.title_activity_add_weight_edit);
             WeightReading readingToEdit = presenter.getWeightReadingById(editId);
-            readingTextView.setText(readingToEdit.getReading()+"");
+            readingTextView.setText(readingToEdit.getReading() + "");
             Calendar cal = Calendar.getInstance();
             cal.setTime(readingToEdit.getCreated());
             addDateTextView.setText(dateTime.getDate(cal));
@@ -199,9 +199,10 @@ public class AddWeightActivity extends AddReadingActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
-                break;
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        return true;
     }
 
     @Override
