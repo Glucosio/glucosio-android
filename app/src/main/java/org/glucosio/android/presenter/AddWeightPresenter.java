@@ -24,11 +24,7 @@ import org.glucosio.android.activity.AddWeightActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.WeightReading;
 import org.glucosio.android.tools.GlucosioConverter;
-import org.glucosio.android.tools.SplitDateTime;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 public class AddWeightPresenter extends AddReadingPresenter {

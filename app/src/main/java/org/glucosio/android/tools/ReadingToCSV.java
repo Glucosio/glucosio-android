@@ -21,10 +21,7 @@
 package org.glucosio.android.tools;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Environment;
-import android.support.v4.content.FileProvider;
 import android.util.Log;
 
 import org.glucosio.android.R;
@@ -39,7 +36,7 @@ import io.realm.Realm;
 
 public class ReadingToCSV {
 
-    Context context;
+    private Context context;
 
     public ReadingToCSV(Context mContext) {
         this.context = mContext;
@@ -50,7 +47,7 @@ public class ReadingToCSV {
             final String databaseName = "/glucosio_exported_data_" + System.currentTimeMillis() + ".csv";
             final String dir =
                     getExternalDir();
-            final String filename = dir+databaseName;
+            final String filename = dir + databaseName;
             checkIfDirExists(dir);
 
             final File sd = Environment.getExternalStorageDirectory();
@@ -123,7 +120,7 @@ public class ReadingToCSV {
     }
 
     public static boolean checkIfDirExists(final String dir) {
-        final File file = new File( dir );
+        final File file = new File(dir);
         return file.exists() || file.mkdirs();
     }
 }

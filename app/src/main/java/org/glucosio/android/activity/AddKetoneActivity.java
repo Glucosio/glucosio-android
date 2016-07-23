@@ -69,7 +69,7 @@ public class AddKetoneActivity extends AppCompatActivity implements TimePickerDi
         }
 
         Bundle b = getIntent().getExtras();
-        if (b!=null) {
+        if (b != null) {
             pagerPosition = b.getInt("pager");
         }
 
@@ -191,9 +191,11 @@ public class AddKetoneActivity extends AppCompatActivity implements TimePickerDi
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
-                break;
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        return true;
     }
 
     @Override

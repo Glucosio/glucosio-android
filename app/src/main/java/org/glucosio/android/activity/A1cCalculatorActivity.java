@@ -136,6 +136,8 @@ public class A1cCalculatorActivity extends AppCompatActivity {
             case android.R.id.home:
                 finish();
                 break;
+            default:
+                return super.onOptionsItemSelected(item);
         }
         return true;
     }

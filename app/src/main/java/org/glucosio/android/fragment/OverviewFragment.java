@@ -68,12 +68,11 @@ import org.glucosio.android.tools.GlucosioConverter;
 import org.glucosio.android.tools.TipsManager;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class OverviewFragment extends Fragment implements OverviewView {
 
     private static final int PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 0;
-    ImageButton HB1ACMoreButton;
+    private ImageButton HB1ACMoreButton;
     private LineChart chart;
     private TextView lastReadingTextView;
     private TextView lastDateTextView;
