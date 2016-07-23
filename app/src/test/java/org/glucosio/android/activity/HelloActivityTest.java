@@ -100,6 +100,18 @@ public class HelloActivityTest extends RobolectricTest {
         assertThat(activity.isRecreated()).isTrue();
     }
 
+    @Test
+    public void ShouldSelectLanguage_WhenCreated() throws Exception {
+        when(getLocaleHelper().getDeviceLocale()).thenReturn(new Locale("nl"));
+        when(getLocaleHelper().getLocalesWithTranslation(any(Resources.class))).
+                thenReturn(Lists.newArrayList("nl"));
+        when(getLocaleHelper().getDisplayLanguage("nl")).thenReturn("Dutch");
+
+        activity = Robolectric.buildActivity(HelloActivity.class).create().get();
+
+        assertThat(activity.languageSpinner.getSpinner().getSelectedItem()).isEqualTo("Dutch");
+    }
+
     public static class TestHelloActivity extends HelloActivity {
         private boolean recreated;
 

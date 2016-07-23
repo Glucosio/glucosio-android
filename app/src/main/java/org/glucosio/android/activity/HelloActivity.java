@@ -121,6 +121,10 @@ public class HelloActivity extends AppCompatActivity implements HelloView {
 
         languageSpinner.setItemsArray(displayLanguages);
 
+        String displayLanguage = localeHelper.getDeviceLocale().getDisplayLanguage();
+
+        setSelection(displayLanguage, languageSpinner);
+
         languageSpinner.setOnItemChosenListener(new LabelledSpinner.OnItemChosenListener() {
             @Override
             public void onItemChosen(View labelledSpinner, AdapterView<?> adapterView, View itemView, int position, long id) {
@@ -133,6 +137,13 @@ public class HelloActivity extends AppCompatActivity implements HelloView {
 
             }
         });
+    }
+
+    private void setSelection(final String label, final LabelledSpinner labelledSpinner) {
+        if (label != null) {
+            int position = ((ArrayAdapter) labelledSpinner.getSpinner().getAdapter()).getPosition(label);
+            labelledSpinner.setSelection(position);
+        }
     }
 
     private void initStartButton() {
@@ -165,10 +176,7 @@ public class HelloActivity extends AppCompatActivity implements HelloView {
         // Get locale country name and set the spinner
         String localCountry = localeHelper.getDeviceLocale().getDisplayCountry();
 
-        if (localCountry != null) {
-            int position = ((ArrayAdapter) countrySpinner.getSpinner().getAdapter()).getPosition(localCountry);
-            countrySpinner.setSelection(position);
-        }
+        setSelection(localCountry, countrySpinner);
     }
 
     @OnClick(R.id.activity_hello_button_start)
