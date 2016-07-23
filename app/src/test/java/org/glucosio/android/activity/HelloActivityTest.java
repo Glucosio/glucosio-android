@@ -10,6 +10,7 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.robolectric.Robolectric;
 
+import java.util.Collections;
 import java.util.Locale;
 
 import static org.assertj.android.api.Assertions.assertThat;
@@ -17,7 +18,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Matchers.anyString;
-import static org.mockito.Matchers.isNull;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
@@ -34,22 +34,15 @@ public class HelloActivityTest extends RobolectricTest {
         initMocks(this);
 
         when(getLocaleHelper().getDeviceLocale()).thenReturn(new Locale("en"));
+        when(getLocaleHelper().getLocalesWithTranslation(any(Resources.class)))
+                .thenReturn(Collections.singletonList("nl"));
+        when(getLocaleHelper().getDisplayLanguage("nl")).thenReturn("Nederlandse");
         activity = Robolectric.buildActivity(HelloActivity.class).create().get();
     }
 
     @Test
     public void ShouldReportAnalytics_WhenCreated() throws Exception {
         verify(getAnalytics()).reportScreen("Hello Activity");
-    }
-
-    @Test
-    public void ShouldSetDefaultLanguageToNull_WhenNextPressed() throws Exception {
-        //with mocked language helper spinner doesn't have any selection
-        activity.countrySpinner.getSpinner().setSelection(0);
-
-        activity.onStartClicked();
-
-        verify(getHelloPresenter()).onNextClicked(anyString(), anyString(), isNull(String.class), anyString(), anyInt(), anyString());
     }
 
     @Test
@@ -71,31 +64,10 @@ public class HelloActivityTest extends RobolectricTest {
 
         activity = Robolectric.buildActivity(HelloActivity.class).create().get();
 
-        assertThat(activity.languageSpinner.getSpinner()).hasCount(4);
-        assertThat(activity.languageSpinner.getSpinner()).hasItemAtPosition(1, "Nederlandse");
-        assertThat(activity.languageSpinner.getSpinner()).hasItemAtPosition(2, "Русский");
-        assertThat(activity.languageSpinner.getSpinner()).hasItemAtPosition(3, "Українська");
-    }
-
-    @Test
-    public void ShouldAddDefaultSpinner_WhenCreated() throws Exception {
-        assertThat(activity.languageSpinner.getSpinner()).hasCount(1);
-        assertThat(activity.languageSpinner.getSpinner()).hasItemAtPosition(0, new Locale("en").getDisplayLanguage());
-    }
-
-    @Test
-    public void ShouldPassNullAsLocale_WhenDefaultSelected() throws Exception {
-        when(getLocaleHelper().getLocalesWithTranslation(any(Resources.class))).
-                thenReturn(Lists.newArrayList("nl"));
-        when(getLocaleHelper().getDisplayLanguage("nl")).thenReturn("Nederlandse");
-        activity = Robolectric.buildActivity(HelloActivity.class).create().get();
-        activity.countrySpinner.getSpinner().setSelection(0);
-
-        activity.onStartClicked();
-
-        verify(getHelloPresenter()).onNextClicked(anyString(), anyString(), stringCaptor.capture(),
-                anyString(), anyInt(), anyString());
-        assertThat(stringCaptor.getValue()).isNull();
+        assertThat(activity.languageSpinner.getSpinner()).hasCount(3);
+        assertThat(activity.languageSpinner.getSpinner()).hasItemAtPosition(0, "Nederlandse");
+        assertThat(activity.languageSpinner.getSpinner()).hasItemAtPosition(1, "Русский");
+        assertThat(activity.languageSpinner.getSpinner()).hasItemAtPosition(2, "Українська");
     }
 
     @Test
@@ -105,7 +77,7 @@ public class HelloActivityTest extends RobolectricTest {
         when(getLocaleHelper().getDisplayLanguage("nl")).thenReturn("Nederlandse");
         TestHelloActivity activity = Robolectric.buildActivity(TestHelloActivity.class).create().get();
         activity.countrySpinner.getSpinner().setSelection(0);
-        activity.languageSpinner.setSelection(1);
+        activity.languageSpinner.setSelection(0);
 
         activity.onStartClicked();
 
@@ -122,9 +94,9 @@ public class HelloActivityTest extends RobolectricTest {
         TestHelloActivity activity = Robolectric.buildActivity(TestHelloActivity.class).create().get();
         activity.countrySpinner.getSpinner().setSelection(0);
 
-        activity.languageSpinner.setSelection(1);
+        activity.languageSpinner.setSelection(0);
 
-        verify(getLocaleHelper()).getDisplayLanguage("nl");
+        verify(getLocaleHelper()).updateLanguage(activity, "nl");
         assertThat(activity.isRecreated()).isTrue();
     }
 
@@ -136,7 +108,7 @@ public class HelloActivityTest extends RobolectricTest {
             recreated = true;
         }
 
-        public boolean isRecreated() {
+        boolean isRecreated() {
             return recreated;
         }
     }
