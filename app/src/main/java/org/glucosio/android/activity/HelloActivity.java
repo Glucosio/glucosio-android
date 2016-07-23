@@ -24,10 +24,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
@@ -38,9 +40,12 @@ import org.glucosio.android.R;
 import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.presenter.HelloPresenter;
 import org.glucosio.android.tools.LabelledSpinner;
+import org.glucosio.android.tools.LocaleHelper;
+import org.glucosio.android.view.HelloView;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Locale;
 
 import butterknife.BindView;
@@ -48,10 +53,13 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class HelloActivity extends AppCompatActivity {
+public class HelloActivity extends AppCompatActivity implements HelloView {
 
     @BindView(R.id.activity_hello_spinner_country)
     LabelledSpinner countrySpinner;
+
+    @BindView(R.id.activity_hello_spinner_language)
+    LabelledSpinner languageSpinner;
 
     @BindView(R.id.activity_hello_spinner_gender)
     LabelledSpinner genderSpinner;
@@ -68,10 +76,9 @@ public class HelloActivity extends AppCompatActivity {
     @BindView(R.id.activity_hello_age)
     TextView ageTextView;
 
-    @BindView(R.id.helloactivity_textview_terms)
-    TextView termsTextView;
-
     private HelloPresenter presenter;
+
+    private List<String> localesWithTranslation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,30 +94,68 @@ public class HelloActivity extends AppCompatActivity {
         presenter = application.createHelloPresenter(this);
         presenter.loadDatabase();
 
-        initCountrySpinner();
+        final LocaleHelper localeHelper = application.getLocaleHelper();
+        initCountrySpinner(localeHelper);
+        initLanguageSpinner(localeHelper);
 
         genderSpinner.setItemsArray(R.array.helloactivity_gender_list);
         unitSpinner.setItemsArray(R.array.helloactivity_preferred_glucose_unit);
         typeSpinner.setItemsArray(R.array.helloactivity_diabetes_type);
 
-        final Drawable pinkArrow = getApplicationContext().getResources().getDrawable(R.drawable.ic_navigate_next_pink_24px);
-        pinkArrow.setBounds(0, 0, 60, 60);
-        startButton.setCompoundDrawables(null, null, pinkArrow, null);
-
-        termsTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HelloActivity.this, LicenceActivity.class);
-                startActivity(intent);
-            }
-        });
+        initStartButton();
 
         Analytics analytics = application.getAnalytics();
         analytics.reportScreen("Hello Activity");
         Log.i("HelloActivity", "Setting screen name: hello");
     }
 
-    private void initCountrySpinner() {
+    private void initLanguageSpinner(final LocaleHelper localeHelper) {
+        localesWithTranslation = localeHelper.getLocalesWithTranslation(getResources());
+
+        List<String> displayLanguages = new ArrayList<>(localesWithTranslation.size());
+        for (String language : localesWithTranslation) {
+            if (language.length() > 0) {
+                displayLanguages.add(localeHelper.getDisplayLanguage(language));
+            }
+        }
+
+        languageSpinner.setItemsArray(displayLanguages);
+
+        String displayLanguage = localeHelper.getDeviceLocale().getDisplayLanguage();
+
+        setSelection(displayLanguage, languageSpinner);
+
+        languageSpinner.setOnItemChosenListener(new LabelledSpinner.OnItemChosenListener() {
+            @Override
+            public void onItemChosen(View labelledSpinner, AdapterView<?> adapterView, View itemView, int position, long id) {
+                localeHelper.updateLanguage(HelloActivity.this, localesWithTranslation.get(position));
+                recreate();
+            }
+
+            @Override
+            public void onNothingChosen(View labelledSpinner, AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+
+    private void setSelection(final String label, final LabelledSpinner labelledSpinner) {
+        if (label != null) {
+            int position = ((ArrayAdapter) labelledSpinner.getSpinner().getAdapter()).getPosition(label);
+            labelledSpinner.setSelection(position);
+        }
+    }
+
+    private void initStartButton() {
+        final Drawable pinkArrow = ResourcesCompat.getDrawable(getResources(),
+                R.drawable.ic_navigate_next_pink_24px, null);
+        if (pinkArrow != null) {
+            pinkArrow.setBounds(0, 0, 60, 60);
+            startButton.setCompoundDrawables(null, null, pinkArrow, null);
+        }
+    }
+
+    private void initCountrySpinner(final LocaleHelper localeHelper) {
         // Get countries list from locale
         ArrayList<String> countries = new ArrayList<>();
         Locale[] locales = Locale.getAvailableLocales();
@@ -129,29 +174,33 @@ public class HelloActivity extends AppCompatActivity {
         countrySpinner.setItemsArray(countries);
 
         // Get locale country name and set the spinner
-        String localCountry = getApplicationContext().getResources().getConfiguration().locale.getDisplayCountry();
+        String localCountry = localeHelper.getDeviceLocale().getDisplayCountry();
 
-        if (localCountry != null) {
-            int position = ((ArrayAdapter) countrySpinner.getSpinner().getAdapter()).getPosition(localCountry);
-            countrySpinner.setSelection(position);
-        }
+        setSelection(localCountry, countrySpinner);
     }
 
     @OnClick(R.id.activity_hello_button_start)
     void onStartClicked() {
         presenter.onNextClicked(ageTextView.getText().toString(),
                 genderSpinner.getSpinner().getSelectedItem().toString(),
-                null,
+                localesWithTranslation.get(languageSpinner.getSpinner().getSelectedItemPosition()),
                 countrySpinner.getSpinner().getSelectedItem().toString(),
                 typeSpinner.getSpinner().getSelectedItemPosition() + 1,
                 unitSpinner.getSpinner().getSelectedItem().toString());
     }
 
-    public void displayErrorMessage() {
+    @OnClick(R.id.helloactivity_textview_terms)
+    void onTermsAndConditionClick() {
+        Intent intent = new Intent(HelloActivity.this, LicenceActivity.class);
+        startActivity(intent);
+    }
+
+    public void displayErrorWrongAge() {
+        //Why toast and not error in edit box or dialog
         Toast.makeText(getApplicationContext(), getString(R.string.helloactivity_age_invalid), Toast.LENGTH_SHORT).show();
     }
 
-    public void closeHelloActivity() {
+    public void startMainView() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();

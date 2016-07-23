@@ -4,6 +4,7 @@ import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.backup.Backup;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.presenter.HelloPresenter;
+import org.glucosio.android.tools.LocaleHelper;
 import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.robolectric.RuntimeEnvironment;
@@ -32,5 +33,10 @@ public abstract class RobolectricTest {
     protected HelloPresenter getHelloPresenter() {
         //noinspection ConstantConditions
         return getTestApplication().createHelloPresenter(null);
+    }
+
+    protected LocaleHelper getLocaleHelper() {
+        //noinspection ConstantConditions
+        return getTestApplication().getLocaleHelper();
     }
 }

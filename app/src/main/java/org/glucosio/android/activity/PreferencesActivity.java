@@ -25,8 +25,6 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
@@ -42,7 +40,6 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.EditText;
 
-import org.glucosio.android.BuildConfig;
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.analytics.Analytics;
@@ -53,10 +50,8 @@ import org.glucosio.android.tools.LocaleHelper;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
-import java.util.Set;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -66,7 +61,6 @@ public class PreferencesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.preferences);
-
 
 
         getFragmentManager().beginTransaction()
@@ -331,46 +325,11 @@ public class PreferencesActivity extends AppCompatActivity {
         }
 
         private void initLanguagePreference() {
-            String[] languages = BuildConfig.TRANSLATION_ARRAY;
-            Set<String> availableLanguagesSet = new HashSet<>();
-            // We always support english
-            availableLanguagesSet.add("en");
+            List<String> valuesLanguages = localeHelper.getLocalesWithTranslation(getResources());
 
-            // Get english string to confront
-            // I know, it's a weird workaround
-            // Sorry :/
-            String englishString = "Automatic backup";
-
-            for (String localString : languages) {
-                // For each locale, check if we have translations
-                Resources res = getResources();
-                Configuration conf = res.getConfiguration();
-                Locale savedLocale = conf.locale;
-                conf.locale = localeHelper.getLocale(localString);
-                res.updateConfiguration(conf, null);
-
-                // Retrieve an example string from this locale
-                String localizedString = res.getString(R.string.activity_backup_drive_automatic);
-
-                if (!englishString.equals(localizedString)){
-                    // if english string is not the same of localized one
-                    // a translation is available
-                    availableLanguagesSet.add(localString);
-                }
-
-                // restore original locale
-                conf.locale = savedLocale;
-                res.updateConfiguration(conf, null);
-            }
-
-            List<String> availableLanguagesList = new ArrayList<>(availableLanguagesSet);
-            Collections.sort(availableLanguagesList);
-
-            List<String> valuesLanguages = new ArrayList<>(availableLanguagesList.size());
-            List<String> displayLanguages = new ArrayList<>(availableLanguagesList.size());
-            for (String language : availableLanguagesList) {
+            List<String> displayLanguages = new ArrayList<>(valuesLanguages.size());
+            for (String language : valuesLanguages) {
                 if (language.length() > 0) {
-                    valuesLanguages.add(language);
                     displayLanguages.add(localeHelper.getDisplayLanguage(language));
                 }
             }

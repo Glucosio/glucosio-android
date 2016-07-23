@@ -1,4 +1,4 @@
-package org.glucosio.android.fragment;
+package org.glucosio.android.view;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
