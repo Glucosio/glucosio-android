@@ -121,7 +121,8 @@ public class HelloActivity extends AppCompatActivity implements HelloView {
 
         languageSpinner.setItemsArray(displayLanguages);
 
-        String displayLanguage = localeHelper.getDeviceLocale().getDisplayLanguage();
+        final Locale deviceLocale = localeHelper.getDeviceLocale();
+        String displayLanguage = deviceLocale.getDisplayLanguage(deviceLocale);
 
         setSelection(displayLanguage, languageSpinner);
 
