@@ -105,11 +105,11 @@ public class HelloActivityTest extends RobolectricTest {
         when(getLocaleHelper().getDeviceLocale()).thenReturn(new Locale("nl"));
         when(getLocaleHelper().getLocalesWithTranslation(any(Resources.class))).
                 thenReturn(Lists.newArrayList("nl"));
-        when(getLocaleHelper().getDisplayLanguage("nl")).thenReturn("Dutch");
+        when(getLocaleHelper().getDisplayLanguage("nl")).thenReturn("Nederlands");
 
         activity = Robolectric.buildActivity(HelloActivity.class).create().get();
 
-        assertThat(activity.languageSpinner.getSpinner().getSelectedItem()).isEqualTo("Dutch");
+        assertThat(activity.languageSpinner.getSpinner().getSelectedItem()).isEqualTo("Nederlands");
     }
 
     public static class TestHelloActivity extends HelloActivity {
