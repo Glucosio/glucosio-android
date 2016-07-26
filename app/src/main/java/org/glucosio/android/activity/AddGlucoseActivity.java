@@ -20,29 +20,21 @@
 
 package org.glucosio.android.activity;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
-import android.view.KeyEvent;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
-import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.db.GlucoseReading;
 import org.glucosio.android.presenter.AddGlucosePresenter;
-import org.glucosio.android.tools.AnimationTools;
 import org.glucosio.android.tools.FormatDateTime;
 import org.glucosio.android.tools.LabelledSpinner;
 
@@ -50,19 +42,14 @@ import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Calendar;
 
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class AddGlucoseActivity extends AddReadingActivity {
 
-    private FloatingActionButton doneFAB;
-    private TextView addTimeTextView;
-    private TextView addDateTextView;
     private TextView readingTextView;
     private EditText typeCustomEditText;
     private EditText notesEditText;
     private LabelledSpinner readingTypeSpinner;
-    private Runnable fabAnimationRunnable;
-    private boolean isCustomType;
+    private boolean isCustomType = false;
 
     static final int CUSTOM_TYPE_SPINNER_VALUE = 11;
 
@@ -86,13 +73,12 @@ public class AddGlucoseActivity extends AddReadingActivity {
 
         readingTypeSpinner = (LabelledSpinner) findViewById(R.id.glucose_add_reading_type);
         readingTypeSpinner.setItemsArray(R.array.dialog_add_measured_list);
-
-        doneFAB = (FloatingActionButton) findViewById(R.id.done_fab);
-        addTimeTextView = (TextView) findViewById(R.id.dialog_add_time);
-        addDateTextView = (TextView) findViewById(R.id.dialog_add_date);
         readingTextView = (TextView) findViewById(R.id.glucose_add_concentration);
         typeCustomEditText = (EditText) findViewById(R.id.glucose_type_custom);
         notesEditText = (EditText) findViewById(R.id.glucose_add_notes);
+
+        this.createDateTimeViewAndListener();
+        this.createFANViewAndListener();
 
         readingTypeSpinner.setOnItemChosenListener(new LabelledSpinner.OnItemChosenListener() {
             @Override
@@ -115,44 +101,6 @@ public class AddGlucoseActivity extends AddReadingActivity {
             }
         });
 
-        FormatDateTime formatDateTime = new FormatDateTime(getApplicationContext());
-        addDateTextView.setText(formatDateTime.getCurrentDate());
-        addTimeTextView.setText(formatDateTime.getCurrentTime());
-        addDateTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar now = Calendar.getInstance();
-                DatePickerDialog dpd = DatePickerDialog.newInstance(
-                        AddGlucoseActivity.this,
-                        now.get(Calendar.YEAR),
-                        now.get(Calendar.MONTH),
-                        now.get(Calendar.DAY_OF_MONTH)
-                );
-                dpd.show(getFragmentManager(), "Datepickerdialog");
-                dpd.setMaxDate(now);
-            }
-        });
-
-        addTimeTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar now = Calendar.getInstance();
-                if (android.text.format.DateFormat.is24HourFormat(getApplicationContext())) {
-                    TimePickerDialog tpd = TimePickerDialog.newInstance(AddGlucoseActivity.this, now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), true);
-                    tpd.show(getFragmentManager(), "Timepickerdialog");
-                } else {
-                    TimePickerDialog tpd = TimePickerDialog.newInstance(AddGlucoseActivity.this, now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), false);
-                    tpd.show(getFragmentManager(), "Timepickerdialog");
-                }
-            }
-        });
-        doneFAB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialogOnAddButtonPressed();
-            }
-        });
-
         TextView unitM = (TextView) findViewById(R.id.glucose_add_unit_measurement);
 
         if (presenter.getUnitMeasuerement().equals("mg/dL")) {
@@ -162,16 +110,16 @@ public class AddGlucoseActivity extends AddReadingActivity {
         }
 
         // If an id is passed, open the activity in edit mode
+        Calendar cal = Calendar.getInstance();
+        FormatDateTime dateTime = new FormatDateTime(getApplicationContext());
         if (this.isEditing()){
-            FormatDateTime dateTime = new FormatDateTime(getApplicationContext());
             setTitle(R.string.title_activity_add_glucose_edit);
             GlucoseReading readingToEdit = presenter.getGlucoseReadingById(this.getEditId());
             readingTextView.setText(readingToEdit.getReading()+"");
             notesEditText.setText(readingToEdit.getNotes());
-            Calendar cal = Calendar.getInstance();
             cal.setTime(readingToEdit.getCreated());
-            addDateTextView.setText(dateTime.getDate(cal));
-            addTimeTextView.setText(dateTime.getTime(cal));
+            this.getAddDateTextView().setText(dateTime.getDate(cal));
+            this.getAddTimeTextView().setText(dateTime.getTime(cal));
             presenter.updateReadingSplitDateTime(readingToEdit.getCreated());
             // retrieve spinner reading to set the registered one
             String measuredTypeText = readingToEdit.getReading_type();
@@ -180,25 +128,18 @@ public class AddGlucoseActivity extends AddReadingActivity {
                 this.isCustomType = true;
                 readingTypeSpinner.setSelection(CUSTOM_TYPE_SPINNER_VALUE);
             } else {
-                this.isCustomType = false;
                 readingTypeSpinner.setSelection(measuredId);
             }
             if(this.isCustomType) {
                 typeCustomEditText.setText(measuredTypeText);
             }
         } else {
+            this.getAddDateTextView().setText(dateTime.getDate(cal));
+            this.getAddTimeTextView().setText(dateTime.getTime(cal));
             presenter.updateSpinnerTypeTime();
-            this.isCustomType = false;
         }
 
-        fabAnimationRunnable = new Runnable() {
-            @Override
-            public void run() {
-                AnimationTools.startCircularReveal(doneFAB);
-            }
-        };
-
-        doneFAB.postDelayed(fabAnimationRunnable, 600);
+        this.getDoneFAB().postDelayed(this.getFabAnimationRunnable(), 600);
     }
 
     private void addAnalyticsEvent() {
@@ -206,28 +147,24 @@ public class AddGlucoseActivity extends AddReadingActivity {
         analytics.reportAction("FreeStyle Libre", "New reading added");
     }
 
-    private void dialogOnAddButtonPressed() {
+    @Override
+    protected void dialogOnAddButtonPressed() {
         AddGlucosePresenter presenter = (AddGlucosePresenter) getPresenter();
+        String readingType;
         if (isCustomType) {
-            if (this.isEditing()) {
-                presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
-                        addDateTextView.getText().toString(), readingTextView.getText().toString(),
-                        typeCustomEditText.getText().toString(), notesEditText.getText().toString(), this.getEditId());
-            } else {
-                presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
-                        addDateTextView.getText().toString(), readingTextView.getText().toString(),
-                        typeCustomEditText.getText().toString(), notesEditText.getText().toString());
-            }
+            readingType = typeCustomEditText.getText().toString();
         } else {
-            if (this.isEditing()) {
-                presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
-                        addDateTextView.getText().toString(), readingTextView.getText().toString(),
-                        readingTypeSpinner.getSpinner().getSelectedItem().toString(), notesEditText.getText().toString(), this.getEditId());
-            } else {
-                presenter.dialogOnAddButtonPressed(addTimeTextView.getText().toString(),
-                        addDateTextView.getText().toString(), readingTextView.getText().toString(),
-                        readingTypeSpinner.getSpinner().getSelectedItem().toString(), notesEditText.getText().toString());
-            }
+            readingType = readingTypeSpinner.getSpinner().getSelectedItem().toString();
+        }
+
+        if (this.isEditing()) {
+            presenter.dialogOnAddButtonPressed(this.getAddTimeTextView().getText().toString(),
+                    this.getAddDateTextView().getText().toString(), readingTextView.getText().toString(),
+                    readingType, notesEditText.getText().toString(), this.getEditId());
+        } else {
+            presenter.dialogOnAddButtonPressed(this.getAddTimeTextView().getText().toString(),
+                    this.getAddDateTextView().getText().toString(), readingTextView.getText().toString(),
+                    readingType, notesEditText.getText().toString());
         }
     }
 
@@ -256,44 +193,5 @@ public class AddGlucoseActivity extends AddReadingActivity {
         super.onTimeSet(view, hourOfDay, minute, seconds);
         DecimalFormat df = new DecimalFormat("00");
         updateSpinnerTypeHour(Integer.parseInt(df.format(hourOfDay)));
-    }
-
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (Integer.parseInt(android.os.Build.VERSION.SDK) > 5
-                && keyCode == KeyEvent.KEYCODE_BACK
-                && event.getRepeatCount() == 0) {
-            onBackPressed();
-            return true;
-        }
-        return super.onKeyDown(keyCode, event);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                break;
-            default:
-                break;
-        }
-        return true;
-    }
-
-    @Override
-    public void onBackPressed() {
-        finishActivity();
-    }
-
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        doneFAB.removeCallbacks(fabAnimationRunnable);
     }
 }
