@@ -4,6 +4,8 @@ import android.text.TextUtils;
 
 import org.glucosio.android.tools.SplitDateTime;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -16,8 +18,11 @@ public class AddReadingPresenter {
     private String readingMinute;
 
     public void setReadingTimeNow() {
+        DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         Date formatted = Calendar.getInstance().getTime();
-        SplitDateTime addSplitDateTime = new SplitDateTime(formatted);
+
+        SplitDateTime addSplitDateTime = new SplitDateTime(formatted, inputFormat);
+
         this.readingYear = addSplitDateTime.getYear();
         this.readingMonth = addSplitDateTime.getMonth();
         this.readingDay = addSplitDateTime.getDay();
@@ -26,7 +31,8 @@ public class AddReadingPresenter {
     }
 
     public void updateReadingSplitDateTime(Date readingDate) {
-        SplitDateTime splitDateTime = new SplitDateTime(readingDate);
+        DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        SplitDateTime splitDateTime = new SplitDateTime(readingDate, inputFormat);
         this.readingDay = splitDateTime.getDay();
         this.readingHour = splitDateTime.getHour();
         this.readingMinute = splitDateTime.getMinute();
@@ -38,6 +44,12 @@ public class AddReadingPresenter {
         Calendar cal = Calendar.getInstance();
         cal.set(Integer.parseInt(readingYear), Integer.parseInt(readingMonth) - 1, Integer.parseInt(readingDay), Integer.parseInt(readingHour), Integer.parseInt(readingMinute));
         return cal.getTime();
+    }
+
+    public Calendar getReadingCal() {
+        Calendar cal = Calendar.getInstance();
+        cal.set(Integer.parseInt(readingYear), Integer.parseInt(readingMonth) - 1, Integer.parseInt(readingDay), Integer.parseInt(readingHour), Integer.parseInt(readingMinute));
+        return cal;
     }
 
     public String getReadingYear() {

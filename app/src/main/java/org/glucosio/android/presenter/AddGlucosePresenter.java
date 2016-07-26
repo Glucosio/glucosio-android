@@ -29,6 +29,8 @@ import org.glucosio.android.tools.GlucosioConverter;
 import org.glucosio.android.tools.ReadingTools;
 import org.glucosio.android.tools.SplitDateTime;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -50,9 +52,10 @@ public class AddGlucosePresenter extends AddReadingPresenter {
     }
 
     private int timeToSpinnerType() {
+        DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         Date formatted = Calendar.getInstance().getTime();
 
-        SplitDateTime addSplitDateTime = new SplitDateTime(formatted);
+        SplitDateTime addSplitDateTime = new SplitDateTime(formatted, inputFormat);
         int hour = Integer.parseInt(addSplitDateTime.getHour());
 
         return hourToSpinnerType(hour);

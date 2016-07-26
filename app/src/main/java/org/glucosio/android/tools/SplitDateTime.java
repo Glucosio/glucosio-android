@@ -20,44 +20,42 @@
 
 package org.glucosio.android.tools;
 
-import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
-
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class SplitDateTime {
 
-    private DateTime origDateTime;
+    private Date origDateTime; // Example "yyyy-MM-dd HH:mm"
     private DateFormat inputFormat;
 
-    public SplitDateTime(Date origDatetime) {
-        this.origDateTime = new DateTime(origDatetime);
+    public SplitDateTime(Date origDatetime, DateFormat origDateFormat) {
+        this.origDateTime = origDatetime;
+        this.inputFormat = origDateFormat;
     }
 
     public String getHour() {
-        DateTimeFormatter hourFormatter = DateTimeFormat.forPattern("HH");
-        return hourFormatter.print(origDateTime);
+        DateFormat finalFormat = new SimpleDateFormat("HH");
+        return finalFormat.format(origDateTime);
     }
 
     public String getMinute() {
-        DateTimeFormatter minuteFormatter = DateTimeFormat.forPattern("mm");
-        return minuteFormatter.print(origDateTime);
+        DateFormat finalFormat = new SimpleDateFormat("mm");
+        return finalFormat.format(origDateTime);
     }
 
     public String getYear() {
-        DateTimeFormatter yearFormatter =  DateTimeFormat.forPattern("yyyy");
-        return yearFormatter.print(origDateTime);
+        DateFormat finalFormat = new SimpleDateFormat("yyyy");
+        return finalFormat.format(origDateTime);
     }
 
     public String getMonth() {
-        DateTimeFormatter mouthFormatter = DateTimeFormat.forPattern("MM");
-        return mouthFormatter.print(origDateTime);
+        DateFormat finalFormat = new SimpleDateFormat("MM");
+        return finalFormat.format(origDateTime);
     }
 
     public String getDay() {
-        DateTimeFormatter dayFormatter = DateTimeFormat.forPattern("dd");
-        return dayFormatter.print(origDateTime);
+        DateFormat finalFormat = new SimpleDateFormat("dd");
+        return finalFormat.format(origDateTime);
     }
 }
