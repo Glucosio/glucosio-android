@@ -113,18 +113,18 @@ public class AddGlucosePresenter extends AddReadingPresenter {
         }
     }
 
-    public int retriveSpinnerID (String measuredTypeText, List<String> measuredTypelist) {
-        int mesuredId = 0;
-        boolean isCustomType = true;
+    public Integer retrieveSpinnerID (String measuredTypeText, List<String> measuredTypelist) {
+        int measuredId = 0;
+        boolean isFound = false;
         for (String measuredType : measuredTypelist) {
             if (measuredType.equals(measuredTypeText)) {
-                isCustomType = false;
+                isFound = true;
                 break;
             }
-            mesuredId++;
+            measuredId++;
         }
-        // if it's a custom type, type = other(12)
-        return isCustomType ? 11 : mesuredId;
+        // if type is not found, it's return null
+        return isFound ? measuredId : null;
     }
 
     public String getUnitMeasuerement() {

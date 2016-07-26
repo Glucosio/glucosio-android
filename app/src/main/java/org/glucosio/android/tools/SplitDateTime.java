@@ -37,8 +37,8 @@ public class SplitDateTime {
     }
 
     public String getHour() {
-        DateTimeFormatter houreFormatter = DateTimeFormat.forPattern("HH");
-        return houreFormatter.print(origDateTime);
+        DateTimeFormatter hourFormatter = DateTimeFormat.forPattern("HH");
+        return hourFormatter.print(origDateTime);
     }
 
     public String getMinute() {

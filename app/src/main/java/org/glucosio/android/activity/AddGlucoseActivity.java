@@ -64,6 +64,8 @@ public class AddGlucoseActivity extends AddReadingActivity {
     private Runnable fabAnimationRunnable;
     private boolean isCustomType;
 
+    static final int CUSTOM_TYPE_SPINNER_VALUE = 11;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,7 +98,7 @@ public class AddGlucoseActivity extends AddReadingActivity {
             @Override
             public void onItemChosen(View labelledSpinner, AdapterView<?> adapterView, View itemView, int position, long id) {
                 // If other is selected
-                if (position == 11) {
+                if (position == CUSTOM_TYPE_SPINNER_VALUE) {
                     typeCustomEditText.setVisibility(View.VISIBLE);
                     isCustomType = true;
                 } else {
@@ -171,11 +173,16 @@ public class AddGlucoseActivity extends AddReadingActivity {
             addDateTextView.setText(dateTime.getDate(cal));
             addTimeTextView.setText(dateTime.getTime(cal));
             presenter.updateReadingSplitDateTime(readingToEdit.getCreated());
-            // retrive spinner reading to set the registered one
+            // retrieve spinner reading to set the registered one
             String measuredTypeText = readingToEdit.getReading_type();
-            int mesuredId = presenter.retriveSpinnerID(measuredTypeText, Arrays.asList(getResources().getStringArray(R.array.dialog_add_measured_list)));
-            readingTypeSpinner.setSelection(mesuredId);
-            this.isCustomType = mesuredId == 11; // if other, it a custom type
+            Integer measuredId = presenter.retrieveSpinnerID(measuredTypeText, Arrays.asList(getResources().getStringArray(R.array.dialog_add_measured_list)));
+            if (measuredId == null) { // if nothing, it a custom type
+                this.isCustomType = true;
+                readingTypeSpinner.setSelection(CUSTOM_TYPE_SPINNER_VALUE);
+            } else {
+                this.isCustomType = false;
+                readingTypeSpinner.setSelection(measuredId);
+            }
             if(this.isCustomType) {
                 typeCustomEditText.setText(measuredTypeText);
             }
