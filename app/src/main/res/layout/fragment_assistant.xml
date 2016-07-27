@@ -39,14 +39,13 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
             android:background="@color/glucosio_pink_light"
             android:paddingBottom="16dp"
             android:paddingTop="16dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:text="@string/assistant_archived"
@@ -62,7 +61,7 @@
         </LinearLayout>
         <TextView
             android:layout_width="fill_parent"
-            android:layout_height="2px"
+            android:layout_height="2dp"
             android:gravity="bottom"
             android:background="#DADADA" />
     </LinearLayout>
