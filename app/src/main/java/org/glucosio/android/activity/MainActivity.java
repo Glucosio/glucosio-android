@@ -22,9 +22,7 @@ package org.glucosio.android.activity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.app.AlarmManager;
 import android.app.Dialog;
-import android.app.PendingIntent;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -664,22 +662,13 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     public void showShareDialog(Uri uri) {
-        Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setData(uri);
         shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         shareIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
         shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
         shareIntent.setType("*/*");
         startActivity(Intent.createChooser(shareIntent, getResources().getString(R.string.share_using)));
-    }
-
-    private void rebootApp() {
-        Intent mStartActivity = new Intent(getApplicationContext(), MainActivity.class);
-        int mPendingIntentId = 123456;
-        PendingIntent mPendingIntent = PendingIntent.getActivity(getApplicationContext(), mPendingIntentId, mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT);
-        AlarmManager mgr = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
-        mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
-        System.exit(0);
     }
 
     @Override

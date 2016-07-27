@@ -40,9 +40,9 @@ public class FormatDateTime {
 
     public String convertDateTime(String date) {
         //TODO use joda.time
-        java.text.DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        java.text.DateFormat finalDataFormat = DateFormat.getDateInstance(DateFormat.SHORT);
-        java.text.DateFormat finalTimeFormat;
+        DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        DateFormat finalDataFormat = DateFormat.getDateInstance(DateFormat.SHORT);
+        DateFormat finalTimeFormat;
 
         if (android.text.format.DateFormat.is24HourFormat(context)) {
             finalTimeFormat = new SimpleDateFormat("HH:mm");
@@ -63,8 +63,8 @@ public class FormatDateTime {
     }
 
     public String formatDate(Date date) {
-        java.text.DateFormat finalDataFormat = DateFormat.getDateInstance(DateFormat.SHORT);
-        java.text.DateFormat finalTimeFormat;
+        DateFormat finalDataFormat = DateFormat.getDateInstance(DateFormat.SHORT);
+        DateFormat finalTimeFormat;
 
         if (android.text.format.DateFormat.is24HourFormat(context)) {
             finalTimeFormat = new SimpleDateFormat("HH:mm");
@@ -78,8 +78,8 @@ public class FormatDateTime {
     }
 
     public String convertDateToMonthOverview(String date) {
-        java.text.DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        java.text.DateFormat finalDataFormat = new SimpleDateFormat("MMMM");
+        DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        DateFormat finalDataFormat = new SimpleDateFormat("MMMM");
 
         Date parsed = null;
         try {
@@ -100,8 +100,8 @@ public class FormatDateTime {
 
 
     public String convertDate(String datetime) {
-        java.text.DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
-        java.text.DateFormat finalDataFormat = DateFormat.getDateInstance(DateFormat.SHORT);
+        DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
+        DateFormat finalDataFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 
         Date parsed = null;
         try {
@@ -115,8 +115,8 @@ public class FormatDateTime {
     }
 
     public String convertRawDate(String datetime) {
-        java.text.DateFormat inputFormat = new SimpleDateFormat("EEE MMM d HH:mm:ss zzz yyyy");
-        java.text.DateFormat finalDataFormat = DateFormat.getDateInstance(DateFormat.SHORT);
+        DateFormat inputFormat = new SimpleDateFormat("EEE MMM d HH:mm:ss zzz yyyy");
+        DateFormat finalDataFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 
         Date parsed = null;
         try {
@@ -130,8 +130,8 @@ public class FormatDateTime {
     }
 
     public String convertRawTime(String datetime) {
-        java.text.DateFormat inputFormat = new SimpleDateFormat("EEE MMM d HH:mm:ss zzz yyyy");
-        java.text.DateFormat finalTimeFormat;
+        DateFormat inputFormat = new SimpleDateFormat("EEE MMM d HH:mm:ss zzz yyyy");
+        DateFormat finalTimeFormat;
 
         if (android.text.format.DateFormat.is24HourFormat(context)) {
             finalTimeFormat = new SimpleDateFormat("HH:mm");
@@ -188,7 +188,7 @@ public class FormatDateTime {
         return finalTime + "";
     }
 
-    private void reportToFirebase(Exception e){
+    private void reportToFirebase(Exception e) {
         FirebaseCrash.log("Error converting date");
         FirebaseCrash.report(e);
     }

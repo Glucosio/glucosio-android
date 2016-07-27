@@ -36,20 +36,20 @@ import android.view.animation.TranslateAnimation;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import org.glucosio.android.object.ActionTip;
 import org.glucosio.android.R;
 import org.glucosio.android.activity.A1cCalculatorActivity;
 import org.glucosio.android.activity.AddGlucoseActivity;
 import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.adapter.AssistantAdapter;
+import org.glucosio.android.object.ActionTip;
 import org.glucosio.android.presenter.AssistantPresenter;
 
 import java.util.ArrayList;
 
 public class AssistantFragment extends Fragment {
 
-    SharedPreferences sharedPref;
-    SharedPreferences.Editor editor;
+    private SharedPreferences sharedPref;
+    private SharedPreferences.Editor editor;
 
     private RecyclerView tipsRecycler;
     private AssistantAdapter adapter;
@@ -235,6 +235,6 @@ public class AssistantFragment extends Fragment {
     }
 
     public void openLiveChat() {
-        ((MainActivity)getActivity()).openSupportDialog();
+        ((MainActivity) getActivity()).openSupportDialog();
     }
 }

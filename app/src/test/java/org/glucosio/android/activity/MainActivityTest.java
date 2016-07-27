@@ -2,7 +2,6 @@ package org.glucosio.android.activity;
 
 import android.view.MotionEvent;
 
-import org.glucosio.android.R;
 import org.glucosio.android.RobolectricTest;
 import org.junit.Before;
 import org.junit.Test;

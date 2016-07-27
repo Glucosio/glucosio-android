@@ -39,7 +39,7 @@ public abstract class AddReadingActivity extends AppCompatActivity implements Ti
 
     protected void retrieveExtra() {
         Bundle b = getIntent().getExtras();
-        if (b!=null) {
+        if (b != null) {
             pagerPosition = b.getInt("pager");
             editId = b.getLong("edit_id");
             editing = b.getBoolean("editing");
@@ -148,11 +148,10 @@ public abstract class AddReadingActivity extends AppCompatActivity implements Ti
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
-                break;
+                return true;
             default:
-                break;
+                return super.onOptionsItemSelected(item);
         }
-        return true;
     }
 
     @Override

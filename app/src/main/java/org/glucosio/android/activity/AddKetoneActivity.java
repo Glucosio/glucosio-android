@@ -20,31 +20,17 @@
 
 package org.glucosio.android.activity;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.Toolbar;
-import android.view.KeyEvent;
-import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
-import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import org.glucosio.android.R;
 import org.glucosio.android.db.KetoneReading;
 import org.glucosio.android.presenter.AddKetonePresenter;
-import org.glucosio.android.presenter.AddReadingPresenter;
-import org.glucosio.android.tools.AnimationTools;
 import org.glucosio.android.tools.FormatDateTime;
 
 import java.util.Calendar;
-import java.util.Date;
-
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class AddKetoneActivity extends AddReadingActivity {
 

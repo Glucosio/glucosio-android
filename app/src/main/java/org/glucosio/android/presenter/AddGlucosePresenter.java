@@ -145,13 +145,9 @@ public class AddGlucosePresenter extends AddReadingPresenter {
                 // We store data in db in mg/dl
                 try {
                     Integer readingValue = Integer.parseInt(reading);
-                    if (readingValue > 19 && readingValue < 601) {
-                        //TODO: Add custom ranges
-                        // TODO: Convert range in mmol/L
-                        return true;
-                    } else {
-                        return false;
-                    }
+                    //TODO: Add custom ranges
+                    // TODO: Convert range in mmol/L
+                    return readingValue > 19 && readingValue < 601;
                 } catch (Exception e) {
                     FirebaseCrash.log("Exception during reading validation");
                     FirebaseCrash.report(e);

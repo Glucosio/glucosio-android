@@ -67,10 +67,10 @@ public class AddWeightActivity extends AddReadingActivity {
 
         // If an id is passed, open the activity in edit mode
         FormatDateTime formatDateTime = new FormatDateTime(getApplicationContext());
-        if (this.isEditing()){
+        if (this.isEditing()) {
             setTitle(R.string.title_activity_add_weight_edit);
             WeightReading readingToEdit = presenter.getWeightReadingById(this.getEditId());
-            readingTextView.setText(readingToEdit.getReading()+"");
+            readingTextView.setText(readingToEdit.getReading() + "");
             Calendar cal = Calendar.getInstance();
             cal.setTime(readingToEdit.getCreated());
             this.getAddDateTextView().setText(formatDateTime.getDate(cal));
