@@ -299,4 +299,5 @@
   <string name="activity_backup_drive_button_open_drive">Beheren op Drive</string>
   <string name="mmol_mol">mmol/mol</string>
   <string name="mmol_L">mmol/l</string>
+  <string name="preferences_graph_old">Terugkeren naar oude grafiek</string>
 </resources>

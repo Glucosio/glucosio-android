@@ -40,6 +40,8 @@
   <string name="helloactivity_spinner_diabetes_type">Tipo de diabetes</string>
   <string name="helloactivity_spinner_diabetes_type_1">Tipo 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Tipo 2</string>
+  <string name="helloactivity_spinner_diabetes_gdm">Gestacional</string>
+  <string name="helloactivity_spinner_diabetes_lada">LADA (Diabetes Autoimone Latente do Adulto)</string>
   <string name="helloactivity_spinner_preferred_glucose_unit">Unidade de glicose preferida</string>
   <string name="preferences_spinner_preferred_a1c_unit">Unidade de A1C preferida</string>
   <string name="preferences_spinner_preferred_a1c_unit_1">percentagem</string>
@@ -233,12 +235,14 @@
   <string name="dialog_add_cholesterol_hdl">Colesterol HDL</string>
   <string name="dialog_add_hb1ac">HB1AC</string>
   <string name="title_activity_add_glucose">Adicionar leitura de glicose</string>
+  <string name="title_activity_add_glucose_edit">Editar leitura de glicose</string>
   <string name="title_activity_add_weight">Adicionar o peso corporal</string>
   <string name="title_activity_add_cholesterol">Adicionar o nível de colesterol</string>
   <string name="title_activity_add_hb1ac">Adicionar HB1AC</string>
   <string name="title_activity_add_ketone">Adicionar cetonas</string>
   <string name="title_activity_add_pressure">Adicionar a pressão arterial</string>
   <string name="fab_weight">Peso corporal</string>
+  <string name="fab_ketones">Cetonas</string>
   <string name="fab_pressure">Pressão arterial</string>
   <string name="fab_cholesterol">Nível de colesterol</string>
   <string name="fab_HB1AC">Leitura de HB1AC</string>
@@ -271,9 +275,12 @@
   <string name="menu_backup_restore">Restaurar</string>
   <string name="menu_backup_csv">Exportação CSV</string>
   <string name="activity_backup_drive_automatic">Backup automático</string>
+  <string name="activity_backup_drive_desc">Fazer o backup de seus dados ao Google Drive permite a você recuperar suas medidas caso você perca ou troque de celular.</string>
   <string name="activity_backup_drive_message_restart">Reiniciando para aplicar as alterações...</string>
   <string name="activity_backup_drive_desc_1">Sincronize o banco de dados do Glucosio na nuvem com o Google Drive.</string>
   <string name="activity_backup_drive_desc_2">Você será capaz de restaurar todas as suas medidas, se você perdeu ou alterar dados do móvil ou sincronizar Glucosio entre seus dispositivos.</string>
+  <string name="activity_backup_drive_success">Backup de dados salvo com sucesso no Google Drive</string>
+  <string name="activity_backup_drive_restore_success">Dados recuperados com sucesso do Drive</string>
   <string name="activity_backup_drive_failed">Algo deu errado. Por favor, tente novamente :/</string>
   <string name="activity_backup_drive_last">Último backup:</string>
   <string name="activity_backup_drive_folder">Pasta de backup</string>
@@ -289,5 +296,7 @@
   <string name="activity_backup_drive_error_restore">Não é posível encontrar um backup válido para restaurar desde Drive</string>
   <string name="activity_main_error_play_services">Glucosio precisa os Play Services para ativar o backup de Google Drive.</string>
   <string name="activity_main_dialog_csv_title">Exportar em arquivo CSV</string>
+  <string name="activity_backup_drive_button_open_drive">Editar no Drive</string>
+  <string name="mmol_mol">mmol/mol</string>
   <string name="mmol_L">mmol/L</string>
 </resources>

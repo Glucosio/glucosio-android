@@ -20,6 +20,20 @@
   ~
   -->
 <resources>
+  <string name="action_invite">Tumira Inshuti</string>
+  <string name="tab_overview">Inshamake</string>
+  <string name="tab_history">Ibihe</string>
+  <string name="tab_tips">Udukoryo</string>
+  <string name="title_activity_hello">Mwaramutse.</string>
+  <string name="helloactivity_terms">Amategeko yo gukoresha</string>
+  <string name="helloactivity_country">Ibihugu</string>
+  <string name="helloactivity_age">Imyaka</string>
+  <string name="helloactivity_spinner_diabetes_type_2">Ubwoko bwa 2</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit">Ubwoko by\'igipimo cya Glucose wishimira</string>
+  <string name="preferences_spinner_preferred_a1c_unit">Ubwoko bwa A1c wahisemo</string>
+  <string name="preferences_spinner_preferred_a1c_unit_1">ijanisha</string>
+  <string name="helloactivity_button_next">Komeza</string>
+  <string name="helloactivity_button_start">Tangira</string>
   <!-- Future Strings Baked In Early For l10n -->
   <!-- Exercise Types -->
   <!-- Food Entry Labels -->

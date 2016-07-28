@@ -150,6 +150,7 @@
   <string name="preferences_backup_google_drive">Google Диск</string>
   <string name="preferences_about_glucosio">О Glucosio</string>
   <string name="preferences_rate">Оценить Glucosio</string>
+  <string name="preferences_licences_open">Лицензии открытого ПО</string>
   <string name="preferences_freestyle_libre">Включить поддержку FreeStyle LibreⓇ</string>
   <string name="preferences_freestyle_libre_experimental">ЭКСПЕРИМЕНТАЛЬНОЕ: Включить поддержку FreeStyle LibreⓇ</string>
   <string name="preferences_font_dyslexia_experimental">ЭКСПЕРИМЕНТАЛЬНОЕ: Улучшить читаемость для пользователей с дислексией</string>
@@ -259,11 +260,19 @@
   <string name="notification_reminder_glucose">Пришло время для входа глюкозы в вашу кровь!</string>
   <string name="notification_reminder_medication">Настало время принять лекарство!</string>
   <string name="dialog_add_notes">Заметки</string>
+  <string name="sidebar_backup_export">Резервное копирование и экспорт</string>
+  <string name="menu_backup_backup">Резервное копирование на диск Google</string>
   <string name="menu_backup_restore">Восстановить</string>
+  <string name="menu_backup_csv">Экспорт в CSV</string>
   <string name="activity_backup_drive_automatic">Автоматическое резервное копирование</string>
+  <string name="activity_backup_drive_desc">Резервное копирование данных на диск Google позволяет восстановить все ваши показания, в случае, если вы потеряете или поменяете устройство.</string>
+  <string name="activity_backup_drive_message_restart">Перезагрузка для применения изменений...</string>
   <string name="activity_backup_drive_last">Последнее резервное копирование:</string>
   <string name="activity_backup_drive_folder">Папка резервного копирования</string>
   <string name="activity_backup_drive_button_backup">Создать резервную копию</string>
   <string name="activity_backup_drive_dialog_restore_button_cancel">Отмена</string>
   <string name="activity_backup_drive_dialog_restore_button_restore">Восстановить конфигурацию</string>
+  <string name="activity_main_dialog_csv_title">Экспортировать в формате CSV</string>
+  <string name="mmol_mol">ммоль/моль</string>
+  <string name="mmol_L">ммоль/литр</string>
 </resources>

@@ -235,6 +235,7 @@
   <string name="dialog_add_cholesterol_hdl">高密度膽固醇</string>
   <string name="dialog_add_hb1ac">糖化血色素</string>
   <string name="title_activity_add_glucose">新增血糖讀數</string>
+  <string name="title_activity_add_glucose_edit">編輯血糖讀數</string>
   <string name="title_activity_add_weight">新增體重讀數</string>
   <string name="title_activity_add_cholesterol">新增膽固醇讀數</string>
   <string name="title_activity_add_hb1ac">新增糖化血色素讀數</string>
@@ -298,4 +299,5 @@
   <string name="activity_backup_drive_button_open_drive">到 Drive 管理</string>
   <string name="mmol_mol">mmol/mol</string>
   <string name="mmol_L">mmol/L</string>
+  <string name="preferences_graph_old">使用舊版圖表</string>
 </resources>

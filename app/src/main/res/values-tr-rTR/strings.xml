@@ -108,6 +108,8 @@
   <string name="assistant">Yardımcı</string>
   <string name="assistant_action_update">Şimdi Güncelleştir</string>
   <string name="assistant_action_ok">TAMAM, ANLADIM</string>
+  <string name="assistant_action_feedback">GERİ BİLDİRİM GÖNDER</string>
+  <string name="assistant_action_live_chat">CANLI SOHBET</string>
   <string name="assistant_action_reading">OKUMA EKLE</string>
   <string name="assistant_action_try">ŞİMDİ DENE</string>
   <string name="assistant_weight_title">Kilonuzu güncelleştirin</string>
@@ -143,6 +145,7 @@
   <!-- Exercise Types -->
   <string name="dialog_add_exercisetype_2">Hızlı yürüme</string>
   <string name="dialog_add_exercisetype_3">Koşu</string>
+  <string name="dialog_add_exercisetype_4">Koşu</string>
   <string name="dialog_add_exercisetype_5">Yüzme</string>
   <string name="dialog_add_exercisetype_6">Dans</string>
   <string name="dialog_add_exercisetype_7">Paten</string>
@@ -200,12 +203,15 @@
   <string name="title_activity_add_ketone">Keton Ekle</string>
   <string name="title_activity_add_pressure">Kan Basıncını Ekle</string>
   <string name="fab_weight">Vücut Ağırlığı</string>
+  <string name="fab_ketones">Ketonlar</string>
   <string name="fab_pressure">Kan Basıncı</string>
   <string name="fab_cholesterol">Kolesterol Düzeyi</string>
   <string name="fab_HB1AC">HBA1C Okunuyor</string>
+  <string name="freestylelibre_nfc_not_supported">Bu cihaz NFC desteklemiyor.</string>
   <string name="freestylelibre_nfc_not_enabled">NFC devre dışı.</string>
   <string name="overview_hb1ac_error_no_data">HBA1C hesaplamak için yeterli veri yok</string>
   <string name="overview_hb1ac">HBA1C:</string>
+  <string name="activity_converter_a1c_glucose">ORTALAMA KAN ŞEKERİ SEVİYESİ</string>
   <string name="activity_converter_a1c">A1C</string>
   <string name="activity_converter_save">KAYDET</string>
   <string name="menu_support">Destek</string>
@@ -213,9 +219,19 @@
   <string name="menu_support_email">E-posta</string>
   <string name="menu_support_live">Canlı Sohbet</string>
   <string name="menu_support_forum">Destek Forumu</string>
+  <string name="notification_reminder_glucose">Kan şekerini ölçme vakti!</string>
+  <string name="notification_reminder_medication">İlacınızı alma vakti!</string>
   <string name="dialog_add_notes">Notlar</string>
+  <string name="sidebar_backup_export">Yedekleme &amp; Kaydet</string>
   <string name="menu_backup_restore">Geri Yükle</string>
   <string name="activity_backup_drive_failed">Hatalı birşeyler var. Lütfen tekrar deneyin :/</string>
+  <string name="activity_backup_drive_folder">Yedekleme dosyası</string>
   <string name="activity_backup_drive_button_backup">Şimdi yedekle</string>
+  <string name="activity_backup_drive_recent">Önceki yedeklemeler</string>
+  <string name="activity_backup_drive_more">Daha fazla yedekleme göster</string>
+  <string name="activity_backup_drive_dialog_restore_title">Önceki versiyona geri al</string>
+  <string name="activity_backup_drive_dialog_restore_details">Yedekleme ayrıntıları</string>
+  <string name="activity_backup_drive_dialog_restore_button_cancel">İptal</string>
+  <string name="activity_backup_drive_dialog_restore_button_restore">Yedek dosyasını geri yükle</string>
   <string name="activity_backup_drive_button_restore">Sürücüden geri yükle</string>
 </resources>
