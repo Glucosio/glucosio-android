@@ -42,6 +42,7 @@
   <string name="preferences_spinner_preferred_weight_unit_1">quilogramas</string>
   <string name="dialog_add_date">Data</string>
   <string name="dialog_add_time">Ora</string>
+  <string name="dialog_add_type_1">Abans lo dejunar</string>
   <string name="dialog_add_type_3">Abans lo dinnar</string>
   <string name="dialog_add_type_4">Aprèp lo dinnar</string>
   <string name="dialog_add_type_5">Abans lo sopar</string>
@@ -51,6 +52,9 @@
   <string name="dialog_add_type_9">Pendent la nuèch</string>
   <string name="dialog_add_type_11">Contraròtle</string>
   <string name="dialog_add_type_12">Autre</string>
+  <string name="dialog_add_cancel">ANULLAR</string>
+  <string name="dialog_add_add">APONDRE</string>
+  <string name="dialog_delete">Suprimir</string>
   <string name="fragment_history_snackbar_action">ANULLAR</string>
   <string name="fragment_overview_selector_month">Mes</string>
   <string name="fragment_overview_selector_day">Jorn</string>
@@ -59,8 +63,12 @@
   <string name="preferences_version">Version</string>
   <string name="glucose_reading_type">Tipe</string>
   <string name="weight">Pes</string>
+  <string name="helloactivity_language">Lenga</string>
+  <string name="reading_ok">D\'acòrdi</string>
   <!-- Future Strings Baked In Early For l10n -->
   <!-- Exercise Types -->
   <!-- Food Entry Labels -->
   <!-- About Glucosio Strings -->
+  <string name="dialog_add_weight">Pes</string>
+  <string name="mmol_L">mmol/L</string>
 </resources>

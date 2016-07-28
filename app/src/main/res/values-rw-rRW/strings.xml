@@ -25,17 +25,37 @@
   <string name="tab_history">Ibihe</string>
   <string name="tab_tips">Udukoryo</string>
   <string name="title_activity_hello">Mwaramutse.</string>
+  <string name="helloactivity_headline">Mwaramutse.</string>
   <string name="helloactivity_terms">Amategeko yo gukoresha</string>
+  <string name="helloactivity_subhead">Dukeneye Utuntu duke mbere yuko mutangira.</string>
   <string name="helloactivity_country">Ibihugu</string>
   <string name="helloactivity_age">Imyaka</string>
+  <string name="helloactivity_gender_list_3">Ibindi</string>
   <string name="helloactivity_spinner_diabetes_type_2">Ubwoko bwa 2</string>
   <string name="helloactivity_spinner_preferred_glucose_unit">Ubwoko by\'igipimo cya Glucose wishimira</string>
   <string name="preferences_spinner_preferred_a1c_unit">Ubwoko bwa A1c wahisemo</string>
   <string name="preferences_spinner_preferred_a1c_unit_1">ijanisha</string>
+  <string name="helloactivity_share_data">Sangiza amakuru mwibanga mugufasha ubuvumbuzi.</string>
   <string name="helloactivity_button_next">Komeza</string>
   <string name="helloactivity_button_start">Tangira</string>
+  <string name="dialog_add_title">Shyiraho Igipimo cy\'isukari mumaraso</string>
+  <string name="dialog_add_date">Itariki</string>
+  <string name="dialog_add_time">Isaha</string>
+  <string name="dialog_add_measured">Ibyapimwe</string>
+  <string name="dialog_add_type_1">Mbere ya Mugitondo</string>
+  <string name="dialog_add_type_2">Nyuma ya Mugitondo</string>
+  <string name="dialog_add_type_3">Mbere ya sasita</string>
+  <string name="dialog_add_type_4">Nyuma ya sasita</string>
+  <string name="dialog_add_type_5">Mbere ya Nimugoroba</string>
+  <string name="dialog_add_type_8">Isaha yo kuryama</string>
+  <string name="dialog_add_type_9">Ijoro</string>
+  <string name="dialog_add_type_11">Ongera Usuzume</string>
+  <string name="dialog_add_type_12">Ibindi</string>
+  <string name="dialog_add_cancel">Hagarika</string>
+  <string name="dialog_add_add">Ongeraho</string>
   <!-- Future Strings Baked In Early For l10n -->
   <!-- Exercise Types -->
   <!-- Food Entry Labels -->
   <!-- About Glucosio Strings -->
+  <string name="mmol_L">mmol/L</string>
 </resources>
