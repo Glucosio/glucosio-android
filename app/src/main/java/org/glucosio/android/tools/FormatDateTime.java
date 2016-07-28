@@ -39,6 +39,7 @@ public class FormatDateTime {
     }
 
     public String convertDateTime(String date) {
+        //TODO use joda.time
         DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         DateFormat finalDataFormat = DateFormat.getDateInstance(DateFormat.SHORT);
         DateFormat finalTimeFormat;

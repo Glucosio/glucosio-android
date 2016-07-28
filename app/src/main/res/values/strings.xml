@@ -366,9 +366,13 @@
     <string name="title_activity_add_weight">Add Body Weight</string>
     <string name="title_activity_add_weight_edit">Edit Body Weight</string>
     <string name="title_activity_add_cholesterol">Add Cholesterol Level</string>
+    <string name="title_activity_add_cholesterol_edit">Edit Cholesterol Level</string>
     <string name="title_activity_add_hb1ac">Add HBA1C</string>
+    <string name="title_activity_add_hb1ac_edit">Edit HBA1C</string>
     <string name="title_activity_add_ketone">Add Ketones</string>
+    <string name="title_activity_add_ketone_edit">Edit Ketones</string>
     <string name="title_activity_add_pressure">Add Blood Pressure</string>
+    <string name="title_activity_add_pressure_edit">Edit Blood Pressure</string>
 
     <string name="fab_weight">Body Weight</string>
     <string name="fab_ketones">Ketones</string>

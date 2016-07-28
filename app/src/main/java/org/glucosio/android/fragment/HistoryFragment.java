@@ -43,7 +43,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import org.glucosio.android.R;
+import org.glucosio.android.activity.AddA1CActivity;
+import org.glucosio.android.activity.AddCholesterolActivity;
 import org.glucosio.android.activity.AddGlucoseActivity;
+import org.glucosio.android.activity.AddKetoneActivity;
+import org.glucosio.android.activity.AddPressureActivity;
 import org.glucosio.android.activity.AddWeightActivity;
 import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.adapter.HistoryAdapter;
@@ -137,9 +141,7 @@ public class HistoryFragment extends Fragment {
             public void onItemLongClick(final View view, final int position) {
                 int historyTypePosition = (int) historySpinner.getSelectedItemId();
                 // if touch Glucose or weight item
-                if (historyTypePosition == 0 || historyTypePosition == 5) {
-                    showBottomSheetDialog(view, position);
-                }
+                showBottomSheetDialog(view, position);
             }
         }));
 
@@ -167,6 +169,22 @@ public class HistoryFragment extends Fragment {
                 int historyTypePosition = (int) historySpinner.getSelectedItemId();
                 Intent intent;
                 switch(historyTypePosition) {
+                    // HAB1C
+                    case 1 :
+                        intent = new Intent(getActivity(), AddA1CActivity.class);
+                        break;
+                    // Cholesterol
+                    case 2 :
+                        intent = new Intent(getActivity(), AddCholesterolActivity.class);
+                        break;
+                    // Pressure
+                    case 3 :
+                        intent = new Intent(getActivity(), AddPressureActivity.class);
+                        break;
+                    // Ketone
+                    case 4 :
+                        intent = new Intent(getActivity(), AddKetoneActivity.class);
+                        break;
                     // Weight
                     case 5 :
                         intent = new Intent(getActivity(), AddWeightActivity.class);

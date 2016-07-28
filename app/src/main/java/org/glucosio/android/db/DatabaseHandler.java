@@ -450,7 +450,7 @@ public class DatabaseHandler {
         realm.commitTransaction();
     }
 
-    public void deleteHB1ACReadingReading(HB1ACReading reading) {
+    public void deleteHB1ACReading(HB1ACReading reading) {
         realm.beginTransaction();
         reading.deleteFromRealm();
         realm.commitTransaction();
@@ -460,6 +460,17 @@ public class DatabaseHandler {
         return realm.where(HB1ACReading.class)
                 .equalTo("id", id)
                 .findFirst();
+    }
+
+    public HB1ACReading getHB1ACReadingById(long id) {
+        return getHB1ACReading(id);
+    }
+
+    public void editHB1ACReading(long oldId, HB1ACReading reading) {
+        // First delete the old reading
+        deleteHB1ACReading(getHB1ACReadingById(oldId));
+        // then save the new one
+        addHB1ACReading(reading);
     }
 
     public RealmResults<HB1ACReading> getrHB1ACRawReadings() {
@@ -536,7 +547,14 @@ public class DatabaseHandler {
         realm.commitTransaction();
     }
 
-    public KetoneReading getKetoneReading(long id) {
+    public void editKetoneReading(long oldId, KetoneReading reading) {
+        // First delete the old reading
+        deleteKetoneReading(getKetoneReadingById(oldId));
+        // then save the new one
+        addKetoneReading(reading);
+    }
+
+    public KetoneReading getKetoneReadingById(long id) {
         return realm.where(KetoneReading.class)
                 .equalTo("id", id)
                 .findFirst();
@@ -622,6 +640,13 @@ public class DatabaseHandler {
         realm.beginTransaction();
         reading.deleteFromRealm();
         realm.commitTransaction();
+    }
+
+    public void editPressureReading(long oldId, PressureReading reading) {
+        // First delete the old reading
+        deletePressureReading(getPressureReading(oldId));
+        // then save the new one
+        addPressureReading(reading);
     }
 
     public ArrayList<PressureReading> getPressureReadings() {
@@ -788,6 +813,13 @@ public class DatabaseHandler {
         reading.setId(getNextKey("cholesterol"));
         realm.copyToRealm(reading);
         realm.commitTransaction();
+    }
+
+    public void editCholesterolReading(long oldId, CholesterolReading reading) {
+        // First delete the old reading
+        deleteCholesterolReading(getCholesterolReading(oldId));
+        // then save the new one
+        addCholesterolReading(reading);
     }
 
     public CholesterolReading getCholesterolReading(long id) {

@@ -39,6 +39,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -527,7 +528,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private boolean validateExportDialog() {
         String dateTo = exportDialogDateTo.getText().toString();
         String dateFrom = exportDialogDateFrom.getText().toString();
-        return !exportRangeButton.isChecked() || !(dateTo.equals("") || dateFrom.equals(""));
+        return !exportRangeButton.isChecked() || !(TextUtils.isEmpty(dateTo) || TextUtils.isEmpty(dateFrom));
     }
 
     public CoordinatorLayout getFabView() {
