@@ -22,6 +22,7 @@ package org.glucosio.android.activity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -299,63 +300,32 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     public void onGlucoseFabClicked(View v) {
-        fabMenu.toggle(false);
-        Intent intent = new Intent(this, AddGlucoseActivity.class);
-        // Pass pager position to open it again later
-        Bundle b = new Bundle();
-        b.putInt("pager", viewPager.getCurrentItem());
-        intent.putExtras(b);
-        startActivity(intent);
-        finish();
+        openNewAddActivity(AddGlucoseActivity.class);
     }
 
     public void onKetoneFabClicked(View v) {
-        fabMenu.toggle(false);
-        Intent intent = new Intent(this, AddKetoneActivity.class);
-        // Pass pager position to open it again later
-        Bundle b = new Bundle();
-        b.putInt("pager", viewPager.getCurrentItem());
-        intent.putExtras(b);
-        startActivity(intent);
-        finish();
+        openNewAddActivity(AddKetoneActivity.class);
     }
 
     public void onPressureFabClicked(View v) {
-        fabMenu.toggle(false);
-        Intent intent = new Intent(this, AddPressureActivity.class);
-        // Pass pager position to open it again later
-        Bundle b = new Bundle();
-        b.putInt("pager", viewPager.getCurrentItem());
-        intent.putExtras(b);
-        startActivity(intent);
-        finish();
+        openNewAddActivity(AddPressureActivity.class);
     }
 
     public void onHB1ACFabClicked(View v) {
-        fabMenu.toggle(false);
-        Intent intent = new Intent(this, AddA1CActivity.class);
-        // Pass pager position to open it again later
-        Bundle b = new Bundle();
-        b.putInt("pager", viewPager.getCurrentItem());
-        intent.putExtras(b);
-        startActivity(intent);
-        finish();
+        openNewAddActivity(AddA1CActivity.class);
     }
 
     public void onCholesterolFabClicked(View v) {
-        fabMenu.toggle(false);
-        Intent intent = new Intent(this, AddCholesterolActivity.class);
-        // Pass pager position to open it again later
-        Bundle b = new Bundle();
-        b.putInt("pager", viewPager.getCurrentItem());
-        intent.putExtras(b);
-        startActivity(intent);
-        finish();
+        openNewAddActivity(AddCholesterolActivity.class);
     }
 
     public void onWeightFabClicked(View v) {
+        openNewAddActivity(AddWeightActivity.class);
+    }
+
+    private void openNewAddActivity(Class<?> activity){
         fabMenu.toggle(false);
-        Intent intent = new Intent(this, AddWeightActivity.class);
+        Intent intent = new Intent(this, activity);
         // Pass pager position to open it again later
         Bundle b = new Bundle();
         b.putInt("pager", viewPager.getCurrentItem());

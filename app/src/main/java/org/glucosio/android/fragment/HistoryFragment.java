@@ -197,6 +197,8 @@ public class HistoryFragment extends Fragment {
 
                 intent.putExtra("edit_id", Long.parseLong(idTextView.getText().toString()));
                 intent.putExtra("editing", true);
+                // History page is 1
+                intent.putExtra("pager", 1);
                 startActivity(intent);
                 mBottomSheetDialog.dismiss();
                 getActivity().finish();
