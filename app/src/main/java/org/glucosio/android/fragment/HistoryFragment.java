@@ -25,7 +25,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialog;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -57,6 +56,10 @@ import org.glucosio.android.tools.FormatDateTime;
 
 public class HistoryFragment extends Fragment {
 
+    private final String INTENT_EXTRA_PAGER = "pager";
+    private final String INTENT_EXTRA_EDITING_ID = "edit_id";
+    private final String INTENT_EXTRA_EDITING = "editing" ;
+    private final String INTENT_EXTRA_DROPDOWN = "history_dropdown";
     private RecyclerView mRecyclerView;
     private LinearLayoutManager mLayoutManager;
     private RecyclerView.Adapter mAdapter;
@@ -64,8 +67,8 @@ public class HistoryFragment extends Fragment {
     private LinearLayout glucoseLegend;
     private Spinner historySpinner;
     private BottomSheetDialog mBottomSheetDialog;
-    private BottomSheetBehavior behavior;
     private Boolean isToolbarScrolling = true;
+    private int historyDropdownPosition = 0;
 
     public HistoryFragment() {
         // Required empty public constructor
@@ -122,6 +125,7 @@ public class HistoryFragment extends Fragment {
                     mAdapter = new HistoryAdapter(context, presenter, metricId);
                     mRecyclerView.setAdapter(mAdapter);
                     mAdapter.notifyDataSetChanged();
+                    historyDropdownPosition = position;
                 }
             }
 
@@ -153,6 +157,12 @@ public class HistoryFragment extends Fragment {
             }
         });
 
+        Bundle extras = getActivity().getIntent().getExtras();
+        if (extras != null) {
+            if (extras.containsKey(INTENT_EXTRA_DROPDOWN)) {
+                historySpinner.setSelection(extras.getInt(INTENT_EXTRA_DROPDOWN));
+            }
+        }
         return mFragmentView;
     }
 
@@ -195,10 +205,11 @@ public class HistoryFragment extends Fragment {
                         break;
                 }
 
-                intent.putExtra("edit_id", Long.parseLong(idTextView.getText().toString()));
-                intent.putExtra("editing", true);
+                intent.putExtra(INTENT_EXTRA_EDITING_ID, Long.parseLong(idTextView.getText().toString()));
+                intent.putExtra(INTENT_EXTRA_EDITING, true);
+                intent.putExtra(INTENT_EXTRA_DROPDOWN, historyDropdownPosition);
                 // History page is 1
-                intent.putExtra("pager", 1);
+                intent.putExtra(INTENT_EXTRA_PAGER, 1);
                 startActivity(intent);
                 mBottomSheetDialog.dismiss();
                 getActivity().finish();
@@ -284,5 +295,9 @@ public class HistoryFragment extends Fragment {
             ((MainActivity) getActivity()).reloadFragmentAdapter();
             ((MainActivity) getActivity()).checkIfEmptyLayout();
         }
+    }
+
+    public int getHistoryDropdownPosition(){
+        return historyDropdownPosition;
     }
 }

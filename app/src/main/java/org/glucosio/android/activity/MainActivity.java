@@ -79,6 +79,8 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     private static final int REQUEST_INVITE = 1;
+    private final String INTENT_EXTRA_DROPDOWN = "history_dropdown";
+    private static final String INTENT_EXTRA_PAGER = "pager";
     private ExportPresenter exportPresenter;
     private RadioButton exportRangeButton;
     private HomePagerAdapter homePagerAdapter;
@@ -327,7 +329,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         Intent intent = new Intent(this, activity);
         // Pass pager position to open it again later
         Bundle b = new Bundle();
-        b.putInt("pager", viewPager.getCurrentItem());
+        b.putInt(INTENT_EXTRA_PAGER, viewPager.getCurrentItem());
+        b.putInt(INTENT_EXTRA_DROPDOWN, homePagerAdapter.getHistoryFragment().getHistoryDropdownPosition());
         intent.putExtras(b);
         startActivity(intent);
         finish();
