@@ -33,22 +33,28 @@ import org.glucosio.android.fragment.OverviewFragment;
 public class HomePagerAdapter extends FragmentPagerAdapter {
 
     private Context mContext;
+    private OverviewFragment overviewFragment;
+    private HistoryFragment historyFragment;
+    private AssistantFragment assistantFragment;
 
 
     public HomePagerAdapter(FragmentManager fm, Context context) {
         super(fm);
         this.mContext = context;
+        overviewFragment = new OverviewFragment();
+        historyFragment = new HistoryFragment();
+        assistantFragment = new AssistantFragment();
     }
 
     @Override
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new OverviewFragment();
+                return overviewFragment;
             case 1:
-                return new HistoryFragment();
+                return historyFragment;
             default:
-                return new AssistantFragment();
+                return assistantFragment;
         }
     }
 
@@ -74,4 +80,28 @@ public class HomePagerAdapter extends FragmentPagerAdapter {
         }
     }
 
+
+    public OverviewFragment getOverviewFragment() {
+        return overviewFragment;
+    }
+
+    public void setOverviewFragment(OverviewFragment overviewFragment) {
+        this.overviewFragment = overviewFragment;
+    }
+
+    public HistoryFragment getHistoryFragment() {
+        return historyFragment;
+    }
+
+    public void setHistoryFragment(HistoryFragment historyFragment) {
+        this.historyFragment = historyFragment;
+    }
+
+    public AssistantFragment getAssistantFragment() {
+        return assistantFragment;
+    }
+
+    public void setAssistantFragment(AssistantFragment assistantFragment) {
+        this.assistantFragment = assistantFragment;
+    }
 }

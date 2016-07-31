@@ -26,6 +26,10 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public abstract class AddReadingActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
+    private final java.lang.String INTENT_EXTRA_EDIT = "editing";
+    private final java.lang.String INTENT_EXTRA_EDIT_ID = "edit_id";
+    private final String INTENT_EXTRA_PAGER = "pager";
+    private final String INTENT_EXTRA_DROPDOWN = "history_dropdown";
     private AddReadingPresenter presenter;
 
     private TextView addTimeTextView;
@@ -34,15 +38,17 @@ public abstract class AddReadingActivity extends AppCompatActivity implements Ti
     private Runnable fabAnimationRunnable;
 
     private int pagerPosition;
+    private int dropdownPosition;
     private long editId = 0;
     private boolean editing = false;
 
     protected void retrieveExtra() {
         Bundle b = getIntent().getExtras();
         if (b != null) {
-            pagerPosition = b.getInt("pager");
-            editId = b.getLong("edit_id");
-            editing = b.getBoolean("editing");
+            pagerPosition = b.getInt(INTENT_EXTRA_PAGER);
+            editId = b.getLong(INTENT_EXTRA_EDIT_ID);
+            editing = b.getBoolean(INTENT_EXTRA_EDIT);
+            dropdownPosition = b.getInt(INTENT_EXTRA_DROPDOWN);
         }
     }
 
@@ -168,7 +174,8 @@ public abstract class AddReadingActivity extends AppCompatActivity implements Ti
         Intent intent = new Intent(this, MainActivity.class);
         // Pass pager position to open it again later
         Bundle b = new Bundle();
-        b.putInt("pager", this.getPagerPosition());
+        b.putInt(INTENT_EXTRA_PAGER, this.getPagerPosition());
+        b.putInt(INTENT_EXTRA_DROPDOWN, this.getDropdownPosition());
         intent.putExtras(b);
         startActivity(intent);
         finish();
@@ -192,6 +199,10 @@ public abstract class AddReadingActivity extends AppCompatActivity implements Ti
 
     public int getPagerPosition() {
         return pagerPosition;
+    }
+
+    public int getDropdownPosition(){
+        return dropdownPosition;
     }
 
     public long getEditId() {
