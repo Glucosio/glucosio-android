@@ -40,6 +40,14 @@
   <string name="helloactivity_spinner_diabetes_type">Diyabet türü</string>
   <string name="helloactivity_spinner_diabetes_type_1">Tip 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Tip 2</string>
+  <string name="helloactivity_spinner_diabetes_gdm">Gestasyonel</string>
+  <string name="helloactivity_spinner_diabetes_lada">LADA</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit">Tercih edilen glikoz birimi</string>
+  <string name="preferences_spinner_preferred_a1c_unit">Tercih edilen A1C birimi</string>
+  <string name="preferences_spinner_preferred_a1c_unit_1">yüzde</string>
+  <string name="preferences_spinner_preferred_weight_unit">Tercih edilen ağırlık birimi</string>
+  <string name="preferences_spinner_preferred_weight_unit_1">kilogram</string>
+  <string name="preferences_spinner_preferred_weight_unit_2">pound</string>
   <string name="helloactivity_share_data">Araştırma için kimliksiz bilgi gönder.</string>
   <string name="helloactivity_hint_settings">Bu ayarları daha sonra değiştirebilirsiniz.</string>
   <string name="helloactivity_button_next">SONRAKİ</string>
@@ -77,7 +85,9 @@
   <string name="fragment_overview_selector_day">Gün</string>
   <string name="fragment_overview_selector_week">Hafta</string>
   <string name="preferences_about">Hakkında</string>
+  <string name="preferences_experimental">Bu özellikler deneyseldir ve tam çalışmayabilir ve kullanıcıların erken test etmesi için vardır. Bize geri bildirim göndermek için telefonunuzu sallayabileceğinizi unutmayın.</string>
   <string name="preferences_version">Sürüm</string>
+  <string name="preferences_coming_soon">Çok yakında...</string>
   <string name="preferences_terms">Kullanım Şartları</string>
   <string name="glucose_reading_type">Tür</string>
   <string name="weight">Ağırlık</string>
@@ -96,14 +106,14 @@
     <item>Hareket ederek kilo vermek kan şekerinizin kontrolünde size yardımcı olur. Bir doktordan, diyetisyenden veya fitness eğitmeninden çalışmanız için plan yardım alabilirsiniz.</item>
     <item>Glucosio gibi uygulamalarla günde iki defa kan düzeyinizi kontrol etmek ve takip etmek sizi istenmeyen sonuçlardan uzak tutacaktır.</item>
     <item>Son 2 - 3 aylık ortalama kan şekerinizi öğrenmek için A1c kan testi yapın. Doktorunuz bu testi ne sıklıkla yapmanız gerektiğini size söyleyecektir.</item>
-    <item>Tracking how many carbohydrates you consume can be just as important as checking blood levels since carbohydrates influence blood glucose levels. Talk to your doctor or a dietician about carbohydrate intake.</item>
+    <item>Ne kadar karbonhidrat aldığınızı takip etmek kan şekerinizi takip etmek kadar önemli olabilir, çünkü karbonhidratlar kan şekerinizi etkiler. Karbonhidrat alımınız hakkında doktorunuz ya da diyetisyeniniz ile konuşun.</item>
     <item>Diyabet hastalığı kalp duyarlı olduğundan tansiyon, kolesterol ve trigliserid düzeylerini kontrol etmek önemlidir.</item>
     <item>Sağlıklı beslenme ve diyabet sonuçlar geliştirmek yardım için yapabileceğiniz birçok diyet yaklaşım vardır. Bir diyetisyenden tavsiye almak işinize yarayacaktır.</item>
-    <item>Working on getting regular exercise is especially important for those with diabetes and can help you maintain a healthy weight. Talk to your doctor about exercises that will be appropriate for you.</item>
-    <item>Being sleep-deprived can make you eat more especially things like junk food and as a result can negatively impact your health. Be sure to get a good night sleep and consult a sleep specialist if you are having difficulty.</item>
-    <item>Stress can have a negative impact on diabetes. Talk to your doctor or other health care professional about coping with stress.</item>
+    <item>Düzenli egzersiz yapmaya çalışmak özellikle şeker hastaları için önemlidir ve sağlıklı bir kiloda olmanıza yardımcı olabilir. Doktorunuzla size uygun egzersiler hakkında konuşabilirsiniz.</item>
+    <item>Uykusuzluk sizi daha çok yemeye ve özellikle abur cubur yemeye itebilir ve böylece sağlığınızı kötü etkileyebilir. İyi uyku almaya özen gösterin ve bu konuda sorun yaşıyosanız bir uyku uzmanına danışın.</item>
+    <item>Stresin diyabet üzerinde olumsuz etkileri olabilir. Stres ile başa çıkma hakkında doktorunuzla ya da diğer sağlık profesyonelleri ile. konuşabilirsiniz.</item>
     <item>Visiting your doctor once a year and having regular communication throughout the year is important for diabetics to prevent any sudden onset of associated health problems.</item>
-    <item>Take your medicine as prescribed by your doctor even small lapses in your medicine can impact your blood glucose level and cause other side effects. If having difficulty remembering ask your doctor about medication management and reminder options.</item>
+    <item>İlacınızı doktorunuzun talimatlarına göre alınız. İlaç alımınızdaki ufak aksamalar bile kan şekerinizi etkileyebilir ve başka yan etkilere yol açabilir. İlaç talimatlarınızı hatırlamakta zorluk yaşıyorsanız doktorunuz ile ilaç yönetimi ve hatırlatıcılar hakkında konuşun.</item>
   </string-array>
   <string name="assistant">Yardımcı</string>
   <string name="assistant_action_update">Şimdi Güncelleştir</string>
@@ -125,6 +135,7 @@
   <string name="assistant_reading_title">Bir okuma Ekle</string>
   <string name="assistant_reading_desc">Glikoz değerlerinizi düzenli olarak eklediğinizden emin olun böylece glikoz seviyenizi takip edebilelim.</string>
   <string name="assistant_export_title">Verilerinizi dışarı aktar</string>
+  <string name="assistant_calculator_a1c_title">A1C\'yi hesapla</string>
   <string name="helloactivity_spinner_preferred_range">Tercih edilen aralık</string>
   <string name="helloactivity_spinner_preferred_range_4">Özel Aralık</string>
   <string name="helloactivity_preferred_range_min">En küçük değer</string>
@@ -132,10 +143,13 @@
   <string name="helloactivity_language">Dil Seç</string>
   <string name="invitation_title">Başka kişileri davet edin</string>
   <string name="invitation_cta">Glucosio deneyin</string>
+  <string name="title_activity_backup_drive">Google Drive yedekleme</string>
+  <string name="activity_main_dialog_backup_export_title">Yedekleme &amp; Kaydet</string>
   <string name="preferences_privacy">Gizlilik</string>
   <string name="preferences_backup_google_drive">Google Drive</string>
   <string name="preferences_about_glucosio">Glucosio hakkında</string>
   <string name="preferences_rate">Glucosio\'yu Değerlendir</string>
+  <string name="preferences_licences_open">Açık kaynak lisansları</string>
   <string name="about_donate">Glucosio\'ya bağış yap</string>
   <string name="reading_ok">OK</string>
   <string name="reading_hypo">Hipoglisemi</string>
@@ -173,6 +187,7 @@
   <!-- About Glucosio Strings -->
   <string name="about_credits">Krediler</string>
   <string name="about_contribute">Katkıda Bulunun</string>
+  <string name="about_contributel10n">Çeviriye katkıda bulunun</string>
   <string name="about_contributedev">Geliştirmeye katkıda bulunun</string>
   <string name="about_discussion">Tartışma topluluğumuza katılın</string>
   <string name="about_maillist">E-posta listemize abone ol</string>
@@ -188,7 +203,9 @@
   <string name="activity_export_snackbar_2">okunuyor</string>
   <string name="fragment_overview_permission_storage">Glucosio ekran görüntüsü kaydetmek için depolama izninin olması gerekir</string>
   <string name="fragment_overview_graph_export_true">Ekran görüntüsü galeriye kaydedildi</string>
+  <string name="fragment_overview_graph_export_false">Galeriye ekran görüntüsü kaydetme hatası</string>
   <string name="dialog_export_range">Dışa aktarma aralığı</string>
+  <string name="wear_new_reading">Yeni okuma eklendi</string>
   <string name="dialog_add_weight">Ağırlık</string>
   <string name="dialog_add_ketones">Ketonlar</string>
   <string name="dialog_add_pressure_min">Min Basınç</string>
@@ -197,6 +214,7 @@
   <string name="dialog_add_cholesterol_ldl">LDL Kolesterol</string>
   <string name="dialog_add_cholesterol_hdl">HDL Kolesterol</string>
   <string name="dialog_add_hb1ac">HB1AC</string>
+  <string name="title_activity_add_glucose_edit">Glikoz okumasını düzenle</string>
   <string name="title_activity_add_weight">Vücut Ağırlığı Ekle</string>
   <string name="title_activity_add_cholesterol">Kolesterol Düzeyini Ekle</string>
   <string name="title_activity_add_hb1ac">HB1AC Ekle</string>
@@ -207,8 +225,11 @@
   <string name="fab_pressure">Kan Basıncı</string>
   <string name="fab_cholesterol">Kolesterol Düzeyi</string>
   <string name="fab_HB1AC">HBA1C Okunuyor</string>
+  <string name="fab_glucose">Kan Şekeri Seviyesi</string>
+  <string name="freestylelibre_nfc_ready">Lütfen, telefonunuzu sensörün üzerine koyun ve bu titreşene kadar hareket etmeyin.</string>
   <string name="freestylelibre_nfc_not_supported">Bu cihaz NFC desteklemiyor.</string>
   <string name="freestylelibre_nfc_not_enabled">NFC devre dışı.</string>
+  <string name="freestylelibre_nfc_error">NFC bağlantısı açarken sorun oluştu!</string>
   <string name="overview_hb1ac_error_no_data">HBA1C hesaplamak için yeterli veri yok</string>
   <string name="overview_hb1ac">HBA1C:</string>
   <string name="activity_converter_a1c_glucose">ORTALAMA KAN ŞEKERİ SEVİYESİ</string>
@@ -223,6 +244,7 @@
   <string name="notification_reminder_medication">İlacınızı alma vakti!</string>
   <string name="dialog_add_notes">Notlar</string>
   <string name="sidebar_backup_export">Yedekleme &amp; Kaydet</string>
+  <string name="menu_backup_backup">Google Drive ile yedekleyin</string>
   <string name="menu_backup_restore">Geri Yükle</string>
   <string name="activity_backup_drive_failed">Hatalı birşeyler var. Lütfen tekrar deneyin :/</string>
   <string name="activity_backup_drive_folder">Yedekleme dosyası</string>
@@ -234,4 +256,7 @@
   <string name="activity_backup_drive_dialog_restore_button_cancel">İptal</string>
   <string name="activity_backup_drive_dialog_restore_button_restore">Yedek dosyasını geri yükle</string>
   <string name="activity_backup_drive_button_restore">Sürücüden geri yükle</string>
+  <string name="mmol_mol">mmol/mol</string>
+  <string name="mmol_L">mmol/L</string>
+  <string name="preferences_graph_old">Eski grafiğe geri dön</string>
 </resources>
