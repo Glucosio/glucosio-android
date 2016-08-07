@@ -96,7 +96,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private HomePagerAdapter homePagerAdapter;
     private MainPresenter presenter;
     private ViewPager viewPager;
-    private GridView addReadingView;
     private BottomSheetBehavior bottomSheetBehavior;
     private View bottomSheetMenu;
 
@@ -184,33 +183,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             }
         });
 
-        bottomSheetMenu = coordinatorLayout.findViewById(R.id.activity_main_add_gridview);
+        bottomSheetMenu = coordinatorLayout.findViewById(R.id.activity_main_add_bottom_sheet_menu);
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetMenu);
-        addReadingView = (GridView) findViewById(R.id.activity_main_add_gridview);
-        addReadingView.setAdapter(new GridImageAdapter(this));
-        addReadingView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                switch (i){
-                    case 0: openNewAddActivity(AddGlucoseActivity.class);
-                        break;
-                    case 1: openNewAddActivity(AddA1CActivity.class);
-                        break;
-                    case 2: openNewAddActivity(AddWeightActivity.class);
-                        break;
-                    case 3: openNewAddActivity(AddKetoneActivity.class);
-                        break;
-                    case 4: openNewAddActivity(AddPressureActivity.class);
-                        break;
-                    case 5: openNewAddActivity(AddCholesterolActivity.class);
-                        break;
-                    default:
-                        // Should NOT happen
-                        // Anyway, open Glucose Activity just to be sure
-                        openNewAddActivity(AddGlucoseActivity.class);
-                }
-            }
-        });
 
         // Add Nav Drawer
         final PrimaryDrawerItem itemSettings = new PrimaryDrawerItem().withName(R.string.action_settings).withIcon(R.drawable.ic_settings_grey_24dp).withSelectable(false).withTypeface(Typeface.DEFAULT_BOLD);
@@ -333,6 +307,30 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         Intent intent = new Intent(this, PreferencesActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    public void onGlucoseFabClicked(View v) {
+        openNewAddActivity(AddGlucoseActivity.class);
+    }
+
+    public void onKetoneFabClicked(View v) {
+        openNewAddActivity(AddKetoneActivity.class);
+    }
+
+    public void onPressureFabClicked(View v) {
+        openNewAddActivity(AddPressureActivity.class);
+    }
+
+    public void onHB1ACFabClicked(View v) {
+        openNewAddActivity(AddA1CActivity.class);
+    }
+
+    public void onCholesterolFabClicked(View v) {
+        openNewAddActivity(AddCholesterolActivity.class);
+    }
+
+    public void onWeightFabClicked(View v) {
+        openNewAddActivity(AddWeightActivity.class);
     }
 
     private void openNewAddActivity(Class<?> activity){

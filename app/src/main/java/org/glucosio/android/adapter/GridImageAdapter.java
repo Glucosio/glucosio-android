@@ -54,7 +54,7 @@ public class GridImageAdapter extends BaseAdapter {
         if (convertView == null) {
             // if it's not recycled, initialize some attributes
             imageView = new ImageView(mContext);
-            imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
+            imageView.setLayoutParams(new GridView.LayoutParams(250, 250));
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             imageView.setPadding(8, 8, 8, 8);
         } else {
@@ -66,7 +66,7 @@ public class GridImageAdapter extends BaseAdapter {
     }
 
     private Integer[] mThumbIds = {
-            R.drawable.ic_fab_glucose, R.drawable.ic_fab_a1c,
+            R.drawable.add_circle_glucose, R.drawable.ic_fab_a1c,
             R.drawable.ic_fab_weight, R.drawable.ic_fab_ketones,
             R.drawable.ic_fab_pressure, R.drawable.ic_fab_cholesterol
     };
