@@ -87,20 +87,6 @@ public class HelloActivityTest extends RobolectricTest {
     }
 
     @Test
-    public void ShouldUpdateAppLanguage_WhenSpinnerSelected() throws Exception {
-        when(getLocaleHelper().getLocalesWithTranslation(any(Resources.class))).
-                thenReturn(Lists.newArrayList("nl"));
-        when(getLocaleHelper().getDisplayLanguage("nl")).thenReturn("Nederlandse");
-        TestHelloActivity activity = Robolectric.buildActivity(TestHelloActivity.class).create().get();
-        activity.countrySpinner.getSpinner().setSelection(0);
-
-        activity.languageSpinner.setSelection(0);
-
-        verify(getLocaleHelper()).updateLanguage(activity, "nl");
-        assertThat(activity.isRecreated()).isTrue();
-    }
-
-    @Test
     public void ShouldSelectLanguage_WhenCreated() throws Exception {
         when(getLocaleHelper().getDeviceLocale()).thenReturn(new Locale("nl"));
         when(getLocaleHelper().getLocalesWithTranslation(any(Resources.class))).
