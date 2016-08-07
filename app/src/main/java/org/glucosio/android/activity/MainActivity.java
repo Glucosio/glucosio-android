@@ -31,7 +31,9 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
@@ -44,6 +46,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
+import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -65,9 +69,14 @@ import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
+import org.glucosio.android.adapter.GridImageAdapter;
 import org.glucosio.android.adapter.HomePagerAdapter;
 import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.db.DatabaseHandler;
+import org.glucosio.android.db.GlucoseReading;
+import org.glucosio.android.db.HB1ACReading;
+import org.glucosio.android.db.KetoneReading;
+import org.glucosio.android.db.WeightReading;
 import org.glucosio.android.presenter.ExportPresenter;
 import org.glucosio.android.presenter.MainPresenter;
 
@@ -81,16 +90,20 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private static final int REQUEST_INVITE = 1;
     private final String INTENT_EXTRA_DROPDOWN = "history_dropdown";
     private static final String INTENT_EXTRA_PAGER = "pager";
+    private CoordinatorLayout coordinatorLayout;
     private ExportPresenter exportPresenter;
     private RadioButton exportRangeButton;
     private HomePagerAdapter homePagerAdapter;
     private MainPresenter presenter;
     private ViewPager viewPager;
+    private GridView addReadingView;
+    private BottomSheetBehavior bottomSheetBehavior;
+    private View bottomSheetMenu;
 
     private TextView exportDialogDateFrom;
     private TextView exportDialogDateTo;
 
-    private FloatingActionMenu fabMenu;
+    private FloatingActionButton fabAddReading;
     private FloatingActionButton fabGlucoseEmpty;
     private Toolbar toolbar;
     private TabLayout tabLayout;
@@ -104,9 +117,9 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         setContentView(R.layout.activity_main);
         initPresenters(application);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        viewPager = (ViewPager) findViewById(R.id.pager);
+        toolbar = (Toolbar) findViewById(R.id.activity_main_toolbar);
+        tabLayout = (TabLayout) findViewById(R.id.activity_main_tab_layout);
+        viewPager = (ViewPager) findViewById(R.id.activity_main_pager);
 
         if (toolbar != null) {
             setSupportActionBar(toolbar);
@@ -116,6 +129,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             getSupportActionBar().setLogo(R.drawable.ic_logo);
         }
 
+        coordinatorLayout = (CoordinatorLayout) findViewById(R.id.activity_main_coordinator_layout);
         homePagerAdapter = new HomePagerAdapter(getSupportFragmentManager(), getApplicationContext());
 
         viewPager.setAdapter(homePagerAdapter);
@@ -137,8 +151,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             public void onPageSelected(int position) {
                 if (position == 2) {
                     hideFabAnimation();
-                    LinearLayout emptyLayout = (LinearLayout) findViewById(R.id.mainactivity_empty_layout);
-                    ViewPager pager = (ViewPager) findViewById(R.id.pager);
+                    LinearLayout emptyLayout = (LinearLayout) findViewById(R.id.activity_main_empty_layout);
+                    ViewPager pager = (ViewPager) findViewById(R.id.activity_main_pager);
                     if (pager.getVisibility() == View.GONE) {
                         pager.setVisibility(View.VISIBLE);
                         emptyLayout.setVisibility(View.INVISIBLE);
@@ -155,24 +169,45 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             }
         });
 
-        fabGlucoseEmpty = (FloatingActionButton) findViewById(R.id.fab_glucose_empty);
-        fabMenu = (FloatingActionMenu) findViewById(R.id.fab_menu_add_reading);
-        fabMenu.setClosedOnTouchOutside(true);
-        fabMenu.setOnMenuToggleListener(new FloatingActionMenu.OnMenuToggleListener() {
+        fabGlucoseEmpty = (FloatingActionButton) findViewById(R.id.activity_main_fab_glucose_empty);
+        fabGlucoseEmpty.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onMenuToggle(boolean opened) {
-                // When Fab Menu is opened, dim the main view.
-                if (opened) {
-                    if (!presenter.isdbEmpty()) {
-                        AlphaAnimation alpha = new AlphaAnimation(1F, 0.2F);
-                        alpha.setDuration(600);
-                        alpha.setFillAfter(true);
-                        viewPager.startAnimation(alpha);
-                    }
-                } else {
-                    if (!presenter.isdbEmpty()) {
-                        removeWhiteOverlay();
-                    }
+            public void onClick(View view) {
+                openNewAddActivity(AddGlucoseActivity.class);
+            }
+        });
+        fabAddReading = (FloatingActionButton) findViewById(R.id.activity_main_fab_add_reading);
+        fabAddReading.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+            }
+        });
+
+        bottomSheetMenu = coordinatorLayout.findViewById(R.id.activity_main_add_gridview);
+        bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetMenu);
+        addReadingView = (GridView) findViewById(R.id.activity_main_add_gridview);
+        addReadingView.setAdapter(new GridImageAdapter(this));
+        addReadingView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                switch (i){
+                    case 0: openNewAddActivity(AddGlucoseActivity.class);
+                        break;
+                    case 1: openNewAddActivity(AddA1CActivity.class);
+                        break;
+                    case 2: openNewAddActivity(AddWeightActivity.class);
+                        break;
+                    case 3: openNewAddActivity(AddKetoneActivity.class);
+                        break;
+                    case 4: openNewAddActivity(AddPressureActivity.class);
+                        break;
+                    case 5: openNewAddActivity(AddCholesterolActivity.class);
+                        break;
+                    default:
+                        // Should NOT happen
+                        // Anyway, open Glucose Activity just to be sure
+                        openNewAddActivity(AddGlucoseActivity.class);
                 }
             }
         });
@@ -300,32 +335,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         finish();
     }
 
-    public void onGlucoseFabClicked(View v) {
-        openNewAddActivity(AddGlucoseActivity.class);
-    }
-
-    public void onKetoneFabClicked(View v) {
-        openNewAddActivity(AddKetoneActivity.class);
-    }
-
-    public void onPressureFabClicked(View v) {
-        openNewAddActivity(AddPressureActivity.class);
-    }
-
-    public void onHB1ACFabClicked(View v) {
-        openNewAddActivity(AddA1CActivity.class);
-    }
-
-    public void onCholesterolFabClicked(View v) {
-        openNewAddActivity(AddCholesterolActivity.class);
-    }
-
-    public void onWeightFabClicked(View v) {
-        openNewAddActivity(AddWeightActivity.class);
-    }
-
     private void openNewAddActivity(Class<?> activity){
-        fabMenu.toggle(false);
+        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
         Intent intent = new Intent(this, activity);
         // Pass pager position to open it again later
         Bundle b = new Bundle();
@@ -504,7 +515,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     public CoordinatorLayout getFabView() {
-        return (CoordinatorLayout) findViewById(R.id.coordinator_layout);
+        return (CoordinatorLayout) findViewById(R.id.activity_main_coordinator_layout);
     }
 
     public void reloadFragmentAdapter() {
@@ -512,8 +523,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     public void turnOffToolbarScrolling() {
-        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.appbar_layout);
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.activity_main_toolbar);
+        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.activity_main_appbar_layout);
 
         //turn off scrolling
         AppBarLayout.LayoutParams toolbarLayoutParams = (AppBarLayout.LayoutParams) mToolbar.getLayoutParams();
@@ -526,8 +537,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     public void turnOnToolbarScrolling() {
-        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.appbar_layout);
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.activity_main_toolbar);
+        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.activity_main_appbar_layout);
 
         //turn on scrolling
         AppBarLayout.LayoutParams toolbarLayoutParams = (AppBarLayout.LayoutParams) mToolbar.getLayoutParams();
@@ -540,11 +551,11 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     public Toolbar getToolbar() {
-        return (Toolbar) findViewById(R.id.toolbar);
+        return (Toolbar) findViewById(R.id.activity_main_toolbar);
     }
 
     private void hideFabAnimation() {
-        final View fab = findViewById(R.id.fab_menu_add_reading);
+        final View fab = findViewById(R.id.activity_main_fab_add_reading);
         fab.animate()
                 .translationY(-5)
                 .alpha(0.0f)
@@ -558,7 +569,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     private void showFabAnimation() {
-        final View fab = findViewById(R.id.fab_menu_add_reading);
+        final View fab = findViewById(R.id.activity_main_fab_add_reading);
         if (fab.getVisibility() == View.INVISIBLE) {
             // Prepare the View for the animation
             fab.setVisibility(View.VISIBLE);
@@ -588,8 +599,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     public void checkIfEmptyLayout() {
-        LinearLayout emptyLayout = (LinearLayout) findViewById(R.id.mainactivity_empty_layout);
-        ViewPager pager = (ViewPager) findViewById(R.id.pager);
+        LinearLayout emptyLayout = (LinearLayout) findViewById(R.id.activity_main_empty_layout);
+        ViewPager pager = (ViewPager) findViewById(R.id.activity_main_pager);
 
         if (presenter.isdbEmpty()) {
             pager.setVisibility(View.GONE);
@@ -597,17 +608,17 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             emptyLayout.setVisibility(View.VISIBLE);
 
             // If empty show only Glucose fab
-            fabMenu.setVisibility(View.GONE);
+            fabAddReading.setVisibility(View.GONE);
             fabGlucoseEmpty.setVisibility(View.VISIBLE);
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 if (getResources().getConfiguration().orientation == 1) {
                     // If Portrait choose vertical curved line
-                    ImageView arrow = (ImageView) findViewById(R.id.mainactivity_arrow);
+                    ImageView arrow = (ImageView) findViewById(R.id.activity_main_arrow);
                     arrow.setBackground(getResources().getDrawable(R.drawable.curved_line_vertical));
                 } else {
                     // Else choose horizontal one
-                    ImageView arrow = (ImageView) findViewById(R.id.mainactivity_arrow);
+                    ImageView arrow = (ImageView) findViewById(R.id.activity_main_arrow);
                     arrow.setBackground((getResources().getDrawable(R.drawable.curved_line_horizontal)));
                 }
             }

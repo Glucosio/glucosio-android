@@ -21,19 +21,18 @@
 
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:fab="http://schemas.android.com/tools"
-    android:id="@+id/coordinator_layout"
+    android:id="@+id/activity_main_coordinator_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <android.support.design.widget.AppBarLayout
-        android:id="@+id/appbar_layout"
+        android:id="@+id/activity_main_appbar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/activity_main_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_scrollFlags="scroll|enterAlways"
@@ -41,7 +40,7 @@
             app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
         <android.support.design.widget.TabLayout
-            android:id="@+id/tab_layout"
+            android:id="@+id/activity_main_tab_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:tabIndicatorColor="@color/glucosio_accent"
@@ -50,14 +49,14 @@
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/pager"
+        android:id="@+id/activity_main_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="visible"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <LinearLayout
-        android:id="@+id/mainactivity_empty_layout"
+        android:id="@+id/activity_main_empty_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:baselineAligned="false"
@@ -71,7 +70,7 @@
             android:layout_weight="45">
 
             <TextView
-                android:id="@+id/mainactivity_empty"
+                android:id="@+id/activity_main_empty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
@@ -106,7 +105,7 @@
                     android:layout_weight="1">
 
                     <ImageView
-                        android:id="@+id/mainactivity_arrow"
+                        android:id="@+id/activity_main_arrow"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:layout_marginBottom="@dimen/fab_size_normal"
@@ -115,97 +114,8 @@
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
-
-    <com.github.clans.fab.FloatingActionMenu
-        android:id="@+id/fab_menu_add_reading"
-        android:layout_gravity="bottom|right"
-        android:layout_margin="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-        app:menu_labels_maxLines="2"
-        app:menu_labels_textColor="#222222"
-        app:menu_labels_colorPressed="#dedede"
-        app:menu_labels_colorNormal="#ffffff"
-        app:menu_fab_size="normal"
-        app:menu_showShadow="true"
-        app:menu_shadowColor="#66000000"
-        app:menu_shadowRadius="4dp"
-        app:menu_shadowXOffset="1dp"
-        app:menu_shadowYOffset="3dp"
-        app:menu_colorNormal="@color/glucosio_accent"
-        app:menu_colorPressed="@color/glucosio_accent"
-        app:menu_colorRipple="#99FFFFFF"
-        app:menu_animationDelayPerItem="50"
-        app:menu_icon="@drawable/ic_add_black_24dp">
-
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fab_weight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_fab_weight"
-            app:fab_colorNormal="@color/glucosio_fab_weight"
-            app:fab_colorPressed="@color/glucosio_fab_weight"
-            android:onClick="onWeightFabClicked"
-            app:fab_size="mini"
-            app:fab_label="@string/fab_weight" />
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fab_ketone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_fab_ketones"
-            android:onClick="onKetoneFabClicked"
-            app:fab_colorNormal="@color/glucosio_fab_ketones"
-            app:fab_colorPressed="@color/glucosio_fab_ketones"
-            app:fab_size="mini"
-            app:fab_label="@string/fab_ketones" />
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fab_pressure"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_fab_pressure"
-            android:onClick="onPressureFabClicked"
-            app:fab_colorNormal="@color/glucosio_fab_pressure"
-            app:fab_colorPressed="@color/glucosio_fab_pressure"
-            app:fab_size="mini"
-            app:fab_label="@string/fab_pressure" />
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fab_cholesterol"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_fab_cholesterol"
-            android:onClick="onCholesterolFabClicked"
-            app:fab_colorNormal="@color/glucosio_fab_cholesterol"
-            app:fab_colorPressed="@color/glucosio_fab_cholesterol"
-            app:fab_size="mini"
-            app:fab_label="@string/fab_cholesterol" />
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fab_HB1AC"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onHB1ACFabClicked"
-            android:src="@drawable/ic_fab_a1c"
-            app:fab_colorNormal="@color/glucosio_fab_HB1AC"
-            app:fab_colorPressed="@color/glucosio_fab_HB1AC"
-            app:fab_size="mini"
-            app:fab_label="@string/fab_HB1AC" />
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fab_glucose"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_fab_glucose"
-            app:fab_colorNormal="@color/glucosio_fab_glucose"
-            app:fab_colorPressed="@color/glucosio_fab_glucose"
-            android:onClick="onGlucoseFabClicked"
-            app:fab_size="normal"
-            app:fab_label="@string/fab_glucose" />
-    </com.github.clans.fab.FloatingActionMenu>
     <com.github.clans.fab.FloatingActionButton
-        android:id="@+id/fab_glucose_empty"
+        android:id="@+id/activity_main_fab_add_reading"
         android:layout_gravity="bottom|right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -218,6 +128,33 @@
         app:fab_colorNormal="@color/glucosio_accent"
         app:fab_colorPressed="@color/glucosio_accent"
         app:fab_colorRipple="#99FFFFFF"
-        android:onClick="onGlucoseFabClicked"
+        android:onClick="addNewGlucoseReading"
         app:fab_size="normal"/>
+
+    <com.github.clans.fab.FloatingActionButton
+        android:id="@+id/activity_main_fab_glucose_empty"
+        android:layout_gravity="bottom|right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/ic_add_black_24dp"
+        app:fab_colorNormal="@color/glucosio_accent"
+        app:fab_colorPressed="@color/glucosio_accent"
+        app:fab_colorRipple="#99FFFFFF"
+        app:fab_size="normal"/>
+    <GridView
+        android:id="@+id/activity_main_add_gridview"
+        app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
+        android:background="#333333"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:numColumns="auto_fit"
+        android:verticalSpacing="10dp"
+        android:horizontalSpacing="10dp"
+        android:stretchMode="columnWidth"
+        android:gravity="center"/>
 </android.support.design.widget.CoordinatorLayout>
