@@ -32,6 +32,7 @@ import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.SwitchPreference;
 import android.support.annotation.NonNull;
+import android.support.annotation.StringRes;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -155,9 +156,9 @@ public class PreferencesActivity extends AppCompatActivity {
             countryPref.setValue(user.getCountry());
             genderPref.setValue(user.getGender());
             diabetesTypePref.setValue(user.getD_type() + "");
-            unitPrefGlucose.setValue(user.getPreferred_unit());
-            unitPrefA1c.setValue(user.getPreferred_unit_a1c());
-            unitPrefWeight.setValue(user.getPreferred_unit_weight());
+            unitPrefGlucose.setValue(getGlucoseUnitValue(user.getPreferred_unit()));
+            unitPrefA1c.setValue(getA1CUnitValue(user.getPreferred_unit_a1c()));
+            unitPrefWeight.setValue(getUnitWeight(user.getPreferred_unit_weight()));
             rangePref.setValue(user.getPreferred_range());
 
             minRangePref.setDefaultValue(user.getCustom_range_min() + "");
@@ -218,7 +219,11 @@ public class PreferencesActivity extends AppCompatActivity {
             unitPrefGlucose.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    updatedUser.setPreferred_unit(newValue.toString());
+                    if (newValue.toString().equals(getResources().getString(R.string.helloactivity_spinner_preferred_glucose_unit_1))) {
+                        updatedUser.setPreferred_unit("mg/dL");
+                    } else {
+                        updatedUser.setPreferred_unit("mmol/L");
+                    }
                     updateDB();
                     return true;
                 }
@@ -325,6 +330,27 @@ public class PreferencesActivity extends AppCompatActivity {
             });
         }
 
+        private String getA1CUnitValue(final String a1CUnit) {
+            @StringRes int unitResId = "percentage".equals(a1CUnit) ?
+                    R.string.preferences_spinner_preferred_a1c_unit_1 :
+                    R.string.preferences_spinner_preferred_a1c_unit_2;
+            return getResources().getString(unitResId);
+        }
+
+        private String getGlucoseUnitValue(final String glucoseUnit) {
+            @StringRes int unitResId = "mg/dL".equals(glucoseUnit) ?
+                    R.string.helloactivity_spinner_preferred_glucose_unit_1 :
+                    R.string.helloactivity_spinner_preferred_glucose_unit_2;
+            return getResources().getString(unitResId);
+        }
+
+        private String getUnitWeight(final String unit_weight) {
+            @StringRes int unitResId = "kilograms".equals(unit_weight) ?
+                    R.string.preferences_spinner_preferred_weight_unit_1 :
+                    R.string.preferences_spinner_preferred_weight_unit_2;
+            return getResources().getString(unitResId);
+        }
+
         private void initLanguagePreference() {
             List<String> valuesLanguages = localeHelper.getLocalesWithTranslation(getResources());
 
@@ -369,9 +395,9 @@ public class PreferencesActivity extends AppCompatActivity {
             agePref.setSummary(user.getAge() + "");
             genderPref.setSummary(user.getGender() + "");
             diabetesTypePref.setSummary(getResources().getString(R.string.glucose_reading_type) + " " + user.getD_type());
-            unitPrefGlucose.setSummary(user.getPreferred_unit() + "");
-            unitPrefA1c.setSummary(user.getPreferred_unit_a1c() + "");
-            unitPrefWeight.setSummary(user.getPreferred_unit_weight() + "");
+            unitPrefGlucose.setSummary(getGlucoseUnitValue(user.getPreferred_unit()));
+            unitPrefA1c.setSummary(getA1CUnitValue(user.getPreferred_unit_a1c()));
+            unitPrefWeight.setSummary(getUnitWeight(user.getPreferred_unit_weight()));
             countryPref.setSummary(user.getCountry());
             minRangePref.setSummary(user.getCustom_range_min() + "");
             maxRangePref.setSummary(user.getCustom_range_max() + "");

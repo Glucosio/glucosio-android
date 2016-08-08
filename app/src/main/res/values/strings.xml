@@ -60,8 +60,8 @@
     </string-array>
 
     <string name="helloactivity_spinner_preferred_glucose_unit">Preferred Glucose unit</string>
-    <string name="helloactivity_spinner_preferred_glucose_unit_1" translatable="false">mg/dL</string>
-    <string name="helloactivity_spinner_preferred_glucose_unit_2" translatable="false">mmol/L</string>
+    <string name="helloactivity_spinner_preferred_glucose_unit_1">mg/dL</string>
+    <string name="helloactivity_spinner_preferred_glucose_unit_2">mmol/L</string>
 
     <string-array name="helloactivity_preferred_glucose_unit" translatable="false">
         <item>@string/helloactivity_spinner_preferred_glucose_unit_1</item>
@@ -70,7 +70,7 @@
 
     <string name="preferences_spinner_preferred_a1c_unit">Preferred A1C unit</string>
     <string name="preferences_spinner_preferred_a1c_unit_1">percentage</string>
-    <string name="preferences_spinner_preferred_a1c_unit_2" translatable="false">mmol/mol</string>
+    <string name="preferences_spinner_preferred_a1c_unit_2">mmol/mol</string>
 
     <string-array name="preferences_preferred_a1c_unit" translatable="false">
         <item>@string/preferences_spinner_preferred_a1c_unit_1</item>
