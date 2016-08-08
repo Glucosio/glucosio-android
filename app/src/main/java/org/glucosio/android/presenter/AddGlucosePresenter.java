@@ -116,7 +116,7 @@ public class AddGlucosePresenter extends AddReadingPresenter {
         }
     }
 
-    public Integer retrieveSpinnerID (String measuredTypeText, List<String> measuredTypelist) {
+    public Integer retrieveSpinnerID(String measuredTypeText, List<String> measuredTypelist) {
         int measuredId = 0;
         boolean isFound = false;
         for (String measuredType : measuredTypelist) {

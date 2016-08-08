@@ -6,7 +6,7 @@ public class IntGraphObject {
     private DateTime created;
     private int reading;
 
-    public IntGraphObject(DateTime created, int reading){
+    public IntGraphObject(DateTime created, int reading) {
         this.created = created;
         this.reading = reading;
     }

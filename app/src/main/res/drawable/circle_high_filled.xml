@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2016 Glucosio Foundation
   ~
   ~ This file is part of Glucosio.
@@ -19,8 +18,10 @@
   ~
   -->
 
-<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="oval" >
-    <solid android:color="@color/glucosio_reading_high"/>
-    <size android:width="8dp"
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <solid android:color="@color/glucosio_reading_high" />
+    <size
+        android:width="8dp"
         android:height="8dp" />
 </shape>

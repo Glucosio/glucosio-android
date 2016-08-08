@@ -61,10 +61,10 @@ public class AddKetoneActivity extends AddReadingActivity {
 
         // If an id is passed, open the activity in edit mode
         FormatDateTime formatDateTime = new FormatDateTime(getApplicationContext());
-        if (this.isEditing()){
+        if (this.isEditing()) {
             setTitle(R.string.title_activity_add_ketone_edit);
             KetoneReading readingToEdit = presenter.getKetoneReadingById(this.getEditId());
-            readingTextView.setText(readingToEdit.getReading()+"");
+            readingTextView.setText(readingToEdit.getReading() + "");
             Calendar cal = Calendar.getInstance();
             cal.setTime(readingToEdit.getCreated());
             this.getAddDateTextView().setText(formatDateTime.getDate(cal));
@@ -82,7 +82,7 @@ public class AddKetoneActivity extends AddReadingActivity {
     @Override
     protected void dialogOnAddButtonPressed() {
         AddKetonePresenter presenter = (AddKetonePresenter) getPresenter();
-        if(this.isEditing()) {
+        if (this.isEditing()) {
             presenter.dialogOnAddButtonPressed(this.getAddTimeTextView().getText().toString(),
                     this.getAddDateTextView().getText().toString(), readingTextView.getText().toString().trim(), this.getEditId());
         } else {

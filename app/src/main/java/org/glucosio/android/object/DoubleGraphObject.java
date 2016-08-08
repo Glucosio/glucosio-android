@@ -6,7 +6,7 @@ public class DoubleGraphObject {
     private DateTime created;
     private double reading;
 
-    public DoubleGraphObject(DateTime created, double reading){
+    public DoubleGraphObject(DateTime created, double reading) {
         this.created = created;
         this.reading = reading;
     }

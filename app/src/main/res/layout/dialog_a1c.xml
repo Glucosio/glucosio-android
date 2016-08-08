@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2016 Glucosio Foundation
   ~
   ~ This file is part of Glucosio.
@@ -20,11 +19,11 @@
   -->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="450dp"
-    android:layout_width="match_parent">
-        <ListView
-            android:id="@+id/dialog_a1c_listview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-           />
+    android:layout_width="match_parent"
+    android:layout_height="450dp">
+
+    <ListView
+        android:id="@+id/dialog_a1c_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </RelativeLayout>

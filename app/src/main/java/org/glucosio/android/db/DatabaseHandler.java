@@ -52,7 +52,7 @@ public class DatabaseHandler {
         this.realm = getNewRealmInstance();
     }
 
-    public Realm getNewRealmInstance(){
+    public Realm getNewRealmInstance() {
         if (mRealmConfig == null) {
             mRealmConfig = new RealmConfiguration.Builder(mContext)
                     .schemaVersion(3)
@@ -62,7 +62,7 @@ public class DatabaseHandler {
         return Realm.getInstance(mRealmConfig); // Automatically run migration if needed
     }
 
-    public Realm getRealmInstance(){
+    public Realm getRealmInstance() {
         return realm;
     }
 
@@ -152,7 +152,7 @@ public class DatabaseHandler {
         realm.commitTransaction();
     }
 
-    public GlucoseReading getLastGlucoseReading(){
+    public GlucoseReading getLastGlucoseReading() {
         RealmResults<GlucoseReading> results =
                 realm.where(GlucoseReading.class)
                         .findAllSorted("created", Sort.DESCENDING);
@@ -434,7 +434,7 @@ public class DatabaseHandler {
         return finalMonths;
     }
 
-    public List<GlucoseReading> getLastMonthGlucoseReadings(){
+    public List<GlucoseReading> getLastMonthGlucoseReadings() {
         JodaTimeAndroid.init(mContext);
 
         DateTime todayDateTime = DateTime.now();

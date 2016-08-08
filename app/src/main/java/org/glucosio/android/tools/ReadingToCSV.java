@@ -42,6 +42,16 @@ public class ReadingToCSV {
         this.context = mContext;
     }
 
+    public static String getExternalDir() {
+        return Environment.getExternalStorageDirectory().getAbsolutePath() +
+                "/glucosio";
+    }
+
+    public static boolean checkIfDirExists(final String dir) {
+        final File file = new File(dir);
+        return file.exists() || file.mkdirs();
+    }
+
     public String createCSVFile(Realm realm, final ArrayList<GlucoseReading> readings, String um) {
         try {
             final String databaseName = "/glucosio_exported_data_" + System.currentTimeMillis() + ".csv";
@@ -112,15 +122,5 @@ public class ReadingToCSV {
             e.printStackTrace();
             return null;
         }
-    }
-
-    public static String getExternalDir() {
-        return Environment.getExternalStorageDirectory().getAbsolutePath() +
-                "/glucosio";
-    }
-
-    public static boolean checkIfDirExists(final String dir) {
-        final File file = new File(dir);
-        return file.exists() || file.mkdirs();
     }
 }

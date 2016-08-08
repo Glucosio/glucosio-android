@@ -244,7 +244,7 @@ public class BackupActivity extends AppCompatActivity {
                 .build(mGoogleApiClient);
     }
 
-    private void getBackupsFromDrive(DriveFolder folder){
+    private void getBackupsFromDrive(DriveFolder folder) {
         final Activity activity = this;
         SortOrder sortOrder = new SortOrder.Builder()
                 .addSortDescending(SortableField.MODIFIED_DATE).build();
@@ -262,7 +262,7 @@ public class BackupActivity extends AppCompatActivity {
                     public void onResult(DriveApi.MetadataBufferResult result) {
                         MetadataBuffer buffer = result.getMetadataBuffer();
                         int size = buffer.getCount();
-                        for (int i=0; i<size; i++){
+                        for (int i = 0; i < size; i++) {
                             Metadata metadata = buffer.get(i);
                             DriveId driveId = metadata.getDriveId();
                             Date modifiedDate = metadata.getModifiedDate();
@@ -407,7 +407,7 @@ public class BackupActivity extends AppCompatActivity {
         }
     }
 
-    private void openOnDrive(DriveId driveId){
+    private void openOnDrive(DriveId driveId) {
         driveId.asDriveFolder().getMetadata((mGoogleApiClient)).setResultCallback(
                 new ResultCallback<DriveResource.MetadataResult>() {
                     @Override
@@ -495,7 +495,7 @@ public class BackupActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), R.string.activity_backup_drive_failed, Toast.LENGTH_SHORT).show();
     }
 
-    private void reportToFirebase(Exception e, String message){
+    private void reportToFirebase(Exception e, String message) {
         FirebaseCrash.log(message);
         FirebaseCrash.report(e);
     }
@@ -512,6 +512,7 @@ public class BackupActivity extends AppCompatActivity {
         finish();
         return true;
     }
+
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));

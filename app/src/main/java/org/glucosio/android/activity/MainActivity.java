@@ -48,8 +48,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
-import android.widget.AdapterView;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -57,7 +55,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.clans.fab.FloatingActionButton;
-import com.github.clans.fab.FloatingActionMenu;
 import com.google.android.gms.appinvite.AppInviteInvitation;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
@@ -71,14 +68,9 @@ import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
-import org.glucosio.android.adapter.GridImageAdapter;
 import org.glucosio.android.adapter.HomePagerAdapter;
 import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.db.DatabaseHandler;
-import org.glucosio.android.db.GlucoseReading;
-import org.glucosio.android.db.HB1ACReading;
-import org.glucosio.android.db.KetoneReading;
-import org.glucosio.android.db.WeightReading;
 import org.glucosio.android.presenter.ExportPresenter;
 import org.glucosio.android.presenter.MainPresenter;
 
@@ -90,8 +82,8 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     private static final int REQUEST_INVITE = 1;
-    private final String INTENT_EXTRA_DROPDOWN = "history_dropdown";
     private static final String INTENT_EXTRA_PAGER = "pager";
+    private final String INTENT_EXTRA_DROPDOWN = "history_dropdown";
     private CoordinatorLayout coordinatorLayout;
     private ExportPresenter exportPresenter;
     private RadioButton exportRangeButton;
@@ -191,7 +183,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         bottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
-                if (newState == BottomSheetBehavior.STATE_COLLAPSED){
+                if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
                     dimMainScreen(false);
                 }
             }
@@ -277,7 +269,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
         // Restore pager position
         Bundle b = getIntent().getExtras();
-        if (b!=null) {
+        if (b != null) {
             viewPager.setCurrentItem(b.getInt("pager"));
         }
 
@@ -349,7 +341,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         openNewAddActivity(AddWeightActivity.class);
     }
 
-    private void openNewAddActivity(Class<?> activity){
+    private void openNewAddActivity(Class<?> activity) {
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
         Intent intent = new Intent(this, activity);
         // Pass pager position to open it again later
@@ -373,8 +365,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             alpha = new AlphaAnimation(ALPHA_DIM, ALPHA_MAX);
             alpha.setDuration(300);
         }
-            alpha.setFillAfter(true);
-            viewPager.startAnimation(alpha);
+        alpha.setFillAfter(true);
+        viewPager.startAnimation(alpha);
     }
 
 
@@ -753,14 +745,15 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         Toast.makeText(getApplicationContext(), R.string.activity_main_error_play_services, Toast.LENGTH_SHORT).show();
     }
 
-    @Override public boolean dispatchTouchEvent(MotionEvent event){
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            if (bottomSheetBehavior.getState()==BottomSheetBehavior.STATE_EXPANDED) {
+            if (bottomSheetBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
 
                 Rect outRect = new Rect();
                 bottomSheetMenu.getGlobalVisibleRect(outRect);
 
-                if(!outRect.contains((int)event.getRawX(), (int)event.getRawY()))
+                if (!outRect.contains((int) event.getRawX(), (int) event.getRawY()))
                     bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
             }
         }

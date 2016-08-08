@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2016 Glucosio Foundation
   ~
   ~ This file is part of Glucosio.
@@ -22,9 +21,9 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_main_coordinator_layout"
-    android:background="#222222"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#222222">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/activity_main_appbar_layout"
@@ -58,9 +57,9 @@
 
     <LinearLayout
         android:id="@+id/activity_main_empty_layout"
-        android:background="#ffffff"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#ffffff"
         android:baselineAligned="false"
         android:orientation="vertical"
         android:visibility="gone"
@@ -116,95 +115,105 @@
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
+
     <com.github.clans.fab.FloatingActionButton
         android:id="@+id/activity_main_fab_add_reading"
-        android:layout_gravity="bottom|right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="16dp"
+        android:layout_gravity="bottom|right"
         android:layout_marginBottom="16dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginRight="16dp"
+        android:onClick="addNewGlucoseReading"
         android:src="@drawable/ic_add_black_24dp"
         app:fab_colorNormal="@color/glucosio_accent"
         app:fab_colorPressed="@color/glucosio_accent"
         app:fab_colorRipple="#99FFFFFF"
-        android:onClick="addNewGlucoseReading"
-        app:fab_size="normal"/>
+        app:fab_size="normal" />
 
     <com.github.clans.fab.FloatingActionButton
         android:id="@+id/activity_main_fab_glucose_empty"
-        android:layout_gravity="bottom|right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="16dp"
+        android:layout_gravity="bottom|right"
         android:layout_marginBottom="16dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginRight="16dp"
         android:src="@drawable/ic_add_black_24dp"
         app:fab_colorNormal="@color/glucosio_accent"
         app:fab_colorPressed="@color/glucosio_accent"
         app:fab_colorRipple="#99FFFFFF"
-        app:fab_size="normal"/>
-    <LinearLayout android:id="@+id/activity_main_add_bottom_sheet_menu"
+        app:fab_size="normal" />
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/activity_main_add_bottom_sheet_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
         android:background="#ffffff"
-        android:orientation="vertical"
         android:gravity="center"
-        xmlns:android="http://schemas.android.com/apk/res/android">
+        android:orientation="vertical"
+        app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+
         <TextView
             fontPath="fonts/lato-bold.ttf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/activity_main_add_new_reading"
             android:layout_gravity="left"
-            android:padding="16dp"/>
+            android:padding="16dp"
+            android:text="@string/activity_main_add_new_reading" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
+
             <LinearLayout
-                android:background="?attr/selectableItemBackgroundBorderless"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
                 android:layout_weight="1"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 android:onClick="onGlucoseFabClicked"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="16dp">
+
                 <ImageView
                     android:layout_width="46dp"
                     android:layout_height="46dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/add_circle_glucose"/>
+                    android:src="@drawable/add_circle_glucose" />
+
                 <TextView
                     fontPath="fonts/lato-bold.ttf"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:textSize="12sp"
                     android:paddingTop="8dp"
-                    android:text="@string/fab_glucose"/>
+                    android:text="@string/fab_glucose"
+                    android:textSize="12sp" />
             </LinearLayout>
+
             <LinearLayout
-                android:background="?attr/selectableItemBackgroundBorderless"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:padding="16dp"
-                android:onClick="onHB1ACFabClicked"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:onClick="onHB1ACFabClicked"
+                android:orientation="vertical"
+                android:padding="16dp">
+
                 <ImageView
                     android:layout_width="46dp"
                     android:layout_height="46dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/add_circle_a1c"/>
+                    android:src="@drawable/add_circle_a1c" />
+
                 <TextView
                     fontPath="fonts/lato-bold.ttf"
                     android:layout_width="wrap_content"
@@ -212,110 +221,123 @@
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:paddingTop="8dp"
-                    android:textSize="12sp"
-                    android:text="@string/fab_HB1AC"/>
+                    android:text="@string/fab_HB1AC"
+                    android:textSize="12sp" />
             </LinearLayout>
+
             <LinearLayout
-                android:background="?attr/selectableItemBackgroundBorderless"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:padding="16dp"
                 android:layout_weight="1"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 android:onClick="onWeightFabClicked"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="16dp">
+
                 <ImageView
                     android:layout_width="46dp"
                     android:layout_height="46dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/add_circle_weight"/>
+                    android:src="@drawable/add_circle_weight" />
+
                 <TextView
                     fontPath="fonts/lato-bold.ttf"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:textSize="12sp"
                     android:paddingTop="8dp"
-                    android:text="@string/fab_weight"/>
+                    android:text="@string/fab_weight"
+                    android:textSize="12sp" />
             </LinearLayout>
         </LinearLayout>
+
         <LinearLayout
-            android:background="?attr/selectableItemBackgroundBorderless"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:gravity="center"
             android:onClick="onPressureFabClicked"
-            android:gravity="center">
+            android:orientation="horizontal">
+
             <LinearLayout
-                android:background="?attr/selectableItemBackgroundBorderless"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:padding="16dp"
+                android:layout_weight="1"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 android:onClick="onPressureFabClicked"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="16dp">
+
                 <ImageView
                     android:layout_width="46dp"
                     android:layout_height="46dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/add_circle_pressure"/>
+                    android:src="@drawable/add_circle_pressure" />
+
                 <TextView
                     fontPath="fonts/lato-bold.ttf"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:textSize="12sp"
                     android:paddingTop="8dp"
-                    android:text="@string/fab_pressure"/>
+                    android:text="@string/fab_pressure"
+                    android:textSize="12sp" />
             </LinearLayout>
+
             <LinearLayout
-                android:background="?attr/selectableItemBackgroundBorderless"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:padding="16dp"
-                android:onClick="onKetoneFabClicked"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:onClick="onKetoneFabClicked"
+                android:orientation="vertical"
+                android:padding="16dp">
+
                 <ImageView
                     android:layout_width="46dp"
                     android:layout_height="46dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/add_circle_ketones"/>
+                    android:src="@drawable/add_circle_ketones" />
+
                 <TextView
                     fontPath="fonts/lato-bold.ttf"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:textSize="12sp"
                     android:paddingTop="8dp"
-                    android:text="@string/fab_ketones"/>
+                    android:text="@string/fab_ketones"
+                    android:textSize="12sp" />
             </LinearLayout>
+
             <LinearLayout
-                android:background="?attr/selectableItemBackgroundBorderless"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:padding="16dp"
                 android:layout_weight="1"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 android:onClick="onCholesterolFabClicked"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="16dp">
+
                 <ImageView
                     android:layout_width="46dp"
                     android:layout_height="46dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/add_circle_cholesterol"/>
+                    android:src="@drawable/add_circle_cholesterol" />
+
                 <TextView
                     fontPath="fonts/lato-bold.ttf"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:textSize="12sp"
                     android:paddingTop="8dp"
-                    android:text="@string/fab_cholesterol"/>
+                    android:text="@string/fab_cholesterol"
+                    android:textSize="12sp" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

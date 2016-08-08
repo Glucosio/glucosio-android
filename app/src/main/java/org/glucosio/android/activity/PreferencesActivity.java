@@ -58,6 +58,12 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class PreferencesActivity extends AppCompatActivity {
 
+    @NonNull
+    private static String[] getEntryValues(List<String> list) {
+        String[] result = new String[list.size()];
+        return list.toArray(result);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -415,11 +421,5 @@ public class PreferencesActivity extends AppCompatActivity {
             mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
             System.exit(0);
         }
-    }
-
-    @NonNull
-    private static String[] getEntryValues(List<String> list) {
-        String[] result = new String[list.size()];
-        return list.toArray(result);
     }
 }

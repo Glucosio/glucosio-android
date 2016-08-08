@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape android:shape="oval">
-            <solid android:color="@color/glucosio_fab_ketones"/>
+            <solid android:color="@color/glucosio_fab_ketones" />
         </shape>
     </item>
     <item android:drawable="@drawable/ic_fab_ketones" />

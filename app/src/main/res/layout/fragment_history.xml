@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2016 Glucosio Foundation
   ~
   ~ This file is part of Glucosio.
@@ -22,17 +21,18 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#ffffff"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_width="match_parent">
+    android:background="#ffffff">
+
     <Spinner
         android:id="@+id/history_spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
+        android:layout_marginBottom="8dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="8dp"
         android:layout_marginTop="16dp" />
 
     <LinearLayout
@@ -65,12 +65,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/glucosio_reading_hypo"
-                    android:paddingTop="2px"
                     android:paddingRight="8dp"
-                    android:text="@string/reading_hypo" />
+                    android:paddingTop="2px"
+                    android:text="@string/reading_hypo"
+                    android:textColor="@color/glucosio_reading_hypo"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -88,12 +88,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:paddingTop="2px"
-                    android:textColor="@color/glucosio_reading_low"
                     android:paddingRight="8dp"
-                    android:text="@string/reading_low" />
+                    android:paddingTop="2px"
+                    android:text="@string/reading_low"
+                    android:textColor="@color/glucosio_reading_low"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -111,12 +111,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/glucosio_reading_ok"
-                    android:textStyle="bold"
                     android:paddingRight="8dp"
                     android:paddingTop="2px"
+                    android:text="@string/reading_ok"
+                    android:textColor="@color/glucosio_reading_ok"
                     android:textSize="12sp"
-                    android:text="@string/reading_ok" />
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -134,12 +134,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingRight="8dp"
+                    android:paddingTop="2px"
+                    android:text="@string/reading_high"
                     android:textColor="@color/glucosio_reading_high"
                     android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:paddingTop="2px"
-                    android:paddingRight="8dp"
-                    android:text="@string/reading_high" />
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -157,15 +157,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/glucosio_reading_hyper"
-                    android:textStyle="bold"
-                    android:textSize="12sp"
-                    android:paddingTop="2px"
                     android:paddingRight="8dp"
-                    android:text="@string/reading_hyper" />
+                    android:paddingTop="2px"
+                    android:text="@string/reading_hyper"
+                    android:textColor="@color/glucosio_reading_hyper"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
         </LinearLayout>
+
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="2px"
@@ -179,17 +180,17 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             android:focusable="true"
-            android:paddingBottom="32dp"
             android:orientation="vertical"
+            android:paddingBottom="32dp"
             android:scrollbars="vertical"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             tools:context="org.glucosio.android.fragment.HistoryFragment" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@color/glucosio_light_grey_background"
-            />
+            android:background="@color/glucosio_light_grey_background" />
     </LinearLayout>
 
 </RelativeLayout>

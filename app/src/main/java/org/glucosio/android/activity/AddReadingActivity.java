@@ -187,21 +187,20 @@ public abstract class AddReadingActivity extends AppCompatActivity implements Ti
         doneFAB.removeCallbacks(fabAnimationRunnable);
     }
 
-    // Getter and Setter
-    public void setPresenter (AddReadingPresenter newPresenter) {
-        this.presenter = newPresenter;
-    }
-
     public AddReadingPresenter getPresenter() {
         return this.presenter;
     }
 
+    // Getter and Setter
+    public void setPresenter(AddReadingPresenter newPresenter) {
+        this.presenter = newPresenter;
+    }
 
     public int getPagerPosition() {
         return pagerPosition;
     }
 
-    public int getDropdownPosition(){
+    public int getDropdownPosition() {
         return dropdownPosition;
     }
 
