@@ -26,6 +26,7 @@
     <string name="tab_overview">Overview</string>
     <string name="tab_history">History</string>
     <string name="tab_tips">Tips</string>
+    <string name="activity_main_add_new_reading">Add new reading</string>
 
     <string name="title_activity_hello">Hello.</string>
     <string name="helloactivity_headline">Hello.</string>

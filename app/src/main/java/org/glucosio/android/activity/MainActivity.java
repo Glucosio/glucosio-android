@@ -27,6 +27,7 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Build;
@@ -43,6 +44,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
@@ -179,12 +181,26 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         fabAddReading.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                dimMainScreen(true);
                 bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
             }
         });
 
         bottomSheetMenu = coordinatorLayout.findViewById(R.id.activity_main_add_bottom_sheet_menu);
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetMenu);
+        bottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+            @Override
+            public void onStateChanged(@NonNull View bottomSheet, int newState) {
+                if (newState == BottomSheetBehavior.STATE_COLLAPSED){
+                    dimMainScreen(false);
+                }
+            }
+
+            @Override
+            public void onSlide(@NonNull View bottomSheet, float slideOffset) {
+
+            }
+        });
 
         // Add Nav Drawer
         final PrimaryDrawerItem itemSettings = new PrimaryDrawerItem().withName(R.string.action_settings).withIcon(R.drawable.ic_settings_grey_24dp).withSelectable(false).withTypeface(Typeface.DEFAULT_BOLD);
@@ -345,12 +361,22 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         finish();
     }
 
-    private void removeWhiteOverlay() {
-        AlphaAnimation alpha = new AlphaAnimation(viewPager.getAlpha(), 1F);
-        alpha.setDuration(0);
-        alpha.setFillAfter(true);
-        viewPager.startAnimation(alpha);
+    private void dimMainScreen(boolean enabled) {
+        float ALPHA_DIM = 0.2F;
+        float ALPHA_MAX = 1F;
+        AlphaAnimation alpha;
+
+        if (enabled) {
+            alpha = new AlphaAnimation(ALPHA_MAX, ALPHA_DIM);
+            alpha.setDuration(600);
+        } else {
+            alpha = new AlphaAnimation(ALPHA_DIM, ALPHA_MAX);
+            alpha.setDuration(300);
+        }
+            alpha.setFillAfter(true);
+            viewPager.startAnimation(alpha);
     }
+
 
     public void openSupportDialog() {
         final Context mContext = this;
@@ -725,6 +751,21 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
     private void showErrorDialogPlayServices() {
         Toast.makeText(getApplicationContext(), R.string.activity_main_error_play_services, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override public boolean dispatchTouchEvent(MotionEvent event){
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            if (bottomSheetBehavior.getState()==BottomSheetBehavior.STATE_EXPANDED) {
+
+                Rect outRect = new Rect();
+                bottomSheetMenu.getGlobalVisibleRect(outRect);
+
+                if(!outRect.contains((int)event.getRawX(), (int)event.getRawY()))
+                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+            }
+        }
+
+        return super.dispatchTouchEvent(event);
     }
 
     @Override
