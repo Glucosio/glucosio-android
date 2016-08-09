@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2016 Glucosio Foundation
   ~
   ~ This file is part of Glucosio.
@@ -22,8 +21,8 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="204.391dp"
     android:height="323.304dp"
-    android:viewportWidth="204.391"
-    android:viewportHeight="323.304">
+    android:viewportHeight="323.304"
+    android:viewportWidth="204.391">
 
     <path
         android:fillColor="#939598"

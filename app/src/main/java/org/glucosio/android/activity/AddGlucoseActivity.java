@@ -45,19 +45,18 @@ import java.util.Calendar;
 
 public class AddGlucoseActivity extends AddReadingActivity {
 
+    static final int CUSTOM_TYPE_SPINNER_VALUE = 11;
     private TextView readingTextView;
     private EditText typeCustomEditText;
     private EditText notesEditText;
     private LabelledSpinner readingTypeSpinner;
     private boolean isCustomType = false;
 
-    static final int CUSTOM_TYPE_SPINNER_VALUE = 11;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_glucose);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.activity_main_toolbar);
 
         if (toolbar != null) {
             setSupportActionBar(toolbar);
@@ -112,10 +111,10 @@ public class AddGlucoseActivity extends AddReadingActivity {
         // If an id is passed, open the activity in edit mode
         Calendar cal = Calendar.getInstance();
         FormatDateTime dateTime = new FormatDateTime(getApplicationContext());
-        if (this.isEditing()){
+        if (this.isEditing()) {
             setTitle(R.string.title_activity_add_glucose_edit);
             GlucoseReading readingToEdit = presenter.getGlucoseReadingById(this.getEditId());
-            readingTextView.setText(readingToEdit.getReading()+"");
+            readingTextView.setText(readingToEdit.getReading() + "");
             notesEditText.setText(readingToEdit.getNotes());
             cal.setTime(readingToEdit.getCreated());
             this.getAddDateTextView().setText(dateTime.getDate(cal));
@@ -130,7 +129,7 @@ public class AddGlucoseActivity extends AddReadingActivity {
             } else {
                 readingTypeSpinner.setSelection(measuredId);
             }
-            if(this.isCustomType) {
+            if (this.isCustomType) {
                 typeCustomEditText.setText(measuredTypeText);
             }
         } else {

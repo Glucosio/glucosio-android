@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2016 Glucosio Foundation
   ~
   ~ This file is part of Glucosio.
@@ -24,7 +23,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:custom="http://schemas.android.com/apk/res-auto"
     tools:context="org.glucosio.android.activity.AddCholesterolActivity">
 
     <RelativeLayout
@@ -32,13 +30,13 @@
         android:layout_height="wrap_content">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/activity_main_toolbar"
             android:layout_width="match_parent"
             android:layout_height="128dp"
             android:background="@color/glucosio_pink"
             android:gravity="bottom"
-            android:paddingBottom="16dp"
             android:minHeight="?android:attr/actionBarSize"
+            android:paddingBottom="16dp"
             app:contentInsetLeft="0dp"
             app:contentInsetStart="0dp"
             app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
@@ -47,21 +45,21 @@
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/done_fab"
-            android:visibility="invisible"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/activity_main_toolbar"
             android:layout_alignParentRight="true"
-            android:layout_alignBottom="@id/toolbar"
             android:layout_marginBottom="-32dp"
             android:layout_marginRight="20dp"
             android:onClick="onFabClicked"
-            app:srcCompat="@drawable/ic_done_black_24dp"
-            app:backgroundTint="@color/glucosio_accent" />
+            android:visibility="invisible"
+            app:backgroundTint="@color/glucosio_accent"
+            app:srcCompat="@drawable/ic_done_black_24dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/toolbar"
+            android:layout_below="@id/activity_main_toolbar"
             android:layout_margin="16dp"
             android:orientation="vertical">
 
@@ -95,8 +93,9 @@
                             android:textSize="@dimen/abc_text_size_body_2_material" />
                     </android.support.design.widget.TextInputLayout>
 
-                    <TextView fontPath="fonts/lato-bold.ttf"
+                    <TextView
                         android:id="@+id/hb1ac_unit"
+                        fontPath="fonts/lato-bold.ttf"
                         android:layout_width="wrap_content"
                         android:layout_height="fill_parent"
                         android:layout_marginBottom="8dp"

@@ -58,7 +58,7 @@ public class HistoryFragment extends Fragment {
 
     private final String INTENT_EXTRA_PAGER = "pager";
     private final String INTENT_EXTRA_EDITING_ID = "edit_id";
-    private final String INTENT_EXTRA_EDITING = "editing" ;
+    private final String INTENT_EXTRA_EDITING = "editing";
     private final String INTENT_EXTRA_DROPDOWN = "history_dropdown";
     private RecyclerView mRecyclerView;
     private LinearLayoutManager mLayoutManager;
@@ -178,25 +178,25 @@ public class HistoryFragment extends Fragment {
             public void onClick(View v) {
                 int historyTypePosition = (int) historySpinner.getSelectedItemId();
                 Intent intent;
-                switch(historyTypePosition) {
+                switch (historyTypePosition) {
                     // HAB1C
-                    case 1 :
+                    case 1:
                         intent = new Intent(getActivity(), AddA1CActivity.class);
                         break;
                     // Cholesterol
-                    case 2 :
+                    case 2:
                         intent = new Intent(getActivity(), AddCholesterolActivity.class);
                         break;
                     // Pressure
-                    case 3 :
+                    case 3:
                         intent = new Intent(getActivity(), AddPressureActivity.class);
                         break;
                     // Ketone
-                    case 4 :
+                    case 4:
                         intent = new Intent(getActivity(), AddKetoneActivity.class);
                         break;
                     // Weight
-                    case 5 :
+                    case 5:
                         intent = new Intent(getActivity(), AddWeightActivity.class);
                         break;
                     // Glucose
@@ -297,7 +297,7 @@ public class HistoryFragment extends Fragment {
         }
     }
 
-    public int getHistoryDropdownPosition(){
+    public int getHistoryDropdownPosition() {
         return historyDropdownPosition;
     }
 }

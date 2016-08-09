@@ -26,6 +26,7 @@
     <string name="tab_overview">Overview</string>
     <string name="tab_history">History</string>
     <string name="tab_tips">Tips</string>
+    <string name="activity_main_add_new_reading">Add new reading</string>
 
     <string name="title_activity_hello">Hello.</string>
     <string name="helloactivity_headline">Hello.</string>
@@ -49,13 +50,13 @@
     <string name="helloactivity_spinner_diabetes_type">Diabetes type</string>
     <string name="helloactivity_spinner_diabetes_type_1">Type 1</string>
     <string name="helloactivity_spinner_diabetes_type_2">Type 2</string>
-        <string name="helloactivity_spinner_diabetes_gdm">Gestational</string>
+    <string name="helloactivity_spinner_diabetes_gdm">Gestational</string>
     <string name="helloactivity_spinner_diabetes_lada">LADA</string>
 
     <string-array name="helloactivity_diabetes_type" translatable="false">
         <item>@string/helloactivity_spinner_diabetes_type_1</item>
         <item>@string/helloactivity_spinner_diabetes_type_2</item>
-           <item>@string/helloactivity_spinner_diabetes_gdm</item>
+        <item>@string/helloactivity_spinner_diabetes_gdm</item>
         <item>@string/helloactivity_spinner_diabetes_lada</item>
     </string-array>
 
@@ -439,7 +440,7 @@
         <item>@string/fab_ketones</item>
         <item>@string/fab_weight</item>
     </string-array>
-    <string translatable="false" name="title_activity_splash">SplashActivity</string>
+    <string name="title_activity_splash" translatable="false">SplashActivity</string>
     <string name="activity_backup_drive_button_open_drive">Manage on Drive</string>
     <string name="mmol_mol">mmol/mol</string>
     <string name="mmol_L">mmol/L</string>

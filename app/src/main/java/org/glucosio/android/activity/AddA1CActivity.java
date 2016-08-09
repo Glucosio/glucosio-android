@@ -41,7 +41,7 @@ public class AddA1CActivity extends AddReadingActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_hb1ac);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.activity_main_toolbar);
 
         if (toolbar != null) {
             setSupportActionBar(toolbar);
@@ -67,10 +67,10 @@ public class AddA1CActivity extends AddReadingActivity {
 
         // If an id is passed, open the activity in edit mode
         FormatDateTime formatDateTime = new FormatDateTime(getApplicationContext());
-        if (this.isEditing()){
+        if (this.isEditing()) {
             setTitle(R.string.title_activity_add_hb1ac_edit);
             HB1ACReading readingToEdit = presenter.getHB1ACReadingById(getEditId());
-            readingTextView.setText(readingToEdit.getReading()+"");
+            readingTextView.setText(readingToEdit.getReading() + "");
             Calendar cal = Calendar.getInstance();
             cal.setTime(readingToEdit.getCreated());
             this.getAddDateTextView().setText(formatDateTime.getDate(cal));

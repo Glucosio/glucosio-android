@@ -43,6 +43,12 @@ import io.realm.Realm;
 
 public class ExportPresenter {
 
+    // Storage Permissions
+    private static final int REQUEST_EXTERNAL_STORAGE = 1;
+    private static String[] PERMISSIONS_STORAGE = {
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+    };
     private int fromDay;
     private int fromMonth;
     private int fromYear;
@@ -51,13 +57,6 @@ public class ExportPresenter {
     private int toYear;
     private DatabaseHandler dB;
     private MainActivity activity;
-
-    // Storage Permissions
-    private static final int REQUEST_EXTERNAL_STORAGE = 1;
-    private static String[] PERMISSIONS_STORAGE = {
-            Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE
-    };
 
     public ExportPresenter(MainActivity exportActivity, DatabaseHandler dbHandler) {
         this.activity = exportActivity;
@@ -115,7 +114,7 @@ public class ExportPresenter {
                     @Override
                     protected void onPostExecute(String filename) {
                         super.onPostExecute(filename);
-                        if (filename!=null) {
+                        if (filename != null) {
                             Uri uri = FileProvider.getUriForFile(activity.getApplicationContext(),
                                     activity.getApplicationContext().getPackageName() + ".provider.fileprovider", new File(filename));
                             activity.showShareDialog(uri);
@@ -136,7 +135,7 @@ public class ExportPresenter {
         int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         Log.i("Glucosio", "Storage permissions granted.");
 
-        if(permission != PackageManager.PERMISSION_GRANTED){
+        if (permission != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(
                     activity,
                     PERMISSIONS_STORAGE,

@@ -47,7 +47,7 @@ public class GoogleDriveBackup implements Backup, GoogleApiClient.OnConnectionFa
     }
 
     @Override
-    public GoogleApiClient getClient(){
+    public GoogleApiClient getClient() {
         return googleApiClient;
     }
 

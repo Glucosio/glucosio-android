@@ -31,7 +31,7 @@
         android:layout_height="wrap_content">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/activity_main_toolbar"
             android:layout_width="match_parent"
             android:layout_height="128dp"
             android:background="@color/glucosio_pink"
@@ -48,7 +48,7 @@
             android:id="@+id/done_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/toolbar"
+            android:layout_alignBottom="@id/activity_main_toolbar"
             android:layout_alignParentRight="true"
             android:layout_marginBottom="-32dp"
             android:layout_marginRight="20dp"
@@ -60,7 +60,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/toolbar"
+            android:layout_below="@id/activity_main_toolbar"
             android:layout_margin="16dp"
             android:layout_marginTop="16dp"
             android:orientation="vertical">

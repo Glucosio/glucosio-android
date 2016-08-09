@@ -379,23 +379,23 @@ public class OverviewFragment extends Fragment implements OverviewView {
             data = generateGlucoseData();
         }
 
-        if (graphCheckboxA1c.isChecked()){
+        if (graphCheckboxA1c.isChecked()) {
             data = generateA1cData();
         }
 
-        if (graphCheckboxKetones.isChecked()){
+        if (graphCheckboxKetones.isChecked()) {
             data = generateKetonesData();
         }
 
-        if (graphCheckboxWeight.isChecked()){
+        if (graphCheckboxWeight.isChecked()) {
             data = generateWeightData();
         }
 
-        if (graphCheckboxPressure.isChecked()){
+        if (graphCheckboxPressure.isChecked()) {
             data = generatePressureData();
         }
 
-        if (graphCheckboxCholesterol.isChecked()){
+        if (graphCheckboxCholesterol.isChecked()) {
             data = generateCholesterolData();
         }
 
@@ -494,7 +494,7 @@ public class OverviewFragment extends Fragment implements OverviewView {
         }
 
         xVals.clear();
-        for (int i=0; i< presenter.getA1cReadingsDateTime().size(); i++){
+        for (int i = 0; i < presenter.getA1cReadingsDateTime().size(); i++) {
             String date = presenter.convertDate(presenter.getA1cReadingsDateTime().get(i));
             xVals.add(date + "");
         }
@@ -514,7 +514,7 @@ public class OverviewFragment extends Fragment implements OverviewView {
         }
 
         xVals.clear();
-        for (int i=0; i< presenter.getKetonesReadingsDateTime().size(); i++){
+        for (int i = 0; i < presenter.getKetonesReadingsDateTime().size(); i++) {
             String date = presenter.convertDate(presenter.getKetonesReadingsDateTime().get(i));
             xVals.add(date + "");
         }
@@ -534,7 +534,7 @@ public class OverviewFragment extends Fragment implements OverviewView {
         }
 
         xVals.clear();
-        for (int i=0; i< presenter.getWeightReadingsDateTime().size(); i++){
+        for (int i = 0; i < presenter.getWeightReadingsDateTime().size(); i++) {
             String date = presenter.convertDate(presenter.getWeightReadingsDateTime().get(i));
             xVals.add(date + "");
         }
@@ -560,7 +560,7 @@ public class OverviewFragment extends Fragment implements OverviewView {
         }
 
         xVals.clear();
-        for (int i=0; i< presenter.getPressureReadingsDateTime().size(); i++){
+        for (int i = 0; i < presenter.getPressureReadingsDateTime().size(); i++) {
             String date = presenter.convertDate(presenter.getPressureReadingsDateTime().get(i));
             xVals.add(date + "");
         }
@@ -582,7 +582,7 @@ public class OverviewFragment extends Fragment implements OverviewView {
         }
 
         xVals.clear();
-        for (int i=0; i< presenter.getCholesterolReadingsDateTime().size(); i++){
+        for (int i = 0; i < presenter.getCholesterolReadingsDateTime().size(); i++) {
             String date = presenter.convertDate(presenter.getCholesterolReadingsDateTime().get(i));
             xVals.add(date + "");
         }
@@ -700,7 +700,7 @@ public class OverviewFragment extends Fragment implements OverviewView {
         tipTextView.setText(presenter.getRandomTip(tipsManager));
     }
 
-    private boolean isNewGraphEnabled(){
+    private boolean isNewGraphEnabled() {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
         return !sharedPref.getBoolean("pref_graph_old", false);
     }

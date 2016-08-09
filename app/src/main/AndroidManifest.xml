@@ -43,7 +43,7 @@
         <activity
             android:name=".activity.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/GlucosioTheme"/>
+            android:theme="@style/GlucosioTheme" />
         <activity
             android:name=".activity.HelloActivity"
             android:label="@string/title_activity_hello"
@@ -163,10 +163,9 @@
                 <action android:name="com.google.android.gms.wearable.BIND_LISTENER" />
             </intent-filter>
         </service>
-        <service
-            android:name=".service.GlucosioFirebaseMessagingService">
+        <service android:name=".service.GlucosioFirebaseMessagingService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 

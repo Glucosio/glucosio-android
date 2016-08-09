@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2016 Glucosio Foundation
   ~
   ~ This file is part of Glucosio.
@@ -20,13 +19,12 @@
   -->
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:id="@+id/action_menu_save"
-        android:title="@string/activity_converter_save"
+    <item
+        android:id="@+id/action_menu_save"
         android:orderInCategory="100"
-        app:showAsAction="always"
-        />
+        android:title="@string/activity_converter_save"
+        app:showAsAction="always" />
 
 </menu>

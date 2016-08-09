@@ -42,7 +42,7 @@ public class AddCholesterolActivity extends AddReadingActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_cholesterol);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.activity_main_toolbar);
 
         if (toolbar != null) {
             setSupportActionBar(toolbar);
@@ -66,13 +66,13 @@ public class AddCholesterolActivity extends AddReadingActivity {
 
         // If an id is passed, open the activity in edit mode
         FormatDateTime formatDateTime = new FormatDateTime(getApplicationContext());
-        if (this.isEditing()){
+        if (this.isEditing()) {
             FormatDateTime dateTime = new FormatDateTime(getApplicationContext());
             setTitle(R.string.title_activity_add_cholesterol_edit);
             CholesterolReading readingToEdit = presenter.getCholesterolReadingById(this.getEditId());
-            totalChoTextView.setText(readingToEdit.getTotalReading()+"");
-            LDLChoTextView.setText(readingToEdit.getLDLReading()+"");
-            HDLChoTextView.setText(readingToEdit.getHDLReading()+"");
+            totalChoTextView.setText(readingToEdit.getTotalReading() + "");
+            LDLChoTextView.setText(readingToEdit.getLDLReading() + "");
+            HDLChoTextView.setText(readingToEdit.getHDLReading() + "");
             Calendar cal = Calendar.getInstance();
             cal.setTime(readingToEdit.getCreated());
             this.getAddDateTextView().setText(dateTime.getDate(cal));
