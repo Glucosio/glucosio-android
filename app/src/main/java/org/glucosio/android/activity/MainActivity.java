@@ -27,14 +27,11 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialog;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
@@ -45,11 +42,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
-import android.view.animation.AlphaAnimation;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -110,7 +104,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         GlucosioApplication application = (GlucosioApplication) getApplication();
 
         setContentView(R.layout.activity_main);
-        initPresenters(application);
 
         toolbar = (Toolbar) findViewById(R.id.activity_main_toolbar);
         tabLayout = (TabLayout) findViewById(R.id.activity_main_tab_layout);
@@ -264,6 +257,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             viewPager.setCurrentItem(b.getInt("pager"));
         }
 
+        initPresenters(application);
         checkIfEmptyLayout();
 
         Analytics analytics = application.getAnalytics();
