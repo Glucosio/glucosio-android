@@ -35,6 +35,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.BottomSheetBehavior;
+import android.support.design.widget.BottomSheetDialog;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
@@ -48,6 +49,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -90,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private HomePagerAdapter homePagerAdapter;
     private MainPresenter presenter;
     private ViewPager viewPager;
-    private BottomSheetBehavior bottomSheetBehavior;
+    private BottomSheetDialog bottomSheetAddDialog;
     private View bottomSheetMenu;
 
     private TextView exportDialogDateFrom;
@@ -173,26 +175,15 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         fabAddReading.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dimMainScreen(true);
-                bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+                bottomSheetAddDialog.show();
             }
         });
 
         bottomSheetMenu = coordinatorLayout.findViewById(R.id.activity_main_add_bottom_sheet_menu);
-        bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetMenu);
-        bottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
-            @Override
-            public void onStateChanged(@NonNull View bottomSheet, int newState) {
-                if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
-                    dimMainScreen(false);
-                }
-            }
+        bottomSheetAddDialog = new BottomSheetDialog(this);
 
-            @Override
-            public void onSlide(@NonNull View bottomSheet, float slideOffset) {
-
-            }
-        });
+        View bottomSheetAddDialogView = getLayoutInflater().inflate(R.layout.fragment_add_bottom_dialog, null);
+        bottomSheetAddDialog.setContentView(bottomSheetAddDialogView);
 
         // Add Nav Drawer
         final PrimaryDrawerItem itemSettings = new PrimaryDrawerItem().withName(R.string.action_settings).withIcon(R.drawable.ic_settings_grey_24dp).withSelectable(false).withTypeface(Typeface.DEFAULT_BOLD);
@@ -308,12 +299,19 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     public void startHelloActivity() {
         Intent intent = new Intent(this, HelloActivity.class);
         startActivity(intent);
-        finish();
+        finishActivity();
     }
 
     public void openPreferences() {
         Intent intent = new Intent(this, PreferencesActivity.class);
         startActivity(intent);
+        finishActivity();
+    }
+
+    public void finishActivity(){
+        // dismiss dialog if still expanded
+        bottomSheetAddDialog.dismiss();
+        // then close activity
         finish();
     }
 
@@ -342,7 +340,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     private void openNewAddActivity(Class<?> activity) {
-        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
         Intent intent = new Intent(this, activity);
         // Pass pager position to open it again later
         Bundle b = new Bundle();
@@ -350,25 +347,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         b.putInt(INTENT_EXTRA_DROPDOWN, homePagerAdapter.getHistoryFragment().getHistoryDropdownPosition());
         intent.putExtras(b);
         startActivity(intent);
-        finish();
+        finishActivity();
     }
-
-    private void dimMainScreen(boolean enabled) {
-        float ALPHA_DIM = 0.2F;
-        float ALPHA_MAX = 1F;
-        AlphaAnimation alpha;
-
-        if (enabled) {
-            alpha = new AlphaAnimation(ALPHA_MAX, ALPHA_DIM);
-            alpha.setDuration(600);
-        } else {
-            alpha = new AlphaAnimation(ALPHA_DIM, ALPHA_MAX);
-            alpha.setDuration(300);
-        }
-        alpha.setFillAfter(true);
-        viewPager.startAnimation(alpha);
-    }
-
 
     public void openSupportDialog() {
         final Context mContext = this;
@@ -743,22 +723,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
     private void showErrorDialogPlayServices() {
         Toast.makeText(getApplicationContext(), R.string.activity_main_error_play_services, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            if (bottomSheetBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
-
-                Rect outRect = new Rect();
-                bottomSheetMenu.getGlobalVisibleRect(outRect);
-
-                if (!outRect.contains((int) event.getRawX(), (int) event.getRawY()))
-                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-            }
-        }
-
-        return super.dispatchTouchEvent(event);
     }
 
     @Override
