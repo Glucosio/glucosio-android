@@ -84,6 +84,7 @@
                 android:id="@+id/activity_freestyle_button_history"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:background="?android:attr/selectableItemBackground"
                 android:textColor="@color/white"
                 android:text="@string/history"

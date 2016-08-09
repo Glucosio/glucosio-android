@@ -45,9 +45,9 @@ import org.glucosio.android.tools.AnimationTools;
 import java.io.IOException;
 import java.util.Arrays;
 
-public class FreestyleLibre extends Activity {
+public class FreestyleLibreActivity extends Activity {
 
-    private static final String TAG = "Glucosio:FreestyleLibre";
+    private static final String TAG = "Glucosio:FreestyleLibreActivity";
     private NfcAdapter mNfcAdapter;
     private TextView readingTextView;
     private TextView unitTextView;
@@ -200,7 +200,7 @@ public class FreestyleLibre extends Activity {
             bundle.putString("reading", currentGlucose + "");
             intent.putExtras(bundle);
             startActivity(intent);
-            FreestyleLibre.this.finish();
+            FreestyleLibreActivity.this.finish();
         } else {
             Intent intent = new Intent(getApplicationContext(), HelloActivity.class);
             startActivity(intent);

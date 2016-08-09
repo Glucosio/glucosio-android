@@ -354,7 +354,7 @@ public class AddGlucoseActivity extends AppCompatActivity implements TimePickerD
     }
 
     public void startLibreActivity() {
-        Intent intent = new Intent(this, FreestyleLibre.class);
+        Intent intent = new Intent(this, FreestyleLibreActivity.class);
         startActivity(intent);
     }
 
