@@ -29,7 +29,7 @@ buildscript {
     dependencies {
         // TODO: Please revert to a stable gradle version before releasing on prod
         // Alpha is required in devel to use Instant Run and speed up development process
-        classpath 'com.android.tools.build:gradle:2.2.0-alpha7'
+        classpath 'com.android.tools.build:gradle:2.2.0-beta1'
         classpath 'com.google.gms:google-services:3.0.0'
         classpath 'io.realm:realm-gradle-plugin:1.1.1'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
@@ -48,7 +48,7 @@ allprojects {
 
     ext.buildToolsVer = '24.0.0'
 
-    ext.androidSupportVer = '24.0.0'
+    ext.androidSupportVer = '24.1.1'
     ext.googlePlayServicesVer = '9.0.2'
 
     ext.butterKnifeVer = '8.0.1'
