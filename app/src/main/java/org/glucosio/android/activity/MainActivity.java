@@ -27,14 +27,11 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialog;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
@@ -45,11 +42,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
-import android.view.animation.AlphaAnimation;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -86,15 +80,12 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private static final int REQUEST_INVITE = 1;
     private static final String INTENT_EXTRA_PAGER = "pager";
     private final String INTENT_EXTRA_DROPDOWN = "history_dropdown";
-    private CoordinatorLayout coordinatorLayout;
     private ExportPresenter exportPresenter;
     private RadioButton exportRangeButton;
     private HomePagerAdapter homePagerAdapter;
     private MainPresenter presenter;
     private ViewPager viewPager;
     private BottomSheetDialog bottomSheetAddDialog;
-    private View bottomSheetMenu;
-
     private TextView exportDialogDateFrom;
     private TextView exportDialogDateTo;
 
@@ -110,7 +101,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         GlucosioApplication application = (GlucosioApplication) getApplication();
 
         setContentView(R.layout.activity_main);
-        initPresenters(application);
 
         toolbar = (Toolbar) findViewById(R.id.activity_main_toolbar);
         tabLayout = (TabLayout) findViewById(R.id.activity_main_tab_layout);
@@ -124,7 +114,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             getSupportActionBar().setLogo(R.drawable.ic_logo);
         }
 
-        coordinatorLayout = (CoordinatorLayout) findViewById(R.id.activity_main_coordinator_layout);
         homePagerAdapter = new HomePagerAdapter(getSupportFragmentManager(), getApplicationContext());
 
         viewPager.setAdapter(homePagerAdapter);
@@ -179,7 +168,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             }
         });
 
-        bottomSheetMenu = coordinatorLayout.findViewById(R.id.activity_main_add_bottom_sheet_menu);
         bottomSheetAddDialog = new BottomSheetDialog(this);
 
         View bottomSheetAddDialogView = getLayoutInflater().inflate(R.layout.fragment_add_bottom_dialog, null);
@@ -264,6 +252,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             viewPager.setCurrentItem(b.getInt("pager"));
         }
 
+        initPresenters(application);
         checkIfEmptyLayout();
 
         Analytics analytics = application.getAnalytics();
