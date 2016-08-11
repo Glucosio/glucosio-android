@@ -43,6 +43,7 @@
   <string name="helloactivity_spinner_diabetes_gdm">Gestasyonel</string>
   <string name="helloactivity_spinner_diabetes_lada">LADA</string>
   <string name="helloactivity_spinner_preferred_glucose_unit">Tercih edilen glikoz birimi</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit_2">mmol/L</string>
   <string name="preferences_spinner_preferred_a1c_unit">Tercih edilen A1C birimi</string>
   <string name="preferences_spinner_preferred_a1c_unit_1">yüzde</string>
   <string name="preferences_spinner_preferred_weight_unit">Tercih edilen ağırlık birimi</string>

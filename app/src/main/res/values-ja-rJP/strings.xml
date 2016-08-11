@@ -43,6 +43,7 @@
   <string name="helloactivity_spinner_diabetes_gdm">妊娠</string>
   <string name="helloactivity_spinner_diabetes_lada">LADA</string>
   <string name="helloactivity_spinner_preferred_glucose_unit">使用する血糖値単位</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit_2">mmol/L</string>
   <string name="preferences_spinner_preferred_a1c_unit">使用する A1C 単位</string>
   <string name="preferences_spinner_preferred_a1c_unit_1">パーセント</string>
   <string name="preferences_spinner_preferred_weight_unit">使用する体重の単位</string>

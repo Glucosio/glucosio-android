@@ -43,6 +43,7 @@
   <string name="helloactivity_spinner_diabetes_gdm">Xestacional</string>
   <string name="helloactivity_spinner_diabetes_lada">LADA</string>
   <string name="helloactivity_spinner_preferred_glucose_unit">Unidade de glicosa preferida</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit_2">mmol/L</string>
   <string name="preferences_spinner_preferred_a1c_unit">Unidade de A1C preferida</string>
   <string name="preferences_spinner_preferred_a1c_unit_1">porcentaxe</string>
   <string name="preferences_spinner_preferred_weight_unit">Unidade de peso preferida</string>

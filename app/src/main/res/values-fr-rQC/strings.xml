@@ -44,6 +44,7 @@
   <string name="helloactivity_spinner_diabetes_gdm">Gestationnel</string>
   <string name="helloactivity_spinner_diabetes_lada">LADA</string>
   <string name="helloactivity_spinner_preferred_glucose_unit">Unité de Glucose préférée</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit_2">mmol/L</string>
   <string name="preferences_spinner_preferred_a1c_unit">Unité d\'A1C préférée</string>
   <string name="preferences_spinner_preferred_a1c_unit_1">pourcentage</string>
   <string name="preferences_spinner_preferred_weight_unit">Unité de poids préférée</string>

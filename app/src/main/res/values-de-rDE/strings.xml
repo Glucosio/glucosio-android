@@ -40,6 +40,7 @@
   <string name="helloactivity_spinner_diabetes_type">Diabetes Typ</string>
   <string name="helloactivity_spinner_diabetes_type_1">Typ 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Typ 2</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit_2">mmol/L</string>
   <string name="preferences_spinner_preferred_a1c_unit_1">prozentualer Anteil</string>
   <string name="preferences_spinner_preferred_weight_unit">Gewünschte Gewichtseinheit</string>
   <string name="preferences_spinner_preferred_weight_unit_1">Kilogramm</string>

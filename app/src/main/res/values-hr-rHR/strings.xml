@@ -40,6 +40,7 @@
   <string name="helloactivity_spinner_diabetes_type_1">Tip 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Tip 2</string>
   <string name="helloactivity_spinner_preferred_glucose_unit">Preferirana jedinica glukoze</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit_2">mmol/L</string>
   <string name="preferences_spinner_preferred_a1c_unit">Preferirana A1C jedinica</string>
   <string name="preferences_spinner_preferred_a1c_unit_1">postotak</string>
   <string name="preferences_spinner_preferred_weight_unit">Preferirana jedinica težine</string>

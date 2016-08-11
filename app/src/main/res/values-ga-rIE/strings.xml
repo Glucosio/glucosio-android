@@ -43,6 +43,7 @@
   <string name="helloactivity_spinner_diabetes_gdm">Tréimhse iompair</string>
   <string name="helloactivity_spinner_diabetes_lada">LADA</string>
   <string name="helloactivity_spinner_preferred_glucose_unit">Do rogha aonaid glúcóis</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit_2">mmol/L</string>
   <string name="preferences_spinner_preferred_a1c_unit">Do rogha aonaid A1C</string>
   <string name="preferences_spinner_preferred_a1c_unit_1">céatadán</string>
   <string name="preferences_spinner_preferred_weight_unit">Do rogha aonaid meáchain</string>

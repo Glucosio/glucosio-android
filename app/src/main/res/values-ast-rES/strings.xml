@@ -41,6 +41,7 @@
   <string name="helloactivity_spinner_diabetes_type_1">Tipu 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Tipu 2</string>
   <string name="helloactivity_spinner_diabetes_lada">LADA</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit_2">mmol/L</string>
   <string name="preferences_spinner_preferred_a1c_unit_1">porcentaxe</string>
   <string name="preferences_spinner_preferred_weight_unit_1">quilogramos</string>
   <string name="preferences_spinner_preferred_weight_unit_2">llibres</string>

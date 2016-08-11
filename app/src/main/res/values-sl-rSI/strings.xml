@@ -43,6 +43,7 @@
   <string name="helloactivity_spinner_diabetes_gdm">Nosečnostna</string>
   <string name="helloactivity_spinner_diabetes_lada">LADA</string>
   <string name="helloactivity_spinner_preferred_glucose_unit">Želena enota za glukozo</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit_2">mmol/l</string>
   <string name="preferences_spinner_preferred_a1c_unit">Želena enota za A1C</string>
   <string name="preferences_spinner_preferred_a1c_unit_1">odstotek</string>
   <string name="preferences_spinner_preferred_weight_unit">Želena enota za težo</string>

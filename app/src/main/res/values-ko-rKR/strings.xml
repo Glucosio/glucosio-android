@@ -43,6 +43,7 @@
   <string name="helloactivity_spinner_diabetes_gdm">임신</string>
   <string name="helloactivity_spinner_diabetes_lada">LADA</string>
   <string name="helloactivity_spinner_preferred_glucose_unit">선호 포도당 단위</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit_2">mmol/L</string>
   <string name="preferences_spinner_preferred_a1c_unit">선호 A1C 단위</string>
   <string name="preferences_spinner_preferred_a1c_unit_1">백분율</string>
   <string name="preferences_spinner_preferred_weight_unit">선호 체중 단위</string>

@@ -43,6 +43,8 @@
   <string name="helloactivity_spinner_diabetes_gdm">Zwangerschapsdiabetes</string>
   <string name="helloactivity_spinner_diabetes_lada">LADA</string>
   <string name="helloactivity_spinner_preferred_glucose_unit">Glucose-eenheid van voorkeur</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit_1">mg/dl</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit_2">mmol/l</string>
   <string name="preferences_spinner_preferred_a1c_unit">A1C-eenheid van voorkeur</string>
   <string name="preferences_spinner_preferred_a1c_unit_1">percentage</string>
   <string name="preferences_spinner_preferred_weight_unit">Gewichtseenheid van voorkeur</string>

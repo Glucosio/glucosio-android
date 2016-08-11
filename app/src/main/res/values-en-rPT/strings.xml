@@ -20,6 +20,74 @@
   ~
   -->
 <resources>
+  <string name="action_settings">Settin\'</string>
+  <string name="action_feedback">Send feedback</string>
+  <string name="action_invite">Invite a bucko</string>
+  <string name="tab_overview">O\'erview</string>
+  <string name="tab_history">History</string>
+  <string name="tab_tips">Old Salt\'s advice</string>
+  <string name="title_activity_hello">Ahoy!</string>
+  <string name="helloactivity_headline">Ahoy!</string>
+  <string name="helloactivity_terms">Terms \'o Use</string>
+  <string name="helloactivity_subhead">We just need a few quick thin\'s before gettin\' ye started.</string>
+  <string name="helloactivity_country">Country</string>
+  <string name="helloactivity_age">Age</string>
+  <string name="helloactivity_age_invalid">Please enter a valid age.</string>
+  <string name="helloactivity_gender">Gender</string>
+  <string name="helloactivity_gender_list_1">Male</string>
+  <string name="helloactivity_gender_list_2">Female</string>
+  <string name="helloactivity_gender_list_3">Other</string>
+  <string name="helloactivity_spinner_diabetes_type">Diabetes type</string>
+  <string name="helloactivity_spinner_diabetes_type_1">Type 1</string>
+  <string name="helloactivity_spinner_diabetes_type_2">Type 2</string>
+  <string name="helloactivity_spinner_diabetes_gdm">Gestational</string>
+  <string name="helloactivity_spinner_diabetes_lada">LADA</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit">Preferred Glucose unit</string>
+  <string name="preferences_spinner_preferred_a1c_unit">Preferred A1C unit</string>
+  <string name="preferences_spinner_preferred_a1c_unit_1">percentage</string>
+  <string name="preferences_spinner_preferred_weight_unit">Preferred Weight unit</string>
+  <string name="preferences_spinner_preferred_weight_unit_1">kilograms</string>
+  <string name="preferences_spinner_preferred_weight_unit_2">pounds</string>
+  <string name="helloactivity_share_data">Share anonymous data fer research.</string>
+  <string name="helloactivity_hint_settings">Ye can change these in settin\'s later.</string>
+  <string name="helloactivity_button_next">NEXT</string>
+  <string name="helloactivity_button_start">GET STARTED</string>
+  <string name="fragment_empty_text">No info available yet. \n Add ye first readin\' here.</string>
+  <string name="dialog_add_title">Add Blood Glucose Level</string>
+  <string name="dialog_add_concentration">Concentration</string>
+  <string name="dialog_add_date">Date</string>
+  <string name="dialog_add_time">Moons</string>
+  <string name="dialog_add_measured">Measured</string>
+  <string name="dialog_add_type_1">Before breakfast</string>
+  <string name="dialog_add_type_2">After breakfast</string>
+  <string name="dialog_add_type_3">Before lunch</string>
+  <string name="dialog_add_type_4">After lunch</string>
+  <string name="dialog_add_type_5">Before dinner</string>
+  <string name="dialog_add_type_6">After dinner</string>
+  <string name="dialog_add_type_7">Munch</string>
+  <string name="dialog_add_type_8">Bedtime</string>
+  <string name="dialog_add_type_9">Night</string>
+  <string name="dialog_add_type_10">Fasting glucose</string>
+  <string name="dialog_add_type_11">Recheck</string>
+  <string name="dialog_add_type_12">Other</string>
+  <string name="assistant_action_reading">ADD READING</string>
+  <string name="assistant_action_try">TRY IT NOW</string>
+  <string name="assistant_weight_title">Update ye weight</string>
+  <string name="assistant_weight_desc">Make sure to update ye weight so Glucosio has th\' most accurate information.</string>
+  <string name="assistant_research_title">	
+Update ye research opt-in</string>
+  <string name="assistant_research_desc">Ye can always opt-in or opt-out \'o diabetes research sharin\', but remember all data shared be entirely anonymous. We only share demographics \'n glucose level trends.</string>
+  <string name="assistant_categories_title">Create categories</string>
+  <string name="assistant_categories_desc">Glucosio comes wit\' default categories fer glucose input but ye can create custom categories in settin\'s to match ye unique needs.</string>
+  <string name="assistant_check_title">Check here often</string>
+  <string name="assistant_check_desc">Glucosio assistant provides regular tips \'n gunna keep improvin\', so always check here fer useful actions ye can take to improve ye Glucosio experience \'n fer other useful tips.</string>
+  <string name="assistant_feedback_title">Submit feedback </string>
+  <string name="assistant_feedback_desc">If ye find any technical issues or have feedback \'bout Glucosio we encourage ye to submit it in th\' settin\'s menu in order to help us improve Glucosio.</string>
+  <string name="assistant_reading_title">Add a reading</string>
+  <string name="assistant_reading_desc">Be sure to regularly add ye glucose readin\'s so we can help ye track ye glucose levels over the hour.</string>
+  <string name="assistant_export_title">Export ye data </string>
+  <string name="assistant_export_desc">	
+Share ye data wit\' ye doctor or backup ye data to Google Drive usin\' th\' export weapon.</string>
   <!-- Future Strings Baked In Early For l10n -->
   <!-- Exercise Types -->
   <!-- Food Entry Labels -->

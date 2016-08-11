@@ -43,6 +43,7 @@
   <string name="helloactivity_spinner_diabetes_gdm">妊娠期</string>
   <string name="helloactivity_spinner_diabetes_lada">LADA</string>
   <string name="helloactivity_spinner_preferred_glucose_unit">偏好的血糖值單位</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit_2">mmol/L</string>
   <string name="preferences_spinner_preferred_a1c_unit">偏好的糖化血色素 (HbA1c) 單位</string>
   <string name="preferences_spinner_preferred_a1c_unit_1">百分比</string>
   <string name="preferences_spinner_preferred_weight_unit">偏好的重量單位</string>

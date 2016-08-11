@@ -38,6 +38,7 @@
   <string name="helloactivity_spinner_diabetes_type">Tipe de diabèt</string>
   <string name="helloactivity_spinner_diabetes_type_1">Tipe 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Tipe 2</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit_2">mmol/L</string>
   <string name="preferences_spinner_preferred_a1c_unit_1">percentatge</string>
   <string name="preferences_spinner_preferred_weight_unit_1">quilogramas</string>
   <string name="dialog_add_date">Data</string>

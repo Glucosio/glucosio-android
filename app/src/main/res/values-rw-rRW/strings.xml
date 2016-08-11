@@ -33,6 +33,7 @@
   <string name="helloactivity_gender_list_3">Ibindi</string>
   <string name="helloactivity_spinner_diabetes_type_2">Ubwoko bwa 2</string>
   <string name="helloactivity_spinner_preferred_glucose_unit">Ubwoko by\'igipimo cya Glucose wishimira</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit_2">mmol/L</string>
   <string name="preferences_spinner_preferred_a1c_unit">Ubwoko bwa A1c wahisemo</string>
   <string name="preferences_spinner_preferred_a1c_unit_1">ijanisha</string>
   <string name="helloactivity_share_data">Sangiza amakuru mwibanga mugufasha ubuvumbuzi.</string>

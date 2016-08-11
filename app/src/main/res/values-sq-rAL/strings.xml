@@ -43,6 +43,7 @@
   <string name="helloactivity_spinner_diabetes_gdm">Gestacional</string>
   <string name="helloactivity_spinner_diabetes_lada">DLARr</string>
   <string name="helloactivity_spinner_preferred_glucose_unit">Njësia e preferuar e glukozës</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit_2">mmol/L</string>
   <string name="preferences_spinner_preferred_a1c_unit">Njësia e preferuar e A1C</string>
   <string name="preferences_spinner_preferred_a1c_unit_1">përqindja</string>
   <string name="preferences_spinner_preferred_weight_unit">Njësia e preferuar e peshës</string>
