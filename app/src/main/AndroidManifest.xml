@@ -20,11 +20,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.glucosio.android">
 
+    <!-- Required to export and save CSV or graph -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <!-- Required for Google Cloud Messaging -->
     <uses-permission android:name="${applicationId}.permission.C2D_MESSAGE" />
+
+    <!-- Enable Chromebook support (no touch) -->
+    <uses-feature android:name="android.hardware.touchscreen"
+        android:required="false" />
 
     <permission
         android:name="${applicationId}.permission.C2D_MESSAGE"
