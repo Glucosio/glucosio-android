@@ -32,6 +32,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialog;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
@@ -172,6 +173,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
         View bottomSheetAddDialogView = getLayoutInflater().inflate(R.layout.fragment_add_bottom_dialog, null);
         bottomSheetAddDialog.setContentView(bottomSheetAddDialogView);
+        BottomSheetBehavior behavior = BottomSheetBehavior.from((View) bottomSheetAddDialogView.getParent());
+        behavior.setHideable(false);
 
         // Add Nav Drawer
         final PrimaryDrawerItem itemSettings = new PrimaryDrawerItem().withName(R.string.action_settings).withIcon(R.drawable.ic_settings_grey_24dp).withSelectable(false).withTypeface(Typeface.DEFAULT_BOLD);
