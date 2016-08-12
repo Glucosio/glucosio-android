@@ -174,6 +174,11 @@ public class AddGlucosePresenter extends AddReadingPresenter {
         }
     }
 
+    public boolean isFreeStyleLibreEnabled() {
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
+        return sharedPref.getBoolean("pref_freestyle_libre", false);
+    }
+
     private boolean validateType(String type) {
         return validateText(type);
     }

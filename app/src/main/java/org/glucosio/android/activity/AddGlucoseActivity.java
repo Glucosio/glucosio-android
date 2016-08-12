@@ -22,6 +22,9 @@ package org.glucosio.android.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputLayout;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
@@ -49,6 +52,8 @@ public class AddGlucoseActivity extends AddReadingActivity {
     private TextView readingTextView;
     private EditText typeCustomEditText;
     private EditText notesEditText;
+    private AppCompatButton addFreeStyleButton;
+    private TextInputLayout readingInputLayout;
     private LabelledSpinner readingTypeSpinner;
     private boolean isCustomType = false;
 
@@ -74,6 +79,8 @@ public class AddGlucoseActivity extends AddReadingActivity {
         readingTypeSpinner.setItemsArray(R.array.dialog_add_measured_list);
         readingTextView = (TextView) findViewById(R.id.glucose_add_concentration);
         typeCustomEditText = (EditText) findViewById(R.id.glucose_type_custom);
+        readingInputLayout = (TextInputLayout) findViewById(R.id.glucose_add_concentration_layout);
+        addFreeStyleButton = (AppCompatButton) findViewById(R.id.glucose_add_freestyle_button);
         notesEditText = (EditText) findViewById(R.id.glucose_add_notes);
 
         this.createDateTimeViewAndListener();
@@ -138,7 +145,38 @@ public class AddGlucoseActivity extends AddReadingActivity {
             presenter.updateSpinnerTypeTime();
         }
 
-        this.getDoneFAB().postDelayed(this.getFabAnimationRunnable(), 600);
+        this.getDoneFAB().postDelayed(this.getFabAnimationRunnable(), 600)
+
+        // Check if activity was started from a NFC sensor
+        if (getIntent().getExtras() != null) {
+            Bundle p;
+            String reading;
+
+            p = getIntent().getExtras();
+            reading = p.getString("reading");
+            if (reading!=null) {
+                // If yes, first convert the decimal value from Freestyle to Integer
+                double d = Double.parseDouble(reading);
+                int glucoseValue = (int) d;
+                readingTextView.setText(glucoseValue + "");
+                readingInputLayout.setErrorEnabled(true);
+                readingInputLayout.setError(getResources().getString(R.string.dialog_add_glucose_freestylelibre_added));
+                addFreeStyleButton.setVisibility(View.GONE);
+
+                addAnalyticsEvent();
+            }
+        }
+
+        // Check if FreeStyle support is enabled in Preferences
+        if (presenter.isFreeStyleLibreEnabled()) {
+            addFreeStyleButton.setVisibility(View.VISIBLE);
+            addFreeStyleButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startLibreActivity();
+                }
+            });
+        }
     }
 
     private void addAnalyticsEvent() {
@@ -172,6 +210,10 @@ public class AddGlucoseActivity extends AddReadingActivity {
         Snackbar.make(rootLayout, getString(R.string.dialog_error2), Snackbar.LENGTH_SHORT).show();
     }
 
+    public void startLibreActivity() {
+        Intent intent = new Intent(this, FreestyleLibreActivity.class);
+        startActivity(intent);
+    }
 
     public void showDuplicateErrorMessage() {
         View rootLayout = findViewById(android.R.id.content);
@@ -193,4 +235,5 @@ public class AddGlucoseActivity extends AddReadingActivity {
         DecimalFormat df = new DecimalFormat("00");
         updateSpinnerTypeHour(Integer.parseInt(df.format(hourOfDay)));
     }
+
 }

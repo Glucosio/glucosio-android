@@ -127,6 +127,7 @@ public class PreferencesActivity extends AppCompatActivity {
         private EditTextPreference minRangePref;
         private EditTextPreference maxRangePref;
         private SwitchPreference dyslexiaModePref;
+        private SwitchPreference freestyleLibrePref;
         private User updatedUser;
         private LocaleHelper localeHelper;
 
@@ -157,6 +158,7 @@ public class PreferencesActivity extends AppCompatActivity {
             minRangePref = (EditTextPreference) findPreference("pref_range_min");
             maxRangePref = (EditTextPreference) findPreference("pref_range_max");
             dyslexiaModePref = (SwitchPreference) findPreference("pref_font_dyslexia");
+            freestyleLibrePref = (SwitchPreference) findPreference("pref_freestyle_libre");
 
             agePref.setDefaultValue(user.getAge());
             countryPref.setValue(user.getCountry());
@@ -294,6 +296,18 @@ public class PreferencesActivity extends AppCompatActivity {
                     // EXPERIMENTAL PREFERENCE
                     // Display Alert
                     showExperimentalDialog(true);
+                    return true;
+                }
+            });
+            freestyleLibrePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    if (!((SwitchPreference) preference).isChecked()) {
+                        // EXPERIMENTAL PREFERENCE
+                        // Display Alert
+                        showExperimentalDialog(false);
+                        return true;
+                    }
                     return true;
                 }
             });

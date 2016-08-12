@@ -445,4 +445,6 @@
     <string name="mmol_mol">mmol/mol</string>
     <string name="mmol_L">mmol/L</string>
     <string name="preferences_graph_old">Revert to old graph</string>
+    <string name="history">history</string>
+    <string name="save">save</string>
 </resources>
