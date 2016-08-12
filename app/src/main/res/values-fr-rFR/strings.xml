@@ -27,6 +27,7 @@
   <string name="tab_overview">Aperçu</string>
   <string name="tab_history">Historique</string>
   <string name="tab_tips">Astuces</string>
+  <string name="activity_main_add_new_reading">Ajouter une valeur</string>
   <string name="title_activity_hello">Bonjour.</string>
   <string name="helloactivity_headline">Bonjour.</string>
   <string name="helloactivity_terms">Conditions d\'utilisation.</string>
@@ -239,10 +240,15 @@
   <string name="title_activity_add_glucose">Ajouter une valeur de glycémie</string>
   <string name="title_activity_add_glucose_edit">Modifier une valeur de glycémie</string>
   <string name="title_activity_add_weight">Ajouter un poids</string>
+  <string name="title_activity_add_weight_edit">Modifier le poids</string>
   <string name="title_activity_add_cholesterol">Ajouter un taux de cholestérol</string>
+  <string name="title_activity_add_cholesterol_edit">Modifier le taux de cholestérol</string>
   <string name="title_activity_add_hb1ac">Ajouter une hémoglobine glyquée</string>
+  <string name="title_activity_add_hb1ac_edit">Modifier l\'HbA1c</string>
   <string name="title_activity_add_ketone">Ajouter des cétones</string>
+  <string name="title_activity_add_ketone_edit">Modifier les corps cétoniques</string>
   <string name="title_activity_add_pressure">Ajouter une pression artérielle</string>
+  <string name="title_activity_add_pressure_edit">Modifier la pression artérielle</string>
   <string name="fab_weight">Masse corporelle</string>
   <string name="fab_ketones">Cétones</string>
   <string name="fab_pressure">Pression artérielle</string>
@@ -286,6 +292,7 @@
   <string name="activity_backup_drive_failed">Une erreur est survenue. Veuillez réessayer :/</string>
   <string name="activity_backup_drive_last">Dernière sauvegarde :</string>
   <string name="activity_backup_drive_folder">Dossier de sauvegarde</string>
+  <string name="activity_backup_drive_folder_not_set">Indéfini</string>
   <string name="activity_backup_drive_button_backup">Sauvegarder</string>
   <string name="activity_backup_drive_recent">Sauvegardes récentes</string>
   <string name="activity_backup_drive_more">Voir plus de sauvegardes</string>

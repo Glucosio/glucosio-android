@@ -26,6 +26,7 @@
   <string name="tab_overview">ພາບລວມ</string>
   <string name="tab_history">ປະຫວັດ</string>
   <string name="tab_tips">ເຄັດລັບ</string>
+  <string name="activity_main_add_new_reading">ເພີ່ມການອ່ານໃຫມ່</string>
   <string name="title_activity_hello">ສະບາຍດີ.</string>
   <string name="helloactivity_headline">ສະບາຍດີ.</string>
   <string name="helloactivity_terms">ເງື່ອນໄຂການໃຊ້.</string>
@@ -40,6 +41,8 @@
   <string name="helloactivity_spinner_diabetes_type">ປະເພດຂອງພະຍາດເບົາຫວານ</string>
   <string name="helloactivity_spinner_diabetes_type_1">ປະເພດທີ່ 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">ປະເພດທີ່ 2</string>
+  <string name="helloactivity_spinner_diabetes_gdm">ຂະນະມານລູກ</string>
+  <string name="helloactivity_spinner_diabetes_lada">LADA</string>
   <string name="helloactivity_spinner_preferred_glucose_unit">ມັກຫົວຫນ່ວຍແບບ Glucose</string>
   <string name="helloactivity_spinner_preferred_glucose_unit_2">mmol/L</string>
   <string name="preferences_spinner_preferred_a1c_unit">ມັກຫົວຫນ່ວຍແບບ A1C</string>
@@ -103,16 +106,20 @@
     <item>When eating out ask for sauces, gravy and salad dressings "on the side."</item>
     <item>ປາສະຈາກນ້ຳຕານກໍ່ບໍ່ໄດ້ຫມາຍຄວາມວ່າຈະປາສະຈາກນໍ້າຕານ 100%. ຫາກແຕ່ມັນຈະມີນ້ຳຕານຢູ່ປະມານ 0.5 ກຼາມ (g) ຕໍ່ຫນຶ່ງຫນ່ວຍການບໍລິໂພກ ດັ່ງນ້ນຈົ່ງຢ່າລົງເຊື່ອໄປກັບສິນຄ້າບໍ່ປາສະຈາກນ້ຳຕານ.</item>
     <item>Moving toward a healthy weight helps control blood sugars. Your doctor, a dietitian, and a fitness trainer can get you started on a plan that will work for you.</item>
-    <item>Checking your blood level and tracking it in an app like Glucosio twice a day will help you be aware of outcomes from food and lifestyle choices.</item>
-    <item>Get A1c blood tests to find out your average blood sugar for the past 2 to 3 months. Your doctor should tell you how frequently this test will be needed to be performed.</item>
+    <item>ການກວດເບິງລະດັບເລືອດຂອງທ່ານ ແລະ ຕິດຕາມມັນໃນແອັບແບບ Glucosio 2 ຄັ້ງຕໍ່ມື້ຈະຊ່ວຍໃຫ້ທ່ານຮູ້ເຖິງຜົນໄດ້ຮັບຈາກສະບຽງອາຫານ ແລະ ວິຖີການດຳລົງຊີວິດ.</item>
+    <item>ນຳເອົາຜົນທົດສອບເລືອດ A1c ໄປຊອກຫາຄ່ານ້ຳຕານສະເລ່ຍໃນເລືອດຂອງທ່ານສຳລັບ 2 ຫາ 3 ເດືອນທີ່ຜ່ານມາ. ທ່ານຫມໍຂອງທ່ານຈະບອກທ່ານວ່າການທົດສອບນີ້ຈຳເປັນຕ້ອງໄດ້ປະຕິບັດຈັກເທື່ອ.</item>
     <item>Tracking how many carbohydrates you consume can be just as important as checking blood levels since carbohydrates influence blood glucose levels. Talk to your doctor or a dietician about carbohydrate intake.</item>
-    <item>Controlling blood pressure, cholesterol, and triglyceride levels is important since diabetics are susceptible to heart disease.</item>
+    <item>ການຄວບຄຸມລະດັບເລືອດ, cholesterol ແລະ ລະດັບ triglyceride ແມ່ນມີຄວາມສຳຄັນເນື່ອງຈາກວ່າພະຍາດເບົາຫວານມີຄວາມອ່ອນໄຫວຕໍ່ການເກີດພະຍາດຫົວໃຈ.</item>
     <item>There are several diet approaches you can take to eating healthier and helping improve your diabetes outcomes. Seek advice from a dietician on what will work best for you and your budget.</item>
-    <item>Working on getting regular exercise is especially important for those with diabetes and can help you maintain a healthy weight. Talk to your doctor about exercises that will be appropriate for you.</item>
+    <item>ການອອກກຳລັງກາຍຢ່າງເປັນປະຈຳແມ່ນມີຄວາມສຳຄັນຢ່າງຍິງສຳລັບຜູ້ທີ່ເປັນພະຍາດເບົາຫວານ ແລະ ສາມາດຄວບຄຸມນຳຫນັກໄດ້. ປຶກສາກັບທ່ານຫມໍຂອງທ່ານກ່ຽວກັບການອອກກຳລັງກາຍທີ່ເຫມະສົມກັບທ່ານ.</item>
     <item>Being sleep-deprived can make you eat more especially things like junk food and as a result can negatively impact your health. Be sure to get a good night sleep and consult a sleep specialist if you are having difficulty.</item>
-    <item>Stress can have a negative impact on diabetes. Talk to your doctor or other health care professional about coping with stress.</item>
+    <item>ຄວາມຄຽດສາມາດເຮັດໃຫ້ມີຜົນກະທົບທາງລົບຕໍ່ໂລກເບົາຫວານ. ປຶກສາກັບທ່ານຫມໍຂອງທ່ານ ຫລື ຜູ້ຊ່ຽວຊານດ້ານສຸຂະພາບກ່ຽວກັບການພະເຊີນຫນ້າກັບຄວາມຄຽດ.</item>
     <item>Visiting your doctor once a year and having regular communication throughout the year is important for diabetics to prevent any sudden onset of associated health problems.</item>
     <item>Take your medicine as prescribed by your doctor even small lapses in your medicine can impact your blood glucose level and cause other side effects. If having difficulty remembering ask your doctor about medication management and reminder options.</item>
+  </string-array>
+  <string-array name="tips_all_age_plus_40">
+    <item>Older diabetics may be at higher risk for health issues associated with diabetes. Talk to your doctor about how your age plays a role in your diabetes and what to watch for.</item>
+    <item>ຈຳກັດປະລິມານເກືອທີ່ນຳໃຊ້ເຂົ້າໃນການປຸ່ງແຕ່ງອາຫານ ແລະ ປະລິມານເກືອທີ່ທ່ານຕື່ມໃສ່ຫລັງຈາກແຕ່ງແລ້ວ.</item>
   </string-array>
   <string name="assistant">ຜູ້ຊ່ວຍ</string>
   <string name="assistant_action_update">ອັບເດດຕອນນີ້ເລີຍ</string>
@@ -124,9 +131,11 @@
   <string name="assistant_weight_title">ອັບເດດນ້ຳຫນັກຂອງທ່ານ</string>
   <string name="assistant_weight_desc">ຫມັ້ນໃຈວ່າໄດ້ອັບເດດນໍ້າຫນັກຂອງທ່ານແລ້ວບໍ່ ສະນັ້ນ Glucosio ຈະໃຫ້ຂໍ້ມູນທີຖືກຕ້ອງທີ່ສຸດ.</string>
   <string name="assistant_research_title">ອັບເດດການຄົ້ນຫາ opt-in ຂອງທ່ານ</string>
+  <string name="assistant_research_desc">ທ່ານສາມາດປ້ອນເຂົ້າ ຫລື ນຳເອົາຂໍ້ມູນການແລກປ່ຽນການຄົ້ນຄວ້າພະຍາດເບົາຫວານອອກໄປໄດ້ຕະລອດເວລາ, ແຕ່ຈືໄວ້ວ່າຂໍ້ມູນທີ່ແລກປ່ຽນທັງຫມົດແມ່ນຈະບໍ່ໄດ້ຮັບການລະບຸຕົວຕົນ. ພວກເຮົາພຽງແຕ່ຈະແບ່ງປັນຂໍ້ມູນກ່ຽວກັບສະຖິຕິຈຳນວນປະຊາກອນ ແລະ ແນວໂນ້ມລະດັບນໍ້າຕານ.</string>
   <string name="assistant_categories_title">ສ້າງປະເພດ</string>
   <string name="assistant_categories_desc">Glucosio ມາພ້ອມກັບປະເພດກລູໂຄສແບບພື້ນຖານ ແຕ່ວ່າທ່ານສາມາດສ້າງຂື້ນມາໃຫມ່ໃນກາານຕັ້ງຄ່າເພື່ອໃຫ້ເຫມາະສົມກັບຄວາມຕ້ອງການຂອງທ່ານ.</string>
   <string name="assistant_check_title">ໃຫ້ເຂົ້າມາກວດເບິງຢູ່ນີ້ຢ່າງເປັນປົກກະຕິ</string>
+  <string name="assistant_check_desc">ຜູ້ຊ່ວຍ Glucosio ຈະສະຫນອງເຄັດລັບຕ່າງໆ ແລະ ປັບປຸງມັນຢ່າງເປັນປະຈຳ. ສະນັ້ນມັນເຂົ້າມາກວດສອບຢູ່ນີ້ສຳລັບຂໍ້ມູນທີ່ສຳຄັນຕ່າງໆທີ່ທ່ານສາມາດນຳເອົາໄປປັບປຸງປະສົບການໃຊ້ງານ Glucosio ຂອງທ່ານ ແລະ ເຄັດລັບອື່ນໆທີ່ເປັນປະໂຫຍດ.</string>
   <string name="assistant_feedback_title">ສົ່ງຄໍາຄິດເຫັນ </string>
   <string name="assistant_feedback_desc">ເພື່ອເປັນການຊ່ວຍໃຫ້ເຮົາສາມາດປັບປຸງ Glucosio ໃຫ້ດີຂື້ນ ຫາກວ່າທ່ານພົບເຫັນບັນຫາທາງເຕັກນິກ ຫລື ຄຳແນະນຳໃດໆ ທ່ານສາມາດສົ່ງຂໍ້ມູນມາໃຫ້ພວກເຮົາໄດ້ໃນເມນູການຕັ້ງຄ່າ.</string>
   <string name="assistant_reading_title">ເພີ່ມການອ່ານ</string>
@@ -139,17 +148,22 @@
   <string name="helloactivity_preferred_range_min">ຄ່າຕຳສຸດ</string>
   <string name="helloactivity_preferred_range_max">ຄ່າໃຫຍ່ສຸດ</string>
   <string name="helloactivity_language">ພາສາ</string>
+  <string name="menu_support_error1">ແອັບອີເມຣຍັງບໍ່ທັນໄດ້ຮັບການຕິດຕັ້ງ. ກະລຸນາສົ່ງອີເມຣໄປຫາ hello@glucosio.org</string>
   <string name="invitation_title">ເຊີນສ່ວນຫມູ່ເພື່ອນຄົນອື່ນໆ</string>
+  <string name="invitation_message">ລອງໃຊ້ Glucosio ຊຶ່ງເປັນແອັບໂອເພັນຊອດສຳລັບການຄວບຄຸມ ແລະ ຄົ້ນຄ້ວາກ່ຽວກັບເບົາຫວານ.</string>
   <string name="invitation_cta">ທົດລອງໃຊ້ Glucosio</string>
   <string name="title_activity_backup_drive">ແບັກອັບໄວ້ໃນ Google Drive</string>
   <string name="activity_main_dialog_backup_export_title">ແບັກອັບ &amp; ນຳອອກ</string>
   <string name="preferences_privacy">ຄວາມເປັນສ່ວນຕົວ</string>
+  <string name="helloactivity_textview_tos">ໂດຍການນຳໃຊ້ Glucosio ທ່ານຈະຍອມຮັບ</string>
   <string name="preferences_backup_google_drive">Google Drive</string>
   <string name="preferences_about_glucosio">ກ່ຽວກັບ Glucosio</string>
   <string name="preferences_rate">ເພີ່ມດາວໃຫ້ Glucosio</string>
   <string name="preferences_licences_open">ໃບອະນຸຍາດ Open source</string>
   <string name="preferences_freestyle_libre">ເປີດນຳໃຊ້ການສະຫນັບສະຫນູນ FreeStyle Libre®</string>
   <string name="preferences_freestyle_libre_experimental">ການທົດລອງ: ເປີດນຳໃຊ້ການສະຫນັບສະຫນູນ FreeStyle Libre®</string>
+  <string name="preferences_font_dyslexia_experimental">ການທົດລອງ: ເພີ່ມຄວາມສາມາດໃນການອ່ານສຳລັບຜູ້ໃຊ້ທີ່ມີຄວາມບົກພ່ອງໃນການອ່ານ</string>
+  <string name="preferences_font_dyslexia">ເພີ່ມຄວາມສາມາດໃນການອ່ານສຳລັບຜູ້ໃຊ້ທີ່ມີຄວາມບົກພ່ອງໃນການອ່ານ</string>
   <string name="about_donate">ບໍລິຈາກໃຫ້ກັບ Glucosio</string>
   <string name="reading_ok">ຕົກລົງ</string>
   <string name="reading_hypo">Hypoglycemia</string>
@@ -182,6 +196,7 @@
   <string name="dialog_add_exercisetype_22">ການປີນຫນ້າຜາ</string>
   <string name="dialog_add_exercisetype_23">ກິລາມວຍປໍ້າ</string>
   <string name="dialog_add_exercisetype_24">ການຢ່າງຫລີ້ນໄລຍະໃກ</string>
+  <string name="dialog_add_exercisetype_25">ອະນາໄມເດີນບ້ານ</string>
   <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">ທາດຄາໂບໄຮເດຣທ:</string>
   <string name="dialog_addfood_protein">ທາດໂປຣຕີນ:</string>
@@ -209,6 +224,7 @@
   <string name="fragment_overview_permission_storage">Glucosio ຕ້ອງໄດ້ຮັບການອະນຸຍາດກ່ອນທີ່ຈະສາມາດບັນທຶກພາບຫນ້າຈໍນີ້ໄດ້</string>
   <string name="fragment_overview_graph_export_true">ພາບຫນ້າຈໍໄດ້ຖືກບັນທຶກໄປໄວ້ຢູ່ໃນຄັງຮູບພາບ</string>
   <string name="fragment_overview_graph_export_false">ພາບຫນ້າຈໍທີ່ມີຂໍ້ຜິດພາດໄດ້ຖືກບັນທຶກໄປໄວ້ຢູ່ໃນຄັງຮູບພາບ</string>
+  <string name="dialog_export_range">ຂອບເຂດການນຳອອກ</string>
   <string name="activity_export_no_readings_snackbar">ບໍ່ມີການອ່ານທີ່ຕ້ອງການນຳອອກ.</string>
   <string name="wear_new_reading">ເພີ່ມລາຍການອ່ານໃຫມ່ແລ້ວ</string>
   <string name="dialog_add_weight">ນໍ້າໜັກ</string>
@@ -220,23 +236,33 @@
   <string name="dialog_add_cholesterol_hdl">HDL Cholesterol</string>
   <string name="dialog_add_hb1ac">HB1AC</string>
   <string name="title_activity_add_glucose">ເພີ່ມການອ່ານ Glucose</string>
+  <string name="title_activity_add_glucose_edit">ແກ້ໄຂການອ່ານ Glucose</string>
   <string name="title_activity_add_weight">ເພີ່ມນໍ້າໜັກ</string>
+  <string name="title_activity_add_weight_edit">ແກ້ໄຂນ້ຳຫນັກຂອງຮ່າງກາຍ</string>
   <string name="title_activity_add_cholesterol">ເພີ່ມລະດັບ Cholesterol</string>
+  <string name="title_activity_add_cholesterol_edit">ແກ້ໄຂລະດັບ Cholesterol</string>
   <string name="title_activity_add_hb1ac">ເພີ່ມ HB1AC</string>
+  <string name="title_activity_add_hb1ac_edit">ແກ້ໄຂ HBA1C</string>
   <string name="title_activity_add_ketone">ເພີ່ມຄີໂຕນ</string>
+  <string name="title_activity_add_ketone_edit">ແກ້ໄຂ Ketones</string>
   <string name="title_activity_add_pressure">ເພີ່ມລະດັບຄວາມດັນເລືອດ</string>
+  <string name="title_activity_add_pressure_edit">ແກ້ໄຂຄວາມດັນເລືອດ</string>
   <string name="fab_weight">ນໍ້າໜັກ</string>
   <string name="fab_ketones">ຄີໂຕນ</string>
   <string name="fab_pressure">ຄວາມ​ດັນ​ເລືອດ</string>
   <string name="fab_cholesterol">ລະດັບ Cholesterol</string>
   <string name="fab_HB1AC">ການອ່ານ HB1AC</string>
   <string name="fab_glucose">ລະດັບນໍ້າຕານໃນເລືອດ</string>
+  <string name="dialog_error_duplicate">ທ່ານໄດ້ຕືມຂໍ້ມູນນີ້ແລ້ວ. ກະລຸນາລືບມັນອອກໄປກ່ອນເພື່ອເພີ່ມການແກ້ໄຂ.</string>
+  <string name="freestylelibre_nfc_ready">ກະລຸນານຳເອົາໂທລະສັບຂອງທ່ານເຂົ້າໄປໃນຕົວເຊັນເຊີ ແລະ ຫ້າມເຄືອນຍ້າຍຈົນກະທັ້ງມັນສັ່ນ.</string>
   <string name="freestylelibre_nfc_not_supported">ອຸປະກອນນີ້ບໍ່ສະຫນັບສະຫນູນ NFC.</string>
   <string name="freestylelibre_nfc_not_enabled">NFC ໄດ້ຖືກປິດນຳໃຊ້.</string>
   <string name="dialog_add_glucose_freestylelibre">ເພີ່ມເຂົ້າມາຈາກ FreeStyle Libre®</string>
   <string name="freestylelibre_nfc_error">ເກີດມີຂໍ້ຜິດພາດໃນການເປີດການເຊື່ອມຕໍ່ NFC!</string>
+  <string name="dialog_add_glucose_freestylelibre_success">ປະສົບຜົນສຳເລັດໃນການເພີ່ມເຂົ້າໄປໃນການອ່ານຈາກ FreeStyle Libre®</string>
   <string name="overview_hb1ac_error_no_data">ບໍ່ມີຂໍ້ມູນພຽງພໍສຳລັບການຄຳນວນ HBA1C</string>
   <string name="overview_hb1ac">HBA1C:</string>
+  <string name="dialog_add_glucose_freestylelibre_added">ເພີ່ມເຂົ້າມາຈາກ FreeStyle Libre® ຂອງທ່ານ</string>
   <string name="activity_converter_a1c_glucose">ລະດັບນໍ້າຕານໃນເລືອດໂດຍສະເລ່ຍ</string>
   <string name="activity_converter_a1c">A1C</string>
   <string name="activity_converter_title">ເຄື່ອງຄິດໄລ່ A1C</string>
@@ -246,6 +272,7 @@
   <string name="menu_support_email">ອີເມຣ</string>
   <string name="menu_support_live">ແຊັດອອນໄລນ໌</string>
   <string name="menu_support_forum">ຟໍລຳໃຫ້ຂໍ້ມູນການສະຫນັບສະຫນູນ</string>
+  <string name="notification_reminder_glucose">ມັນຮອດເວລາວັດແທກລະດັບນໍ້າຕານໃນເລືອດຂອງທ່ານແລ້ວ!</string>
   <string name="notification_reminder_medication">ມັນຮອດເວລາທີ່ຈະໃຊ້ຢາຂອງທ່ານແລ້ວ!</string>
   <string name="dialog_add_notes">ຫມາຍເຫດ</string>
   <string name="sidebar_backup_export">ແບັກອັບ &amp; ນຳອອກ</string>
@@ -253,16 +280,30 @@
   <string name="menu_backup_restore">ກູ້ຄືນ</string>
   <string name="menu_backup_csv">ນຳອອກ CSV</string>
   <string name="activity_backup_drive_automatic">ແບັກອັບອັດຕະໂນມັດ</string>
+  <string name="activity_backup_drive_desc">ການແບັກອັບຂໍ້ມູນຂອງທ່ານໄປໄວ້ໃນ Google Drive ຈະເຮັດໃຫ້ທ່ານສາມາດກູ້ຄືນການອ່ານຂອງທ່ານໃນກໍລະນີຂໍ້ມູນຂອງທ່ານເສຍ ຫລື ປ່ຽນອຸປະກອນໃຫມ່.</string>
   <string name="activity_backup_drive_message_restart">ມອດແລ້ວເປີດໃຫມ່ເພື່ອນຳໃຊ້ສິ່ງທີ່ມີການປ່ຽນແປງ...</string>
+  <string name="activity_backup_drive_desc_1">Sync ຖານຂໍ້ມູນຂອງ Glucosio ໃນຄຣາວດ້ວຍ Google Drive.</string>
+  <string name="activity_backup_drive_desc_2">ທ່ານສາມາດກູ້ຂໍ້ມູນການອ່ານຂອງທ່ານຄືນໄດ້ຖ້າຫາກວ່າທ່ານມີການປ່ຽນໂທລະສັບ ຫລື ຂໍ້ມູນຂອງທ່ານເສຍ ຫລື sync ຂໍ້ມູນ Glucosio ລະຫວ່າງອຸປະກອນຂອງທ່ານ.</string>
+  <string name="activity_backup_drive_success">ປະສົບຜົນສຳເລັດໃນການແບັກອັບຖານຂໍ້ມູນໄປໄວ້ໃນ Drive</string>
+  <string name="activity_backup_drive_restore_success">ປະສົບຜົນສຳເລັດໃນການກູ້ຖານຂໍ້ມູນຄືນມາຈາກ Drive</string>
+  <string name="activity_backup_drive_failed">ມີບ່າງສິງບ່າງຢ່າງຜິດພາດ. ກະລຸນາລອງໃຫມ່ອີກຄັ້ງ :/</string>
   <string name="activity_backup_drive_last">ແບັກອັບຄັ້ງຫລ້າສຸດ:</string>
   <string name="activity_backup_drive_folder">ໂຟຣເດີສຳລັບແບັກອັບ</string>
+  <string name="activity_backup_drive_folder_not_set">ບໍ່ໄດ້ຕັ້ງຄ່າ</string>
   <string name="activity_backup_drive_button_backup">ແບັກອັບໄວ້ດຽວນີ້ເລີຍ</string>
+  <string name="activity_backup_drive_recent">ແບັກອັບມື້ກີ້ນີ້</string>
+  <string name="activity_backup_drive_more">ເບິງແບັກອັບຕົວອື່ນໆ</string>
   <string name="activity_backup_drive_dialog_restore_title">ກັບໄປນຳໃຊ້ເວີຊັນກ່ອນຫນ້ານີ້</string>
+  <string name="activity_backup_drive_dialog_restore_desc">ຖ້າທ່ານແບັກອັບຂໍ້ມູນເກົ່າຂອງທ່ານຈະໄປຂຽນທັບໃສ່ຂໍ້ມູນຂອງທ່ານທີ່ມີຢູ່ໃນປະຈຸບັນນີ້.</string>
   <string name="activity_backup_drive_dialog_restore_details">ລາຍລະອຽດການແບັກອັບ</string>
   <string name="activity_backup_drive_dialog_restore_button_cancel">ຍົກເລີກ</string>
   <string name="activity_backup_drive_dialog_restore_button_restore">ກູ້ຄືນການແບັກອັບ</string>
   <string name="activity_backup_drive_button_restore">ກູ້ຄືນຈາກບ່ອນເກັບຂໍ້ມູນ</string>
   <string name="activity_backup_drive_error_restore">ບໍ່ສາມາດຊອກຟາຍແບັກອັບເພື່ອກູ້ຂ້ມູນຄືນຈາກບ່ອນເກັບຂໍ້ມູນໄດ້</string>
+  <string name="activity_main_error_play_services">Glucosio ຕ້ອງການ Play Services ເພື່ອໃຊ້ງານການແບັກອັບ Google Drive.</string>
   <string name="activity_main_dialog_csv_title">ນຳອອກໄປເປັນຟາຍຂໍ້ມູນ CSV</string>
+  <string name="activity_backup_drive_button_open_drive">ຈັດການໃນ Drive</string>
+  <string name="mmol_mol">mmol/mol</string>
   <string name="mmol_L">mmol/L</string>
+  <string name="preferences_graph_old">ກັບຄືນໄປກຣາບເກົ່າ</string>
 </resources>

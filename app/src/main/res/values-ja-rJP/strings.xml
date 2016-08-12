@@ -26,6 +26,7 @@
   <string name="tab_overview">概要</string>
   <string name="tab_history">履歴</string>
   <string name="tab_tips">ヒント</string>
+  <string name="activity_main_add_new_reading">新しい測定値を追加</string>
   <string name="title_activity_hello">こんにちは。</string>
   <string name="helloactivity_headline">こんにちは。</string>
   <string name="helloactivity_terms">利用規約</string>
@@ -238,10 +239,15 @@
   <string name="title_activity_add_glucose">血糖の測定値を追加</string>
   <string name="title_activity_add_glucose_edit">血糖の測定値を編集</string>
   <string name="title_activity_add_weight">体重を追加</string>
+  <string name="title_activity_add_weight_edit">体重を編集</string>
   <string name="title_activity_add_cholesterol">コレステ ロール値を追加</string>
+  <string name="title_activity_add_cholesterol_edit">コレステロール値を編集</string>
   <string name="title_activity_add_hb1ac">HB1AC を追加</string>
+  <string name="title_activity_add_hb1ac_edit">HBA1C を編集</string>
   <string name="title_activity_add_ketone">ケトンを追加</string>
+  <string name="title_activity_add_ketone_edit">ケトンを編集</string>
   <string name="title_activity_add_pressure">血圧を追加</string>
+  <string name="title_activity_add_pressure_edit">血圧を編集</string>
   <string name="fab_weight">体重</string>
   <string name="fab_ketones">ケトン</string>
   <string name="fab_pressure">血圧</string>
@@ -285,6 +291,7 @@
   <string name="activity_backup_drive_failed">何か問題が起きたようです。後でもう一度やり直してください :/</string>
   <string name="activity_backup_drive_last">前回のバックアップ:</string>
   <string name="activity_backup_drive_folder">バックアップ フォルダー</string>
+  <string name="activity_backup_drive_folder_not_set">設定されていません</string>
   <string name="activity_backup_drive_button_backup">今すぐバックアップ</string>
   <string name="activity_backup_drive_recent">最新のバックアップ</string>
   <string name="activity_backup_drive_more">さらにバックアップを表示</string>

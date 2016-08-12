@@ -301,4 +301,5 @@
   <string name="activity_backup_drive_button_open_drive">الإدارة على Drive</string>
   <string name="mmol_mol">ميللي مول/مول</string>
   <string name="mmol_L">م.مول/ل</string>
+  <string name="preferences_graph_old">العودة إلى الرسم البياني القديم</string>
 </resources>

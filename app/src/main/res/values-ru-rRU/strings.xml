@@ -41,6 +41,10 @@
   <string name="helloactivity_spinner_diabetes_type_1">Тип 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Тип 2</string>
   <string name="helloactivity_spinner_diabetes_lada">LADA</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit">Предпочитаемые единицы измерения глюкозы</string>
+  <string name="preferences_spinner_preferred_a1c_unit">Предпочитаемые единицы измерения A1C</string>
+  <string name="preferences_spinner_preferred_a1c_unit_1">Процентное соотношение</string>
+  <string name="preferences_spinner_preferred_weight_unit">Предпочитаемые единицы измерения массы тела</string>
   <string name="preferences_spinner_preferred_weight_unit_1">килограммы</string>
   <string name="preferences_spinner_preferred_weight_unit_2">фунты</string>
   <string name="helloactivity_share_data">Поделиться анонимными данными для исследований.</string>
@@ -142,9 +146,12 @@
   <string name="helloactivity_preferred_range_min">Минимальное значение</string>
   <string name="helloactivity_preferred_range_max">Максимальное значение</string>
   <string name="helloactivity_language">Язык</string>
+  <string name="menu_support_error1">Не установлено приложение для электронной почты. Пожалуйста отправляйте письма по адресу hello@glucosio.org</string>
   <string name="invitation_title">Пригласить других людей</string>
   <string name="invitation_message">Попробовать Glucosio, приложение с открытым исходным кодом для исследований и отслеживания диабета.</string>
   <string name="invitation_cta">Попробовать Glucosio</string>
+  <string name="title_activity_backup_drive">Резервное копирование на Google Drive</string>
+  <string name="activity_main_dialog_backup_export_title">Резервное копирование и экспорт</string>
   <string name="preferences_privacy">Приватность</string>
   <string name="helloactivity_textview_tos">Используя Glucosio, вы соглашаетесь с</string>
   <string name="preferences_backup_google_drive">Google Диск</string>
@@ -228,10 +235,15 @@
   <string name="dialog_add_hb1ac">HB1AC</string>
   <string name="title_activity_add_glucose">Добавить данные об уровне глюкозы</string>
   <string name="title_activity_add_weight">Добавить вес тела</string>
+  <string name="title_activity_add_weight_edit">Изменить массу тела</string>
   <string name="title_activity_add_cholesterol">Добавить уровень холестерина</string>
+  <string name="title_activity_add_cholesterol_edit">Изменить уровень холестерина</string>
   <string name="title_activity_add_hb1ac">Добавить HB1AC</string>
+  <string name="title_activity_add_hb1ac_edit">Изменить уровень HBA1C</string>
   <string name="title_activity_add_ketone">Добавить кетоны</string>
+  <string name="title_activity_add_ketone_edit">Изменить уровень кетоновых тел</string>
   <string name="title_activity_add_pressure">Добавить уровень кровяного давления</string>
+  <string name="title_activity_add_pressure_edit">Изменить уровень кровяного давления</string>
   <string name="fab_weight">Вес</string>
   <string name="fab_ketones">Кетоны</string>
   <string name="fab_pressure">Кровяное давление</string>
@@ -267,6 +279,7 @@
   <string name="activity_backup_drive_automatic">Автоматическое резервное копирование</string>
   <string name="activity_backup_drive_desc">Резервное копирование данных на диск Google позволяет восстановить все ваши показания, в случае, если вы потеряете или поменяете устройство.</string>
   <string name="activity_backup_drive_message_restart">Перезагрузка для применения изменений...</string>
+  <string name="activity_backup_drive_desc_1">Синхронизировать базу данных Glucosio с облачным Google Drive.</string>
   <string name="activity_backup_drive_last">Последнее резервное копирование:</string>
   <string name="activity_backup_drive_folder">Папка резервного копирования</string>
   <string name="activity_backup_drive_button_backup">Создать резервную копию</string>
