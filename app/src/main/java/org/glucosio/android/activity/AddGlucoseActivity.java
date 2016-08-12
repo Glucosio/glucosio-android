@@ -20,10 +20,10 @@
 
 package org.glucosio.android.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -145,7 +145,7 @@ public class AddGlucoseActivity extends AddReadingActivity {
             presenter.updateSpinnerTypeTime();
         }
 
-        this.getDoneFAB().postDelayed(this.getFabAnimationRunnable(), 600)
+        this.getDoneFAB().postDelayed(this.getFabAnimationRunnable(), 600);
 
         // Check if activity was started from a NFC sensor
         if (getIntent().getExtras() != null) {
@@ -235,5 +235,4 @@ public class AddGlucoseActivity extends AddReadingActivity {
         DecimalFormat df = new DecimalFormat("00");
         updateSpinnerTypeHour(Integer.parseInt(df.format(hourOfDay)));
     }
-
 }

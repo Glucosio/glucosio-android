@@ -132,20 +132,4 @@
         app:fab_colorPressed="@color/glucosio_accent"
         app:fab_colorRipple="#99FFFFFF"
         app:fab_size="normal" />
-
-    <com.github.clans.fab.FloatingActionButton
-        android:id="@+id/activity_main_fab_glucose_empty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_gravity="bottom|right"
-        android:layout_marginBottom="16dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="16dp"
-        android:src="@drawable/ic_add_black_24dp"
-        app:fab_colorNormal="@color/glucosio_accent"
-        app:fab_colorPressed="@color/glucosio_accent"
-        app:fab_colorRipple="#99FFFFFF"
-        app:fab_size="normal" />
 </android.support.design.widget.CoordinatorLayout>

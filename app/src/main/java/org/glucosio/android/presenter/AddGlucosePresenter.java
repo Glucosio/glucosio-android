@@ -20,6 +20,9 @@
 
 package org.glucosio.android.presenter;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+
 import com.google.firebase.crash.FirebaseCrash;
 
 import org.glucosio.android.activity.AddGlucoseActivity;

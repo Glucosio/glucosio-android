@@ -89,9 +89,9 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private BottomSheetDialog bottomSheetAddDialog;
     private TextView exportDialogDateFrom;
     private TextView exportDialogDateTo;
-
+    private View bottomSheetAddDialogView;
     private FloatingActionButton fabAddReading;
-    private FloatingActionButton fabGlucoseEmpty;
+    BottomSheetBehavior bottomSheetBehavior;
     private Toolbar toolbar;
     private TabLayout tabLayout;
 
@@ -102,6 +102,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         GlucosioApplication application = (GlucosioApplication) getApplication();
 
         setContentView(R.layout.activity_main);
+        initPresenters(application);
 
         toolbar = (Toolbar) findViewById(R.id.activity_main_toolbar);
         tabLayout = (TabLayout) findViewById(R.id.activity_main_tab_layout);
@@ -154,27 +155,16 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             }
         });
 
-        fabGlucoseEmpty = (FloatingActionButton) findViewById(R.id.activity_main_fab_glucose_empty);
-        fabGlucoseEmpty.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openNewAddActivity(AddGlucoseActivity.class);
-            }
-        });
         fabAddReading = (FloatingActionButton) findViewById(R.id.activity_main_fab_add_reading);
         fabAddReading.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 bottomSheetAddDialog.show();
+                bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
             }
         });
 
         bottomSheetAddDialog = new BottomSheetDialog(this);
-
-        View bottomSheetAddDialogView = getLayoutInflater().inflate(R.layout.fragment_add_bottom_dialog, null);
-        bottomSheetAddDialog.setContentView(bottomSheetAddDialogView);
-        BottomSheetBehavior behavior = BottomSheetBehavior.from((View) bottomSheetAddDialogView.getParent());
-        behavior.setHideable(false);
 
         // Add Nav Drawer
         final PrimaryDrawerItem itemSettings = new PrimaryDrawerItem().withName(R.string.action_settings).withIcon(R.drawable.ic_settings_grey_24dp).withSelectable(false).withTypeface(Typeface.DEFAULT_BOLD);
@@ -255,8 +245,10 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             viewPager.setCurrentItem(b.getInt("pager"));
         }
 
-        initPresenters(application);
         checkIfEmptyLayout();
+        bottomSheetAddDialog.setContentView(bottomSheetAddDialogView);
+        bottomSheetBehavior = BottomSheetBehavior.from((View) bottomSheetAddDialogView.getParent());
+        bottomSheetBehavior.setHideable(false);
 
         Analytics analytics = application.getAnalytics();
         Log.i("MainActivity", "Setting screen name: " + "main");
@@ -291,7 +283,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     public void startHelloActivity() {
         Intent intent = new Intent(this, HelloActivity.class);
         startActivity(intent);
-        finishActivity();
+        finish();
     }
 
     public void openPreferences() {
@@ -595,9 +587,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             tabLayout.setVisibility(View.GONE);
             emptyLayout.setVisibility(View.VISIBLE);
 
-            // If empty show only Glucose fab
-            fabAddReading.setVisibility(View.GONE);
-            fabGlucoseEmpty.setVisibility(View.VISIBLE);
+            bottomSheetAddDialogView = getLayoutInflater().inflate(R.layout.fragment_add_bottom_dialog_disabled, null);
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 if (getResources().getConfiguration().orientation == 1) {
@@ -613,7 +603,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         } else {
             pager.setVisibility(View.VISIBLE);
             emptyLayout.setVisibility(View.GONE);
-            fabGlucoseEmpty.setVisibility(View.GONE);
+            bottomSheetAddDialogView = getLayoutInflater().inflate(R.layout.fragment_add_bottom_dialog, null);
         }
     }
 
