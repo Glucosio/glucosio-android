@@ -39,6 +39,7 @@
   <string name="helloactivity_spinner_diabetes_type">ಮಧುಮೇಹ</string>
   <string name="helloactivity_spinner_diabetes_type_1">ಟೈಪ್ 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">ಟೈಪ್ 2</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit_2">mmol/L</string>
   <string name="helloactivity_share_data">ಸಂಶೋಧನೆಗೆ ಅನಾಮಧೇಯ ಡೇಟಾವನ್ನು ಹಂಚಿಕೊಳ್ಳಿ.</string>
   <string name="helloactivity_hint_settings">ನೀವಿದನ್ನು ನಂತರ ಸೆಟ್ಟಿಂಗ್ಗಳಲ್ಲಿ ಬದಲಾಯಿಸಬಹುದು.</string>
   <string name="helloactivity_button_next">ಮುಂದಿನ</string>

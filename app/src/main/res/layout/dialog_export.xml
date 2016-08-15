@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2016 Glucosio Foundation
   ~
   ~ This file is part of Glucosio.
@@ -20,8 +19,6 @@
   -->
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:custom="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:minWidth="330dp"
@@ -36,82 +33,82 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingBottom="16dp"
             android:text="@string/activity_main_dialog_csv_title"
             android:textColor="#000000"
-            android:textSize="18sp"
-            android:paddingBottom="16dp"/>
+            android:textSize="18sp" />
 
-            <RadioButton
-                android:id="@+id/activity_export_range"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Export range" />
+        <RadioButton
+            android:id="@+id/activity_export_range"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_export_range" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:orientation="vertical">
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
 
-                <LinearLayout
-                    android:layout_width="fill_parent"
+                <TextView
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
-                    android:orientation="horizontal"
-                    android:weightSum="10">
+                    android:layout_weight="2"
+                    android:text="@string/activity_export_date_from"
+                    android:textColor="@color/glucosio_text_dark"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:textStyle="bold"
-                        android:textColor="@color/glucosio_text_dark"
-                        android:text="@string/activity_export_date_from" />
-
-                    <EditText
-                        android:id="@+id/activity_export_date_from"
-                        android:layout_weight="8"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:clickable="false"
-                        android:cursorVisible="false"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
-                        android:singleLine="true"
-                        android:textSize="@dimen/abc_text_size_body_2_material" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="fill_parent"
+                <EditText
+                    android:id="@+id/activity_export_date_from"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
-                    android:orientation="horizontal"
-                    android:weightSum="10">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:textStyle="bold"
-                        android:textColor="@color/glucosio_text_dark"
-                        android:text="@string/dialog_export_date_to" />
-
-                    <EditText
-                        android:id="@+id/activity_export_date_to"
-                        android:layout_weight="8"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:clickable="false"
-                        android:cursorVisible="false"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
-                        android:singleLine="true"
-                        android:textSize="@dimen/abc_text_size_body_2_material" />
-                </LinearLayout>
+                    android:layout_weight="8"
+                    android:clickable="false"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:singleLine="true"
+                    android:textSize="@dimen/abc_text_size_body_2_material" />
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/dialog_export_date_to"
+                    android:textColor="@color/glucosio_text_dark"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/activity_export_date_to"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:clickable="false"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:singleLine="true"
+                    android:textSize="@dimen/abc_text_size_body_2_material" />
+            </LinearLayout>
+        </LinearLayout>
 
         <RadioButton
             android:id="@+id/activity_export_all"

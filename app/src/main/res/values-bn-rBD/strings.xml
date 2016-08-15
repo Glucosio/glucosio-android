@@ -62,6 +62,7 @@
   <string name="dialog_add_add">যোগ</string>
   <string name="dialog_error2">অনুগ্রহ করে একটি বৈধ মান প্রবেশ করান।</string>
   <string name="dialog_error">অনুগ্রহ করে সকল ফিল্ড ভরাট করুন।</string>
+  <string name="dialog_edit">সম্পাদন</string>
   <string name="dialog_delete">মুছে ফেলুন</string>
   <string name="fragment_history_snackbar_text">একটি তথ্য মুছে ফেলা হল</string>
   <string name="fragment_history_snackbar_action">বাতিল করুন</string>

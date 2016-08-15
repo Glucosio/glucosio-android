@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2016 Glucosio Foundation
   ~
   ~ This file is part of Glucosio.
@@ -21,6 +20,10 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <ListPreference
+        android:dialogTitle="@string/helloactivity_language"
+        android:key="pref_language"
+        android:title="@string/helloactivity_language" />
+    <ListPreference
         android:dialogTitle="@string/helloactivity_country"
         android:key="pref_country"
         android:title="@string/helloactivity_country" />
@@ -29,36 +32,42 @@
         android:inputType="number"
         android:key="pref_age"
         android:title="@string/helloactivity_age" />
-    <ListPreference android:key="pref_gender"
+    <ListPreference
         android:id="@+id/preferences_gender"
-        android:title="@string/helloactivity_gender"
         android:entries="@array/helloactivity_gender_list"
-        android:entryValues="@array/helloactivity_gender_list" />
-    <ListPreference android:key="pref_diabetes_type"
+        android:entryValues="@array/helloactivity_gender_list"
+        android:key="pref_gender"
+        android:title="@string/helloactivity_gender" />
+    <ListPreference
         android:id="@+id/preferences_diabetes_type"
-        android:title="@string/helloactivity_spinner_diabetes_type"
         android:entries="@array/helloactivity_diabetes_type"
-        android:entryValues="@array/helloactivity_diabetes_type" />
-    <ListPreference android:key="pref_unit_glucose"
+        android:entryValues="@array/helloactivity_diabetes_type"
+        android:key="pref_diabetes_type"
+        android:title="@string/helloactivity_spinner_diabetes_type" />
+    <ListPreference
         android:id="@+id/preferences_unit_glucose"
-        android:title="@string/helloactivity_spinner_preferred_glucose_unit"
         android:entries="@array/helloactivity_preferred_glucose_unit"
-        android:entryValues="@array/helloactivity_preferred_glucose_unit" />
-    <ListPreference android:key="pref_unit_a1c"
+        android:entryValues="@array/helloactivity_preferred_glucose_unit"
+        android:key="pref_unit_glucose"
+        android:title="@string/helloactivity_spinner_preferred_glucose_unit" />
+    <ListPreference
         android:id="@+id/preferences_unit_a1c"
-        android:title="@string/preferences_spinner_preferred_a1c_unit"
         android:entries="@array/preferences_preferred_a1c_unit"
-        android:entryValues="@array/preferences_preferred_a1c_unit" />
-    <ListPreference android:key="pref_unit_weight"
-    android:id="@+id/preferences_unit_weight"
-    android:title="@string/preferences_spinner_preferred_weight_unit"
-    android:entries="@array/preferences_preferred_weight_unit"
-    android:entryValues="@array/preferences_preferred_weight_unit" />
-    <ListPreference android:key="pref_range"
+        android:entryValues="@array/preferences_preferred_a1c_unit"
+        android:key="pref_unit_a1c"
+        android:title="@string/preferences_spinner_preferred_a1c_unit" />
+    <ListPreference
+        android:id="@+id/preferences_unit_weight"
+        android:entries="@array/preferences_preferred_weight_unit"
+        android:entryValues="@array/preferences_preferred_weight_unit"
+        android:key="pref_unit_weight"
+        android:title="@string/preferences_spinner_preferred_weight_unit" />
+    <ListPreference
         android:id="@+id/preferences_range"
-        android:title="@string/helloactivity_spinner_preferred_range"
         android:entries="@array/helloactivity_preferred_range"
-        android:entryValues="@array/helloactivity_preferred_range" />
+        android:entryValues="@array/helloactivity_preferred_range"
+        android:key="pref_range"
+        android:title="@string/helloactivity_spinner_preferred_range" />
     <EditTextPreference
         android:dialogTitle="@string/helloactivity_preferred_range_min"
         android:inputType="number"
@@ -70,15 +79,25 @@
         android:key="pref_range_max"
         android:title="@string/helloactivity_preferred_range_max" />
     <SwitchPreference
-        android:id="@+id/preferences_font_dyslexia"
-        android:key="pref_font_dyslexia"
+        android:id="@+id/preferences_freestyle_libre"
+        android:summary="@string/preferences_freestyle_libre_experimental"
         android:defaultValue="false"
-        android:summary="@string/preferences_font_dyslexia_experimental"
+        android:key="pref_freestyle_libre"
         />
-<!--    <Preference
-        android:key="backup_settings"
-        android:title="Backup" />-->
+    <SwitchPreference
+        android:id="@+id/preferences_graph_old"
+        android:defaultValue="false"
+        android:key="pref_graph_old"
+        android:title="@string/preferences_graph_old" />
+    <SwitchPreference
+        android:id="@+id/preferences_font_dyslexia"
+        android:defaultValue="false"
+        android:key="pref_font_dyslexia"
+        android:summary="@string/preferences_font_dyslexia_experimental" />
+    <!--    <Preference
+            android:key="backup_settings"
+            android:title="Backup" />-->
     <Preference
         android:key="about_settings"
-        android:title="@string/preferences_about_glucosio"/>
+        android:title="@string/preferences_about_glucosio" />
 </PreferenceScreen>

@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2016 Glucosio Foundation
   ~
   ~ This file is part of Glucosio.
@@ -20,10 +19,10 @@
   -->
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginBottom="16dp"
     android:layout_marginTop="16dp"
     android:background="#ffffff"
@@ -33,53 +32,54 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/fab_size_normal"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/fab_size_normal">
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-        <Spinner
-            android:id="@+id/chart_spinner_range"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:spinnerMode="dropdown"
-            android:dropDownWidth="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="16dp" />
             <Spinner
-                android:id="@+id/chart_spinner_metrics"
-                android:visibility="gone"
+                android:id="@+id/chart_spinner_range"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:spinnerMode="dropdown"
-                android:dropDownWidth="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                android:dropDownWidth="wrap_content"
+                android:spinnerMode="dropdown" />
+
+            <Spinner
+                android:id="@+id/chart_spinner_metrics"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_marginBottom="8dp"
-                android:layout_marginTop="16dp" />
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                android:dropDownWidth="wrap_content"
+                android:spinnerMode="dropdown"
+                android:visibility="gone" />
 
 
             <TextView
-                android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
             <ImageButton
                 android:id="@+id/fragment_overview_graph_export"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:paddingRight="16dp"
-                android:paddingLeft="16dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:src="@drawable/ic_photo_black_24dp"/>
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:src="@drawable/ic_photo_black_24dp" />
         </LinearLayout>
 
         <com.github.mikephil.charting.charts.LineChart
@@ -88,6 +88,97 @@
             android:layout_height="200dp"
             android:paddingLeft="16dp"
             android:paddingRight="16dp" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="2px"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            android:background="#DADADA" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.5"
+                android:orientation="vertical">
+
+                <CheckBox
+                    android:id="@+id/fragment_overview_graph_glucose"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:button="@drawable/selector_checkbox_glucose"
+                    android:checked="true"
+                    android:padding="4dp"
+                    android:text="@string/fab_glucose"
+                    android:textColor="@color/glucosio_text_light"
+                    android:textSize="12sp" />
+
+                <CheckBox
+                    android:id="@+id/fragment_overview_graph_a1c"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:button="@drawable/selector_checkbox_a1c"
+                    android:padding="4dp"
+                    android:text="@string/fab_HB1AC"
+                    android:textColor="@color/glucosio_text_light"
+                    android:textSize="12sp" />
+
+                <CheckBox
+                    android:id="@+id/fragment_overview_graph_ketones"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:button="@drawable/selector_checkbox_ketones"
+                    android:padding="4dp"
+                    android:text="@string/fab_ketones"
+                    android:textColor="@color/glucosio_text_light"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:orientation="vertical">
+
+                <CheckBox
+                    android:id="@+id/fragment_overview_graph_weight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:button="@drawable/selector_checkbox_weight"
+                    android:padding="4dp"
+                    android:text="@string/fab_weight"
+                    android:textColor="@color/glucosio_text_light"
+                    android:textSize="12sp" />
+
+                <CheckBox
+                    android:id="@+id/fragment_overview_graph_pressure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:button="@drawable/selector_checkbox_pressure"
+                    android:padding="4dp"
+                    android:text="@string/fab_pressure"
+                    android:textColor="@color/glucosio_text_light"
+                    android:textSize="12sp" />
+
+                <CheckBox
+                    android:id="@+id/fragment_overview_graph_cholesterol"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:button="@drawable/selector_checkbox_cholesterol"
+                    android:padding="4dp"
+                    android:text="@string/fab_cholesterol"
+                    android:textColor="@color/glucosio_text_light"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
 
         <TextView
             android:layout_width="fill_parent"
@@ -124,22 +215,24 @@
                     android:layout_marginTop="16dp"
                     android:text="100 mg/dL"
                     android:textColor="@color/glucosio_text" />
+
                 <TextView
-                    fontPath="fonts/lato.ttf"
                     android:id="@+id/fragment_overview_last_date"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginLeft="8dp"
+                    fontPath="fonts/lato.ttf"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/glucosio_text_light"
-                    android:text="Thu, 22 dic 2016"/>
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Thu, 22 dic 2016"
+                    android:textColor="@color/glucosio_text_light" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:visibility="gone"
-                android:text="">
+                android:text=""
+                android:visibility="gone">
 
                 <TextView
                     fontPath="fonts/lato-bold.ttf"
@@ -186,15 +279,16 @@
                     android:layout_marginTop="16dp"
                     android:text="@string/overview_hb1ac"
                     android:textColor="@color/glucosio_text" />
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginRight="4dp"
-                    android:layout_marginLeft="2dp"
                     android:layout_marginBottom="4dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="16dp"
                     android:onClick="onA1cInfoClicked"
-                    app:srcCompat="@drawable/ic_error_outline_black_24dp"/>
+                    app:srcCompat="@drawable/ic_error_outline_black_24dp" />
 
                 <TextView
                     android:id="@+id/fragment_overview_hb1ac"
@@ -205,18 +299,20 @@
                     android:layout_marginTop="16dp"
                     android:text="6.5%"
                     android:textColor="@color/glucosio_text" />
+
                 <TextView
-                    android:visibility="visible"
-                    fontPath="fonts/lato.ttf"
                     android:id="@+id/fragment_overview_hb1ac_date"
-                    android:layout_weight="1"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginBottom="16dp"
+                    fontPath="fonts/lato.ttf"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="1"
+                    android:text="December"
                     android:textColor="@color/glucosio_text_light"
-                    android:text="December"/>
+                    android:visibility="visible" />
+
                 <ImageButton
                     android:id="@+id/fragment_overview_a1c_more"
                     android:layout_width="wrap_content"

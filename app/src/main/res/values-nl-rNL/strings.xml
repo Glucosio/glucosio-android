@@ -26,6 +26,7 @@
   <string name="tab_overview">Overzicht</string>
   <string name="tab_history">Geschiedenis</string>
   <string name="tab_tips">Tips</string>
+  <string name="activity_main_add_new_reading">Nieuwe uitlezing toevoegen</string>
   <string name="title_activity_hello">Hallo.</string>
   <string name="helloactivity_headline">Hallo.</string>
   <string name="helloactivity_terms">Gebruiksvoorwaarden</string>
@@ -43,6 +44,8 @@
   <string name="helloactivity_spinner_diabetes_gdm">Zwangerschapsdiabetes</string>
   <string name="helloactivity_spinner_diabetes_lada">LADA</string>
   <string name="helloactivity_spinner_preferred_glucose_unit">Glucose-eenheid van voorkeur</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit_1">mg/dl</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit_2">mmol/l</string>
   <string name="preferences_spinner_preferred_a1c_unit">A1C-eenheid van voorkeur</string>
   <string name="preferences_spinner_preferred_a1c_unit_1">percentage</string>
   <string name="preferences_spinner_preferred_weight_unit">Gewichtseenheid van voorkeur</string>
@@ -74,6 +77,7 @@
   <string name="dialog_add_add">TOEVOEGEN</string>
   <string name="dialog_error2">Voer een geldige waarde in.</string>
   <string name="dialog_error">Vul alle velden in.</string>
+  <string name="dialog_edit">Bewerken</string>
   <string name="dialog_delete">Verwijderen</string>
   <string name="fragment_history_snackbar_text">1 uitlezing verwijderd</string>
   <string name="fragment_history_snackbar_action">ONGEDAAN MAKEN</string>
@@ -136,7 +140,7 @@
   <string name="assistant_feedback_title">Feedback indienen </string>
   <string name="assistant_feedback_desc">Als u technische problemen tegenkomt of feedback over Glucosio hebt, zien we graag dat u deze indient om Glucosio te helpen verbeteren.</string>
   <string name="assistant_reading_title">Een uitlezing toevoegen</string>
-  <string name="assistant_reading_desc">Zorg ervoor dat u regelmatig uw glucose-uitlezingen toevoegt, zodat we kunnen helpen uw glucosegehalten in de loop der tijd bij te houden.</string>
+  <string name="assistant_reading_desc">Zorg ervoor dat u regelmatig uw glucose-uitlezingen toevoegt, zodat we kunnen helpen uw glucosegehalten na verloop van tijd bij te houden.</string>
   <string name="assistant_export_title">Uw gegevens exporteren</string>
   <string name="assistant_export_desc">Deel uw gegevens met uw arts of plaats een back-up ervan op Google Drive via de exportfunctie.</string>
   <string name="assistant_calculator_a1c_title">A1C berekenen</string>
@@ -234,11 +238,17 @@
   <string name="dialog_add_cholesterol_hdl">HDL-cholesterol</string>
   <string name="dialog_add_hb1ac">HB1AC</string>
   <string name="title_activity_add_glucose">Glucose-uitlezing toevoegen</string>
+  <string name="title_activity_add_glucose_edit">Glucose-uitlezing bewerken</string>
   <string name="title_activity_add_weight">Lichaamsgewicht toevoegen</string>
+  <string name="title_activity_add_weight_edit">Lichaamsgewicht bewerken</string>
   <string name="title_activity_add_cholesterol">Cholesterolspiegel toevoegen</string>
+  <string name="title_activity_add_cholesterol_edit">Cholesterolniveau bewerken</string>
   <string name="title_activity_add_hb1ac">HB1AC toevoegen</string>
+  <string name="title_activity_add_hb1ac_edit">HBA1C bewerken</string>
   <string name="title_activity_add_ketone">Ketonen toevoegen</string>
+  <string name="title_activity_add_ketone_edit">Ketonen bewerken</string>
   <string name="title_activity_add_pressure">Bloeddruk toevoegen</string>
+  <string name="title_activity_add_pressure_edit">Bloeddruk bewerken</string>
   <string name="fab_weight">Lichaamsgewicht</string>
   <string name="fab_ketones">Ketonen</string>
   <string name="fab_pressure">Bloeddruk</string>
@@ -269,16 +279,20 @@
   <string name="overview_hb1ac_info">Dit is slechts een schatting en is berekend op basis van de gemiddelden van uitlezingen in de afgelopen maand. Hoewel deze schatting een algemeen erkende formule voor HbA1C-schatting gebruikt, raden we gebruikers aan om dit alleen als een schatting te gebruiken.</string>
   <string name="dialog_add_notes">Notities</string>
   <string name="sidebar_backup_export">Back-up maken en exporteren</string>
-  <string name="menu_backup_backup">Back-up op Google Drive</string>
+  <string name="menu_backup_backup">Back-up maken op Google Drive</string>
   <string name="menu_backup_restore">Terugzetten</string>
   <string name="menu_backup_csv">CSV exporteren</string>
   <string name="activity_backup_drive_automatic">Automatische back-up</string>
+  <string name="activity_backup_drive_desc">Door een back-up van uw gegevens op Google Drive te plaatsen, kunt u al uw uitlezingen terugzetten als u een apparaat verliest of vervangt.</string>
   <string name="activity_backup_drive_message_restart">Herstarten om wijzigingen toe te passen...</string>
   <string name="activity_backup_drive_desc_1">Synchroniseer Glucosio’s database in de cloud met Google Drive.</string>
   <string name="activity_backup_drive_desc_2">Zo kunt u al uw uitlezingen terugzetten als u uw telefoon hebt verloren of vervangen, of Glucosio’s gegevens tussen uw apparaten synchroniseren.</string>
+  <string name="activity_backup_drive_success">Back-up van database op Drive geplaatst</string>
+  <string name="activity_backup_drive_restore_success">Database met succes vanaf Drive teruggezet</string>
   <string name="activity_backup_drive_failed">Er ging iets mis. Probeer het opnieuw. :/</string>
   <string name="activity_backup_drive_last">Laatste back-up:</string>
   <string name="activity_backup_drive_folder">Back-upmap</string>
+  <string name="activity_backup_drive_folder_not_set">Niet ingesteld</string>
   <string name="activity_backup_drive_button_backup">Nu back-up maken</string>
   <string name="activity_backup_drive_recent">Recente back-ups</string>
   <string name="activity_backup_drive_more">Meer back-ups bekijken</string>
@@ -292,5 +306,7 @@
   <string name="activity_main_error_play_services">Glucosio heeft Play Services nodig voor back-ups op Google Drive.</string>
   <string name="activity_main_dialog_csv_title">Exporteren naar CSV-bestand</string>
   <string name="activity_backup_drive_button_open_drive">Beheren op Drive</string>
+  <string name="mmol_mol">mmol/mol</string>
   <string name="mmol_L">mmol/l</string>
+  <string name="preferences_graph_old">Terugkeren naar oude grafiek</string>
 </resources>

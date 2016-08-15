@@ -43,6 +43,7 @@ import org.hamcrest.Matcher;
 
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayingAtLeast;
 import static org.hamcrest.Matchers.allOf;
+
 /**
  * Enables clicking on views.
  */
@@ -56,6 +57,7 @@ public final class CustomClickAction implements ViewAction {
                              PrecisionDescriber precisionDescriber) {
         this(tapper, coordinatesProvider, precisionDescriber, null);
     }
+
     public CustomClickAction(Tapper tapper, CoordinatesProvider coordinatesProvider,
                              PrecisionDescriber precisionDescriber, ViewAction rollbackAction) {
         this.coordinatesProvider = coordinatesProvider;
@@ -63,6 +65,11 @@ public final class CustomClickAction implements ViewAction {
         this.precisionDescriber = precisionDescriber;
         this.rollbackAction = Optional.fromNullable(rollbackAction);
     }
+
+    public static ViewAction click() {
+        return new CustomClickAction(Tap.SINGLE, GeneralLocation.CENTER, Press.FINGER);
+    }
+
     @Override
     @SuppressWarnings("unchecked")
     public Matcher<View> getConstraints() {
@@ -73,6 +80,7 @@ public final class CustomClickAction implements ViewAction {
             return standardConstraint;
         }
     }
+
     @Override
     public void perform(UiController uiController, View view) {
         float[] coordinates = coordinatesProvider.calculateCoordinates(view);
@@ -140,12 +148,9 @@ public final class CustomClickAction implements ViewAction {
             uiController.loopMainThreadForAtLeast(ViewConfiguration.getDoubleTapTimeout());
         }
     }
+
     @Override
     public String getDescription() {
         return tapper.toString().toLowerCase() + " click";
-    }
-
-    public static ViewAction click() {
-        return new CustomClickAction(Tap.SINGLE, GeneralLocation.CENTER, Press.FINGER);
     }
 }

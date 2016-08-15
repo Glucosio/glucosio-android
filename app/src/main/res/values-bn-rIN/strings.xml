@@ -63,6 +63,7 @@
   <string name="dialog_add_add">যোগ করুন</string>
   <string name="dialog_error2">অনুগ্রহ করে একটি বৈধ মান দিন।</string>
   <string name="dialog_error">সব ক্ষেত্র পূরণ করুন।</string>
+  <string name="dialog_edit">সম্পাদনা করুন</string>
   <string name="dialog_delete">মুছে দিন</string>
   <string name="fragment_history_snackbar_text">1 পাঠের মুছে ফেলা হয়েছে</string>
   <string name="fragment_history_snackbar_action">পূর্বাবস্থায় যান</string>

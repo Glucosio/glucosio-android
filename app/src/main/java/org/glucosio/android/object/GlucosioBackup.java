@@ -31,7 +31,7 @@ public class GlucosioBackup {
     private Date modifiedDate;
     private long backupSize;
 
-    public GlucosioBackup(DriveId driveId, Date modifiedDate, long backupSize){
+    public GlucosioBackup(DriveId driveId, Date modifiedDate, long backupSize) {
         this.driveId = driveId;
         this.modifiedDate = modifiedDate;
         this.backupSize = backupSize;

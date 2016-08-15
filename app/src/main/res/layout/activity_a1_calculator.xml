@@ -27,7 +27,7 @@
     tools:context=".activity.A1cCalculatorActivity">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/activity_main_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -35,6 +35,7 @@
         android:minHeight="?android:attr/actionBarSize"
         app:contentInsetLeft="0dp"
         app:contentInsetStart="0dp"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:titleTextAppearance="@style/Toolbar.WhiteText" />
 
     <ScrollView

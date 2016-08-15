@@ -57,6 +57,7 @@
   <string name="dialog_add_add">थप्नुहोस्</string>
   <string name="dialog_error2">कृपया ठिक मान हाल्नुहोस्।</string>
   <string name="dialog_error">कृपया सबै क्षेत्रहरु भर्नुहोस्।</string>
+  <string name="dialog_edit">सम्पादन</string>
   <string name="dialog_delete">हटाउनुहोस</string>
   <string name="fragment_history_snackbar_text">एउटा हटाइयो</string>
   <string name="fragment_history_snackbar_action">undo</string>

@@ -22,6 +22,7 @@
 <resources>
   <string name="action_settings">ตั้งค่า</string>
   <string name="action_feedback">ส่งคำติชม</string>
+  <string name="action_invite">เชิญช่วนเพื่อน</string>
   <string name="tab_overview">ภาพรวม</string>
   <string name="tab_history">ประวัติ</string>
   <string name="tab_tips">เคล็ดลับ</string>
@@ -38,6 +39,7 @@
   <string name="helloactivity_spinner_diabetes_type">ชนิดของโรคเบาหวาน</string>
   <string name="helloactivity_spinner_diabetes_type_1">ชนิดที่ 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">ชนิดที่ 2</string>
+  <string name="helloactivity_spinner_diabetes_gdm">เบาหวานที่เกิดขึ้นขณะตั้งครรภ์</string>
   <string name="helloactivity_share_data">แบ่งปันข้อมูลนิรนามเพิ่อการวิจัย</string>
   <string name="helloactivity_hint_settings">คุณสามารถเปลี่ยนการตั้งค่าเหล่านี้ในภายหลัง</string>
   <string name="helloactivity_button_next">ถัดไป</string>
@@ -55,10 +57,13 @@
   <string name="dialog_add_type_5">ก่อนอาหารเย็น</string>
   <string name="dialog_add_type_6">หลังอาหารเย็น</string>
   <string name="dialog_add_type_9">กลางคืน</string>
+  <string name="dialog_add_type_11">ตรวจสอบอีกครั้ง</string>
+  <string name="dialog_add_type_12">อื่น ๆ</string>
   <string name="dialog_add_cancel">ยกเลิก</string>
   <string name="dialog_add_add">เพิ่ม</string>
   <string name="dialog_error2">กรุณาใส่ค่าถูกต้อง</string>
   <string name="dialog_error">กรุณากรอกข้อมูลให้ครบทุกรายการ</string>
+  <string name="dialog_edit">แก้ไข</string>
   <string name="dialog_delete">ลบ</string>
   <string name="fragment_history_snackbar_text">ลบแล้ว 1 รายการ</string>
   <string name="fragment_history_snackbar_action">เลิกทำ</string>
@@ -108,4 +113,5 @@
   <!-- Exercise Types -->
   <!-- Food Entry Labels -->
   <!-- About Glucosio Strings -->
+  <string name="dialog_add_weight">น้ำหนัก</string>
 </resources>

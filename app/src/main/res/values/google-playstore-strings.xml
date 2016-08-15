@@ -28,38 +28,37 @@
 
 <resources>
 
-       
 
- <string name="PlaystoreDescription_para_0100">Glucosio - Diabetes Tracker</string>
- <string name="PlaystoreDescription_para_0200">Glucosio is a modern diabetes tracker</string>
- <string name="PlaystoreDescription_para_0300">Glucosio is a modern diabetes tracker for blood glucose, HB1AC, Cholesterol, Blood Pressure, Ketones, Body Weight and more. Glucosio diabetes tracker makes it quick and easy to track all aspects of your diabetes! Glucosio is the only open source diabetes app for both type 1 &amp; type 2 diabetes and entirely free!</string>
- <string name="PlaystoreDescription_para_0400">FEATURES:</string>
- <string name="PlaystoreDescription_para_0500">• Quick and easy logging (blood glucose, HB1AC, Cholesterol, Blood Pressure, Ketones, Body Weight etc.)</string>
- <string name="PlaystoreDescription_para_0600">• Designed for both type 1 &amp; type 2 diabetes</string>
- <string name="PlaystoreDescription_para_0700">• Estimated HbA1c &amp; HbA1c conversion calculator</string>
- <string name="PlaystoreDescription_para_0800">• Choose Glucose Target (ADA, NICE, AACE, Custom)</string>
- <string name="PlaystoreDescription_para_0900">• CGM data integration via CSV import and NFC</string>
- <string name="PlaystoreDescription_para_1000">• Daily, weekly and monthly graphs and analysis</string>
- <string name="PlaystoreDescription_para_1100">• Assistant gives tips and more</string>
- <string name="PlaystoreDescription_para_1200">• Backup to Google Drive and export data to CSV</string>
- <string name="PlaystoreDescription_para_1300">• Import from CSV</string>
- <string name="PlaystoreDescription_para_1400">• Free support (average response time under 24 hours!)</string>
- <string name="PlaystoreDescription_para_1500">• Accessibility Features</string>
- <string name="PlaystoreDescription_para_1600">• Opt-In to support diabetes research anonymously</string>
- <string name="PlaystoreDescription_para_1700">COMING SOON:</string>
- <string name="PlaystoreDescription_para_1800">• Reminders</string>
- <string name="PlaystoreDescription_para_1900">• Dexcom CGM support</string>
- <string name="PlaystoreDescription_para_2000">• Additional export formats</string>
- <string name="PlaystoreDescription_para_2100">• New backup providers</string>
- <string name="PlaystoreDescription_para_2200">• Bolus and Basal tracking</string>
- <string name="PlaystoreDescription_para_2300">Please file any bugs, issues, or feature requests at:</string>
- <string name="PlaystoreDescription_para_2400">https://github.com/glucosio/android</string>
- <string name="PlaystoreDescription_para_2500">Visit our website to learn more about the Glucosio Project and Glucosio Foundation:</string>
- <string name="PlaystoreDescription_para_2600">http://www.glucosio.org/</string>
- <string name="PlaystoreDescription_para_2700">Get support:</string>
- <string name="PlaystoreDescription_para_2800">http://community.glucosio.org/c/glucosio-android</string>
+    <string name="PlaystoreDescription_para_0100">Glucosio - Diabetes Tracker</string>
+    <string name="PlaystoreDescription_para_0200">Glucosio is a modern diabetes tracker</string>
+    <string name="PlaystoreDescription_para_0300">Glucosio is a modern diabetes tracker for blood glucose, HB1AC, Cholesterol, Blood Pressure, Ketones, Body Weight and more. Glucosio diabetes tracker makes it quick and easy to track all aspects of your diabetes! Glucosio is the only open source diabetes app for both type 1 &amp; type 2 diabetes and entirely free!</string>
+    <string name="PlaystoreDescription_para_0400">FEATURES:</string>
+    <string name="PlaystoreDescription_para_0500">• Quick and easy logging (blood glucose, HB1AC, Cholesterol, Blood Pressure, Ketones, Body Weight etc.)</string>
+    <string name="PlaystoreDescription_para_0600">• Designed for both type 1 &amp; type 2 diabetes</string>
+    <string name="PlaystoreDescription_para_0700">• Estimated HbA1c &amp; HbA1c conversion calculator</string>
+    <string name="PlaystoreDescription_para_0800">• Choose Glucose Target (ADA, NICE, AACE, Custom)</string>
+    <string name="PlaystoreDescription_para_0900">• CGM data integration via CSV import and NFC</string>
+    <string name="PlaystoreDescription_para_1000">• Daily, weekly and monthly graphs and analysis</string>
+    <string name="PlaystoreDescription_para_1100">• Assistant gives tips and more</string>
+    <string name="PlaystoreDescription_para_1200">• Backup to Google Drive and export data to CSV</string>
+    <string name="PlaystoreDescription_para_1300">• Import from CSV</string>
+    <string name="PlaystoreDescription_para_1400">• Free support (average response time under 24 hours!)</string>
+    <string name="PlaystoreDescription_para_1500">• Accessibility Features</string>
+    <string name="PlaystoreDescription_para_1600">• Opt-In to support diabetes research anonymously</string>
+    <string name="PlaystoreDescription_para_1700">COMING SOON:</string>
+    <string name="PlaystoreDescription_para_1800">• Reminders</string>
+    <string name="PlaystoreDescription_para_1900">• Dexcom CGM support</string>
+    <string name="PlaystoreDescription_para_2000">• Additional export formats</string>
+    <string name="PlaystoreDescription_para_2100">• New backup providers</string>
+    <string name="PlaystoreDescription_para_2200">• Bolus and Basal tracking</string>
+    <string name="PlaystoreDescription_para_2300">Please file any bugs, issues, or feature requests at:</string>
+    <string name="PlaystoreDescription_para_2400">https://github.com/glucosio/android</string>
+    <string name="PlaystoreDescription_para_2500">Visit our website to learn more about the Glucosio Project and Glucosio Foundation:</string>
+    <string name="PlaystoreDescription_para_2600">http://www.glucosio.org/</string>
+    <string name="PlaystoreDescription_para_2700">Get support:</string>
+    <string name="PlaystoreDescription_para_2800">http://community.glucosio.org/c/glucosio-android</string>
 
-	      <!-- EOF -->
-	      
+    <!-- EOF -->
+
 </resources>
 

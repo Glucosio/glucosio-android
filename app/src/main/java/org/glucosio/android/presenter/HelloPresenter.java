@@ -22,25 +22,20 @@ package org.glucosio.android.presenter;
 
 import android.text.TextUtils;
 
-import org.glucosio.android.activity.HelloActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.User;
+import org.glucosio.android.view.HelloView;
 
 
 public class HelloPresenter {
-    private DatabaseHandler dB;
-    private HelloActivity helloActivity;
-    private int id;
-    private int age;
-    private String name;
-    private String country;
-    private String gender;
-    private int diabetesType;
-    private String unitMeasurement;
-    private String language;
+    private final DatabaseHandler dB;
+    private final HelloView helloView;
 
-    public HelloPresenter(HelloActivity helloActivity, DatabaseHandler dbHandler) {
-        this.helloActivity = helloActivity;
+    private int id;
+    private String name;
+
+    public HelloPresenter(final HelloView helloView, final DatabaseHandler dbHandler) {
+        this.helloView = helloView;
         dB = dbHandler;
     }
 
@@ -51,16 +46,10 @@ public class HelloPresenter {
 
     public void onNextClicked(String age, String gender, String language, String country, int type, String unit) {
         if (validateAge(age)) {
-            this.age = Integer.parseInt(age);
-            this.gender = gender;
-            this.language = language;
-            this.country = country;
-            this.diabetesType = type;
-            this.unitMeasurement = unit;
-
-            saveToDatabase();
+            saveToDatabase(id, name, language, country, Integer.parseInt(age), gender, type, unit);
+            helloView.startMainView();
         } else {
-            helloActivity.displayErrorMessage();
+            helloView.displayErrorWrongAge();
         }
     }
 
@@ -75,8 +64,10 @@ public class HelloPresenter {
         }
     }
 
-    public void saveToDatabase() {
-        dB.addUser(new User(id, name, language, country, age, gender, diabetesType, unitMeasurement, "percentage", "kilograms", "ADA", 70, 180)); // We use ADA range by default
-        helloActivity.closeHelloActivity();
+    private void saveToDatabase(final int id, final String name, final String language,
+                                final String country, final int age, final String gender,
+                                final int diabetesType, final String unitMeasurement) {
+        dB.addUser(new User(id, name, language, country, age, gender, diabetesType, unitMeasurement,
+                "percentage", "kilograms", "ADA", 70, 180)); // We use ADA range by default
     }
 }

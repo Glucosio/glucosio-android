@@ -40,6 +40,11 @@
   <string name="helloactivity_spinner_diabetes_type">Triba de diabetes</string>
   <string name="helloactivity_spinner_diabetes_type_1">Tipu 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Tipu 2</string>
+  <string name="helloactivity_spinner_diabetes_lada">LADA</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit_2">mmol/L</string>
+  <string name="preferences_spinner_preferred_a1c_unit_1">porcentaxe</string>
+  <string name="preferences_spinner_preferred_weight_unit_1">quilogramos</string>
+  <string name="preferences_spinner_preferred_weight_unit_2">llibres</string>
   <string name="helloactivity_share_data">Compartir datos anónimos pa investigación.</string>
   <string name="helloactivity_hint_settings">Sero pues camudar esto n\'axustes.</string>
   <string name="helloactivity_button_next">SIGUIENTE</string>
@@ -66,6 +71,7 @@
   <string name="dialog_add_add">AMESTAR</string>
   <string name="dialog_error2">Introduz un valor válidu, por favor.</string>
   <string name="dialog_error">Enllena tolos campos, por favor.</string>
+  <string name="dialog_edit">Editar</string>
   <string name="dialog_delete">Desaniciar</string>
   <string name="fragment_history_snackbar_text">Desanicióse una llectura</string>
   <string name="fragment_history_snackbar_action">DESFACER</string>
@@ -198,6 +204,7 @@
   <string name="dialog_export_range">Esportar rangu</string>
   <string name="activity_export_no_readings_snackbar">Nun hai llectures pa esportar.</string>
   <string name="wear_new_reading">Amestóse la llectura nueva</string>
+  <string name="dialog_add_weight">Pesu</string>
   <string name="dialog_add_pressure_min">Presión mínima</string>
   <string name="dialog_add_pressure_max">Presión máxima</string>
   <string name="dialog_add_cholesterol_total">Colesterol total</string>
@@ -218,11 +225,18 @@
   <string name="freestylelibre_nfc_not_supported">Esti preséu nun sofita NFC.</string>
   <string name="freestylelibre_nfc_not_enabled">Ta deshabilitáu\'l NFC.</string>
   <string name="freestylelibre_nfc_error">¡Fallu abriendo la conexón NFC!</string>
+  <string name="overview_hb1ac">HBA1C:</string>
+  <string name="activity_converter_a1c">A1C</string>
+  <string name="activity_converter_save">GUARDAR</string>
   <string name="menu_support_title">¿Cómo podemos ayudate?</string>
   <string name="menu_support_email">Corréu</string>
   <string name="menu_support_live">Charra en direuto</string>
   <string name="menu_support_forum">Foru de sofitu</string>
   <string name="notification_reminder_glucose">¡Ye hora de rexistrar el to nivel sanguineu de glucosa!</string>
   <string name="notification_reminder_medication">¡Ye hora de tomar les tos melecines!</string>
+  <string name="dialog_add_notes">Notes</string>
+  <string name="activity_backup_drive_desc_2">Sedrás a restaurar toles tos llectures si pierdes o camudes de teléfonu o sincronizar datos de Glucosio ente los tos preseos.</string>
+  <string name="activity_backup_drive_failed">Daqué foi mal. Volvi tentalo, por favor :/</string>
+  <string name="mmol_mol">mmol/mol</string>
   <string name="mmol_L">mmol/L</string>
 </resources>

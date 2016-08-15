@@ -49,16 +49,20 @@ public class DatabaseHandler {
     public DatabaseHandler(Context context) {
         this.mContext = context;
 
+        this.realm = getNewRealmInstance();
+    }
+
+    public Realm getNewRealmInstance() {
         if (mRealmConfig == null) {
-            mRealmConfig = new RealmConfiguration.Builder(context)
+            mRealmConfig = new RealmConfiguration.Builder(mContext)
                     .schemaVersion(3)
                     .migration(new Migration())
                     .build();
         }
-        this.realm = Realm.getInstance(mRealmConfig); // Automatically run migration if needed
+        return Realm.getInstance(mRealmConfig); // Automatically run migration if needed
     }
 
-    public Realm getRealmIstance(){
+    public Realm getRealmInstance() {
         return realm;
     }
 
@@ -74,6 +78,12 @@ public class DatabaseHandler {
                 .findFirst();
     }
 
+    public User getUser(Realm realm, long id) {
+        return realm.where(User.class)
+                .equalTo("id", id)
+                .findFirst();
+    }
+
     public void updateUser(User user) {
         realm.beginTransaction();
         realm.copyToRealmOrUpdate(user);
@@ -81,14 +91,8 @@ public class DatabaseHandler {
     }
 
     public boolean addGlucoseReading(GlucoseReading reading) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(reading.getCreated());
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
-        int hours = calendar.get(Calendar.HOUR_OF_DAY);
-        int minutes = calendar.get(Calendar.MINUTE);
-        String id = "" + year + month + day + hours + minutes + reading.getReading();
+        // generate record Id
+        String id = generateIdFromDate(reading.getCreated(), reading.getReading());
 
         // Check for duplicates
         if (getGlucoseReadingById(Long.parseLong(id)) != null) {
@@ -100,6 +104,17 @@ public class DatabaseHandler {
             realm.commitTransaction();
             return true;
         }
+    }
+
+    private String generateIdFromDate(Date created, int readingId) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(created);
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        int hours = calendar.get(Calendar.HOUR_OF_DAY);
+        int minutes = calendar.get(Calendar.MINUTE);
+        return "" + year + month + day + hours + minutes + readingId;
     }
 
     public void addNGlucoseReadings(int n) {
@@ -133,12 +148,29 @@ public class DatabaseHandler {
 
     public void deleteGlucoseReading(GlucoseReading reading) {
         realm.beginTransaction();
-        reading.removeFromRealm();
+        reading.deleteFromRealm();
         realm.commitTransaction();
     }
 
+    public GlucoseReading getLastGlucoseReading() {
+        RealmResults<GlucoseReading> results =
+                realm.where(GlucoseReading.class)
+                        .findAllSorted("created", Sort.DESCENDING);
+        return results.get(0);
+    }
 
-    public ArrayList<GlucoseReading> getGlucoseReadings() {
+    public List<GlucoseReading> getGlucoseReadings() {
+        RealmResults<GlucoseReading> results =
+                realm.where(GlucoseReading.class)
+                        .findAllSorted("created", Sort.DESCENDING);
+        ArrayList<GlucoseReading> readingList = new ArrayList<>();
+        for (int i = 0; i < results.size(); i++) {
+            readingList.add(results.get(i));
+        }
+        return readingList;
+    }
+
+    public ArrayList<GlucoseReading> getGlucoseReadings(Realm realm) {
         RealmResults<GlucoseReading> results =
                 realm.where(GlucoseReading.class)
                         .findAllSorted("created", Sort.DESCENDING);
@@ -150,6 +182,18 @@ public class DatabaseHandler {
     }
 
     public ArrayList<GlucoseReading> getGlucoseReadings(Date from, Date to) {
+        RealmResults<GlucoseReading> results =
+                realm.where(GlucoseReading.class)
+                        .between("created", from, to)
+                        .findAllSorted("created", Sort.DESCENDING);
+        ArrayList<GlucoseReading> readingList = new ArrayList<>();
+        for (int i = 0; i < results.size(); i++) {
+            readingList.add(results.get(i));
+        }
+        return readingList;
+    }
+
+    public ArrayList<GlucoseReading> getGlucoseReadings(Realm realm, Date from, Date to) {
         RealmResults<GlucoseReading> results =
                 realm.where(GlucoseReading.class)
                         .between("created", from, to)
@@ -243,6 +287,14 @@ public class DatabaseHandler {
         return datetimeArray;
     }
 
+    public Date getFirstGlucoseDateTime() {
+        return realm.where(GlucoseReading.class).minimumDate("created");
+    }
+
+    public Date getLastGlucoseDateTime() {
+        return realm.where(GlucoseReading.class).maximumDate("created");
+    }
+
     public GlucoseReading getGlucoseReadingById(long id) {
         return getGlucoseReading(id);
     }
@@ -263,7 +315,7 @@ public class DatabaseHandler {
         List<GlucoseReading> gReadings;
         ArrayList<Integer> readings = new ArrayList<Integer>();
 
-        gReadings = GlucoseReading.getGlucoseReadings(whereString);
+        gReadings = GlucoseReading.getGlucoseReadingsWithZeros(whereString);
         int i;
         for (i=0; i < gReadings.size(); i++){
             readings.add(gReadings.get(i).getGlucoseReading());
@@ -382,6 +434,15 @@ public class DatabaseHandler {
         return finalMonths;
     }
 
+    public List<GlucoseReading> getLastMonthGlucoseReadings() {
+        JodaTimeAndroid.init(mContext);
+
+        DateTime todayDateTime = DateTime.now();
+        DateTime minDateTime = DateTime.now().minusMonths(1).minusDays(15);
+
+        return getGlucoseReadings(minDateTime.toDate(), todayDateTime.toDate());
+    }
+
     public void addHB1ACReading(HB1ACReading reading) {
         realm.beginTransaction();
         reading.setId(getNextKey("hb1ac"));
@@ -389,9 +450,9 @@ public class DatabaseHandler {
         realm.commitTransaction();
     }
 
-    public void deleteHB1ACReadingReading(HB1ACReading reading) {
+    public void deleteHB1ACReading(HB1ACReading reading) {
         realm.beginTransaction();
-        reading.removeFromRealm();
+        reading.deleteFromRealm();
         realm.commitTransaction();
     }
 
@@ -399,6 +460,17 @@ public class DatabaseHandler {
         return realm.where(HB1ACReading.class)
                 .equalTo("id", id)
                 .findFirst();
+    }
+
+    public HB1ACReading getHB1ACReadingById(long id) {
+        return getHB1ACReading(id);
+    }
+
+    public void editHB1ACReading(long oldId, HB1ACReading reading) {
+        // First delete the old reading
+        deleteHB1ACReading(getHB1ACReadingById(oldId));
+        // then save the new one
+        addHB1ACReading(reading);
     }
 
     public RealmResults<HB1ACReading> getrHB1ACRawReadings() {
@@ -475,7 +547,14 @@ public class DatabaseHandler {
         realm.commitTransaction();
     }
 
-    public KetoneReading getKetoneReading(long id) {
+    public void editKetoneReading(long oldId, KetoneReading reading) {
+        // First delete the old reading
+        deleteKetoneReading(getKetoneReadingById(oldId));
+        // then save the new one
+        addKetoneReading(reading);
+    }
+
+    public KetoneReading getKetoneReadingById(long id) {
         return realm.where(KetoneReading.class)
                 .equalTo("id", id)
                 .findFirst();
@@ -483,7 +562,7 @@ public class DatabaseHandler {
 
     public void deleteKetoneReading(KetoneReading reading) {
         realm.beginTransaction();
-        reading.removeFromRealm();
+        reading.deleteFromRealm();
         realm.commitTransaction();
     }
 
@@ -559,8 +638,15 @@ public class DatabaseHandler {
 
     public void deletePressureReading(PressureReading reading) {
         realm.beginTransaction();
-        reading.removeFromRealm();
+        reading.deleteFromRealm();
         realm.commitTransaction();
+    }
+
+    public void editPressureReading(long oldId, PressureReading reading) {
+        // First delete the old reading
+        deletePressureReading(getPressureReading(oldId));
+        // then save the new one
+        addPressureReading(reading);
     }
 
     public ArrayList<PressureReading> getPressureReadings() {
@@ -642,6 +728,13 @@ public class DatabaseHandler {
         realm.commitTransaction();
     }
 
+    public void editWeightReading(long oldId, WeightReading reading) {
+        // First delete the old reading
+        deleteWeightReading(getWeightReadingById(oldId));
+        // then save the new one
+        addWeightReading(reading);
+    }
+
     public WeightReading getWeightReading(long id) {
         return realm.where(WeightReading.class)
                 .equalTo("id", id)
@@ -650,7 +743,7 @@ public class DatabaseHandler {
 
     public void deleteWeightReading(WeightReading reading) {
         realm.beginTransaction();
-        reading.removeFromRealm();
+        reading.deleteFromRealm();
         realm.commitTransaction();
     }
 
@@ -711,11 +804,22 @@ public class DatabaseHandler {
         return datetimeArray;
     }
 
+    public WeightReading getWeightReadingById(long id) {
+        return getWeightReading(id);
+    }
+
     public void addCholesterolReading(CholesterolReading reading) {
         realm.beginTransaction();
         reading.setId(getNextKey("cholesterol"));
         realm.copyToRealm(reading);
         realm.commitTransaction();
+    }
+
+    public void editCholesterolReading(long oldId, CholesterolReading reading) {
+        // First delete the old reading
+        deleteCholesterolReading(getCholesterolReading(oldId));
+        // then save the new one
+        addCholesterolReading(reading);
     }
 
     public CholesterolReading getCholesterolReading(long id) {
@@ -726,7 +830,7 @@ public class DatabaseHandler {
 
     public void deleteCholesterolReading(CholesterolReading reading) {
         realm.beginTransaction();
-        reading.removeFromRealm();
+        reading.deleteFromRealm();
         realm.commitTransaction();
     }
 
@@ -817,7 +921,7 @@ public class DatabaseHandler {
         return datetimeArray;
     }
 
-    public long getNextKey(String where) {
+    private long getNextKey(String where) {
         Number maxId = null;
         switch (where) {
             case "glucose":

@@ -26,6 +26,7 @@
   <string name="tab_overview">Foramharc</string>
   <string name="tab_history">Stair</string>
   <string name="tab_tips">Leideanna</string>
+  <string name="activity_main_add_new_reading">Tomhas nua</string>
   <string name="title_activity_hello">Dia dhuit.</string>
   <string name="helloactivity_headline">Dia dhuit.</string>
   <string name="helloactivity_terms">Téarmaí Úsáide.</string>
@@ -43,6 +44,7 @@
   <string name="helloactivity_spinner_diabetes_gdm">Tréimhse iompair</string>
   <string name="helloactivity_spinner_diabetes_lada">LADA</string>
   <string name="helloactivity_spinner_preferred_glucose_unit">Do rogha aonaid glúcóis</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit_2">mmol/L</string>
   <string name="preferences_spinner_preferred_a1c_unit">Do rogha aonaid A1C</string>
   <string name="preferences_spinner_preferred_a1c_unit_1">céatadán</string>
   <string name="preferences_spinner_preferred_weight_unit">Do rogha aonaid meáchain</string>
@@ -74,6 +76,7 @@
   <string name="dialog_add_add">OK</string>
   <string name="dialog_error2">Cuir luach bailí isteach.</string>
   <string name="dialog_error">Líon isteach na réimsí go léir.</string>
+  <string name="dialog_edit">Eagar</string>
   <string name="dialog_delete">Scrios</string>
   <string name="fragment_history_snackbar_text">Scriosadh tomhas amháin</string>
   <string name="fragment_history_snackbar_action">CEALAIGH</string>
@@ -234,11 +237,17 @@
   <string name="dialog_add_cholesterol_hdl">Colaistéaról LPAD</string>
   <string name="dialog_add_hb1ac">HB1AC</string>
   <string name="title_activity_add_glucose">Cuir isteach leibhéal glúcóis</string>
+  <string name="title_activity_add_glucose_edit">Cuir leibhéal glúcóis in eagar</string>
   <string name="title_activity_add_weight">Cuir isteach meáchan coirp</string>
+  <string name="title_activity_add_weight_edit">Cuir meáchan coirp in eagar</string>
   <string name="title_activity_add_cholesterol">Cuir isteach leibhéal colaistéaróil</string>
+  <string name="title_activity_add_cholesterol_edit">Cuir leibhéal colaistéaróil in eagar</string>
   <string name="title_activity_add_hb1ac">Cuir isteach HB1AC</string>
+  <string name="title_activity_add_hb1ac_edit">Cuir HBA1C in eagar</string>
   <string name="title_activity_add_ketone">Cuir isteach céatóin</string>
+  <string name="title_activity_add_ketone_edit">Cuir céatóin in eagar</string>
   <string name="title_activity_add_pressure">Cuir isteach brú fola</string>
+  <string name="title_activity_add_pressure_edit">Cuir brú fola in eagar</string>
   <string name="fab_weight">Meáchan Coirp</string>
   <string name="fab_ketones">Céatóin</string>
   <string name="fab_pressure">Brú Fola</string>
@@ -273,12 +282,16 @@
   <string name="menu_backup_restore">Athchóirigh</string>
   <string name="menu_backup_csv">Easpórtáil CSV</string>
   <string name="activity_backup_drive_automatic">Cúltaca uathoibríoch</string>
+  <string name="activity_backup_drive_desc">Má dhéanann tú cóip chúltaca de do chuid sonraí ar Google Drive, bheifeá in ann na sonraí go léir a fháil ar ais dá gcaillfeá nó dá n-athrófá do ghuthán.</string>
   <string name="activity_backup_drive_message_restart">Á atosú chun na hathruithe a chur i bhfeidhm...</string>
   <string name="activity_backup_drive_desc_1">Sioncronaigh bunachar sonraí Glucosio sa néal le Google Drive.</string>
   <string name="activity_backup_drive_desc_2">Beidh tú in ann do chuid sonraí go léir a fháil ar ais má chailleann tú nó má athraíonn tú do ghuthán, agus beidh tú in ann sonraí Glucosio a shioncronú idir gléasanna.</string>
+  <string name="activity_backup_drive_success">D\'éirigh linn cóip chúltaca den bhunachar sonraí a shábháil ar Google Drive</string>
+  <string name="activity_backup_drive_restore_success">D\'éirigh linn an bunachar sonraí a athchóiriú ó Google Drive</string>
   <string name="activity_backup_drive_failed">Tharla earráid. Bain triail eile as :/</string>
   <string name="activity_backup_drive_last">An cúltaca is déanaí:</string>
   <string name="activity_backup_drive_folder">Fillteán na gcúltacaí</string>
+  <string name="activity_backup_drive_folder_not_set">Gan socrú</string>
   <string name="activity_backup_drive_button_backup">Déan cúltaca anois</string>
   <string name="activity_backup_drive_recent">Na cúltacaí is déanaí</string>
   <string name="activity_backup_drive_more">Féach ar thuilleadh cúltacaí</string>
@@ -292,5 +305,7 @@
   <string name="activity_main_error_play_services">Teastaíonn Play Services ó Glucosio chun cúltaca ar Google Drive a dhéanamh.</string>
   <string name="activity_main_dialog_csv_title">Easpórtáil mar chomhad CSV</string>
   <string name="activity_backup_drive_button_open_drive">Bainistigh ar Google Drive</string>
+  <string name="mmol_mol">mmol/mol</string>
   <string name="mmol_L">mmol/L</string>
+  <string name="preferences_graph_old">Fill ar an seanghraf</string>
 </resources>

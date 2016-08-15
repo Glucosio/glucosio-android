@@ -21,9 +21,10 @@
 apply plugin: 'com.android.application'
 apply plugin: 'realm-android'
 apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'jacoco'
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 24
     buildToolsVersion buildToolsVer
 
     lintOptions {
@@ -32,10 +33,10 @@ android {
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 23
-        versionCode 26
-        versionName '1.0.2'
-        applicationId "org.glucosio.android"
+        targetSdkVersion 24
+        versionCode 34
+        versionName '1.2.0'
+        applicationId 'org.glucosio.android'
 
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
@@ -49,7 +50,10 @@ android {
             versionNameSuffix '-DEVEL'
             applicationIdSuffix '.daily'
 
+            testCoverageEnabled true
+
             buildConfigField 'String', 'GOOGLE_ANALYTICS_TRACKER', '"UA-68882401-2"'
+            buildConfigField "String[]", "TRANSLATION_ARRAY", "new String[]{}"
         }
 
         release {
@@ -60,6 +64,7 @@ android {
 
             buildConfigField 'String', 'GOOGLE_ANALYTICS_TRACKER', '"UA-68882401-2"'
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "String[]", "TRANSLATION_ARRAY", getAllLocales()
         }
     }
 
@@ -68,11 +73,14 @@ android {
     }
 
     testOptions {
-        unitTests {
-            all {
-                // configure the test JVM arguments
-                jvmArgs '-noverify'
+        unitTests.returnDefaultValues = true
+
+        unitTests.all {
+            jacoco {
+                includeNoLocationClasses = true
             }
+            // configure the test JVM arguments
+            jvmArgs '-noverify'
         }
     }
 }
@@ -90,7 +98,7 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
 
     // Android Support libraries
-    compile 'com.google.android.support:wearable:1.3.0'
+    compile 'com.google.android.support:wearable:1.4.0'
 
     compile "com.android.support:appcompat-v7:${androidSupportVer}"
     compile "com.android.support:design:${androidSupportVer}"
@@ -112,14 +120,17 @@ dependencies {
 
     // Other libraries
     compile 'com.github.paolorotolo:expandableheightlistview:1.0.0'
-    compile 'com.github.clans:fab:1.6.3'
-    compile 'com.wdullaer:materialdatetimepicker:2.3.0'
-    compile 'com.github.PhilJay:MPAndroidChart:v2.2.4'
+    compile 'com.github.clans:fab:1.6.4'
+    compile 'com.wdullaer:materialdatetimepicker:2.4.0'
+    compile 'com.github.PhilJay:MPAndroidChart:v2.2.5'
     compile 'uk.co.chrisjenx:calligraphy:2.2.0'
-    compile 'net.danlew:android.joda:2.9.3'
-    compile('com.mikepenz:materialdrawer:5.2.6@aar') {
+    compile 'net.danlew:android.joda:2.9.4.1'
+    compile('com.mikepenz:materialdrawer:5.4.0@aar') {
         transitive = true
     }
+
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-math3
+    compile files('libs/commons-math3-3.6.jar')
 
     // Butterknife
     compile "com.jakewharton:butterknife:${butterKnifeVer}"
@@ -136,7 +147,7 @@ dependencies {
         exclude group: 'commons-logging', module: 'commons-logging'
         exclude group: 'org.apache.httpcomponents', module: 'httpclient'
     }
-    testCompile 'io.reactivex:rxjava:1.0.13'
+    testCompile 'io.reactivex:rxjava:1.1.8'
 
     // Testing libraries
     androidTestCompile 'com.android.support.test:rules:0.4.1'
@@ -153,4 +164,55 @@ configurations.all {
     resolutionStrategy.force "com.android.support:design:${androidSupportVer}"
     resolutionStrategy.force "com.android.support:appcompat-v7:${androidSupportVer}"
 }
+
+def getAllLocales() {
+    def foundLocales = new StringBuilder()
+    foundLocales.append("new String[]{")
+
+    fileTree("src/main/res").visit { FileVisitDetails details ->
+        if (details.file.path.endsWith("strings.xml")) {
+            def languageCode = details.file.parent.tokenize('/').last().replaceAll('values-', '').replaceAll('-r', '-')
+            languageCode = (languageCode == "values") ? "en" : languageCode;
+            foundLocales.append("\"").append(languageCode).append("\"").append(",")
+        }
+    }
+
+    foundLocales.append("}")
+    //Don't forget to remove the trailing comma
+    return foundLocales.toString().replaceAll(',}', '}')
+}
+
 apply plugin: 'com.google.gms.google-services'
+
+def coverageSourceDirs = ['src/main/java']
+
+task jacocoTestReport(type: JacocoReport, dependsOn: 'testDebugUnitTest') {
+    group = 'Reporting'
+
+    description = 'Generate Jacoco coverage reports'
+
+    classDirectories = fileTree(dir: 'build/intermediates/classes/debug',
+            excludes: ['**/R.class',
+                       '**/R$*.class',
+                       '**/*$ViewBinder*.*',
+                       '**/*$InjectAdapter.*',
+                       '**/BuildConfig.*',
+                       '**/Manifest*.*',])
+
+    additionalSourceDirs = files(coverageSourceDirs)
+    sourceDirectories = files(coverageSourceDirs)
+    executionData = files('build/jacoco/testDebugUnitTest.exec')
+
+    reports {
+        xml.enabled = true
+        html.enabled = true
+        csv.enabled = false
+    }
+}
+
+apply plugin: 'com.github.kt3k.coveralls'
+
+coveralls {
+    sourceDirs = files(['src/main/java']).files.absolutePath
+    jacocoReportPath = 'build/reports/jacoco/jacocoTestReport/jacocoTestReport.xml'
+}

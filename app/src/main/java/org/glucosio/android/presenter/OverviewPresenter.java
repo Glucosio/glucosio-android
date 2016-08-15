@@ -21,55 +21,68 @@
 package org.glucosio.android.presenter;
 
 import org.glucosio.android.R;
+import org.glucosio.android.db.CholesterolReading;
 import org.glucosio.android.db.DatabaseHandler;
-import org.glucosio.android.fragment.OverviewFragment;
+import org.glucosio.android.db.GlucoseReading;
+import org.glucosio.android.db.HB1ACReading;
+import org.glucosio.android.db.KetoneReading;
+import org.glucosio.android.db.PressureReading;
+import org.glucosio.android.db.WeightReading;
 import org.glucosio.android.object.A1cEstimate;
+import org.glucosio.android.object.IntGraphObject;
 import org.glucosio.android.tools.GlucosioConverter;
 import org.glucosio.android.tools.TipsManager;
+import org.glucosio.android.view.OverviewView;
+import org.joda.time.DateTime;
+import org.joda.time.Days;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
 public class OverviewPresenter {
 
     private DatabaseHandler dB;
-    private ArrayList<Integer> glucoseReading;
+    private OverviewView view;
+
     private ArrayList<String> glucoseType;
-    private ArrayList<String> glucoseDatetime;
     private List<Integer> glucoseReadingsWeek;
     private List<Integer> glucoseReadingsMonth;
     private List<String> glucoseDatetimeWeek;
     private List<String> glucoseDatetimeMonth;
+    private List<GlucoseReading> glucoseReadings;
+    private List<IntGraphObject> glucoseGraphObjects;
     private int glucoseMinValue = 0;
     private int glucoseMaxValue = 0;
-    private OverviewFragment fragment;
 
-
-    public OverviewPresenter(OverviewFragment overviewFragment) {
-        dB = new DatabaseHandler(overviewFragment.getContext());
-        this.fragment = overviewFragment;
+    public OverviewPresenter(OverviewView view, DatabaseHandler dB) {
+        this.dB = dB;
+        this.view = view;
     }
 
     public boolean isdbEmpty() {
         return dB.getGlucoseReadings().size() == 0;
     }
 
-    public void loadDatabase() {
-        this.glucoseReading = dB.getGlucoseReadingAsArray();
+    public void loadDatabase(boolean isNewGraphEnabled) {
+        this.glucoseReadings = dB.getGlucoseReadings();
+        this.glucoseGraphObjects = generateGlucoseGraphPoints(isNewGraphEnabled);
         this.glucoseReadingsMonth = dB.getAverageGlucoseReadingsByMonth();
         this.glucoseReadingsWeek = dB.getAverageGlucoseReadingsByWeek();
         this.glucoseDatetimeWeek = dB.getGlucoseDatetimesByWeek();
         this.glucoseDatetimeMonth = dB.getGlucoseDatetimesByMonth();
         this.glucoseType = dB.getGlucoseTypeAsArray();
-        this.glucoseDatetime = dB.getGlucoseDateTimeAsArray();
         this.glucoseMaxValue = dB.getUser(1).getCustom_range_max();
         this.glucoseMinValue = dB.getUser(1).getCustom_range_min();
     }
 
     public String convertDate(String date) {
-        return fragment.convertDate(date);
+        return view.convertDate(date);
     }
 
 /*    public int getGlucoseTrend(){
@@ -86,7 +99,7 @@ public class OverviewPresenter {
                 return converter.a1cNgspToIfcc(converter.glucoseToA1C(getGlucoseReadingsMonth().get(getGlucoseReadingsMonth().size() - 2))) + " mmol/mol";
             }
         } else {
-            return fragment.getResources().getString(R.string.overview_hb1ac_error_no_data);
+            return view.getString(R.string.overview_hb1ac_error_no_data);
         }
     }
 
@@ -118,11 +131,13 @@ public class OverviewPresenter {
     }
 
     public String getLastReading() {
-        return getGlucoseReading().get(getGlucoseReading().size() - 1) + "";
+        return dB.getLastGlucoseReading().getReading() + "";
     }
 
     public String getLastDateTime() {
-        return getGlucoseDatetime().get(getGlucoseDatetime().size() - 1) + "";
+        java.text.DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        return inputFormat.format(dB.getLastGlucoseReading().getCreated());
     }
 
     public String getRandomTip(TipsManager manager) {
@@ -141,15 +156,150 @@ public class OverviewPresenter {
         return dB.getUser(1).getAge();
     }
 
-    public ArrayList<Integer> getGlucoseReading() {
-        return glucoseReading;
+    public List<Integer> getGlucoseReadings() {
+
+        ArrayList<Integer> glucoseReadings = new ArrayList<>();
+        for (int i = 0; i < glucoseGraphObjects.size(); i++) {
+            glucoseReadings.add(glucoseGraphObjects.get(i).getReading());
+        }
+
+        return glucoseReadings;
     }
 
-    public ArrayList<String> getGlucoseType() {
-        return glucoseType;
+    public ArrayList<Double> getA1cReadings() {
+        final List<HB1ACReading> a1cReadings = dB.getHB1ACReadings();
+        ArrayList<Double> finalArrayList = new ArrayList<>();
+        for (int i = 0; i < a1cReadings.size(); i++) {
+            finalArrayList.add(a1cReadings.get(i).getReading());
+        }
+        return finalArrayList;
     }
 
-    public ArrayList<String> getGlucoseDatetime() {
+    public ArrayList<String> getA1cReadingsDateTime() {
+        return dB.getHB1ACDateTimeAsArray();
+    }
+
+    public ArrayList<Double> getKetonesReadings() {
+        final List<KetoneReading> ketoneReadings = dB.getKetoneReadings();
+        ArrayList<Double> finalArrayList = new ArrayList<>();
+        for (int i = 0; i < ketoneReadings.size(); i++) {
+            finalArrayList.add(ketoneReadings.get(i).getReading());
+        }
+        return finalArrayList;
+    }
+
+    public ArrayList<String> getKetonesReadingsDateTime() {
+        return dB.getKetoneDateTimeAsArray();
+    }
+
+    public ArrayList<Integer> getWeightReadings() {
+        final List<WeightReading> weightReadings = dB.getWeightReadings();
+        ArrayList<Integer> finalArrayList = new ArrayList<>();
+        for (int i = 0; i < weightReadings.size(); i++) {
+            finalArrayList.add(weightReadings.get(i).getReading());
+        }
+        return finalArrayList;
+    }
+
+    public ArrayList<String> getWeightReadingsDateTime() {
+        return dB.getWeightReadingDateTimeAsArray();
+    }
+
+    public ArrayList<Integer> getMinPressureReadings() {
+        final List<PressureReading> pressureReadings = dB.getPressureReadings();
+        ArrayList<Integer> finalArrayList = new ArrayList<>();
+        for (int i = 0; i < pressureReadings.size(); i++) {
+            finalArrayList.add(pressureReadings.get(i).getMinReading());
+        }
+        return finalArrayList;
+    }
+
+    public ArrayList<Integer> getMaxPressureReadings() {
+        final List<PressureReading> pressureReadings = dB.getPressureReadings();
+        ArrayList<Integer> finalArrayList = new ArrayList<>();
+        for (int i = 0; i < pressureReadings.size(); i++) {
+            finalArrayList.add(pressureReadings.get(i).getMaxReading());
+        }
+        return finalArrayList;
+    }
+
+    public ArrayList<String> getPressureReadingsDateTime() {
+        return dB.getPressureDateTimeAsArray();
+    }
+
+    public ArrayList<Integer> getCholesterolReadings() {
+        final List<CholesterolReading> cholesterolReadings = dB.getCholesterolReadings();
+        ArrayList<Integer> finalArrayList = new ArrayList<>();
+        for (int i = 0; i < cholesterolReadings.size(); i++) {
+            finalArrayList.add(cholesterolReadings.get(i).getTotalReading());
+        }
+        return finalArrayList;
+    }
+
+    public ArrayList<String> getCholesterolReadingsDateTime() {
+        return dB.getCholesterolDateTimeAsArray();
+    }
+
+    private List<IntGraphObject> generateGlucoseGraphPoints(boolean isNewGraphEnabled) {
+        final ArrayList<IntGraphObject> finalGraphObjects = new ArrayList<>();
+        if (isNewGraphEnabled) {
+            DateTime minDateTime = DateTime.now().minusMonths(1).minusDays(15);
+            final List<GlucoseReading> glucoseReadings = dB.getLastMonthGlucoseReadings();
+
+            Collections.sort(glucoseReadings, new Comparator<GlucoseReading>() {
+                public int compare(GlucoseReading o1, GlucoseReading o2) {
+                    return o1.getCreated().compareTo(o2.getCreated());
+                }
+            });
+
+            DateTime startDate = glucoseReadings.size() > 0 ?
+                    minDateTime : DateTime.now();
+            // Transfer values from database to ArrayList as GlucoseGraphObjects
+            for (int i = 0; i < glucoseReadings.size(); i++) {
+                final GlucoseReading reading = glucoseReadings.get(i);
+                final DateTime createdDate = new DateTime(reading.getCreated());
+                //add zero values between current value and last added value
+                addZeroReadings(finalGraphObjects, startDate, createdDate);
+                //add new value
+                finalGraphObjects.add(
+                        new IntGraphObject(createdDate, reading.getReading())
+                );
+                //update start date
+                startDate = createdDate;
+            }
+            //add last zeros till now
+            addZeroReadings(finalGraphObjects, startDate, DateTime.now());
+        } else {
+            Collections.sort(glucoseReadings, new Comparator<GlucoseReading>() {
+                public int compare(GlucoseReading o1, GlucoseReading o2) {
+                    return o1.getCreated().compareTo(o2.getCreated());
+                }
+            });
+            for (int i = 0; i < glucoseReadings.size(); i++) {
+                GlucoseReading glucoseReading = glucoseReadings.get(i);
+                finalGraphObjects.add(new IntGraphObject(new DateTime(glucoseReading.getCreated()), glucoseReading.getReading()));
+            }
+        }
+
+        return finalGraphObjects;
+    }
+
+    private void addZeroReadings(final ArrayList<IntGraphObject> graphObjects,
+                                 final DateTime firstDate,
+                                 final DateTime lastDate) {
+        int daysBetween = Days.daysBetween(firstDate, lastDate).getDays();
+        for (int i = 1; i < daysBetween; i++) {
+            graphObjects.add(new IntGraphObject(firstDate.plusDays(i), 0));
+        }
+    }
+
+    public ArrayList<String> getGraphGlucoseDateTime() {
+        ArrayList<String> glucoseDatetime = new ArrayList<>();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm");
+
+        for (int i = 0; i < glucoseGraphObjects.size(); i++) {
+            glucoseDatetime.add(dateTimeFormatter.print(glucoseGraphObjects.get(i).getCreated()));
+        }
         return glucoseDatetime;
     }
 
@@ -170,7 +320,7 @@ public class OverviewPresenter {
     }
 
     public String convertDateToMonth(String s) {
-        return fragment.convertDateToMonth(s);
+        return view.convertDateToMonth(s);
     }
 
     public int getGlucoseMinValue() {

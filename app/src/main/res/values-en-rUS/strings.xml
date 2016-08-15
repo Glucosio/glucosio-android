@@ -40,6 +40,7 @@
   <string name="helloactivity_spinner_diabetes_type">Diabetes type</string>
   <string name="helloactivity_spinner_diabetes_type_1">Type 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Type 2</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit_2">mmol/L</string>
   <string name="helloactivity_share_data">Share anonymous data for research.</string>
   <string name="helloactivity_hint_settings">You can change these in settings later.</string>
   <string name="helloactivity_button_next">NEXT</string>
@@ -66,6 +67,7 @@
   <string name="dialog_add_add">ADD</string>
   <string name="dialog_error2">Please enter a valid value.</string>
   <string name="dialog_error">Please fill all the fields.</string>
+  <string name="dialog_edit">Edit</string>
   <string name="dialog_delete">Delete</string>
   <string name="fragment_history_snackbar_text">1 reading deleted</string>
   <string name="fragment_history_snackbar_action">UNDO</string>

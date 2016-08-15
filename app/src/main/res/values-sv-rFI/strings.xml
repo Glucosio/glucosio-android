@@ -66,6 +66,7 @@
   <string name="dialog_add_add">Lägg till</string>
   <string name="dialog_error2">Ange ett giltigt värde.</string>
   <string name="dialog_error">Vänligen fyll i alla fält.</string>
+  <string name="dialog_edit">Redigera</string>
   <string name="dialog_delete">Ta bort</string>
   <string name="fragment_history_snackbar_text">1 avläsning borttagen</string>
   <string name="fragment_history_snackbar_action">Ångra</string>

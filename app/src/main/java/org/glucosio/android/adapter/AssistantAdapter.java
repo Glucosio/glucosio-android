@@ -29,8 +29,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import org.glucosio.android.object.ActionTip;
 import org.glucosio.android.R;
+import org.glucosio.android.object.ActionTip;
 import org.glucosio.android.presenter.AssistantPresenter;
 
 import java.util.ArrayList;

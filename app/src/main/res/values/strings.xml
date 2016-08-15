@@ -26,6 +26,7 @@
     <string name="tab_overview">Overview</string>
     <string name="tab_history">History</string>
     <string name="tab_tips">Tips</string>
+    <string name="activity_main_add_new_reading">Add new reading</string>
 
     <string name="title_activity_hello">Hello.</string>
     <string name="helloactivity_headline">Hello.</string>
@@ -49,19 +50,19 @@
     <string name="helloactivity_spinner_diabetes_type">Diabetes type</string>
     <string name="helloactivity_spinner_diabetes_type_1">Type 1</string>
     <string name="helloactivity_spinner_diabetes_type_2">Type 2</string>
-        <string name="helloactivity_spinner_diabetes_gdm">Gestational</string>
+    <string name="helloactivity_spinner_diabetes_gdm">Gestational</string>
     <string name="helloactivity_spinner_diabetes_lada">LADA</string>
 
     <string-array name="helloactivity_diabetes_type" translatable="false">
         <item>@string/helloactivity_spinner_diabetes_type_1</item>
         <item>@string/helloactivity_spinner_diabetes_type_2</item>
-           <item>@string/helloactivity_spinner_diabetes_gdm</item>
+        <item>@string/helloactivity_spinner_diabetes_gdm</item>
         <item>@string/helloactivity_spinner_diabetes_lada</item>
     </string-array>
 
     <string name="helloactivity_spinner_preferred_glucose_unit">Preferred Glucose unit</string>
-    <string name="helloactivity_spinner_preferred_glucose_unit_1" translatable="false">mg/dL</string>
-    <string name="helloactivity_spinner_preferred_glucose_unit_2" translatable="false">mmol/L</string>
+    <string name="helloactivity_spinner_preferred_glucose_unit_1">mg/dL</string>
+    <string name="helloactivity_spinner_preferred_glucose_unit_2">mmol/L</string>
 
     <string-array name="helloactivity_preferred_glucose_unit" translatable="false">
         <item>@string/helloactivity_spinner_preferred_glucose_unit_1</item>
@@ -70,7 +71,7 @@
 
     <string name="preferences_spinner_preferred_a1c_unit">Preferred A1C unit</string>
     <string name="preferences_spinner_preferred_a1c_unit_1">percentage</string>
-    <string name="preferences_spinner_preferred_a1c_unit_2" translatable="false">mmol/mol</string>
+    <string name="preferences_spinner_preferred_a1c_unit_2">mmol/mol</string>
 
     <string-array name="preferences_preferred_a1c_unit" translatable="false">
         <item>@string/preferences_spinner_preferred_a1c_unit_1</item>
@@ -158,7 +159,7 @@
     <string name="preferences_about">About</string>
     <string name="preferences_experimental_title" translatable="false">Here be dragons :/</string>
     <string name="preferences_experimental">These features are experimental and may not fully work and are for early testing by users. Remember that you can shake your phone to send us feedback.</string>
-    <string name="version" translatable="false">1.0.2 (Shega)</string>
+    <string name="version" translatable="false">1.2.0 (Chutney)</string>
     <string name="preferences_version">Version</string>
     <string name="preferences_coming_soon">Coming soon...</string>
     <string name="preferences_terms">Terms of use</string>
@@ -215,7 +216,7 @@
     <string name="assistant_export_title">Export your data</string>
     <string name="assistant_export_desc">Share your data with your doctor or backup your data to Google Drive using the export feature.</string>
     <string name="assistant_calculator_a1c_title">Calculate A1C</string>
-    <string name="assistant_calculator_a1c_desc">Glucosio\'s built–in A1C calculator is now available to use in navigation drawer. Enter your average blood glucose and save the calculated A1C value instantly.</string>
+    <string name="assistant_calculator_a1c_desc">Glucosio\'s built–in A1C calculator is now available to use in the navigation drawer. Enter your average blood glucose and save the calculated A1C value instantly.</string>
 
     <string-array name="assistant_titles" translatable="false">
         <item>@string/assistant_calculator_a1c_title</item>
@@ -364,10 +365,15 @@
     <string name="title_activity_add_glucose">Add Glucose reading</string>
     <string name="title_activity_add_glucose_edit">Edit Glucose reading</string>
     <string name="title_activity_add_weight">Add Body Weight</string>
+    <string name="title_activity_add_weight_edit">Edit Body Weight</string>
     <string name="title_activity_add_cholesterol">Add Cholesterol Level</string>
+    <string name="title_activity_add_cholesterol_edit">Edit Cholesterol Level</string>
     <string name="title_activity_add_hb1ac">Add HBA1C</string>
+    <string name="title_activity_add_hb1ac_edit">Edit HBA1C</string>
     <string name="title_activity_add_ketone">Add Ketones</string>
+    <string name="title_activity_add_ketone_edit">Edit Ketones</string>
     <string name="title_activity_add_pressure">Add Blood Pressure</string>
+    <string name="title_activity_add_pressure_edit">Edit Blood Pressure</string>
 
     <string name="fab_weight">Body Weight</string>
     <string name="fab_ketones">Ketones</string>
@@ -412,6 +418,7 @@
     <string name="activity_backup_drive_failed">Something went wrong. Please try again :/</string>
     <string name="activity_backup_drive_last">Last backup:</string>
     <string name="activity_backup_drive_folder">Backup folder</string>
+    <string name="activity_backup_drive_folder_not_set">Not set</string>
     <string name="activity_backup_drive_button_backup">Backup now</string>
     <string name="activity_backup_drive_recent">Recent backups</string>
     <string name="activity_backup_drive_more">See more Backups</string>
@@ -433,8 +440,11 @@
         <item>@string/fab_ketones</item>
         <item>@string/fab_weight</item>
     </string-array>
-    <string translatable="false" name="title_activity_splash">SplashActivity</string>
+    <string name="title_activity_splash" translatable="false">SplashActivity</string>
     <string name="activity_backup_drive_button_open_drive">Manage on Drive</string>
     <string name="mmol_mol">mmol/mol</string>
     <string name="mmol_L">mmol/L</string>
+    <string name="preferences_graph_old">Revert to old graph</string>
+    <string name="history">history</string>
+    <string name="save">save</string>
 </resources>

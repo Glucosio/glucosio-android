@@ -56,11 +56,13 @@
   <string name="dialog_add_type_5">ਰਾਤ ਦੇ ਖਾਣੇ ਤੋਂ ਪਹਿਲਾਂ</string>
   <string name="dialog_add_type_6">ਰਾਤ ਦੇ ਖਾਣੇ ਤੋਂ ਬਾਅਦ</string>
   <string name="dialog_add_type_9">ਰਾਤ</string>
+  <string name="dialog_add_type_11">ਮੁੜ-ਜਾਂਚ ਕਰੋ</string>
   <string name="dialog_add_type_12">ਹੋਰ</string>
   <string name="dialog_add_cancel">ਰੱਦ ਕਰੋ</string>
   <string name="dialog_add_add">ਸ਼ਾਮਲ ਕਰੋ</string>
   <string name="dialog_error2">ਕਿਰਪਾ ਕਰਕੇ ਇੱਕ ਸਹੀ ਮੁੱਲ ਦਰਜ ਕਰੋ।</string>
   <string name="dialog_error">ਕਿਰਪਾ ਕਰਕੇ ਸਾਰੀਆਂ ਥਾਵਾਂ ਭਰੋ।</string>
+  <string name="dialog_edit">ਸੋਧ ਕਰੋ</string>
   <string name="dialog_delete">ਹਟਾਓ</string>
   <string name="fragment_history_snackbar_text">1 ਰੀਡਿੰਗ ਹਟਾਈ</string>
   <string name="fragment_history_snackbar_action">ਵਾਪਸ</string>

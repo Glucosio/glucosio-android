@@ -22,15 +22,15 @@ apply plugin: 'com.android.application'
 
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 24
     buildToolsVersion buildToolsVer
 
     defaultConfig {
         applicationId "org.glucosio.android"
         minSdkVersion 21
-        targetSdkVersion 23
-        versionCode 26
-        versionName '1.0.2'
+        targetSdkVersion 24
+        versionCode 34
+        versionName '1.2.0'
     }
     buildTypes {
         debug {

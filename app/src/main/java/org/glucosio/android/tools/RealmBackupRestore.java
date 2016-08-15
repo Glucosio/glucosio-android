@@ -19,24 +19,21 @@ import io.realm.Realm;
 
 public class RealmBackupRestore {
 
-    private File EXPORT_REALM_PATH = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-    private String EXPORT_REALM_FILE_NAME = "glucosio.realm";
-    private String IMPORT_REALM_FILE_NAME = "default.realm"; // Eventually replace this if you're using a custom db name
-
     private final static String TAG = RealmBackupRestore.class.getName();
-
-    private Activity activity;
-    private Realm realm;
-
     // Storage Permissions
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
+    private File EXPORT_REALM_PATH = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+    private String EXPORT_REALM_FILE_NAME = "glucosio.realm";
+    private String IMPORT_REALM_FILE_NAME = "default.realm"; // Eventually replace this if you're using a custom db name
+    private Activity activity;
+    private Realm realm;
 
     public RealmBackupRestore(Activity activity) {
-        this.realm = new DatabaseHandler(activity.getApplicationContext()).getRealmIstance();
+        this.realm = new DatabaseHandler(activity.getApplicationContext()).getRealmInstance();
         this.activity = activity;
     }
 
@@ -106,7 +103,7 @@ public class RealmBackupRestore {
         // Check if we have write permission
         int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
-        if(permission != PackageManager.PERMISSION_GRANTED){
+        if (permission != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(
                     activity,
                     PERMISSIONS_STORAGE,
@@ -115,7 +112,7 @@ public class RealmBackupRestore {
         }
     }
 
-    private String dbPath(){
+    private String dbPath() {
         return realm.getPath();
     }
 }

@@ -17,7 +17,7 @@ import java.util.List;
 
 public class A1cEstimateAdapter extends ArrayAdapter<A1cEstimate> {
 
-    DatabaseHandler db;
+    private DatabaseHandler db;
 
     public A1cEstimateAdapter(Context context, int textViewResourceId) {
         super(context, textViewResourceId);
@@ -36,7 +36,7 @@ public class A1cEstimateAdapter extends ArrayAdapter<A1cEstimate> {
         if (v == null) {
             LayoutInflater vi;
             vi = LayoutInflater.from(getContext());
-            v = vi.inflate(R.layout.dialog_a1c_item, null);
+            v = vi.inflate(R.layout.dialog_a1c_item, parent, false);
         }
 
         A1cEstimate p = getItem(position);

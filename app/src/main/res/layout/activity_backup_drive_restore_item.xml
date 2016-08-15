@@ -48,9 +48,9 @@
                 fontPath="fonts/lato-bold.ttf"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
                 android:text="2:30 am, Monday, 22 December 1997"
-                android:textColor="@color/glucosio_text_light" />
+                android:textColor="@color/glucosio_text_light"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/item_history_type"

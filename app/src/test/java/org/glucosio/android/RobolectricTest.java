@@ -3,6 +3,8 @@ package org.glucosio.android;
 import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.backup.Backup;
 import org.glucosio.android.db.DatabaseHandler;
+import org.glucosio.android.presenter.HelloPresenter;
+import org.glucosio.android.tools.LocaleHelper;
 import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.robolectric.RuntimeEnvironment;
@@ -13,14 +15,28 @@ import org.robolectric.annotation.Config;
 @Config(constants = BuildConfig.class, sdk = 21, packageName = "org.glucosio.android")
 public abstract class RobolectricTest {
     protected Analytics getAnalytics() {
-        return ((TestGlucosioApplication) RuntimeEnvironment.application).getAnalytics();
+        return getTestApplication().getAnalytics();
     }
 
     protected Backup getBackup() {
-        return ((TestGlucosioApplication) RuntimeEnvironment.application).getBackup();
+        return getTestApplication().getBackup();
+    }
+
+    private TestGlucosioApplication getTestApplication() {
+        return (TestGlucosioApplication) RuntimeEnvironment.application;
     }
 
     protected DatabaseHandler getDBHandler() {
-        return ((TestGlucosioApplication) RuntimeEnvironment.application).getDBHandler();
+        return getTestApplication().getDBHandler();
+    }
+
+    protected HelloPresenter getHelloPresenter() {
+        //noinspection ConstantConditions
+        return getTestApplication().createHelloPresenter(null);
+    }
+
+    protected LocaleHelper getLocaleHelper() {
+        //noinspection ConstantConditions
+        return getTestApplication().getLocaleHelper();
     }
 }

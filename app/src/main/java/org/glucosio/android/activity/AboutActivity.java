@@ -126,7 +126,7 @@ public class AboutActivity extends AppCompatActivity {
                     if (activityExists) {
                         startActivity(emailIntent);
                     } else {
-                        Toast.makeText(getActivity().getApplicationContext(),getResources().getString(R.string.menu_support_error1), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R.string.menu_support_error1), Toast.LENGTH_LONG).show();
                     }
 
                     return false;
