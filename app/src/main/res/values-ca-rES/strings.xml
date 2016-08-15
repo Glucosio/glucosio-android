@@ -26,6 +26,7 @@
   <string name="tab_overview">Informació general</string>
   <string name="tab_history">Historial</string>
   <string name="tab_tips">Consells</string>
+  <string name="activity_main_add_new_reading">Afegeix una lectura nova</string>
   <string name="title_activity_hello">Hola.</string>
   <string name="helloactivity_headline">Hola.</string>
   <string name="helloactivity_terms">Condicions d\'ús.</string>
@@ -238,10 +239,15 @@
   <string name="title_activity_add_glucose">Afegeix una lectura de glucosa</string>
   <string name="title_activity_add_glucose_edit">Edita la lectura de glucosa</string>
   <string name="title_activity_add_weight">Afegeix un pes corporal</string>
+  <string name="title_activity_add_weight_edit">Edita el pes corporal</string>
   <string name="title_activity_add_cholesterol">Afegeix un nivell de colesterol</string>
+  <string name="title_activity_add_cholesterol_edit">Edita el nivell de colesterol</string>
   <string name="title_activity_add_hb1ac">Afegeix la HbA1c</string>
+  <string name="title_activity_add_hb1ac_edit">Edita la HbA1c</string>
   <string name="title_activity_add_ketone">Afegeix cetones</string>
+  <string name="title_activity_add_ketone_edit">Edita les cetones</string>
   <string name="title_activity_add_pressure">Afegeix la pressió arterial</string>
+  <string name="title_activity_add_pressure_edit">Edita la pressió arterial</string>
   <string name="fab_weight">Pes corporal</string>
   <string name="fab_ketones">Cetones</string>
   <string name="fab_pressure">Pressió arterial</string>
@@ -285,6 +291,7 @@
   <string name="activity_backup_drive_failed">Alguna cosa ha anat malament. Torneu a provar-ho més tard :/</string>
   <string name="activity_backup_drive_last">Última còpia de seguretat:</string>
   <string name="activity_backup_drive_folder">Carpeta de còpies de seguretat</string>
+  <string name="activity_backup_drive_folder_not_set">Sense definir</string>
   <string name="activity_backup_drive_button_backup">Fes la còpia de seguretat ara</string>
   <string name="activity_backup_drive_recent">Còpies de seguretat recents</string>
   <string name="activity_backup_drive_more">Mostra més còpies de seguretat</string>
