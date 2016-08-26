@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private static final int REQUEST_INVITE = 1;
     private static final String INTENT_EXTRA_PAGER = "pager";
     private final String INTENT_EXTRA_DROPDOWN = "history_dropdown";
+    BottomSheetBehavior bottomSheetBehavior;
     private ExportPresenter exportPresenter;
     private RadioButton exportRangeButton;
     private HomePagerAdapter homePagerAdapter;
@@ -85,7 +86,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private TextView exportDialogDateTo;
     private View bottomSheetAddDialogView;
     private FloatingActionButton fabAddReading;
-    BottomSheetBehavior bottomSheetBehavior;
     private Toolbar toolbar;
     private TabLayout tabLayout;
 
@@ -587,6 +587,11 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     public void showNoReadingsSnackBar() {
         View rootLayout = findViewById(android.R.id.content);
         Snackbar.make(rootLayout, getString(R.string.activity_export_no_readings_snackbar), Snackbar.LENGTH_SHORT).show();
+    }
+
+    public void showExportError() {
+        View rootLayout = findViewById(android.R.id.content);
+        Snackbar.make(rootLayout, getString(R.string.activity_export_issue_generic), Snackbar.LENGTH_SHORT).show();
     }
 
     private void showSnackBar(String text, int lengthLong) {
