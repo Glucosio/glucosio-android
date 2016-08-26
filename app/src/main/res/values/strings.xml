@@ -352,6 +352,7 @@
     <string name="fragment_overview_graph_export_true">Screenshot saved to gallery</string>
     <string name="fragment_overview_graph_export_false">Error saving screenshot to gallery</string>
     <string name="dialog_export_range">Export range</string>
+    <string name="activity_export_issue_generic">There was a problem exporting the readings. Please try again.</string>
     <string name="activity_export_no_readings_snackbar">No readings to export.</string>
     <string name="wear_new_reading">New reading added</string>
     <string name="dialog_add_weight">Weight</string>

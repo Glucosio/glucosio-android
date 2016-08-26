@@ -617,6 +617,11 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         Snackbar.make(rootLayout, getString(R.string.activity_export_no_readings_snackbar), Snackbar.LENGTH_SHORT).show();
     }
 
+    public void showExportError() {
+        View rootLayout = findViewById(android.R.id.content);
+        Snackbar.make(rootLayout, getString(R.string.activity_export_issue_generic), Snackbar.LENGTH_SHORT).show();
+    }
+
     private void showSnackBar(String text, int lengthLong) {
         View rootLayout = findViewById(android.R.id.content);
         Snackbar.make(rootLayout, text, lengthLong).show();
