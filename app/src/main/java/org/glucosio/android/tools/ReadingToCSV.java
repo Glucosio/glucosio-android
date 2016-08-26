@@ -51,26 +51,26 @@ public class ReadingToCSV {
                 FileOutputStream fileOutputStream = new FileOutputStream(file);
                 OutputStreamWriter osw = new OutputStreamWriter(fileOutputStream);
 
-                // Export Structure
-                // Concentration | Measured | Date | Time | Notes | Unit of Measurement
-
-                osw.append(context.getResources().getString(R.string.dialog_add_concentration));
-                osw.append(',');
-
-                osw.append(context.getResources().getString(R.string.dialog_add_measured));
-                osw.append(',');
-
+                // CSV Structure
+                // Date | Time | Concentration | Unit | Measured | Notes
                 osw.append(context.getResources().getString(R.string.dialog_add_date));
                 osw.append(',');
 
                 osw.append(context.getResources().getString(R.string.dialog_add_time));
                 osw.append(',');
 
-                osw.append(context.getResources().getString(R.string.dialog_add_notes));
+                osw.append(context.getResources().getString(R.string.dialog_add_concentration));
                 osw.append(',');
 
                 osw.append(context.getResources().getString(R.string.helloactivity_spinner_preferred_glucose_unit));
+                osw.append(',');
+
+                osw.append(context.getResources().getString(R.string.dialog_add_measured));
+                osw.append(',');
+
+                osw.append(context.getResources().getString(R.string.dialog_add_notes));
                 osw.append('\n');
+
 
                 FormatDateTime dateTool = new FormatDateTime(context);
 
@@ -78,48 +78,48 @@ public class ReadingToCSV {
                 if ("mg/dL".equals(um)) {
                     for (int i = 0; i < readings.size(); i++) {
                         GlucoseReading reading = readings.get(i);
-
-                        osw.append(reading.getReading() + "");
-                        osw.append(',');
-
-                        osw.append(reading.getReading_type() + "");
-                        osw.append(',');
-
                         osw.append(dateTool.convertRawDate(reading.getCreated() + ""));
                         osw.append(',');
 
                         osw.append(dateTool.convertRawTime(reading.getCreated() + ""));
                         osw.append(',');
 
-                        osw.append(reading.getNotes());
+                        osw.append(reading.getReading() + "");
                         osw.append(',');
 
                         osw.append("mg/dL");
+                        osw.append(',');
+
+                        osw.append(reading.getReading_type() + "");
+                        osw.append(',');
+
+                        osw.append(reading.getNotes());
                         osw.append('\n');
+
                     }
                 } else {
                     GlucosioConverter converter = new GlucosioConverter();
 
                     for (int i = 0; i < readings.size(); i++) {
                         GlucoseReading reading = readings.get(i);
-
-                        osw.append(converter.glucoseToMmolL(reading.getReading()) + "");
-                        osw.append(',');
-
-                        osw.append(reading.getReading_type() + "");
-                        osw.append(',');
-
                         osw.append(dateTool.convertRawDate(reading.getCreated() + ""));
                         osw.append(',');
 
                         osw.append(dateTool.convertRawTime(reading.getCreated() + ""));
                         osw.append(',');
 
-                        osw.append(reading.getNotes());
+                        osw.append(converter.glucoseToMmolL(reading.getReading()) + "");
                         osw.append(',');
 
                         osw.append("mmol/L");
+                        osw.append(',');
+
+                        osw.append(reading.getReading_type() + "");
+                        osw.append(',');
+
+                        osw.append(reading.getNotes());
                         osw.append('\n');
+
                     }
                 }
 
