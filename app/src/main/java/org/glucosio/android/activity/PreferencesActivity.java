@@ -209,13 +209,23 @@ public class PreferencesActivity extends AppCompatActivity {
             diabetesTypePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    if (newValue.toString().equals(getResources().getString(R.string.helloactivity_spinner_diabetes_type_1))) {
+                    String[] typesArray = getResources().getStringArray(R.array.helloactivity_diabetes_type);
+                    String selectedType = newValue.toString();
+
+                    if (selectedType.equals(typesArray[0])) {
                         updatedUser.setD_type(1);
                         updateDB();
-                    } else {
+                    } else if (selectedType.equals(typesArray[1])) {
                         updatedUser.setD_type(2);
                         updateDB();
+                    } else if (selectedType.equals(typesArray[2])) {
+                        updatedUser.setD_type(3);
+                        updateDB();
+                    } else {
+                        updatedUser.setD_type(4);
+                        updateDB();
                     }
+
                     return true;
                 }
             });
@@ -409,7 +419,8 @@ public class PreferencesActivity extends AppCompatActivity {
             dB.updateUser(updatedUser);
             agePref.setSummary(user.getAge() + "");
             genderPref.setSummary(user.getGender() + "");
-            diabetesTypePref.setSummary(getResources().getString(R.string.glucose_reading_type) + " " + user.getD_type());
+
+            diabetesTypePref.setSummary(getResources().getStringArray(R.array.helloactivity_diabetes_type)[user.getD_type() - 1]);
             unitPrefGlucose.setSummary(getGlucoseUnitValue(user.getPreferred_unit()));
             unitPrefA1c.setSummary(getA1CUnitValue(user.getPreferred_unit_a1c()));
             unitPrefWeight.setSummary(getUnitWeight(user.getPreferred_unit_weight()));
