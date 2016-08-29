@@ -69,7 +69,7 @@
         <item>@string/helloactivity_spinner_preferred_glucose_unit_2</item>
     </string-array>
 
-    <string name="preferences_spinner_preferred_a1c_unit">Preferred A1C unit</string>
+    <string name="preferences_spinner_preferred_a1c_unit">Preferred HbA1c unit</string>
     <string name="preferences_spinner_preferred_a1c_unit_1">percentage</string>
     <string name="preferences_spinner_preferred_a1c_unit_2">mmol/mol</string>
 
@@ -159,7 +159,7 @@
     <string name="preferences_about">About</string>
     <string name="preferences_experimental_title" translatable="false">Here be dragons :/</string>
     <string name="preferences_experimental">These features are experimental and may not fully work and are for early testing by users. Remember that you can shake your phone to send us feedback.</string>
-    <string name="version" translatable="false">1.2.0 (Chutney)</string>
+    <string name="version" translatable="false">1.2.1 (Chutney)</string>
     <string name="preferences_version">Version</string>
     <string name="preferences_coming_soon">Coming soon...</string>
     <string name="preferences_terms">Terms of use</string>
@@ -180,7 +180,7 @@
         <item>Sugar free doesn’t really mean sugar free. It means 0.5 grams (g) of sugar per serving, so be careful to not indulge in too many sugar free items.</item>
         <item>Moving toward a healthy weight helps control blood sugars. Your doctor, a dietitian, and a fitness trainer can get you started on a plan that will work for you.</item>
         <item>Checking your blood level and tracking it in an app like Glucosio twice a day will help you be aware of outcomes from food and lifestyle choices.</item>
-        <item>Get A1c blood tests to find out your average blood sugar for the past 2 to 3 months. Your doctor should tell you how frequently this test will be needed to be performed.</item>
+        <item>Get HbA1c blood tests to find out your average blood sugar for the past 2 to 3 months. Your doctor should tell you how frequently this test will be needed to be performed.</item>
         <item>Tracking how many carbohydrates you consume can be just as important as checking blood levels since carbohydrates influence blood glucose levels. Talk to your doctor or a dietician about carbohydrate intake.</item>
         <item>Controlling blood pressure, cholesterol, and triglyceride levels is important since diabetics are susceptible to heart disease.</item>
         <item>There are several diet approaches you can take to eating healthier and helping improve your diabetes outcomes. Seek advice from a dietician on what will work best for you and your budget.</item>
@@ -215,8 +215,8 @@
     <string name="assistant_reading_desc">Be sure to regularly add your glucose readings so we can help you track your glucose levels over time.</string>
     <string name="assistant_export_title">Export your data</string>
     <string name="assistant_export_desc">Share your data with your doctor or backup your data to Google Drive using the export feature.</string>
-    <string name="assistant_calculator_a1c_title">Calculate A1C</string>
-    <string name="assistant_calculator_a1c_desc">Glucosio\'s built–in A1C calculator is now available to use in the navigation drawer. Enter your average blood glucose and save the calculated A1C value instantly.</string>
+    <string name="assistant_calculator_a1c_title">Calculate HbA1c</string>
+    <string name="assistant_calculator_a1c_desc">Glucosio\'s built–in HbA1c calculator is now available to use in the navigation drawer. Enter your average blood glucose and save the calculated HbA1c value instantly.</string>
 
     <string-array name="assistant_titles" translatable="false">
         <item>@string/assistant_calculator_a1c_title</item>
@@ -352,6 +352,7 @@
     <string name="fragment_overview_graph_export_true">Screenshot saved to gallery</string>
     <string name="fragment_overview_graph_export_false">Error saving screenshot to gallery</string>
     <string name="dialog_export_range">Export range</string>
+    <string name="activity_export_issue_generic">There was a problem exporting the readings. Please try again.</string>
     <string name="activity_export_no_readings_snackbar">No readings to export.</string>
     <string name="wear_new_reading">New reading added</string>
     <string name="dialog_add_weight">Weight</string>
@@ -361,15 +362,15 @@
     <string name="dialog_add_cholesterol_total">Total Cholesterol</string>
     <string name="dialog_add_cholesterol_ldl">LDL Cholesterol</string>
     <string name="dialog_add_cholesterol_hdl">HDL Cholesterol</string>
-    <string name="dialog_add_hb1ac">HBA1C</string>
+    <string name="dialog_add_hb1ac">HbA1c</string>
     <string name="title_activity_add_glucose">Add Glucose reading</string>
     <string name="title_activity_add_glucose_edit">Edit Glucose reading</string>
     <string name="title_activity_add_weight">Add Body Weight</string>
     <string name="title_activity_add_weight_edit">Edit Body Weight</string>
     <string name="title_activity_add_cholesterol">Add Cholesterol Level</string>
     <string name="title_activity_add_cholesterol_edit">Edit Cholesterol Level</string>
-    <string name="title_activity_add_hb1ac">Add HBA1C</string>
-    <string name="title_activity_add_hb1ac_edit">Edit HBA1C</string>
+    <string name="title_activity_add_hb1ac">Add HbA1c</string>
+    <string name="title_activity_add_hb1ac_edit">Edit HbA1c</string>
     <string name="title_activity_add_ketone">Add Ketones</string>
     <string name="title_activity_add_ketone_edit">Edit Ketones</string>
     <string name="title_activity_add_pressure">Add Blood Pressure</string>
@@ -379,7 +380,7 @@
     <string name="fab_ketones">Ketones</string>
     <string name="fab_pressure">Blood Pressure</string>
     <string name="fab_cholesterol">Cholesterol Level</string>
-    <string name="fab_HB1AC">HBA1C Reading</string>
+    <string name="fab_HB1AC">HbA1c Reading</string>
     <string name="fab_glucose">Blood Glucose Level</string>
     <string name="dialog_error_duplicate">You already have an entry for this time. Please remove it before adding a correction.</string>
     <string name="freestylelibre_nfc_ready">Please, put your phone on the sensor and do not move until it vibrates.</string>
@@ -388,12 +389,12 @@
     <string name="dialog_add_glucose_freestylelibre">Add from FreeStyle Libre®</string>
     <string name="freestylelibre_nfc_error">Error opening NFC connection!</string>
     <string name="dialog_add_glucose_freestylelibre_success">Successfully added reading from FreeStyle Libre®</string>
-    <string name="overview_hb1ac_error_no_data">Not enough data to calculate HBA1C</string>
-    <string name="overview_hb1ac">HBA1C:</string>
+    <string name="overview_hb1ac_error_no_data">Not enough data to calculate HbA1c</string>
+    <string name="overview_hb1ac">HbA1c:</string>
     <string name="dialog_add_glucose_freestylelibre_added">Added from your FreeStyle Libre®</string>
     <string name="activity_converter_a1c_glucose">AVERAGE BLOOD GLUCOSE LEVEL</string>
-    <string name="activity_converter_a1c">A1C</string>
-    <string name="activity_converter_title">A1C Calculator</string>
+    <string name="activity_converter_a1c">HbA1c</string>
+    <string name="activity_converter_title">HbA1c Calculator</string>
     <string name="activity_converter_save">SAVE</string>
     <string name="menu_support">Support</string>
     <string name="menu_support_title">How can we help you?</string>
@@ -402,7 +403,7 @@
     <string name="menu_support_forum">Support Forum</string>
     <string name="notification_reminder_glucose">It is time to log your blood glucose level!</string>
     <string name="notification_reminder_medication">It is time to take your medication!</string>
-    <string name="overview_hb1ac_info">This is just an estimate and is calculated using the averages of the last month of readings. While this estimate uses a widely accepted formula for HbA1C estimation we encourage users to only use this as an estimate.</string>
+    <string name="overview_hb1ac_info">This is just an estimate and is calculated using the averages of the last month of readings. While this estimate uses a widely accepted formula for HbA1c estimation we encourage users to only use this as an estimate.</string>
     <string name="dialog_add_notes">Notes</string>
     <string name="sidebar_backup_export">Backup &amp; Export</string>
     <string name="menu_backup_backup">Backup on Google Drive</string>

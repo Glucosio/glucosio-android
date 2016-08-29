@@ -25,6 +25,7 @@ import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.FileProvider;
 import android.util.Log;
@@ -108,7 +109,13 @@ public class ExportPresenter {
                             readingsToExport = dB.getGlucoseReadings(realm, fromDate.getTime(), toDate.getTime());
                         }
 
-                        return csv.createCSVFile(realm, readingsToExport, preferredUnit);
+                        if (dirExists()) {
+                            Log.i("glucosio", "Dir exists");
+                            return csv.createCSVFile(realm, readingsToExport, preferredUnit);
+                        } else {
+                            Log.i("glucosio", "Dir NOT exists");
+                            return null;
+                        }
                     }
 
                     @Override
@@ -120,7 +127,7 @@ public class ExportPresenter {
                             activity.showShareDialog(uri);
                         } else {
                             //TODO: Show error SnackBar
-                            activity.showNoReadingsSnackBar();
+                            activity.showExportError();
                         }
                     }
                 }.execute();
@@ -128,6 +135,11 @@ public class ExportPresenter {
         } else {
             activity.showNoReadingsSnackBar();
         }
+    }
+
+    private boolean dirExists() {
+        final File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/glucosio");
+        return file.exists() || file.mkdirs();
     }
 
     private boolean hasStoragePermissions(Activity activity) {
