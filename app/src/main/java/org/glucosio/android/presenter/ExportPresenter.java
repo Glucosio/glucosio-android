@@ -142,16 +142,6 @@ public class ExportPresenter {
         return file.exists() || file.mkdirs();
     }
 
-    private boolean arePermissionsGranted() {
-        if (hasStoragePermissions(activity)) {
-            File glucosioDirectory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/glucosio");
-            glucosioDirectory.mkdirs();
-            return glucosioDirectory.exists();
-        } else {
-            return false;
-        }
-    }
-
     private boolean hasStoragePermissions(Activity activity) {
         // Check if we have write permission
         int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
