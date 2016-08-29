@@ -29,7 +29,6 @@ import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.FileProvider;
 import android.util.Log;
-import android.widget.Toast;
 
 import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.db.DatabaseHandler;
@@ -141,16 +140,6 @@ public class ExportPresenter {
     private boolean dirExists() {
         final File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/glucosio");
         return file.exists() || file.mkdirs();
-    }
-
-    private boolean arePermissionsGranted() {
-        if (hasStoragePermissions(activity)) {
-            File glucosioDirectory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/glucosio");
-            glucosioDirectory.mkdirs();
-            return glucosioDirectory.exists();
-        } else {
-            return false;
-        }
     }
 
     private boolean hasStoragePermissions(Activity activity) {
