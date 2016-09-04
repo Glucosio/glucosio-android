@@ -5,7 +5,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.TextView;
 
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
@@ -14,7 +13,6 @@ import org.glucosio.android.R;
 import org.glucosio.android.presenter.RemindersPresenter;
 import org.glucosio.android.tools.FormatDateTime;
 
-import java.text.DecimalFormat;
 import java.util.Calendar;
 
 public class RemindersActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
@@ -40,22 +38,25 @@ public class RemindersActivity extends AppCompatActivity implements TimePickerDi
         addFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Open Time Picker on FAB click
+                boolean is24HourFormat = android.text.format.DateFormat.is24HourFormat(getApplicationContext());
+                Calendar cal = presenter.getCalendar();
 
+                TimePickerDialog tpd = TimePickerDialog.newInstance(
+                        RemindersActivity.this,
+                        cal.get(Calendar.HOUR_OF_DAY),
+                        cal.get(Calendar.MINUTE),
+                        is24HourFormat);
+                tpd.show(getFragmentManager(), "Timepickerdialog");
             }
         });
-
-
     }
 
     @Override
     public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int seconds) {
-        TextView addTime = (TextView) findViewById(R.id.dialog_add_time);
-        DecimalFormat df = new DecimalFormat("00");
-
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.HOUR_OF_DAY, hourOfDay);
         cal.set(Calendar.MINUTE, minute);
         FormatDateTime formatDateTime = new FormatDateTime(getApplicationContext());
-        addTime.setText(formatDateTime.getTime(cal));
     }
 }

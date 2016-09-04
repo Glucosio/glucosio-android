@@ -53,9 +53,14 @@ public class Migration implements RealmMigration {
          int custom_range_min;
          int custom_range_max;
 
+         class Reminder
+         @PrimaryKey long id;
+         Date alarmTime;
+         boolean oneTime;
+         String metric;
+
          class CholesterolReading
          @PrimaryKey long id;
-
          int totalReading;
          int LDLReading;
          int HDLReading;
@@ -63,7 +68,6 @@ public class Migration implements RealmMigration {
 
          class GlucoseReading
          @PrimaryKey long id;
-
          int reading;
          String reading_type;
          String notes;
@@ -72,20 +76,17 @@ public class Migration implements RealmMigration {
 
          class KetoneReading
          @PrimaryKey long id;
-
          double reading;
          Date created;
 
          class PressureReading
          @PrimaryKey long id;
-
          int minReading;
          int maxReading;
          Date created;
 
          class WeightReading
          @PrimaryKey long id;
-
          int reading;
          Date created;
 
@@ -158,6 +159,16 @@ public class Migration implements RealmMigration {
                             obj.set("preferred_unit_weight", "kilograms");
                         }
                     });
+            oldVersion++;
+        }
+
+        if (oldVersion == 3) {
+            // Add Reminders
+            RealmObjectSchema remindersSchema = schema.create("Reminders")
+                    .addField("id", Long.class, FieldAttribute.PRIMARY_KEY, FieldAttribute.REQUIRED)
+                    .addField("metric", String.class, FieldAttribute.REQUIRED)
+                    .addField("alarmTime", Date.class)
+                    .addField("oneTime", Boolean.class);
             oldVersion++;
         }
     }
