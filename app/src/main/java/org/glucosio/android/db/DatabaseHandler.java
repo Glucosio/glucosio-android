@@ -90,22 +90,38 @@ public class DatabaseHandler {
         realm.commitTransaction();
     }
 
-    public void addReminder(Reminder reminder) {
-        realm.beginTransaction();
-        realm.copyToRealm(reminder);
-        realm.commitTransaction();
+    public boolean addReminder(Reminder reminder) {
+        // Check for duplicates first
+        if (getReminder(reminder.getId()) == null) {
+            realm.beginTransaction();
+            realm.copyToRealm(reminder);
+            realm.commitTransaction();
+            return true;
+        }
+
+        return false;
     }
 
     public void updateReminder(Reminder reminder) {
         realm.beginTransaction();
-        realm.copyToRealm(reminder);
+        realm.copyToRealmOrUpdate(reminder);
         realm.commitTransaction();
     }
 
-    public void deleteRemider(Reminder reminder) {
+    public void deleteReminder(Reminder reminder) {
         realm.beginTransaction();
         reminder.deleteFromRealm();
         realm.commitTransaction();
+    }
+
+    public void deleteReminder(long id) {
+        deleteReminder(getReminder(id));
+    }
+
+    public Reminder getReminder(long id) {
+        return realm.where(Reminder.class)
+                .equalTo("id", id)
+                .findFirst();
     }
 
     public List<Reminder> getReminders() {

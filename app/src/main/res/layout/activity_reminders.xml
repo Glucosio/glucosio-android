@@ -5,13 +5,25 @@
     android:id="@+id/activity_reminders"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context="org.glucosio.android.activity.RemindersActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/activity_main_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@color/glucosio_pink"
+        android:minHeight="?android:attr/actionBarSize"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:titleTextAppearance="@style/Toolbar.WhiteText" />
 
     <ListView
         android:id="@+id/activity_reminders_listview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_below="@id/activity_main_toolbar" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/activity_reminders_fab_add"
@@ -21,8 +33,8 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_margin="16dp"
-        android:clickable="true"
+        android:onClick="onFabClicked"
+        android:visibility="invisible"
         app:backgroundTint="@color/glucosio_accent"
-        app:fabSize="normal"
         app:srcCompat="@drawable/ic_add_black_24dp" />
 </RelativeLayout>

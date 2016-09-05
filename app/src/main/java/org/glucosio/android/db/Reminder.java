@@ -17,7 +17,8 @@ public class Reminder extends RealmObject {
     public Reminder() {
     }
 
-    public Reminder(Date alarmTime, String metric, boolean oneTime, boolean active) {
+    public Reminder(long id, Date alarmTime, String metric, boolean oneTime, boolean active) {
+        this.id = id;
         this.alarmTime = alarmTime;
         this.metric = metric;
         this.oneTime = oneTime;

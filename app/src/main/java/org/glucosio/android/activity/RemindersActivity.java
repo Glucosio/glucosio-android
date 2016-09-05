@@ -1,20 +1,23 @@
 package org.glucosio.android.activity;
 
 import android.os.Bundle;
+import android.support.design.widget.BottomSheetDialog;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import org.glucosio.android.R;
-import org.glucosio.android.adapter.RemindersAdapter;
-import org.glucosio.android.db.DatabaseHandler;
+import org.glucosio.android.db.Reminder;
 import org.glucosio.android.presenter.RemindersPresenter;
-import org.glucosio.android.tools.FormatDateTime;
+import org.glucosio.android.tools.AnimationTools;
 
 import java.util.Calendar;
 
@@ -36,9 +39,11 @@ public class RemindersActivity extends AppCompatActivity implements TimePickerDi
             setSupportActionBar(toolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setElevation(2);
+            getSupportActionBar().setTitle(getResources().getString(R.string.activity_reminders_title));
         }
 
         addFab = (FloatingActionButton) findViewById(R.id.activity_reminders_fab_add);
+
         addFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,9 +60,23 @@ public class RemindersActivity extends AppCompatActivity implements TimePickerDi
             }
         });
 
-        DatabaseHandler db = new DatabaseHandler(this);
-        RemindersAdapter adapter = new RemindersAdapter(this, R.layout.activity_reminder_item, db.getReminders());
-        listView.setAdapter(adapter);
+        listView = (ListView) findViewById(R.id.activity_reminders_listview);
+        listView.setAdapter(presenter.getAdapter());
+        addFab.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                AnimationTools.startCircularReveal(addFab);
+            }
+        }, 600);
+    }
+
+    public void updateReminder(Reminder reminder) {
+        presenter.updateReminder(reminder);
+    }
+
+    public void updateRemindersList() {
+        listView.setAdapter(presenter.getAdapter());
+        listView.invalidate();
     }
 
     @Override
@@ -65,6 +84,42 @@ public class RemindersActivity extends AppCompatActivity implements TimePickerDi
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.HOUR_OF_DAY, hourOfDay);
         cal.set(Calendar.MINUTE, minute);
-        FormatDateTime formatDateTime = new FormatDateTime(getApplicationContext());
+        // Id is HOURS+MINUTES to avoid duplicates
+        String concatenatedId = hourOfDay + "" + minute;
+        // Metric is always glucose until I write support for other metrics so...
+        // TODO: Add Reminders for other metrics
+        // Also oneTime is always set to false until I implement one time alarms
+        // TODO: Implement one time alarms
+        presenter.addReminder(Long.parseLong(concatenatedId), cal.getTime(), "glucose", false, true);
+    }
+
+    public void showDuplicateError() {
+        View parentLayout = findViewById(R.id.activity_reminders_root_view);
+        Snackbar.make(parentLayout, "This reminder already exists.", Snackbar.LENGTH_SHORT).show();
+    }
+
+    public void showBottomSheetDialog(final long id) {
+        final BottomSheetDialog mBottomSheetDialog = new BottomSheetDialog(this);
+        View sheetView = getLayoutInflater().inflate(R.layout.fragment_reminders_bottom_sheet, null);
+        LinearLayout delete = (LinearLayout) sheetView.findViewById(R.id.fragment_history_bottom_sheet_delete);
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                presenter.deleteReminder(id);
+                updateRemindersList();
+                mBottomSheetDialog.dismiss();
+            }
+        });
+
+        mBottomSheetDialog.setContentView(sheetView);
+        mBottomSheetDialog.show();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        if (menuItem.getItemId() == android.R.id.home) {
+            finish();
+        }
+        return super.onOptionsItemSelected(menuItem);
     }
 }
