@@ -90,6 +90,65 @@ public class DatabaseHandler {
         realm.commitTransaction();
     }
 
+    public void addReminder(Reminder reminder) {
+        realm.beginTransaction();
+        realm.copyToRealm(reminder);
+        realm.commitTransaction();
+    }
+
+    public void updateReminder(Reminder reminder) {
+        realm.beginTransaction();
+        realm.copyToRealm(reminder);
+        realm.commitTransaction();
+    }
+
+    public void deleteRemider(Reminder reminder) {
+        realm.beginTransaction();
+        reminder.deleteFromRealm();
+        realm.commitTransaction();
+    }
+
+    public List<Reminder> getReminders() {
+        RealmResults<Reminder> results =
+                realm.where(Reminder.class)
+                        .findAllSorted("alarmTime", Sort.DESCENDING);
+        ArrayList<Reminder> reminders = new ArrayList<>();
+        for (int i = 0; i < results.size(); i++) {
+            reminders.add(results.get(i));
+        }
+        return reminders;
+    }
+
+    public ArrayList<Date> getRemindersDatesAsArray() {
+        List<Reminder> readings = getReminders();
+        ArrayList<Date> datesArray = new ArrayList<Date>();
+        int i;
+
+        for (i = 0; i < readings.size(); i++) {
+            Date reading;
+            Reminder reminder = readings.get(i);
+            reading = reminder.getAlarmTime();
+            datesArray.add(reading);
+        }
+        return datesArray;
+    }
+
+    public ArrayList<String> getRemindersDatesStringAsArray() {
+        List<Reminder> readings = getReminders();
+        ArrayList<String> datesArray = new ArrayList<String>();
+        int i;
+        DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+
+        for (i = 0; i < readings.size(); i++) {
+            String reading;
+            Reminder reminder = readings.get(i);
+            reading = inputFormat.format(reminder.getAlarmTime());
+            datesArray.add(reading);
+        }
+
+        return datesArray;
+    }
+
     public boolean addGlucoseReading(GlucoseReading reading) {
         // generate record Id
         String id = generateIdFromDate(reading.getCreated(), reading.getReading());

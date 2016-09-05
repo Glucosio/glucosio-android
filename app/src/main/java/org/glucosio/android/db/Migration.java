@@ -168,6 +168,7 @@ public class Migration implements RealmMigration {
                     .addField("id", Long.class, FieldAttribute.PRIMARY_KEY, FieldAttribute.REQUIRED)
                     .addField("metric", String.class, FieldAttribute.REQUIRED)
                     .addField("alarmTime", Date.class)
+                    .addField("active", Boolean.class)
                     .addField("oneTime", Boolean.class);
             oldVersion++;
         }

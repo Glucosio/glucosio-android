@@ -5,11 +5,14 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ListView;
 
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import org.glucosio.android.R;
+import org.glucosio.android.adapter.RemindersAdapter;
+import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.presenter.RemindersPresenter;
 import org.glucosio.android.tools.FormatDateTime;
 
@@ -17,8 +20,9 @@ import java.util.Calendar;
 
 public class RemindersActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
 
-    FloatingActionButton addFab;
-    RemindersPresenter presenter;
+    private FloatingActionButton addFab;
+    private RemindersPresenter presenter;
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +54,10 @@ public class RemindersActivity extends AppCompatActivity implements TimePickerDi
                 tpd.show(getFragmentManager(), "Timepickerdialog");
             }
         });
+
+        DatabaseHandler db = new DatabaseHandler(this);
+        RemindersAdapter adapter = new RemindersAdapter(this, R.layout.activity_reminder_item, db.getReminders());
+        listView.setAdapter(adapter);
     }
 
     @Override
