@@ -10,6 +10,7 @@ import org.glucosio.android.db.Reminder;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class RemindersPresenter {
 
@@ -46,5 +47,12 @@ public class RemindersPresenter {
 
     public void deleteReminder(long id) {
         db.deleteReminder(id);
+    }
+
+    public void saveReminders() {
+        List<Date> activeDates = db.getActiveReminders();
+
+
+        activity.finish();
     }
 }

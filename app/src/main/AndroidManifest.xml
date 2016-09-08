@@ -201,8 +201,8 @@
         </service>
 
         <receiver
-            android:name="com.yourapp.BootBroadcastReceiver"
-            android:enabled="true">
+            android:name="org.glucosio.android.receivers.BootBroadcastReceiver"
+            android:enabled="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>

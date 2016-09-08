@@ -118,6 +118,20 @@ public class DatabaseHandler {
         deleteReminder(getReminder(id));
     }
 
+    public List<Date> getActiveReminders(){
+        ArrayList<Date> activeAlarmsDates = new ArrayList<>();
+        RealmResults<Reminder> activeRemindersList =
+                realm.where(Reminder.class)
+                        .equalTo("active", true)
+                        .findAll();
+
+        for (int i=0; i<activeRemindersList.size(); i++){
+            activeAlarmsDates.add(activeRemindersList.get(i).getAlarmTime());
+        }
+
+        return activeAlarmsDates;
+    }
+
     public Reminder getReminder(long id) {
         return realm.where(Reminder.class)
                 .equalTo("id", id)
