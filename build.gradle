@@ -17,9 +17,7 @@
  *
  *
  */
-
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-
 buildscript {
 
     repositories {
@@ -40,7 +38,6 @@ buildscript {
         // in the individual module build.gradle files
     }
 }
-
 allprojects {
     repositories {
         jcenter()
@@ -60,7 +57,6 @@ allprojects {
 
     apply plugin: 'com.github.ben-manes.versions'
 }
-
-task wrapper( type: Wrapper ) {
+task wrapper(type: Wrapper) {
     gradleVersion = '2.13'
 }
