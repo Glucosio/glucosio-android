@@ -43,6 +43,9 @@ import org.glucosio.android.tools.Preferences;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 public class GlucosioApplication extends Application {
+
+    private static GlucosioApplication sInstance;
+
     @Nullable
     private Analytics analytics;
 
@@ -55,7 +58,7 @@ public class GlucosioApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
+        sInstance = this;
         initFont();
         initLanguage();
     }
@@ -151,6 +154,13 @@ public class GlucosioApplication extends Application {
         }
 
         return preferences;
+    }
+
+    public static GlucosioApplication getInstance() {
+        if (sInstance == null) {
+            sInstance = new GlucosioApplication();
+        }
+        return sInstance;
     }
 
     @NonNull

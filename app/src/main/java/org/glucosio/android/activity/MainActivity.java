@@ -70,13 +70,14 @@ import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.presenter.ExportPresenter;
 import org.glucosio.android.presenter.MainPresenter;
+import org.glucosio.android.view.ExportView;
 
 import java.util.Calendar;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
-public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, ExportView {
 
     private static final int REQUEST_INVITE = 1;
     private static final String INTENT_EXTRA_PAGER = "pager";
@@ -258,7 +259,37 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private void initPresenters(GlucosioApplication application) {
         final DatabaseHandler dbHandler = application.getDBHandler();
         presenter = new MainPresenter(this, dbHandler);
-        exportPresenter = new ExportPresenter(this, dbHandler);
+        exportPresenter = new ExportPresenter(this);
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
+
+    @Override
+    public void onExportStarted(int numberOfItemsToExport) {
+        showExportedSnackBar(numberOfItemsToExport); // TODO: 09/09/16 Instead of calling this method, move logic to this callback ?
+        Log.d("Activity", "onExportStarted(): you might want to track this event");
+    }
+
+    @Override
+    public void onNoItemsToExport() {
+        showNoReadingsSnackBar(); // TODO: 09/09/16 Instead of calling this method, move logic to this callback ?
+        Log.e("Activity", "onNoItemsToExport(): you might want to track this event");
+    }
+
+    @Override
+    public void onExportFinish(Uri uri) {
+        showShareDialog(uri); // TODO: 09/09/16 Instead of calling this method, move logic to this callback ?
+        Log.e("Activity", "onExportFinish(): you might want to track this event");
+    }
+
+    @Override
+    public void onExportError() {
+        showExportError(); // TODO: 09/09/16 Instead of calling this method, move logic to this callback ?
+        Log.e("Activity", "onExportError(): you might want to track this event");
     }
 
     private void openA1CCalculator() {
@@ -292,7 +323,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         finishActivity();
     }
 
-    public void finishActivity(){
+    public void finishActivity() {
         // dismiss dialog if still expanded
         bottomSheetAddDialog.dismiss();
         // then close activity
@@ -710,10 +741,5 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
     private void showErrorDialogPlayServices() {
         Toast.makeText(getApplicationContext(), R.string.activity_main_error_play_services, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

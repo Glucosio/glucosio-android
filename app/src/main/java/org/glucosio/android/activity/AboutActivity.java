@@ -33,6 +33,7 @@ import android.widget.Toast;
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.analytics.Analytics;
+import org.glucosio.android.presenter.ExportPresenter;
 
 import java.util.Locale;
 
@@ -47,6 +48,9 @@ public class AboutActivity extends AppCompatActivity {
 
         getFragmentManager().beginTransaction()
                 .replace(R.id.aboutPreferencesFrame, new MyPreferenceFragment()).commit();
+
+        ExportPresenter exportPresenter = new ExportPresenter(this);
+        exportPresenter.getFromDay();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(getString(R.string.preferences_about_glucosio));
