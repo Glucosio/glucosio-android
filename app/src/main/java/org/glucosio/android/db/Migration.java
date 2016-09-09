@@ -164,7 +164,7 @@ public class Migration implements RealmMigration {
 
         if (oldVersion == 3) {
             // Add Reminders
-            RealmObjectSchema remindersSchema = schema.create("Reminders")
+            RealmObjectSchema remindersSchema = schema.create("Reminder")
                     .addField("id", Long.class, FieldAttribute.PRIMARY_KEY, FieldAttribute.REQUIRED)
                     .addField("metric", String.class, FieldAttribute.REQUIRED)
                     .addField("alarmTime", Date.class)

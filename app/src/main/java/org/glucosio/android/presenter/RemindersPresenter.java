@@ -7,10 +7,10 @@ import org.glucosio.android.activity.RemindersActivity;
 import org.glucosio.android.adapter.RemindersAdapter;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.Reminder;
+import org.glucosio.android.tools.GlucosioAlarmManager;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 public class RemindersPresenter {
 
@@ -50,9 +50,8 @@ public class RemindersPresenter {
     }
 
     public void saveReminders() {
-        List<Date> activeDates = db.getActiveReminders();
-
-
+        GlucosioAlarmManager alarmManager = new GlucosioAlarmManager(activity.getApplicationContext());
+        alarmManager.setAlarms();
         activity.finish();
     }
 }

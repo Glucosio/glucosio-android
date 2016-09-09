@@ -118,7 +118,7 @@ public class DatabaseHandler {
         deleteReminder(getReminder(id));
     }
 
-    public List<Date> getActiveReminders(){
+    public boolean areRemindersActive() {
         ArrayList<Date> activeAlarmsDates = new ArrayList<>();
         RealmResults<Reminder> activeRemindersList =
                 realm.where(Reminder.class)
@@ -129,7 +129,7 @@ public class DatabaseHandler {
             activeAlarmsDates.add(activeRemindersList.get(i).getAlarmTime());
         }
 
-        return activeAlarmsDates;
+        return activeAlarmsDates.size() > 0;
     }
 
     public Reminder getReminder(long id) {
