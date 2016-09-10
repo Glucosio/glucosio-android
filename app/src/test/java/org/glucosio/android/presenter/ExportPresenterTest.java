@@ -3,12 +3,9 @@ package org.glucosio.android.presenter;
 import org.glucosio.android.RobolectricTest;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
-import org.glucosio.android.view.ExportView;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.ArgumentCaptor;
-import org.mockito.Captor;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
@@ -24,21 +21,12 @@ public class ExportPresenterTest extends RobolectricTest {
 
     private static final String MOCK_NOTE_FOR_TEST = "Note for testing, this should be exported";
     private static final Integer TEST_READING_VALUE = 55;
-
-    @Mock
-    private ExportPresenter presenter;
-
-    @Mock
-    private ExportView exportView;
-
+    
     @Mock
     private DatabaseHandler dbHandlerMock;
 
     @Mock
     private GlucoseReading glucoseReadingMock;
-
-    @Captor
-    private ArgumentCaptor<GlucoseReading> glucoseReadingCaptor;
 
     @Before
     public void setUp() throws Exception {
@@ -51,12 +39,12 @@ public class ExportPresenterTest extends RobolectricTest {
 
 
     @Test
-    public void ShouldReturnNoteFromReading_WhenReadingHasNote() throws Exception {
+    public void shouldReturnNoteFromReading_WhenReadingHasNote() throws Exception {
         assertThat(glucoseReadingMock.getNotes()).matches(MOCK_NOTE_FOR_TEST);
     }
 
     @Test
-    public void ShouldReturnNotReturnNoteFromReading_WhenReadingHasNoNote() throws Exception {
+    public void shouldReturnNotReturnNoteFromReading_WhenReadingHasNoNote() throws Exception {
         when(glucoseReadingMock.getNotes()).thenReturn("");
         assertThat(glucoseReadingMock.getNotes()).doesNotMatch(MOCK_NOTE_FOR_TEST);
         assertThat(glucoseReadingMock.getNotes()).isEmpty();
