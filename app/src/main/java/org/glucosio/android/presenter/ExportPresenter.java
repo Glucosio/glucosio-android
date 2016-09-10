@@ -74,7 +74,6 @@ public class ExportPresenter {
     public void onExportClicked(final boolean isExportAll) {
 
         if (hasStoragePermissions(mActivity)) {
-//            final ReadingToCSV csv = new ReadingToCSV(GlucosioApplication.getInstance());
             final String preferredUnit = dB.getUser(1).getPreferred_unit();
             final boolean[] isEmpty = {false};
 

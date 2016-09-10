@@ -33,18 +33,20 @@ public class ExportPresenterTest extends RobolectricTest {
         initMocks(this);
         when(dbHandlerMock.getGlucoseReading(anyLong())).thenReturn(glucoseReadingMock);
         when(glucoseReadingMock.getNotes()).thenReturn(MOCK_NOTE_FOR_TEST);
-        when(glucoseReadingMock.getCreated()).thenReturn(new Date(System.currentTimeMillis()));
+        when(glucoseReadingMock.getCreated()).thenReturn(new Date());
         when(glucoseReadingMock.getReading()).thenReturn(TEST_READING_VALUE);
     }
 
 
     @Test
     public void shouldReturnNoteFromReading_WhenReadingHasNote() throws Exception {
+        // TODO: 10/09/16  
         assertThat(glucoseReadingMock.getNotes()).matches(MOCK_NOTE_FOR_TEST);
     }
 
     @Test
     public void shouldReturnNotReturnNoteFromReading_WhenReadingHasNoNote() throws Exception {
+        // TODO: 10/09/16  
         when(glucoseReadingMock.getNotes()).thenReturn("");
         assertThat(glucoseReadingMock.getNotes()).doesNotMatch(MOCK_NOTE_FOR_TEST);
         assertThat(glucoseReadingMock.getNotes()).isEmpty();

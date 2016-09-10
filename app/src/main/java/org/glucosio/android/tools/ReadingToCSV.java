@@ -34,7 +34,7 @@ import java.util.List;
 
 import io.realm.Realm;
 
-public class ReadingToCSV {
+public final class ReadingToCSV {
 
     public static String createCSVFile(Context context, Realm realm, final List<GlucoseReading> readings, String um) {
         try {
