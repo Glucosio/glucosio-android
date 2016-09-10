@@ -166,10 +166,10 @@ public class Migration implements RealmMigration {
             // Add Reminders
             RealmObjectSchema remindersSchema = schema.create("Reminder")
                     .addField("id", Long.class, FieldAttribute.PRIMARY_KEY, FieldAttribute.REQUIRED)
-                    .addField("metric", String.class, FieldAttribute.REQUIRED)
+                    .addField("metric", String.class)
                     .addField("alarmTime", Date.class)
-                    .addField("active", Boolean.class)
-                    .addField("oneTime", Boolean.class);
+                    .addField("active", Boolean.class, FieldAttribute.REQUIRED)
+                    .addField("oneTime", Boolean.class, FieldAttribute.REQUIRED);
             oldVersion++;
         }
     }
