@@ -62,6 +62,7 @@ public class RemindersActivity extends AppCompatActivity implements TimePickerDi
         });
 
         listView = (ListView) findViewById(R.id.activity_reminders_listview);
+        listView.setEmptyView(findViewById(R.id.activity_reminders_listview_empty));
         listView.setAdapter(presenter.getAdapter());
         addFab.postDelayed(new Runnable() {
             @Override

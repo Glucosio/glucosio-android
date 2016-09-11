@@ -25,6 +25,13 @@
         android:layout_height="match_parent"
         android:layout_below="@id/activity_main_toolbar" />
 
+    <TextView
+        android:id="@+id/activity_reminders_listview_empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/glucosio_activity_reminders_empty" />
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/activity_reminders_fab_add"
         android:layout_width="wrap_content"

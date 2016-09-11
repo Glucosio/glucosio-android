@@ -6,7 +6,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.widget.Toast;
 
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.Reminder;
@@ -47,8 +46,6 @@ public class GlucosioAlarmManager {
                 cal.setTime(reminder.getAlarmTime());
                 alarmMgr.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),
                         AlarmManager.INTERVAL_DAY, alarmIntent);
-
-                Toast.makeText(context, "Setting alarm" + reminder.getId(), Toast.LENGTH_LONG).show();
             } else {
                 alarmMgr.cancel(alarmIntent);
             }
