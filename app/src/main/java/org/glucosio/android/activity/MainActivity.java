@@ -259,7 +259,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private void initPresenters(GlucosioApplication application) {
         final DatabaseHandler dbHandler = application.getDBHandler();
         presenter = new MainPresenter(this, dbHandler);
-        exportPresenter = new ExportPresenter(this);
+        exportPresenter = new ExportPresenter(this, dbHandler);
     }
 
     @Override

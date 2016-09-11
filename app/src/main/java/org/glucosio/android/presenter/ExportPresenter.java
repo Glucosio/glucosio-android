@@ -30,7 +30,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.FileProvider;
 import android.util.Log;
 
-import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
 import org.glucosio.android.tools.ReadingToCSV;
@@ -61,14 +60,14 @@ public class ExportPresenter {
     private ExportView mExportView;
     private DatabaseHandler dB;
 
-    public ExportPresenter(Activity activity) {
+    public ExportPresenter(Activity activity, DatabaseHandler databaseHandler) {
         mActivity = activity;
         if (activity instanceof ExportView) {
             mExportView = (ExportView) activity;
         } else {
             throw new RuntimeException("ExportPresenter Activity must implement ExportView interface");
         }
-        dB = GlucosioApplication.getInstance().getDBHandler();
+        dB = databaseHandler;
     }
 
     public void onExportClicked(final boolean isExportAll) {
