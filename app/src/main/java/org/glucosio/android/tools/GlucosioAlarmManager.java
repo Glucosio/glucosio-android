@@ -15,10 +15,9 @@ import java.util.Calendar;
 import java.util.List;
 
 public class GlucosioAlarmManager {
-    List<Reminder> reminders;
-    Context context;
-    AlarmManager alarmMgr;
-    DatabaseHandler db;
+    private Context context;
+    private AlarmManager alarmMgr;
+    private DatabaseHandler db;
 
     public GlucosioAlarmManager(Context context) {
         this.context = context;
@@ -27,7 +26,7 @@ public class GlucosioAlarmManager {
     }
 
     public void setAlarms() {
-        reminders = db.getReminders();
+        List<Reminder> reminders = db.getReminders();
         int activeRemindersCount = 0;
 
         // Set an alarm for each date

@@ -29,7 +29,7 @@ import io.realm.RealmMigration;
 import io.realm.RealmObjectSchema;
 import io.realm.RealmSchema;
 
-public class Migration implements RealmMigration {
+class Migration implements RealmMigration {
 
     @Override
     public void migrate(final DynamicRealm realm, long oldVersion, long newVersion) {
@@ -97,28 +97,28 @@ public class Migration implements RealmMigration {
          ************************************************/
 
         if (oldVersion == 0) {
-            RealmObjectSchema weightSchema = schema.create("WeightReading")
+            schema.create("WeightReading")
                     .addField("id", Long.class, FieldAttribute.PRIMARY_KEY, FieldAttribute.REQUIRED)
                     .addField("created", Date.class)
                     .addField("reading", Integer.class, FieldAttribute.REQUIRED);
 
-            RealmObjectSchema pressureSchema = schema.create("PressureReading")
+            schema.create("PressureReading")
                     .addField("id", Long.class, FieldAttribute.PRIMARY_KEY, FieldAttribute.REQUIRED)
                     .addField("created", Date.class)
                     .addField("minReading", Integer.class, FieldAttribute.REQUIRED)
                     .addField("maxReading", Integer.class, FieldAttribute.REQUIRED);
 
-            RealmObjectSchema ketoneSchema = schema.create("KetoneReading")
+            schema.create("KetoneReading")
                     .addField("id", Long.class, FieldAttribute.PRIMARY_KEY, FieldAttribute.REQUIRED)
                     .addField("created", Date.class)
                     .addField("reading", Double.class, FieldAttribute.REQUIRED);
 
-            RealmObjectSchema HB1ACSchema = schema.create("HB1ACReading")
+            schema.create("HB1ACReading")
                     .addField("id", Long.class, FieldAttribute.PRIMARY_KEY, FieldAttribute.REQUIRED)
                     .addField("created", Date.class)
                     .addField("reading", Integer.class, FieldAttribute.REQUIRED);
 
-            RealmObjectSchema cholesterolSchema = schema.create("CholesterolReading")
+            schema.create("CholesterolReading")
                     .addField("id", Long.class, FieldAttribute.PRIMARY_KEY, FieldAttribute.REQUIRED)
                     .addField("created", Date.class)
                     .addField("totalReading", Integer.class, FieldAttribute.REQUIRED)
@@ -164,7 +164,7 @@ public class Migration implements RealmMigration {
 
         if (oldVersion == 3) {
             // Add Reminders
-            RealmObjectSchema remindersSchema = schema.create("Reminder")
+            schema.create("Reminder")
                     .addField("id", Long.class, FieldAttribute.PRIMARY_KEY, FieldAttribute.REQUIRED)
                     .addField("metric", String.class)
                     .addField("alarmTime", Date.class)

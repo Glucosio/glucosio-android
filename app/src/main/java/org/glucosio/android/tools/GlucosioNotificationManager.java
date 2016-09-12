@@ -12,8 +12,8 @@ import org.glucosio.android.R;
 import org.glucosio.android.activity.AddGlucoseActivity;
 
 public class GlucosioNotificationManager {
-    private static final String REMOTE_INPUT_KEY = "glucosio_remote_key";
-    private static final int NOTIFICATION_ID = 011;
+    //private static final String REMOTE_INPUT_KEY = "glucosio_remote_key";
+    private static final int NOTIFICATION_ID = 11;
     private Context context;
 
     public GlucosioNotificationManager(Context context) {
@@ -23,7 +23,7 @@ public class GlucosioNotificationManager {
     public void sendReminderNotification() {
         String NOTIFICATION_TITLE = "\u23f0";
         String NOTIFICATION_TEXT = context.getString(R.string.reminders_notification_text);
-        String NOTIFICATION_ACTION = context.getString(R.string.reminders_notification_action);
+        //String NOTIFICATION_ACTION = context.getString(R.string.reminders_notification_action);
 
         Intent intent = new Intent(context, AddGlucoseActivity.class);
         intent.putExtra("glucose_reminder_notification", true);

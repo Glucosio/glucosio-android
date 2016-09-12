@@ -2,7 +2,6 @@ package org.glucosio.android.receivers;
 
 import android.content.Context;
 import android.content.Intent;
-import android.widget.Toast;
 
 import org.glucosio.android.tools.GlucosioAlarmManager;
 import org.glucosio.android.tools.GlucosioNotificationManager;
