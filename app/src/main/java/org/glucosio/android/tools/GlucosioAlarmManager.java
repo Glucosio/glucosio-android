@@ -28,9 +28,7 @@ public class GlucosioAlarmManager {
 
     public void setAlarms() {
         reminders = db.getReminders();
-
-        // if there are some active alarms, start receiver to set them at boot
-        enableBootReceiver(db.areRemindersActive());
+        int activeRemindersCount = 0;
 
         // Set an alarm for each date
         for (int i = 0; i < reminders.size(); i++) {
@@ -38,10 +36,12 @@ public class GlucosioAlarmManager {
 
             Intent intent = new Intent(context, GlucosioBroadcastReceiver.class);
             intent.putExtra("metric", reminder.getMetric());
+            intent.putExtra("glucosio_reminder", true);
 
             PendingIntent alarmIntent = PendingIntent.getBroadcast(context, (int) reminder.getId(), intent, 0);
 
             if (reminder.isActive()) {
+                activeRemindersCount++;
                 Calendar cal = Calendar.getInstance();
                 cal.setTime(reminder.getAlarmTime());
                 alarmMgr.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),
@@ -50,6 +50,8 @@ public class GlucosioAlarmManager {
                 alarmMgr.cancel(alarmIntent);
             }
         }
+
+        enableBootReceiver(activeRemindersCount > 0);
     }
 
     private void enableBootReceiver(boolean value) {

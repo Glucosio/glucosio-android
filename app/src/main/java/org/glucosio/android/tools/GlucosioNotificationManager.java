@@ -29,7 +29,7 @@ public class GlucosioNotificationManager {
         intent.putExtra("glucose_reminder_notification", true);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-        Notification notification;
+        Notification.Builder notificationBuilder;
 /*
         // ADD LATER TO SUPPORT NOUGAT DIRECT REPLY
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -51,30 +51,20 @@ public class GlucosioNotificationManager {
                     .setActions(actionNotification)
                     .build();
         } else {*/
+        notificationBuilder = new Notification.Builder(context)
+                .setContentTitle(NOTIFICATION_TITLE)
+                .setContentText(NOTIFICATION_TEXT)
+                .setAutoCancel(true)
+                .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+                .setVibrate(new long[]{1000, 1000})
+                .setContentIntent(pendingIntent)
+                .setSmallIcon(R.drawable.ic_stat_glucosio);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            notification = new Notification.Builder(context)
-                    .setContentTitle(NOTIFICATION_TITLE)
-                    .setContentText(NOTIFICATION_TEXT)
-                    .setAutoCancel(true)
-                    .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
-                    .setVibrate(new long[]{1000, 1000})
-                    .setColor(context.getColor(R.color.glucosio_pink))
-                    .setContentIntent(pendingIntent)
-                    .setSmallIcon(R.drawable.ic_stat_glucosio)
-                    .build();
-        } else {
-            notification = new Notification.Builder(context)
-                    .setContentTitle(NOTIFICATION_TITLE)
-                    .setContentText(NOTIFICATION_TEXT)
-                    .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
-                    .setVibrate(new long[]{1000, 1000})
-                    .setAutoCancel(true)
-                    .setContentIntent(pendingIntent)
-                    .setSmallIcon(R.drawable.ic_stat_glucosio)
-                    .build();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            notificationBuilder.setColor(context.getColor(R.color.glucosio_pink));
         }
 
+        Notification notification = notificationBuilder.build();
         NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(context);
         notificationManagerCompat.notify(NOTIFICATION_ID, notification);
     }

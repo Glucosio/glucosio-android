@@ -119,17 +119,12 @@ public class DatabaseHandler {
     }
 
     public boolean areRemindersActive() {
-        ArrayList<Date> activeAlarmsDates = new ArrayList<>();
         RealmResults<Reminder> activeRemindersList =
                 realm.where(Reminder.class)
                         .equalTo("active", true)
                         .findAll();
 
-        for (int i=0; i<activeRemindersList.size(); i++){
-            activeAlarmsDates.add(activeRemindersList.get(i).getAlarmTime());
-        }
-
-        return activeAlarmsDates.size() > 0;
+        return activeRemindersList.size() > 0;
     }
 
     public Reminder getReminder(long id) {
@@ -142,7 +137,7 @@ public class DatabaseHandler {
         RealmResults<Reminder> results =
                 realm.where(Reminder.class)
                         .findAllSorted("alarmTime", Sort.DESCENDING);
-        ArrayList<Reminder> reminders = new ArrayList<>();
+        List<Reminder> reminders = new ArrayList<>(results.size());
         for (int i = 0; i < results.size(); i++) {
             reminders.add(results.get(i));
         }

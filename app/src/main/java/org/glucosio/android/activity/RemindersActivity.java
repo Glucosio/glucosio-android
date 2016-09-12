@@ -74,6 +74,7 @@ public class RemindersActivity extends AppCompatActivity implements TimePickerDi
 
     public void updateReminder(Reminder reminder) {
         presenter.updateReminder(reminder);
+        presenter.saveReminders();
     }
 
     public void updateRemindersList() {
@@ -97,7 +98,7 @@ public class RemindersActivity extends AppCompatActivity implements TimePickerDi
 
     public void showDuplicateError() {
         View parentLayout = findViewById(R.id.activity_reminders_root_view);
-        Snackbar.make(parentLayout, "This reminder already exists.", Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(parentLayout, R.string.activitiy_reminders_error_duplicate, Snackbar.LENGTH_SHORT).show();
     }
 
     public void showBottomSheetDialog(final long id) {
@@ -118,17 +119,10 @@ public class RemindersActivity extends AppCompatActivity implements TimePickerDi
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_reminders, menu);
-        return true;
-    }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         if (menuItem.getItemId() == android.R.id.home) {
-            finish();
-        } else if (menuItem.getItemId() == R.id.action_menu_save){
             presenter.saveReminders();
+            finish();
         }
         return super.onOptionsItemSelected(menuItem);
     }

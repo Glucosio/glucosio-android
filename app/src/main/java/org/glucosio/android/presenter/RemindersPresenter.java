@@ -40,6 +40,7 @@ public class RemindersPresenter {
         boolean added = db.addReminder(reminder);
         if (added) {
             activity.updateRemindersList();
+            saveReminders();
         } else {
             activity.showDuplicateError();
         }
@@ -52,6 +53,5 @@ public class RemindersPresenter {
     public void saveReminders() {
         GlucosioAlarmManager alarmManager = new GlucosioAlarmManager(activity.getApplicationContext());
         alarmManager.setAlarms();
-        activity.finish();
     }
 }
