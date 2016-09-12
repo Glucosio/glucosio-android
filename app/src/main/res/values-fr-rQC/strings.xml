@@ -266,7 +266,7 @@
   <string name="overview_hb1ac">Hb1AC :</string>
   <string name="dialog_add_glucose_freestylelibre_added">Ajoutées depuis votre compte FreeStyle Libre®</string>
   <string name="activity_converter_a1c_glucose">GLYCÉMIE MOYENNE</string>
-  <string name="activity_converter_a1c">Taux D’Hba1C</string>
+  <string name="activity_converter_a1c">HbA1c</string>
   <string name="activity_converter_title">Convertisseur HbA1C</string>
   <string name="activity_converter_save">ENREGISTRER</string>
   <string name="menu_support">Support</string>

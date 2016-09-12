@@ -228,4 +228,5 @@
   <string name="freestylelibre_nfc_not_supported">Enheter stöder inte NFC.</string>
   <string name="freestylelibre_nfc_not_enabled">NFC är inaktiverat.</string>
   <string name="freestylelibre_nfc_error">Ett fel uppstod när NFC-anslutning skulle öppnas!</string>
+  <string name="activity_converter_a1c">HB1AC</string>
 </resources>
