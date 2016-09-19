@@ -48,6 +48,7 @@ public class RemindersPresenter {
 
     public void deleteReminder(long id) {
         db.deleteReminder(id);
+        saveReminders();
     }
 
     public void saveReminders() {

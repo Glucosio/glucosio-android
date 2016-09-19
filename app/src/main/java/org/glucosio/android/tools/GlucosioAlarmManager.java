@@ -6,10 +6,12 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.util.Log;
 
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.Reminder;
 import org.glucosio.android.receivers.GlucosioBroadcastReceiver;
+import org.joda.time.DateTime;
 
 import java.util.Calendar;
 import java.util.List;
@@ -41,9 +43,22 @@ public class GlucosioAlarmManager {
 
             if (reminder.isActive()) {
                 activeRemindersCount++;
-                Calendar cal = Calendar.getInstance();
-                cal.setTime(reminder.getAlarmTime());
-                alarmMgr.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),
+                Calendar calNow = Calendar.getInstance();
+                Calendar calAlarm = Calendar.getInstance();
+                calAlarm.setTime(reminder.getAlarmTime());
+                calAlarm.set(Calendar.SECOND, 0);
+
+                DateTime now = new DateTime(calNow.getTime());
+                DateTime reminderDate = new DateTime(calAlarm);
+
+                if (reminderDate.isBefore(now)) {
+                    calAlarm.set(Calendar.DATE, calNow.get(Calendar.DATE));
+                    calAlarm.add(Calendar.DATE, 1);
+                }
+
+                Log.d("Glucosio", "Added reminder on " + calAlarm.get(Calendar.DAY_OF_MONTH) + " at " + calAlarm.get(Calendar.HOUR) + ":" + calAlarm.get(Calendar.MINUTE));
+
+                alarmMgr.setRepeating(AlarmManager.RTC_WAKEUP, calAlarm.getTimeInMillis(),
                         AlarmManager.INTERVAL_DAY, alarmIntent);
             } else {
                 alarmMgr.cancel(alarmIntent);
