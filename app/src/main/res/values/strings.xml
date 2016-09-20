@@ -448,4 +448,9 @@
     <string name="preferences_graph_old">Revert to old graph</string>
     <string name="history">history</string>
     <string name="save">save</string>
+    <string name="activity_reminders_title">Reminders</string>
+    <string name="reminders_notification_text">Time to log your glucose level!</string>
+    <string name="reminders_notification_action">Add reading</string>
+    <string name="glucosio_activity_reminders_empty">No reminders set. Add a new reminder here.</string>
+    <string name="activitiy_reminders_error_duplicate">This reminder already exists.</string>
 </resources>

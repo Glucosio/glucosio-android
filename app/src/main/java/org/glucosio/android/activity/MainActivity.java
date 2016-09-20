@@ -81,6 +81,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private static final int REQUEST_INVITE = 1;
     private static final String INTENT_EXTRA_PAGER = "pager";
     private final String INTENT_EXTRA_DROPDOWN = "history_dropdown";
+    BottomSheetBehavior bottomSheetBehavior;
     private ExportPresenter exportPresenter;
     private RadioButton exportRangeButton;
     private HomePagerAdapter homePagerAdapter;
@@ -91,7 +92,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private TextView exportDialogDateTo;
     private View bottomSheetAddDialogView;
     private FloatingActionButton fabAddReading;
-    BottomSheetBehavior bottomSheetBehavior;
     private Toolbar toolbar;
     private TabLayout tabLayout;
 
@@ -174,7 +174,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         final PrimaryDrawerItem itemInvite = new PrimaryDrawerItem().withName(R.string.action_invite).withIcon(R.drawable.ic_face_grey_24dp).withSelectable(false).withTypeface(Typeface.DEFAULT_BOLD);
         final PrimaryDrawerItem itemDonate = new PrimaryDrawerItem().withName(R.string.about_donate).withIcon(R.drawable.ic_favorite_grey_24dp).withSelectable(false).withTypeface(Typeface.DEFAULT_BOLD);
         final PrimaryDrawerItem itemA1C = new PrimaryDrawerItem().withName(R.string.activity_converter_title).withIcon(R.drawable.ic_calculator_a1c_grey_24dp).withSelectable(false).withTypeface(Typeface.DEFAULT_BOLD);
-
+        final PrimaryDrawerItem itemReminders = new PrimaryDrawerItem().withName(R.string.activity_reminders_title).withIcon(R.drawable.ic_alarm_grey_24dp).withSelectable(false).withTypeface(Typeface.DEFAULT_BOLD);
 
         DrawerBuilder drawerBuilder = new DrawerBuilder()
                 .withActivity(this)
@@ -209,6 +209,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                             openDonateIntent();
                         } else if (drawerItem.equals(itemA1C)) {
                             openA1CCalculator();
+                        } else if (drawerItem.equals(itemReminders)) {
+                            openRemindersActivity();
                         }
                         return false;
                     }
@@ -217,6 +219,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         if (isPlayServicesAvailable()) {
             drawerBuilder.addDrawerItems(
                     itemA1C,
+                    itemReminders,
                     itemExport,
                     itemSettings,
                     itemFeedback,
@@ -229,6 +232,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         } else {
             drawerBuilder.addDrawerItems(
                     itemA1C,
+                    itemReminders,
                     itemExport,
                     itemSettings,
                     itemFeedback,
@@ -253,6 +257,11 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         Analytics analytics = application.getAnalytics();
         Log.i("MainActivity", "Setting screen name: " + "main");
         analytics.reportScreen("Main Activity");
+    }
+
+    private void openRemindersActivity() {
+        Intent intent = new Intent(this, RemindersActivity.class);
+        startActivity(intent);
     }
 
     private void initPresenters(GlucosioApplication application) {
