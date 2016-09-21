@@ -36,15 +36,27 @@
         android:orientation="horizontal"
         android:padding="16dp">
 
-        <TextView
-            android:id="@+id/activity_reminders_item_time"
-            fontPath="fonts/lato.ttf"
-            android:layout_width="0dp"
+        <LinearLayout
             android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
             android:layout_weight="1"
-            android:fontFamily="sans-serif-thin"
-            android:text="08:00"
-            android:textSize="34sp" />
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/activity_reminders_item_time"
+                fontPath="fonts/lato.ttf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-thin"
+                android:text="08:00"
+                android:textSize="34sp" />
+            <TextView
+                android:id="@+id/activity_reminders_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                android:text="Label"
+                android:textSize="18sp"/>
+            </LinearLayout>
 
         <Switch
             android:id="@+id/activity_reminders_item_enabled"

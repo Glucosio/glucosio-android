@@ -35,8 +35,8 @@ public class RemindersPresenter {
         return new RemindersAdapter(activity, R.layout.activity_reminder_item, db.getReminders());
     }
 
-    public void addReminder(long id, Date alarmTime, String metric, boolean oneTime, boolean active) {
-        Reminder reminder = new Reminder(id, alarmTime, metric, oneTime, active);
+    public void addReminder(long id, Date alarmTime, String label, String metric, boolean oneTime, boolean active) {
+        Reminder reminder = new Reminder(id, alarmTime, label, metric, oneTime, active);
         boolean added = db.addReminder(reminder);
         if (added) {
             activity.updateRemindersList();

@@ -12,13 +12,15 @@ public class Reminder extends RealmObject {
     private Date alarmTime;
     private boolean oneTime;
     private boolean active;
+    private String label;
     private String metric;
 
     public Reminder() {
     }
 
-    public Reminder(long id, Date alarmTime, String metric, boolean oneTime, boolean active) {
+    public Reminder(long id, Date alarmTime, String label, String metric, boolean oneTime, boolean active) {
         this.id = id;
+        this.label = label;
         this.alarmTime = alarmTime;
         this.metric = metric;
         this.oneTime = oneTime;
@@ -63,5 +65,13 @@ public class Reminder extends RealmObject {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public void setLabel(String label){
+        this.label = label;
+    }
+
+    public String getLabel(){
+        return label;
     }
 }

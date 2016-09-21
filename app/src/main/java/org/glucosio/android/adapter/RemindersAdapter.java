@@ -48,18 +48,20 @@ public class RemindersAdapter extends ArrayAdapter<Reminder> {
 
         LinearLayout rootView = (LinearLayout) v.findViewById(R.id.activity_reminders_root_view);
         TextView timeTextView = (TextView) v.findViewById(R.id.activity_reminders_item_time);
+        TextView labelTextView = (TextView) v.findViewById(R.id.activity_reminders_label);
         Switch activeSwitch = (Switch) v.findViewById(R.id.activity_reminders_item_enabled);
         final Reminder reminder = items.get(position);
         final long reminderId = reminder.getId();
 
         calendar.setTime(reminder.getAlarmTime());
         timeTextView.setText(formatDateTime.getTime(calendar));
+        labelTextView.setText(reminder.getLabel());
         activeSwitch.setChecked(reminder.isActive());
 
         activeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                Reminder updatedReminder = new Reminder(reminder.getId(), reminder.getAlarmTime(), reminder.getMetric(),
+                Reminder updatedReminder = new Reminder(reminder.getId(), reminder.getAlarmTime(), reminder.getLabel(), reminder.getMetric(),
                         reminder.isOneTime(), reminder.isActive());
                 updatedReminder.setActive(b);
                 updateReminder(updatedReminder);
