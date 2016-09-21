@@ -20,8 +20,8 @@ public class GlucosioNotificationManager {
         this.context = context;
     }
 
-    public void sendReminderNotification() {
-        String NOTIFICATION_TITLE = "\u23f0";
+    public void sendReminderNotification(String label) {
+        String NOTIFICATION_TITLE = label + " " + "\u23f0";
         String NOTIFICATION_TEXT = context.getString(R.string.reminders_notification_text);
         //String NOTIFICATION_ACTION = context.getString(R.string.reminders_notification_action);
 

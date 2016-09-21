@@ -38,6 +38,7 @@ public class GlucosioAlarmManager {
             Intent intent = new Intent(context, GlucosioBroadcastReceiver.class);
             intent.putExtra("metric", reminder.getMetric());
             intent.putExtra("glucosio_reminder", true);
+            intent.putExtra("reminder_label", reminder.getLabel());
 
             PendingIntent alarmIntent = PendingIntent.getBroadcast(context, (int) reminder.getId(), intent, 0);
 

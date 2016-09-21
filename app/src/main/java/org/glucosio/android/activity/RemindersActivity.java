@@ -37,7 +37,7 @@ public class RemindersActivity extends AppCompatActivity implements TimePickerDi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reminders);
-        final Activity ReminderActivity = this;
+        final Activity reminderActivity = this;
         presenter = new RemindersPresenter(this);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.activity_main_toolbar);
@@ -55,13 +55,14 @@ public class RemindersActivity extends AppCompatActivity implements TimePickerDi
             @Override
             public void onClick(final View view) {
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(ReminderActivity);
+                AlertDialog.Builder builder = new AlertDialog.Builder(reminderActivity);
                 builder.setTitle(R.string.activity_reminder_add_label);
 
                 // Set up the input
-                final EditText input = new EditText(ReminderActivity);
+                final EditText input = new EditText(reminderActivity);
                 // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
                 input.setInputType(InputType.TYPE_CLASS_TEXT);
+                input.setPadding(16,0,16,0);
                 builder.setView(input);
 
                 // Set up the buttons

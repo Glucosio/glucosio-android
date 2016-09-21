@@ -15,7 +15,8 @@ public class GlucosioBroadcastReceiver extends android.content.BroadcastReceiver
         } else {
             if (intent.getBooleanExtra("glucosio_reminder", false)) {
                 GlucosioNotificationManager notificationManager = new GlucosioNotificationManager(context);
-                notificationManager.sendReminderNotification();
+                String reminderLabel = intent.getStringExtra("reminder_label");
+                notificationManager.sendReminderNotification(reminderLabel);
             } else {
                 setAlarms(context);
             }
