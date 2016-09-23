@@ -26,12 +26,14 @@ import android.view.MenuItem;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-
 import org.glucosio.android.R;
 
 
 public class LicenceActivity extends AppCompatActivity {
 
+    private final String GLUCOSIO_TERMS = "http://www.glucosio.org/terms/";
+    private final String GLUCOSIO_LICENSES = "http://www.glucosio.org/third-party-licenses/";
+    private final String GLUCOSIO_PRIVACY = "http://www.glucosio.org/privacy/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,13 +54,13 @@ public class LicenceActivity extends AppCompatActivity {
 
 
         if (url != null && url.equals("privacy")) {
-            webView.loadUrl("http://www.glucosio.org/privacy/");
+            webView.loadUrl(GLUCOSIO_PRIVACY);
             getSupportActionBar().setTitle(getResources().getString(R.string.preferences_privacy));
         } else if (url != null && url.equals("open_source")) {
-            webView.loadUrl("http://www.glucosio.org/third-party-licenses/");
+            webView.loadUrl(GLUCOSIO_LICENSES);
             getSupportActionBar().setTitle(getResources().getString(R.string.preferences_licences_open));
         } else {
-            webView.loadUrl("http://www.glucosio.org/terms/");
+            webView.loadUrl(GLUCOSIO_TERMS);
             getSupportActionBar().setTitle(getResources().getString(R.string.preferences_terms));
         }
 
@@ -66,6 +68,7 @@ public class LicenceActivity extends AppCompatActivity {
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
                 return true;
             }
+
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
