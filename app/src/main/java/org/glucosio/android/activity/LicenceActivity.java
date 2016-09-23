@@ -77,7 +77,8 @@ public class LicenceActivity extends AppCompatActivity implements ExternalViewPr
         }
     }
 
-    @Override public String extractAction() {
+    @Override
+    public String extractAction() {
         Bundle p;
         if (getIntent().getExtras() != null) {
             p = getIntent().getExtras();
@@ -91,7 +92,8 @@ public class LicenceActivity extends AppCompatActivity implements ExternalViewPr
         webView.loadUrl(url);
     }
 
-    @Override public void showNoConnectionWarning() {
+    @Override
+    public void showNoConnectionWarning() {
         AlertDialog dialog = new AlertDialog.Builder(this)
             .setMessage(R.string.warning_internet_connection_required)
             .setPositiveButton(R.string.mdtp_ok, new DialogInterface.OnClickListener() {
