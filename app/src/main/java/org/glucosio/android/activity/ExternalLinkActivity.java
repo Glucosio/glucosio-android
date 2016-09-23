@@ -35,7 +35,7 @@ import org.glucosio.android.presenter.ExternalViewPresenter;
 import org.glucosio.android.tools.network.BasicNetworkConnectivity;
 import org.glucosio.android.tools.network.GlucosioExternalLinks;
 
-public class LicenceActivity extends AppCompatActivity implements ExternalViewPresenter.View {
+public class ExternalLinkActivity extends AppCompatActivity implements ExternalViewPresenter.View {
 
     private ExternalViewPresenter presenter;
     private WebView webView;
@@ -98,7 +98,7 @@ public class LicenceActivity extends AppCompatActivity implements ExternalViewPr
             .setMessage(R.string.warning_internet_connection_required)
             .setPositiveButton(R.string.mdtp_ok, new DialogInterface.OnClickListener() {
                 @Override public void onClick(DialogInterface dialog, int which) {
-                    LicenceActivity.this.finish();
+                    ExternalLinkActivity.this.finish();
                 }
             })
             .create();

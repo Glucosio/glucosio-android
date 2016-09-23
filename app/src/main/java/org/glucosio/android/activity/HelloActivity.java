@@ -32,7 +32,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.analytics.Analytics;
@@ -40,15 +46,6 @@ import org.glucosio.android.presenter.HelloPresenter;
 import org.glucosio.android.tools.LabelledSpinner;
 import org.glucosio.android.tools.LocaleHelper;
 import org.glucosio.android.view.HelloView;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Locale;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class HelloActivity extends AppCompatActivity implements HelloView {
@@ -177,7 +174,7 @@ public class HelloActivity extends AppCompatActivity implements HelloView {
 
     @OnClick(R.id.helloactivity_textview_terms)
     void onTermsAndConditionClick() {
-        Intent intent = new Intent(HelloActivity.this, LicenceActivity.class);
+        Intent intent = new Intent(HelloActivity.this, ExternalLinkActivity.class);
         startActivity(intent);
     }
 
