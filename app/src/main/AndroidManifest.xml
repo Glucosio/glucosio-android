@@ -36,8 +36,12 @@
     <!-- Required for Google Cloud Messaging -->
     <uses-permission android:name="${applicationId}.permission.C2D_MESSAGE" />
 
+    <!-- Required to set reminders -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
     <!-- Enable Chromebook support (no touch) -->
-    <uses-feature android:name="android.hardware.touchscreen"
+    <uses-feature
+        android:name="android.hardware.touchscreen"
         android:required="false" />
 
     <permission
@@ -154,6 +158,7 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+
             <meta-data
                 android:name="android.nfc.action.TECH_DISCOVERED"
                 android:resource="@xml/nfc_tech_filter" />
@@ -169,7 +174,7 @@
                 android:value="org.glucosio.android.activity.MainActivity" />
         </activity>
 
-        <!--             Google Cloud Messaging receiver -->
+        <!-- Google Cloud Messaging receiver -->
         <receiver
             android:name="com.google.android.gms.gcm.GcmReceiver"
             android:exported="true"
@@ -194,6 +199,15 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
+        <receiver
+            android:name="org.glucosio.android.receivers.GlucosioBroadcastReceiver"
+            android:enabled="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </receiver>
 
         <!--
          Register AnalyticsReceiver and AnalyticsService to support background
@@ -236,9 +250,11 @@
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.RemindersActivity"></activity>
     </application>
 
 </manifest>

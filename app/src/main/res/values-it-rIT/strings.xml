@@ -227,6 +227,7 @@
   <string name="fragment_overview_graph_export_true">Screenshot salvato nella galleria</string>
   <string name="fragment_overview_graph_export_false">Errore durante il salvataggio nella galleria</string>
   <string name="dialog_export_range">Esporta intervallo di date</string>
+  <string name="activity_export_issue_generic">Si è verificato un problema nell\'esportazione delle letture. Per favore prova di nuovo.</string>
   <string name="activity_export_no_readings_snackbar">Nessuna lettura da esportare.</string>
   <string name="wear_new_reading">Nuova lettura aggiunta</string>
   <string name="dialog_add_weight">Peso</string>
@@ -309,4 +310,10 @@
   <string name="mmol_mol">mmol/mol</string>
   <string name="mmol_L">mmol/L</string>
   <string name="preferences_graph_old">Ritorna al vecchio grafico</string>
+  <string name="history">cronologia</string>
+  <string name="save">salva</string>
+  <string name="activity_reminders_title">Promemoria</string>
+  <string name="reminders_notification_text">È ora di aggiungere la tua glicemia!</string>
+  <string name="reminders_notification_action">Aggiungi lettura</string>
+  <string name="glucosio_activity_reminders_empty">Nessun promemoria impostato. Aggiungine uno qui.</string>
 </resources>

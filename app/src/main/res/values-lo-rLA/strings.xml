@@ -29,7 +29,6 @@
   <string name="activity_main_add_new_reading">ເພີ່ມການອ່ານໃຫມ່</string>
   <string name="title_activity_hello">ສະບາຍດີ.</string>
   <string name="helloactivity_headline">ສະບາຍດີ.</string>
-  <string name="helloactivity_terms">ເງື່ອນໄຂການໃຊ້.</string>
   <string name="helloactivity_subhead">ພວກເຮົາຕ້ອງການຮູ້ຂໍ້ມູນທົ່ວໄປຂອງທ່ານກ່ອນການເລີມນຳໃຊ້ງານ.</string>
   <string name="helloactivity_country">ປະເທດ</string>
   <string name="helloactivity_age">ອາຍຸ</string>
