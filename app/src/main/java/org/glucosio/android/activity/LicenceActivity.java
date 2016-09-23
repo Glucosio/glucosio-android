@@ -41,27 +41,19 @@ public class LicenceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_licence);
         WebView webView = (WebView) findViewById(R.id.webview_licence);
 
-        Bundle p;
-        String url;
 
         // Check if extras are available. If not, show terms by default
-        if (getIntent().getExtras() != null) {
-            p = getIntent().getExtras();
-            url = p.getString("key");
-        } else {
-            url = "terms";
-        }
-
+        String url = extractUrl();
 
         if (url != null && url.equals("privacy")) {
             webView.loadUrl(GLUCOSIO_PRIVACY);
-            getSupportActionBar().setTitle(getResources().getString(R.string.preferences_privacy));
+            setToolbarTitle(getResources().getString(R.string.preferences_privacy));
         } else if (url != null && url.equals("open_source")) {
             webView.loadUrl(GLUCOSIO_LICENSES);
-            getSupportActionBar().setTitle(getResources().getString(R.string.preferences_licences_open));
+            setToolbarTitle(getResources().getString(R.string.preferences_licences_open));
         } else {
             webView.loadUrl(GLUCOSIO_TERMS);
-            getSupportActionBar().setTitle(getResources().getString(R.string.preferences_terms));
+            setToolbarTitle(getResources().getString(R.string.preferences_terms));
         }
 
         webView.setWebViewClient(new WebViewClient() {
@@ -76,6 +68,23 @@ public class LicenceActivity extends AppCompatActivity {
 
     }
 
+    private String extractUrl() {
+        Bundle p;
+        String url;
+        if (getIntent().getExtras() != null) {
+            p = getIntent().getExtras();
+            url = p.getString("key");
+        } else {
+            url = "terms";
+        }
+        return url;
+    }
+
+    private void setToolbarTitle(String string) {
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(string);
+        }
+    }
 
     public boolean onOptionsItemSelected(MenuItem item) {
         finish();
