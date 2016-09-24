@@ -40,7 +40,7 @@ public class ExternalViewPresenter {
   }
 
   private void initUrls() {
-    urlMatchings = new HashMap<>();
+    urlMatchings = new HashMap<>(3);
     urlMatchings.put(PRIVACY, GlucosioExternalLinks.PRIVACY);
     urlMatchings.put(OPEN_SOURCE, GlucosioExternalLinks.LICENSES);
     urlMatchings.put(TERMS, GlucosioExternalLinks.TERMS);
