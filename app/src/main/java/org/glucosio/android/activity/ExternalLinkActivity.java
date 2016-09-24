@@ -117,7 +117,7 @@ public class ExternalLinkActivity extends AppCompatActivity implements ExternalV
         toolbarTitle = new HashMap<>();
         toolbarTitle.put(GlucosioExternalLinks.PRIVACY, R.string.preferences_privacy);
         toolbarTitle.put(GlucosioExternalLinks.LICENSES, R.string.preferences_licences_open);
-        toolbarTitle.put(GlucosioExternalLinks.TERMS, R.string.preferences_licences_open);
+        toolbarTitle.put(GlucosioExternalLinks.TERMS, R.string.preferences_terms);
     }
 
     private void setToolbarTitle(String string) {
