@@ -96,6 +96,7 @@ public class ExternalLinkActivity extends AppCompatActivity implements ExternalV
     public void showNoConnectionWarning() {
         AlertDialog dialog = new AlertDialog.Builder(this)
             .setMessage(R.string.warning_internet_connection_required)
+            .setCancelable(false)
             .setPositiveButton(R.string.mdtp_ok, new DialogInterface.OnClickListener() {
                 @Override public void onClick(DialogInterface dialog, int which) {
                     ExternalLinkActivity.this.finish();
