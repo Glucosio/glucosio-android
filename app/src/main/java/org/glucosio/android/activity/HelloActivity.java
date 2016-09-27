@@ -45,6 +45,7 @@ import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.presenter.HelloPresenter;
 import org.glucosio.android.tools.LabelledSpinner;
 import org.glucosio.android.tools.LocaleHelper;
+import org.glucosio.android.tools.network.GlucosioExternalLinks;
 import org.glucosio.android.view.HelloView;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -174,8 +175,10 @@ public class HelloActivity extends AppCompatActivity implements HelloView {
 
     @OnClick(R.id.helloactivity_textview_terms)
     void onTermsAndConditionClick() {
-        Intent intent = new Intent(HelloActivity.this, ExternalLinkActivity.class);
-        startActivity(intent);
+        ExternalLinkActivity.launch(
+            this,
+            getString(R.string.preferences_terms),
+            GlucosioExternalLinks.TERMS);
     }
 
     public void displayErrorWrongAge() {
