@@ -90,12 +90,10 @@ public class AboutActivity extends AppCompatActivity {
             licencesPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
-                    Intent intent = new Intent(getActivity(), ExternalLinkActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putString("key", "open_source");
-                    intent.putExtras(bundle);
-                    startActivity(intent);
-
+                    ExternalLinkActivity.launch(
+                        getActivity(),
+                        getString(R.string.preferences_licences_open),
+                        GlucosioExternalLinks.LICENSES);
                     addTermsAnalyticsEvent("Glucosio Licence opened");
                     return false;
                 }
@@ -131,14 +129,11 @@ public class AboutActivity extends AppCompatActivity {
             privacyPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
-                    Intent intent = new Intent(getActivity(), ExternalLinkActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putString("key", "privacy");
-                    intent.putExtras(bundle);
-                    startActivity(intent);
-
+                    ExternalLinkActivity.launch(
+                        getActivity(),
+                        getString(R.string.preferences_privacy),
+                        GlucosioExternalLinks.PRIVACY);
                     addTermsAnalyticsEvent("Glucosio Privacy opened");
-
                     return false;
                 }
             });
