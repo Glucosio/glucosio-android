@@ -24,7 +24,7 @@ public class ExternalViewPresenterTest {
   @Test
   public void ShouldLoadTerms_WhenNoExtras() throws Exception {
     when(network.isConnected()).thenReturn(true);
-    when(view.extractAction()).thenReturn(null);
+    when(view.extractTitle()).thenReturn(null);
 
     presenter.onViewCreated();
 
@@ -33,7 +33,7 @@ public class ExternalViewPresenterTest {
 
   @Test
   public void ShouldLoadOpenSourceLicenses_WhenLicenseAction() throws Exception {
-    when(view.extractAction()).thenReturn("open_source");
+    when(view.extractTitle()).thenReturn("open_source");
     when(network.isConnected()).thenReturn(true);
 
     presenter.onViewCreated();
@@ -43,7 +43,7 @@ public class ExternalViewPresenterTest {
 
   @Test
   public void ShouldLoadPrivacy_WhenPrivacyAction() throws Exception {
-    when(view.extractAction()).thenReturn("privacy");
+    when(view.extractTitle()).thenReturn("privacy");
     when(network.isConnected()).thenReturn(true);
 
     presenter.onViewCreated();
@@ -52,7 +52,7 @@ public class ExternalViewPresenterTest {
   }
 
   @Test public void ShouldLoadAlwaysTerms_WhenUnknownAction() throws Exception {
-    when(view.extractAction()).thenReturn("unknown");
+    when(view.extractTitle()).thenReturn("unknown");
     when(network.isConnected()).thenReturn(true);
 
     presenter.onViewCreated();
@@ -61,7 +61,7 @@ public class ExternalViewPresenterTest {
   }
 
   @Test public void ShouldDisplayTermsToolbarTitle_WhenDefaultAction() throws Exception {
-    when(view.extractAction()).thenReturn("unknown");
+    when(view.extractTitle()).thenReturn("unknown");
     when(network.isConnected()).thenReturn(true);
 
     presenter.onViewCreated();

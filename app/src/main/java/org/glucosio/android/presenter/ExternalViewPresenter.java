@@ -20,55 +20,35 @@
 
 package org.glucosio.android.presenter;
 
-import java.util.HashMap;
-import java.util.Map;
-import org.glucosio.android.tools.network.GlucosioExternalLinks;
 import org.glucosio.android.tools.network.NetworkConnectivity;
 
 public class ExternalViewPresenter {
-  private final String TERMS = "terms";
-  private final String OPEN_SOURCE = "open_source";
-  private final String PRIVACY = "privacy";
+
   private ExternalViewPresenter.View view;
   private NetworkConnectivity network;
-  private Map<String, String> urlMatchings;
 
   public ExternalViewPresenter(View view, NetworkConnectivity network) {
     this.view = view;
     this.network = network;
-    initUrls();
-  }
-
-  private void initUrls() {
-    urlMatchings = new HashMap<>(3);
-    urlMatchings.put(PRIVACY, GlucosioExternalLinks.PRIVACY);
-    urlMatchings.put(OPEN_SOURCE, GlucosioExternalLinks.LICENSES);
-    urlMatchings.put(TERMS, GlucosioExternalLinks.TERMS);
   }
 
   public void onViewCreated() {
     if (network.isConnected()) {
-      String action = view.extractAction();
-      String url = matchUrlToAction(action);
-      view.setupToolbarTitle(url);
+      String title = view.extractTitle();
+      String url = view.extractUrl();
+      view.setupToolbarTitle(title);
       view.loadExternalUrl(url);
     } else {
       view.showNoConnectionWarning();
     }
   }
 
-  private String matchUrlToAction(String action) {
-    String url = GlucosioExternalLinks.TERMS;
-    if (action != null && urlMatchings.containsKey(action)) {
-      url = urlMatchings.get(action);
-    }
-    return url;
-  }
-
   public interface View {
     void setupToolbarTitle(String link);
 
-    String extractAction();
+    String extractTitle();
+
+    String extractUrl();
 
     void loadExternalUrl(String url);
 

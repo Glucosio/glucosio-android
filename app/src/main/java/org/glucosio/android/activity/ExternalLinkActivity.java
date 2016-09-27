@@ -89,13 +89,20 @@ public class ExternalLinkActivity extends AppCompatActivity implements ExternalV
     }
 
     @Override
-    public String extractAction() {
-        Bundle p;
+    public String extractTitle() {
+        String title = "";
         if (getIntent().getExtras() != null) {
-            p = getIntent().getExtras();
-            return p.getString("key");
+            title = getIntent().getStringExtra(TITLE_KEY);
         }
-        return null;
+        return title;
+    }
+
+    @Override public String extractUrl() {
+        String url = "";
+        if (getIntent().getExtras() != null) {
+            url = getIntent().getStringExtra(URL_KEY);
+        }
+        return url;
     }
 
     @Override
