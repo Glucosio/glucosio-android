@@ -21,51 +21,24 @@ public class ExternalViewPresenterTest {
     presenter = new ExternalViewPresenter(view, network);
   }
 
-  @Test
-  public void ShouldLoadTerms_WhenNoExtras() throws Exception {
+  @Test(expected = RuntimeException.class)
+  public void ShouldThrowException_WhenNoParameters() throws Exception {
     when(network.isConnected()).thenReturn(true);
     when(view.extractTitle()).thenReturn(null);
 
     presenter.onViewCreated();
 
-    verify(view).loadExternalUrl(GlucosioExternalLinks.TERMS);
   }
 
-  @Test
-  public void ShouldLoadOpenSourceLicenses_WhenLicenseAction() throws Exception {
-    when(view.extractTitle()).thenReturn("open_source");
+  @Test public void ShouldLoadOpenSourceLicenses_WhenLicenseParameters() throws Exception {
+    String LICENSES = "licenses";
+    when(view.extractUrl()).thenReturn(GlucosioExternalLinks.LICENSES);
+    when(view.extractTitle()).thenReturn(LICENSES);
     when(network.isConnected()).thenReturn(true);
 
     presenter.onViewCreated();
 
     verify(view).loadExternalUrl(GlucosioExternalLinks.LICENSES);
-  }
-
-  @Test
-  public void ShouldLoadPrivacy_WhenPrivacyAction() throws Exception {
-    when(view.extractTitle()).thenReturn("privacy");
-    when(network.isConnected()).thenReturn(true);
-
-    presenter.onViewCreated();
-
-    verify(view).loadExternalUrl(GlucosioExternalLinks.PRIVACY);
-  }
-
-  @Test public void ShouldLoadAlwaysTerms_WhenUnknownAction() throws Exception {
-    when(view.extractTitle()).thenReturn("unknown");
-    when(network.isConnected()).thenReturn(true);
-
-    presenter.onViewCreated();
-
-    verify(view).loadExternalUrl(GlucosioExternalLinks.TERMS);
-  }
-
-  @Test public void ShouldDisplayTermsToolbarTitle_WhenDefaultAction() throws Exception {
-    when(view.extractTitle()).thenReturn("unknown");
-    when(network.isConnected()).thenReturn(true);
-
-    presenter.onViewCreated();
-
-    verify(view).setupToolbarTitle(GlucosioExternalLinks.TERMS);
+    verify(view).setupToolbarTitle(LICENSES);
   }
 }
