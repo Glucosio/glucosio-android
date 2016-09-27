@@ -33,6 +33,7 @@ import java.util.Locale;
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.analytics.Analytics;
+import org.glucosio.android.tools.network.GlucosioExternalLinks;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class AboutActivity extends AppCompatActivity {
@@ -77,14 +78,11 @@ public class AboutActivity extends AppCompatActivity {
             termsPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
-                    Intent intent = new Intent(getActivity(), ExternalLinkActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putString("key", "terms");
-                    intent.putExtras(bundle);
-                    startActivity(intent);
-
+                    ExternalLinkActivity.launch(
+                        getActivity(),
+                        getString(R.string.preferences_terms),
+                        GlucosioExternalLinks.TERMS);
                     addTermsAnalyticsEvent("Glucosio Terms opened");
-
                     return false;
                 }
             });
