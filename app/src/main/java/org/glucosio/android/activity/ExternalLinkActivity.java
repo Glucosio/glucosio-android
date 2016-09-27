@@ -20,7 +20,9 @@
 
 package org.glucosio.android.activity;
 
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -37,9 +39,18 @@ import org.glucosio.android.tools.network.GlucosioExternalLinks;
 
 public class ExternalLinkActivity extends AppCompatActivity implements ExternalViewPresenter.View {
 
+    private static final String TITLE_KEY = "TITLE_KEY";
+    private static final String URL_KEY = "URL_KEY";
     private ExternalViewPresenter presenter;
     private WebView webView;
     private Map<String, Integer> toolbarTitle;
+
+    public static void launch(Context context, String title, String url) {
+        Intent intent = new Intent(context, ExternalLinkActivity.class);
+        intent.putExtra(TITLE_KEY, title);
+        intent.putExtra(URL_KEY, url);
+        context.startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
