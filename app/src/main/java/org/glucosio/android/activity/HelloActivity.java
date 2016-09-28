@@ -28,6 +28,7 @@ import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -154,12 +155,12 @@ public class HelloActivity extends AppCompatActivity implements HelloView {
     }
 
     private void initScrollViewListener() {
-        scrollView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
-            @Override
-            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-                checkIfScrolledToBottom();
-            }
-        });
+        scrollView.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
+			@Override
+			public void onScrollChanged() {
+				checkIfScrolledToBottom();
+			}
+		});
     }
 
     private void checkIfScrolledToBottom() {
