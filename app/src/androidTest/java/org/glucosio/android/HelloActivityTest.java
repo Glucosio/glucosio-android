@@ -72,8 +72,7 @@ public class HelloActivityTest {
             R.id.activity_hello_age,
             R.id.activity_hello_spinner_gender,
             R.id.activity_hello_spinner_diabetes_type,
-            R.id.activity_hello_spinner_preferred_unit,
-            R.id.activity_hello_check_share};
+            R.id.activity_hello_spinner_preferred_unit };
 
     @BeforeClass
     public static void clearAppData() {
@@ -97,7 +96,6 @@ public class HelloActivityTest {
     @Test
     public void check_002_IfStartButtonIsDisplayed() throws InterruptedException {
         onView(withId(R.id.activity_hello_button_start))
-                .perform(scrollTo())
                 .check(matches(isDisplayed()));
     }
 
@@ -175,6 +173,7 @@ public class HelloActivityTest {
     public void check_008_IfICanUncheckShareDataCheckBox() throws InterruptedException {
         // Click on Share Data CheckBox multiple times
         onView(withId(R.id.activity_hello_check_share))
+				.perform(scrollTo())
                 .check(matches(isChecked()))
                 .perform(click())
                 .check(matches(not(isChecked())));
@@ -184,6 +183,6 @@ public class HelloActivityTest {
     public void check_009_IfICanSubmitAnyData() throws InterruptedException {
         // Perform submit
         onView(withId(R.id.activity_hello_button_start))
-                .perform(scrollTo(), click());
+                .perform(click());
     }
 }
