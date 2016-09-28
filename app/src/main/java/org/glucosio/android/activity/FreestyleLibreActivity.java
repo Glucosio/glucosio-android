@@ -176,7 +176,7 @@ public class FreestyleLibreActivity extends Activity {
 
         // Apply values in TextViews
         // TODO: Add check for mmol/L
-        readingTextView.setText(mResult.history.get(mResult.history.size()-1).glucose(false));
+        readingTextView.setText(mResult.trend.get(0).glucose(false));
 
         new Runnable() {
             @Override
@@ -196,7 +196,7 @@ public class FreestyleLibreActivity extends Activity {
             // Start AddGlucose Activity passing the reading value
             Intent intent = new Intent(getApplicationContext(), AddGlucoseActivity.class);
             Bundle bundle = new Bundle();
-            String currentGlucose = mResult.history.get(mResult.history.size()-1).glucose(false);
+            String currentGlucose = mResult.trend.get(0).glucose(false);
             bundle.putString("reading", currentGlucose + "");
             intent.putExtras(bundle);
             startActivity(intent);
