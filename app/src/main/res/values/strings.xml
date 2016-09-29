@@ -453,4 +453,5 @@
     <string name="reminders_notification_action">Add reading</string>
     <string name="glucosio_activity_reminders_empty">No reminders set. Add a new reminder here.</string>
     <string name="activitiy_reminders_error_duplicate">This reminder already exists.</string>
+    <string name="warning_internet_connection_required">Sorry but you need internet for this feature</string>
 </resources>
