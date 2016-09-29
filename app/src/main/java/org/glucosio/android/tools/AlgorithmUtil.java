@@ -44,7 +44,7 @@ public class AlgorithmUtil {
     }
 
     private static int getGlucose(byte[] bytes) {
-        return (int)(((256 * (bytes[0] & 0xFF) + (bytes[1] & 0xFF)) & 0x0FFF) / 8.5);
+        return (int)Math.round(((256 * (bytes[0] & 0xFF) + (bytes[1] & 0xFF)) & 0x0FFF) / 8.5);
     }
 
     public interface AlertRule {
