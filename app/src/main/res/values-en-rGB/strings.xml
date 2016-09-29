@@ -196,7 +196,9 @@
   <string name="activity_export_date_from">From:</string>
   <string name="dialog_add_weight">Weight</string>
   <string name="dialog_add_ketones">Ketones</string>
+  <string name="dialog_add_hb1ac">HbA1c</string>
   <string name="title_activity_add_glucose">Add Glucose reading</string>
+  <string name="title_activity_add_hb1ac_edit">Edit HbA1c</string>
   <string name="title_activity_add_ketone_edit">Edit Ketones</string>
   <string name="title_activity_add_pressure">Add Blood Pressure</string>
   <string name="title_activity_add_pressure_edit">Edit Blood Pressure</string>
@@ -248,5 +250,8 @@
   <string name="activity_backup_drive_recent">Recent backups</string>
   <string name="activity_backup_drive_more">See more Backups</string>
   <string name="activity_backup_drive_dialog_restore_button_cancel">Cancel</string>
+  <string name="mmol_mol">mmol/mol</string>
   <string name="mmol_L">mmol/L</string>
+  <string name="history">history</string>
+  <string name="save">save</string>
 </resources>

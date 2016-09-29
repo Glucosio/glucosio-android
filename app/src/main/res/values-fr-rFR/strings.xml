@@ -309,4 +309,9 @@
   <string name="mmol_mol">mmol/mol</string>
   <string name="mmol_L">mmol/L</string>
   <string name="preferences_graph_old">Revenir à l’ancien graphique</string>
+  <string name="history">historique</string>
+  <string name="save">enregistrer</string>
+  <string name="activity_reminders_title">Rappels</string>
+  <string name="reminders_notification_text">Il est temps de mesurer votre glycémie !</string>
+  <string name="glucosio_activity_reminders_empty">Aucun rappel de la valeur. Ajouter un nouveau rappel ici.</string>
 </resources>

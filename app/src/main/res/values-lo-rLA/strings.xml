@@ -29,6 +29,7 @@
   <string name="activity_main_add_new_reading">ເພີ່ມການອ່ານໃຫມ່</string>
   <string name="title_activity_hello">ສະບາຍດີ.</string>
   <string name="helloactivity_headline">ສະບາຍດີ.</string>
+  <string name="helloactivity_terms">ເງື່ອນໄຂການນຳໃຊ້.</string>
   <string name="helloactivity_subhead">ພວກເຮົາຕ້ອງການຮູ້ຂໍ້ມູນທົ່ວໄປຂອງທ່ານກ່ອນການເລີມນຳໃຊ້ງານ.</string>
   <string name="helloactivity_country">ປະເທດ</string>
   <string name="helloactivity_age">ອາຍຸ</string>
@@ -102,22 +103,22 @@
     <item>ເມື່ອຮັບປະທານອາຫານນອກບ້ານ, ໃຫ້ເລືອກອາຫານປະເພດທີມີແຄລໍຮີຕໍ່າ ເຊັ່ນວ່າສະລັດຜັກ ເຖິງແມ່ນວ່າມັນຈະບໍ່ມີຢູ່ໃນເມນູກໍ່ຕາມ.</item>
     <item>ເມື່ອຮັບປະທານອາຫານນອກບ້ານຂໍໃຫ້ເລືອກອາຫານປະເພດອື່ນແທນທີ່ຈະເປັນຈືນມັນຟະລັງ ໃຫ້ສັ່ງເປັນປະເພດສະລັດຜັກ, ຖົ່ວລັນເຕົາ ຫລື ບຣອກໂຄລີ່.</item>
     <item>ເມື່ອຮັບປະທານອາຫານນອກບ້ານ ສັ່ງອາຫານທີ່ບໍ່ແມ່ນຂະຫນົມປັງ ຫລື ອາຫານປະເພດຈືນ.</item>
-    <item>When eating out ask for sauces, gravy and salad dressings "on the side."</item>
+    <item>ເມື່ອອອກໄປຮັບປະທານອາຫານນອກບ້ານ ຂໍແຍກຊອສ໌, ນໍ້າເກຣວີ ແລະ ນໍ້າສະລັດ \"ອອກຕ່າງຫາກ.\"</item>
     <item>ປາສະຈາກນ້ຳຕານກໍ່ບໍ່ໄດ້ຫມາຍຄວາມວ່າຈະປາສະຈາກນໍ້າຕານ 100%. ຫາກແຕ່ມັນຈະມີນ້ຳຕານຢູ່ປະມານ 0.5 ກຼາມ (g) ຕໍ່ຫນຶ່ງຫນ່ວຍການບໍລິໂພກ ດັ່ງນ້ນຈົ່ງຢ່າລົງເຊື່ອໄປກັບສິນຄ້າບໍ່ປາສະຈາກນ້ຳຕານ.</item>
-    <item>Moving toward a healthy weight helps control blood sugars. Your doctor, a dietitian, and a fitness trainer can get you started on a plan that will work for you.</item>
+    <item>ການລົດຫນໍ້າຫນັກໃນລະດັບທີ່ເຫມາະສົມກັບສົມຂະພາບຈະຊ່ວຍຄວບຄຸມລະດັບນໍ້າຕານໃນເລືອດຂອງທ່ານ. ແພດປະຈຳຕົວຂອງທ່ານ, ນັກໂພຊະນາການ ແລະ ຄູຝຶກອອກກຳລັງກາຍສາມາດຊ່ວຍທ່ານວາງແຜນທີ່ເຫມາະສົມກັບທ່ານ.</item>
     <item>ການກວດເບິງລະດັບເລືອດຂອງທ່ານ ແລະ ຕິດຕາມມັນໃນແອັບແບບ Glucosio 2 ຄັ້ງຕໍ່ມື້ຈະຊ່ວຍໃຫ້ທ່ານຮູ້ເຖິງຜົນໄດ້ຮັບຈາກສະບຽງອາຫານ ແລະ ວິຖີການດຳລົງຊີວິດ.</item>
     <item>ນຳເອົາຜົນທົດສອບເລືອດ A1c ໄປຊອກຫາຄ່ານ້ຳຕານສະເລ່ຍໃນເລືອດຂອງທ່ານສຳລັບ 2 ຫາ 3 ເດືອນທີ່ຜ່ານມາ. ທ່ານຫມໍຂອງທ່ານຈະບອກທ່ານວ່າການທົດສອບນີ້ຈຳເປັນຕ້ອງໄດ້ປະຕິບັດຈັກເທື່ອ.</item>
-    <item>Tracking how many carbohydrates you consume can be just as important as checking blood levels since carbohydrates influence blood glucose levels. Talk to your doctor or a dietician about carbohydrate intake.</item>
+    <item>ການຕິດຕາມປະລິມານການບໍລິໂພກ carbohydrates ຂອງທ່ານສາມາດເຮັດໃຫ້ສາມາດກວດສອບລະດັບນໍ້ຕານໃນເລືອດໄດ້ເພາະວ່າ carbohydrates ມີຜົນຕໍ່ລະດັບນໍ້າຕານໃນເລືອດ. ປຶກສາກັບແພດປະຈຳຕົວ ຫລື ນັກໂພຊະນາການຂອງທ່ານກ່ຽວກັບປະລິມານທີ່ຄວນບໍລິໂພກ carbohydrates.</item>
     <item>ການຄວບຄຸມລະດັບເລືອດ, cholesterol ແລະ ລະດັບ triglyceride ແມ່ນມີຄວາມສຳຄັນເນື່ອງຈາກວ່າພະຍາດເບົາຫວານມີຄວາມອ່ອນໄຫວຕໍ່ການເກີດພະຍາດຫົວໃຈ.</item>
-    <item>There are several diet approaches you can take to eating healthier and helping improve your diabetes outcomes. Seek advice from a dietician on what will work best for you and your budget.</item>
+    <item>ມັນມີຫລາຍວິທີສຳລັບການລົດອາຫານທີ່ທ່ານສາມາດນຳໄປໃຊ້ໃນການຮັບປະທານອາຫານເພື່ອໃຫ້ເກີດປະໂຫຍດຕໍ່ສຸຂະພາບ ແລະ ສາມາດບັນເທົາພະຍາດເບົາຫວານຂອງທ່ານໄດ້. ຊອກຫາຄຳແນະນຳເພີ່ມເຕີ່ມໄດ້ຈາກນັກໂພຊະນາການກ່ຽວກັບການລົດອາຫານທີ່ເຫມາະສົມກັບທ່ານທີ່ສຸດ ແລະ ງົບປະມານຂອງທ່ານ.</item>
     <item>ການອອກກຳລັງກາຍຢ່າງເປັນປະຈຳແມ່ນມີຄວາມສຳຄັນຢ່າງຍິງສຳລັບຜູ້ທີ່ເປັນພະຍາດເບົາຫວານ ແລະ ສາມາດຄວບຄຸມນຳຫນັກໄດ້. ປຶກສາກັບທ່ານຫມໍຂອງທ່ານກ່ຽວກັບການອອກກຳລັງກາຍທີ່ເຫມະສົມກັບທ່ານ.</item>
-    <item>Being sleep-deprived can make you eat more especially things like junk food and as a result can negatively impact your health. Be sure to get a good night sleep and consult a sleep specialist if you are having difficulty.</item>
+    <item>ການນອນບໍ່ພຽງພໍສາມາດເຮັດໃຫ້ທ່ານຮັບປະທານຫລາຍຂື້ນ ເປັນຕົ້ນແມ່ນອາຫານວ່າງ ແລະ ອາດເປັນຜົນທາງລົບຕໍ່ສຸຂະພາບຂອງທ່ານ. ຈົ່ງແນ່ໃຈວ່າໄດ້ນອນພຽງພໍ ແລະ ໄປປຶກສາກັບຜູ້ຊ່ຽວຊານຖ້າຫາກວ່າທ່ານພົບຂໍ້ຍຸ້ງຍາກ.</item>
     <item>ຄວາມຄຽດສາມາດເຮັດໃຫ້ມີຜົນກະທົບທາງລົບຕໍ່ໂລກເບົາຫວານ. ປຶກສາກັບທ່ານຫມໍຂອງທ່ານ ຫລື ຜູ້ຊ່ຽວຊານດ້ານສຸຂະພາບກ່ຽວກັບການພະເຊີນຫນ້າກັບຄວາມຄຽດ.</item>
-    <item>Visiting your doctor once a year and having regular communication throughout the year is important for diabetics to prevent any sudden onset of associated health problems.</item>
-    <item>Take your medicine as prescribed by your doctor even small lapses in your medicine can impact your blood glucose level and cause other side effects. If having difficulty remembering ask your doctor about medication management and reminder options.</item>
+    <item>ໄປຫາແພດປະຈຳຕົວຂອງທ່ານຫນຶ່ງຄັ້ງຕໍ່ປີ ແລະ ໄປຫາຢ່າງເປັນປະຈຳໃນຫນຶ່ງປີແມ່ນມີຄວາມສຳຄັນສຳລັບການປ້ອງກັນບັນຫາຕ່າງໆຂອງສຸຂະພາບທີ່ຈະກໍ່ໃຫ້ເກີດເປັນໂລກເບົາຫວານໄດ້.</item>
+    <item>ນຳເອົາຢາຮັກສາໂລກຕາມໃບ່ສັງຈ່າຍຢາໂດຍແພດປະຈຳຕົວຂອງທ່ານ ຖ້າຫາກວ່າມີການຮັບຢາຜິດພາດພຽງເຫລັກນ້ອຍສາມາດສົ່ງຜົນກະທົບຮ້າຍແຮງຕໍ່ລະດັບນໍ້າຕານໃນເລືອດຂອງທ່ານ ແລະ ຈະສົ່ງຜົນກະທົບໃຫ້ພະຍາດອື່ນໆນຳ. ຖ້າຫາກວ່າທ່ານປະສົບຄວາມຫຍຸ້ງຍາກໃນການຈືຢາຂອງທ່ານໃຫ້ຖາມແພດປະຈຳຕົວຂອງທ່ານກ່ຽວກັບການຈັດການກັບຢາຂອງທ່ານ ແລະ ວິທີການແຈ້ງເຕືອນ.</item>
   </string-array>
   <string-array name="tips_all_age_plus_40">
-    <item>Older diabetics may be at higher risk for health issues associated with diabetes. Talk to your doctor about how your age plays a role in your diabetes and what to watch for.</item>
+    <item>ຜູ້ທີ່ມີອາຍຸສູງເປັນພະຍາດເບົາຫວານອາດຈະມີຄວາມສ່ຽງສູງສໍາລັບບັນຫາສຸຂະພາບທີ່ກ່ຽວຂ້ອງກັບພະຍາດເບົາຫວານ. ປຶກສາກັບແພດປະຈຳຕົວຂອງທ່ານກ່ຽວກັບອາຍຸທີ່ມີຜົນຕໍ່ພະຍາດເບົາຫວານຂອງທ່ານ ແລະ ສິ່ງທີທ່ານຕ້ອງໄດ້ຕິດຕາມ.</item>
     <item>ຈຳກັດປະລິມານເກືອທີ່ນຳໃຊ້ເຂົ້າໃນການປຸ່ງແຕ່ງອາຫານ ແລະ ປະລິມານເກືອທີ່ທ່ານຕື່ມໃສ່ຫລັງຈາກແຕ່ງແລ້ວ.</item>
   </string-array>
   <string name="assistant">ຜູ້ຊ່ວຍ</string>
@@ -142,6 +143,7 @@
   <string name="assistant_export_title">ນຳເອົາຂໍ້ມູນຂອງທ່ານອອກໄປ</string>
   <string name="assistant_export_desc">ແບ່ງປັນຂໍ້ມູນກັບທ່ານຫມໍຂອງທ່ານ ຫລື ສຳຮອງຂໍ້ມູນຂອງທ່ານໄວ້ໃນ Google Drive ໂດຍການໃຊ້ຄູນສົມບັດການນຳອອກ.</string>
   <string name="assistant_calculator_a1c_title">ຄິດໄລ່ A1C</string>
+  <string name="assistant_calculator_a1c_desc">ຕົວຄິດໄລ່ HbA1c ທີມີ່ຢູ່ໃນ Glucosio ແມ່ນມີໃຫ້ນຳໃຊ້ຢູ່ໃນ navigation drawer. ປ້ອນຄ່າສະເລຍນໍ້າຕານໃນເລືອດໃສ່ ແລະ ບັນທຶກຜົນການຄິດໄລ່ HbA1c ໄວ້.</string>
   <string name="helloactivity_spinner_preferred_range">ຊ່ວງທີ່ຕ້ອງການ</string>
   <string name="helloactivity_spinner_preferred_range_4">ຊ່ວງທີ່ກຳນົດເອງ</string>
   <string name="helloactivity_preferred_range_min">ຄ່າຕຳສຸດ</string>
@@ -224,6 +226,7 @@
   <string name="fragment_overview_graph_export_true">ພາບຫນ້າຈໍໄດ້ຖືກບັນທຶກໄປໄວ້ຢູ່ໃນຄັງຮູບພາບ</string>
   <string name="fragment_overview_graph_export_false">ພາບຫນ້າຈໍທີ່ມີຂໍ້ຜິດພາດໄດ້ຖືກບັນທຶກໄປໄວ້ຢູ່ໃນຄັງຮູບພາບ</string>
   <string name="dialog_export_range">ຂອບເຂດການນຳອອກ</string>
+  <string name="activity_export_issue_generic">ມີບັນຫາໃນການນຳເອົາການອ່ານອອກໄປ. ກະລຸນາລອງໃຫມ່ອີກຄັ້ງ.</string>
   <string name="activity_export_no_readings_snackbar">ບໍ່ມີການອ່ານທີ່ຕ້ອງການນຳອອກ.</string>
   <string name="wear_new_reading">ເພີ່ມລາຍການອ່ານໃຫມ່ແລ້ວ</string>
   <string name="dialog_add_weight">ນໍ້າໜັກ</string>
@@ -273,6 +276,7 @@
   <string name="menu_support_forum">ຟໍລຳໃຫ້ຂໍ້ມູນການສະຫນັບສະຫນູນ</string>
   <string name="notification_reminder_glucose">ມັນຮອດເວລາວັດແທກລະດັບນໍ້າຕານໃນເລືອດຂອງທ່ານແລ້ວ!</string>
   <string name="notification_reminder_medication">ມັນຮອດເວລາທີ່ຈະໃຊ້ຢາຂອງທ່ານແລ້ວ!</string>
+  <string name="overview_hb1ac_info">ນີ້ເປັນພຽງແຕ່ການປະເມີນຄ່າ ແລະ ຖືກຄິດໄລ່ໂດຍການນຳໃຊ້ຄ່າສະເລ່ຍຈາກການອ່ານຂອງເດືອນທີ່ຜ່ານມາ. ໃນຂະນະທີ່ການປະເມີນຄ່ານີ້ໄດ້ຖືກຍອມຮັບຢ່າງກ້ວາງຂວາງກັບສູດການປະເມີນ HbA1C ພວກເຮົາສົ່ງເສີມໃຫ້ຜູ້ໃຊ້ນຳໃຊ້ຄ່ານີ້ສຳລັບການປະເມີນເທົ່ານັ້ນ.</string>
   <string name="dialog_add_notes">ຫມາຍເຫດ</string>
   <string name="sidebar_backup_export">ແບັກອັບ &amp; ນຳອອກ</string>
   <string name="menu_backup_backup">ແບັກອັບໄວ້ໃນ Google Drive</string>
@@ -305,4 +309,10 @@
   <string name="mmol_mol">mmol/mol</string>
   <string name="mmol_L">mmol/L</string>
   <string name="preferences_graph_old">ກັບຄືນໄປກຣາບເກົ່າ</string>
+  <string name="history">ປະຫວັດການນຳໃຊ້</string>
+  <string name="save">ບັນທຶກ</string>
+  <string name="activity_reminders_title">ການແຈ້ງເຕືອນ</string>
+  <string name="reminders_notification_text">ເຖິງເວລາບັນທຶກລະດັບນໍ້າຕານຂອງທ່ານ!</string>
+  <string name="reminders_notification_action">ເພີ່ມການອ່ານ</string>
+  <string name="glucosio_activity_reminders_empty">ບໍ່ໄດ້ຕັ້ງຄ່າການແຈ້ງເຕືອນ. ເພີ່ມການແຈ້ງເຕືອນໃຫມ່ໄດ້ບ່ອນນີ້.</string>
 </resources>

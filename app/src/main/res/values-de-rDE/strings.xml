@@ -26,6 +26,7 @@
   <string name="tab_overview">Übersicht</string>
   <string name="tab_history">Verlauf</string>
   <string name="tab_tips">Tipps</string>
+  <string name="activity_main_add_new_reading">Neuen Wert eintragen</string>
   <string name="title_activity_hello">Hallo.</string>
   <string name="helloactivity_headline">Hallo.</string>
   <string name="helloactivity_terms">Nutzungsbedingungen.</string>
@@ -40,7 +41,11 @@
   <string name="helloactivity_spinner_diabetes_type">Diabetes Typ</string>
   <string name="helloactivity_spinner_diabetes_type_1">Typ 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Typ 2</string>
+  <string name="helloactivity_spinner_diabetes_gdm">Schwangerschaftsdiabetes</string>
+  <string name="helloactivity_spinner_diabetes_lada">LADA</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit">Bevorzugte Glukoseeinheit</string>
   <string name="helloactivity_spinner_preferred_glucose_unit_2">mmol/L</string>
+  <string name="preferences_spinner_preferred_a1c_unit">Bevorzugte HbA1c-Einheit</string>
   <string name="preferences_spinner_preferred_a1c_unit_1">prozentualer Anteil</string>
   <string name="preferences_spinner_preferred_weight_unit">Gewünschte Gewichtseinheit</string>
   <string name="preferences_spinner_preferred_weight_unit_1">Kilogramm</string>
@@ -103,7 +108,7 @@
     <item>Ein gesundes Körpergewicht hilft den Blutzucker zu stabilisieren. Ihr Arzt, ein Ernährungsberater oder Fitnesstrainer kann ihnen helfen.</item>
     <item>Ihren Blutzucker mittels einer App wie Glucosio zwei Mal täglich zu überprüfen und zu verfolgen, wird ihnen dabei helfen, den Ergebnissen von Ernährung und des Lebensstils bewusst zu werden.</item>
     <item>Verwenden sie A1c Tests um ihren durchschnittlichen Blutzucker der vergangenen 2 bis 3 Monate zu bestimmen. Ihr Arzt sollte ihnen mitteilen, wie oft sie diesen durchführen müssen.</item>
-    <item>Tracking how many carbohydrates you consume can be just as important as checking blood levels since carbohydrates influence blood glucose levels. Talk to your doctor or a dietician about carbohydrate intake.</item>
+    <item>Der Überblick über die aufgenommenen Kohlenhydrate kann genauso wichtig sein, wie die Kontrolle der Blutwerte, da die Kohlenhydrate den Blutzucker beeinflussen. Sprechen Sie mit Ihrem Arzt oder Ernährungsberater über den Kohlenhydratanteil Ihrer Ernährung.</item>
     <item>Kontrolle von Blutdruck, Cholesterin und Triglyzeride ist wichtig, da Diabetiker anfälliger für Herzerkrankungen sind.</item>
     <item>Es gibt mehrere Diät-Ansätze um gesünder zu essen und Ihnen zu helfen, Ihre Diabetes-Ergebnisse zu verbessern. Konsultieren Sie einen Ernährungsberater um rauszufinden, was am besten für Sie und Ihren Geldbeutel ist.</item>
     <item>Eine regelmäßige sportliche Aktivität ist besonders für Diabetiker wichtig um ein gesundes Gewicht zu halten. Sprechen Sie mit Ihrem Arzt über für sie passende Übungen.</item>
@@ -138,6 +143,7 @@
   <string name="assistant_export_title">Daten exportieren</string>
   <string name="assistant_export_desc">Teilen sie ihre Daten mit Ihrem Arzt oder sichern sie diese auf Google Drive mit der Exportfunktion.</string>
   <string name="assistant_calculator_a1c_title">Berechne A1C</string>
+  <string name="assistant_calculator_a1c_desc">Glucosios integrierter HbA1c-Rechner ist jetzt im Navigationsmenü verfügbar. Geben Sie Ihren durchschnittlichen Blutzuckerwert ein und speichern Sie den berechneten HbA1c-Wert direkt ab.</string>
   <string name="helloactivity_spinner_preferred_range">Empfohlener Bereich</string>
   <string name="helloactivity_spinner_preferred_range_4">Individueller Bereich</string>
   <string name="helloactivity_preferred_range_min">Minimumwert</string>
@@ -148,11 +154,13 @@
   <string name="invitation_message">Teste Glucosio, ein Open Source Programm für Diabetes-Managment und Forschung.</string>
   <string name="invitation_cta">Teste Glucosio</string>
   <string name="title_activity_backup_drive">Google Drive Backup</string>
+  <string name="activity_main_dialog_backup_export_title">Backup &amp; Export</string>
   <string name="preferences_privacy">Datenschutz</string>
   <string name="helloactivity_textview_tos">Durch die Verwendung von Glucosio akzeptierst du die</string>
   <string name="preferences_backup_google_drive">Google Drive</string>
   <string name="preferences_about_glucosio">Über Glucosio</string>
   <string name="preferences_rate">Bewerte Glucosio</string>
+  <string name="preferences_licences_open">Open-Source-Lizenzen</string>
   <string name="preferences_freestyle_libre">Aktiviere FreeStyle Libre® Unterstützung</string>
   <string name="preferences_freestyle_libre_experimental">EXPERIMENTELL: Aktiviere FreeStyle Libre® Unterstützung</string>
   <string name="preferences_font_dyslexia_experimental">EXPERIMENTELL: Erhöht die Lesbarkeit für Benutzer mit Dyslexie</string>
@@ -229,11 +237,17 @@
   <string name="dialog_add_cholesterol_hdl">HDL Cholesterin</string>
   <string name="dialog_add_hb1ac">HBA1C</string>
   <string name="title_activity_add_glucose">Blutzuckermessung hinzufügen</string>
+  <string name="title_activity_add_glucose_edit">Blutzuckerwert bearbeiten</string>
   <string name="title_activity_add_weight">Gewicht hinzufügen</string>
+  <string name="title_activity_add_weight_edit">Körpergewicht bearbeiten</string>
   <string name="title_activity_add_cholesterol">Cholesterinwert hinzufügen</string>
+  <string name="title_activity_add_cholesterol_edit">Cholesterinwert bearbeiten</string>
   <string name="title_activity_add_hb1ac">HBA1C hinzufügen</string>
+  <string name="title_activity_add_hb1ac_edit">HbA1c-Wert bearbeiten</string>
   <string name="title_activity_add_ketone">Kotonin hinzufügen</string>
+  <string name="title_activity_add_ketone_edit">Ketonwert bearbeiten</string>
   <string name="title_activity_add_pressure">Blutdruckmessung hinzufügen</string>
+  <string name="title_activity_add_pressure_edit">Blutdruckwert bearbeiten</string>
   <string name="fab_weight">Körpergewicht</string>
   <string name="fab_ketones">Ketonin</string>
   <string name="fab_pressure">Blutdruck</string>
@@ -263,17 +277,21 @@
   <string name="notification_reminder_medication">Es ist Zeit ihre Medikamente zu nehmen!</string>
   <string name="overview_hb1ac_info">Dies ist nur eine Schätzung und errechnet sich aus dem Durchschnitt des letzten Monats der Messungen. Während diese Schätzung eine weithin akzeptierte Formel für die Abschätzung des HbA1C ist, appellieren wir an die User dies nur als Schätzung zu verwenden.</string>
   <string name="dialog_add_notes">Anmerkungen</string>
+  <string name="sidebar_backup_export">Backup &amp; Export</string>
   <string name="menu_backup_backup">Backup auf Google Drive</string>
   <string name="menu_backup_restore">Wiederherstellen</string>
   <string name="menu_backup_csv">CSV-Export</string>
   <string name="activity_backup_drive_automatic">Automatische Sicherung</string>
   <string name="activity_backup_drive_desc">Das Sichern Ihrer Daten auf Google Drive ermöglicht es Ihnen, Ihre Messwerte wiederherzustellen, wenn Sie Ihr Gerät verlieren oder durch ein anderes ersetzen.</string>
   <string name="activity_backup_drive_message_restart">Neustart um die Änderungen anzuwenden...</string>
+  <string name="activity_backup_drive_desc_1">Glucosio-Datenbank mit Google Drive synchronisieren.</string>
+  <string name="activity_backup_drive_desc_2">Sie können alle Ihre Werte wiederherstellen, wenn Sie Ihr Telefon verlieren oder wechseln, oder Ihre Daten zwischen mehreren Geräten synchronisieren.</string>
   <string name="activity_backup_drive_success">Datenbank erfolgreich gesichert</string>
   <string name="activity_backup_drive_restore_success">Datenbank erfolgreich wiederhergestellt</string>
   <string name="activity_backup_drive_failed">Etwas ist schiefgelaufen. Bitte erneut versuchen :/</string>
   <string name="activity_backup_drive_last">Letzte Sicherung:</string>
   <string name="activity_backup_drive_folder">Backup Ordner</string>
+  <string name="activity_backup_drive_folder_not_set">Nicht angegeben</string>
   <string name="activity_backup_drive_button_backup">Jetzt sichern</string>
   <string name="activity_backup_drive_recent">Letzte Sicherungen</string>
   <string name="activity_backup_drive_more">Weitere Sicherungen anzeigen</string>
@@ -284,6 +302,10 @@
   <string name="activity_backup_drive_dialog_restore_button_restore">Sicherung wiederherstellen</string>
   <string name="activity_backup_drive_button_restore">Wiederherstellung von Laufwerk</string>
   <string name="activity_backup_drive_error_restore">Es konnte keine gültige Sicherung auf dem Laufwerk gefunden werden</string>
+  <string name="activity_main_error_play_services">Glucosio benötigt Google Play-Dienste um Google Drive Backup verwenden zu können.</string>
   <string name="activity_main_dialog_csv_title">In ein CSV-File exportieren</string>
+  <string name="activity_backup_drive_button_open_drive">In Google Drive öffnen</string>
+  <string name="mmol_mol">mmol/mol</string>
   <string name="mmol_L">mmol/L</string>
+  <string name="preferences_graph_old">Alte Graph-Darstellung verwenden</string>
 </resources>

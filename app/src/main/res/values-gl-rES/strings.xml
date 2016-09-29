@@ -26,6 +26,7 @@
   <string name="tab_overview">Vista xeral</string>
   <string name="tab_history">Historial</string>
   <string name="tab_tips">Consellos</string>
+  <string name="activity_main_add_new_reading">Engadir nova lectura</string>
   <string name="title_activity_hello">Ola!</string>
   <string name="helloactivity_headline">Ola!</string>
   <string name="helloactivity_terms">Condicións de uso</string>
@@ -225,6 +226,7 @@
   <string name="fragment_overview_graph_export_true">Captura de pantalla gardada na galería</string>
   <string name="fragment_overview_graph_export_false">Erro ao gardar a captura de pantalla na galería</string>
   <string name="dialog_export_range">Intervalo de exportación</string>
+  <string name="activity_export_issue_generic">Produciuse un erro ao exportar as lecturas. Por favor, téntao de novo.</string>
   <string name="activity_export_no_readings_snackbar">Ningún rexistro para exportar.</string>
   <string name="wear_new_reading">Novo rexistro engadido</string>
   <string name="dialog_add_weight">Peso</string>
@@ -238,10 +240,15 @@
   <string name="title_activity_add_glucose">Engadir rexistro de glicosa</string>
   <string name="title_activity_add_glucose_edit">Editar rexistro de glicosa</string>
   <string name="title_activity_add_weight">Engadir peso corporal</string>
+  <string name="title_activity_add_weight_edit">Editar o peso corporal</string>
   <string name="title_activity_add_cholesterol">Engadir nivel de colesterol</string>
+  <string name="title_activity_add_cholesterol_edit">Editar o nivel de colesterol</string>
   <string name="title_activity_add_hb1ac">Engadir HB1AC</string>
+  <string name="title_activity_add_hb1ac_edit">Editar HbA1c</string>
   <string name="title_activity_add_ketone">Engadir cetonas</string>
+  <string name="title_activity_add_ketone_edit">Editar as cetonas</string>
   <string name="title_activity_add_pressure">Engadir presión arterial</string>
+  <string name="title_activity_add_pressure_edit">Editar presión arterial</string>
   <string name="fab_weight">Peso corporal</string>
   <string name="fab_ketones">Cetonas</string>
   <string name="fab_pressure">Presión arterial</string>
@@ -285,6 +292,7 @@
   <string name="activity_backup_drive_failed">Algo foi mal. Téntao de novo, por favor :/</string>
   <string name="activity_backup_drive_last">Última copia de seguranza:</string>
   <string name="activity_backup_drive_folder">Cartafol das copias de seguranza</string>
+  <string name="activity_backup_drive_folder_not_set">Sen definir</string>
   <string name="activity_backup_drive_button_backup">Facer copia de seguranza</string>
   <string name="activity_backup_drive_recent">Copias de seguranza recentes</string>
   <string name="activity_backup_drive_more">Ver máis copias de seguranza</string>
@@ -301,4 +309,10 @@
   <string name="mmol_mol">mmol/mol</string>
   <string name="mmol_L">mmol/L</string>
   <string name="preferences_graph_old">Volver ao gráfico antigo</string>
+  <string name="history">historial</string>
+  <string name="save">gardar</string>
+  <string name="activity_reminders_title">Recordatorios</string>
+  <string name="reminders_notification_text">É hora de rexistrar o nivel de glucosa!</string>
+  <string name="reminders_notification_action">Engadir unha lectura</string>
+  <string name="glucosio_activity_reminders_empty">Recordatorios non definidos. Engadir aquí un novo.</string>
 </resources>
