@@ -20,6 +20,7 @@
 
 package org.glucosio.android.presenter;
 
+import android.text.TextUtils;
 import org.glucosio.android.tools.network.NetworkConnectivity;
 
 public class ExternalViewPresenter {
@@ -46,12 +47,12 @@ public class ExternalViewPresenter {
 
   private void parametersPrecondition(String title, String url) {
     if ((invalidParam(title)) || invalidParam(url)) {
-      throw new RuntimeException("Invalid arguments: need URL and TITLE");
+      throw new IllegalArgumentException("Invalid arguments: need URL and TITLE");
     }
   }
 
   private boolean invalidParam(String url) {
-    return url == null || url.length() == 0;
+    return TextUtils.isEmpty(url);
   }
 
   public interface View {
