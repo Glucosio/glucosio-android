@@ -39,6 +39,7 @@ import java.util.Date;
 import java.util.List;
 
 public class AddGlucosePresenter extends AddReadingPresenter {
+    private static final int UNKNOWN_ID = -1;
     private DatabaseHandler dB;
     private AddGlucoseActivity activity;
     private ReadingTools rTools;
@@ -70,49 +71,40 @@ public class AddGlucosePresenter extends AddReadingPresenter {
     }
 
     public void dialogOnAddButtonPressed(String time, String date, String reading, String type, String notes) {
-        if (validateDate(date) && validateTime(time) && validateGlucose(reading) && validateType(type)) {
-            Date finalDateTime = getReadingTime();
-            boolean isReadingAdded;
-            if ("mg/dL".equals(getUnitMeasuerement())) {
-                int finalReading = Integer.parseInt(reading);
-                GlucoseReading gReading = new GlucoseReading(finalReading, type, finalDateTime, notes);
-                isReadingAdded = dB.addGlucoseReading(gReading);
-            } else {
-                converter = new GlucosioConverter();
-                int convertedReading = converter.glucoseToMgDl(Double.parseDouble(reading));
-                GlucoseReading gReading = new GlucoseReading(convertedReading, type, finalDateTime, notes);
-
-                isReadingAdded = dB.addGlucoseReading(gReading);
-            }
-            if (!isReadingAdded) {
-                activity.showDuplicateErrorMessage();
-            } else {
-                activity.finishActivity();
-            }
-        } else {
-            activity.showErrorMessage();
-        }
+        dialogOnAddButtonPressed(time, date, reading, type, notes, UNKNOWN_ID);
     }
 
     public void dialogOnAddButtonPressed(String time, String date, String reading, String type, String notes, long oldId) {
         if (validateDate(date) && validateTime(time) && validateGlucose(reading) && validateType(type)) {
             Date finalDateTime = getReadingTime();
-            boolean isReadingAdded;
-            if ("mg/dL".equals(getUnitMeasuerement())) {
-                int finalReading = Integer.parseInt(reading);
-                GlucoseReading gReading = new GlucoseReading(finalReading, type, finalDateTime, notes);
-                isReadingAdded = dB.editGlucoseReading(oldId, gReading);
+            Number number = ReadingTools.parseReading(reading);
+            if (number == null) {
+                activity.showErrorMessage();
             } else {
-                converter = new GlucosioConverter();
-                int convertedReading = converter.glucoseToMgDl(Double.parseDouble(reading));
-                GlucoseReading gReading = new GlucoseReading(convertedReading, type, finalDateTime, notes);
-
-                isReadingAdded = dB.editGlucoseReading(oldId, gReading);
-            }
-            if (!isReadingAdded) {
-                activity.showDuplicateErrorMessage();
-            } else {
-                activity.finishActivity();
+                boolean isReadingAdded;
+                if ("mg/dL".equals(getUnitMeasuerement())) {
+                    int finalReading = number.intValue();
+                    GlucoseReading gReading = new GlucoseReading(finalReading, type, finalDateTime, notes);
+                    if (oldId == UNKNOWN_ID) {
+                        isReadingAdded = dB.addGlucoseReading(gReading);
+                    } else {
+                        isReadingAdded = dB.editGlucoseReading(oldId, gReading);
+                    }
+                } else {
+                    converter = new GlucosioConverter();
+                    int convertedReading = converter.glucoseToMgDl(number.doubleValue());
+                    GlucoseReading gReading = new GlucoseReading(convertedReading, type, finalDateTime, notes);
+                    if (oldId == UNKNOWN_ID) {
+                        isReadingAdded = dB.addGlucoseReading(gReading);
+                    } else {
+                        isReadingAdded = dB.editGlucoseReading(oldId, gReading);
+                    }
+                }
+                if (!isReadingAdded) {
+                    activity.showDuplicateErrorMessage();
+                } else {
+                    activity.finishActivity();
+                }
             }
         } else {
             activity.showErrorMessage();

@@ -20,6 +20,11 @@
 
 package org.glucosio.android.tools;
 
+import android.support.annotation.Nullable;
+
+import java.text.NumberFormat;
+import java.text.ParseException;
+
 public class ReadingTools {
 
     public ReadingTools() {
@@ -43,6 +48,24 @@ public class ReadingTools {
             return 0; // before breakfast
         } else {
             return 8; // night time
+        }
+    }
+
+    /**
+     * A convenient method for parsing reading value based on user's locale
+     *
+     * @param reading reading number String
+     * @return reading Number
+     */
+    @Nullable
+    public static Number parseReading(String reading) {
+        if (reading == null)
+            return null;
+        NumberFormat numberFormat = NumberFormat.getInstance();
+        try {
+            return numberFormat.parse(reading);
+        } catch (ParseException e) {
+            return null;
         }
     }
 }
