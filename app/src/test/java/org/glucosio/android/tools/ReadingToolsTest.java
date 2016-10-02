@@ -1,13 +1,27 @@
 package org.glucosio.android.tools;
 
-import org.glucosio.android.RobolectricTest;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Locale;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ReadingToolsTest extends RobolectricTest {
+public class ReadingToolsTest {
+
+    private Locale defaultLocale;
+
+    @Before
+    public void setUp() {
+        defaultLocale = Locale.getDefault();
+    }
+
+    @After
+    public void after() {
+        Locale.setDefault(defaultLocale);
+    }
+
     @Test
     public void shouldReturnNull_whenNullStringPassed() {
         assertThat(ReadingTools.parseReading(null)).isNull();
