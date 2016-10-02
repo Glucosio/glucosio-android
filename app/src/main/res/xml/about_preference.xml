@@ -35,6 +35,9 @@
         android:key="preference_licences"
         android:title="@string/preferences_licences_open" />
     <Preference
+        android:key="preference_thanks"
+        android:title="@string/preferences_contributors" />
+    <Preference
         android:key="preference_version"
         android:summary="@string/version"
         android:title="@string/preferences_version" />

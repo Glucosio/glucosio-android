@@ -279,6 +279,7 @@
     <string name="preferences_about_glucosio">About Glucosio</string>
     <string name="preferences_rate">Rate Glucosio</string>
     <string name="preferences_licences_open">Open source licenses</string>
+    <string name="preferences_contributors">Contributors</string>
     <string name="preferences_freestyle_libre">Enable FreeStyle Libre® support</string>
     <string name="preferences_freestyle_libre_experimental">EXPERIMENTAL: Enable FreeStyle Libre® support</string>
     <string name="preferences_font_dyslexia_experimental">EXPERIMENTAL: Increase readability for users with dyslexia</string>
