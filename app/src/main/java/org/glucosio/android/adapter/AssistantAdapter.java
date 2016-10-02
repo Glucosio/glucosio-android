@@ -22,6 +22,7 @@ package org.glucosio.android.adapter;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -33,15 +34,15 @@ import org.glucosio.android.R;
 import org.glucosio.android.object.ActionTip;
 import org.glucosio.android.presenter.AssistantPresenter;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class AssistantAdapter extends RecyclerView.Adapter<AssistantAdapter.ViewHolder> {
-    private ArrayList<ActionTip> actionTips;
+    private List<ActionTip> actionTips;
     private AssistantPresenter presenter;
     private Resources res;
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public AssistantAdapter(Context context, AssistantPresenter assistantPresenter, ArrayList<ActionTip> tips) {
+    public AssistantAdapter(Context context, AssistantPresenter assistantPresenter, List<ActionTip> tips) {
         this.res = context.getResources();
         this.presenter = assistantPresenter;
         this.actionTips = tips;
@@ -49,8 +50,7 @@ public class AssistantAdapter extends RecyclerView.Adapter<AssistantAdapter.View
 
     // Create new views (invoked by the layout manager)
     @Override
-    public AssistantAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                          int viewType) {
+    public AssistantAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.fragment_assistant_item, parent, false);
@@ -69,12 +69,19 @@ public class AssistantAdapter extends RecyclerView.Adapter<AssistantAdapter.View
         actionTipAction.setText(actionTips.get(position).getTipAction());
         String actionTipTitleString = actionTips.get(position).getTipTitle();
 
+        View.OnClickListener actionListener = getActionListener(actionTipTitleString);
+        actionTipAction.setOnClickListener(actionListener);
+    }
+
+    @NonNull
+    private View.OnClickListener getActionListener(String actionTipTitleString) {
         View.OnClickListener actionListener;
+        //TODO: OOP or at least switch
         if (actionTipTitleString.equals(res.getString(R.string.assistant_feedback_title))) {
             actionListener = new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    presenter.openLiveChat();
+                    presenter.userSupportAsked();
 
                 }
             };
@@ -82,26 +89,25 @@ public class AssistantAdapter extends RecyclerView.Adapter<AssistantAdapter.View
             actionListener = new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    presenter.startExportActivity();
+                    presenter.userAskedExport();
                 }
             };
         } else if (actionTipTitleString.equals(res.getString(R.string.assistant_calculator_a1c_title))) {
             actionListener = new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    presenter.startA1CCalculatorActivity();
+                    presenter.userAskedA1CCalculator();
                 }
             };
         } else {
             actionListener = new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    presenter.addReading();
+                    presenter.userAskedAddReading();
                 }
             };
         }
-
-        actionTipAction.setOnClickListener(actionListener);
+        return actionListener;
     }
 
     // Return the size of your dataset (invoked by the layout manager)
@@ -113,11 +119,11 @@ public class AssistantAdapter extends RecyclerView.Adapter<AssistantAdapter.View
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
-        public View mView;
+        View mView;
 
-        public ViewHolder(View v) {
+        ViewHolder(View v) {
             super(v);
             mView = v;
         }

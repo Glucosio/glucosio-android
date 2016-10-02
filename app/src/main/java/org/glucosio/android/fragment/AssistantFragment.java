@@ -241,7 +241,7 @@ public class AssistantFragment extends Fragment {
         startActivity(intent);
     }
 
-    public void openLiveChat() {
+    public void openSupportDialog() {
         ((MainActivity) getActivity()).openSupportDialog();
     }
 }
