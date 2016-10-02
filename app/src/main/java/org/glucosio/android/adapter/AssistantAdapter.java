@@ -36,15 +36,12 @@ import org.glucosio.android.presenter.AssistantPresenter;
 import java.util.ArrayList;
 
 public class AssistantAdapter extends RecyclerView.Adapter<AssistantAdapter.ViewHolder> {
-    private Context mContext;
     private ArrayList<ActionTip> actionTips;
     private AssistantPresenter presenter;
     private Resources res;
 
-
     // Provide a suitable constructor (depends on the kind of dataset)
     public AssistantAdapter(Context context, AssistantPresenter assistantPresenter, ArrayList<ActionTip> tips) {
-        this.mContext = context;
         this.res = context.getResources();
         this.presenter = assistantPresenter;
         this.actionTips = tips;
@@ -54,13 +51,11 @@ public class AssistantAdapter extends RecyclerView.Adapter<AssistantAdapter.View
     @Override
     public AssistantAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                           int viewType) {
-
         // create a new view
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.fragment_assistant_item, parent, false);
 
-        ViewHolder vh = new ViewHolder(v);
-        return vh;
+        return new ViewHolder(v);
     }
 
     // Replace the contents of a view (invoked by the layout manager)
