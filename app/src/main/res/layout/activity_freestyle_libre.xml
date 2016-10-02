@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2016 Glucosio Foundation
   ~
   ~ This file is part of Glucosio.
@@ -29,74 +28,70 @@
         android:id="@+id/activity_freestyle_intro"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:gravity="center"
-        android:visibility="visible"
-        android:padding="20dp">
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:visibility="visible">
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:src="@drawable/ic_freestylelibre"/>
+            android:src="@drawable/ic_freestylelibre" />
+
         <TextView
+            android:id="@+id/result"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/result"
-            android:textColor="@color/glucosio_text"
             android:layout_marginTop="16dp"
-            android:textSize="18sp"
             android:gravity="center"
-            android:text="@string/freestylelibre_nfc_ready" />
+            android:text="@string/freestylelibre_nfc_ready"
+            android:textColor="@color/glucosio_text"
+            android:textSize="18sp" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/activity_freestyle_reading"
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="invisible"
+        android:background="@color/glucosio_pink"
         android:gravity="center"
-        android:background="@color/glucosio_pink">
+        android:orientation="vertical"
+        android:visibility="invisible">
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-        <TextView
-            android:id="@+id/activity_freestyle_textview_reading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="56sp"
-            android:text="80"
-            />
+
+            <TextView
+                android:id="@+id/activity_freestyle_textview_reading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="56sp"
+                tools:text="80" />
+
             <TextView
                 android:id="@+id/activity_freestyle_textview_unit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:textSize="36sp"
                 android:text=" mg/dl"
-                />
+                android:textColor="@color/white"
+                android:textSize="36sp" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <Button
-                android:id="@+id/activity_freestyle_button_history"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:background="?android:attr/selectableItemBackground"
-                android:textColor="@color/white"
-                android:text="@string/history"
-                />
+
             <Button
                 android:id="@+id/activity_freestyle_button_save"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="?android:attr/selectableItemBackground"
-                android:textColor="@color/white"
                 android:text="@string/save"
-                />
+                android:textColor="@color/white" />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

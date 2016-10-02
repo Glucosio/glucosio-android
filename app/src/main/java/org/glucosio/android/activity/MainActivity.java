@@ -55,7 +55,6 @@ import com.github.clans.fab.FloatingActionButton;
 import com.google.android.gms.appinvite.AppInviteInvitation;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
-import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
@@ -79,10 +78,11 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, ExportView {
 
+    private static final String INTENT_EXTRA_DROPDOWN = "history_dropdown";
     private static final int REQUEST_INVITE = 1;
     private static final String INTENT_EXTRA_PAGER = "pager";
-    private final String INTENT_EXTRA_DROPDOWN = "history_dropdown";
-    BottomSheetBehavior bottomSheetBehavior;
+
+    private BottomSheetBehavior bottomSheetBehavior;
     private ExportPresenter exportPresenter;
     private RadioButton exportRangeButton;
     private HomePagerAdapter homePagerAdapter;
@@ -92,8 +92,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private TextView exportDialogDateFrom;
     private TextView exportDialogDateTo;
     private View bottomSheetAddDialogView;
-    private FloatingActionButton fabAddReading;
-    private Toolbar toolbar;
     private TabLayout tabLayout;
 
     @Override
@@ -105,7 +103,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         setContentView(R.layout.activity_main);
         initPresenters(application);
 
-        toolbar = (Toolbar) findViewById(R.id.activity_main_toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.activity_main_toolbar);
         tabLayout = (TabLayout) findViewById(R.id.activity_main_tab_layout);
         viewPager = (ViewPager) findViewById(R.id.activity_main_pager);
 
@@ -121,7 +119,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
         viewPager.setAdapter(homePagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
-        tabLayout.setOnTabSelectedListener(
+        tabLayout.addOnTabSelectedListener(
                 new TabLayout.ViewPagerOnTabSelectedListener(viewPager) {
                     @Override
                     public void onTabSelected(TabLayout.Tab tab) {
@@ -156,7 +154,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             }
         });
 
-        fabAddReading = (FloatingActionButton) findViewById(R.id.activity_main_fab_add_reading);
+        FloatingActionButton fabAddReading = (FloatingActionButton) findViewById(R.id.activity_main_fab_add_reading);
         fabAddReading.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -375,7 +373,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     public void openSupportDialog() {
-        final Context mContext = this;
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(getResources().getString(R.string.menu_support_title));
         builder.setItems(getResources().getStringArray(R.array.menu_support_options), new DialogInterface.OnClickListener() {
@@ -700,7 +697,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     private boolean isPlayServicesAvailable() {
-        int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext());
+        GoogleApiAvailability googleAPI = GoogleApiAvailability.getInstance();
+        int status = googleAPI.isGooglePlayServicesAvailable(getApplicationContext());
         if (status == ConnectionResult.SUCCESS)
             return true;
         else {

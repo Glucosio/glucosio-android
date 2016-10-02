@@ -52,8 +52,6 @@ public class AddGlucoseActivity extends AddReadingActivity {
     private TextView readingTextView;
     private EditText typeCustomEditText;
     private EditText notesEditText;
-    private AppCompatButton addFreeStyleButton;
-    private TextInputLayout readingInputLayout;
     private LabelledSpinner readingTypeSpinner;
     private boolean isCustomType = false;
 
@@ -79,8 +77,8 @@ public class AddGlucoseActivity extends AddReadingActivity {
         readingTypeSpinner.setItemsArray(R.array.dialog_add_measured_list);
         readingTextView = (TextView) findViewById(R.id.glucose_add_concentration);
         typeCustomEditText = (EditText) findViewById(R.id.glucose_type_custom);
-        readingInputLayout = (TextInputLayout) findViewById(R.id.glucose_add_concentration_layout);
-        addFreeStyleButton = (AppCompatButton) findViewById(R.id.glucose_add_freestyle_button);
+        TextInputLayout readingInputLayout = (TextInputLayout) findViewById(R.id.glucose_add_concentration_layout);
+        AppCompatButton addFreeStyleButton = (AppCompatButton) findViewById(R.id.glucose_add_freestyle_button);
         notesEditText = (EditText) findViewById(R.id.glucose_add_notes);
 
         this.createDateTimeViewAndListener();
@@ -154,7 +152,7 @@ public class AddGlucoseActivity extends AddReadingActivity {
 
             p = getIntent().getExtras();
             reading = p.getString("reading");
-            if (reading!=null) {
+            if (reading != null) {
                 // If yes, first convert the decimal value from Freestyle to Integer
                 double d = Double.parseDouble(reading);
                 int glucoseValue = (int) d;

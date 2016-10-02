@@ -47,6 +47,7 @@ public class AddGlucosePresenter extends AddReadingPresenter {
     public AddGlucosePresenter(AddGlucoseActivity addGlucoseActivity) {
         this.activity = addGlucoseActivity;
         dB = new DatabaseHandler(addGlucoseActivity.getApplicationContext());
+        rTools = new ReadingTools();
     }
 
     public void updateSpinnerTypeTime() {
@@ -65,7 +66,6 @@ public class AddGlucosePresenter extends AddReadingPresenter {
     }
 
     public int hourToSpinnerType(int hour) {
-        rTools = new ReadingTools();
         return rTools.hourToSpinnerType(hour);
     }
 

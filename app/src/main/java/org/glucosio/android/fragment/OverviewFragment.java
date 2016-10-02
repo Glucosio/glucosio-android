@@ -69,6 +69,7 @@ import org.glucosio.android.tools.TipsManager;
 import org.glucosio.android.view.OverviewView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class OverviewFragment extends Fragment implements OverviewView {
 
@@ -77,13 +78,10 @@ public class OverviewFragment extends Fragment implements OverviewView {
     private LineChart chart;
     private TextView lastReadingTextView;
     private TextView lastDateTextView;
-    private TextView trendTextView;
     private TextView tipTextView;
     private TextView HB1ACTextView;
     private TextView HB1ACDateTextView;
-    private ImageButton graphExport;
     private Spinner graphSpinnerRange;
-    private Spinner graphSpinnerMetric;
     private OverviewPresenter presenter;
 
     private CheckBox graphCheckboxGlucose;
@@ -95,15 +93,8 @@ public class OverviewFragment extends Fragment implements OverviewView {
     private View mFragmentView;
 
 
-    public OverviewFragment() {
-        // Required empty public constructor
-    }
-
-    public static HistoryFragment newInstance() {
-        HistoryFragment fragment = new HistoryFragment();
-
-
-        return fragment;
+    public static OverviewFragment newInstance() {
+        return new OverviewFragment();
     }
 
     public static void disableTouchTheft(View view) {
@@ -143,11 +134,10 @@ public class OverviewFragment extends Fragment implements OverviewView {
 
         lastReadingTextView = (TextView) mFragmentView.findViewById(R.id.item_history_reading);
         lastDateTextView = (TextView) mFragmentView.findViewById(R.id.fragment_overview_last_date);
-        trendTextView = (TextView) mFragmentView.findViewById(R.id.item_history_trend);
         tipTextView = (TextView) mFragmentView.findViewById(R.id.random_tip_textview);
         graphSpinnerRange = (Spinner) mFragmentView.findViewById(R.id.chart_spinner_range);
-        graphSpinnerMetric = (Spinner) mFragmentView.findViewById(R.id.chart_spinner_metrics);
-        graphExport = (ImageButton) mFragmentView.findViewById(R.id.fragment_overview_graph_export);
+        Spinner graphSpinnerMetric = (Spinner) mFragmentView.findViewById(R.id.chart_spinner_metrics);
+        ImageButton graphExport = (ImageButton) mFragmentView.findViewById(R.id.fragment_overview_graph_export);
         HB1ACTextView = (TextView) mFragmentView.findViewById(R.id.fragment_overview_hb1ac);
         HB1ACDateTextView = (TextView) mFragmentView.findViewById(R.id.fragment_overview_hb1ac_date);
         HB1ACMoreButton = (ImageButton) mFragmentView.findViewById(R.id.fragment_overview_a1c_more);
@@ -256,8 +246,8 @@ public class OverviewFragment extends Fragment implements OverviewView {
         // Set array and adapter for graphSpinnerRange
         String[] selectorRangeArray = getActivity().getResources().getStringArray(R.array.fragment_overview_selector_range);
         String[] selectorMetricArray = getActivity().getResources().getStringArray(R.array.fragment_overview_selector_metric);
-        ArrayAdapter<String> dataRangeAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, selectorRangeArray);
-        ArrayAdapter<String> dataMetricAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, selectorMetricArray);
+        ArrayAdapter<String> dataRangeAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, selectorRangeArray);
+        ArrayAdapter<String> dataMetricAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, selectorMetricArray);
         dataRangeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         dataMetricAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         graphSpinnerRange.setAdapter(dataRangeAdapter);
@@ -411,9 +401,8 @@ public class OverviewFragment extends Fragment implements OverviewView {
     }
 
     private LineData generateGlucoseData() {
-        ArrayList<String> xVals = new ArrayList<String>();
-        ArrayList<Entry> yVals = new ArrayList<Entry>();
-        ArrayList<Integer> colors = new ArrayList<>();
+        List<String> xVals = new ArrayList<>();
+        List<Entry> yVals = new ArrayList<>();
         GlucosioConverter converter = new GlucosioConverter();
 
 
@@ -428,8 +417,6 @@ public class OverviewFragment extends Fragment implements OverviewView {
                     float converted = (float) val;
                     yVals.add(new Entry(converted, i));
                 }
-                GlucoseRanges ranges = new GlucoseRanges(getActivity().getApplicationContext());
-                colors.add(ranges.stringToColor(ranges.colorFromReading(presenter.getGlucoseReadings().get(i))));
             }
         } else if (graphSpinnerRange.getSelectedItemPosition() == 1) {
             // Week view
@@ -443,7 +430,6 @@ public class OverviewFragment extends Fragment implements OverviewView {
                     yVals.add(new Entry(converted, i));
                 }
             }
-            colors.add(getResources().getColor(R.color.glucosio_pink));
         } else {
             // Month view
             for (int i = 0; i < presenter.getGlucoseReadingsMonth().size(); i++) {
@@ -456,8 +442,6 @@ public class OverviewFragment extends Fragment implements OverviewView {
                     yVals.add(new Entry(converted, i));
                 }
             }
-            colors.add(getResources().getColor(R.color.glucosio_pink));
-
         }
 
         if (graphSpinnerRange.getSelectedItemPosition() == 0) {
@@ -485,8 +469,8 @@ public class OverviewFragment extends Fragment implements OverviewView {
     }
 
     private LineData generateA1cData() {
-        ArrayList<String> xVals = new ArrayList<String>();
-        ArrayList<Entry> yVals = new ArrayList<Entry>();
+        ArrayList<String> xVals = new ArrayList<>();
+        ArrayList<Entry> yVals = new ArrayList<>();
 
         for (int i = 0; i < presenter.getA1cReadings().size(); i++) {
             float val = Float.parseFloat(presenter.getA1cReadings().get(i).toString());
@@ -505,8 +489,8 @@ public class OverviewFragment extends Fragment implements OverviewView {
     }
 
     private LineData generateKetonesData() {
-        ArrayList<String> xVals = new ArrayList<String>();
-        ArrayList<Entry> yVals = new ArrayList<Entry>();
+        List<String> xVals = new ArrayList<>();
+        List<Entry> yVals = new ArrayList<>();
 
         for (int i = 0; i < presenter.getKetonesReadings().size(); i++) {
             float val = Float.parseFloat(presenter.getKetonesReadings().get(i).toString());
@@ -525,8 +509,8 @@ public class OverviewFragment extends Fragment implements OverviewView {
     }
 
     private LineData generateWeightData() {
-        ArrayList<String> xVals = new ArrayList<String>();
-        ArrayList<Entry> yVals = new ArrayList<Entry>();
+        List<String> xVals = new ArrayList<>();
+        List<Entry> yVals = new ArrayList<>();
 
         for (int i = 0; i < presenter.getWeightReadings().size(); i++) {
             float val = Float.parseFloat(presenter.getWeightReadings().get(i).toString());
@@ -545,9 +529,9 @@ public class OverviewFragment extends Fragment implements OverviewView {
     }
 
     private LineData generatePressureData() {
-        ArrayList<String> xVals = new ArrayList<String>();
-        ArrayList<Entry> yValsMax = new ArrayList<Entry>();
-        ArrayList<Entry> yValsMin = new ArrayList<Entry>();
+        List<String> xVals = new ArrayList<>();
+        List<Entry> yValsMax = new ArrayList<>();
+        List<Entry> yValsMin = new ArrayList<>();
 
         for (int i = 0; i < presenter.getMaxPressureReadings().size(); i++) {
             float val = Float.parseFloat(presenter.getMaxPressureReadings().get(i).toString());
@@ -573,8 +557,8 @@ public class OverviewFragment extends Fragment implements OverviewView {
     }
 
     private LineData generateCholesterolData() {
-        ArrayList<String> xVals = new ArrayList<String>();
-        ArrayList<Entry> yVals = new ArrayList<Entry>();
+        List<String> xVals = new ArrayList<>();
+        List<Entry> yVals = new ArrayList<>();
 
         for (int i = 0; i < presenter.getCholesterolReadings().size(); i++) {
             float val = Float.parseFloat(presenter.getCholesterolReadings().get(i).toString());
@@ -592,10 +576,10 @@ public class OverviewFragment extends Fragment implements OverviewView {
                 generateLineDataSet(yVals, getResources().getColor(R.color.glucosio_fab_cholesterol)));
     }
 
-    private LineDataSet generateLineDataSet(ArrayList<Entry> yVals, int color) {
+    private LineDataSet generateLineDataSet(List<Entry> yVals, int color) {
         // create a dataset and give it a type
         LineDataSet set1 = new LineDataSet(yVals, "");
-        ArrayList<Integer> colors = new ArrayList<>();
+        List<Integer> colors = new ArrayList<>();
 
         if (color == getResources().getColor(R.color.glucosio_pink)) {
             for (Entry yVal : yVals) {
@@ -671,19 +655,13 @@ public class OverviewFragment extends Fragment implements OverviewView {
         }
     }
 
-/*    private void loadGlucoseTrend(){
-        if (!presenter.isdbEmpty()) {
-            trendTextView.setText(presenter.getGlucoseTrend() + "");
-        }
-    }*/
-
     private void loadLastReading() {
         if (!presenter.isdbEmpty()) {
             if (presenter.getUnitMeasuerement().equals("mg/dL")) {
                 lastReadingTextView.setText(presenter.getLastReading() + " mg/dL");
             } else {
                 GlucosioConverter converter = new GlucosioConverter();
-                lastReadingTextView.setText(converter.glucoseToMmolL(Double.parseDouble(presenter.getLastReading().toString())) + " mmol/L");
+                lastReadingTextView.setText(converter.glucoseToMmolL(Double.parseDouble(presenter.getLastReading())) + " mmol/L");
             }
 
             FormatDateTime dateTime = new FormatDateTime(getActivity().getApplicationContext());
@@ -718,8 +696,7 @@ public class OverviewFragment extends Fragment implements OverviewView {
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           String permissions[], int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
         switch (requestCode) {
             case PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE: {
                 // If request is cancelled, the result arrays are empty.
