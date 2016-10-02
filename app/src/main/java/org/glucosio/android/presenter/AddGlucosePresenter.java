@@ -81,25 +81,7 @@ public class AddGlucosePresenter extends AddReadingPresenter {
             if (number == null) {
                 activity.showErrorMessage();
             } else {
-                boolean isReadingAdded;
-                if ("mg/dL".equals(getUnitMeasuerement())) {
-                    int finalReading = number.intValue();
-                    GlucoseReading gReading = new GlucoseReading(finalReading, type, finalDateTime, notes);
-                    if (oldId == UNKNOWN_ID) {
-                        isReadingAdded = dB.addGlucoseReading(gReading);
-                    } else {
-                        isReadingAdded = dB.editGlucoseReading(oldId, gReading);
-                    }
-                } else {
-                    converter = new GlucosioConverter();
-                    int convertedReading = converter.glucoseToMgDl(number.doubleValue());
-                    GlucoseReading gReading = new GlucoseReading(convertedReading, type, finalDateTime, notes);
-                    if (oldId == UNKNOWN_ID) {
-                        isReadingAdded = dB.addGlucoseReading(gReading);
-                    } else {
-                        isReadingAdded = dB.editGlucoseReading(oldId, gReading);
-                    }
-                }
+                boolean isReadingAdded = createReading(type, notes, oldId, finalDateTime, number);
                 if (!isReadingAdded) {
                     activity.showDuplicateErrorMessage();
                 } else {
@@ -109,6 +91,24 @@ public class AddGlucosePresenter extends AddReadingPresenter {
         } else {
             activity.showErrorMessage();
         }
+    }
+
+    private boolean createReading(String type, String notes, long oldId, Date finalDateTime, Number number) {
+        boolean isReadingAdded;
+        int readingValue;
+        if ("mg/dL".equals(getUnitMeasuerement())) {
+            readingValue = number.intValue();
+        } else {
+            converter = new GlucosioConverter();
+            readingValue = converter.glucoseToMgDl(number.doubleValue());
+        }
+        GlucoseReading gReading = new GlucoseReading(readingValue, type, finalDateTime, notes);
+        if (oldId == UNKNOWN_ID) {
+            isReadingAdded = dB.addGlucoseReading(gReading);
+        } else {
+            isReadingAdded = dB.editGlucoseReading(oldId, gReading);
+        }
+        return isReadingAdded;
     }
 
     public Integer retrieveSpinnerID(String measuredTypeText, List<String> measuredTypelist) {
