@@ -94,7 +94,7 @@ public class AssistantFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_assistant, container, false);
         unbinder = ButterKnife.bind(this, view);
 
-        adapter = new AssistantAdapter(getActivity().getApplicationContext(), presenter, actionTips);
+        adapter = new AssistantAdapter(presenter, getActivity().getApplicationContext().getResources(), actionTips);
 
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         llm.setOrientation(LinearLayoutManager.VERTICAL);

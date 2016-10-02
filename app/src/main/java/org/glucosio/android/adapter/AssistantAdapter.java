@@ -20,7 +20,6 @@
 
 package org.glucosio.android.adapter;
 
-import android.content.Context;
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.AppCompatButton;
@@ -42,8 +41,8 @@ public class AssistantAdapter extends RecyclerView.Adapter<AssistantAdapter.View
     private Resources res;
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public AssistantAdapter(Context context, AssistantPresenter assistantPresenter, List<ActionTip> tips) {
-        this.res = context.getResources();
+    public AssistantAdapter(AssistantPresenter assistantPresenter, final Resources resources, List<ActionTip> tips) {
+        this.res = resources;
         this.presenter = assistantPresenter;
         this.actionTips = tips;
     }

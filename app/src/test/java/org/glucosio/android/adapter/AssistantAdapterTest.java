@@ -42,7 +42,7 @@ public class AssistantAdapterTest extends RobolectricTest {
         viewGroup = (ViewGroup) activity.findViewById(android.R.id.content);
 
         List<ActionTip> tips = prepareTips();
-        adapter = new AssistantAdapter(activity, presenterMock, tips);
+        adapter = new AssistantAdapter(presenterMock, activity.getResources(), tips);
     }
 
     private List<ActionTip> prepareTips() {
