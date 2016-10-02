@@ -1,6 +1,5 @@
 package org.glucosio.android.activity;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.BottomSheetDialog;
@@ -38,7 +37,6 @@ public class RemindersActivity extends AppCompatActivity implements TimePickerDi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reminders);
-        final Activity reminderActivity = this;
         presenter = new RemindersPresenter(this);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.activity_main_toolbar);
@@ -56,11 +54,11 @@ public class RemindersActivity extends AppCompatActivity implements TimePickerDi
             @Override
             public void onClick(final View view) {
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(reminderActivity);
+                AlertDialog.Builder builder = new AlertDialog.Builder(RemindersActivity.this);
                 builder.setTitle(R.string.activity_reminder_add_label);
 
                 // Set up the input
-                final EditText input = new EditText(reminderActivity);
+                final EditText input = new EditText(RemindersActivity.this);
                 // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
                 input.setInputType(InputType.TYPE_CLASS_TEXT);
                 // Set EditText margin
