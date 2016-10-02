@@ -70,7 +70,7 @@
             android:name=".activity.PreferencesActivity"
             android:theme="@style/GlucosioSettings" />
         <activity
-            android:name=".activity.LicenceActivity"
+            android:name=".activity.ExternalLinkActivity"
             android:theme="@style/GlucosioSettings" />
         <activity
             android:name=".activity.AboutActivity"

@@ -226,6 +226,7 @@
   <string name="fragment_overview_graph_export_true">Zaslonska slika shranjena v galerijo</string>
   <string name="fragment_overview_graph_export_false">Napaka pri shranjevanju zaslonske slike v galerijo</string>
   <string name="dialog_export_range">Izvozi obseg</string>
+  <string name="activity_export_issue_generic">Pri izvozu meritev je prišlo do težave. Poizkusite znova.</string>
   <string name="activity_export_no_readings_snackbar">Ni meritev za izvoz.</string>
   <string name="wear_new_reading">Dodana nova meritev</string>
   <string name="dialog_add_weight">Teža</string>
@@ -308,4 +309,10 @@
   <string name="mmol_mol">mmol/mol</string>
   <string name="mmol_L">mmol/l</string>
   <string name="preferences_graph_old">Povrni na stari graf</string>
+  <string name="history">zgodovina</string>
+  <string name="save">shrani</string>
+  <string name="activity_reminders_title">Opomniki</string>
+  <string name="reminders_notification_text">Čas je za beleženje vaše ravni glukoze!</string>
+  <string name="reminders_notification_action">Dodaj meritev</string>
+  <string name="glucosio_activity_reminders_empty">Opomniki niso nastavljeni. Tu dodajte novega.</string>
 </resources>
