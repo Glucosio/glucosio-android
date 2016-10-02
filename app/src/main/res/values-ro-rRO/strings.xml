@@ -26,6 +26,7 @@
   <string name="tab_overview">General</string>
   <string name="tab_history">Istoric</string>
   <string name="tab_tips">Ponturi</string>
+  <string name="activity_main_add_new_reading">Adaugă o nouă citire</string>
   <string name="title_activity_hello">Salut.</string>
   <string name="helloactivity_headline">Salut.</string>
   <string name="helloactivity_terms">Termeni de folosire</string>
@@ -43,6 +44,7 @@
   <string name="helloactivity_spinner_diabetes_gdm">Gestațional</string>
   <string name="helloactivity_spinner_diabetes_lada">LADA</string>
   <string name="helloactivity_spinner_preferred_glucose_unit">Unitate de glucoză preferată</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit_2">mmol/L</string>
   <string name="preferences_spinner_preferred_a1c_unit">Unitate A1C preferată</string>
   <string name="preferences_spinner_preferred_a1c_unit_1">procentaj</string>
   <string name="preferences_spinner_preferred_weight_unit">Unitate de greutate preferată</string>
@@ -76,7 +78,7 @@
   <string name="dialog_error">Te rog completează toate câmpurile.</string>
   <string name="dialog_edit">Modifică</string>
   <string name="dialog_delete">Șterge</string>
-  <string name="fragment_history_snackbar_text">O înregistrare ștearsă</string>
+  <string name="fragment_history_snackbar_text">O citire ștearsă</string>
   <string name="fragment_history_snackbar_action">ANULEAZĂ</string>
   <string name="fragment_overview_last_reading">Ultima verificare:</string>
   <string name="fragment_overview_trend">Tendința pe ultima lună:</string>
@@ -94,7 +96,7 @@
   <string name="dialog_add_custom_type">Categorie de măsurare proprie</string>
   <string-array name="tips_all">
     <item>Mănâncă mai multă mâncare proaspătă, neprocesată pentru a reduce carbohidrații și zaharurile.</item>
-    <item>Citește eticheta de pe mâncare si băutură pentru a controla aportul de carbohidrați și zaharuri.</item>
+    <item>Citește eticheta de pe mâncare și băutură pentru a controla aportul de carbohidrați și zaharuri.</item>
     <item>Când mănânci în oraș, cere pește sau carne fiartă fără adaos de unt sau ulei.</item>
     <item>Când mănânci în oraș, cere preparate cu conținut scăzut de sodiu.</item>
     <item>Când mănânci în oraș, mănâncă aceeași porție ca și acasă și ia restul la pachet.</item>
@@ -124,7 +126,7 @@
   <string name="assistant_action_ok">OK, AM ÎNȚELES</string>
   <string name="assistant_action_feedback">TRIMITE FEEDBACK</string>
   <string name="assistant_action_live_chat">CHAT LIVE</string>
-  <string name="assistant_action_reading">ADAUGĂ ÎNREGISTRARE</string>
+  <string name="assistant_action_reading">ADAUGĂ CITIRE</string>
   <string name="assistant_action_try">ÎNCEARCĂ ACUM</string>
   <string name="assistant_weight_title">Actualizați greutatea dumneavoastră</string>
   <string name="assistant_weight_desc">Asiguraţi-vă că actualizați greutatea dumneavoastră, astfel încât Glucosio să aibă informaţii cât mai precise.</string>
@@ -136,8 +138,8 @@
   <string name="assistant_check_desc">Asistentul Glucosio oferă sfaturi regulate şi se va îmbunătăți, astfel încât întotdeauna reveniți aici pentru acţiuni utile pe care puteţi lua pentru a îmbunătăţi experienţa dumneavoastră Glucosio şi pentru alte sfaturi utile.</string>
   <string name="assistant_feedback_title">Trimite feedback </string>
   <string name="assistant_feedback_desc">Dacă găsiţi orice probleme tehnice sau aveți feedback despre Glucosio vă recomandăm să-l trimiteți prin meniul de setări, pentru a ne ajuta să îmbunătăţim Glucosio.</string>
-  <string name="assistant_reading_title">Adauga o înregistrare</string>
-  <string name="assistant_reading_desc">Asiguraţi-vă că adăugați în mod regulat înregistrările dumneavoastră de glucoză, astfel încât să vă putem ajuta să urmăriți nivelurile glucozei în timp.</string>
+  <string name="assistant_reading_title">Adaugă o citire</string>
+  <string name="assistant_reading_desc">Asigură-te că adaugi în mod regulat citirile de glucoză ca să te putem ajuta să urmărești nivelul de glucoză în timp.</string>
   <string name="assistant_export_title">Exportă datele tale</string>
   <string name="assistant_export_desc">Împărtășește datele tale cu doctorul, sau salvează datele pe Google Drive folosind funcția de exportare.</string>
   <string name="assistant_calculator_a1c_title">Calculează A1C</string>
@@ -161,8 +163,8 @@
   <string name="preferences_licences_open">Licențe cu sursă deschisă</string>
   <string name="preferences_freestyle_libre">Permite suport pentru FreeStyle Libre®</string>
   <string name="preferences_freestyle_libre_experimental">EXPERIMENTAL: permite suport pentru FreeStyle Libre®</string>
-  <string name="preferences_font_dyslexia_experimental">EXPERIMENTAL: crește capacitatea de citire pentru utilizatori cu dislexie</string>
-  <string name="preferences_font_dyslexia">Crește rata de citire pentru utilizatori cu dislexie</string>
+  <string name="preferences_font_dyslexia_experimental">EXPERIMENTAL: text mai ușor de citit pentru utilizatori cu dislexie</string>
+  <string name="preferences_font_dyslexia">Crește capacitatea de citire pentru utilizatorii cu dislexie</string>
   <string name="about_donate">Donează la Glucosio</string>
   <string name="reading_ok">Ok</string>
   <string name="reading_hypo">Hipoglicemie</string>
@@ -237,17 +239,22 @@
   <string name="title_activity_add_glucose">Adaugă citire a glucozei</string>
   <string name="title_activity_add_glucose_edit">Editează citirea glucozei</string>
   <string name="title_activity_add_weight">Adaugă greutatea corporală</string>
+  <string name="title_activity_add_weight_edit">Editează masa corporală</string>
   <string name="title_activity_add_cholesterol">Adaugă nivelul de colesterol</string>
+  <string name="title_activity_add_cholesterol_edit">Editează nivelul de colesterol</string>
   <string name="title_activity_add_hb1ac">Adaugă HB1AC</string>
+  <string name="title_activity_add_hb1ac_edit">Editează HBA1C</string>
   <string name="title_activity_add_ketone">Adaugă ketone</string>
+  <string name="title_activity_add_ketone_edit">Editează ketonele</string>
   <string name="title_activity_add_pressure">Adaugă tensiune arterială</string>
+  <string name="title_activity_add_pressure_edit">Editează tensiunea arterială</string>
   <string name="fab_weight">Greutate corporală</string>
   <string name="fab_ketones">Ketone</string>
   <string name="fab_pressure">Tensiune arterială</string>
   <string name="fab_cholesterol">Nivelul de colesterol</string>
   <string name="fab_HB1AC">Citiri HB1AC</string>
   <string name="fab_glucose">Nivel de glucoză în sânge</string>
-  <string name="dialog_error_duplicate">Ai deja o înregistrare pentru această perioadă. Te rugăm să o elimini înainte de a adăuga o corecție.</string>
+  <string name="dialog_error_duplicate">Ai deja o citire pentru această perioadă. Te rugăm să o elimini înainte de a adăuga o corecție.</string>
   <string name="freestylelibre_nfc_ready">Te rugăm să pui telefonul pe senzor și nu-l mișca până nu vibrează.</string>
   <string name="freestylelibre_nfc_not_supported">Dispozitivul nu suportă NFC.</string>
   <string name="freestylelibre_nfc_not_enabled">NFC este dezactivat.</string>
@@ -268,7 +275,7 @@
   <string name="menu_support_forum">Forum de asistență</string>
   <string name="notification_reminder_glucose">Este timpul să înregistrezi nivelul de glucoză!</string>
   <string name="notification_reminder_medication">Este timpul să iei medicația!</string>
-  <string name="overview_hb1ac_info">Aceasta este doar o estimare și este calculată folosind mediile citirilor din luna trecută. Această estimare este o formulă larg acceptată pentru HbA1C, dar încurajăm utilizatorii să considere această valoare doar ca o estimare.</string>
+  <string name="overview_hb1ac_info">Aceasta este doar o estimare și este calculată folosind mediile citirilor din luna trecută. Această estimare este o formulă larg acceptată pentru HbA1C, dar încurajăm utilizatorii să considere valoarea doar estimativ.</string>
   <string name="dialog_add_notes">Note</string>
   <string name="sidebar_backup_export">Copie de siguranță și exportare</string>
   <string name="menu_backup_backup">Backup pe Google Drive</string>
@@ -284,6 +291,7 @@
   <string name="activity_backup_drive_failed">Ceva nu a funcționat. Te rugăm să reîncerci :/</string>
   <string name="activity_backup_drive_last">Ultimul backup:</string>
   <string name="activity_backup_drive_folder">Dosar de backup</string>
+  <string name="activity_backup_drive_folder_not_set">Nesetat</string>
   <string name="activity_backup_drive_button_backup">Fă o copie acum</string>
   <string name="activity_backup_drive_recent">Copii recente</string>
   <string name="activity_backup_drive_more">Vezi mai multe copii de siguranță</string>
@@ -299,4 +307,5 @@
   <string name="activity_backup_drive_button_open_drive">Gestionează în Drive</string>
   <string name="mmol_mol">mmol/mol</string>
   <string name="mmol_L">mmol/L</string>
+  <string name="preferences_graph_old">Revino la graficul vechi</string>
 </resources>

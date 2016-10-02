@@ -27,30 +27,26 @@ import android.os.Bundle;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
 import android.view.WindowManager;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.presenter.HelloPresenter;
 import org.glucosio.android.tools.LabelledSpinner;
 import org.glucosio.android.tools.LocaleHelper;
+import org.glucosio.android.tools.network.GlucosioExternalLinks;
 import org.glucosio.android.view.HelloView;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Locale;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class HelloActivity extends AppCompatActivity implements HelloView {
@@ -121,22 +117,10 @@ public class HelloActivity extends AppCompatActivity implements HelloView {
 
         languageSpinner.setItemsArray(displayLanguages);
 
-        String displayLanguage = localeHelper.getDeviceLocale().getDisplayLanguage();
+        final Locale deviceLocale = localeHelper.getDeviceLocale();
+        String displayLanguage = localeHelper.getDisplayLanguage(deviceLocale.toString());
 
         setSelection(displayLanguage, languageSpinner);
-
-        languageSpinner.setOnItemChosenListener(new LabelledSpinner.OnItemChosenListener() {
-            @Override
-            public void onItemChosen(View labelledSpinner, AdapterView<?> adapterView, View itemView, int position, long id) {
-                localeHelper.updateLanguage(HelloActivity.this, localesWithTranslation.get(position));
-                recreate();
-            }
-
-            @Override
-            public void onNothingChosen(View labelledSpinner, AdapterView<?> adapterView) {
-
-            }
-        });
     }
 
     private void setSelection(final String label, final LabelledSpinner labelledSpinner) {
@@ -191,8 +175,10 @@ public class HelloActivity extends AppCompatActivity implements HelloView {
 
     @OnClick(R.id.helloactivity_textview_terms)
     void onTermsAndConditionClick() {
-        Intent intent = new Intent(HelloActivity.this, LicenceActivity.class);
-        startActivity(intent);
+        ExternalLinkActivity.launch(
+            this,
+            getString(R.string.preferences_terms),
+            GlucosioExternalLinks.TERMS);
     }
 
     public void displayErrorWrongAge() {

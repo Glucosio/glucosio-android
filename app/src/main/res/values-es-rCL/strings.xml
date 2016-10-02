@@ -44,6 +44,7 @@
   <string name="helloactivity_spinner_diabetes_gdm">Gestacional</string>
   <string name="helloactivity_spinner_diabetes_lada">LADA</string>
   <string name="helloactivity_spinner_preferred_glucose_unit">Unidad de glucosa preferida</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit_2">mmol/L</string>
   <string name="preferences_spinner_preferred_a1c_unit">Unidad de A1C preferida</string>
   <string name="preferences_spinner_preferred_a1c_unit_1">porcentaje</string>
   <string name="preferences_spinner_preferred_weight_unit">Unidad de peso preferida</string>
@@ -276,12 +277,12 @@
   <string name="menu_backup_restore">Restaurar</string>
   <string name="menu_backup_csv">Exportar a CSV</string>
   <string name="activity_backup_drive_automatic">Copia de seguridad automática</string>
-  <string name="activity_backup_drive_desc">Si guardas tus datos en Google Drive podrás recuperar todas tus mediciones en caso de que pierdas o cambies de dispositivo.</string>
+  <string name="activity_backup_drive_desc">Si guarda sus datos en Google Drive, podrá recuperar todas las mediciones en caso de que pierda o cambie de dispositivo.</string>
   <string name="activity_backup_drive_message_restart">Reiniciar para aplicar los cambios...</string>
   <string name="activity_backup_drive_desc_1">Sincroniza la base de datos de Glucosio en Google Drive.</string>
   <string name="activity_backup_drive_desc_2">Podrás restaurar todas las lecturas que pierdas o si cambiaste de celular, o sincronizar los datos de Glucosio entre tus dispositivos.</string>
-  <string name="activity_backup_drive_success">Base de datos guardada correctamente en Drive</string>
-  <string name="activity_backup_drive_restore_success">Base de datos restaurada correctamente desde Drive</string>
+  <string name="activity_backup_drive_success">Base de datos respaldada exitosamente</string>
+  <string name="activity_backup_drive_restore_success">Base de datos correctamente restaurada desde Drive</string>
   <string name="activity_backup_drive_failed">Algo salió mal. Inténtelo de nuevo :/</string>
   <string name="activity_backup_drive_last">Última copia de seguridad:</string>
   <string name="activity_backup_drive_folder">Carpeta de las copias de seguridad</string>
@@ -300,4 +301,5 @@
   <string name="activity_backup_drive_button_open_drive">Gestionar en Drive</string>
   <string name="mmol_mol">mmol/mol</string>
   <string name="mmol_L">mmol/L</string>
+  <string name="preferences_graph_old">Volver al gráfico antiguo</string>
 </resources>

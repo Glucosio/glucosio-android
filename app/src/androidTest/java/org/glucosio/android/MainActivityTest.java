@@ -55,6 +55,8 @@ public class MainActivityTest {
     @Test
     public void check_001_checkIfToolbarIsDisplayed() throws InterruptedException {
         goThroughHelloActivity();
-        onView(withId(R.id.toolbar)).check(matches(isDisplayed()));
+        onView(withId(R.id.activity_main_toolbar)).check(matches(isDisplayed()));
     }
+
+    // TODO: 09/09/16 Test the responses in UI -> Show ui notice when export started, is empty or error
 }

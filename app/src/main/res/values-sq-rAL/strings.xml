@@ -43,6 +43,7 @@
   <string name="helloactivity_spinner_diabetes_gdm">Gestacional</string>
   <string name="helloactivity_spinner_diabetes_lada">DLARr</string>
   <string name="helloactivity_spinner_preferred_glucose_unit">Njësia e preferuar e glukozës</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit_2">mmol/L</string>
   <string name="preferences_spinner_preferred_a1c_unit">Njësia e preferuar e A1C</string>
   <string name="preferences_spinner_preferred_a1c_unit_1">përqindja</string>
   <string name="preferences_spinner_preferred_weight_unit">Njësia e preferuar e peshës</string>
@@ -298,5 +299,4 @@
   <string name="activity_main_dialog_csv_title">Eksportoje në një file CSV</string>
   <string name="activity_backup_drive_button_open_drive">Menaxho në Drive</string>
   <string name="mmol_mol">mmol/mol</string>
-  <string name="mmol_L">mmol/L</string>
 </resources>

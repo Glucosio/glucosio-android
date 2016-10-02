@@ -17,9 +17,7 @@
  *
  *
  */
-
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-
 buildscript {
 
     repositories {
@@ -29,18 +27,17 @@ buildscript {
     dependencies {
         // TODO: Please revert to a stable gradle version before releasing on prod
         // Alpha is required in devel to use Instant Run and speed up development process
-        classpath 'com.android.tools.build:gradle:2.2.0-alpha5'
+        classpath 'com.android.tools.build:gradle:2.2.0'
         classpath 'com.google.gms:google-services:3.0.0'
-        classpath 'io.realm:realm-gradle-plugin:1.0.0'
+        classpath 'io.realm:realm-gradle-plugin:1.1.1'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
         classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.6.3'
-        classpath 'com.github.ben-manes:gradle-versions-plugin:0.12.0'
+        classpath 'com.github.ben-manes:gradle-versions-plugin:0.13.0'
         classpath 'org.jacoco:org.jacoco.core:0.7.7.201606060606'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
 }
-
 allprojects {
     repositories {
         jcenter()
@@ -48,8 +45,8 @@ allprojects {
 
     ext.buildToolsVer = '24.0.0'
 
-    ext.androidSupportVer = '24.0.0'
-    ext.googlePlayServicesVer = '9.0.2'
+    ext.androidSupportVer = '24.2.1'
+    ext.googlePlayServicesVer = '9.4.0'
 
     ext.butterKnifeVer = '8.0.1'
 
@@ -60,7 +57,6 @@ allprojects {
 
     apply plugin: 'com.github.ben-manes.versions'
 }
-
-task wrapper( type: Wrapper ) {
+task wrapper(type: Wrapper) {
     gradleVersion = '2.13'
 }

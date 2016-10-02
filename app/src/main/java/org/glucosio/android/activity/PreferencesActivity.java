@@ -32,10 +32,12 @@ import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.SwitchPreference;
 import android.support.annotation.NonNull;
+import android.support.annotation.StringRes;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputFilter;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -57,11 +59,16 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class PreferencesActivity extends AppCompatActivity {
 
+    @NonNull
+    private static String[] getEntryValues(List<String> list) {
+        String[] result = new String[list.size()];
+        return list.toArray(result);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.preferences);
-
 
         getFragmentManager().beginTransaction()
                 .replace(R.id.preferencesFrame, new MyPreferenceFragment()).commit();
@@ -119,6 +126,7 @@ public class PreferencesActivity extends AppCompatActivity {
         private EditTextPreference minRangePref;
         private EditTextPreference maxRangePref;
         private SwitchPreference dyslexiaModePref;
+        private SwitchPreference freestyleLibrePref;
         private User updatedUser;
         private LocaleHelper localeHelper;
 
@@ -149,14 +157,15 @@ public class PreferencesActivity extends AppCompatActivity {
             minRangePref = (EditTextPreference) findPreference("pref_range_min");
             maxRangePref = (EditTextPreference) findPreference("pref_range_max");
             dyslexiaModePref = (SwitchPreference) findPreference("pref_font_dyslexia");
+            freestyleLibrePref = (SwitchPreference) findPreference("pref_freestyle_libre");
 
             agePref.setDefaultValue(user.getAge());
             countryPref.setValue(user.getCountry());
             genderPref.setValue(user.getGender());
             diabetesTypePref.setValue(user.getD_type() + "");
-            unitPrefGlucose.setValue(user.getPreferred_unit());
-            unitPrefA1c.setValue(user.getPreferred_unit_a1c());
-            unitPrefWeight.setValue(user.getPreferred_unit_weight());
+            unitPrefGlucose.setValue(getGlucoseUnitValue(user.getPreferred_unit()));
+            unitPrefA1c.setValue(getA1CUnitValue(user.getPreferred_unit_a1c()));
+            unitPrefWeight.setValue(getUnitWeight(user.getPreferred_unit_weight()));
             rangePref.setValue(user.getPreferred_range());
 
             minRangePref.setDefaultValue(user.getCustom_range_min() + "");
@@ -204,20 +213,34 @@ public class PreferencesActivity extends AppCompatActivity {
             diabetesTypePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    if (newValue.toString().equals(getResources().getString(R.string.helloactivity_spinner_diabetes_type_1))) {
+                    String[] typesArray = getResources().getStringArray(R.array.helloactivity_diabetes_type);
+                    String selectedType = newValue.toString();
+
+                    if (selectedType.equals(typesArray[0])) {
                         updatedUser.setD_type(1);
                         updateDB();
-                    } else {
+                    } else if (selectedType.equals(typesArray[1])) {
                         updatedUser.setD_type(2);
                         updateDB();
+                    } else if (selectedType.equals(typesArray[2])) {
+                        updatedUser.setD_type(3);
+                        updateDB();
+                    } else {
+                        updatedUser.setD_type(4);
+                        updateDB();
                     }
+
                     return true;
                 }
             });
             unitPrefGlucose.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    updatedUser.setPreferred_unit(newValue.toString());
+                    if (newValue.toString().equals(getResources().getString(R.string.helloactivity_spinner_preferred_glucose_unit_1))) {
+                        updatedUser.setPreferred_unit("mg/dL");
+                    } else {
+                        updatedUser.setPreferred_unit("mmol/L");
+                    }
                     updateDB();
                     return true;
                 }
@@ -257,7 +280,7 @@ public class PreferencesActivity extends AppCompatActivity {
             minRangePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    if (newValue.toString().trim().equals("")) {
+                    if (TextUtils.isEmpty(newValue.toString().trim())) {
                         return false;
                     }
                     updatedUser.setCustom_range_min(Integer.parseInt(newValue.toString()));
@@ -268,7 +291,7 @@ public class PreferencesActivity extends AppCompatActivity {
             maxRangePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    if (newValue.toString().trim().equals("")) {
+                    if (TextUtils.isEmpty(newValue.toString().trim())) {
                         return false;
                     }
                     updatedUser.setCustom_range_max(Integer.parseInt(newValue.toString()));
@@ -282,6 +305,18 @@ public class PreferencesActivity extends AppCompatActivity {
                     // EXPERIMENTAL PREFERENCE
                     // Display Alert
                     showExperimentalDialog(true);
+                    return true;
+                }
+            });
+            freestyleLibrePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    if (!((SwitchPreference) preference).isChecked()) {
+                        // EXPERIMENTAL PREFERENCE
+                        // Display Alert
+                        showExperimentalDialog(false);
+                        return true;
+                    }
                     return true;
                 }
             });
@@ -322,6 +357,27 @@ public class PreferencesActivity extends AppCompatActivity {
                     return false;
                 }
             });
+        }
+
+        private String getA1CUnitValue(final String a1CUnit) {
+            @StringRes int unitResId = "percentage".equals(a1CUnit) ?
+                    R.string.preferences_spinner_preferred_a1c_unit_1 :
+                    R.string.preferences_spinner_preferred_a1c_unit_2;
+            return getResources().getString(unitResId);
+        }
+
+        private String getGlucoseUnitValue(final String glucoseUnit) {
+            @StringRes int unitResId = "mg/dL".equals(glucoseUnit) ?
+                    R.string.helloactivity_spinner_preferred_glucose_unit_1 :
+                    R.string.helloactivity_spinner_preferred_glucose_unit_2;
+            return getResources().getString(unitResId);
+        }
+
+        private String getUnitWeight(final String unit_weight) {
+            @StringRes int unitResId = "kilograms".equals(unit_weight) ?
+                    R.string.preferences_spinner_preferred_weight_unit_1 :
+                    R.string.preferences_spinner_preferred_weight_unit_2;
+            return getResources().getString(unitResId);
         }
 
         private void initLanguagePreference() {
@@ -367,10 +423,11 @@ public class PreferencesActivity extends AppCompatActivity {
             dB.updateUser(updatedUser);
             agePref.setSummary(user.getAge() + "");
             genderPref.setSummary(user.getGender() + "");
-            diabetesTypePref.setSummary(getResources().getString(R.string.glucose_reading_type) + " " + user.getD_type());
-            unitPrefGlucose.setSummary(user.getPreferred_unit() + "");
-            unitPrefA1c.setSummary(user.getPreferred_unit_a1c() + "");
-            unitPrefWeight.setSummary(user.getPreferred_unit_weight() + "");
+
+            diabetesTypePref.setSummary(getResources().getStringArray(R.array.helloactivity_diabetes_type)[user.getD_type() - 1]);
+            unitPrefGlucose.setSummary(getGlucoseUnitValue(user.getPreferred_unit()));
+            unitPrefA1c.setSummary(getA1CUnitValue(user.getPreferred_unit_a1c()));
+            unitPrefWeight.setSummary(getUnitWeight(user.getPreferred_unit_weight()));
             countryPref.setSummary(user.getCountry());
             minRangePref.setSummary(user.getCustom_range_min() + "");
             maxRangePref.setSummary(user.getCustom_range_max() + "");
@@ -414,11 +471,5 @@ public class PreferencesActivity extends AppCompatActivity {
             mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
             System.exit(0);
         }
-    }
-
-    @NonNull
-    private static String[] getEntryValues(List<String> list) {
-        String[] result = new String[list.size()];
-        return list.toArray(result);
     }
 }

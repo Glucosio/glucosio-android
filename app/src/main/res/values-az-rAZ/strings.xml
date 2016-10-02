@@ -56,6 +56,8 @@
   <string name="dialog_add_type_5">Şam yeməyindən əvvəl</string>
   <string name="dialog_add_type_6">Şam yeməyindən sonra</string>
   <string name="dialog_add_type_9">Gecə</string>
+  <string name="dialog_add_type_11">Yenidən yoxla</string>
+  <string name="dialog_add_type_12">Digər</string>
   <string name="dialog_add_cancel">LƏĞV ET</string>
   <string name="dialog_add_add">ƏLAVƏ ET</string>
   <string name="dialog_error2">Etibarlı dəyər daxil edin.</string>
@@ -128,4 +130,6 @@
   <!-- Exercise Types -->
   <!-- Food Entry Labels -->
   <!-- About Glucosio Strings -->
+  <string name="dialog_add_weight">Çəki</string>
+  <string name="title_activity_add_glucose">Qlükoza dərəcəsi haqqında məlumat əlavə et</string>
 </resources>

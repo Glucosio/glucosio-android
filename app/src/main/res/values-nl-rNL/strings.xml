@@ -26,6 +26,7 @@
   <string name="tab_overview">Overzicht</string>
   <string name="tab_history">Geschiedenis</string>
   <string name="tab_tips">Tips</string>
+  <string name="activity_main_add_new_reading">Nieuwe uitlezing toevoegen</string>
   <string name="title_activity_hello">Hallo.</string>
   <string name="helloactivity_headline">Hallo.</string>
   <string name="helloactivity_terms">Gebruiksvoorwaarden</string>
@@ -43,6 +44,8 @@
   <string name="helloactivity_spinner_diabetes_gdm">Zwangerschapsdiabetes</string>
   <string name="helloactivity_spinner_diabetes_lada">LADA</string>
   <string name="helloactivity_spinner_preferred_glucose_unit">Glucose-eenheid van voorkeur</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit_1">mg/dl</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit_2">mmol/l</string>
   <string name="preferences_spinner_preferred_a1c_unit">A1C-eenheid van voorkeur</string>
   <string name="preferences_spinner_preferred_a1c_unit_1">percentage</string>
   <string name="preferences_spinner_preferred_weight_unit">Gewichtseenheid van voorkeur</string>
@@ -137,7 +140,7 @@
   <string name="assistant_feedback_title">Feedback indienen </string>
   <string name="assistant_feedback_desc">Als u technische problemen tegenkomt of feedback over Glucosio hebt, zien we graag dat u deze indient om Glucosio te helpen verbeteren.</string>
   <string name="assistant_reading_title">Een uitlezing toevoegen</string>
-  <string name="assistant_reading_desc">Zorg ervoor dat u regelmatig uw glucose-uitlezingen toevoegt, zodat we kunnen helpen uw glucosegehalten in de loop der tijd bij te houden.</string>
+  <string name="assistant_reading_desc">Zorg ervoor dat u regelmatig uw glucose-uitlezingen toevoegt, zodat we kunnen helpen uw glucosegehalten na verloop van tijd bij te houden.</string>
   <string name="assistant_export_title">Uw gegevens exporteren</string>
   <string name="assistant_export_desc">Deel uw gegevens met uw arts of plaats een back-up ervan op Google Drive via de exportfunctie.</string>
   <string name="assistant_calculator_a1c_title">A1C berekenen</string>
@@ -224,6 +227,7 @@
   <string name="fragment_overview_graph_export_true">Schermafbeelding opgeslagen naar galerij</string>
   <string name="fragment_overview_graph_export_false">Fout bij opslaan van schermafbeelding naar galerij</string>
   <string name="dialog_export_range">Exportbereik</string>
+  <string name="activity_export_issue_generic">Er was een probleem bij het exporteren van de uitlezingen. Probeer het opnieuw.</string>
   <string name="activity_export_no_readings_snackbar">Geen uitlezingen te exporteren.</string>
   <string name="wear_new_reading">Nieuwe uitlezing toegevoegd</string>
   <string name="dialog_add_weight">Gewicht</string>
@@ -237,10 +241,15 @@
   <string name="title_activity_add_glucose">Glucose-uitlezing toevoegen</string>
   <string name="title_activity_add_glucose_edit">Glucose-uitlezing bewerken</string>
   <string name="title_activity_add_weight">Lichaamsgewicht toevoegen</string>
+  <string name="title_activity_add_weight_edit">Lichaamsgewicht bewerken</string>
   <string name="title_activity_add_cholesterol">Cholesterolspiegel toevoegen</string>
+  <string name="title_activity_add_cholesterol_edit">Cholesterolniveau bewerken</string>
   <string name="title_activity_add_hb1ac">HB1AC toevoegen</string>
+  <string name="title_activity_add_hb1ac_edit">HBA1C bewerken</string>
   <string name="title_activity_add_ketone">Ketonen toevoegen</string>
+  <string name="title_activity_add_ketone_edit">Ketonen bewerken</string>
   <string name="title_activity_add_pressure">Bloeddruk toevoegen</string>
+  <string name="title_activity_add_pressure_edit">Bloeddruk bewerken</string>
   <string name="fab_weight">Lichaamsgewicht</string>
   <string name="fab_ketones">Ketonen</string>
   <string name="fab_pressure">Bloeddruk</string>
@@ -284,6 +293,7 @@
   <string name="activity_backup_drive_failed">Er ging iets mis. Probeer het opnieuw. :/</string>
   <string name="activity_backup_drive_last">Laatste back-up:</string>
   <string name="activity_backup_drive_folder">Back-upmap</string>
+  <string name="activity_backup_drive_folder_not_set">Niet ingesteld</string>
   <string name="activity_backup_drive_button_backup">Nu back-up maken</string>
   <string name="activity_backup_drive_recent">Recente back-ups</string>
   <string name="activity_backup_drive_more">Meer back-ups bekijken</string>
@@ -299,4 +309,11 @@
   <string name="activity_backup_drive_button_open_drive">Beheren op Drive</string>
   <string name="mmol_mol">mmol/mol</string>
   <string name="mmol_L">mmol/l</string>
+  <string name="preferences_graph_old">Terugkeren naar oude grafiek</string>
+  <string name="history">geschiedenis</string>
+  <string name="save">opslaan</string>
+  <string name="activity_reminders_title">Herinneringen</string>
+  <string name="reminders_notification_text">Tijd om uw glucosespiegel vast te leggen!</string>
+  <string name="reminders_notification_action">Uitlezing toevoegen</string>
+  <string name="glucosio_activity_reminders_empty">Geen herinneringen ingesteld. Voeg hier nieuwe herinneringen toe.</string>
 </resources>

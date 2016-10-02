@@ -22,6 +22,7 @@ public class PreferencesActivityTest extends RobolectricTest {
         initMocks(this);
         when(getDBHandler().getUser(1)).thenReturn(mockedUser);
         when(mockedUser.getPreferred_range()).thenReturn("Test");
+        when(mockedUser.getD_type()).thenReturn(1);
 
         activity = Robolectric.buildActivity(PreferencesActivity.class).create().get();
     }

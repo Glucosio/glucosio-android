@@ -25,17 +25,17 @@ import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.FileProvider;
 import android.util.Log;
 
-import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
 import org.glucosio.android.tools.ReadingToCSV;
+import org.glucosio.android.view.ExportView;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -43,92 +43,95 @@ import io.realm.Realm;
 
 public class ExportPresenter {
 
-    private int fromDay;
-    private int fromMonth;
-    private int fromYear;
-    private int toDay;
-    private int toMonth;
-    private int toYear;
-    private DatabaseHandler dB;
-    private MainActivity activity;
-
     // Storage Permissions
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
+    private int fromDay;
+    private int fromMonth;
+    private int fromYear;
+    private int toDay;
+    private int toMonth;
+    private int toYear;
 
-    public ExportPresenter(MainActivity exportActivity, DatabaseHandler dbHandler) {
-        this.activity = exportActivity;
-        dB = dbHandler;
+    private Activity mActivity;
+    private ExportView mExportView;
+    private DatabaseHandler dB;
+
+    public ExportPresenter(Activity activity, DatabaseHandler databaseHandler) {
+        mActivity = activity;
+        if (activity instanceof ExportView) {
+            mExportView = (ExportView) activity;
+        } else {
+            throw new RuntimeException("ExportPresenter Activity must implement ExportView interface");
+        }
+        dB = databaseHandler;
     }
 
-    public void onExportClicked(final Boolean all) {
-        final List<GlucoseReading> readings;
+    public void onExportClicked(final boolean isExportAll) {
 
-        if (all) {
-            readings = dB.getGlucoseReadings();
-        } else {
-            Calendar fromDate = Calendar.getInstance();
-            fromDate.set(Calendar.YEAR, fromYear);
-            fromDate.set(Calendar.MONTH, fromMonth);
-            fromDate.set(Calendar.DAY_OF_MONTH, fromDay);
+        if (hasStoragePermissions(mActivity)) {
+            final String preferredUnit = dB.getUser(1).getPreferred_unit();
+            final boolean[] isEmpty = {false};
 
-            Calendar toDate = Calendar.getInstance();
-            toDate.set(Calendar.YEAR, toYear);
-            toDate.set(Calendar.MONTH, toMonth);
-            toDate.set(Calendar.DAY_OF_MONTH, toDay);
-            readings = dB.getGlucoseReadings(fromDate.getTime(), toDate.getTime());
-        }
+            new AsyncTask<Void, Void, String>() {
+                @Override
+                protected String doInBackground(Void... params) {
 
-        if (readings.size() != 0) {
-            if (hasStoragePermissions(activity)) {
-                activity.showExportedSnackBar(readings.size());
-                final ReadingToCSV csv = new ReadingToCSV(activity.getApplicationContext());
-                final String preferredUnit = dB.getUser(1).getPreferred_unit();
+                    Realm realm = dB.getNewRealmInstance();
+                    final List<GlucoseReading> readings;
+                    if (isExportAll) {
+                        readings = dB.getGlucoseReadings(realm);
+                    } else {
+                        Calendar fromDate = Calendar.getInstance();
+                        fromDate.set(Calendar.YEAR, fromYear);
+                        fromDate.set(Calendar.MONTH, fromMonth);
+                        fromDate.set(Calendar.DAY_OF_MONTH, fromDay);
 
-                new AsyncTask<Void, Void, String>() {
-                    @Override
-                    protected String doInBackground(Void... params) {
-                        final ArrayList<GlucoseReading> readingsToExport;
-                        Realm realm = dB.getNewRealmInstance();
-
-                        if (all) {
-                            readingsToExport = dB.getGlucoseReadings(realm);
-                        } else {
-                            Calendar fromDate = Calendar.getInstance();
-                            fromDate.set(Calendar.YEAR, fromYear);
-                            fromDate.set(Calendar.MONTH, fromMonth);
-                            fromDate.set(Calendar.DAY_OF_MONTH, fromDay);
-
-                            Calendar toDate = Calendar.getInstance();
-                            toDate.set(Calendar.YEAR, toYear);
-                            toDate.set(Calendar.MONTH, toMonth);
-                            toDate.set(Calendar.DAY_OF_MONTH, toDay);
-                            readingsToExport = dB.getGlucoseReadings(realm, fromDate.getTime(), toDate.getTime());
-                        }
-
-                        return csv.createCSVFile(realm, readingsToExport, preferredUnit);
+                        Calendar toDate = Calendar.getInstance();
+                        toDate.set(Calendar.YEAR, toYear);
+                        toDate.set(Calendar.MONTH, toMonth);
+                        toDate.set(Calendar.DAY_OF_MONTH, toDay);
+                        readings = dB.getGlucoseReadings(realm, fromDate.getTime(), toDate.getTime());
                     }
 
-                    @Override
-                    protected void onPostExecute(String filename) {
-                        super.onPostExecute(filename);
-                        if (filename!=null) {
-                            Uri uri = FileProvider.getUriForFile(activity.getApplicationContext(),
-                                    activity.getApplicationContext().getPackageName() + ".provider.fileprovider", new File(filename));
-                            activity.showShareDialog(uri);
-                        } else {
-                            //TODO: Show error SnackBar
-                            activity.showNoReadingsSnackBar();
-                        }
+                    mExportView.onExportStarted(readings.size());
+                    if (readings.isEmpty()) {
+                        isEmpty[0] = true;
+                        return null;
                     }
-                }.execute();
-            }
-        } else {
-            activity.showNoReadingsSnackBar();
+
+                    if (dirExists()) {
+                        Log.i("glucosio", "Dir exists");
+                        return ReadingToCSV.createCSVFile(mActivity, realm, readings, preferredUnit);
+                    } else {
+                        Log.i("glucosio", "Dir NOT exists");
+                        return null;
+                    }
+                }
+
+                @Override
+                protected void onPostExecute(String filename) {
+                    super.onPostExecute(filename);
+                    if (filename != null) {
+                        Uri uri = FileProvider.getUriForFile(mActivity.getApplicationContext(),
+                                mActivity.getApplicationContext().getPackageName() + ".provider.fileprovider", new File(filename));
+                        mExportView.onExportFinish(uri);
+                    } else if (isEmpty[0]) {
+                        mExportView.onNoItemsToExport();
+                    } else {
+                        mExportView.onExportError();
+                    }
+                }
+            }.execute();
         }
+    }
+
+    private boolean dirExists() {
+        final File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/glucosio");
+        return file.exists() || file.mkdirs();
     }
 
     private boolean hasStoragePermissions(Activity activity) {
@@ -136,7 +139,7 @@ public class ExportPresenter {
         int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         Log.i("Glucosio", "Storage permissions granted.");
 
-        if(permission != PackageManager.PERMISSION_GRANTED){
+        if (permission != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(
                     activity,
                     PERMISSIONS_STORAGE,

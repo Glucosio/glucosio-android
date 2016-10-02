@@ -26,6 +26,7 @@
   <string name="tab_overview">概要</string>
   <string name="tab_history">履歴</string>
   <string name="tab_tips">ヒント</string>
+  <string name="activity_main_add_new_reading">新しい測定値を追加</string>
   <string name="title_activity_hello">こんにちは。</string>
   <string name="helloactivity_headline">こんにちは。</string>
   <string name="helloactivity_terms">利用規約</string>
@@ -43,6 +44,7 @@
   <string name="helloactivity_spinner_diabetes_gdm">妊娠</string>
   <string name="helloactivity_spinner_diabetes_lada">LADA</string>
   <string name="helloactivity_spinner_preferred_glucose_unit">使用する血糖値単位</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit_2">mmol/L</string>
   <string name="preferences_spinner_preferred_a1c_unit">使用する A1C 単位</string>
   <string name="preferences_spinner_preferred_a1c_unit_1">パーセント</string>
   <string name="preferences_spinner_preferred_weight_unit">使用する体重の単位</string>
@@ -224,6 +226,7 @@
   <string name="fragment_overview_graph_export_true">スクリーン ショットをギャラリーに保存しました</string>
   <string name="fragment_overview_graph_export_false">スクリーン ショットをギャラリーに保存中にエラー</string>
   <string name="dialog_export_range">エクスポート範囲</string>
+  <string name="activity_export_issue_generic">測定値のエクスポート時に問題が発生しました。もう一度やり直してください。</string>
   <string name="activity_export_no_readings_snackbar">エクスポートする測定値はありません。</string>
   <string name="wear_new_reading">新しい測定値が追加されました</string>
   <string name="dialog_add_weight">体重</string>
@@ -237,10 +240,15 @@
   <string name="title_activity_add_glucose">血糖の測定値を追加</string>
   <string name="title_activity_add_glucose_edit">血糖の測定値を編集</string>
   <string name="title_activity_add_weight">体重を追加</string>
+  <string name="title_activity_add_weight_edit">体重を編集</string>
   <string name="title_activity_add_cholesterol">コレステ ロール値を追加</string>
+  <string name="title_activity_add_cholesterol_edit">コレステロール値を編集</string>
   <string name="title_activity_add_hb1ac">HB1AC を追加</string>
+  <string name="title_activity_add_hb1ac_edit">HBA1C を編集</string>
   <string name="title_activity_add_ketone">ケトンを追加</string>
+  <string name="title_activity_add_ketone_edit">ケトンを編集</string>
   <string name="title_activity_add_pressure">血圧を追加</string>
+  <string name="title_activity_add_pressure_edit">血圧を編集</string>
   <string name="fab_weight">体重</string>
   <string name="fab_ketones">ケトン</string>
   <string name="fab_pressure">血圧</string>
@@ -284,6 +292,7 @@
   <string name="activity_backup_drive_failed">何か問題が起きたようです。後でもう一度やり直してください :/</string>
   <string name="activity_backup_drive_last">前回のバックアップ:</string>
   <string name="activity_backup_drive_folder">バックアップ フォルダー</string>
+  <string name="activity_backup_drive_folder_not_set">設定されていません</string>
   <string name="activity_backup_drive_button_backup">今すぐバックアップ</string>
   <string name="activity_backup_drive_recent">最新のバックアップ</string>
   <string name="activity_backup_drive_more">さらにバックアップを表示</string>
@@ -299,4 +308,11 @@
   <string name="activity_backup_drive_button_open_drive">ドライブで管理</string>
   <string name="mmol_mol">mmol/mol</string>
   <string name="mmol_L">mmol/L</string>
+  <string name="preferences_graph_old">古いグラフに戻す</string>
+  <string name="history">履歴</string>
+  <string name="save">保存</string>
+  <string name="activity_reminders_title">アラーム</string>
+  <string name="reminders_notification_text">血糖値を記録する時間です!</string>
+  <string name="reminders_notification_action">測定値を追加</string>
+  <string name="glucosio_activity_reminders_empty">アラームは設定されていません。ここで新しいアラームを追加します。</string>
 </resources>

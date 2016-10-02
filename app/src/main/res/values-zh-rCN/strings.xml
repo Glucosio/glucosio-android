@@ -42,6 +42,7 @@
   <string name="helloactivity_spinner_diabetes_type_1">1型糖尿病</string>
   <string name="helloactivity_spinner_diabetes_type_2">2型糖尿病</string>
   <string name="helloactivity_spinner_preferred_glucose_unit">首选的葡萄糖单位</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit_2">毫摩尔/升</string>
   <string name="preferences_spinner_preferred_a1c_unit">首选的糖化血红蛋白单位</string>
   <string name="preferences_spinner_preferred_a1c_unit_1">百分比</string>
   <string name="preferences_spinner_preferred_weight_unit">首选的重量单位</string>

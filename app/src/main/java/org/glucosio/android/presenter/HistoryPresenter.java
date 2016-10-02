@@ -53,7 +53,7 @@ public class HistoryPresenter {
                 break;
             // HB1AC
             case 1:
-                dB.deleteHB1ACReadingReading(dB.getHB1ACReading(idToDelete));
+                dB.deleteHB1ACReading(dB.getHB1ACReading(idToDelete));
                 fragment.reloadFragmentAdapter();
                 break;
             // Cholesterol
@@ -68,7 +68,7 @@ public class HistoryPresenter {
                 break;
             //Ketones
             case 4:
-                dB.deleteKetoneReading(dB.getKetoneReading(idToDelete));
+                dB.deleteKetoneReading(dB.getKetoneReadingById(idToDelete));
                 fragment.reloadFragmentAdapter();
                 break;
             // Weight

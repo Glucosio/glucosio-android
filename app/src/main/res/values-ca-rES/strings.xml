@@ -26,6 +26,7 @@
   <string name="tab_overview">Informació general</string>
   <string name="tab_history">Historial</string>
   <string name="tab_tips">Consells</string>
+  <string name="activity_main_add_new_reading">Afegeix una lectura nova</string>
   <string name="title_activity_hello">Hola.</string>
   <string name="helloactivity_headline">Hola.</string>
   <string name="helloactivity_terms">Condicions d\'ús.</string>
@@ -40,7 +41,10 @@
   <string name="helloactivity_spinner_diabetes_type">Tipus de diabetis</string>
   <string name="helloactivity_spinner_diabetes_type_1">Tipus 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">Tipus 2</string>
+  <string name="helloactivity_spinner_diabetes_gdm">Gestacional</string>
+  <string name="helloactivity_spinner_diabetes_lada">LADA</string>
   <string name="helloactivity_spinner_preferred_glucose_unit">Unitat de glucosa preferida</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit_2">mmol/L</string>
   <string name="preferences_spinner_preferred_a1c_unit">Unitat A1c preferida</string>
   <string name="preferences_spinner_preferred_a1c_unit_1">percentatge</string>
   <string name="preferences_spinner_preferred_weight_unit">Unitat de pes preferida</string>
@@ -222,6 +226,7 @@
   <string name="fragment_overview_graph_export_true">S\'ha desat la captura a la galeria</string>
   <string name="fragment_overview_graph_export_false">S\'ha produït un error en desar la captura a la galeria</string>
   <string name="dialog_export_range">Rang d\'exportació</string>
+  <string name="activity_export_issue_generic">Hi ha hagut un error en exportar la configuració. Torneu a provar.</string>
   <string name="activity_export_no_readings_snackbar">No hi ha lectures per a exportar.</string>
   <string name="wear_new_reading">S\'ha afegit una lectura nova</string>
   <string name="dialog_add_weight">Pes</string>
@@ -233,11 +238,17 @@
   <string name="dialog_add_cholesterol_hdl">Colesterol HDL</string>
   <string name="dialog_add_hb1ac">HbA1c</string>
   <string name="title_activity_add_glucose">Afegeix una lectura de glucosa</string>
+  <string name="title_activity_add_glucose_edit">Edita la lectura de glucosa</string>
   <string name="title_activity_add_weight">Afegeix un pes corporal</string>
+  <string name="title_activity_add_weight_edit">Edita el pes corporal</string>
   <string name="title_activity_add_cholesterol">Afegeix un nivell de colesterol</string>
+  <string name="title_activity_add_cholesterol_edit">Edita el nivell de colesterol</string>
   <string name="title_activity_add_hb1ac">Afegeix la HbA1c</string>
+  <string name="title_activity_add_hb1ac_edit">Edita la HbA1c</string>
   <string name="title_activity_add_ketone">Afegeix cetones</string>
+  <string name="title_activity_add_ketone_edit">Edita les cetones</string>
   <string name="title_activity_add_pressure">Afegeix la pressió arterial</string>
+  <string name="title_activity_add_pressure_edit">Edita la pressió arterial</string>
   <string name="fab_weight">Pes corporal</string>
   <string name="fab_ketones">Cetones</string>
   <string name="fab_pressure">Pressió arterial</string>
@@ -272,12 +283,16 @@
   <string name="menu_backup_restore">Restaura</string>
   <string name="menu_backup_csv">Exportació CSV</string>
   <string name="activity_backup_drive_automatic">Copia de seguretat automàtica</string>
+  <string name="activity_backup_drive_desc">Si feu còpia de seguretat de les vostres dades al Google Drive podreu restaurar totes les lectures en cas que perdeu o canvieu els aparells.</string>
   <string name="activity_backup_drive_message_restart">S\'està reiniciant per a aplicar els canvis...</string>
   <string name="activity_backup_drive_desc_1">Sincronitza la base de dades de Glucosio amb el núvol del Google Drive.</string>
   <string name="activity_backup_drive_desc_2">Podreu recuperar totes les lectures, si perdeu o canvieu el telèfon o sincronitzeu les dades de Glucosio entre diferents aparells.</string>
+  <string name="activity_backup_drive_success">S\'ha fet correctament una còpia de seguretat de la base de dades al Drive</string>
+  <string name="activity_backup_drive_restore_success">S\'ha recuperat correctament la base de dades del Drive</string>
   <string name="activity_backup_drive_failed">Alguna cosa ha anat malament. Torneu a provar-ho més tard :/</string>
   <string name="activity_backup_drive_last">Última còpia de seguretat:</string>
   <string name="activity_backup_drive_folder">Carpeta de còpies de seguretat</string>
+  <string name="activity_backup_drive_folder_not_set">Sense definir</string>
   <string name="activity_backup_drive_button_backup">Fes la còpia de seguretat ara</string>
   <string name="activity_backup_drive_recent">Còpies de seguretat recents</string>
   <string name="activity_backup_drive_more">Mostra més còpies de seguretat</string>
@@ -290,5 +305,14 @@
   <string name="activity_backup_drive_error_restore">No s\'ha pogut trobar al Drive cap còpia de seguretat per a recuperar</string>
   <string name="activity_main_error_play_services">Glucosio requereix els Serveis del Play per a activar la còpia al Google Drive.</string>
   <string name="activity_main_dialog_csv_title">Exporta a un fitxer CSV</string>
+  <string name="activity_backup_drive_button_open_drive">Gestiona al Drive</string>
+  <string name="mmol_mol">mmol/mol</string>
   <string name="mmol_L">mmol/L</string>
+  <string name="preferences_graph_old">Torna al gràfic antic</string>
+  <string name="history">historial</string>
+  <string name="save">desa</string>
+  <string name="activity_reminders_title">Recordatoris</string>
+  <string name="reminders_notification_text">Ara és l\'hora de mesurar el nivell de glucosa!</string>
+  <string name="reminders_notification_action">Afegeix una lectura</string>
+  <string name="glucosio_activity_reminders_empty">No s\'ha trobat cap recordatori, Afegiu un nou.</string>
 </resources>

@@ -38,20 +38,9 @@ public class AddWeightPresenter extends AddReadingPresenter {
     }
 
     public void dialogOnAddButtonPressed(String time, String date, String reading) {
-        if (validateEmpty(date) && validateEmpty(time) && validateEmpty(reading)) {
-            Date finalDateTime = getCurrentTimeBis();
+        if (validateDate(date) && validateTime(time) && validateWeight(reading)) {
 
-            int finalReading;
-
-            if ("kilograms".equals(getWeightUnitMeasuerement())) {
-                finalReading = Integer.parseInt(reading);
-            } else {
-                GlucosioConverter converter = new GlucosioConverter();
-                finalReading = converter.lbToKg(Integer.parseInt(reading));
-            }
-
-            WeightReading wReading = new WeightReading(finalReading, finalDateTime);
-
+            WeightReading wReading = generateWeightReading(reading);
             dB.addWeightReading(wReading);
 
             activity.finishActivity();
@@ -61,20 +50,9 @@ public class AddWeightPresenter extends AddReadingPresenter {
     }
 
     public void dialogOnAddButtonPressed(String time, String date, String reading, long oldId) {
-        if (validateEmpty(date) && validateEmpty(time) && validateEmpty(reading)) {
-            Date finalDateTime = getCurrentTimeBis();
+        if (validateDate(date) && validateTime(time) && validateWeight(reading)) {
 
-            int finalReading;
-
-            if ("kilograms".equals(getWeightUnitMeasuerement())) {
-                finalReading = Integer.parseInt(reading);
-            } else {
-                GlucosioConverter converter = new GlucosioConverter();
-                finalReading = converter.lbToKg(Integer.parseInt(reading));
-            }
-
-            WeightReading wReading = new WeightReading(finalReading, finalDateTime);
-
+            WeightReading wReading = generateWeightReading(reading);
             dB.editWeightReading(oldId, wReading);
 
             activity.finishActivity();
@@ -83,8 +61,19 @@ public class AddWeightPresenter extends AddReadingPresenter {
         }
     }
 
-    private boolean validateEmpty(String time) {
-        return !time.equals("");
+    private WeightReading generateWeightReading(String reading) {
+        Date finalDateTime = getReadingTime();
+
+        int finalReading;
+
+        if ("kilograms".equals(getWeightUnitMeasuerement())) {
+            finalReading = Integer.parseInt(reading);
+        } else {
+            GlucosioConverter converter = new GlucosioConverter();
+            finalReading = converter.lbToKg(Integer.parseInt(reading));
+        }
+
+        return new WeightReading(finalReading, finalDateTime);
     }
 
     // Getters and Setters
@@ -95,6 +84,11 @@ public class AddWeightPresenter extends AddReadingPresenter {
 
     public WeightReading getWeightReadingById(Long id) {
         return dB.getWeightReadingById(id);
+    }
+
+    // Validator
+    private boolean validateWeight(String reading) {
+        return validateText(reading);
     }
 
 }

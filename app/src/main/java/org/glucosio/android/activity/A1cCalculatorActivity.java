@@ -89,7 +89,7 @@ public class A1cCalculatorActivity extends AppCompatActivity {
     }
 
     private void initActionBar() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.activity_main_toolbar);
 
         if (toolbar != null) {
             setSupportActionBar(toolbar);

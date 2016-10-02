@@ -26,6 +26,7 @@
   <string name="tab_overview">Pregled</string>
   <string name="tab_history">Zgodovina</string>
   <string name="tab_tips">Nasveti</string>
+  <string name="activity_main_add_new_reading">Dodaj novo meritev</string>
   <string name="title_activity_hello">Dobrodošli.</string>
   <string name="helloactivity_headline">Dobrodošli.</string>
   <string name="helloactivity_terms">Pogoji uporabe.</string>
@@ -43,6 +44,7 @@
   <string name="helloactivity_spinner_diabetes_gdm">Nosečnostna</string>
   <string name="helloactivity_spinner_diabetes_lada">LADA</string>
   <string name="helloactivity_spinner_preferred_glucose_unit">Želena enota za glukozo</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit_2">mmol/l</string>
   <string name="preferences_spinner_preferred_a1c_unit">Želena enota za A1C</string>
   <string name="preferences_spinner_preferred_a1c_unit_1">odstotek</string>
   <string name="preferences_spinner_preferred_weight_unit">Želena enota za težo</string>
@@ -224,6 +226,7 @@
   <string name="fragment_overview_graph_export_true">Zaslonska slika shranjena v galerijo</string>
   <string name="fragment_overview_graph_export_false">Napaka pri shranjevanju zaslonske slike v galerijo</string>
   <string name="dialog_export_range">Izvozi obseg</string>
+  <string name="activity_export_issue_generic">Pri izvozu meritev je prišlo do težave. Poizkusite znova.</string>
   <string name="activity_export_no_readings_snackbar">Ni meritev za izvoz.</string>
   <string name="wear_new_reading">Dodana nova meritev</string>
   <string name="dialog_add_weight">Teža</string>
@@ -237,10 +240,15 @@
   <string name="title_activity_add_glucose">Dodaj vrednost izmerjene glukoze</string>
   <string name="title_activity_add_glucose_edit">Uredi vrednost izmerjene glukoze</string>
   <string name="title_activity_add_weight">Dodaj telesno težo</string>
+  <string name="title_activity_add_weight_edit">Uredi telesno težo</string>
   <string name="title_activity_add_cholesterol">Dodaj raven holesterola</string>
+  <string name="title_activity_add_cholesterol_edit">Uredi raven holesterola</string>
   <string name="title_activity_add_hb1ac">Dodaj HBA1C</string>
+  <string name="title_activity_add_hb1ac_edit">Uredi HBA1C</string>
   <string name="title_activity_add_ketone">Dodaj ketone</string>
+  <string name="title_activity_add_ketone_edit">Uredi ketone</string>
   <string name="title_activity_add_pressure">Dodaj krvni tlak</string>
+  <string name="title_activity_add_pressure_edit">Uredi krvni tlak</string>
   <string name="fab_weight">Telesna teža</string>
   <string name="fab_ketones">Ketoni</string>
   <string name="fab_pressure">Krvni tlak</string>
@@ -284,6 +292,7 @@
   <string name="activity_backup_drive_failed">Nekaj je šlo narobe. Prosimo poizkusite znova :/</string>
   <string name="activity_backup_drive_last">Zadnja var. kop.: %s</string>
   <string name="activity_backup_drive_folder">Mapa z var. kopijami</string>
+  <string name="activity_backup_drive_folder_not_set">Ni nastavljeno</string>
   <string name="activity_backup_drive_button_backup">Var. kopiraj zdaj</string>
   <string name="activity_backup_drive_recent">Nedavne varnostne kopije</string>
   <string name="activity_backup_drive_more">Pokaži več varnostnih kopij</string>
@@ -299,4 +308,11 @@
   <string name="activity_backup_drive_button_open_drive">Upravljaj v Driveu</string>
   <string name="mmol_mol">mmol/mol</string>
   <string name="mmol_L">mmol/l</string>
+  <string name="preferences_graph_old">Povrni na stari graf</string>
+  <string name="history">zgodovina</string>
+  <string name="save">shrani</string>
+  <string name="activity_reminders_title">Opomniki</string>
+  <string name="reminders_notification_text">Čas je za beleženje vaše ravni glukoze!</string>
+  <string name="reminders_notification_action">Dodaj meritev</string>
+  <string name="glucosio_activity_reminders_empty">Opomniki niso nastavljeni. Tu dodajte novega.</string>
 </resources>

@@ -1,6 +1,7 @@
 package org.glucosio.android.activity;
 
 import android.app.Activity;
+
 import org.glucosio.android.RobolectricTest;
 import org.junit.Before;
 import org.junit.Test;

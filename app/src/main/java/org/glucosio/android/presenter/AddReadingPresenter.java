@@ -1,5 +1,7 @@
 package org.glucosio.android.presenter;
 
+import android.text.TextUtils;
+
 import org.glucosio.android.tools.SplitDateTime;
 
 import java.text.DateFormat;
@@ -15,7 +17,7 @@ public class AddReadingPresenter {
     private String readingHour;
     private String readingMinute;
 
-    public void getCurrentTime() {
+    public void setReadingTimeNow() {
         DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         Date formatted = Calendar.getInstance().getTime();
 
@@ -28,10 +30,26 @@ public class AddReadingPresenter {
         this.readingMinute = addSplitDateTime.getMinute();
     }
 
-    public Date getCurrentTimeBis() {
+    public void updateReadingSplitDateTime(Date readingDate) {
+        DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        SplitDateTime splitDateTime = new SplitDateTime(readingDate, inputFormat);
+        this.readingDay = splitDateTime.getDay();
+        this.readingHour = splitDateTime.getHour();
+        this.readingMinute = splitDateTime.getMinute();
+        this.readingYear = splitDateTime.getYear();
+        this.readingMonth = splitDateTime.getMonth();
+    }
+
+    public Date getReadingTime() {
         Calendar cal = Calendar.getInstance();
         cal.set(Integer.parseInt(readingYear), Integer.parseInt(readingMonth) - 1, Integer.parseInt(readingDay), Integer.parseInt(readingHour), Integer.parseInt(readingMinute));
         return cal.getTime();
+    }
+
+    public Calendar getReadingCal() {
+        Calendar cal = Calendar.getInstance();
+        cal.set(Integer.parseInt(readingYear), Integer.parseInt(readingMonth) - 1, Integer.parseInt(readingDay), Integer.parseInt(readingHour), Integer.parseInt(readingMinute));
+        return cal;
     }
 
     public String getReadingYear() {
@@ -60,5 +78,20 @@ public class AddReadingPresenter {
 
     public void setReadingMinute(String readingMinute) {
         this.readingMinute = readingMinute;
+    }
+
+    protected boolean validateText(String text) {
+        return !TextUtils.isEmpty(text);
+    }
+
+    // Validator
+    protected boolean validateTime(String time) {
+        //TODO check if it can be empty or not valid in other way in different sdk
+        return !TextUtils.isEmpty(time);
+    }
+
+    protected boolean validateDate(String date) {
+        //TODO check if it can be empty or not valid in other way in different sdk
+        return !TextUtils.isEmpty(date);
     }
 }

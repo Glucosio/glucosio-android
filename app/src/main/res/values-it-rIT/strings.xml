@@ -27,6 +27,7 @@
   <string name="tab_overview">Riepilogo</string>
   <string name="tab_history">Cronologia</string>
   <string name="tab_tips">Suggerimenti</string>
+  <string name="activity_main_add_new_reading">Aggiungi nuova lettura</string>
   <string name="title_activity_hello">Ciao.</string>
   <string name="helloactivity_headline">Ciao.</string>
   <string name="helloactivity_terms">Condizioni d\'uso.</string>
@@ -44,6 +45,7 @@
   <string name="helloactivity_spinner_diabetes_gdm">Gestazionale</string>
   <string name="helloactivity_spinner_diabetes_lada">LADA</string>
   <string name="helloactivity_spinner_preferred_glucose_unit">Unità di misura Glucosio</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit_2">mmol/L</string>
   <string name="preferences_spinner_preferred_a1c_unit">Unità di misura glicata</string>
   <string name="preferences_spinner_preferred_a1c_unit_1">percentuale</string>
   <string name="preferences_spinner_preferred_weight_unit">Unità di misura peso</string>
@@ -225,6 +227,7 @@
   <string name="fragment_overview_graph_export_true">Screenshot salvato nella galleria</string>
   <string name="fragment_overview_graph_export_false">Errore durante il salvataggio nella galleria</string>
   <string name="dialog_export_range">Esporta intervallo di date</string>
+  <string name="activity_export_issue_generic">Si è verificato un problema nell\'esportazione delle letture. Per favore prova di nuovo.</string>
   <string name="activity_export_no_readings_snackbar">Nessuna lettura da esportare.</string>
   <string name="wear_new_reading">Nuova lettura aggiunta</string>
   <string name="dialog_add_weight">Peso</string>
@@ -238,10 +241,15 @@
   <string name="title_activity_add_glucose">Aggiungi Glicemia</string>
   <string name="title_activity_add_glucose_edit">Modifica Glicemia</string>
   <string name="title_activity_add_weight">Aggiungi Peso Corporeo</string>
+  <string name="title_activity_add_weight_edit">Modifica Peso</string>
   <string name="title_activity_add_cholesterol">Aggiungi Colesterolo</string>
+  <string name="title_activity_add_cholesterol_edit">Modifica Colesterolo</string>
   <string name="title_activity_add_hb1ac">Aggiungi Emoglobina glicata</string>
+  <string name="title_activity_add_hb1ac_edit">Modifica Glicata</string>
   <string name="title_activity_add_ketone">Aggiungi Chetoni</string>
+  <string name="title_activity_add_ketone_edit">Modifica Chetoni</string>
   <string name="title_activity_add_pressure">Aggiungi pressione sanguigna</string>
+  <string name="title_activity_add_pressure_edit">Modifica Pressione</string>
   <string name="fab_weight">Peso corporeo</string>
   <string name="fab_ketones">Chetoni</string>
   <string name="fab_pressure">Pressione sanguigna</string>
@@ -285,6 +293,7 @@
   <string name="activity_backup_drive_failed">Qualcosa è andato storto. Per favore, riprova :/</string>
   <string name="activity_backup_drive_last">Ultimo backup:</string>
   <string name="activity_backup_drive_folder">Cartella per il Backup</string>
+  <string name="activity_backup_drive_folder_not_set">Non specificato</string>
   <string name="activity_backup_drive_button_backup">Esegui backup adesso</string>
   <string name="activity_backup_drive_recent">Backup recenti</string>
   <string name="activity_backup_drive_more">Mostra più backup</string>
@@ -301,4 +310,10 @@
   <string name="mmol_mol">mmol/mol</string>
   <string name="mmol_L">mmol/L</string>
   <string name="preferences_graph_old">Ritorna al vecchio grafico</string>
+  <string name="history">cronologia</string>
+  <string name="save">salva</string>
+  <string name="activity_reminders_title">Promemoria</string>
+  <string name="reminders_notification_text">È ora di aggiungere la tua glicemia!</string>
+  <string name="reminders_notification_action">Aggiungi lettura</string>
+  <string name="glucosio_activity_reminders_empty">Nessun promemoria impostato. Aggiungine uno qui.</string>
 </resources>

@@ -225,6 +225,7 @@
   <string name="freestylelibre_nfc_error">Грешка при отваряне на NFC връзка!</string>
   <string name="overview_hb1ac_error_no_data">Недостатъчно данни за изчисляване на HBA1C</string>
   <string name="overview_hb1ac">HBA1C:</string>
+  <string name="activity_converter_a1c">HBA1C</string>
   <string name="activity_converter_save">ЗАПАЗИ</string>
   <string name="menu_support">Поддръжка</string>
   <string name="menu_support_title">Как можем да Ви помогнем?</string>

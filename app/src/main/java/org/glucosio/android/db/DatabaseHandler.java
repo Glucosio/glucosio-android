@@ -52,17 +52,17 @@ public class DatabaseHandler {
         this.realm = getNewRealmInstance();
     }
 
-    public Realm getNewRealmInstance(){
+    public Realm getNewRealmInstance() {
         if (mRealmConfig == null) {
             mRealmConfig = new RealmConfiguration.Builder(mContext)
-                    .schemaVersion(3)
+                    .schemaVersion(4)
                     .migration(new Migration())
                     .build();
         }
         return Realm.getInstance(mRealmConfig); // Automatically run migration if needed
     }
 
-    public Realm getRealmInstance(){
+    public Realm getRealmInstance() {
         return realm;
     }
 
@@ -88,6 +88,90 @@ public class DatabaseHandler {
         realm.beginTransaction();
         realm.copyToRealmOrUpdate(user);
         realm.commitTransaction();
+    }
+
+    public boolean addReminder(Reminder reminder) {
+        // Check for duplicates first
+        if (getReminder(reminder.getId()) == null) {
+            realm.beginTransaction();
+            realm.copyToRealm(reminder);
+            realm.commitTransaction();
+            return true;
+        }
+
+        return false;
+    }
+
+    public void updateReminder(Reminder reminder) {
+        realm.beginTransaction();
+        realm.copyToRealmOrUpdate(reminder);
+        realm.commitTransaction();
+    }
+
+    public void deleteReminder(Reminder reminder) {
+        realm.beginTransaction();
+        reminder.deleteFromRealm();
+        realm.commitTransaction();
+    }
+
+    public void deleteReminder(long id) {
+        deleteReminder(getReminder(id));
+    }
+
+    public boolean areRemindersActive() {
+        RealmResults<Reminder> activeRemindersList =
+                realm.where(Reminder.class)
+                        .equalTo("active", true)
+                        .findAll();
+
+        return activeRemindersList.size() > 0;
+    }
+
+    public Reminder getReminder(long id) {
+        return realm.where(Reminder.class)
+                .equalTo("id", id)
+                .findFirst();
+    }
+
+    public List<Reminder> getReminders() {
+        RealmResults<Reminder> results =
+                realm.where(Reminder.class)
+                        .findAllSorted("alarmTime", Sort.DESCENDING);
+        List<Reminder> reminders = new ArrayList<>(results.size());
+        for (int i = 0; i < results.size(); i++) {
+            reminders.add(results.get(i));
+        }
+        return reminders;
+    }
+
+    public ArrayList<Date> getRemindersDatesAsArray() {
+        List<Reminder> readings = getReminders();
+        ArrayList<Date> datesArray = new ArrayList<Date>();
+        int i;
+
+        for (i = 0; i < readings.size(); i++) {
+            Date reading;
+            Reminder reminder = readings.get(i);
+            reading = reminder.getAlarmTime();
+            datesArray.add(reading);
+        }
+        return datesArray;
+    }
+
+    public ArrayList<String> getRemindersDatesStringAsArray() {
+        List<Reminder> readings = getReminders();
+        ArrayList<String> datesArray = new ArrayList<String>();
+        int i;
+        DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+
+        for (i = 0; i < readings.size(); i++) {
+            String reading;
+            Reminder reminder = readings.get(i);
+            reading = inputFormat.format(reminder.getAlarmTime());
+            datesArray.add(reading);
+        }
+
+        return datesArray;
     }
 
     public boolean addGlucoseReading(GlucoseReading reading) {
@@ -152,7 +236,7 @@ public class DatabaseHandler {
         realm.commitTransaction();
     }
 
-    public GlucoseReading getLastGlucoseReading(){
+    public GlucoseReading getLastGlucoseReading() {
         RealmResults<GlucoseReading> results =
                 realm.where(GlucoseReading.class)
                         .findAllSorted("created", Sort.DESCENDING);
@@ -434,7 +518,7 @@ public class DatabaseHandler {
         return finalMonths;
     }
 
-    public List<GlucoseReading> getLastMonthGlucoseReadings(){
+    public List<GlucoseReading> getLastMonthGlucoseReadings() {
         JodaTimeAndroid.init(mContext);
 
         DateTime todayDateTime = DateTime.now();
@@ -450,7 +534,7 @@ public class DatabaseHandler {
         realm.commitTransaction();
     }
 
-    public void deleteHB1ACReadingReading(HB1ACReading reading) {
+    public void deleteHB1ACReading(HB1ACReading reading) {
         realm.beginTransaction();
         reading.deleteFromRealm();
         realm.commitTransaction();
@@ -460,6 +544,17 @@ public class DatabaseHandler {
         return realm.where(HB1ACReading.class)
                 .equalTo("id", id)
                 .findFirst();
+    }
+
+    public HB1ACReading getHB1ACReadingById(long id) {
+        return getHB1ACReading(id);
+    }
+
+    public void editHB1ACReading(long oldId, HB1ACReading reading) {
+        // First delete the old reading
+        deleteHB1ACReading(getHB1ACReadingById(oldId));
+        // then save the new one
+        addHB1ACReading(reading);
     }
 
     public RealmResults<HB1ACReading> getrHB1ACRawReadings() {
@@ -536,7 +631,14 @@ public class DatabaseHandler {
         realm.commitTransaction();
     }
 
-    public KetoneReading getKetoneReading(long id) {
+    public void editKetoneReading(long oldId, KetoneReading reading) {
+        // First delete the old reading
+        deleteKetoneReading(getKetoneReadingById(oldId));
+        // then save the new one
+        addKetoneReading(reading);
+    }
+
+    public KetoneReading getKetoneReadingById(long id) {
         return realm.where(KetoneReading.class)
                 .equalTo("id", id)
                 .findFirst();
@@ -622,6 +724,13 @@ public class DatabaseHandler {
         realm.beginTransaction();
         reading.deleteFromRealm();
         realm.commitTransaction();
+    }
+
+    public void editPressureReading(long oldId, PressureReading reading) {
+        // First delete the old reading
+        deletePressureReading(getPressureReading(oldId));
+        // then save the new one
+        addPressureReading(reading);
     }
 
     public ArrayList<PressureReading> getPressureReadings() {
@@ -788,6 +897,13 @@ public class DatabaseHandler {
         reading.setId(getNextKey("cholesterol"));
         realm.copyToRealm(reading);
         realm.commitTransaction();
+    }
+
+    public void editCholesterolReading(long oldId, CholesterolReading reading) {
+        // First delete the old reading
+        deleteCholesterolReading(getCholesterolReading(oldId));
+        // then save the new one
+        addCholesterolReading(reading);
     }
 
     public CholesterolReading getCholesterolReading(long id) {
