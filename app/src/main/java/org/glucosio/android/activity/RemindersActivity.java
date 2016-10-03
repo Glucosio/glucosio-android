@@ -1,15 +1,20 @@
 package org.glucosio.android.activity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.BottomSheetDialog;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.InputType;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TableLayout;
 
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
@@ -26,6 +31,7 @@ public class RemindersActivity extends AppCompatActivity implements TimePickerDi
     private FloatingActionButton addFab;
     private RemindersPresenter presenter;
     private ListView listView;
+    private String label;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,18 +52,42 @@ public class RemindersActivity extends AppCompatActivity implements TimePickerDi
 
         addFab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                // Open Time Picker on FAB click
-                boolean is24HourFormat = android.text.format.DateFormat.is24HourFormat(getApplicationContext());
-                Calendar cal = presenter.getCalendar();
+            public void onClick(final View view) {
 
-                TimePickerDialog tpd = TimePickerDialog.newInstance(
-                        RemindersActivity.this,
-                        cal.get(Calendar.HOUR_OF_DAY),
-                        cal.get(Calendar.MINUTE),
-                        is24HourFormat);
-                tpd.show(getFragmentManager(), "Timepickerdialog");
-            }
+                AlertDialog.Builder builder = new AlertDialog.Builder(RemindersActivity.this);
+                builder.setTitle(R.string.activity_reminder_add_label);
+
+                // Set up the input
+                final EditText input = new EditText(RemindersActivity.this);
+                // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+                input.setInputType(InputType.TYPE_CLASS_TEXT);
+                // Set EditText margin
+                TableLayout.LayoutParams params = new TableLayout.LayoutParams();
+                params.setMargins(16, 16, 16, 16);
+                input.setLayoutParams(params);
+                builder.setView(input);
+
+                // Set up the buttons
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        label = input.getText().toString();
+                        if (label.isEmpty()){
+                            showEmptyErrorMessage(view);
+                        } else {
+                            openTimePicker();
+                        }
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                builder.show();
+         }
         });
 
         listView = (ListView) findViewById(R.id.activity_reminders_listview);
@@ -71,6 +101,19 @@ public class RemindersActivity extends AppCompatActivity implements TimePickerDi
         }, 600);
     }
 
+    private void openTimePicker(){
+        // Open Time Picker on FAB click
+        boolean is24HourFormat = android.text.format.DateFormat.is24HourFormat(getApplicationContext());
+        Calendar cal = presenter.getCalendar();
+
+        TimePickerDialog tpd = TimePickerDialog.newInstance(
+                RemindersActivity.this,
+                cal.get(Calendar.HOUR_OF_DAY),
+                cal.get(Calendar.MINUTE),
+                is24HourFormat);
+        tpd.show(getFragmentManager(), "Timepickerdialog");
+    }
+
     public void updateReminder(Reminder reminder) {
         presenter.updateReminder(reminder);
         presenter.saveReminders();
@@ -79,6 +122,10 @@ public class RemindersActivity extends AppCompatActivity implements TimePickerDi
     public void updateRemindersList() {
         listView.setAdapter(presenter.getAdapter());
         listView.invalidate();
+    }
+
+    private void showEmptyErrorMessage(View view){
+        Snackbar.make(view, R.string.activity_reminder_error_empty, Snackbar.LENGTH_SHORT).show();
     }
 
     @Override
@@ -92,7 +139,7 @@ public class RemindersActivity extends AppCompatActivity implements TimePickerDi
         // TODO: Add Reminders for other metrics
         // Also oneTime is always set to false until I implement one time alarms
         // TODO: Implement one time alarms
-        presenter.addReminder(Long.parseLong(concatenatedId), cal.getTime(), "glucose", false, true);
+        presenter.addReminder(Long.parseLong(concatenatedId), cal.getTime(), label, "glucose", false, true);
     }
 
     public void showDuplicateError() {
