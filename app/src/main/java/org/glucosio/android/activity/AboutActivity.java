@@ -73,6 +73,7 @@ public class AboutActivity extends AppCompatActivity {
             final Preference privacyPref = (Preference) findPreference("preference_privacy");
             final Preference termsPref = (Preference) findPreference("preference_terms");
             final Preference versionPref = (Preference) findPreference("preference_version");
+            final Preference thanksPref = (Preference) findPreference("preference_thanks");
 
 
             termsPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
@@ -134,6 +135,18 @@ public class AboutActivity extends AppCompatActivity {
                         getString(R.string.preferences_privacy),
                         GlucosioExternalLinks.PRIVACY);
                     addTermsAnalyticsEvent("Glucosio Privacy opened");
+                    return false;
+                }
+            });
+
+            thanksPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    ExternalLinkActivity.launch(
+                            getActivity(),
+                            getString(R.string.preferences_contributors),
+                            GlucosioExternalLinks.THANKS);
+                    addTermsAnalyticsEvent("Glucosio Contributors opened");
                     return false;
                 }
             });
