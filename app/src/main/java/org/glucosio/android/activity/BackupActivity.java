@@ -29,7 +29,9 @@ import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -65,6 +67,7 @@ import org.glucosio.android.adapter.BackupAdapter;
 import org.glucosio.android.backup.Backup;
 import org.glucosio.android.object.GlucosioBackup;
 
+import java.io.Closeable;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -79,22 +82,19 @@ import io.realm.Realm;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class BackupActivity extends AppCompatActivity {
-    private int REQUEST_CODE_PICKER = 2;
-    private int REQUEST_CODE_SELECT = 3;
-    private int REQUEST_CODE_PICKER_FOLDER = 4;
+    private static final int REQUEST_CODE_PICKER = 2;
+    private static final int REQUEST_CODE_PICKER_FOLDER = 4;
+
+    private static final String TAG = "glucosio_drive_backup";
+    private static final String BACKUP_FOLDER_KEY = "backup_folder";
 
     private Backup backup;
     private GoogleApiClient mGoogleApiClient;
-    private String TAG = "glucosio_drive_backup";
-    private Button backupButton;
-    private TextView manageButton;
     private TextView folderTextView;
     private IntentSender intentPicker;
     private Realm realm;
     private String backupFolder;
     private ExpandableHeightListView backupListView;
-    private LinearLayout selectFolderButton;
-    private String BACKUP_FOLDER_KEY = "backup_folder";
 
     private SharedPreferences sharedPref;
 
@@ -115,10 +115,10 @@ public class BackupActivity extends AppCompatActivity {
         connectClient();
         mGoogleApiClient = backup.getClient();
 
-        backupButton = (Button) findViewById(R.id.activity_backup_drive_button_backup);
-        manageButton = (TextView) findViewById(R.id.activity_backup_drive_button_manage_drive);
+        Button backupButton = (Button) findViewById(R.id.activity_backup_drive_button_backup);
+        TextView manageButton = (TextView) findViewById(R.id.activity_backup_drive_button_manage_drive);
         folderTextView = (TextView) findViewById(R.id.activity_backup_drive_textview_folder);
-        selectFolderButton = (LinearLayout) findViewById(R.id.activity_backup_drive_button_folder);
+        LinearLayout selectFolderButton = (LinearLayout) findViewById(R.id.activity_backup_drive_button_folder);
         backupListView = (ExpandableHeightListView) findViewById(R.id.activity_backup_drive_listview_restore);
 
         backupListView.setExpanded(true);
@@ -167,7 +167,7 @@ public class BackupActivity extends AppCompatActivity {
         id.asDriveFolder().getMetadata((mGoogleApiClient)).setResultCallback(
                 new ResultCallback<DriveResource.MetadataResult>() {
                     @Override
-                    public void onResult(DriveResource.MetadataResult result) {
+                    public void onResult(@NonNull DriveResource.MetadataResult result) {
                         if (!result.getStatus().isSuccess()) {
                             showErrorDialog();
                             return;
@@ -179,32 +179,10 @@ public class BackupActivity extends AppCompatActivity {
         );
     }
 
-    private void openFilePicker() {
-        IntentSender intentSender = null;
-        // check if client is connected first
-        if (mGoogleApiClient.isConnected()) {
-            // build an intent that we'll use to start the open file activity
-            intentSender = Drive.DriveApi
-                    .newOpenFileActivityBuilder()
-//                these mimetypes enable these folders/files types to be selected
-                    .setMimeType(new String[]{DriveFolder.MIME_TYPE, "text/plain"})
-                    .build(mGoogleApiClient);
-        }
-        try {
-            if (intentSender != null) {
-                startIntentSenderForResult(
-                        intentSender, REQUEST_CODE_SELECT, null, 0, 0, 0);
-            }
-        } catch (IntentSender.SendIntentException e) {
-            Log.e(TAG, "Unable to send intent", e);
-            showErrorDialog();
-        }
-    }
-
     private void openFolderPicker(boolean uploadToDrive) {
         if (uploadToDrive) {
             // First we check if a backup folder is set
-            if ("".equals(backupFolder)) {
+            if (TextUtils.isEmpty(backupFolder)) {
                 try {
                     if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
                         if (intentPicker == null)
@@ -256,10 +234,10 @@ public class BackupActivity extends AppCompatActivity {
         folder.queryChildren(mGoogleApiClient, query)
                 .setResultCallback(new ResultCallback<DriveApi.MetadataBufferResult>() {
 
-                    private ArrayList<GlucosioBackup> backupsArray = new ArrayList<GlucosioBackup>();
+                    private ArrayList<GlucosioBackup> backupsArray = new ArrayList<>();
 
                     @Override
-                    public void onResult(DriveApi.MetadataBufferResult result) {
+                    public void onResult(@NonNull DriveApi.MetadataBufferResult result) {
                         MetadataBuffer buffer = result.getMetadataBuffer();
                         int size = buffer.getCount();
                         for (int i = 0; i < size; i++) {
@@ -279,7 +257,7 @@ public class BackupActivity extends AppCompatActivity {
         file.open(mGoogleApiClient, DriveFile.MODE_READ_ONLY, null)
                 .setResultCallback(new ResultCallback<DriveApi.DriveContentsResult>() {
                     @Override
-                    public void onResult(DriveApi.DriveContentsResult result) {
+                    public void onResult(@NonNull DriveApi.DriveContentsResult result) {
                         if (!result.getStatus().isSuccess()) {
                             showErrorDialog();
                             return;
@@ -303,7 +281,7 @@ public class BackupActivity extends AppCompatActivity {
                                     }
                                     output.flush();
                                 } finally {
-                                    output.close();
+                                    safeCloseClosable(input);
                                 }
                             } catch (Exception e) {
                                 reportToFirebase(e, "Error downloading backup from drive");
@@ -313,12 +291,7 @@ public class BackupActivity extends AppCompatActivity {
                             reportToFirebase(e, "Error downloading backup from drive, file not found");
                             e.printStackTrace();
                         } finally {
-                            try {
-                                input.close();
-                            } catch (IOException e) {
-                                reportToFirebase(e, "Error downloading backup from drive, IO Exception");
-                                e.printStackTrace();
-                            }
+                            safeCloseClosable(input);
                         }
 
                         Toast.makeText(getApplicationContext(), R.string.activity_backup_drive_message_restart, Toast.LENGTH_LONG).show();
@@ -334,6 +307,15 @@ public class BackupActivity extends AppCompatActivity {
                 });
     }
 
+    private void safeCloseClosable(Closeable closeable) {
+        try {
+            closeable.close();
+        } catch (IOException e) {
+            reportToFirebase(e, "Error downloading backup from drive, IO Exception");
+            e.printStackTrace();
+        }
+    }
+
     private void uploadToDrive(DriveId mFolderDriveId) {
         if (mFolderDriveId != null) {
             //Create the file on GDrive
@@ -341,7 +323,7 @@ public class BackupActivity extends AppCompatActivity {
             Drive.DriveApi.newDriveContents(mGoogleApiClient)
                     .setResultCallback(new ResultCallback<DriveApi.DriveContentsResult>() {
                         @Override
-                        public void onResult(DriveApi.DriveContentsResult result) {
+                        public void onResult(@NonNull DriveApi.DriveContentsResult result) {
                             if (!result.getStatus().isSuccess()) {
                                 Log.e(TAG, "Error while trying to create new file contents");
                                 showErrorDialog();
@@ -389,7 +371,7 @@ public class BackupActivity extends AppCompatActivity {
                                     folder.createFile(mGoogleApiClient, changeSet, driveContents)
                                             .setResultCallback(new ResultCallback<DriveFolder.DriveFileResult>() {
                                                 @Override
-                                                public void onResult(DriveFolder.DriveFileResult result) {
+                                                public void onResult(@NonNull DriveFolder.DriveFileResult result) {
                                                     if (!result.getStatus().isSuccess()) {
                                                         Log.d(TAG, "Error while trying to create the file");
                                                         showErrorDialog();
@@ -411,7 +393,7 @@ public class BackupActivity extends AppCompatActivity {
         driveId.asDriveFolder().getMetadata((mGoogleApiClient)).setResultCallback(
                 new ResultCallback<DriveResource.MetadataResult>() {
                     @Override
-                    public void onResult(DriveResource.MetadataResult result) {
+                    public void onResult(@NonNull DriveResource.MetadataResult result) {
                         if (!result.getStatus().isSuccess()) {
                             showErrorDialog();
                             return;
