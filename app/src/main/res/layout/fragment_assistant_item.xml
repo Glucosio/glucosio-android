@@ -18,59 +18,49 @@
   ~
   -->
 
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_assistant_item"
-    android:layout_width="match_parent"
+    android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:background="#ffffff"
-    android:clickable="true"
-    android:focusable="true"
-    android:foreground="?android:attr/selectableItemBackground"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingTop="16dp">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/fragment_assistant_item_title"
+        fontPath="fonts/lato-bold.ttf"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:background="#ffffff"
-        android:orientation="vertical"
-        android:paddingTop="16dp">
+        android:layout_height="wrap_content"
+        android:paddingBottom="8dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:textStyle="bold"
+        tools:text="Title" />
 
-        <TextView
-            android:id="@+id/fragment_assistant_item_title"
-            fontPath="fonts/lato-bold.ttf"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="8dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:text="Title"
-            android:textStyle="bold" />
+    <TextView
+        android:id="@+id/fragment_assistant_item_description"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="8dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        tools:text="Always bring a banana to a party, Rose, bananas are good!" />
 
-        <TextView
-            android:id="@+id/fragment_assistant_item_description"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="8dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:text="Always bring a banana to a party, Rose, bananas are good!" />
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/fragment_assistant_item_action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:gravity="center_vertical|start"
+        android:textColor="@color/glucosio_pink"
+        tools:text="ACTION" />
 
-        <android.support.v7.widget.AppCompatButton
-            android:id="@+id/fragment_assistant_item_action"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:background="?android:attr/selectableItemBackground"
-            android:gravity="center_vertical|start"
-            android:text="ACTION"
-            android:textColor="@color/glucosio_pink" />
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="1dp"
-            android:background="#dadada" />
-    </LinearLayout>
-
-</android.support.v7.widget.CardView>
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#dadada" />
+</LinearLayout>

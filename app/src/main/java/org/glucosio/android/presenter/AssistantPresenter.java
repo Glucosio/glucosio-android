@@ -25,24 +25,23 @@ import org.glucosio.android.fragment.AssistantFragment;
 public class AssistantPresenter {
     private AssistantFragment fragment;
 
-
     public AssistantPresenter(AssistantFragment assistantFragment) {
         this.fragment = assistantFragment;
     }
 
-    public void addReading() {
+    public void userAskedAddReading() {
         fragment.addReading();
     }
 
-    public void startExportActivity() {
+    public void userAskedExport() {
         fragment.startExportActivity();
     }
 
-    public void startA1CCalculatorActivity() {
+    public void userAskedA1CCalculator() {
         fragment.startA1CCalculatorActivity();
     }
 
-    public void openLiveChat() {
-        fragment.openLiveChat();
+    public void userSupportAsked() {
+        fragment.openSupportDialog();
     }
 }
