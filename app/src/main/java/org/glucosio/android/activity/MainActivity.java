@@ -32,7 +32,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialog;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
@@ -101,7 +100,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         GlucosioApplication application = (GlucosioApplication) getApplication();
 
         setContentView(R.layout.activity_main);
-        initPresenters(application);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.activity_main_toolbar);
         tabLayout = (TabLayout) findViewById(R.id.activity_main_tab_layout);
@@ -248,6 +246,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             viewPager.setCurrentItem(b.getInt("pager"));
         }
 
+        initPresenters(application);
         checkIfEmptyLayout();
         bottomSheetAddDialog.setContentView(bottomSheetAddDialogView);
         bottomSheetBehavior = BottomSheetBehavior.from((View) bottomSheetAddDialogView.getParent());
