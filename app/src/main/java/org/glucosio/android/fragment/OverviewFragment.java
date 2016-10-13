@@ -68,6 +68,7 @@ import org.glucosio.android.tools.GlucosioConverter;
 import org.glucosio.android.tools.TipsManager;
 import org.glucosio.android.view.OverviewView;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -663,7 +664,8 @@ public class OverviewFragment extends Fragment implements OverviewView {
             } else {
                 GlucosioConverter converter = new GlucosioConverter();
                 String mgdl = presenter.getLastReading();
-                String reading = String.valueOf(converter.glucoseToMmolL(Double.parseDouble(mgdl)));
+                double mmol = converter.glucoseToMmolL(Double.parseDouble(mgdl));
+                String reading = NumberFormat.getInstance().format(mmol);
                 lastReadingTextView.setText(getString(R.string.mmol_L_value, reading));
             }
 

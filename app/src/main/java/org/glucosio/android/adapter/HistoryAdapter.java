@@ -32,6 +32,7 @@ import org.glucosio.android.presenter.HistoryPresenter;
 import org.glucosio.android.tools.GlucoseRanges;
 import org.glucosio.android.tools.GlucosioConverter;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -153,11 +154,12 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
                 String color = ranges.colorFromReading(glucoseReadingArray.get(position));
 
                 if (presenter.getUnitMeasuerement().equals("mg/dL")) {
-                    String reading = glucoseReadingArray.get(position).toString();
+                    int glucoseReading = glucoseReadingArray.get(position);
+                    String reading = NumberFormat.getInstance().format(glucoseReading);
                     readingTextView.setText(mContext.getString(R.string.mg_dL_value, reading));
                 } else {
-                    String mgdlReading = glucoseReadingArray.get(position).toString();
-                    String reading = String.valueOf(converter.glucoseToMmolL(Double.parseDouble(mgdlReading)));
+                    double mmol = converter.glucoseToMmolL(glucoseReadingArray.get(position));
+                    String reading = NumberFormat.getInstance().format(mmol);
                     readingTextView.setText(mContext.getString(R.string.mmol_L_value, reading));
                 }
 
@@ -177,7 +179,8 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
                     readingTextView.setText(hb1acReadingArray.get(position).toString() + " %");
                 } else {
                     GlucosioConverter converter = new GlucosioConverter();
-                    String reading = String.valueOf(converter.a1cNgspToIfcc(hb1acReadingArray.get(position)));
+                    double ifcc = converter.a1cNgspToIfcc(hb1acReadingArray.get(position));
+                    String reading = NumberFormat.getInstance().format(ifcc);
                     readingTextView.setText(mContext.getString(R.string.mmol_mol_value, reading));
                 }
                 datetimeTextView.setText(presenter.convertDate(hb1acDateTimeArray.get(position)));

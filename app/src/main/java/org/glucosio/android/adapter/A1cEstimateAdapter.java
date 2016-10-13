@@ -13,6 +13,7 @@ import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.object.A1cEstimate;
 import org.glucosio.android.tools.GlucosioConverter;
 
+import java.text.NumberFormat;
 import java.util.List;
 
 public class A1cEstimateAdapter extends ArrayAdapter<A1cEstimate> {
@@ -66,8 +67,9 @@ public class A1cEstimateAdapter extends ArrayAdapter<A1cEstimate> {
                     glucoseAverage.setText(getContext().getString(R.string.mg_dL_value, p.getGlucoseAverage()));
                 } else {
                     GlucosioConverter converter = new GlucosioConverter();
-                    String mmol = String.valueOf(converter.glucoseToMgDl(Double.parseDouble(p.getGlucoseAverage())));
-                    glucoseAverage.setText(getContext().getString(R.string.mmol_L_value, mmol));
+                    int mmol = converter.glucoseToMgDl(Double.parseDouble(p.getGlucoseAverage()));
+                    String reading = NumberFormat.getInstance().format(mmol);
+                    glucoseAverage.setText(getContext().getString(R.string.mmol_L_value, reading));
                 }
             }
         }
