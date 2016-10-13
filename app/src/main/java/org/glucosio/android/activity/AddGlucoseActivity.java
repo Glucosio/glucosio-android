@@ -108,9 +108,9 @@ public class AddGlucoseActivity extends AddReadingActivity {
         TextView unitM = (TextView) findViewById(R.id.glucose_add_unit_measurement);
 
         if (presenter.getUnitMeasuerement().equals("mg/dL")) {
-            unitM.setText("mg/dL");
+            unitM.setText(getString(R.string.mg_dL));
         } else {
-            unitM.setText("mmol/L");
+            unitM.setText(getString(R.string.mmol_L));
         }
 
         // If an id is passed, open the activity in edit mode

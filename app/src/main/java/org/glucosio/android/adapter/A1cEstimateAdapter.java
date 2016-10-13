@@ -63,10 +63,11 @@ public class A1cEstimateAdapter extends ArrayAdapter<A1cEstimate> {
 
             if (glucoseAverage != null) {
                 if ("mg/dL".equals(db.getUser(1).getPreferred_unit())) {
-                    glucoseAverage.setText(p.getGlucoseAverage() + " mg/dL");
+                    glucoseAverage.setText(getContext().getString(R.string.mg_dL_value, p.getGlucoseAverage()));
                 } else {
                     GlucosioConverter converter = new GlucosioConverter();
-                    glucoseAverage.setText(converter.glucoseToMgDl(Double.parseDouble(p.getGlucoseAverage())) + " mmol/L");
+                    String mmol = String.valueOf(converter.glucoseToMgDl(Double.parseDouble(p.getGlucoseAverage())));
+                    glucoseAverage.setText(getContext().getString(R.string.mmol_L_value, mmol));
                 }
             }
         }

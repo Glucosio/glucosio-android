@@ -153,9 +153,12 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
                 String color = ranges.colorFromReading(glucoseReadingArray.get(position));
 
                 if (presenter.getUnitMeasuerement().equals("mg/dL")) {
-                    readingTextView.setText(glucoseReadingArray.get(position).toString() + " mg/dL");
+                    String reading = glucoseReadingArray.get(position).toString();
+                    readingTextView.setText(mContext.getString(R.string.mg_dL_value, reading));
                 } else {
-                    readingTextView.setText(converter.glucoseToMmolL(Double.parseDouble(glucoseReadingArray.get(position).toString())) + " mmol/L");
+                    String mgdlReading = glucoseReadingArray.get(position).toString();
+                    String reading = String.valueOf(converter.glucoseToMmolL(Double.parseDouble(mgdlReading)));
+                    readingTextView.setText(mContext.getString(R.string.mmol_L_value, reading));
                 }
 
                 readingTextView.setTextColor(ranges.stringToColor(color));
@@ -174,7 +177,8 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
                     readingTextView.setText(hb1acReadingArray.get(position).toString() + " %");
                 } else {
                     GlucosioConverter converter = new GlucosioConverter();
-                    readingTextView.setText(converter.a1cNgspToIfcc(hb1acReadingArray.get(position)) + " mmol/mol");
+                    String reading = String.valueOf(converter.a1cNgspToIfcc(hb1acReadingArray.get(position)));
+                    readingTextView.setText(mContext.getString(R.string.mmol_mol_value, reading));
                 }
                 datetimeTextView.setText(presenter.convertDate(hb1acDateTimeArray.get(position)));
                 typeTextView.setText("");
@@ -184,7 +188,8 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
             // Cholesterol
             case 2:
                 idTextView.setText(cholesterolIdArray.get(position).toString());
-                readingTextView.setText(cholesterolTotalArray.get(position).toString() + " mg/dL");
+                String reading = cholesterolTotalArray.get(position).toString();
+                readingTextView.setText(mContext.getString(R.string.mg_dL_value, reading));
                 datetimeTextView.setText(presenter.convertDate(cholesterolDateTimeArray.get(position)));
                 typeTextView.setText("LDL: " + cholesterolLDLArray.get(position) + " - " + "HDL: " + cholesterolHDLArray.get(position));
                 readingTextView.setTextColor(mContext.getResources().getColor(R.color.glucosio_text_dark));
