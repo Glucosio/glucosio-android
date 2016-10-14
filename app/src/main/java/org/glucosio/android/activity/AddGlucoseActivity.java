@@ -119,7 +119,11 @@ public class AddGlucoseActivity extends AddReadingActivity {
         if (this.isEditing()) {
             setTitle(R.string.title_activity_add_glucose_edit);
             GlucoseReading readingToEdit = presenter.getGlucoseReadingById(this.getEditId());
-            readingTextView.setText(readingToEdit.getReading() + "");
+            if (presenter.getUnitMeasuerement().equals("mg/dL")) {
+                readingTextView.setText(String.valueOf(readingToEdit.getReading()));
+            } else {
+                readingTextView.setText(String.valueOf(presenter.convertToMmol(readingToEdit.getReading())));
+            }
             notesEditText.setText(readingToEdit.getNotes());
             cal.setTime(readingToEdit.getCreated());
             this.getAddDateTextView().setText(dateTime.getDate(cal));
