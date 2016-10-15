@@ -72,7 +72,14 @@ public class A1CCalculatorPresenter {
     }
 
     public void saveA1C(double a1c) {
-        HB1ACReading a1cReading = new HB1ACReading(a1c, new Date());
+        User user = dbHandler.getUser(1);
+        double finalA1c = a1c;
+        if (!"percentage".equals(user.getPreferred_unit_a1c())) {
+            GlucosioConverter converter = new GlucosioConverter();
+            finalA1c = converter.a1cIfccToNgsp(a1c);
+        }
+
+        HB1ACReading a1cReading = new HB1ACReading(finalA1c, new Date());
         dbHandler.addHB1ACReading(a1cReading);
         activity.finish();
     }
