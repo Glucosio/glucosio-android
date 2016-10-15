@@ -2,6 +2,8 @@ package org.glucosio.android.object;
 
 import org.glucosio.android.tools.GlucosioConverter;
 
+import java.text.NumberFormat;
+
 public class A1cEstimate {
     private double value;
     private String month;
@@ -29,6 +31,6 @@ public class A1cEstimate {
 
     public String getGlucoseAverage() {
         GlucosioConverter conveter = new GlucosioConverter();
-        return conveter.a1cToGlucose(value) + "";
+        return NumberFormat.getInstance().format(conveter.a1cToGlucose(value));
     }
 }

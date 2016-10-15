@@ -443,6 +443,10 @@
     <string name="activity_backup_drive_button_open_drive">Manage on Drive</string>
     <string name="mmol_mol">mmol/mol</string>
     <string name="mmol_L">mmol/L</string>
+    <string name="mmol_mol_value">%1$s mmol/mol</string>
+    <string name="mmol_L_value">%1$s mmol/L</string>
+    <string name="mg_dL">mg/dL</string>
+    <string name="mg_dL_value">%1$s mg/dL</string>
     <string name="preferences_graph_old">Revert to old graph</string>
     <string name="history">history</string>
     <string name="save">save</string>
