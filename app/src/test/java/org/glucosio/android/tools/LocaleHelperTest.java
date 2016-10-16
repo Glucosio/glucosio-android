@@ -14,7 +14,7 @@ public class LocaleHelperTest extends RobolectricTest {
     private LocaleHelper helper = new LocaleHelper();
 
     @Test
-    public void ShouldReturnAtLEastEnglish_WhenAsked() throws Exception {
+    public void ShouldReturnAtLeastEnglish_WhenAsked() throws Exception {
         final Resources resources = RuntimeEnvironment.application.getResources();
 
         final List<String> localesWithTranslation = helper.getLocalesWithTranslation(resources);

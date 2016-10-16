@@ -69,6 +69,7 @@ import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.presenter.ExportPresenter;
 import org.glucosio.android.presenter.MainPresenter;
+import org.glucosio.android.tools.LocaleHelper;
 import org.glucosio.android.view.ExportView;
 
 import java.util.Calendar;
@@ -93,6 +94,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private TextView exportDialogDateTo;
     private View bottomSheetAddDialogView;
     private TabLayout tabLayout;
+    private LocaleHelper localeHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,8 +102,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
         GlucosioApplication application = (GlucosioApplication) getApplication();
 
-        setContentView(R.layout.activity_main);
         initPresenters(application);
+        setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.activity_main_toolbar);
         tabLayout = (TabLayout) findViewById(R.id.activity_main_tab_layout);
@@ -265,6 +267,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
     private void initPresenters(GlucosioApplication application) {
         final DatabaseHandler dbHandler = application.getDBHandler();
+        localeHelper = new LocaleHelper();
         presenter = new MainPresenter(this, dbHandler);
         exportPresenter = new ExportPresenter(this, dbHandler);
     }
@@ -570,6 +573,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     public Toolbar getToolbar() {
         return (Toolbar) findViewById(R.id.activity_main_toolbar);
     }
+
+    public LocaleHelper getLocaleHelper() { return localeHelper; }
 
     private void hideFabAnimation() {
         final View fab = findViewById(R.id.activity_main_fab_add_reading);
