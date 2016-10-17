@@ -145,26 +145,23 @@ public class AddGlucosePresenter extends AddReadingPresenter {
                 try {
                     Integer readingValue = Integer.parseInt(reading);
                     //TODO: Add custom ranges
-                    // TODO: Convert range in mmol/L
                     return readingValue > 19 && readingValue < 601;
                 } catch (Exception e) {
                     FirebaseCrash.log("Exception during reading validation");
                     FirebaseCrash.report(e);
                     return false;
                 }
-            } else {
-/*            try {
-                //TODO: Add custom ranges for mmol/L
-                Integer readingValue = Integer.parseInt(reading);
-                if (readingValue > 19 && readingValue < 601) {
-                    // TODO: Convert range in mmol/L
-                    return true;
-                } else {
+            } else if ("mmol/L".equals(getUnitMeasuerement())) {
+                // Convert mmol/L Unit
+                try {
+                    Double readingValue = Double.parseDouble(reading);
+                    return readingValue > 1.0545 && readingValue < 33.3555;
+                } catch (Exception e) {
+                    FirebaseCrash.log("Exception during reading validation");
+                    FirebaseCrash.report(e);
                     return false;
                 }
-            } catch (Exception e) {
-                return false;
-            }*/
+            } else {
                 // IT return always true: we don't have ranges yet.
                 return true;
             }
