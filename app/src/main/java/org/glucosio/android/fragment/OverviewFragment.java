@@ -310,7 +310,7 @@ public class OverviewFragment extends Fragment implements OverviewView {
         ll2.setLineColor(ContextCompat.getColor(getActivity(), R.color.glucosio_reading_high));
 
         YAxis leftAxis = chart.getAxisLeft();
-        leftAxis.setTextColor(getResources().getColor(R.color.glucosio_text_light));
+        leftAxis.setTextColor(ContextCompat.getColor(getActivity(), R.color.glucosio_text_light));
         leftAxis.setStartAtZero(false);
         leftAxis.disableGridDashedLine();
         leftAxis.setDrawGridLines(false);
