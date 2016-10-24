@@ -8,7 +8,6 @@ import android.util.DisplayMetrics;
 
 import org.glucosio.android.BuildConfig;
 import org.glucosio.android.R;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -46,6 +45,7 @@ public class LocaleHelper {
         // Change locale settings in the app.
         DisplayMetrics dm = res.getDisplayMetrics();
         Configuration conf = res.getConfiguration();
+        // TODO(raacker): deprecated. change to setLocale(). It needs to be set minSdk to 17. Configure project's minSdk first
         conf.locale = locale;
         res.updateConfiguration(conf, dm);
 
@@ -54,35 +54,20 @@ public class LocaleHelper {
 
     @NonNull
     public List<String> getLocalesWithTranslation(final Resources resources) {
-        String[] languages = BuildConfig.TRANSLATION_ARRAY;
+        String[] languageList = BuildConfig.TRANSLATION_ARRAY;
         Set<String> availableLanguagesSet = new HashSet<>();
-        // We always support english
+
+        // Glucosio support English as default
         availableLanguagesSet.add("en");
 
-        // Get english string to confront
-        // I know, it's a weird workaround
-        // Sorry :/
-        String englishString = "Automatic backup";
+        String[] translatedLanguages = resources.getStringArray(R.array.available_languages);
+        Set<String> translatedLanguageSet = new HashSet<>();
 
-        for (String localString : languages) {
-            // For each locale, check if we have translations
-            Configuration conf = resources.getConfiguration();
-            Locale savedLocale = conf.locale;
-            conf.locale = getLocale(localString);
-            resources.updateConfiguration(conf, null);
+        Collections.addAll(translatedLanguageSet, translatedLanguages);
 
-            // Retrieve an example string from this locale
-            String localizedString = resources.getString(R.string.activity_backup_drive_automatic);
-
-            if (!englishString.equals(localizedString)) {
-                // if english string is not the same of localized one
-                // a translation is available
-                availableLanguagesSet.add(localString);
-            }
-
-            // restore original locale
-            conf.locale = savedLocale;
-            resources.updateConfiguration(conf, null);
+        for (String language : languageList) {
+            if (translatedLanguageSet.contains(language.substring(0, 5)))
+                availableLanguagesSet.add(language);
         }
 
         List<String> availableLanguagesList = new ArrayList<>(availableLanguagesSet);
@@ -91,6 +76,7 @@ public class LocaleHelper {
     }
 
     public Locale getDeviceLocale() {
+        // TODO(raacker): deprecated. change to getLocale(). It needs to be set minSdk to 17. Configure project's minSdk first
         return Resources.getSystem().getConfiguration().locale;
     }
 }
