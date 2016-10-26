@@ -24,7 +24,7 @@ apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'jacoco'
 
 android {
-    compileSdkVersion 24
+    compileSdkVersion 25
     buildToolsVersion buildToolsVer
 
     lintOptions {
