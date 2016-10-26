@@ -462,6 +462,7 @@
     <string name="reminder_item_title_generic">It is time to do an entry in Glucosio!</string>
     <string name="reminder_item_title_generic2">Time to log your glucose level!</string>
     <string name="warning_internet_connection_required">Sorry but you need internet for this feature</string>
+    <string name="PIN_Message">Please enter your pin below ...</string>
 
     <string-array name="reminder_title_array" translatable="false">
         <item>@string/reminder_item_title_generic</item>

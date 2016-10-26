@@ -77,7 +77,7 @@ import java.util.Calendar;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
-public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, ExportView {
+public class MainActivity extends AppLockActivity implements DatePickerDialog.OnDateSetListener, ExportView {
 
     private static final String INTENT_EXTRA_DROPDOWN = "history_dropdown";
     private static final int REQUEST_INVITE = 1;
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private View bottomSheetAddDialogView;
     private TabLayout tabLayout;
     private LocaleHelper localeHelper;
-
+    private static final String TAG = "MainActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
