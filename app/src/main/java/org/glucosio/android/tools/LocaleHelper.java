@@ -66,7 +66,7 @@ public class LocaleHelper {
         Collections.addAll(translatedLanguageSet, translatedLanguages);
 
         for (String language : languageList) {
-            if (translatedLanguageSet.contains(language.substring(0, 5)))
+            if (translatedLanguageSet.contains(language))
                 availableLanguagesSet.add(language);
         }
 
