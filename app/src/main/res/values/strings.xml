@@ -159,7 +159,7 @@
     <string name="preferences_about">About</string>
     <string name="preferences_experimental_title" translatable="false">Here be dragons :/</string>
     <string name="preferences_experimental">These features are experimental and may not fully work and are for early testing by users. Remember that you can shake your phone to send us feedback.</string>
-    <string name="version" translatable="false">1.2.1 (Chutney)</string>
+    <string name="version" translatable="false">1.3.0 (Chutney)</string>
     <string name="preferences_version">Version</string>
     <string name="preferences_coming_soon">Coming soon...</string>
     <string name="preferences_terms">Terms of use</string>
@@ -209,7 +209,7 @@
     <string name="assistant_categories_desc">Glucosio comes with default categories for glucose input but you can create custom categories in settings to match your unique needs.</string>
     <string name="assistant_check_title">Check here often</string>
     <string name="assistant_check_desc">Glucosio assistant provides regular tips and will keep improving, so always check here for useful actions you can take to improve your Glucosio experience and for other useful tips.</string>
-    <string name="assistant_feedback_title">Submit feedback </string>
+    <string name="assistant_feedback_title">Submit feedback</string>
     <string name="assistant_feedback_desc">If you find any technical issues or have feedback about Glucosio we encourage you to submit it in the settings menu in order to help us improve Glucosio.</string>
     <string name="assistant_reading_title">Add a reading</string>
     <string name="assistant_reading_desc">Be sure to regularly add your glucose readings so we can help you track your glucose levels over time.</string>
@@ -222,14 +222,12 @@
         <item>@string/assistant_calculator_a1c_title</item>
         <item>@string/assistant_feedback_title</item>
         <item>@string/assistant_reading_title</item>
-        <item>@string/assistant_categories_title</item>
         <item>@string/assistant_export_title</item>
     </string-array>
     <string-array name="assistant_descriptions" translatable="false">
         <item>@string/assistant_calculator_a1c_desc</item>
         <item>@string/assistant_feedback_desc</item>
         <item>@string/assistant_reading_desc</item>
-        <item>@string/assistant_categories_desc</item>
         <item>@string/assistant_export_desc</item>
     </string-array>
 
@@ -237,7 +235,6 @@
         <item>@string/assistant_action_try</item>
         <item>@string/assistant_action_feedback</item>
         <item>@string/assistant_action_reading</item>
-        <item>@string/assistant_action_try</item>
         <item>@string/dialog_export_button</item>
     </string-array>
 
@@ -279,6 +276,7 @@
     <string name="preferences_about_glucosio">About Glucosio</string>
     <string name="preferences_rate">Rate Glucosio</string>
     <string name="preferences_licences_open">Open source licenses</string>
+    <string name="preferences_contributors">Contributors</string>
     <string name="preferences_freestyle_libre">Enable FreeStyle Libre® support</string>
     <string name="preferences_freestyle_libre_experimental">EXPERIMENTAL: Enable FreeStyle Libre® support</string>
     <string name="preferences_font_dyslexia_experimental">EXPERIMENTAL: Increase readability for users with dyslexia</string>
@@ -445,7 +443,28 @@
     <string name="activity_backup_drive_button_open_drive">Manage on Drive</string>
     <string name="mmol_mol">mmol/mol</string>
     <string name="mmol_L">mmol/L</string>
+    <string name="mmol_mol_value">%1$s mmol/mol</string>
+    <string name="mmol_L_value">%1$s mmol/L</string>
+    <string name="mg_dL">mg/dL</string>
+    <string name="mg_dL_value">%1$s mg/dL</string>
     <string name="preferences_graph_old">Revert to old graph</string>
     <string name="history">history</string>
     <string name="save">save</string>
+    <string name="activity_reminders_title">Reminders</string>
+    <string name="reminders_notification_action">Add reading</string>
+    <string name="glucosio_activity_reminders_empty">No reminders set. Add a new reminder here.</string>
+    <string name="activitiy_reminders_error_duplicate">This reminder already exists.</string>
+    <string name="activity_reminder_error_empty">Please enter a valid label.</string>
+    <string name="activity_reminder_add_label">Set reminder Label</string>
+    <string name="reminder_item_title_morning">Good Morning, It is time to do an entry in Glucosio!</string>
+    <string name="reminder_item_title_afternoon">Good Afternoon, It is time to do an entry in Glucosio!</string>
+    <string name="reminder_item_title_evening">Good Evening, It is time to do an entry in Glucosio!</string>
+    <string name="reminder_item_title_generic">It is time to do an entry in Glucosio!</string>
+    <string name="reminder_item_title_generic2">Time to log your glucose level!</string>
+    <string name="warning_internet_connection_required">Sorry but you need internet for this feature</string>
+
+    <string-array name="reminder_title_array" translatable="false">
+        <item>@string/reminder_item_title_generic</item>
+        <item>@string/reminder_item_title_generic2</item>
+    </string-array>
 </resources>

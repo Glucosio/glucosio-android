@@ -29,13 +29,11 @@ import android.preference.PreferenceFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.Toast;
-
+import java.util.Locale;
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.analytics.Analytics;
-
-import java.util.Locale;
-
+import org.glucosio.android.tools.network.GlucosioExternalLinks;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class AboutActivity extends AppCompatActivity {
@@ -75,19 +73,17 @@ public class AboutActivity extends AppCompatActivity {
             final Preference privacyPref = (Preference) findPreference("preference_privacy");
             final Preference termsPref = (Preference) findPreference("preference_terms");
             final Preference versionPref = (Preference) findPreference("preference_version");
+            final Preference thanksPref = (Preference) findPreference("preference_thanks");
 
 
             termsPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
-                    Intent intent = new Intent(getActivity(), LicenceActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putString("key", "terms");
-                    intent.putExtras(bundle);
-                    startActivity(intent);
-
+                    ExternalLinkActivity.launch(
+                        getActivity(),
+                        getString(R.string.preferences_terms),
+                        GlucosioExternalLinks.TERMS);
                     addTermsAnalyticsEvent("Glucosio Terms opened");
-
                     return false;
                 }
             });
@@ -95,12 +91,10 @@ public class AboutActivity extends AppCompatActivity {
             licencesPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
-                    Intent intent = new Intent(getActivity(), LicenceActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putString("key", "open_source");
-                    intent.putExtras(bundle);
-                    startActivity(intent);
-
+                    ExternalLinkActivity.launch(
+                        getActivity(),
+                        getString(R.string.preferences_licences_open),
+                        GlucosioExternalLinks.LICENSES);
                     addTermsAnalyticsEvent("Glucosio Licence opened");
                     return false;
                 }
@@ -136,14 +130,23 @@ public class AboutActivity extends AppCompatActivity {
             privacyPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
-                    Intent intent = new Intent(getActivity(), LicenceActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putString("key", "privacy");
-                    intent.putExtras(bundle);
-                    startActivity(intent);
-
+                    ExternalLinkActivity.launch(
+                        getActivity(),
+                        getString(R.string.preferences_privacy),
+                        GlucosioExternalLinks.PRIVACY);
                     addTermsAnalyticsEvent("Glucosio Privacy opened");
+                    return false;
+                }
+            });
 
+            thanksPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    ExternalLinkActivity.launch(
+                            getActivity(),
+                            getString(R.string.preferences_contributors),
+                            GlucosioExternalLinks.THANKS);
+                    addTermsAnalyticsEvent("Glucosio Contributors opened");
                     return false;
                 }
             });

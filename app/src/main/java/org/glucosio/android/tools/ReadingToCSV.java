@@ -30,22 +30,15 @@ import org.glucosio.android.db.GlucoseReading;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
-import java.util.ArrayList;
+import java.util.List;
 
 import io.realm.Realm;
 
-public class ReadingToCSV {
+public final class ReadingToCSV {
 
-    private Context context;
-
-    public ReadingToCSV(Context mContext) {
-        this.context = mContext;
-    }
-
-
-    public String createCSVFile(Realm realm, final ArrayList<GlucoseReading> readings, String um) {
+    public static String createCSVFile(Context context, Realm realm, final List<GlucoseReading> readings, String um) {
         try {
-            final File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/glucosio", "glucosio_export_ " + System.currentTimeMillis()/1000 + ".csv");
+            final File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/glucosio", "glucosio_export_ " + System.currentTimeMillis() / 1000 + ".csv");
             final File sd = Environment.getExternalStorageDirectory();
             if (sd.canWrite()) {
                 FileOutputStream fileOutputStream = new FileOutputStream(file);
@@ -84,13 +77,13 @@ public class ReadingToCSV {
                         osw.append(dateTool.convertRawTime(reading.getCreated() + ""));
                         osw.append(',');
 
-                        osw.append(reading.getReading() + "");
+                        osw.append(String.valueOf(reading.getReading()));
                         osw.append(',');
 
                         osw.append("mg/dL");
                         osw.append(',');
 
-                        osw.append(reading.getReading_type() + "");
+                        osw.append(String.valueOf(reading.getReading_type()));
                         osw.append(',');
 
                         osw.append(reading.getNotes());
@@ -122,7 +115,6 @@ public class ReadingToCSV {
 
                     }
                 }
-
                 osw.flush();
                 osw.close();
                 Log.i("Glucosio", "Done exporting readings");

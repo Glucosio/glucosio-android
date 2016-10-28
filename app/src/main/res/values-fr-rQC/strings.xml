@@ -266,7 +266,7 @@
   <string name="overview_hb1ac">Hb1AC :</string>
   <string name="dialog_add_glucose_freestylelibre_added">Ajoutées depuis votre compte FreeStyle Libre®</string>
   <string name="activity_converter_a1c_glucose">GLYCÉMIE MOYENNE</string>
-  <string name="activity_converter_a1c">Taux D’Hba1C</string>
+  <string name="activity_converter_a1c">HbA1c</string>
   <string name="activity_converter_title">Convertisseur HbA1C</string>
   <string name="activity_converter_save">ENREGISTRER</string>
   <string name="menu_support">Support</string>
@@ -308,4 +308,9 @@
   <string name="activity_backup_drive_button_open_drive">Gérer les fichiers</string>
   <string name="mmol_L">mmol/L</string>
   <string name="preferences_graph_old">Revenir à l’ancien graphique</string>
+  <string name="history">historique</string>
+  <string name="save">enregistrer</string>
+  <string name="activity_reminders_title">Rappels</string>
+  <string name="reminders_notification_text">Il est temps de mesurer votre glycémie !</string>
+  <string name="glucosio_activity_reminders_empty">Aucun rappel de la valeur. Ajouter un nouveau rappel ici.</string>
 </resources>

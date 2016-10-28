@@ -50,7 +50,6 @@ public class OverviewPresenter {
     private DatabaseHandler dB;
     private OverviewView view;
 
-    private ArrayList<String> glucoseType;
     private List<Integer> glucoseReadingsWeek;
     private List<Integer> glucoseReadingsMonth;
     private List<String> glucoseDatetimeWeek;
@@ -76,7 +75,6 @@ public class OverviewPresenter {
         this.glucoseReadingsWeek = dB.getAverageGlucoseReadingsByWeek();
         this.glucoseDatetimeWeek = dB.getGlucoseDatetimesByWeek();
         this.glucoseDatetimeMonth = dB.getGlucoseDatetimesByMonth();
-        this.glucoseType = dB.getGlucoseTypeAsArray();
         this.glucoseMaxValue = dB.getUser(1).getCustom_range_max();
         this.glucoseMinValue = dB.getUser(1).getCustom_range_min();
     }
@@ -84,10 +82,6 @@ public class OverviewPresenter {
     public String convertDate(String date) {
         return view.convertDate(date);
     }
-
-/*    public int getGlucoseTrend(){
-        return dB.getAverageGlucoseReadingForLastMonth();
-    }*/
 
     public String getHB1AC() {
         // Check if last month is available first

@@ -41,8 +41,8 @@ public class HomePagerAdapter extends FragmentPagerAdapter {
     public HomePagerAdapter(FragmentManager fm, Context context) {
         super(fm);
         this.mContext = context;
-        overviewFragment = new OverviewFragment();
-        historyFragment = new HistoryFragment();
+        overviewFragment = OverviewFragment.newInstance();
+        historyFragment = HistoryFragment.newInstance();
         assistantFragment = new AssistantFragment();
     }
 

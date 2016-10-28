@@ -95,7 +95,7 @@
     <item>\"Bez cukru\" opravdu neznamená bez cukru. To znamená 0,5 gramů (g) cukru na jednu porci, dejte si tedy pozor, abyste nekonzumovali tolik jídel \"bez cukru\".</item>
     <item>Zdravá tělesná váha pomáhá držet krevní cukr pod kontrolou. Váš lékař, dietolog nebo fitness trenér vám může pomoci vytvořit plán, který vám s udržením nebo snížením tělesné váhy pomůže.</item>
     <item>Kontrola a sledování hladiny krevního tlaku dvakrát denně v aplikaci jako je Glucosio vám pomůže znát výsledky z volby stravování a životního stylu.</item>
-    <item>Get A1c blood tests to find out your average blood sugar for the past 2 to 3 months. Your doctor should tell you how frequently this test will be needed to be performed.</item>
+    <item>Get HbA1c blood tests to find out your average blood sugar for the past 2 to 3 months. Your doctor should tell you how frequently this test will be needed to be performed.</item>
     <item>Tracking how many carbohydrates you consume can be just as important as checking blood levels since carbohydrates influence blood glucose levels. Talk to your doctor or a dietician about carbohydrate intake.</item>
     <item>Kontroly krevního tlaku, hladiny cholesterolu a hladiny triglyceridů, jsou důležité, neboť diabetici jsou náchylní k srdečním onemocněním.</item>
     <item>Existuje několik typů diet, které můžete zvolit proto, abyste jedli zdravě a zároveň zlepšili výsledky cukrovky. Vyhledejte dietologa pro radu o nejvhodnější dietě pro vás a váš rozpočet.</item>
@@ -205,4 +205,5 @@
   <string name="fab_cholesterol">Hladina cholesterolu</string>
   <string name="fab_HB1AC">Hodnota HB1AC</string>
   <string name="fab_glucose">Hladina glukózy v krvi</string>
+  <string name="activity_converter_a1c">HB1AC</string>
 </resources>

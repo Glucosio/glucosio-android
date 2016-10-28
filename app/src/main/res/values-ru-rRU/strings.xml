@@ -226,6 +226,7 @@
   <string name="fragment_overview_graph_export_true">Снимок экрана сохранён в галерее</string>
   <string name="fragment_overview_graph_export_false">Ошибка сохранения снимка экрана в галерею</string>
   <string name="dialog_export_range">Диапазон экспорта</string>
+  <string name="activity_export_issue_generic">Возникла проблема при экспорте данных. Пожалуйста, попробуйте еще раз.</string>
   <string name="activity_export_no_readings_snackbar">Нет данных для экспорта.</string>
   <string name="wear_new_reading">Добавлены новые данные</string>
   <string name="dialog_add_weight">Вес</string>
@@ -308,4 +309,10 @@
   <string name="mmol_mol">ммоль/моль</string>
   <string name="mmol_L">ммоль/литр</string>
   <string name="preferences_graph_old">Вернуться к старому графику</string>
+  <string name="history">история</string>
+  <string name="save">сохранить</string>
+  <string name="activity_reminders_title">Напоминания</string>
+  <string name="reminders_notification_text">Пора зарегистрировать ваш уровень глюкозы!</string>
+  <string name="reminders_notification_action">Добавить данные</string>
+  <string name="glucosio_activity_reminders_empty">Нет напоминаний. Добавьте новое напоминание здесь.</string>
 </resources>

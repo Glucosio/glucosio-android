@@ -46,35 +46,38 @@ import org.glucosio.android.presenter.AssistantPresenter;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
+
 public class AssistantFragment extends Fragment {
 
     private SharedPreferences sharedPref;
-    private SharedPreferences.Editor editor;
 
-    private RecyclerView tipsRecycler;
+    @BindView(R.id.fragment_tips_recyclerview)
+    RecyclerView tipsRecycler;
+    @BindView(R.id.fragment_assistant_archived)
+    LinearLayout archivedButton;
+    @BindView(R.id.fragment_assistant_archived_dismiss)
+    LinearLayout archivedDismissButton;
+
     private AssistantAdapter adapter;
-    private LinearLayout archivedButton;
-    private LinearLayout archivedDismissButton;
     private ArrayList<ActionTip> actionTips;
     private String[] actionTipTitles;
     private String[] actionTipDescriptions;
     private String[] actionTipActions;
 
-    public AssistantFragment() {
-        // Required empty public constructor
-    }
+    private Unbinder unbinder;
 
     public static AssistantFragment newInstance() {
-        AssistantFragment fragment = new AssistantFragment();
-
-        return fragment;
+        return new AssistantFragment();
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-        editor = sharedPref.edit();
     }
 
     @Override
@@ -86,13 +89,12 @@ public class AssistantFragment extends Fragment {
         actionTipTitles = getResources().getStringArray(R.array.assistant_titles);
         actionTipDescriptions = getResources().getStringArray(R.array.assistant_descriptions);
         actionTipActions = getResources().getStringArray(R.array.assistant_actions);
-        popolateWithNewTips();
+        populateWithNewTips();
 
-        View mView = inflater.inflate(R.layout.fragment_assistant, container, false);
-        tipsRecycler = (RecyclerView) mView.findViewById(R.id.fragment_tips_recyclerview);
-        archivedButton = (LinearLayout) mView.findViewById(R.id.fragment_assistant_archived);
-        archivedDismissButton = (LinearLayout) mView.findViewById(R.id.fragment_assistant_archived_dismiss);
-        adapter = new AssistantAdapter(getActivity().getApplicationContext(), presenter, actionTips);
+        View view = inflater.inflate(R.layout.fragment_assistant, container, false);
+        unbinder = ButterKnife.bind(this, view);
+
+        adapter = new AssistantAdapter(presenter, getActivity().getApplicationContext().getResources(), actionTips);
 
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
@@ -100,7 +102,25 @@ public class AssistantFragment extends Fragment {
         tipsRecycler.setAdapter(adapter);
         tipsRecycler.setHasFixedSize(false);
 
-        // Swipe to remove functionality
+        initSwipeToRemoveTouchHelper();
+
+        // If there aren't dismissed tips, don't show archive button
+        if (actionTipTitles.length == adapter.getItemCount()) {
+            archivedButton.setVisibility(View.GONE);
+        }
+
+        return view;
+    }
+
+    @Override
+    public void onDestroyView() {
+        unbinder.unbind();
+
+        super.onDestroyView();
+    }
+
+    // Swipe to remove functionality
+    private void initSwipeToRemoveTouchHelper() {
         ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
             @Override
             public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
@@ -134,44 +154,33 @@ public class AssistantFragment extends Fragment {
         final ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
 
         itemTouchHelper.attachToRecyclerView(tipsRecycler);
-
-        // If there aren't dismissed tips, don't show archive button
-        if (actionTipTitles.length == adapter.getItemCount()) {
-            archivedButton.setVisibility(View.GONE);
-        }
-
-        archivedButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                popolateWithArchivedTips();
-                adapter.notifyDataSetChanged();
-                tipsRecycler.swapAdapter(adapter, false);
-                archivedDismissButton.setVisibility(View.VISIBLE);
-                final Animation slide = new TranslateAnimation(0, 0, 0, 200);
-                slide.setDuration(500);
-
-                archivedButton.startAnimation(slide);
-                archivedButton.setVisibility(View.GONE);
-            }
-        });
-
-        archivedDismissButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                popolateWithNewTips();
-                adapter.notifyDataSetChanged();
-                tipsRecycler.swapAdapter(adapter, false);
-                archivedDismissButton.setVisibility(View.GONE);
-                archivedButton.setVisibility(View.VISIBLE);
-
-                ((MainActivity) getActivity()).reloadFragmentAdapter();
-            }
-        });
-
-        return mView;
     }
 
-    private void popolateWithNewTips() {
+    @OnClick(R.id.fragment_assistant_archived_dismiss)
+    void archivedDismissButtonClick() {
+        populateWithNewTips();
+        adapter.notifyDataSetChanged();
+        tipsRecycler.swapAdapter(adapter, false);
+        archivedDismissButton.setVisibility(View.GONE);
+        archivedButton.setVisibility(View.VISIBLE);
+
+        ((MainActivity) getActivity()).reloadFragmentAdapter();
+    }
+
+    @OnClick(R.id.fragment_assistant_archived)
+    void archivedButtonClicked() {
+        populateWithArchivedTips();
+        adapter.notifyDataSetChanged();
+        tipsRecycler.swapAdapter(adapter, false);
+        archivedDismissButton.setVisibility(View.VISIBLE);
+        final Animation slide = new TranslateAnimation(0, 0, 0, 200);
+        slide.setDuration(500);
+
+        archivedButton.startAnimation(slide);
+        archivedButton.setVisibility(View.GONE);
+    }
+
+    private void populateWithNewTips() {
         actionTips.clear();
         for (int i = 0; i < actionTipTitles.length; i++) {
             String actionTipTitle = actionTipTitles[i];
@@ -190,7 +199,7 @@ public class AssistantFragment extends Fragment {
         }
     }
 
-    private void popolateWithArchivedTips() {
+    private void populateWithArchivedTips() {
         actionTips.clear();
         for (int i = 0; i < actionTipTitles.length; i++) {
             String actionTipTitle = actionTipTitles[i];
@@ -210,13 +219,11 @@ public class AssistantFragment extends Fragment {
     }
 
     private void addPreference(String key) {
-        editor.putBoolean(key, true);
-        editor.commit();
+        sharedPref.edit().putBoolean(key, true).apply();
     }
 
     private void removePreference(String key) {
-        editor.putBoolean(key, false);
-        editor.commit();
+        sharedPref.edit().putBoolean(key, false).apply();
     }
 
     public void addReading() {
@@ -234,7 +241,7 @@ public class AssistantFragment extends Fragment {
         startActivity(intent);
     }
 
-    public void openLiveChat() {
+    public void openSupportDialog() {
         ((MainActivity) getActivity()).openSupportDialog();
     }
 }

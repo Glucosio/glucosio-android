@@ -227,6 +227,7 @@
   <string name="fragment_overview_graph_export_true">Schermafbeelding opgeslagen naar galerij</string>
   <string name="fragment_overview_graph_export_false">Fout bij opslaan van schermafbeelding naar galerij</string>
   <string name="dialog_export_range">Exportbereik</string>
+  <string name="activity_export_issue_generic">Er was een probleem bij het exporteren van de uitlezingen. Probeer het opnieuw.</string>
   <string name="activity_export_no_readings_snackbar">Geen uitlezingen te exporteren.</string>
   <string name="wear_new_reading">Nieuwe uitlezing toegevoegd</string>
   <string name="dialog_add_weight">Gewicht</string>
@@ -309,4 +310,10 @@
   <string name="mmol_mol">mmol/mol</string>
   <string name="mmol_L">mmol/l</string>
   <string name="preferences_graph_old">Terugkeren naar oude grafiek</string>
+  <string name="history">geschiedenis</string>
+  <string name="save">opslaan</string>
+  <string name="activity_reminders_title">Herinneringen</string>
+  <string name="reminders_notification_text">Tijd om uw glucosespiegel vast te leggen!</string>
+  <string name="reminders_notification_action">Uitlezing toevoegen</string>
+  <string name="glucosio_activity_reminders_empty">Geen herinneringen ingesteld. Voeg hier nieuwe herinneringen toe.</string>
 </resources>

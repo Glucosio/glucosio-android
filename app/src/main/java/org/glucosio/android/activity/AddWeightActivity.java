@@ -35,7 +35,6 @@ import java.util.Calendar;
 public class AddWeightActivity extends AddReadingActivity {
 
     private TextView readingTextView;
-    private TextView unitTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +55,7 @@ public class AddWeightActivity extends AddReadingActivity {
         presenter.setReadingTimeNow();
 
         readingTextView = (TextView) findViewById(R.id.weight_add_value);
-        unitTextView = (TextView) findViewById(R.id.weight_add_unit_measurement);
+        TextView unitTextView = (TextView) findViewById(R.id.weight_add_unit_measurement);
 
         this.createDateTimeViewAndListener();
         this.createFANViewAndListener();

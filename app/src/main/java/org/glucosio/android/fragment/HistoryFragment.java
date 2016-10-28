@@ -56,10 +56,11 @@ import org.glucosio.android.tools.FormatDateTime;
 
 public class HistoryFragment extends Fragment {
 
-    private final String INTENT_EXTRA_PAGER = "pager";
-    private final String INTENT_EXTRA_EDITING_ID = "edit_id";
-    private final String INTENT_EXTRA_EDITING = "editing";
-    private final String INTENT_EXTRA_DROPDOWN = "history_dropdown";
+    private static final String INTENT_EXTRA_PAGER = "pager";
+    private static final String INTENT_EXTRA_EDITING_ID = "edit_id";
+    private static final String INTENT_EXTRA_EDITING = "editing";
+    private static final String INTENT_EXTRA_DROPDOWN = "history_dropdown";
+
     private RecyclerView mRecyclerView;
     private LinearLayoutManager mLayoutManager;
     private RecyclerView.Adapter mAdapter;
@@ -70,15 +71,8 @@ public class HistoryFragment extends Fragment {
     private Boolean isToolbarScrolling = true;
     private int historyDropdownPosition = 0;
 
-    public HistoryFragment() {
-        // Required empty public constructor
-    }
-
     public static HistoryFragment newInstance() {
-        HistoryFragment fragment = new HistoryFragment();
-
-
-        return fragment;
+        return new HistoryFragment();
     }
 
     public void onCreate(Bundle savedInstanceState) {
@@ -107,7 +101,7 @@ public class HistoryFragment extends Fragment {
         // use a linear layout manager
         // Set array and adapter for graphSpinner
         String[] selectorArray = getActivity().getResources().getStringArray(R.array.fragment_history_selector);
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, selectorArray);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, selectorArray);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         historySpinner.setAdapter(dataAdapter);
 
@@ -116,13 +110,12 @@ public class HistoryFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (!presenter.isdbEmpty()) {
-                    int metricId = position;
                     if (position != 0) {
                         glucoseLegend.setVisibility(View.GONE);
                     } else {
                         glucoseLegend.setVisibility(View.VISIBLE);
                     }
-                    mAdapter = new HistoryAdapter(context, presenter, metricId);
+                    mAdapter = new HistoryAdapter(context, presenter, position);
                     mRecyclerView.setAdapter(mAdapter);
                     mAdapter.notifyDataSetChanged();
                     historyDropdownPosition = position;
@@ -143,9 +136,8 @@ public class HistoryFragment extends Fragment {
 
             @Override
             public void onItemLongClick(final View view, final int position) {
-                int historyTypePosition = (int) historySpinner.getSelectedItemId();
                 // if touch Glucose or weight item
-                showBottomSheetDialog(view, position);
+                showBottomSheetDialog(view);
             }
         }));
 
@@ -166,7 +158,7 @@ public class HistoryFragment extends Fragment {
         return mFragmentView;
     }
 
-    private void showBottomSheetDialog(final View itemView, final int itemPosition) {
+    private void showBottomSheetDialog(final View itemView) {
         mBottomSheetDialog = new BottomSheetDialog(getActivity());
         View sheetView = getActivity().getLayoutInflater().inflate(R.layout.fragment_history_bottom_sheet, null);
         LinearLayout edit = (LinearLayout) sheetView.findViewById(R.id.fragment_history_bottom_sheet_edit);
@@ -237,11 +229,6 @@ public class HistoryFragment extends Fragment {
                             default:
                                 break;
                         }
-                    }
-
-                    @Override
-                    public void onShown(Snackbar snackbar) {
-                        // Do nothing
                     }
                 }).setAction("UNDO", new View.OnClickListener() {
                     @Override

@@ -52,8 +52,6 @@ public class AddGlucoseActivity extends AddReadingActivity {
     private TextView readingTextView;
     private EditText typeCustomEditText;
     private EditText notesEditText;
-    private AppCompatButton addFreeStyleButton;
-    private TextInputLayout readingInputLayout;
     private LabelledSpinner readingTypeSpinner;
     private boolean isCustomType = false;
 
@@ -79,8 +77,8 @@ public class AddGlucoseActivity extends AddReadingActivity {
         readingTypeSpinner.setItemsArray(R.array.dialog_add_measured_list);
         readingTextView = (TextView) findViewById(R.id.glucose_add_concentration);
         typeCustomEditText = (EditText) findViewById(R.id.glucose_type_custom);
-        readingInputLayout = (TextInputLayout) findViewById(R.id.glucose_add_concentration_layout);
-        addFreeStyleButton = (AppCompatButton) findViewById(R.id.glucose_add_freestyle_button);
+        TextInputLayout readingInputLayout = (TextInputLayout) findViewById(R.id.glucose_add_concentration_layout);
+        AppCompatButton addFreeStyleButton = (AppCompatButton) findViewById(R.id.glucose_add_freestyle_button);
         notesEditText = (EditText) findViewById(R.id.glucose_add_notes);
 
         this.createDateTimeViewAndListener();
@@ -110,9 +108,9 @@ public class AddGlucoseActivity extends AddReadingActivity {
         TextView unitM = (TextView) findViewById(R.id.glucose_add_unit_measurement);
 
         if (presenter.getUnitMeasuerement().equals("mg/dL")) {
-            unitM.setText("mg/dL");
+            unitM.setText(getString(R.string.mg_dL));
         } else {
-            unitM.setText("mmol/L");
+            unitM.setText(getString(R.string.mmol_L));
         }
 
         // If an id is passed, open the activity in edit mode
@@ -121,7 +119,15 @@ public class AddGlucoseActivity extends AddReadingActivity {
         if (this.isEditing()) {
             setTitle(R.string.title_activity_add_glucose_edit);
             GlucoseReading readingToEdit = presenter.getGlucoseReadingById(this.getEditId());
-            readingTextView.setText(readingToEdit.getReading() + "");
+
+            String readingString;
+            if (presenter.getUnitMeasuerement().equals("mg/dL")) {
+                readingString = String.valueOf(readingToEdit.getReading());
+            } else {
+                readingString = String.valueOf(presenter.convertToMmol(readingToEdit.getReading()));
+            }
+
+            readingTextView.setText(readingString);
             notesEditText.setText(readingToEdit.getNotes());
             cal.setTime(readingToEdit.getCreated());
             this.getAddDateTextView().setText(dateTime.getDate(cal));
@@ -154,7 +160,7 @@ public class AddGlucoseActivity extends AddReadingActivity {
 
             p = getIntent().getExtras();
             reading = p.getString("reading");
-            if (reading!=null) {
+            if (reading != null) {
                 // If yes, first convert the decimal value from Freestyle to Integer
                 double d = Double.parseDouble(reading);
                 int glucoseValue = (int) d;

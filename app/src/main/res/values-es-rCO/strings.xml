@@ -260,7 +260,7 @@
   <string name="overview_hb1ac">HBA1C:</string>
   <string name="dialog_add_glucose_freestylelibre_added">Añadido desde tu FreeStyle Libre®</string>
   <string name="activity_converter_a1c_glucose">NIVEL MEDIO DE GLUCOSA</string>
-  <string name="activity_converter_a1c">A1C</string>
+  <string name="activity_converter_a1c">HB1AC</string>
   <string name="activity_converter_title">Calculador de A1C</string>
   <string name="activity_converter_save">GUARDAR</string>
   <string name="menu_support">Asistencia técnica</string>

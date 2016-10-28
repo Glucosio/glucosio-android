@@ -226,6 +226,7 @@
   <string name="fragment_overview_graph_export_true">S\'ha desat la captura a la galeria</string>
   <string name="fragment_overview_graph_export_false">S\'ha produït un error en desar la captura a la galeria</string>
   <string name="dialog_export_range">Rang d\'exportació</string>
+  <string name="activity_export_issue_generic">Hi ha hagut un error en exportar la configuració. Torneu a provar.</string>
   <string name="activity_export_no_readings_snackbar">No hi ha lectures per a exportar.</string>
   <string name="wear_new_reading">S\'ha afegit una lectura nova</string>
   <string name="dialog_add_weight">Pes</string>
@@ -308,4 +309,10 @@
   <string name="mmol_mol">mmol/mol</string>
   <string name="mmol_L">mmol/L</string>
   <string name="preferences_graph_old">Torna al gràfic antic</string>
+  <string name="history">historial</string>
+  <string name="save">desa</string>
+  <string name="activity_reminders_title">Recordatoris</string>
+  <string name="reminders_notification_text">Ara és l\'hora de mesurar el nivell de glucosa!</string>
+  <string name="reminders_notification_action">Afegeix una lectura</string>
+  <string name="glucosio_activity_reminders_empty">No s\'ha trobat cap recordatori, Afegiu un nou.</string>
 </resources>
