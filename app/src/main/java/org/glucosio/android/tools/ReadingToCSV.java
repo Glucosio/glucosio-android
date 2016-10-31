@@ -38,7 +38,7 @@ public final class ReadingToCSV {
 
     public static String createCSVFile(Context context, Realm realm, final List<GlucoseReading> readings, String um) {
         try {
-            final File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/glucosio", "glucosio_export_ " + System.currentTimeMillis() / 1000 + ".csv");
+            final File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/glucosio", "glucosio_export_" + System.currentTimeMillis() / 1000 + ".csv");
             final File sd = Environment.getExternalStorageDirectory();
             if (sd.canWrite()) {
                 FileOutputStream fileOutputStream = new FileOutputStream(file);
