@@ -147,4 +147,5 @@
   <string name="fab_cholesterol">Kolesterolnivelo</string>
   <string name="fab_HB1AC">HB1AC-legado</string>
   <string name="fab_glucose">Sangoglukozonivelo</string>
+  <string name="activity_converter_a1c">HB1AC</string>
 </resources>

@@ -31,6 +31,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import org.glucosio.android.R;
+import org.glucosio.android.tools.network.GlucosioExternalLinks;
 
 import java.util.Locale;
 
@@ -67,23 +68,22 @@ public class AboutActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.about_preference);
 
-            final Preference licencesPref = findPreference("preference_licences");
-            final Preference ratePref = findPreference("preference_rate");
-            final Preference feedbackPref = findPreference("preference_feedback");
-            final Preference privacyPref = findPreference("preference_privacy");
-            final Preference termsPref = findPreference("preference_terms");
-            final Preference versionPref = findPreference("preference_version");
+            final Preference licencesPref = (Preference) findPreference("preference_licences");
+            final Preference ratePref = (Preference) findPreference("preference_rate");
+            final Preference feedbackPref = (Preference) findPreference("preference_feedback");
+            final Preference privacyPref = (Preference) findPreference("preference_privacy");
+            final Preference termsPref = (Preference) findPreference("preference_terms");
+            final Preference versionPref = (Preference) findPreference("preference_version");
+            final Preference thanksPref = (Preference) findPreference("preference_thanks");
 
 
             termsPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
-                    Intent intent = new Intent(getActivity(), LicenceActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putString("key", "terms");
-                    intent.putExtras(bundle);
-                    startActivity(intent);
-
+                    ExternalLinkActivity.launch(
+                            getActivity(),
+                            getString(R.string.preferences_terms),
+                            GlucosioExternalLinks.TERMS);
                     return false;
                 }
             });
@@ -91,12 +91,10 @@ public class AboutActivity extends AppCompatActivity {
             licencesPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
-                    Intent intent = new Intent(getActivity(), LicenceActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putString("key", "open_source");
-                    intent.putExtras(bundle);
-                    startActivity(intent);
-
+                    ExternalLinkActivity.launch(
+                            getActivity(),
+                            getString(R.string.preferences_licences_open),
+                            GlucosioExternalLinks.LICENSES);
                     return false;
                 }
             });
@@ -131,12 +129,21 @@ public class AboutActivity extends AppCompatActivity {
             privacyPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
-                    Intent intent = new Intent(getActivity(), LicenceActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putString("key", "privacy");
-                    intent.putExtras(bundle);
-                    startActivity(intent);
+                    ExternalLinkActivity.launch(
+                            getActivity(),
+                            getString(R.string.preferences_privacy),
+                            GlucosioExternalLinks.PRIVACY);
+                    return false;
+                }
+            });
 
+            thanksPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    ExternalLinkActivity.launch(
+                            getActivity(),
+                            getString(R.string.preferences_contributors),
+                            GlucosioExternalLinks.THANKS);
                     return false;
                 }
             });

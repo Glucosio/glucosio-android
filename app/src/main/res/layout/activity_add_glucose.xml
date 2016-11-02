@@ -89,6 +89,7 @@
                             android:id="@+id/glucose_add_concentration"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
+                            android:digits="0123456789.,"
                             android:hint="@string/dialog_add_concentration"
                             android:inputType="numberDecimal"
                             android:singleLine="true"
@@ -113,13 +114,13 @@
                     android:id="@+id/glucose_add_freestyle_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
                     android:layout_marginTop="24dp"
                     android:background="?android:attr/selectableItemBackground"
                     android:padding="8dp"
                     android:text="@string/dialog_add_glucose_freestylelibre"
                     android:textColor="@color/glucosio_text_light"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:visibility="gone" />
 
                 <LinearLayout
                     android:layout_width="fill_parent"

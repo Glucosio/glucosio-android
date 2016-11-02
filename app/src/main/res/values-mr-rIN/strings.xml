@@ -51,6 +51,8 @@
   <string name="dialog_add_type_5">जेवणाआधी</string>
   <string name="dialog_add_type_6">जेवणानंतर</string>
   <string name="dialog_add_type_9">रात्र</string>
+  <string name="dialog_add_type_11">पुनःतपासा</string>
+  <string name="dialog_add_type_12">इतर</string>
   <string name="dialog_add_cancel">रद्द</string>
   <string name="dialog_add_add">जोडा</string>
   <string name="dialog_edit">संपादन</string>
@@ -65,4 +67,5 @@
   <!-- Exercise Types -->
   <!-- Food Entry Labels -->
   <!-- About Glucosio Strings -->
+  <string name="dialog_add_weight">वजन</string>
 </resources>

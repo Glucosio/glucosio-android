@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/add_circle_glucose_shortcut"
+        android:shortcutDisabledMessage="@string/title_activity_add_glucose"
+        android:shortcutId="glucose"
+        android:shortcutLongLabel="@string/fab_glucose"
+        android:shortcutShortLabel="@string/fab_glucose">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="org.glucosio.android.activity.AddGlucoseActivity"
+            android:targetPackage="org.glucosio.android" />
+    </shortcut>
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/add_circle_weight_shortcut"
+        android:shortcutDisabledMessage="@string/fab_weight"
+        android:shortcutId="weight"
+        android:shortcutLongLabel="@string/fab_weight"
+        android:shortcutShortLabel="@string/fab_weight">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="org.glucosio.android.activity.AddWeightActivity"
+            android:targetPackage="org.glucosio.android" />
+    </shortcut>
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/add_circle_a1c_shortcut"
+        android:shortcutDisabledMessage="@string/fab_HB1AC"
+        android:shortcutId="hb1ac"
+        android:shortcutLongLabel="@string/fab_HB1AC"
+        android:shortcutShortLabel="@string/fab_HB1AC">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="org.glucosio.android.activity.AddA1CActivity"
+            android:targetPackage="org.glucosio.android" />
+    </shortcut>
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/add_circle_pressure_shortcut"
+        android:shortcutDisabledMessage="@string/fab_pressure"
+        android:shortcutId="pressure"
+        android:shortcutLongLabel="@string/fab_pressure"
+        android:shortcutShortLabel="@string/fab_pressure">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="org.glucosio.android.activity.AddPressureActivity"
+            android:targetPackage="org.glucosio.android" />
+    </shortcut>
+</shortcuts>

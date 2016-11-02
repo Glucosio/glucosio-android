@@ -39,16 +39,26 @@ import org.glucosio.android.tools.Preferences;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 public class GlucosioApplication extends Application {
+
+    private static GlucosioApplication sInstance;
+
     @Nullable
     private LocaleHelper localeHelper;
 
     @Nullable
     private Preferences preferences;
 
+    public static GlucosioApplication getInstance() {
+        if (sInstance == null) {
+            sInstance = new GlucosioApplication();
+        }
+        return sInstance;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
-
+        sInstance = this;
         initFont();
         initLanguage();
     }

@@ -62,7 +62,7 @@ public class AddA1CActivity extends AddReadingActivity {
         this.createFANViewAndListener();
 
         if (!"percentage".equals(presenter.getA1CUnitMeasuerement())) {
-            unitTextView.setText("mmol/mol");
+            unitTextView.setText(getString(R.string.mmol_mol));
         }
 
         // If an id is passed, open the activity in edit mode

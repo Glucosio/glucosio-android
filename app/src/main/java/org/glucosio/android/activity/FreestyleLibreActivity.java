@@ -47,12 +47,11 @@ import java.util.Arrays;
 
 public class FreestyleLibreActivity extends Activity {
 
-    private static final String TAG = "Glucosio:FreestyleLibreActivity";
+    private static final String TAG = "FreestyleLibreActivity";
+
     private NfcAdapter mNfcAdapter;
     private TextView readingTextView;
-    private TextView unitTextView;
-    private Button historyButton;
-    private Button saveButton;
+    private ReadingData mResult = new ReadingData(PredictionData.Result.ERROR_NO_NFC);
 
     /**
      * @param activity The corresponding {@link Activity} requesting the foreground dispatch.
@@ -83,8 +82,6 @@ public class FreestyleLibreActivity extends Activity {
         adapter.disableForegroundDispatch(activity);
     }
 
-    private ReadingData mResult = new ReadingData(PredictionData.Result.ERROR_NO_NFC);
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,9 +89,7 @@ public class FreestyleLibreActivity extends Activity {
 
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
         readingTextView = (TextView) findViewById(R.id.activity_freestyle_textview_reading);
-        unitTextView = (TextView) findViewById(R.id.activity_freestyle_textview_unit);
-        historyButton = (Button) findViewById(R.id.activity_freestyle_button_history);
-        saveButton = (Button) findViewById(R.id.activity_freestyle_button_save);
+        Button saveButton = (Button) findViewById(R.id.activity_freestyle_button_save);
 
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -158,10 +153,7 @@ public class FreestyleLibreActivity extends Activity {
             Log.d("glucosio", "NfcAdapter.ACTION_TECH_DISCOVERED");
             // In case we would still use the Tech Discovered Intent
             Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
-            String[] techList = tag.getTechList();
-            String searchedTech = NfcV.class.getName();
             new NfcVReaderTask().execute(tag);
-
         }
     }
 
@@ -176,7 +168,7 @@ public class FreestyleLibreActivity extends Activity {
 
         // Apply values in TextViews
         // TODO: Add check for mmol/L
-        readingTextView.setText(mResult.history.get(mResult.history.size()-1).glucose(false));
+        readingTextView.setText(mResult.trend.get(0).glucose(false));
 
         new Runnable() {
             @Override
@@ -196,7 +188,7 @@ public class FreestyleLibreActivity extends Activity {
             // Start AddGlucose Activity passing the reading value
             Intent intent = new Intent(getApplicationContext(), AddGlucoseActivity.class);
             Bundle bundle = new Bundle();
-            String currentGlucose = mResult.history.get(mResult.history.size()-1).glucose(false);
+            String currentGlucose = mResult.trend.get(0).glucose(false);
             bundle.putString("reading", currentGlucose + "");
             intent.putExtras(bundle);
             startActivity(intent);
@@ -205,6 +197,22 @@ public class FreestyleLibreActivity extends Activity {
             Intent intent = new Intent(getApplicationContext(), HelloActivity.class);
             startActivity(intent);
         }
+    }
+
+    private String bytesToHexString(byte[] src) {
+        StringBuilder builder = new StringBuilder("");
+        if (src == null || src.length <= 0) {
+            return "";
+        }
+
+        char[] buffer = new char[2];
+        for (byte b : src) {
+            buffer[0] = Character.forDigit((b >>> 4) & 0x0F, 16);
+            buffer[1] = Character.forDigit(b & 0x0F, 16);
+            builder.append(buffer);
+        }
+
+        return builder.toString();
     }
 
     private class NfcVReaderTask extends AsyncTask<Tag, Void, Tag> {
@@ -227,8 +235,8 @@ public class FreestyleLibreActivity extends Activity {
             try {
                 nfcvTag.connect();
                 final byte[] uid = tag.getId();
-                for(int i=0; i <= 40; i++) {
-                    byte[] cmd = new byte[]{0x60, 0x20, 0, 0, 0, 0, 0, 0, 0, 0, (byte)i, 0};
+                for (int i = 0; i <= 40; i++) {
+                    byte[] cmd = new byte[]{0x60, 0x20, 0, 0, 0, 0, 0, 0, 0, 0, (byte) i, 0};
                     System.arraycopy(uid, 0, cmd, 2, 8);
                     byte[] oneBlock;
                     Long time = System.currentTimeMillis();
@@ -245,7 +253,7 @@ public class FreestyleLibreActivity extends Activity {
                     }
 
                     oneBlock = Arrays.copyOfRange(oneBlock, 2, oneBlock.length);
-                    System.arraycopy(oneBlock, 0, data, i*8, 8);
+                    System.arraycopy(oneBlock, 0, data, i * 8, 8);
                 }
 
             } catch (Exception e) {
@@ -261,21 +269,5 @@ public class FreestyleLibreActivity extends Activity {
 
             return tag;
         }
-    }
-
-    private String bytesToHexString(byte[] src) {
-        StringBuilder builder = new StringBuilder("");
-        if (src == null || src.length <= 0) {
-            return "";
-        }
-
-        char[] buffer = new char[2];
-        for (byte b : src) {
-            buffer[0] = Character.forDigit((b >>> 4) & 0x0F, 16);
-            buffer[1] = Character.forDigit(b & 0x0F, 16);
-            builder.append(buffer);
-        }
-
-        return builder.toString();
     }
 }

@@ -16,27 +16,9 @@ public class AlgorithmUtil {
 
     private static final double TREND_UP_DOWN_LIMIT = 1;
     private static final double TREND_SLIGHT_UP_DOWN_LIMIT = 0.5;
-
-    public enum TrendArrow {
-        UNKNOWN,
-        DOWN,
-        SLIGHTLY_DOWN,
-        FLAT,
-        SLIGHTLY_UP,
-        UP
-    }
-
-    public enum Danger {
-        HIGH,
-        LOW,
-        NOTHING
-    }
-
     private static final int MINUTE = 60000;
-
     // TODO: 15 a good value?
     private static final int PREDICTION_TIME = 15;
-
     private static final SimpleDateFormat mFormat = new SimpleDateFormat("HH:mm:ss");
 
     public static String format(Date date) {
@@ -44,19 +26,7 @@ public class AlgorithmUtil {
     }
 
     private static int getGlucose(byte[] bytes) {
-        return ((256 * (bytes[0] & 0xFF) + (bytes[1] & 0xFF)) & 0x3FFF) / 10;
-    }
-
-    public interface AlertRule {
-        enum AlertResult {
-            INVALID,
-            NO_ALERTS,
-            NOTHING,
-            ALERT_HIGH,
-            ALERT_LOW,
-        }
-
-        AlertResult doFilter(Context context, GlucoseData prediction);
+        return (int) Math.round(((256 * (bytes[0] & 0xFF) + (bytes[1] & 0xFF)) & 0x0FFF) / 8.5);
     }
 
     public static TrendArrow getTrendArrow(Context context, GlucoseData data) {
@@ -173,5 +143,32 @@ public class AlgorithmUtil {
         predictedGlucose.attempt = attempt;
         predictedGlucose.sensorTime = trendList.get(0).sensorTime;
         return predictedGlucose;
+    }
+
+    public enum TrendArrow {
+        UNKNOWN,
+        DOWN,
+        SLIGHTLY_DOWN,
+        FLAT,
+        SLIGHTLY_UP,
+        UP
+    }
+
+    public enum Danger {
+        HIGH,
+        LOW,
+        NOTHING
+    }
+
+    public interface AlertRule {
+        AlertResult doFilter(Context context, GlucoseData prediction);
+
+        enum AlertResult {
+            INVALID,
+            NO_ALERTS,
+            NOTHING,
+            ALERT_HIGH,
+            ALERT_LOW,
+        }
     }
 }

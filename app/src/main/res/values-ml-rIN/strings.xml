@@ -22,12 +22,15 @@
 <resources>
   <string name="action_settings">സജ്ജീകരണങ്ങള്‍</string>
   <string name="action_feedback">അഭിപ്രായം അറിയിക്കുക</string>
+  <string name="action_invite">കൂട്ടുകാരെ ക്ഷണിക്കൂ</string>
   <string name="tab_overview">മേല്‍കാഴ്ച</string>
   <string name="tab_history">നാള്‍വഴി</string>
   <string name="tab_tips">സൂത്രങ്ങള്‍</string>
+  <string name="activity_main_add_new_reading">പുതിയത് ചേര്‍ക്കൂ</string>
   <string name="title_activity_hello">നമസ്കാരം.</string>
   <string name="helloactivity_headline">നമസ്കാരം.</string>
   <string name="helloactivity_terms">ഉപയോഗനിബന്ധനകൾ.</string>
+  <string name="helloactivity_subhead">തുടങ്ങുന്നതിന് മുമ്പ് കുറച്ച് കാര്യങ്ങള്‍.</string>
   <string name="helloactivity_country">രാജ്യം</string>
   <string name="helloactivity_age">വയസ്സു്</string>
   <string name="helloactivity_age_invalid">ഒരു സാധുതയുള്ള വയസ്സ് നൽകുക.</string>
@@ -38,6 +41,8 @@
   <string name="helloactivity_spinner_diabetes_type">പ്രമേഹത്തിന്റെ വിധം</string>
   <string name="helloactivity_spinner_diabetes_type_1">ടൈപ്പു് 1</string>
   <string name="helloactivity_spinner_diabetes_type_2">ടൈപ്പു് 2</string>
+  <string name="helloactivity_spinner_diabetes_gdm">ഗര്‍ഭസംബന്ധ</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit">ഇഷ്ട ഗ്ലൂക്കോസ് യൂണിറ്റ്</string>
   <string name="helloactivity_share_data">നിരീക്ഷണത്തിനായി വിവരങ്ങൾ നൽകുക.</string>
   <string name="helloactivity_hint_settings">ഇത് പിന്നീട് മാറ്റാവുന്നതാണു്.</string>
   <string name="helloactivity_button_next">അടുത്തത്</string>
@@ -80,4 +85,5 @@
   <!-- Food Entry Labels -->
   <!-- About Glucosio Strings -->
   <string name="dialog_add_weight">തൂക്കം</string>
+  <string name="title_activity_add_glucose">ഗ്ലൂക്കോസ് ചേര്‍ക്കുക</string>
 </resources>

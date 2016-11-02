@@ -238,6 +238,7 @@
   <string name="fab_glucose">רמת סוכר בדם</string>
   <string name="freestylelibre_nfc_not_enabled">NFC מנוטרל.</string>
   <string name="freestylelibre_nfc_error">שגיאה בפתיחת חיבור NFC!</string>
+  <string name="activity_converter_a1c">HB1AC</string>
   <string name="activity_converter_save">שמירה</string>
   <string name="menu_support">תמיכה</string>
   <string name="menu_support_title">איך נוכל לעזור לך?</string>

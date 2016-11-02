@@ -42,6 +42,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -64,18 +65,21 @@ import org.glucosio.android.adapter.HomePagerAdapter;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.presenter.ExportPresenter;
 import org.glucosio.android.presenter.MainPresenter;
+import org.glucosio.android.tools.LocaleHelper;
+import org.glucosio.android.view.ExportView;
 
 import java.util.Calendar;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
-public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, ExportView {
 
+    private static final String INTENT_EXTRA_DROPDOWN = "history_dropdown";
     private static final int REQUEST_INVITE = 1;
     private static final String INTENT_EXTRA_PAGER = "pager";
-    private final String INTENT_EXTRA_DROPDOWN = "history_dropdown";
-    BottomSheetBehavior bottomSheetBehavior;
+
+    private BottomSheetBehavior bottomSheetBehavior;
     private ExportPresenter exportPresenter;
     private RadioButton exportRangeButton;
     private HomePagerAdapter homePagerAdapter;
@@ -85,9 +89,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private TextView exportDialogDateFrom;
     private TextView exportDialogDateTo;
     private View bottomSheetAddDialogView;
-    private FloatingActionButton fabAddReading;
-    private Toolbar toolbar;
     private TabLayout tabLayout;
+    private LocaleHelper localeHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,10 +98,10 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
         GlucosioApplication application = (GlucosioApplication) getApplication();
 
-        setContentView(R.layout.activity_main);
         initPresenters(application);
+        setContentView(R.layout.activity_main);
 
-        toolbar = (Toolbar) findViewById(R.id.activity_main_toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.activity_main_toolbar);
         tabLayout = (TabLayout) findViewById(R.id.activity_main_tab_layout);
         viewPager = (ViewPager) findViewById(R.id.activity_main_pager);
 
@@ -114,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
         viewPager.setAdapter(homePagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
-        tabLayout.setOnTabSelectedListener(
+        tabLayout.addOnTabSelectedListener(
                 new TabLayout.ViewPagerOnTabSelectedListener(viewPager) {
                     @Override
                     public void onTabSelected(TabLayout.Tab tab) {
@@ -149,7 +152,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             }
         });
 
-        fabAddReading = (FloatingActionButton) findViewById(R.id.activity_main_fab_add_reading);
+        FloatingActionButton fabAddReading = (FloatingActionButton) findViewById(R.id.activity_main_fab_add_reading);
         fabAddReading.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -167,7 +170,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         final PrimaryDrawerItem itemAbout = new PrimaryDrawerItem().withName(R.string.preferences_about_glucosio).withIcon(R.drawable.ic_info_grey_24dp).withSelectable(false).withTypeface(Typeface.DEFAULT_BOLD);
         final PrimaryDrawerItem itemDonate = new PrimaryDrawerItem().withName(R.string.about_donate).withIcon(R.drawable.ic_favorite_grey_24dp).withSelectable(false).withTypeface(Typeface.DEFAULT_BOLD);
         final PrimaryDrawerItem itemA1C = new PrimaryDrawerItem().withName(R.string.activity_converter_title).withIcon(R.drawable.ic_calculator_a1c_grey_24dp).withSelectable(false).withTypeface(Typeface.DEFAULT_BOLD);
-
+        final PrimaryDrawerItem itemReminders = new PrimaryDrawerItem().withName(R.string.activity_reminders_title).withIcon(R.drawable.ic_alarm_grey_24dp).withSelectable(false).withTypeface(Typeface.DEFAULT_BOLD);
 
         DrawerBuilder drawerBuilder = new DrawerBuilder()
                 .withActivity(this)
@@ -199,6 +202,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                             openDonateIntent();
                         } else if (drawerItem.equals(itemA1C)) {
                             openA1CCalculator();
+                        } else if (drawerItem.equals(itemReminders)) {
+                            openRemindersActivity();
                         }
                         return false;
                     }
@@ -207,6 +212,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         if (isPlayServicesAvailable()) {
             drawerBuilder.addDrawerItems(
                     itemA1C,
+                    itemReminders,
                     itemExport,
                     itemSettings,
                     itemFeedback,
@@ -218,6 +224,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         } else {
             drawerBuilder.addDrawerItems(
                     itemA1C,
+                    itemReminders,
                     itemExport,
                     itemSettings,
                     itemFeedback,
@@ -240,10 +247,46 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         bottomSheetBehavior.setHideable(false);
     }
 
+    private void openRemindersActivity() {
+        Intent intent = new Intent(this, RemindersActivity.class);
+        startActivity(intent);
+    }
+
     private void initPresenters(GlucosioApplication application) {
         final DatabaseHandler dbHandler = application.getDBHandler();
+        localeHelper = new LocaleHelper();
         presenter = new MainPresenter(this, dbHandler);
         exportPresenter = new ExportPresenter(this, dbHandler);
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
+
+    @Override
+    public void onExportStarted(int numberOfItemsToExport) {
+        showExportedSnackBar(numberOfItemsToExport); // TODO: 09/09/16 Instead of calling this method, move logic to this callback ?
+        Log.d("Activity", "onExportStarted(): you might want to track this event");
+    }
+
+    @Override
+    public void onNoItemsToExport() {
+        showNoReadingsSnackBar(); // TODO: 09/09/16 Instead of calling this method, move logic to this callback ?
+        Log.e("Activity", "onNoItemsToExport(): you might want to track this event");
+    }
+
+    @Override
+    public void onExportFinish(Uri uri) {
+        showShareDialog(uri); // TODO: 09/09/16 Instead of calling this method, move logic to this callback ?
+        Log.e("Activity", "onExportFinish(): you might want to track this event");
+    }
+
+    @Override
+    public void onExportError() {
+        showExportError(); // TODO: 09/09/16 Instead of calling this method, move logic to this callback ?
+        Log.e("Activity", "onExportError(): you might want to track this event");
     }
 
     private void openA1CCalculator() {
@@ -277,7 +320,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         finishActivity();
     }
 
-    public void finishActivity(){
+    public void finishActivity() {
         // dismiss dialog if still expanded
         bottomSheetAddDialog.dismiss();
         // then close activity
@@ -320,7 +363,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     public void openSupportDialog() {
-        final Context mContext = this;
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(getResources().getString(R.string.menu_support_title));
         builder.setItems(getResources().getStringArray(R.array.menu_support_options), new DialogInterface.OnClickListener() {
@@ -514,6 +556,10 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         return (Toolbar) findViewById(R.id.activity_main_toolbar);
     }
 
+    public LocaleHelper getLocaleHelper() {
+        return localeHelper;
+    }
+
     private void hideFabAnimation() {
         final View fab = findViewById(R.id.activity_main_fab_add_reading);
         fab.animate()
@@ -649,10 +695,5 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
     private void showErrorDialogPlayServices() {
         Toast.makeText(getApplicationContext(), R.string.activity_main_error_play_services, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="available_languages">
+        <item>en-US</item>
+        <item>en</item>
+        <item>ko-KR</item>
+        <item>ca-ES</item>
+        <item>nl-NL</item>
+        <item>gl-ES</item>
+        <item>it-IT</item>
+        <item>lo-LA</item>
+        <item>ru-RU</item>
+        <item>sl-Sl</item>
+        <item>fr-FR</item>
+        <item>de-DE</item>
+        <item>pt-BR</item>
+        <item>es-ES</item>
+        <item>es-CL</item>
+        <item>es-MX</item>
+        <item>es-VE</item>
+        <item>ga-IE</item>
+        <item>en-GB</item>
+        <item>hr-HR</item>
+        <item>zh-TW</item>
+        <item>zh-CN</item>
+        <item>ar-SA</item>
+        <item>sq-AL</item>
+        <item>ja-JP</item>
+    </string-array>
+    <!-- Supported Languages : 24
+        English : en-US, en
+        Korean : ko-KR
+        Catalan : ca-ES
+        Dutch : nl-NL
+        Galician : gl-ES
+        Italian : it-IT
+        Lao : lo-LA
+        Russian : ru-RU
+        Slovenian : sl-Sl
+        French : fr-FR
+        German : de-DE
+        Portuguese, Brazilian : pt-BR
+        Spanish : es-ES
+        Spanish, Chile : es-CL
+        Spanish, Mexico : es-MX
+        Spanish, Venezuela : es-VE
+        Irish : ga-IE
+        English : en-GB
+        Croatian : hr-HR
+        Chinese Traditional : zh-TW
+        Chinese Simplified : zh-CN
+        Arabic : ar-SA
+        Albanian : sq-AL
+        Japanese : ja-JP
+    -->
+</resources>

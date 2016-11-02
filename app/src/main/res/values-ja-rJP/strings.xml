@@ -226,6 +226,7 @@
   <string name="fragment_overview_graph_export_true">スクリーン ショットをギャラリーに保存しました</string>
   <string name="fragment_overview_graph_export_false">スクリーン ショットをギャラリーに保存中にエラー</string>
   <string name="dialog_export_range">エクスポート範囲</string>
+  <string name="activity_export_issue_generic">測定値のエクスポート時に問題が発生しました。もう一度やり直してください。</string>
   <string name="activity_export_no_readings_snackbar">エクスポートする測定値はありません。</string>
   <string name="wear_new_reading">新しい測定値が追加されました</string>
   <string name="dialog_add_weight">体重</string>
@@ -308,4 +309,10 @@
   <string name="mmol_mol">mmol/mol</string>
   <string name="mmol_L">mmol/L</string>
   <string name="preferences_graph_old">古いグラフに戻す</string>
+  <string name="history">履歴</string>
+  <string name="save">保存</string>
+  <string name="activity_reminders_title">アラーム</string>
+  <string name="reminders_notification_text">血糖値を記録する時間です!</string>
+  <string name="reminders_notification_action">測定値を追加</string>
+  <string name="glucosio_activity_reminders_empty">アラームは設定されていません。ここで新しいアラームを追加します。</string>
 </resources>
