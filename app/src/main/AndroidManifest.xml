@@ -258,6 +258,7 @@
                 android:resource="@xml/shortcuts" />
         </activity>
         <activity android:name=".activity.RemindersActivity"></activity>
+        <activity android:name=".activity.ParentActivity"></activity>
         <activity android:name=".activity.AppLockActivity"></activity>
     </application>
 

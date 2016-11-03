@@ -36,7 +36,7 @@ import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.tools.network.GlucosioExternalLinks;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class AboutActivity extends AppCompatActivity {
+public class AboutActivity extends ParentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -24,7 +24,7 @@ import java.util.Calendar;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public abstract class AddReadingActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
+public abstract class AddReadingActivity extends ParentActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
     private final java.lang.String INTENT_EXTRA_EDIT = "editing";
     private final java.lang.String INTENT_EXTRA_EDIT_ID = "edit_id";
