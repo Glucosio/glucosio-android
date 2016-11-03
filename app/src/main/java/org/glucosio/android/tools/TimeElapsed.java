@@ -1,9 +1,9 @@
 package org.glucosio.android.tools;
 
-import java.util.Calendar;
 
-/**Singleton Class to intiate start time and calculate the time elapsed
- * Created by Viney Ugave on 10/25/16.
+/**Singleton Class to initiate start time and calculate the time elapsed
+ * Created on 10/25/16
+ * @author Viney Ugave (viney@vinzzz.com)
  */
 
 public class TimeElapsed {
@@ -28,7 +28,7 @@ public class TimeElapsed {
     }
 
     public static void setStartTime() {
-        TimeElapsed.startTime = Calendar.getInstance().getTimeInMillis();
+        TimeElapsed.startTime = System.currentTimeMillis();
     }
 
     public static void resetTime(){
