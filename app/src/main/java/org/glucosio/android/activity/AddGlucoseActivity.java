@@ -151,7 +151,6 @@ public class AddGlucoseActivity extends AddReadingActivity {
             presenter.updateSpinnerTypeTime();
         }
 
-        this.getDoneFAB().postDelayed(this.getFabAnimationRunnable(), 600);
 
         // Check if activity was started from a NFC sensor
         if (getIntent().getExtras() != null) {

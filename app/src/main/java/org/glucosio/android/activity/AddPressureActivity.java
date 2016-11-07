@@ -83,7 +83,6 @@ public class AddPressureActivity extends AddReadingActivity {
             this.getAddTimeTextView().setText(formatDateTime.getCurrentTime());
         }
 
-        this.getDoneFAB().postDelayed(this.getFabAnimationRunnable(), 600);
     }
 
     @Override
