@@ -54,7 +54,7 @@ public class A1CCalculatorPresenter {
         } else {
             convertedA1C = converter.glucoseToA1C(converter.glucoseToMgDl(Double.parseDouble(glucose)));
         }
-        if (!"percentage".equals(user.getPreferred_unit_a1c())) {
+        if ("percentage".equals(user.getPreferred_unit_a1c())) {
             return converter.a1cNgspToIfcc(convertedA1C);
         } else {
             return convertedA1C;
