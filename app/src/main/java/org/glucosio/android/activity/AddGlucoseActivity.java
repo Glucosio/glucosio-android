@@ -39,6 +39,7 @@ import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.db.GlucoseReading;
 import org.glucosio.android.presenter.AddGlucosePresenter;
 import org.glucosio.android.tools.FormatDateTime;
+import org.glucosio.android.tools.GlucosioConverter;
 import org.glucosio.android.tools.LabelledSpinner;
 
 import java.text.DecimalFormat;
@@ -124,7 +125,7 @@ public class AddGlucoseActivity extends AddReadingActivity {
             if (presenter.getUnitMeasuerement().equals("mg/dL")) {
                 readingString = String.valueOf(readingToEdit.getReading());
             } else {
-                readingString = String.valueOf(presenter.convertToMmol(readingToEdit.getReading()));
+                readingString = String.valueOf(GlucosioConverter.glucoseToMmolL(readingToEdit.getReading()));
             }
 
             readingTextView.setText(readingString);

@@ -52,8 +52,7 @@ public class A1cEstimateAdapter extends ArrayAdapter<A1cEstimate> {
                     String stringValue = p.getValue() + " %";
                     value.setText(stringValue);
                 } else {
-                    GlucosioConverter converter = new GlucosioConverter();
-                    String stringValue = converter.a1cNgspToIfcc(p.getValue()) + " mmol/mol";
+                    String stringValue = GlucosioConverter.a1cNgspToIfcc(p.getValue()) + " mmol/mol";
                     value.setText(stringValue);
                 }
             }
@@ -66,8 +65,7 @@ public class A1cEstimateAdapter extends ArrayAdapter<A1cEstimate> {
                 if ("mg/dL".equals(db.getUser(1).getPreferred_unit())) {
                     glucoseAverage.setText(getContext().getString(R.string.mg_dL_value, p.getGlucoseAverage()));
                 } else {
-                    GlucosioConverter converter = new GlucosioConverter();
-                    int mmol = converter.glucoseToMgDl(Double.parseDouble(p.getGlucoseAverage()));
+                    int mmol = GlucosioConverter.glucoseToMgDl(Double.parseDouble(p.getGlucoseAverage()));
                     String reading = NumberFormat.getInstance().format(mmol);
                     glucoseAverage.setText(getContext().getString(R.string.mmol_L_value, reading));
                 }

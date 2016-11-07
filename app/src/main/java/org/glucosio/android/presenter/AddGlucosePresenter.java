@@ -43,13 +43,11 @@ public class AddGlucosePresenter extends AddReadingPresenter {
     private DatabaseHandler dB;
     private AddGlucoseActivity activity;
     private ReadingTools rTools;
-    private GlucosioConverter converter;
 
     public AddGlucosePresenter(AddGlucoseActivity addGlucoseActivity) {
         this.activity = addGlucoseActivity;
         dB = new DatabaseHandler(addGlucoseActivity.getApplicationContext());
         rTools = new ReadingTools();
-        converter = new GlucosioConverter();
     }
 
     public void updateSpinnerTypeTime() {
@@ -100,7 +98,7 @@ public class AddGlucosePresenter extends AddReadingPresenter {
         if ("mg/dL".equals(getUnitMeasuerement())) {
             readingValue = number.intValue();
         } else {
-            readingValue = converter.glucoseToMgDl(number.doubleValue());
+            readingValue = GlucosioConverter.glucoseToMgDl(number.doubleValue());
         }
         GlucoseReading gReading = new GlucoseReading(readingValue, type, finalDateTime, notes);
         if (oldId == UNKNOWN_ID) {
@@ -109,10 +107,6 @@ public class AddGlucosePresenter extends AddReadingPresenter {
             isReadingAdded = dB.editGlucoseReading(oldId, gReading);
         }
         return isReadingAdded;
-    }
-
-    public double convertToMmol(int mgDl) {
-        return converter.glucoseToMmolL(mgDl);
     }
 
     public Integer retrieveSpinnerID(String measuredTypeText, List<String> measuredTypelist) {
