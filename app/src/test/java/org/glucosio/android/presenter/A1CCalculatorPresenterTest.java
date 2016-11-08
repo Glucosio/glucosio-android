@@ -56,7 +56,14 @@ public class A1CCalculatorPresenterTest {
     }
 
     @Test
-    public void ShouldReturnNonZero_WhenAnotherDecimalSeparatorStringPassed() throws Exception {
-        assertThat(presenter.calculateA1C("2")).isNotZero();
+    public void ShouldCalculatable_WhenUserPreferredMmol() throws Exception {
+        when(userMock.getPreferred_unit()).thenReturn("mmol/L");
+        assertThat(presenter.calculateA1C("1")).isEqualTo(2.25);
+    }
+
+    @Test
+    public void ShouldCalculatable_WhenUserPreferredPercentage() throws Exception {
+        when(userMock.getPreferred_unit_a1c()).thenReturn("mmol/mol");
+        assertThat(presenter.calculateA1C("20")).isEqualTo(1.84);
     }
 }
