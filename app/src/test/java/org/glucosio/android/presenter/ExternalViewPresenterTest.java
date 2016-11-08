@@ -1,15 +1,20 @@
 package org.glucosio.android.presenter;
 
+import org.glucosio.android.BuildConfig;
 import org.glucosio.android.tools.network.GlucosioExternalLinks;
 import org.glucosio.android.tools.network.NetworkConnectivity;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.robolectric.RobolectricGradleTestRunner;
+import org.robolectric.annotation.Config;
 
-import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+@RunWith(RobolectricGradleTestRunner.class)
+@Config(constants = BuildConfig.class, sdk = 21)
 public class ExternalViewPresenterTest {
 
   private ExternalViewPresenter.View view;
@@ -22,16 +27,12 @@ public class ExternalViewPresenterTest {
     presenter = new ExternalViewPresenter(view, network);
   }
 
-  @Test
+  @Test(expected = IllegalArgumentException.class)
   public void shouldThrowException_WhenNoParameters() throws Exception {
     when(network.isConnected()).thenReturn(true);
     when(view.extractTitle()).thenReturn(null);
-
-    try {
-      presenter.onViewCreated();
-    } catch (Exception ex) {
-      assertTrue(ex instanceof IllegalArgumentException);
-    }
+    when(view.extractUrl()).thenReturn(null);
+    presenter.onViewCreated();
   }
 
   @Test public void shouldLoadOpenSourceLicenses_WhenLicenseParameters() throws Exception {
@@ -44,5 +45,12 @@ public class ExternalViewPresenterTest {
 
     verify(view).loadExternalUrl(GlucosioExternalLinks.LICENSES);
     verify(view).setupToolbarTitle(LICENSES);
+  }
+
+  @Test
+  public void shouldInvokeShowNoConnectionWarning_WhenNetworkIsNotConnected() throws Exception {
+    when(network.isConnected()).thenReturn(false);
+    presenter.onViewCreated();
+    verify(view).showNoConnectionWarning();
   }
 }
