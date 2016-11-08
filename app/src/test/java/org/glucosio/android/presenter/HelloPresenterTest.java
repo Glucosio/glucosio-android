@@ -83,6 +83,24 @@ public class HelloPresenterTest extends RobolectricTest {
     }
 
     @Test
+    public void ShouldAskForWarning_WhenAgeIsEmpty() throws Exception {
+
+        presenter.onNextClicked("", null, null, null, -1, null);
+
+        verify(helloViewMock).displayErrorWrongAge();
+        verify(dbHandlerMock, never()).addUser(any(User.class));
+    }
+
+    @Test
+    public void ShouldAskForWarning_WhenAgeIsNull() throws Exception {
+
+        presenter.onNextClicked(null, null, null, null, -1, null);
+
+        verify(helloViewMock).displayErrorWrongAge();
+        verify(dbHandlerMock, never()).addUser(any(User.class));
+    }
+
+    @Test
     public void ShouldPropagateAllValues_WhenSavingUser() throws Exception {
 
         final String gender = "male";
