@@ -134,6 +134,7 @@ public abstract class AddReadingActivity extends AppCompatActivity implements Ti
                 AnimationTools.startCircularReveal(doneFAB);
             }
         };
+        doneFAB.postDelayed(fabAnimationRunnable, 600);
     }
 
     protected abstract void dialogOnAddButtonPressed();
@@ -228,11 +229,4 @@ public abstract class AddReadingActivity extends AppCompatActivity implements Ti
         this.addDateTextView = addDateTextView;
     }
 
-    public FloatingActionButton getDoneFAB() {
-        return doneFAB;
-    }
-
-    public Runnable getFabAnimationRunnable() {
-        return fabAnimationRunnable;
-    }
 }
