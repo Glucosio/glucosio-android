@@ -289,7 +289,7 @@ public class DatabaseHandler {
         return readingList;
     }
 
-    public GlucoseReading getGlucoseReading(long id) {
+    public GlucoseReading getGlucoseReadingById(long id) {
         return realm.where(GlucoseReading.class)
                 .equalTo("id", id)
                 .findFirst();
@@ -378,11 +378,6 @@ public class DatabaseHandler {
     public Date getLastGlucoseDateTime() {
         return realm.where(GlucoseReading.class).maximumDate("created");
     }
-
-    public GlucoseReading getGlucoseReadingById(long id) {
-        return getGlucoseReading(id);
-    }
-
 
 /*    private ArrayList<Integer> getGlucoseReadingsForLastMonthAsArray(){
         Calendar calendar = Calendar.getInstance();
