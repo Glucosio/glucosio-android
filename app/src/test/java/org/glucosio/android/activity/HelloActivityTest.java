@@ -1,26 +1,43 @@
 package org.glucosio.android.activity;
 
+import android.content.Intent;
 import android.content.res.Resources;
 
+import org.apache.tools.ant.Main;
 import org.assertj.core.util.Lists;
+import org.glucosio.android.BuildConfig;
+import org.glucosio.android.R;
 import org.glucosio.android.RobolectricTest;
+import org.glucosio.android.tools.network.GlucosioExternalLinks;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.robolectric.Robolectric;
+import org.robolectric.RobolectricGradleTestRunner;
+import org.robolectric.Shadows;
+import org.robolectric.annotation.Config;
+import org.robolectric.shadows.ShadowActivity;
+import org.robolectric.shadows.ShadowIntent;
+import org.robolectric.shadows.ShadowToast;
 
 import java.util.Collections;
 import java.util.Locale;
 
 import static org.assertj.android.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
+import static org.robolectric.Shadows.shadowOf;
+
+@RunWith(RobolectricGradleTestRunner.class)
+@Config(constants = BuildConfig.class, sdk = 21, packageName = "org.glucosio.android")
 
 public class HelloActivityTest extends RobolectricTest {
 
@@ -96,6 +113,30 @@ public class HelloActivityTest extends RobolectricTest {
         activity = Robolectric.buildActivity(HelloActivity.class).create().get();
 
         assertThat(activity.languageSpinner.getSpinner().getSelectedItem()).isEqualTo("Nederlands");
+    }
+
+    @Test
+    public void ShouldShowWebView_WhenTermsOfUseButtonIsClicked() throws Exception{
+        activity.onTermsAndConditionClick();
+        ShadowActivity shadowActivity = shadowOf(activity);
+        Intent startedIntent = shadowActivity.getNextStartedActivity();
+        assertEquals(ExternalLinkActivity.class.getName(), startedIntent.getComponent().getClassName());
+
+    }
+    @Test
+    public void ShouldShowToastMessage_WhenDisplayErrorWrongAgeIsCalled() throws Exception {
+        activity.displayErrorWrongAge();
+        assertEquals(ShadowToast.getTextOfLatestToast(), activity.getApplicationContext().getResources().getString(R.string.helloactivity_age_invalid));
+    }
+
+    @Test
+    public void ShouldConvertActivity_WhenStartMainViewIsCalled() throws Exception {
+        activity.startMainView();
+        ShadowActivity shadowActivity = shadowOf(activity);
+        Intent startedIntent = shadowActivity.getNextStartedActivity();
+        assertEquals(MainActivity.class.getName(), startedIntent.getComponent().getClassName());
+        shadowActivity.finish();
+
     }
 
     public static class TestHelloActivity extends HelloActivity {
