@@ -26,7 +26,6 @@ apply plugin: 'jacoco'
 android {
     compileSdkVersion 25
     buildToolsVersion buildToolsVer
-    useLibrary 'org.apache.http.legacy'
 
     lintOptions {
         abortOnError false
