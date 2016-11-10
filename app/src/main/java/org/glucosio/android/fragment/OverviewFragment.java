@@ -287,7 +287,6 @@ public class OverviewFragment extends Fragment implements OverviewView {
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setTextColor(getResources().getColor(R.color.glucosio_text_light));
         xAxis.setAvoidFirstLastClipping(true);
-        GlucosioConverter converter = new GlucosioConverter();
 
         int minGlucoseValue = presenter.getGlucoseMinValue();
         int maxGlucoseValue = presenter.getGlucoseMaxValue();
@@ -299,8 +298,8 @@ public class OverviewFragment extends Fragment implements OverviewView {
             ll1 = new LimitLine(minGlucoseValue);
             ll2 = new LimitLine(maxGlucoseValue);
         } else {
-            ll1 = new LimitLine((float) converter.glucoseToMmolL(maxGlucoseValue), getString(R.string.reading_high));
-            ll2 = new LimitLine((float) converter.glucoseToMmolL(minGlucoseValue), getString(R.string.reading_low));
+            ll1 = new LimitLine((float) GlucosioConverter.glucoseToMmolL(maxGlucoseValue), getString(R.string.reading_high));
+            ll2 = new LimitLine((float) GlucosioConverter.glucoseToMmolL(minGlucoseValue), getString(R.string.reading_low));
         }
 
         ll1.setLineWidth(0.8f);
@@ -404,8 +403,6 @@ public class OverviewFragment extends Fragment implements OverviewView {
     private LineData generateGlucoseData() {
         List<String> xVals = new ArrayList<>();
         List<Entry> yVals = new ArrayList<>();
-        GlucosioConverter converter = new GlucosioConverter();
-
 
         if (graphSpinnerRange.getSelectedItemPosition() == 0) {
             // Day view
@@ -414,7 +411,7 @@ public class OverviewFragment extends Fragment implements OverviewView {
                     float val = Float.parseFloat(presenter.getGlucoseReadings().get(i).toString());
                     yVals.add(new Entry(val, i));
                 } else {
-                    double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getGlucoseReadings().get(i).toString()));
+                    double val = GlucosioConverter.glucoseToMmolL(Double.parseDouble(presenter.getGlucoseReadings().get(i).toString()));
                     float converted = (float) val;
                     yVals.add(new Entry(converted, i));
                 }
@@ -426,7 +423,7 @@ public class OverviewFragment extends Fragment implements OverviewView {
                     float val = Float.parseFloat(presenter.getGlucoseReadingsWeek().get(i) + "");
                     yVals.add(new Entry(val, i));
                 } else {
-                    double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getGlucoseReadingsWeek().get(i) + ""));
+                    double val = GlucosioConverter.glucoseToMmolL(Double.parseDouble(presenter.getGlucoseReadingsWeek().get(i) + ""));
                     float converted = (float) val;
                     yVals.add(new Entry(converted, i));
                 }
@@ -438,7 +435,7 @@ public class OverviewFragment extends Fragment implements OverviewView {
                     float val = Float.parseFloat(presenter.getGlucoseReadingsMonth().get(i) + "");
                     yVals.add(new Entry(val, i));
                 } else {
-                    double val = converter.glucoseToMmolL(Double.parseDouble(presenter.getGlucoseReadingsMonth().get(i) + ""));
+                    double val = GlucosioConverter.glucoseToMmolL(Double.parseDouble(presenter.getGlucoseReadingsMonth().get(i) + ""));
                     float converted = (float) val;
                     yVals.add(new Entry(converted, i));
                 }
@@ -662,9 +659,8 @@ public class OverviewFragment extends Fragment implements OverviewView {
                 String reading = presenter.getLastReading();
                 lastReadingTextView.setText(getString(R.string.mg_dL_value, reading));
             } else {
-                GlucosioConverter converter = new GlucosioConverter();
                 String mgdl = presenter.getLastReading();
-                double mmol = converter.glucoseToMmolL(Double.parseDouble(mgdl));
+                double mmol = GlucosioConverter.glucoseToMmolL(Double.parseDouble(mgdl));
                 String reading = NumberFormat.getInstance().format(mmol);
                 lastReadingTextView.setText(getString(R.string.mmol_L_value, reading));
             }

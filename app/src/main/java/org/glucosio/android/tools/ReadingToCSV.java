@@ -91,8 +91,6 @@ public final class ReadingToCSV {
 
                     }
                 } else {
-                    GlucosioConverter converter = new GlucosioConverter();
-
                     for (int i = 0; i < readings.size(); i++) {
                         GlucoseReading reading = readings.get(i);
                         osw.append(dateTool.convertRawDate(reading.getCreated() + ""));
@@ -101,7 +99,7 @@ public final class ReadingToCSV {
                         osw.append(dateTool.convertRawTime(reading.getCreated() + ""));
                         osw.append(',');
 
-                        osw.append(converter.glucoseToMmolL(reading.getReading()) + "");
+                        osw.append(GlucosioConverter.glucoseToMmolL(reading.getReading()) + "");
                         osw.append(',');
 
                         osw.append("mmol/L");
@@ -112,7 +110,6 @@ public final class ReadingToCSV {
 
                         osw.append(reading.getNotes());
                         osw.append('\n');
-
                     }
                 }
                 osw.flush();
