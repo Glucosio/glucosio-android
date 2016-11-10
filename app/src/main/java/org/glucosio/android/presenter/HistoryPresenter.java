@@ -48,7 +48,7 @@ public class HistoryPresenter {
         switch (metricID) {
             // Glucose
             case 0:
-                dB.deleteGlucoseReading(dB.getGlucoseReading(idToDelete));
+                dB.deleteGlucoseReading(dB.getGlucoseReadingById(idToDelete));
                 fragment.reloadFragmentAdapter();
                 break;
             // HB1AC
