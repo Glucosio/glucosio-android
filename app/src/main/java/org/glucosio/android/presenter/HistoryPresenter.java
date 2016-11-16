@@ -53,7 +53,7 @@ public class HistoryPresenter {
                 break;
             // HB1AC
             case 1:
-                dB.deleteHB1ACReading(dB.getHB1ACReading(idToDelete));
+                dB.deleteHB1ACReading(dB.getHB1ACReadingById(idToDelete));
                 fragment.reloadFragmentAdapter();
                 break;
             // Cholesterol
@@ -73,7 +73,7 @@ public class HistoryPresenter {
                 break;
             // Weight
             case 5:
-                dB.deleteWeightReading(dB.getWeightReading(idToDelete));
+                dB.deleteWeightReading(dB.getWeightReadingById(idToDelete));
                 fragment.reloadFragmentAdapter();
                 break;
             default:
