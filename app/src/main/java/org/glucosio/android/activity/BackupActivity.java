@@ -246,9 +246,8 @@ public class BackupActivity extends AppCompatActivity {
                             Date modifiedDate = metadata.getModifiedDate();
                             long backupSize = metadata.getFileSize();
                             backupsArray.add(new GlucosioBackup(driveId, modifiedDate, backupSize));
-                            backupListView.setAdapter(new BackupAdapter(activity, R.layout.preferences_backup, backupsArray));
                         }
-
+                        backupListView.setAdapter(new BackupAdapter(activity, R.layout.activity_backup_drive_restore_item, backupsArray));
                     }
                 });
     }
