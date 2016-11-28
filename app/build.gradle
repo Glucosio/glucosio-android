@@ -42,6 +42,12 @@ android {
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
     }
 
+    signingConfigs {
+        debug {
+            storeFile file('../extra/debug.keystore')
+        }
+    }
+
     buildTypes {
         debug {
             minifyEnabled false
@@ -54,6 +60,8 @@ android {
 
             buildConfigField 'String', 'GOOGLE_ANALYTICS_TRACKER', '"UA-68882401-2"'
             buildConfigField "String[]", "TRANSLATION_ARRAY", "new String[]{}"
+
+            signingConfig signingConfigs.debug
         }
 
         release {

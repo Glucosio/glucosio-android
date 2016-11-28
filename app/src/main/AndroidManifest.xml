@@ -201,7 +201,7 @@
         </service>
 
         <receiver
-            android:name="org.glucosio.android.receivers.GlucosioBroadcastReceiver"
+            android:name=".receivers.GlucosioBroadcastReceiver"
             android:enabled="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
@@ -257,7 +257,8 @@
                 android:name="android.app.shortcuts"
                 android:resource="@xml/shortcuts" />
         </activity>
-        <activity android:name=".activity.RemindersActivity"></activity>
+        <activity android:name=".activity.RemindersActivity" />
+        <activity android:name=".activity.AppLockActivity"></activity>
     </application>
 
 </manifest>
