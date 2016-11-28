@@ -149,6 +149,12 @@ dependencies {
     }
     testCompile 'io.reactivex:rxjava:1.1.8'
 
+    // PowerMock
+    testCompile "org.powermock:powermock-module-junit4:${powerMockVer}"
+    testCompile "org.powermock:powermock-module-junit4-rule:${powerMockVer}"
+    testCompile "org.powermock:powermock-classloading-xstream:${powerMockVer}"
+    testCompile "org.powermock:powermock-api-mockito:${powerMockVer}"
+
     // Testing libraries
     androidTestCompile 'com.android.support.test:rules:0.4.1'
     androidTestCompile 'com.android.support.test:runner:0.4.1'

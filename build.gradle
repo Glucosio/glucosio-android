@@ -54,6 +54,7 @@ allprojects {
     ext.mockitoVer = '1.10.17'
     ext.androidAssertJVer = '1.1.1'
     ext.robolectricVer = '3.0'
+    ext.powerMockVer = '1.6.5'
 
     apply plugin: 'com.github.ben-manes.versions'
 }
