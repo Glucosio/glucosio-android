@@ -23,9 +23,11 @@ package org.glucosio.android.tools;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.annotation.ArrayRes;
+import android.support.annotation.ColorInt;
 import android.support.annotation.ColorRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.StringRes;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -91,7 +93,7 @@ public class LabelledSpinner extends LinearLayout implements AdapterView.OnItemS
                 0);
         String labelText = typedArray.getString(R.styleable.LabelledSpinner_labelText);
         mWidgetColor = typedArray.getColor(R.styleable.LabelledSpinner_widgetColor,
-                getResources().getColor(R.color.widget_labelled_spinner));
+                ContextCompat.getColor(getContext(), R.color.widget_labelled_spinner));
         typedArray.recycle();
 
         LayoutInflater inflater =
@@ -174,8 +176,9 @@ public class LabelledSpinner extends LinearLayout implements AdapterView.OnItemS
      *                 color that is to be displayed on the widget.
      */
     public void setColor(@ColorRes int colorRes) {
-        mLabel.setTextColor(getResources().getColor(colorRes));
-        mDivider.setBackgroundColor(getResources().getColor(colorRes));
+        @ColorInt int color = ContextCompat.getColor(getContext(), colorRes);
+        mLabel.setTextColor(color);
+        mDivider.setBackgroundColor(color);
     }
 
     /**

@@ -21,6 +21,7 @@
 package org.glucosio.android.adapter;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -189,7 +190,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
                 datetimeTextView.setText(presenter.convertDate(hb1acDateTimeArray.get(position)));
                 typeTextView.setText("");
                 typeTextView.setVisibility(View.GONE);
-                readingTextView.setTextColor(mContext.getResources().getColor(R.color.glucosio_text_dark));
+                readingTextView.setTextColor(ContextCompat.getColor(mContext, R.color.glucosio_text_dark));
                 break;
             // Cholesterol
             case 2:
@@ -198,7 +199,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
                 readingTextView.setText(mContext.getString(R.string.mg_dL_value, reading));
                 datetimeTextView.setText(presenter.convertDate(cholesterolDateTimeArray.get(position)));
                 typeTextView.setText("LDL: " + cholesterolLDLArray.get(position) + " - " + "HDL: " + cholesterolHDLArray.get(position));
-                readingTextView.setTextColor(mContext.getResources().getColor(R.color.glucosio_text_dark));
+                readingTextView.setTextColor(ContextCompat.getColor(mContext, R.color.glucosio_text_dark));
                 break;
             // Pressure
             case 3:
@@ -207,7 +208,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
                 datetimeTextView.setText(presenter.convertDate(pressureDateTimeArray.get(position)));
                 typeTextView.setText("");
                 typeTextView.setVisibility(View.GONE);
-                readingTextView.setTextColor(mContext.getResources().getColor(R.color.glucosio_text_dark));
+                readingTextView.setTextColor(ContextCompat.getColor(mContext, R.color.glucosio_text_dark));
                 break;
             //Ketones
             case 4:
@@ -216,7 +217,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
                 datetimeTextView.setText(presenter.convertDate(ketoneDataTimeArray.get(position)));
                 typeTextView.setText("");
                 typeTextView.setVisibility(View.GONE);
-                readingTextView.setTextColor(mContext.getResources().getColor(R.color.glucosio_text_dark));
+                readingTextView.setTextColor(ContextCompat.getColor(mContext, R.color.glucosio_text_dark));
                 break;
             // Weight
             case 5:
@@ -233,7 +234,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
                 datetimeTextView.setText(presenter.convertDate(weightDataTime.get(position)));
                 typeTextView.setText("");
                 typeTextView.setVisibility(View.GONE);
-                readingTextView.setTextColor(mContext.getResources().getColor(R.color.glucosio_text_dark));
+                readingTextView.setTextColor(ContextCompat.getColor(mContext, R.color.glucosio_text_dark));
                 break;
         }
     }

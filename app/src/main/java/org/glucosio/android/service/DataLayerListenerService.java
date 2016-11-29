@@ -24,6 +24,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import com.google.android.gms.wearable.MessageEvent;
 import com.google.android.gms.wearable.WearableListenerService;
@@ -79,7 +80,7 @@ public class DataLayerListenerService extends WearableListenerService {
                 new NotificationCompat.Builder(this)
                         .setSmallIcon(R.drawable.ic_stat_glucosio)
                         .setContentTitle(getResources().getString(R.string.wear_new_reading))
-                        .setColor(getResources().getColor(R.color.glucosio_pink))
+                        .setColor(ContextCompat.getColor(getApplicationContext(), R.color.glucosio_pink))
                         .setContentIntent(contentIntent)
                         .setAutoCancel(true)
                         .setContentText(reading + ", " + readingType);
