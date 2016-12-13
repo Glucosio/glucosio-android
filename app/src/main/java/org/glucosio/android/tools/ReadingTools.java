@@ -31,10 +31,9 @@ public class ReadingTools {
     }
 
     public int hourToSpinnerType(int hour) {
+        hour %= 24; // A day's time is 0:00 to 23:59
 
-        if (hour > 23) {
-            return 8;  //night
-        } else if (hour > 20) {
+        if (hour > 20) {
             return 5; //after dinner
         } else if (hour > 17) {
             return 4; // before dinner
