@@ -121,16 +121,16 @@ dependencies {
     // Other libraries
     compile 'com.github.paolorotolo:expandableheightlistview:1.0.0'
     compile 'com.github.clans:fab:1.6.4'
-    compile 'com.wdullaer:materialdatetimepicker:2.4.0'
-    compile 'com.github.PhilJay:MPAndroidChart:v2.2.5'
+    compile 'com.wdullaer:materialdatetimepicker:3.0.0'
+    compile 'com.github.PhilJay:MPAndroidChart:v3.0.1'
     compile 'uk.co.chrisjenx:calligraphy:2.2.0'
-    compile 'net.danlew:android.joda:2.9.4.1'
-    compile('com.mikepenz:materialdrawer:5.4.0@aar') {
+    compile 'net.danlew:android.joda:2.9.5.1'
+    compile('com.mikepenz:materialdrawer:5.8.1@aar') {
         transitive = true
     }
 
     // https://mvnrepository.com/artifact/org.apache.commons/commons-math3
-    compile files('libs/commons-math3-3.6.jar')
+    compile files('libs/commons-math3-3.6.1.jar')
 
     // Butterknife
     compile "com.jakewharton:butterknife:${butterKnifeVer}"
@@ -147,7 +147,7 @@ dependencies {
         exclude group: 'commons-logging', module: 'commons-logging'
         exclude group: 'org.apache.httpcomponents', module: 'httpclient'
     }
-    testCompile 'io.reactivex:rxjava:1.1.8'
+    testCompile 'io.reactivex:rxjava:1.2.4'
 
     // Testing libraries
     androidTestCompile 'com.android.support.test:rules:0.4.1'
