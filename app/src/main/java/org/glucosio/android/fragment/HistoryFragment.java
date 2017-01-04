@@ -50,7 +50,7 @@ import org.glucosio.android.activity.AddPressureActivity;
 import org.glucosio.android.activity.AddWeightActivity;
 import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.adapter.HistoryAdapter;
-import org.glucosio.android.listener.RecyclerItemClickListener;
+import org.glucosio.android.listener.ItemClickSupport;
 import org.glucosio.android.presenter.HistoryPresenter;
 import org.glucosio.android.tools.FormatDateTime;
 
@@ -128,18 +128,13 @@ public class HistoryFragment extends Fragment {
             }
         });
 
-        mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), mRecyclerView, new RecyclerItemClickListener.OnItemClickListener() {
+        ItemClickSupport.addTo(mRecyclerView).setOnItemLongClickListener(new ItemClickSupport.OnItemLongClickListener() {
             @Override
-            public void onItemClick(View view, int position) {
-                // Do nothing
+            public boolean onItemLongClicked(RecyclerView recyclerView, int position, View v) {
+                showBottomSheetDialog(v);
+                return true;
             }
-
-            @Override
-            public void onItemLongClick(final View view, final int position) {
-                // if touch Glucose or weight item
-                showBottomSheetDialog(view);
-            }
-        }));
+        });
 
         mRecyclerView.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
             @Override

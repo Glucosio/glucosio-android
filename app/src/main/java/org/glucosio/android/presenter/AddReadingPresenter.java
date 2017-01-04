@@ -17,19 +17,6 @@ public class AddReadingPresenter {
     private String readingHour;
     private String readingMinute;
 
-    public void setReadingTimeNow() {
-        DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        Date formatted = Calendar.getInstance().getTime();
-
-        SplitDateTime addSplitDateTime = new SplitDateTime(formatted, inputFormat);
-
-        this.readingYear = addSplitDateTime.getYear();
-        this.readingMonth = addSplitDateTime.getMonth();
-        this.readingDay = addSplitDateTime.getDay();
-        this.readingHour = addSplitDateTime.getHour();
-        this.readingMinute = addSplitDateTime.getMinute();
-    }
-
     public void updateReadingSplitDateTime(Date readingDate) {
         DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         SplitDateTime splitDateTime = new SplitDateTime(readingDate, inputFormat);
@@ -40,16 +27,19 @@ public class AddReadingPresenter {
         this.readingMonth = splitDateTime.getMonth();
     }
 
-    public Date getReadingTime() {
-        Calendar cal = Calendar.getInstance();
-        cal.set(Integer.parseInt(readingYear), Integer.parseInt(readingMonth) - 1, Integer.parseInt(readingDay), Integer.parseInt(readingHour), Integer.parseInt(readingMinute));
-        return cal.getTime();
+    public void setReadingTimeNow() {
+        Date formatted = new Date();
+        updateReadingSplitDateTime(formatted);
     }
 
     public Calendar getReadingCal() {
         Calendar cal = Calendar.getInstance();
         cal.set(Integer.parseInt(readingYear), Integer.parseInt(readingMonth) - 1, Integer.parseInt(readingDay), Integer.parseInt(readingHour), Integer.parseInt(readingMinute));
         return cal;
+    }
+
+    public Date getReadingTime() {
+        return getReadingCal().getTime();
     }
 
     public String getReadingYear() {

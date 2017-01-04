@@ -86,11 +86,10 @@ public class OverviewPresenter {
     public String getHB1AC() {
         // Check if last month is available first
         if (getGlucoseReadingsMonth().size() > 1) {
-            GlucosioConverter converter = new GlucosioConverter();
             if ("percentage".equals(dB.getUser(1).getPreferred_unit_a1c())) {
-                return converter.glucoseToA1C(getGlucoseReadingsMonth().get(getGlucoseReadingsMonth().size() - 2)) + " %";
+                return GlucosioConverter.glucoseToA1C(getGlucoseReadingsMonth().get(getGlucoseReadingsMonth().size() - 2)) + " %";
             } else {
-                return converter.a1cNgspToIfcc(converter.glucoseToA1C(getGlucoseReadingsMonth().get(getGlucoseReadingsMonth().size() - 2))) + " mmol/mol";
+                return GlucosioConverter.a1cNgspToIfcc(GlucosioConverter.glucoseToA1C(getGlucoseReadingsMonth().get(getGlucoseReadingsMonth().size() - 2))) + " mmol/mol";
             }
         } else {
             return view.getString(R.string.overview_hb1ac_error_no_data);
@@ -102,12 +101,11 @@ public class OverviewPresenter {
     }
 
     public ArrayList<A1cEstimate> getA1cEstimateList() {
-        GlucosioConverter converter = new GlucosioConverter();
         ArrayList<A1cEstimate> a1cEstimateList = new ArrayList<>();
 
         // We don't take this month because A1C is incomplete
         for (int i = 0; i < getGlucoseReadingsMonth().size() - 1; i++) {
-            double value = converter.glucoseToA1C(getGlucoseReadingsMonth().get(i));
+            double value = GlucosioConverter.glucoseToA1C(getGlucoseReadingsMonth().get(i));
             String month = convertDateToMonth(getGlucoseDatetimeMonth().get(i));
             a1cEstimateList.add(new A1cEstimate(value, month));
         }

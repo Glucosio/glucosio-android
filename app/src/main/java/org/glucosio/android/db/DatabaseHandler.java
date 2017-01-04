@@ -289,7 +289,7 @@ public class DatabaseHandler {
         return readingList;
     }
 
-    public GlucoseReading getGlucoseReading(long id) {
+    public GlucoseReading getGlucoseReadingById(long id) {
         return realm.where(GlucoseReading.class)
                 .equalTo("id", id)
                 .findFirst();
@@ -378,11 +378,6 @@ public class DatabaseHandler {
     public Date getLastGlucoseDateTime() {
         return realm.where(GlucoseReading.class).maximumDate("created");
     }
-
-    public GlucoseReading getGlucoseReadingById(long id) {
-        return getGlucoseReading(id);
-    }
-
 
 /*    private ArrayList<Integer> getGlucoseReadingsForLastMonthAsArray(){
         Calendar calendar = Calendar.getInstance();
@@ -540,14 +535,10 @@ public class DatabaseHandler {
         realm.commitTransaction();
     }
 
-    public HB1ACReading getHB1ACReading(long id) {
+    public HB1ACReading getHB1ACReadingById(long id) {
         return realm.where(HB1ACReading.class)
                 .equalTo("id", id)
                 .findFirst();
-    }
-
-    public HB1ACReading getHB1ACReadingById(long id) {
-        return getHB1ACReading(id);
     }
 
     public void editHB1ACReading(long oldId, HB1ACReading reading) {
@@ -819,7 +810,7 @@ public class DatabaseHandler {
         addWeightReading(reading);
     }
 
-    public WeightReading getWeightReading(long id) {
+    public WeightReading getWeightReadingById(long id) {
         return realm.where(WeightReading.class)
                 .equalTo("id", id)
                 .findFirst();
@@ -886,10 +877,6 @@ public class DatabaseHandler {
         }
 
         return datetimeArray;
-    }
-
-    public WeightReading getWeightReadingById(long id) {
-        return getWeightReading(id);
     }
 
     public void addCholesterolReading(CholesterolReading reading) {

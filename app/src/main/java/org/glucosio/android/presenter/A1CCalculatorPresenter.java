@@ -45,19 +45,18 @@ public class A1CCalculatorPresenter {
             return 0;
         }
 
-        GlucosioConverter converter = new GlucosioConverter();
         double convertedA1C;
         User user = dbHandler.getUser(1);
 
         if ("mg/dL".equals(user.getPreferred_unit())) {
-            convertedA1C = converter.glucoseToA1C(Double.parseDouble(glucose));
+            convertedA1C = GlucosioConverter.glucoseToA1C(Double.parseDouble(glucose));
         } else {
-            convertedA1C = converter.glucoseToA1C(converter.glucoseToMgDl(Double.parseDouble(glucose)));
+            convertedA1C = GlucosioConverter.glucoseToA1C(GlucosioConverter.glucoseToMgDl(Double.parseDouble(glucose)));
         }
-        if (!"percentage".equals(user.getPreferred_unit_a1c())) {
-            return converter.a1cNgspToIfcc(convertedA1C);
-        } else {
+        if ("percentage".equals(user.getPreferred_unit_a1c())) {
             return convertedA1C;
+        } else {
+            return GlucosioConverter.a1cNgspToIfcc(convertedA1C);
         }
     }
 
@@ -75,8 +74,7 @@ public class A1CCalculatorPresenter {
         User user = dbHandler.getUser(1);
         double finalA1c = a1c;
         if (!"percentage".equals(user.getPreferred_unit_a1c())) {
-            GlucosioConverter converter = new GlucosioConverter();
-            finalA1c = converter.a1cIfccToNgsp(a1c);
+            finalA1c = GlucosioConverter.a1cIfccToNgsp(a1c);
         }
 
         HB1ACReading a1cReading = new HB1ACReading(finalA1c, new Date());

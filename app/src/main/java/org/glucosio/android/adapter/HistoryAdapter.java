@@ -58,7 +58,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     private ArrayList<Double> hb1acReadingArray;
     private ArrayList<Long> hb1acIdArray;
     private HistoryPresenter presenter;
-    private GlucosioConverter converter;
     private ArrayList<Long> glucoseIdArray;
     private ArrayList<String> glucoseNotes;
     private ArrayList<Integer> glucoseReadingArray;
@@ -131,8 +130,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.fragment_history_item, parent, false);
 
-        converter = new GlucosioConverter();
-
         ViewHolder vh = new ViewHolder(v);
         return vh;
     }
@@ -158,7 +155,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
                     String reading = NumberFormat.getInstance().format(glucoseReading);
                     readingTextView.setText(mContext.getString(R.string.mg_dL_value, reading));
                 } else {
-                    double mmol = converter.glucoseToMmolL(glucoseReadingArray.get(position));
+                    double mmol = GlucosioConverter.glucoseToMmolL(glucoseReadingArray.get(position));
                     String reading = NumberFormat.getInstance().format(mmol);
                     readingTextView.setText(mContext.getString(R.string.mmol_L_value, reading));
                 }
@@ -178,8 +175,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
                 if ("percentage".equals(presenter.getA1cUnitMeasurement())) {
                     readingTextView.setText(hb1acReadingArray.get(position).toString() + " %");
                 } else {
-                    GlucosioConverter converter = new GlucosioConverter();
-                    double ifcc = converter.a1cNgspToIfcc(hb1acReadingArray.get(position));
+                    double ifcc = GlucosioConverter.a1cNgspToIfcc(hb1acReadingArray.get(position));
                     String reading = NumberFormat.getInstance().format(ifcc);
                     readingTextView.setText(mContext.getString(R.string.mmol_mol_value, reading));
                 }
@@ -222,8 +218,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
                 if ("kilograms".equals(presenter.getWeightUnitMeasurement())) {
                     readingTextView.setText(weightReadingArray.get(position) + " kg");
                 } else {
-                    GlucosioConverter converter = new GlucosioConverter();
-                    readingTextView.setText(converter.kgToLb(weightReadingArray.get(position)) + " lbs");
+                    readingTextView.setText(GlucosioConverter.kgToLb(weightReadingArray.get(position)) + " lbs");
                 }
 
                 datetimeTextView.setText(presenter.convertDate(weightDataTime.get(position)));

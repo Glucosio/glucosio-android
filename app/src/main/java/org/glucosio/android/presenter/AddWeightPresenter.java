@@ -69,8 +69,7 @@ public class AddWeightPresenter extends AddReadingPresenter {
         if ("kilograms".equals(getWeightUnitMeasuerement())) {
             finalReading = Integer.parseInt(reading);
         } else {
-            GlucosioConverter converter = new GlucosioConverter();
-            finalReading = converter.lbToKg(Integer.parseInt(reading));
+            finalReading = GlucosioConverter.lbToKg(Integer.parseInt(reading));
         }
 
         return new WeightReading(finalReading, finalDateTime);

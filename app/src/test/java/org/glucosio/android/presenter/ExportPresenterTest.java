@@ -31,7 +31,7 @@ public class ExportPresenterTest extends RobolectricTest {
     @Before
     public void setUp() throws Exception {
         initMocks(this);
-        when(dbHandlerMock.getGlucoseReading(anyLong())).thenReturn(glucoseReadingMock);
+        when(dbHandlerMock.getGlucoseReadingById(anyLong())).thenReturn(glucoseReadingMock);
         when(glucoseReadingMock.getNotes()).thenReturn(MOCK_NOTE_FOR_TEST);
         when(glucoseReadingMock.getCreated()).thenReturn(new Date());
         when(glucoseReadingMock.getReading()).thenReturn(TEST_READING_VALUE);
