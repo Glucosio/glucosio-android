@@ -40,6 +40,8 @@ android {
 
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -157,6 +159,9 @@ dependencies {
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
     androidTestCompile 'com.android.support.test.espresso:espresso-intents:2.2.2'
     androidTestCompile 'com.android.support.test.espresso:espresso-contrib:2.2.2'
+
+    // PDF Creator library 'itext' for PDF export
+    compile 'com.itextpdf:itextg:5.5.9'
 }
 
 configurations.all {

@@ -67,6 +67,7 @@ import org.glucosio.android.R;
 import org.glucosio.android.adapter.HomePagerAdapter;
 import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.db.DatabaseHandler;
+import org.glucosio.android.presenter.ExportPdfPresenter;
 import org.glucosio.android.presenter.ExportPresenter;
 import org.glucosio.android.presenter.MainPresenter;
 import org.glucosio.android.tools.LocaleHelper;
@@ -85,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
     private BottomSheetBehavior bottomSheetBehavior;
     private ExportPresenter exportPresenter;
+    private ExportPdfPresenter exportPdfPresenter;
     private RadioButton exportRangeButton;
     private HomePagerAdapter homePagerAdapter;
     private MainPresenter presenter;
@@ -270,6 +272,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         localeHelper = new LocaleHelper();
         presenter = new MainPresenter(this, dbHandler);
         exportPresenter = new ExportPresenter(this, dbHandler);
+        exportPdfPresenter = new ExportPdfPresenter(this, dbHandler);
     }
 
     @Override
@@ -425,9 +428,11 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                     } else {
                         dialog.dismiss();
                     }
-                } else {
+                } else if (which == 1) {
                     // Export to CSV
                     showExportCsvDialog();
+                } else {
+                    showExportPdfDialog();
                 }
             }
         });
@@ -466,7 +471,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                         now.get(Calendar.MONTH),
                         now.get(Calendar.DAY_OF_MONTH)
                 );
-                dpd.show(getFragmentManager(), "fromDateDialog");
+                dpd.show(getFragmentManager(), "CSVfromDateDialog");
                 dpd.setMaxDate(now);
             }
         });
@@ -481,7 +486,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                         now.get(Calendar.MONTH),
                         now.get(Calendar.DAY_OF_MONTH)
                 );
-                dpd.show(getFragmentManager(), "toDateDialog");
+                dpd.show(getFragmentManager(), "CSVtoDateDialog");
                 dpd.setMaxDate(now);
             }
         });
@@ -526,6 +531,99 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             }
         });
 
+    }
+
+    public void showExportPdfDialog() {
+        final Dialog exportDialog = new Dialog(MainActivity.this, R.style.GlucosioTheme);
+
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(exportDialog.getWindow().getAttributes());
+        lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        exportDialog.setContentView(R.layout.dialog_pdf_export);
+        exportDialog.getWindow().setAttributes(lp);
+        exportDialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+        exportDialog.getWindow().setDimAmount(0.5f);
+        exportDialog.show();
+
+        exportDialogDateFrom = (TextView) exportDialog.findViewById(R.id.activity_export_date_from);
+        exportDialogDateTo = (TextView) exportDialog.findViewById(R.id.activity_export_date_to);
+        exportRangeButton = (RadioButton) exportDialog.findViewById(R.id.activity_export_range);
+        final RadioButton exportAllButton = (RadioButton) exportDialog.findViewById(R.id.activity_export_all);
+        final TextView exportButton = (TextView) exportDialog.findViewById(R.id.dialog_export_add);
+        final TextView cancelButton = (TextView) exportDialog.findViewById(R.id.dialog_export_cancel);
+
+        exportRangeButton.setChecked(true);
+
+        exportDialogDateFrom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar now = Calendar.getInstance();
+                DatePickerDialog dpd = DatePickerDialog.newInstance(
+                        MainActivity.this,
+                        now.get(Calendar.YEAR),
+                        now.get(Calendar.MONTH),
+                        now.get(Calendar.DAY_OF_MONTH)
+                );
+                dpd.show(getFragmentManager(), "PDFfromDateDialog");
+                dpd.setMaxDate(now);
+            }
+        });
+
+        exportDialogDateTo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar now = Calendar.getInstance();
+                DatePickerDialog dpd = DatePickerDialog.newInstance(
+                        MainActivity.this,
+                        now.get(Calendar.YEAR),
+                        now.get(Calendar.MONTH),
+                        now.get(Calendar.DAY_OF_MONTH)
+                );
+                dpd.show(getFragmentManager(), "PDFtoDateDialog");
+                dpd.setMaxDate(now);
+            }
+        });
+
+        exportRangeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean isChecked = exportRangeButton.isChecked();
+                exportDialogDateFrom.setEnabled(true);
+                exportDialogDateTo.setEnabled(true);
+                exportAllButton.setChecked(!isChecked);
+            }
+        });
+
+        exportAllButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean isChecked = exportAllButton.isChecked();
+                exportDialogDateFrom.setEnabled(false);
+                exportDialogDateTo.setEnabled(false);
+                exportRangeButton.setChecked(!isChecked);
+                exportButton.setEnabled(true);
+            }
+        });
+
+        exportButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (validateExportDialog()) {
+                    exportPdfPresenter.onExportClicked(exportAllButton.isChecked());
+                    exportDialog.dismiss();
+                } else {
+                    showSnackBar(getResources().getString(R.string.dialog_error), Snackbar.LENGTH_LONG);
+                }
+            }
+        });
+
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                exportDialog.dismiss();
+            }
+        });
     }
 
     private boolean validateExportDialog() {
@@ -682,7 +780,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     @Override
     public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
         // Check which dialog set the date
-        if (view.getTag().equals("fromDateDialog")) {
+        if (view.getTag().equals("CSVfromDateDialog")) {
             exportPresenter.setFromYear(year);
             exportPresenter.setFromMonth(monthOfYear);
             exportPresenter.setFromDay(dayOfMonth);
@@ -690,10 +788,26 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             int monthToShow = monthOfYear + 1;
             String date = +dayOfMonth + "/" + monthToShow + "/" + year;
             exportDialogDateFrom.setText(date);
-        } else {
+        } else if (view.getTag().equals("CSVtoDateDialog")) {
             exportPresenter.setToYear(year);
             exportPresenter.setToMonth(monthOfYear);
             exportPresenter.setToDay(dayOfMonth);
+
+            int monthToShow = monthOfYear + 1;
+            String date = +dayOfMonth + "/" + monthToShow + "/" + year;
+            exportDialogDateTo.setText(date);
+        } else if (view.getTag().equals("PDFfromDateDialog")) {
+            exportPdfPresenter.setFromYear(year);
+            exportPdfPresenter.setFromMonth(monthOfYear);
+            exportPdfPresenter.setFromDay(dayOfMonth);
+
+            int monthToShow = monthOfYear + 1;
+            String date = +dayOfMonth + "/" + monthToShow + "/" + year;
+            exportDialogDateFrom.setText(date);
+        } else {
+            exportPdfPresenter.setToYear(year);
+            exportPdfPresenter.setToMonth(monthOfYear);
+            exportPdfPresenter.setToDay(dayOfMonth);
 
             int monthToShow = monthOfYear + 1;
             String date = +dayOfMonth + "/" + monthToShow + "/" + year;

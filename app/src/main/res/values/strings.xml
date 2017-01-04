@@ -262,6 +262,7 @@
     <string-array name="menu_backup_options" translatable="false">
         <item>@string/menu_backup_backup</item>
         <item>@string/menu_backup_csv</item>
+        <item>@string/menu_backup_pdf</item>
     </string-array>
 
     <string name="invitation_title">Invite other people</string>
@@ -448,6 +449,7 @@
     <string name="menu_backup_backup">Backup on Google Drive</string>
     <string name="menu_backup_restore">Restore</string>
     <string name="menu_backup_csv">CSV export</string>
+    <string name="menu_backup_pdf">PDF export</string>
     <string name="activity_backup_drive_automatic">Automatic backup</string>
     <string name="activity_backup_drive_desc">Backing up your data to Google Drive allows you to restore all your readings in case you lose or change devices.</string>
     <string name="activity_backup_drive_message_restart">Restarting to apply changes...</string>
@@ -471,6 +473,7 @@
     <string name="activity_backup_drive_error_restore">Unable to find a valid backup to restore from Drive</string>
     <string name="activity_main_error_play_services">Glucosio needs Play Services to enable Google Drive backup.</string>
     <string name="activity_main_dialog_csv_title">Export to CSV file</string>
+    <string name="activity_main_dialog_pdf_title">Export to PDF file</string>
 
     <string-array name="fragment_history_selector" translatable="false">
         <item>@string/fab_glucose</item>
