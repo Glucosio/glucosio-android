@@ -114,23 +114,13 @@ public class FormatDateTime {
         return finalData + "";
     }
 
-    public String convertRawDate(String datetime) {
-        DateFormat inputFormat = new SimpleDateFormat("EEE MMM d HH:mm:ss zzz yyyy");
+    public String convertRawDate(Date datetime) {
         DateFormat finalDataFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 
-        Date parsed = null;
-        try {
-            parsed = inputFormat.parse(datetime);
-        } catch (ParseException e) {
-            reportToFirebase(e);
-            e.printStackTrace();
-        }
-        String finalData = finalDataFormat.format(parsed);
-        return finalData + "";
+        return finalDataFormat.format(datetime);
     }
 
-    public String convertRawTime(String datetime) {
-        DateFormat inputFormat = new SimpleDateFormat("EEE MMM d HH:mm:ss zzz yyyy");
+    public String convertRawTime(Date datetime) {
         DateFormat finalTimeFormat;
 
         if (android.text.format.DateFormat.is24HourFormat(context)) {
@@ -139,15 +129,7 @@ public class FormatDateTime {
             finalTimeFormat = new SimpleDateFormat("hh:mm a");
         }
 
-        Date parsed = null;
-        try {
-            parsed = inputFormat.parse(datetime);
-        } catch (ParseException e) {
-            reportToFirebase(e);
-            e.printStackTrace();
-        }
-        String finalTime = finalTimeFormat.format(parsed);
-        return finalTime + "";
+        return finalTimeFormat.format(datetime);
     }
 
     public String getCurrentTime() {

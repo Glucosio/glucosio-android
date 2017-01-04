@@ -21,6 +21,7 @@
 package org.glucosio.android.tools;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.os.Environment;
 import android.util.Log;
 
@@ -29,6 +30,7 @@ import org.glucosio.android.db.GlucoseReading;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.List;
 
@@ -36,92 +38,95 @@ import io.realm.Realm;
 
 public final class ReadingToCSV {
 
-    public static String createCSVFile(Context context, Realm realm, final List<GlucoseReading> readings, String um) {
+    private final Context context;
+    private final String um;
+    private final FormatDateTime dateTool;
+
+    public ReadingToCSV(Context context, String um) {
+        this.context = context;
+        this.um = um;
+
+        this.dateTool = new FormatDateTime(context);
+    }
+
+    public String createCSVFile(Realm realm, final List<GlucoseReading> readings) {
         try {
-            final File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/glucosio", "glucosio_export_ " + System.currentTimeMillis() / 1000 + ".csv");
+            File file = null;
             final File sd = Environment.getExternalStorageDirectory();
             if (sd.canWrite()) {
-                FileOutputStream fileOutputStream = new FileOutputStream(file);
-                OutputStreamWriter osw = new OutputStreamWriter(fileOutputStream);
+                file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/glucosio", "glucosio_export_" + System.currentTimeMillis() / 1000 + ".csv");
 
-                // CSV Structure
-                // Date | Time | Concentration | Unit | Measured | Notes
-                osw.append(context.getResources().getString(R.string.dialog_add_date));
-                osw.append(',');
+                FileOutputStream fileOutputStream = null;
+                OutputStreamWriter osw = null;
 
-                osw.append(context.getResources().getString(R.string.dialog_add_time));
-                osw.append(',');
+                try {
+                    fileOutputStream = new FileOutputStream(file);
+                    osw = new OutputStreamWriter(fileOutputStream);
 
-                osw.append(context.getResources().getString(R.string.dialog_add_concentration));
-                osw.append(',');
+                    // CSV Structure
+                    // Date | Time | Concentration | Unit | Measured | Notes
+                    final Resources resources = this.context.getResources();
+                    writeLine(osw,
+                            resources.getString(R.string.dialog_add_date),
+                            resources.getString(R.string.dialog_add_time),
+                            resources.getString(R.string.dialog_add_concentration),
+                            resources.getString(R.string.helloactivity_spinner_preferred_glucose_unit),
+                            resources.getString(R.string.dialog_add_measured),
+                            resources.getString(R.string.dialog_add_notes)
+                    );
 
-                osw.append(context.getResources().getString(R.string.helloactivity_spinner_preferred_glucose_unit));
-                osw.append(',');
+                    // Concentration | Measured | Date | Time | Notes | Unit of Measurement
+                    if ("mg/dL".equals(um)) {
+                        for (int i = 0; i < readings.size(); i++) {
+                            GlucoseReading reading = readings.get(i);
 
-                osw.append(context.getResources().getString(R.string.dialog_add_measured));
-                osw.append(',');
+                            writeLine(osw,
+                                    this.dateTool.convertRawDate(reading.getCreated()),
+                                    this.dateTool.convertRawTime(reading.getCreated()),
+                                    String.valueOf(reading.getReading()),
+                                    "mg/dL",
+                                    String.valueOf(reading.getReading_type()),
+                                    reading.getNotes()
+                            );
 
-                osw.append(context.getResources().getString(R.string.dialog_add_notes));
-                osw.append('\n');
+                        }
+                    } else {
+                        for (int i = 0; i < readings.size(); i++) {
+                            GlucoseReading reading = readings.get(i);
 
-
-                FormatDateTime dateTool = new FormatDateTime(context);
-
-                // Concentration | Measured | Date | Time | Notes | Unit of Measurement
-                if ("mg/dL".equals(um)) {
-                    for (int i = 0; i < readings.size(); i++) {
-                        GlucoseReading reading = readings.get(i);
-                        osw.append(dateTool.convertRawDate(reading.getCreated() + ""));
-                        osw.append(',');
-
-                        osw.append(dateTool.convertRawTime(reading.getCreated() + ""));
-                        osw.append(',');
-
-                        osw.append(String.valueOf(reading.getReading()));
-                        osw.append(',');
-
-                        osw.append("mg/dL");
-                        osw.append(',');
-
-                        osw.append(String.valueOf(reading.getReading_type()));
-                        osw.append(',');
-
-                        osw.append(reading.getNotes());
-                        osw.append('\n');
+                            writeLine(osw,
+                                    this.dateTool.convertRawDate(reading.getCreated()),
+                                    this.dateTool.convertRawTime(reading.getCreated()),
+                                    GlucosioConverter.glucoseToMmolL(reading.getReading()) + "",
+                                    "mmol/L",
+                                    reading.getReading_type() + "",
+                                    reading.getNotes()
+                            );
+                        }
 
                     }
-                } else {
-                    for (int i = 0; i < readings.size(); i++) {
-                        GlucoseReading reading = readings.get(i);
-                        osw.append(dateTool.convertRawDate(reading.getCreated() + ""));
-                        osw.append(',');
-
-                        osw.append(dateTool.convertRawTime(reading.getCreated() + ""));
-                        osw.append(',');
-
-                        osw.append(GlucosioConverter.glucoseToMmolL(reading.getReading()) + "");
-                        osw.append(',');
-
-                        osw.append("mmol/L");
-                        osw.append(',');
-
-                        osw.append(reading.getReading_type() + "");
-                        osw.append(',');
-
-                        osw.append(reading.getNotes());
-                        osw.append('\n');
-                    }
+                    osw.flush();
+                } catch (Exception e) {
+                    Log.e("Glucosio", "Error exporting readings", e);
+                } finally {
+                    if (osw != null) osw.close();
+                    if (fileOutputStream != null) fileOutputStream.close();
                 }
-                osw.flush();
-                osw.close();
                 Log.i("Glucosio", "Done exporting readings");
             }
             realm.close();
-            return file.getPath();
+            return file == null ? null : file.getPath();
         } catch (Exception e) {
             realm.close();
             e.printStackTrace();
             return null;
+        }
+    }
+
+    private void writeLine(OutputStreamWriter osw, String... values) throws IOException {
+        for (int i = 0; i < values.length; i++) {
+            osw.append(values[i]);
+            osw.append(i == values.length - 1 ? '\n' : ',');
         }
     }
 }

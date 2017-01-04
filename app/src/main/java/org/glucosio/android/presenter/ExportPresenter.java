@@ -105,7 +105,7 @@ public class ExportPresenter {
 
                     if (dirExists()) {
                         Log.i("glucosio", "Dir exists");
-                        return ReadingToCSV.createCSVFile(mActivity, realm, readings, preferredUnit);
+                        return new ReadingToCSV(mActivity, preferredUnit).createCSVFile(realm, readings);
                     } else {
                         Log.i("glucosio", "Dir NOT exists");
                         return null;
