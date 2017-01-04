@@ -121,8 +121,8 @@ dependencies {
     // Other libraries
     compile 'com.github.paolorotolo:expandableheightlistview:1.0.0'
     compile 'com.github.clans:fab:1.6.4'
-    compile 'com.wdullaer:materialdatetimepicker:3.0.0'
-    compile 'com.github.PhilJay:MPAndroidChart:v3.0.1'
+    compile 'com.wdullaer:materialdatetimepicker:2.4.0'
+    compile 'com.github.PhilJay:MPAndroidChart:v2.2.5'
     compile 'uk.co.chrisjenx:calligraphy:2.2.0'
     compile 'net.danlew:android.joda:2.9.5.1'
     compile('com.mikepenz:materialdrawer:5.8.1@aar') {
