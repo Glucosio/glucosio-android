@@ -1,21 +1,19 @@
 package org.glucosio.android.presenter;
 
 import org.glucosio.android.BuildConfig;
+import org.glucosio.android.RobolectricTest;
 import org.glucosio.android.tools.network.GlucosioExternalLinks;
 import org.glucosio.android.tools.network.NetworkConnectivity;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.annotation.Config;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-@RunWith(RobolectricGradleTestRunner.class)
-@Config(constants = BuildConfig.class, sdk = 21, packageName = "org.glucosio.android")
-public class ExternalViewPresenterTest {
+public class ExternalViewPresenterTest extends RobolectricTest {
 
   private ExternalViewPresenter.View view;
   private ExternalViewPresenter presenter;
