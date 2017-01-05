@@ -22,9 +22,11 @@
 <resources>
   <string name="action_settings">Pengaturan</string>
   <string name="action_feedback">Kirim umpan balik</string>
+  <string name="action_invite">Undang teman</string>
   <string name="tab_overview">Ikhtisar</string>
   <string name="tab_history">Riwayat</string>
   <string name="tab_tips">Kiat</string>
+  <string name="activity_main_add_new_reading">Tambahkan bacaan baru</string>
   <string name="title_activity_hello">Halo.</string>
   <string name="helloactivity_headline">Halo.</string>
   <string name="helloactivity_terms">Ketentuan Penggunaan.</string>
@@ -55,6 +57,7 @@
   <string name="dialog_add_type_4">Setelah makan siang</string>
   <string name="dialog_add_type_5">Sebelum makan malam</string>
   <string name="dialog_add_type_6">Setelah makan malam</string>
+  <string name="dialog_add_type_7">Kudapan</string>
   <string name="dialog_add_type_9">Malam</string>
   <string name="dialog_add_type_11">Periksa kembali</string>
   <string name="dialog_add_type_12">Lainnya</string>
@@ -73,6 +76,7 @@
   <string name="fragment_overview_selector_week">Minggu</string>
   <string name="preferences_about">Tentang</string>
   <string name="preferences_version">Versi</string>
+  <string name="preferences_coming_soon">Segera...</string>
   <string name="preferences_terms">Syarat penggunaan</string>
   <string name="glucose_reading_type">Tipe</string>
   <string name="weight">Berat</string>
@@ -106,6 +110,7 @@
   <string name="assistant">Asisten</string>
   <string name="assistant_action_update">PERBARUI SEKARANG JUGA</string>
   <string name="assistant_action_ok">OK, MENGERTI</string>
+  <string name="assistant_action_feedback">KIRIM SARAN</string>
   <string name="assistant_action_reading">TAMBAHKAN BACAAN</string>
   <string name="assistant_action_try">COBA SEKARANG JUGA</string>
   <string name="assistant_weight_title">Perbarui berat kamu</string>
@@ -116,16 +121,98 @@
   <string name="assistant_categories_desc">Glucosio dilengkapi kategori baku untuk masukan glukosa namun kamu juga bisa membuat kategori lain di pengaturan untuk menyesuaikan kebutuhan unikmu.</string>
   <string name="assistant_check_title">Sering-seringlah memeriksa</string>
   <string name="assistant_check_desc">Asisten Glucosio memberikan kiat berkala dan akan terus berkembang, jadi pastikan untuk selalu periksa disini untuk aksi bermanfaat yang bisa kamu lakukan demi meningkatkan pengalaman Glucosio dan kiat bermanfaat lainnya.</string>
-  <string name="assistant_feedback_title">Kirim umpan balik </string>
   <string name="assistant_feedback_desc">Jika kamu menemukan masalah teknik atau umpan balik tentang Glucosio kami mengharapkan kamu untuk mengirimkannya pada menu pengaturan demi membantu kami meningkatkan Glucosio.</string>
   <string name="assistant_reading_title">Tambahkan bacaan</string>
   <string name="assistant_reading_desc">Pastikan untuk menambahkan bacaan glukosamu secara berkala agar kami dapat membantu melacak level glukosamu.</string>
+  <string name="assistant_export_title">Ekspor data Anda</string>
   <string name="helloactivity_spinner_preferred_range">Kisaran yang diinginkan</string>
   <string name="helloactivity_preferred_range_min">Nilai minimal</string>
   <string name="helloactivity_preferred_range_max">Nilai maksimal</string>
+  <string name="helloactivity_language">Bahasa</string>
+  <string name="menu_support_error1">Tidak ada aplikasi email yang terpasang. Silakan kirim email ke hello@glucosio.org</string>
+  <string name="invitation_title">Undang orang lain</string>
+  <string name="invitation_message">Coba Glucosio, sebuah aplikasi sumber terbuka untuk manajemen diabetes dan penelitian.</string>
+  <string name="invitation_cta">Coba Glucosio</string>
+  <string name="preferences_privacy">Privasi</string>
+  <string name="helloactivity_textview_tos">Dengan menggunakan Glucosio, Anda setuju dengan</string>
+  <string name="preferences_about_glucosio">Tentang Glucosio</string>
+  <string name="preferences_licences_open">Lisensi sumber terbuka</string>
+  <string name="preferences_freestyle_libre">Aktifkan dukungan FreeStyle Libre®</string>
+  <string name="reading_low">Rendah</string>
+  <string name="reading_high">Tinggi</string>
   <!-- Future Strings Baked In Early For l10n -->
   <!-- Exercise Types -->
+  <string name="dialog_add_exercisetype_2">Jalan cepat</string>
+  <string name="dialog_add_exercisetype_4">Berlari</string>
+  <string name="dialog_add_exercisetype_5">Renang</string>
+  <string name="dialog_add_exercisetype_6">Menari</string>
+  <string name="dialog_add_exercisetype_8">Bersepeda</string>
+  <string name="dialog_add_exercisetype_9">Golf</string>
+  <string name="dialog_add_exercisetype_18">Tinju</string>
+  <string name="dialog_add_exercisetype_19">Tenis</string>
+  <string name="dialog_add_exercisetype_20">Tenis meja</string>
+  <string name="dialog_add_exercisetype_22">Panjat tebing</string>
+  <string name="dialog_add_exercisetype_23">Gulat</string>
+  <string name="dialog_add_exercisetype_24">Mendaki</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
+  <string name="dialog_addfood_carbs">Karbohidrat:</string>
+  <string name="dialog_addfood_protein">Protein:</string>
+  <string name="dialog_addfood_sugars">Gula:</string>
+  <string name="dialog_addfood_fat">Lemak:</string>
   <!-- About Glucosio Strings -->
+  <string name="about_contribute">Berkontribusi</string>
+  <string name="activity_export_date_from">Dari:</string>
+  <string name="dialog_export_button">EKSPOR</string>
+  <string name="title_activity_export">Ekspor Data</string>
+  <string name="share_using">Berbagi menggunakan</string>
+  <string name="share_subject">Data Glucosio</string>
+  <string name="activity_export_snackbar_1">"Mengekspor"</string>
+  <string name="fragment_overview_graph_export_true">Tangkapan layar disimpan di Galeri</string>
+  <string name="activity_export_issue_generic">Ada masalah saat mengekspor bacaan. Silakan coba lagi.</string>
+  <string name="activity_export_no_readings_snackbar">Tidak ada bacaan untuk diekspor.</string>
   <string name="dialog_add_weight">Berat</string>
+  <string name="dialog_add_ketones">Keton</string>
+  <string name="dialog_add_pressure_min">Tekanan minimal</string>
+  <string name="dialog_add_pressure_max">Tekanan maksimal</string>
+  <string name="dialog_add_hb1ac">HbA1c</string>
+  <string name="title_activity_add_glucose">Tambahkan bacaan Glukosa</string>
+  <string name="title_activity_add_glucose_edit">Ubah bacaan Glukosa</string>
+  <string name="title_activity_add_weight">Tambahkan Berat Badan</string>
+  <string name="title_activity_add_weight_edit">Ubah Berat Badan</string>
+  <string name="title_activity_add_cholesterol">Tambahkan Tingkat Kolesterol</string>
+  <string name="title_activity_add_cholesterol_edit">Ubah Tingkat Kolesterol</string>
+  <string name="title_activity_add_hb1ac">Tambahkan HbA1c</string>
+  <string name="title_activity_add_hb1ac_edit">Ubah HbA1c</string>
+  <string name="title_activity_add_ketone">Tambahkan Keton</string>
+  <string name="title_activity_add_ketone_edit">Ubah Keton</string>
+  <string name="title_activity_add_pressure">Tambahkan Tekanan Darah</string>
+  <string name="title_activity_add_pressure_edit">Ubah Tekanan Darah</string>
+  <string name="fab_weight">Berat Badan</string>
+  <string name="fab_pressure">Tekanan Darah</string>
+  <string name="fab_cholesterol">Tingkat Kolesterol</string>
+  <string name="fab_glucose">Tingkat Gula Darah</string>
+  <string name="dialog_error_duplicate">Anda sudah memiliki entri untuk saat ini. Silakan menghapusnya sebelum menambahkan koreksi.</string>
+  <string name="freestylelibre_nfc_ready">Silakan meletakan ponsel Anda pada sensor dan jangan bergerak sampai itu bergetar.</string>
+  <string name="freestylelibre_nfc_not_supported">Perangkat ini tidak mendukung NFC.</string>
+  <string name="freestylelibre_nfc_not_enabled">NFC dinonaktifkan.</string>
+  <string name="dialog_add_glucose_freestylelibre">Tambahkan dari FreeStyle Libre®</string>
+  <string name="dialog_add_glucose_freestylelibre_success">Berhasil menambahkan bacaan dari FreeStyle Libre®</string>
+  <string name="overview_hb1ac">HbA1c:</string>
+  <string name="dialog_add_glucose_freestylelibre_added">Ditambahkan dari FreeStyle Libre® Anda</string>
+  <string name="activity_converter_a1c_glucose">RATA-RATA KADAR GULA DARAH</string>
+  <string name="activity_converter_save">SIMPAN</string>
+  <string name="menu_support">Dukungan</string>
+  <string name="menu_support_email">Email</string>
+  <string name="activity_backup_drive_button_backup">Cadangkan sekarang</string>
+  <string name="activity_backup_drive_dialog_restore_button_cancel">Batal</string>
+  <string name="history">riwayat</string>
+  <string name="save">simpan</string>
+  <string name="activity_reminders_title">Pengingat</string>
+  <string name="reminders_notification_action">Tambahkan bacaan</string>
 </resources>

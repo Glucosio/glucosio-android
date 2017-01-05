@@ -136,7 +136,6 @@
   <string name="assistant_categories_desc">Glucosio ມາພ້ອມກັບປະເພດກລູໂຄສແບບພື້ນຖານ ແຕ່ວ່າທ່ານສາມາດສ້າງຂື້ນມາໃຫມ່ໃນກາານຕັ້ງຄ່າເພື່ອໃຫ້ເຫມາະສົມກັບຄວາມຕ້ອງການຂອງທ່ານ.</string>
   <string name="assistant_check_title">ໃຫ້ເຂົ້າມາກວດເບິງຢູ່ນີ້ຢ່າງເປັນປົກກະຕິ</string>
   <string name="assistant_check_desc">ຜູ້ຊ່ວຍ Glucosio ຈະສະຫນອງເຄັດລັບຕ່າງໆ ແລະ ປັບປຸງມັນຢ່າງເປັນປະຈຳ. ສະນັ້ນມັນເຂົ້າມາກວດສອບຢູ່ນີ້ສຳລັບຂໍ້ມູນທີ່ສຳຄັນຕ່າງໆທີ່ທ່ານສາມາດນຳເອົາໄປປັບປຸງປະສົບການໃຊ້ງານ Glucosio ຂອງທ່ານ ແລະ ເຄັດລັບອື່ນໆທີ່ເປັນປະໂຫຍດ.</string>
-  <string name="assistant_feedback_title">ສົ່ງຄໍາຄິດເຫັນ </string>
   <string name="assistant_feedback_desc">ເພື່ອເປັນການຊ່ວຍໃຫ້ເຮົາສາມາດປັບປຸງ Glucosio ໃຫ້ດີຂື້ນ ຫາກວ່າທ່ານພົບເຫັນບັນຫາທາງເຕັກນິກ ຫລື ຄຳແນະນຳໃດໆ ທ່ານສາມາດສົ່ງຂໍ້ມູນມາໃຫ້ພວກເຮົາໄດ້ໃນເມນູການຕັ້ງຄ່າ.</string>
   <string name="assistant_reading_title">ເພີ່ມການອ່ານ</string>
   <string name="assistant_reading_desc">ກວດສອບເບິງໃຫ້ແນ່ໃຈວ່າໄດ້ບັນທຶກລະດັບນ້ຳຕານກລູໂຄສເປັນປະຈຳ ເພື່ອທີ່ພວກເຮົາຈະສາມາດຊ່ວຍທ່ານຕິດຕາມລະດັບນ້ຳຕານກລູໂຄສຕະລອດເວລາ.</string>
@@ -198,6 +197,12 @@
   <string name="dialog_add_exercisetype_23">ກິລາມວຍປໍ້າ</string>
   <string name="dialog_add_exercisetype_24">ການຢ່າງຫລີ້ນໄລຍະໃກ</string>
   <string name="dialog_add_exercisetype_25">ອະນາໄມເດີນບ້ານ</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">ທາດຄາໂບໄຮເດຣທ:</string>
   <string name="dialog_addfood_protein">ທາດໂປຣຕີນ:</string>
@@ -312,7 +317,6 @@
   <string name="history">ປະຫວັດການນຳໃຊ້</string>
   <string name="save">ບັນທຶກ</string>
   <string name="activity_reminders_title">ການແຈ້ງເຕືອນ</string>
-  <string name="reminders_notification_text">ເຖິງເວລາບັນທຶກລະດັບນໍ້າຕານຂອງທ່ານ!</string>
   <string name="reminders_notification_action">ເພີ່ມການອ່ານ</string>
   <string name="glucosio_activity_reminders_empty">ບໍ່ໄດ້ຕັ້ງຄ່າການແຈ້ງເຕືອນ. ເພີ່ມການແຈ້ງເຕືອນໃຫມ່ໄດ້ບ່ອນນີ້.</string>
 </resources>

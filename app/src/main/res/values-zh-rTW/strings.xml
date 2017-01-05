@@ -135,7 +135,6 @@
   <string name="assistant_categories_desc">Glucosio 有一些血糖值的預設分類，您也還是可以在設定中自訂分類來滿足您的需求。</string>
   <string name="assistant_check_title">常看看這裡</string>
   <string name="assistant_check_desc">Glucosio 血糖小幫手提供控制血糖的小祕訣，並會持續改善。請常回來看看有沒有什麼能改善您的 Glucosio 使用體驗的新鮮事，或是其他有用的小祕訣。</string>
-  <string name="assistant_feedback_title">送出意見回饋 </string>
   <string name="assistant_feedback_desc">若您發現任何技術問題，或是對 Glucosio 有任何意見想說，我們相當歡迎您在設定選單告訴我們，以幫助我們改善 Glucosio。</string>
   <string name="assistant_reading_title">新增測量值</string>
   <string name="assistant_reading_desc">務必定期紀錄血糖測量值，這樣才能幫助您追蹤血糖值。</string>
@@ -197,6 +196,12 @@
   <string name="dialog_add_exercisetype_23">摔跤</string>
   <string name="dialog_add_exercisetype_24">登山</string>
   <string name="dialog_add_exercisetype_25">園藝工作</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">碳水化合物:</string>
   <string name="dialog_addfood_protein">蛋白質:</string>

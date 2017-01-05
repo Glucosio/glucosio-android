@@ -124,7 +124,6 @@
   <string name="assistant_categories_desc">Glucosio comes with default categories for glucose input but you can create custom categories in settings to match your unique needs.</string>
   <string name="assistant_check_title">Check here often</string>
   <string name="assistant_check_desc">Glucosio assistant provides regular tips and will keep improving, so always check here for useful actions you can take to improve your Glucosio experience and for other useful tips.</string>
-  <string name="assistant_feedback_title">Submit feedback </string>
   <string name="assistant_feedback_desc">If you find any technical issues or have feedback about Glucosio we encourage you to submit it in the settings menu in order to help us improve Glucosio.</string>
   <string name="assistant_reading_title">Add a reading</string>
   <string name="assistant_reading_desc">Be sure to regularly add your glucose readings so we can help you track your glucose levels over time.</string>
@@ -135,6 +134,12 @@
   <!-- Future Strings Baked In Early For l10n -->
   <!-- Exercise Types -->
   <string name="dialog_add_exercisetype_25">Yard work</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">Carbs:</string>
   <string name="dialog_addfood_protein">Protein:</string>

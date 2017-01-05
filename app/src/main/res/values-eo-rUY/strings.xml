@@ -80,7 +80,6 @@
   <string name="assistant_weight_title">Ĝisdatigi vian pezon</string>
   <string name="assistant_categories_title">Krei kategoriojn</string>
   <string name="assistant_check_title">Vidi ĉi tie ofte</string>
-  <string name="assistant_feedback_title">Sendi rimarkon </string>
   <string name="assistant_reading_title">Aldoni legadon</string>
   <string name="assistant_export_title">Eksporti viajn datumojn</string>
   <string name="helloactivity_preferred_range_min">Minimuma valoro</string>
@@ -112,6 +111,12 @@
   <string name="dialog_add_exercisetype_23">Luktado</string>
   <string name="dialog_add_exercisetype_24">Marŝado</string>
   <string name="dialog_add_exercisetype_25">Ĝardenado</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">Karbonhidratoj:</string>
   <string name="dialog_addfood_protein">Proteino:</string>

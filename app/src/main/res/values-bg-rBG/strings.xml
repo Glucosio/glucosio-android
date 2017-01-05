@@ -124,7 +124,6 @@
   <string name="assistant_categories_desc">В Glucosio са предложени готови категории за въвеждане на данни за кръвната захар, но можете да създадете собствени категории в настройките, за да отговарят на вашите уникални нужди.</string>
   <string name="assistant_check_title">Проверявайте често тук</string>
   <string name="assistant_check_desc">Glucosio помощникът осигурява редовни съвети и ще продължи да се подобрява, така че винаги проверявай тук за полезни действия, които да подобрят вашата употреба на Glucosio и за други полезни съвети.</string>
-  <string name="assistant_feedback_title">Изпрати отзив </string>
   <string name="assistant_feedback_desc">Ако откриете някакви технически грешки или имате отзив за Glucosio ви насърчаваме да го изпратите в менюто \"Настройки\", за да ни помогнете да усъвършенстваме Glucosio.</string>
   <string name="assistant_reading_title">Добави стойност</string>
   <string name="assistant_reading_desc">Не забравяйте редовно да добавяте показанията на кръвната ви захар, така ще можем да ви помогнем да проследите нивата с течение на времето.</string>
@@ -173,6 +172,12 @@
   <string name="dialog_add_exercisetype_21">Бойни изкуства</string>
   <string name="dialog_add_exercisetype_22">Скално катерене</string>
   <string name="dialog_add_exercisetype_23">Кеч</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">Въглехидрати:</string>
   <string name="dialog_addfood_protein">Протеин:</string>

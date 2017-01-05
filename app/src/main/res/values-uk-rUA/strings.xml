@@ -123,7 +123,6 @@
   <string name="assistant_weight_title">Оновити свою вагу</string>
   <string name="assistant_weight_desc">Не забудьте оновити свою вагу, аби Glucosio мав найточнішу інформацію.</string>
   <string name="assistant_categories_title">Додати категорії</string>
-  <string name="assistant_feedback_title">Відправити відгук </string>
   <string name="assistant_feedback_desc">Якщо ви знайшли будь-які технічні недоліки або хочете написати відгук про Glucosio то ви можете зробити це в меню \"Параметри\", що допоможе нам покращити Glucosio.</string>
   <string name="assistant_reading_title">Додати вимірювання</string>
   <string name="assistant_reading_desc">Переконайтеся, що ви регулярно подаєте ваші показники глюкози, щоб ми могли допомогти вам відстежувати ваш рівень глюкози з часом.</string>
@@ -171,6 +170,12 @@
   <string name="dialog_add_exercisetype_23">Боротьба</string>
   <string name="dialog_add_exercisetype_24">Піші прогулянки</string>
   <string name="dialog_add_exercisetype_25">Роботу у дворі</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">Вуглеводи:</string>
   <string name="dialog_addfood_protein">Протеїн:</string>

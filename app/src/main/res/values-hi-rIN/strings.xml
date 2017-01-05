@@ -112,7 +112,6 @@
   <string name="assistant_research_title">अपने अनुसंधान में ऑप्ट अद्यतन</string>
   <string name="assistant_categories_title">श्रेणियों बनाएँ</string>
   <string name="assistant_check_title">यहाँ अक्सर चेक</string>
-  <string name="assistant_feedback_title">प्रतिक्रिया सबमिट करें </string>
   <string name="assistant_reading_title">एक पढ़ने जोड़ें</string>
   <string name="helloactivity_spinner_preferred_range">पसंदीदा श्रेणी</string>
   <string name="helloactivity_spinner_preferred_range_4">कस्टम श्रेणी</string>
@@ -120,6 +119,12 @@
   <string name="helloactivity_preferred_range_max">अधिकतम मूल्य</string>
   <!-- Future Strings Baked In Early For l10n -->
   <!-- Exercise Types -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <!-- About Glucosio Strings -->
 </resources>

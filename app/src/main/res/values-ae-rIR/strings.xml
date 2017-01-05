@@ -95,9 +95,14 @@
   <string name="assistant_action_update">بروزرسانی همین حالا</string>
   <string name="assistant_action_ok">متوجه شدم</string>
   <string name="assistant_weight_title">بروزرسانی وزن</string>
-  <string name="assistant_feedback_title">ارسال بازخورد </string>
   <!-- Future Strings Baked In Early For l10n -->
   <!-- Exercise Types -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <!-- About Glucosio Strings -->
 </resources>

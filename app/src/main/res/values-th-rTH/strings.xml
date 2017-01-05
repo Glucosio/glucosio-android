@@ -101,7 +101,6 @@
   <string name="assistant_action_update">อัพเดตเดี๋ยวนี้</string>
   <string name="assistant_action_ok">ได้ ฉันเข้าใจ</string>
   <string name="assistant_weight_title">ปรับปรุงน้ำหนักของคุณ</string>
-  <string name="assistant_feedback_title">ส่งคำติชม </string>
   <string name="assistant_feedback_desc">ในการที่จะช่วยให้เราปรับปรุง Glucosio หากคุณพบปัญหาทางเทคนิคหรือมีข้อเสนอแนะใด ๆ คุณสามารถส่งข้อมูลให้เราได้ในเมนูการตั้งค่า</string>
   <string name="assistant_reading_title">เพิ่มข้อมูล</string>
   <string name="assistant_reading_desc">ตรวจสอบให้แน่ใจว่าได้บันทึกระดับน้ำตาลกลูโคสเป็นประจำ เพื่อที่เราสามารถช่วยคุณติดตามระดับน้ำตาลกลูโคสตลอดเวลา</string>
@@ -111,6 +110,12 @@
   <string name="helloactivity_preferred_range_max">ค่าสูงสุด</string>
   <!-- Future Strings Baked In Early For l10n -->
   <!-- Exercise Types -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <!-- About Glucosio Strings -->
   <string name="dialog_add_weight">น้ำหนัก</string>

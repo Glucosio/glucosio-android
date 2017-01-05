@@ -136,7 +136,6 @@
   <string name="assistant_categories_desc">Glucosio ten xa unhas categorías predefinidas para a entrada de rexistros, mais sempre podes crear outras personalizadas que se adapten ás túas necesidades.</string>
   <string name="assistant_check_title">Comprobar a miúdo</string>
   <string name="assistant_check_desc">O asistente de Glucosio ofrece consellos periodicamente e seguirá mellorando, polo que ten ansia de revisar esta sección para mellorar a túa experiencia coa aplicación e recibir consellos útiles.</string>
-  <string name="assistant_feedback_title">Enviar comentarios </string>
   <string name="assistant_feedback_desc">Se dás con calquera problema técnico ou tes comentarios sobre Glucosio, animámoste a envialos desde o menú dos axustes co fin de contribuír á mellora e evolución de Glucosio.</string>
   <string name="assistant_reading_title">Engadir un rexistro</string>
   <string name="assistant_reading_desc">Procura ir engadindo periodicamente os teus rexistros ou lecturas de glicosa para que así poidamos axudarche a levar conta deles no tempo.</string>
@@ -198,6 +197,12 @@
   <string name="dialog_add_exercisetype_23">Loita</string>
   <string name="dialog_add_exercisetype_24">Excursionismo</string>
   <string name="dialog_add_exercisetype_25">Xardinaría</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">Carbohidratos:</string>
   <string name="dialog_addfood_protein">Proteínas:</string>
@@ -312,7 +317,6 @@
   <string name="history">historial</string>
   <string name="save">gardar</string>
   <string name="activity_reminders_title">Recordatorios</string>
-  <string name="reminders_notification_text">É hora de rexistrar o nivel de glucosa!</string>
   <string name="reminders_notification_action">Engadir unha lectura</string>
   <string name="glucosio_activity_reminders_empty">Recordatorios non definidos. Engadir aquí un novo.</string>
 </resources>

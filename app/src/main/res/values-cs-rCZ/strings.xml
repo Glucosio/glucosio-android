@@ -119,7 +119,6 @@
   <string name="assistant_categories_title">Vytvořit kategorie</string>
   <string name="assistant_categories_desc">Glucosio přichází s výchozími kategoriemi pro zadávání hladin cukru, můžete však vytvořit vlastní kategorie v nastavení tak, aby odpovídaly vašim potřebám.</string>
   <string name="assistant_check_title">Kontrolujte často</string>
-  <string name="assistant_feedback_title">Odeslat zpětnou vazbu </string>
   <string name="assistant_reading_title">Přidat měření</string>
   <string name="assistant_reading_desc">Ujistěte se, aby jste pravidelně přidávali hodnoty hladiny glykémie tak, abychom vám mohli pomoci průběžně sledovat hladiny glukózy.</string>
   <string name="assistant_export_title">Exportujte svá data</string>
@@ -168,6 +167,12 @@
   <string name="dialog_add_exercisetype_23">Wrestling</string>
   <string name="dialog_add_exercisetype_24">Turistika</string>
   <string name="dialog_add_exercisetype_25">Práce na zahradě</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">Sacharidy:</string>
   <string name="dialog_addfood_protein">Bílkoviny:</string>

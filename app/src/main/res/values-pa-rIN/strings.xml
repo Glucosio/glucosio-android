@@ -117,7 +117,6 @@
   <string name="assistant_categories_title">ਵਰਗ ਬਣਾਓ</string>
   <string name="assistant_categories_desc">ਗਲੂਕੋਜ਼ ਇਨਪੁੱਟ ਲਈ Glucosio ਮੂਲ ਵਰਗਾਂ ਨਾਲ ਆਉਂਦਾ ਹੈ ਪਰ ਤੁਸੀਂ ਆਪਣੀਆਂ ਜ਼ਰੂਰਤਾਂ ਮੁਤਾਬਿਕ ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਤਰਜੀਹੀ ਵਰਗ ਬਣਾ ਸਕਦੇ ਹੋ।</string>
   <string name="assistant_check_title">ਇੱਥੇ ਅਕਸਰ ਵੇਖੋ</string>
-  <string name="assistant_feedback_title">ਫੀਡਬੈਕ ਭੇਜੋ </string>
   <string name="assistant_feedback_desc">ਜੇਕਰ ਤੁਹਾਨੂ ਕੋਈ ਤਕਨੀਕੀ ਸਮੱਸਿਆ ਆਈ ਜਾਂ Glucosio ਬਾਰੇ ਫੀਡਬੈਕ ਭੇਜਣਾ ਚਾਹੁੰਦੇ ਹੋ Glucosio ਨੂੰ ਵਧੀਆ ਬਣਾਉਣ ਵਿੱਚ ਸਾਡੀ ਸਹਾਇਤਾ ਲਈ ਅਸੀਂ ਤੁਹਾਨੂੰ ਇਸ ਨੂੰ ਸੈਟਿੰਗ ਮੀਨੂੰ ਤੋਂ ਭੇਜਣ ਲਈ ਉਤਸ਼ਾਹਿਤ ਕਰਦੇ ਹਾਂ।</string>
   <string name="assistant_reading_title">ਰੀਡਿੰਗ ਸ਼ਾਮਲ ਕਰੋ</string>
   <string name="assistant_reading_desc">ਨਿਯਮਿਤ ਤੌਰ ਤੇ ਆਪਣੀ ਗਲੋਕੂਜ਼ ਰੀਡਿੰਗ ਸ਼ਾਮਲ ਕਰਨਾ ਯਕੀਨੀ ਬਣਾਓ ਤਾਂ ਕੀ ਅਸੀਂ ਤੁਹਾਡੀ ਗਲੂਕੋਜ਼ ਪੱਧਰਾਂ ਤੇ ਨਜ਼ਰ ਰੱਖਣ ਵਿੱਚ ਸਹਾਇਤਾ ਕਰ ਸਕੀਏ।</string>
@@ -127,6 +126,12 @@
   <string name="helloactivity_preferred_range_max">ਵੱਧੋ-ਵੱਧ ਮੁੱਲ</string>
   <!-- Future Strings Baked In Early For l10n -->
   <!-- Exercise Types -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <!-- About Glucosio Strings -->
   <string name="dialog_add_weight">ਭਾਰ</string>
