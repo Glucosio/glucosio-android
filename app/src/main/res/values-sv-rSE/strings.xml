@@ -122,7 +122,6 @@
   <string name="assistant_categories_desc">Glucosio levereras med standardkategorier för glukos-indata, men du kan skapa egna kategorier i inställningarna för att matcha dina unika behov.</string>
   <string name="assistant_check_title">Kolla här ofta</string>
   <string name="assistant_check_desc">Glucosio assistent ger regelbundna tips och kommer att fortsätta att förbättras, så kontrolera alltid här för nyttiga åtgärder som du kan vidta för att förbättra din erfarenhet av Glucosio och andra användbara tips.</string>
-  <string name="assistant_feedback_title">Skicka in feedback </string>
   <string name="assistant_feedback_desc">Om du hittar några tekniska problem eller har synpunkter om Glucosio rekommenderar vi att du skickar in den i inställningsmenyn för att hjälpa oss att förbättra Glucosio.</string>
   <string name="assistant_reading_title">Lägga till ett värde</string>
   <string name="assistant_reading_desc">Var noga med att regelbundet lägga till dina glukosvärden så att vi kan hjälpa dig att spåra dina glukosnivåer över tiden.</string>
@@ -174,6 +173,12 @@
   <string name="dialog_add_exercisetype_23">Brottning</string>
   <string name="dialog_add_exercisetype_24">Vandring</string>
   <string name="dialog_add_exercisetype_25">Gårdsarbete</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">Kolhydrater:</string>
   <string name="dialog_addfood_protein">Protein:</string>

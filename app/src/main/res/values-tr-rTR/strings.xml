@@ -131,7 +131,6 @@
   <string name="assistant_categories_desc">Glucosio glikoz girişi için varsayılan kategoriler bulundurmaktadır ancak benzersiz gereksinimlerinize ayarlarında özel kategoriler oluşturabilirsiniz.</string>
   <string name="assistant_check_title">Burayı sık sık kontrol et</string>
   <string name="assistant_check_desc">Glucosio Yardımcısı düzenli ipuçları sağlar ve ilerlemeyi kaydeder, bu yüzden her zaman burayı, Glucosio deneyiminizi geliştirmek için yapabileceğiniz faydalı işlemler ve diğer yararlı ipuçları için kontrol edin.</string>
-  <string name="assistant_feedback_title">Geribildirim Gönder </string>
   <string name="assistant_feedback_desc">Eğer herhangi bir teknik sorun bulursanız veya Glucosio hakkında geribildiriminiz varsa Glucosio\'yu geliştirmemize yardımcı olmak için Ayarlar menüsünden geribildirim göndermeyi öneririz.</string>
   <string name="assistant_reading_title">Bir okuma Ekle</string>
   <string name="assistant_reading_desc">Glikoz değerlerinizi düzenli olarak eklediğinizden emin olun böylece glikoz seviyenizi takip edebilelim.</string>
@@ -180,6 +179,12 @@
   <string name="dialog_add_exercisetype_22">Dağ tırmanışı</string>
   <string name="dialog_add_exercisetype_23">Güreş</string>
   <string name="dialog_add_exercisetype_25">Bahçe işleri</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">Karbonhidrat:</string>
   <string name="dialog_addfood_protein">Protein:</string>

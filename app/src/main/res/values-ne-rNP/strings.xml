@@ -76,10 +76,15 @@
   <string name="assistant_action_ok">ल ठिक छ</string>
   <string name="assistant_weight_title">आफ्नो वजन अद्यावधिक गर्नुहोस्</string>
   <string name="assistant_categories_title">विभाग सिर्जना</string>
-  <string name="assistant_feedback_title">प्रतिक्रिया बुझाउनुहोस् </string>
   <string name="helloactivity_spinner_preferred_range">रुचाइएको सीमा</string>
   <!-- Future Strings Baked In Early For l10n -->
   <!-- Exercise Types -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <!-- About Glucosio Strings -->
 </resources>

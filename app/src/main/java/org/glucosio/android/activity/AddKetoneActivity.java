@@ -74,9 +74,6 @@ public class AddKetoneActivity extends AddReadingActivity {
             this.getAddDateTextView().setText(formatDateTime.getCurrentDate());
             this.getAddTimeTextView().setText(formatDateTime.getCurrentTime());
         }
-
-        //TODO try to do this in AddReadingActivity.createFANViewAndListener
-        this.getDoneFAB().postDelayed(this.getFabAnimationRunnable(), 600);
     }
 
     @Override

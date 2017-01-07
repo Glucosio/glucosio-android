@@ -30,7 +30,6 @@ public class A1cEstimate {
     }
 
     public String getGlucoseAverage() {
-        GlucosioConverter conveter = new GlucosioConverter();
-        return NumberFormat.getInstance().format(conveter.a1cToGlucose(value));
+        return NumberFormat.getInstance().format(GlucosioConverter.a1cToGlucose(value));
     }
 }

@@ -27,11 +27,11 @@ buildscript {
     dependencies {
         // TODO: Please revert to a stable gradle version before releasing on prod
         // Alpha is required in devel to use Instant Run and speed up development process
-        classpath 'com.android.tools.build:gradle:2.2.2'
+        classpath 'com.android.tools.build:gradle:2.3.0-beta1'
         classpath 'com.google.gms:google-services:3.0.0'
-        classpath 'io.realm:realm-gradle-plugin:1.1.1'
+        classpath 'io.realm:realm-gradle-plugin:1.2.0'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
-        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.6.3'
+        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.7.1'
         classpath 'com.github.ben-manes:gradle-versions-plugin:0.13.0'
         classpath 'org.jacoco:org.jacoco.core:0.7.7.201606060606'
         // NOTE: Do not place your application dependencies here; they belong
@@ -43,17 +43,17 @@ allprojects {
         jcenter()
     }
 
-    ext.buildToolsVer = '25.0.0'
+    ext.buildToolsVer = '25.0.1'
 
-    ext.androidSupportVer = '25.0.0'
-    ext.googlePlayServicesVer = '9.4.0'
+    ext.androidSupportVer = '25.1.0'
+    ext.googlePlayServicesVer = '10.0.1'
 
-    ext.butterKnifeVer = '8.0.1'
+    ext.butterKnifeVer = '8.4.0'
 
     ext.junitVer = '4.12'
-    ext.mockitoVer = '1.10.17'
+    ext.mockitoVer = '1.10.19'
     ext.androidAssertJVer = '1.1.1'
-    ext.robolectricVer = '3.0'
+    ext.robolectricVer = '3.2'
 
     apply plugin: 'com.github.ben-manes.versions'
 }

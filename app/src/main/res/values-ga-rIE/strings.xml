@@ -136,7 +136,6 @@
   <string name="assistant_categories_desc">Tagann Glucosio le catagóirí réamhshocraithe le haghaidh ionchurtha glúcóis, ach is féidir leat catagóirí de do chuid féin a chruthú sna socruithe.</string>
   <string name="assistant_check_title">Féach anseo go minic</string>
   <string name="assistant_check_desc">Tugann Cúntóir Glucosio leideanna duit go rialta, agus rachaidh sé i bhfeabhas de réir a chéile. Mar sin, ba chóir duit filleadh anseo anois is arís le gníomhartha agus leideanna úsáideacha a fháil.</string>
-  <string name="assistant_feedback_title">Seol aiseolas </string>
   <string name="assistant_feedback_desc">Má fheiceann tú aon fhadhb theicniúil, nó más mian leat aiseolas faoi Glucosio a thabhairt dúinn, is féidir é sin a dhéanamh sa roghchlár Socruithe, chun cabhrú linn Glucosio a fheabhsú.</string>
   <string name="assistant_reading_title">Tomhas nua</string>
   <string name="assistant_reading_desc">Ba chóir duit do leibhéal glúcos fola a thástáil go rialta sa chaoi go mbeidh tú in ann an leibhéal a leanúint thar thréimhse ama.</string>
@@ -198,6 +197,12 @@
   <string name="dialog_add_exercisetype_23">Iomrascáil</string>
   <string name="dialog_add_exercisetype_24">Cnocadóireacht</string>
   <string name="dialog_add_exercisetype_25">Garraíodóireacht</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">Carbaihiodráití:</string>
   <string name="dialog_addfood_protein">Próitéin:</string>

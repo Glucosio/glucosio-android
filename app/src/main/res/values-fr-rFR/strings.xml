@@ -137,7 +137,6 @@
   <string name="assistant_categories_desc">Glucosio comprend des catégories par défaut pour l\'entrée de glucose mais vous pouvez créer des catégories personnalisées dans paramètres pour assortir vos besoins uniques.</string>
   <string name="assistant_check_title">Vérifiez souvent</string>
   <string name="assistant_check_desc">Glucosio assistant fournit des conseils réguliers et va continuer à améliorer, il faut donc toujours vérifier ici pour des actions utiles, que vous pouvez prendre pour améliorer votre expérience de Glucosio et pour d\'autres conseils utiles.</string>
-  <string name="assistant_feedback_title">Envoyer un commentaire </string>
   <string name="assistant_feedback_desc">Si vous trouvez des problèmes techniques ou avez des commentaires sur Glucosio nous vous encourageons à nous les transmettre dans le menu réglages afin de nous aider à améliorer Glucosio.</string>
   <string name="assistant_reading_title">Ajouter une lecture</string>
   <string name="assistant_reading_desc">N\'oubliez pas d\'ajouter régulièrement vos lectures de glucose, donc nous pouvons vous aider à suivre votre taux de glucose dans le temps.</string>
@@ -199,6 +198,12 @@
   <string name="dialog_add_exercisetype_23">Lutte</string>
   <string name="dialog_add_exercisetype_24">Randonnée</string>
   <string name="dialog_add_exercisetype_25">Jardinage</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">Glucides :</string>
   <string name="dialog_addfood_protein">Protéines :</string>
@@ -227,6 +232,7 @@
   <string name="fragment_overview_graph_export_true">Copie d\'écran enregistrée dans la galerie photo</string>
   <string name="fragment_overview_graph_export_false">Erreur à l\'enregistrement de la copie d\'écran dans la galerie photo</string>
   <string name="dialog_export_range">Fourchette d\'exportation</string>
+  <string name="activity_export_issue_generic">Il y a eu un problème à l\'exportation des lectures. Veuillez réessayer.</string>
   <string name="activity_export_no_readings_snackbar">Aucun enregistrement à exporter.</string>
   <string name="wear_new_reading">Nouvel enregistrement ajouté</string>
   <string name="dialog_add_weight">Poids</string>
@@ -312,6 +318,6 @@
   <string name="history">historique</string>
   <string name="save">enregistrer</string>
   <string name="activity_reminders_title">Rappels</string>
-  <string name="reminders_notification_text">Il est temps de mesurer votre glycémie !</string>
+  <string name="reminders_notification_action">Ajouter une lecture</string>
   <string name="glucosio_activity_reminders_empty">Aucun rappel de la valeur. Ajouter un nouveau rappel ici.</string>
 </resources>

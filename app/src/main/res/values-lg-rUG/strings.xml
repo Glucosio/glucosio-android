@@ -65,9 +65,14 @@
   <string name="fragment_overview_selector_week">Sabiiti</string>
   <string name="preferences_version">Ekyikka</string>
   <string name="weight">Obuzito</string>
-  <string name="assistant_feedback_title">Waayo endowooza yo </string>
   <!-- Future Strings Baked In Early For l10n -->
   <!-- Exercise Types -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <!-- About Glucosio Strings -->
   <string name="fab_pressure">Entunnmuusi</string>

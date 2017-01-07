@@ -26,6 +26,7 @@
   <string name="tab_overview">Visão geral</string>
   <string name="tab_history">Histórico</string>
   <string name="tab_tips">Dicas</string>
+  <string name="activity_main_add_new_reading">Adicionar nova leitura</string>
   <string name="title_activity_hello">Olá.</string>
   <string name="helloactivity_headline">Olá.</string>
   <string name="helloactivity_terms">Termos de uso.</string>
@@ -135,7 +136,6 @@
   <string name="assistant_categories_desc">Glucosio vem com categorias padrão para a entrada de glicose, mas você pode criar categorias personalizadas nas configurações para atender às suas necessidades exclusivas.</string>
   <string name="assistant_check_title">Confira aqui frequentemente</string>
   <string name="assistant_check_desc">O assistente Glucosio fornece dicas regulares e vai continuar melhorando, portanto, sempre confira aqui ações úteis que você pode tomar para melhorar a sua experiência com o Glucosio e outras dicas úteis.</string>
-  <string name="assistant_feedback_title">Enviar comentários </string>
   <string name="assistant_feedback_desc">Se você encontrar quaisquer problemas técnicos ou tiver comentários sobre o Glucosio, nós encorajamos você a apresentá-los no menu de configuraçõesm, a fim de nos ajudar a melhorar o Glucosio.</string>
   <string name="assistant_reading_title">Adicionar uma leitura</string>
   <string name="assistant_reading_desc">Não se esqueça de adicionar regularmente as leituras de glicemia, para podermos ajudá-lo a controlar seus níveis de glicemia ao longo do tempo.</string>
@@ -197,6 +197,12 @@
   <string name="dialog_add_exercisetype_23">Luta</string>
   <string name="dialog_add_exercisetype_24">Caminhada</string>
   <string name="dialog_add_exercisetype_25">Jardinagem</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">Carboidratos:</string>
   <string name="dialog_addfood_protein">Proteína:</string>
@@ -225,6 +231,7 @@
   <string name="fragment_overview_graph_export_true">Captura de tela salva na galeria</string>
   <string name="fragment_overview_graph_export_false">Erro ao salvar a captura de tela na galeria</string>
   <string name="dialog_export_range">Intervalo de exportação</string>
+  <string name="activity_export_issue_generic">Houve um problema ao exportar as leituras. Por favor, tente novamente.</string>
   <string name="activity_export_no_readings_snackbar">Nenhuma leitura para exportar.</string>
   <string name="wear_new_reading">Nova leitura adicionada</string>
   <string name="dialog_add_weight">Peso</string>
@@ -238,10 +245,15 @@
   <string name="title_activity_add_glucose">Adicionar leitura de glicose</string>
   <string name="title_activity_add_glucose_edit">Editar leitura de glicose</string>
   <string name="title_activity_add_weight">Adicionar o peso corporal</string>
+  <string name="title_activity_add_weight_edit">Editar peso corporal</string>
   <string name="title_activity_add_cholesterol">Adicionar o nível de colesterol</string>
+  <string name="title_activity_add_cholesterol_edit">Editar nível de colesterol</string>
   <string name="title_activity_add_hb1ac">Adicionar HB1AC</string>
+  <string name="title_activity_add_hb1ac_edit">Editar HbA1c</string>
   <string name="title_activity_add_ketone">Adicionar cetonas</string>
+  <string name="title_activity_add_ketone_edit">Editar cetonas</string>
   <string name="title_activity_add_pressure">Adicionar a pressão arterial</string>
+  <string name="title_activity_add_pressure_edit">Editar pressão arterial</string>
   <string name="fab_weight">Peso corporal</string>
   <string name="fab_ketones">Cetonas</string>
   <string name="fab_pressure">Pressão arterial</string>
@@ -285,6 +297,7 @@
   <string name="activity_backup_drive_failed">Algo deu errado. Por favor, tente novamente :/</string>
   <string name="activity_backup_drive_last">Último backup:</string>
   <string name="activity_backup_drive_folder">Pasta de backup</string>
+  <string name="activity_backup_drive_folder_not_set">Indefinido</string>
   <string name="activity_backup_drive_button_backup">Fazer o backup agora</string>
   <string name="activity_backup_drive_recent">Backups recentes</string>
   <string name="activity_backup_drive_more">Ver mais backups</string>
@@ -300,4 +313,10 @@
   <string name="activity_backup_drive_button_open_drive">Editar no Drive</string>
   <string name="mmol_mol">mmol/mol</string>
   <string name="mmol_L">mmol/L</string>
+  <string name="preferences_graph_old">Reverter para o gráfico antigo</string>
+  <string name="history">histórico</string>
+  <string name="save">salvar</string>
+  <string name="activity_reminders_title">Lembretes</string>
+  <string name="reminders_notification_action">Adicionar leitura</string>
+  <string name="glucosio_activity_reminders_empty">Nenhum conjunto de lembretes. Adicione um novo lembrete aqui.</string>
 </resources>

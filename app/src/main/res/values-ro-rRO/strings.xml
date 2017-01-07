@@ -69,7 +69,7 @@
   <string name="dialog_add_type_7">Gustare</string>
   <string name="dialog_add_type_8">Ora de culcare</string>
   <string name="dialog_add_type_9">Noapte</string>
-  <string name="dialog_add_type_10">Nivel de glucoză pe nemâncate</string>
+  <string name="dialog_add_type_10">Nivel de glucoză pe nemâncate (preprandial)</string>
   <string name="dialog_add_type_11">Reverifică</string>
   <string name="dialog_add_type_12">Altceva</string>
   <string name="dialog_add_cancel">RENUNȚĂ</string>
@@ -136,7 +136,6 @@
   <string name="assistant_categories_desc">Glucosio vine cu categorii implicite pentru glucoză, dar puteţi crea categorii particularizate în setări pentru a se potrivi nevoilor dumneavoastră unice.</string>
   <string name="assistant_check_title">Reveniți des</string>
   <string name="assistant_check_desc">Asistentul Glucosio oferă sfaturi regulate şi se va îmbunătăți, astfel încât întotdeauna reveniți aici pentru acţiuni utile pe care puteţi lua pentru a îmbunătăţi experienţa dumneavoastră Glucosio şi pentru alte sfaturi utile.</string>
-  <string name="assistant_feedback_title">Trimite feedback </string>
   <string name="assistant_feedback_desc">Dacă găsiţi orice probleme tehnice sau aveți feedback despre Glucosio vă recomandăm să-l trimiteți prin meniul de setări, pentru a ne ajuta să îmbunătăţim Glucosio.</string>
   <string name="assistant_reading_title">Adaugă o citire</string>
   <string name="assistant_reading_desc">Asigură-te că adaugi în mod regulat citirile de glucoză ca să te putem ajuta să urmărești nivelul de glucoză în timp.</string>
@@ -198,6 +197,12 @@
   <string name="dialog_add_exercisetype_23">Lupte</string>
   <string name="dialog_add_exercisetype_24">Drumeții</string>
   <string name="dialog_add_exercisetype_25">Muncă în curte</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">Carbohidrați:</string>
   <string name="dialog_addfood_protein">Proteine:</string>
@@ -226,6 +231,7 @@
   <string name="fragment_overview_graph_export_true">Captură salvată în galerie</string>
   <string name="fragment_overview_graph_export_false">Eroare la salvarea capturii în galerie</string>
   <string name="dialog_export_range">Exportă în intervalul</string>
+  <string name="activity_export_issue_generic">A existat o problema la exportul citirilor. Va rugam sa incercati din nou.</string>
   <string name="activity_export_no_readings_snackbar">Nu sunt citiri de exportat.</string>
   <string name="wear_new_reading">Noua citire a fost adăugată</string>
   <string name="dialog_add_weight">Greutate</string>
@@ -308,4 +314,5 @@
   <string name="mmol_mol">mmol/mol</string>
   <string name="mmol_L">mmol/L</string>
   <string name="preferences_graph_old">Revino la graficul vechi</string>
+  <string name="history">istoric</string>
 </resources>

@@ -116,7 +116,6 @@
   <string name="assistant_categories_desc">Glucosio yaja na makundi yaliyoundwa tayari kwa ajili ya kuingiza kiwango cha glukosi ila unaweza pia kutengeneza makundi maalum kwneye mpangilio ili kuendana na upekee wa mahitaji yako.</string>
   <string name="assistant_check_title">Angalia hapa mara nyingi</string>
   <string name="assistant_check_desc">Wasaidizi wa Glucosio hutoa vidokezo vya mara kwa mara ambavyo vitaendelea kuboreshwa, kwa hivyo angalia hapa mara kwa mara ilikuchua nini cha kufanya ili kuboresha uzoefu wako wa Glucosio na kwa kupata vidokezo vingine muhimu.</string>
-  <string name="assistant_feedback_title">Wasilisha mrejesho </string>
   <string name="assistant_feedback_desc">Kama una tatizo lolote la kiufundi au mrejesho wowote kuhusu Glucosio tunakutia moyo uyawasilishe kwenye menyu ya mpangilio ili tuweze kuboresha Glucosio.</string>
   <string name="assistant_reading_title">Ongeza kipimo</string>
   <string name="assistant_reading_desc">Hakikisha kwamba una ongeza idadi ya kipimo cha glukosi kilichopo mwilini kila wakati ili tukusaidie kufautilia viwango vyako vya glukosi muda kwa muda.</string>
@@ -126,6 +125,12 @@
   <string name="helloactivity_preferred_range_max">Thamani ya juu</string>
   <!-- Future Strings Baked In Early For l10n -->
   <!-- Exercise Types -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <!-- About Glucosio Strings -->
 </resources>

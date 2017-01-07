@@ -135,7 +135,6 @@
   <string name="assistant_categories_desc">Glucosio vjenë me kategori të parazgjedhura për inputet e glukozës por ju mund të krijoni kategori të zakonshme tek parametrat që të përputhen me nevojat tuaja të veçanta.</string>
   <string name="assistant_check_title">Kontrolloni këtu shpesh</string>
   <string name="assistant_check_desc">Ndihmësi nga Glucosio siguron këshilla të rregullta dhe do vazhdojë të përmirësohet, kështu që gjithmonë kontrolloni këtu për veprime të dobishme që mund të kryeni për të përmirësuar eksperiencën tuaj me Glucosio dhe për këshilla të tjera të dobishme.</string>
-  <string name="assistant_feedback_title">Dërgo komente </string>
   <string name="assistant_feedback_desc">Nëse keni ndonjë problem teknik ose doni të ndani përshtypjen tuaj rreth Glucosio ne ju inkurajojm që ti dërgoni ato në menun e parametrave në mënyrë që të na ndihmoni që ta përmirësojmë Glucosion.</string>
   <string name="assistant_reading_title">Shto një lexim</string>
   <string name="assistant_reading_desc">Sigurohuni që ti shtoni rregullisht leximet tuaja rreth glukozës në mënyrë që ne të mund t\'ju ndihmojm të gjurmoni nivelet tuaja të glukozës me kalimin e kohës.</string>
@@ -197,6 +196,12 @@
   <string name="dialog_add_exercisetype_23">Mundje</string>
   <string name="dialog_add_exercisetype_24">Udhëtim i gjetë në këmbë</string>
   <string name="dialog_add_exercisetype_25">Punë në kopsht</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">Karbohidrate:</string>
   <string name="dialog_addfood_protein">Proteina:</string>

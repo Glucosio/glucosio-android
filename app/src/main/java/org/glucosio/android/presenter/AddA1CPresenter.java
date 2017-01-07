@@ -67,8 +67,7 @@ public class AddA1CPresenter extends AddReadingPresenter {
         if ("percentage".equals(getA1CUnitMeasuerement())) {
             finalReading = Double.parseDouble(reading);
         } else {
-            GlucosioConverter converter = new GlucosioConverter();
-            finalReading = converter.a1cIfccToNgsp(Double.parseDouble(reading));
+            finalReading = GlucosioConverter.a1cIfccToNgsp(Double.parseDouble(reading));
         }
 
         return new HB1ACReading(finalReading, finalDateTime);

@@ -136,7 +136,6 @@
   <string name="assistant_categories_desc">Aplikacija Glucosio ima privzete kategorije za vnos glukoze, vendar si lahko ustvarite svoje lastne kategorije in jih v nastavitvah uredite, da bodo ustrezale vašim potrebam.</string>
   <string name="assistant_check_title">Pogosto preverite</string>
   <string name="assistant_check_desc">Asistent v aplikaciji Glucosio vam redno ponuja nasvete. Ker se zavedamo pomembnosti, ga bomo redno nadgrajevali, zato ga večkrat preverite in se seznanite z nasveti, ki bodo omogočili boljšo uporabniško izkušnjo in vam bili v dodatno pomoč.</string>
-  <string name="assistant_feedback_title">Pošlji povratno informacijo </string>
   <string name="assistant_feedback_desc">Če boste imeli katero koli tehnično vprašanje ali povratno informacijo, vas prosimo, da nam jo pošljete preko menija v nastavitvah. Samo tako bomo lahko aplikacijo Glucosio redno izboljševali.</string>
   <string name="assistant_reading_title">Dodaj meritev</string>
   <string name="assistant_reading_desc">Poskrbite, da redno dodajate vaše odčitke glukoze, da vam lahko pomagamo slediti vaši ravni glukoze.</string>
@@ -198,6 +197,12 @@
   <string name="dialog_add_exercisetype_23">Rokoborba</string>
   <string name="dialog_add_exercisetype_24">Pohodništvo</string>
   <string name="dialog_add_exercisetype_25">Delo na vrtu</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">Ogljikovi hidrati:</string>
   <string name="dialog_addfood_protein">Beljakovine:</string>
@@ -312,7 +317,6 @@
   <string name="history">zgodovina</string>
   <string name="save">shrani</string>
   <string name="activity_reminders_title">Opomniki</string>
-  <string name="reminders_notification_text">Čas je za beleženje vaše ravni glukoze!</string>
   <string name="reminders_notification_action">Dodaj meritev</string>
   <string name="glucosio_activity_reminders_empty">Opomniki niso nastavljeni. Tu dodajte novega.</string>
 </resources>

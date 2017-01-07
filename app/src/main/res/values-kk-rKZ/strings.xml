@@ -84,6 +84,12 @@
   <string name="dialog_add_exercisetype_22">өрмелеу</string>
   <string name="dialog_add_exercisetype_23">Күрес</string>
   <string name="dialog_add_exercisetype_25">Аулада жұмыс істеу</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <string name="dialog_addfood_sugars">Қанты:</string>
   <string name="dialog_addfood_fat">Майлылығы:</string>

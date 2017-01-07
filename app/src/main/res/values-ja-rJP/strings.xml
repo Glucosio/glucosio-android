@@ -136,7 +136,6 @@
   <string name="assistant_categories_desc">Glucosio は血糖値入力のデフォルトの分類が付属していますが、設定で、お客様固有のニーズに合わせてカスタム分類を作成することができます。</string>
   <string name="assistant_check_title">多くの場合はこちら</string>
   <string name="assistant_check_desc">Glucosio の体験を改善するために行うことができる便利なアクションや、その他の有用なヒントを常にここで確認するため、Glucosio アシスタントは、正規のヒントを提供して改善を維持します。</string>
-  <string name="assistant_feedback_title">フィードバックを送信 </string>
   <string name="assistant_feedback_desc">技術的な問題を見つけたり、Glucosio についてのフィードバックをしたい場合、 Glucosio を改善するため、設定メニューでそれを送信することをお勧めします。</string>
   <string name="assistant_reading_title">測定値を追加</string>
   <string name="assistant_reading_desc">私たちが時間をかけてあなたの血糖値を追跡できるように、血糖値の測定値を定期的に追加するようにしてください。</string>
@@ -198,6 +197,12 @@
   <string name="dialog_add_exercisetype_23">レスリング</string>
   <string name="dialog_add_exercisetype_24">ハイキング</string>
   <string name="dialog_add_exercisetype_25">庭仕事</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">炭水化物:</string>
   <string name="dialog_addfood_protein">タンパク質:</string>
@@ -312,7 +317,6 @@
   <string name="history">履歴</string>
   <string name="save">保存</string>
   <string name="activity_reminders_title">アラーム</string>
-  <string name="reminders_notification_text">血糖値を記録する時間です!</string>
   <string name="reminders_notification_action">測定値を追加</string>
   <string name="glucosio_activity_reminders_empty">アラームは設定されていません。ここで新しいアラームを追加します。</string>
 </resources>
