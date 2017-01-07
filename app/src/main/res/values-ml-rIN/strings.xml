@@ -91,4 +91,5 @@
   <!-- Food Entry Labels -->
   <!-- About Glucosio Strings -->
   <string name="dialog_add_weight">തൂക്കം</string>
+  <string name="title_activity_add_glucose">ഗ്ലൂക്കോസ് ചേര്‍ക്കുക</string>
 </resources>
