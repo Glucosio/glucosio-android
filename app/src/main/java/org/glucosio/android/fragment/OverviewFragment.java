@@ -285,7 +285,7 @@ public class OverviewFragment extends Fragment implements OverviewView {
         XAxis xAxis = chart.getXAxis();
         xAxis.setDrawGridLines(false);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setTextColor(getResources().getColor(R.color.glucosio_text_light));
+        xAxis.setTextColor(ContextCompat.getColor(getActivity(), R.color.glucosio_text_light));
         xAxis.setAvoidFirstLastClipping(true);
 
         int minGlucoseValue = presenter.getGlucoseMinValue();
@@ -303,13 +303,13 @@ public class OverviewFragment extends Fragment implements OverviewView {
         }
 
         ll1.setLineWidth(0.8f);
-        ll1.setLineColor(getResources().getColor(R.color.glucosio_reading_low));
+        ll1.setLineColor(ContextCompat.getColor(getActivity(), R.color.glucosio_reading_low));
 
         ll2.setLineWidth(0.8f);
-        ll2.setLineColor(getResources().getColor(R.color.glucosio_reading_high));
+        ll2.setLineColor(ContextCompat.getColor(getActivity(), R.color.glucosio_reading_high));
 
         YAxis leftAxis = chart.getAxisLeft();
-        leftAxis.setTextColor(getResources().getColor(R.color.glucosio_text_light));
+        leftAxis.setTextColor(ContextCompat.getColor(getActivity(), R.color.glucosio_text_light));
         leftAxis.setStartAtZero(false);
         leftAxis.disableGridDashedLine();
         leftAxis.setDrawGridLines(false);
@@ -463,7 +463,7 @@ public class OverviewFragment extends Fragment implements OverviewView {
         }
 
         return new LineData(xVals,
-                generateLineDataSet(yVals, getResources().getColor(R.color.glucosio_pink)));
+                generateLineDataSet(yVals, ContextCompat.getColor(getActivity(), R.color.glucosio_pink)));
     }
 
     private LineData generateA1cData() {
@@ -483,7 +483,7 @@ public class OverviewFragment extends Fragment implements OverviewView {
 
         // create a data object with the datasets
         return new LineData(xVals,
-                generateLineDataSet(yVals, getResources().getColor(R.color.glucosio_fab_HB1AC)));
+                generateLineDataSet(yVals, ContextCompat.getColor(getActivity(), R.color.glucosio_fab_HB1AC)));
     }
 
     private LineData generateKetonesData() {
@@ -503,7 +503,7 @@ public class OverviewFragment extends Fragment implements OverviewView {
 
         // create a data object with the datasets
         return new LineData(xVals,
-                generateLineDataSet(yVals, getResources().getColor(R.color.glucosio_fab_ketones)));
+                generateLineDataSet(yVals, ContextCompat.getColor(getActivity(), R.color.glucosio_fab_ketones)));
     }
 
     private LineData generateWeightData() {
@@ -523,7 +523,7 @@ public class OverviewFragment extends Fragment implements OverviewView {
 
         // create a data object with the datasets
         return new LineData(xVals,
-                generateLineDataSet(yVals, getResources().getColor(R.color.glucosio_fab_weight)));
+                generateLineDataSet(yVals, ContextCompat.getColor(getActivity(), R.color.glucosio_fab_weight)));
     }
 
     private LineData generatePressureData() {
@@ -548,8 +548,8 @@ public class OverviewFragment extends Fragment implements OverviewView {
         }
 
         LineData data = new LineData(xVals,
-                generateLineDataSet(yValsMax, getResources().getColor(R.color.glucosio_fab_pressure)));
-        data.addDataSet(generateLineDataSet(yValsMin, getResources().getColor(R.color.glucosio_fab_pressure)));
+                generateLineDataSet(yValsMax, ContextCompat.getColor(getActivity(), R.color.glucosio_fab_pressure)));
+        data.addDataSet(generateLineDataSet(yValsMin, ContextCompat.getColor(getActivity(), R.color.glucosio_fab_pressure)));
         // create a data object with the datasets
         return data;
     }
@@ -571,7 +571,7 @@ public class OverviewFragment extends Fragment implements OverviewView {
 
         // create a data object with the datasets
         return new LineData(xVals,
-                generateLineDataSet(yVals, getResources().getColor(R.color.glucosio_fab_cholesterol)));
+                generateLineDataSet(yVals, ContextCompat.getColor(getActivity(), R.color.glucosio_fab_cholesterol)));
     }
 
     private LineDataSet generateLineDataSet(List<Entry> yVals, int color) {
@@ -579,7 +579,7 @@ public class OverviewFragment extends Fragment implements OverviewView {
         LineDataSet set1 = new LineDataSet(yVals, "");
         List<Integer> colors = new ArrayList<>();
 
-        if (color == getResources().getColor(R.color.glucosio_pink)) {
+        if (color == ContextCompat.getColor(getActivity(), R.color.glucosio_pink)) {
             for (Entry yVal : yVals) {
                 if (yVal.getVal() == (0)) {
                     colors.add(Color.TRANSPARENT);
@@ -601,8 +601,8 @@ public class OverviewFragment extends Fragment implements OverviewView {
         set1.setDrawFilled(true);
         set1.setValueTextSize(0);
         set1.setValueTextColor(Color.parseColor("#FFFFFF"));
-        set1.setFillDrawable(getResources().getDrawable(R.drawable.graph_gradient));
-        set1.setHighLightColor(getResources().getColor(R.color.glucosio_gray_light));
+        set1.setFillDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.graph_gradient));
+        set1.setHighLightColor(ContextCompat.getColor(getActivity(), R.color.glucosio_gray_light));
         set1.setCubicIntensity(0.2f);
 
         // TODO: Change this to true when a fix is available
