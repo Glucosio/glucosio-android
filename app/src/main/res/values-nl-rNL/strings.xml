@@ -260,7 +260,7 @@
   <string name="fab_pressure">Bloeddruk</string>
   <string name="fab_cholesterol">Cholesterolspiegel</string>
   <string name="fab_HB1AC">HbA1c-uitlezing</string>
-  <string name="fab_glucose">Bloedsuikerspiegel</string>
+  <string name="fab_glucose">Bloedsuiker&#173;spiegel</string>
   <string name="dialog_error_duplicate">U hebt al een vermelding voor deze tijd. Verwijder deze voordat u een correctie toevoegt.</string>
   <string name="freestylelibre_nfc_ready">Houd uw telefoon voor de sensor en beweeg niet totdat deze trilt.</string>
   <string name="freestylelibre_nfc_not_supported">Dit apparaat ondersteunt geen NFC.</string>
