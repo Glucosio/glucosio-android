@@ -226,7 +226,7 @@
   <string name="dialog_export_all">Alles exporteren</string>
   <string name="share_using">Delen via</string>
   <string name="share_subject">Glucosio-gegevens</string>
-  <string name="activity_export_snackbar_1">"Exporteren"</string>
+  <string name="activity_export_snackbar_1">"Exporteren:"</string>
   <string name="activity_export_snackbar_2">uitlezingen</string>
   <string name="fragment_overview_permission_storage">Glucosio heeft een opslagmachtiging nodig om een schermafbeelding op te slaan</string>
   <string name="fragment_overview_graph_export_true">Schermafbeelding opgeslagen naar galerij</string>
