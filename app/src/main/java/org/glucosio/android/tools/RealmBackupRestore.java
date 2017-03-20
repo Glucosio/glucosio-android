@@ -44,21 +44,16 @@ public class RealmBackupRestore {
 
         Log.d(TAG, "Realm DB Path = " + realm.getPath());
 
-        try {
-            EXPORT_REALM_PATH.mkdirs();
+        EXPORT_REALM_PATH.mkdirs();
 
-            // create a backup file
-            exportRealmFile = new File(EXPORT_REALM_PATH, EXPORT_REALM_FILE_NAME);
+        // create a backup file
+        exportRealmFile = new File(EXPORT_REALM_PATH, EXPORT_REALM_FILE_NAME);
 
-            // if backup file already exists, delete it
-            exportRealmFile.delete();
+        // if backup file already exists, delete it
+        exportRealmFile.delete();
 
-            // copy current realm to backup file
-            realm.writeCopyTo(exportRealmFile);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        // copy current realm to backup file
+        realm.writeCopyTo(exportRealmFile);
 
         String msg = "File exported to Path: " + EXPORT_REALM_PATH + "/" + EXPORT_REALM_FILE_NAME;
         Toast.makeText(activity.getApplicationContext(), msg, Toast.LENGTH_LONG).show();
