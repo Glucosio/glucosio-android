@@ -33,6 +33,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -50,6 +51,7 @@ import android.widget.TextView;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.LimitLine;
 import com.github.mikephil.charting.components.XAxis;
@@ -57,6 +59,7 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
@@ -92,6 +95,8 @@ public class OverviewFragment extends Fragment implements OverviewView {
     private CheckBox graphCheckboxWeight;
     private CheckBox graphCheckboxPressure;
     private View mFragmentView;
+
+    private List<String> xValues = new ArrayList<>();
 
 
     public static OverviewFragment newInstance() {
@@ -268,21 +273,8 @@ public class OverviewFragment extends Fragment implements OverviewView {
             }
         });
 
-        graphSpinnerRange.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (!presenter.isdbEmpty()) {
-                    setData();
-                }
-            }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        XAxis xAxis = chart.getXAxis();
+        final XAxis xAxis = chart.getXAxis();
         xAxis.setDrawGridLines(false);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setTextColor(getResources().getColor(R.color.glucosio_text_light));
@@ -319,7 +311,6 @@ public class OverviewFragment extends Fragment implements OverviewView {
 
         chart.getAxisRight().setEnabled(false);
         chart.setBackgroundColor(Color.parseColor("#FFFFFF"));
-        chart.setDescription("");
         chart.setGridBackgroundColor(Color.parseColor("#FFFFFF"));
         if (!presenter.isdbEmpty()) {
             setData();
@@ -389,7 +380,9 @@ public class OverviewFragment extends Fragment implements OverviewView {
             data = generateCholesterolData();
         }
 
+
         chart.setData(data);
+        Log.e("glucosio", "DATA2 is "  + data.getXMax());
         chart.setPinchZoom(true);
         chart.setHardwareAccelerationEnabled(true);
         chart.animateY(1000, Easing.EasingOption.EaseOutCubic);
@@ -397,23 +390,45 @@ public class OverviewFragment extends Fragment implements OverviewView {
         chart.notifyDataSetChanged();
         chart.fitScreen();
         chart.setVisibleXRangeMaximum(20);
-        chart.moveViewToX(data.getXValCount());
+        chart.moveViewToX(data.getXMax());
+        Log.e("glucosio", "Size is: " + xValues.size());
+
+        XAxis xAxis = chart.getXAxis();
+        xAxis.setValueFormatter(null);
+
+        final LineData finalData = data;
+        IAxisValueFormatter formatter = new IAxisValueFormatter() {
+
+            @Override
+            public String getFormattedValue(float value, AxisBase axis) {
+                Log.e("glucosio", "Values is " + value + "; Size is: " + xValues.size());
+                // Dirty fix for a library bug. I have to report it online because 'value' returns old values even if the dataset is changed
+                if (value < xValues.size()) {
+                    return xValues.get((int) value);
+                } else {
+                    return "";
+                }
+            }
+        };
+        xAxis.setGranularity(1f); // minimum axis-step (interval) is 1
+        xAxis.setValueFormatter(formatter);
+
     }
 
     private LineData generateGlucoseData() {
         List<String> xVals = new ArrayList<>();
-        List<Entry> yVals = new ArrayList<>();
+        List<Entry> vals = new ArrayList<>();
 
         if (graphSpinnerRange.getSelectedItemPosition() == 0) {
             // Day view
             for (int i = 0; i < presenter.getGlucoseReadings().size(); i++) {
                 if (presenter.getUnitMeasuerement().equals("mg/dL")) {
                     float val = Float.parseFloat(presenter.getGlucoseReadings().get(i).toString());
-                    yVals.add(new Entry(val, i));
+                    vals.add(new Entry(i, val));
                 } else {
                     double val = GlucosioConverter.glucoseToMmolL(Double.parseDouble(presenter.getGlucoseReadings().get(i).toString()));
                     float converted = (float) val;
-                    yVals.add(new Entry(converted, i));
+                    vals.add(new Entry(i, converted));
                 }
             }
         } else if (graphSpinnerRange.getSelectedItemPosition() == 1) {
@@ -421,11 +436,11 @@ public class OverviewFragment extends Fragment implements OverviewView {
             for (int i = 0; i < presenter.getGlucoseReadingsWeek().size(); i++) {
                 if (presenter.getUnitMeasuerement().equals("mg/dL")) {
                     float val = Float.parseFloat(presenter.getGlucoseReadingsWeek().get(i) + "");
-                    yVals.add(new Entry(val, i));
+                    vals.add(new Entry(i, val));
                 } else {
                     double val = GlucosioConverter.glucoseToMmolL(Double.parseDouble(presenter.getGlucoseReadingsWeek().get(i) + ""));
                     float converted = (float) val;
-                    yVals.add(new Entry(converted, i));
+                    vals.add(new Entry(i, converted));
                 }
             }
         } else {
@@ -433,11 +448,11 @@ public class OverviewFragment extends Fragment implements OverviewView {
             for (int i = 0; i < presenter.getGlucoseReadingsMonth().size(); i++) {
                 if (presenter.getUnitMeasuerement().equals("mg/dL")) {
                     float val = Float.parseFloat(presenter.getGlucoseReadingsMonth().get(i) + "");
-                    yVals.add(new Entry(val, i));
+                    vals.add(new Entry(i, val));
                 } else {
                     double val = GlucosioConverter.glucoseToMmolL(Double.parseDouble(presenter.getGlucoseReadingsMonth().get(i) + ""));
                     float converted = (float) val;
-                    yVals.add(new Entry(converted, i));
+                    vals.add(new Entry(i, converted));
                 }
             }
         }
@@ -462,8 +477,10 @@ public class OverviewFragment extends Fragment implements OverviewView {
             }
         }
 
-        return new LineData(xVals,
-                generateLineDataSet(yVals, getResources().getColor(R.color.glucosio_pink)));
+        xValues = xVals;
+        LineData data = new LineData(generateLineDataSet(vals, getResources().getColor(R.color.glucosio_pink)));
+        Log.e("glucosio", "DATA1 is " + data.getXMax());
+        return data;
     }
 
     private LineData generateA1cData() {
@@ -482,8 +499,7 @@ public class OverviewFragment extends Fragment implements OverviewView {
         }
 
         // create a data object with the datasets
-        return new LineData(xVals,
-                generateLineDataSet(yVals, getResources().getColor(R.color.glucosio_fab_HB1AC)));
+        return new LineData(generateLineDataSet(yVals, getResources().getColor(R.color.glucosio_fab_HB1AC)));
     }
 
     private LineData generateKetonesData() {
@@ -502,8 +518,7 @@ public class OverviewFragment extends Fragment implements OverviewView {
         }
 
         // create a data object with the datasets
-        return new LineData(xVals,
-                generateLineDataSet(yVals, getResources().getColor(R.color.glucosio_fab_ketones)));
+        return new LineData(generateLineDataSet(yVals, getResources().getColor(R.color.glucosio_fab_ketones)));
     }
 
     private LineData generateWeightData() {
@@ -522,8 +537,7 @@ public class OverviewFragment extends Fragment implements OverviewView {
         }
 
         // create a data object with the datasets
-        return new LineData(xVals,
-                generateLineDataSet(yVals, getResources().getColor(R.color.glucosio_fab_weight)));
+        return new LineData(generateLineDataSet(yVals, getResources().getColor(R.color.glucosio_fab_weight)));
     }
 
     private LineData generatePressureData() {
@@ -547,8 +561,7 @@ public class OverviewFragment extends Fragment implements OverviewView {
             xVals.add(date + "");
         }
 
-        LineData data = new LineData(xVals,
-                generateLineDataSet(yValsMax, getResources().getColor(R.color.glucosio_fab_pressure)));
+        LineData data = new LineData(generateLineDataSet(yValsMax, getResources().getColor(R.color.glucosio_fab_pressure)));
         data.addDataSet(generateLineDataSet(yValsMin, getResources().getColor(R.color.glucosio_fab_pressure)));
         // create a data object with the datasets
         return data;
@@ -570,18 +583,17 @@ public class OverviewFragment extends Fragment implements OverviewView {
         }
 
         // create a data object with the datasets
-        return new LineData(xVals,
-                generateLineDataSet(yVals, getResources().getColor(R.color.glucosio_fab_cholesterol)));
+        return new LineData(generateLineDataSet(yVals, getResources().getColor(R.color.glucosio_fab_cholesterol)));
     }
 
-    private LineDataSet generateLineDataSet(List<Entry> yVals, int color) {
+    private LineDataSet generateLineDataSet(List<Entry> vals, int color) {
         // create a dataset and give it a type
-        LineDataSet set1 = new LineDataSet(yVals, "");
+        LineDataSet set1 = new LineDataSet(vals, "");
         List<Integer> colors = new ArrayList<>();
 
         if (color == getResources().getColor(R.color.glucosio_pink)) {
-            for (Entry yVal : yVals) {
-                if (yVal.getVal() == (0)) {
+            for (Entry val : vals) {
+                if (val.getY() == (0)) {
                     colors.add(Color.TRANSPARENT);
                 } else {
                     colors.add(color);
@@ -605,17 +617,13 @@ public class OverviewFragment extends Fragment implements OverviewView {
         set1.setHighLightColor(getResources().getColor(R.color.glucosio_gray_light));
         set1.setCubicIntensity(0.2f);
 
-        // TODO: Change this to true when a fix is available
-        // https://github.com/PhilJay/MPAndroidChart/issues/1541
-        set1.setDrawCubic(false);
-
         if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.JELLY_BEAN_MR2) {
             set1.setDrawFilled(false);
             set1.setLineWidth(2f);
             set1.setCircleSize(4f);
             set1.setDrawCircleHole(true);
         }
-
+        Log.e("glucosio", "DATA is " + set1.getXMax());
         return set1;
     }
 
