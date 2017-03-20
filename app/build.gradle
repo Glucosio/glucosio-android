@@ -98,7 +98,7 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
 
     // Android Support libraries
-    compile 'com.google.android.support:wearable:1.4.0'
+    compile 'com.google.android.support:wearable:2.0.0'
 
     compile "com.android.support:appcompat-v7:${androidSupportVer}"
     compile "com.android.support:design:${androidSupportVer}"
