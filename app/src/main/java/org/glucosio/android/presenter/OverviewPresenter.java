@@ -159,12 +159,7 @@ public class OverviewPresenter {
     }
 
     public ArrayList<Double> getA1cReadings() {
-        final List<HB1ACReading> a1cReadings = dB.getHB1ACReadings();
-        ArrayList<Double> finalArrayList = new ArrayList<>();
-        for (int i = 0; i < a1cReadings.size(); i++) {
-            finalArrayList.add(a1cReadings.get(i).getReading());
-        }
-        return finalArrayList;
+        return dB.getHB1ACReadingAsArray();
     }
 
     public ArrayList<String> getA1cReadingsDateTime() {

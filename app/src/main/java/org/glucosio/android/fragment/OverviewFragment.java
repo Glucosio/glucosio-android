@@ -382,7 +382,7 @@ public class OverviewFragment extends Fragment implements OverviewView {
 
 
         chart.setData(data);
-        Log.e("glucosio", "DATA2 is "  + data.getXMax());
+        Log.e("glucosio", "DATA2 is "  + data.getEntryCount());
         chart.setPinchZoom(true);
         chart.setHardwareAccelerationEnabled(true);
         chart.animateY(1000, Easing.EasingOption.EaseOutCubic);
@@ -403,7 +403,7 @@ public class OverviewFragment extends Fragment implements OverviewView {
             public String getFormattedValue(float value, AxisBase axis) {
                 Log.e("glucosio", "Values is " + value + "; Size is: " + xValues.size());
                 // Dirty fix for a library bug. I have to report it online because 'value' returns old values even if the dataset is changed
-                if (value < xValues.size()) {
+                if (value < xValues.size() && value > 0) {
                     return xValues.get((int) value);
                 } else {
                     return "";
@@ -487,17 +487,20 @@ public class OverviewFragment extends Fragment implements OverviewView {
         ArrayList<String> xVals = new ArrayList<>();
         ArrayList<Entry> yVals = new ArrayList<>();
 
-        for (int i = 0; i < presenter.getA1cReadings().size(); i++) {
+        int k = 0;
+        for (int i = presenter.getA1cReadings().size() - 1; i >= 0; i--) {
             float val = Float.parseFloat(presenter.getA1cReadings().get(i).toString());
-            yVals.add(new Entry(val, i));
+            Log.e("glucosio", "ADDING " + val);
+            yVals.add(new Entry(k, val));
+            k++;
         }
 
-        xVals.clear();
-        for (int i = 0; i < presenter.getA1cReadingsDateTime().size(); i++) {
+        for (int i = presenter.getA1cReadingsDateTime().size() - 1; i >= 0; i--) {
             String date = presenter.convertDate(presenter.getA1cReadingsDateTime().get(i));
             xVals.add(date + "");
         }
 
+        xValues = xVals;
         // create a data object with the datasets
         return new LineData(generateLineDataSet(yVals, getResources().getColor(R.color.glucosio_fab_HB1AC)));
     }
@@ -623,7 +626,7 @@ public class OverviewFragment extends Fragment implements OverviewView {
             set1.setCircleSize(4f);
             set1.setDrawCircleHole(true);
         }
-        Log.e("glucosio", "DATA is " + set1.getXMax());
+        Log.e("glucosio", "DATA is " + set1.getEntryCount());
         return set1;
     }
 
