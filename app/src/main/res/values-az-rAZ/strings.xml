@@ -44,6 +44,7 @@
   <string name="helloactivity_spinner_diabetes_gdm">Hamiləlik</string>
   <string name="helloactivity_spinner_diabetes_lada">LADA</string>
   <string name="helloactivity_spinner_preferred_glucose_unit">Üstünlük verilən qlükoza vahidi</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit_2">mmol/L</string>
   <string name="preferences_spinner_preferred_a1c_unit">Üstünlük verilən HbA1c vahidi</string>
   <string name="preferences_spinner_preferred_a1c_unit_1">faiz</string>
   <string name="preferences_spinner_preferred_weight_unit">Üstünlük verilən çəki vahidi</string>
@@ -135,6 +136,7 @@
   <string name="assistant_categories_desc">Glucosio, standart olaraq qlükoza kateqoriyalara bölünmüş halda gəlir, amma siz nizamlamalarda şəxsi kateqoriyalarınızı yarada bilərsiniz.</string>
   <string name="assistant_check_title">Buranı tez-tez yoxla</string>
   <string name="assistant_check_desc">Glucosio köməkçisi müntəzəm məsləhətlər verir və yaxşılaşmağa davam edəcək, buna görə hər zaman Glucosio təcrübənizi yaxşılaşdıracaq və digər faydalı şeylər üçün buranı yoxlayın.</string>
+  <string name="assistant_feedback_title">Geri bildiriş göndər</string>
   <string name="assistant_feedback_desc">Əgər siz hər hansı texniki problem aşkar etsəniz və ya Glucosio ilə əks əlaqə yaratmaq istəsəniz, Glucosio-u yaxşılaşdırmağa kömək etmək üçün nizamlamalardan bizə təqdim etməyinizi xahiş edirik.</string>
   <string name="assistant_reading_title">Oxuma əlavə et</string>
   <string name="assistant_reading_desc">Qlükozanın öz ifadələrini daim əlavə etdiyinizə əmin olun. Buna görə sizə uzun vaxt ərzində qlükozanın səviyyələrini izləməyə kömək edə bilərik.</string>
@@ -254,6 +256,7 @@
   <string name="title_activity_add_pressure">Qan təzyiqi əlavə et</string>
   <string name="title_activity_add_pressure_edit">Qan təzyiqi redaktə et</string>
   <string name="fab_weight">Çəki</string>
+  <string name="fab_ketones">Ketonlar</string>
   <string name="fab_pressure">Qan təzyiqi</string>
   <string name="fab_cholesterol">Xalestrol səviyyəsi</string>
   <string name="fab_HB1AC">Hba1C Məlumatı</string>
@@ -269,6 +272,7 @@
   <string name="overview_hb1ac">HbA1c:</string>
   <string name="dialog_add_glucose_freestylelibre_added">Sizin FreeStyle Libre®-izdən əlavə edin</string>
   <string name="activity_converter_a1c_glucose">ORTA QAN QLÜKOZA SƏVİYYƏSİ</string>
+  <string name="activity_converter_a1c">Hba1C</string>
   <string name="activity_converter_title">HbA1c Kalkulyatoru</string>
   <string name="activity_converter_save">YADDA SAXLA</string>
   <string name="menu_support">Dəstək</string>
@@ -309,10 +313,13 @@
   <string name="activity_main_dialog_csv_title">CSV fayla ixrac et</string>
   <string name="activity_backup_drive_button_open_drive">Drive-da idarə et</string>
   <string name="mmol_mol">mmol/mol</string>
+  <string name="mmol_L">mmol/L</string>
+  <string name="mg_dL">mg/dL</string>
   <string name="preferences_graph_old">Köhnə qrafikə qayıt</string>
   <string name="history">tarix</string>
   <string name="save">yadda saxla</string>
   <string name="activity_reminders_title">Xatırlatmalar</string>
   <string name="reminders_notification_action">Məlumat əlavə et</string>
   <string name="glucosio_activity_reminders_empty">Xatırlatma əlavə edilməyib. Yeni xatırlatma əlavə et.</string>
+  <string name="reminder_item_title_generic2">Sizin qlükoza səviyyənizi qeyd etmək vaxtıdır!</string>
 </resources>

@@ -136,6 +136,7 @@
   <string name="assistant_categories_desc">Glucosio는 포도당 입력에 대한 디폴트 카테고리를 제공하지만 개별적인 요구에 맞추기 위해 설정에서 사용자정의 카테고리를 생성할 수 있습니다.</string>
   <string name="assistant_check_title">여기에서 자주 확인</string>
   <string name="assistant_check_desc">Glucosio 보조는 정기적인 팁을 제공하며 지속적으로 개선되고 있습니다. 따라서 Glucosio 사용경험을 개선하고 다른 유용한 팁을 위해 취할 수 있는 유용한 작업에 대해 여기를 항상 확인해 주세요.</string>
+  <string name="assistant_feedback_title">피드백 보내기</string>
   <string name="assistant_feedback_desc">기술적인 이슈를 찾거나 Glucosio에 대한 피드백이 있을 때 Glucosio를 개선하도록 돕기 위해 설정 메뉴에서 제출해 주시기를 권장합니다.</string>
   <string name="assistant_reading_title">읽기 추가</string>
   <string name="assistant_reading_desc">주기적으로 포도당 읽기를 추가하여 시간이 지남에 따른 포도당 레벨을 추적하는 데 돕도록 해야 합니다.</string>
@@ -153,6 +154,7 @@
   <string name="invitation_message">당뇨 관리 및 연구를 위한 오픈 소스 앱인 Glucosio를 사용해 보세요.</string>
   <string name="invitation_cta">Glucosio를 사용해 보세요</string>
   <string name="title_activity_backup_drive">구글 드라이브 백업</string>
+  <string name="activity_main_dialog_backup_export_title">백업 및 내보내기</string>
   <string name="preferences_privacy">개인 정보</string>
   <string name="helloactivity_textview_tos">Glucosio를 사용함으로써 다음 사항을 동의합니다</string>
   <string name="preferences_backup_google_drive">구글 드라이브</string>
@@ -312,10 +314,12 @@
   <string name="activity_backup_drive_button_open_drive">드라이브 관리</string>
   <string name="mmol_mol">mmol/L</string>
   <string name="mmol_L">mmol/L</string>
+  <string name="mg_dL">mg/dL</string>
   <string name="preferences_graph_old">이전의 그래프로 되돌리기</string>
   <string name="history">히스토리</string>
   <string name="save">저장</string>
   <string name="activity_reminders_title">알림</string>
   <string name="reminders_notification_action">수치 추가</string>
   <string name="glucosio_activity_reminders_empty">설정된 알람이 없습니다. 새로운 알람을 등록하세요.</string>
+  <string name="reminder_item_title_generic2">포도당 수치를 기록할 시간입니다!</string>
 </resources>
