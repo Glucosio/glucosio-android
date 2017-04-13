@@ -40,7 +40,6 @@ import android.support.design.widget.TabLayout;
 import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
@@ -78,7 +77,7 @@ import java.util.Calendar;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
-public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, ExportView {
+public class MainActivity extends ParentActivity implements DatePickerDialog.OnDateSetListener, ExportView {
 
     private static final String INTENT_EXTRA_DROPDOWN = "history_dropdown";
     private static final int REQUEST_INVITE = 1;

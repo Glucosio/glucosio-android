@@ -43,7 +43,7 @@ import butterknife.OnEditorAction;
 import butterknife.OnTextChanged;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class A1cCalculatorActivity extends AppCompatActivity {
+public class A1cCalculatorActivity extends ParentActivity {
 
     @BindView(R.id.activity_converter_a1c_glucose_unit)
     TextView glucoseUnit;

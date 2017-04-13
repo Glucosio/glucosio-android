@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_app_lock"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+        android:weightSum="1">
+
+        <TextView
+            android:text="@string/PIN_Message"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:id="@+id/textViewPinMessage"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:paddingTop="100dp"
+            android:layout_weight="0.25" />
+
+    <EditText
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:inputType="number"
+    android:ems="10"
+    android:id="@+id/editTextPinValue"
+        android:textAlignment="center"
+        android:singleLine="true"
+        android:layout_gravity="center_horizontal"
+        android:textSize="24sp" />
+
+    <Button
+        android:text="@string/PIN_Submit_Button_Message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnSubmit"
+        android:layout_weight="0.06"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:textSize="18sp" />
+</LinearLayout>

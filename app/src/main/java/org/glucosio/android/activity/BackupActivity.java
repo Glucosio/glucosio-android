@@ -81,7 +81,7 @@ import java.util.Date;
 import io.realm.Realm;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class BackupActivity extends AppCompatActivity {
+public class BackupActivity extends ParentActivity {
     private static final int REQUEST_CODE_PICKER = 2;
     private static final int REQUEST_CODE_PICKER_FOLDER = 4;
 

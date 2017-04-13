@@ -57,7 +57,7 @@ import java.util.Locale;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class PreferencesActivity extends AppCompatActivity {
+public class PreferencesActivity extends ParentActivity {
 
     @NonNull
     private static String[] getEntryValues(List<String> list) {

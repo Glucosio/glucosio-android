@@ -26,7 +26,7 @@ import org.glucosio.android.tools.AnimationTools;
 
 import java.util.Calendar;
 
-public class RemindersActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
+public class RemindersActivity extends ParentActivity implements TimePickerDialog.OnTimeSetListener {
 
     private FloatingActionButton addFab;
     private RemindersPresenter presenter;

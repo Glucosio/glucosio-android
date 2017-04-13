@@ -38,7 +38,7 @@ import org.glucosio.android.presenter.ExternalViewPresenter;
 import org.glucosio.android.tools.network.BasicNetworkConnectivity;
 import org.glucosio.android.tools.network.GlucosioExternalLinks;
 
-public class ExternalLinkActivity extends AppCompatActivity implements ExternalViewPresenter.View {
+public class ExternalLinkActivity extends ParentActivity implements ExternalViewPresenter.View {
 
   private static final String TITLE_KEY = "TITLE_KEY";
   private static final String URL_KEY = "URL_KEY";
