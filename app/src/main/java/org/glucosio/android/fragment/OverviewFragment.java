@@ -387,7 +387,6 @@ public class OverviewFragment extends Fragment implements OverviewView {
         } else {
             chart.setData(null);
         }
-        Log.e("glucosio", "DATA2 is "  + data.getEntryCount());
         chart.setPinchZoom(true);
         chart.setHardwareAccelerationEnabled(true);
         chart.setNoDataTextColor(getResources().getColor(R.color.glucosio_text));
@@ -398,17 +397,14 @@ public class OverviewFragment extends Fragment implements OverviewView {
         chart.setDescription(null);
         chart.setVisibleXRangeMaximum(20);
         chart.moveViewToX(data.getXMax());
-        Log.e("glucosio", "Size is: " + xValues.size());
 
         XAxis xAxis = chart.getXAxis();
-        xAxis.setValueFormatter(null);
 
         final LineData finalData = data;
         IAxisValueFormatter formatter = new IAxisValueFormatter() {
 
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
-                Log.e("glucosio", "Values is " + value + "; Size is: " + xValues.size());
                 // Dirty fix for a library bug. I have to report it online because 'value' returns old values even if the dataset is changed
                 if (value < xValues.size() && value > 0) {
                     return xValues.get((int) value);
@@ -424,42 +420,46 @@ public class OverviewFragment extends Fragment implements OverviewView {
 
     private LineData generateGlucoseData() {
         List<String> xVals = new ArrayList<>();
-        List<Entry> vals = new ArrayList<>();
+        List<Entry> yVals = new ArrayList<>();
 
         if (graphSpinnerRange.getSelectedItemPosition() == 0) {
+            List<Integer> glucosioReadings = presenter.getGlucoseReadings();
+
             // Day view
-            for (int i = 0; i < presenter.getGlucoseReadings().size(); i++) {
+            for (int i = 0; i < glucosioReadings.size(); i++) {
                 if (presenter.getUnitMeasuerement().equals("mg/dL")) {
-                    float val = Float.parseFloat(presenter.getGlucoseReadings().get(i).toString());
-                    vals.add(new Entry(i, val));
+                    float val = Float.parseFloat(glucosioReadings.get(i).toString());
+                    yVals.add(new Entry(i, val));
                 } else {
-                    double val = GlucosioConverter.glucoseToMmolL(Double.parseDouble(presenter.getGlucoseReadings().get(i).toString()));
+                    double val = GlucosioConverter.glucoseToMmolL(Double.parseDouble(glucosioReadings.get(i).toString()));
                     float converted = (float) val;
-                    vals.add(new Entry(i, converted));
+                    yVals.add(new Entry(i, converted));
                 }
             }
         } else if (graphSpinnerRange.getSelectedItemPosition() == 1) {
+            List<Integer> glucosioReadingsWeek = presenter.getGlucoseReadingsWeek();
             // Week view
             for (int i = 0; i < presenter.getGlucoseReadingsWeek().size(); i++) {
                 if (presenter.getUnitMeasuerement().equals("mg/dL")) {
-                    float val = Float.parseFloat(presenter.getGlucoseReadingsWeek().get(i) + "");
-                    vals.add(new Entry(i, val));
+                    float val = Float.parseFloat(glucosioReadingsWeek.get(i) + "");
+                    yVals.add(new Entry(i, val));
                 } else {
-                    double val = GlucosioConverter.glucoseToMmolL(Double.parseDouble(presenter.getGlucoseReadingsWeek().get(i) + ""));
+                    double val = GlucosioConverter.glucoseToMmolL(Double.parseDouble(glucosioReadingsWeek.get(i) + ""));
                     float converted = (float) val;
-                    vals.add(new Entry(i, converted));
+                    yVals.add(new Entry(i, converted));
                 }
             }
         } else {
+            List<Integer> glucosioReadingsMonth = presenter.getGlucoseReadingsMonth();
             // Month view
             for (int i = 0; i < presenter.getGlucoseReadingsMonth().size(); i++) {
                 if (presenter.getUnitMeasuerement().equals("mg/dL")) {
-                    float val = Float.parseFloat(presenter.getGlucoseReadingsMonth().get(i) + "");
-                    vals.add(new Entry(i, val));
+                    float val = Float.parseFloat(glucosioReadingsMonth.get(i) + "");
+                    yVals.add(new Entry(i, val));
                 } else {
-                    double val = GlucosioConverter.glucoseToMmolL(Double.parseDouble(presenter.getGlucoseReadingsMonth().get(i) + ""));
+                    double val = GlucosioConverter.glucoseToMmolL(Double.parseDouble(glucosioReadingsMonth.get(i) + ""));
                     float converted = (float) val;
-                    vals.add(new Entry(i, converted));
+                    yVals.add(new Entry(i, converted));
                 }
             }
         }
@@ -468,25 +468,24 @@ public class OverviewFragment extends Fragment implements OverviewView {
             // Day view
             for (int i = 0; i < presenter.getGraphGlucoseDateTime().size(); i++) {
                 String date = presenter.convertDate(presenter.getGraphGlucoseDateTime().get(i));
-                xVals.add(date + "");
+                xVals.add(date);
             }
         } else if (graphSpinnerRange.getSelectedItemPosition() == 1) {
             // Week view
             for (int i = 0; i < presenter.getGlucoseReadingsWeek().size(); i++) {
                 String date = presenter.convertDate(presenter.getGlucoseDatetimeWeek().get(i));
-                xVals.add(date + "");
+                xVals.add(date);
             }
         } else {
             // Month view
             for (int i = 0; i < presenter.getGlucoseReadingsMonth().size(); i++) {
                 String date = presenter.convertDateToMonth(presenter.getGlucoseDatetimeMonth().get(i));
-                xVals.add(date + "");
+                xVals.add(date);
             }
         }
 
         xValues = xVals;
-        LineData data = new LineData(generateLineDataSet(vals, getResources().getColor(R.color.glucosio_pink)));
-        Log.e("glucosio", "DATA1 is " + data.getXMax());
+        LineData data = new LineData(generateLineDataSet(yVals, getResources().getColor(R.color.glucosio_pink)));
         return data;
     }
 
@@ -497,14 +496,13 @@ public class OverviewFragment extends Fragment implements OverviewView {
         int k = 0;
         for (int i = presenter.getA1cReadings().size() - 1; i >= 0; i--) {
             float val = Float.parseFloat(presenter.getA1cReadings().get(i).toString());
-            Log.e("glucosio", "ADDING " + val);
             yVals.add(new Entry(k, val));
             k++;
         }
 
         for (int i = presenter.getA1cReadingsDateTime().size() - 1; i >= 0; i--) {
             String date = presenter.convertDate(presenter.getA1cReadingsDateTime().get(i));
-            xVals.add(date + "");
+            xVals.add(date);
         }
 
         xValues = xVals;
@@ -525,7 +523,7 @@ public class OverviewFragment extends Fragment implements OverviewView {
 
         for (int i = presenter.getKetonesReadingsDateTime().size() - 1; i >= 0; i--) {
             String date = presenter.convertDate(presenter.getKetonesReadingsDateTime().get(i));
-            xVals.add(date + "");
+            xVals.add(date);
         }
 
         xValues = xVals;
@@ -546,7 +544,7 @@ public class OverviewFragment extends Fragment implements OverviewView {
 
         for (int i = presenter.getWeightReadingsDateTime().size() - 1; i >= 0; i--) {
             String date = presenter.convertDate(presenter.getWeightReadingsDateTime().get(i));
-            xVals.add(date + "");
+            xVals.add(date);
         }
 
         xValues = xVals;
@@ -575,7 +573,7 @@ public class OverviewFragment extends Fragment implements OverviewView {
 
         for (int i = presenter.getPressureReadingsDateTime().size() - 1; i >= 0; i--) {
             String date = presenter.convertDate(presenter.getPressureReadingsDateTime().get(i));
-            xVals.add(date + "");
+            xVals.add(date);
         }
 
         xValues = xVals;
@@ -598,7 +596,7 @@ public class OverviewFragment extends Fragment implements OverviewView {
 
         for (int i = presenter.getCholesterolReadingsDateTime().size() - 1; i >= 0; i--) {
             String date = presenter.convertDate(presenter.getCholesterolReadingsDateTime().get(i));
-            xVals.add(date + "");
+            xVals.add(date);
         }
 
         xValues = xVals;
@@ -643,7 +641,6 @@ public class OverviewFragment extends Fragment implements OverviewView {
             set1.setCircleSize(4f);
             set1.setDrawCircleHole(true);
         }
-        Log.e("glucosio", "DATA is " + set1.getEntryCount());
         return set1;
     }
 
