@@ -150,7 +150,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.glucosio.android.activity.MainActivity" />
         </activity>
-        <activity android:name=".activity.FreestyleLibreActivity">
+        <activity
+            android:name=".activity.FreestyleLibreActivity"
+            android:screenOrientation="portrait">
 
             <!-- NFC for FreeStyle -->
             <intent-filter>
