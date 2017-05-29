@@ -18,164 +18,195 @@
   ~
   -->
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:custom="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/helloactivity_mainframe"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:visibility="visible"
-    tools:context="org.glucosio.android.activity.HelloActivity">
+<RelativeLayout android:id="@+id/helloactivity_mainframe"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:custom="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="24dp"
+                android:paddingLeft="32dp"
+                android:paddingRight="32dp"
+                tools:context="org.glucosio.android.activity.HelloActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingBottom="32dp"
-        android:paddingLeft="32dp"
-        android:paddingRight="32dp"
-        android:paddingTop="32dp">
+        android:layout_height="match_parent"
+        android:layout_above="@+id/activity_hello_start_btn_holder"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/activity_hello_title"
+        <ScrollView
+            android:id="@+id/activity_hello_scrollview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:paddingTop="32dp"
-            android:text="@string/helloactivity_headline"
-            android:textColor="@color/glucosio_text_dark"
-            android:textSize="@dimen/abc_text_size_display_1_material" />
+            android:visibility="visible">
 
-        <TextView
-            android:id="@+id/activity_hello_subtitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="16dp"
-            android:text="@string/helloactivity_subhead"
-            android:textColor="@color/glucosio_text"
-            android:textSize="@dimen/abc_text_size_subhead_material" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-        <org.glucosio.android.tools.LabelledSpinner
-            android:id="@+id/activity_hello_spinner_country"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            custom:labelText="@string/helloactivity_country"
-            custom:widgetColor="@color/glucosio_pink" />
-
-        <org.glucosio.android.tools.LabelledSpinner
-            android:id="@+id/activity_hello_spinner_language"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            custom:labelText="@string/helloactivity_language"
-            custom:widgetColor="@color/glucosio_pink" />
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <EditText
-                    android:id="@+id/activity_hello_age"
+                <TextView
+                    android:id="@+id/activity_hello_title"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:digits="0123456789"
-                    android:hint="@string/helloactivity_age"
-                    android:inputType="number"
-                    android:maxLines="1"
-                    android:textSize="@dimen/abc_text_size_body_2_material" />
-            </android.support.design.widget.TextInputLayout>
+                    android:layout_height="wrap_content"
+                    android:paddingTop="32dp"
+                    android:text="@string/helloactivity_headline"
+                    android:textColor="@color/glucosio_text_dark"
+                    android:textSize="@dimen/abc_text_size_display_1_material"/>
 
-            <org.glucosio.android.tools.LabelledSpinner
-                android:id="@+id/activity_hello_spinner_gender"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="-17dp"
-                android:layout_weight="1"
-                android:textSize="@dimen/abc_text_size_body_2_material"
-                custom:labelText="@string/helloactivity_gender"
-                custom:widgetColor="@color/glucosio_pink" />
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/activity_hello_subtitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="16dp"
+                    android:text="@string/helloactivity_subhead"
+                    android:textColor="@color/glucosio_text"
+                    android:textSize="@dimen/abc_text_size_subhead_material"/>
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:orientation="horizontal"
-            android:weightSum="2">
+                <org.glucosio.android.tools.LabelledSpinner
+                    android:id="@+id/activity_hello_spinner_country"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    custom:labelText="@string/helloactivity_country"
+                    custom:widgetColor="@color/glucosio_pink"/>
 
-            <org.glucosio.android.tools.LabelledSpinner
-                android:id="@+id/activity_hello_spinner_diabetes_type"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="-17dp"
-                android:layout_weight="1"
-                android:textSize="@dimen/abc_text_size_body_2_material"
-                custom:labelText="@string/helloactivity_spinner_diabetes_type"
-                custom:widgetColor="@color/glucosio_pink" />
+                <org.glucosio.android.tools.LabelledSpinner
+                    android:id="@+id/activity_hello_spinner_language"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    custom:labelText="@string/helloactivity_language"
+                    custom:widgetColor="@color/glucosio_pink"/>
 
-            <org.glucosio.android.tools.LabelledSpinner
-                android:id="@+id/activity_hello_spinner_preferred_unit"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="-17dp"
-                android:layout_weight="1"
-                android:textSize="@dimen/abc_text_size_body_2_material"
-                custom:labelText="@string/helloactivity_spinner_preferred_glucose_unit"
-                custom:widgetColor="@color/glucosio_pink" />
-        </LinearLayout>
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
 
-        <CheckBox
-            android:id="@+id/activity_hello_check_share"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:checked="true"
-            android:text="@string/helloactivity_share_data" />
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/helloactivity_hint_settings"
-            android:textStyle="bold" />
+                        <EditText
+                            android:id="@+id/activity_hello_age"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:digits="0123456789"
+                            android:hint="@string/helloactivity_age"
+                            android:inputType="number"
+                            android:maxLines="1"
+                            android:textSize="@dimen/abc_text_size_body_2_material"/>
+                    </android.support.design.widget.TextInputLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="@string/helloactivity_textview_tos"
-            android:textColor="@color/glucosio_text"
-            android:textStyle="bold" />
+                    <org.glucosio.android.tools.LabelledSpinner
+                        android:id="@+id/activity_hello_spinner_gender"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-17dp"
+                        android:layout_weight="1"
+                        android:textSize="@dimen/abc_text_size_body_2_material"
+                        custom:labelText="@string/helloactivity_gender"
+                        custom:widgetColor="@color/glucosio_pink"/>
+                </LinearLayout>
 
-        <TextView
-            android:id="@+id/helloactivity_textview_terms"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="@string/helloactivity_terms"
-            android:textColor="@color/glucosio_pink"
-            android:textStyle="bold" />
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <org.glucosio.android.tools.LabelledSpinner
+                        android:id="@+id/activity_hello_spinner_diabetes_type"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-17dp"
+                        android:layout_weight="1"
+                        android:textSize="@dimen/abc_text_size_body_2_material"
+                        custom:labelText="@string/helloactivity_spinner_diabetes_type"
+                        custom:widgetColor="@color/glucosio_pink"/>
+
+                    <org.glucosio.android.tools.LabelledSpinner
+                        android:id="@+id/activity_hello_spinner_preferred_unit"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-17dp"
+                        android:layout_weight="1"
+                        android:textSize="@dimen/abc_text_size_body_2_material"
+                        custom:labelText="@string/helloactivity_spinner_preferred_glucose_unit"
+                        custom:widgetColor="@color/glucosio_pink"/>
+                </LinearLayout>
+
+                <CheckBox
+                    android:id="@+id/activity_hello_check_share"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:checked="true"
+                    android:text="@string/helloactivity_share_data"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/helloactivity_hint_settings"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/helloactivity_textview_tos"
+                    android:textColor="@color/glucosio_text"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/helloactivity_textview_terms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/helloactivity_terms"
+                    android:textColor="@color/glucosio_pink"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/activity_hello_start_btn_holder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/top_border_set"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/activity_hello_button_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="12dp"
             android:background="?android:attr/selectableItemBackground"
             android:drawableEnd="@drawable/ic_navigate_next_pink_24px"
             android:drawableRight="@drawable/ic_navigate_next_pink_24px"
-            android:padding="8dp"
+            android:gravity="right|center_vertical"
             android:text="@string/helloactivity_button_start"
             android:textColor="@color/glucosio_pink"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
+
     </LinearLayout>
-</ScrollView>
+
+</RelativeLayout>

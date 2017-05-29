@@ -27,9 +27,13 @@ import android.os.Bundle;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 import butterknife.BindView;
@@ -72,9 +76,17 @@ public class HelloActivity extends AppCompatActivity implements HelloView {
     @BindView(R.id.activity_hello_age)
     TextView ageTextView;
 
+    @BindView(R.id.activity_hello_scrollview)
+    ScrollView scrollView;
+
+    @BindView(R.id.activity_hello_start_btn_holder)
+    LinearLayout startButtonHolder;
+
     private HelloPresenter presenter;
 
     private List<String> localesWithTranslation;
+
+    private boolean scrolledToBottom = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +111,7 @@ public class HelloActivity extends AppCompatActivity implements HelloView {
         typeSpinner.setItemsArray(R.array.helloactivity_diabetes_type);
 
         initStartButton();
+        initScrollViewListener();
 
         Analytics analytics = application.getAnalytics();
         analytics.reportScreen("Hello Activity");
@@ -137,6 +150,27 @@ public class HelloActivity extends AppCompatActivity implements HelloView {
             pinkArrow.setBounds(0, 0, 60, 60);
             startButton.setCompoundDrawables(null, null, pinkArrow, null);
         }
+    }
+
+    private void initScrollViewListener() {
+        scrollView.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
+			@Override
+			public void onScrollChanged() {
+				checkIfScrolledToBottom();
+			}
+		});
+    }
+
+    private void checkIfScrolledToBottom() {
+        View lastView = scrollView.getChildAt(scrollView.getChildCount() - 1);
+        int difference = (lastView.getBottom() - (scrollView.getHeight() + scrollView.getScrollY()));
+        if (difference == 0) {
+			scrolledToBottom = true;
+			startButtonHolder.setBackground(null);
+		} else if (scrolledToBottom) {
+			scrolledToBottom = false;
+			startButtonHolder.setBackground(getResources().getDrawable(R.drawable.top_border_set));
+		}
     }
 
     private void initCountrySpinner(final LocaleHelper localeHelper) {
@@ -195,5 +229,12 @@ public class HelloActivity extends AppCompatActivity implements HelloView {
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        //this is fired when the view has completely rendered and this is needed so we can then check the scrolling position
+        super.onWindowFocusChanged(hasFocus);
+        checkIfScrolledToBottom();
     }
 }
