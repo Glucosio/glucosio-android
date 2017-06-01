@@ -45,8 +45,8 @@ allprojects {
 
     ext.buildToolsVer = '25.0.1'
 
-    ext.androidSupportVer = '25.3.0'
-    ext.googlePlayServicesVer = '10.2.0'
+    ext.androidSupportVer = '25.3.1'
+    ext.googlePlayServicesVer = '10.2.6'
 
     ext.butterKnifeVer = '8.4.0'
 
