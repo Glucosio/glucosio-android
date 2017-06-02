@@ -35,8 +35,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.db.DatabaseHandler;
+import org.glucosio.android.db.User;
 import org.glucosio.android.object.PredictionData;
 import org.glucosio.android.object.ReadingData;
 import org.glucosio.android.tools.AlgorithmUtil;
@@ -51,6 +53,7 @@ public class FreestyleLibreActivity extends Activity {
 
     private NfcAdapter mNfcAdapter;
     private TextView readingTextView;
+    private User user;
 
     /**
      * @param activity The corresponding {@link Activity} requesting the foreground dispatch.
@@ -87,6 +90,10 @@ public class FreestyleLibreActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_freestyle_libre);
+
+        final GlucosioApplication app = (GlucosioApplication) getApplicationContext();
+        DatabaseHandler dB = app.getDBHandler();
+        user = dB.getUser(1);
 
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
         readingTextView = (TextView) findViewById(R.id.activity_freestyle_textview_reading);
@@ -168,8 +175,7 @@ public class FreestyleLibreActivity extends Activity {
         mFinishAfterSentMessages = true;*/
 
         // Apply values in TextViews
-        // TODO: Add check for mmol/L
-        readingTextView.setText(mResult.trend.get(0).glucose(false));
+        readingTextView.setText(mResult.trend.get(0).glucose(user.getPreferred_unit().equals("mmol/L")));
 
         new Runnable() {
             @Override
@@ -189,7 +195,7 @@ public class FreestyleLibreActivity extends Activity {
             // Start AddGlucose Activity passing the reading value
             Intent intent = new Intent(getApplicationContext(), AddGlucoseActivity.class);
             Bundle bundle = new Bundle();
-            String currentGlucose = mResult.trend.get(0).glucose(false);
+            String currentGlucose = mResult.trend.get(0).glucose(user.getPreferred_unit().equals("mmol/L"));
             bundle.putString("reading", currentGlucose + "");
             intent.putExtras(bundle);
             startActivity(intent);

@@ -155,8 +155,8 @@ dependencies {
     testCompile "org.powermock:powermock-classloading-xstream:1.6.4"
 
     // Testing libraries
-    androidTestCompile 'com.android.support.test:rules:0.4.1'
-    androidTestCompile 'com.android.support.test:runner:0.4.1'
+    androidTestCompile 'com.android.support.test:rules:0.5'
+    androidTestCompile 'com.android.support.test:runner:0.5'
     androidTestCompile "com.android.support:support-annotations:${androidSupportVer}"
     androidTestCompile "com.android.support:recyclerview-v7:${androidSupportVer}"
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
