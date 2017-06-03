@@ -48,13 +48,13 @@ public class DatabaseHandler {
 
     public DatabaseHandler(Context context) {
         this.mContext = context;
-
+        Realm.init(context);
         this.realm = getNewRealmInstance();
     }
 
     public Realm getNewRealmInstance() {
         if (mRealmConfig == null) {
-            mRealmConfig = new RealmConfiguration.Builder(mContext)
+            mRealmConfig = new RealmConfiguration.Builder()
                     .schemaVersion(4)
                     .migration(new Migration())
                     .build();

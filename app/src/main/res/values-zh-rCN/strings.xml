@@ -136,6 +136,7 @@
   <string name="assistant_categories_desc">Glucosio 默认带有血糖读数分类，您还可以在设置中创建自定义的分类以满足您的独特需求。</string>
   <string name="assistant_check_title">经常检查这里</string>
   <string name="assistant_check_desc">Glucosio 助理提供定期的提示并将不断改善，因此请经常检查这里的提示，这有助您采取措施来提高使用 Glucosio 的经验和技巧。</string>
+  <string name="assistant_feedback_title">提交反馈</string>
   <string name="assistant_feedback_desc">如果您发现了任何技术问题，或有关于 Glucosio 的反馈，我们鼓励您在设置菜单中提交它，以帮助我们改进 Glucosio。</string>
   <string name="assistant_reading_title">添加阅读</string>
   <string name="assistant_reading_desc">一定要定期添加您的血糖读数，以便我们帮助您随时间跟踪您的血糖水平。</string>
@@ -311,10 +312,12 @@
   <string name="activity_main_dialog_csv_title">导出到 CSV 文件</string>
   <string name="activity_backup_drive_button_open_drive">在 Drive 上管理</string>
   <string name="mmol_L">毫摩尔/升</string>
+  <string name="mg_dL">毫克/分升</string>
   <string name="preferences_graph_old">回到旧图</string>
   <string name="history">历史</string>
   <string name="save">保存</string>
   <string name="activity_reminders_title">提醒</string>
   <string name="reminders_notification_action">添加读数</string>
   <string name="glucosio_activity_reminders_empty">未设置提醒。在这里添加新的提示。</string>
+  <string name="reminder_item_title_generic2">该记录您的血糖水平了！</string>
 </resources>

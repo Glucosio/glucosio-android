@@ -20,6 +20,7 @@
   ~
   -->
 <resources>
+  <string name="helloactivity_headline">Сәлам.</string>
   <!-- Future Strings Baked In Early For l10n -->
   <!-- Exercise Types -->
   <!-- Future Strings Baked In Early For l10n -->

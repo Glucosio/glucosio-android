@@ -23,14 +23,15 @@ Glucosio for Android, a user centered free and open source app for Diabetes mana
 
 Read more about contributing to Glucosio [here](http://www.glucosio.org/contribute/).
 
-## Download on Google Play Store
-<a href="https://play.google.com/store/apps/details?id=org.glucosio.android&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-AC-global-none-all-co-pr-py-PartBadges-Oct1515-1"><img alt="Get it on Google Play" height="80" src="https://play.google.com/intl/en_us/badges/images/apps/en-play-badge.png" /></a>
+## Download
+
+<a href="https://play.google.com/store/apps/details?id=org.glucosio.android&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-AC-global-none-all-co-pr-py-PartBadges-Oct1515-1" target="_blank">
+<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Get it on Google Play" height="100"/></a>
+<a href="https://f-droid.org/repository/browse/?fdid=org.glucosio.android" target="_blank">
+<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="100"/></a>
 
 ## Join Beta Testing
 Join our [Community on Google+](https://plus.google.com/communities/117048486613219870727), then [click here](https://play.google.com/apps/testing/org.glucosio.android).
 
 ## Test Drive Glucosio Daily
 http://daily.glucosio.org
-
-
-

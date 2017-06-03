@@ -162,6 +162,7 @@
   <string name="preferences_about_glucosio">Sobre Glucosio</string>
   <string name="preferences_rate">Clasifique Glucosio</string>
   <string name="preferences_licences_open">Licencias de software libre</string>
+  <string name="preferences_contributors">Colaboradores</string>
   <string name="preferences_freestyle_libre">Habilitar soporte para FreeStyle Libre®</string>
   <string name="preferences_freestyle_libre_experimental">EXPERIMENTAL: Habilitar soporte para FreeStyle Libre®</string>
   <string name="preferences_font_dyslexia_experimental">EXPERIMENTAL: Mejorar legibilidad para usuarios con dislexia</string>
@@ -201,6 +202,15 @@
   <string name="dialog_add_exercisetype_25">Trabajo de jardinería</string>
   <!-- Future Strings Baked In Early For l10n -->
   <!-- Intro Strings -->
+  <string name="intro_title1">¡Bienvenido a Glucosio!</string>
+  <string name="intro_para1">Glucosio es una aplicación gratuita y de código abierto para la gestión de su diabetes</string>
+  <string name="intro_title2">Registro y tendencias</string>
+  <string name="intro_para2">Glucosio hace fácil registrar los niveles de glucosa y visualizar tendencias</string>
+  <string name="intro_title3">Apoya la investigación de la Diabetes</string>
+  <string name="intro_para3">Glucosio te permite compartir anónimamente las tendencias con investigadores académicos de diabetes</string>
+  <string name="intro_title4">Centrado en la Privacidad</string>
+  <string name="intro_para4">Glucosio se toma su privacidad en serio y sólo comparte las tendencias indefinibles si usted acepta</string>
+  <string name="intro_title5">Mejores resultados en salud</string>
   <!-- Future Strings Baked In Early For l10n -->
   <!-- Smart Assistant Strings -->
   <!-- Future Strings Baked In Early For l10n -->
@@ -320,4 +330,5 @@
   <string name="activity_reminders_title">Recordatorios</string>
   <string name="reminders_notification_action">Añadir Lectura</string>
   <string name="glucosio_activity_reminders_empty">No hay recordatorios. agregar un nuevo recordatorio.</string>
+  <string name="reminder_item_title_generic2">¡Hora de registrar tus niveles de glucosa!</string>
 </resources>

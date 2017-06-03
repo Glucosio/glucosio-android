@@ -70,12 +70,12 @@
         android:title="@string/helloactivity_spinner_preferred_range" />
     <EditTextPreference
         android:dialogTitle="@string/helloactivity_preferred_range_min"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:key="pref_range_min"
         android:title="@string/helloactivity_preferred_range_min" />
     <EditTextPreference
         android:dialogTitle="@string/helloactivity_preferred_range_max"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:key="pref_range_max"
         android:title="@string/helloactivity_preferred_range_max" />
     <SwitchPreference

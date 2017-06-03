@@ -188,6 +188,7 @@
   <string name="dialog_addfood_fat">Grases:</string>
   <!-- About Glucosio Strings -->
   <string name="about_credits">Créitos</string>
+  <string name="about_contribute">Collaborar</string>
   <string name="about_contributel10n">Contribúi a la traducción</string>
   <string name="about_contributedev">Contribúi al desendolcu</string>
   <string name="about_discussion">Xúnite a la nuesa comunidá de discutiniu</string>
@@ -232,7 +233,9 @@
   <string name="freestylelibre_nfc_error">¡Fallu abriendo la conexón NFC!</string>
   <string name="overview_hb1ac">HBA1C:</string>
   <string name="activity_converter_a1c">A1C</string>
+  <string name="activity_converter_title">Calculadora HbA1c</string>
   <string name="activity_converter_save">GUARDAR</string>
+  <string name="menu_support">Sofitu</string>
   <string name="menu_support_title">¿Cómo podemos ayudate?</string>
   <string name="menu_support_email">Corréu</string>
   <string name="menu_support_live">Charra en direuto</string>
@@ -246,6 +249,8 @@
   <string name="activity_backup_drive_dialog_restore_button_cancel">Encaboxar</string>
   <string name="mmol_mol">mmol/mol</string>
   <string name="mmol_L">mmol/L</string>
+  <string name="mg_dL">mg/dL</string>
   <string name="activity_reminders_title">Recordatorios</string>
   <string name="glucosio_activity_reminders_empty">Nun s\'afitaron recordatorios. Amiesta nuevos equí.</string>
+  <string name="reminder_item_title_generic2">¡Hora de rexistrar el to nivel de glucosa!</string>
 </resources>

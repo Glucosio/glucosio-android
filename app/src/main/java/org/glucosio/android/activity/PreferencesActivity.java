@@ -47,6 +47,7 @@ import org.glucosio.android.R;
 import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.User;
+import org.glucosio.android.tools.GlucosioConverter;
 import org.glucosio.android.tools.InputFilterMinMax;
 import org.glucosio.android.tools.LocaleHelper;
 
@@ -162,16 +163,19 @@ public class PreferencesActivity extends AppCompatActivity {
             agePref.setDefaultValue(user.getAge());
             countryPref.setValue(user.getCountry());
             genderPref.setValue(user.getGender());
-            diabetesTypePref.setValue(user.getD_type() + "");
+            diabetesTypePref.setValue(String.valueOf(user.getD_type()));
             unitPrefGlucose.setValue(getGlucoseUnitValue(user.getPreferred_unit()));
             unitPrefA1c.setValue(getA1CUnitValue(user.getPreferred_unit_a1c()));
             unitPrefWeight.setValue(getUnitWeight(user.getPreferred_unit_weight()));
             rangePref.setValue(user.getPreferred_range());
 
-            minRangePref.setDefaultValue(user.getCustom_range_min() + "");
-            maxRangePref.setDefaultValue(user.getCustom_range_max() + "");
-            minRangePref.setDefaultValue(user.getCustom_range_min() + "");
-            maxRangePref.setDefaultValue(user.getCustom_range_max() + "");
+            if (user.getPreferred_unit().equals("mg/dL")) {
+                maxRangePref.setDefaultValue(user.getCustom_range_max());
+                minRangePref.setDefaultValue(user.getCustom_range_min());
+            } else {
+                maxRangePref.setDefaultValue(GlucosioConverter.glucoseToMmolL(user.getCustom_range_max()));
+                minRangePref.setDefaultValue(GlucosioConverter.glucoseToMmolL(user.getCustom_range_min()));
+            }
 
             if (!"custom".equals(rangePref.getValue())) {
                 minRangePref.setEnabled(false);
@@ -277,15 +281,36 @@ public class PreferencesActivity extends AppCompatActivity {
                     return true;
                 }
             });
+
+            minRangePref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    minEditText.setText("");
+                    return false;
+                }
+            });
+
             minRangePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
                     if (TextUtils.isEmpty(newValue.toString().trim())) {
                         return false;
                     }
-                    updatedUser.setCustom_range_min(Integer.parseInt(newValue.toString()));
+                    if (user.getPreferred_unit().equals("mg/dL")) {
+                        updatedUser.setCustom_range_min(Integer.parseInt(newValue.toString()));
+                    } else {
+                        updatedUser.setCustom_range_min(GlucosioConverter.glucoseToMgDl(Double.parseDouble(newValue.toString())));
+                    }
                     updateDB();
                     return true;
+                }
+            });
+
+            maxRangePref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    maxEditText.setText("");
+                    return false;
                 }
             });
             maxRangePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
@@ -294,7 +319,11 @@ public class PreferencesActivity extends AppCompatActivity {
                     if (TextUtils.isEmpty(newValue.toString().trim())) {
                         return false;
                     }
-                    updatedUser.setCustom_range_max(Integer.parseInt(newValue.toString()));
+                    if (user.getPreferred_unit().equals("mg/dL")) {
+                        updatedUser.setCustom_range_max(Integer.parseInt(newValue.toString()));
+                    } else {
+                        updatedUser.setCustom_range_max(GlucosioConverter.glucoseToMgDl(Double.parseDouble(newValue.toString())));
+                    }
                     updateDB();
                     return true;
                 }
@@ -326,8 +355,6 @@ public class PreferencesActivity extends AppCompatActivity {
             maxEditText = maxRangePref.getEditText();
 
             ageEditText.setFilters(new InputFilter[]{new InputFilterMinMax(1, 110)});
-            minEditText.setFilters(new InputFilter[]{new InputFilterMinMax(1, 1500)});
-            maxEditText.setFilters(new InputFilter[]{new InputFilterMinMax(1, 1500)});
 
             // Get countries list from locale
             ArrayList<String> countriesArray = new ArrayList<>();
@@ -421,20 +448,26 @@ public class PreferencesActivity extends AppCompatActivity {
 
         private void updateDB() {
             dB.updateUser(updatedUser);
-            agePref.setSummary(user.getAge() + "");
-            genderPref.setSummary(user.getGender() + "");
+            agePref.setSummary(String.valueOf(user.getAge()));
+            genderPref.setSummary(String.valueOf(user.getGender()));
 
             diabetesTypePref.setSummary(getResources().getStringArray(R.array.helloactivity_diabetes_type)[user.getD_type() - 1]);
             unitPrefGlucose.setSummary(getGlucoseUnitValue(user.getPreferred_unit()));
             unitPrefA1c.setSummary(getA1CUnitValue(user.getPreferred_unit_a1c()));
             unitPrefWeight.setSummary(getUnitWeight(user.getPreferred_unit_weight()));
             countryPref.setSummary(user.getCountry());
-            minRangePref.setSummary(user.getCustom_range_min() + "");
-            maxRangePref.setSummary(user.getCustom_range_max() + "");
+
+            if (user.getPreferred_unit().equals("mg/dL")) {
+                minRangePref.setSummary(String.valueOf(user.getCustom_range_min()));
+                maxRangePref.setSummary(String.valueOf(user.getCustom_range_max()));
+            } else {
+                minRangePref.setSummary(String.valueOf(GlucosioConverter.glucoseToMmolL(user.getCustom_range_min())));
+                maxRangePref.setSummary(String.valueOf(GlucosioConverter.glucoseToMmolL(user.getCustom_range_max())));
+            }
 
             countryPref.setValue(user.getCountry());
             genderPref.setValue(user.getGender());
-            diabetesTypePref.setValue(user.getD_type() + "");
+            diabetesTypePref.setValue(String.valueOf(user.getD_type()));
             unitPrefGlucose.setValue(user.getPreferred_unit());
             genderPref.setValue(user.getGender());
             unitPrefGlucose.setValue(user.getPreferred_unit());
