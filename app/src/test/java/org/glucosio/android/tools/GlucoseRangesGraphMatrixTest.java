@@ -2,6 +2,7 @@ package org.glucosio.android.tools;
 
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 
 import org.glucosio.android.BuildConfig;
 import org.glucosio.android.R;
@@ -22,33 +23,43 @@ public class GlucoseRangesGraphMatrixTest {
 
 
     @Test
-    public void stringToColorGreen() {
-        assertEquals(contextMock.getResources().getColor(R.color.glucosio_reading_ok),
-                glucoseRangesExt.stringToColor("green"));
+    public void shouldReturnOkColorIfGreenStringIsGiven() {
+        int expected = ContextCompat.getColor(contextMock, R.color.glucosio_reading_ok);
+        int actual = glucoseRangesExt.stringToColor("green");
+
+        assertEquals(expected, actual);
     }
 
     @Test
-    public void stringToColorRed() {
-        assertEquals(contextMock.getResources().getColor(R.color.glucosio_reading_hyper),
-                glucoseRangesExt.stringToColor("red"));
+    public void shouldReturnHyperColorIfRedStringIsGiven() {
+        int expected = ContextCompat.getColor(contextMock, R.color.glucosio_reading_hyper);
+        int actual = glucoseRangesExt.stringToColor("red");
+
+        assertEquals(expected, actual);
     }
 
     @Test
-    public void stringToColorBlue() {
-        assertEquals(contextMock.getResources().getColor(R.color.glucosio_reading_low),
-                glucoseRangesExt.stringToColor("blue"));
+    public void shouldReturnLowColorIfBlueStringGiven() {
+        int expected = ContextCompat.getColor(contextMock, R.color.glucosio_reading_low);
+        int actual = glucoseRangesExt.stringToColor("blue");
+
+        assertEquals(expected, actual);
     }
 
     @Test
-    public void stringToColorOrange() {
-        assertEquals(contextMock.getResources().getColor(R.color.glucosio_reading_high),
-                glucoseRangesExt.stringToColor("orange"));
+    public void shouldReturnHighColorIfOrangeStringIsGiven() {
+        int expected = ContextCompat.getColor(contextMock, R.color.glucosio_reading_high);
+        int actual = glucoseRangesExt.stringToColor("orange");
+
+        assertEquals(expected, actual);
     }
 
     @Test
-    public void stringToColorPurple() {
-        assertEquals(contextMock.getResources().getColor(R.color.glucosio_reading_hypo),
-                glucoseRangesExt.stringToColor("purple"));
+    public void shouldReturnHypoColorIfPurpleStringIsGiven() {
+        int expected = ContextCompat.getColor(contextMock, R.color.glucosio_reading_hypo);
+        int actual = glucoseRangesExt.stringToColor("purple");
+
+        assertEquals(expected, actual);
     }
 
 }
