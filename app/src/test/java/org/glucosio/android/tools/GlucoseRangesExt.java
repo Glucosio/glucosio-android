@@ -2,12 +2,12 @@ package org.glucosio.android.tools;
 
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 
 import org.glucosio.android.R;
 
 public class GlucoseRangesExt extends GlucoseRanges {
     private Context context;
-    private String preferredRange;
     private int customMin;
     private int customMax;
 
@@ -77,15 +77,15 @@ public class GlucoseRangesExt extends GlucoseRanges {
     public int stringToColor(String color) {
         switch (color) {
             case "green":
-                return context.getResources().getColor(R.color.glucosio_reading_ok);
+                return ContextCompat.getColor(context, R.color.glucosio_reading_ok);
             case "red":
-                return context.getResources().getColor(R.color.glucosio_reading_hyper);
+                return ContextCompat.getColor(context, R.color.glucosio_reading_hyper);
             case "blue":
-                return context.getResources().getColor(R.color.glucosio_reading_low);
+                return ContextCompat.getColor(context, R.color.glucosio_reading_low);
             case "orange":
-                return context.getResources().getColor(R.color.glucosio_reading_high);
+                return ContextCompat.getColor(context, R.color.glucosio_reading_high);
             default:
-                return context.getResources().getColor(R.color.glucosio_reading_hypo);
+                return ContextCompat.getColor(context, R.color.glucosio_reading_hypo);
         }
     }
 }
