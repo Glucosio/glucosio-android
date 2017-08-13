@@ -1,128 +1,126 @@
 package org.glucosio.android.tools;
 
 
-import org.junit.Before;
+import android.test.mock.MockContext;
+
 import org.junit.Test;
 
 import static junit.framework.Assert.assertTrue;
 
 public class GlucoseRangesLogicTest {
 
-    // Test Fixtures
-    private int reading;
-    private GlucoseRangesExt gr;
-    private String preferredRange;
+    private GlucoseRangesExt glucoseRangesExt = new GlucoseRangesExt(new MockContext());
+    private String preferredRange = "";
+    private int reading = 65;
 
-    @Before
-    public void setup() {
 
-        gr = new GlucoseRangesExt(0, 0);
-        reading = 65;
-    }
-
-    /*
-     * Testing colorFromReading for Clause Coverage
-     */
     @Test
-    public void clause1() {
-        reading = 65;
-        preferredRange = "";
-        assertTrue(gr.colorFromReading(reading, preferredRange).equals("purple"));
+    public void expectPurpleWhenReadingValueIs65WithNoPreferredRange() {
+        assertTrue(glucoseRangesExt.colorFromReading(reading, preferredRange).equals("purple"));
     }
 
     @Test
-    public void clause2() {
+    public void expectRedWhenReadingValueIs210WithNoPreferredRange() {
         reading = 210;
-        preferredRange = "";
-        assertTrue(gr.colorFromReading(reading, preferredRange).equals("red"));
+
+        assertTrue(glucoseRangesExt.colorFromReading(reading, preferredRange).equals("red"));
     }
 
     @Test
-    public void clauseADAGreen() {
+    public void expectGreenWhenReadingValueIs100WithADAPreferredRange() {
         reading = 100;
         preferredRange = "ADA";
-        assertTrue(gr.colorFromReading(reading, preferredRange).equals("green"));
+
+        assertTrue(glucoseRangesExt.colorFromReading(reading, preferredRange).equals("green"));
     }
 
     @Test
-    public void clauseADABlue() {
+    public void expectBlueWhenReadingValueIs72WithADAPreferredRange() {
         // FIXME: 13.08.2017 FIX ADA range in primary and extension classes
         reading = 72;
         preferredRange = "ADA";
-        assertTrue(gr.colorFromReading(reading, preferredRange).equals("blue"));
+
+        assertTrue(glucoseRangesExt.colorFromReading(reading, preferredRange).equals("blue"));
     }
 
     @Test
-    public void clauseADAOrange() {
+    public void expectOrangeWhenReadingValueIs185WithADAPreferredRange() {
         reading = 185;
         preferredRange = "ADA";
-        assertTrue(gr.colorFromReading(reading, preferredRange).equals("orange"));
+
+        assertTrue(glucoseRangesExt.colorFromReading(reading, preferredRange).equals("orange"));
     }
 
     @Test
-    public void clauseAACEGreen() {
+    public void expectGreenWhenReadingValueIs130WithAACEPreferredRange() {
         reading = 130;
         preferredRange = "AACE";
-        assertTrue(gr.colorFromReading(reading, preferredRange).equals("green"));
+
+        assertTrue(glucoseRangesExt.colorFromReading(reading, preferredRange).equals("green"));
     }
 
     @Test
-    public void clauseAACEBlue() {
+    public void expectBlueWhenReadingValueIs90WithAACEPreferredRange() {
         reading = 90;
         preferredRange = "AACE";
-        assertTrue(gr.colorFromReading(reading, preferredRange).equals("blue"));
+
+        assertTrue(glucoseRangesExt.colorFromReading(reading, preferredRange).equals("blue"));
     }
 
     @Test
-    public void clauseAACEOrange() {
+    public void expectOrangeWhenReadingValueIs150WithAACEPreferredRange() {
         reading = 150;
         preferredRange = "AACE";
-        assertTrue(gr.colorFromReading(reading, preferredRange).equals("orange"));
+
+        assertTrue(glucoseRangesExt.colorFromReading(reading, preferredRange).equals("orange"));
     }
 
     @Test
-    public void clauseUKNICEGreen() {
+    public void expectGreenWhenReadingValueIs100WithUK_NICEPreferredRange() {
         reading = 100;
         preferredRange = "UK NICE";
-        assertTrue(gr.colorFromReading(reading, preferredRange).equals("green"));
+
+        assertTrue(glucoseRangesExt.colorFromReading(reading, preferredRange).equals("green"));
     }
 
     @Test
-    public void clauseUKNICEBlue() {
+    public void expectBlueWhenReadingValueIs71WithUK_NICEPreferredRange() {
         reading = 71;
         preferredRange = "UK NICE";
-        assertTrue(gr.colorFromReading(reading, preferredRange).equals("blue"));
+
+        assertTrue(glucoseRangesExt.colorFromReading(reading, preferredRange).equals("blue"));
     }
 
     @Test
-    public void clauseUKNICEOrange() {
+    public void expectOrangeWhenReadingValueIs155WithUK_NICEPreferredRange() {
         reading = 155;
         preferredRange = "UK NICE";
-        assertTrue(gr.colorFromReading(reading, preferredRange).equals("orange"));
+
+        assertTrue(glucoseRangesExt.colorFromReading(reading, preferredRange).equals("orange"));
     }
 
     @Test
-    public void clauseCustomGreen() {
+    public void expectGreenWhenReadingValueIs100WithNoPreferredRangeAndExtValuesRange75_140() {
+        glucoseRangesExt = new GlucoseRangesExt(75, 140);
         reading = 100;
-        preferredRange = "";
-        GlucoseRangesExt temp = new GlucoseRangesExt(75, 140);
-        assertTrue(temp.colorFromReading(reading, preferredRange).equals("green"));
+
+        assertTrue(glucoseRangesExt.colorFromReading(reading, preferredRange).equals("green"));
     }
 
     @Test
-    public void clauseCustomBlue() {
+    public void expectBlueWhenReadingValueIs72WithNoPreferredRangeAndExtValuesRange75_140() {
+        glucoseRangesExt = new GlucoseRangesExt(75, 140);
         reading = 72;
-        preferredRange = "";
-        GlucoseRangesExt temp = new GlucoseRangesExt(75, 140);
-        assertTrue(temp.colorFromReading(reading, preferredRange).equals("blue"));
+
+        assertTrue(glucoseRangesExt.colorFromReading(reading, preferredRange).equals("blue"));
     }
 
     @Test
-    public void clauseCustomOrange() {
+    public void expectOrangeWhenReadingValueIs145WithNoPreferredRangeAndExtValuesRange75_140() {
+        glucoseRangesExt = new GlucoseRangesExt(75, 140);
         reading = 145;
-        preferredRange = "";
-        GlucoseRangesExt temp = new GlucoseRangesExt(75, 140);
-        assertTrue(temp.colorFromReading(reading, preferredRange).equals("orange"));
+
+        assertTrue(glucoseRangesExt.colorFromReading(reading, preferredRange).equals("orange"));
     }
 }
 
