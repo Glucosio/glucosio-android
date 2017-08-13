@@ -1,53 +1,26 @@
-/*
- * Copyright (C) 2016 Glucosio Foundation
- *
- * This file is part of Glucosio.
- *
- * Glucosio is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, version 3.
- *
- * Glucosio is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with Glucosio.  If not, see <http://www.gnu.org/licenses/>.
- *
- *
- */
-
 package org.glucosio.android.tools;
+
 
 import android.content.Context;
 
 import org.glucosio.android.R;
-import org.glucosio.android.db.DatabaseHandler;
 
-public class GlucoseRanges {
-
-    private DatabaseHandler dB;
-    private Context mContext;
+public class GlucoseRangesExt extends GlucoseRanges {
+    private Context context;
     private String preferredRange;
     private int customMin;
     private int customMax;
 
-    public GlucoseRanges(Context context) {
-        this.mContext = context;
-        dB = new DatabaseHandler(mContext);
-        this.preferredRange = dB.getUser(1).getPreferred_range();
-        if (preferredRange.equals("Custom range")) {
-            this.customMin = dB.getUser(1).getCustom_range_min();
-            this.customMax = dB.getUser(1).getCustom_range_max();
-        }
+    public GlucoseRangesExt(int customMin, int customMax) {
+        this.customMin = customMin;
+        this.customMax = customMax;
     }
 
-    public GlucoseRanges() {
-
+    public GlucoseRangesExt(Context context) {
+        this.context = context;
     }
 
-    public String colorFromReading(int reading) {
+    public String colorFromReading(int reading, String preferredRange) {
         // Check for Hypo/Hyperglycemia
         if (reading < 70) {
             return "purple";
@@ -57,9 +30,10 @@ public class GlucoseRanges {
             // if not check with custom ranges
             switch (preferredRange) {
                 case "ADA":
-                    if (reading >= 70 & reading <= 180) {
+                    //// FIXME: 13.08.2017 FIX ADA range
+                    if (reading >= 75 & reading <= 180) {
                         return "green";
-                    } else if (reading < 70) {
+                    } else if (reading < 75) {
                         return "blue";
                     } else if (reading > 180) {
                         return "orange";
@@ -93,19 +67,25 @@ public class GlucoseRanges {
         return "red";
     }
 
+    /**
+     * This it the same method like in original class, but used with different context
+     * given by GlucoseRanges extension class.
+     * <p>
+     * params @color
+     */
+    @Override
     public int stringToColor(String color) {
         switch (color) {
             case "green":
-                return mContext.getResources().getColor(R.color.glucosio_reading_ok);
+                return context.getResources().getColor(R.color.glucosio_reading_ok);
             case "red":
-                return mContext.getResources().getColor(R.color.glucosio_reading_hyper);
+                return context.getResources().getColor(R.color.glucosio_reading_hyper);
             case "blue":
-                return mContext.getResources().getColor(R.color.glucosio_reading_low);
+                return context.getResources().getColor(R.color.glucosio_reading_low);
             case "orange":
-                return mContext.getResources().getColor(R.color.glucosio_reading_high);
+                return context.getResources().getColor(R.color.glucosio_reading_high);
             default:
-                return mContext.getResources().getColor(R.color.glucosio_reading_hypo);
+                return context.getResources().getColor(R.color.glucosio_reading_hypo);
         }
     }
-
 }
