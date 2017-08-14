@@ -21,6 +21,7 @@
 package org.glucosio.android.tools;
 
 import android.content.Context;
+import android.support.annotation.VisibleForTesting;
 
 import org.glucosio.android.R;
 import org.glucosio.android.db.DatabaseHandler;
@@ -29,31 +30,53 @@ public class GlucoseRanges {
 
     private DatabaseHandler dB;
     private Context mContext;
+
+    @VisibleForTesting
+    protected boolean isInUnitTests() {
+        return false;
+    }
+
+    @VisibleForTesting
+    public void setPreferredRange(String preferredRange) {
+        this.preferredRange = preferredRange;
+    }
+
+    @VisibleForTesting
+    public void setCustomMin(int customMin) {
+        this.customMin = customMin;
+    }
+
+    @VisibleForTesting
+    public void setCustomMax(int customMax) {
+        this.customMax = customMax;
+    }
+
     private String preferredRange;
     private int customMin;
     private int customMax;
 
-    public GlucoseRanges(Context context) {
-        this.mContext = context;
-        dB = new DatabaseHandler(mContext);
-        this.preferredRange = dB.getUser(1).getPreferred_range();
-        if (preferredRange.equals("Custom range")) {
-            this.customMin = dB.getUser(1).getCustom_range_min();
-            this.customMax = dB.getUser(1).getCustom_range_max();
-        }
-    }
 
     public GlucoseRanges() {
+        //default empty constructor
+    }
 
+    public GlucoseRanges(Context context) {
+        this.mContext = context;
+        if (!isInUnitTests()) {
+            dB = new DatabaseHandler(mContext);
+            this.preferredRange = dB.getUser(1).getPreferred_range();
+            if (preferredRange.equals("Custom range")) {
+                this.customMin = dB.getUser(1).getCustom_range_min();
+                this.customMax = dB.getUser(1).getCustom_range_max();
+            }
+        }
     }
 
     public String colorFromReading(int reading) {
         // Check for Hypo/Hyperglycemia
         if (reading < 70) {
             return "purple";
-        } else if (reading > 200) {
-            return "red";
-        } else if (reading > 70 | reading < 200) {
+        } else if (reading > 70 && reading < 200) {
             // if not check with custom ranges
             switch (preferredRange) {
                 case "ADA":
