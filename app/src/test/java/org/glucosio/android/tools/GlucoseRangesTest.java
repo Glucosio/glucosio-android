@@ -189,13 +189,3 @@ public class GlucoseRangesTest {
         glucoseRanges.setCustomMax(max);
     }
 }
-
-class TestGlucoseRanges extends GlucoseRanges {
-    TestGlucoseRanges(Context context) {
-        super(context);
-    }
-
-    protected boolean isInUnitTests() {
-        return true;
-    }
-}
