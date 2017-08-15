@@ -3,6 +3,8 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/a6f7bcc22a174ac9b36795438c143b6d)](https://www.codacy.com/app/Glucosio/glucosio-android?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Glucosio/glucosio-android&amp;utm_campaign=Badge_Grade)
 [![Coverage Status](https://coveralls.io/repos/github/Glucosio/glucosio-android/badge.svg?branch=develop)](https://coveralls.io/github/Glucosio/glucosio-android?branch=develop)
 
+# Glucosio is in need of a new lead developer for Glucosio for Android! If you are interested email us through our website!
+
 # Glucosio for Android
 Glucosio for Android, a user centered free and open source app for Diabetes management and research for Android.
 
