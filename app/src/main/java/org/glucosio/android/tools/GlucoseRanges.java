@@ -31,6 +31,9 @@ public class GlucoseRanges {
 
     private DatabaseHandler dB;
     private Context mContext;
+    private String preferredRange;
+    private int customMin;
+    private int customMax;
 
     @VisibleForTesting
     protected boolean isInUnitTests() {
@@ -51,10 +54,6 @@ public class GlucoseRanges {
     public void setCustomMax(int customMax) {
         this.customMax = customMax;
     }
-
-    private String preferredRange;
-    private int customMin;
-    private int customMax;
 
 
     public GlucoseRanges() {

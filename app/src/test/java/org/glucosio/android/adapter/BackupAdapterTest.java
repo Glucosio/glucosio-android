@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import static org.assertj.android.api.Assertions.assertThat;
+import static junit.framework.Assert.assertTrue;
 import static org.mockito.MockitoAnnotations.initMocks;
 
 public class BackupAdapterTest extends RobolectricTest {
@@ -47,6 +47,9 @@ public class BackupAdapterTest extends RobolectricTest {
         View view = adapter.getView(0, null, viewGroup);
 
         TextView sizeView = (TextView) view.findViewById(R.id.item_history_type);
-        assertThat(sizeView).hasText("1.00KB");
+        String sizeViewText = sizeView.getText().toString();
+        assertTrue(sizeViewText.matches(
+                "([0-9]*\\.[0-9]+[0-9]+[K]+[B])|([0-9],[0-9]+[0-9]+[K]+[B])"
+        ));
     }
 }

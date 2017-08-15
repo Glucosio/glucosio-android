@@ -96,7 +96,7 @@ public class GlucoseRangesTest {
     }
 
     @Test
-    public void expectGreenWhenReadingValueIs100WithUK_NICEPreferredRange() {
+    public void expectGreenWhenReadingValueIs100WithUKNICEPreferredRange() {
         glucoseRanges.setPreferredRange("UK NICE");
         reading = 100;
 
