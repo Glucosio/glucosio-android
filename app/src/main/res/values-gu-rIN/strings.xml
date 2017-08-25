@@ -47,9 +47,14 @@
   <string name="fragment_overview_last_reading">છેલ્લી ચકાસણી:</string>
   <string name="fragment_overview_trend">ગયા મહિના નું સરવૈયું:</string>
   <string name="assistant_action_ok">હમમ, સમજાઈ ગયું</string>
-  <string name="assistant_feedback_title">પ્રતિક્રિયા મોકલો </string>
   <!-- Future Strings Baked In Early For l10n -->
   <!-- Exercise Types -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <!-- About Glucosio Strings -->
 </resources>

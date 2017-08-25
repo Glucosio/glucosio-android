@@ -26,6 +26,7 @@
   <string name="tab_overview">미리보기</string>
   <string name="tab_history">기록</string>
   <string name="tab_tips">Tips</string>
+  <string name="activity_main_add_new_reading">새로운 수치 추가</string>
   <string name="title_activity_hello">안녕하세요</string>
   <string name="helloactivity_headline">안녕하세요</string>
   <string name="helloactivity_terms">이용 약관</string>
@@ -94,32 +95,37 @@
   <string name="weight">체중</string>
   <string name="dialog_add_custom_type">측정 카테고리 선택</string>
   <string-array name="tips_all">
-    <item>Eat more fresh, unprocessed foods to help reduce carbohydrate and sugar intake.</item>
-    <item>Read the nutritional label on packaged foods and beverages to control sugar and carbohydrate intake.</item>
-    <item>When eating out, ask for fish or meat broiled with no extra butter or oil.</item>
-    <item>When eating out, ask if they have low sodium dishes.</item>
-    <item>When eating out, eat the same portion sizes you would at home and take the leftovers to go.</item>
-    <item>When eating out ask for low-calorie items, such as salad dressings, even if they\'re not on the menu.</item>
-    <item>When eating out ask for substitutions. Instead of French fries, request a double order of a vegetable like salad, green beans or broccoli.</item>
-    <item>When eating out, order foods that are not breaded or fried.</item>
-    <item>When eating out ask for sauces, gravy and salad dressings "on the side."</item>
-    <item>Sugar free doesn’t really mean sugar free. It means 0.5 grams (g) of sugar per serving, so be careful to not indulge in too many sugar free items.</item>
-    <item>Moving toward a healthy weight helps control blood sugars. Your doctor, a dietitian, and a fitness trainer can get you started on a plan that will work for you.</item>
-    <item>Checking your blood level and tracking it in an app like Glucosio twice a day will help you be aware of outcomes from food and lifestyle choices.</item>
-    <item>Get HbA1c blood tests to find out your average blood sugar for the past 2 to 3 months. Your doctor should tell you how frequently this test will be needed to be performed.</item>
+    <item>더 신선하고, 가공되지 않은 음식을 먹는 것은 탄수화물과 당 섭취를 줄이는데 도움을 줍니다.</item>
+    <item>당과 탕수화물 섭취를 조절하기 위해 포장된 식품과 음료에 있는 영양성분표를 읽으세요.</item>
+    <item>외식할 때, 생선이나 고기를 추가적인 버터나 기름없이 구워달라고 요청하세요.</item>
+    <item>외식할 때, 저염식 요리가 있는지 물어보세요.</item>
+    <item>외식을 할 때는 집에서 먹는 양만큼만 먹고 남은 것은 싸가시기 바랍니다.</item>
+    <item>외식할 때, 메뉴에 없더라도 샐러드 드레싱과 같은 저칼로리 품목을 요청하세요.</item>
+    <item>외식을 할 때는 다른 것으로 교체하세요. 감자튀김 대신에 샐러드, 콩 또는 브로콜리 같은 채소를 요청하십시오.</item>
+    <item>외식할 때, 빵가루를 입히지 않거나 기름에 튀기지 않은 음식을 주문하세요.</item>
+    <item>외식을 할 때는 육즙으로 만든 소스를 요청하시고 샐러드 드레싱은 따로 달라고 요청하십시오.</item>
+    <item>무설탕은 정말로 설탕이 안들어갔다는 의미가 아닙니다. 1회 제공량에 0.5그램(g)의 설탕이 있다는 의미이므로, 너무 많은 무설탕 품목에 빠지지 않도록 조심하세요.</item>
+    <item>건강한 몸무게로 유지하는 것은 혈당 수치를 관리하는 데에 도움이 됩니다. 의사, 영양사 그리고 헬스 트레이너가 몸무게 관리 계획에 도움을 줄 것입니다.</item>
+    <item>혈액 수치를 측정하고 그 결과를 Glucosio앱을 통해 하루에 2번 추적하는 것은 음식과 생활 양식의 선택으로부터 나온 결과를 인식하는 데 도움을 줄 것입니다.</item>
+    <item>지난 2 ~ 3개월동안의 평균 혈당 수치를 알아보려면 HbA1c 혈액 검사를 받으세요. 의사가 검사결과를 보고 이 검사를 얼마나 자주 받아야 할지 알려줄 것입니다.</item>
     <item>탄수화물은 혈당 레벨에 영향을 미치므로 얼마나 많은 탄수화물을 소비하는지를 추적하는 것은 혈액 레벨을 확인하는 것 만큼 중요하다고 할 수 있습니다. 탄수화물 섭취에 관해 의사 또는 영양학자와 이야기해 보세요.</item>
-    <item>Controlling blood pressure, cholesterol, and triglyceride levels is important since diabetics are susceptible to heart disease.</item>
-    <item>There are several diet approaches you can take to eating healthier and helping improve your diabetes outcomes. Seek advice from a dietician on what will work best for you and your budget.</item>
-    <item>Working on getting regular exercise is especially important for those with diabetes and can help you maintain a healthy weight. Talk to your doctor about exercises that will be appropriate for you.</item>
-    <item>Being sleep-deprived can make you eat more especially things like junk food and as a result can negatively impact your health. Be sure to get a good night sleep and consult a sleep specialist if you are having difficulty.</item>
-    <item>Stress can have a negative impact on diabetes. Talk to your doctor or other health care professional about coping with stress.</item>
-    <item>Visiting your doctor once a year and having regular communication throughout the year is important for diabetics to prevent any sudden onset of associated health problems.</item>
+    <item>당뇨병은 심장질환으로 이어지기 쉽기 때문에 혈압, 콜레스테롤, 트라이글리세라이드 수치를 관리하는 것이 중요합니다.</item>
+    <item>식이요법중에는 더 건강한 식단이나 당뇨 수치 개선에 도움을 줄 수 있는 것들이 있습니다. 영양사와 상담하여 어떠한 식단이 적절한 예산안에서 당신에게 가장 유용할지 조언 받으시기 바랍니다.</item>
+    <item>규칙적인 운동은 당뇨병 환자들에게 중요하며, 건강한 몸무게를 유지하는데에 도움을 줍니다. 의사와 상담하여 당신에게 적절한 운동에 대해 조언을 받으십시오.</item>
+    <item>부족한 수면은 불량 식품 같은 것을 더 먹도록 하며, 이는 건강에 안좋은 영향을 끼치게 될 것입니다. 잠을 편히 잘 수 있도록 노력하시고, 만약 잠을 잘 못주무신다면 수면 전문가와 상담하시기 바랍니다.</item>
+    <item>스트레스는 당뇨병에 부정적인 영향을 줄 수 있습니다. 담당 의사나 전문 의료진과 스트레스 대처법에 관해 상담하세요.</item>
+    <item>의사에게 지속적으로 정기적인 상담을 받는 것은, 당뇨와 관련하여 일어날 수 있는 갑작스런 건강문제를 방지하기 위해 중요합니다.</item>
     <item>비록 약 복용한지 조금 경과하여도 혈당 레벨에 영향을 주고 다른 부작용의 원인이 될지라도 의사에게 처방받은 대로 약을 복용합니다. 기억하기 어려운 경우에는 복약 관리 및 미리 알려주는 옵션에 대해 의사에게 요청합니다.</item>
+  </string-array>
+  <string-array name="tips_all_age_plus_40">
+    <item>나이가 많은 당뇨병 환자는 당뇨와 관련된 건강문제에 큰 위험이 있을 수 있습니다. 당신의 나이에 존재하는 당뇨병의 문제와 어떤 것에 대해 조심해야 할 지 의사와 상담하시기 바랍니다.</item>
+    <item>음식을 만들 때 사용하는 소금과 요리된 음식에 넣을 소금의 양을 제한합니다.</item>
   </string-array>
   <string name="assistant">보조 기능</string>
   <string name="assistant_action_update">지금 업데이트</string>
   <string name="assistant_action_ok">네, 알겠습니다</string>
   <string name="assistant_action_feedback">의견 보내기</string>
+  <string name="assistant_action_live_chat">라이브 채팅</string>
   <string name="assistant_action_reading">읽기 추가</string>
   <string name="assistant_action_try">지금 사용해 보기</string>
   <string name="assistant_weight_title">체중 업데이트</string>
@@ -130,26 +136,31 @@
   <string name="assistant_categories_desc">Glucosio는 포도당 입력에 대한 디폴트 카테고리를 제공하지만 개별적인 요구에 맞추기 위해 설정에서 사용자정의 카테고리를 생성할 수 있습니다.</string>
   <string name="assistant_check_title">여기에서 자주 확인</string>
   <string name="assistant_check_desc">Glucosio 보조는 정기적인 팁을 제공하며 지속적으로 개선되고 있습니다. 따라서 Glucosio 사용경험을 개선하고 다른 유용한 팁을 위해 취할 수 있는 유용한 작업에 대해 여기를 항상 확인해 주세요.</string>
-  <string name="assistant_feedback_title">피드백 보내기 </string>
+  <string name="assistant_feedback_title">피드백 보내기</string>
   <string name="assistant_feedback_desc">기술적인 이슈를 찾거나 Glucosio에 대한 피드백이 있을 때 Glucosio를 개선하도록 돕기 위해 설정 메뉴에서 제출해 주시기를 권장합니다.</string>
   <string name="assistant_reading_title">읽기 추가</string>
   <string name="assistant_reading_desc">주기적으로 포도당 읽기를 추가하여 시간이 지남에 따른 포도당 레벨을 추적하는 데 돕도록 해야 합니다.</string>
   <string name="assistant_export_title">데이터 내보내기</string>
   <string name="assistant_export_desc">내보내기 기능을 사용하여 의사에게 데이터를 공유하거나 데이터를 Google Drive에 백업합니다.</string>
   <string name="assistant_calculator_a1c_title">A1C 계산</string>
+  <string name="assistant_calculator_a1c_desc">이제 Glucosio의 HbA1c 계산기를 네비게이션 메뉴에서 사용하실 수 있습니다. 당신의 평균 혈액 포도당 수치를 입력하고 간단하게 HbA1c 값을 저장하세요.</string>
   <string name="helloactivity_spinner_preferred_range">선호 범위</string>
   <string name="helloactivity_spinner_preferred_range_4">사용자 정의 범위</string>
   <string name="helloactivity_preferred_range_min">최소값</string>
   <string name="helloactivity_preferred_range_max">최대값</string>
   <string name="helloactivity_language">언어</string>
+  <string name="menu_support_error1">이메일 어플리케이션이 설치되어 있지 않습니다. hello@glucosio.org 로 직접 메일을 보내주시기 바랍니다.</string>
   <string name="invitation_title">다른 사람 초대</string>
   <string name="invitation_message">당뇨 관리 및 연구를 위한 오픈 소스 앱인 Glucosio를 사용해 보세요.</string>
   <string name="invitation_cta">Glucosio를 사용해 보세요</string>
+  <string name="title_activity_backup_drive">구글 드라이브 백업</string>
+  <string name="activity_main_dialog_backup_export_title">백업 및 내보내기</string>
   <string name="preferences_privacy">개인 정보</string>
   <string name="helloactivity_textview_tos">Glucosio를 사용함으로써 다음 사항을 동의합니다</string>
   <string name="preferences_backup_google_drive">구글 드라이브</string>
   <string name="preferences_about_glucosio">Glucosio에 대하여</string>
   <string name="preferences_rate">Glucosio 등급</string>
+  <string name="preferences_licences_open">오픈소스 라이센스</string>
   <string name="preferences_freestyle_libre">FreeStyle Libre® 지원 활성화</string>
   <string name="preferences_freestyle_libre_experimental">실험 기능: FreeStyle Libre® 지원 활성화</string>
   <string name="preferences_font_dyslexia_experimental">실험 기능: 읽기 어려운 사용자에 대한 가독성 증가</string>
@@ -187,6 +198,12 @@
   <string name="dialog_add_exercisetype_23">레슬링</string>
   <string name="dialog_add_exercisetype_24">하이킹</string>
   <string name="dialog_add_exercisetype_25">정원 일</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">탄수화물:</string>
   <string name="dialog_addfood_protein">단백질:</string>
@@ -215,6 +232,7 @@
   <string name="fragment_overview_graph_export_true">스크린샷을 갤러리에 저장하였습니다</string>
   <string name="fragment_overview_graph_export_false">스크린샷을 갤러리에 저장하는데 오류가 발생하였습니다</string>
   <string name="dialog_export_range">범위 내보내기</string>
+  <string name="activity_export_issue_generic">수치를 내보내는 중에 문제가 생겼습니다.\n다시 시도 하세요.</string>
   <string name="activity_export_no_readings_snackbar">내보내기할 읽기가 없습니다.</string>
   <string name="wear_new_reading">새로운 읽기를 추가하였습니다</string>
   <string name="dialog_add_weight">체중</string>
@@ -228,10 +246,15 @@
   <string name="title_activity_add_glucose">포도 당 독서를 추가</string>
   <string name="title_activity_add_glucose_edit">포도당 읽기 편집</string>
   <string name="title_activity_add_weight">몸무게 추가</string>
+  <string name="title_activity_add_weight_edit">몸무게 수정하기</string>
   <string name="title_activity_add_cholesterol">콜레스테롤 레벨 추가</string>
+  <string name="title_activity_add_cholesterol_edit">콜레스테롤 수치 수정하기</string>
   <string name="title_activity_add_hb1ac">HBA1C 추가</string>
+  <string name="title_activity_add_hb1ac_edit">HbA1C 수정하기</string>
   <string name="title_activity_add_ketone">케톤 추가</string>
+  <string name="title_activity_add_ketone_edit">케톤 수정하기</string>
   <string name="title_activity_add_pressure">혈압 추가</string>
+  <string name="title_activity_add_pressure_edit">혈압 수정하기</string>
   <string name="fab_weight">신체 체중</string>
   <string name="fab_ketones">케톤</string>
   <string name="fab_pressure">혈압</string>
@@ -240,20 +263,63 @@
   <string name="fab_glucose">혈당 레벨</string>
   <string name="dialog_error_duplicate">해당 시간에 대한 항목을 이미 갖고 있습니다. 수정사항을 추가하기 전에 먼저 삭제하십시오.</string>
   <string name="freestylelibre_nfc_ready">폰을 센서에 가져다대고 진동이 울릴 때까지 움직이지 마십시오.</string>
+  <string name="freestylelibre_nfc_not_supported">이 장치는 NFC를 지원하지 않습니다.</string>
   <string name="freestylelibre_nfc_not_enabled">NFC가 비활성화 되었습니다.</string>
+  <string name="dialog_add_glucose_freestylelibre">FreeStyle Libre®에서 추가하기</string>
   <string name="freestylelibre_nfc_error">NFC 연결을 여는데 오류가 발생하였습니다!</string>
+  <string name="dialog_add_glucose_freestylelibre_success">FreeStyle Libre®에서 성공적으로 수치를 추가했습니다.</string>
   <string name="overview_hb1ac_error_no_data">HBA1C를 계산하기 위한 데이터가 충분하지 않습니다</string>
   <string name="overview_hb1ac">HBA1C:</string>
+  <string name="dialog_add_glucose_freestylelibre_added">FreeStyle Libre®에서 추가하였습니다</string>
   <string name="activity_converter_a1c_glucose">평균 혈당 레벨</string>
   <string name="activity_converter_a1c">A1C</string>
   <string name="activity_converter_title">A1C 계산기</string>
   <string name="activity_converter_save">저장</string>
   <string name="menu_support">지원</string>
+  <string name="menu_support_title">어떻게 도와 드릴까요?</string>
   <string name="menu_support_email">Email</string>
   <string name="menu_support_live">라이브 채팅</string>
   <string name="menu_support_forum">지원 포럼</string>
   <string name="notification_reminder_glucose">혈당 레벨을 기록할 시간입니다!</string>
+  <string name="notification_reminder_medication">약을 복용할 시간입니다.</string>
+  <string name="overview_hb1ac_info">이것은 추정치이며 지난달 기록의 평균으로 부터 계산되었습니다. 이 추정치는 HbA1c 추정치 계산에 널리 쓰이는 계산식을 사용한 것이므로 단순히 추정치로만 참고하시기 바랍니다.</string>
   <string name="dialog_add_notes">참고</string>
+  <string name="sidebar_backup_export">백업 및 내보내기</string>
+  <string name="menu_backup_backup">구글 드라이브에 백업</string>
+  <string name="menu_backup_restore">복원하기</string>
+  <string name="menu_backup_csv">CSV 형식으로 내보내기</string>
   <string name="activity_backup_drive_automatic">자동 백업</string>
+  <string name="activity_backup_drive_desc">구글 드라이브에 당신의 데이터를 백업해서 당신이 장치를 잃어버렸거나 바꿨을때 당신의 수치들을 복원할 수 있습니다.</string>
+  <string name="activity_backup_drive_message_restart">변경 내용을 적용하기 위해 다시 시작합니다...</string>
+  <string name="activity_backup_drive_desc_1">Google Drive와 Glucosio 데이터 베이스를 동기화 합니다.</string>
+  <string name="activity_backup_drive_desc_2">Glucosio의 데이터를 동기화하면 기기를 잃어버리시거나 변경하시더라도 모든 기록을 복원할 수 있습니다.</string>
+  <string name="activity_backup_drive_success">데이터베이스가 드라이브에 성공적으로 백업되었습니다</string>
+  <string name="activity_backup_drive_restore_success">드라이브에서 성공적으로 데이터베이스를 복원하였습니다</string>
+  <string name="activity_backup_drive_failed">문제가 발생했습니다. 다시 시도하십시오 :/</string>
+  <string name="activity_backup_drive_last">마지막 백업:</string>
+  <string name="activity_backup_drive_folder">백업 폴더</string>
+  <string name="activity_backup_drive_folder_not_set">미설정</string>
+  <string name="activity_backup_drive_button_backup">지금 백업하기</string>
+  <string name="activity_backup_drive_recent">최근 백업</string>
+  <string name="activity_backup_drive_more">더 많은 백업들 보기</string>
+  <string name="activity_backup_drive_dialog_restore_title">이전 버전으로 되돌리기</string>
+  <string name="activity_backup_drive_dialog_restore_desc">백업을 복원하면 모든 기존의 데이터를 덮어쓸 것입니다.</string>
+  <string name="activity_backup_drive_dialog_restore_details">백업 세부 정보</string>
+  <string name="activity_backup_drive_dialog_restore_button_cancel">취소</string>
+  <string name="activity_backup_drive_dialog_restore_button_restore">백업 복원</string>
+  <string name="activity_backup_drive_button_restore">드라이브에서 복원</string>
+  <string name="activity_backup_drive_error_restore">드라이브에서 복원이 가능한 백업을 찾을 수 없습니다.</string>
+  <string name="activity_main_error_play_services">구글드라이브에 백업하려면 구글 플레이 서비스를 사용 해야 합니다.</string>
+  <string name="activity_main_dialog_csv_title">CSV 파일로 내보내기</string>
+  <string name="activity_backup_drive_button_open_drive">드라이브 관리</string>
+  <string name="mmol_mol">mmol/L</string>
   <string name="mmol_L">mmol/L</string>
+  <string name="mg_dL">mg/dL</string>
+  <string name="preferences_graph_old">이전의 그래프로 되돌리기</string>
+  <string name="history">히스토리</string>
+  <string name="save">저장</string>
+  <string name="activity_reminders_title">알림</string>
+  <string name="reminders_notification_action">수치 추가</string>
+  <string name="glucosio_activity_reminders_empty">설정된 알람이 없습니다. 새로운 알람을 등록하세요.</string>
+  <string name="reminder_item_title_generic2">포도당 수치를 기록할 시간입니다!</string>
 </resources>

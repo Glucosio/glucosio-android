@@ -136,7 +136,7 @@
   <string name="assistant_categories_desc">El Glucosio ve amb categories predeterminades per entrada de glucosa però podeu crear categories personalitzades dins la configuració per ajustar-ho a les vostres necessitats particulars.</string>
   <string name="assistant_check_title">Comprova sovint aquí</string>
   <string name="assistant_check_desc">L\'assistent de Glucosio proporciona consells regulars i continuarà millorant, així que comproveu sempre aquí els passos que podeu prendre per millorar l\'experiència de Glucosio i altres consells útils.</string>
-  <string name="assistant_feedback_title">Envia comentari </string>
+  <string name="assistant_feedback_title">Envia un comentari</string>
   <string name="assistant_feedback_desc">Si trobeu incidències tècniques o teniu comentaris sobre Glucosio us animem a enviar-ho des del menú de configuració per tal d\'ajudar-nos a millorar Glucosio.</string>
   <string name="assistant_reading_title">Afegeix una lectura</string>
   <string name="assistant_reading_desc">Assegureu-vos d\'afegir regularment les vostres lectures de glucosa per tal que puguem ajudar-vos a fer un seguiment dels vostres nivells de glucosa al llarg del temps.</string>
@@ -161,6 +161,7 @@
   <string name="preferences_about_glucosio">Quant a Glucosio</string>
   <string name="preferences_rate">Qualifica Glucosio</string>
   <string name="preferences_licences_open">Llicències de codi obert</string>
+  <string name="preferences_contributors">Col·laboradors</string>
   <string name="preferences_freestyle_libre">Activa el suport a FreeStyle Libre®</string>
   <string name="preferences_freestyle_libre_experimental">EXPERIMENTAL: activa el suport a FreeStyle Libre®</string>
   <string name="preferences_font_dyslexia_experimental">EXPERIMENTAL: incrementa la llegibilitat per als usuaris amb dislèxia</string>
@@ -198,6 +199,40 @@
   <string name="dialog_add_exercisetype_23">Lluita lliure</string>
   <string name="dialog_add_exercisetype_24">Senderisme</string>
   <string name="dialog_add_exercisetype_25">Feines de jardí</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <string name="intro_title1">Benvinguts a Glucosio!</string>
+  <string name="intro_para1">Glucosio és una aplicació de codi obert per gestionar la diabetis</string>
+  <string name="intro_title2">Registre i tendències</string>
+  <string name="intro_para2">Glucosio facilita el registre dels nivells de glucosa i la visualització de tendències</string>
+  <string name="intro_title3">Doneu suport a la recerca de la diabetis</string>
+  <string name="intro_para3">Glucosio us permet compartir tendències anònimes amb investigadors acadèmics</string>
+  <string name="intro_title4">Centrat en la privacitat</string>
+  <string name="intro_para4">Glucosio es pren molt seriosament la vostra privacitat i només comparteix tendències no identificables si hi optau</string>
+  <string name="intro_title5">Resultats de salut millorats</string>
+  <string name="intro_para5">Glucosio us ajuda a fer un seguiment de les vostres tendències del nivell de glucosa i altres mètriques per a resultats de salut millorats</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <string name="assistant_coachyesterday1">Els vostres nivells de glucosa d\'ahir eren bons!</string>
+  <string name="assistant_coachweek1">Els vostres nivell de glucosa d\'aquesta setmana han estat fabulosos!</string>
+  <string name="assistant_coachmorning1">El vostre nivell de glucosa matinal ha estat perfecte!</string>
+  <string name="assistant_coachafternoon1">El vostre nivell de glucosa de tarda ha estat perfecte!</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
+  <string name="badge_perfectweektitle1">Gran setmana</string>
+  <string name="badge_perfectweekdesc1">Heu aconseguit la insígnia de la setmana dins els rangs de nivell de glucosa! Bona feina!</string>
+  <string name="badge_perfectmonthtitle1">Gran mes</string>
+  <string name="badge_perfectmonthdesc1">Heu aconseguit la insígnia del mes dins els rangs de nivell de glucosa! Bona feina!</string>
+  <string name="badge_dataexporttitle1">Exportació de dades</string>
+  <string name="badge_dataexportdesc1">Heu aconseguit el distintiu d\'exportació de dades per ser un usuari que li agrada la portabilitat de dades! Bona feina!</string>
+  <string name="badge_log100title1">100 registres</string>
+  <string name="badge_log100desc1">Heu aconseguit el distintiu dels 100 registre de lectura de glucosa! Bona feina!</string>
+  <string name="badge_log250title1">250 registres</string>
+  <string name="badge_log250desc1">Heu aconseguit el distintiu dels 250 registre de lectura de glucosa! Bona feina!</string>
+  <string name="badge_log500title1">500 registres</string>
+  <string name="badge_log500desc1">Heu aconseguit el distintiu dels 500 registre de lectura de glucosa! Bona feina!</string>
+  <string name="badge_7daystitle1">7 dies</string>
+  <string name="badge_7daysdesc1">Heu aconseguit el distintiu de 7 dies de registres de nivell consistents! Bona feina!</string>
   <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">Carbohidrats:</string>
   <string name="dialog_addfood_protein">Proteïnes:</string>
@@ -308,11 +343,23 @@
   <string name="activity_backup_drive_button_open_drive">Gestiona al Drive</string>
   <string name="mmol_mol">mmol/mol</string>
   <string name="mmol_L">mmol/L</string>
+  <string name="mmol_mol_value">%1$s mmol/mol</string>
+  <string name="mmol_L_value">%1$s mmol/L</string>
+  <string name="mg_dL">mg/dL</string>
+  <string name="mg_dL_value">%1$s mg/dL</string>
   <string name="preferences_graph_old">Torna al gràfic antic</string>
   <string name="history">historial</string>
   <string name="save">desa</string>
   <string name="activity_reminders_title">Recordatoris</string>
-  <string name="reminders_notification_text">Ara és l\'hora de mesurar el nivell de glucosa!</string>
   <string name="reminders_notification_action">Afegeix una lectura</string>
   <string name="glucosio_activity_reminders_empty">No s\'ha trobat cap recordatori, Afegiu un nou.</string>
+  <string name="activitiy_reminders_error_duplicate">Ja existeix aquest recordatori.</string>
+  <string name="activity_reminder_error_empty">Introduïu una etiqueta vàlida.</string>
+  <string name="activity_reminder_add_label">Establiu una etiqueta de recordatori</string>
+  <string name="reminder_item_title_morning">Bon dia, és hora de fer una entrada a Glucosio!</string>
+  <string name="reminder_item_title_afternoon">Bona tarda, es hora de fer una entrada a Glucosio!</string>
+  <string name="reminder_item_title_evening">Bon vespre, és hora de fer una entrada a Glucosio!</string>
+  <string name="reminder_item_title_generic">És hora de fer una entrada a Glucosio!</string>
+  <string name="reminder_item_title_generic2">Ara és l\'hora de mesurar el nivell de glucosa!</string>
+  <string name="warning_internet_connection_required">Ens sap greu però necessiteu internet per a aquesta funció</string>
 </resources>

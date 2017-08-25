@@ -82,8 +82,13 @@
   <string name="assistant_action_update">ഇപ്പോൾ പുതുക്കുക</string>
   <!-- Future Strings Baked In Early For l10n -->
   <!-- Exercise Types -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <!-- About Glucosio Strings -->
   <string name="dialog_add_weight">തൂക്കം</string>
-  <string name="title_activity_add_glucose">ഗ്ലൂക്കോസ് ചേര്‍ക്കുക</string>
 </resources>

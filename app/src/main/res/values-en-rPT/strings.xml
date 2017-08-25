@@ -81,7 +81,6 @@ Update ye research opt-in</string>
   <string name="assistant_categories_desc">Glucosio comes wit\' default categories fer glucose input but ye can create custom categories in settin\'s to match ye unique needs.</string>
   <string name="assistant_check_title">Check here often</string>
   <string name="assistant_check_desc">Glucosio assistant provides regular tips \'n gunna keep improvin\', so always check here fer useful actions ye can take to improve ye Glucosio experience \'n fer other useful tips.</string>
-  <string name="assistant_feedback_title">Submit feedback </string>
   <string name="assistant_feedback_desc">If ye find any technical issues or have feedback \'bout Glucosio we encourage ye to submit it in th\' settin\'s menu in order to help us improve Glucosio.</string>
   <string name="assistant_reading_title">Add a reading</string>
   <string name="assistant_reading_desc">Be sure to regularly add ye glucose readin\'s so we can help ye track ye glucose levels over the hour.</string>
@@ -90,6 +89,12 @@ Update ye research opt-in</string>
 Share ye data wit\' ye doctor or backup ye data to Google Drive usin\' th\' export weapon.</string>
   <!-- Future Strings Baked In Early For l10n -->
   <!-- Exercise Types -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <!-- About Glucosio Strings -->
 </resources>

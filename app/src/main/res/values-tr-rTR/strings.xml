@@ -26,6 +26,7 @@
   <string name="tab_overview">Önizleme</string>
   <string name="tab_history">Geçmiş</string>
   <string name="tab_tips">İpuçları</string>
+  <string name="activity_main_add_new_reading">Yeni okuma ekle</string>
   <string name="title_activity_hello">Merhaba.</string>
   <string name="helloactivity_headline">Merhaba.</string>
   <string name="helloactivity_terms">Kullanım Şartları.</string>
@@ -113,8 +114,12 @@
     <item>Düzenli egzersiz yapmaya çalışmak özellikle şeker hastaları için önemlidir ve sağlıklı bir kiloda olmanıza yardımcı olabilir. Doktorunuzla size uygun egzersiler hakkında konuşabilirsiniz.</item>
     <item>Uykusuzluk sizi daha çok yemeye ve özellikle abur cubur yemeye itebilir ve böylece sağlığınızı kötü etkileyebilir. İyi uyku almaya özen gösterin ve bu konuda sorun yaşıyosanız bir uyku uzmanına danışın.</item>
     <item>Stresin diyabet üzerinde olumsuz etkileri olabilir. Stres ile başa çıkma hakkında doktorunuzla ya da diğer sağlık profesyonelleri ile. konuşabilirsiniz.</item>
-    <item>Visiting your doctor once a year and having regular communication throughout the year is important for diabetics to prevent any sudden onset of associated health problems.</item>
+    <item>Doktorunuzu yılda bir kez ziyaret etmek ve düzenli olarak irtibatta olmak şeker hastaları için herhangi bir ani sağlık sorunun önlemek için önemlidir.</item>
     <item>İlacınızı doktorunuzun talimatlarına göre alınız. İlaç alımınızdaki ufak aksamalar bile kan şekerinizi etkileyebilir ve başka yan etkilere yol açabilir. İlaç talimatlarınızı hatırlamakta zorluk yaşıyorsanız doktorunuz ile ilaç yönetimi ve hatırlatıcılar hakkında konuşun.</item>
+  </string-array>
+  <string-array name="tips_all_age_plus_40">
+    <item>Yaşlı şeker hastaları hastalığa bağlı sağlık sorunları için daha büyük risk taşır. Yaşınızın şeker hastalığında nasıl bir rolü olduğu hakkında ve neleri izlemek gerektiği hakkında doktorunuzla görüşün.</item>
+    <item>Yemek pişirmede ve pişirmeden sonra eklenen tuz miktarını azaltın.</item>
   </string-array>
   <string name="assistant">Yardımcı</string>
   <string name="assistant_action_update">Şimdi Güncelleştir</string>
@@ -131,33 +136,45 @@
   <string name="assistant_categories_desc">Glucosio glikoz girişi için varsayılan kategoriler bulundurmaktadır ancak benzersiz gereksinimlerinize ayarlarında özel kategoriler oluşturabilirsiniz.</string>
   <string name="assistant_check_title">Burayı sık sık kontrol et</string>
   <string name="assistant_check_desc">Glucosio Yardımcısı düzenli ipuçları sağlar ve ilerlemeyi kaydeder, bu yüzden her zaman burayı, Glucosio deneyiminizi geliştirmek için yapabileceğiniz faydalı işlemler ve diğer yararlı ipuçları için kontrol edin.</string>
-  <string name="assistant_feedback_title">Geribildirim Gönder </string>
+  <string name="assistant_feedback_title">Geri bildirim gönder</string>
   <string name="assistant_feedback_desc">Eğer herhangi bir teknik sorun bulursanız veya Glucosio hakkında geribildiriminiz varsa Glucosio\'yu geliştirmemize yardımcı olmak için Ayarlar menüsünden geribildirim göndermeyi öneririz.</string>
   <string name="assistant_reading_title">Bir okuma Ekle</string>
   <string name="assistant_reading_desc">Glikoz değerlerinizi düzenli olarak eklediğinizden emin olun böylece glikoz seviyenizi takip edebilelim.</string>
   <string name="assistant_export_title">Verilerinizi dışarı aktar</string>
+  <string name="assistant_export_desc">Verilerinizi doktorunuzla paylaşın veya yverilerinizi Google Drive dışa aktarma özelliğiyle yedekleyin.</string>
   <string name="assistant_calculator_a1c_title">A1C\'yi hesapla</string>
+  <string name="assistant_calculator_a1c_desc">Glucosio\'nun dahili HbA1c hesaplayıcısı gezinti çekmecesinde kullanılabilir. Ortalama kan şekerinizi girip hesaplanan HbA1c değerini anında kaydedin.</string>
   <string name="helloactivity_spinner_preferred_range">Tercih edilen aralık</string>
   <string name="helloactivity_spinner_preferred_range_4">Özel Aralık</string>
   <string name="helloactivity_preferred_range_min">En küçük değer</string>
   <string name="helloactivity_preferred_range_max">Max. değer</string>
   <string name="helloactivity_language">Dil Seç</string>
+  <string name="menu_support_error1">Yüklü bir e-posta uygulaması yok. Lütfen hello@glucosio.org adresine mail gönderin</string>
   <string name="invitation_title">Başka kişileri davet edin</string>
+  <string name="invitation_message">Glucosio\'yu deneyin, diyabet yönetimi ve araştırmaları için açık kaynak kodlu bir uygulama.</string>
   <string name="invitation_cta">Glucosio deneyin</string>
   <string name="title_activity_backup_drive">Google Drive yedekleme</string>
   <string name="activity_main_dialog_backup_export_title">Yedekleme &amp; Kaydet</string>
   <string name="preferences_privacy">Gizlilik</string>
+  <string name="helloactivity_textview_tos">Glucosio kullanarak, bunları kabul ediyorsunuz</string>
   <string name="preferences_backup_google_drive">Google Drive</string>
   <string name="preferences_about_glucosio">Glucosio hakkında</string>
   <string name="preferences_rate">Glucosio\'yu Değerlendir</string>
   <string name="preferences_licences_open">Açık kaynak lisansları</string>
+  <string name="preferences_contributors">Katkıda Bulunanlar</string>
+  <string name="preferences_freestyle_libre">Freestyle Libre® desteğini etkinleştir</string>
+  <string name="preferences_freestyle_libre_experimental">DENEYSEL: FreeStyle Libre® desteğini etkinleştirme</string>
+  <string name="preferences_font_dyslexia_experimental">DENEYSEL: disleksi olan kullanıcılar için okunabilirliği artırmak</string>
+  <string name="preferences_font_dyslexia">Disleksisi olan kullanıcılar için okunabilirliği artırmak</string>
   <string name="about_donate">Glucosio\'ya bağış yap</string>
   <string name="reading_ok">OK</string>
   <string name="reading_hypo">Hipoglisemi</string>
   <string name="reading_low">Düşük</string>
   <string name="reading_high">Yüksek</string>
+  <string name="reading_hyper">Hiperglisemi</string>
   <!-- Future Strings Baked In Early For l10n -->
   <!-- Exercise Types -->
+  <string name="dialog_add_exercisetype_1">Acelesiz yürüyüş</string>
   <string name="dialog_add_exercisetype_2">Hızlı yürüme</string>
   <string name="dialog_add_exercisetype_3">Koşu</string>
   <string name="dialog_add_exercisetype_4">Koşu</string>
@@ -166,6 +183,7 @@
   <string name="dialog_add_exercisetype_7">Paten</string>
   <string name="dialog_add_exercisetype_8">Bisiklet</string>
   <string name="dialog_add_exercisetype_9">Golf</string>
+  <string name="dialog_add_exercisetype_10">Softbol</string>
   <string name="dialog_add_exercisetype_11">Badminton</string>
   <string name="dialog_add_exercisetype_12">Futbol</string>
   <string name="dialog_add_exercisetype_13">Basketbol</string>
@@ -179,7 +197,23 @@
   <string name="dialog_add_exercisetype_21">Dövüş sanatları</string>
   <string name="dialog_add_exercisetype_22">Dağ tırmanışı</string>
   <string name="dialog_add_exercisetype_23">Güreş</string>
+  <string name="dialog_add_exercisetype_24">Yürüyüş</string>
   <string name="dialog_add_exercisetype_25">Bahçe işleri</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <string name="intro_title1">Glucosio\'ya hoş geldiniz!</string>
+  <string name="intro_para1">Glucosio diyabet yönetimi ve araştırmaları için açık kaynak kodlu ve ücretsiz bir uygulamadır</string>
+  <string name="intro_title2">Günlüğe kaydetme ve trendler</string>
+  <string name="intro_para2">Glucosio trendleri kolayca görselleştirir ve glukoz seviyelerini günlüğe kaydeder</string>
+  <string name="intro_title3">Diyabet araştırmaları desteklemek</string>
+  <string name="intro_para3">Glucosio akademik diyabet araştırmacılar ile anonim eğilimleri paylaşmaya katılımızı sağlar</string>
+  <string name="intro_title4">Gizlilik odaklı</string>
+  <string name="intro_para4">Glucosio gizliliğinizi ciddiye alır ve izin veridiğiniz eğilimleri paylaşır</string>
+  <string name="intro_title5">Gelişmiş sağlık sonuçları</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">Karbonhidrat:</string>
   <string name="dialog_addfood_protein">Protein:</string>
@@ -259,5 +293,6 @@
   <string name="activity_backup_drive_button_restore">Sürücüden geri yükle</string>
   <string name="mmol_mol">mmol/mol</string>
   <string name="mmol_L">mmol/L</string>
+  <string name="mg_dL">mg/dL</string>
   <string name="preferences_graph_old">Eski grafiğe geri dön</string>
 </resources>

@@ -20,8 +20,44 @@
   ~
   -->
 <resources>
+  <string name="action_settings">Optiounen</string>
+  <string name="action_feedback">Feedback schécken</string>
+  <string name="tab_overview">Iwwersiicht</string>
+  <string name="title_activity_hello">Moien.</string>
+  <string name="helloactivity_headline">Moien.</string>
+  <string name="helloactivity_terms">Notzongsbedingungen</string>
+  <string name="helloactivity_subhead">Mier brauchen nemmen e puer Sachen ier mier lasleen.</string>
+  <string name="helloactivity_country">Land</string>
+  <string name="helloactivity_age">Alter</string>
+  <string name="helloactivity_age_invalid">Gëff e gëltegt Alter an w. e. g.</string>
+  <string name="helloactivity_gender">Geschlecht</string>
+  <string name="helloactivity_gender_list_1">Männlech</string>
+  <string name="helloactivity_gender_list_2">Weiblech</string>
+  <string name="helloactivity_gender_list_3">Aner</string>
+  <string name="helloactivity_spinner_diabetes_type">Diabetiss Typ</string>
+  <string name="helloactivity_spinner_diabetes_type_1">Typ 1</string>
+  <string name="helloactivity_spinner_diabetes_type_2">Typ 2</string>
+  <string name="helloactivity_spinner_diabetes_gdm">Schwangerschaftsdiabetis</string>
+  <string name="helloactivity_spinner_diabetes_lada">LADA</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit">Gewenschten Glukose Meng</string>
+  <string name="preferences_spinner_preferred_a1c_unit">Gewenschten HbA1c Meng</string>
+  <string name="dialog_add_date">Datum</string>
+  <string name="dialog_add_time">Zäit</string>
+  <string name="dialog_add_type_5">Firum Owesiessen</string>
+  <string name="dialog_add_type_6">No dem Owesiessen</string>
+  <string name="dialog_add_type_7">Snack</string>
+  <string name="dialog_add_type_8">Firum Schlofengoen</string>
+  <string name="dialog_add_type_9">Nuecht</string>
+  <string name="dialog_add_type_11">Kontrollmiessung</string>
+  <string name="dialog_add_type_12">Aner</string>
   <!-- Future Strings Baked In Early For l10n -->
   <!-- Exercise Types -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <!-- About Glucosio Strings -->
 </resources>

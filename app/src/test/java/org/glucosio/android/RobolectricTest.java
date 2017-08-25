@@ -9,10 +9,11 @@ import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
+import org.robolectric.RobolectricTestRunner;
 
 @Ignore
-@RunWith(GlucosioTestRunner.class)
-@Config(constants = BuildConfig.class, sdk = 21, packageName = "org.glucosio.android")
+@RunWith(RobolectricTestRunner.class)
+@Config(constants = BuildConfig.class, sdk = 21)
 public abstract class RobolectricTest {
     protected Analytics getAnalytics() {
         return getTestApplication().getAnalytics();

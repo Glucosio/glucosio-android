@@ -60,12 +60,17 @@
   <string name="glucose_reading_type">Ke ʻAno</string>
   <string name="assistant_categories_title">Haku i nā māhele</string>
   <string name="assistant_check_title">E hoʻi pinepine</string>
-  <string name="assistant_feedback_title">Hoʻouna i ka manaʻo </string>
   <string name="assistant_feedback_desc">Inā loaʻa i ka pilikia ʻoe a i ʻole loaʻa iā ʻoe ka manaʻo no Glucosio, hoʻopaipai mākou i ka waiho ʻana o ia mea āu i ka papa kauna i hiki mākou ke holomua iā Glucosio.</string>
   <string name="assistant_reading_title">Hoʻohui i ka heluhelu</string>
   <string name="assistant_reading_desc">E hoʻohui pinepine i kou mau heluhelu monakō i hiki mākou ke kōkua i ka nānā ʻana o kou ana monakō ma o ka manawa holomua.</string>
   <!-- Future Strings Baked In Early For l10n -->
   <!-- Exercise Types -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <!-- About Glucosio Strings -->
 </resources>

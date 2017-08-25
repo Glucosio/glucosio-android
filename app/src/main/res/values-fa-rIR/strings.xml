@@ -113,7 +113,6 @@
   <string name="assistant_weight_title">وزن خود را به روز رسانی کنید</string>
   <string name="assistant_categories_title">ایجاد دسته</string>
   <string name="assistant_check_title">اینجا را مکررا بررسی کنید</string>
-  <string name="assistant_feedback_title">ارسال انتقادات و پیشنهادات </string>
   <string name="assistant_reading_title">اضافه کردن اندازه گیری</string>
   <string name="helloactivity_spinner_preferred_range">محدوده مورد نظر</string>
   <string name="helloactivity_spinner_preferred_range_4">محدوده سفارشی</string>
@@ -161,6 +160,12 @@
   <string name="dialog_add_exercisetype_23">کشتی</string>
   <string name="dialog_add_exercisetype_24">پیاده روی</string>
   <string name="dialog_add_exercisetype_25">کار در حیاط</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">کربوهیدرات:</string>
   <string name="dialog_addfood_protein">پروتئین:</string>

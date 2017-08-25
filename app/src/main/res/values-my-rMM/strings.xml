@@ -122,7 +122,6 @@
   <string name="assistant_categories_desc">ဂလူးကို့စ် အချက်အလက်အတွက် Glucosio က ပုံသေ ကဏ္ဍများဖြင့် ထည့်သွင်းထားပါသည် သို့ရာတွင် သင်၏လိုအပ်ချက်နှင့် ကိုက်ညီရန် စိတ်ကြိုက်ကဏ္ဍများကို အပြင်အဆင်များထဲတွင် ဖန်တီးနိုင်ပါသည်.</string>
   <string name="assistant_check_title">ဒီနေရာကို မကြာခဏ စစ်ဆေးပါ</string>
   <string name="assistant_check_desc">Glucosio လက်ထောက်သည် ပုံမှန်အကြံပြုချက်များကို ပေးပါသည်။ ထို့ပြင် ဆက်လက်တိုးတက်အောင် ဆောင်ရွက်နေပါသည်။ ထို့ကြောင့် သင့်Glucosio သုံးစွဲမှုအတွေ့အကြုံများနှင့် အခြားအသုံးဝင်သည့် အကြံပြုချက်များအတွက် သင်ဆောင်ရွက်နိုင်သည်များကို အဲဒီမှာ အမြဲ လာရောက်ကြည့်ရှုပါ။</string>
-  <string name="assistant_feedback_title">အကြံပြုချက် ပေးပို့ရန် </string>
   <string name="assistant_feedback_desc">နည်းပညာ အခက်အခဲများ သို့မဟုတ် Glucosio နှင့် ပတ်သက်၍ တုံ့ပြန်လိုပါက Glucosio ကို ပိုမိုကောင်းမွန်ဖို့ ကူညီရန် အပြင်အဆင် စာရင်းတွင် ကျွန်ုပ်တို့ကို ပေးပို့ပါ.</string>
   <string name="assistant_reading_title">ပြန်ဆိုချက် တစ်ခု ထည့်ပါ</string>
   <string name="assistant_reading_desc">သင်၏ ဂလူးကို့စ် ဖတ်ခြင်းကို ပုံမှန် ဖြစ်အောင်လုပ်ပေးပါ အဲလိုဆိုရင် ကျွန်ုပ်တို့က သင်၏ဂလူးကို့စ် ပမာဏကို အချိန်တိုင်း စောင့်ကြည့်ဖို့ ကူညီမှာပါ.</string>
@@ -177,6 +176,12 @@
   <string name="dialog_add_exercisetype_23">နပန်း</string>
   <string name="dialog_add_exercisetype_24">ခရီး​ဝေးလမ်း​လျှောက်ခြင်း</string>
   <string name="dialog_add_exercisetype_25">ခြံရှင်းအလုပ်</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">ကစီဓါတ်ပါ​သော အစာများ</string>
   <string name="dialog_addfood_protein">အသားဓါတ်</string>

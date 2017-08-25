@@ -20,8 +20,59 @@
   ~
   -->
 <resources>
+  <string name="action_settings">Indstillinger</string>
+  <string name="action_feedback">Send kommentar</string>
+  <string name="action_invite">Inviter en ven</string>
+  <string name="tab_overview">Oversigt</string>
+  <string name="tab_history">Historie</string>
+  <string name="tab_tips">Tips</string>
+  <string name="activity_main_add_new_reading">Tilføj nye læsning</string>
+  <string name="title_activity_hello">Hej.</string>
+  <string name="helloactivity_headline">Hej.</string>
+  <string name="helloactivity_terms">Brugervilkår</string>
+  <string name="helloactivity_subhead">Lige et par ting til at hjælpe dig hurtigt i gang.</string>
+  <string name="helloactivity_country">Land</string>
+  <string name="helloactivity_age">Alder</string>
+  <string name="helloactivity_age_invalid">Angiv en gyldig alder.</string>
+  <string name="helloactivity_gender">Køn</string>
+  <string name="helloactivity_gender_list_1">Mand</string>
+  <string name="helloactivity_gender_list_2">Kvinde</string>
+  <string name="helloactivity_gender_list_3">Andet</string>
+  <string name="helloactivity_spinner_diabetes_type">Diabetes type</string>
+  <string name="helloactivity_spinner_diabetes_type_1">Type 1</string>
+  <string name="helloactivity_spinner_diabetes_type_2">Type 2</string>
+  <string name="helloactivity_spinner_diabetes_gdm">Svangerskabsuge</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit">Foretrukne glukose enhed</string>
+  <string name="preferences_spinner_preferred_a1c_unit">Foretrukne HbA1c enhed</string>
+  <string name="preferences_spinner_preferred_a1c_unit_1">procent</string>
+  <string name="preferences_spinner_preferred_weight_unit">Foretrukne vægtenhed</string>
+  <string name="preferences_spinner_preferred_weight_unit_1">kg</string>
+  <string name="preferences_spinner_preferred_weight_unit_2">pund</string>
+  <string name="helloactivity_share_data">Del anonyme data til forsknings brug.</string>
+  <string name="helloactivity_hint_settings">Du kan ændre disse indstillinger senere.</string>
+  <string name="helloactivity_button_next">NÆSTE</string>
+  <string name="helloactivity_button_start">START</string>
+  <string name="fragment_empty_text">Ingen data. \n Tilføj din første læsning her.</string>
+  <string name="dialog_add_title">Tilføj blodsukker niveau</string>
+  <string name="dialog_add_concentration">Koncentration</string>
+  <string name="dialog_add_date">Dato</string>
+  <string name="dialog_add_time">Tid</string>
+  <string name="dialog_add_measured">Målt</string>
+  <string name="dialog_add_type_1">Før morgenmad</string>
+  <string name="dialog_add_type_2">Efter morgenmad</string>
+  <string name="dialog_add_type_3">Før frokost</string>
+  <string name="dialog_add_type_4">Efter frokost</string>
+  <string name="dialog_add_type_5">Før middag</string>
+  <string name="dialog_add_type_12">Andet</string>
   <!-- Future Strings Baked In Early For l10n -->
   <!-- Exercise Types -->
+  <string name="dialog_add_exercisetype_8">Cykling</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <!-- About Glucosio Strings -->
 </resources>

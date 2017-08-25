@@ -117,7 +117,6 @@
   <string name="assistant_categories_desc">Ang Glucosio ay mga kategoryang kalakip para sa glucose input, ngunit maaari kang gumawa ng sarili mong kategorya kung nanaisin.</string>
   <string name="assistant_check_title">Pumunta dito ng madalas</string>
   <string name="assistant_check_desc">Nagbibigay ang Glucosio assistant ng mga payo kung paano gaganda ang iyong kalusugan at kung paano mo makukuha ang benepisyo ng paggamit ng Glucosio.</string>
-  <string name="assistant_feedback_title">I-submit ang feedback</string>
   <string name="assistant_feedback_desc">Kung may mga katanungang pangteknikal or may mga puna at suhesyon para sa Glucosio, pumunta sa settings menu.</string>
   <string name="assistant_reading_title">Magdagdag ng reading</string>
   <string name="assistant_reading_desc">Siguraduhing palaging magdagdag ng iyong glucose readings para ikaw matulungan naming i-track ang iyong glucose levels.</string>
@@ -127,6 +126,12 @@
   <string name="helloactivity_preferred_range_max">Max value</string>
   <!-- Future Strings Baked In Early For l10n -->
   <!-- Exercise Types -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <!-- About Glucosio Strings -->
   <string name="dialog_add_weight">Timbang</string>

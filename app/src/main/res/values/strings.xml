@@ -159,7 +159,7 @@
     <string name="preferences_about">About</string>
     <string name="preferences_experimental_title" translatable="false">Here be dragons :/</string>
     <string name="preferences_experimental">These features are experimental and may not fully work and are for early testing by users. Remember that you can shake your phone to send us feedback.</string>
-    <string name="version" translatable="false">1.3.0 (Chutney)</string>
+    <string name="version" translatable="false">1.4.0 (Chutney)</string>
     <string name="preferences_version">Version</string>
     <string name="preferences_coming_soon">Coming soon...</string>
     <string name="preferences_terms">Terms of use</string>
@@ -318,7 +318,48 @@
     <string name="dialog_add_exercisetype_24">Hiking</string>
     <string name="dialog_add_exercisetype_25">Yard work</string>
 
-    <!-- Food Entry Labels -->
+  <!-- Future Strings Baked In Early For l10n -->
+    <!-- Intro Strings -->
+    <string name="intro_title1">Welcome to Glucosio!</string>
+    <string name="intro_para1">Glucosio is a free and open source app for managing your diabetes</string>
+    <string name="intro_title2">Logging and Trends</string>
+    <string name="intro_para2">Glucosio makes logging glucose levels and visualizing trends easy</string>
+    <string name="intro_title3">Support Diabetes Research</string>
+    <string name="intro_para3">Glucosio allows you to opt-in to sharing anonymous trends with academic diabetes researchers</string>
+    <string name="intro_title4">Privacy Focused</string>
+    <string name="intro_para4">Glucosio takes your privacy seriously and only shares undidenfiable trends if you opt-in</string>
+    <string name="intro_title5">Improved Health Outcomes</string>
+    <string name="intro_para5">Glucosio helps you track your glucose level trends and other health metrics for improved health outcomes</string>
+  
+    <!-- Future Strings Baked In Early For l10n -->
+    <!-- Smart Assistant Strings -->
+ 
+    <string name="assistant_coachyesterday1">Your glucose levels yesterday were great!</string>
+  <string name="assistant_coachweek1">Your glucose levels this week have been terrific!</string>
+  <string name="assistant_coachmorning1">Your morning time glucose level was perfect!</string>
+  <string name="assistant_coachafternoon1">Your afternoon glucose level was perfect!</string>
+  
+  
+    <!-- Future Strings Baked In Early For l10n -->
+    <!-- Badges -->
+ 
+    <string name="badge_perfectweektitle1">Great Week</string>
+    <string name="badge_perfectweekdesc1">You achieved the one week of in range glucose levels badge! Great job!</string>
+    <string name="badge_perfectmonthtitle1">Great Month</string>
+    <string name="badge_perfectmonthdesc1">You achieved the one month of in range glucose levels badge! Great job!</string>
+    <string name="badge_dataexporttitle1">Data Export</string>
+    <string name="badge_dataexportdesc1">You achieved the data export badge for being a user who likes data portability! Great job!</string>
+    <string name="badge_log100title1">Logged 100</string>
+    <string name="badge_log100desc1">You achieved the logged 100 glucose readings badge! Great job!</string>
+    <string name="badge_log250title1">Logged 250</string>
+    <string name="badge_log250desc1">You achieved the logged 250 glucose readings badge! Great job!</string>
+    <string name="badge_log500title1">Logged 500</string>
+    <string name="badge_log500desc1">You achieved the logged 500 glucose readings badge! Great job!</string>
+    <string name="badge_7daystitle1">7-Days</string>
+    <string name="badge_7daysdesc1">You achieved the 7-Days of consistent glucose level logging badge! Great job!</string>
+
+  
+     <!-- Food Entry Labels -->
 
     <string name="dialog_addfood_carbs">Carbs:</string>
     <string name="dialog_addfood_protein">Protein:</string>
@@ -467,4 +508,6 @@
         <item>@string/reminder_item_title_generic</item>
         <item>@string/reminder_item_title_generic2</item>
     </string-array>
+    <string name="helloactivity_terms_accept">I\'ve read and accept the Terms of Use</string>
+    <string name="helloactivity_terms_full">The contents of the Glucosio website and apps, such as text, graphics, images, and other material (“Content”) are for informational purposes only. The content is not intended to be a substitute for professional medical advice, diagnosis, or treatment. We encourage Glucosio users to always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition. Never disregard professional medical advice or delay in seeking it because of something you have read on the Glucosio website or in our apps. The Glucosio Website, Blog, Wiki and other web browser accessible content (“Website”) should be used only for the purpose described above.\\n Reliance on any information provided by Glucosio, Glucosio team members, volunteers and others appearing on the Website or in our apps is solely at your own risk.  The Site and the Content are provided on an “as is” basis.</string>
 </resources>

@@ -20,8 +20,300 @@
   ~
   -->
 <resources>
+  <string name="action_settings">Instellingen</string>
+  <string name="action_feedback">Feedback verzenden</string>
+  <string name="tab_overview">Overzicht</string>
+  <string name="tab_history">Geschiedenis</string>
+  <string name="tab_tips">Tips</string>
+  <string name="title_activity_hello">Hallo.</string>
+  <string name="helloactivity_headline">Hallo.</string>
+  <string name="helloactivity_terms">Gebruiksvoorwaarden</string>
+  <string name="helloactivity_country">Land</string>
+  <string name="helloactivity_age">Leeftijd</string>
+  <string name="helloactivity_gender">Geslacht</string>
+  <string name="helloactivity_gender_list_1">Man</string>
+  <string name="helloactivity_gender_list_2">Vrouw</string>
+  <string name="helloactivity_spinner_diabetes_type">Type diabetes</string>
+  <string name="helloactivity_spinner_diabetes_type_1">Type 1</string>
+  <string name="helloactivity_spinner_diabetes_type_2">Type 2</string>
+  <string name="helloactivity_spinner_diabetes_gdm">Zwangerschap</string>
+  <string name="helloactivity_spinner_diabetes_lada">LADA</string>
+  <string name="helloactivity_spinner_preferred_glucose_unit_2">mmol/l</string>
+  <string name="preferences_spinner_preferred_a1c_unit">Verkozen HbA1c-eenheid</string>
+  <string name="preferences_spinner_preferred_a1c_unit_1">procent</string>
+  <string name="preferences_spinner_preferred_weight_unit">Verkozen gewichtseenheid</string>
+  <string name="preferences_spinner_preferred_weight_unit_2">pond</string>
+  <string name="helloactivity_button_next">VOLGENDE</string>
+  <string name="dialog_add_concentration">Concentratie</string>
+  <string name="dialog_add_date">Datum</string>
+  <string name="dialog_add_time">Tijd</string>
+  <string name="dialog_add_measured">Gemeten</string>
+  <string name="dialog_add_type_1">Voor ontbijt</string>
+  <string name="dialog_add_type_2">Na ontbijt</string>
+  <string name="dialog_add_type_3">Voor middagmaal</string>
+  <string name="dialog_add_type_4">Na middagmaal</string>
+  <string name="dialog_add_type_5">Voor avondmaal</string>
+  <string name="dialog_add_type_6">Na avondmaal</string>
+  <string name="dialog_add_type_7">Tussendoortje</string>
+  <string name="dialog_add_type_8">Bedtijd</string>
+  <string name="dialog_add_type_9">Nacht</string>
+  <string name="dialog_add_type_10">Nuchtere glucose</string>
+  <string name="dialog_add_cancel">ANNULEREN</string>
+  <string name="dialog_edit">Bewerken</string>
+  <string name="dialog_delete">Verwijderen</string>
+  <string name="fragment_overview_last_reading">Laatste controle:</string>
+  <string name="fragment_overview_trend">Trend in voorbije maand:</string>
+  <string name="fragment_overview_trend_positive">binnen bereik en gezond</string>
+  <string name="fragment_overview_selector_month">Maand</string>
+  <string name="fragment_overview_selector_day">Dag</string>
+  <string name="fragment_overview_selector_week">Week</string>
+  <string name="preferences_about">Over</string>
+  <string name="preferences_experimental">Deze functies zijn experimenteel, werken mogelijk niet volledig en zijn bedoeld voor vroege tests door gebruikers. Onthoud dat u uw telefoon kunt schudden om feedback te verzenden.</string>
+  <string name="preferences_version">Versie</string>
+  <string name="preferences_coming_soon">Komt binnenkort...</string>
+  <string name="preferences_terms">Gebruiksvoorwaarden</string>
+  <string name="glucose_reading_type">Type</string>
+  <string name="weight">Gewicht</string>
+  <string name="dialog_add_custom_type">Categorie met eigen metingen</string>
+  <string-array name="tips_all">
+    <item>Eet meer verse, onverwerkte voeding om inname van koolhydraten en suikers te verminderen.</item>
+    <item>Lees het voedingslabel op voorverpakt voedsel en drinkwaren om inname van suikers en koolhydraten te beheersen.</item>
+    <item>When eating out, ask for fish or meat broiled with no extra butter or oil.</item>
+    <item>Als u uitgaat, vraag dan of ze natriumarme gerechten serveren.</item>
+    <item>Als u uitgaat, eet dan evenveel als thuis en neem de restjes mee.</item>
+    <item>When eating out ask for low-calorie items, such as salad dressings, even if they\'re not on the menu.</item>
+    <item>When eating out ask for substitutions. Instead of French fries, request a double order of a vegetable like salad, green beans or broccoli.</item>
+    <item>When eating out, order foods that are not breaded or fried.</item>
+    <item>When eating out ask for sauces, gravy and salad dressings "on the side."</item>
+    <item>Sugar free doesn’t really mean sugar free. It means 0.5 grams (g) of sugar per serving, so be careful to not indulge in too many sugar free items.</item>
+    <item>Moving toward a healthy weight helps control blood sugars. Your doctor, a dietitian, and a fitness trainer can get you started on a plan that will work for you.</item>
+    <item>Tweemaal per dag controleren en opvolgen van uw suikerspiegel in een applicatie als Glucosio kan ervoor zorgen dat u betere voedings- en levensstijlkeuzes maakt.</item>
+    <item>Get HbA1c blood tests to find out your average blood sugar for the past 2 to 3 months. Your doctor should tell you how frequently this test will be needed to be performed.</item>
+    <item>Het opvolgen van hoeveel koolhydraten u verbruikt kan net zo belangrijk zijn als het controleren van uw suikerspiegel, omdat koolhydraten de suikerspiegel beïnvloeden. Praat met uw dokter of diëtist(e) over de inname van koolhydraten.</item>
+    <item>Controlling blood pressure, cholesterol, and triglyceride levels is important since diabetics are susceptible to heart disease.</item>
+    <item>There are several diet approaches you can take to eating healthier and helping improve your diabetes outcomes. Seek advice from a dietician on what will work best for you and your budget.</item>
+    <item>Working on getting regular exercise is especially important for those with diabetes and can help you maintain a healthy weight. Talk to your doctor about exercises that will be appropriate for you.</item>
+    <item>Being sleep-deprived can make you eat more especially things like junk food and as a result can negatively impact your health. Be sure to get a good night sleep and consult a sleep specialist if you are having difficulty.</item>
+    <item>Stress kan een negatieve invloed hebben op diabetes. Praat met uw dokter of andere gezondheidsspecialist over het omgaan met stress.</item>
+    <item>Visiting your doctor once a year and having regular communication throughout the year is important for diabetics to prevent any sudden onset of associated health problems.</item>
+    <item>Neem uw medicijnen net als voorgeschreven door de dokter, zelfs kleine onderbrekingen kunnen invloed hebben op de suikerspiegel en andere bijwerkingen veroorzaken. Als u hiermee problemen heeft, vraag dan uw dokter om medicatiebeheer en herinneringsopties.</item>
+  </string-array>
+  <string-array name="tips_all_age_plus_40">
+    <item>Oudere diabetici kunnen een hoger risico op aan diabetes gerelateerde gezondheidsproblemen lopen. Praat met uw arts over in hoeverre uw leeftijd een rol speelt in uw diabetes en waar u op moet letten.</item>
+    <item>Beperk de hoeveelheid zout die u gebruikt om voedsel te koken en die u aan maaltijden toevoegt nadat het is gekookt.</item>
+  </string-array>
+  <string name="assistant">Assistent</string>
+  <string name="assistant_action_update">NU BIJWERKEN</string>
+  <string name="assistant_action_ok">OK, DUIDELIJK</string>
+  <string name="assistant_action_feedback">FEEDBACK VERZENDEN</string>
+  <string name="assistant_action_live_chat">LIVECHAT</string>
+  <string name="assistant_action_try">PROBEER HET NU</string>
+  <string name="assistant_weight_title">Uw gewicht bijwerken</string>
+  <string name="assistant_weight_desc">Zorg ervoor dat u uw gewicht bijwerkt, zodat Glucosio de meest accurate gegevens heeft.</string>
+  <string name="assistant_research_desc">U heeft altijd de mogelijkheid om diabetesonderzoeksgegevens in- en uit te schakelen, maar onthoud dat alle gedeelde gegevens volledig anoniem zijn. We delen alleen trends in demografie en glucosegehalten.</string>
+  <string name="assistant_categories_desc">Glucosio bevat standaardcategorieën voor glucose-invoer, maar in de instellingen kunt u eigen categorieën maken die aan uw unieke behoeften voldoen.</string>
+  <string name="assistant_check_title">Kijk hier regelmatig</string>
+  <string name="assistant_check_desc">Glucosio-assistent levert regelmatig tips en wordt continu verbeterd, dus kijk altijd hier voor nuttige acties die u kunt nemen om uw Glucosio-ervaring te verbeteren en voor andere nuttige tips.</string>
+  <string name="assistant_feedback_title">Feedback indienen</string>
+  <string name="assistant_feedback_desc">Als u technische problemen tegenkomt of feedback over Glucosio hebt, zien we graag dat u deze indient om Glucosio te helpen verbeteren.</string>
+  <string name="assistant_export_title">Uw gegevens exporteren</string>
+  <string name="assistant_export_desc">Deel uw gegevens met uw dokter of plaats een back-up ervan op Google Drive via de exportfunctie.</string>
+  <string name="assistant_calculator_a1c_title">HbA1c berekenen</string>
+  <string name="assistant_calculator_a1c_desc">Glucosio’s ingebouwde HbA1c-calculator is nu in het zijmenu beschikbaar. Voer uw gemiddelde bloedsuikerspiegel in en sla direct de berekende HbA1c-waarde op.</string>
+  <string name="helloactivity_spinner_preferred_range">Voorkeursbereik</string>
+  <string name="helloactivity_spinner_preferred_range_4">Aangepast bereik</string>
+  <string name="helloactivity_preferred_range_min">Minimumwaarde</string>
+  <string name="helloactivity_preferred_range_max">Maximumwaarde</string>
+  <string name="helloactivity_language">Taal</string>
+  <string name="menu_support_error1">Er is geen e-mail-app geïnstalleerd. Stuur een e-mail naar hello@glucosio.org</string>
+  <string name="invitation_message">Probeer Glucosio, een opensource-app voor diabetesbeheer en -onderzoek.</string>
+  <string name="title_activity_backup_drive">Google Drive-back-up</string>
+  <string name="activity_main_dialog_backup_export_title">Back-up maken en exporteren</string>
+  <string name="preferences_privacy">Privacy</string>
+  <string name="helloactivity_textview_tos">Door Glucosio te gebruiken, gaat u akkoord met de</string>
+  <string name="preferences_backup_google_drive">Google Drive</string>
+  <string name="preferences_about_glucosio">Over Glucosio</string>
+  <string name="preferences_rate">Glucosio beoordelen</string>
+  <string name="preferences_licences_open">Opensourcelicenties</string>
+  <string name="preferences_contributors">Medewerkers</string>
+  <string name="preferences_freestyle_libre">FreeStyle Libre®-ondersteuning inschakelen</string>
+  <string name="preferences_freestyle_libre_experimental">EXPERIMENTEEL: FreeStyle Libre®-ondersteuning inschakelen</string>
+  <string name="preferences_font_dyslexia_experimental">EXPERIMENTEEL: leesbaarheid voor gebruikers met dyslexie verbeteren</string>
+  <string name="preferences_font_dyslexia">Leesbaarheid voor gebruikers met dyslexie verbeteren</string>
+  <string name="about_donate">Doneren aan Glucosio</string>
+  <string name="reading_ok">Oké</string>
+  <string name="reading_hypo">Hypoglykemie</string>
+  <string name="reading_low">Laag</string>
+  <string name="reading_high">Hoog</string>
+  <string name="reading_hyper">Hyperglykemie</string>
   <!-- Future Strings Baked In Early For l10n -->
   <!-- Exercise Types -->
+  <string name="dialog_add_exercisetype_1">Ontspannen wandelen</string>
+  <string name="dialog_add_exercisetype_2">Snelwandelen</string>
+  <string name="dialog_add_exercisetype_3">Joggen</string>
+  <string name="dialog_add_exercisetype_4">Lopen</string>
+  <string name="dialog_add_exercisetype_5">Zwemmen</string>
+  <string name="dialog_add_exercisetype_6">Dansen</string>
+  <string name="dialog_add_exercisetype_7">Rolschaatsen</string>
+  <string name="dialog_add_exercisetype_8">Fietsen</string>
+  <string name="dialog_add_exercisetype_9">Golf</string>
+  <string name="dialog_add_exercisetype_10">Softbal</string>
+  <string name="dialog_add_exercisetype_11">Badminton</string>
+  <string name="dialog_add_exercisetype_12">Voetbal</string>
+  <string name="dialog_add_exercisetype_13">Basketbal</string>
+  <string name="dialog_add_exercisetype_14">Volleybal</string>
+  <string name="dialog_add_exercisetype_15">Cricket</string>
+  <string name="dialog_add_exercisetype_16">Frisbee</string>
+  <string name="dialog_add_exercisetype_17">Skiën</string>
+  <string name="dialog_add_exercisetype_18">Boksen</string>
+  <string name="dialog_add_exercisetype_19">Tennis</string>
+  <string name="dialog_add_exercisetype_20">Tafeltennis</string>
+  <string name="dialog_add_exercisetype_21">Vechtsport</string>
+  <string name="dialog_add_exercisetype_22">Rotsklimmen</string>
+  <string name="dialog_add_exercisetype_23">Worstelen</string>
+  <string name="dialog_add_exercisetype_24">Wandelen</string>
+  <string name="dialog_add_exercisetype_25">Tuinieren</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <string name="intro_title1">Welkom bij Glucosio!</string>
+  <string name="intro_para1">Glucosio is een gratis en opensource-applicatie voor het beheren van uw diabetes</string>
+  <string name="intro_title2">Vastleggen en trends</string>
+  <string name="intro_para2">Glucosio maakt het vastleggen van suikerspiegels en het visualiseren van trends eenvoudig</string>
+  <string name="intro_title3">Steun diabetesonderzoek</string>
+  <string name="intro_title4">Gericht op privacy</string>
+  <string name="intro_para4">Glucosio neemt uw privacy serieus en deelt alleen niet-identificeerbare trends als u opteert</string>
+  <string name="intro_title5">Verbeterde gezondheidsresultaten</string>
+  <string name="intro_para5">Glucosio helpt u trends in suikerspiegels en andere gezondheidsmetingen bij te houden voor verbeterde gezondheidsresultaten</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <string name="assistant_coachyesterday1">Uw suikerspiegels van gisteren waren geweldig!</string>
+  <string name="assistant_coachweek1">Uw suikerspiegels van deze week waren geweldig!</string>
+  <string name="assistant_coachmorning1">Uw suikerspiegel van vanochtend was perfect!</string>
+  <string name="assistant_coachafternoon1">Uw suikerspiegel van vanmiddag was perfect!</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
+  <string name="badge_perfectweektitle1">Geweldige week</string>
+  <string name="badge_perfectweekdesc1">U hebt de badge voor één week suikerspiegels binnen normaalwaarden behaald. Goed gedaan!</string>
+  <string name="badge_perfectmonthtitle1">Geweldige maand</string>
+  <string name="badge_perfectmonthdesc1">U hebt de badge voor één maand suikerspiegels binnen normaalwaarden behaald. Goed gedaan!</string>
+  <string name="badge_dataexporttitle1">Gegevensexport</string>
+  <string name="badge_dataexportdesc1">U hebt de badge voor gegevensexport behaald als gebruiker die van gegevensportabiliteit houdt! Goed gedaan!</string>
+  <string name="badge_log100title1">100 vastgelegd</string>
+  <string name="badge_log250title1">250 vastgelegd</string>
+  <string name="badge_log500title1">500 vastgelegd</string>
+  <string name="badge_7daystitle1">7 dagen</string>
+  <string name="badge_7daysdesc1">U hebt de badge voor 7 dagen consistent vastleggen van suikerspiegels behaald. Goed gedaan!</string>
   <!-- Food Entry Labels -->
+  <string name="dialog_addfood_carbs">Koolhydraten:</string>
+  <string name="dialog_addfood_protein">Eiwitten:</string>
+  <string name="dialog_addfood_sugars">Suikers:</string>
+  <string name="dialog_addfood_fat">Vet:</string>
   <!-- About Glucosio Strings -->
+  <string name="about_credits">Credits</string>
+  <string name="about_contribute">Meewerken</string>
+  <string name="about_contributel10n">Meewerken aan vertaling</string>
+  <string name="about_contributedev">Meewerken aan ontwikkeling</string>
+  <string name="about_discussion">Deelnemen aan onze discussiegemeenschap</string>
+  <string name="about_maillist">Inschrijven voor onze mailinglijst</string>
+  <string name="assistant_archived">GEARCHIVEERDE TIPS</string>
+  <string name="dialog_export_title">Gegevens exporteren</string>
+  <string name="activity_export_date_from">Van:</string>
+  <string name="dialog_export_date_to">Tot:</string>
+  <string name="dialog_export_today">Vandaag kiezen</string>
+  <string name="dialog_export_button">EXPORTEREN</string>
+  <string name="title_activity_export">Gegevens exporteren</string>
+  <string name="dialog_export_all">Alles exporteren</string>
+  <string name="share_using">Delen via</string>
+  <string name="share_subject">Glucosio-gegevens</string>
+  <string name="fragment_overview_permission_storage">Glucosio heeft een opslagmachtiging nodig om een schermafbeelding op te slaan</string>
+  <string name="fragment_overview_graph_export_true">Schermafbeelding opgeslagen naar galerij</string>
+  <string name="fragment_overview_graph_export_false">Fout bij opslaan van schermafbeelding naar galerij</string>
+  <string name="dialog_add_weight">Gewicht</string>
+  <string name="dialog_add_ketones">Ketonen</string>
+  <string name="dialog_add_pressure_min">Minimale druk</string>
+  <string name="dialog_add_pressure_max">Maximale druk</string>
+  <string name="dialog_add_cholesterol_total">Totale cholesterol</string>
+  <string name="dialog_add_cholesterol_ldl">LDL-cholesterol</string>
+  <string name="dialog_add_cholesterol_hdl">HDL-cholesterol</string>
+  <string name="dialog_add_hb1ac">HbA1c</string>
+  <string name="title_activity_add_glucose">Glucose-uitlezing toevoegen</string>
+  <string name="title_activity_add_weight">Lichaamsgewicht toevoegen</string>
+  <string name="title_activity_add_weight_edit">Lichaamsgewicht bewerken</string>
+  <string name="title_activity_add_cholesterol">Cholesterolspiegel toevoegen</string>
+  <string name="title_activity_add_cholesterol_edit">Cholesterolspiegel bewerken</string>
+  <string name="title_activity_add_hb1ac">HbA1c toevoegen</string>
+  <string name="title_activity_add_hb1ac_edit">HbA1c bewerken</string>
+  <string name="title_activity_add_ketone">Ketonen toevoegen</string>
+  <string name="title_activity_add_ketone_edit">Ketonen bewerken</string>
+  <string name="title_activity_add_pressure">Bloeddruk toevoegen</string>
+  <string name="title_activity_add_pressure_edit">Bloeddruk bewerken</string>
+  <string name="fab_weight">Lichaamsgewicht</string>
+  <string name="fab_ketones">Ketonen</string>
+  <string name="fab_pressure">Bloeddruk</string>
+  <string name="fab_cholesterol">Cholesterolspiegel</string>
+  <string name="fab_glucose">Bloedsuikerspiegel</string>
+  <string name="dialog_error_duplicate">U hebt al een vermelding voor deze tijd. Verwijder deze voordat u een correctie toevoegt.</string>
+  <string name="freestylelibre_nfc_not_supported">Dit apparaat ondersteunt geen NFC.</string>
+  <string name="freestylelibre_nfc_not_enabled">NFC is uitgeschakeld.</string>
+  <string name="dialog_add_glucose_freestylelibre">Toevoegen vanuit FreeStyle Libre®</string>
+  <string name="freestylelibre_nfc_error">Fout bij openen van NFC-verbinding!</string>
+  <string name="overview_hb1ac_error_no_data">Onvoldoende gegevens om HbA1c te berekenen</string>
+  <string name="overview_hb1ac">HbA1c:</string>
+  <string name="dialog_add_glucose_freestylelibre_added">Toegevoegd vanuit uw FreeStyle Libre®</string>
+  <string name="activity_converter_a1c_glucose">GEMIDDELDE BLOEDSUIKERSPIEGEL</string>
+  <string name="activity_converter_a1c">HbA1c</string>
+  <string name="activity_converter_title">HbA1c-calculator</string>
+  <string name="activity_converter_save">OPSLAAN</string>
+  <string name="menu_support">Ondersteuning</string>
+  <string name="menu_support_title">Hoe kunnen we u helpen?</string>
+  <string name="menu_support_email">E-mail</string>
+  <string name="menu_support_live">Livechat</string>
+  <string name="menu_support_forum">Ondersteuningsforum</string>
+  <string name="notification_reminder_glucose">Het is tijd om uw bloedsuikerspiegel vast te leggen!</string>
+  <string name="notification_reminder_medication">Het is tijd voor uw medicatie!</string>
+  <string name="sidebar_backup_export">Back-up maken en exporteren</string>
+  <string name="menu_backup_backup">Back-up maken op Google Drive</string>
+  <string name="menu_backup_restore">Terugzetten</string>
+  <string name="menu_backup_csv">CSV exporteren</string>
+  <string name="activity_backup_drive_automatic">Automatische back-up</string>
+  <string name="activity_backup_drive_message_restart">Herstarten om wijzigingen toe te passen...</string>
+  <string name="activity_backup_drive_desc_1">Synchroniseer Glucosio’s database in de cloud met Google Drive.</string>
+  <string name="activity_backup_drive_success">Back-up van database op Drive geplaatst</string>
+  <string name="activity_backup_drive_failed">Er ging iets mis. Probeer het opnieuw. :/</string>
+  <string name="activity_backup_drive_last">Laatste back-up:</string>
+  <string name="activity_backup_drive_folder">Back-upmap</string>
+  <string name="activity_backup_drive_folder_not_set">Niet ingesteld</string>
+  <string name="activity_backup_drive_button_backup">Nu back-up maken</string>
+  <string name="activity_backup_drive_recent">Recente back-ups</string>
+  <string name="activity_backup_drive_more">Meer back-ups bekijken</string>
+  <string name="activity_backup_drive_dialog_restore_title">Terugkeren naar vorige versie</string>
+  <string name="activity_backup_drive_dialog_restore_desc">Terugzetten van de back-up overschrijft alle bestaande gegevens door de back-up.</string>
+  <string name="activity_backup_drive_dialog_restore_details">Back-updetails</string>
+  <string name="activity_backup_drive_dialog_restore_button_cancel">Annuleren</string>
+  <string name="activity_backup_drive_dialog_restore_button_restore">Back-up terugzetten</string>
+  <string name="activity_backup_drive_button_restore">Terugzetten vanaf Drive</string>
+  <string name="activity_backup_drive_error_restore">Kan geen geldige back-up voor terugzetten vanaf Drive vinden</string>
+  <string name="activity_main_error_play_services">Glucosio heeft Play Services nodig voor back-ups op Google Drive.</string>
+  <string name="activity_main_dialog_csv_title">Exporteren naar CSV-bestand</string>
+  <string name="activity_backup_drive_button_open_drive">Beheren op Drive</string>
+  <string name="mmol_mol">mmol/mol</string>
+  <string name="mmol_L">mmol/l</string>
+  <string name="mmol_mol_value">%1$s mmol/mol</string>
+  <string name="mmol_L_value">%1$s mmol/l</string>
+  <string name="mg_dL">mg/dl</string>
+  <string name="mg_dL_value">%1$s mg/dl</string>
+  <string name="preferences_graph_old">Terugkeren naar oude grafiek</string>
+  <string name="history">geschiedenis</string>
+  <string name="save">opslaan</string>
+  <string name="activity_reminders_title">Herinneringen</string>
+  <string name="glucosio_activity_reminders_empty">Geen herinneringen ingesteld. Voeg hier nieuwe herinneringen toe.</string>
+  <string name="activitiy_reminders_error_duplicate">Deze herinnering bestaat al.</string>
+  <string name="activity_reminder_error_empty">Voer een geldig label in.</string>
+  <string name="activity_reminder_add_label">Herinneringslabel instellen</string>
+  <string name="reminder_item_title_morning">Goedemorgen, het is tijd voor een vermelding in Glucosio!</string>
+  <string name="reminder_item_title_afternoon">Goedemiddag, het is tijd voor een vermelding in Glucosio!</string>
+  <string name="reminder_item_title_evening">Goedenavond, het is tijd voor een vermelding in Glucosio!</string>
+  <string name="reminder_item_title_generic">Het is tijd voor een vermelding in Glucosio!</string>
+  <string name="reminder_item_title_generic2">Tijd om uw suikerspiegel vast te leggen!</string>
+  <string name="warning_internet_connection_required">Sorry, maar u hebt internet nodig voor deze functie</string>
 </resources>

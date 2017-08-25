@@ -136,7 +136,7 @@
   <string name="assistant_categories_desc">Tagann Glucosio le catagóirí réamhshocraithe le haghaidh ionchurtha glúcóis, ach is féidir leat catagóirí de do chuid féin a chruthú sna socruithe.</string>
   <string name="assistant_check_title">Féach anseo go minic</string>
   <string name="assistant_check_desc">Tugann Cúntóir Glucosio leideanna duit go rialta, agus rachaidh sé i bhfeabhas de réir a chéile. Mar sin, ba chóir duit filleadh anseo anois is arís le gníomhartha agus leideanna úsáideacha a fháil.</string>
-  <string name="assistant_feedback_title">Seol aiseolas </string>
+  <string name="assistant_feedback_title">Seol aiseolas</string>
   <string name="assistant_feedback_desc">Má fheiceann tú aon fhadhb theicniúil, nó más mian leat aiseolas faoi Glucosio a thabhairt dúinn, is féidir é sin a dhéanamh sa roghchlár Socruithe, chun cabhrú linn Glucosio a fheabhsú.</string>
   <string name="assistant_reading_title">Tomhas nua</string>
   <string name="assistant_reading_desc">Ba chóir duit do leibhéal glúcos fola a thástáil go rialta sa chaoi go mbeidh tú in ann an leibhéal a leanúint thar thréimhse ama.</string>
@@ -161,6 +161,7 @@
   <string name="preferences_about_glucosio">Maidir le Glucosio</string>
   <string name="preferences_rate">Rátáil Glucosio</string>
   <string name="preferences_licences_open">Ceadúnais foinse oscailte</string>
+  <string name="preferences_contributors">Rannpháirtithe</string>
   <string name="preferences_freestyle_libre">Cumasaigh tacaíocht do FreeStyle Libre®</string>
   <string name="preferences_freestyle_libre_experimental">TURGNAMHACH: Cumasaigh tacaíocht do FreeStyle Libre®</string>
   <string name="preferences_font_dyslexia_experimental">TURGNAMHACH: Úsáid téacs níos soléite ar son úsáideoirí disléicseacha</string>
@@ -198,6 +199,40 @@
   <string name="dialog_add_exercisetype_23">Iomrascáil</string>
   <string name="dialog_add_exercisetype_24">Cnocadóireacht</string>
   <string name="dialog_add_exercisetype_25">Garraíodóireacht</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <string name="intro_title1">Fáilte go Glucosio!</string>
+  <string name="intro_para1">Is aip saor in aisce agus oscailte é Glucosio a chuidíonn leat do dhiaibéiteas a choinneáil faoi smacht</string>
+  <string name="intro_title2">Logáil agus Treochtaí</string>
+  <string name="intro_para2">Le Glucosio, tá sé an-éasca do leibhéal glúcós a logáil agus treochtaí a léiriú</string>
+  <string name="intro_title3">Tacaigh le Taighde ar Dhiaibéiteas</string>
+  <string name="intro_para3">Má roghnaíonn tú é, is féidir sonraí gan ainm a chomhroinnt le taighdeoirí acadúla atá ag obair ar dhiaibéiteas</string>
+  <string name="intro_title4">Dírithe ar Phríobháideachas</string>
+  <string name="intro_para4">Tá forbróirí Glucosio i ndáiríre faoi do phríobháideachas. Ní sheolann Glucosio sonraí ach amháin má roghnaíonn tú é, agus ní sheolann sé ach treochtaí ginearálta gan sonraí pearsanta</string>
+  <string name="intro_title5">Torthaí Sláinte Níos Fearr</string>
+  <string name="intro_para5">Cuidíonn Glucosio leat do leibhéil ghlúcóis agus méadracht sláinte eile a logáil chun biseach a chur ar do shláinte</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <string name="assistant_coachyesterday1">Bhí do leibhéil ghlúcóis ar fheabhas inné!</string>
+  <string name="assistant_coachweek1">Tá do leibhéil ghlúcóis ar fheabhas an tseachtain seo!</string>
+  <string name="assistant_coachmorning1">Bhí do leibhéal glúcóis foirfe ar maidin!</string>
+  <string name="assistant_coachafternoon1">Bhí do leibhéal glúcóis foirfe tráthnóna!</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
+  <string name="badge_perfectweektitle1">Seachtain Iontach</string>
+  <string name="badge_perfectweekdesc1">Ghnóthaigh tú suaitheantas: leibhéil ghlúcóis sa raon ceart ar feadh seachtaine! Maith thú!</string>
+  <string name="badge_perfectmonthtitle1">Mí Iontach</string>
+  <string name="badge_perfectmonthdesc1">Ghnóthaigh tú suaitheantas: leibhéil ghlúcóis sa raon ceart ar feadh míosa! Maith thú!</string>
+  <string name="badge_dataexporttitle1">Easpórtáil Sonraí</string>
+  <string name="badge_dataexportdesc1">Ghnóthaigh tú suaitheantas as do chuid sonraí a easpórtáil: is léir go dtaitníonn iniomparthacht sonraí leat! Maith thú!</string>
+  <string name="badge_log100title1">100 Tomhas</string>
+  <string name="badge_log100desc1">Ghnóthaigh tú suaitheantas as 100 tomhas glúcóis! Maith thú!</string>
+  <string name="badge_log250title1">250 Tomhas</string>
+  <string name="badge_log250desc1">Ghnóthaigh tú suaitheantas as 250 tomhas glúcóis! Maith thú!</string>
+  <string name="badge_log500title1">500 Tomhas</string>
+  <string name="badge_log500desc1">Ghnóthaigh tú suaitheantas as 500 tomhas glúcóis! Maith thú!</string>
+  <string name="badge_7daystitle1">7-Lá</string>
+  <string name="badge_7daysdesc1">Ghnóthaigh tú suaitheantas as do leibhéil ghlúcóis a thomhas 7 lá as a chéile! Maith thú!</string>
   <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">Carbaihiodráití:</string>
   <string name="dialog_addfood_protein">Próitéin:</string>
@@ -226,6 +261,7 @@
   <string name="fragment_overview_graph_export_true">Sábháladh an pictiúr sa ghailearaí</string>
   <string name="fragment_overview_graph_export_false">Earráid agus an pictiúr á shábháil sa ghailearaí</string>
   <string name="dialog_export_range">Raon easpórtála</string>
+  <string name="activity_export_issue_generic">Tharla earráid agus na tomhais á n-easpórtáil. Bain triail eile as.</string>
   <string name="activity_export_no_readings_snackbar">Níl aon léamh le heaspórtáil.</string>
   <string name="wear_new_reading">Cuireadh léamh nua leis</string>
   <string name="dialog_add_weight">Meáchan</string>
@@ -307,5 +343,23 @@
   <string name="activity_backup_drive_button_open_drive">Bainistigh ar Google Drive</string>
   <string name="mmol_mol">mmol/mol</string>
   <string name="mmol_L">mmol/L</string>
+  <string name="mmol_mol_value">%1$s mmol/mol</string>
+  <string name="mmol_L_value">%1$s mmol/L</string>
+  <string name="mg_dL">mg/dL</string>
+  <string name="mg_dL_value">%1$s mg/dL</string>
   <string name="preferences_graph_old">Fill ar an seanghraf</string>
+  <string name="history">stair</string>
+  <string name="save">sábháil</string>
+  <string name="activity_reminders_title">Meabhrúcháin</string>
+  <string name="reminders_notification_action">Tomhas nua</string>
+  <string name="glucosio_activity_reminders_empty">Níl aon mheabhrúchán ann. Cruthaigh ceann nua anseo.</string>
+  <string name="activitiy_reminders_error_duplicate">Tá an meabhrúchán seo ann cheana.</string>
+  <string name="activity_reminder_error_empty">Cuir lipéad bailí isteach.</string>
+  <string name="activity_reminder_add_label">Socraigh lipéad an mheabhrúcháin</string>
+  <string name="reminder_item_title_morning">Dia dhuit ar maidin, tá sé in am tomhas nua a dhéanamh in Glucosio!</string>
+  <string name="reminder_item_title_afternoon">Tráthnóna maith duit, tá sé in am tomhas nua a dhéanamh in Glucosio!</string>
+  <string name="reminder_item_title_evening">Oíche mhaith, tá sé in am tomhas nua a dhéanamh in Glucosio!</string>
+  <string name="reminder_item_title_generic">Tá sé in am tomhas nua a dhéanamh in Glucosio!</string>
+  <string name="reminder_item_title_generic2">Tá sé in am do leibhéal glúcós a logáil!</string>
+  <string name="warning_internet_connection_required">Caithfidh tú a bheith ceangailte leis an Idirlíon chun é seo a dhéanamh</string>
 </resources>

@@ -127,7 +127,6 @@
   <string name="assistant_categories_desc">Glucosio vien con estayes predeterminaes pa la entrada de glucosa pero pues crear estayes personalizaes nos axustes pa concasar coles tos necesidaes úniques.</string>
   <string name="assistant_check_title">Compruébalo equí davezu</string>
   <string name="assistant_check_desc">L\'asistente Glucosio apurre conseyos regulaes y siguirá ameyorando, asina qu\'equí comprueba siempres les aiciones que pues tomar p\'ameyorar la to esperiencia Glucosio y pa otros conseyos útiles.</string>
-  <string name="assistant_feedback_title">Unvia feedback </string>
   <string name="assistant_feedback_desc">Si alcuentres cualesquier torga téunica o tienes feedback tocante a Glucosio encamentámoste unvialo nel menú d\'axustes p\'ayudamos a ameyorar Glucosio.</string>
   <string name="assistant_reading_title">Amiesta una llectura</string>
   <string name="assistant_reading_desc">Asegúrate d\'amestar davezu los tos niveles de glucosa nel sangre pa qu\'asina podamos siguilos nel tiempu.</string>
@@ -176,6 +175,12 @@
   <string name="dialog_add_exercisetype_23">Llucha llibre</string>
   <string name="dialog_add_exercisetype_24">Senderismu</string>
   <string name="dialog_add_exercisetype_25">Trabayu de campu</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">Carbohidratos:</string>
   <string name="dialog_addfood_protein">Proteines:</string>
@@ -183,6 +188,7 @@
   <string name="dialog_addfood_fat">Grases:</string>
   <!-- About Glucosio Strings -->
   <string name="about_credits">Créitos</string>
+  <string name="about_contribute">Collaborar</string>
   <string name="about_contributel10n">Contribúi a la traducción</string>
   <string name="about_contributedev">Contribúi al desendolcu</string>
   <string name="about_discussion">Xúnite a la nuesa comunidá de discutiniu</string>
@@ -227,7 +233,9 @@
   <string name="freestylelibre_nfc_error">¡Fallu abriendo la conexón NFC!</string>
   <string name="overview_hb1ac">HBA1C:</string>
   <string name="activity_converter_a1c">A1C</string>
+  <string name="activity_converter_title">Calculadora HbA1c</string>
   <string name="activity_converter_save">GUARDAR</string>
+  <string name="menu_support">Sofitu</string>
   <string name="menu_support_title">¿Cómo podemos ayudate?</string>
   <string name="menu_support_email">Corréu</string>
   <string name="menu_support_live">Charra en direuto</string>
@@ -241,7 +249,8 @@
   <string name="activity_backup_drive_dialog_restore_button_cancel">Encaboxar</string>
   <string name="mmol_mol">mmol/mol</string>
   <string name="mmol_L">mmol/L</string>
+  <string name="mg_dL">mg/dL</string>
   <string name="activity_reminders_title">Recordatorios</string>
-  <string name="reminders_notification_text">¡Hora de rexistrar el to nivel de glucosa!</string>
   <string name="glucosio_activity_reminders_empty">Nun s\'afitaron recordatorios. Amiesta nuevos equí.</string>
+  <string name="reminder_item_title_generic2">¡Hora de rexistrar el to nivel de glucosa!</string>
 </resources>

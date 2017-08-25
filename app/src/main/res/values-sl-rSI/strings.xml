@@ -136,7 +136,7 @@
   <string name="assistant_categories_desc">Aplikacija Glucosio ima privzete kategorije za vnos glukoze, vendar si lahko ustvarite svoje lastne kategorije in jih v nastavitvah uredite, da bodo ustrezale vašim potrebam.</string>
   <string name="assistant_check_title">Pogosto preverite</string>
   <string name="assistant_check_desc">Asistent v aplikaciji Glucosio vam redno ponuja nasvete. Ker se zavedamo pomembnosti, ga bomo redno nadgrajevali, zato ga večkrat preverite in se seznanite z nasveti, ki bodo omogočili boljšo uporabniško izkušnjo in vam bili v dodatno pomoč.</string>
-  <string name="assistant_feedback_title">Pošlji povratno informacijo </string>
+  <string name="assistant_feedback_title">Pošlji povratne informacije</string>
   <string name="assistant_feedback_desc">Če boste imeli katero koli tehnično vprašanje ali povratno informacijo, vas prosimo, da nam jo pošljete preko menija v nastavitvah. Samo tako bomo lahko aplikacijo Glucosio redno izboljševali.</string>
   <string name="assistant_reading_title">Dodaj meritev</string>
   <string name="assistant_reading_desc">Poskrbite, da redno dodajate vaše odčitke glukoze, da vam lahko pomagamo slediti vaši ravni glukoze.</string>
@@ -161,6 +161,7 @@
   <string name="preferences_about_glucosio">O Glucosiu</string>
   <string name="preferences_rate">Ocenite Glucosio</string>
   <string name="preferences_licences_open">Odprtokodna dovoljenja</string>
+  <string name="preferences_contributors">Prispevali so</string>
   <string name="preferences_freestyle_libre">Omogoči podporo za FreeStyle Libre®</string>
   <string name="preferences_freestyle_libre_experimental">PREIZKUSNO: omogoči podporo za FreeStyle Libre®</string>
   <string name="preferences_font_dyslexia_experimental">PREIZKUSNO: povečaj berljivost za uporabnike z disleksijo</string>
@@ -198,6 +199,40 @@
   <string name="dialog_add_exercisetype_23">Rokoborba</string>
   <string name="dialog_add_exercisetype_24">Pohodništvo</string>
   <string name="dialog_add_exercisetype_25">Delo na vrtu</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <string name="intro_title1">Dobrodošli v Glucosio!</string>
+  <string name="intro_para1">Glucosio je brezplačna in odprtokodna aplikacija za obvladovanje sladkorne bolezni</string>
+  <string name="intro_title2">Beleženje in trendi</string>
+  <string name="intro_para2">Glucosio omogoča enostavno beleženje ravni sladkorja in vizualizacijo sprememb</string>
+  <string name="intro_title3">Podprite raziskave sladkorne bolezni</string>
+  <string name="intro_para3">Glucosio omogoča deljenje anonimnih podatkov o trendih z akademskimi raziskovalci sladkorne bolezni</string>
+  <string name="intro_title4">Osredotočen na zasebnost</string>
+  <string name="intro_para4">Glucosio jemlje zasebnost resno in v primeru, da se za to možnost odločite, deli samo trende, po katerih vas ni mogoče prepoznati</string>
+  <string name="intro_title5">Izboljšani rezultati zdravja</string>
+  <string name="intro_para5">Glucosio pomaga slediti spremembam ravni sladkorja in drugim metrikam zdravja, da izboljša rezultate zdravja</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <string name="assistant_coachyesterday1">Včeraj so bile vaše ravni sladkorja odlične!</string>
+  <string name="assistant_coachweek1">Ta teden so bile vaše ravni sladkorja odlične!</string>
+  <string name="assistant_coachmorning1">Jutranja raven sladkorja je bila perfektna!</string>
+  <string name="assistant_coachafternoon1">Popoldanska raven sladkorja je bila perfektna!</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
+  <string name="badge_perfectweektitle1">Odličen teden</string>
+  <string name="badge_perfectweekdesc1">Dobili ste značko za en teden normalnih ravni sladkorja! Le tako naprej!</string>
+  <string name="badge_perfectmonthtitle1">Odličen mesec</string>
+  <string name="badge_perfectmonthdesc1">Dobili ste značko za en mesec normalnih ravni sladkorja! Le tako naprej!</string>
+  <string name="badge_dataexporttitle1">Izvoz podatkov</string>
+  <string name="badge_dataexportdesc1">Dobili ste značko izvoza podatkov, ker imate radi prenosljivost podatkov! Le tako naprej!</string>
+  <string name="badge_log100title1">100 zabeleženih</string>
+  <string name="badge_log100desc1">Dobili ste značko 100-ih zabeleženih meritev ravni sladkorja! Le tako naprej!</string>
+  <string name="badge_log250title1">250 zabeleženih</string>
+  <string name="badge_log250desc1">Dobili ste značko 250-ih zabeleženih meritev ravni sladkorja! Le tako naprej!</string>
+  <string name="badge_log500title1">500 zabeleženih</string>
+  <string name="badge_log500desc1">Dobili ste značko 500-ih zabeleženih meritev ravni sladkorja! Le tako naprej!</string>
+  <string name="badge_7daystitle1">7 dni</string>
+  <string name="badge_7daysdesc1">Dobili ste značko za 7 dni zaporednih beleženj ravni sladkorja! Le tako naprej!</string>
   <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">Ogljikovi hidrati:</string>
   <string name="dialog_addfood_protein">Beljakovine:</string>
@@ -308,11 +343,23 @@
   <string name="activity_backup_drive_button_open_drive">Upravljaj v Driveu</string>
   <string name="mmol_mol">mmol/mol</string>
   <string name="mmol_L">mmol/l</string>
+  <string name="mmol_mol_value">%1$s mmol/mol</string>
+  <string name="mmol_L_value">%1$s mmol/l</string>
+  <string name="mg_dL">mg/dl</string>
+  <string name="mg_dL_value">%1$s mg/dl</string>
   <string name="preferences_graph_old">Povrni na stari graf</string>
   <string name="history">zgodovina</string>
   <string name="save">shrani</string>
   <string name="activity_reminders_title">Opomniki</string>
-  <string name="reminders_notification_text">Čas je za beleženje vaše ravni glukoze!</string>
   <string name="reminders_notification_action">Dodaj meritev</string>
   <string name="glucosio_activity_reminders_empty">Opomniki niso nastavljeni. Tu dodajte novega.</string>
+  <string name="activitiy_reminders_error_duplicate">Ta opomnik že obstaja.</string>
+  <string name="activity_reminder_error_empty">Vnesite veljavno oznako.</string>
+  <string name="activity_reminder_add_label">Nastavi oznako opomnika</string>
+  <string name="reminder_item_title_morning">Dobro jutro! Čas je za vnos v Glucosio!</string>
+  <string name="reminder_item_title_afternoon">Dober dan! Čas je za vnos v Glucosio!</string>
+  <string name="reminder_item_title_evening">Dober večer! Čas je za vnos v Glucosio!</string>
+  <string name="reminder_item_title_generic">Čas je za vnos v Glucosio!</string>
+  <string name="reminder_item_title_generic2">Čas je za beleženje vaše ravni glukoze!</string>
+  <string name="warning_internet_connection_required">Žal za to funkcijo potrebujete internet</string>
 </resources>

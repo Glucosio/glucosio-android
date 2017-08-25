@@ -137,7 +137,7 @@
   <string name="assistant_categories_desc">Glucosio ha delle categorie di default per l\'immissione dei valori di glucosio, ma puoi creare categorie personalizzate nelle impostazioni per soddisfare le tue necessità.</string>
   <string name="assistant_check_title">Controllare spesso qui</string>
   <string name="assistant_check_desc">L\'assistente di Glucosio fornisce constanti suggerimenti e continuerà a migliorare, perciò controlla sempre qui azioni che possono migliorare la tua esperienza d\'uso di Glucosio e altri utili consigli.</string>
-  <string name="assistant_feedback_title">Invia feedback </string>
+  <string name="assistant_feedback_title">Invia un commento</string>
   <string name="assistant_feedback_desc">Se trovi eventuali problemi tecnici o hai feedback su Glucosio ti invitiamo a segnalarli nel menu impostazioni, al fine di aiutarci a migliorare Glucosio.</string>
   <string name="assistant_reading_title">Aggiungi una lettura</string>
   <string name="assistant_reading_desc">Assicurati di aggiungere regolarmente le letture della tua glicemia, così possiamo aiutarti a monitorare i livelli di glucosio nel corso del tempo.</string>
@@ -162,6 +162,7 @@
   <string name="preferences_about_glucosio">Info su Glucosio</string>
   <string name="preferences_rate">Valuta Glucosio</string>
   <string name="preferences_licences_open">Licenze Open Source</string>
+  <string name="preferences_contributors">Collaboratori</string>
   <string name="preferences_freestyle_libre">Abilita supporto a FreeStyle Libre®</string>
   <string name="preferences_freestyle_libre_experimental">BETA: Abilita supporto a FreeStyle Libre®</string>
   <string name="preferences_font_dyslexia_experimental">BETA: Aumenta leggibilità per utenti dislessici</string>
@@ -199,6 +200,40 @@
   <string name="dialog_add_exercisetype_23">Wrestling</string>
   <string name="dialog_add_exercisetype_24">Escursionismo</string>
   <string name="dialog_add_exercisetype_25">Lavori di casa</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <string name="intro_title1">Benvenuto su Glucosio!</string>
+  <string name="intro_para1">Glucosio è un\'applicazione gratuita e open source per gestire il tuo diabete</string>
+  <string name="intro_title2">Registro e Tendenze</string>
+  <string name="intro_para2">Glucosio facilita la registrazione dei livelli di glucosio e la visualizzazione delle tendenze</string>
+  <string name="intro_title3">Sostieni la ricerca sul diabete</string>
+  <string name="intro_para3">Glucosio ti permette di condividere anonimamente le tue tendenze con accademici che fanno ricerca sul diabete</string>
+  <string name="intro_title4">Focalizzato sulla privacy</string>
+  <string name="intro_para4">Glucosio prende sul serio la tua privacy e condivide solo tendenze non identificabili se accetti</string>
+  <string name="intro_title5">Risultati sanitari migliorati</string>
+  <string name="intro_para5">Glucosio ti aiuta a tenere traccia delle tendenze del tuo livello di glucosio e di altri valori sanitari per ottenere migliori risultati in termini di salute</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <string name="assistant_coachyesterday1">I tuoi livelli di glucosio ieri erano fantastici!</string>
+  <string name="assistant_coachweek1">I tuoi livelli di glucosio questa settimana sono stati fantastici!</string>
+  <string name="assistant_coachmorning1">Il tuo livello di glucosio della mattina era perfetto!</string>
+  <string name="assistant_coachafternoon1">Il tuo livello di glucosio del pomeriggio era perfetto!</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
+  <string name="badge_perfectweektitle1">Grande settimana</string>
+  <string name="badge_perfectweekdesc1">Hai ottenuto il badge per una settimana di livelli di glucosio nei range corretti! Ottimo lavoro!</string>
+  <string name="badge_perfectmonthtitle1">Grande mese</string>
+  <string name="badge_perfectmonthdesc1">Hai ottenuto il badge per un mese di livelli di glucosio nel range corretti! Ottimo lavoro!</string>
+  <string name="badge_dataexporttitle1">Esportazione dati</string>
+  <string name="badge_dataexportdesc1">Hai ottenuto il badge di esportazione dati perché sei un utente a cui piace la portabilità dei dati! Ottimo lavoro!</string>
+  <string name="badge_log100title1">100 immissioni</string>
+  <string name="badge_log100desc1">Hai ottenuto il badge per aver compiuto 100 immissioni di livelli di glucosio! Ottimo lavoro!</string>
+  <string name="badge_log250title1">250 immissioni</string>
+  <string name="badge_log250desc1">Hai ottenuto il badge per aver compiuto 250 immissioni di livelli di glucosio! Ottimo lavoro!</string>
+  <string name="badge_log500title1">500 immissioni</string>
+  <string name="badge_log500desc1">Hai ottenuto il badge per aver compiuto 500 immissioni di livelli di glucosio! Ottimo lavoro!</string>
+  <string name="badge_7daystitle1">7-giorni</string>
+  <string name="badge_7daysdesc1">Hai ottenuto il badge 7-giorni di immissioni regolari di glucosio! Ottimo lavoro!</string>
   <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">Carboidrati:</string>
   <string name="dialog_addfood_protein">Proteine:</string>
@@ -309,11 +344,23 @@
   <string name="activity_backup_drive_button_open_drive">Organizza su Drive</string>
   <string name="mmol_mol">mmol/mol</string>
   <string name="mmol_L">mmol/L</string>
+  <string name="mmol_mol_value">%1$s mmol/mol</string>
+  <string name="mmol_L_value">%1$s mmol/L</string>
+  <string name="mg_dL">mg/dL</string>
+  <string name="mg_dL_value">%1$s mg/dL</string>
   <string name="preferences_graph_old">Ritorna al vecchio grafico</string>
   <string name="history">cronologia</string>
   <string name="save">salva</string>
   <string name="activity_reminders_title">Promemoria</string>
-  <string name="reminders_notification_text">È ora di aggiungere la tua glicemia!</string>
   <string name="reminders_notification_action">Aggiungi lettura</string>
   <string name="glucosio_activity_reminders_empty">Nessun promemoria impostato. Aggiungine uno qui.</string>
+  <string name="activitiy_reminders_error_duplicate">Questo promemoria esiste già.</string>
+  <string name="activity_reminder_error_empty">Per favore, inserisci un\'etichetta valida.</string>
+  <string name="activity_reminder_add_label">Imposta un\'etichetta per il promemoria</string>
+  <string name="reminder_item_title_morning">Buongiorno, è il momento di inserire una misurazione in Glucosio!</string>
+  <string name="reminder_item_title_afternoon">Buon pomeriggio, è il momento di inserire una misurazione in Glucosio!</string>
+  <string name="reminder_item_title_evening">Buona sera, è il momento di inserire una misurazione in Glucosio!</string>
+  <string name="reminder_item_title_generic">È il momento di inserire una misurazione in Glucosio!</string>
+  <string name="reminder_item_title_generic2">È ora di aggiungere la tua glicemia!</string>
+  <string name="warning_internet_connection_required">Spiacenti, hai bisogno di una connessione internet per questa funzionalità</string>
 </resources>

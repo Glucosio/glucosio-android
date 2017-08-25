@@ -122,7 +122,6 @@
   <string name="assistant_categories_desc">Glucosio dolazi sa izvornim kategorijama za unos glukoze ali vi u postavkama možete kreirati zasebne kategorije koje odgovaraju vašim potrebama.</string>
   <string name="assistant_check_title">Često provjerite ovdje</string>
   <string name="assistant_check_desc">Glucosio asistent pruža redovne savjete i nastavit će se unapređivati, stoga često provjerite ovdje za korisne akcije koje možete poduzeti da poboljšanje svog Glucosio doživljaja te druge korisne savjete.</string>
-  <string name="assistant_feedback_title">Pošalji povratne informacije </string>
   <string name="assistant_feedback_desc">Ukoliko naiđete na tehničke probleme ili imate druge povratne informacije o Glucosiu, molimo vas da ih pošaljete putem menija za postavke kako bismo unaprijedili Glucosio.</string>
   <string name="assistant_reading_title">Dodaj očitavanje</string>
   <string name="assistant_reading_desc">Pobrinite se da redovno dodajete svoja očitavanja glukoze kako bismo vam pomogli da pratite vaše nivoe glukoze tokom vremena.</string>
@@ -174,6 +173,12 @@
   <string name="dialog_add_exercisetype_17">Skijanje</string>
   <string name="dialog_add_exercisetype_18">Boks</string>
   <string name="dialog_add_exercisetype_19">Tenis</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <!-- About Glucosio Strings -->
   <string name="fab_cholesterol">Nivo holesterola</string>

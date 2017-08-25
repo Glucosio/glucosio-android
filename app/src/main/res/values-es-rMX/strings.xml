@@ -27,6 +27,7 @@
   <string name="tab_overview">Resumen</string>
   <string name="tab_history">Historial</string>
   <string name="tab_tips">Consejos</string>
+  <string name="activity_main_add_new_reading">Agregar lectura nueva</string>
   <string name="title_activity_hello">Hola.</string>
   <string name="helloactivity_headline">Hola.</string>
   <string name="helloactivity_terms">Términos de Uso.</string>
@@ -136,7 +137,7 @@
   <string name="assistant_categories_desc">Glucosio tiene categorías predeterminadas para la entrada de glucosa, pero puede crear categorías personalizadas en la configuración para que coincida con sus necesidades particulares.</string>
   <string name="assistant_check_title">Revise esto a menudo</string>
   <string name="assistant_check_desc">Asistente de Glucosio ofrece consejos regulares y seguirá mejorando, así que siempre revisa aquí para ver lo que puede hacer para mejorar su experiencia con Glucosio y para aprender otros consejos útiles.</string>
-  <string name="assistant_feedback_title">Enviar comentarios </string>
+  <string name="assistant_feedback_title">Enviar comentarios</string>
   <string name="assistant_feedback_desc">Si encuentra cualquier problema técnico o tiene comentarios sobre Glucosio, le animamos a enviar sus comentarios en el menú de configuración con el fin de ayudarnos a mejorar Glucosio.</string>
   <string name="assistant_reading_title">Añadir una medición de glucosa</string>
   <string name="assistant_reading_desc">Asegúrese de añadir regularmente sus lecturas de glucosa para que podamos ayudarle a seguir sus niveles de glucosa a largo plazo.</string>
@@ -161,6 +162,7 @@
   <string name="preferences_about_glucosio">Sobre Glucosio</string>
   <string name="preferences_rate">Califica a Glucosio</string>
   <string name="preferences_licences_open">Licencias de código abierto</string>
+  <string name="preferences_contributors">Colaboradores</string>
   <string name="preferences_freestyle_libre">Habilitar soporte para FreeStyle Libre®</string>
   <string name="preferences_freestyle_libre_experimental">EXPERIMENTAL: Habilitar soporte para FreeStyle Libre®</string>
   <string name="preferences_font_dyslexia_experimental">EXPERIMENTAL: Mejorar legibilidad para usuarios con dislexia</string>
@@ -198,6 +200,21 @@
   <string name="dialog_add_exercisetype_23">Lucha libre</string>
   <string name="dialog_add_exercisetype_24">Senderismo</string>
   <string name="dialog_add_exercisetype_25">Trabajo de jardinería</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <string name="intro_title1">¡Bienvenido a Glucosio!</string>
+  <string name="intro_para1">Glucosio es una aplicación gratuita y de código abierto para la gestión de su diabetes</string>
+  <string name="intro_title2">Registro y tendencias</string>
+  <string name="intro_para2">Glucosio hace fácil registrar los niveles de glucosa y visualizar tendencias</string>
+  <string name="intro_title3">Apoya la investigación de la Diabetes</string>
+  <string name="intro_para3">Glucosio te permite compartir anónimamente las tendencias con investigadores académicos de diabetes</string>
+  <string name="intro_title4">Centrado en la Privacidad</string>
+  <string name="intro_para4">Glucosio se toma su privacidad en serio y sólo comparte las tendencias indefinibles si usted acepta</string>
+  <string name="intro_title5">Mejores resultados en salud</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">Carbohidratos:</string>
   <string name="dialog_addfood_protein">Proteínas:</string>
@@ -226,6 +243,7 @@
   <string name="fragment_overview_graph_export_true">Captura de pantalla guardada en la galería</string>
   <string name="fragment_overview_graph_export_false">Error al guardar la captura de pantalla en la galería</string>
   <string name="dialog_export_range">Exportar rango</string>
+  <string name="activity_export_issue_generic">Ocurrió un error al exportar las lecturas. Intentalo de nuevo.</string>
   <string name="activity_export_no_readings_snackbar">No hay lecturas para exportar.</string>
   <string name="wear_new_reading">Nueva lectura añadida</string>
   <string name="dialog_add_weight">Peso</string>
@@ -239,10 +257,15 @@
   <string name="title_activity_add_glucose">Añadir lectura de glucosa</string>
   <string name="title_activity_add_glucose_edit">Editar lectura de glucosa</string>
   <string name="title_activity_add_weight">Añadir peso corporal</string>
+  <string name="title_activity_add_weight_edit">Editar peso corporal</string>
   <string name="title_activity_add_cholesterol">Añadir nivel de colesterol</string>
+  <string name="title_activity_add_cholesterol_edit">Editar nivel de colesterol</string>
   <string name="title_activity_add_hb1ac">Añadir HBA1C</string>
+  <string name="title_activity_add_hb1ac_edit">Editar HBA1C</string>
   <string name="title_activity_add_ketone">Añadir cetonas</string>
+  <string name="title_activity_add_ketone_edit">Editar cetonas</string>
   <string name="title_activity_add_pressure">Añadir presión arterial</string>
+  <string name="title_activity_add_pressure_edit">Editar presión arterial</string>
   <string name="fab_weight">Peso corporal</string>
   <string name="fab_ketones">Cetonas</string>
   <string name="fab_pressure">Presión arterial</string>
@@ -286,6 +309,7 @@
   <string name="activity_backup_drive_failed">Algo salió mal. Inténtalo de nuevo :/</string>
   <string name="activity_backup_drive_last">Última copia de seguridad:</string>
   <string name="activity_backup_drive_folder">Carpeta de las copias de seguridad</string>
+  <string name="activity_backup_drive_folder_not_set">Sin configurar</string>
   <string name="activity_backup_drive_button_backup">Respaldar ahora</string>
   <string name="activity_backup_drive_recent">Copias de seguridad recientes</string>
   <string name="activity_backup_drive_more">Ver más copias de seguridad</string>
@@ -301,5 +325,12 @@
   <string name="activity_backup_drive_button_open_drive">Gestionar en Drive</string>
   <string name="mmol_mol">mmol/mol</string>
   <string name="mmol_L">mmol/L</string>
+  <string name="mg_dL">mg/dl</string>
   <string name="preferences_graph_old">Volver al gráfico antiguo</string>
+  <string name="history">historial</string>
+  <string name="save">guardar</string>
+  <string name="activity_reminders_title">Recordatorios</string>
+  <string name="reminders_notification_action">Añadir Lectura</string>
+  <string name="glucosio_activity_reminders_empty">No hay recordatorios. agregar un nuevo recordatorio.</string>
+  <string name="reminder_item_title_generic2">¡Hora de registrar tus niveles de glucosa!</string>
 </resources>

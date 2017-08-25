@@ -111,7 +111,6 @@
   <string name="assistant_weight_title">Aktualizujte vašu hmotnosť</string>
   <string name="assistant_weight_desc">Uistite sa, aby bola vaša váha vždy aktuálna, aby mal Glucosio čo najpresnejšie údaje.</string>
   <string name="assistant_categories_title">Vytvoriť kategórie</string>
-  <string name="assistant_feedback_title">Odoslať spätnú väzbu </string>
   <string name="assistant_feedback_desc">Ak nájdete nejaké technické problémy, alebo nám chcete zanechať spätnú väzbu o Glucosio odporúčame vám ju odoslať cez položku v nastaveniach. Pomôžete tak vylepšiť Glucosio.</string>
   <string name="assistant_reading_title">Pridať meranie</string>
   <string name="assistant_reading_desc">Uistite sa, aby ste pravidelne pridávali hodnoty hladiny glykémie tak, aby sme vám mohli pomôcť priebežne sledovať hladiny glukózy.</string>
@@ -127,6 +126,12 @@
   <string name="helloactivity_textview_tos">Používaním Glucosio sa zaväzujete, že</string>
   <!-- Future Strings Baked In Early For l10n -->
   <!-- Exercise Types -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <!-- About Glucosio Strings -->
   <string name="dialog_add_weight">Váha</string>

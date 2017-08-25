@@ -122,7 +122,6 @@
   <string name="assistant_categories_desc">Glucosio-তে কিছু ডিফল্ট বিষয়শ্রেণী থাকে আপনার গ্লুকোজ ইনপুট দেওয়ার জন্য তবে আপনি নিজেও আপনার সাথে মিল রেখে সেটিংস থেকে নিজস্ব বিষয়শ্রেণী তৈরি করতে পারেন।</string>
   <string name="assistant_check_title">এখানে প্রায়ই পরীক্ষা করুন</string>
   <string name="assistant_check_desc">Glucosio সহযোগী নিয়মিত পরামর্শ প্রদান করে এবং প্রতিনিয়ত নিজেকে আরও ভালো করছে, তাই আপনার Glucosio অভিজ্ঞতাকে আরও ভালো করতে এবং অন্যান্য আরও উপকারী পরামর্শ পেতে নিয়মিত এখানে দেখুন এবং কি করতে হবে জানুন।</string>
-  <string name="assistant_feedback_title">ফিডব্যাক জমা করুন </string>
   <string name="assistant_feedback_desc">যেকোন কারিগরি সমস্যায় বা যদি Glucosio সম্পর্কে কোন ফিডব্যাক থাকে তাহলে Glucosio-কে আরও ভালো করতে সেটিংস মেনু থেকে তা সাবমিট করুন।</string>
   <string name="assistant_reading_title">পড়া যোগ করুন</string>
   <string name="assistant_reading_desc">অবশ্যই নিয়মিত আপনার গ্লুকোজের মাত্রা যোগ করবেন যেন আমরা আপনাকে আপনার গ্লুকোজের মাত্রা সময়ে সময়ে ট্র্যাক করতে সহযোগীতা করতে পারি।</string>
@@ -134,6 +133,12 @@
   <string name="invitation_title">অন্যান্য মানুষদের আমন্ত্রণ করুন</string>
   <!-- Future Strings Baked In Early For l10n -->
   <!-- Exercise Types -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <!-- About Glucosio Strings -->
   <string name="dialog_add_weight">ওজন</string>

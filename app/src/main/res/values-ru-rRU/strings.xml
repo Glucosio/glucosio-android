@@ -136,7 +136,6 @@
   <string name="assistant_categories_desc">Glucosio содержит категории по умолчанию, но в настройках вы можете создать собственные категории так, чтобы они подходили под ваши нужды.</string>
   <string name="assistant_check_title">Регулярно обращайтесь сюда</string>
   <string name="assistant_check_desc">Помощник Glucosio предоставляет регулярные советы. Мы работаем над усовершенствованием нашего помощника, поэтому обращайтесь сюда за советами, которые вы сможете использовать для того, чтобы получить большую пользу от Glucosio, а также за другими полезными советами.</string>
-  <string name="assistant_feedback_title">Отправьте отзыв </string>
   <string name="assistant_feedback_desc">Если вы обнаружите какие-либо технические проблемы или захотите отправить отзыв о работе Glucosio, вы можете сделать это в меню настроек. Это поможет нам улучшить Glucosio.</string>
   <string name="assistant_reading_title">Добавить данные</string>
   <string name="assistant_reading_desc">Регулярно вводите данные об уровне глюкозы, в течением времени это поможет вам отслеживать уровень глюкозы.</string>
@@ -198,6 +197,12 @@
   <string name="dialog_add_exercisetype_23">Борьба</string>
   <string name="dialog_add_exercisetype_24">Пешие прогулки</string>
   <string name="dialog_add_exercisetype_25">Работа во дворе</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">Углеводы:</string>
   <string name="dialog_addfood_protein">Белок:</string>
@@ -312,7 +317,6 @@
   <string name="history">история</string>
   <string name="save">сохранить</string>
   <string name="activity_reminders_title">Напоминания</string>
-  <string name="reminders_notification_text">Пора зарегистрировать ваш уровень глюкозы!</string>
   <string name="reminders_notification_action">Добавить данные</string>
   <string name="glucosio_activity_reminders_empty">Нет напоминаний. Добавьте новое напоминание здесь.</string>
 </resources>

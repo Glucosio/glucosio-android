@@ -136,7 +136,6 @@
   <string name="assistant_categories_desc">Glucosio kommt mit Standardkategorien für Zuckereingabe, aber sie können benutzerdefinierte Kategorien in Einstellungen entsprechend ihren speziellen Anforderungen erstellen.</string>
   <string name="assistant_check_title">Kommen sie öfter wieder</string>
   <string name="assistant_check_desc">Glucosio-Assistent bietet regelmäßige Tipps und wird laufend verbessert. Also kommen sie regelmäßig hierhin zurück für sinnvolle Maßnahmen, die sie ergreifen können, um ihr Glucosio-Erlebnis zu verbessern und andere nützliche Tipps.</string>
-  <string name="assistant_feedback_title">Feedback geben </string>
   <string name="assistant_feedback_desc">Wenn sie technische Probleme finden oder Feedback über Glucosio abgeben möchten, empfehlen wir ihnen dies im Menü \"Einstellungen\" einzugeben, um Glucosio zu verbessern.</string>
   <string name="assistant_reading_title">Messwert hinzufügen</string>
   <string name="assistant_reading_desc">Achten Sie darauf, regelmäßig Ihre Glukose-Messungen hinzuzufügen, damit wir helfen können, Ihren Blutzuckerspiegel im Laufe der Zeit zu verfolgen.</string>
@@ -198,6 +197,12 @@
   <string name="dialog_add_exercisetype_23">Wrestling</string>
   <string name="dialog_add_exercisetype_24">Wandern</string>
   <string name="dialog_add_exercisetype_25">Gartenarbeit</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">Kohlenhydrate:</string>
   <string name="dialog_addfood_protein">Eiweiß:</string>
@@ -226,6 +231,7 @@
   <string name="fragment_overview_graph_export_true">Screenshot in der Galerie gespeichert</string>
   <string name="fragment_overview_graph_export_false">Fehler beim Speichern des Screenshot in der Galerie</string>
   <string name="dialog_export_range">Bereichbereich</string>
+  <string name="activity_export_issue_generic">Es gab ein Problem beim Exportieren der Werte. Bitte versuchen Sie es erneut.</string>
   <string name="activity_export_no_readings_snackbar">Keine Messungen zum exportieren.</string>
   <string name="wear_new_reading">Neue Messungen hinzugefügt</string>
   <string name="dialog_add_weight">Gewicht</string>
@@ -308,4 +314,9 @@
   <string name="mmol_mol">mmol/mol</string>
   <string name="mmol_L">mmol/L</string>
   <string name="preferences_graph_old">Alte Graph-Darstellung verwenden</string>
+  <string name="history">Verlauf</string>
+  <string name="save">speichern</string>
+  <string name="activity_reminders_title">Erinnerungen</string>
+  <string name="reminders_notification_action">Messwert hinzufügen</string>
+  <string name="glucosio_activity_reminders_empty">Keine Erinnerungen eingestellt. Füge hier eine neue Erinnerung hinzu.</string>
 </resources>

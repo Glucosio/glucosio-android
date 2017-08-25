@@ -101,7 +101,6 @@
     <item>Take your medicine as prescribed by your doctor even small lapses in your medicine can impact your blood glucose level and cause other side effects. If having difficulty remembering ask your doctor about medication management and reminder options.</item>
   </string-array>
   <string name="assistant_action_ok">კაი, გავიგე</string>
-  <string name="assistant_feedback_title">უკუკავშირის გაგზავნა </string>
   <string name="assistant_export_title">მონაცემთა ექსპორტირება</string>
   <string name="helloactivity_language">ენა</string>
   <string name="preferences_privacy">კონფედენციალურობა</string>
@@ -121,6 +120,12 @@
   <string name="dialog_add_exercisetype_14">ფრენბურთი</string>
   <string name="dialog_add_exercisetype_15">კრიკეტი</string>
   <string name="dialog_add_exercisetype_19">ტენისი</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <string name="dialog_addfood_fat">ცხიმი:</string>
   <!-- About Glucosio Strings -->

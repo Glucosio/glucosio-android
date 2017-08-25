@@ -23,13 +23,13 @@ public class PreferencesActivityTest extends RobolectricTest {
         when(getDBHandler().getUser(1)).thenReturn(mockedUser);
         when(mockedUser.getPreferred_range()).thenReturn("Test");
         when(mockedUser.getD_type()).thenReturn(1);
+        when(mockedUser.getPreferred_unit()).thenReturn("mg/dL");
 
         activity = Robolectric.buildActivity(PreferencesActivity.class).create().get();
     }
 
     @Test
     public void ShouldReportAnalytics_WhenCreated() throws Exception {
-
         verify(getAnalytics()).reportScreen("Preferences");
     }
 }

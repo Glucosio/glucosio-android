@@ -37,6 +37,7 @@ import android.support.design.widget.BottomSheetDialog;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
+import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -168,14 +169,14 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         bottomSheetAddDialog = new BottomSheetDialog(this);
 
         // Add Nav Drawer
-        final PrimaryDrawerItem itemSettings = new PrimaryDrawerItem().withName(R.string.action_settings).withIcon(R.drawable.ic_settings_grey_24dp).withSelectable(false).withTypeface(Typeface.DEFAULT_BOLD);
-        final PrimaryDrawerItem itemExport = new PrimaryDrawerItem().withName(R.string.sidebar_backup_export).withIcon(R.drawable.ic_backup_grey_24dp).withSelectable(false).withTypeface(Typeface.DEFAULT_BOLD);
-        final PrimaryDrawerItem itemFeedback = new PrimaryDrawerItem().withName(R.string.menu_support).withIcon(R.drawable.ic_announcement_grey_24dp).withSelectable(false).withTypeface(Typeface.DEFAULT_BOLD);
-        final PrimaryDrawerItem itemAbout = new PrimaryDrawerItem().withName(R.string.preferences_about_glucosio).withIcon(R.drawable.ic_info_grey_24dp).withSelectable(false).withTypeface(Typeface.DEFAULT_BOLD);
-        final PrimaryDrawerItem itemInvite = new PrimaryDrawerItem().withName(R.string.action_invite).withIcon(R.drawable.ic_face_grey_24dp).withSelectable(false).withTypeface(Typeface.DEFAULT_BOLD);
-        final PrimaryDrawerItem itemDonate = new PrimaryDrawerItem().withName(R.string.about_donate).withIcon(R.drawable.ic_favorite_grey_24dp).withSelectable(false).withTypeface(Typeface.DEFAULT_BOLD);
-        final PrimaryDrawerItem itemA1C = new PrimaryDrawerItem().withName(R.string.activity_converter_title).withIcon(R.drawable.ic_calculator_a1c_grey_24dp).withSelectable(false).withTypeface(Typeface.DEFAULT_BOLD);
-        final PrimaryDrawerItem itemReminders = new PrimaryDrawerItem().withName(R.string.activity_reminders_title).withIcon(R.drawable.ic_alarm_grey_24dp).withSelectable(false).withTypeface(Typeface.DEFAULT_BOLD);
+        final PrimaryDrawerItem itemSettings = new PrimaryDrawerItem().withName(R.string.action_settings).withIcon(VectorDrawableCompat.create(getResources(), R.drawable.ic_settings_grey_24dp, null)).withSelectable(false).withTypeface(Typeface.DEFAULT_BOLD);
+        final PrimaryDrawerItem itemExport = new PrimaryDrawerItem().withName(R.string.sidebar_backup_export).withIcon(VectorDrawableCompat.create(getResources(), R.drawable.ic_backup_grey_24dp, null)).withSelectable(false).withTypeface(Typeface.DEFAULT_BOLD);
+        final PrimaryDrawerItem itemFeedback = new PrimaryDrawerItem().withName(R.string.menu_support).withIcon(VectorDrawableCompat.create(getResources(), R.drawable.ic_announcement_grey_24dp, null)).withSelectable(false).withTypeface(Typeface.DEFAULT_BOLD);
+        final PrimaryDrawerItem itemAbout = new PrimaryDrawerItem().withName(R.string.preferences_about_glucosio).withIcon(VectorDrawableCompat.create(getResources(), R.drawable.ic_info_grey_24dp, null)).withSelectable(false).withTypeface(Typeface.DEFAULT_BOLD);
+        final PrimaryDrawerItem itemInvite = new PrimaryDrawerItem().withName(R.string.action_invite).withIcon(VectorDrawableCompat.create(getResources(), R.drawable.ic_face_grey_24dp, null)).withSelectable(false).withTypeface(Typeface.DEFAULT_BOLD);
+        final PrimaryDrawerItem itemDonate = new PrimaryDrawerItem().withName(R.string.about_donate).withIcon(VectorDrawableCompat.create(getResources(), R.drawable.ic_favorite_grey_24dp, null)).withSelectable(false).withTypeface(Typeface.DEFAULT_BOLD);
+        final PrimaryDrawerItem itemA1C = new PrimaryDrawerItem().withName(R.string.activity_converter_title).withIcon(VectorDrawableCompat.create(getResources(), R.drawable.ic_calculator_a1c_grey_24dp, null)).withSelectable(false).withTypeface(Typeface.DEFAULT_BOLD);
+        final PrimaryDrawerItem itemReminders = new PrimaryDrawerItem().withName(R.string.activity_reminders_title).withIcon(VectorDrawableCompat.create(getResources(), R.drawable.ic_alarm_grey_24dp, null)).withSelectable(false).withTypeface(Typeface.DEFAULT_BOLD);
 
         DrawerBuilder drawerBuilder = new DrawerBuilder()
                 .withActivity(this)

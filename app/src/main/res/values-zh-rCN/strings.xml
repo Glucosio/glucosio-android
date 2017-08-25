@@ -27,6 +27,7 @@
   <string name="tab_overview">概览</string>
   <string name="tab_history">历史记录</string>
   <string name="tab_tips">小提示</string>
+  <string name="activity_main_add_new_reading">添加新读数</string>
   <string name="title_activity_hello">你好</string>
   <string name="helloactivity_headline">你好</string>
   <string name="helloactivity_terms">使用条款。</string>
@@ -87,6 +88,7 @@
   <string name="preferences_about">关于</string>
   <string name="preferences_experimental">这些实验性功能不保证能稳定工作，仅面向早期测试用户。您可以摇动手机以给我们发送反馈。</string>
   <string name="preferences_version">版本</string>
+  <string name="preferences_coming_soon">即将到来……</string>
   <string name="preferences_terms">使用条款</string>
   <string name="glucose_reading_type">类型</string>
   <string name="weight">体重</string>
@@ -134,7 +136,7 @@
   <string name="assistant_categories_desc">Glucosio 默认带有血糖读数分类，您还可以在设置中创建自定义的分类以满足您的独特需求。</string>
   <string name="assistant_check_title">经常检查这里</string>
   <string name="assistant_check_desc">Glucosio 助理提供定期的提示并将不断改善，因此请经常检查这里的提示，这有助您采取措施来提高使用 Glucosio 的经验和技巧。</string>
-  <string name="assistant_feedback_title">提交反馈 </string>
+  <string name="assistant_feedback_title">提交反馈</string>
   <string name="assistant_feedback_desc">如果您发现了任何技术问题，或有关于 Glucosio 的反馈，我们鼓励您在设置菜单中提交它，以帮助我们改进 Glucosio。</string>
   <string name="assistant_reading_title">添加阅读</string>
   <string name="assistant_reading_desc">一定要定期添加您的血糖读数，以便我们帮助您随时间跟踪您的血糖水平。</string>
@@ -196,6 +198,12 @@
   <string name="dialog_add_exercisetype_23">摔跤</string>
   <string name="dialog_add_exercisetype_24">徒步旅行</string>
   <string name="dialog_add_exercisetype_25">院子里工作</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">碳水化合物:</string>
   <string name="dialog_addfood_protein">蛋白质:</string>
@@ -224,6 +232,7 @@
   <string name="fragment_overview_graph_export_true">截图已保存到图库</string>
   <string name="fragment_overview_graph_export_false">保存截图到图库出错</string>
   <string name="dialog_export_range">导出范围</string>
+  <string name="activity_export_issue_generic">导出读数出错。请再试一次。</string>
   <string name="activity_export_no_readings_snackbar">没有读数可导出。</string>
   <string name="wear_new_reading">新读数已添加</string>
   <string name="dialog_add_weight">体重</string>
@@ -235,11 +244,17 @@
   <string name="dialog_add_cholesterol_hdl">高密度脂蛋白胆固醇</string>
   <string name="dialog_add_hb1ac">糖化血红蛋白</string>
   <string name="title_activity_add_glucose">添加血糖读数</string>
+  <string name="title_activity_add_glucose_edit">编辑血糖读数</string>
   <string name="title_activity_add_weight">增加体重</string>
+  <string name="title_activity_add_weight_edit">编辑体重</string>
   <string name="title_activity_add_cholesterol">添加胆固醇水平</string>
+  <string name="title_activity_add_cholesterol_edit">编辑胆固醇水平</string>
   <string name="title_activity_add_hb1ac">添加糖化血红蛋白</string>
+  <string name="title_activity_add_hb1ac_edit">编辑 HbA1c</string>
   <string name="title_activity_add_ketone">添加酮体</string>
+  <string name="title_activity_add_ketone_edit">编辑酮</string>
   <string name="title_activity_add_pressure">添加血压</string>
+  <string name="title_activity_add_pressure_edit">编辑血压</string>
   <string name="fab_weight">体重</string>
   <string name="fab_ketones">酮体</string>
   <string name="fab_pressure">血压</string>
@@ -267,16 +282,42 @@
   <string name="menu_support_forum">支持论坛</string>
   <string name="notification_reminder_glucose">该记录您的血糖水平了！</string>
   <string name="notification_reminder_medication">现在是您的服药时间！</string>
+  <string name="dialog_add_notes">备注</string>
   <string name="sidebar_backup_export">备份和导出</string>
   <string name="menu_backup_backup">在 Google Drive 上备份</string>
   <string name="menu_backup_restore">恢复</string>
   <string name="menu_backup_csv">CSV 导出</string>
+  <string name="activity_backup_drive_automatic">自动备份</string>
+  <string name="activity_backup_drive_desc">备份您的数据到谷歌驱动器允许您恢复您的读数，以防丢失或变更设备。</string>
   <string name="activity_backup_drive_message_restart">重启以应用更改...</string>
   <string name="activity_backup_drive_desc_1">用 Google Drive 云同步 Glucosio 的数据库。</string>
   <string name="activity_backup_drive_desc_2">如果您丢失或者变更手机，或者在您的设备之间同步 Glucosio 的数据，将可以恢复您的所有读数。</string>
+  <string name="activity_backup_drive_success">数据库已成功备份到谷歌驱动器</string>
+  <string name="activity_backup_drive_restore_success">驱动器已成功从谷歌数据库恢复</string>
   <string name="activity_backup_drive_failed">出现错误。请重试。</string>
+  <string name="activity_backup_drive_last">上次备份：</string>
+  <string name="activity_backup_drive_folder">备份文件夹</string>
+  <string name="activity_backup_drive_folder_not_set">未设置</string>
   <string name="activity_backup_drive_button_backup">立即备份</string>
+  <string name="activity_backup_drive_recent">最近的备份</string>
+  <string name="activity_backup_drive_more">查看更多备份</string>
+  <string name="activity_backup_drive_dialog_restore_title">恢复到以前的版本</string>
+  <string name="activity_backup_drive_dialog_restore_desc">恢复备份将使用备份覆盖现有的所有数据。</string>
+  <string name="activity_backup_drive_dialog_restore_details">备份详细信息</string>
+  <string name="activity_backup_drive_dialog_restore_button_cancel">取消</string>
+  <string name="activity_backup_drive_dialog_restore_button_restore">恢复备份</string>
   <string name="activity_backup_drive_button_restore">从 Drive 恢复</string>
   <string name="activity_backup_drive_error_restore">无法在 Drive 找到有效的备份以恢复</string>
+  <string name="activity_main_error_play_services">Glucosio 需要 Play 服务才能启用谷歌驱动器备份。</string>
+  <string name="activity_main_dialog_csv_title">导出到 CSV 文件</string>
+  <string name="activity_backup_drive_button_open_drive">在 Drive 上管理</string>
   <string name="mmol_L">毫摩尔/升</string>
+  <string name="mg_dL">毫克/分升</string>
+  <string name="preferences_graph_old">回到旧图</string>
+  <string name="history">历史</string>
+  <string name="save">保存</string>
+  <string name="activity_reminders_title">提醒</string>
+  <string name="reminders_notification_action">添加读数</string>
+  <string name="glucosio_activity_reminders_empty">未设置提醒。在这里添加新的提示。</string>
+  <string name="reminder_item_title_generic2">该记录您的血糖水平了！</string>
 </resources>

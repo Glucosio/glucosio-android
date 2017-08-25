@@ -136,7 +136,6 @@
   <string name="assistant_categories_desc">جلوكوسيو يأتي بفئات افتراضية لإدخال الجلوكوز ولكن يمكنك إنشاء فئات مخصصة في الإعدادات بحيث تتطابق مع احتياجاتك الخاصة.</string>
   <string name="assistant_check_title">تردد هنا عدة مرات</string>
   <string name="assistant_check_desc">مساعد جلوكوسيو يوفر نصائح عدة ، لذلك قم بالتردد هنا لتتعرف على إجراءات يمكنك اتخاذها لتحسين تجربة جلوكوسيو ونصائح مفيدة أخرى.</string>
-  <string name="assistant_feedback_title">إرسال ملاحظات </string>
   <string name="assistant_feedback_desc">إذا كان لديك اي مشكلة تقنية أو اقتراحات حول جلوكوسيو نحن نشجعكم على ارساله من قائمة الإعدادات من أجل مساعدتنا على تحسين جلوكوسيو.</string>
   <string name="assistant_reading_title">إضافة قراءة</string>
   <string name="assistant_reading_desc">تأكد من إضافة قراءات السكر بانتظام حتى يمكننا مساعدتك على تتبع مستويات السكر الخاص بك مع الوقت.</string>
@@ -198,6 +197,12 @@
   <string name="dialog_add_exercisetype_23">المصارعة</string>
   <string name="dialog_add_exercisetype_24">المشي لمسافات طويلة (تجوال)</string>
   <string name="dialog_add_exercisetype_25">أعمال الحديقة المنزلية</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">الكربوهيدرات:</string>
   <string name="dialog_addfood_protein">البروتين:</string>

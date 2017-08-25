@@ -70,10 +70,15 @@
   <string name="assistant_action_reading">ÚTLÊZING TAFOEGJE</string>
   <string name="assistant_categories_title">Kategoryen meitsje</string>
   <string name="assistant_check_title">Sjoch hjir regelmjittich</string>
-  <string name="assistant_feedback_title">Weromkeppeling ferstjoere </string>
   <string name="assistant_reading_title">In útlêzing tafoegje</string>
   <!-- Future Strings Baked In Early For l10n -->
   <!-- Exercise Types -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <!-- About Glucosio Strings -->
 </resources>

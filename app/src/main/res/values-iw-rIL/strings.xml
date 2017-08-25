@@ -131,7 +131,6 @@
   <string name="assistant_categories_desc">Glucosio מגיע עם קטגוריות ברירת המחדל עבור קלט רמת הגלוקוז, אך באפשרותך ליצור קטגוריות מותאמות אישית הגדרות כדי להתאים לצרכים הייחודיים שלך.</string>
   <string name="assistant_check_title">בדוק כאן לעיתים קרובות</string>
   <string name="assistant_check_desc">העוזר ב-Glucosio מספק עצות קבועות לשמור על שיפור, בידקו בתכיפות לגבי שימושי פעולות שבאפשרותך לבצע כדי לשפר את החוויה Glucosio שלך, טיפים שימושיים נוספים.</string>
-  <string name="assistant_feedback_title">שלח משוב </string>
   <string name="assistant_feedback_desc">אם אתם מוצאים כל בעיות טכניות או לקבל משוב אודות Glucosio אנו מעודדים אותך להגיש את זה בתפריט \' הגדרות \' כדי לסייע לנו לשפר את Glucosio.</string>
   <string name="assistant_reading_title">הוסף מדידה</string>
   <string name="assistant_reading_desc">הקפד להוסיף באופן קבוע את מדידות רמת הסוכר בדם שלך כדי שנוכל לעזור לך לעקוב אחר רמות הסוכר שלך לאורך זמן.</string>
@@ -186,6 +185,12 @@
   <string name="dialog_add_exercisetype_23">היאבקות</string>
   <string name="dialog_add_exercisetype_24">טיולי הליכה</string>
   <string name="dialog_add_exercisetype_25">טיולים בחצר</string>
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Intro Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Smart Assistant Strings -->
+  <!-- Future Strings Baked In Early For l10n -->
+  <!-- Badges -->
   <!-- Food Entry Labels -->
   <string name="dialog_addfood_carbs">פחמימות:</string>
   <string name="dialog_addfood_protein">חלבון:</string>
