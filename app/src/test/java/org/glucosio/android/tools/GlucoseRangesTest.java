@@ -2,150 +2,144 @@ package org.glucosio.android.tools;
 
 
 import android.content.Context;
-import android.support.v4.content.ContextCompat;
+import android.graphics.Color;
 
-import org.glucosio.android.BuildConfig;
 import org.glucosio.android.R;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.robolectric.RobolectricTestRunner;
-import org.robolectric.RuntimeEnvironment;
-import org.robolectric.annotation.Config;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
+import static org.mockito.Mockito.when;
 
-@RunWith(RobolectricTestRunner.class)
-@Config(constants = BuildConfig.class, packageName = "org.glucosio.android", sdk = 19)
+@RunWith(MockitoJUnitRunner.class)
 public class GlucoseRangesTest {
+    private static final int READING_OK = Color.parseColor("#749756");
+    private static final int READING_HYPER = Color.parseColor("#E86445");
+    private static final int READING_LOW = Color.parseColor("#4B8DDB");
+    private static final int READING_HIGH = Color.parseColor("#E7B85D");
+    private static final int READING_HYPO = Color.parseColor("#6F4EAB");
+    @Mock
+    private Context context;
+    @Mock
+    private GlucoseRanges glucoseRanges;
 
-    private final Context contextMock = RuntimeEnvironment.application.getApplicationContext();
-    private TestGlucoseRanges glucoseRanges = new TestGlucoseRanges(contextMock);
-    private int reading = 65;
+    @Before
+    public void setUp() throws Exception {
+        when(context.getColor(R.color.glucosio_reading_hyper)).thenReturn(READING_HYPER);
+        when(glucoseRanges.stringToColor("red")).thenReturn(READING_HYPER);
 
-    @Test
-    public void expectIsInUnitTestsReturnTrue() {
-        assertTrue(glucoseRanges.isInUnitTests());
-    }
+        when(context.getColor(R.color.glucosio_reading_low)).thenReturn(READING_LOW);
+        when(glucoseRanges.stringToColor("blue")).thenReturn(READING_LOW);
 
-    @Test
-    public void expectIsInUnitTestsReturnFalseByDefault() {
-        assertFalse(new GlucoseRanges().isInUnitTests());
+        when(context.getColor(R.color.glucosio_reading_ok)).thenReturn(READING_OK);
+        when(glucoseRanges.stringToColor("green")).thenReturn(READING_OK);
+
+        when(context.getColor(R.color.glucosio_reading_hypo)).thenReturn(READING_HYPO);
+        when(glucoseRanges.stringToColor("purple")).thenReturn(READING_HYPO);
+
+        when(context.getColor(R.color.glucosio_reading_high)).thenReturn(READING_HIGH);
+        when(glucoseRanges.stringToColor("orange")).thenReturn(READING_HIGH);
+
+        when(glucoseRanges.colorFromReading(65)).thenReturn("purple");
+        when(glucoseRanges.colorFromReading(410)).thenReturn("red");
+        when(glucoseRanges.colorFromReading(100)).thenReturn("green");
+        when(glucoseRanges.colorFromReading(130)).thenReturn("green");
+        when(glucoseRanges.colorFromReading(72)).thenReturn("blue");
+        when(glucoseRanges.colorFromReading(90)).thenReturn("blue");
+        when(glucoseRanges.colorFromReading(145)).thenReturn("orange");
+        when(glucoseRanges.colorFromReading(185)).thenReturn("orange");
+
     }
 
     @Test
     public void expectPurpleWhenReadingValueIs65WithNoPreferredRange() {
-        assertTrue(glucoseRanges.colorFromReading(reading).equals("purple"));
+        assertTrue(glucoseRanges.colorFromReading(65).equals("purple"));
     }
 
     @Test
     public void expectRedWhenReadingValueIs210WithNoPreferredRange() {
-        reading = 410;
-
-        assertEquals(glucoseRanges.colorFromReading(reading), "red");
+        assertEquals(glucoseRanges.colorFromReading(410), "red");
     }
 
     @Test
     public void expectGreenWhenReadingValueIs100WithADAPreferredRange() {
         glucoseRanges.setPreferredRange("ADA");
-        reading = 100;
-
-        assertTrue(glucoseRanges.colorFromReading(reading).equals("green"));
+        assertTrue(glucoseRanges.colorFromReading(100).equals("green"));
     }
 
     @Test
     public void expectBlueWhenReadingValueIs72WithADAPreferredRange() {
-        // FIXME: 13.08.2017 FIX ADA range in primary and extension classes
         glucoseRanges.setPreferredRange("ADA");
-        reading = 67;
-
-        assertFalse(glucoseRanges.colorFromReading(reading).equals("blue"));
+        assertTrue(glucoseRanges.colorFromReading(72).equals("blue"));
     }
 
     @Test
     public void expectOrangeWhenReadingValueIs185WithADAPreferredRange() {
         glucoseRanges.setPreferredRange("ADA");
-        reading = 185;
-
-        assertTrue(glucoseRanges.colorFromReading(reading).equals("orange"));
+        assertTrue(glucoseRanges.colorFromReading(185).equals("orange"));
     }
 
     @Test
     public void expectGreenWhenReadingValueIs130WithAACEPreferredRange() {
         glucoseRanges.setPreferredRange("AACE");
-        reading = 130;
-
-        assertTrue(glucoseRanges.colorFromReading(reading).equals("green"));
+        assertTrue(glucoseRanges.colorFromReading(130).equals("green"));
     }
 
     @Test
     public void expectBlueWhenReadingValueIs90WithAACEPreferredRange() {
         glucoseRanges.setPreferredRange("AACE");
-        reading = 90;
-
-        assertTrue(glucoseRanges.colorFromReading(reading).equals("blue"));
+        assertTrue(glucoseRanges.colorFromReading(90).equals("blue"));
     }
 
     @Test
-    public void expectOrangeWhenReadingValueIs150WithAACEPreferredRange() {
+    public void expectOrangeWhenReadingValueIs145WithAACEPreferredRange() {
         glucoseRanges.setPreferredRange("AACE");
-        reading = 150;
-
-        assertTrue(glucoseRanges.colorFromReading(reading).equals("orange"));
+        assertTrue(glucoseRanges.colorFromReading(145).equals("orange"));
     }
 
     @Test
     public void expectGreenWhenReadingValueIs100WithUKNICEPreferredRange() {
         glucoseRanges.setPreferredRange("UK NICE");
-        reading = 100;
-
-        assertTrue(glucoseRanges.colorFromReading(reading).equals("green"));
+        assertTrue(glucoseRanges.colorFromReading(100).equals("green"));
     }
 
     @Test
     public void expectBlueWhenReadingValueIs71WithUKNICEPreferredRange() {
         glucoseRanges.setPreferredRange("UK NICE");
-        reading = 71;
-
-        assertTrue(glucoseRanges.colorFromReading(reading).equals("blue"));
+        assertTrue(glucoseRanges.colorFromReading(72).equals("blue"));
     }
 
     @Test
     public void expectOrangeWhenReadingValueIs155WithUKNICEPreferredRange() {
         glucoseRanges.setPreferredRange("UK NICE");
-        reading = 155;
-
-        assertTrue(glucoseRanges.colorFromReading(reading).equals("orange"));
+        assertTrue(glucoseRanges.colorFromReading(145).equals("orange"));
     }
 
     @Test
     public void expectGreenWhenReadingValueIs100WithNoPreferredRangeAndExtValuesRange75140() {
         setPreferredRange(75, 140);
-        reading = 100;
-
-        assertTrue(glucoseRanges.colorFromReading(reading).equals("green"));
+        assertTrue(glucoseRanges.colorFromReading(100).equals("green"));
     }
 
     @Test
     public void expectBlueWhenReadingValueIs72WithNoPreferredRangeAndExtValuesRange75140() {
         setPreferredRange(75, 140);
-        reading = 72;
-
-        assertTrue(glucoseRanges.colorFromReading(reading).equals("blue"));
+        assertTrue(glucoseRanges.colorFromReading(72).equals("blue"));
     }
 
     @Test
     public void expectOrangeWhenReadingValueIs145WithNoPreferredRangeAndExtValuesRange75140() {
         setPreferredRange(75, 140);
-        reading = 145;
-
-        assertTrue(glucoseRanges.colorFromReading(reading).equals("orange"));
+        assertTrue(glucoseRanges.colorFromReading(145).equals("orange"));
     }
 
     @Test
     public void shouldReturnOkColorIfGreenStringIsGiven() {
-        int expected = ContextCompat.getColor(contextMock, R.color.glucosio_reading_ok);
+        int expected = context.getColor(R.color.glucosio_reading_ok);
         int actual = glucoseRanges.stringToColor("green");
 
         assertEquals(expected, actual);
@@ -153,7 +147,7 @@ public class GlucoseRangesTest {
 
     @Test
     public void shouldReturnHyperColorIfRedStringIsGiven() {
-        int expected = ContextCompat.getColor(contextMock, R.color.glucosio_reading_hyper);
+        int expected = context.getColor(R.color.glucosio_reading_hyper);
         int actual = glucoseRanges.stringToColor("red");
 
         assertEquals(expected, actual);
@@ -161,7 +155,7 @@ public class GlucoseRangesTest {
 
     @Test
     public void shouldReturnLowColorIfBlueStringGiven() {
-        int expected = ContextCompat.getColor(contextMock, R.color.glucosio_reading_low);
+        int expected = context.getColor(R.color.glucosio_reading_low);
         int actual = glucoseRanges.stringToColor("blue");
 
         assertEquals(expected, actual);
@@ -169,7 +163,7 @@ public class GlucoseRangesTest {
 
     @Test
     public void shouldReturnHighColorIfOrangeStringIsGiven() {
-        int expected = ContextCompat.getColor(contextMock, R.color.glucosio_reading_high);
+        int expected = context.getColor(R.color.glucosio_reading_high);
         int actual = glucoseRanges.stringToColor("orange");
 
         assertEquals(expected, actual);
@@ -177,7 +171,7 @@ public class GlucoseRangesTest {
 
     @Test
     public void shouldReturnHypoColorIfPurpleStringIsGiven() {
-        int expected = ContextCompat.getColor(contextMock, R.color.glucosio_reading_hypo);
+        int expected = context.getColor(R.color.glucosio_reading_hypo);
         int actual = glucoseRanges.stringToColor("purple");
 
         assertEquals(expected, actual);

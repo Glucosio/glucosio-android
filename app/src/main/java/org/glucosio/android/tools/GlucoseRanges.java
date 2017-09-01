@@ -35,41 +35,30 @@ public class GlucoseRanges {
     private int customMin;
     private int customMax;
 
-    @VisibleForTesting
-    protected boolean isInUnitTests() {
-        return false;
+    public GlucoseRanges(Context context) {
+        this.mContext = context;
+        dB = new DatabaseHandler(mContext);
+        this.preferredRange = dB.getUser(1).getPreferred_range();
+        if (preferredRange.equals("Custom range")) {
+            this.customMin = dB.getUser(1).getCustom_range_min();
+            this.customMax = dB.getUser(1).getCustom_range_max();
+        }
+
     }
 
     @VisibleForTesting
-    public void setPreferredRange(String preferredRange) {
+    void setPreferredRange(String preferredRange) {
         this.preferredRange = preferredRange;
     }
 
     @VisibleForTesting
-    public void setCustomMin(int customMin) {
+    void setCustomMin(int customMin) {
         this.customMin = customMin;
     }
 
     @VisibleForTesting
-    public void setCustomMax(int customMax) {
+    void setCustomMax(int customMax) {
         this.customMax = customMax;
-    }
-
-
-    public GlucoseRanges() {
-        //default empty constructor
-    }
-
-    public GlucoseRanges(Context context) {
-        this.mContext = context;
-        if (!isInUnitTests()) {
-            dB = new DatabaseHandler(mContext);
-            this.preferredRange = dB.getUser(1).getPreferred_range();
-            if (preferredRange.equals("Custom range")) {
-                this.customMin = dB.getUser(1).getCustom_range_min();
-                this.customMax = dB.getUser(1).getCustom_range_max();
-            }
-        }
     }
 
     public String colorFromReading(int reading) {
