@@ -21,6 +21,8 @@
 package org.glucosio.android.tools;
 
 import android.content.Context;
+import android.support.annotation.VisibleForTesting;
+import android.support.v4.content.ContextCompat;
 
 import org.glucosio.android.R;
 import org.glucosio.android.db.DatabaseHandler;
@@ -41,15 +43,29 @@ public class GlucoseRanges {
             this.customMin = dB.getUser(1).getCustom_range_min();
             this.customMax = dB.getUser(1).getCustom_range_max();
         }
+
+    }
+
+    @VisibleForTesting
+    void setPreferredRange(String preferredRange) {
+        this.preferredRange = preferredRange;
+    }
+
+    @VisibleForTesting
+    void setCustomMin(int customMin) {
+        this.customMin = customMin;
+    }
+
+    @VisibleForTesting
+    void setCustomMax(int customMax) {
+        this.customMax = customMax;
     }
 
     public String colorFromReading(int reading) {
         // Check for Hypo/Hyperglycemia
         if (reading < 70) {
             return "purple";
-        } else if (reading > 200) {
-            return "red";
-        } else if (reading > 70 | reading < 200) {
+        } else if (reading > 70 && reading < 200) {
             // if not check with custom ranges
             switch (preferredRange) {
                 case "ADA":
@@ -92,17 +108,16 @@ public class GlucoseRanges {
     public int stringToColor(String color) {
         switch (color) {
             case "green":
-                return mContext.getResources().getColor(R.color.glucosio_reading_ok);
+                return ContextCompat.getColor(mContext, R.color.glucosio_reading_ok);
             case "red":
-                return mContext.getResources().getColor(R.color.glucosio_reading_hyper);
+                return ContextCompat.getColor(mContext, R.color.glucosio_reading_hyper);
             case "blue":
-                return mContext.getResources().getColor(R.color.glucosio_reading_low);
+                return ContextCompat.getColor(mContext, R.color.glucosio_reading_low);
             case "orange":
-                return mContext.getResources().getColor(R.color.glucosio_reading_high);
+                return ContextCompat.getColor(mContext, R.color.glucosio_reading_high);
             default:
-                return mContext.getResources().getColor(R.color.glucosio_reading_hypo);
+                return ContextCompat.getColor(mContext, R.color.glucosio_reading_hypo);
         }
     }
 
-    ;
 }

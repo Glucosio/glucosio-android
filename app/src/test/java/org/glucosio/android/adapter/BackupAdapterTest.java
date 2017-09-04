@@ -18,6 +18,7 @@ import org.robolectric.Robolectric;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import static org.assertj.android.api.Assertions.assertThat;
 import static org.mockito.MockitoAnnotations.initMocks;
@@ -44,9 +45,13 @@ public class BackupAdapterTest extends RobolectricTest {
 
     @Test
     public void ReturnViewWithSizeFormatted_WhenAsked() throws Exception {
-        View view = adapter.getView(0, null, viewGroup);
+        Locale english = new Locale("en", "EN");
+        Locale.setDefault(english);
 
+        View view = adapter.getView(0, null, viewGroup);
         TextView sizeView = (TextView) view.findViewById(R.id.item_history_type);
+
         assertThat(sizeView).hasText("1.00KB");
+
     }
 }

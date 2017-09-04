@@ -22,8 +22,10 @@ package org.glucosio.android.tools;
 
 import android.text.InputFilter;
 import android.text.Spanned;
+import android.util.Log;
 
 public class InputFilterMinMax implements InputFilter {
+    private static final String TAG = "InputFilterMinMax";
 
     private int min, max;
 
@@ -44,11 +46,12 @@ public class InputFilterMinMax implements InputFilter {
             if (isInRange(min, max, input))
                 return null;
         } catch (NumberFormatException nfe) {
+            Log.e(TAG, "filter: ", nfe);
         }
         return "";
     }
 
-    private boolean isInRange(int a, int b, int c) {
+    protected boolean isInRange(int a, int b, int c) {
         return b > a ? c >= a && c <= b : c >= b && c <= a;
     }
 }
