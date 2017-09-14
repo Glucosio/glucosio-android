@@ -190,7 +190,6 @@ public class PreferencesActivity extends AppCompatActivity {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
                     updatedUser.setCountry(newValue.toString());
-
                     updateDB();
                     return false;
                 }
@@ -448,14 +447,15 @@ public class PreferencesActivity extends AppCompatActivity {
 
         private void updateDB() {
             dB.updateUser(updatedUser);
+
+            countryPref.setSummary(user.getCountry());
             agePref.setSummary(String.valueOf(user.getAge()));
             genderPref.setSummary(String.valueOf(user.getGender()));
-
             diabetesTypePref.setSummary(getResources().getStringArray(R.array.helloactivity_diabetes_type)[user.getD_type() - 1]);
             unitPrefGlucose.setSummary(getGlucoseUnitValue(user.getPreferred_unit()));
             unitPrefA1c.setSummary(getA1CUnitValue(user.getPreferred_unit_a1c()));
             unitPrefWeight.setSummary(getUnitWeight(user.getPreferred_unit_weight()));
-            countryPref.setSummary(user.getCountry());
+            rangePref.setSummary(user.getPreferred_range());
 
             if (user.getPreferred_unit().equals("mg/dL")) {
                 minRangePref.setSummary(String.valueOf(user.getCustom_range_min()));
@@ -464,14 +464,6 @@ public class PreferencesActivity extends AppCompatActivity {
                 minRangePref.setSummary(String.valueOf(GlucosioConverter.glucoseToMmolL(user.getCustom_range_min())));
                 maxRangePref.setSummary(String.valueOf(GlucosioConverter.glucoseToMmolL(user.getCustom_range_max())));
             }
-
-            countryPref.setValue(user.getCountry());
-            genderPref.setValue(user.getGender());
-            diabetesTypePref.setValue(String.valueOf(user.getD_type()));
-            unitPrefGlucose.setValue(user.getPreferred_unit());
-            genderPref.setValue(user.getGender());
-            unitPrefGlucose.setValue(user.getPreferred_unit());
-            rangePref.setValue(user.getPreferred_range());
 
             if (!user.getPreferred_range().equals("Custom range")) {
                 minRangePref.setEnabled(false);
