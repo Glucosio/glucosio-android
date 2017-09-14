@@ -691,8 +691,8 @@ public class OverviewFragment extends Fragment implements OverviewView {
             }
 
             FormatDateTime dateTime = new FormatDateTime(getActivity().getApplicationContext());
+            lastDateTextView.setText(dateTime.convertDateTime(presenter.getLastDateTime()));
 
-            lastDateTextView.setText(dateTime.convertDate(presenter.getLastDateTime()));
             GlucoseRanges ranges = new GlucoseRanges(getActivity().getApplicationContext());
             String color = ranges.colorFromReading(Integer.parseInt(presenter.getLastReading()));
             lastReadingTextView.setTextColor(ranges.stringToColor(color));
