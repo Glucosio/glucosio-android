@@ -34,16 +34,15 @@ public class GlucoseRanges {
     private String preferredRange;
     private int customMin;
     private int customMax;
+    private final static int hyperLimit = 200;
+    private final static int hypoLimit = 70;
 
     public GlucoseRanges(Context context) {
         this.mContext = context;
         dB = new DatabaseHandler(mContext);
         this.preferredRange = dB.getUser(1).getPreferred_range();
-        if (preferredRange.equals("Custom range")) {
-            this.customMin = dB.getUser(1).getCustom_range_min();
-            this.customMax = dB.getUser(1).getCustom_range_max();
-        }
-
+        this.customMin = dB.getUser(1).getCustom_range_min();
+        this.customMax = dB.getUser(1).getCustom_range_max();
     }
 
     @VisibleForTesting
@@ -61,48 +60,49 @@ public class GlucoseRanges {
         this.customMax = customMax;
     }
 
-    public String colorFromReading(int reading) {
-        // Check for Hypo/Hyperglycemia
-        if (reading < 70) {
-            return "purple";
-        } else if (reading > 70 && reading < 200) {
-            // if not check with custom ranges
-            switch (preferredRange) {
-                case "ADA":
-                    if (reading >= 70 & reading <= 180) {
-                        return "green";
-                    } else if (reading < 70) {
-                        return "blue";
-                    } else if (reading > 180) {
-                        return "orange";
-                    }
-                case "AACE":
-                    if (reading >= 110 & reading <= 140) {
-                        return "green";
-                    } else if (reading < 110) {
-                        return "blue";
-                    } else if (reading > 140) {
-                        return "orange";
-                    }
-                case "UK NICE":
-                    if (reading >= 72 & reading <= 153) {
-                        return "green";
-                    } else if (reading < 72) {
-                        return "blue";
-                    } else if (reading > 153) {
-                        return "orange";
-                    }
-                default:
-                    if (reading >= customMin & reading <= customMax) {
-                        return "green";
-                    } else if (reading < customMin) {
-                        return "blue";
-                    } else if (reading > customMax) {
-                        return "orange";
-                    }
-            }
+    public static int rangePresetToMin(String preset) {
+        switch (preset) {
+            case "ADA":
+                return 70;
+            case "AACE":
+                return 110;
+            case "UK NICE":
+                return 72;
+            default:
+                return 70;
         }
-        return "red";
+    }
+
+    public static int rangePresetToMax(String preset) {
+        switch (preset) {
+            case "ADA":
+                return 180;
+            case "AACE":
+                return 140;
+            case "UK NICE":
+                return 153;
+            default:
+                return 180;
+        }
+    }
+
+    public String colorFromReading(int reading) {
+        if (reading < hypoLimit) {
+            // hypo limit 70
+            return "purple";
+        } else if (reading > hyperLimit) {
+            //  hyper limit 200
+            return "red";
+        } else if (reading < customMin) {
+            // low limit
+            return "blue";
+        } else if (reading > customMax) {
+            // high limit
+            return "orange";
+        } else {
+            // in range
+            return "green";
+        }
     }
 
     public int stringToColor(String color) {

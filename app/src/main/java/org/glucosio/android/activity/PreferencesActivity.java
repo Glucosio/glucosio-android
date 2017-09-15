@@ -47,6 +47,7 @@ import org.glucosio.android.R;
 import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.User;
+import org.glucosio.android.tools.GlucoseRanges;
 import org.glucosio.android.tools.GlucosioConverter;
 import org.glucosio.android.tools.InputFilterMinMax;
 import org.glucosio.android.tools.LocaleHelper;
@@ -276,6 +277,16 @@ public class PreferencesActivity extends AppCompatActivity {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
                     updatedUser.setPreferred_range(newValue.toString());
+
+                    // look up the min/max values of the selected preset
+                    if (!newValue.toString().equals("Custom range")) {
+                        int rangeMin = GlucoseRanges.rangePresetToMin(newValue.toString());
+                        int rangeMax = GlucoseRanges.rangePresetToMax(newValue.toString());
+                        // min/max ranges are stored in mg/dl format
+                        updatedUser.setCustom_range_min(rangeMin);
+                        updatedUser.setCustom_range_max(rangeMax);
+                    }
+
                     updateDB();
                     return true;
                 }
