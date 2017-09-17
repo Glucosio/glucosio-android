@@ -63,13 +63,13 @@ public class GlucoseRanges {
     public static int rangePresetToMin(String preset) {
         switch (preset) {
             case "ADA":
-                return 70;
+                return 80;
             case "AACE":
                 return 110;
             case "UK NICE":
-                return 72;
+                return 81;
             default:
-                return 70;
+                return 80;
         }
     }
 
