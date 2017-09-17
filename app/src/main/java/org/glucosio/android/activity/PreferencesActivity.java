@@ -276,12 +276,13 @@ public class PreferencesActivity extends AppCompatActivity {
             rangePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    updatedUser.setPreferred_range(newValue.toString());
+                    String selectedPreset = newValue.toString();
+                    updatedUser.setPreferred_range(selectedPreset);
 
                     // look up the min/max values of the selected preset
-                    if (!newValue.toString().equals("Custom range")) {
-                        int rangeMin = GlucoseRanges.rangePresetToMin(newValue.toString());
-                        int rangeMax = GlucoseRanges.rangePresetToMax(newValue.toString());
+                    if (!selectedPreset.equals("Custom range")) {
+                        int rangeMin = GlucoseRanges.getPresetMin(selectedPreset);
+                        int rangeMax = GlucoseRanges.getPresetMax(selectedPreset);
                         // min/max ranges are stored in mg/dl format
                         updatedUser.setCustom_range_min(rangeMin);
                         updatedUser.setCustom_range_max(rangeMax);

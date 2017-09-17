@@ -32,17 +32,26 @@ public class GlucoseRanges {
     private DatabaseHandler dB;
     private Context mContext;
     private String preferredRange;
-    private int customMin;
-    private int customMax;
-    private final static int hyperLimit = 200;
-    private final static int hypoLimit = 70;
+    private int userMin;
+    private int userMax;
+    private final static String ADA = "ADA";
+    private final static String AACE = "AACE";
+    private final static String UKNICE = "UK NICE";
+    private final static int HYPER_LIMIT = 200;
+    private final static int HYPO_LIMIT = 70;
+    private final static int ADA_MIN = 80;
+    private final static int ADA_MAX = 180;
+    private final static int AACE_MIN = 110;
+    private final static int AACE_MAX = 140;
+    private final static int UKNICE_MIN = 81;
+    private final static int UKNICE_MAX = 153;
 
     public GlucoseRanges(Context context) {
         this.mContext = context;
         dB = new DatabaseHandler(mContext);
         this.preferredRange = dB.getUser(1).getPreferred_range();
-        this.customMin = dB.getUser(1).getCustom_range_min();
-        this.customMax = dB.getUser(1).getCustom_range_max();
+        this.userMin = dB.getUser(1).getCustom_range_min();
+        this.userMax = dB.getUser(1).getCustom_range_max();
     }
 
     @VisibleForTesting
@@ -52,51 +61,51 @@ public class GlucoseRanges {
 
     @VisibleForTesting
     void setCustomMin(int customMin) {
-        this.customMin = customMin;
+        this.userMin = customMin;
     }
 
     @VisibleForTesting
     void setCustomMax(int customMax) {
-        this.customMax = customMax;
+        this.userMax = customMax;
     }
 
-    public static int rangePresetToMin(String preset) {
+    public static int getPresetMin(String preset) {
         switch (preset) {
-            case "ADA":
-                return 80;
-            case "AACE":
-                return 110;
-            case "UK NICE":
-                return 81;
+            case ADA:
+                return ADA_MIN;
+            case AACE:
+                return AACE_MIN;
+            case UKNICE:
+                return UKNICE_MIN;
             default:
-                return 80;
+                return ADA_MIN;
         }
     }
 
-    public static int rangePresetToMax(String preset) {
+    public static int getPresetMax(String preset) {
         switch (preset) {
-            case "ADA":
-                return 180;
-            case "AACE":
-                return 140;
-            case "UK NICE":
-                return 153;
+            case ADA:
+                return ADA_MAX;
+            case AACE:
+                return AACE_MAX;
+            case UKNICE:
+                return UKNICE_MAX;
             default:
-                return 180;
+                return ADA_MAX;
         }
     }
 
     public String colorFromReading(int reading) {
-        if (reading < hypoLimit) {
+        if (reading < HYPO_LIMIT) {
             // hypo limit 70
             return "purple";
-        } else if (reading > hyperLimit) {
+        } else if (reading > HYPER_LIMIT) {
             //  hyper limit 200
             return "red";
-        } else if (reading < customMin) {
+        } else if (reading < userMin) {
             // low limit
             return "blue";
-        } else if (reading > customMax) {
+        } else if (reading > userMax) {
             // high limit
             return "orange";
         } else {
