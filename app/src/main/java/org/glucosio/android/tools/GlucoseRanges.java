@@ -34,17 +34,17 @@ public class GlucoseRanges {
     private String preferredRange;
     private int userMin;
     private int userMax;
-    private final static String ADA = "ADA";
-    private final static String AACE = "AACE";
-    private final static String UKNICE = "UK NICE";
-    private final static int HYPER_LIMIT = 200;
-    private final static int HYPO_LIMIT = 70;
-    private final static int ADA_MIN = 80;
-    private final static int ADA_MAX = 180;
-    private final static int AACE_MIN = 110;
-    private final static int AACE_MAX = 140;
-    private final static int UKNICE_MIN = 81;
-    private final static int UKNICE_MAX = 153;
+    private static final String ADA = "ADA";
+    private static final String AACE = "AACE";
+    private static final String UKNICE = "UK NICE";
+    private static final int HYPER_LIMIT = 200;
+    private static final int HYPO_LIMIT = 70;
+    private static final int ADA_MIN = 80;
+    private static final int ADA_MAX = 180;
+    private static final int AACE_MIN = 110;
+    private static final int AACE_MAX = 140;
+    private static final int UKNICE_MIN = 81;
+    private static final int UKNICE_MAX = 153;
 
     public GlucoseRanges(Context context) {
         this.mContext = context;
