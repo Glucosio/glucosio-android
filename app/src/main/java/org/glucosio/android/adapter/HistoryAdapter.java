@@ -167,6 +167,9 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
                 if (!notes.isEmpty()) {
                     notesTextView.setText(glucoseNotes.get(position));
                     notesTextView.setVisibility(View.VISIBLE);
+                } else {
+                    notesTextView.setText("");
+                    notesTextView.setVisibility(View.GONE);
                 }
                 break;
             // A1C
