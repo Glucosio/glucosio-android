@@ -47,6 +47,7 @@ import org.glucosio.android.R;
 import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.User;
+import org.glucosio.android.tools.GlucoseRanges;
 import org.glucosio.android.tools.GlucosioConverter;
 import org.glucosio.android.tools.InputFilterMinMax;
 import org.glucosio.android.tools.LocaleHelper;
@@ -190,7 +191,6 @@ public class PreferencesActivity extends AppCompatActivity {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
                     updatedUser.setCountry(newValue.toString());
-
                     updateDB();
                     return false;
                 }
@@ -276,7 +276,18 @@ public class PreferencesActivity extends AppCompatActivity {
             rangePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    updatedUser.setPreferred_range(newValue.toString());
+                    String selectedPreset = newValue.toString();
+                    updatedUser.setPreferred_range(selectedPreset);
+
+                    // look up the min/max values of the selected preset
+                    if (!selectedPreset.equals("Custom range")) {
+                        int rangeMin = GlucoseRanges.getPresetMin(selectedPreset);
+                        int rangeMax = GlucoseRanges.getPresetMax(selectedPreset);
+                        // min/max ranges are stored in mg/dl format
+                        updatedUser.setCustom_range_min(rangeMin);
+                        updatedUser.setCustom_range_max(rangeMax);
+                    }
+
                     updateDB();
                     return true;
                 }
@@ -448,14 +459,15 @@ public class PreferencesActivity extends AppCompatActivity {
 
         private void updateDB() {
             dB.updateUser(updatedUser);
+
+            countryPref.setSummary(user.getCountry());
             agePref.setSummary(String.valueOf(user.getAge()));
             genderPref.setSummary(String.valueOf(user.getGender()));
-
             diabetesTypePref.setSummary(getResources().getStringArray(R.array.helloactivity_diabetes_type)[user.getD_type() - 1]);
             unitPrefGlucose.setSummary(getGlucoseUnitValue(user.getPreferred_unit()));
             unitPrefA1c.setSummary(getA1CUnitValue(user.getPreferred_unit_a1c()));
             unitPrefWeight.setSummary(getUnitWeight(user.getPreferred_unit_weight()));
-            countryPref.setSummary(user.getCountry());
+            rangePref.setSummary(user.getPreferred_range());
 
             if (user.getPreferred_unit().equals("mg/dL")) {
                 minRangePref.setSummary(String.valueOf(user.getCustom_range_min()));
@@ -464,14 +476,6 @@ public class PreferencesActivity extends AppCompatActivity {
                 minRangePref.setSummary(String.valueOf(GlucosioConverter.glucoseToMmolL(user.getCustom_range_min())));
                 maxRangePref.setSummary(String.valueOf(GlucosioConverter.glucoseToMmolL(user.getCustom_range_max())));
             }
-
-            countryPref.setValue(user.getCountry());
-            genderPref.setValue(user.getGender());
-            diabetesTypePref.setValue(String.valueOf(user.getD_type()));
-            unitPrefGlucose.setValue(user.getPreferred_unit());
-            genderPref.setValue(user.getGender());
-            unitPrefGlucose.setValue(user.getPreferred_unit());
-            rangePref.setValue(user.getPreferred_range());
 
             if (!user.getPreferred_range().equals("Custom range")) {
                 minRangePref.setEnabled(false);

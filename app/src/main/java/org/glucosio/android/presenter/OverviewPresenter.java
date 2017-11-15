@@ -127,9 +127,9 @@ public class OverviewPresenter {
     }
 
     public String getLastDateTime() {
-        java.text.DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
-
+        java.text.DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         return inputFormat.format(dB.getLastGlucoseReading().getCreated());
+
     }
 
     public String getRandomTip(TipsManager manager) {
