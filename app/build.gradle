@@ -19,7 +19,6 @@
  */
 
 apply plugin: 'com.android.application'
-apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'jacoco'
 apply plugin: 'realm-android'
 
@@ -134,7 +133,7 @@ dependencies {
 
     // Butterknife
     compile "com.jakewharton:butterknife:${butterKnifeVer}"
-    apt "com.jakewharton:butterknife-compiler:${butterKnifeVer}"
+    annotationProcessor "com.jakewharton:butterknife-compiler:${butterKnifeVer}"
 
     testCompile "junit:junit:${junitVer}"
     testCompile "org.mockito:mockito-all:${mockitoVer}"
