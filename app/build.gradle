@@ -128,8 +128,6 @@ dependencies {
         transitive = true
     }
 
-    implementation 'org.apache.commons:commons-math3:3.6.1'
-
     // Butterknife
     compile "com.jakewharton:butterknife:${butterKnifeVer}"
     annotationProcessor "com.jakewharton:butterknife-compiler:${butterKnifeVer}"
