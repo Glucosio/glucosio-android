@@ -113,3 +113,6 @@
 -keepclassmembers class * {
    @com.google.api.client.util.Key <fields>;
 }
+
+# For org.apache.commons.math
+-dontwarn java.awt.**
