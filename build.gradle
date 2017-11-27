@@ -41,9 +41,10 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        google()
     }
 
-    ext.buildToolsVer = '26.0.2'
+    ext.buildToolsVer = '26.0.3'
 
     ext.androidSupportVer = '25.3.1'
     ext.googlePlayServicesVer = '10.2.6'

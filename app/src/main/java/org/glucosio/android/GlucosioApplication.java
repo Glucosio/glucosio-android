@@ -20,12 +20,12 @@
 
 package org.glucosio.android;
 
-import android.app.Application;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.VisibleForTesting;
+import android.support.multidex.MultiDexApplication;
 
 import org.glucosio.android.activity.A1cCalculatorActivity;
 import org.glucosio.android.activity.HelloActivity;
@@ -42,7 +42,7 @@ import org.glucosio.android.tools.Preferences;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
-public class GlucosioApplication extends Application {
+public class GlucosioApplication extends MultiDexApplication {
 
     private static GlucosioApplication sInstance;
 
