@@ -7,9 +7,9 @@ import org.glucosio.android.presenter.HelloPresenter;
 import org.glucosio.android.tools.LocaleHelper;
 import org.junit.Ignore;
 import org.junit.runner.RunWith;
+import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
-import org.robolectric.RobolectricTestRunner;
 
 @Ignore
 @RunWith(RobolectricTestRunner.class)
