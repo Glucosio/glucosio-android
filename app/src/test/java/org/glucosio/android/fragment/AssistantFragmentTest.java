@@ -9,7 +9,6 @@ import org.robolectric.shadows.support.v4.SupportFragmentTestUtil;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@RunWith(RobolectricTestRunner.class)
 public class AssistantFragmentTest extends RobolectricTest {
     private AssistantFragment fragment;
 
