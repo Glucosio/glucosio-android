@@ -29,11 +29,11 @@ buildscript {
         // TODO: Please revert to a stable gradle version before releasing on prod
         // Alpha is required in devel to use Instant Run and speed up development process
         classpath 'com.android.tools.build:gradle:3.0.1'
-        classpath 'com.google.gms:google-services:3.0.0'
+        classpath 'com.google.gms:google-services:3.1.2'
         classpath 'io.realm:realm-gradle-plugin:4.2.0'
-        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.7.1'
-        classpath 'com.github.ben-manes:gradle-versions-plugin:0.13.0'
-        classpath 'org.jacoco:org.jacoco.core:0.7.7.201606060606'
+        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.8.2'
+        classpath 'com.github.ben-manes:gradle-versions-plugin:0.17.0'
+        classpath 'org.jacoco:org.jacoco.core:0.7.9'
         classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.7.3'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -47,10 +47,10 @@ allprojects {
 
     ext.buildToolsVer = '27.0.1'
 
-    ext.androidSupportVer = '25.3.1'
-    ext.googlePlayServicesVer = '10.2.6'
+    ext.androidSupportVer = '25.4.0'
+    ext.googlePlayServicesVer = '11.6.2'
 
-    ext.butterKnifeVer = '8.4.0'
+    ext.butterKnifeVer = '8.8.1'
 
     ext.junitVer = '4.12'
     ext.mockitoVer = '1.10.19'
