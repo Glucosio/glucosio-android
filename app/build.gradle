@@ -53,8 +53,6 @@ android {
 
             buildConfigField 'String', 'GOOGLE_ANALYTICS_TRACKER', '"UA-68882401-2"'
             buildConfigField "String[]", "TRANSLATION_ARRAY", "new String[]{}"
-
-//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
 
         release {
