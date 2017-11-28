@@ -43,7 +43,7 @@ android {
 
     buildTypes {
         debug {
-            minifyEnabled true
+            minifyEnabled false
             debuggable true
 
             versionNameSuffix '-DEVEL'
@@ -54,7 +54,7 @@ android {
             buildConfigField 'String', 'GOOGLE_ANALYTICS_TRACKER', '"UA-68882401-2"'
             buildConfigField "String[]", "TRANSLATION_ARRAY", "new String[]{}"
 
-            proguardFiles getDefaultProguardFile('proguard-android.txt'),'proguard-rules.pro'
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
 
         release {
@@ -82,6 +82,10 @@ android {
             }
             // configure the test JVM arguments
             jvmArgs '-noverify'
+        }
+
+        unitTests {
+            includeAndroidResources = true
         }
     }
 }
@@ -135,11 +139,11 @@ dependencies {
     testCompile "junit:junit:${junitVer}"
     testCompile "org.mockito:mockito-all:${mockitoVer}"
     testCompile "com.squareup.assertj:assertj-android:${androidAssertJVer}"
-    testCompile("org.robolectric:robolectric:${robolectricVer}") {
+    testImplementation("org.robolectric:robolectric:3.5.1") {
         exclude group: 'commons-logging', module: 'commons-logging'
         exclude group: 'org.apache.httpcomponents', module: 'httpclient'
     }
-    testCompile("org.robolectric:shadows-support-v4:${robolectricVer}") {
+    testImplementation("org.robolectric:shadows-support-v4:3.3.2") {
         exclude group: 'commons-logging', module: 'commons-logging'
         exclude group: 'org.apache.httpcomponents', module: 'httpclient'
     }
@@ -151,8 +155,8 @@ dependencies {
     testCompile "org.powermock:powermock-classloading-xstream:1.6.4"
 
     // Testing libraries
-    androidTestCompile 'com.android.support.test:rules:0.5'
-    androidTestCompile 'com.android.support.test:runner:0.5'
+    androidTestCompile 'com.android.support.test:rules:1.0.1'
+    androidTestCompile 'com.android.support.test:runner:1.0.1'
     androidTestCompile "com.android.support:support-annotations:${androidSupportVer}"
     androidTestCompile "com.android.support:recyclerview-v7:${androidSupportVer}"
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
