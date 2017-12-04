@@ -90,6 +90,10 @@ public class HelloActivityTest {
     @Test
     public void check_001_IfHelloActivityIsCompletelyDisplayed() throws InterruptedException {
         for (int id : helloActivityViews) {
+            if (id == R.id.activity_hello_check_share) {
+                onView(withId(id)).perform(scrollTo()).check(matches(isDisplayed()));
+                continue;
+            }
             onView(withId(id)).check(matches(isDisplayed()));
         }
     }
