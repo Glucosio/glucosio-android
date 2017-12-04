@@ -160,6 +160,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-intents:3.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.1'
+}
 
 configurations.all {
     resolutionStrategy.force "com.android.support:support-annotations:${androidSupportVer}"
