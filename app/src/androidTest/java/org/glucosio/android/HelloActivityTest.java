@@ -176,7 +176,7 @@ public class HelloActivityTest {
         // Click on Share Data CheckBox multiple times
         onView(withId(R.id.activity_hello_check_share))
                 .check(matches(isChecked()))
-                .perform(click())
+                .perform(scrollTo(), click()) // this checkButton needs to be scrolled to
                 .check(matches(not(isChecked())));
     }
 
