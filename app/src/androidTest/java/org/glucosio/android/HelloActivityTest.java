@@ -23,7 +23,7 @@ package org.glucosio.android;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
-import org.glucosio.android.activity.MainActivity;
+import org.glucosio.android.activity.HelloActivity;
 import org.glucosio.android.util.CustomClickAction;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
@@ -64,7 +64,7 @@ public class HelloActivityTest {
     private static final String VALID_UNIT = "mg/dL";
 
     @Rule
-    public ActivityTestRule<MainActivity> mRule = new ActivityTestRule<>(MainActivity.class);
+    public ActivityTestRule<HelloActivity> mRule = new ActivityTestRule<>(HelloActivity.class);
     private int[] helloActivityViews = {
             R.id.activity_hello_title,
             R.id.activity_hello_subtitle,
