@@ -201,7 +201,8 @@ task jacocoTestReport(type: JacocoReport, dependsOn: 'testDebugUnitTest') {
                        '**/*$ViewBinder*.*',
                        '**/*$InjectAdapter.*',
                        '**/BuildConfig.*',
-                       '**/Manifest*.*',])
+                       '**/Manifest*.*',
+                       'io/realm/**/*'])
 
     additionalSourceDirs = files(coverageSourceDirs)
     sourceDirectories = files(coverageSourceDirs)
