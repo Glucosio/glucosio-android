@@ -31,8 +31,7 @@ public class OverviewPresenterTest {
     @Mock
     private DatabaseHandler dbMock;
 
-    @Mock
-    private User userMock;
+    private User user = new User(1, "test", "en", "en", 23, "M", 1, "mg/dL", "", "", "Test", 0, 100);
 
     @Before
     public void setUp() throws Exception {
@@ -40,7 +39,7 @@ public class OverviewPresenterTest {
         DateTimeZone.setProvider(new UTCProvider());
 
         presenter = new OverviewPresenter(viewMock, dbMock);
-        when(dbMock.getUser(anyLong())).thenReturn(userMock);
+        when(dbMock.getUser(anyLong())).thenReturn(user);
     }
 
     @Test

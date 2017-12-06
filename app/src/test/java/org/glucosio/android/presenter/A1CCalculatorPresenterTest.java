@@ -26,14 +26,11 @@ public class A1CCalculatorPresenterTest {
     @InjectMocks
     private A1CCalculatorPresenter presenter;
 
-    @Mock
-    private User userMock;
+    private User user = new User(1, "test", "en", "en", 23, "M", 1, "mg/dL", "percentage", "", "Test", 0, 100);
 
     @Before
     public void setUp() throws Exception {
-        when(dbHandlerMock.getUser(anyLong())).thenReturn(userMock);
-        when(userMock.getPreferred_unit()).thenReturn("mg/dL");
-        when(userMock.getPreferred_unit_a1c()).thenReturn("percentage");
+        when(dbHandlerMock.getUser(anyLong())).thenReturn(user);
     }
 
     @Test
@@ -58,33 +55,40 @@ public class A1CCalculatorPresenterTest {
 
     @Test
     public void ShouldCalculatable_WhenUserPreferredMmol() throws Exception {
-        when(userMock.getPreferred_unit()).thenReturn("mmol/L");
+        user.setPreferred_unit("mmol/L");
+
         assertThat(presenter.calculateA1C("1")).isEqualTo(2.25);
     }
 
     @Test
     public void ShouldCalculatable_WhenUserPreferredPercentage() throws Exception {
-        when(userMock.getPreferred_unit_a1c()).thenReturn("mmol/mol");
+        user.setPreferred_unit_a1c("mmol/mol");
+
         assertThat(presenter.calculateA1C("20")).isEqualTo(1.84);
     }
 
     @Test
     public void ShouldCallSetMmol_WhenUserPreferredUnitIsNotMgDl() throws Exception {
-        when(userMock.getPreferred_unit()).thenReturn("mmol/L");
+        user.setPreferred_unit("mmol/L");
+
         presenter.checkGlucoseUnit();
+
         verify(activity).setMmol();
     }
 
     @Test
     public void ShouldReturnCorrectA1CUnit_WhenGetterCalled() throws Exception {
-        when(userMock.getPreferred_unit_a1c()).thenReturn("mmol/mol");
+        user.setPreferred_unit_a1c("mmol/mol");
+
         assertThat(presenter.getA1cUnit()).isEqualTo("mmol/mol");
     }
 
     @Test
     public void ShouldFinishActivityAfterSaving_WhensaveA1CCalled() throws Exception {
-        when(userMock.getPreferred_unit_a1c()).thenReturn("mmol/mol");
+        user.setPreferred_unit_a1c("mmol/mol");
+
         presenter.saveA1C(presenter.calculateA1C("20"));
+
         verify(activity).finish();
     }
 }

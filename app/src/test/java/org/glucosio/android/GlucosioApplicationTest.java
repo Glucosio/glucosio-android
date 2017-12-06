@@ -1,15 +1,14 @@
 package org.glucosio.android;
 
 import android.support.annotation.NonNull;
-
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.User;
 import org.glucosio.android.tools.Preferences;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
@@ -19,77 +18,91 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class GlucosioApplicationTest {
-    @InjectMocks
-    private GlucosioApplicationForTest application;
+public class GlucosioApplicationTest
+{
+  private GlucosioApplicationForTest application;
 
-    @Mock
-    private Preferences preferencesMock;
+  @Mock
+  private Preferences preferencesMock;
 
-    @Mock
-    private DatabaseHandler databaseHandlerMock;
+  @Mock
+  private DatabaseHandler databaseHandlerMock;
 
-    @Mock
-    private User userMock;
+  private User user = new User(1, "test", null, "en", 23, "M", 1, "mg/dL", "percentage", "", "Test", 0, 100);
 
-    @Captor
-    private ArgumentCaptor<User> userCaptor;
+  @Captor
+  private ArgumentCaptor<User> userCaptor;
 
-    @Test
-    public void ShouldClearLanguage_WhenSetFromHelloActivityAndNotFixedYet() throws Exception {
-        when(databaseHandlerMock.getUser(1)).thenReturn(userMock);
+  @Before
+  public void setUp()
+  {
+    application = new GlucosioApplicationForTest(databaseHandlerMock, preferencesMock);
+  }
 
-        application.onCreate();
+  @Test
+  public void ShouldClearLanguage_WhenSetFromHelloActivityAndNotFixedYet()
+  {
+    when(databaseHandlerMock.getUser(1)).thenReturn(user);
 
-        verify(databaseHandlerMock).updateUser(userCaptor.capture());
-        assertThat(userCaptor.getValue().getPreferred_language()).isNull();
+    application.onCreate();
+
+    verify(databaseHandlerMock).updateUser(userCaptor.capture());
+    assertThat(userCaptor.getValue().getPreferred_language()).isNull();
+  }
+
+  @Test
+  public void ShouldSaveLanguageClearedToPreferences_WhenItIsDone()
+  {
+    when(databaseHandlerMock.getUser(1)).thenReturn(user);
+
+    application.onCreate();
+
+    verify(preferencesMock).saveLocaleCleaned();
+  }
+
+  @Test
+  public void ShouldNotClearLanguage_WhenAlreadyDone()
+  {
+    user.setPreferred_language("en");
+    when(preferencesMock.isLocaleCleaned()).thenReturn(true);
+
+    application.onCreate();
+
+    assertThat(user.getPreferred_language()).isNotNull();
+    verify(databaseHandlerMock, never()).updateUser(user);
+  }
+
+  static class GlucosioApplicationForTest
+    extends GlucosioApplication
+  {
+
+    private final DatabaseHandler dbHandler;
+    private final Preferences preferences;
+
+    private GlucosioApplicationForTest(DatabaseHandler dbHandler, Preferences preferences)
+    {
+      this.dbHandler = dbHandler;
+      this.preferences = preferences;
     }
 
-    @Test
-    public void ShouldSaveLanguageClearedToPreferences_WhenItIsDone() throws Exception {
-        when(databaseHandlerMock.getUser(1)).thenReturn(userMock);
-
-        application.onCreate();
-
-
-        verify(preferencesMock).saveLocaleCleaned();
+    @NonNull
+    @Override
+    public DatabaseHandler getDBHandler()
+    {
+      return dbHandler;
     }
 
-    @Test
-    public void ShouldNotClearLanguage_WhenAlreadyDone() throws Exception {
-        when(preferencesMock.isLocaleCleaned()).thenReturn(true);
-
-        application.onCreate();
-
-        verify(userMock, never()).setPreferred_language(null);
-        verify(databaseHandlerMock, never()).updateUser(userMock);
+    @NonNull
+    @Override
+    public Preferences getPreferences()
+    {
+      return preferences;
     }
 
-    static class GlucosioApplicationForTest extends GlucosioApplication {
-
-        private final DatabaseHandler dbHandler;
-        private final Preferences preferences;
-
-        private GlucosioApplicationForTest(DatabaseHandler dbHandler, Preferences preferences) {
-            this.dbHandler = dbHandler;
-            this.preferences = preferences;
-        }
-
-        @NonNull
-        @Override
-        public DatabaseHandler getDBHandler() {
-            return dbHandler;
-        }
-
-        @NonNull
-        @Override
-        public Preferences getPreferences() {
-            return preferences;
-        }
-
-        @Override
-        protected void initFont() {
-            //don't do anything for now
-        }
+    @Override
+    protected void initFont()
+    {
+      //don't do anything for now
     }
+  }
 }

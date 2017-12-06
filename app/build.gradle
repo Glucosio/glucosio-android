@@ -23,7 +23,7 @@ apply plugin: 'jacoco'
 apply plugin: 'realm-android'
 
 android {
-    compileSdkVersion 25
+    compileSdkVersion 26
     buildToolsVersion buildToolsVer
 
     lintOptions {
@@ -32,7 +32,7 @@ android {
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 25
+        targetSdkVersion 26
         versionCode 41
         versionName '1.4.0'
         applicationId 'org.glucosio.android'
@@ -145,7 +145,7 @@ dependencies {
         exclude group: 'commons-logging', module: 'commons-logging'
         exclude group: 'org.apache.httpcomponents', module: 'httpclient'
     }
-    testImplementation 'io.reactivex:rxjava:1.3.4'
+    testImplementation 'io.reactivex.rxjava2:rxjava:2.1.0'
 
     testImplementation "org.powermock:powermock-module-junit4:1.6.4"
     testImplementation "org.powermock:powermock-module-junit4-rule:1.6.4"
