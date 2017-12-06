@@ -20,10 +20,11 @@
 
 package org.glucosio.android;
 
+import android.support.test.espresso.ViewInteraction;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
-import org.glucosio.android.activity.MainActivity;
+import org.glucosio.android.activity.HelloActivity;
 import org.glucosio.android.util.CustomClickAction;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
@@ -64,7 +65,7 @@ public class HelloActivityTest {
     private static final String VALID_UNIT = "mg/dL";
 
     @Rule
-    public ActivityTestRule<MainActivity> mRule = new ActivityTestRule<>(MainActivity.class);
+    public ActivityTestRule<HelloActivity> mRule = new ActivityTestRule<>(HelloActivity.class);
     private int[] helloActivityViews = {
             R.id.activity_hello_title,
             R.id.activity_hello_subtitle,
@@ -90,6 +91,11 @@ public class HelloActivityTest {
     @Test
     public void check_001_IfHelloActivityIsCompletelyDisplayed() throws InterruptedException {
         for (int id : helloActivityViews) {
+            if (id == R.id.activity_hello_check_share) {
+                ViewInteraction checkButtonInteraction = onView(withId(id)).perform(scrollTo());
+                checkButtonInteraction.check(matches(isDisplayed()));
+                continue;
+            }
             onView(withId(id)).check(matches(isDisplayed()));
         }
     }
@@ -176,7 +182,7 @@ public class HelloActivityTest {
         // Click on Share Data CheckBox multiple times
         onView(withId(R.id.activity_hello_check_share))
                 .check(matches(isChecked()))
-                .perform(click())
+                .perform(scrollTo(), click()) // this checkButton needs to be scrolled to
                 .check(matches(not(isChecked())));
     }
 

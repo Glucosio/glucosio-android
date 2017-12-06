@@ -153,13 +153,13 @@ dependencies {
     testImplementation "org.powermock:powermock-classloading-xstream:1.6.4"
 
     // Testing libraries
-    androidTestImplementation 'com.android.support.test:rules:0.5'
-    androidTestImplementation 'com.android.support.test:runner:0.5'
+    androidTestImplementation 'com.android.support.test:rules:1.0.1'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation "com.android.support:support-annotations:${androidSupportVer}"
     androidTestImplementation "com.android.support:recyclerview-v7:${androidSupportVer}"
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:2.2.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-intents:2.2.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:2.2.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-intents:3.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.1'
 }
 
 configurations.all {
@@ -200,7 +200,8 @@ task jacocoTestReport(type: JacocoReport, dependsOn: 'testDebugUnitTest') {
                        '**/*$ViewBinder*.*',
                        '**/*$InjectAdapter.*',
                        '**/BuildConfig.*',
-                       '**/Manifest*.*',])
+                       '**/Manifest*.*',
+                       'io/realm/**/*'])
 
     additionalSourceDirs = files(coverageSourceDirs)
     sourceDirectories = files(coverageSourceDirs)
