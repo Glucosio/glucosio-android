@@ -20,6 +20,7 @@
 
 package org.glucosio.android;
 
+import android.support.test.espresso.ViewInteraction;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
@@ -91,7 +92,8 @@ public class HelloActivityTest {
     public void check_001_IfHelloActivityIsCompletelyDisplayed() throws InterruptedException {
         for (int id : helloActivityViews) {
             if (id == R.id.activity_hello_check_share) {
-                onView(withId(id)).perform(scrollTo()).check(matches(isDisplayed()));
+                ViewInteraction checkButtonInteraction = onView(withId(id)).perform(scrollTo());
+                checkButtonInteraction.check(matches(isDisplayed()));
                 continue;
             }
             onView(withId(id)).check(matches(isDisplayed()));
