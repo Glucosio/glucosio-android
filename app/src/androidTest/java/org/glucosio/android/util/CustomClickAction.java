@@ -74,9 +74,9 @@ public final class CustomClickAction implements ViewAction {
     @SuppressWarnings("unchecked")
     public Matcher<View> getConstraints() {
         Matcher<View> standardConstraint = isDisplayingAtLeast(10);
-        if (rollbackAction.isPresent())
+        if (rollbackAction.isPresent()) {
             return allOf(standardConstraint, rollbackAction.get().getConstraints());
-        else {
+        } else {
             return standardConstraint;
         }
     }
