@@ -23,7 +23,6 @@ package org.glucosio.android.presenter;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
 import com.google.firebase.crash.FirebaseCrash;
 
@@ -90,7 +89,11 @@ public class AddGlucosePresenter extends AddReadingPresenter {
                                          @NonNull String notes,
                                          long oldId) {
 
-        if (validateDate(date) && validateTime(time) && validateGlucose(reading) && validateType(type)) {
+        if (validateDate(date) && // FIXME: always true
+                validateTime(time) && // FIXME: always true
+                validateGlucose(reading) &&
+                validateType(type)) { // FIXME: always true
+
             Date finalDateTime = getReadingTime();
             Number number = ReadingTools.parseReading(reading);
             if (number == null) {
