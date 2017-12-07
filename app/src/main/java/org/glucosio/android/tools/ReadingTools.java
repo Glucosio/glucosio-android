@@ -59,7 +59,7 @@ public class ReadingTools {
      * @return reading Number
      */
     @Nullable
-    public static Number parseReading(String reading) {
+    public static Number parseReading(@Nullable String reading) {
         if (reading == null) {
             return null;
         }

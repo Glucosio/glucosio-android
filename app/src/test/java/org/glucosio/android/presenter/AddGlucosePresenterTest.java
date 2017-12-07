@@ -11,7 +11,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.Calendar;
 import java.util.Date;
 
 import static org.mockito.Matchers.anyLong;
@@ -36,23 +35,27 @@ public class AddGlucosePresenterTest {
     @Mock
     private User userMock;
 
+    private final static String FAKE_TIME = "11:09";
+    private final static String FAKE_DATE = "22.12";
+    private final static String FAKE_TYPE = "fakeType";
+
     @Before
     public void setUp() {
-
-    }
-
-    @Test
-    public void dialogOnButtonPressed_numberIsNull() {
-        String testFakeTime = "11:09";
-        String testFakeDate = "22.12";
-        String testFakeType = "fakeType";
-
         presenter.updateReadingSplitDateTime(new Date());
 
         when(dB.getUser(anyLong())).thenReturn(userMock);
         when(userMock.getPreferred_unit()).thenReturn("mg/dl");
+    }
 
-        presenter.dialogOnAddButtonPressed(testFakeTime, testFakeDate, null, testFakeType, "");
+    @Test
+    public void dialogOnButtonPressed_numberIsNull() {
+        presenter.dialogOnAddButtonPressed(FAKE_TIME, FAKE_DATE, "", FAKE_TYPE, "");
         verify(mockActivity).showErrorMessage();
+    }
+
+    @Test
+    public void dialogOnButtonPressed_isReadingAdded_false() {
+        presenter.dialogOnAddButtonPressed(FAKE_TIME, FAKE_DATE, "2562", FAKE_TYPE, "");
+        verify(mockActivity).showDuplicateErrorMessage();
     }
 }

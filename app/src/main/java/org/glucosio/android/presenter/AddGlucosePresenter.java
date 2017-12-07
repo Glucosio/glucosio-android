@@ -23,6 +23,7 @@ package org.glucosio.android.presenter;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import com.google.firebase.crash.FirebaseCrash;
 
@@ -73,11 +74,22 @@ public class AddGlucosePresenter extends AddReadingPresenter {
         return rTools.hourToSpinnerType(hour);
     }
 
-    public void dialogOnAddButtonPressed(String time, String date, String reading, String type, String notes) {
+    public void dialogOnAddButtonPressed(@NonNull String time,
+                                         @NonNull String date,
+                                         @NonNull String reading,
+                                         @NonNull String type,
+                                         @NonNull String notes) {
+
         dialogOnAddButtonPressed(time, date, reading, type, notes, UNKNOWN_ID);
     }
 
-    public void dialogOnAddButtonPressed(String time, String date, String reading, String type, String notes, long oldId) {
+    public void dialogOnAddButtonPressed(@NonNull String time,
+                                         @NonNull String date,
+                                         @NonNull String reading,
+                                         @NonNull String type,
+                                         @NonNull String notes,
+                                         long oldId) {
+
         if (validateDate(date) && validateTime(time) && validateGlucose(reading) && validateType(type)) {
             Date finalDateTime = getReadingTime();
             Number number = ReadingTools.parseReading(reading);
@@ -96,7 +108,12 @@ public class AddGlucosePresenter extends AddReadingPresenter {
         }
     }
 
-    private boolean createReading(String type, String notes, long oldId, Date finalDateTime, Number number) {
+    private boolean createReading(String type,
+                                  @NonNull String notes,
+                                  long oldId,
+                                  Date finalDateTime,
+                                  Number number) {
+
         boolean isReadingAdded;
         int readingValue;
         if ("mg/dL".equals(getUnitMeasuerement())) {
@@ -104,12 +121,14 @@ public class AddGlucosePresenter extends AddReadingPresenter {
         } else {
             readingValue = GlucosioConverter.glucoseToMgDl(number.doubleValue());
         }
+
         GlucoseReading gReading = new GlucoseReading(readingValue, type, finalDateTime, notes);
         if (oldId == UNKNOWN_ID) {
             isReadingAdded = dB.addGlucoseReading(gReading);
         } else {
             isReadingAdded = dB.editGlucoseReading(oldId, gReading);
         }
+
         return isReadingAdded;
     }
 
@@ -136,7 +155,7 @@ public class AddGlucosePresenter extends AddReadingPresenter {
     }
 
     // Validator
-    private boolean validateGlucose(String reading) {
+    private boolean validateGlucose(@NonNull String reading) {
         if (validateText(reading)) {
             if ("mg/dL".equals(getUnitMeasuerement())) {
                 // We store data in db in mg/dl
@@ -161,6 +180,7 @@ public class AddGlucosePresenter extends AddReadingPresenter {
                 }
             } else {
                 // IT return always true: we don't have ranges yet.
+                // FIXME: If reading == null, returns true
                 return true;
             }
         } else {
@@ -173,7 +193,7 @@ public class AddGlucosePresenter extends AddReadingPresenter {
         return sharedPref.getBoolean("pref_freestyle_libre", false);
     }
 
-    private boolean validateType(String type) {
+    private boolean validateType(@NonNull String type) {
         return validateText(type);
     }
 }
