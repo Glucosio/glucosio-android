@@ -33,7 +33,7 @@ import android.support.test.espresso.action.PrecisionDescriber;
 import android.support.test.espresso.action.Press;
 import android.support.test.espresso.action.Tap;
 import android.support.test.espresso.action.Tapper;
-import android.support.test.espresso.core.deps.guava.base.Optional;
+import android.support.test.espresso.core.internal.deps.guava.base.Optional;
 import android.support.test.espresso.util.HumanReadables;
 import android.view.View;
 import android.view.ViewConfiguration;
