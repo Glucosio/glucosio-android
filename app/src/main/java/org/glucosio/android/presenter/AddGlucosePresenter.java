@@ -22,6 +22,7 @@ package org.glucosio.android.presenter;
 
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 
 import com.google.firebase.crash.FirebaseCrash;
 
@@ -39,15 +40,18 @@ import java.util.Date;
 import java.util.List;
 
 public class AddGlucosePresenter extends AddReadingPresenter {
-    private static final int UNKNOWN_ID = -1;
-    private DatabaseHandler dB;
-    private AddGlucoseActivity activity;
-    private ReadingTools rTools;
 
-    public AddGlucosePresenter(AddGlucoseActivity addGlucoseActivity) {
+    private static final int UNKNOWN_ID = -1;
+    private final DatabaseHandler dB;
+    private final AddGlucoseActivity activity;
+    private final ReadingTools rTools;
+
+    public AddGlucosePresenter(@NonNull AddGlucoseActivity addGlucoseActivity,
+                               @NonNull DatabaseHandler dB,
+                               @NonNull ReadingTools readingTools) {
         this.activity = addGlucoseActivity;
-        dB = new DatabaseHandler(addGlucoseActivity.getApplicationContext());
-        rTools = new ReadingTools();
+        this.dB = dB;
+        this.rTools = readingTools;
     }
 
     public void updateSpinnerTypeTime() {
