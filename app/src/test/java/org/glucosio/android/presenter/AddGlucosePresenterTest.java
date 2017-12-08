@@ -2,11 +2,11 @@ package org.glucosio.android.presenter;
 
 import com.google.firebase.crash.FirebaseCrash;
 
-import org.glucosio.android.report.CrashReporter;
 import org.glucosio.android.activity.AddGlucoseActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
 import org.glucosio.android.db.User;
+import org.glucosio.android.report.CrashReporter;
 import org.glucosio.android.tools.ReadingTools;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,8 +17,12 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Matchers.anyLong;
@@ -138,5 +142,30 @@ public class AddGlucosePresenterTest {
         presenter.dialogOnAddButtonPressed(FAKE_TIME, FAKE_DATE, "abc123", FAKE_TYPE, "");
         verify(mockCrashReporter).log("Exception during reading validation");
         verify(mockCrashReporter).report((Throwable) any());
+    }
+
+    @Test
+    public void retrieveSpinnerID_found() {
+        final String fakeMeasureTypeText = "fake_measure";
+        List<String> fakeMeasuredTypeList = new ArrayList<String>() {{
+            add("fakeMeasure11");
+            add("glucosio");
+            add(fakeMeasureTypeText);
+        }};
+        int result = presenter.retrieveSpinnerID(fakeMeasureTypeText, fakeMeasuredTypeList);
+
+        assertEquals(2, result);
+    }
+
+    @Test
+    public void retrieveSpinnerID_notFound() {
+        final String fakeMeasureTypeText = "fake_measure";
+        List<String> fakeMeasuredTypeList = new ArrayList<String>() {{
+            add("fakeMeasure11");
+            add("glucosio");
+            add("there is no measure here");
+        }};
+
+        assertNull(presenter.retrieveSpinnerID(fakeMeasureTypeText, fakeMeasuredTypeList));
     }
 }
