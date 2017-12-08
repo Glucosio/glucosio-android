@@ -100,4 +100,18 @@ public class AddGlucosePresenterTest {
         presenter.updateSpinnerTypeTime();
         verify(mockActivity).updateSpinnerTypeTime(24);
     }
+
+    @Test
+    public void validateGlucose_mgDl_true_and_readingIsWrong() {
+        when(userMock.getPreferred_unit()).thenReturn("mg/dL");
+        presenter.dialogOnAddButtonPressed(FAKE_TIME, FAKE_DATE, FAKE_READING_WRONG, FAKE_TYPE, "");
+        verify(mockActivity).showErrorMessage();
+    }
+
+    @Test
+    public void validateGlucose_mgDl_true_and_readingIsWrongLess() {
+        when(userMock.getPreferred_unit()).thenReturn("mg/dL");
+        presenter.dialogOnAddButtonPressed(FAKE_TIME, FAKE_DATE, "15", FAKE_TYPE, "");
+        verify(mockActivity).showErrorMessage();
+    }
 }
