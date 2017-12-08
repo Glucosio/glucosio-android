@@ -1,6 +1,5 @@
 package org.glucosio.android.presenter;
 
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.crash.FirebaseCrash;
 
 import org.glucosio.android.activity.AddGlucoseActivity;
@@ -21,7 +20,6 @@ import java.util.Date;
 
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Matchers.anyLong;
-import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -93,8 +91,8 @@ public class AddGlucosePresenterTest {
 
     @Test
     public void updateSpinnerTypeTime() {
-        when(readingTools.hourToSpinnerType(anyInt())).thenReturn(24);
+        when(readingTools.hourToSpinnerType(anyInt())).thenReturn(anyInt());
         presenter.updateSpinnerTypeTime();
-        verify(mockActivity).updateSpinnerTypeTime(24);
+        verify(mockActivity).updateSpinnerTypeTime(anyInt());
     }
 }
