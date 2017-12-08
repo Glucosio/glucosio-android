@@ -2,6 +2,7 @@ package org.glucosio.android.presenter;
 
 import com.google.firebase.crash.FirebaseCrash;
 
+import org.glucosio.android.report.CrashReporter;
 import org.glucosio.android.activity.AddGlucoseActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
@@ -18,6 +19,7 @@ import org.powermock.core.classloader.annotations.PrepareForTest;
 
 import java.util.Date;
 
+import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Matchers.anyLong;
 import static org.mockito.Mockito.verify;
@@ -35,6 +37,9 @@ public class AddGlucosePresenterTest {
 
     @Mock
     private ReadingTools readingTools;
+
+    @Mock
+    private CrashReporter mockCrashReporter;
 
     @InjectMocks
     private AddGlucosePresenter presenter;
@@ -116,5 +121,22 @@ public class AddGlucosePresenterTest {
         when(userMock.getPreferred_unit()).thenReturn("mg/dL");
         presenter.dialogOnAddButtonPressed(FAKE_TIME, FAKE_DATE, "15", FAKE_TYPE, "");
         verify(mockActivity).showErrorMessage();
+    }
+
+    @Test
+    public void validateGlucose_parseIntException() {
+        when(userMock.getPreferred_unit()).thenReturn("mg/dL");
+        presenter.dialogOnAddButtonPressed(FAKE_TIME, FAKE_DATE, "abc123", FAKE_TYPE, "");
+        verify(mockCrashReporter).log("Exception during reading validation");
+        verify(mockCrashReporter).report((Throwable) any());
+    }
+
+
+    @Test
+    public void validateGlucose_parseDoubleException() {
+        when(userMock.getPreferred_unit()).thenReturn("mmol/L");
+        presenter.dialogOnAddButtonPressed(FAKE_TIME, FAKE_DATE, "abc123", FAKE_TYPE, "");
+        verify(mockCrashReporter).log("Exception during reading validation");
+        verify(mockCrashReporter).report((Throwable) any());
     }
 }

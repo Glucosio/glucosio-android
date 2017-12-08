@@ -24,8 +24,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 
-import com.google.firebase.crash.FirebaseCrash;
-
+import org.glucosio.android.report.CrashReporter;
 import org.glucosio.android.activity.AddGlucoseActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
@@ -45,14 +44,17 @@ public class AddGlucosePresenter extends AddReadingPresenter {
     private final DatabaseHandler dB;
     private final AddGlucoseActivity activity;
     private final ReadingTools rTools;
+    private final CrashReporter crashReporter;
 
     public AddGlucosePresenter(@NonNull AddGlucoseActivity addGlucoseActivity,
                                @NonNull DatabaseHandler dB,
-                               @NonNull ReadingTools readingTools) {
+                               @NonNull ReadingTools readingTools,
+                               @NonNull CrashReporter crashReporter) {
 
         this.activity = addGlucoseActivity;
         this.dB = dB;
         this.rTools = readingTools;
+        this.crashReporter = crashReporter;
     }
 
     public void updateSpinnerTypeTime() {
@@ -168,8 +170,8 @@ public class AddGlucosePresenter extends AddReadingPresenter {
                     //TODO: Add custom ranges
                     return readingValue > 19 && readingValue < 601;
                 } catch (Exception e) {
-                    FirebaseCrash.log("Exception during reading validation");
-                    FirebaseCrash.report(e);
+                    crashReporter.log("Exception during reading validation");
+                    crashReporter.report(e);
                     return false;
                 }
             } else if ("mmol/L".equals(getUnitMeasuerement())) {
@@ -178,8 +180,8 @@ public class AddGlucosePresenter extends AddReadingPresenter {
                     Double readingValue = Double.parseDouble(reading);
                     return readingValue > 1.0545 && readingValue < 33.3555;
                 } catch (Exception e) {
-                    FirebaseCrash.log("Exception during reading validation");
-                    FirebaseCrash.report(e);
+                    crashReporter.log("Exception during reading validation");
+                    crashReporter.report(e);
                     return false;
                 }
             } else {
