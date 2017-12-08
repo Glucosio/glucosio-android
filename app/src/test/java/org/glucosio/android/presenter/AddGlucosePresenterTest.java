@@ -45,7 +45,8 @@ public class AddGlucosePresenterTest {
     private final static String FAKE_TIME = "11:09";
     private final static String FAKE_DATE = "22.12";
     private final static String FAKE_TYPE = "fakeType";
-    private final static String FAKE_READING = "2562";
+    private final static String FAKE_READING_WRONG = "2562";
+    private final static String FAKE_READING_OK = "500";
 
     private final Date fakeDate = new Date();
 
@@ -63,21 +64,21 @@ public class AddGlucosePresenterTest {
 
     @Test
     public void dialogOnButtonPressed_isReadingAdded_false() {
-        presenter.dialogOnAddButtonPressed(FAKE_TIME, FAKE_DATE, FAKE_READING, FAKE_TYPE, "");
+        presenter.dialogOnAddButtonPressed(FAKE_TIME, FAKE_DATE, FAKE_READING_WRONG, FAKE_TYPE, "");
         verify(mockActivity).showDuplicateErrorMessage();
     }
 
     @Test
     public void dialogOnButtonPressed_isReadingAdded_true_oldIdIsUlnown() {
         when(dB.addGlucoseReading(Mockito.any(GlucoseReading.class))).thenReturn(true);
-        presenter.dialogOnAddButtonPressed(FAKE_TIME, FAKE_DATE, FAKE_READING, FAKE_TYPE, "");
+        presenter.dialogOnAddButtonPressed(FAKE_TIME, FAKE_DATE, FAKE_READING_WRONG, FAKE_TYPE, "");
         verify(mockActivity).finishActivity();
     }
 
     @Test
     public void dialogOnButtonPressed_isReadingAdded_true_oldIdIsAnyInt() {
         when(dB.editGlucoseReading(anyInt(), (GlucoseReading) Mockito.any())).thenReturn(true);
-        presenter.dialogOnAddButtonPressed(FAKE_TIME, FAKE_DATE, FAKE_READING, FAKE_TYPE, "", 165165);
+        presenter.dialogOnAddButtonPressed(FAKE_TIME, FAKE_DATE, FAKE_READING_WRONG, FAKE_TYPE, "", 165165);
         verify(mockActivity).finishActivity();
     }
 
@@ -94,5 +95,12 @@ public class AddGlucosePresenterTest {
         when(readingTools.hourToSpinnerType(anyInt())).thenReturn(anyInt());
         presenter.updateSpinnerTypeTime();
         verify(mockActivity).updateSpinnerTypeTime(anyInt());
+    }
+
+    @Test
+    public void validateGlucose_mgDl_true_and_readingIsOk() {
+        when(userMock.getPreferred_unit()).thenReturn("mg/dL");
+        presenter.dialogOnAddButtonPressed(FAKE_TIME, FAKE_DATE, FAKE_READING_OK, FAKE_TYPE, "");
+        verify(mockActivity).showDuplicateErrorMessage();
     }
 }
