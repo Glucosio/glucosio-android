@@ -33,6 +33,7 @@ import android.widget.TextView;
 
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 
+import org.glucosio.android.report.FirebaseCrashReporter;
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.analytics.Analytics;
@@ -74,7 +75,8 @@ public class AddGlucoseActivity extends AddReadingActivity {
 
         AddGlucosePresenter presenter = new AddGlucosePresenter(this,
                 new DatabaseHandler(getApplicationContext()),
-                new ReadingTools());
+                new ReadingTools(),
+                new FirebaseCrashReporter());
         setPresenter(presenter);
         presenter.setReadingTimeNow();
 
