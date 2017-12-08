@@ -49,6 +49,7 @@ public class AddGlucosePresenter extends AddReadingPresenter {
     public AddGlucosePresenter(@NonNull AddGlucoseActivity addGlucoseActivity,
                                @NonNull DatabaseHandler dB,
                                @NonNull ReadingTools readingTools) {
+
         this.activity = addGlucoseActivity;
         this.dB = dB;
         this.rTools = readingTools;
@@ -183,7 +184,7 @@ public class AddGlucosePresenter extends AddReadingPresenter {
                 }
             } else {
                 // IT return always true: we don't have ranges yet.
-                // FIXME: If reading == null, returns true
+                // FIXME: If reading.equals(""), returns true
                 return true;
             }
         } else {
