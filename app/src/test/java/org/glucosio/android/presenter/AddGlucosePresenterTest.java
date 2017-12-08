@@ -1,5 +1,8 @@
 package org.glucosio.android.presenter;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.crash.FirebaseCrash;
+
 import org.glucosio.android.activity.AddGlucoseActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
@@ -12,15 +15,18 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.powermock.core.classloader.annotations.PrepareForTest;
 
 import java.util.Date;
 
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Matchers.anyLong;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
+@PrepareForTest(FirebaseCrash.class)
 public class AddGlucosePresenterTest {
 
     @Mock
@@ -48,9 +54,7 @@ public class AddGlucosePresenterTest {
     @Before
     public void setUp() {
         presenter.updateReadingSplitDateTime(fakeDate);
-
         when(dB.getUser(anyLong())).thenReturn(userMock);
-        when(userMock.getPreferred_unit()).thenReturn("mg/dl");
     }
 
     @Test
@@ -85,5 +89,12 @@ public class AddGlucosePresenterTest {
         when(userMock.getPreferred_unit()).thenReturn("mmol/L");
         presenter.dialogOnAddButtonPressed(FAKE_TIME, FAKE_DATE, "1000", FAKE_TYPE, "");
         verify(mockActivity).showErrorMessage();
+    }
+
+    @Test
+    public void updateSpinnerTypeTime() {
+        when(readingTools.hourToSpinnerType(anyInt())).thenReturn(24);
+        presenter.updateSpinnerTypeTime();
+        verify(mockActivity).updateSpinnerTypeTime(24);
     }
 }
