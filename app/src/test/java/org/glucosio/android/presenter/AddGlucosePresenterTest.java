@@ -1,7 +1,5 @@
 package org.glucosio.android.presenter;
 
-import com.google.firebase.crash.FirebaseCrash;
-
 import org.glucosio.android.activity.AddGlucoseActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
@@ -14,7 +12,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
-import org.powermock.core.classloader.annotations.PrepareForTest;
 
 import java.util.Date;
 
@@ -24,7 +21,6 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-@PrepareForTest(FirebaseCrash.class)
 public class AddGlucosePresenterTest {
 
     @Mock
