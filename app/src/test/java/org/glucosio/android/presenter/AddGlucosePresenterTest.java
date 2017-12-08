@@ -1,5 +1,8 @@
 package org.glucosio.android.presenter;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.crash.FirebaseCrash;
+
 import org.glucosio.android.activity.AddGlucoseActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
@@ -12,15 +15,18 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.powermock.core.classloader.annotations.PrepareForTest;
 
 import java.util.Date;
 
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Matchers.anyLong;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
+@PrepareForTest(FirebaseCrash.class)
 public class AddGlucosePresenterTest {
 
     @Mock
@@ -41,9 +47,7 @@ public class AddGlucosePresenterTest {
     private final static String FAKE_TIME = "11:09";
     private final static String FAKE_DATE = "22.12";
     private final static String FAKE_TYPE = "fakeType";
-
-    private final static String FAKE_READING_WRONG = "2562";
-    private final static String FAKE_READING_OK = "500";
+    private final static String FAKE_READING = "2562";
 
     private final Date fakeDate = new Date();
 
@@ -61,21 +65,21 @@ public class AddGlucosePresenterTest {
 
     @Test
     public void dialogOnButtonPressed_isReadingAdded_false() {
-        presenter.dialogOnAddButtonPressed(FAKE_TIME, FAKE_DATE, FAKE_READING_WRONG, FAKE_TYPE, "");
+        presenter.dialogOnAddButtonPressed(FAKE_TIME, FAKE_DATE, FAKE_READING, FAKE_TYPE, "");
         verify(mockActivity).showDuplicateErrorMessage();
     }
 
     @Test
     public void dialogOnButtonPressed_isReadingAdded_true_oldIdIsUlnown() {
         when(dB.addGlucoseReading(Mockito.any(GlucoseReading.class))).thenReturn(true);
-        presenter.dialogOnAddButtonPressed(FAKE_TIME, FAKE_DATE, FAKE_READING_WRONG, FAKE_TYPE, "");
+        presenter.dialogOnAddButtonPressed(FAKE_TIME, FAKE_DATE, FAKE_READING, FAKE_TYPE, "");
         verify(mockActivity).finishActivity();
     }
 
     @Test
     public void dialogOnButtonPressed_isReadingAdded_true_oldIdIsAnyInt() {
         when(dB.editGlucoseReading(anyInt(), (GlucoseReading) Mockito.any())).thenReturn(true);
-        presenter.dialogOnAddButtonPressed(FAKE_TIME, FAKE_DATE, FAKE_READING_WRONG, FAKE_TYPE, "", 165165);
+        presenter.dialogOnAddButtonPressed(FAKE_TIME, FAKE_DATE, FAKE_READING, FAKE_TYPE, "", 165165);
         verify(mockActivity).finishActivity();
     }
 
@@ -85,13 +89,6 @@ public class AddGlucosePresenterTest {
         when(userMock.getPreferred_unit()).thenReturn("mmol/L");
         presenter.dialogOnAddButtonPressed(FAKE_TIME, FAKE_DATE, "1000", FAKE_TYPE, "");
         verify(mockActivity).showErrorMessage();
-    }
-
-    @Test
-    public void createReading_mgdL_true() {
-        when(userMock.getPreferred_unit()).thenReturn("mg/dL");
-        presenter.dialogOnAddButtonPressed(FAKE_TIME, FAKE_DATE, FAKE_READING_OK, FAKE_TYPE, "");
-        verify(mockActivity).showDuplicateErrorMessage(); // reading is not created
     }
 
     @Test
