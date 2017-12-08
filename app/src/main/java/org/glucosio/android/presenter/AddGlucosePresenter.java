@@ -122,7 +122,7 @@ public class AddGlucosePresenter extends AddReadingPresenter {
 
         boolean isReadingAdded;
         int readingValue;
-        if ("mg/dL".equals(getUnitMeasuerement())) { //HERE
+        if ("mg/dL".equals(getUnitMeasuerement())) {
             readingValue = number.intValue();
         } else {
             readingValue = GlucosioConverter.glucoseToMgDl(number.doubleValue());
