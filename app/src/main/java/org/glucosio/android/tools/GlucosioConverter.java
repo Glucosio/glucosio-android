@@ -24,7 +24,8 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 public final class GlucosioConverter {
-    private GlucosioConverter(){}
+    private GlucosioConverter() {
+    }
 
     public static double round(double value, int places) {
         if (places < 0) throw new IllegalArgumentException();
@@ -34,9 +35,8 @@ public final class GlucosioConverter {
         return bd.doubleValue();
     }
 
-    public static int glucoseToMgDl(double mmolL) {
-        double converted = mmolL * 18;
-        return (int) converted;
+    public static double glucoseToMgDl(double mmolL) {
+        return mmolL * 18;
     }
 
     public static double glucoseToMmolL(double mgDl) {
@@ -53,14 +53,12 @@ public final class GlucosioConverter {
         return round((a1c * 28.7) - 46.7, 2);
     }
 
-    public static int kgToLb(int kg) {
-        Double d = kg * 2.20462;
-        return d.intValue();
+    public static double kgToLb(double kg) {
+        return kg * 2.20462;
     }
 
-    public static int lbToKg(int lb) {
-        Double d = lb / 2.20462;
-        return d.intValue();
+    public static double lbToKg(double lb) {
+        return lb / 2.20462;
     }
 
     public static double a1cNgspToIfcc(double ngsp) {

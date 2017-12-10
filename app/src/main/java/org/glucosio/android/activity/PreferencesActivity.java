@@ -26,11 +26,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.preference.EditTextPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.PreferenceFragment;
-import android.preference.SwitchPreference;
+import android.preference.*;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
 import android.support.v7.app.ActionBar;
@@ -41,7 +37,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.EditText;
-
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.analytics.Analytics;
@@ -51,13 +46,12 @@ import org.glucosio.android.tools.GlucoseRanges;
 import org.glucosio.android.tools.GlucosioConverter;
 import org.glucosio.android.tools.InputFilterMinMax;
 import org.glucosio.android.tools.LocaleHelper;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
-
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class PreferencesActivity extends AppCompatActivity {
 
@@ -308,7 +302,7 @@ public class PreferencesActivity extends AppCompatActivity {
                         return false;
                     }
                     if (user.getPreferred_unit().equals("mg/dL")) {
-                        updatedUser.setCustom_range_min(Integer.parseInt(newValue.toString()));
+                        updatedUser.setCustom_range_min(Double.parseDouble(newValue.toString()));
                     } else {
                         updatedUser.setCustom_range_min(GlucosioConverter.glucoseToMgDl(Double.parseDouble(newValue.toString())));
                     }
@@ -331,7 +325,7 @@ public class PreferencesActivity extends AppCompatActivity {
                         return false;
                     }
                     if (user.getPreferred_unit().equals("mg/dL")) {
-                        updatedUser.setCustom_range_max(Integer.parseInt(newValue.toString()));
+                        updatedUser.setCustom_range_max(Double.parseDouble(newValue.toString()));
                     } else {
                         updatedUser.setCustom_range_max(GlucosioConverter.glucoseToMgDl(Double.parseDouble(newValue.toString())));
                     }
@@ -355,7 +349,6 @@ public class PreferencesActivity extends AppCompatActivity {
                         // EXPERIMENTAL PREFERENCE
                         // Display Alert
                         showExperimentalDialog(false);
-                        return true;
                     }
                     return true;
                 }

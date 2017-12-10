@@ -58,8 +58,8 @@ public class AddPressurePresenter extends AddReadingPresenter {
 
     private PressureReading generatePressureReading(String minReading, String maxReading) {
         Date finalDateTime = getReadingTime();
-        int minFinalReading = Integer.parseInt(minReading);
-        int maxFinalReading = Integer.parseInt(maxReading);
+        double minFinalReading = Double.parseDouble(minReading);
+        double maxFinalReading = Double.parseDouble(maxReading);
         return new PressureReading(minFinalReading, maxFinalReading, finalDateTime);
     }
 

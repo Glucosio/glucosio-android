@@ -83,16 +83,11 @@
                         android:layout_weight="1">
 
                         <EditText
+                            style="@style/edit_number"
                             android:id="@+id/pressure_add_value_max"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:digits="1234567890"
-                            android:hint="@string/dialog_add_pressure_max"
-                            android:inputType="numberDecimal"
-                            android:singleLine="true"
-                            android:textColorHighlight="@color/glucosio_pink"
-                            android:textIsSelectable="false"
-                            android:textSize="@dimen/abc_text_size_body_2_material" />
+                            android:hint="@string/dialog_add_pressure_max"/>
                     </android.support.design.widget.TextInputLayout>
 
                     <TextView
@@ -108,16 +103,11 @@
                         android:layout_weight="1">
 
                         <EditText
+                            style="@style/edit_number"
                             android:id="@+id/pressure_add_value_min"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:digits="1234567890"
-                            android:hint="@string/dialog_add_pressure_min"
-                            android:inputType="numberDecimal"
-                            android:singleLine="true"
-                            android:textColorHighlight="@color/glucosio_pink"
-                            android:textIsSelectable="false"
-                            android:textSize="@dimen/abc_text_size_body_2_material" />
+                            android:hint="@string/dialog_add_pressure_min"/>
                     </android.support.design.widget.TextInputLayout>
 
                     <TextView

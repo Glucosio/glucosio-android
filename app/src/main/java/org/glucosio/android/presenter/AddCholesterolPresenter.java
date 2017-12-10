@@ -58,13 +58,13 @@ public class AddCholesterolPresenter extends AddReadingPresenter {
 
     private CholesterolReading generateCholesterolReading(String totalCho, String LDLCho, String HDLCho) {
         Date finalDateTime = getReadingTime();
-        int totalChoFinal = Integer.parseInt(totalCho);
-        int LDLChoFinal = Integer.parseInt(LDLCho);
-        int HDLChoFinal = Integer.parseInt(HDLCho);
+        double totalChoFinal = Double.parseDouble(totalCho);
+        double LDLChoFinal = Double.parseDouble(LDLCho);
+        double HDLChoFinal = Double.parseDouble(HDLCho);
         return new CholesterolReading(totalChoFinal, LDLChoFinal, HDLChoFinal, finalDateTime);
     }
 
-    public String getUnitMeasuerement() {
+    public String getUnitMeasurement() {
         return dB.getUser(1).getPreferred_unit();
     }
 

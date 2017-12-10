@@ -81,4 +81,13 @@
     <style name="Toolbar.WhiteText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textColor">@color/white</item>
     </style>
+
+    <style name="edit_number" parent="Widget.AppCompat.EditText">
+        <item name="android:inputType">numberDecimal</item>
+        <item name="android:digits">1234567890.,</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColorHighlight">@color/glucosio_pink</item>
+        <item name="android:textIsSelectable">false</item>
+        <item name="android:textSize">@dimen/abc_text_size_body_2_material</item>
+    </style>
 </resources>

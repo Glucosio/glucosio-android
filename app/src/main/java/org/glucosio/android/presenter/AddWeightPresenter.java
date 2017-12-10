@@ -64,12 +64,12 @@ public class AddWeightPresenter extends AddReadingPresenter {
     private WeightReading generateWeightReading(String reading) {
         Date finalDateTime = getReadingTime();
 
-        int finalReading;
+        double finalReading;
 
         if ("kilograms".equals(getWeightUnitMeasuerement())) {
-            finalReading = Integer.parseInt(reading);
+            finalReading = Double.parseDouble(reading);
         } else {
-            finalReading = GlucosioConverter.lbToKg(Integer.parseInt(reading));
+            finalReading = GlucosioConverter.lbToKg(Double.parseDouble(reading));
         }
 
         return new WeightReading(finalReading, finalDateTime);

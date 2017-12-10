@@ -82,15 +82,11 @@
                         android:layout_weight="1">
 
                         <EditText
+                            style="@style/edit_number"
                             android:id="@+id/ketone_add_value"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/dialog_add_ketones"
-                            android:inputType="numberDecimal"
-                            android:singleLine="true"
-                            android:textColorHighlight="@color/glucosio_pink"
-                            android:textIsSelectable="false"
-                            android:textSize="@dimen/abc_text_size_body_2_material" />
+                            android:hint="@string/dialog_add_ketones"/>
                     </android.support.design.widget.TextInputLayout>
 
                     <TextView
@@ -125,6 +121,7 @@
                             android:focusable="false"
                             android:focusableInTouchMode="false"
                             android:hint="@string/dialog_add_date"
+                            android:inputType="date"
                             android:singleLine="true"
                             android:textSize="@dimen/abc_text_size_body_2_material" />
                     </android.support.design.widget.TextInputLayout>
@@ -139,6 +136,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:clickable="false"
+                            android:inputType="time"
                             android:cursorVisible="false"
                             android:focusable="false"
                             android:focusableInTouchMode="false"

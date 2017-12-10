@@ -23,17 +23,14 @@ package org.glucosio.android.tools;
 import android.content.Context;
 import android.support.annotation.VisibleForTesting;
 import android.support.v4.content.ContextCompat;
-
 import org.glucosio.android.R;
 import org.glucosio.android.db.DatabaseHandler;
 
 public class GlucoseRanges {
 
-    private DatabaseHandler dB;
     private Context mContext;
-    private String preferredRange;
-    private int userMin;
-    private int userMax;
+    private double userMin;
+    private double userMax;
     private static final String ADA = "ADA";
     private static final String AACE = "AACE";
     private static final String UKNICE = "UK NICE";
@@ -48,15 +45,9 @@ public class GlucoseRanges {
 
     public GlucoseRanges(Context context) {
         this.mContext = context;
-        dB = new DatabaseHandler(mContext);
-        this.preferredRange = dB.getUser(1).getPreferred_range();
+        DatabaseHandler dB = new DatabaseHandler(mContext);
         this.userMin = dB.getUser(1).getCustom_range_min();
         this.userMax = dB.getUser(1).getCustom_range_max();
-    }
-
-    @VisibleForTesting
-    void setPreferredRange(String preferredRange) {
-        this.preferredRange = preferredRange;
     }
 
     @VisibleForTesting
@@ -95,7 +86,7 @@ public class GlucoseRanges {
         }
     }
 
-    public String colorFromReading(int reading) {
+    public String colorFromReading(double reading) {
         if (reading < HYPO_LIMIT) {
             // hypo limit 70
             return "purple";

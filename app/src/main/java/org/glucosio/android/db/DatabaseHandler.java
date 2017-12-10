@@ -21,9 +21,11 @@
 package org.glucosio.android.db;
 
 import android.content.Context;
-
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
+import io.realm.RealmResults;
+import io.realm.Sort;
 import net.danlew.android.joda.JodaTimeAndroid;
-
 import org.joda.time.DateTime;
 import org.joda.time.Months;
 import org.joda.time.Weeks;
@@ -34,11 +36,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-
-import io.realm.Realm;
-import io.realm.RealmConfiguration;
-import io.realm.RealmResults;
-import io.realm.Sort;
 
 public class DatabaseHandler {
 
@@ -55,7 +52,7 @@ public class DatabaseHandler {
     public Realm getNewRealmInstance() {
         if (mRealmConfig == null) {
             mRealmConfig = new RealmConfiguration.Builder()
-                    .schemaVersion(4)
+                    .schemaVersion(5)
                     .migration(new Migration())
                     .build();
         }
@@ -176,7 +173,7 @@ public class DatabaseHandler {
 
     public boolean addGlucoseReading(GlucoseReading reading) {
         // generate record Id
-        String id = generateIdFromDate(reading.getCreated(), reading.getReading());
+        String id = generateIdFromDate(reading.getCreated(), reading.getId());
 
         // Check for duplicates
         if (getGlucoseReadingById(Long.parseLong(id)) != null) {
@@ -190,7 +187,7 @@ public class DatabaseHandler {
         }
     }
 
-    private String generateIdFromDate(Date created, int readingId) {
+    private String generateIdFromDate(Date created, long readingId) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(created);
         int year = calendar.get(Calendar.YEAR);
@@ -310,15 +307,14 @@ public class DatabaseHandler {
         return idArray;
     }
 
-    public ArrayList<Integer> getGlucoseReadingAsArray() {
+    public List<Double> getGlucoseReadingAsArray() {
         List<GlucoseReading> glucoseReading = getGlucoseReadings();
-        ArrayList<Integer> readingArray = new ArrayList<Integer>();
+        ArrayList<Double> readingArray = new ArrayList<>(glucoseReading.size());
         int i;
 
         for (i = 0; i < glucoseReading.size(); i++) {
-            int reading;
             GlucoseReading singleReading = glucoseReading.get(i);
-            reading = singleReading.getReading();
+            double reading = singleReading.getReading();
             readingArray.add(reading);
         }
 
@@ -667,9 +663,9 @@ public class DatabaseHandler {
         return idArray;
     }
 
-    public ArrayList<Double> getKetoneReadingAsArray() {
+    public List<Double> getKetoneReadingAsArray() {
         List<KetoneReading> readings = getKetoneReadings();
-        ArrayList<Double> readingArray = new ArrayList<Double>();
+        ArrayList<Double> readingArray = new ArrayList<>(readings.size());
         int i;
 
         for (i = 0; i < readings.size(); i++) {
@@ -750,30 +746,28 @@ public class DatabaseHandler {
         return idArray;
     }
 
-    public ArrayList<Integer> getMinPressureReadingAsArray() {
+    public List<Double> getMinPressureReadingAsArray() {
         List<PressureReading> readings = getPressureReadings();
-        ArrayList<Integer> readingArray = new ArrayList<Integer>();
+        ArrayList<Double> readingArray = new ArrayList<>(readings.size());
         int i;
 
         for (i = 0; i < readings.size(); i++) {
-            int reading;
             PressureReading singleReading = readings.get(i);
-            reading = singleReading.getMinReading();
+            double reading = singleReading.getMinReading();
             readingArray.add(reading);
         }
 
         return readingArray;
     }
 
-    public ArrayList<Integer> getMaxPressureReadingAsArray() {
+    public List<Double> getMaxPressureReadingAsArray() {
         List<PressureReading> readings = getPressureReadings();
-        ArrayList<Integer> readingArray = new ArrayList<Integer>();
+        ArrayList<Double> readingArray = new ArrayList<>(readings.size());
         int i;
 
         for (i = 0; i < readings.size(); i++) {
-            int reading;
             PressureReading singleReading = readings.get(i);
-            reading = singleReading.getMaxReading();
+            double reading = singleReading.getMaxReading();
             readingArray.add(reading);
         }
 
@@ -848,15 +842,14 @@ public class DatabaseHandler {
         return idArray;
     }
 
-    public ArrayList<Integer> getWeightReadingAsArray() {
+    public List<Double> getWeightReadingAsArray() {
         List<WeightReading> readings = getWeightReadings();
-        ArrayList<Integer> readingArray = new ArrayList<Integer>();
+        ArrayList<Double> readingArray = new ArrayList<>(readings.size());
         int i;
 
         for (i = 0; i < readings.size(); i++) {
-            int reading;
             WeightReading singleReading = readings.get(i);
-            reading = singleReading.getReading();
+            double reading = singleReading.getReading();
             readingArray.add(reading);
         }
 
@@ -931,45 +924,42 @@ public class DatabaseHandler {
         return idArray;
     }
 
-    public ArrayList<Integer> getHDLCholesterolReadingAsArray() {
+    public List<Double> getHDLCholesterolReadingAsArray() {
         List<CholesterolReading> readings = getCholesterolReadings();
-        ArrayList<Integer> readingArray = new ArrayList<Integer>();
+        ArrayList<Double> readingArray = new ArrayList<>(readings.size());
         int i;
 
         for (i = 0; i < readings.size(); i++) {
-            int reading;
             CholesterolReading singleReading = readings.get(i);
-            reading = singleReading.getHDLReading();
+            double reading = singleReading.getHDLReading();
             readingArray.add(reading);
         }
 
         return readingArray;
     }
 
-    public ArrayList<Integer> getLDLCholesterolReadingAsArray() {
+    public List<Double> getLDLCholesterolReadingAsArray() {
         List<CholesterolReading> readings = getCholesterolReadings();
-        ArrayList<Integer> readingArray = new ArrayList<Integer>();
+        ArrayList<Double> readingArray = new ArrayList<>(readings.size());
         int i;
 
         for (i = 0; i < readings.size(); i++) {
-            int reading;
             CholesterolReading singleReading = readings.get(i);
-            reading = singleReading.getLDLReading();
+            double reading = singleReading.getLDLReading();
             readingArray.add(reading);
         }
 
         return readingArray;
     }
 
-    public ArrayList<Integer> getTotalCholesterolReadingAsArray() {
+    public List<Double> getTotalCholesterolReadingAsArray() {
         List<CholesterolReading> readings = getCholesterolReadings();
-        ArrayList<Integer> readingArray = new ArrayList<Integer>();
+        ArrayList<Double> readingArray = new ArrayList<>(readings.size());
         int i;
 
         for (i = 0; i < readings.size(); i++) {
-            int reading;
             CholesterolReading singleReading = readings.get(i);
-            reading = singleReading.getTotalReading();
+            double reading = singleReading.getTotalReading();
             readingArray.add(reading);
         }
 

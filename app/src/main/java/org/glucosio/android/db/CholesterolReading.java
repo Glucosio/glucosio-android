@@ -20,24 +20,24 @@
 
 package org.glucosio.android.db;
 
-import java.util.Date;
-
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
+
+import java.util.Date;
 
 public class CholesterolReading extends RealmObject {
     @PrimaryKey
     private long id;
 
-    private int totalReading;
-    private int LDLReading;
-    private int HDLReading;
+    private double totalReading;
+    private double LDLReading;
+    private double HDLReading;
     private Date created;
 
     public CholesterolReading() {
     }
 
-    public CholesterolReading(int totalReading, int LDLReading, int HDLReading, Date created) {
+    public CholesterolReading(double totalReading, double LDLReading, double HDLReading, Date created) {
         // mg/dL
         // 0-200
         this.totalReading = totalReading;
@@ -46,27 +46,27 @@ public class CholesterolReading extends RealmObject {
         this.created = created;
     }
 
-    public int getTotalReading() {
+    public double getTotalReading() {
         return totalReading;
     }
 
-    public void setTotalReading(int totalReading) {
+    public void setTotalReading(double totalReading) {
         this.totalReading = totalReading;
     }
 
-    public int getLDLReading() {
+    public double getLDLReading() {
         return LDLReading;
     }
 
-    public void setLDLReading(int LDLReading) {
+    public void setLDLReading(double LDLReading) {
         this.LDLReading = LDLReading;
     }
 
-    public int getHDLReading() {
+    public double getHDLReading() {
         return HDLReading;
     }
 
-    public void setHDLReading(int HDLReading) {
+    public void setHDLReading(double HDLReading) {
         this.HDLReading = HDLReading;
     }
 

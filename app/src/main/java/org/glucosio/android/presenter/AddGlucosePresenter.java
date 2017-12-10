@@ -22,9 +22,7 @@ package org.glucosio.android.presenter;
 
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-
 import com.google.firebase.crash.FirebaseCrash;
-
 import org.glucosio.android.activity.AddGlucoseActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
@@ -94,9 +92,9 @@ public class AddGlucosePresenter extends AddReadingPresenter {
 
     private boolean createReading(String type, String notes, long oldId, Date finalDateTime, Number number) {
         boolean isReadingAdded;
-        int readingValue;
+        double readingValue;
         if ("mg/dL".equals(getUnitMeasuerement())) {
-            readingValue = number.intValue();
+            readingValue = number.doubleValue();
         } else {
             readingValue = GlucosioConverter.glucoseToMgDl(number.doubleValue());
         }
@@ -137,7 +135,7 @@ public class AddGlucosePresenter extends AddReadingPresenter {
             if ("mg/dL".equals(getUnitMeasuerement())) {
                 // We store data in db in mg/dl
                 try {
-                    Integer readingValue = Integer.parseInt(reading);
+                    Double readingValue = Double.parseDouble(reading);
                     //TODO: Add custom ranges
                     return readingValue > 19 && readingValue < 601;
                 } catch (Exception e) {
