@@ -99,7 +99,7 @@ public class MigrationTest {
 
         migration.migrate(realmMock, 4, 5);
 
-        inOrder.verify(schemaMock).get("CholestrolReading");
+        inOrder.verify(schemaMock).get("CholesterolReading");
         checkObjectIntMigration("totalReading", 8);
         checkObjectIntMigration("LDLReading", 4);
         checkObjectIntMigration("HDLReading", 9);

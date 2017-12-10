@@ -9,7 +9,7 @@ public enum RObject {
     WEIGHT("WeightReading"),
     PRESSURE("PressureReading"),
     KETONE("KetoneReading"),
-    CHOLESTEROL("CholestrolReading"),
+    CHOLESTEROL("CholesterolReading"),
     USER("User"),
     REMINDER("Reminder");
 
