@@ -28,7 +28,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'
         classpath 'com.google.gms:google-services:3.1.2'
-        classpath 'io.realm:realm-gradle-plugin:4.2.0' // version update breaks down some tests. RxJava 2.x needed
+        classpath 'io.realm:realm-gradle-plugin:4.3.1'
         classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.8.2'
         classpath 'com.github.ben-manes:gradle-versions-plugin:0.17.0'
         classpath 'org.jacoco:org.jacoco.core:0.7.9'
