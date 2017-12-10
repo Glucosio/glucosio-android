@@ -3,7 +3,6 @@ package org.glucosio.android.tools;
 
 import android.content.Context;
 import android.graphics.Color;
-
 import org.glucosio.android.R;
 import org.junit.Before;
 import org.junit.Test;
@@ -28,7 +27,7 @@ public class GlucoseRangesTest {
     private GlucoseRanges glucoseRanges;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         when(context.getColor(R.color.glucosio_reading_hyper)).thenReturn(READING_HYPER);
         when(glucoseRanges.stringToColor("red")).thenReturn(READING_HYPER);
 
@@ -67,55 +66,46 @@ public class GlucoseRangesTest {
 
     @Test
     public void expectGreenWhenReadingValueIs100WithADAPreferredRange() {
-        glucoseRanges.setPreferredRange("ADA");
         assertTrue(glucoseRanges.colorFromReading(100).equals("green"));
     }
 
     @Test
     public void expectBlueWhenReadingValueIs72WithADAPreferredRange() {
-        glucoseRanges.setPreferredRange("ADA");
         assertTrue(glucoseRanges.colorFromReading(72).equals("blue"));
     }
 
     @Test
     public void expectOrangeWhenReadingValueIs185WithADAPreferredRange() {
-        glucoseRanges.setPreferredRange("ADA");
         assertTrue(glucoseRanges.colorFromReading(185).equals("orange"));
     }
 
     @Test
     public void expectGreenWhenReadingValueIs130WithAACEPreferredRange() {
-        glucoseRanges.setPreferredRange("AACE");
         assertTrue(glucoseRanges.colorFromReading(130).equals("green"));
     }
 
     @Test
     public void expectBlueWhenReadingValueIs90WithAACEPreferredRange() {
-        glucoseRanges.setPreferredRange("AACE");
         assertTrue(glucoseRanges.colorFromReading(90).equals("blue"));
     }
 
     @Test
     public void expectOrangeWhenReadingValueIs145WithAACEPreferredRange() {
-        glucoseRanges.setPreferredRange("AACE");
         assertTrue(glucoseRanges.colorFromReading(145).equals("orange"));
     }
 
     @Test
     public void expectGreenWhenReadingValueIs100WithUKNICEPreferredRange() {
-        glucoseRanges.setPreferredRange("UK NICE");
         assertTrue(glucoseRanges.colorFromReading(100).equals("green"));
     }
 
     @Test
     public void expectBlueWhenReadingValueIs71WithUKNICEPreferredRange() {
-        glucoseRanges.setPreferredRange("UK NICE");
         assertTrue(glucoseRanges.colorFromReading(72).equals("blue"));
     }
 
     @Test
     public void expectOrangeWhenReadingValueIs155WithUKNICEPreferredRange() {
-        glucoseRanges.setPreferredRange("UK NICE");
         assertTrue(glucoseRanges.colorFromReading(145).equals("orange"));
     }
 
@@ -178,7 +168,6 @@ public class GlucoseRangesTest {
     }
 
     private void setPreferredRange(int min, int max) {
-        glucoseRanges.setPreferredRange("Custom");
         glucoseRanges.setCustomMin(min);
         glucoseRanges.setCustomMax(max);
     }

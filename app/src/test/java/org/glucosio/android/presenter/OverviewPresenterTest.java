@@ -34,7 +34,7 @@ public class OverviewPresenterTest {
     private User user = new User(1, "test", "en", "en", 23, "M", 1, "mg/dL", "", "", "Test", 0, 100);
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         //to remove joda error printing
         DateTimeZone.setProvider(new UTCProvider());
 
@@ -43,7 +43,7 @@ public class OverviewPresenterTest {
     }
 
     @Test
-    public void ShouldAddZerosBetweenReadings_WhenAsked() throws Exception {
+    public void ShouldAddZerosBetweenReadings_WhenAsked() {
         DateTime now = DateTime.now();
         DateTime fiveDaysAgo = now.minusDays(5);
         when(dbMock.getLastMonthGlucoseReadings()).thenReturn(
@@ -54,14 +54,14 @@ public class OverviewPresenterTest {
 
         presenter.loadDatabase(true);
 
-        final List<Integer> readings = presenter.getGlucoseReadings();
+        final List<Double> readings = presenter.getGlucoseReadings();
         DateTime minDateTime = DateTime.now().minusMonths(1).minusDays(15);
         assertThat(readings).hasSize(Days.daysBetween(minDateTime, now).getDays());
-        assertThat(readings).containsSequence(12, 0, 0, 0, 0, 21);
+        assertThat(readings).containsSequence(12., 0., 0., 0., 0., 21.);
     }
 
     @Test
-    public void ShouldSortReadingsChronologically_WhenAsked() throws Exception {
+    public void ShouldSortReadingsChronologically_WhenAsked() {
         DateTime now = DateTime.now();
         DateTime twoDaysAgo = now.minusDays(2);
         when(dbMock.getLastMonthGlucoseReadings()).thenReturn(
@@ -72,7 +72,7 @@ public class OverviewPresenterTest {
 
         presenter.loadDatabase(true);
 
-        final List<Integer> readings = presenter.getGlucoseReadings();
-        assertThat(readings).containsSequence(11, 0, 33);
+        final List<Double> readings = presenter.getGlucoseReadings();
+        assertThat(readings).containsSequence(11., 0., 33.);
     }
 }
