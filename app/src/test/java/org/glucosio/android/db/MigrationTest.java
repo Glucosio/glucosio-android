@@ -1,6 +1,10 @@
 package org.glucosio.android.db;
 
-import io.realm.*;
+import io.realm.DynamicRealm;
+import io.realm.DynamicRealmObject;
+import io.realm.FieldAttribute;
+import io.realm.RealmObjectSchema;
+import io.realm.RealmSchema;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
@@ -9,7 +13,10 @@ import org.mockito.InOrder;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.inOrder;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 public class MigrationTest {
     private Migration migration = new Migration();

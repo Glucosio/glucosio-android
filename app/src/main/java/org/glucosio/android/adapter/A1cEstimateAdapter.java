@@ -16,8 +16,8 @@ import java.text.NumberFormat;
 import java.util.List;
 
 public class A1cEstimateAdapter extends ArrayAdapter<A1cEstimate> {
-    private DatabaseHandler db;
-    private NumberFormat numberFormat = NumberFormat.getNumberInstance();
+    private final DatabaseHandler db;
+    private final NumberFormat numberFormat = NumberFormat.getNumberInstance();
 
     public A1cEstimateAdapter(Context context, int resource, List<A1cEstimate> items) {
         super(context, resource, items);

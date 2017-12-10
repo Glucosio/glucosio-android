@@ -34,12 +34,16 @@ import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Random;
 
 public class OverviewPresenter {
 
-    private DatabaseHandler dB;
-    private OverviewView view;
+    private final DatabaseHandler dB;
+    private final OverviewView view;
 
     private List<Integer> glucoseReadingsWeek;
     private List<Integer> glucoseReadingsMonth;

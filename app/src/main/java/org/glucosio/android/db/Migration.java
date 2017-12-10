@@ -22,7 +22,12 @@ package org.glucosio.android.db;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import io.realm.*;
+import io.realm.DynamicRealm;
+import io.realm.DynamicRealmObject;
+import io.realm.FieldAttribute;
+import io.realm.RealmMigration;
+import io.realm.RealmObjectSchema;
+import io.realm.RealmSchema;
 
 import java.util.Date;
 

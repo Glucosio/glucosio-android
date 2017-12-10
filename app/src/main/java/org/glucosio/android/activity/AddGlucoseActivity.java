@@ -48,14 +48,15 @@ import java.util.Calendar;
 
 public class AddGlucoseActivity extends AddReadingActivity {
 
-    static final int CUSTOM_TYPE_SPINNER_VALUE = 11;
+    private static final int CUSTOM_TYPE_SPINNER_VALUE = 11;
+
     private TextView readingTextView;
     private EditText typeCustomEditText;
     private EditText notesEditText;
     private LabelledSpinner readingTypeSpinner;
     private boolean isCustomType = false;
 
-    private NumberFormat numberFormat = NumberFormat.getNumberInstance();
+    private final NumberFormat numberFormat = NumberFormat.getNumberInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

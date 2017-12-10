@@ -9,26 +9,20 @@ import org.robolectric.Robolectric;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-public class PreferencesActivityTest
-  extends RobolectricTest
-{
-  private PreferencesActivity activity;
+public class PreferencesActivityTest extends RobolectricTest {
+    private PreferencesActivity activity;
 
-  private User user = new User(1, "test", "en", "en", 23, "M", 1, "mg/dL", "", "", "Test", 0, 100);
+    private User user = new User(1, "test", "en", "en", 23, "M", 1, "mg/dL", "", "", "Test", 0, 100);
 
-  @Before
-  public void setUp()
-    throws Exception
-  {
-    when(getDBHandler().getUser(1)).thenReturn(user);
+    @Before
+    public void setUp() {
+        when(getDBHandler().getUser(1)).thenReturn(user);
 
-    activity = Robolectric.buildActivity(PreferencesActivity.class).create().get();
-  }
+        activity = Robolectric.buildActivity(PreferencesActivity.class).create().get();
+    }
 
-  @Test
-  public void ShouldReportAnalytics_WhenCreated()
-    throws Exception
-  {
-    verify(getAnalytics()).reportScreen("Preferences");
-  }
+    @Test
+    public void ShouldReportAnalytics_WhenCreated() {
+        verify(getAnalytics()).reportScreen("Preferences");
+    }
 }
