@@ -208,7 +208,7 @@ class Migration implements RealmMigration {
                     @Override
                     public void apply(@NonNull DynamicRealmObject obj) {
                         int oldType = obj.getInt(columnName);
-                        obj.setDouble(tempColumnName, Double.parseDouble(oldType + ""));
+                        obj.setDouble(tempColumnName, oldType);
                     }
                 })
                 .removeField(columnName)
