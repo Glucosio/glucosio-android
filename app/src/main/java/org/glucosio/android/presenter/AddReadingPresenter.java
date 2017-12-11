@@ -1,5 +1,6 @@
 package org.glucosio.android.presenter;
 
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 import org.glucosio.android.tools.SplitDateTime;
@@ -70,17 +71,17 @@ public class AddReadingPresenter {
         this.readingMinute = readingMinute;
     }
 
-    protected boolean validateText(String text) {
+    boolean validateText(@NonNull String text) {
         return !TextUtils.isEmpty(text);
     }
 
     // Validator
-    protected boolean validateTime(String time) {
+    boolean validateTime(@NonNull String time) {
         //TODO check if it can be empty or not valid in other way in different sdk
         return !TextUtils.isEmpty(time);
     }
 
-    protected boolean validateDate(String date) {
+    boolean validateDate(@NonNull String date) {
         //TODO check if it can be empty or not valid in other way in different sdk
         return !TextUtils.isEmpty(date);
     }

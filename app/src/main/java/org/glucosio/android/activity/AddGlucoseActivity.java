@@ -33,14 +33,17 @@ import android.widget.TextView;
 
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 
+import org.glucosio.android.report.FirebaseCrashReporter;
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.analytics.Analytics;
+import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
 import org.glucosio.android.presenter.AddGlucosePresenter;
 import org.glucosio.android.tools.FormatDateTime;
 import org.glucosio.android.tools.GlucosioConverter;
 import org.glucosio.android.tools.LabelledSpinner;
+import org.glucosio.android.tools.ReadingTools;
 
 import java.text.DecimalFormat;
 import java.util.Arrays;
@@ -62,7 +65,7 @@ public class AddGlucoseActivity extends AddReadingActivity {
         setContentView(R.layout.activity_add_glucose);
         Toolbar toolbar = (Toolbar) findViewById(R.id.activity_main_toolbar);
 
-        if (toolbar != null) {
+        if (toolbar != null && getSupportActionBar() != null) {
             setSupportActionBar(toolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setElevation(2);
@@ -70,7 +73,10 @@ public class AddGlucoseActivity extends AddReadingActivity {
 
         this.retrieveExtra();
 
-        AddGlucosePresenter presenter = new AddGlucosePresenter(this);
+        AddGlucosePresenter presenter = new AddGlucosePresenter(this,
+                new DatabaseHandler(getApplicationContext()),
+                new ReadingTools(),
+                new FirebaseCrashReporter());
         setPresenter(presenter);
         presenter.setReadingTimeNow();
 
@@ -102,7 +108,7 @@ public class AddGlucoseActivity extends AddReadingActivity {
 
             @Override
             public void onNothingChosen(View labelledSpinner, AdapterView<?> adapterView) {
-
+                // empty for some reason
             }
         });
 

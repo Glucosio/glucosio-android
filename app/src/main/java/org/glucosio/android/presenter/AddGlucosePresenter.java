@@ -22,9 +22,9 @@ package org.glucosio.android.presenter;
 
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 
-import com.google.firebase.crash.FirebaseCrash;
-
+import org.glucosio.android.report.CrashReporter;
 import org.glucosio.android.activity.AddGlucoseActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
@@ -39,15 +39,22 @@ import java.util.Date;
 import java.util.List;
 
 public class AddGlucosePresenter extends AddReadingPresenter {
-    private static final int UNKNOWN_ID = -1;
-    private DatabaseHandler dB;
-    private AddGlucoseActivity activity;
-    private ReadingTools rTools;
 
-    public AddGlucosePresenter(AddGlucoseActivity addGlucoseActivity) {
+    private static final int UNKNOWN_ID = -1;
+    private final DatabaseHandler dB;
+    private final AddGlucoseActivity activity;
+    private final ReadingTools rTools;
+    private final CrashReporter crashReporter;
+
+    public AddGlucosePresenter(@NonNull AddGlucoseActivity addGlucoseActivity,
+                               @NonNull DatabaseHandler dB,
+                               @NonNull ReadingTools readingTools,
+                               @NonNull CrashReporter crashReporter) {
+
         this.activity = addGlucoseActivity;
-        dB = new DatabaseHandler(addGlucoseActivity.getApplicationContext());
-        rTools = new ReadingTools();
+        this.dB = dB;
+        this.rTools = readingTools;
+        this.crashReporter = crashReporter;
     }
 
     public void updateSpinnerTypeTime() {
@@ -69,12 +76,27 @@ public class AddGlucosePresenter extends AddReadingPresenter {
         return rTools.hourToSpinnerType(hour);
     }
 
-    public void dialogOnAddButtonPressed(String time, String date, String reading, String type, String notes) {
+    public void dialogOnAddButtonPressed(@NonNull String time,
+                                         @NonNull String date,
+                                         @NonNull String reading,
+                                         @NonNull String type,
+                                         @NonNull String notes) {
+
         dialogOnAddButtonPressed(time, date, reading, type, notes, UNKNOWN_ID);
     }
 
-    public void dialogOnAddButtonPressed(String time, String date, String reading, String type, String notes, long oldId) {
-        if (validateDate(date) && validateTime(time) && validateGlucose(reading) && validateType(type)) {
+    public void dialogOnAddButtonPressed(@NonNull String time,
+                                         @NonNull String date,
+                                         @NonNull String reading,
+                                         @NonNull String type,
+                                         @NonNull String notes,
+                                         long oldId) {
+
+        if (validateDate(date) && // FIXME: always true
+                validateTime(time) && // FIXME: always true
+                validateGlucose(reading) &&
+                validateType(type)) { // FIXME: always true
+
             Date finalDateTime = getReadingTime();
             Number number = ReadingTools.parseReading(reading);
             if (number == null) {
@@ -92,7 +114,12 @@ public class AddGlucosePresenter extends AddReadingPresenter {
         }
     }
 
-    private boolean createReading(String type, String notes, long oldId, Date finalDateTime, Number number) {
+    private boolean createReading(String type,
+                                  @NonNull String notes,
+                                  long oldId,
+                                  Date finalDateTime,
+                                  Number number) {
+
         boolean isReadingAdded;
         int readingValue;
         if ("mg/dL".equals(getUnitMeasuerement())) {
@@ -100,12 +127,14 @@ public class AddGlucosePresenter extends AddReadingPresenter {
         } else {
             readingValue = GlucosioConverter.glucoseToMgDl(number.doubleValue());
         }
+
         GlucoseReading gReading = new GlucoseReading(readingValue, type, finalDateTime, notes);
         if (oldId == UNKNOWN_ID) {
             isReadingAdded = dB.addGlucoseReading(gReading);
         } else {
             isReadingAdded = dB.editGlucoseReading(oldId, gReading);
         }
+
         return isReadingAdded;
     }
 
@@ -132,7 +161,7 @@ public class AddGlucosePresenter extends AddReadingPresenter {
     }
 
     // Validator
-    private boolean validateGlucose(String reading) {
+    private boolean validateGlucose(@NonNull String reading) {
         if (validateText(reading)) {
             if ("mg/dL".equals(getUnitMeasuerement())) {
                 // We store data in db in mg/dl
@@ -141,8 +170,8 @@ public class AddGlucosePresenter extends AddReadingPresenter {
                     //TODO: Add custom ranges
                     return readingValue > 19 && readingValue < 601;
                 } catch (Exception e) {
-                    FirebaseCrash.log("Exception during reading validation");
-                    FirebaseCrash.report(e);
+                    crashReporter.log("Exception during reading validation");
+                    crashReporter.report(e);
                     return false;
                 }
             } else if ("mmol/L".equals(getUnitMeasuerement())) {
@@ -151,12 +180,13 @@ public class AddGlucosePresenter extends AddReadingPresenter {
                     Double readingValue = Double.parseDouble(reading);
                     return readingValue > 1.0545 && readingValue < 33.3555;
                 } catch (Exception e) {
-                    FirebaseCrash.log("Exception during reading validation");
-                    FirebaseCrash.report(e);
+                    crashReporter.log("Exception during reading validation");
+                    crashReporter.report(e);
                     return false;
                 }
             } else {
                 // IT return always true: we don't have ranges yet.
+                // FIXME: If reading.equals(""), returns true
                 return true;
             }
         } else {
@@ -169,7 +199,7 @@ public class AddGlucosePresenter extends AddReadingPresenter {
         return sharedPref.getBoolean("pref_freestyle_libre", false);
     }
 
-    private boolean validateType(String type) {
+    private boolean validateType(@NonNull String type) {
         return validateText(type);
     }
 }

@@ -20,6 +20,8 @@
 
 package org.glucosio.android.db;
 
+import android.support.annotation.NonNull;
+
 import java.util.Date;
 
 import io.realm.RealmObject;
@@ -39,7 +41,10 @@ public class GlucoseReading extends RealmObject {
     public GlucoseReading() {
     }
 
-    public GlucoseReading(int reading, String reading_type, Date created, String notes) {
+    public GlucoseReading(int reading,
+                          String reading_type,
+                          Date created,
+                          @NonNull String notes) {
         this.reading = reading;
         this.reading_type = reading_type;
         this.created = created;

@@ -28,6 +28,7 @@ import java.text.ParseException;
 public class ReadingTools {
 
     public ReadingTools() {
+        // empty
     }
 
     public int hourToSpinnerType(int hour) {
@@ -58,9 +59,10 @@ public class ReadingTools {
      * @return reading Number
      */
     @Nullable
-    public static Number parseReading(String reading) {
-        if (reading == null)
+    public static Number parseReading(@Nullable String reading) {
+        if (reading == null) {
             return null;
+        }
         NumberFormat numberFormat = NumberFormat.getInstance();
         try {
             return numberFormat.parse(reading);
