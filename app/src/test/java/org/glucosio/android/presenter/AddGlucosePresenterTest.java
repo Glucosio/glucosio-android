@@ -30,7 +30,6 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-@PrepareForTest(FirebaseCrash.class)
 public class AddGlucosePresenterTest {
 
     @Mock
