@@ -1,9 +1,12 @@
 package org.glucosio.android.presenter;
 
+import com.google.firebase.crash.FirebaseCrash;
+
 import org.glucosio.android.activity.AddGlucoseActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
 import org.glucosio.android.db.User;
+import org.glucosio.android.report.CrashReporter;
 import org.glucosio.android.tools.ReadingTools;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,15 +15,22 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.powermock.core.classloader.annotations.PrepareForTest;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Matchers.anyLong;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
+@PrepareForTest(FirebaseCrash.class)
 public class AddGlucosePresenterTest {
 
     @Mock
@@ -32,6 +42,9 @@ public class AddGlucosePresenterTest {
     @Mock
     private ReadingTools readingTools;
 
+    @Mock
+    private CrashReporter mockCrashReporter;
+
     @InjectMocks
     private AddGlucosePresenter presenter;
 
@@ -41,7 +54,6 @@ public class AddGlucosePresenterTest {
     private final static String FAKE_TIME = "11:09";
     private final static String FAKE_DATE = "22.12";
     private final static String FAKE_TYPE = "fakeType";
-
     private final static String FAKE_READING_WRONG = "2562";
     private final static String FAKE_READING_OK = "500";
 
@@ -88,17 +100,17 @@ public class AddGlucosePresenterTest {
     }
 
     @Test
-    public void createReading_mgdL_true() {
-        when(userMock.getPreferred_unit()).thenReturn("mg/dL");
-        presenter.dialogOnAddButtonPressed(FAKE_TIME, FAKE_DATE, FAKE_READING_OK, FAKE_TYPE, "");
-        verify(mockActivity).showDuplicateErrorMessage(); // reading is not created
+    public void updateSpinnerTypeTime() {
+        when(readingTools.hourToSpinnerType(anyInt())).thenReturn(anyInt());
+        presenter.updateSpinnerTypeTime();
+        verify(mockActivity).updateSpinnerTypeTime(anyInt());
     }
 
     @Test
-    public void updateSpinnerTypeTime() {
-        when(readingTools.hourToSpinnerType(anyInt())).thenReturn(24);
-        presenter.updateSpinnerTypeTime();
-        verify(mockActivity).updateSpinnerTypeTime(24);
+    public void validateGlucose_mgDl_true_and_readingIsOk() {
+        when(userMock.getPreferred_unit()).thenReturn("mg/dL");
+        presenter.dialogOnAddButtonPressed(FAKE_TIME, FAKE_DATE, FAKE_READING_OK, FAKE_TYPE, "");
+        verify(mockActivity).showDuplicateErrorMessage();
     }
 
     @Test
@@ -113,5 +125,47 @@ public class AddGlucosePresenterTest {
         when(userMock.getPreferred_unit()).thenReturn("mg/dL");
         presenter.dialogOnAddButtonPressed(FAKE_TIME, FAKE_DATE, "15", FAKE_TYPE, "");
         verify(mockActivity).showErrorMessage();
+    }
+
+    @Test
+    public void validateGlucose_parseIntException() {
+        when(userMock.getPreferred_unit()).thenReturn("mg/dL");
+        presenter.dialogOnAddButtonPressed(FAKE_TIME, FAKE_DATE, "abc123", FAKE_TYPE, "");
+        verify(mockCrashReporter).log("Exception during reading validation");
+        verify(mockCrashReporter).report((Throwable) any());
+    }
+
+
+    @Test
+    public void validateGlucose_parseDoubleException() {
+        when(userMock.getPreferred_unit()).thenReturn("mmol/L");
+        presenter.dialogOnAddButtonPressed(FAKE_TIME, FAKE_DATE, "abc123", FAKE_TYPE, "");
+        verify(mockCrashReporter).log("Exception during reading validation");
+        verify(mockCrashReporter).report((Throwable) any());
+    }
+
+    @Test
+    public void retrieveSpinnerID_found() {
+        final String fakeMeasureTypeText = "fake_measure";
+        List<String> fakeMeasuredTypeList = new ArrayList<String>() {{
+            add("fakeMeasure11");
+            add("glucosio");
+            add(fakeMeasureTypeText);
+        }};
+        int result = presenter.retrieveSpinnerID(fakeMeasureTypeText, fakeMeasuredTypeList);
+
+        assertEquals(2, result);
+    }
+
+    @Test
+    public void retrieveSpinnerID_notFound() {
+        final String fakeMeasureTypeText = "fake_measure";
+        List<String> fakeMeasuredTypeList = new ArrayList<String>() {{
+            add("fakeMeasure11");
+            add("glucosio");
+            add("there is no measure here");
+        }};
+
+        assertNull(presenter.retrieveSpinnerID(fakeMeasureTypeText, fakeMeasuredTypeList));
     }
 }
