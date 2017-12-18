@@ -1,5 +1,6 @@
 package org.glucosio.android.presenter;
 
+import org.glucosio.android.DomainConstants;
 import org.glucosio.android.activity.A1cCalculatorActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.User;
@@ -12,8 +13,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Matchers.anyLong;
-import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class A1CCalculatorPresenterTest {
@@ -26,49 +27,49 @@ public class A1CCalculatorPresenterTest {
     @InjectMocks
     private A1CCalculatorPresenter presenter;
 
-    private User user = new User(1, "test", "en", "en", 23, "M", 1, "mg/dL", "percentage", "", "Test", 0, 100);
+    private User user = new User(1, "test", "en", "en", 23, "M", 1, DomainConstants.MG_D_L, "percentage", "", "Test", 0, 100);
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         when(dbHandlerMock.getUser(anyLong())).thenReturn(user);
     }
 
     @Test
-    public void ShouldReturnZero_WhenNullStringPassed() throws Exception {
+    public void ShouldReturnZero_WhenNullStringPassed() {
         assertThat(presenter.calculateA1C(null)).isZero();
     }
 
     @Test
-    public void ShouldReturnZero_WhenEmptyStringPassed() throws Exception {
+    public void ShouldReturnZero_WhenEmptyStringPassed() {
         assertThat(presenter.calculateA1C(null)).isZero();
     }
 
     @Test
-    public void ShouldReturnZero_WhenDecimalSeparatorStringPassed() throws Exception {
+    public void ShouldReturnZero_WhenDecimalSeparatorStringPassed() {
         assertThat(presenter.calculateA1C(".")).isZero();
     }
 
     @Test
-    public void ShouldReturnZero_WhenAnotherDecimalSeparatorStringPassed() throws Exception {
+    public void ShouldReturnZero_WhenAnotherDecimalSeparatorStringPassed() {
         assertThat(presenter.calculateA1C(",")).isZero();
     }
 
     @Test
-    public void ShouldCalculatable_WhenUserPreferredMmol() throws Exception {
+    public void ShouldCalculatable_WhenUserPreferredMmol() {
         user.setPreferred_unit("mmol/L");
 
         assertThat(presenter.calculateA1C("1")).isEqualTo(2.25);
     }
 
     @Test
-    public void ShouldCalculatable_WhenUserPreferredPercentage() throws Exception {
+    public void ShouldCalculatable_WhenUserPreferredPercentage() {
         user.setPreferred_unit_a1c("mmol/mol");
 
         assertThat(presenter.calculateA1C("20")).isEqualTo(1.84);
     }
 
     @Test
-    public void ShouldCallSetMmol_WhenUserPreferredUnitIsNotMgDl() throws Exception {
+    public void ShouldCallSetMmol_WhenUserPreferredUnitIsNotMgDl() {
         user.setPreferred_unit("mmol/L");
 
         presenter.checkGlucoseUnit();
@@ -77,14 +78,14 @@ public class A1CCalculatorPresenterTest {
     }
 
     @Test
-    public void ShouldReturnCorrectA1CUnit_WhenGetterCalled() throws Exception {
+    public void ShouldReturnCorrectA1CUnit_WhenGetterCalled() {
         user.setPreferred_unit_a1c("mmol/mol");
 
         assertThat(presenter.getA1cUnit()).isEqualTo("mmol/mol");
     }
 
     @Test
-    public void ShouldFinishActivityAfterSaving_WhensaveA1CCalled() throws Exception {
+    public void ShouldFinishActivityAfterSaving_WhensaveA1CCalled() {
         user.setPreferred_unit_a1c("mmol/mol");
 
         presenter.saveA1C(presenter.calculateA1C("20"));

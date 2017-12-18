@@ -7,23 +7,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import org.glucosio.android.DomainConstants;
 import org.glucosio.android.R;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.object.A1cEstimate;
 import org.glucosio.android.tools.GlucosioConverter;
+import org.glucosio.android.tools.NumberFormatUtils;
 
 import java.text.NumberFormat;
 import java.util.List;
 
 public class A1cEstimateAdapter extends ArrayAdapter<A1cEstimate> {
-    private final DatabaseHandler db;
-    private final NumberFormat numberFormat = NumberFormat.getNumberInstance();
+    private final DatabaseHandler databaseHandler;
+    private final NumberFormat numberFormat = NumberFormatUtils.createDefaultNumberFormat();
 
     public A1cEstimateAdapter(Context context, int resource, List<A1cEstimate> items) {
         super(context, resource, items);
-        db = new DatabaseHandler(context);
-        numberFormat.setMinimumFractionDigits(0);
-        numberFormat.setMaximumFractionDigits(3);
+        databaseHandler = new DatabaseHandler(context);
     }
 
     @Override
@@ -45,7 +45,7 @@ public class A1cEstimateAdapter extends ArrayAdapter<A1cEstimate> {
             TextView glucoseAverage = v.findViewById(R.id.dialog_a1c_item_glucose_value);
 
             if (value != null) {
-                if ("percentage".equals(db.getUser(1).getPreferred_unit_a1c())) {
+                if ("percentage".equals(databaseHandler.getUser(1).getPreferred_unit_a1c())) {
                     String stringValue = p.getValue() + " %";
                     value.setText(stringValue);
                 } else {
@@ -59,7 +59,7 @@ public class A1cEstimateAdapter extends ArrayAdapter<A1cEstimate> {
             }
 
             if (glucoseAverage != null) {
-                if ("mg/dL".equals(db.getUser(1).getPreferred_unit())) {
+                if (DomainConstants.MG_D_L.equals(databaseHandler.getUser(1).getPreferred_unit())) {
                     glucoseAverage.setText(getContext().getString(R.string.mg_dL_value, p.getGlucoseAverage()));
                 } else {
                     double mmol = GlucosioConverter.glucoseToMgDl(Double.parseDouble(p.getGlucoseAverage()));
@@ -71,5 +71,4 @@ public class A1cEstimateAdapter extends ArrayAdapter<A1cEstimate> {
 
         return v;
     }
-
 }

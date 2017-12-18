@@ -96,7 +96,7 @@
                         android:layout_height="fill_parent"
                         android:layout_marginBottom="8dp"
                         android:gravity="bottom"
-                        android:text="mg/dL"
+                        android:text="@string/mg_dL"
                         android:textSize="@dimen/abc_text_size_body_2_material"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -140,7 +140,7 @@
                         android:layout_height="fill_parent"
                         android:layout_marginBottom="8dp"
                         android:gravity="bottom"
-                        android:text="mg/dL"
+                        android:text="@string/mg_dL"
                         android:textSize="@dimen/abc_text_size_body_2_material"
                         android:textStyle="bold" />
                 </LinearLayout>

@@ -23,6 +23,7 @@ package org.glucosio.android.presenter;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import com.google.firebase.crash.FirebaseCrash;
+import org.glucosio.android.DomainConstants;
 import org.glucosio.android.activity.AddGlucoseActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
@@ -93,7 +94,7 @@ public class AddGlucosePresenter extends AddReadingPresenter {
     private boolean createReading(String type, String notes, long oldId, Date finalDateTime, Number number) {
         boolean isReadingAdded;
         double readingValue;
-        if ("mg/dL".equals(getUnitMeasuerement())) {
+        if (DomainConstants.MG_D_L.equals(getUnitMeasuerement())) {
             readingValue = number.doubleValue();
         } else {
             readingValue = GlucosioConverter.glucoseToMgDl(number.doubleValue());
@@ -132,7 +133,7 @@ public class AddGlucosePresenter extends AddReadingPresenter {
     // Validator
     private boolean validateGlucose(String reading) {
         if (validateText(reading)) {
-            if ("mg/dL".equals(getUnitMeasuerement())) {
+            if (DomainConstants.MG_D_L.equals(getUnitMeasuerement())) {
                 // We store data in db in mg/dl
                 try {
                     Double readingValue = Double.parseDouble(reading);

@@ -31,6 +31,7 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
+import org.glucosio.android.DomainConstants;
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.analytics.Analytics;
@@ -39,6 +40,7 @@ import org.glucosio.android.presenter.AddGlucosePresenter;
 import org.glucosio.android.tools.FormatDateTime;
 import org.glucosio.android.tools.GlucosioConverter;
 import org.glucosio.android.tools.LabelledSpinner;
+import org.glucosio.android.tools.NumberFormatUtils;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -56,17 +58,13 @@ public class AddGlucoseActivity extends AddReadingActivity {
     private LabelledSpinner readingTypeSpinner;
     private boolean isCustomType = false;
 
-    private final NumberFormat numberFormat = NumberFormat.getNumberInstance();
+    private final NumberFormat numberFormat = NumberFormatUtils.createDefaultNumberFormat();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_glucose);
         Toolbar toolbar = findViewById(R.id.activity_main_toolbar);
-
-        //TODO: extract to resuse
-        numberFormat.setMaximumFractionDigits(3);
-        numberFormat.setMaximumFractionDigits(0);
 
         if (toolbar != null) {
             setSupportActionBar(toolbar);
@@ -114,7 +112,7 @@ public class AddGlucoseActivity extends AddReadingActivity {
 
         TextView unitM = findViewById(R.id.glucose_add_unit_measurement);
 
-        if (presenter.getUnitMeasuerement().equals("mg/dL")) {
+        if (presenter.getUnitMeasuerement().equals(DomainConstants.MG_D_L)) {
             unitM.setText(getString(R.string.mg_dL));
         } else {
             unitM.setText(getString(R.string.mmol_L));
@@ -128,7 +126,7 @@ public class AddGlucoseActivity extends AddReadingActivity {
             GlucoseReading readingToEdit = presenter.getGlucoseReadingById(this.getEditId());
 
             String readingString;
-            if (presenter.getUnitMeasuerement().equals("mg/dL")) {
+            if (presenter.getUnitMeasuerement().equals(DomainConstants.MG_D_L)) {
                 readingString = String.valueOf(readingToEdit.getReading());
             } else {
                 readingString = String.valueOf(GlucosioConverter.glucoseToMmolL(readingToEdit.getReading()));

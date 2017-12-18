@@ -21,7 +21,7 @@
 package org.glucosio.android.presenter;
 
 import android.support.annotation.NonNull;
-
+import org.glucosio.android.DomainConstants;
 import org.glucosio.android.activity.A1cCalculatorActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.HB1ACReading;
@@ -48,7 +48,7 @@ public class A1CCalculatorPresenter {
         double convertedA1C;
         User user = dbHandler.getUser(1);
 
-        if ("mg/dL".equals(user.getPreferred_unit())) {
+        if (DomainConstants.MG_D_L.equals(user.getPreferred_unit())) {
             convertedA1C = GlucosioConverter.glucoseToA1C(Double.parseDouble(glucose));
         } else {
             convertedA1C = GlucosioConverter.glucoseToA1C(GlucosioConverter.glucoseToMgDl(Double.parseDouble(glucose)));
@@ -65,7 +65,7 @@ public class A1CCalculatorPresenter {
     }
 
     public void checkGlucoseUnit() {
-        if (!dbHandler.getUser(1).getPreferred_unit().equals("mg/dL")) {
+        if (!DomainConstants.MG_D_L.equals(dbHandler.getUser(1).getPreferred_unit())) {
             activity.setMmol();
         }
     }

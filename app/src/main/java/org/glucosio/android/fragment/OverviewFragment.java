@@ -58,6 +58,7 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+import org.glucosio.android.DomainConstants;
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.adapter.A1cEstimateAdapter;
@@ -283,7 +284,7 @@ public class OverviewFragment extends Fragment implements OverviewView {
         LimitLine ll1;
         LimitLine ll2;
 
-        if ("mg/dL".equals(presenter.getUnitMeasurement())) {
+        if (DomainConstants.MG_D_L.equals(presenter.getUnitMeasurement())) {
             ll1 = new LimitLine((float) minGlucoseValue);
             ll2 = new LimitLine((float) maxGlucoseValue);
         } else {
@@ -423,7 +424,7 @@ public class OverviewFragment extends Fragment implements OverviewView {
 
             // Day view
             for (int i = 0; i < glucosioReadings.size(); i++) {
-                if (presenter.getUnitMeasurement().equals("mg/dL")) {
+                if (presenter.getUnitMeasurement().equals(DomainConstants.MG_D_L)) {
                     float val = glucosioReadings.get(i).floatValue();
                     yVals.add(new Entry(i, val));
                 } else {
@@ -436,7 +437,7 @@ public class OverviewFragment extends Fragment implements OverviewView {
             List<Integer> glucosioReadingsWeek = presenter.getGlucoseReadingsWeek();
             // Week view
             for (int i = 0; i < presenter.getGlucoseReadingsWeek().size(); i++) {
-                if (presenter.getUnitMeasurement().equals("mg/dL")) {
+                if (presenter.getUnitMeasurement().equals(DomainConstants.MG_D_L)) {
                     float val = Float.parseFloat(glucosioReadingsWeek.get(i) + "");
                     yVals.add(new Entry(i, val));
                 } else {
@@ -449,7 +450,7 @@ public class OverviewFragment extends Fragment implements OverviewView {
             List<Integer> glucosioReadingsMonth = presenter.getGlucoseReadingsMonth();
             // Month view
             for (int i = 0; i < presenter.getGlucoseReadingsMonth().size(); i++) {
-                if (presenter.getUnitMeasurement().equals("mg/dL")) {
+                if (presenter.getUnitMeasurement().equals(DomainConstants.MG_D_L)) {
                     float val = Float.parseFloat(glucosioReadingsMonth.get(i) + "");
                     yVals.add(new Entry(i, val));
                 } else {
@@ -676,7 +677,7 @@ public class OverviewFragment extends Fragment implements OverviewView {
 
     private void loadLastReading() {
         if (!presenter.isdbEmpty()) {
-            if (presenter.getUnitMeasurement().equals("mg/dL")) {
+            if (presenter.getUnitMeasurement().equals(DomainConstants.MG_D_L)) {
                 String reading = presenter.getLastReading();
                 lastReadingTextView.setText(getString(R.string.mg_dL_value, reading));
             } else {

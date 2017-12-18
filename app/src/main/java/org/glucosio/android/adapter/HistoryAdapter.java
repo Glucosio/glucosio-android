@@ -26,10 +26,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import org.glucosio.android.DomainConstants;
 import org.glucosio.android.R;
 import org.glucosio.android.presenter.HistoryPresenter;
 import org.glucosio.android.tools.GlucoseRanges;
 import org.glucosio.android.tools.GlucosioConverter;
+import org.glucosio.android.tools.NumberFormatUtils;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -63,17 +65,14 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     private List<Double> glucoseReadingArray;
     private ArrayList<String> glucoseDateTime;
     private ArrayList<String> glucoseReadingType;
-    private NumberFormat numberFormat;
+
+    private NumberFormat numberFormat = NumberFormatUtils.createDefaultNumberFormat();
 
     // Provide a suitable constructor (depends on the kind of dataset)
     public HistoryAdapter(Context context, HistoryPresenter presenter, int metricId) {
         this.mContext = context;
         this.presenter = presenter;
         this.metricId = metricId;
-
-        numberFormat = NumberFormat.getInstance();
-        numberFormat.setMaximumFractionDigits(3);
-        numberFormat.setMinimumFractionDigits(0);
 
         switch (metricId) {
             // Glucose
@@ -154,7 +153,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
                 GlucoseRanges ranges = new GlucoseRanges(mContext);
                 String color = ranges.colorFromReading(glucoseReadingArray.get(position));
 
-                if (presenter.getUnitMeasuerement().equals("mg/dL")) {
+                if (DomainConstants.MG_D_L.equals(presenter.getUnitMeasuerement())) {
                     double glucoseReading = glucoseReadingArray.get(position);
                     String reading = numberFormat.format(glucoseReading);
                     readingTextView.setText(mContext.getString(R.string.mg_dL_value, reading));

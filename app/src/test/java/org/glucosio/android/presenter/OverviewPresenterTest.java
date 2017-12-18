@@ -1,5 +1,6 @@
 package org.glucosio.android.presenter;
 
+import org.glucosio.android.DomainConstants;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
 import org.glucosio.android.db.User;
@@ -31,7 +32,7 @@ public class OverviewPresenterTest {
     @Mock
     private DatabaseHandler dbMock;
 
-    private User user = new User(1, "test", "en", "en", 23, "M", 1, "mg/dL", "", "", "Test", 0, 100);
+    private User user = new User(1, "test", "en", "en", 23, "M", 1, DomainConstants.MG_D_L, "", "", "Test", 0, 100);
 
     @Before
     public void setUp() {

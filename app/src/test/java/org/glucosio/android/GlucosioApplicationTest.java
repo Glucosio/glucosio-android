@@ -27,7 +27,7 @@ public class GlucosioApplicationTest {
     @Mock
     private DatabaseHandler databaseHandlerMock;
 
-    private User user = new User(1, "test", null, "en", 23, "M", 1, "mg/dL", "percentage", "", "Test", 0, 100);
+    private User user = new User(1, "test", null, "en", 23, "M", 1, DomainConstants.MG_D_L, "percentage", "", "Test", 0, 100);
 
     @Captor
     private ArgumentCaptor<User> userCaptor;
