@@ -13,7 +13,7 @@ import static org.mockito.Mockito.when;
 public class PreferencesActivityTest extends RobolectricTest {
     private PreferencesActivity activity;
 
-    private User user = new User(1, "test", "en", "en", 23, "M", 1, Constants.Units.MG_DL, "", "", "Test", 0, 100);
+    private final User user = new User(1, "test", "en", "en", 23, "M", 1, Constants.Units.MG_DL, "", "", "Test", 0, 100);
 
     @Before
     public void setUp() {

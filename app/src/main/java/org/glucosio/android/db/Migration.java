@@ -99,40 +99,13 @@ class Migration implements RealmMigration {
         RealmSchema schema = realm.getSchema();
 
         if (oldVersion == 0) {
-            schema.create(RObject.WEIGHT.key())
-                    .addField(RealmField.ID.key(), Long.class, FieldAttribute.PRIMARY_KEY, FieldAttribute.REQUIRED)
-                    .addField(RealmField.CREATED.key(), Date.class)
-                    .addField(RealmField.READING.key(), Integer.class, FieldAttribute.REQUIRED);
-
-            schema.create(RObject.PRESSURE.key())
-                    .addField(RealmField.ID.key(), Long.class, FieldAttribute.PRIMARY_KEY, FieldAttribute.REQUIRED)
-                    .addField(RealmField.CREATED.key(), Date.class)
-                    .addField(RealmField.MIN_READING.key(), Integer.class, FieldAttribute.REQUIRED)
-                    .addField(RealmField.MAX_READING.key(), Integer.class, FieldAttribute.REQUIRED);
-
-            schema.create(RObject.KETONE.key())
-                    .addField(RealmField.ID.key(), Long.class, FieldAttribute.PRIMARY_KEY, FieldAttribute.REQUIRED)
-                    .addField(RealmField.CREATED.key(), Date.class)
-                    .addField(RealmField.READING.key(), Double.class, FieldAttribute.REQUIRED);
-
-            schema.create(RObject.HB_1_AC.key())
-                    .addField(RealmField.ID.key(), Long.class, FieldAttribute.PRIMARY_KEY, FieldAttribute.REQUIRED)
-                    .addField(RealmField.CREATED.key(), Date.class)
-                    .addField(RealmField.READING.key(), Integer.class, FieldAttribute.REQUIRED);
-
-            schema.create(RObject.CHOLESTEROL.key())
-                    .addField(RealmField.ID.key(), Long.class, FieldAttribute.PRIMARY_KEY, FieldAttribute.REQUIRED)
-                    .addField(RealmField.CREATED.key(), Date.class)
-                    .addField(RealmField.TOTAL_READING.key(), Integer.class, FieldAttribute.REQUIRED)
-                    .addField(RealmField.LDL_READING.key(), Integer.class, FieldAttribute.REQUIRED)
-                    .addField(RealmField.HDL_READING.key(), Integer.class, FieldAttribute.REQUIRED);
+            createInitialSchema(schema);
             oldVersion++;
         }
 
         if (oldVersion == 1) {
             // Change HB1AC reading from int to double
-            RealmObjectSchema objectSchema = schema.get(RObject.HB_1_AC.key());
-            safeMigrationIntToDouble(objectSchema, RealmField.READING.key());
+            changeHB1ACReadingsToDouble(schema);
 
             oldVersion++;
         }
@@ -142,61 +115,107 @@ class Migration implements RealmMigration {
             // String preferred_unit_a1c
             // String preferred_unit_weight
             // and populate them with default values (% and kilograms)
-
-            schema.get(RObject.USER.key())
-                    .addField(RealmField.PREFERRED_UNIT_A1C.key(), String.class, FieldAttribute.REQUIRED)
-                    .addField(RealmField.PREFERRED_UNIT_WEIGHT.key(), String.class, FieldAttribute.REQUIRED)
-                    .transform(new RealmObjectSchema.Function() {
-                        @Override
-                        public void apply(DynamicRealmObject obj) {
-                            obj.set(RealmField.PREFERRED_UNIT_A1C.key(), "percentage");
-                            obj.set(RealmField.PREFERRED_UNIT_WEIGHT.key(), "kilograms");
-                        }
-                    });
+            addWeightAndA1CUnitsToUser(schema);
 
             oldVersion++;
         }
 
         if (oldVersion == 3) {
             // Add Reminders
-            schema.create(RObject.REMINDER.key())
-                    .addField(RealmField.ID.key(), Long.class, FieldAttribute.PRIMARY_KEY, FieldAttribute.REQUIRED)
-                    .addField(RealmField.METRIC.key(), String.class)
-                    .addField(RealmField.ALARM_TIME.key(), Date.class)
-                    .addField(RealmField.ACTIVE.key(), Boolean.class, FieldAttribute.REQUIRED)
-                    .addField(RealmField.ONE_TIME.key(), Boolean.class, FieldAttribute.REQUIRED)
-                    .addField(RealmField.LABEL.key(), String.class);
+            addReminders(schema);
 
             oldVersion++;
         }
 
         if (oldVersion == 4) {
-            // Change Weight reading from int to double
-            RealmObjectSchema objectSchema = schema.get(RObject.WEIGHT.key());
-            safeMigrationIntToDouble(objectSchema, RealmField.READING.key());
-
-            // Change Pressure max and min readings from int to double
-            objectSchema = schema.get(RObject.PRESSURE.key());
-            safeMigrationIntToDouble(objectSchema, RealmField.MIN_READING.key());
-            safeMigrationIntToDouble(objectSchema, RealmField.MAX_READING.key());
-
-            // Change Glucose reading from int to double
-            objectSchema = schema.get(RObject.GLUCOSE.key());
-            safeMigrationIntToDouble(objectSchema, RealmField.READING.key());
-
-            // Change Cholesterol total, ldl and hdl readings from int to double
-            objectSchema = schema.get(RObject.CHOLESTEROL.key());
-            safeMigrationIntToDouble(objectSchema, RealmField.TOTAL_READING.key());
-            safeMigrationIntToDouble(objectSchema, RealmField.LDL_READING.key());
-            safeMigrationIntToDouble(objectSchema, RealmField.HDL_READING.key());
-
-            // Change User custom range min and max from int to double
-            objectSchema = schema.get(RObject.USER.key());
-            safeMigrationIntToDouble(objectSchema, RealmField.CUSTOM_RANGE_MIN.key());
-            safeMigrationIntToDouble(objectSchema, RealmField.CUSTOM_RANGE_MAX.key());
+            migrateAllReadingsToDouble(schema);
 
             oldVersion++;
         }
+    }
+
+    private void migrateAllReadingsToDouble(RealmSchema schema) {
+        // Change Weight reading from int to double
+        RealmObjectSchema objectSchema = schema.get(RObject.WEIGHT.key());
+        safeMigrationIntToDouble(objectSchema, RealmField.READING.key());
+
+        // Change Pressure max and min readings from int to double
+        objectSchema = schema.get(RObject.PRESSURE.key());
+        safeMigrationIntToDouble(objectSchema, RealmField.MIN_READING.key());
+        safeMigrationIntToDouble(objectSchema, RealmField.MAX_READING.key());
+
+        // Change Glucose reading from int to double
+        objectSchema = schema.get(RObject.GLUCOSE.key());
+        safeMigrationIntToDouble(objectSchema, RealmField.READING.key());
+
+        // Change Cholesterol total, ldl and hdl readings from int to double
+        objectSchema = schema.get(RObject.CHOLESTEROL.key());
+        safeMigrationIntToDouble(objectSchema, RealmField.TOTAL_READING.key());
+        safeMigrationIntToDouble(objectSchema, RealmField.LDL_READING.key());
+        safeMigrationIntToDouble(objectSchema, RealmField.HDL_READING.key());
+
+        // Change User custom range min and max from int to double
+        objectSchema = schema.get(RObject.USER.key());
+        safeMigrationIntToDouble(objectSchema, RealmField.CUSTOM_RANGE_MIN.key());
+        safeMigrationIntToDouble(objectSchema, RealmField.CUSTOM_RANGE_MAX.key());
+    }
+
+    private void addReminders(RealmSchema schema) {
+        schema.create(RObject.REMINDER.key())
+                .addField(RealmField.ID.key(), Long.class, FieldAttribute.PRIMARY_KEY, FieldAttribute.REQUIRED)
+                .addField(RealmField.METRIC.key(), String.class)
+                .addField(RealmField.ALARM_TIME.key(), Date.class)
+                .addField(RealmField.ACTIVE.key(), Boolean.class, FieldAttribute.REQUIRED)
+                .addField(RealmField.ONE_TIME.key(), Boolean.class, FieldAttribute.REQUIRED)
+                .addField(RealmField.LABEL.key(), String.class);
+    }
+
+    private void addWeightAndA1CUnitsToUser(RealmSchema schema) {
+        schema.get(RObject.USER.key())
+                .addField(RealmField.PREFERRED_UNIT_A1C.key(), String.class, FieldAttribute.REQUIRED)
+                .addField(RealmField.PREFERRED_UNIT_WEIGHT.key(), String.class, FieldAttribute.REQUIRED)
+                .transform(new RealmObjectSchema.Function() {
+                    @Override
+                    public void apply(DynamicRealmObject obj) {
+                        obj.set(RealmField.PREFERRED_UNIT_A1C.key(), "percentage");
+                        obj.set(RealmField.PREFERRED_UNIT_WEIGHT.key(), "kilograms");
+                    }
+                });
+    }
+
+    private void changeHB1ACReadingsToDouble(RealmSchema schema) {
+        RealmObjectSchema objectSchema = schema.get(RObject.HB_1_AC.key());
+        safeMigrationIntToDouble(objectSchema, RealmField.READING.key());
+    }
+
+    private void createInitialSchema(RealmSchema schema) {
+        schema.create(RObject.WEIGHT.key())
+                .addField(RealmField.ID.key(), Long.class, FieldAttribute.PRIMARY_KEY, FieldAttribute.REQUIRED)
+                .addField(RealmField.CREATED.key(), Date.class)
+                .addField(RealmField.READING.key(), Integer.class, FieldAttribute.REQUIRED);
+
+        schema.create(RObject.PRESSURE.key())
+                .addField(RealmField.ID.key(), Long.class, FieldAttribute.PRIMARY_KEY, FieldAttribute.REQUIRED)
+                .addField(RealmField.CREATED.key(), Date.class)
+                .addField(RealmField.MIN_READING.key(), Integer.class, FieldAttribute.REQUIRED)
+                .addField(RealmField.MAX_READING.key(), Integer.class, FieldAttribute.REQUIRED);
+
+        schema.create(RObject.KETONE.key())
+                .addField(RealmField.ID.key(), Long.class, FieldAttribute.PRIMARY_KEY, FieldAttribute.REQUIRED)
+                .addField(RealmField.CREATED.key(), Date.class)
+                .addField(RealmField.READING.key(), Double.class, FieldAttribute.REQUIRED);
+
+        schema.create(RObject.HB_1_AC.key())
+                .addField(RealmField.ID.key(), Long.class, FieldAttribute.PRIMARY_KEY, FieldAttribute.REQUIRED)
+                .addField(RealmField.CREATED.key(), Date.class)
+                .addField(RealmField.READING.key(), Integer.class, FieldAttribute.REQUIRED);
+
+        schema.create(RObject.CHOLESTEROL.key())
+                .addField(RealmField.ID.key(), Long.class, FieldAttribute.PRIMARY_KEY, FieldAttribute.REQUIRED)
+                .addField(RealmField.CREATED.key(), Date.class)
+                .addField(RealmField.TOTAL_READING.key(), Integer.class, FieldAttribute.REQUIRED)
+                .addField(RealmField.LDL_READING.key(), Integer.class, FieldAttribute.REQUIRED)
+                .addField(RealmField.HDL_READING.key(), Integer.class, FieldAttribute.REQUIRED);
     }
 
     private void safeMigrationIntToDouble(@Nullable RealmObjectSchema objectSchema, @NonNull String columnName) {

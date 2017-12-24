@@ -66,7 +66,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     private List<String> glucoseDateTime;
     private List<String> glucoseReadingType;
 
-    private NumberFormat numberFormat = NumberFormatUtils.createDefaultNumberFormat();
+    private final NumberFormat numberFormat = NumberFormatUtils.createDefaultNumberFormat();
 
     // Provide a suitable constructor (depends on the kind of dataset)
     public HistoryAdapter(Context context, HistoryPresenter presenter, int metricId) {
