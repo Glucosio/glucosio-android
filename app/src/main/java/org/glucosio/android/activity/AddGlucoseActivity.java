@@ -31,7 +31,7 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
-import org.glucosio.android.DomainConstants;
+import org.glucosio.android.Constants;
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.analytics.Analytics;
@@ -112,7 +112,7 @@ public class AddGlucoseActivity extends AddReadingActivity {
 
         TextView unitM = findViewById(R.id.glucose_add_unit_measurement);
 
-        if (presenter.getUnitMeasuerement().equals(DomainConstants.MG_D_L)) {
+        if (Constants.Units.MG_DL.equals(presenter.getUnitMeasurement())) {
             unitM.setText(getString(R.string.mg_dL));
         } else {
             unitM.setText(getString(R.string.mmol_L));
@@ -126,7 +126,7 @@ public class AddGlucoseActivity extends AddReadingActivity {
             GlucoseReading readingToEdit = presenter.getGlucoseReadingById(this.getEditId());
 
             String readingString;
-            if (presenter.getUnitMeasuerement().equals(DomainConstants.MG_D_L)) {
+            if (presenter.getUnitMeasurement().equals(Constants.Units.MG_DL)) {
                 readingString = String.valueOf(readingToEdit.getReading());
             } else {
                 readingString = String.valueOf(GlucosioConverter.glucoseToMmolL(readingToEdit.getReading()));
@@ -165,9 +165,8 @@ public class AddGlucoseActivity extends AddReadingActivity {
             p = getIntent().getExtras();
             reading = p.getString("reading");
             if (reading != null) {
-                // If yes, first convert the decimal value from Freestyle to Double
-                double d = Double.parseDouble(reading);
-                readingTextView.setText(numberFormat.format(d));
+                double readingDouble = Double.parseDouble(reading);
+                readingTextView.setText(numberFormat.format(readingDouble));
                 readingInputLayout.setErrorEnabled(true);
                 readingInputLayout.setError(getResources().getString(R.string.dialog_add_glucose_freestylelibre_added));
                 addFreeStyleButton.setVisibility(View.GONE);

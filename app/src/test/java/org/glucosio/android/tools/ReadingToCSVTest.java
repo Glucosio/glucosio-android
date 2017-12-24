@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.os.Environment;
 import io.realm.Realm;
-import org.glucosio.android.DomainConstants;
+import org.glucosio.android.Constants;
 import org.glucosio.android.R;
 import org.glucosio.android.db.GlucoseReading;
 import org.junit.After;
@@ -108,7 +108,7 @@ public class ReadingToCSVTest {
 
     @Test
     public void whenNoDataGeneratesEmptyCSVWithHeader() throws IOException {
-        final ReadingToCSV r = createReadingToCSV(DomainConstants.MG_D_L);
+        final ReadingToCSV r = createReadingToCSV(Constants.Units.MG_DL);
         final String path = r.createCSVFile(realm, new ArrayList<GlucoseReading>());
 
         assertFileContentEqualsToString(path, headerAsString());
@@ -121,10 +121,10 @@ public class ReadingToCSVTest {
         List<GlucoseReading> values = new ArrayList<>();
         values.add(new GlucoseReading(80, "type", created, "notes"));
 
-        final ReadingToCSV r = createReadingToCSV(DomainConstants.MG_D_L);
+        final ReadingToCSV r = createReadingToCSV(Constants.Units.MG_DL);
         final String path = r.createCSVFile(realm, values);
 
-        assertFileContentEqualsToString(path, headerAsString(), valuesAsString(values.get(0), DomainConstants.MG_D_L));
+        assertFileContentEqualsToString(path, headerAsString(), valuesAsString(values.get(0), Constants.Units.MG_DL));
     }
 
     private ReadingToCSV createReadingToCSV(String um) {

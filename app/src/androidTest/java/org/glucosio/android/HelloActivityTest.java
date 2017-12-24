@@ -165,13 +165,13 @@ public class HelloActivityTest {
                 .perform(CustomClickAction.click());
 
         // Select random Unit
-        onData(allOf(is(instanceOf(String.class)), is(DomainConstants.MG_D_L)))
+        onData(allOf(is(instanceOf(String.class)), is(Constants.Units.MG_DL)))
                 .perform(CustomClickAction.click());
 
         // Locate Spinner view and check its text is equal with VALID_UNIT
         onView(allOf(withId(R.id.custom_spinner),
                 withParent(withId(R.id.activity_hello_spinner_preferred_unit))))
-                .check(matches(withSpinnerText(DomainConstants.MG_D_L)));
+                .check(matches(withSpinnerText(Constants.Units.MG_DL)));
     }
 
     @Test

@@ -26,7 +26,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import org.glucosio.android.DomainConstants;
+import org.glucosio.android.Constants;
 import org.glucosio.android.R;
 import org.glucosio.android.presenter.HistoryPresenter;
 import org.glucosio.android.tools.GlucoseRanges;
@@ -153,7 +153,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
                 GlucoseRanges ranges = new GlucoseRanges(mContext);
                 String color = ranges.colorFromReading(glucoseReadingArray.get(position));
 
-                if (DomainConstants.MG_D_L.equals(presenter.getUnitMeasuerement())) {
+                if (Constants.Units.MG_DL.equals(presenter.getUnitMeasuerement())) {
                     double glucoseReading = glucoseReadingArray.get(position);
                     String reading = numberFormat.format(glucoseReading);
                     readingTextView.setText(mContext.getString(R.string.mg_dL_value, reading));

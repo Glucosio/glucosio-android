@@ -1,6 +1,6 @@
 package org.glucosio.android.presenter;
 
-import org.glucosio.android.DomainConstants;
+import org.glucosio.android.Constants;
 import org.glucosio.android.activity.A1cCalculatorActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.User;
@@ -27,7 +27,7 @@ public class A1CCalculatorPresenterTest {
     @InjectMocks
     private A1CCalculatorPresenter presenter;
 
-    private User user = new User(1, "test", "en", "en", 23, "M", 1, DomainConstants.MG_D_L, "percentage", "", "Test", 0, 100);
+    private User user = new User(1, "test", "en", "en", 23, "M", 1, Constants.Units.MG_DL, "percentage", "", "Test", 0, 100);
 
     @Before
     public void setUp() {

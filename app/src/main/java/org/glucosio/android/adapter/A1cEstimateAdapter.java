@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-import org.glucosio.android.DomainConstants;
+import org.glucosio.android.Constants;
 import org.glucosio.android.R;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.object.A1cEstimate;
@@ -59,7 +59,7 @@ public class A1cEstimateAdapter extends ArrayAdapter<A1cEstimate> {
             }
 
             if (glucoseAverage != null) {
-                if (DomainConstants.MG_D_L.equals(databaseHandler.getUser(1).getPreferred_unit())) {
+                if (Constants.Units.MG_DL.equals(databaseHandler.getUser(1).getPreferred_unit())) {
                     glucoseAverage.setText(getContext().getString(R.string.mg_dL_value, p.getGlucoseAverage()));
                 } else {
                     double mmol = GlucosioConverter.glucoseToMgDl(Double.parseDouble(p.getGlucoseAverage()));

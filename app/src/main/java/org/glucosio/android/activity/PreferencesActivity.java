@@ -41,7 +41,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.EditText;
-import org.glucosio.android.DomainConstants;
+import org.glucosio.android.Constants;
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.analytics.Analytics;
@@ -169,7 +169,7 @@ public class PreferencesActivity extends AppCompatActivity {
             unitPrefWeight.setValue(getUnitWeight(user.getPreferred_unit_weight()));
             rangePref.setValue(user.getPreferred_range());
 
-            if (DomainConstants.MG_D_L.equals(user.getPreferred_unit())) {
+            if (Constants.Units.MG_DL.equals(user.getPreferred_unit())) {
                 maxRangePref.setDefaultValue(user.getCustom_range_max());
                 minRangePref.setDefaultValue(user.getCustom_range_min());
             } else {
@@ -239,8 +239,8 @@ public class PreferencesActivity extends AppCompatActivity {
             unitPrefGlucose.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    if (newValue.toString().equals(getResources().getString(R.string.helloactivity_spinner_preferred_glucose_unit_1))) {
-                        updatedUser.setPreferred_unit(DomainConstants.MG_D_L);
+                    if (getResources().getString(R.string.helloactivity_spinner_preferred_glucose_unit_1).equals(newValue.toString())) {
+                        updatedUser.setPreferred_unit(Constants.Units.MG_DL);
                     } else {
                         updatedUser.setPreferred_unit("mmol/L");
                     }
@@ -306,7 +306,7 @@ public class PreferencesActivity extends AppCompatActivity {
                     if (TextUtils.isEmpty(newValue.toString().trim())) {
                         return false;
                     }
-                    if (user.getPreferred_unit().equals(DomainConstants.MG_D_L)) {
+                    if (user.getPreferred_unit().equals(Constants.Units.MG_DL)) {
                         updatedUser.setCustom_range_min(Double.parseDouble(newValue.toString()));
                     } else {
                         updatedUser.setCustom_range_min(GlucosioConverter.glucoseToMgDl(Double.parseDouble(newValue.toString())));
@@ -329,7 +329,7 @@ public class PreferencesActivity extends AppCompatActivity {
                     if (TextUtils.isEmpty(newValue.toString().trim())) {
                         return false;
                     }
-                    if (user.getPreferred_unit().equals(DomainConstants.MG_D_L)) {
+                    if (user.getPreferred_unit().equals(Constants.Units.MG_DL)) {
                         updatedUser.setCustom_range_max(Double.parseDouble(newValue.toString()));
                     } else {
                         updatedUser.setCustom_range_max(GlucosioConverter.glucoseToMgDl(Double.parseDouble(newValue.toString())));
@@ -403,7 +403,7 @@ public class PreferencesActivity extends AppCompatActivity {
         }
 
         private String getGlucoseUnitValue(final String glucoseUnit) {
-            @StringRes int unitResId = DomainConstants.MG_D_L.equals(glucoseUnit) ?
+            @StringRes int unitResId = Constants.Units.MG_DL.equals(glucoseUnit) ?
                     R.string.helloactivity_spinner_preferred_glucose_unit_1 :
                     R.string.helloactivity_spinner_preferred_glucose_unit_2;
             return getResources().getString(unitResId);
@@ -467,7 +467,7 @@ public class PreferencesActivity extends AppCompatActivity {
             unitPrefWeight.setSummary(getUnitWeight(user.getPreferred_unit_weight()));
             rangePref.setSummary(user.getPreferred_range());
 
-            if (user.getPreferred_unit().equals(DomainConstants.MG_D_L)) {
+            if (Constants.Units.MG_DL.equals(user.getPreferred_unit())) {
                 minRangePref.setSummary(String.valueOf(user.getCustom_range_min()));
                 maxRangePref.setSummary(String.valueOf(user.getCustom_range_max()));
             } else {
