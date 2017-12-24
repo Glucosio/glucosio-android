@@ -13,7 +13,7 @@ import org.robolectric.annotation.Config;
 
 @Ignore
 @RunWith(RobolectricTestRunner.class)
-@Config(constants = BuildConfig.class, sdk = 21)
+@Config(sdk = 25)
 public abstract class RobolectricTest {
     protected Analytics getAnalytics() {
         return getTestApplication().getAnalytics();
