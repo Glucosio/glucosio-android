@@ -105,7 +105,7 @@ public class DatabaseHandler {
         realm.commitTransaction();
     }
 
-    public void deleteReminder(Reminder reminder) {
+    private void deleteReminder(Reminder reminder) {
         realm.beginTransaction();
         reminder.deleteFromRealm();
         realm.commitTransaction();
@@ -251,39 +251,27 @@ public class DatabaseHandler {
         return readingList;
     }
 
-    public ArrayList<GlucoseReading> getGlucoseReadings(Realm realm) {
+    public List<GlucoseReading> getGlucoseReadings(Realm realm) {
         RealmResults<GlucoseReading> results =
                 realm.where(GlucoseReading.class)
                         .findAllSorted("created", Sort.DESCENDING);
-        ArrayList<GlucoseReading> readingList = new ArrayList<>();
-        for (int i = 0; i < results.size(); i++) {
-            readingList.add(results.get(i));
-        }
-        return readingList;
+        return new ArrayList<>(results);
     }
 
-    public ArrayList<GlucoseReading> getGlucoseReadings(Date from, Date to) {
+    private ArrayList<GlucoseReading> getGlucoseReadings(Date from, Date to) {
         RealmResults<GlucoseReading> results =
                 realm.where(GlucoseReading.class)
                         .between("created", from, to)
                         .findAllSorted("created", Sort.DESCENDING);
-        ArrayList<GlucoseReading> readingList = new ArrayList<>();
-        for (int i = 0; i < results.size(); i++) {
-            readingList.add(results.get(i));
-        }
-        return readingList;
+        return new ArrayList<>(results);
     }
 
-    public ArrayList<GlucoseReading> getGlucoseReadings(Realm realm, Date from, Date to) {
+    public List<GlucoseReading> getGlucoseReadings(Realm realm, Date from, Date to) {
         RealmResults<GlucoseReading> results =
                 realm.where(GlucoseReading.class)
                         .between("created", from, to)
                         .findAllSorted("created", Sort.DESCENDING);
-        ArrayList<GlucoseReading> readingList = new ArrayList<>();
-        for (int i = 0; i < results.size(); i++) {
-            readingList.add(results.get(i));
-        }
-        return readingList;
+        return new ArrayList<>(results);
     }
 
     public GlucoseReading getGlucoseReadingById(long id) {
@@ -292,22 +280,19 @@ public class DatabaseHandler {
                 .findFirst();
     }
 
-    public ArrayList<Long> getGlucoseIdAsArray() {
+    public List<Long> getGlucoseIdAsList() {
         List<GlucoseReading> glucoseReading = getGlucoseReadings();
-        ArrayList<Long> idArray = new ArrayList<Long>();
-        int i;
+        List<Long> idArray = new ArrayList<>(glucoseReading.size());
 
-        for (i = 0; i < glucoseReading.size(); i++) {
-            long id;
-            GlucoseReading singleReading = glucoseReading.get(i);
-            id = singleReading.getId();
+        for (GlucoseReading aGlucoseReading : glucoseReading) {
+            long id = aGlucoseReading.getId();
             idArray.add(id);
         }
 
         return idArray;
     }
 
-    public List<Double> getGlucoseReadingAsArray() {
+    public List<Double> getGlucoseReadingAsList() {
         List<GlucoseReading> glucoseReading = getGlucoseReadings();
         ArrayList<Double> readingArray = new ArrayList<>(glucoseReading.size());
         int i;
@@ -321,97 +306,42 @@ public class DatabaseHandler {
         return readingArray;
     }
 
-    public ArrayList<String> getGlucoseTypeAsArray() {
+    public List<String> getGlucoseTypeAsList() {
         List<GlucoseReading> glucoseReading = getGlucoseReadings();
-        ArrayList<String> typeArray = new ArrayList<String>();
-        int i;
+        List<String> typeArray = new ArrayList<>(glucoseReading.size());
 
-        for (i = 0; i < glucoseReading.size(); i++) {
-            String reading;
-            GlucoseReading singleReading = glucoseReading.get(i);
-            reading = singleReading.getReading_type();
+        for (GlucoseReading aGlucoseReading : glucoseReading) {
+            String reading = aGlucoseReading.getReading_type();
             typeArray.add(reading);
         }
 
         return typeArray;
     }
 
-    public ArrayList<String> getGlucoseNotesAsArray() {
+    public List<String> getGlucoseNotesAsList() {
         List<GlucoseReading> glucoseReading = getGlucoseReadings();
-        ArrayList<String> notesArray = new ArrayList<String>();
-        int i;
+        ArrayList<String> notesArray = new ArrayList<>(glucoseReading.size());
 
-        for (i = 0; i < glucoseReading.size(); i++) {
-            String reading;
-            GlucoseReading singleReading = glucoseReading.get(i);
-            reading = singleReading.getNotes();
+        for (GlucoseReading aGlucoseReading : glucoseReading) {
+            String reading = aGlucoseReading.getNotes();
             notesArray.add(reading);
         }
 
         return notesArray;
     }
 
-    public ArrayList<String> getGlucoseDateTimeAsArray() {
+    public List<String> getGlucoseDateTimeAsList() {
         List<GlucoseReading> glucoseReading = getGlucoseReadings();
-        ArrayList<String> datetimeArray = new ArrayList<String>();
-        int i;
+        ArrayList<String> datetimeArray = new ArrayList<>(glucoseReading.size());
         DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
-        for (i = 0; i < glucoseReading.size(); i++) {
-            String reading;
-            GlucoseReading singleReading = glucoseReading.get(i);
-            reading = inputFormat.format(singleReading.getCreated());
+        for (GlucoseReading singleReading : glucoseReading) {
+            String reading = inputFormat.format(singleReading.getCreated());
             datetimeArray.add(reading);
         }
 
         return datetimeArray;
     }
-
-    public Date getFirstGlucoseDateTime() {
-        return realm.where(GlucoseReading.class).minimumDate("created");
-    }
-
-    public Date getLastGlucoseDateTime() {
-        return realm.where(GlucoseReading.class).maximumDate("created");
-    }
-
-/*    private ArrayList<Integer> getGlucoseReadingsForLastMonthAsArray(){
-        Calendar calendar = Calendar.getInstance();
-        DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        String now = inputFormat.format(calendar.getTime());
-        calendar.add(Calendar.MONTH, -1);
-        String oneMonthAgo = inputFormat.format(calendar.getTime());
-
-
-        String[] parameters = new String[] { oneMonthAgo, now } ;
-        String[] columns = new String[] { "reading" };
-        String whereString = "created_at between ? and ?";
-
-        List<GlucoseReading> gReadings;
-        ArrayList<Integer> readings = new ArrayList<Integer>();
-
-        gReadings = GlucoseReading.getGlucoseReadingsWithZeros(whereString);
-        int i;
-        for (i=0; i < gReadings.size(); i++){
-            readings.add(gReadings.get(i).getGlucoseReading());
-        }
-
-        return readings;
-    }
-
-    public Integer getAverageGlucoseReadingForLastMonth() {
-        ArrayList<Integer> readings = getGlucoseReadingsForLastMonthAsArray();
-        int sum = 0;
-        int numberOfReadings = readings.size();
-        for (int i=0; i < numberOfReadings; i++) {
-            sum += readings.get(i);
-        }
-        if (numberOfReadings > 0){
-            return Math.round(sum / numberOfReadings);
-        } else {
-            return 0;
-        }
-    }*/
 
     public List<Integer> getAverageGlucoseReadingsByWeek() {
         JodaTimeAndroid.init(mContext);
@@ -420,7 +350,7 @@ public class DatabaseHandler {
         DateTime minDateTime = new DateTime(realm.where(GlucoseReading.class).minimumDate("created").getTime());
 
         DateTime currentDateTime = minDateTime;
-        DateTime newDateTime = minDateTime;
+        DateTime newDateTime;
 
         ArrayList<Integer> averageReadings = new ArrayList<Integer>();
 
@@ -445,7 +375,7 @@ public class DatabaseHandler {
         DateTime minDateTime = new DateTime(realm.where(GlucoseReading.class).minimumDate("created").getTime());
 
         DateTime currentDateTime = minDateTime;
-        DateTime newDateTime = minDateTime;
+        DateTime newDateTime;
 
         ArrayList<String> finalWeeks = new ArrayList<String>();
 
@@ -468,7 +398,7 @@ public class DatabaseHandler {
         DateTime minDateTime = new DateTime(realm.where(GlucoseReading.class).minimumDate("created").getTime());
 
         DateTime currentDateTime = minDateTime;
-        DateTime newDateTime = minDateTime;
+        DateTime newDateTime;
 
         ArrayList<Integer> averageReadings = new ArrayList<Integer>();
 

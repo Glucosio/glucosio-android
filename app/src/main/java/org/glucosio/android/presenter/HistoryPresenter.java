@@ -97,28 +97,28 @@ public class HistoryPresenter {
         return dB.getUser(1).getPreferred_unit_a1c();
     }
 
-    public ArrayList<Long> getGlucoseId() {
-        return dB.getGlucoseIdAsArray();
+    public List<Long> getGlucoseId() {
+        return dB.getGlucoseIdAsList();
     }
 
-    public ArrayList<String> getGlucoseReadingType() {
-        return dB.getGlucoseTypeAsArray();
+    public List<String> getGlucoseReadingType() {
+        return dB.getGlucoseTypeAsList();
     }
 
-    public ArrayList<String> getGlucoseNotes() {
-        return dB.getGlucoseNotesAsArray();
+    public List<String> getGlucoseNotes() {
+        return dB.getGlucoseNotesAsList();
     }
 
     public List<Double> getGlucoseReading() {
-        return dB.getGlucoseReadingAsArray();
+        return dB.getGlucoseReadingAsList();
     }
 
-    public ArrayList<String> getGlucoseDateTime() {
-        return dB.getGlucoseDateTimeAsArray();
+    public List<String> getGlucoseDateTime() {
+        return dB.getGlucoseDateTimeAsList();
     }
 
     public int getGlucoseReadingsNumber() {
-        return dB.getGlucoseReadingAsArray().size();
+        return dB.getGlucoseReadingAsList().size();
     }
 
     public List<Double> getKetoneReading() {

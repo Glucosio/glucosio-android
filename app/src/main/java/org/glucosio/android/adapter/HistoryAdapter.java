@@ -60,11 +60,11 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     private ArrayList<Double> hb1acReadingArray;
     private ArrayList<Long> hb1acIdArray;
     private HistoryPresenter presenter;
-    private ArrayList<Long> glucoseIdArray;
-    private ArrayList<String> glucoseNotes;
+    private List<Long> glucoseIdArray;
+    private List<String> glucoseNotes;
     private List<Double> glucoseReadingArray;
-    private ArrayList<String> glucoseDateTime;
-    private ArrayList<String> glucoseReadingType;
+    private List<String> glucoseDateTime;
+    private List<String> glucoseReadingType;
 
     private NumberFormat numberFormat = NumberFormatUtils.createDefaultNumberFormat();
 
