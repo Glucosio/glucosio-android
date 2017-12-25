@@ -3,6 +3,7 @@ package org.glucosio.android.activity;
 import org.glucosio.android.Constants;
 import org.glucosio.android.RobolectricTest;
 import org.glucosio.android.db.User;
+import org.glucosio.android.db.UserBuilder;
 import org.junit.Before;
 import org.junit.Test;
 import org.robolectric.Robolectric;
@@ -13,7 +14,21 @@ import static org.mockito.Mockito.when;
 public class PreferencesActivityTest extends RobolectricTest {
     private PreferencesActivity activity;
 
-    private final User user = new User(1, "test", "en", "en", 23, "M", 1, Constants.Units.MG_DL, "", "", "Test", 0, 100);
+    private final User user = new UserBuilder()
+            .setId(1)
+            .setName("test")
+            .setPreferredLanguage("en")
+            .setCountry("en")
+            .setAge(23)
+            .setGender("M")
+            .setDiabetesType(1)
+            .setPrefferedUnit(Constants.Units.MG_DL)
+            .setA1cUnit("")
+            .setPreferredWeightUnit("")
+            .setPreferredRange("Test")
+            .setMinRange(0)
+            .setMaxRange(100)
+            .createUser();
 
     @Before
     public void setUp() {

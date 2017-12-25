@@ -26,7 +26,6 @@ import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.VisibleForTesting;
-
 import org.glucosio.android.activity.A1cCalculatorActivity;
 import org.glucosio.android.activity.HelloActivity;
 import org.glucosio.android.analytics.Analytics;
@@ -39,7 +38,6 @@ import org.glucosio.android.presenter.A1CCalculatorPresenter;
 import org.glucosio.android.presenter.HelloPresenter;
 import org.glucosio.android.tools.LocaleHelper;
 import org.glucosio.android.tools.Preferences;
-
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 public class GlucosioApplication extends Application {
@@ -95,11 +93,7 @@ public class GlucosioApplication extends Application {
         boolean cleanLocaleDone = preferences.isLocaleCleaned();
 
         if (!cleanLocaleDone) {
-            User updatedUser = new User(user.getId(), user.getName(), user.getPreferred_language(),
-                    user.getCountry(), user.getAge(), user.getGender(), user.getD_type(),
-                    user.getPreferred_unit(), user.getPreferred_unit_a1c(),
-                    user.getPreferred_unit_weight(), user.getPreferred_range(),
-                    user.getCustom_range_min(), user.getCustom_range_max());
+            User updatedUser = new User(user);
             updatedUser.setPreferred_language(null);
             //TODO: is it long operation? should we move it to separate thread?
             getDBHandler().updateUser(updatedUser);

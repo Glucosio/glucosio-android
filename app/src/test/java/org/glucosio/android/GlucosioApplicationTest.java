@@ -3,6 +3,7 @@ package org.glucosio.android;
 import android.support.annotation.NonNull;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.User;
+import org.glucosio.android.db.UserBuilder;
 import org.glucosio.android.tools.Preferences;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,7 +28,21 @@ public class GlucosioApplicationTest {
     @Mock
     private DatabaseHandler databaseHandlerMock;
 
-    private User user = new User(1, "test", null, "en", 23, "M", 1, Constants.Units.MG_DL, "percentage", "", "Test", 0, 100);
+    private final User user = new UserBuilder()
+            .setId(1)
+            .setName("test")
+            .setPreferredLanguage(null)
+            .setCountry("en")
+            .setAge(23)
+            .setGender("M")
+            .setDiabetesType(1)
+            .setPrefferedUnit(Constants.Units.MG_DL)
+            .setA1cUnit("percentage")
+            .setPreferredWeightUnit("")
+            .setPreferredRange("Test")
+            .setMinRange(0)
+            .setMaxRange(100)
+            .createUser();
 
     @Captor
     private ArgumentCaptor<User> userCaptor;

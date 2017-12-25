@@ -53,6 +53,7 @@ allprojects {
     ext.junitVer = '4.12'
     ext.mockitoVer = '1.10.19'
     ext.androidAssertJVer = '1.1.1'
+    ext.robolectricVer = '3.6.1'
 
     apply plugin: 'com.github.ben-manes.versions'
 }

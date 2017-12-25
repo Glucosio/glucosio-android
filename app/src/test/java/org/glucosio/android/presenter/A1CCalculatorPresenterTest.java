@@ -4,6 +4,7 @@ import org.glucosio.android.Constants;
 import org.glucosio.android.activity.A1cCalculatorActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.User;
+import org.glucosio.android.db.UserBuilder;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,7 +28,20 @@ public class A1CCalculatorPresenterTest {
     @InjectMocks
     private A1CCalculatorPresenter presenter;
 
-    private final User user = new User(1, "test", "en", "en", 23, "M", 1, Constants.Units.MG_DL, "percentage", "", "Test", 0, 100);
+    private final User user = new UserBuilder()
+            .setId(1).setName("test")
+            .setPreferredLanguage("en")
+            .setCountry("en")
+            .setAge(23)
+            .setGender("M")
+            .setDiabetesType(1)
+            .setPrefferedUnit(Constants.Units.MG_DL)
+            .setA1cUnit("percentage")
+            .setPreferredWeightUnit("")
+            .setPreferredRange("Test")
+            .setMinRange(0)
+            .setMaxRange(100)
+            .createUser();
 
     @Before
     public void setUp() {

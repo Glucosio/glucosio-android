@@ -4,6 +4,7 @@ import org.glucosio.android.Constants;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
 import org.glucosio.android.db.User;
+import org.glucosio.android.db.UserBuilder;
 import org.glucosio.android.view.OverviewView;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
@@ -32,7 +33,20 @@ public class OverviewPresenterTest {
     @Mock
     private DatabaseHandler dbMock;
 
-    private User user = new User(1, "test", "en", "en", 23, "M", 1, Constants.Units.MG_DL, "", "", "Test", 0, 100);
+    private User user = new UserBuilder()
+            .setId(1).setName("test")
+            .setPreferredLanguage("en")
+            .setCountry("en")
+            .setAge(23)
+            .setGender("M")
+            .setDiabetesType(1)
+            .setPrefferedUnit(Constants.Units.MG_DL)
+            .setA1cUnit("")
+            .setPreferredWeightUnit("")
+            .setPreferredRange("Test")
+            .setMinRange(0)
+            .setMaxRange(100)
+            .createUser();
 
     @Before
     public void setUp() {
