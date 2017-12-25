@@ -23,6 +23,7 @@ package org.glucosio.android.presenter;
 import org.glucosio.android.activity.AddCholesterolActivity;
 import org.glucosio.android.db.CholesterolReading;
 import org.glucosio.android.db.DatabaseHandler;
+import org.glucosio.android.tools.ReadingTools;
 
 import java.util.Date;
 
@@ -58,9 +59,9 @@ public class AddCholesterolPresenter extends AddReadingPresenter {
 
     private CholesterolReading generateCholesterolReading(String totalCho, String LDLCho, String HDLCho) {
         Date finalDateTime = getReadingTime();
-        double totalChoFinal = Double.parseDouble(totalCho);
-        double LDLChoFinal = Double.parseDouble(LDLCho);
-        double HDLChoFinal = Double.parseDouble(HDLCho);
+        double totalChoFinal = ReadingTools.safeParseDouble(totalCho);
+        double LDLChoFinal = ReadingTools.safeParseDouble(LDLCho);
+        double HDLChoFinal = ReadingTools.safeParseDouble(HDLCho);
         return new CholesterolReading(totalChoFinal, LDLChoFinal, HDLChoFinal, finalDateTime);
     }
 

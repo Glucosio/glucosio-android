@@ -51,6 +51,7 @@ import org.glucosio.android.tools.GlucoseRanges;
 import org.glucosio.android.tools.GlucosioConverter;
 import org.glucosio.android.tools.InputFilterMinMax;
 import org.glucosio.android.tools.LocaleHelper;
+import org.glucosio.android.tools.ReadingTools;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 import java.util.ArrayList;
@@ -302,10 +303,11 @@ public class PreferencesActivity extends AppCompatActivity {
                     if (TextUtils.isEmpty(newValue.toString().trim())) {
                         return false;
                     }
+                    double glucoseDouble = ReadingTools.safeParseDouble(newValue.toString());
                     if (user.getPreferred_unit().equals(Constants.Units.MG_DL)) {
-                        updatedUser.setCustom_range_min(Double.parseDouble(newValue.toString()));
+                        updatedUser.setCustom_range_min(glucoseDouble);
                     } else {
-                        updatedUser.setCustom_range_min(GlucosioConverter.glucoseToMgDl(Double.parseDouble(newValue.toString())));
+                        updatedUser.setCustom_range_min(GlucosioConverter.glucoseToMgDl(glucoseDouble));
                     }
                     updateDB();
                     return true;
@@ -326,9 +328,9 @@ public class PreferencesActivity extends AppCompatActivity {
                         return false;
                     }
                     if (user.getPreferred_unit().equals(Constants.Units.MG_DL)) {
-                        updatedUser.setCustom_range_max(Double.parseDouble(newValue.toString()));
+                        updatedUser.setCustom_range_max(ReadingTools.safeParseDouble(newValue.toString()));
                     } else {
-                        updatedUser.setCustom_range_max(GlucosioConverter.glucoseToMgDl(Double.parseDouble(newValue.toString())));
+                        updatedUser.setCustom_range_max(GlucosioConverter.glucoseToMgDl(ReadingTools.safeParseDouble(newValue.toString())));
                     }
                     updateDB();
                     return true;

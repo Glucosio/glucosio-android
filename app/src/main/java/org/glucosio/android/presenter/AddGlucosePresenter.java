@@ -22,7 +22,6 @@ package org.glucosio.android.presenter;
 
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import com.google.firebase.crash.FirebaseCrash;
 import org.glucosio.android.Constants;
 import org.glucosio.android.activity.AddGlucoseActivity;
 import org.glucosio.android.db.DatabaseHandler;
@@ -135,25 +134,13 @@ public class AddGlucosePresenter extends AddReadingPresenter {
         if (validateText(reading)) {
             if (Constants.Units.MG_DL.equals(getUnitMeasurement())) {
                 // We store data in db in mg/dl
-                try {
-                    Double readingValue = Double.parseDouble(reading);
-                    //TODO: Add custom ranges
-                    return readingValue > 19 && readingValue < 601;
-                } catch (Exception e) {
-                    FirebaseCrash.log("Exception during reading validation");
-                    FirebaseCrash.report(e);
-                    return false;
-                }
+                Double readingValue = ReadingTools.safeParseDouble(reading);
+                //TODO: Add custom ranges
+                return readingValue > 19 && readingValue < 601;
             } else if ("mmol/L".equals(getUnitMeasurement())) {
                 // Convert mmol/L Unit
-                try {
-                    Double readingValue = Double.parseDouble(reading);
-                    return readingValue > 1.0545 && readingValue < 33.3555;
-                } catch (Exception e) {
-                    FirebaseCrash.log("Exception during reading validation");
-                    FirebaseCrash.report(e);
-                    return false;
-                }
+                Double readingValue = ReadingTools.safeParseDouble(reading);
+                return readingValue > 1.0545 && readingValue < 33.3555;
             } else {
                 // IT return always true: we don't have ranges yet.
                 return true;

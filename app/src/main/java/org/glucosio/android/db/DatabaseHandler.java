@@ -343,7 +343,7 @@ public class DatabaseHandler {
         return datetimeArray;
     }
 
-    public List<Integer> getAverageGlucoseReadingsByWeek() {
+    public List<Double> getAverageGlucoseReadingsByWeek() {
         JodaTimeAndroid.init(mContext);
 
         DateTime maxDateTime = new DateTime(realm.where(GlucoseReading.class).maximumDate("created").getTime());
@@ -352,7 +352,7 @@ public class DatabaseHandler {
         DateTime currentDateTime = minDateTime;
         DateTime newDateTime;
 
-        ArrayList<Integer> averageReadings = new ArrayList<Integer>();
+        List<Double> averageReadings = new ArrayList<>(Weeks.weeksBetween(maxDateTime, minDateTime).getWeeks());
 
         // The number of weeks is at least 1 since we do have average for the current week even if incomplete
         int weeksNumber = Weeks.weeksBetween(minDateTime, maxDateTime).getWeeks() + 1;
@@ -362,7 +362,7 @@ public class DatabaseHandler {
             RealmResults<GlucoseReading> readings = realm.where(GlucoseReading.class)
                     .between("created", currentDateTime.toDate(), newDateTime.toDate())
                     .findAll();
-            averageReadings.add(((int) readings.average("reading")));
+            averageReadings.add(readings.average("reading"));
             currentDateTime = newDateTime;
         }
         return averageReadings;
@@ -377,7 +377,7 @@ public class DatabaseHandler {
         DateTime currentDateTime = minDateTime;
         DateTime newDateTime;
 
-        ArrayList<String> finalWeeks = new ArrayList<String>();
+        List<String> finalWeeks = new ArrayList<>();
 
         // The number of weeks is at least 1 since we do have average for the current week even if incomplete
         int weeksNumber = Weeks.weeksBetween(minDateTime, maxDateTime).getWeeks() + 1;
@@ -391,7 +391,7 @@ public class DatabaseHandler {
         return finalWeeks;
     }
 
-    public List<Integer> getAverageGlucoseReadingsByMonth() {
+    public List<Double> getAverageGlucoseReadingsByMonth() {
         JodaTimeAndroid.init(mContext);
 
         DateTime maxDateTime = new DateTime(realm.where(GlucoseReading.class).maximumDate("created").getTime());
@@ -400,7 +400,7 @@ public class DatabaseHandler {
         DateTime currentDateTime = minDateTime;
         DateTime newDateTime;
 
-        ArrayList<Integer> averageReadings = new ArrayList<Integer>();
+        List<Double> averageReadings = new ArrayList<>(Months.monthsBetween(maxDateTime, minDateTime).getMonths());
 
         // The number of months is at least 1 since we do have average for the current week even if incomplete
         int monthsNumber = Months.monthsBetween(minDateTime, maxDateTime).getMonths() + 1;
@@ -410,7 +410,7 @@ public class DatabaseHandler {
             RealmResults<GlucoseReading> readings = realm.where(GlucoseReading.class)
                     .between("created", currentDateTime.toDate(), newDateTime.toDate())
                     .findAll();
-            averageReadings.add(((int) readings.average("reading")));
+            averageReadings.add(readings.average("reading"));
             currentDateTime = newDateTime;
         }
         return averageReadings;

@@ -66,6 +66,7 @@ import org.glucosio.android.presenter.OverviewPresenter;
 import org.glucosio.android.tools.FormatDateTime;
 import org.glucosio.android.tools.GlucoseRanges;
 import org.glucosio.android.tools.GlucosioConverter;
+import org.glucosio.android.tools.ReadingTools;
 import org.glucosio.android.tools.TipsManager;
 import org.glucosio.android.view.OverviewView;
 
@@ -434,27 +435,27 @@ public class OverviewFragment extends Fragment implements OverviewView {
                 }
             }
         } else if (graphSpinnerRange.getSelectedItemPosition() == 1) {
-            List<Integer> glucosioReadingsWeek = presenter.getGlucoseReadingsWeek();
+            List<Double> glucosioReadingsWeek = presenter.getGlucoseReadingsWeek();
             // Week view
             for (int i = 0; i < presenter.getGlucoseReadingsWeek().size(); i++) {
                 if (presenter.getUnitMeasurement().equals(Constants.Units.MG_DL)) {
-                    float val = Float.parseFloat(glucosioReadingsWeek.get(i) + "");
+                    float val = glucosioReadingsWeek.get(i).floatValue();
                     yVals.add(new Entry(i, val));
                 } else {
-                    double val = GlucosioConverter.glucoseToMmolL(Double.parseDouble(glucosioReadingsWeek.get(i) + ""));
+                    double val = GlucosioConverter.glucoseToMmolL(glucosioReadingsWeek.get(i));
                     float converted = (float) val;
                     yVals.add(new Entry(i, converted));
                 }
             }
         } else {
-            List<Integer> glucosioReadingsMonth = presenter.getGlucoseReadingsMonth();
+            List<Double> glucosioReadingsMonth = presenter.getGlucoseReadingsMonth();
             // Month view
             for (int i = 0; i < presenter.getGlucoseReadingsMonth().size(); i++) {
                 if (presenter.getUnitMeasurement().equals(Constants.Units.MG_DL)) {
-                    float val = Float.parseFloat(glucosioReadingsMonth.get(i) + "");
+                    float val = glucosioReadingsMonth.get(i).floatValue();
                     yVals.add(new Entry(i, val));
                 } else {
-                    double val = GlucosioConverter.glucoseToMmolL(Double.parseDouble(glucosioReadingsMonth.get(i) + ""));
+                    double val = GlucosioConverter.glucoseToMmolL(ReadingTools.safeParseDouble(glucosioReadingsMonth.get(i) + ""));
                     float converted = (float) val;
                     yVals.add(new Entry(i, converted));
                 }
@@ -682,7 +683,7 @@ public class OverviewFragment extends Fragment implements OverviewView {
                 lastReadingTextView.setText(getString(R.string.mg_dL_value, reading));
             } else {
                 String mgdl = presenter.getLastReading();
-                double mmol = GlucosioConverter.glucoseToMmolL(Double.parseDouble(mgdl));
+                double mmol = GlucosioConverter.glucoseToMmolL(ReadingTools.safeParseDouble(mgdl));
                 String reading = NumberFormat.getInstance().format(mmol);
                 lastReadingTextView.setText(getString(R.string.mmol_L_value, reading));
             }
@@ -691,7 +692,7 @@ public class OverviewFragment extends Fragment implements OverviewView {
             lastDateTextView.setText(dateTime.convertDateTime(presenter.getLastDateTime()));
 
             GlucoseRanges ranges = new GlucoseRanges(getActivity().getApplicationContext());
-            String color = ranges.colorFromReading(Double.parseDouble(presenter.getLastReading()));
+            String color = ranges.colorFromReading(ReadingTools.safeParseDouble(presenter.getLastReading()));
             lastReadingTextView.setTextColor(ranges.stringToColor(color));
         }
     }

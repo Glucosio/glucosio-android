@@ -73,7 +73,7 @@ public class UserBuilderTest {
     public void SetsPreferredUnit_WhenAsked() {
         String unit = Constants.Units.MG_DL;
 
-        User user = new UserBuilder().setPrefferedUnit(unit).createUser();
+        User user = new UserBuilder().setPreferredUnit(unit).createUser();
 
         assertThat(user.getPreferred_unit()).isEqualTo(unit);
     }
@@ -82,7 +82,7 @@ public class UserBuilderTest {
     public void SetsPreferredUnitA1C_WhenAsked() {
         String unit = Constants.Units.MG_DL;
 
-        User user = new UserBuilder().setPrefferedUnit(unit).createUser();
+        User user = new UserBuilder().setPreferredA1CUnit(unit).createUser();
 
         assertThat(user.getPreferred_unit_a1c()).isEqualTo(unit);
     }

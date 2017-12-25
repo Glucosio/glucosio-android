@@ -50,12 +50,12 @@ public class UserBuilder {
         return this;
     }
 
-    public UserBuilder setPrefferedUnit(String unit) {
+    public UserBuilder setPreferredUnit(String unit) {
         this.preferredUnit = unit;
         return this;
     }
 
-    public UserBuilder setA1cUnit(String a1cUnit) {
+    public UserBuilder setPreferredA1CUnit(String a1cUnit) {
         this.a1cUnit = a1cUnit;
         return this;
     }

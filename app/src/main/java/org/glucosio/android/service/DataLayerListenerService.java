@@ -32,6 +32,7 @@ import org.glucosio.android.R;
 import org.glucosio.android.activity.MainActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
+import org.glucosio.android.tools.ReadingTools;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Calendar;
@@ -63,7 +64,7 @@ public class DataLayerListenerService extends WearableListenerService {
     }
 
     private void addToDatabase(String reading, String readingType) {
-        double glucoseValue = Double.parseDouble(reading);
+        double glucoseValue = ReadingTools.safeParseDouble(reading);
         Calendar cal = Calendar.getInstance();
         DatabaseHandler dB = new DatabaseHandler(this);
         GlucoseReading gReading = new GlucoseReading(glucoseValue, readingType, cal.getTime(), "");

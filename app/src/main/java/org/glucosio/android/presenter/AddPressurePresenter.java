@@ -23,6 +23,7 @@ package org.glucosio.android.presenter;
 import org.glucosio.android.activity.AddPressureActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.PressureReading;
+import org.glucosio.android.tools.ReadingTools;
 
 import java.util.Date;
 
@@ -58,8 +59,8 @@ public class AddPressurePresenter extends AddReadingPresenter {
 
     private PressureReading generatePressureReading(String minReading, String maxReading) {
         Date finalDateTime = getReadingTime();
-        double minFinalReading = Double.parseDouble(minReading);
-        double maxFinalReading = Double.parseDouble(maxReading);
+        double minFinalReading = ReadingTools.safeParseDouble(minReading);
+        double maxFinalReading = ReadingTools.safeParseDouble(maxReading);
         return new PressureReading(minFinalReading, maxFinalReading, finalDateTime);
     }
 

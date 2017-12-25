@@ -45,8 +45,8 @@ public class OverviewPresenter {
     private final DatabaseHandler dB;
     private final OverviewView view;
 
-    private List<Integer> glucoseReadingsWeek;
-    private List<Integer> glucoseReadingsMonth;
+    private List<Double> glucoseReadingsWeek;
+    private List<Double> glucoseReadingsMonth;
     private List<String> glucoseDatetimeWeek;
     private List<String> glucoseDatetimeMonth;
     private List<GlucoseReading> glucoseReadings;
@@ -261,11 +261,11 @@ public class OverviewPresenter {
         return glucoseDatetime;
     }
 
-    public List<Integer> getGlucoseReadingsWeek() {
+    public List<Double> getGlucoseReadingsWeek() {
         return glucoseReadingsWeek;
     }
 
-    public List<Integer> getGlucoseReadingsMonth() {
+    public List<Double> getGlucoseReadingsMonth() {
         return glucoseReadingsMonth;
     }
 

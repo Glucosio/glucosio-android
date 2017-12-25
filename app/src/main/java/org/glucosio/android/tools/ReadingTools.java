@@ -68,4 +68,12 @@ public class ReadingTools {
             return null;
         }
     }
+
+    public static double safeParseDouble(String doubleValue) {
+        try {
+            return Double.parseDouble(doubleValue);
+        } catch (Exception e) {
+            return 0;
+        }
+    }
 }

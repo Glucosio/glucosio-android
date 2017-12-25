@@ -35,14 +35,14 @@ public class InputFilterMinMax implements InputFilter {
     }
 
     public InputFilterMinMax(String min, String max) {
-        this.min = Double.parseDouble(min);
-        this.max = Double.parseDouble(max);
+        this.min = ReadingTools.safeParseDouble(min);
+        this.max = ReadingTools.safeParseDouble(max);
     }
 
     @Override
     public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
         try {
-            double input = Double.parseDouble(dest.toString() + source.toString());
+            double input = ReadingTools.safeParseDouble(dest.toString() + source.toString());
             if (isInRange(min, max, input))
                 return null;
         } catch (NumberFormatException nfe) {

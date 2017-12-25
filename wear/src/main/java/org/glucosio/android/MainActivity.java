@@ -33,7 +33,6 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.wearable.Node;
 import com.google.android.gms.wearable.NodeApi;
@@ -57,9 +56,9 @@ public class MainActivity extends Activity implements
     private GoogleApiClient client;
     private String nodeId;
 
-    public static boolean isNumeric(String str) {
+    private static boolean isNumeric(String str) {
         try {
-            double d = Double.parseDouble(str);
+            Double.parseDouble(str);
         } catch (NumberFormatException nfe) {
             return false;
         }

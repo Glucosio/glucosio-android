@@ -24,6 +24,7 @@ import org.glucosio.android.activity.AddWeightActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.WeightReading;
 import org.glucosio.android.tools.GlucosioConverter;
+import org.glucosio.android.tools.ReadingTools;
 
 import java.util.Date;
 
@@ -67,9 +68,9 @@ public class AddWeightPresenter extends AddReadingPresenter {
         double finalReading;
 
         if ("kilograms".equals(getWeightUnitMeasuerement())) {
-            finalReading = Double.parseDouble(reading);
+            finalReading = ReadingTools.safeParseDouble(reading);
         } else {
-            finalReading = GlucosioConverter.lbToKg(Double.parseDouble(reading));
+            finalReading = GlucosioConverter.lbToKg(ReadingTools.safeParseDouble(reading));
         }
 
         return new WeightReading(finalReading, finalDateTime);

@@ -41,6 +41,7 @@ import org.glucosio.android.tools.FormatDateTime;
 import org.glucosio.android.tools.GlucosioConverter;
 import org.glucosio.android.tools.LabelledSpinner;
 import org.glucosio.android.tools.NumberFormatUtils;
+import org.glucosio.android.tools.ReadingTools;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -165,7 +166,7 @@ public class AddGlucoseActivity extends AddReadingActivity {
             p = getIntent().getExtras();
             reading = p.getString("reading");
             if (reading != null) {
-                double readingDouble = Double.parseDouble(reading);
+                double readingDouble = ReadingTools.safeParseDouble(reading);
                 readingTextView.setText(numberFormat.format(readingDouble));
                 readingInputLayout.setErrorEnabled(true);
                 readingInputLayout.setError(getResources().getString(R.string.dialog_add_glucose_freestylelibre_added));
