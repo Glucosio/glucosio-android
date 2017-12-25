@@ -34,9 +34,9 @@ import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
 import org.glucosio.android.tools.ReadingToCSV;
 import org.glucosio.android.view.ExportView;
+import org.joda.time.DateTime;
 
 import java.io.File;
-import java.util.Calendar;
 import java.util.List;
 
 public class ExportPresenter {
@@ -47,6 +47,7 @@ public class ExportPresenter {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
+
     private int fromDay;
     private int fromMonth;
     private int fromYear;
@@ -63,7 +64,7 @@ public class ExportPresenter {
         if (activity instanceof ExportView) {
             mExportView = (ExportView) activity;
         } else {
-            throw new RuntimeException("ExportPresenter Activity must implement ExportView interface");
+            throw new IllegalStateException("ExportPresenter Activity must implement ExportView interface");
         }
         dB = databaseHandler;
     }
@@ -83,16 +84,10 @@ public class ExportPresenter {
                     if (isExportAll) {
                         readings = dB.getGlucoseReadings(realm);
                     } else {
-                        Calendar fromDate = Calendar.getInstance();
-                        fromDate.set(Calendar.YEAR, fromYear);
-                        fromDate.set(Calendar.MONTH, fromMonth);
-                        fromDate.set(Calendar.DAY_OF_MONTH, fromDay);
+                        DateTime fromDate = new DateTime(fromYear, fromMonth, fromDay, 0, 0);
+                        DateTime toDate = new DateTime(toYear, toMonth, toDay, 0, 0);
 
-                        Calendar toDate = Calendar.getInstance();
-                        toDate.set(Calendar.YEAR, toYear);
-                        toDate.set(Calendar.MONTH, toMonth);
-                        toDate.set(Calendar.DAY_OF_MONTH, toDay);
-                        readings = dB.getGlucoseReadings(realm, fromDate.getTime(), toDate.getTime());
+                        readings = dB.getGlucoseReadings(realm, fromDate.toDate(), toDate.toDate());
                     }
 
                     mExportView.onExportStarted(readings.size());
@@ -149,48 +144,24 @@ public class ExportPresenter {
         }
     }
 
-    public int getFromDay() {
-        return fromDay;
-    }
-
     public void setFromDay(int fromDay) {
         this.fromDay = fromDay;
-    }
-
-    public int getFromMonth() {
-        return fromMonth;
     }
 
     public void setFromMonth(int fromMonth) {
         this.fromMonth = fromMonth;
     }
 
-    public int getFromYear() {
-        return fromYear;
-    }
-
     public void setFromYear(int fromYear) {
         this.fromYear = fromYear;
-    }
-
-    public int getToDay() {
-        return toDay;
     }
 
     public void setToDay(int toDay) {
         this.toDay = toDay;
     }
 
-    public int getToMonth() {
-        return toMonth;
-    }
-
     public void setToMonth(int toMonth) {
         this.toMonth = toMonth;
-    }
-
-    public int getToYear() {
-        return toYear;
     }
 
     public void setToYear(int toYear) {

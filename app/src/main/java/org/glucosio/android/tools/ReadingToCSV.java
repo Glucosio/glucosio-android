@@ -23,6 +23,7 @@ package org.glucosio.android.tools;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Environment;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import io.realm.Realm;
 import org.glucosio.android.Constants;
@@ -38,17 +39,17 @@ import java.util.List;
 public final class ReadingToCSV {
 
     private final Context context;
-    private final String um;
+    private final String userMeasurements;
     private final FormatDateTime dateTool;
 
-    public ReadingToCSV(Context context, String um) {
+    public ReadingToCSV(Context context, String userMeasurements) {
         this.context = context;
-        this.um = um;
+        this.userMeasurements = userMeasurements;
 
         this.dateTool = new FormatDateTime(context);
     }
 
-    public String createCSVFile(Realm realm, final List<GlucoseReading> readings) {
+    public String createCSVFile(Realm realm, @NonNull List<GlucoseReading> readings) {
         try {
             File file = null;
             final File sd = Environment.getExternalStorageDirectory();
@@ -64,7 +65,7 @@ public final class ReadingToCSV {
 
                     // CSV Structure
                     // Date | Time | Concentration | Unit | Measured | Notes
-                    final Resources resources = this.context.getResources();
+                    final Resources resources = context.getResources();
                     writeLine(osw,
                             resources.getString(R.string.dialog_add_date),
                             resources.getString(R.string.dialog_add_time),
@@ -90,9 +91,7 @@ public final class ReadingToCSV {
 
                         }
                     } else {
-                        for (int i = 0; i < readings.size(); i++) {
-                            GlucoseReading reading = readings.get(i);
-
+                        for (GlucoseReading reading : readings) {
                             writeLine(osw,
                                     this.dateTool.convertRawDate(reading.getCreated()),
                                     this.dateTool.convertRawTime(reading.getCreated()),
