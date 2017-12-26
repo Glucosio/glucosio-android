@@ -24,6 +24,7 @@ import org.glucosio.android.activity.AddA1CActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.HB1ACReading;
 import org.glucosio.android.tools.GlucosioConverter;
+import org.glucosio.android.tools.ReadingTools;
 
 import java.util.Date;
 
@@ -65,9 +66,9 @@ public class AddA1CPresenter extends AddReadingPresenter {
 
         double finalReading;
         if ("percentage".equals(getA1CUnitMeasuerement())) {
-            finalReading = Double.parseDouble(reading);
+            finalReading = ReadingTools.safeParseDouble(reading);
         } else {
-            finalReading = GlucosioConverter.a1cIfccToNgsp(Double.parseDouble(reading));
+            finalReading = GlucosioConverter.a1cIfccToNgsp(ReadingTools.safeParseDouble(reading));
         }
 
         return new HB1ACReading(finalReading, finalDateTime);

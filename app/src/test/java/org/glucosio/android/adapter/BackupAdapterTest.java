@@ -4,9 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.google.android.gms.drive.DriveId;
-
 import org.glucosio.android.R;
 import org.glucosio.android.RobolectricTest;
 import org.glucosio.android.object.GlucosioBackup;
@@ -24,7 +22,6 @@ import static org.assertj.android.api.Assertions.assertThat;
 import static org.mockito.MockitoAnnotations.initMocks;
 
 public class BackupAdapterTest extends RobolectricTest {
-    private AppCompatActivity activity;
     private ViewGroup viewGroup;
     private BackupAdapter adapter;
 
@@ -32,11 +29,11 @@ public class BackupAdapterTest extends RobolectricTest {
     private DriveId driveIDMock;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         initMocks(this);
 
-        activity = Robolectric.buildActivity(AppCompatActivity.class).create().get();
-        viewGroup = (ViewGroup) activity.findViewById(android.R.id.content);
+        AppCompatActivity activity = Robolectric.buildActivity(AppCompatActivity.class).create().get();
+        viewGroup = activity.findViewById(android.R.id.content);
 
         List<GlucosioBackup> backupsArray = new ArrayList<>();
         backupsArray.add(new GlucosioBackup(driveIDMock, new Date(), 1024));
@@ -44,14 +41,13 @@ public class BackupAdapterTest extends RobolectricTest {
     }
 
     @Test
-    public void ReturnViewWithSizeFormatted_WhenAsked() throws Exception {
+    public void ReturnViewWithSizeFormatted_WhenAsked() {
         Locale english = new Locale("en", "EN");
         Locale.setDefault(english);
 
         View view = adapter.getView(0, null, viewGroup);
-        TextView sizeView = (TextView) view.findViewById(R.id.item_history_type);
+        TextView sizeView = view.findViewById(R.id.item_history_type);
 
-        assertThat(sizeView).hasText("1.00KB");
-
+        assertThat(sizeView).hasText("1.00 KB");
     }
 }

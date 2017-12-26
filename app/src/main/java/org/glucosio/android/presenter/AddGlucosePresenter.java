@@ -22,9 +22,7 @@ package org.glucosio.android.presenter;
 
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-
-import com.google.firebase.crash.FirebaseCrash;
-
+import org.glucosio.android.Constants;
 import org.glucosio.android.activity.AddGlucoseActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
@@ -94,9 +92,9 @@ public class AddGlucosePresenter extends AddReadingPresenter {
 
     private boolean createReading(String type, String notes, long oldId, Date finalDateTime, Number number) {
         boolean isReadingAdded;
-        int readingValue;
-        if ("mg/dL".equals(getUnitMeasuerement())) {
-            readingValue = number.intValue();
+        double readingValue;
+        if (Constants.Units.MG_DL.equals(getUnitMeasurement())) {
+            readingValue = number.doubleValue();
         } else {
             readingValue = GlucosioConverter.glucoseToMgDl(number.doubleValue());
         }
@@ -123,7 +121,7 @@ public class AddGlucosePresenter extends AddReadingPresenter {
         return isFound ? measuredId : null;
     }
 
-    public String getUnitMeasuerement() {
+    public String getUnitMeasurement() {
         return dB.getUser(1).getPreferred_unit();
     }
 
@@ -134,27 +132,15 @@ public class AddGlucosePresenter extends AddReadingPresenter {
     // Validator
     private boolean validateGlucose(String reading) {
         if (validateText(reading)) {
-            if ("mg/dL".equals(getUnitMeasuerement())) {
+            if (Constants.Units.MG_DL.equals(getUnitMeasurement())) {
                 // We store data in db in mg/dl
-                try {
-                    Integer readingValue = Integer.parseInt(reading);
-                    //TODO: Add custom ranges
-                    return readingValue > 19 && readingValue < 601;
-                } catch (Exception e) {
-                    FirebaseCrash.log("Exception during reading validation");
-                    FirebaseCrash.report(e);
-                    return false;
-                }
-            } else if ("mmol/L".equals(getUnitMeasuerement())) {
+                Double readingValue = ReadingTools.safeParseDouble(reading);
+                //TODO: Add custom ranges
+                return readingValue > 19 && readingValue < 601;
+            } else if ("mmol/L".equals(getUnitMeasurement())) {
                 // Convert mmol/L Unit
-                try {
-                    Double readingValue = Double.parseDouble(reading);
-                    return readingValue > 1.0545 && readingValue < 33.3555;
-                } catch (Exception e) {
-                    FirebaseCrash.log("Exception during reading validation");
-                    FirebaseCrash.report(e);
-                    return false;
-                }
+                Double readingValue = ReadingTools.safeParseDouble(reading);
+                return readingValue > 1.0545 && readingValue < 33.3555;
             } else {
                 // IT return always true: we don't have ranges yet.
                 return true;

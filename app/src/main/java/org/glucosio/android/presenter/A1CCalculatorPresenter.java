@@ -21,12 +21,13 @@
 package org.glucosio.android.presenter;
 
 import android.support.annotation.NonNull;
-
+import org.glucosio.android.Constants;
 import org.glucosio.android.activity.A1cCalculatorActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.HB1ACReading;
 import org.glucosio.android.db.User;
 import org.glucosio.android.tools.GlucosioConverter;
+import org.glucosio.android.tools.ReadingTools;
 
 import java.util.Date;
 
@@ -48,10 +49,11 @@ public class A1CCalculatorPresenter {
         double convertedA1C;
         User user = dbHandler.getUser(1);
 
-        if ("mg/dL".equals(user.getPreferred_unit())) {
-            convertedA1C = GlucosioConverter.glucoseToA1C(Double.parseDouble(glucose));
+        double glucoseDouble = ReadingTools.safeParseDouble(glucose);
+        if (Constants.Units.MG_DL.equals(user.getPreferred_unit())) {
+            convertedA1C = GlucosioConverter.glucoseToA1C(glucoseDouble);
         } else {
-            convertedA1C = GlucosioConverter.glucoseToA1C(GlucosioConverter.glucoseToMgDl(Double.parseDouble(glucose)));
+            convertedA1C = GlucosioConverter.glucoseToA1C(GlucosioConverter.glucoseToMgDl(glucoseDouble));
         }
         if ("percentage".equals(user.getPreferred_unit_a1c())) {
             return convertedA1C;
@@ -65,7 +67,7 @@ public class A1CCalculatorPresenter {
     }
 
     public void checkGlucoseUnit() {
-        if (!dbHandler.getUser(1).getPreferred_unit().equals("mg/dL")) {
+        if (!Constants.Units.MG_DL.equals(dbHandler.getUser(1).getPreferred_unit())) {
             activity.setMmol();
         }
     }

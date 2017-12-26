@@ -86,16 +86,11 @@
                         android:layout_weight="1">
 
                         <EditText
+                            style="@style/edit_number"
                             android:id="@+id/glucose_add_concentration"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/dialog_add_concentration"
-                            android:digits="0123456789.,"
-                            android:inputType="numberDecimal"
-                            android:singleLine="true"
-                            android:textColorHighlight="@color/glucosio_pink"
-                            android:textIsSelectable="false"
-                            android:textSize="@dimen/abc_text_size_body_2_material" />
+                            android:hint="@string/dialog_add_concentration"/>
                     </android.support.design.widget.TextInputLayout>
 
                     <TextView
@@ -141,6 +136,7 @@
                             android:clickable="false"
                             android:cursorVisible="false"
                             android:focusable="false"
+                            android:inputType="date"
                             android:focusableInTouchMode="false"
                             android:hint="@string/dialog_add_date"
                             android:singleLine="true"
@@ -160,6 +156,7 @@
                             android:cursorVisible="false"
                             android:focusable="false"
                             android:focusableInTouchMode="false"
+                            android:inputType="time"
                             android:hint="@string/dialog_add_time"
                             android:singleLine="true"
                             android:textSize="@dimen/abc_text_size_body_2_material" />

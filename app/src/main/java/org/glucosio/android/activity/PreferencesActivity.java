@@ -41,7 +41,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.EditText;
-
+import org.glucosio.android.Constants;
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.analytics.Analytics;
@@ -51,13 +51,13 @@ import org.glucosio.android.tools.GlucoseRanges;
 import org.glucosio.android.tools.GlucosioConverter;
 import org.glucosio.android.tools.InputFilterMinMax;
 import org.glucosio.android.tools.LocaleHelper;
+import org.glucosio.android.tools.ReadingTools;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
-
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class PreferencesActivity extends AppCompatActivity {
 
@@ -142,11 +142,7 @@ public class PreferencesActivity extends AppCompatActivity {
             dB = app.getDBHandler();
             localeHelper = app.getLocaleHelper();
             user = dB.getUser(1);
-            updatedUser = new User(user.getId(), user.getName(), user.getPreferred_language(),
-                    user.getCountry(), user.getAge(), user.getGender(), user.getD_type(),
-                    user.getPreferred_unit(), user.getPreferred_unit_a1c(),
-                    user.getPreferred_unit_weight(), user.getPreferred_range(),
-                    user.getCustom_range_min(), user.getCustom_range_max());
+            updatedUser = new User(user);
             agePref = (EditTextPreference) findPreference("pref_age");
             countryPref = (ListPreference) findPreference("pref_country");
             languagePref = (ListPreference) findPreference("pref_language");
@@ -170,7 +166,7 @@ public class PreferencesActivity extends AppCompatActivity {
             unitPrefWeight.setValue(getUnitWeight(user.getPreferred_unit_weight()));
             rangePref.setValue(user.getPreferred_range());
 
-            if (user.getPreferred_unit().equals("mg/dL")) {
+            if (Constants.Units.MG_DL.equals(user.getPreferred_unit())) {
                 maxRangePref.setDefaultValue(user.getCustom_range_max());
                 minRangePref.setDefaultValue(user.getCustom_range_min());
             } else {
@@ -240,8 +236,8 @@ public class PreferencesActivity extends AppCompatActivity {
             unitPrefGlucose.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    if (newValue.toString().equals(getResources().getString(R.string.helloactivity_spinner_preferred_glucose_unit_1))) {
-                        updatedUser.setPreferred_unit("mg/dL");
+                    if (getResources().getString(R.string.helloactivity_spinner_preferred_glucose_unit_1).equals(newValue.toString())) {
+                        updatedUser.setPreferred_unit(Constants.Units.MG_DL);
                     } else {
                         updatedUser.setPreferred_unit("mmol/L");
                     }
@@ -307,10 +303,11 @@ public class PreferencesActivity extends AppCompatActivity {
                     if (TextUtils.isEmpty(newValue.toString().trim())) {
                         return false;
                     }
-                    if (user.getPreferred_unit().equals("mg/dL")) {
-                        updatedUser.setCustom_range_min(Integer.parseInt(newValue.toString()));
+                    double glucoseDouble = ReadingTools.safeParseDouble(newValue.toString());
+                    if (user.getPreferred_unit().equals(Constants.Units.MG_DL)) {
+                        updatedUser.setCustom_range_min(glucoseDouble);
                     } else {
-                        updatedUser.setCustom_range_min(GlucosioConverter.glucoseToMgDl(Double.parseDouble(newValue.toString())));
+                        updatedUser.setCustom_range_min(GlucosioConverter.glucoseToMgDl(glucoseDouble));
                     }
                     updateDB();
                     return true;
@@ -330,10 +327,10 @@ public class PreferencesActivity extends AppCompatActivity {
                     if (TextUtils.isEmpty(newValue.toString().trim())) {
                         return false;
                     }
-                    if (user.getPreferred_unit().equals("mg/dL")) {
-                        updatedUser.setCustom_range_max(Integer.parseInt(newValue.toString()));
+                    if (user.getPreferred_unit().equals(Constants.Units.MG_DL)) {
+                        updatedUser.setCustom_range_max(ReadingTools.safeParseDouble(newValue.toString()));
                     } else {
-                        updatedUser.setCustom_range_max(GlucosioConverter.glucoseToMgDl(Double.parseDouble(newValue.toString())));
+                        updatedUser.setCustom_range_max(GlucosioConverter.glucoseToMgDl(ReadingTools.safeParseDouble(newValue.toString())));
                     }
                     updateDB();
                     return true;
@@ -355,7 +352,6 @@ public class PreferencesActivity extends AppCompatActivity {
                         // EXPERIMENTAL PREFERENCE
                         // Display Alert
                         showExperimentalDialog(false);
-                        return true;
                     }
                     return true;
                 }
@@ -405,7 +401,7 @@ public class PreferencesActivity extends AppCompatActivity {
         }
 
         private String getGlucoseUnitValue(final String glucoseUnit) {
-            @StringRes int unitResId = "mg/dL".equals(glucoseUnit) ?
+            @StringRes int unitResId = Constants.Units.MG_DL.equals(glucoseUnit) ?
                     R.string.helloactivity_spinner_preferred_glucose_unit_1 :
                     R.string.helloactivity_spinner_preferred_glucose_unit_2;
             return getResources().getString(unitResId);
@@ -469,7 +465,7 @@ public class PreferencesActivity extends AppCompatActivity {
             unitPrefWeight.setSummary(getUnitWeight(user.getPreferred_unit_weight()));
             rangePref.setSummary(user.getPreferred_range());
 
-            if (user.getPreferred_unit().equals("mg/dL")) {
+            if (Constants.Units.MG_DL.equals(user.getPreferred_unit())) {
                 minRangePref.setSummary(String.valueOf(user.getCustom_range_min()));
                 maxRangePref.setSummary(String.valueOf(user.getCustom_range_max()));
             } else {

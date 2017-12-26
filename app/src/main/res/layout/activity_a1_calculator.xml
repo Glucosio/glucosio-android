@@ -93,7 +93,7 @@
                         android:paddingLeft="8dp"
                         android:paddingStart="8dp"
                         android:paddingTop="8dp"
-                        android:text="mg/dL"
+                        android:text="@string/mg_dL"
                         android:textColor="@color/glucosio_text"
                         android:textSize="16sp" />
                 </LinearLayout>

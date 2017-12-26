@@ -83,16 +83,11 @@
                         android:layout_weight="2">
 
                         <EditText
+                            style="@style/edit_number"
                             android:id="@+id/cholesterol_add_value_total"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:digits="1234567890"
-                            android:hint="@string/dialog_add_cholesterol_total"
-                            android:inputType="numberDecimal"
-                            android:singleLine="true"
-                            android:textColorHighlight="@color/glucosio_pink"
-                            android:textIsSelectable="false"
-                            android:textSize="@dimen/abc_text_size_body_2_material" />
+                            android:hint="@string/dialog_add_cholesterol_total"/>
                     </android.support.design.widget.TextInputLayout>
 
                     <TextView
@@ -101,7 +96,7 @@
                         android:layout_height="fill_parent"
                         android:layout_marginBottom="8dp"
                         android:gravity="bottom"
-                        android:text="mg/dL"
+                        android:text="@string/mg_dL"
                         android:textSize="@dimen/abc_text_size_body_2_material"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -119,16 +114,11 @@
                         android:layout_weight="1">
 
                         <EditText
+                            style="@style/edit_number"
                             android:id="@+id/cholesterol_add_value_ldl"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:digits="1234567890"
-                            android:hint="@string/dialog_add_cholesterol_ldl"
-                            android:inputType="numberDecimal"
-                            android:singleLine="true"
-                            android:textColorHighlight="@color/glucosio_pink"
-                            android:textIsSelectable="false"
-                            android:textSize="@dimen/abc_text_size_body_2_material" />
+                            android:hint="@string/dialog_add_cholesterol_ldl"/>
                     </android.support.design.widget.TextInputLayout>
 
                     <android.support.design.widget.TextInputLayout
@@ -137,16 +127,11 @@
                         android:layout_weight="1">
 
                         <EditText
+                            style="@style/edit_number"
                             android:id="@+id/cholesterol_add_value_hdl"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:digits="1234567890"
-                            android:hint="@string/dialog_add_cholesterol_hdl"
-                            android:inputType="numberDecimal"
-                            android:singleLine="true"
-                            android:textColorHighlight="@color/glucosio_pink"
-                            android:textIsSelectable="false"
-                            android:textSize="@dimen/abc_text_size_body_2_material" />
+                            android:hint="@string/dialog_add_cholesterol_hdl"/>
                     </android.support.design.widget.TextInputLayout>
 
                     <TextView
@@ -155,7 +140,7 @@
                         android:layout_height="fill_parent"
                         android:layout_marginBottom="8dp"
                         android:gravity="bottom"
-                        android:text="mg/dL"
+                        android:text="@string/mg_dL"
                         android:textSize="@dimen/abc_text_size_body_2_material"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -179,6 +164,7 @@
                             android:clickable="false"
                             android:cursorVisible="false"
                             android:focusable="false"
+                            android:inputType="date"
                             android:focusableInTouchMode="false"
                             android:hint="@string/dialog_add_date"
                             android:singleLine="true"
@@ -198,6 +184,7 @@
                             android:cursorVisible="false"
                             android:focusable="false"
                             android:focusableInTouchMode="false"
+                            android:inputType="time"
                             android:hint="@string/dialog_add_time"
                             android:singleLine="true"
                             android:textSize="@dimen/abc_text_size_body_2_material" />

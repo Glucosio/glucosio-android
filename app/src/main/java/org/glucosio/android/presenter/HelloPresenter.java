@@ -21,9 +21,9 @@
 package org.glucosio.android.presenter;
 
 import android.text.TextUtils;
-
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.User;
+import org.glucosio.android.db.UserBuilder;
 import org.glucosio.android.view.HelloView;
 
 
@@ -67,7 +67,21 @@ public class HelloPresenter {
     private void saveToDatabase(final int id, final String name, final String language,
                                 final String country, final int age, final String gender,
                                 final int diabetesType, final String unitMeasurement) {
-        dB.addUser(new User(id, name, language, country, age, gender, diabetesType, unitMeasurement,
-                "percentage", "kilograms", "ADA", 70, 180)); // We use ADA range by default
+        User user = new UserBuilder()
+                .setId(id)
+                .setName(name)
+                .setPreferredLanguage(language)
+                .setCountry(country)
+                .setAge(age)
+                .setGender(gender)
+                .setDiabetesType(diabetesType)
+                .setPreferredUnit(unitMeasurement)
+                .setPreferredA1CUnit("percentage")
+                .setPreferredWeightUnit("kilograms")
+                .setPreferredRange("ADA")
+                .setMinRange(70)
+                .setMaxRange(180)
+                .createUser();
+        dB.addUser(user); // We use ADA range by default
     }
 }

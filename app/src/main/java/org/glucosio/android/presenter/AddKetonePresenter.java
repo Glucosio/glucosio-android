@@ -23,6 +23,7 @@ package org.glucosio.android.presenter;
 import org.glucosio.android.activity.AddKetoneActivity;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.KetoneReading;
+import org.glucosio.android.tools.ReadingTools;
 
 import java.util.Date;
 
@@ -61,7 +62,7 @@ public class AddKetonePresenter extends AddReadingPresenter {
 
     private KetoneReading generateKetoneReading(String reading) {
         Date finalDateTime = getReadingTime();
-        double finalReading = Double.parseDouble(reading);
+        double finalReading = ReadingTools.safeParseDouble(reading);
         return new KetoneReading(finalReading, finalDateTime);
     }
 

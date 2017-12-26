@@ -82,15 +82,11 @@
                         android:layout_weight="1">
 
                         <EditText
+                            style="@style/edit_number"
                             android:id="@+id/hb1ac_add_value"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/dialog_add_hb1ac"
-                            android:inputType="numberDecimal"
-                            android:singleLine="true"
-                            android:textColorHighlight="@color/glucosio_pink"
-                            android:textIsSelectable="false"
-                            android:textSize="@dimen/abc_text_size_body_2_material" />
+                            android:hint="@string/dialog_add_hb1ac"/>
                     </android.support.design.widget.TextInputLayout>
 
                     <TextView

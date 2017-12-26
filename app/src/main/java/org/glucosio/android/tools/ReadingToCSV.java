@@ -24,7 +24,8 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.os.Environment;
 import android.util.Log;
-
+import io.realm.Realm;
+import org.glucosio.android.Constants;
 import org.glucosio.android.R;
 import org.glucosio.android.db.GlucoseReading;
 
@@ -33,8 +34,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.List;
-
-import io.realm.Realm;
 
 public final class ReadingToCSV {
 
@@ -76,7 +75,7 @@ public final class ReadingToCSV {
                     );
 
                     // Concentration | Measured | Date | Time | Notes | Unit of Measurement
-                    if ("mg/dL".equals(um)) {
+                    if (Constants.Units.MG_DL.equals(um)) {
                         for (int i = 0; i < readings.size(); i++) {
                             GlucoseReading reading = readings.get(i);
 
@@ -84,7 +83,7 @@ public final class ReadingToCSV {
                                     this.dateTool.convertRawDate(reading.getCreated()),
                                     this.dateTool.convertRawTime(reading.getCreated()),
                                     String.valueOf(reading.getReading()),
-                                    "mg/dL",
+                                    Constants.Units.MG_DL,
                                     String.valueOf(reading.getReading_type()),
                                     reading.getNotes()
                             );

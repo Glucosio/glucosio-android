@@ -3,12 +3,8 @@ package org.glucosio.android.tools;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Environment;
-
-import static org.powermock.api.mockito.PowerMockito.mock;
-import static org.powermock.api.mockito.PowerMockito.mockStatic;
-import static org.powermock.api.mockito.PowerMockito.when;
-
-
+import io.realm.Realm;
+import org.glucosio.android.Constants;
 import org.glucosio.android.R;
 import org.glucosio.android.db.GlucoseReading;
 import org.junit.After;
@@ -34,7 +30,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
-import io.realm.Realm;
+import static org.powermock.api.mockito.PowerMockito.mock;
+import static org.powermock.api.mockito.PowerMockito.mockStatic;
+import static org.powermock.api.mockito.PowerMockito.when;
 
 /**
  * Created by david on 30/10/16.
@@ -59,15 +57,15 @@ public class ReadingToCSVTest {
         context = mock(Context.class);
 
         dateTool = new FormatDateTime(context);
-        
+
         final Resources resources = mock(Resources.class);
         when(resources.getString(Matchers.anyInt())).thenAnswer(new Answer<String>() {
             @Override
-            public String answer(InvocationOnMock invocation) throws Throwable {
+            public String answer(InvocationOnMock invocation) {
                 return String.valueOf(invocation.getArguments()[0]);
             }
         });
-        
+
         when(context.getResources()).thenReturn(resources);
 
         File tmpDir = new File(System.getProperty("java.io.tmpdir"));
@@ -110,7 +108,7 @@ public class ReadingToCSVTest {
 
     @Test
     public void whenNoDataGeneratesEmptyCSVWithHeader() throws IOException {
-        final ReadingToCSV r = createReadingToCSV("mg/dL");
+        final ReadingToCSV r = createReadingToCSV(Constants.Units.MG_DL);
         final String path = r.createCSVFile(realm, new ArrayList<GlucoseReading>());
 
         assertFileContentEqualsToString(path, headerAsString());
@@ -123,10 +121,10 @@ public class ReadingToCSVTest {
         List<GlucoseReading> values = new ArrayList<>();
         values.add(new GlucoseReading(80, "type", created, "notes"));
 
-        final ReadingToCSV r = createReadingToCSV("mg/dL");
+        final ReadingToCSV r = createReadingToCSV(Constants.Units.MG_DL);
         final String path = r.createCSVFile(realm, values);
 
-        assertFileContentEqualsToString(path, headerAsString(), valuesAsString(values.get(0), "mg/dL"));
+        assertFileContentEqualsToString(path, headerAsString(), valuesAsString(values.get(0), Constants.Units.MG_DL));
     }
 
     private ReadingToCSV createReadingToCSV(String um) {

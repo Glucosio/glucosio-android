@@ -24,6 +24,7 @@ import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.fragment.HistoryFragment;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HistoryPresenter {
 
@@ -96,31 +97,31 @@ public class HistoryPresenter {
         return dB.getUser(1).getPreferred_unit_a1c();
     }
 
-    public ArrayList<Long> getGlucoseId() {
-        return dB.getGlucoseIdAsArray();
+    public List<Long> getGlucoseId() {
+        return dB.getGlucoseIdAsList();
     }
 
-    public ArrayList<String> getGlucoseReadingType() {
-        return dB.getGlucoseTypeAsArray();
+    public List<String> getGlucoseReadingType() {
+        return dB.getGlucoseTypeAsList();
     }
 
-    public ArrayList<String> getGlucoseNotes() {
-        return dB.getGlucoseNotesAsArray();
+    public List<String> getGlucoseNotes() {
+        return dB.getGlucoseNotesAsList();
     }
 
-    public ArrayList<Integer> getGlucoseReading() {
-        return dB.getGlucoseReadingAsArray();
+    public List<Double> getGlucoseReading() {
+        return dB.getGlucoseReadingAsList();
     }
 
-    public ArrayList<String> getGlucoseDateTime() {
-        return dB.getGlucoseDateTimeAsArray();
+    public List<String> getGlucoseDateTime() {
+        return dB.getGlucoseDateTimeAsList();
     }
 
     public int getGlucoseReadingsNumber() {
-        return dB.getGlucoseReadingAsArray().size();
+        return dB.getGlucoseReadingAsList().size();
     }
 
-    public ArrayList<Double> getKetoneReading() {
+    public List<Double> getKetoneReading() {
         return dB.getKetoneReadingAsArray();
     }
 
@@ -144,15 +145,15 @@ public class HistoryPresenter {
         return dB.getCholesterolDateTimeAsArray();
     }
 
-    public ArrayList<Integer> getHDLCholesterolReading() {
+    public List<Double> getHDLCholesterolReading() {
         return dB.getHDLCholesterolReadingAsArray();
     }
 
-    public ArrayList<Integer> getLDLCholesterolReading() {
+    public List<Double> getLDLCholesterolReading() {
         return dB.getLDLCholesterolReadingAsArray();
     }
 
-    public ArrayList<Integer> getTotalCholesterolReading() {
+    public List<Double> getTotalCholesterolReading() {
         return dB.getTotalCholesterolReadingAsArray();
     }
 
@@ -188,11 +189,11 @@ public class HistoryPresenter {
         return dB.getPressureIdAsArray();
     }
 
-    public ArrayList<Integer> getMinPressureReading() {
+    public List<Double> getMinPressureReading() {
         return dB.getMinPressureReadingAsArray();
     }
 
-    public ArrayList<Integer> getMaxPressureReading() {
+    public List<Double> getMaxPressureReading() {
         return dB.getMaxPressureReadingAsArray();
     }
 
@@ -200,7 +201,7 @@ public class HistoryPresenter {
         return dB.getPressureIdAsArray().size();
     }
 
-    public ArrayList<Integer> getWeightReadings() {
+    public List<Double> getWeightReadings() {
         return dB.getWeightReadingAsArray();
     }
 

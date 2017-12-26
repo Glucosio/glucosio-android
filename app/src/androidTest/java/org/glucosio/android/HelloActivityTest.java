@@ -23,7 +23,6 @@ package org.glucosio.android;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-
 import org.glucosio.android.activity.HelloActivity;
 import org.glucosio.android.util.CustomClickAction;
 import org.junit.BeforeClass;
@@ -62,7 +61,6 @@ public class HelloActivityTest {
     private static final String VALID_COUNTRY = "Argentina";
     private static final String VALID_GENDER = "Other";
     private static final String VALID_TYPE = "Type 2";
-    private static final String VALID_UNIT = "mg/dL";
 
     @Rule
     public ActivityTestRule<HelloActivity> mRule = new ActivityTestRule<>(HelloActivity.class);
@@ -89,7 +87,7 @@ public class HelloActivityTest {
     }
 
     @Test
-    public void check_001_IfHelloActivityIsCompletelyDisplayed() throws InterruptedException {
+    public void check_001_IfHelloActivityIsCompletelyDisplayed() {
         for (int id : helloActivityViews) {
             if (id == R.id.activity_hello_check_share) {
                 ViewInteraction checkButtonInteraction = onView(withId(id)).perform(scrollTo());
@@ -101,15 +99,14 @@ public class HelloActivityTest {
     }
 
     @Test
-    public void check_002_IfStartButtonIsDisplayed() throws InterruptedException {
+    public void check_002_IfStartButtonIsDisplayed() {
         onView(withId(R.id.activity_hello_button_start))
                 .perform(scrollTo())
                 .check(matches(isDisplayed()));
     }
 
     @Test
-    public void check_003_IfICanUseCountrySpinnerToSelectMyActualCountry() throws
-            InterruptedException {
+    public void check_003_IfICanUseCountrySpinnerToSelectMyActualCountry() {
         // Click on Country spinner
         onView(withId(R.id.activity_hello_spinner_country)).perform(click());
 
@@ -123,14 +120,14 @@ public class HelloActivityTest {
     }
 
     @Test
-    public void check_004_IfICanEnterMyAgeUsingHelloAgeEditText() throws InterruptedException {
+    public void check_004_IfICanEnterMyAgeUsingHelloAgeEditText() {
         // Enter a valid Age
         onView(withId(R.id.activity_hello_age))
                 .perform(typeText(STRING_TYPED_AGE), closeSoftKeyboard());
     }
 
     @Test
-    public void check_005_IfCanUseGenderSpinnerToSelectMyGender() throws InterruptedException {
+    public void check_005_IfCanUseGenderSpinnerToSelectMyGender() {
         // Click on Gender spinner
         onView(withId(R.id.activity_hello_spinner_gender))
                 .perform(CustomClickAction.click());
@@ -146,7 +143,7 @@ public class HelloActivityTest {
     }
 
     @Test
-    public void check_006_IfICanUseTypeSpinnerToChangeDiabetesType() throws InterruptedException {
+    public void check_006_IfICanUseTypeSpinnerToChangeDiabetesType() {
         // Click on Type spinner
         onView(withId(R.id.activity_hello_spinner_diabetes_type))
                 .perform(CustomClickAction.click());
@@ -162,23 +159,23 @@ public class HelloActivityTest {
     }
 
     @Test
-    public void check_007_IfICanUseUnitSpinnerToSelectPreferredUnit() throws InterruptedException {
+    public void check_007_IfICanUseUnitSpinnerToSelectPreferredUnit() {
         // Click on Unit spinner
         onView(withId(R.id.activity_hello_spinner_preferred_unit))
                 .perform(CustomClickAction.click());
 
         // Select random Unit
-        onData(allOf(is(instanceOf(String.class)), is(VALID_UNIT)))
+        onData(allOf(is(instanceOf(String.class)), is(Constants.Units.MG_DL)))
                 .perform(CustomClickAction.click());
 
         // Locate Spinner view and check its text is equal with VALID_UNIT
         onView(allOf(withId(R.id.custom_spinner),
                 withParent(withId(R.id.activity_hello_spinner_preferred_unit))))
-                .check(matches(withSpinnerText(VALID_UNIT)));
+                .check(matches(withSpinnerText(Constants.Units.MG_DL)));
     }
 
     @Test
-    public void check_008_IfICanUncheckShareDataCheckBox() throws InterruptedException {
+    public void check_008_IfICanUncheckShareDataCheckBox() {
         // Click on Share Data CheckBox multiple times
         onView(withId(R.id.activity_hello_check_share))
                 .check(matches(isChecked()))
@@ -187,7 +184,7 @@ public class HelloActivityTest {
     }
 
     @Test
-    public void check_009_IfICanSubmitAnyData() throws InterruptedException {
+    public void check_009_IfICanSubmitAnyData() {
         // Perform submit
         onView(withId(R.id.activity_hello_button_start))
                 .perform(scrollTo(), click());

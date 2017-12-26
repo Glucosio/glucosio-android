@@ -21,15 +21,10 @@
 package org.glucosio.android.presenter;
 
 import org.glucosio.android.R;
-import org.glucosio.android.db.CholesterolReading;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.GlucoseReading;
-import org.glucosio.android.db.HB1ACReading;
-import org.glucosio.android.db.KetoneReading;
-import org.glucosio.android.db.PressureReading;
-import org.glucosio.android.db.WeightReading;
 import org.glucosio.android.object.A1cEstimate;
-import org.glucosio.android.object.IntGraphObject;
+import org.glucosio.android.object.DoubleGraphObject;
 import org.glucosio.android.tools.GlucosioConverter;
 import org.glucosio.android.tools.TipsManager;
 import org.glucosio.android.view.OverviewView;
@@ -47,17 +42,17 @@ import java.util.Random;
 
 public class OverviewPresenter {
 
-    private DatabaseHandler dB;
-    private OverviewView view;
+    private final DatabaseHandler dB;
+    private final OverviewView view;
 
-    private List<Integer> glucoseReadingsWeek;
-    private List<Integer> glucoseReadingsMonth;
+    private List<Double> glucoseReadingsWeek;
+    private List<Double> glucoseReadingsMonth;
     private List<String> glucoseDatetimeWeek;
     private List<String> glucoseDatetimeMonth;
     private List<GlucoseReading> glucoseReadings;
-    private List<IntGraphObject> glucoseGraphObjects;
-    private int glucoseMinValue = 0;
-    private int glucoseMaxValue = 0;
+    private List<DoubleGraphObject> glucoseGraphObjects;
+    private double glucoseMinValue = 0;
+    private double glucoseMaxValue = 0;
 
     public OverviewPresenter(OverviewView view, DatabaseHandler dB) {
         this.dB = dB;
@@ -140,7 +135,7 @@ public class OverviewPresenter {
         return tips.get(randomNumber);
     }
 
-    public String getUnitMeasuerement() {
+    public String getUnitMeasurement() {
         return dB.getUser(1).getPreferred_unit();
     }
 
@@ -148,9 +143,8 @@ public class OverviewPresenter {
         return dB.getUser(1).getAge();
     }
 
-    public List<Integer> getGlucoseReadings() {
-
-        ArrayList<Integer> glucoseReadings = new ArrayList<>();
+    public List<Double> getGlucoseReadings() {
+        ArrayList<Double> glucoseReadings = new ArrayList<>(glucoseGraphObjects.size());
         for (int i = 0; i < glucoseGraphObjects.size(); i++) {
             glucoseReadings.add(glucoseGraphObjects.get(i).getReading());
         }
@@ -166,69 +160,44 @@ public class OverviewPresenter {
         return dB.getHB1ACDateTimeAsArray();
     }
 
-    public ArrayList<Double> getKetonesReadings() {
-        final List<KetoneReading> ketoneReadings = dB.getKetoneReadings();
-        ArrayList<Double> finalArrayList = new ArrayList<>();
-        for (int i = 0; i < ketoneReadings.size(); i++) {
-            finalArrayList.add(ketoneReadings.get(i).getReading());
-        }
-        return finalArrayList;
+    public List<Double> getKetonesReadings() {
+        return dB.getKetoneReadingAsArray();
     }
 
     public ArrayList<String> getKetonesReadingsDateTime() {
         return dB.getKetoneDateTimeAsArray();
     }
 
-    public ArrayList<Integer> getWeightReadings() {
-        final List<WeightReading> weightReadings = dB.getWeightReadings();
-        ArrayList<Integer> finalArrayList = new ArrayList<>();
-        for (int i = 0; i < weightReadings.size(); i++) {
-            finalArrayList.add(weightReadings.get(i).getReading());
-        }
-        return finalArrayList;
+    public List<Double> getWeightReadings() {
+        return dB.getWeightReadingAsArray();
     }
 
     public ArrayList<String> getWeightReadingsDateTime() {
         return dB.getWeightReadingDateTimeAsArray();
     }
 
-    public ArrayList<Integer> getMinPressureReadings() {
-        final List<PressureReading> pressureReadings = dB.getPressureReadings();
-        ArrayList<Integer> finalArrayList = new ArrayList<>();
-        for (int i = 0; i < pressureReadings.size(); i++) {
-            finalArrayList.add(pressureReadings.get(i).getMinReading());
-        }
-        return finalArrayList;
+    public List<Double> getMinPressureReadings() {
+        return dB.getMinPressureReadingAsArray();
     }
 
-    public ArrayList<Integer> getMaxPressureReadings() {
-        final List<PressureReading> pressureReadings = dB.getPressureReadings();
-        ArrayList<Integer> finalArrayList = new ArrayList<>();
-        for (int i = 0; i < pressureReadings.size(); i++) {
-            finalArrayList.add(pressureReadings.get(i).getMaxReading());
-        }
-        return finalArrayList;
+    public List<Double> getMaxPressureReadings() {
+        return dB.getMaxPressureReadingAsArray();
     }
 
     public ArrayList<String> getPressureReadingsDateTime() {
         return dB.getPressureDateTimeAsArray();
     }
 
-    public ArrayList<Integer> getCholesterolReadings() {
-        final List<CholesterolReading> cholesterolReadings = dB.getCholesterolReadings();
-        ArrayList<Integer> finalArrayList = new ArrayList<>();
-        for (int i = 0; i < cholesterolReadings.size(); i++) {
-            finalArrayList.add(cholesterolReadings.get(i).getTotalReading());
-        }
-        return finalArrayList;
+    public List<Double> getCholesterolReadings() {
+        return dB.getTotalCholesterolReadingAsArray();
     }
 
     public ArrayList<String> getCholesterolReadingsDateTime() {
         return dB.getCholesterolDateTimeAsArray();
     }
 
-    private List<IntGraphObject> generateGlucoseGraphPoints(boolean isNewGraphEnabled) {
-        final ArrayList<IntGraphObject> finalGraphObjects = new ArrayList<>();
+    private List<DoubleGraphObject> generateGlucoseGraphPoints(boolean isNewGraphEnabled) {
+        final ArrayList<DoubleGraphObject> finalGraphObjects = new ArrayList<>();
         if (isNewGraphEnabled) {
             DateTime minDateTime = DateTime.now().minusMonths(1).minusDays(15);
             final List<GlucoseReading> glucoseReadings = dB.getLastMonthGlucoseReadings();
@@ -249,7 +218,7 @@ public class OverviewPresenter {
                 addZeroReadings(finalGraphObjects, startDate, createdDate);
                 //add new value
                 finalGraphObjects.add(
-                        new IntGraphObject(createdDate, reading.getReading())
+                        new DoubleGraphObject(createdDate, reading.getReading())
                 );
                 //update start date
                 startDate = createdDate;
@@ -264,19 +233,21 @@ public class OverviewPresenter {
             });
             for (int i = 0; i < glucoseReadings.size(); i++) {
                 GlucoseReading glucoseReading = glucoseReadings.get(i);
-                finalGraphObjects.add(new IntGraphObject(new DateTime(glucoseReading.getCreated()), glucoseReading.getReading()));
+                finalGraphObjects.add(
+                        new DoubleGraphObject(new DateTime(glucoseReading.getCreated()), glucoseReading.getReading())
+                );
             }
         }
 
         return finalGraphObjects;
     }
 
-    private void addZeroReadings(final ArrayList<IntGraphObject> graphObjects,
+    private void addZeroReadings(final ArrayList<DoubleGraphObject> graphObjects,
                                  final DateTime firstDate,
                                  final DateTime lastDate) {
         int daysBetween = Days.daysBetween(firstDate, lastDate).getDays();
         for (int i = 1; i < daysBetween; i++) {
-            graphObjects.add(new IntGraphObject(firstDate.plusDays(i), 0));
+            graphObjects.add(new DoubleGraphObject(firstDate.plusDays(i), 0));
         }
     }
 
@@ -290,11 +261,11 @@ public class OverviewPresenter {
         return glucoseDatetime;
     }
 
-    public List<Integer> getGlucoseReadingsWeek() {
+    public List<Double> getGlucoseReadingsWeek() {
         return glucoseReadingsWeek;
     }
 
-    public List<Integer> getGlucoseReadingsMonth() {
+    public List<Double> getGlucoseReadingsMonth() {
         return glucoseReadingsMonth;
     }
 
@@ -310,11 +281,11 @@ public class OverviewPresenter {
         return view.convertDateToMonth(s);
     }
 
-    public int getGlucoseMinValue() {
+    public double getGlucoseMinValue() {
         return glucoseMinValue;
     }
 
-    public int getGlucoseMaxValue() {
+    public double getGlucoseMaxValue() {
         return glucoseMaxValue;
     }
 }

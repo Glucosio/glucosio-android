@@ -23,7 +23,7 @@ apply plugin: 'jacoco'
 apply plugin: 'realm-android'
 
 android {
-    compileSdkVersion 25
+    compileSdkVersion 26
     buildToolsVersion buildToolsVer
 
     lintOptions {
@@ -32,7 +32,7 @@ android {
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 25
+        targetSdkVersion 26
         versionCode 41
         versionName '1.4.0'
         applicationId 'org.glucosio.android'
@@ -137,15 +137,15 @@ dependencies {
     testImplementation "junit:junit:${junitVer}"
     testImplementation "org.mockito:mockito-all:${mockitoVer}"
     testImplementation "com.squareup.assertj:assertj-android:${androidAssertJVer}"
-    testImplementation("org.robolectric:robolectric:3.5.1") {
+    testImplementation("org.robolectric:robolectric:${robolectricVer}") {
         exclude group: 'commons-logging', module: 'commons-logging'
         exclude group: 'org.apache.httpcomponents', module: 'httpclient'
     }
-    testImplementation("org.robolectric:shadows-support-v4:3.3.2") {
+    testImplementation("org.robolectric:shadows-supportv4:${robolectricVer}") {
         exclude group: 'commons-logging', module: 'commons-logging'
         exclude group: 'org.apache.httpcomponents', module: 'httpclient'
     }
-    testImplementation 'io.reactivex:rxjava:1.3.4'
+    testImplementation 'io.reactivex.rxjava2:rxjava:2.1.0'
 
     testImplementation "org.powermock:powermock-module-junit4:1.6.4"
     testImplementation "org.powermock:powermock-module-junit4-rule:1.6.4"

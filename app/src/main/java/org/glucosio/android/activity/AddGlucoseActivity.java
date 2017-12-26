@@ -30,9 +30,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
-
+import org.glucosio.android.Constants;
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.analytics.Analytics;
@@ -41,26 +40,32 @@ import org.glucosio.android.presenter.AddGlucosePresenter;
 import org.glucosio.android.tools.FormatDateTime;
 import org.glucosio.android.tools.GlucosioConverter;
 import org.glucosio.android.tools.LabelledSpinner;
+import org.glucosio.android.tools.NumberFormatUtils;
+import org.glucosio.android.tools.ReadingTools;
 
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.Arrays;
 import java.util.Calendar;
 
 
 public class AddGlucoseActivity extends AddReadingActivity {
 
-    static final int CUSTOM_TYPE_SPINNER_VALUE = 11;
+    private static final int CUSTOM_TYPE_SPINNER_VALUE = 11;
+
     private TextView readingTextView;
     private EditText typeCustomEditText;
     private EditText notesEditText;
     private LabelledSpinner readingTypeSpinner;
     private boolean isCustomType = false;
 
+    private final NumberFormat numberFormat = NumberFormatUtils.createDefaultNumberFormat();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_glucose);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.activity_main_toolbar);
+        Toolbar toolbar = findViewById(R.id.activity_main_toolbar);
 
         if (toolbar != null) {
             setSupportActionBar(toolbar);
@@ -74,13 +79,13 @@ public class AddGlucoseActivity extends AddReadingActivity {
         setPresenter(presenter);
         presenter.setReadingTimeNow();
 
-        readingTypeSpinner = (LabelledSpinner) findViewById(R.id.glucose_add_reading_type);
+        readingTypeSpinner = findViewById(R.id.glucose_add_reading_type);
         readingTypeSpinner.setItemsArray(R.array.dialog_add_measured_list);
-        readingTextView = (TextView) findViewById(R.id.glucose_add_concentration);
-        typeCustomEditText = (EditText) findViewById(R.id.glucose_type_custom);
-        TextInputLayout readingInputLayout = (TextInputLayout) findViewById(R.id.glucose_add_concentration_layout);
-        AppCompatButton addFreeStyleButton = (AppCompatButton) findViewById(R.id.glucose_add_freestyle_button);
-        notesEditText = (EditText) findViewById(R.id.glucose_add_notes);
+        readingTextView = findViewById(R.id.glucose_add_concentration);
+        typeCustomEditText = findViewById(R.id.glucose_type_custom);
+        TextInputLayout readingInputLayout = findViewById(R.id.glucose_add_concentration_layout);
+        AppCompatButton addFreeStyleButton = findViewById(R.id.glucose_add_freestyle_button);
+        notesEditText = findViewById(R.id.glucose_add_notes);
 
         this.createDateTimeViewAndListener();
         this.createFANViewAndListener();
@@ -106,9 +111,9 @@ public class AddGlucoseActivity extends AddReadingActivity {
             }
         });
 
-        TextView unitM = (TextView) findViewById(R.id.glucose_add_unit_measurement);
+        TextView unitM = findViewById(R.id.glucose_add_unit_measurement);
 
-        if (presenter.getUnitMeasuerement().equals("mg/dL")) {
+        if (Constants.Units.MG_DL.equals(presenter.getUnitMeasurement())) {
             unitM.setText(getString(R.string.mg_dL));
         } else {
             unitM.setText(getString(R.string.mmol_L));
@@ -122,7 +127,7 @@ public class AddGlucoseActivity extends AddReadingActivity {
             GlucoseReading readingToEdit = presenter.getGlucoseReadingById(this.getEditId());
 
             String readingString;
-            if (presenter.getUnitMeasuerement().equals("mg/dL")) {
+            if (presenter.getUnitMeasurement().equals(Constants.Units.MG_DL)) {
                 readingString = String.valueOf(readingToEdit.getReading());
             } else {
                 readingString = String.valueOf(GlucosioConverter.glucoseToMmolL(readingToEdit.getReading()));
@@ -161,10 +166,8 @@ public class AddGlucoseActivity extends AddReadingActivity {
             p = getIntent().getExtras();
             reading = p.getString("reading");
             if (reading != null) {
-                // If yes, first convert the decimal value from Freestyle to Integer
-                double d = Double.parseDouble(reading);
-                int glucoseValue = (int) d;
-                readingTextView.setText(glucoseValue + "");
+                double readingDouble = ReadingTools.safeParseDouble(reading);
+                readingTextView.setText(numberFormat.format(readingDouble));
                 readingInputLayout.setErrorEnabled(true);
                 readingInputLayout.setError(getResources().getString(R.string.dialog_add_glucose_freestylelibre_added));
                 addFreeStyleButton.setVisibility(View.GONE);

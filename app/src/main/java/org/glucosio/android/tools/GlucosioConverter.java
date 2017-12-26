@@ -24,23 +24,27 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 public final class GlucosioConverter {
-    private GlucosioConverter(){}
+
+    private static final double MG_DL_TO_MMOL_CONSTANT = 18.0;
+    private static final double KG_TO_LB_CONSTANT = 2.20462;
+
+    private GlucosioConverter() {
+    }
 
     public static double round(double value, int places) {
         if (places < 0) throw new IllegalArgumentException();
 
-        BigDecimal bd = new BigDecimal(value);
+        BigDecimal bd = BigDecimal.valueOf(value);
         bd = bd.setScale(places, RoundingMode.HALF_UP);
         return bd.doubleValue();
     }
 
-    public static int glucoseToMgDl(double mmolL) {
-        double converted = mmolL * 18;
-        return (int) converted;
+    public static double glucoseToMgDl(double mmolL) {
+        return mmolL * MG_DL_TO_MMOL_CONSTANT;
     }
 
     public static double glucoseToMmolL(double mgDl) {
-        return round(mgDl / 18.0, 1);
+        return round(mgDl / MG_DL_TO_MMOL_CONSTANT, 1);
     }
 
     public static double glucoseToA1C(double mgDl) {
@@ -53,14 +57,12 @@ public final class GlucosioConverter {
         return round((a1c * 28.7) - 46.7, 2);
     }
 
-    public static int kgToLb(int kg) {
-        Double d = kg * 2.20462;
-        return d.intValue();
+    public static double kgToLb(double kg) {
+        return kg * KG_TO_LB_CONSTANT;
     }
 
-    public static int lbToKg(int lb) {
-        Double d = lb / 2.20462;
-        return d.intValue();
+    public static double lbToKg(double lb) {
+        return lb / KG_TO_LB_CONSTANT;
     }
 
     public static double a1cNgspToIfcc(double ngsp) {
