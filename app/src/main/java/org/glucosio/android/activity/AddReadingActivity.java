@@ -1,5 +1,7 @@
 package org.glucosio.android.activity;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,21 +10,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.TextView;
-
-import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
-import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
-import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
-
+import android.widget.TimePicker;
 import org.glucosio.android.R;
 import org.glucosio.android.presenter.AddReadingPresenter;
 import org.glucosio.android.tools.AnimationTools;
 import org.glucosio.android.tools.FormatDateTime;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 import java.text.DecimalFormat;
 import java.util.Calendar;
-
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public abstract class AddReadingActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
@@ -53,8 +51,8 @@ public abstract class AddReadingActivity extends AppCompatActivity implements Ti
     }
 
     @Override
-    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int seconds) {
-        TextView addTime = (TextView) findViewById(R.id.dialog_add_time);
+    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+        TextView addTime = findViewById(R.id.dialog_add_time);
         DecimalFormat df = new DecimalFormat("00");
 
         presenter.setReadingHour(df.format(hourOfDay));
@@ -68,8 +66,8 @@ public abstract class AddReadingActivity extends AppCompatActivity implements Ti
     }
 
     @Override
-    public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-        TextView addDate = (TextView) findViewById(R.id.dialog_add_date);
+    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+        TextView addDate = findViewById(R.id.dialog_add_date);
         DecimalFormat df = new DecimalFormat("00");
 
         presenter.setReadingYear(year + "");
@@ -81,21 +79,22 @@ public abstract class AddReadingActivity extends AppCompatActivity implements Ti
     }
 
     public void createDateTimeViewAndListener() {
-        addTimeTextView = (TextView) findViewById(R.id.dialog_add_time);
-        addDateTextView = (TextView) findViewById(R.id.dialog_add_date);
+        addTimeTextView = findViewById(R.id.dialog_add_time);
+        addDateTextView = findViewById(R.id.dialog_add_date);
 
         addDateTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Calendar now = Calendar.getInstance();
-                DatePickerDialog dpd = DatePickerDialog.newInstance(
+                DatePickerDialog dpd = new DatePickerDialog(
+                        AddReadingActivity.this,
                         AddReadingActivity.this,
                         now.get(Calendar.YEAR),
                         now.get(Calendar.MONTH),
                         now.get(Calendar.DAY_OF_MONTH)
                 );
-                dpd.show(getFragmentManager(), "Datepickerdialog");
-                dpd.setMaxDate(now);
+                dpd.getDatePicker().setMaxDate(System.currentTimeMillis());
+                dpd.show();
             }
         });
 
@@ -109,19 +108,20 @@ public abstract class AddReadingActivity extends AppCompatActivity implements Ti
                 if (addReadingActivity.isEditing()) {
                     cal.setTime(addReadingPresenter.getReadingTime());
                 }
-                TimePickerDialog tpd = TimePickerDialog.newInstance(
+                TimePickerDialog tpd = new TimePickerDialog(
+                        AddReadingActivity.this,
                         AddReadingActivity.this,
                         cal.get(Calendar.HOUR_OF_DAY),
                         cal.get(Calendar.MINUTE),
                         is24HourFormat);
-                tpd.show(getFragmentManager(), "Timepickerdialog");
+                tpd.show();
             }
         });
     }
 
     public void createFANViewAndListener() {
 
-        doneFAB = (FloatingActionButton) findViewById(R.id.done_fab);
+        doneFAB = findViewById(R.id.done_fab);
         doneFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

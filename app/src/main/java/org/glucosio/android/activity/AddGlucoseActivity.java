@@ -30,7 +30,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
+import android.widget.TimePicker;
 import org.glucosio.android.Constants;
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
@@ -239,8 +239,8 @@ public class AddGlucoseActivity extends AddReadingActivity {
     }
 
     @Override
-    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int seconds) {
-        super.onTimeSet(view, hourOfDay, minute, seconds);
+    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+        super.onTimeSet(view, hourOfDay, minute);
         DecimalFormat df = new DecimalFormat("00");
         updateSpinnerTypeHour(Integer.parseInt(df.format(hourOfDay)));
     }
