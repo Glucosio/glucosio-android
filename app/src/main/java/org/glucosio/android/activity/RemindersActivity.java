@@ -1,5 +1,6 @@
 package org.glucosio.android.activity;
 
+import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.BottomSheetDialog;
@@ -15,10 +16,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TableLayout;
-
-import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
-import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
-
+import android.widget.TimePicker;
 import org.glucosio.android.R;
 import org.glucosio.android.db.Reminder;
 import org.glucosio.android.presenter.RemindersPresenter;
@@ -39,7 +37,7 @@ public class RemindersActivity extends AppCompatActivity implements TimePickerDi
         setContentView(R.layout.activity_reminders);
         presenter = new RemindersPresenter(this);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.activity_main_toolbar);
+        Toolbar toolbar = findViewById(R.id.activity_main_toolbar);
 
         if (toolbar != null) {
             setSupportActionBar(toolbar);
@@ -48,7 +46,7 @@ public class RemindersActivity extends AppCompatActivity implements TimePickerDi
             getSupportActionBar().setTitle(getResources().getString(R.string.activity_reminders_title));
         }
 
-        addFab = (FloatingActionButton) findViewById(R.id.activity_reminders_fab_add);
+        addFab = findViewById(R.id.activity_reminders_fab_add);
 
         addFab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +70,7 @@ public class RemindersActivity extends AppCompatActivity implements TimePickerDi
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         label = input.getText().toString();
-                        if (label.isEmpty()){
+                        if (label.isEmpty()) {
                             showEmptyErrorMessage(view);
                         } else {
                             openTimePicker();
@@ -87,10 +85,10 @@ public class RemindersActivity extends AppCompatActivity implements TimePickerDi
                 });
 
                 builder.show();
-         }
+            }
         });
 
-        listView = (ListView) findViewById(R.id.activity_reminders_listview);
+        listView = findViewById(R.id.activity_reminders_listview);
         listView.setEmptyView(findViewById(R.id.activity_reminders_listview_empty));
         listView.setAdapter(presenter.getAdapter());
         addFab.postDelayed(new Runnable() {
@@ -101,17 +99,18 @@ public class RemindersActivity extends AppCompatActivity implements TimePickerDi
         }, 600);
     }
 
-    private void openTimePicker(){
+    private void openTimePicker() {
         // Open Time Picker on FAB click
         boolean is24HourFormat = android.text.format.DateFormat.is24HourFormat(getApplicationContext());
         Calendar cal = presenter.getCalendar();
 
-        TimePickerDialog tpd = TimePickerDialog.newInstance(
+        TimePickerDialog tpd = new TimePickerDialog(
+                RemindersActivity.this,
                 RemindersActivity.this,
                 cal.get(Calendar.HOUR_OF_DAY),
                 cal.get(Calendar.MINUTE),
                 is24HourFormat);
-        tpd.show(getFragmentManager(), "Timepickerdialog");
+        tpd.show();
     }
 
     public void updateReminder(Reminder reminder) {
@@ -124,12 +123,12 @@ public class RemindersActivity extends AppCompatActivity implements TimePickerDi
         listView.invalidate();
     }
 
-    private void showEmptyErrorMessage(View view){
+    private void showEmptyErrorMessage(View view) {
         Snackbar.make(view, R.string.activity_reminder_error_empty, Snackbar.LENGTH_SHORT).show();
     }
 
     @Override
-    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int seconds) {
+    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.HOUR_OF_DAY, hourOfDay);
         cal.set(Calendar.MINUTE, minute);
@@ -150,7 +149,7 @@ public class RemindersActivity extends AppCompatActivity implements TimePickerDi
     public void showBottomSheetDialog(final long id) {
         final BottomSheetDialog mBottomSheetDialog = new BottomSheetDialog(this);
         View sheetView = getLayoutInflater().inflate(R.layout.fragment_reminders_bottom_sheet, null);
-        LinearLayout delete = (LinearLayout) sheetView.findViewById(R.id.fragment_history_bottom_sheet_delete);
+        LinearLayout delete = sheetView.findViewById(R.id.fragment_history_bottom_sheet_delete);
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

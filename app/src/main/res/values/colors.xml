@@ -45,6 +45,7 @@
     <color name="glucosio_grey_action_icon">#7c7c7c</color>
     <color name="mdtp_accent_color">@color/glucosio_pink</color>
     <color name="mdtp_accent_color_dark">@color/glucosio_pink_dark</color>
+    <color name="mdtp_transparent_black">#7f000000</color>
     <color name="glucosio_reading_ok">#749756</color>
     <color name="glucosio_reading_hyper">#E86445</color>
     <color name="glucosio_reading_low">#4B8DDB</color>

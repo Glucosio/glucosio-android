@@ -121,8 +121,6 @@ dependencies {
 
     // Other libraries
     implementation 'com.github.paolorotolo:expandableheightlistview:1.0.0'
-    implementation 'com.github.clans:fab:1.6.4'
-    implementation 'com.wdullaer:materialdatetimepicker:2.4.0'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.1'
     implementation 'uk.co.chrisjenx:calligraphy:2.2.0'
     implementation 'net.danlew:android.joda:2.9.5.1'
