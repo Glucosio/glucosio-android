@@ -43,10 +43,10 @@ allprojects {
         google()
     }
 
-    ext.buildToolsVer = '27.0.1'
+    ext.buildToolsVer = '27.0.2'
 
-    ext.androidSupportVer = '26.1.0'
-    ext.googlePlayServicesVer = '11.6.2'
+    ext.androidSupportVer = '27.0.2'
+    ext.googlePlayServicesVer = '11.8.0'
 
     ext.butterKnifeVer = '8.8.1'
 
