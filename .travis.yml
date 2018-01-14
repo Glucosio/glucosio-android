@@ -20,6 +20,7 @@ before_install:
  - chmod +x gradlew
  - export JAVA8_HOME=/usr/lib/jvm/java-8-oracle
  - export JAVA_HOME=$JAVA8_HOME
+ - yes | sdkmanager "platforms;android-27"
 
 after_success:
  - ./gradlew coveralls
