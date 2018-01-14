@@ -121,7 +121,7 @@ public class DatabaseHandler {
                         .equalTo("active", true)
                         .findAll();
 
-        return activeRemindersList.size() > 0;
+        return !activeRemindersList.isEmpty();
     }
 
     public Reminder getReminder(long id) {
@@ -133,17 +133,14 @@ public class DatabaseHandler {
     public List<Reminder> getReminders() {
         RealmResults<Reminder> results =
                 realm.where(Reminder.class)
-                        .findAllSorted("alarmTime", Sort.DESCENDING);
-        List<Reminder> reminders = new ArrayList<>(results.size());
-        for (int i = 0; i < results.size(); i++) {
-            reminders.add(results.get(i));
-        }
-        return reminders;
+                        .sort("alarmTime", Sort.DESCENDING)
+                        .findAll();
+        return new ArrayList<>(results);
     }
 
-    public ArrayList<Date> getRemindersDatesAsArray() {
+    public List<Date> getRemindersDatesAsArray() {
         List<Reminder> readings = getReminders();
-        ArrayList<Date> datesArray = new ArrayList<Date>();
+        ArrayList<Date> datesArray = new ArrayList<>(readings.size());
         int i;
 
         for (i = 0; i < readings.size(); i++) {
@@ -155,9 +152,9 @@ public class DatabaseHandler {
         return datesArray;
     }
 
-    public ArrayList<String> getRemindersDatesStringAsArray() {
+    public List<String> getRemindersDatesStringAsArray() {
         List<Reminder> readings = getReminders();
-        ArrayList<String> datesArray = new ArrayList<String>();
+        ArrayList<String> datesArray = new ArrayList<>(readings.size());
         int i;
         DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
@@ -236,25 +233,24 @@ public class DatabaseHandler {
     public GlucoseReading getLastGlucoseReading() {
         RealmResults<GlucoseReading> results =
                 realm.where(GlucoseReading.class)
-                        .findAllSorted("created", Sort.DESCENDING);
+                        .sort("created", Sort.DESCENDING)
+                        .findAll();
         return results.get(0);
     }
 
     public List<GlucoseReading> getGlucoseReadings() {
         RealmResults<GlucoseReading> results =
                 realm.where(GlucoseReading.class)
-                        .findAllSorted("created", Sort.DESCENDING);
-        ArrayList<GlucoseReading> readingList = new ArrayList<>();
-        for (int i = 0; i < results.size(); i++) {
-            readingList.add(results.get(i));
-        }
-        return readingList;
+                        .sort("created", Sort.DESCENDING)
+                        .findAll();
+        return new ArrayList<>(results);
     }
 
     public List<GlucoseReading> getGlucoseReadings(Realm realm) {
         RealmResults<GlucoseReading> results =
                 realm.where(GlucoseReading.class)
-                        .findAllSorted("created", Sort.DESCENDING);
+                        .sort("created", Sort.DESCENDING)
+                        .findAll();
         return new ArrayList<>(results);
     }
 
@@ -262,7 +258,8 @@ public class DatabaseHandler {
         RealmResults<GlucoseReading> results =
                 realm.where(GlucoseReading.class)
                         .between("created", from, to)
-                        .findAllSorted("created", Sort.DESCENDING);
+                        .sort("created", Sort.DESCENDING)
+                        .findAll();
         return new ArrayList<>(results);
     }
 
@@ -270,7 +267,8 @@ public class DatabaseHandler {
         RealmResults<GlucoseReading> results =
                 realm.where(GlucoseReading.class)
                         .between("created", from, to)
-                        .findAllSorted("created", Sort.DESCENDING);
+                        .sort("created", Sort.DESCENDING)
+                        .findAll();
         return new ArrayList<>(results);
     }
 
@@ -352,12 +350,11 @@ public class DatabaseHandler {
         DateTime currentDateTime = minDateTime;
         DateTime newDateTime;
 
-        List<Double> averageReadings = new ArrayList<>(Weeks.weeksBetween(maxDateTime, minDateTime).getWeeks());
+        int weeksNumber = Weeks.weeksBetween(minDateTime, maxDateTime).getWeeks();
+        List<Double> averageReadings = new ArrayList<>(weeksNumber);
 
         // The number of weeks is at least 1 since we do have average for the current week even if incomplete
-        int weeksNumber = Weeks.weeksBetween(minDateTime, maxDateTime).getWeeks() + 1;
-
-        for (int i = 0; i < weeksNumber; i++) {
+        for (int i = 0; i < weeksNumber + 1; i++) {
             newDateTime = currentDateTime.plusWeeks(1);
             RealmResults<GlucoseReading> readings = realm.where(GlucoseReading.class)
                     .between("created", currentDateTime.toDate(), newDateTime.toDate())
@@ -400,10 +397,11 @@ public class DatabaseHandler {
         DateTime currentDateTime = minDateTime;
         DateTime newDateTime;
 
-        List<Double> averageReadings = new ArrayList<>(Months.monthsBetween(maxDateTime, minDateTime).getMonths());
+        int months = Months.monthsBetween(minDateTime, maxDateTime).getMonths();
+        List<Double> averageReadings = new ArrayList<>(months);
 
         // The number of months is at least 1 since we do have average for the current week even if incomplete
-        int monthsNumber = Months.monthsBetween(minDateTime, maxDateTime).getMonths() + 1;
+        int monthsNumber = months + 1;
 
         for (int i = 0; i < monthsNumber; i++) {
             newDateTime = currentDateTime.plusMonths(1);
@@ -423,9 +421,9 @@ public class DatabaseHandler {
         DateTime minDateTime = new DateTime(realm.where(GlucoseReading.class).minimumDate("created").getTime());
 
         DateTime currentDateTime = minDateTime;
-        DateTime newDateTime = minDateTime;
+        DateTime newDateTime;
 
-        ArrayList<String> finalMonths = new ArrayList<String>();
+        ArrayList<String> finalMonths = new ArrayList<>();
 
         // The number of months is at least 1 because current month is incomplete
         int monthsNumber = Months.monthsBetween(minDateTime, maxDateTime).getMonths() + 1;
