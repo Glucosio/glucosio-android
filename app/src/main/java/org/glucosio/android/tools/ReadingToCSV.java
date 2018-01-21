@@ -23,6 +23,7 @@ package org.glucosio.android.tools;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.Log;
 import org.glucosio.android.Constants;
 import org.glucosio.android.R;
@@ -30,13 +31,18 @@ import org.glucosio.android.db.GlucoseReading;
 
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.text.NumberFormat;
 import java.util.List;
 
 public final class ReadingToCSV {
 
+    private static final char[] SYMBOLS_TO_ESCAPE = new char[]{',', '"', '\n', '\r'};
+
     private final Context context;
     private final String userMeasurements;
     private final FormatDateTime dateTool;
+
+    private final NumberFormat formatter = NumberFormatUtils.createDefaultNumberFormat();
 
     public ReadingToCSV(@NonNull Context context, @NonNull String userMeasurements) {
         this.context = context;
@@ -63,10 +69,10 @@ public final class ReadingToCSV {
                 writeLine(osw,
                         dateTool.convertRawDate(reading.getCreated()),
                         dateTool.convertRawTime(reading.getCreated()),
-                        String.valueOf(reading.getReading()),
+                        formatter.format(reading.getReading()),
                         Constants.Units.MG_DL,
-                        String.valueOf(reading.getReading_type()),
-                        reading.getNotes()
+                        valueOrEmptyString(reading.getReading_type()),
+                        valueOrEmptyString(reading.getNotes())
                 );
 
             }
@@ -75,16 +81,22 @@ public final class ReadingToCSV {
                 writeLine(osw,
                         this.dateTool.convertRawDate(reading.getCreated()),
                         this.dateTool.convertRawTime(reading.getCreated()),
-                        GlucosioConverter.glucoseToMmolL(reading.getReading()) + "",
+                        formatter.format(GlucosioConverter.glucoseToMmolL(reading.getReading())),
                         "mmol/L",
-                        reading.getReading_type() + "",
-                        reading.getNotes()
+                        valueOrEmptyString(reading.getReading_type()),
+                        valueOrEmptyString((reading.getNotes())
+                        )
                 );
             }
 
         }
         osw.flush();
         Log.i("Glucosio", "Done exporting readings");
+    }
+
+    @NonNull
+    private String valueOrEmptyString(@Nullable String value) {
+        return value == null ? "" : value;
     }
 
     private void writeLine(@NonNull OutputStreamWriter osw, @NonNull String... values) throws IOException {
@@ -95,10 +107,20 @@ public final class ReadingToCSV {
     }
 
     private String escapeCSV(String value) {
-        if ((value.contains("\"") || value.contains(","))) {
+        if (containsSymbolsToEscape(value)) {
             return "\"" + value.replace("\"", "\"\"") + "\"";
         } else {
             return value;
         }
+    }
+
+    private boolean containsSymbolsToEscape(String value) {
+        for (char c : SYMBOLS_TO_ESCAPE) {
+            if (value.indexOf(c) > -1) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
