@@ -137,7 +137,7 @@ public class AddGlucosePresenter extends AddReadingPresenter {
                 Double readingValue = ReadingTools.safeParseDouble(reading);
                 //TODO: Add custom ranges
                 return readingValue > 19 && readingValue < 601;
-            } else if ("mmol/L".equals(getUnitMeasurement())) {
+            } else if (Constants.Units.MMOL_L.equals(getUnitMeasurement())) {
                 // Convert mmol/L Unit
                 Double readingValue = ReadingTools.safeParseDouble(reading);
                 return readingValue > 1.0545 && readingValue < 33.3555;

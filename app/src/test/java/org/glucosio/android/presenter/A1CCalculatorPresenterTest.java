@@ -70,7 +70,7 @@ public class A1CCalculatorPresenterTest {
 
     @Test
     public void ShouldCalculatable_WhenUserPreferredMmol() {
-        user.setPreferred_unit("mmol/L");
+        user.setPreferred_unit(Constants.Units.MMOL_L);
 
         assertThat(presenter.calculateA1C("1")).isEqualTo(2.25);
     }
@@ -84,7 +84,7 @@ public class A1CCalculatorPresenterTest {
 
     @Test
     public void ShouldCallSetMmol_WhenUserPreferredUnitIsNotMgDl() {
-        user.setPreferred_unit("mmol/L");
+        user.setPreferred_unit(Constants.Units.MMOL_L);
 
         presenter.checkGlucoseUnit();
 

@@ -57,10 +57,10 @@ public class ReadingToCSVTest extends RobolectricTest {
         List<GlucoseReading> values = new ArrayList<>();
         values.add(new GlucoseReading(80, "type", created, "notes"));
 
-        ReadingToCSV r = new ReadingToCSV(RuntimeEnvironment.application, "mmol/L");
+        ReadingToCSV r = new ReadingToCSV(RuntimeEnvironment.application, Constants.Units.MMOL_L);
         r.createCSVFile(values, osw);
 
-        assertFileContentEqualsToString(outputStream.toString(), headerAsString(), valuesAsString(values.get(0), "mmol/L"));
+        assertFileContentEqualsToString(outputStream.toString(), headerAsString(), valuesAsString(values.get(0), Constants.Units.MMOL_L));
     }
 
     @Test

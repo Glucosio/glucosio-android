@@ -82,7 +82,7 @@ public final class ReadingToCSV {
                         this.dateTool.convertRawDate(reading.getCreated()),
                         this.dateTool.convertRawTime(reading.getCreated()),
                         formatter.format(GlucosioConverter.glucoseToMmolL(reading.getReading())),
-                        "mmol/L",
+                        Constants.Units.MMOL_L,
                         valueOrEmptyString(reading.getReading_type()),
                         valueOrEmptyString((reading.getNotes())
                         )
