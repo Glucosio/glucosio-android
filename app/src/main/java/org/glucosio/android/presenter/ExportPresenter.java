@@ -105,13 +105,13 @@ public class ExportPresenter {
                     super.onPostExecute(filename);
                     if (EMPTY.equals(filename)) {
                         view.onNoItemsToExport();
-                    } else if (filename != null) {
+                    } else if (filename == null) {
+                        view.onExportError();
+                    } else {
                         Context applicationContext = context.getApplicationContext();
                         Uri uri = FileProvider.getUriForFile(applicationContext,
                                 applicationContext.getPackageName() + ".provider.fileprovider", new File(filename));
                         view.onExportFinish(uri);
-                    } else {
-                        view.onExportError();
                     }
                 }
             }.execute();
@@ -132,7 +132,7 @@ public class ExportPresenter {
             new ReadingToCSV(context, preferredUnit).createCSVFile(readings, osw);
 
             return file.getPath();
-        } catch (Exception e) {
+        } catch (IOException e) {
             Log.e("ExportPresenter", "Exporting CSV", e);
             return null;
         } finally {

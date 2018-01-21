@@ -84,8 +84,7 @@ public final class ReadingToCSV {
                         formatter.format(GlucosioConverter.glucoseToMmolL(reading.getReading())),
                         Constants.Units.MMOL_L,
                         valueOrEmptyString(reading.getReading_type()),
-                        valueOrEmptyString((reading.getNotes())
-                        )
+                        valueOrEmptyString(reading.getNotes())
                 );
             }
 
