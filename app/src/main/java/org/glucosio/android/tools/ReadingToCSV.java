@@ -89,8 +89,16 @@ public final class ReadingToCSV {
 
     private void writeLine(@NonNull OutputStreamWriter osw, @NonNull String... values) throws IOException {
         for (int i = 0; i < values.length; i++) {
-            osw.append(values[i]);
+            osw.append(escapeCSV(values[i]));
             osw.append(i == values.length - 1 ? '\n' : ',');
+        }
+    }
+
+    private String escapeCSV(String value) {
+        if ((value.contains("\"") || value.contains(","))) {
+            return "\"" + value.replace("\"", "\"\"") + "\"";
+        } else {
+            return value;
         }
     }
 }

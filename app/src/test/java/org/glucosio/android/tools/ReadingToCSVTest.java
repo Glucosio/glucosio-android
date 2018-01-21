@@ -52,6 +52,19 @@ public class ReadingToCSVTest extends RobolectricTest {
         assertFileContentEqualsToString(outputStream.toString(), headerAsString(), valuesAsString(values.get(0), Constants.Units.MG_DL));
     }
 
+    @Test
+    public void whenOneDataWithWrongCharsGeneratesCSVWithHeaderAndOneLineEscaped() throws IOException {
+        final Date created = new Date();
+
+        List<GlucoseReading> values = new ArrayList<>();
+        values.add(new GlucoseReading(80, "type", created, ",\"E\""));
+
+        ReadingToCSV r = new ReadingToCSV(RuntimeEnvironment.application, Constants.Units.MG_DL);
+        r.createCSVFile(values, osw);
+
+        assertFileContentEqualsToString(outputStream.toString(), headerAsString(), valuesAsString(values.get(0), Constants.Units.MG_DL));
+    }
+
     private String headerAsString() {
         return getString(R.string.dialog_add_date) +
                 ',' +
@@ -81,7 +94,14 @@ public class ReadingToCSVTest extends RobolectricTest {
                 ',' +
                 reading.getReading_type() +
                 ',' +
-                reading.getNotes();
+                escapedCSVString(reading.getNotes());
+    }
+
+    private String escapedCSVString(String s) {
+        if (s.contains(",") || s.contains("\""))
+            return "\"" + s.replace("\"", "\"\"") + "\"";
+        else
+            return s;
     }
 
     private void assertFileContentEqualsToString(String output, String... expectedValues) {
