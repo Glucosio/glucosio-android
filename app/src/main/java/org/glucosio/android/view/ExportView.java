@@ -1,6 +1,7 @@
 package org.glucosio.android.view;
 
 import android.net.Uri;
+import android.support.annotation.NonNull;
 
 /**
  * Created by joaquimley on 08/09/16.
@@ -11,7 +12,9 @@ public interface ExportView {
 
     void onNoItemsToExport();
 
-    void onExportFinish(Uri fileUri);
+    void onExportFinish(@NonNull Uri fileUri);
 
     void onExportError();
+
+    void requestStoragePermission();
 }

@@ -20,6 +20,7 @@
 
 package org.glucosio.android.activity;
 
+import android.Manifest;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.DatePickerDialog;
@@ -32,6 +33,7 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialog;
@@ -40,6 +42,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.graphics.drawable.VectorDrawableCompat;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -81,6 +84,12 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private static final String INTENT_EXTRA_DROPDOWN = "history_dropdown";
     private static final int REQUEST_INVITE = 1;
     private static final String INTENT_EXTRA_PAGER = "pager";
+
+    private static final int REQUEST_EXTERNAL_STORAGE = 1;
+    private static final String[] PERMISSIONS_STORAGE = {
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+    };
 
     private BottomSheetBehavior bottomSheetBehavior;
     private ExportPresenter exportPresenter;
@@ -268,7 +277,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         final DatabaseHandler dbHandler = application.getDBHandler();
         localeHelper = new LocaleHelper();
         presenter = new MainPresenter(this, dbHandler);
-        exportPresenter = new ExportPresenter(this, dbHandler);
+        exportPresenter = new ExportPresenter(this, this, dbHandler);
     }
 
     @Override
@@ -290,7 +299,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     @Override
-    public void onExportFinish(Uri uri) {
+    public void onExportFinish(@NonNull Uri uri) {
         showShareDialog(uri); // TODO: 09/09/16 Instead of calling this method, move logic to this callback ?
         Log.e("Activity", "onExportFinish(): you might want to track this event");
     }
@@ -299,6 +308,15 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     public void onExportError() {
         showExportError(); // TODO: 09/09/16 Instead of calling this method, move logic to this callback ?
         Log.e("Activity", "onExportError(): you might want to track this event");
+    }
+
+    @Override
+    public void requestStoragePermission() {
+        ActivityCompat.requestPermissions(
+                this,
+                PERMISSIONS_STORAGE,
+                REQUEST_EXTERNAL_STORAGE
+        );
     }
 
     private void openA1CCalculator() {
@@ -686,17 +704,13 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
         // Check which dialog set the date
         if (view.getTag().equals("fromDateDialog")) {
-            exportPresenter.setFromYear(year);
-            exportPresenter.setFromMonth(monthOfYear);
-            exportPresenter.setFromDay(dayOfMonth);
+            exportPresenter.setFrom(year, monthOfYear, dayOfMonth);
 
             int monthToShow = monthOfYear + 1;
             String date = +dayOfMonth + "/" + monthToShow + "/" + year;
             exportDialogDateFrom.setText(date);
         } else {
-            exportPresenter.setToYear(year);
-            exportPresenter.setToMonth(monthOfYear);
-            exportPresenter.setToDay(dayOfMonth);
+            exportPresenter.setTo(year, monthOfYear, dayOfMonth);
 
             int monthToShow = monthOfYear + 1;
             String date = +dayOfMonth + "/" + monthToShow + "/" + year;

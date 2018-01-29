@@ -1,188 +1,173 @@
 package org.glucosio.android.tools;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Environment;
-import io.realm.Realm;
 import org.glucosio.android.Constants;
 import org.glucosio.android.R;
+import org.glucosio.android.RobolectricTest;
 import org.glucosio.android.db.GlucoseReading;
-import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Matchers;
-import org.mockito.internal.util.io.IOUtil;
-import org.mockito.invocation.InvocationOnMock;
-import org.mockito.stubbing.Answer;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.junit4.PowerMockRunner;
+import org.robolectric.RuntimeEnvironment;
 
-import java.io.File;
-import java.io.FileInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
+import java.io.OutputStreamWriter;
+import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
-import java.util.UUID;
 
-import static org.powermock.api.mockito.PowerMockito.mock;
-import static org.powermock.api.mockito.PowerMockito.mockStatic;
-import static org.powermock.api.mockito.PowerMockito.when;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Created by david on 30/10/16.
  */
 
-@RunWith(PowerMockRunner.class)
-@PrepareForTest({ReadingToCSV.class, Realm.class, Environment.class})
-public class ReadingToCSVTest {
+public class ReadingToCSVTest extends RobolectricTest {
 
-    private Context context;
+    private final FormatDateTime dateTool = new FormatDateTime(RuntimeEnvironment.application);
+    private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+    private final OutputStreamWriter osw = new OutputStreamWriter(outputStream);
+    private final NumberFormat numberFormat = NumberFormatUtils.createDefaultNumberFormat();
 
-    private Realm realm;
+    @Test
+    public void GeneratesEmptyCSVWithHeader_WhenNoData() throws IOException {
+        ReadingToCSV r = new ReadingToCSV(RuntimeEnvironment.application, Constants.Units.MG_DL);
+        r.createCSVFile(new ArrayList<GlucoseReading>(), osw);
 
-    private File tmpFolderForTesting;
-    private File glucosioFolder;
-
-    private FormatDateTime dateTool;
-
-    @Before
-    public void setUp() {
-        realm = mock(Realm.class);
-        context = mock(Context.class);
-
-        dateTool = new FormatDateTime(context);
-
-        final Resources resources = mock(Resources.class);
-        when(resources.getString(Matchers.anyInt())).thenAnswer(new Answer<String>() {
-            @Override
-            public String answer(InvocationOnMock invocation) {
-                return String.valueOf(invocation.getArguments()[0]);
-            }
-        });
-
-        when(context.getResources()).thenReturn(resources);
-
-        File tmpDir = new File(System.getProperty("java.io.tmpdir"));
-
-        tmpFolderForTesting = new File(tmpDir, UUID.randomUUID().toString());
-
-        // Create the folder for glucosio
-        glucosioFolder = new File(tmpFolderForTesting, "glucosio");
-        glucosioFolder.mkdirs();
-
-        Assert.assertTrue(glucosioFolder.exists() && glucosioFolder.isDirectory());
-
-        mockStatic(Environment.class);
-        when(Environment.getExternalStorageDirectory()).thenReturn(tmpDir);
-        when(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)).thenReturn(tmpFolderForTesting);
-    }
-
-    @After
-    public void clean() {
-        removeFolder(tmpFolderForTesting);
-    }
-
-    private void removeFolder(File folder) {
-        if (!folder.exists() || !folder.isDirectory()) {
-            return;
-        }
-        final File[] files = folder.listFiles();
-        if (files != null) {
-            for (int i = 0; i < files.length; i++) {
-                File f = files[i];
-                if (f.isDirectory()) {
-                    removeFolder(f);
-                } else {
-                    files[i].delete();
-                }
-            }
-        }
-        folder.delete();
+        assertFileContentEqualsToString(outputStream.toString(), headerAsString());
     }
 
     @Test
-    public void whenNoDataGeneratesEmptyCSVWithHeader() throws IOException {
-        final ReadingToCSV r = createReadingToCSV(Constants.Units.MG_DL);
-        final String path = r.createCSVFile(realm, new ArrayList<GlucoseReading>());
-
-        assertFileContentEqualsToString(path, headerAsString());
-    }
-
-    @Test
-    public void whenOneDataGeneratesCSVWithHeaderAndOneLine() throws IOException {
+    public void GeneratesCSVWithHeaderAndOneLine_WhenOneReading() throws IOException {
         final Date created = new Date();
 
         List<GlucoseReading> values = new ArrayList<>();
         values.add(new GlucoseReading(80, "type", created, "notes"));
 
-        final ReadingToCSV r = createReadingToCSV(Constants.Units.MG_DL);
-        final String path = r.createCSVFile(realm, values);
+        ReadingToCSV r = new ReadingToCSV(RuntimeEnvironment.application, Constants.Units.MG_DL);
+        r.createCSVFile(values, osw);
 
-        assertFileContentEqualsToString(path, headerAsString(), valuesAsString(values.get(0), Constants.Units.MG_DL));
+        assertFileContentEqualsToString(outputStream.toString(), headerAsString(), valuesAsString(values.get(0), Constants.Units.MG_DL));
     }
 
-    private ReadingToCSV createReadingToCSV(String um) {
-        return new ReadingToCSV(context, um);
+    @Test
+    public void GeneratesCSVWithHeaderAndOneLine_WhenOneReadingInMMol() throws IOException {
+        final Date created = new Date();
+
+        List<GlucoseReading> values = new ArrayList<>();
+        values.add(new GlucoseReading(80, "type", created, "notes"));
+
+        ReadingToCSV r = new ReadingToCSV(RuntimeEnvironment.application, Constants.Units.MMOL_L);
+        r.createCSVFile(values, osw);
+
+        assertFileContentEqualsToString(outputStream.toString(), headerAsString(), valuesAsString(values.get(0), Constants.Units.MMOL_L));
+    }
+
+    @Test
+    public void GeneratesCSVWithoutNulls_WhenOneReadingWithNulls() throws IOException {
+        final Date created = new Date();
+
+        List<GlucoseReading> values = new ArrayList<>();
+        values.add(new GlucoseReading(80, null, created, null));
+
+        ReadingToCSV r = new ReadingToCSV(RuntimeEnvironment.application, Constants.Units.MG_DL);
+        r.createCSVFile(values, osw);
+
+        assertFileContentEqualsToString(outputStream.toString(), headerAsString(), valuesAsString(values.get(0), Constants.Units.MG_DL));
+    }
+
+    @Test
+    public void GeneratesCSVWithHeaderAndLinesEscaped_WhenDataWithWrongChars() throws IOException {
+        final Date created = new Date();
+
+        List<GlucoseReading> values = new ArrayList<>();
+        values.add(new GlucoseReading(80, "type", created, ","));
+        values.add(new GlucoseReading(81, "type", created, "\"E\""));
+        values.add(new GlucoseReading(82, "type", created, "\r"));
+
+        ReadingToCSV r = new ReadingToCSV(RuntimeEnvironment.application, Constants.Units.MG_DL);
+        r.createCSVFile(values, osw);
+
+        assertFileContentEqualsToString(
+                outputStream.toString(),
+                headerAsString(),
+                valuesAsString(values.get(0), Constants.Units.MG_DL),
+                valuesAsString(values.get(1), Constants.Units.MG_DL),
+                valuesAsString(values.get(2), Constants.Units.MG_DL)
+        );
+    }
+
+    @Test
+    public void EscapeNewLine_WhenDataWithIt() throws IOException {
+        final Date created = new Date();
+
+        List<GlucoseReading> values = new ArrayList<>();
+        values.add(new GlucoseReading(82, "type", created, "\n"));
+
+        ReadingToCSV r = new ReadingToCSV(RuntimeEnvironment.application, Constants.Units.MG_DL);
+        r.createCSVFile(values, osw);
+
+        String result = outputStream.toString();
+        String header = headerAsString();
+        assertThat(result).contains(header);
+        String resultWithoutHeader = result.replace(header, "");
+        resultWithoutHeader = resultWithoutHeader.trim();
+
+        assertThat(resultWithoutHeader).isEqualTo(valuesAsString(values.get(0), Constants.Units.MG_DL));
     }
 
     private String headerAsString() {
-        return new StringBuilder().append(R.string.dialog_add_date)
-                .append(',')
-                .append(R.string.dialog_add_time)
-                .append(',')
-                .append(R.string.dialog_add_concentration)
-                .append(',')
-                .append(R.string.helloactivity_spinner_preferred_glucose_unit)
-                .append(',')
-                .append(R.string.dialog_add_measured)
-                .append(',')
-                .append(R.string.dialog_add_notes)
-                .toString();
+        return getString(R.string.dialog_add_date) +
+                ',' +
+                getString(R.string.dialog_add_time) +
+                ',' +
+                getString(R.string.dialog_add_concentration) +
+                ',' +
+                getString(R.string.helloactivity_spinner_preferred_glucose_unit) +
+                ',' +
+                getString(R.string.dialog_add_measured) +
+                ',' +
+                getString(R.string.dialog_add_notes);
+    }
+
+    private String getString(int stringId) {
+        return RuntimeEnvironment.application.getString(stringId);
     }
 
     private String valuesAsString(GlucoseReading reading, String units) {
-        return new StringBuilder().append(dateTool.convertRawDate(reading.getCreated()))
-                .append(',')
-                .append(dateTool.convertRawTime(reading.getCreated()))
-                .append(',')
-                .append(reading.getReading())
-                .append(',')
-                .append(units)
-                .append(',')
-                .append(reading.getReading_type())
-                .append(',')
-                .append(reading.getNotes())
-                .toString();
+        double readingValue = Constants.Units.MG_DL.equals(units) ?
+                reading.getReading() :
+                GlucosioConverter.glucoseToMmolL(reading.getReading());
+
+        String reading_type = reading.getReading_type();
+        String notes = reading.getNotes();
+
+        return dateTool.convertRawDate(reading.getCreated()) +
+                ',' +
+                dateTool.convertRawTime(reading.getCreated()) +
+                ',' +
+                numberFormat.format(readingValue) +
+                ',' +
+                units +
+                ',' +
+                (reading_type == null ? "" : reading_type) +
+                ',' +
+                escapedCSVString(notes == null ? "" : notes);
     }
 
-    private void assertFileContentEqualsToString(String path, String... expectedValues) throws IOException {
-        Assert.assertNotNull(path);
+    private String escapedCSVString(String s) {
+        if (s.contains(",") || s.contains("\"") || s.contains("\n") || s.contains("\r"))
+            return "\"" + s.replace("\"", "\"\"") + "\"";
+        else
+            return s;
+    }
 
-        final File file = new File(path);
-        Assert.assertTrue(file.exists() && file.isFile());
+    private void assertFileContentEqualsToString(String output, String... expectedValues) {
+        String[] lines = output.split("\n");
+        Assert.assertEquals(expectedValues.length, lines.length);
 
-        InputStream is = new FileInputStream(file);
-        try {
-            Collection<String> lines = IOUtil.readLines(is);
-
-            Assert.assertEquals(expectedValues.length, lines.size());
-
-            Iterator<String> iterator = lines.iterator();
-
-            for (int i = 0; i < lines.size(); i++) {
-                Assert.assertTrue(iterator.hasNext());
-                Assert.assertEquals(expectedValues[i], iterator.next());
-            }
-
-        } finally {
-            IOUtil.closeQuietly(is);
+        for (int i = 0; i < lines.length; i++) {
+            Assert.assertEquals(expectedValues[i], lines[i]);
         }
     }
-
 }

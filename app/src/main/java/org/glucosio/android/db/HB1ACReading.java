@@ -20,10 +20,10 @@
 
 package org.glucosio.android.db;
 
-import java.util.Date;
-
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
+
+import java.util.Date;
 
 public class HB1ACReading extends RealmObject {
     @PrimaryKey

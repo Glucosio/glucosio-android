@@ -236,11 +236,10 @@ public class PreferencesActivity extends AppCompatActivity {
             unitPrefGlucose.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    if (getResources().getString(R.string.helloactivity_spinner_preferred_glucose_unit_1).equals(newValue.toString())) {
-                        updatedUser.setPreferred_unit(Constants.Units.MG_DL);
-                    } else {
-                        updatedUser.setPreferred_unit("mmol/L");
-                    }
+                    String preferredUnit = getResources().getString(R.string.helloactivity_spinner_preferred_glucose_unit_1).equals(newValue.toString()) ?
+                            Constants.Units.MG_DL :
+                            Constants.Units.MMOL_L;
+                    updatedUser.setPreferred_unit(preferredUnit);
                     updateDB();
                     return true;
                 }

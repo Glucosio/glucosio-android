@@ -34,7 +34,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import org.glucosio.android.Constants;
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.db.DatabaseHandler;
@@ -96,8 +96,8 @@ public class FreestyleLibreActivity extends Activity {
         user = dB.getUser(1);
 
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
-        readingTextView = (TextView) findViewById(R.id.activity_freestyle_textview_reading);
-        Button saveButton = (Button) findViewById(R.id.activity_freestyle_button_save);
+        readingTextView = findViewById(R.id.activity_freestyle_textview_reading);
+        Button saveButton = findViewById(R.id.activity_freestyle_button_save);
 
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -166,27 +166,12 @@ public class FreestyleLibreActivity extends Activity {
     }
 
     private void showReadingLayout() {
-/*        SimpleDatabase database = new SimpleDatabase(this);
-        long id = database.saveMessage(mResult);
-        ReadingData.TransferObject transferObject = new ReadingData.TransferObject(id, mResult);
-        database.close();
-        WearableApi.sendMessage(mGoogleApiClient, WearableApi.GLUCOSE, new Gson().toJson(transferObject), mMessageListener);
-        mMessagesBeingSent++;
-        mFinishAfterSentMessages = true;*/
-
         // Apply values in TextViews
-        readingTextView.setText(mResult.trend.get(0).glucose(user.getPreferred_unit().equals("mmol/L")));
+        readingTextView.setText(mResult.trend.get(0).glucose(Constants.Units.MMOL_L.equals(user.getPreferred_unit())));
 
-        new Runnable() {
-            @Override
-            public void run() {
-                View view = findViewById(R.id.activity_freestyle_reading);
-                view.setVisibility(View.INVISIBLE);
-                AnimationTools.startCircularReveal(view);
-            }
-        }.run();
-        // Reveal ReadingLayout
-
+        View view = findViewById(R.id.activity_freestyle_reading);
+        view.setVisibility(View.INVISIBLE);
+        AnimationTools.startCircularReveal(view);
     }
 
     private void openAddGlucoseActivity() {
@@ -195,7 +180,7 @@ public class FreestyleLibreActivity extends Activity {
             // Start AddGlucose Activity passing the reading value
             Intent intent = new Intent(getApplicationContext(), AddGlucoseActivity.class);
             Bundle bundle = new Bundle();
-            String currentGlucose = mResult.trend.get(0).glucose(user.getPreferred_unit().equals("mmol/L"));
+            String currentGlucose = mResult.trend.get(0).glucose(user.getPreferred_unit().equals(Constants.Units.MMOL_L));
             bundle.putString("reading", currentGlucose + "");
             intent.putExtras(bundle);
             startActivity(intent);
