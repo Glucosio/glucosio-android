@@ -62,60 +62,58 @@ public class ExportPresenter {
 
     public void onExportClicked(final boolean isExportAll) {
 
-        if (hasStoragePermissions()) {
-            final String preferredUnit = databaseHandler.getUser(1).getPreferred_unit();
+        final String preferredUnit = databaseHandler.getUser(1).getPreferred_unit();
 
-            new AsyncTask<Void, Integer, String>() {
-                @Override
-                protected String doInBackground(Void... params) {
+        new AsyncTask<Void, Integer, String>() {
+            @Override
+            protected String doInBackground(Void... params) {
 
-                    Realm realm = databaseHandler.getNewRealmInstance();
-                    final List<GlucoseReading> readings;
-                    if (isExportAll) {
-                        readings = databaseHandler.getGlucoseReadings(realm);
-                    } else {
-                        readings = databaseHandler.getGlucoseReadings(realm, fromDate.toDate(), toDate.toDate());
-                    }
-
-                    if (readings.isEmpty()) {
-                        realm.close();
-                        return EMPTY;
-                    }
-
-                    if (dirExistsAndCanWrite()) {
-                        Log.i("glucosio", "Dir exists");
-                        String csvFile = exportReadings(readings, preferredUnit);
-                        realm.close();
-                        return csvFile;
-                    } else {
-                        Log.i("glucosio", "Dir NOT exists");
-                        realm.close();
-                        return null;
-                    }
+                Realm realm = databaseHandler.getNewRealmInstance();
+                final List<GlucoseReading> readings;
+                if (isExportAll) {
+                    readings = databaseHandler.getGlucoseReadings(realm);
+                } else {
+                    readings = databaseHandler.getGlucoseReadings(realm, fromDate.toDate(), toDate.toDate());
                 }
 
-                @Override
-                protected void onProgressUpdate(Integer... values) {
-                    super.onProgressUpdate(values);
-                    view.onExportStarted(values[0]);
+                if (readings.isEmpty()) {
+                    realm.close();
+                    return EMPTY;
                 }
 
-                @Override
-                protected void onPostExecute(String filename) {
-                    super.onPostExecute(filename);
-                    if (EMPTY.equals(filename)) {
-                        view.onNoItemsToExport();
-                    } else if (filename == null) {
-                        view.onExportError();
-                    } else {
-                        Context applicationContext = context.getApplicationContext();
-                        Uri uri = FileProvider.getUriForFile(applicationContext,
-                                applicationContext.getPackageName() + ".provider.fileprovider", new File(filename));
-                        view.onExportFinish(uri);
-                    }
+                if (dirExistsAndCanWrite()) {
+                    Log.i("glucosio", "Dir exists");
+                    String csvFile = exportReadings(readings, preferredUnit);
+                    realm.close();
+                    return csvFile;
+                } else {
+                    Log.i("glucosio", "Dir NOT exists");
+                    realm.close();
+                    return null;
                 }
-            }.execute();
-        }
+            }
+
+            @Override
+            protected void onProgressUpdate(Integer... values) {
+                super.onProgressUpdate(values);
+                view.onExportStarted(values[0]);
+            }
+
+            @Override
+            protected void onPostExecute(String filename) {
+                super.onPostExecute(filename);
+                if (EMPTY.equals(filename)) {
+                    view.onNoItemsToExport();
+                } else if (filename == null) {
+                    view.onExportError();
+                } else {
+                    Context applicationContext = context.getApplicationContext();
+                    Uri uri = FileProvider.getUriForFile(applicationContext,
+                            applicationContext.getPackageName() + ".provider.fileprovider", new File(filename));
+                    view.onExportFinish(uri);
+                }
+            }
+        }.execute();
     }
 
     @Nullable
@@ -153,19 +151,6 @@ public class ExportPresenter {
     private boolean dirExistsAndCanWrite() {
         File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/glucosio");
         return (file.exists() || file.mkdirs()) && file.canWrite();
-    }
-
-    private boolean hasStoragePermissions() {
-        // Check if we have write permission
-        int permission = ActivityCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        Log.i("Glucosio", "Storage permissions granted.");
-
-        if (permission != PackageManager.PERMISSION_GRANTED) {
-            view.requestStoragePermission();
-            return false;
-        } else {
-            return true;
-        }
     }
 
     public void setTo(int year, int monthOfYear, int dayOfMonth) {
