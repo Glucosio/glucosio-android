@@ -32,7 +32,7 @@ ext.versions = ['gradle'                  : '4.5',
                 'playServices'            : '11.8.0',
 
                 'assertJAndroid'          : '1.2.0',
-                'mockito'                 : '1.10.19',
+                'mockito'                 : '2.13.0',
                 'robolectric'             : '3.6.1',
 
                 'espresso'                : '3.0.1',

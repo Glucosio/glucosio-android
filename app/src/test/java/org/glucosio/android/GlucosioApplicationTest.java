@@ -1,6 +1,7 @@
 package org.glucosio.android;
 
 import android.support.annotation.NonNull;
+
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.db.User;
 import org.glucosio.android.db.UserBuilder;
@@ -74,7 +75,6 @@ public class GlucosioApplicationTest {
     @Test
     public void ShouldNotClearLanguage_WhenAlreadyDone() {
         user.setPreferred_language("en");
-        when(preferencesMock.isLocaleCleaned()).thenReturn(true);
 
         application.onCreate();
 
