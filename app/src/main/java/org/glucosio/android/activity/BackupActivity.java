@@ -116,11 +116,11 @@ public class BackupActivity extends AppCompatActivity {
         connectClient();
         mGoogleApiClient = backup.getClient();
 
-        Button backupButton = (Button) findViewById(R.id.activity_backup_drive_button_backup);
-        TextView manageButton = (TextView) findViewById(R.id.activity_backup_drive_button_manage_drive);
-        folderTextView = (TextView) findViewById(R.id.activity_backup_drive_textview_folder);
-        LinearLayout selectFolderButton = (LinearLayout) findViewById(R.id.activity_backup_drive_button_folder);
-        backupListView = (ExpandableHeightListView) findViewById(R.id.activity_backup_drive_listview_restore);
+        Button backupButton = findViewById(R.id.activity_backup_drive_button_backup);
+        TextView manageButton = findViewById(R.id.activity_backup_drive_button_manage_drive);
+        folderTextView = findViewById(R.id.activity_backup_drive_textview_folder);
+        LinearLayout selectFolderButton = findViewById(R.id.activity_backup_drive_button_folder);
+        backupListView = findViewById(R.id.activity_backup_drive_listview_restore);
 
         backupListView.setExpanded(true);
 
@@ -349,6 +349,14 @@ public class BackupActivity extends AppCompatActivity {
                                         reportToFirebase(e, "Error uploading backup from drive, file not found");
                                         showErrorDialog();
                                         e.printStackTrace();
+                                    } finally {
+                                        if (inputStream != null) {
+                                            try {
+                                                inputStream.close();
+                                            } catch (IOException ignored) {
+                                                //ignored
+                                            }
+                                        }
                                     }
 
                                     byte[] buf = new byte[1024];
