@@ -76,6 +76,9 @@ android {
         unitTests.returnDefaultValues = true
 
         unitTests.all {
+            jacoco {
+                includeNoLocationClasses = true
+            }
             // configure the test JVM arguments
             jvmArgs '-noverify'
         }
