@@ -51,7 +51,6 @@
             android:layout_alignParentRight="true"
             android:layout_marginBottom="-32dp"
             android:layout_marginRight="20dp"
-            android:onClick="onFabClicked"
             android:visibility="invisible"
             app:backgroundTint="@color/glucosio_accent"
             app:srcCompat="@drawable/ic_done_black_24dp" />
@@ -82,11 +81,11 @@
                         android:layout_weight="1">
 
                         <EditText
-                            style="@style/edit_number"
                             android:id="@+id/ketone_add_value"
+                            style="@style/edit_number"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/dialog_add_ketones"/>
+                            android:hint="@string/dialog_add_ketones" />
                     </android.support.design.widget.TextInputLayout>
 
                     <TextView
@@ -97,7 +96,8 @@
                         android:gravity="bottom"
                         android:text="mmol"
                         android:textSize="@dimen/abc_text_size_body_2_material"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:ignore="MissingPrefix" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -136,11 +136,11 @@
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:clickable="false"
-                            android:inputType="time"
                             android:cursorVisible="false"
                             android:focusable="false"
                             android:focusableInTouchMode="false"
                             android:hint="@string/dialog_add_time"
+                            android:inputType="time"
                             android:singleLine="true"
                             android:textSize="@dimen/abc_text_size_body_2_material" />
                     </android.support.design.widget.TextInputLayout>

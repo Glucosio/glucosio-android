@@ -62,7 +62,8 @@
                     android:text="@string/activity_converter_a1c_glucose"
                     android:textColor="@color/glucosio_text_dark"
                     android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:ignore="MissingPrefix" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -82,7 +83,8 @@
                         android:paddingTop="8dp"
                         android:singleLine="true"
                         android:textColor="@color/glucosio_text_dark"
-                        android:textSize="52sp" />
+                        android:textSize="52sp"
+                        tools:ignore="MissingPrefix" />
 
                     <TextView
                         android:id="@+id/activity_converter_a1c_glucose_unit"
@@ -135,7 +137,8 @@
                         android:paddingTop="8dp"
                         android:text="00"
                         android:textColor="@color/glucosio_text_dark"
-                        android:textSize="52sp" />
+                        android:textSize="52sp"
+                        tools:ignore="MissingPrefix" />
 
                     <TextView
                         android:id="@+id/activity_converter_a1c_a1c_unit"

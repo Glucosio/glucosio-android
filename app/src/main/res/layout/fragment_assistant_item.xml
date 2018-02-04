@@ -36,6 +36,7 @@
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:textStyle="bold"
+        tools:ignore="MissingPrefix"
         tools:text="Title" />
 
     <TextView
