@@ -39,11 +39,13 @@ import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard
 import static android.support.test.espresso.action.ViewActions.scrollTo;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.RootMatchers.withDecorView;
 import static android.support.test.espresso.matcher.ViewMatchers.isChecked;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withParent;
 import static android.support.test.espresso.matcher.ViewMatchers.withSpinnerText;
+import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.is;
@@ -188,5 +190,21 @@ public class HelloActivityTest {
         // Perform submit
         onView(withId(R.id.activity_hello_button_start))
                 .perform(scrollTo(), click());
+    }
+
+    @Test
+    public void check_010_IfIEnterWrongAge() {
+        // Entering invalid age
+        onView(withId(R.id.activity_hello_age))
+                .perform(typeText("0"), closeSoftKeyboard());
+
+        // Click on GET STARTED button
+        onView(withId(R.id.activity_hello_button_start))
+                .perform(scrollTo(), click());
+
+        // Checking the toast is displayed with invalid message
+        onView(withText(R.string.helloactivity_age_invalid))
+                .inRoot(withDecorView(not(mRule.getActivity().getWindow().getDecorView())))
+                .check(matches(isDisplayed()));
     }
 }
