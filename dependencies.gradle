@@ -1,0 +1,107 @@
+ext.buildConfig = ['compileSdk' : 27,
+                   'minSdkApp'  : 24,
+                   'minSdkWear' : 21,
+                   'minSdk'     : 16,
+                   'targetSdk'  : 27,
+
+                   'buildTools' : '27.0.2',
+
+                   'versionCode': 41,
+                   'versionName': '1.4.0']
+
+ext.versions = ['gradle'                  : '4.5',
+
+                'androidGradlePlugin'     : '3.0.1',
+                'coveralsGradlePlugin'    : '2.8.2',
+                'dexcountGradlePlugin'    : '0.8.2',
+                'realmGradlePlugin'       : '4.3.3',
+                'playServicesGradlePlugin': '3.2.0',
+                'versionsGradlePlugin'    : '0.17.0',
+
+                'androidWearable'         : '2.2.0',
+
+                'androidJoda'             : '2.9.9.1',
+                'butterKnife'             : '8.8.1',
+                'calligraphy'             : '2.3.0',
+                'expandableHeightListView': '1.0.0',
+                'materialDrawer'          : '6.0.4',
+                'mpAndroidChart'          : 'v3.0.3',
+
+                'supportLibrary'          : '27.0.2',
+
+                'playServices'            : '11.8.0',
+
+                'assertJAndroid'          : '1.2.0',
+                'mockito'                 : '1.10.19',
+                'robolectric'             : '3.6.1',
+
+                'espresso'                : '3.0.1',
+                'atsl'                    : '1.0.1',
+
+]
+
+ext.deps = [
+        'buildScript': [
+                'androidGradlePlugin'     : "com.android.tools.build:gradle:${versions.androidGradlePlugin}",
+                'coveralsGradlePlugin'    : "org.kt3k.gradle.plugin:coveralls-gradle-plugin:${versions.coveralsGradlePlugin}",
+                'dexcountGradlePlugin'    : "com.getkeepsafe.dexcount:dexcount-gradle-plugin:${versions.dexcountGradlePlugin}",
+                'realmGradlePlugin'       : "io.realm:realm-gradle-plugin:${versions.realmGradlePlugin}",
+                'playServicesGradlePlugin': "com.google.gms:google-services:${versions.playServicesGradlePlugin}",
+                'versionsGradlePlugin'    : "com.github.ben-manes:gradle-versions-plugin:${versions.versionsGradlePlugin}"
+        ],
+
+        'android'    : [
+                'gms'     : [
+                        'analytics': "com.google.android.gms:play-services-analytics:${versions.playServices}",
+                        'drive'    : "com.google.android.gms:play-services-drive:${versions.playServices}",
+                        'gcm'      : "com.google.android.gms:play-services-gcm:${versions.playServices}",
+                        'wearable' : "com.google.android.gms:play-services-wearable:${versions.playServices}",
+                ],
+
+                'support' : [
+                        'annotations' : "com.android.support:support-annotations:${versions.supportLibrary}",
+                        'cardView'    : "com.android.support:cardview-v7:${versions.supportLibrary}",
+                        'design'      : "com.android.support:design:${versions.supportLibrary}",
+                        'percent'     : "com.android.support:percent:${versions.supportLibrary}",
+                        'recyclerView': "com.android.support:recyclerview-v7:${versions.supportLibrary}",
+                        'wearable'    : "com.google.android.support:wearable:${versions.androidWearable}"
+                ],
+
+                'test'    : [
+                        'runner'  : "com.android.support.test:runner:${versions.atsl}",
+                        'rules'   : "com.android.support.test:rules:${versions.atsl}",
+                        'espresso': [
+                                'core'   : "com.android.support.test.espresso:espresso-core:${versions.espresso}",
+                                'intents': "com.android.support.test.espresso:espresso-intents:${versions.espresso}",
+                                'contrib': "com.android.support.test.espresso:espresso-contrib:${versions.espresso}"
+                        ],
+                ],
+
+                'wearable': "com.google.android.wearable:wearable:${versions.androidWearable}"
+        ],
+
+        'google'     : [
+                'firebase': [
+                        'crash'    : "com.google.firebase:firebase-crash:${versions.playServices}",
+                        'invites'  : "com.google.firebase:firebase-invites:${versions.playServices}",
+                        'messaging': "com.google.firebase:firebase-messaging:${versions.playServices}"
+                ]
+        ],
+
+        'ChrisJenx'  : ['calligraphy': "uk.co.chrisjenx:calligraphy:${versions.calligraphy}"],
+        'DanLew'     : ['androidJoda': "net.danlew:android.joda:${versions.androidJoda}"],
+        'JakeWharton': ['butterKnife': ['core'    : "com.jakewharton:butterknife:${versions.butterKnife}",
+                                        'compiler': "com.jakewharton:butterknife-compiler:${versions.butterKnife}"]],
+        'MikePenz'   : ['materialDrawer': "com.mikepenz:materialdrawer:${versions.materialDrawer}@aar"],
+        'PaoloRotolo': ['expandableHeightListView': "com.github.paolorotolo:expandableheightlistview:${versions.expandableHeightListView}"],
+        'PhilJay'    : ['mpAndroidChart': "com.github.PhilJay:MPAndroidChart:${versions.mpAndroidChart}"],
+
+
+        'junit'      : 'junit:junit:4.12',
+        'mockito'    : "org.mockito:mockito-core:${versions.mockito}",
+        'robolectric': [
+                'core'   : "org.robolectric:robolectric:${versions.robolectric}",
+                'shadows': "org.robolectric:shadows-supportv4:${versions.robolectric}"
+        ],
+        'square'     : ['assertJAndroid': "com.squareup.assertj:assertj-android:${versions.assertJAndroid}"],
+]

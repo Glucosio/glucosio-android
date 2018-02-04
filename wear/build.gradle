@@ -18,19 +18,20 @@
  *
  */
 
+apply from: '../dependencies.gradle'
 apply plugin: 'com.android.application'
 
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion buildToolsVer
+    compileSdkVersion buildConfig.compileSdk
+    buildToolsVersion buildConfig.buildTools
 
     defaultConfig {
-        applicationId "org.glucosio.android"
-        minSdkVersion 21
-        targetSdkVersion 25
-        versionCode 40
-        versionName '1.3.2'
+        applicationId 'org.glucosio.android'
+        minSdkVersion buildConfig.minSdkWear
+        targetSdkVersion buildConfig.compileSdk
+        versionCode buildConfig.versionCode
+        versionName buildConfig.versionName
     }
     buildTypes {
         debug {
@@ -51,6 +52,7 @@ android {
 }
 
 dependencies {
-    implementation 'com.google.android.support:wearable:2.0.0'
-    implementation 'com.google.android.gms:play-services-wearable:11.0.4'
+    implementation deps.android.support.wearable
+    implementation deps.android.gms.wearable
+    compileOnly deps.android.wearable
 }
