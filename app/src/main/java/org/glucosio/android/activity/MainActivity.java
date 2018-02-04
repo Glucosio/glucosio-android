@@ -29,6 +29,7 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Build;
@@ -79,7 +80,8 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 import java.util.Calendar;
 
 
-public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, ExportView {
+public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener,
+        ActivityCompat.OnRequestPermissionsResultCallback, ExportView {
 
     private static final String INTENT_EXTRA_DROPDOWN = "history_dropdown";
     private static final int REQUEST_INVITE = 1;
@@ -319,6 +321,21 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         );
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == REQUEST_EXTERNAL_STORAGE) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED &&
+                    grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+                // Storage permissions granted, show the CSV dialog again
+                showExportCsvDialog();
+            } else {
+                showExportPermissionError();
+            }
+        }
+    }
+
     private void openA1CCalculator() {
         Intent calculatorIntent = new Intent(this, A1cCalculatorActivity.class);
         startActivity(calculatorIntent);
@@ -452,99 +469,100 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     public void showExportCsvDialog() {
-        final Dialog exportDialog = new Dialog(MainActivity.this, R.style.GlucosioTheme);
+        if (hasStoragePermissions()) {
+            final Dialog exportDialog = new Dialog(MainActivity.this, R.style.GlucosioTheme);
 
-        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
-        lp.copyFrom(exportDialog.getWindow().getAttributes());
-        lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
-        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
-        exportDialog.setContentView(R.layout.dialog_export);
-        exportDialog.getWindow().setAttributes(lp);
-        exportDialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-        exportDialog.getWindow().setDimAmount(0.5f);
-        exportDialog.show();
+            WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+            lp.copyFrom(exportDialog.getWindow().getAttributes());
+            lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
+            lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+            exportDialog.setContentView(R.layout.dialog_export);
+            exportDialog.getWindow().setAttributes(lp);
+            exportDialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+            exportDialog.getWindow().setDimAmount(0.5f);
+            exportDialog.show();
 
-        exportDialogDateFrom = exportDialog.findViewById(R.id.activity_export_date_from);
-        exportDialogDateTo = exportDialog.findViewById(R.id.activity_export_date_to);
-        exportRangeButton = exportDialog.findViewById(R.id.activity_export_range);
-        final RadioButton exportAllButton = exportDialog.findViewById(R.id.activity_export_all);
-        final TextView exportButton = exportDialog.findViewById(R.id.dialog_export_add);
-        final TextView cancelButton = exportDialog.findViewById(R.id.dialog_export_cancel);
+            exportDialogDateFrom = exportDialog.findViewById(R.id.activity_export_date_from);
+            exportDialogDateTo = exportDialog.findViewById(R.id.activity_export_date_to);
+            exportRangeButton = exportDialog.findViewById(R.id.activity_export_range);
+            final RadioButton exportAllButton = exportDialog.findViewById(R.id.activity_export_all);
+            final TextView exportButton = exportDialog.findViewById(R.id.dialog_export_add);
+            final TextView cancelButton = exportDialog.findViewById(R.id.dialog_export_cancel);
 
-        exportRangeButton.setChecked(true);
+            exportRangeButton.setChecked(true);
 
-        exportDialogDateFrom.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar now = Calendar.getInstance();
-                DatePickerDialog dpd = new DatePickerDialog(
-                        MainActivity.this,
-                        MainActivity.this,
-                        now.get(Calendar.YEAR),
-                        now.get(Calendar.MONTH),
-                        now.get(Calendar.DAY_OF_MONTH)
-                );
-                dpd.getDatePicker().setMaxDate(System.currentTimeMillis());
-                dpd.show();
-            }
-        });
-
-        exportDialogDateTo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar now = Calendar.getInstance();
-                DatePickerDialog dpd = new DatePickerDialog(
-                        MainActivity.this,
-                        MainActivity.this,
-                        now.get(Calendar.YEAR),
-                        now.get(Calendar.MONTH),
-                        now.get(Calendar.DAY_OF_MONTH)
-                );
-                dpd.getDatePicker().setMaxDate(System.currentTimeMillis());
-                dpd.show();
-            }
-        });
-
-        exportRangeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                boolean isChecked = exportRangeButton.isChecked();
-                exportDialogDateFrom.setEnabled(true);
-                exportDialogDateTo.setEnabled(true);
-                exportAllButton.setChecked(!isChecked);
-            }
-        });
-
-        exportAllButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                boolean isChecked = exportAllButton.isChecked();
-                exportDialogDateFrom.setEnabled(false);
-                exportDialogDateTo.setEnabled(false);
-                exportRangeButton.setChecked(!isChecked);
-                exportButton.setEnabled(true);
-            }
-        });
-
-        exportButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (validateExportDialog()) {
-                    exportPresenter.onExportClicked(exportAllButton.isChecked());
-                    exportDialog.dismiss();
-                } else {
-                    showSnackBar(getResources().getString(R.string.dialog_error), Snackbar.LENGTH_LONG);
+            exportDialogDateFrom.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Calendar now = Calendar.getInstance();
+                    DatePickerDialog dpd = new DatePickerDialog(
+                            MainActivity.this,
+                            MainActivity.this,
+                            now.get(Calendar.YEAR),
+                            now.get(Calendar.MONTH),
+                            now.get(Calendar.DAY_OF_MONTH)
+                    );
+                    dpd.getDatePicker().setMaxDate(System.currentTimeMillis());
+                    dpd.show();
                 }
-            }
-        });
+            });
 
-        cancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                exportDialog.dismiss();
-            }
-        });
+            exportDialogDateTo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Calendar now = Calendar.getInstance();
+                    DatePickerDialog dpd = new DatePickerDialog(
+                            MainActivity.this,
+                            MainActivity.this,
+                            now.get(Calendar.YEAR),
+                            now.get(Calendar.MONTH),
+                            now.get(Calendar.DAY_OF_MONTH)
+                    );
+                    dpd.getDatePicker().setMaxDate(System.currentTimeMillis());
+                    dpd.show();
+                }
+            });
 
+            exportRangeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    boolean isChecked = exportRangeButton.isChecked();
+                    exportDialogDateFrom.setEnabled(true);
+                    exportDialogDateTo.setEnabled(true);
+                    exportAllButton.setChecked(!isChecked);
+                }
+            });
+
+            exportAllButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    boolean isChecked = exportAllButton.isChecked();
+                    exportDialogDateFrom.setEnabled(false);
+                    exportDialogDateTo.setEnabled(false);
+                    exportRangeButton.setChecked(!isChecked);
+                    exportButton.setEnabled(true);
+                }
+            });
+
+            exportButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (validateExportDialog()) {
+                        exportPresenter.onExportClicked(exportAllButton.isChecked());
+                        exportDialog.dismiss();
+                    } else {
+                        showSnackBar(getResources().getString(R.string.dialog_error), Snackbar.LENGTH_LONG);
+                    }
+                }
+            });
+
+            cancelButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    exportDialog.dismiss();
+                }
+            });
+        }
     }
 
     private boolean validateExportDialog() {
@@ -685,6 +703,11 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         Snackbar.make(rootLayout, getString(R.string.activity_export_issue_generic), Snackbar.LENGTH_SHORT).show();
     }
 
+    public void showExportPermissionError() {
+        View rootLayout = findViewById(android.R.id.content);
+        Snackbar.make(rootLayout, getString(R.string.activity_export_issue_permissions), Snackbar.LENGTH_SHORT).show();
+    }
+
     private void showSnackBar(String text, int lengthLong) {
         View rootLayout = findViewById(android.R.id.content);
         Snackbar.make(rootLayout, text, lengthLong).show();
@@ -745,6 +768,19 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private void addA1cAnalyticsEvent() {
         Analytics analytics = ((GlucosioApplication) getApplication()).getAnalytics();
         analytics.reportAction("A1C", "A1C disclaimer opened");
+    }
+
+    private boolean hasStoragePermissions() {
+        // Check if we have write permission
+        int permission = ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        Log.i("Glucosio", "Storage permissions granted.");
+
+        if (permission == PackageManager.PERMISSION_DENIED) {
+            requestStoragePermission();
+            return false;
+        } else {
+            return true;
+        }
     }
 
     /**
