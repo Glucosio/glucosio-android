@@ -19,6 +19,7 @@
  */
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
+    apply from: 'dependencies.gradle'
 
     repositories {
         jcenter()
@@ -26,15 +27,13 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.1'
-        classpath 'com.google.gms:google-services:3.1.2'
-        classpath 'io.realm:realm-gradle-plugin:4.3.1'
-        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.8.2'
-        classpath 'com.github.ben-manes:gradle-versions-plugin:0.17.0'
-        classpath 'org.jacoco:org.jacoco.core:0.7.9'
-        classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.7.3'
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        classpath deps.buildScript.androidGradlePlugin
+        classpath deps.buildScript.playServicesGradlePlugin
+        classpath deps.buildScript.realmGradlePlugin
+
+        classpath deps.buildScript.coveralsGradlePlugin
+        classpath deps.buildScript.versionsGradlePlugin
+        classpath deps.buildScript.dexcountGradlePlugin
     }
 }
 allprojects {
@@ -43,20 +42,35 @@ allprojects {
         google()
     }
 
-    ext.buildToolsVer = '27.0.2'
-
-    ext.androidSupportVer = '27.0.2'
-    ext.googlePlayServicesVer = '11.8.0'
-
-    ext.butterKnifeVer = '8.8.1'
-
-    ext.junitVer = '4.12'
-    ext.mockitoVer = '1.10.19'
-    ext.androidAssertJVer = '1.1.1'
-    ext.robolectricVer = '3.6.1'
-
     apply plugin: 'com.github.ben-manes.versions'
+
+    // Force all of the primary support libraries to use the same version.
+    configurations.all {
+        resolutionStrategy {
+            eachDependency { details ->
+                if (details.requested.group == 'com.android.support') {
+                    details.useVersion versions.supportLibrary
+                }
+            }
+        }
+    }
+
+    // Force only stable dependencies
+    dependencyUpdates.resolutionStrategy = {
+        componentSelection { rules ->
+            rules.all { ComponentSelection selection ->
+                boolean rejected = ['alpha', 'beta', 'rc', 'cr', 'm', 'preview'].any {
+                    qualifier -> selection.candidate.version ==~ /(?i).*[.-]${qualifier}[.\d-]*/
+                }
+                if (rejected) {
+                    selection.reject('Release candidate')
+                }
+            }
+        }
+    }
+
 }
+
 task wrapper(type: Wrapper) {
-    gradleVersion = '4.3.1'
+    gradleVersion = versions.gradle
 }

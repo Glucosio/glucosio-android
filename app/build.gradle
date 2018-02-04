@@ -18,23 +18,24 @@
  *
  */
 
+apply from: "${rootDir}/dependencies.gradle"
 apply plugin: 'com.android.application'
 apply plugin: 'jacoco'
 apply plugin: 'realm-android'
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion buildToolsVer
+    compileSdkVersion buildConfig.compileSdk
+    buildToolsVersion buildConfig.buildTools
 
     lintOptions {
         abortOnError false
     }
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 27
-        versionCode 41
-        versionName '1.4.0'
+        minSdkVersion buildConfig.minSdk
+        targetSdkVersion buildConfig.targetSdk
+        versionCode buildConfig.versionCode
+        versionName buildConfig.versionName
         applicationId 'org.glucosio.android'
 
         vectorDrawables.useSupportLibrary = true
@@ -75,9 +76,6 @@ android {
         unitTests.returnDefaultValues = true
 
         unitTests.all {
-            jacoco {
-                includeNoLocationClasses = true
-            }
             // configure the test JVM arguments
             jvmArgs '-noverify'
         }
@@ -92,78 +90,58 @@ repositories {
     mavenCentral()
     jcenter()
     maven { url 'https://jitpack.io' }
-    maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
 }
 
 dependencies {
     wearApp project(':wear')
 
     // Android Support libraries
-    implementation 'com.google.android.support:wearable:2.0.0'
+    implementation deps.android.support.wearable
 
-    implementation "com.android.support:appcompat-v7:${androidSupportVer}"
-    implementation "com.android.support:design:${androidSupportVer}"
-    implementation "com.android.support:cardview-v7:${androidSupportVer}"
-    implementation "com.android.support:recyclerview-v7:${androidSupportVer}"
-    implementation "com.android.support:percent:${androidSupportVer}"
+    implementation deps.android.support.design
+    implementation deps.android.support.cardView
+    implementation deps.android.support.recyclerView
+    implementation deps.android.support.percent
 
     // Google Play Services
-    implementation "com.google.android.gms:play-services-analytics:${googlePlayServicesVer}"
-    implementation "com.google.android.gms:play-services-drive:${googlePlayServicesVer}"
-    implementation "com.google.android.gms:play-services-wearable:${googlePlayServicesVer}"
-    implementation "com.google.android.gms:play-services-gcm:${googlePlayServicesVer}"
+    implementation deps.android.gms.analytics
+    implementation deps.android.gms.drive
+    implementation deps.android.gms.gcm
+    implementation deps.android.gms.wearable
 
     // Firebase
-    implementation "com.google.firebase:firebase-core:${googlePlayServicesVer}"
-    implementation "com.google.firebase:firebase-crash:${googlePlayServicesVer}"
-    implementation "com.google.firebase:firebase-invites:${googlePlayServicesVer}"
-    implementation "com.google.firebase:firebase-messaging:${googlePlayServicesVer}"
+    implementation deps.google.firebase.crash
+    implementation deps.google.firebase.invites
+    implementation deps.google.firebase.messaging
 
     // Other libraries
-    implementation 'com.github.paolorotolo:expandableheightlistview:1.0.0'
-    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.1'
-    implementation 'uk.co.chrisjenx:calligraphy:2.2.0'
-    implementation 'net.danlew:android.joda:2.9.9'
-    implementation('com.mikepenz:materialdrawer:5.8.1@aar') {
+    implementation deps.ChrisJenx.calligraphy
+    implementation deps.DanLew.androidJoda
+    implementation(deps.MikePenz.materialDrawer) {
         transitive = true
     }
+    implementation deps.PaoloRotolo.expandableHeightListView
+    implementation deps.PhilJay.mpAndroidChart
 
     // Butterknife
-    implementation "com.jakewharton:butterknife:${butterKnifeVer}"
-    annotationProcessor "com.jakewharton:butterknife-compiler:${butterKnifeVer}"
+    implementation deps.JakeWharton.butterKnife.core
+    annotationProcessor deps.JakeWharton.butterKnife.compiler
 
-    testImplementation "junit:junit:${junitVer}"
-    testImplementation "org.mockito:mockito-all:${mockitoVer}"
-    testImplementation "com.squareup.assertj:assertj-android:${androidAssertJVer}"
-    testImplementation("org.robolectric:robolectric:${robolectricVer}") {
-        exclude group: 'commons-logging', module: 'commons-logging'
-        exclude group: 'org.apache.httpcomponents', module: 'httpclient'
-    }
-    testImplementation("org.robolectric:shadows-supportv4:${robolectricVer}") {
-        exclude group: 'commons-logging', module: 'commons-logging'
-        exclude group: 'org.apache.httpcomponents', module: 'httpclient'
-    }
+    // Tests
+    testImplementation deps.junit
+    testImplementation deps.mockito
+    testImplementation deps.square.assertJAndroid
+    testImplementation deps.robolectric.core
+    testImplementation deps.robolectric.shadows
+    // This is for Mockito and Realm (TODO: find clean solution)
     testImplementation 'io.reactivex.rxjava2:rxjava:2.1.3'
 
-    testImplementation "org.powermock:powermock-module-junit4:1.6.4"
-    testImplementation "org.powermock:powermock-module-junit4-rule:1.6.4"
-    testImplementation "org.powermock:powermock-api-mockito:1.6.4"
-    testImplementation "org.powermock:powermock-classloading-xstream:1.6.4"
-
-    // Testing libraries
-    androidTestImplementation 'com.android.support.test:rules:1.0.1'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation "com.android.support:support-annotations:${androidSupportVer}"
-    androidTestImplementation "com.android.support:recyclerview-v7:${androidSupportVer}"
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-intents:3.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.1'
-}
-
-configurations.all {
-    resolutionStrategy.force "com.android.support:support-annotations:${androidSupportVer}"
-    resolutionStrategy.force "com.android.support:design:${androidSupportVer}"
-    resolutionStrategy.force "com.android.support:appcompat-v7:${androidSupportVer}"
+    // Instrumental Tests
+    androidTestImplementation deps.android.test.runner
+    androidTestImplementation deps.android.test.rules
+    androidTestImplementation deps.android.test.espresso.core
+    androidTestImplementation deps.android.test.espresso.intents
+    androidTestImplementation deps.android.test.espresso.contrib
 }
 
 def getAllLocales() {
