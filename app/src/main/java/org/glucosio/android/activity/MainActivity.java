@@ -775,7 +775,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         int permission = ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         Log.i("Glucosio", "Storage permissions granted.");
 
-        if (permission != PackageManager.PERMISSION_GRANTED) {
+        if (permission == PackageManager.PERMISSION_DENIED) {
             requestStoragePermission();
             return false;
         } else {
