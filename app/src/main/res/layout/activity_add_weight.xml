@@ -51,7 +51,6 @@
             android:layout_alignParentRight="true"
             android:layout_marginBottom="-32dp"
             android:layout_marginRight="20dp"
-            android:onClick="onFabClicked"
             android:visibility="invisible"
             app:backgroundTint="@color/glucosio_accent"
             app:srcCompat="@drawable/ic_done_black_24dp" />
@@ -92,6 +91,7 @@
 
                     <TextView
                         android:id="@+id/weight_add_unit_measurement"
+                        tools:ignore="MissingPrefix"
                         fontPath="fonts/lato-bold.ttf"
                         android:layout_width="wrap_content"
                         android:layout_height="fill_parent"

@@ -482,6 +482,7 @@
     </string-array>
     <string name="title_activity_splash" translatable="false">SplashActivity</string>
     <string name="activity_backup_drive_button_open_drive">Manage on Drive</string>
+    <string name="mm_Hg">mm/Hg</string>
     <string name="mmol_mol">mmol/mol</string>
     <string name="mmol_L">mmol/L</string>
     <string name="mmol_mol_value">%1$s mmol/mol</string>

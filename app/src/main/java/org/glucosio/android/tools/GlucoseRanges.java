@@ -21,6 +21,7 @@
 package org.glucosio.android.tools;
 
 import android.content.Context;
+import android.support.annotation.ColorRes;
 import android.support.annotation.VisibleForTesting;
 import android.support.v4.content.ContextCompat;
 import org.glucosio.android.R;
@@ -106,18 +107,24 @@ public class GlucoseRanges {
     }
 
     public int stringToColor(String color) {
+        @ColorRes int colorInt;
         switch (color) {
             case "green":
-                return ContextCompat.getColor(mContext, R.color.glucosio_reading_ok);
+                colorInt = R.color.glucosio_reading_ok;
+                break;
             case "red":
-                return ContextCompat.getColor(mContext, R.color.glucosio_reading_hyper);
+                colorInt = R.color.glucosio_reading_hyper;
+                break;
             case "blue":
-                return ContextCompat.getColor(mContext, R.color.glucosio_reading_low);
+                colorInt = R.color.glucosio_reading_low;
+                break;
             case "orange":
-                return ContextCompat.getColor(mContext, R.color.glucosio_reading_high);
+                colorInt = R.color.glucosio_reading_high;
+                break;
             default:
-                return ContextCompat.getColor(mContext, R.color.glucosio_reading_hypo);
+                colorInt = R.color.glucosio_reading_hypo;
         }
-    }
 
+        return ContextCompat.getColor(mContext, colorInt);
+    }
 }

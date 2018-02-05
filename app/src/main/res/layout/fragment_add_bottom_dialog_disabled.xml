@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main_add_bottom_sheet_menu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,7 +16,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="left"
         android:padding="16dp"
-        android:text="@string/activity_main_add_new_reading" />
+        android:text="@string/activity_main_add_new_reading"
+        tools:ignore="MissingPrefix" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -46,7 +48,8 @@
                 android:gravity="center"
                 android:paddingTop="8dp"
                 android:text="@string/fab_glucose"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                tools:ignore="MissingPrefix" />
         </LinearLayout>
 
         <LinearLayout
@@ -71,7 +74,8 @@
                 android:gravity="center"
                 android:paddingTop="8dp"
                 android:text="@string/fab_HB1AC"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                tools:ignore="MissingPrefix" />
         </LinearLayout>
 
         <LinearLayout
@@ -95,7 +99,8 @@
                 android:gravity="center"
                 android:paddingTop="8dp"
                 android:text="@string/fab_weight"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                tools:ignore="MissingPrefix" />
         </LinearLayout>
     </LinearLayout>
 
@@ -127,7 +132,8 @@
                 android:gravity="center"
                 android:paddingTop="8dp"
                 android:text="@string/fab_pressure"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                tools:ignore="MissingPrefix" />
         </LinearLayout>
 
         <LinearLayout
@@ -151,7 +157,8 @@
                 android:gravity="center"
                 android:paddingTop="8dp"
                 android:text="@string/fab_ketones"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                tools:ignore="MissingPrefix" />
         </LinearLayout>
 
         <LinearLayout
@@ -176,7 +183,8 @@
                 android:gravity="center"
                 android:paddingTop="8dp"
                 android:text="@string/fab_cholesterol"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                tools:ignore="MissingPrefix" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

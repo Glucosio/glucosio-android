@@ -28,6 +28,7 @@ import android.os.Bundle;
 import android.support.design.widget.BottomSheetDialog;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -232,7 +233,7 @@ public class HistoryFragment extends Fragment {
                         item.setAlpha(1.0f);
                         mAdapter.notifyDataSetChanged();
                     }
-                }).setActionTextColor(getResources().getColor(R.color.glucosio_accent)).show();
+                }).setActionTextColor(ContextCompat.getColor(getContext(), R.color.glucosio_accent)).show();
 
             }
         });

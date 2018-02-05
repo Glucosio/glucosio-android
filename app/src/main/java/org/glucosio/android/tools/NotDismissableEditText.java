@@ -21,12 +21,12 @@
 package org.glucosio.android.tools;
 
 import android.content.Context;
+import android.support.v7.widget.AppCompatEditText;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
-import android.widget.EditText;
 
 
-public class NotDismissableEditText extends EditText {
+public class NotDismissableEditText extends AppCompatEditText {
 
     public NotDismissableEditText(Context context, AttributeSet attrs) {
         super(context, attrs);

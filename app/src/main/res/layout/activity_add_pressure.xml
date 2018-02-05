@@ -51,7 +51,6 @@
             android:layout_alignParentRight="true"
             android:layout_marginBottom="-32dp"
             android:layout_marginRight="20dp"
-            android:onClick="onFabClicked"
             android:visibility="invisible"
             app:backgroundTint="@color/glucosio_accent"
             app:srcCompat="@drawable/ic_done_black_24dp" />
@@ -83,11 +82,11 @@
                         android:layout_weight="1">
 
                         <EditText
-                            style="@style/edit_number"
                             android:id="@+id/pressure_add_value_max"
+                            style="@style/edit_number"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/dialog_add_pressure_max"/>
+                            android:hint="@string/dialog_add_pressure_max" />
                     </android.support.design.widget.TextInputLayout>
 
                     <TextView
@@ -103,11 +102,11 @@
                         android:layout_weight="1">
 
                         <EditText
-                            style="@style/edit_number"
                             android:id="@+id/pressure_add_value_min"
+                            style="@style/edit_number"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/dialog_add_pressure_min"/>
+                            android:hint="@string/dialog_add_pressure_min" />
                     </android.support.design.widget.TextInputLayout>
 
                     <TextView
@@ -116,9 +115,10 @@
                         android:layout_height="fill_parent"
                         android:layout_marginBottom="8dp"
                         android:gravity="bottom"
-                        android:text="mm/Hg"
+                        android:text="@string/mm_Hg"
                         android:textSize="@dimen/abc_text_size_body_2_material"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:ignore="MissingPrefix" />
                 </LinearLayout>
 
                 <LinearLayout
