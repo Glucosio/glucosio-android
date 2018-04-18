@@ -1,6 +1,8 @@
 package org.glucosio.android.analytics;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
@@ -11,6 +13,7 @@ import org.glucosio.android.BuildConfig;
 
 public class GoogleAnalytics implements Analytics {
     private Tracker mTracker;
+    private boolean enabled;
 
     @Override
     public void init(@NonNull final Context context) {
@@ -20,6 +23,9 @@ public class GoogleAnalytics implements Analytics {
         mTracker = analytics.newTracker(BuildConfig.GOOGLE_ANALYTICS_TRACKER);
         mTracker.enableAdvertisingIdCollection(true);
 
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+        enabled = sharedPref.getBoolean("pref_analytics_opt_in", false);
+
         if (BuildConfig.DEBUG) {
             com.google.android.gms.analytics.GoogleAnalytics.getInstance(context).setAppOptOut(true);
             Log.i("Glucosio", "DEBUG BUILD: ANALYTICS IS DISABLED");
@@ -28,15 +34,19 @@ public class GoogleAnalytics implements Analytics {
 
     @Override
     public void reportScreen(@NonNull String name) {
-        mTracker.setScreenName(name);
-        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+        if (enabled) {
+            mTracker.setScreenName(name);
+            mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+        }
     }
 
     @Override
     public void reportAction(@NonNull String category, @NonNull String name) {
-        mTracker.send(new HitBuilders.EventBuilder()
-                .setCategory(category)
-                .setAction(name)
-                .build());
+        if (enabled) {
+            mTracker.send(new HitBuilders.EventBuilder()
+                    .setCategory(category)
+                    .setAction(name)
+                    .build());
+        }
     }
 }
