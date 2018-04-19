@@ -29,7 +29,13 @@ public class GoogleAnalytics implements Analytics {
         if (BuildConfig.DEBUG) {
             com.google.android.gms.analytics.GoogleAnalytics.getInstance(context).setAppOptOut(true);
             Log.i("Glucosio", "DEBUG BUILD: ANALYTICS IS DISABLED");
+        } else {
+            if (!enabled) {
+                com.google.android.gms.analytics.GoogleAnalytics.getInstance(context).setAppOptOut(true);
+            }
         }
+
+
     }
 
     @Override

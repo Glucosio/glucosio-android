@@ -41,11 +41,6 @@ public class HelloActivityTest extends RobolectricTest {
     }
 
     @Test
-    public void ShouldReportAnalytics_WhenCreated() throws Exception {
-        verify(getAnalytics()).reportScreen("Hello Activity");
-    }
-
-    @Test
     public void ShouldBindView_WhenCreated() throws Exception {
         assertThat(activity.languageSpinner).isNotNull();
         assertThat(activity.countrySpinner).isNotNull();

@@ -286,11 +286,10 @@
     <string name="optout">Opt-Out</string>
     <string name="analytics_usage">Analytics usage</string>
     <string name="analytics_usage_overview">
-        Glucosio collects data using Google Analytics to help us understand how the app is used,
-        which in turn helps us improve the program.  This data cannot be connected to any other data you
-        may have told us about yourself.  You can opt-out now but you also can opt-out
-        of analytics at any time by changing your preference on the settings screen. Can we collect
-        this information?
+        Glucosio collects crash and other analytics to help identify bugs and improve service for users.
+        We do not sell or share any of the data collected. You can opt-out now but you also can opt-out
+        of analytics at any time by changing your preference on the settings screen.
+        Can we collect this information?
     </string>
     <string name="about_donate">Donate to Glucosio</string>
     <string name="reading_ok">OK</string>
