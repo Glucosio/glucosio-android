@@ -17,13 +17,17 @@ import org.glucosio.android.R;
 import org.glucosio.android.presenter.AddReadingPresenter;
 import org.glucosio.android.tools.AnimationTools;
 import org.glucosio.android.tools.FormatDateTime;
+import org.glucosio.android.tools.NumberFormatUtils;
+
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.Calendar;
 
 public abstract class AddReadingActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
+    protected final NumberFormat numberFormat = NumberFormatUtils.createDefaultNumberFormat();
     private final java.lang.String INTENT_EXTRA_EDIT = "editing";
     private final java.lang.String INTENT_EXTRA_EDIT_ID = "edit_id";
     private final String INTENT_EXTRA_PAGER = "pager";

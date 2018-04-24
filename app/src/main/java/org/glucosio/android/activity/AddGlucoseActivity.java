@@ -59,8 +59,6 @@ public class AddGlucoseActivity extends AddReadingActivity {
     private LabelledSpinner readingTypeSpinner;
     private boolean isCustomType = false;
 
-    private final NumberFormat numberFormat = NumberFormatUtils.createDefaultNumberFormat();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
