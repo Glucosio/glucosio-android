@@ -288,4 +288,8 @@ public class OverviewPresenter {
     public double getGlucoseMaxValue() {
         return glucoseMaxValue;
     }
+
+    public String getWeightUnitMeasuerement() {
+        return dB.getUser(1).getPreferred_unit_weight();
+    }
 }

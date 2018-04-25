@@ -532,10 +532,19 @@ public class OverviewFragment extends Fragment implements OverviewView {
     private LineData generateWeightData() {
         List<String> xVals = new ArrayList<>();
         List<Entry> yVals = new ArrayList<>();
+        boolean needUnitConversion = false;
+
+        if (!"kilograms".equals(presenter.getWeightUnitMeasuerement())) {
+            needUnitConversion = true;
+        }
 
         int k = 0;
         for (int i = presenter.getWeightReadings().size() - 1; i >= 0; i--) {
             float val = Float.parseFloat(presenter.getWeightReadings().get(i).toString());
+            if (needUnitConversion) {
+                val = (float)GlucosioConverter.kgToLb(val);
+            }
+
             yVals.add(new Entry(k, val));
             k++;
         }
