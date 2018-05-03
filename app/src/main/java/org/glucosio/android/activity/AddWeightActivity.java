@@ -76,7 +76,7 @@ public class AddWeightActivity extends AddReadingActivity {
             double weightVal = readingToEdit.getReading();
             if (needUnitConversion)
                 weightVal = GlucosioConverter.kgToLb(weightVal);
-            readingTextView.setText(this.numberFormat.format(weightVal));
+            readingTextView.setText(numberFormat.format(weightVal));
             Calendar cal = Calendar.getInstance();
             cal.setTime(readingToEdit.getCreated());
             this.getAddDateTextView().setText(formatDateTime.getDate(cal));
