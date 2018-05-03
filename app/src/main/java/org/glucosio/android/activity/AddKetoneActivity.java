@@ -64,7 +64,7 @@ public class AddKetoneActivity extends AddReadingActivity {
         if (this.isEditing()) {
             setTitle(R.string.title_activity_add_ketone_edit);
             KetoneReading readingToEdit = presenter.getKetoneReadingById(this.getEditId());
-            readingTextView.setText(new StringBuilder().append(this.numberFormat.format(readingToEdit.getReading())).append("").toString());
+            readingTextView.setText(numberFormat.format(readingToEdit.getReading()));
             Calendar cal = Calendar.getInstance();
             cal.setTime(readingToEdit.getCreated());
             this.getAddDateTextView().setText(formatDateTime.getDate(cal));
