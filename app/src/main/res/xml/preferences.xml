@@ -79,18 +79,10 @@
         android:key="pref_range_max"
         android:title="@string/helloactivity_preferred_range_max" />
     <SwitchPreference
-        android:id="@+id/preferences_freestyle_libre"
-        android:summary="@string/preferences_freestyle_libre_experimental"
-        android:defaultValue="false"
-        android:key="pref_freestyle_libre"
-        />
-    <SwitchPreference
         android:id="@+id/preferences_analytics_opt_in"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:defaultValue="false"
         android:key="pref_analytics_opt_in"
-        android:summary="@string/preferences_analytics_opt_in" />
+        android:title="@string/preferences_analytics_opt_in" />
     <SwitchPreference
         android:id="@+id/preferences_graph_old"
         android:defaultValue="false"
@@ -101,6 +93,12 @@
         android:defaultValue="false"
         android:key="pref_font_dyslexia"
         android:summary="@string/preferences_font_dyslexia_experimental" />
+    <SwitchPreference
+        android:id="@+id/preferences_freestyle_libre"
+        android:summary="@string/preferences_freestyle_libre_experimental"
+        android:defaultValue="false"
+        android:key="pref_freestyle_libre"
+        />
     <!--    <Preference
             android:key="backup_settings"
             android:title="Backup" />-->

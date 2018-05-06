@@ -203,6 +203,7 @@ public class HelloActivity extends AppCompatActivity implements HelloView {
         new AlertDialog.Builder(this)
                 .setTitle(R.string.analytics_usage)
                 .setMessage(R.string.analytics_usage_overview)
+                .setCancelable(false)
                 .setNegativeButton(R.string.optout, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
