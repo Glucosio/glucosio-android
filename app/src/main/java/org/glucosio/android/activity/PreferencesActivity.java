@@ -41,6 +41,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.EditText;
+
 import org.glucosio.android.Constants;
 import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
@@ -52,12 +53,13 @@ import org.glucosio.android.tools.GlucosioConverter;
 import org.glucosio.android.tools.InputFilterMinMax;
 import org.glucosio.android.tools.LocaleHelper;
 import org.glucosio.android.tools.ReadingTools;
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class PreferencesActivity extends AppCompatActivity {
 
@@ -129,6 +131,7 @@ public class PreferencesActivity extends AppCompatActivity {
         private EditTextPreference maxRangePref;
         private SwitchPreference dyslexiaModePref;
         private SwitchPreference freestyleLibrePref;
+        private SwitchPreference analyticsOptInPref;
         private User updatedUser;
         private LocaleHelper localeHelper;
 
@@ -156,6 +159,7 @@ public class PreferencesActivity extends AppCompatActivity {
             maxRangePref = (EditTextPreference) findPreference("pref_range_max");
             dyslexiaModePref = (SwitchPreference) findPreference("pref_font_dyslexia");
             freestyleLibrePref = (SwitchPreference) findPreference("pref_freestyle_libre");
+            analyticsOptInPref = (SwitchPreference) findPreference( "pref_analytics_opt_in");
 
             agePref.setDefaultValue(user.getAge());
             countryPref.setValue(user.getCountry());
@@ -355,7 +359,12 @@ public class PreferencesActivity extends AppCompatActivity {
                     return true;
                 }
             });
-
+            analyticsOptInPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                 @Override
+                 public boolean onPreferenceChange(Preference preference, Object newValue) {
+                     return true;
+                 }
+            });
             ageEditText = agePref.getEditText();
             minEditText = minRangePref.getEditText();
             maxEditText = maxRangePref.getEditText();
@@ -390,6 +399,7 @@ public class PreferencesActivity extends AppCompatActivity {
                     return false;
                 }
             });
+
         }
 
         private String getA1CUnitValue(final String a1CUnit) {

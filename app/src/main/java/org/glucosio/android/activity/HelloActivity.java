@@ -21,10 +21,14 @@
 package org.glucosio.android.activity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.content.res.ResourcesCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.WindowManager;
@@ -100,10 +104,13 @@ public class HelloActivity extends AppCompatActivity implements HelloView {
 
         initStartButton();
 
-        Analytics analytics = application.getAnalytics();
-        analytics.reportScreen("Hello Activity");
+        showAnalyticsExplanationDialog();
+
         Log.i("HelloActivity", "Setting screen name: hello");
+
+
     }
+
 
     private void initLanguageSpinner(final LocaleHelper localeHelper) {
         localesWithTranslation = localeHelper.getLocalesWithTranslation(getResources());
@@ -191,6 +198,32 @@ public class HelloActivity extends AppCompatActivity implements HelloView {
         startActivity(intent);
         finish();
     }
+
+    private void showAnalyticsExplanationDialog() {
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.analytics_usage)
+                .setMessage(R.string.analytics_usage_overview)
+                .setCancelable(false)
+                .setNegativeButton(R.string.optout, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                        sharedPref.edit().putBoolean("pref_analytics_opt_in", false).apply();
+                    }
+                })
+                .setPositiveButton(R.string.allow, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                        sharedPref.edit().putBoolean("pref_analytics_opt_in", true).apply();
+                        GlucosioApplication application = (GlucosioApplication) getApplication();
+                        Analytics analytics = application.getAnalytics();
+                        analytics.reportScreen("Hello Activity");
+                    }
+                })
+                .show();
+    }
+
+
 
     @Override
     protected void attachBaseContext(Context newBase) {

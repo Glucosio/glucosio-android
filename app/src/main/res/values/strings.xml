@@ -281,6 +281,16 @@
     <string name="preferences_freestyle_libre_experimental">EXPERIMENTAL: Enable FreeStyle Libre® support</string>
     <string name="preferences_font_dyslexia_experimental">EXPERIMENTAL: Increase readability for users with dyslexia</string>
     <string name="preferences_font_dyslexia">Increase readability for users with dyslexia</string>
+    <string name="preferences_analytics_opt_in">Enable analytics</string>
+    <string name="allow">Allow</string>
+    <string name="optout">Opt-Out</string>
+    <string name="analytics_usage">Analytics usage</string>
+    <string name="analytics_usage_overview">
+        Glucosio collects crash and other analytics to help identify bugs and improve service for users.
+        We do not sell or share any of the data collected. You can opt-out now but you also can opt-out
+        of analytics at any time by changing your preference on the settings screen.
+        Can we collect this information?
+    </string>
     <string name="about_donate">Donate to Glucosio</string>
     <string name="reading_ok">OK</string>
     <string name="reading_hypo">Hypoglycemia</string>
@@ -318,7 +328,7 @@
     <string name="dialog_add_exercisetype_24">Hiking</string>
     <string name="dialog_add_exercisetype_25">Yard work</string>
 
-  <!-- Future Strings Baked In Early For l10n -->
+    <!-- Future Strings Baked In Early For l10n -->
     <!-- Intro Strings -->
     <string name="intro_title1">Welcome to Glucosio!</string>
     <string name="intro_para1">Glucosio is a free and open source app for managing your diabetes</string>
@@ -330,19 +340,19 @@
     <string name="intro_para4">Glucosio takes your privacy seriously and only shares undidenfiable trends if you opt-in</string>
     <string name="intro_title5">Improved Health Outcomes</string>
     <string name="intro_para5">Glucosio helps you track your glucose level trends and other health metrics for improved health outcomes</string>
-  
+
     <!-- Future Strings Baked In Early For l10n -->
     <!-- Smart Assistant Strings -->
- 
+
     <string name="assistant_coachyesterday1">Your glucose levels yesterday were great!</string>
-  <string name="assistant_coachweek1">Your glucose levels this week have been terrific!</string>
-  <string name="assistant_coachmorning1">Your morning time glucose level was perfect!</string>
-  <string name="assistant_coachafternoon1">Your afternoon glucose level was perfect!</string>
-  
-  
+    <string name="assistant_coachweek1">Your glucose levels this week have been terrific!</string>
+    <string name="assistant_coachmorning1">Your morning time glucose level was perfect!</string>
+    <string name="assistant_coachafternoon1">Your afternoon glucose level was perfect!</string>
+
+
     <!-- Future Strings Baked In Early For l10n -->
     <!-- Badges -->
- 
+
     <string name="badge_perfectweektitle1">Great Week</string>
     <string name="badge_perfectweekdesc1">You achieved the one week of in range glucose levels badge! Great job!</string>
     <string name="badge_perfectmonthtitle1">Great Month</string>
@@ -358,8 +368,8 @@
     <string name="badge_7daystitle1">7-Days</string>
     <string name="badge_7daysdesc1">You achieved the 7-Days of consistent glucose level logging badge! Great job!</string>
 
-  
-     <!-- Food Entry Labels -->
+
+    <!-- Food Entry Labels -->
 
     <string name="dialog_addfood_carbs">Carbs:</string>
     <string name="dialog_addfood_protein">Protein:</string>
