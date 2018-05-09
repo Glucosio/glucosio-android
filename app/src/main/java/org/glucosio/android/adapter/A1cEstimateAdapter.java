@@ -20,11 +20,12 @@ import java.util.List;
 
 public class A1cEstimateAdapter extends ArrayAdapter<A1cEstimate> {
     private final DatabaseHandler databaseHandler;
-    private final NumberFormat numberFormat = NumberFormatUtils.createDefaultNumberFormat();
+    private final NumberFormat numberFormat;
 
     public A1cEstimateAdapter(Context context, int resource, List<A1cEstimate> items) {
         super(context, resource, items);
         databaseHandler = new DatabaseHandler(context);
+        numberFormat = NumberFormatUtils.createDefaultNumberFormat(databaseHandler.getUser(1).getPreferred_unit());
     }
 
     @Override
@@ -61,7 +62,8 @@ public class A1cEstimateAdapter extends ArrayAdapter<A1cEstimate> {
 
             if (glucoseAverage != null) {
                 if (Constants.Units.MG_DL.equals(databaseHandler.getUser(1).getPreferred_unit())) {
-                    glucoseAverage.setText(getContext().getString(R.string.mg_dL_value, p.getGlucoseAverage()));
+                    String reading = numberFormat.format(p.getGlucoseAverage());
+                    glucoseAverage.setText(getContext().getString(R.string.mg_dL_value, reading));
                 } else {
                     double mmol = GlucosioConverter.glucoseToMgDl(ReadingTools.safeParseDouble(p.getGlucoseAverage()));
                     String reading = numberFormat.format(mmol);

@@ -68,8 +68,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     private List<String> glucoseDateTime;
     private List<String> glucoseReadingType;
 
-    private final NumberFormat numberFormat = NumberFormatUtils.createDefaultNumberFormat();
-
     // Provide a suitable constructor (depends on the kind of dataset)
     public HistoryAdapter(Context context, HistoryPresenter presenter, int metricId) {
         this.mContext = context;
@@ -148,6 +146,8 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         TextView idTextView = holder.mView.findViewById(R.id.item_history_id);
         TextView notesTextView = holder.mView.findViewById(R.id.item_history_notes);
 
+        NumberFormat numberFormat;
+
         switch (metricId) {
             // Glucose
             case 0:
@@ -156,11 +156,13 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
                 String color = ranges.colorFromReading(glucoseReadingArray.get(position));
 
                 if (Constants.Units.MG_DL.equals(presenter.getUnitMeasuerement())) {
+                    numberFormat = NumberFormatUtils.createDefaultNumberFormat(Constants.Units.MG_DL);
                     double glucoseReading = glucoseReadingArray.get(position);
                     String reading = numberFormat.format(glucoseReading);
                     readingTextView.setText(mContext.getString(R.string.mg_dL_value, reading));
                 } else {
                     double mmol = GlucosioConverter.glucoseToMmolL(glucoseReadingArray.get(position));
+                    numberFormat = NumberFormatUtils.createDefaultNumberFormat(Constants.Units.MMOL_L);
                     String reading = numberFormat.format(mmol);
                     readingTextView.setText(mContext.getString(R.string.mmol_L_value, reading));
                 }
@@ -180,10 +182,13 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
             // A1C
             case 1:
                 idTextView.setText(hb1acIdArray.get(position).toString());
-                if ("percentage".equals(presenter.getA1cUnitMeasurement())) {
-                    readingTextView.setText(hb1acReadingArray.get(position).toString() + " %");
+                if (Constants.Units.MMOL_MOL.equals(presenter.getA1cUnitMeasurement())) {
+                    numberFormat = NumberFormatUtils.createDefaultNumberFormat(Constants.Units.PERCENTAGE);
+                    String reading = numberFormat.format(hb1acReadingArray.get(position));
+                    readingTextView.setText(reading + " %");
                 } else {
                     double ifcc = GlucosioConverter.a1cNgspToIfcc(hb1acReadingArray.get(position));
+                    numberFormat = NumberFormatUtils.createDefaultNumberFormat(Constants.Units.MMOL_MOL);
                     String reading = numberFormat.format(ifcc);
                     readingTextView.setText(mContext.getString(R.string.mmol_mol_value, reading));
                 }
@@ -194,17 +199,20 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
                 break;
             // Cholesterol
             case 2:
+                numberFormat = NumberFormatUtils.createDefaultNumberFormat(Constants.Units.MG_DL);
                 idTextView.setText(cholesterolIdArray.get(position).toString());
-                String reading = cholesterolTotalArray.get(position).toString();
+                String reading = numberFormat.format(cholesterolTotalArray.get(position));
                 readingTextView.setText(mContext.getString(R.string.mg_dL_value, reading));
                 datetimeTextView.setText(presenter.convertDate(cholesterolDateTimeArray.get(position)));
-                typeTextView.setText("LDL: " + cholesterolLDLArray.get(position) + " - " + "HDL: " + cholesterolHDLArray.get(position));
+                typeTextView.setText("LDL: " + numberFormat.format(cholesterolLDLArray.get(position)) + " - " + "HDL: " + numberFormat.format(cholesterolHDLArray.get(position)));
                 readingTextView.setTextColor(ContextCompat.getColor(mContext, R.color.glucosio_text_dark));
                 break;
             // Pressure
             case 3:
                 idTextView.setText(pressureIdArray.get(position).toString());
-                readingTextView.setText(pressureMaxArray.get(position).toString() + "/" + pressureMinArray.get(position).toString() + "  mm/Hg");
+                numberFormat = NumberFormatUtils.createDefaultNumberFormat(Constants.Units.MM_HG);
+                readingTextView.setText(numberFormat.format(pressureMaxArray.get(position)) + "/" +
+                        numberFormat.format(pressureMinArray.get(position)) + "  mm/Hg");
                 datetimeTextView.setText(presenter.convertDate(pressureDateTimeArray.get(position)));
                 typeTextView.setText("");
                 typeTextView.setVisibility(View.GONE);
@@ -225,8 +233,10 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
 
                 //TODO: localise
                 if ("kilograms".equals(presenter.getWeightUnitMeasurement())) {
+                    numberFormat = NumberFormatUtils.createDefaultNumberFormat(Constants.Units.KG);
                     readingTextView.setText(numberFormat.format(weightReadingArray.get(position)) + " kg");
                 } else {
+                    numberFormat = NumberFormatUtils.createDefaultNumberFormat(Constants.Units.LBS);
                     double lb = GlucosioConverter.kgToLb(weightReadingArray.get(position));
                     readingTextView.setText(numberFormat.format(lb) + " lbs");
                 }

@@ -27,10 +27,10 @@ public class ReadingToCSVTest extends RobolectricTest {
     private final FormatDateTime dateTool = new FormatDateTime(RuntimeEnvironment.application);
     private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
     private final OutputStreamWriter osw = new OutputStreamWriter(outputStream);
-    private final NumberFormat numberFormat = NumberFormatUtils.createDefaultNumberFormat();
 
     @Test
     public void GeneratesEmptyCSVWithHeader_WhenNoData() throws IOException {
+        NumberFormat numberFormat = NumberFormatUtils.createDefaultNumberFormat(Constants.Units.MG_DL);
         ReadingToCSV r = new ReadingToCSV(RuntimeEnvironment.application, Constants.Units.MG_DL);
         r.createCSVFile(new ArrayList<GlucoseReading>(), osw);
 
@@ -141,6 +141,7 @@ public class ReadingToCSVTest extends RobolectricTest {
 
         String reading_type = reading.getReading_type();
         String notes = reading.getNotes();
+        NumberFormat numberFormat = NumberFormatUtils.createDefaultNumberFormat(units);
 
         return dateTool.convertRawDate(reading.getCreated()) +
                 ',' +

@@ -25,9 +25,11 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Calendar;
 
+import static org.glucosio.android.Constants.Units.MG_DL;
+
 public abstract class AddReadingActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
-    protected final NumberFormat numberFormat = NumberFormatUtils.createDefaultNumberFormat();
+    protected final NumberFormat numberFormat = NumberFormatUtils.createDefaultNumberFormat(MG_DL);
     private final java.lang.String INTENT_EXTRA_EDIT = "editing";
     private final java.lang.String INTENT_EXTRA_EDIT_ID = "edit_id";
     private final String INTENT_EXTRA_PAGER = "pager";

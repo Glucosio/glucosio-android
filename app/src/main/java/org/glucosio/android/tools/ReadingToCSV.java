@@ -34,6 +34,9 @@ import java.io.OutputStreamWriter;
 import java.text.NumberFormat;
 import java.util.List;
 
+import static org.glucosio.android.Constants.Units.MG_DL;
+import static org.glucosio.android.Constants.Units.MMOL_L;
+
 public final class ReadingToCSV {
 
     private static final char[] SYMBOLS_TO_ESCAPE = new char[]{',', '"', '\n', '\r'};
@@ -42,7 +45,8 @@ public final class ReadingToCSV {
     private final String userMeasurements;
     private final FormatDateTime dateTool;
 
-    private final NumberFormat formatter = NumberFormatUtils.createDefaultNumberFormat();
+    private final NumberFormat mg_dl_formatter = NumberFormatUtils.createDefaultNumberFormat(MG_DL);
+    private final NumberFormat mmol_formatter = NumberFormatUtils.createDefaultNumberFormat(MMOL_L);
 
     public ReadingToCSV(@NonNull Context context, @NonNull String userMeasurements) {
         this.context = context;
@@ -64,13 +68,13 @@ public final class ReadingToCSV {
         );
 
         // Concentration | Measured | Date | Time | Notes | Unit of Measurement
-        if (Constants.Units.MG_DL.equals(userMeasurements)) {
+        if (MG_DL.equals(userMeasurements)) {
             for (GlucoseReading reading : readings) {
                 writeLine(osw,
                         dateTool.convertRawDate(reading.getCreated()),
                         dateTool.convertRawTime(reading.getCreated()),
-                        formatter.format(reading.getReading()),
-                        Constants.Units.MG_DL,
+                        mg_dl_formatter.format(reading.getReading()),
+                        MG_DL,
                         valueOrEmptyString(reading.getReading_type()),
                         valueOrEmptyString(reading.getNotes())
                 );
@@ -81,7 +85,7 @@ public final class ReadingToCSV {
                 writeLine(osw,
                         this.dateTool.convertRawDate(reading.getCreated()),
                         this.dateTool.convertRawTime(reading.getCreated()),
-                        formatter.format(GlucosioConverter.glucoseToMmolL(reading.getReading())),
+                        mmol_formatter.format(GlucosioConverter.glucoseToMmolL(reading.getReading())),
                         Constants.Units.MMOL_L,
                         valueOrEmptyString(reading.getReading_type()),
                         valueOrEmptyString(reading.getNotes())
