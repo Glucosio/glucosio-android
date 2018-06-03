@@ -35,7 +35,6 @@ import org.glucosio.android.tools.GlucosioConverter;
 import org.glucosio.android.tools.NumberFormatUtils;
 
 import java.text.NumberFormat;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -44,24 +43,24 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     private final Context mContext;
     private final HistoryPresenter presenter;
 
-    private ArrayList<String> weightDataTime;
-    private ArrayList<Long> weightIdArray;
+    private List<String> weightDataTime;
+    private List<Long> weightIdArray;
     private List<Double> weightReadingArray;
-    private ArrayList<String> ketoneDataTimeArray;
+    private List<String> ketoneDataTimeArray;
     private List<Double> ketoneReadingArray;
-    private ArrayList<Long> ketoneIdArray;
-    private ArrayList<String> pressureDateTimeArray;
+    private List<Long> ketoneIdArray;
+    private List<String> pressureDateTimeArray;
     private List<Double> pressureMinArray;
     private List<Double> pressureMaxArray;
-    private ArrayList<Long> pressureIdArray;
-    private ArrayList<String> cholesterolDateTimeArray;
+    private List<Long> pressureIdArray;
+    private List<String> cholesterolDateTimeArray;
     private List<Double> cholesterolHDLArray;
     private List<Double> cholesterolLDLArray;
     private List<Double> cholesterolTotalArray;
-    private ArrayList<Long> cholesterolIdArray;
-    private ArrayList<String> hb1acDateTimeArray;
-    private ArrayList<Double> hb1acReadingArray;
-    private ArrayList<Long> hb1acIdArray;
+    private List<Long> cholesterolIdArray;
+    private List<String> hb1acDateTimeArray;
+    private List<Double> hb1acReadingArray;
+    private List<Long> hb1acIdArray;
     private List<Long> glucoseIdArray;
     private List<String> glucoseNotes;
     private List<Double> glucoseReadingArray;

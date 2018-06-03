@@ -233,7 +233,7 @@ public class DatabaseHandler {
     public GlucoseReading getLastGlucoseReading() {
         RealmResults<GlucoseReading> results =
                 realm.where(GlucoseReading.class)
-                        .sort("created", Sort.DESCENDING)
+                        .sort(RealmField.CREATED.key(), Sort.DESCENDING)
                         .findAll();
         return results.get(0);
     }
@@ -241,7 +241,7 @@ public class DatabaseHandler {
     public List<GlucoseReading> getGlucoseReadings() {
         RealmResults<GlucoseReading> results =
                 realm.where(GlucoseReading.class)
-                        .sort("created", Sort.DESCENDING)
+                        .sort(RealmField.CREATED.key(), Sort.DESCENDING)
                         .findAll();
         return new ArrayList<>(results);
     }
@@ -249,7 +249,7 @@ public class DatabaseHandler {
     public List<GlucoseReading> getGlucoseReadings(Realm realm) {
         RealmResults<GlucoseReading> results =
                 realm.where(GlucoseReading.class)
-                        .sort("created", Sort.DESCENDING)
+                        .sort(RealmField.CREATED.key(), Sort.DESCENDING)
                         .findAll();
         return new ArrayList<>(results);
     }
@@ -257,8 +257,8 @@ public class DatabaseHandler {
     private ArrayList<GlucoseReading> getGlucoseReadings(Date from, Date to) {
         RealmResults<GlucoseReading> results =
                 realm.where(GlucoseReading.class)
-                        .between("created", from, to)
-                        .sort("created", Sort.DESCENDING)
+                        .between(RealmField.CREATED.key(), from, to)
+                        .sort(RealmField.CREATED.key(), Sort.DESCENDING)
                         .findAll();
         return new ArrayList<>(results);
     }
@@ -266,8 +266,8 @@ public class DatabaseHandler {
     public List<GlucoseReading> getGlucoseReadings(Realm realm, Date from, Date to) {
         RealmResults<GlucoseReading> results =
                 realm.where(GlucoseReading.class)
-                        .between("created", from, to)
-                        .sort("created", Sort.DESCENDING)
+                        .between(RealmField.CREATED.key(), from, to)
+                        .sort(RealmField.CREATED.key(), Sort.DESCENDING)
                         .findAll();
         return new ArrayList<>(results);
     }
@@ -344,8 +344,8 @@ public class DatabaseHandler {
     public List<Double> getAverageGlucoseReadingsByWeek() {
         JodaTimeAndroid.init(mContext);
 
-        DateTime maxDateTime = new DateTime(realm.where(GlucoseReading.class).maximumDate("created").getTime());
-        DateTime minDateTime = new DateTime(realm.where(GlucoseReading.class).minimumDate("created").getTime());
+        DateTime maxDateTime = new DateTime(realm.where(GlucoseReading.class).maximumDate(RealmField.CREATED.key()).getTime());
+        DateTime minDateTime = new DateTime(realm.where(GlucoseReading.class).minimumDate(RealmField.CREATED.key()).getTime());
 
         DateTime currentDateTime = minDateTime;
         DateTime newDateTime;
@@ -357,7 +357,7 @@ public class DatabaseHandler {
         for (int i = 0; i < weeksNumber + 1; i++) {
             newDateTime = currentDateTime.plusWeeks(1);
             RealmResults<GlucoseReading> readings = realm.where(GlucoseReading.class)
-                    .between("created", currentDateTime.toDate(), newDateTime.toDate())
+                    .between(RealmField.CREATED.key(), currentDateTime.toDate(), newDateTime.toDate())
                     .findAll();
             averageReadings.add(readings.average("reading"));
             currentDateTime = newDateTime;
@@ -368,8 +368,8 @@ public class DatabaseHandler {
     public List<String> getGlucoseDatetimesByWeek() {
         JodaTimeAndroid.init(mContext);
 
-        DateTime maxDateTime = new DateTime(realm.where(GlucoseReading.class).maximumDate("created").getTime());
-        DateTime minDateTime = new DateTime(realm.where(GlucoseReading.class).minimumDate("created").getTime());
+        DateTime maxDateTime = new DateTime(realm.where(GlucoseReading.class).maximumDate(RealmField.CREATED.key()).getTime());
+        DateTime minDateTime = new DateTime(realm.where(GlucoseReading.class).minimumDate(RealmField.CREATED.key()).getTime());
 
         DateTime currentDateTime = minDateTime;
         DateTime newDateTime;
@@ -391,8 +391,8 @@ public class DatabaseHandler {
     public List<Double> getAverageGlucoseReadingsByMonth() {
         JodaTimeAndroid.init(mContext);
 
-        DateTime maxDateTime = new DateTime(realm.where(GlucoseReading.class).maximumDate("created").getTime());
-        DateTime minDateTime = new DateTime(realm.where(GlucoseReading.class).minimumDate("created").getTime());
+        DateTime maxDateTime = new DateTime(realm.where(GlucoseReading.class).maximumDate(RealmField.CREATED.key()).getTime());
+        DateTime minDateTime = new DateTime(realm.where(GlucoseReading.class).minimumDate(RealmField.CREATED.key()).getTime());
 
         DateTime currentDateTime = minDateTime;
         DateTime newDateTime;
@@ -406,7 +406,7 @@ public class DatabaseHandler {
         for (int i = 0; i < monthsNumber; i++) {
             newDateTime = currentDateTime.plusMonths(1);
             RealmResults<GlucoseReading> readings = realm.where(GlucoseReading.class)
-                    .between("created", currentDateTime.toDate(), newDateTime.toDate())
+                    .between(RealmField.CREATED.key(), currentDateTime.toDate(), newDateTime.toDate())
                     .findAll();
             averageReadings.add(readings.average("reading"));
             currentDateTime = newDateTime;
@@ -417,8 +417,8 @@ public class DatabaseHandler {
     public List<String> getGlucoseDatetimesByMonth() {
         JodaTimeAndroid.init(mContext);
 
-        DateTime maxDateTime = new DateTime(realm.where(GlucoseReading.class).maximumDate("created").getTime());
-        DateTime minDateTime = new DateTime(realm.where(GlucoseReading.class).minimumDate("created").getTime());
+        DateTime maxDateTime = new DateTime(realm.where(GlucoseReading.class).maximumDate(RealmField.CREATED.key()).getTime());
+        DateTime minDateTime = new DateTime(realm.where(GlucoseReading.class).minimumDate(RealmField.CREATED.key()).getTime());
 
         DateTime currentDateTime = minDateTime;
         DateTime newDateTime;
@@ -474,23 +474,22 @@ public class DatabaseHandler {
 
     public RealmResults<HB1ACReading> getrHB1ACRawReadings() {
         return realm.where(HB1ACReading.class)
-                .findAllSorted("created", Sort.DESCENDING);
+                .sort(RealmField.CREATED.key(), Sort.DESCENDING)
+                .findAll();
     }
 
-    public ArrayList<HB1ACReading> getHB1ACReadings() {
+    public List<HB1ACReading> getHB1ACReadings() {
         RealmResults<HB1ACReading> results =
                 realm.where(HB1ACReading.class)
-                        .findAllSorted("created", Sort.DESCENDING);
-        ArrayList<HB1ACReading> readingList = new ArrayList<>();
-        for (int i = 0; i < results.size(); i++) {
-            readingList.add(results.get(i));
-        }
-        return readingList;
+                        .sort(RealmField.CREATED.key(), Sort.DESCENDING)
+                        .findAll();
+
+        return new ArrayList<>(results);
     }
 
-    public ArrayList<Long> getHB1ACIdAsArray() {
+    public List<Long> getHB1ACIdAsArray() {
         List<HB1ACReading> readings = getHB1ACReadings();
-        ArrayList<Long> idArray = new ArrayList<Long>();
+        ArrayList<Long> idArray = new ArrayList<>();
         int i;
 
         for (i = 0; i < readings.size(); i++) {
@@ -503,9 +502,9 @@ public class DatabaseHandler {
         return idArray;
     }
 
-    public ArrayList<Double> getHB1ACReadingAsArray() {
+    public List<Double> getHB1ACReadingAsArray() {
         List<HB1ACReading> readings = getHB1ACReadings();
-        ArrayList<Double> readingArray = new ArrayList<Double>();
+        ArrayList<Double> readingArray = new ArrayList<>();
         int i;
 
         for (i = 0; i < readings.size(); i++) {
@@ -518,9 +517,9 @@ public class DatabaseHandler {
         return readingArray;
     }
 
-    public ArrayList<String> getHB1ACDateTimeAsArray() {
+    public List<String> getHB1ACDateTimeAsArray() {
         List<HB1ACReading> readings = getHB1ACReadings();
-        ArrayList<String> datetimeArray = new ArrayList<String>();
+        ArrayList<String> datetimeArray = new ArrayList<>();
         int i;
         DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
@@ -536,7 +535,8 @@ public class DatabaseHandler {
 
     public RealmResults<KetoneReading> getRawKetoneReadings() {
         return realm.where(KetoneReading.class)
-                .findAllSorted("created", Sort.DESCENDING);
+                .sort(RealmField.CREATED.key(), Sort.DESCENDING)
+                .findAll();
     }
 
     public void addKetoneReading(KetoneReading reading) {
@@ -565,20 +565,18 @@ public class DatabaseHandler {
         realm.commitTransaction();
     }
 
-    public ArrayList<KetoneReading> getKetoneReadings() {
+    public List<KetoneReading> getKetoneReadings() {
         RealmResults<KetoneReading> results =
                 realm.where(KetoneReading.class)
-                        .findAllSorted("created", Sort.DESCENDING);
-        ArrayList<KetoneReading> readingList = new ArrayList<>();
-        for (int i = 0; i < results.size(); i++) {
-            readingList.add(results.get(i));
-        }
-        return readingList;
+                        .sort(RealmField.CREATED.key(), Sort.DESCENDING)
+                        .findAll();
+
+        return new ArrayList<>(results);
     }
 
-    public ArrayList<Long> getKetoneIdAsArray() {
+    public List<Long> getKetoneIdAsArray() {
         List<KetoneReading> readings = getKetoneReadings();
-        ArrayList<Long> idArray = new ArrayList<Long>();
+        ArrayList<Long> idArray = new ArrayList<>();
         int i;
 
         for (i = 0; i < readings.size(); i++) {
@@ -606,9 +604,9 @@ public class DatabaseHandler {
         return readingArray;
     }
 
-    public ArrayList<String> getKetoneDateTimeAsArray() {
+    public List<String> getKetoneDateTimeAsArray() {
         List<KetoneReading> readings = getKetoneReadings();
-        ArrayList<String> datetimeArray = new ArrayList<String>();
+        ArrayList<String> datetimeArray = new ArrayList<>();
         int i;
         DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
@@ -648,20 +646,18 @@ public class DatabaseHandler {
         addPressureReading(reading);
     }
 
-    public ArrayList<PressureReading> getPressureReadings() {
+    public List<PressureReading> getPressureReadings() {
         RealmResults<PressureReading> results =
                 realm.where(PressureReading.class)
-                        .findAllSorted("created", Sort.DESCENDING);
-        ArrayList<PressureReading> readingList = new ArrayList<>();
-        for (int i = 0; i < results.size(); i++) {
-            readingList.add(results.get(i));
-        }
-        return readingList;
+                        .sort(RealmField.CREATED.key(), Sort.DESCENDING)
+                        .findAll();
+
+        return new ArrayList<>(results);
     }
 
-    public ArrayList<Long> getPressureIdAsArray() {
+    public List<Long> getPressureIdAsArray() {
         List<PressureReading> readings = getPressureReadings();
-        ArrayList<Long> idArray = new ArrayList<Long>();
+        ArrayList<Long> idArray = new ArrayList<>();
         int i;
 
         for (i = 0; i < readings.size(); i++) {
@@ -702,9 +698,9 @@ public class DatabaseHandler {
         return readingArray;
     }
 
-    public ArrayList<String> getPressureDateTimeAsArray() {
+    public List<String> getPressureDateTimeAsArray() {
         List<PressureReading> readings = getPressureReadings();
-        ArrayList<String> datetimeArray = new ArrayList<String>();
+        ArrayList<String> datetimeArray = new ArrayList<>();
         int i;
         DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
@@ -744,20 +740,18 @@ public class DatabaseHandler {
         realm.commitTransaction();
     }
 
-    public ArrayList<WeightReading> getWeightReadings() {
+    public List<WeightReading> getWeightReadings() {
         RealmResults<WeightReading> results =
                 realm.where(WeightReading.class)
-                        .findAllSorted("created", Sort.DESCENDING);
-        ArrayList<WeightReading> readingList = new ArrayList<>();
-        for (int i = 0; i < results.size(); i++) {
-            readingList.add(results.get(i));
-        }
-        return readingList;
+                        .sort(RealmField.CREATED.key(), Sort.DESCENDING)
+                        .findAll();
+
+        return new ArrayList<>(results);
     }
 
-    public ArrayList<Long> getWeightIdAsArray() {
+    public List<Long> getWeightIdAsArray() {
         List<WeightReading> readings = getWeightReadings();
-        ArrayList<Long> idArray = new ArrayList<Long>();
+        ArrayList<Long> idArray = new ArrayList<>();
         int i;
 
         for (i = 0; i < readings.size(); i++) {
@@ -784,9 +778,9 @@ public class DatabaseHandler {
         return readingArray;
     }
 
-    public ArrayList<String> getWeightReadingDateTimeAsArray() {
+    public List<String> getWeightReadingDateTimeAsArray() {
         List<WeightReading> readings = getWeightReadings();
-        ArrayList<String> datetimeArray = new ArrayList<String>();
+        ArrayList<String> datetimeArray = new ArrayList<>();
         int i;
         DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
@@ -826,20 +820,18 @@ public class DatabaseHandler {
         realm.commitTransaction();
     }
 
-    public ArrayList<CholesterolReading> getCholesterolReadings() {
+    public List<CholesterolReading> getCholesterolReadings() {
         RealmResults<CholesterolReading> results =
                 realm.where(CholesterolReading.class)
-                        .findAllSorted("created", Sort.DESCENDING);
-        ArrayList<CholesterolReading> readingList = new ArrayList<>();
-        for (int i = 0; i < results.size(); i++) {
-            readingList.add(results.get(i));
-        }
-        return readingList;
+                        .sort(RealmField.CREATED.key(), Sort.DESCENDING)
+                        .findAll();
+
+        return new ArrayList<>(results);
     }
 
-    public ArrayList<Long> getCholesterolIdAsArray() {
+    public List<Long> getCholesterolIdAsArray() {
         List<CholesterolReading> readings = getCholesterolReadings();
-        ArrayList<Long> idArray = new ArrayList<Long>();
+        ArrayList<Long> idArray = new ArrayList<>();
         int i;
 
         for (i = 0; i < readings.size(); i++) {
@@ -894,9 +886,9 @@ public class DatabaseHandler {
         return readingArray;
     }
 
-    public ArrayList<String> getCholesterolDateTimeAsArray() {
+    public List<String> getCholesterolDateTimeAsArray() {
         List<CholesterolReading> readings = getCholesterolReadings();
-        ArrayList<String> datetimeArray = new ArrayList<String>();
+        ArrayList<String> datetimeArray = new ArrayList<>();
         int i;
         DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 

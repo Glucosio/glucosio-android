@@ -95,7 +95,7 @@ public class OverviewPresenter {
         return getGlucoseReadingsMonth().size() > depth;
     }
 
-    public ArrayList<A1cEstimate> getA1cEstimateList() {
+    public List<A1cEstimate> getA1cEstimateList() {
         ArrayList<A1cEstimate> a1cEstimateList = new ArrayList<>();
 
         // We don't take this month because A1C is incomplete
@@ -152,11 +152,11 @@ public class OverviewPresenter {
         return glucoseReadings;
     }
 
-    public ArrayList<Double> getA1cReadings() {
+    public List<Double> getA1cReadings() {
         return dB.getHB1ACReadingAsArray();
     }
 
-    public ArrayList<String> getA1cReadingsDateTime() {
+    public List<String> getA1cReadingsDateTime() {
         return dB.getHB1ACDateTimeAsArray();
     }
 
@@ -164,7 +164,7 @@ public class OverviewPresenter {
         return dB.getKetoneReadingAsArray();
     }
 
-    public ArrayList<String> getKetonesReadingsDateTime() {
+    public List<String> getKetonesReadingsDateTime() {
         return dB.getKetoneDateTimeAsArray();
     }
 
@@ -172,7 +172,7 @@ public class OverviewPresenter {
         return dB.getWeightReadingAsArray();
     }
 
-    public ArrayList<String> getWeightReadingsDateTime() {
+    public List<String> getWeightReadingsDateTime() {
         return dB.getWeightReadingDateTimeAsArray();
     }
 
@@ -184,7 +184,7 @@ public class OverviewPresenter {
         return dB.getMaxPressureReadingAsArray();
     }
 
-    public ArrayList<String> getPressureReadingsDateTime() {
+    public List<String> getPressureReadingsDateTime() {
         return dB.getPressureDateTimeAsArray();
     }
 
@@ -192,7 +192,7 @@ public class OverviewPresenter {
         return dB.getTotalCholesterolReadingAsArray();
     }
 
-    public ArrayList<String> getCholesterolReadingsDateTime() {
+    public List<String> getCholesterolReadingsDateTime() {
         return dB.getCholesterolDateTimeAsArray();
     }
 
