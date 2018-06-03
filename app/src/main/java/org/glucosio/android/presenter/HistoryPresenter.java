@@ -23,7 +23,6 @@ package org.glucosio.android.presenter;
 import org.glucosio.android.db.DatabaseHandler;
 import org.glucosio.android.fragment.HistoryFragment;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class HistoryPresenter {
@@ -125,11 +124,11 @@ public class HistoryPresenter {
         return dB.getKetoneReadingAsArray();
     }
 
-    public ArrayList<String> getKetoneDateTime() {
+    public List<String> getKetoneDateTime() {
         return dB.getKetoneDateTimeAsArray();
     }
 
-    public ArrayList<Long> getKetoneId() {
+    public List<Long> getKetoneId() {
         return dB.getKetoneIdAsArray();
     }
 
@@ -137,11 +136,11 @@ public class HistoryPresenter {
         return dB.getKetoneDateTimeAsArray().size();
     }
 
-    public ArrayList<Long> getCholesterolId() {
+    public List<Long> getCholesterolId() {
         return dB.getCholesterolIdAsArray();
     }
 
-    public ArrayList<String> getCholesterolDateTime() {
+    public List<String> getCholesterolDateTime() {
         return dB.getCholesterolDateTimeAsArray();
     }
 
@@ -161,15 +160,15 @@ public class HistoryPresenter {
         return dB.getCholesterolIdAsArray().size();
     }
 
-    public ArrayList<Long> getHB1ACId() {
+    public List<Long> getHB1ACId() {
         return dB.getHB1ACIdAsArray();
     }
 
-    public ArrayList<String> getHB1ACDateTime() {
+    public List<String> getHB1ACDateTime() {
         return dB.getHB1ACDateTimeAsArray();
     }
 
-    public ArrayList<Double> getHB1ACReading() {
+    public List<Double> getHB1ACReading() {
         return dB.getHB1ACReadingAsArray();
     }
 
@@ -181,11 +180,11 @@ public class HistoryPresenter {
         return dB.getPressureReadings().size();
     }
 
-    public ArrayList<String> getPressureDateTime() {
+    public List<String> getPressureDateTime() {
         return dB.getPressureDateTimeAsArray();
     }
 
-    public ArrayList<Long> getPressureId() {
+    public List<Long> getPressureId() {
         return dB.getPressureIdAsArray();
     }
 
@@ -205,11 +204,11 @@ public class HistoryPresenter {
         return dB.getWeightReadingAsArray();
     }
 
-    public ArrayList<String> getWeightDateTime() {
+    public List<String> getWeightDateTime() {
         return dB.getWeightReadingDateTimeAsArray();
     }
 
-    public ArrayList<Long> getWeightId() {
+    public List<Long> getWeightId() {
         return dB.getWeightIdAsArray();
     }
 

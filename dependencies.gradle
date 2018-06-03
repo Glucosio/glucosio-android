@@ -4,40 +4,45 @@ ext.buildConfig = ['compileSdk' : 27,
                    'minSdk'     : 16,
                    'targetSdk'  : 27,
 
-                   'buildTools' : '27.0.2',
+                   'buildTools' : '27.0.3',
 
                    'versionCode': 41,
                    'versionName': '1.4.0']
 
-ext.versions = ['gradle'                  : '4.5',
+ext.versions = ['gradle'                  : '4.7',
 
-                'androidGradlePlugin'     : '3.0.1',
+                'androidGradlePlugin'     : '3.1.2',
                 'coveralsGradlePlugin'    : '2.8.2',
                 'dexcountGradlePlugin'    : '0.8.2',
-                'realmGradlePlugin'       : '4.3.3',
-                'playServicesGradlePlugin': '3.2.0',
+                'realmGradlePlugin'       : '5.1.0',
+                'playServicesGradlePlugin': '4.0.1',
                 'versionsGradlePlugin'    : '0.17.0',
 
-                'androidWearable'         : '2.2.0',
+                'androidWearable'         : '2.3.0',
 
-                'androidJoda'             : '2.9.9.1',
+                'androidJoda'             : '2.9.9.4',
                 'butterKnife'             : '8.8.1',
                 'calligraphy'             : '2.3.0',
                 'expandableHeightListView': '1.0.0',
-                'materialDrawer'          : '6.0.4',
+                'materialDrawer'          : '6.0.7',
                 'mpAndroidChart'          : 'v3.0.3',
 
-                'supportLibrary'          : '27.0.2',
+                'supportLibrary'          : '27.1.1',
 
-                'playServices'            : '11.8.0',
+                'playServicesAnalytics'   : '16.0.0',
+                'playServicesWearable'    : '15.0.1',
+                'playServicesDrive'       : '15.0.1',
+                'playServicesGcm'         : '15.0.1',
+                'firebaseInvites'         : '16.0.0',
+                'firebaseMessanging'      : '17.0.0',
+                'firebaseCrash'           : '16.0.0',
 
                 'assertJAndroid'          : '1.2.0',
-                'mockito'                 : '2.13.0',
-                'robolectric'             : '3.6.1',
+                'mockito'                 : '2.18.3',
+                'robolectric'             : '3.8',
 
-                'espresso'                : '3.0.1',
-                'atsl'                    : '1.0.1',
-
+                'espresso'                : '3.0.2',
+                'atsl'                    : '1.0.2',
 ]
 
 ext.deps = [
@@ -52,10 +57,10 @@ ext.deps = [
 
         'android'    : [
                 'gms'     : [
-                        'analytics': "com.google.android.gms:play-services-analytics:${versions.playServices}",
-                        'drive'    : "com.google.android.gms:play-services-drive:${versions.playServices}",
-                        'gcm'      : "com.google.android.gms:play-services-gcm:${versions.playServices}",
-                        'wearable' : "com.google.android.gms:play-services-wearable:${versions.playServices}",
+                        'analytics': "com.google.android.gms:play-services-analytics:${versions.playServicesAnalytics}",
+                        'drive'    : "com.google.android.gms:play-services-drive:${versions.playServicesDrive}",
+                        'gcm'      : "com.google.android.gms:play-services-gcm:${versions.playServicesGcm}",
+                        'wearable' : "com.google.android.gms:play-services-wearable:${versions.playServicesWearable}",
                 ],
 
                 'support' : [
@@ -82,9 +87,9 @@ ext.deps = [
 
         'google'     : [
                 'firebase': [
-                        'crash'    : "com.google.firebase:firebase-crash:${versions.playServices}",
-                        'invites'  : "com.google.firebase:firebase-invites:${versions.playServices}",
-                        'messaging': "com.google.firebase:firebase-messaging:${versions.playServices}"
+                        'crash'    : "com.google.firebase:firebase-crash:${versions.firebaseCrash}",
+                        'invites'  : "com.google.firebase:firebase-invites:${versions.firebaseInvites}",
+                        'messaging': "com.google.firebase:firebase-messaging:${versions.firebaseMessanging}"
                 ]
         ],
 
