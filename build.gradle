@@ -51,9 +51,6 @@ allprojects {
                 if (details.requested.group == 'com.android.support') {
                     details.useVersion versions.supportLibrary
                 }
-                if (details.requested.group == 'com.google.android.gms') {
-                    details.useVersion versions.playServices
-                }
             }
         }
     }

@@ -30,9 +30,13 @@ ext.versions = ['gradle'                  : '4.5',
                 'supportLibrary'          : '27.1.1',
 
                 'playServices'            : '15.0.2',
+                'playServicesWearable'    : '15.0.0',
+                'playServicesDrive'       : '15.0.0',
+                'playServicesGcm'         : '15.0.0',
+                'playServicesInvites'     : '15.0.0',
 
                 'assertJAndroid'          : '1.2.0',
-                'mockito'                 : '2.18.6',
+                'mockito'                 : '2.18.3',
                 'robolectric'             : '3.8',
 
                 'espresso'                : '3.0.1',
@@ -53,9 +57,9 @@ ext.deps = [
         'android'    : [
                 'gms'     : [
                         'analytics': "com.google.android.gms:play-services-analytics:${versions.playServices}",
-                        'drive'    : "com.google.android.gms:play-services-drive:${versions.playServices}",
-                        'gcm'      : "com.google.android.gms:play-services-gcm:${versions.playServices}",
-                        'wearable' : "com.google.android.gms:play-services-wearable:${versions.playServices}",
+                        'drive'    : "com.google.android.gms:play-services-drive:${versions.playServicesDrive}",
+                        'gcm'      : "com.google.android.gms:play-services-gcm:${versions.playServicesGcm}",
+                        'wearable' : "com.google.android.gms:play-services-wearable:${versions.playServicesWearable}",
                 ],
 
                 'support' : [
@@ -83,7 +87,7 @@ ext.deps = [
         'google'     : [
                 'firebase': [
                         'crash'    : "com.google.firebase:firebase-crash:${versions.playServices}",
-                        'invites'  : "com.google.firebase:firebase-invites:${versions.playServices}",
+                        'invites'  : "com.google.firebase:firebase-invites:${versions.playServicesInvites}",
                         'messaging': "com.google.firebase:firebase-messaging:${versions.playServices}"
                 ]
         ],
