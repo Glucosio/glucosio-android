@@ -137,6 +137,9 @@ dependencies {
     testImplementation deps.robolectric.core
     testImplementation deps.robolectric.shadows
 
+    // This is for Mockito and Realm (TODO: find clean solution)
+    testImplementation 'io.reactivex.rxjava2:rxjava:2.1.14'
+
     // Instrumental Tests
     androidTestImplementation deps.android.test.runner
     androidTestImplementation deps.android.test.rules
