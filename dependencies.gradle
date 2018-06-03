@@ -29,7 +29,7 @@ ext.versions = ['gradle'                  : '4.5',
 
                 'supportLibrary'          : '27.1.1',
 
-                'playServices'            : '15.0.0',
+                'playServices'            : '15.0.2',
 
                 'assertJAndroid'          : '1.2.0',
                 'mockito'                 : '2.18.6',
