@@ -68,8 +68,8 @@ public class AddPressureActivity extends AddReadingActivity {
             PressureReading readingToEdit = presenter.getPressureReadingById(this.getEditId());
 
             // set reading values
-            minPressureTextView.setText(this.numberFormat.format(readingToEdit.getMinReading()));
-            maxPressureTextView.setText(this.numberFormat.format(readingToEdit.getMaxReading()));
+            minPressureTextView.setText(numberFormat.format(readingToEdit.getMinReading()));
+            maxPressureTextView.setText(numberFormat.format(readingToEdit.getMaxReading()));
 
             // set reading time
             Calendar cal = Calendar.getInstance();

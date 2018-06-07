@@ -70,10 +70,10 @@ public class AddCholesterolActivity extends AddReadingActivity {
             setTitle(R.string.title_activity_add_cholesterol_edit);
             CholesterolReading readingToEdit = presenter.getCholesterolReadingById(this.getEditId());
 
+            totalChoTextView.setText(numberFormat.format(readingToEdit.getTotalReading()));
+            LDLChoTextView.setText(numberFormat.format(readingToEdit.getLDLReading()));
+            HDLChoTextView.setText(numberFormat.format(readingToEdit.getHDLReading()));
 
-            totalChoTextView.setText(this.numberFormat.format(readingToEdit.getTotalReading()));
-            LDLChoTextView.setText(this.numberFormat.format(readingToEdit.getLDLReading()));
-            HDLChoTextView.setText(this.numberFormat.format(readingToEdit.getHDLReading()));
             Calendar cal = Calendar.getInstance();
             cal.setTime(readingToEdit.getCreated());
             this.getAddDateTextView().setText(dateTime.getDate(cal));

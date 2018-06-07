@@ -69,7 +69,7 @@ public class AddA1CActivity extends AddReadingActivity {
         if (this.isEditing()) {
             setTitle(R.string.title_activity_add_hb1ac_edit);
             HB1ACReading readingToEdit = presenter.getHB1ACReadingById(getEditId());
-            readingTextView.setText(this.numberFormat.format(readingToEdit.getReading()));
+            readingTextView.setText(numberFormat.format(readingToEdit.getReading()));
             Calendar cal = Calendar.getInstance();
             cal.setTime(readingToEdit.getCreated());
             this.getAddDateTextView().setText(formatDateTime.getDate(cal));
