@@ -255,7 +255,6 @@
     </string-array>
     <string name="menu_support_error1">There isn\'t an email app installed. Please send a mail to hello@glucosio.org</string>
     <string-array name="menu_support_options" translatable="false">
-        <item>@string/menu_support_email</item>
         <item>@string/menu_support_forum</item>
     </string-array>
 

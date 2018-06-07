@@ -415,31 +415,34 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         builder.setItems(getResources().getStringArray(R.array.menu_support_options), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                if (which == 0) {
-                    // Email
-                    Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:hello@glucosio.org"));
-                    boolean activityExists = emailIntent.resolveActivityInfo(getPackageManager(), 0) != null;
 
-                    if (activityExists) {
-                        startActivity(emailIntent);
-                    } else {
-                        showSnackBar(getResources().getString(R.string.menu_support_error1), Snackbar.LENGTH_LONG);
-                    }
-                } else {
-                    // Forum
-                    String url = "http://community.glucosio.org/";
-                    Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    i.setPackage("com.android.chrome");
-                    try {
-                        startActivity(i);
-                    } catch (ActivityNotFoundException e) {
-                        // Chrome is probably not installed
-                        // Try with the default browser
-                        i.setPackage(null);
-                        startActivity(i);
-                    }
+//          E-mail support is no longer an option.
+
+//                if (which == 0) {
+//                    // Email
+//                    Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:hello@glucosio.org"));
+//                    boolean activityExists = emailIntent.resolveActivityInfo(getPackageManager(), 0) != null;
+//
+//                    if (activityExists) {
+//                        startActivity(emailIntent);
+//                    } else {
+//                        showSnackBar(getResources().getString(R.string.menu_support_error1), Snackbar.LENGTH_LONG);
+//                    }
+                // } else {
+                // Forum
+                String url = "http://community.glucosio.org/";
+                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                i.setPackage("com.android.chrome");
+                try {
+                    startActivity(i);
+                } catch (ActivityNotFoundException e) {
+                    // Chrome is probably not installed
+                    // Try with the default browser
+                    i.setPackage(null);
+                    startActivity(i);
                 }
+                //}
             }
         });
         builder.show();
