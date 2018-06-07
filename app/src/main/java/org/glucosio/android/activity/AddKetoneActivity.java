@@ -24,7 +24,6 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import org.glucosio.android.R;
 import org.glucosio.android.db.KetoneReading;
 import org.glucosio.android.presenter.AddKetonePresenter;
@@ -40,7 +39,7 @@ public class AddKetoneActivity extends AddReadingActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_ketone);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.activity_main_toolbar);
+        Toolbar toolbar = findViewById(R.id.activity_main_toolbar);
 
         if (toolbar != null) {
             setSupportActionBar(toolbar);
@@ -54,7 +53,7 @@ public class AddKetoneActivity extends AddReadingActivity {
         this.setPresenter(presenter);
         presenter.setReadingTimeNow();
 
-        readingTextView = (TextView) findViewById(R.id.ketone_add_value);
+        readingTextView = findViewById(R.id.ketone_add_value);
 
         this.createDateTimeViewAndListener();
         this.createFANViewAndListener();
@@ -64,7 +63,7 @@ public class AddKetoneActivity extends AddReadingActivity {
         if (this.isEditing()) {
             setTitle(R.string.title_activity_add_ketone_edit);
             KetoneReading readingToEdit = presenter.getKetoneReadingById(this.getEditId());
-            readingTextView.setText(readingToEdit.getReading() + "");
+            readingTextView.setText(this.numberFormat.format(readingToEdit.getReading()));
             Calendar cal = Calendar.getInstance();
             cal.setTime(readingToEdit.getCreated());
             this.getAddDateTextView().setText(formatDateTime.getDate(cal));
