@@ -17,9 +17,9 @@ import java.util.Locale;
 
 import static org.assertj.android.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyInt;
-import static org.mockito.Matchers.anyString;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
@@ -72,7 +72,7 @@ public class HelloActivityTest extends RobolectricTest {
         when(getLocaleHelper().getLocalesWithTranslation(any(Resources.class))).
                 thenReturn(Lists.newArrayList("nl"));
         when(getLocaleHelper().getDisplayLanguage("nl")).thenReturn("Nederlandse");
-        TestHelloActivity activity = Robolectric.buildActivity(TestHelloActivity.class).create().get();
+        HelloActivity activity = Robolectric.buildActivity(HelloActivity.class).create().get();
         activity.countrySpinner.getSpinner().setSelection(0);
         activity.languageSpinner.setSelection(0);
 
@@ -102,19 +102,5 @@ public class HelloActivityTest extends RobolectricTest {
         d.getButton(DialogInterface.BUTTON_POSITIVE).performClick();
 
         verify(getAnalytics()).reportScreen("Hello Activity");
-    }
-
-
-    public static class TestHelloActivity extends HelloActivity {
-        private boolean recreated;
-
-        @Override
-        public void recreate() {
-            recreated = true;
-        }
-
-        boolean isRecreated() {
-            return recreated;
-        }
     }
 }
