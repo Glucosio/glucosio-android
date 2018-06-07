@@ -1,7 +1,8 @@
 package org.glucosio.android.activity;
 
+import android.content.DialogInterface;
 import android.content.res.Resources;
-
+import android.support.v7.app.AlertDialog;
 import org.assertj.core.util.Lists;
 import org.glucosio.android.RobolectricTest;
 import org.junit.Before;
@@ -9,6 +10,7 @@ import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.robolectric.Robolectric;
+import org.robolectric.shadows.ShadowDialog;
 
 import java.util.Collections;
 import java.util.Locale;
@@ -30,7 +32,7 @@ public class HelloActivityTest extends RobolectricTest {
     private ArgumentCaptor<String> stringCaptor;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         initMocks(this);
 
         when(getLocaleHelper().getDeviceLocale()).thenReturn(new Locale("en"));
@@ -41,7 +43,7 @@ public class HelloActivityTest extends RobolectricTest {
     }
 
     @Test
-    public void ShouldBindView_WhenCreated() throws Exception {
+    public void ShouldBindView_WhenCreated() {
         assertThat(activity.languageSpinner).isNotNull();
         assertThat(activity.countrySpinner).isNotNull();
         assertThat(activity.ageTextView).isNotNull();
@@ -50,7 +52,7 @@ public class HelloActivityTest extends RobolectricTest {
     }
 
     @Test
-    public void ShouldInitLanguageSpinner_WhenCreated() throws Exception {
+    public void ShouldInitLanguageSpinner_WhenCreated() {
         when(getLocaleHelper().getLocalesWithTranslation(any(Resources.class))).
                 thenReturn(Lists.newArrayList("nl", "ru", "ua"));
         when(getLocaleHelper().getDisplayLanguage("nl")).thenReturn("Nederlandse");
@@ -66,7 +68,7 @@ public class HelloActivityTest extends RobolectricTest {
     }
 
     @Test
-    public void ShouldPassNLAsLocale_WhenNLSelected() throws Exception {
+    public void ShouldPassNLAsLocale_WhenNLSelected() {
         when(getLocaleHelper().getLocalesWithTranslation(any(Resources.class))).
                 thenReturn(Lists.newArrayList("nl"));
         when(getLocaleHelper().getDisplayLanguage("nl")).thenReturn("Nederlandse");
@@ -82,7 +84,7 @@ public class HelloActivityTest extends RobolectricTest {
     }
 
     @Test
-    public void ShouldSelectLanguage_WhenCreated() throws Exception {
+    public void ShouldSelectLanguage_WhenCreated() {
         when(getLocaleHelper().getDeviceLocale()).thenReturn(new Locale("nl"));
         when(getLocaleHelper().getLocalesWithTranslation(any(Resources.class))).
                 thenReturn(Lists.newArrayList("nl"));
@@ -92,6 +94,16 @@ public class HelloActivityTest extends RobolectricTest {
 
         assertThat(activity.languageSpinner.getSpinner().getSelectedItem()).isEqualTo("Nederlands");
     }
+
+    @Test
+    public void ShouldReportAnalytics_WhenCreated() {
+        AlertDialog d = (AlertDialog) ShadowDialog.getLatestDialog();
+
+        d.getButton(DialogInterface.BUTTON_POSITIVE).performClick();
+
+        verify(getAnalytics()).reportScreen("Hello Activity");
+    }
+
 
     public static class TestHelloActivity extends HelloActivity {
         private boolean recreated;
