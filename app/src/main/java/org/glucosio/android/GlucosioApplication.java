@@ -29,7 +29,7 @@ import android.support.annotation.VisibleForTesting;
 import org.glucosio.android.activity.A1cCalculatorActivity;
 import org.glucosio.android.activity.HelloActivity;
 import org.glucosio.android.analytics.Analytics;
-import org.glucosio.android.analytics.GoogleAnalytics;
+import org.glucosio.android.analytics.GlucosioGoogleAnalytics;
 import org.glucosio.android.backup.Backup;
 import org.glucosio.android.backup.GoogleDriveBackup;
 import org.glucosio.android.db.DatabaseHandler;
@@ -116,7 +116,7 @@ public class GlucosioApplication extends Application {
     @NonNull
     public Analytics getAnalytics() {
         if (analytics == null) {
-            analytics = new GoogleAnalytics();
+            analytics = new GlucosioGoogleAnalytics();
             analytics.init(this);
         }
 
