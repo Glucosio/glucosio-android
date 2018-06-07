@@ -24,7 +24,6 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import org.glucosio.android.R;
 import org.glucosio.android.db.PressureReading;
 import org.glucosio.android.presenter.AddPressurePresenter;
@@ -41,7 +40,7 @@ public class AddPressureActivity extends AddReadingActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_pressure);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.activity_main_toolbar);
+        Toolbar toolbar = findViewById(R.id.activity_main_toolbar);
 
         if (toolbar != null) {
             setSupportActionBar(toolbar);
@@ -55,8 +54,8 @@ public class AddPressureActivity extends AddReadingActivity {
         setPresenter(presenter);
         presenter.setReadingTimeNow();
 
-        minPressureTextView = (TextView) findViewById(R.id.pressure_add_value_min);
-        maxPressureTextView = (TextView) findViewById(R.id.pressure_add_value_max);
+        minPressureTextView = findViewById(R.id.pressure_add_value_min);
+        maxPressureTextView = findViewById(R.id.pressure_add_value_max);
 
         this.createDateTimeViewAndListener();
         this.createFANViewAndListener();
@@ -69,8 +68,8 @@ public class AddPressureActivity extends AddReadingActivity {
             PressureReading readingToEdit = presenter.getPressureReadingById(this.getEditId());
 
             // set reading values
-            minPressureTextView.setText(new StringBuilder().append(this.numberFormat.format(readingToEdit.getMinReading())).append("").toString());
-            maxPressureTextView.setText(new StringBuilder().append(this.numberFormat.format(readingToEdit.getMaxReading())).append("").toString());
+            minPressureTextView.setText(this.numberFormat.format(readingToEdit.getMinReading()));
+            maxPressureTextView.setText(this.numberFormat.format(readingToEdit.getMaxReading()));
 
             // set reading time
             Calendar cal = Calendar.getInstance();

@@ -24,7 +24,6 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import org.glucosio.android.R;
 import org.glucosio.android.db.CholesterolReading;
 import org.glucosio.android.presenter.AddCholesterolPresenter;
@@ -42,7 +41,7 @@ public class AddCholesterolActivity extends AddReadingActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_cholesterol);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.activity_main_toolbar);
+        Toolbar toolbar = findViewById(R.id.activity_main_toolbar);
 
         if (toolbar != null) {
             setSupportActionBar(toolbar);
@@ -56,9 +55,9 @@ public class AddCholesterolActivity extends AddReadingActivity {
         setPresenter(presenter);
         presenter.setReadingTimeNow();
 
-        totalChoTextView = (TextView) findViewById(R.id.cholesterol_add_value_total);
-        LDLChoTextView = (TextView) findViewById(R.id.cholesterol_add_value_ldl);
-        HDLChoTextView = (TextView) findViewById(R.id.cholesterol_add_value_hdl);
+        totalChoTextView = findViewById(R.id.cholesterol_add_value_total);
+        LDLChoTextView = findViewById(R.id.cholesterol_add_value_ldl);
+        HDLChoTextView = findViewById(R.id.cholesterol_add_value_hdl);
 
         this.createDateTimeViewAndListener();
         this.createFANViewAndListener();
@@ -72,9 +71,9 @@ public class AddCholesterolActivity extends AddReadingActivity {
             CholesterolReading readingToEdit = presenter.getCholesterolReadingById(this.getEditId());
 
 
-            totalChoTextView.setText(new StringBuilder().append(this.numberFormat.format(readingToEdit.getTotalReading())).append("").toString());
-            LDLChoTextView.setText(new StringBuilder().append(this.numberFormat.format(readingToEdit.getLDLReading())).append("").toString());
-            HDLChoTextView.setText(new StringBuilder().append(this.numberFormat.format(readingToEdit.getHDLReading())).append("").toString());
+            totalChoTextView.setText(this.numberFormat.format(readingToEdit.getTotalReading()));
+            LDLChoTextView.setText(this.numberFormat.format(readingToEdit.getLDLReading()));
+            HDLChoTextView.setText(this.numberFormat.format(readingToEdit.getHDLReading()));
             Calendar cal = Calendar.getInstance();
             cal.setTime(readingToEdit.getCreated());
             this.getAddDateTextView().setText(dateTime.getDate(cal));

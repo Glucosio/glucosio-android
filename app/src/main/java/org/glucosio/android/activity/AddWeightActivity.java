@@ -24,7 +24,6 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import org.glucosio.android.R;
 import org.glucosio.android.db.WeightReading;
 import org.glucosio.android.presenter.AddWeightPresenter;
@@ -44,7 +43,7 @@ public class AddWeightActivity extends AddReadingActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_add_weight);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.activity_main_toolbar);
+        Toolbar toolbar = findViewById(R.id.activity_main_toolbar);
 
         if (toolbar != null) {
             setSupportActionBar(toolbar);
@@ -58,8 +57,8 @@ public class AddWeightActivity extends AddReadingActivity {
         this.setPresenter(presenter);
         presenter.setReadingTimeNow();
 
-        readingTextView = (TextView) findViewById(R.id.weight_add_value);
-        TextView unitTextView = (TextView) findViewById(R.id.weight_add_unit_measurement);
+        readingTextView = findViewById(R.id.weight_add_value);
+        TextView unitTextView = findViewById(R.id.weight_add_unit_measurement);
 
         this.createDateTimeViewAndListener();
         this.createFANViewAndListener();
@@ -77,7 +76,7 @@ public class AddWeightActivity extends AddReadingActivity {
             double weightVal = readingToEdit.getReading();
             if (needUnitConversion)
                 weightVal = GlucosioConverter.kgToLb(weightVal);
-            readingTextView.setText(new StringBuilder().append(this.numberFormat.format(weightVal)).append("").toString());
+            readingTextView.setText(this.numberFormat.format(weightVal));
             Calendar cal = Calendar.getInstance();
             cal.setTime(readingToEdit.getCreated());
             this.getAddDateTextView().setText(formatDateTime.getDate(cal));

@@ -24,7 +24,6 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import org.glucosio.android.R;
 import org.glucosio.android.db.HB1ACReading;
 import org.glucosio.android.presenter.AddA1CPresenter;
@@ -41,7 +40,7 @@ public class AddA1CActivity extends AddReadingActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_hb1ac);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.activity_main_toolbar);
+        Toolbar toolbar = findViewById(R.id.activity_main_toolbar);
 
         if (toolbar != null) {
             setSupportActionBar(toolbar);
@@ -55,8 +54,8 @@ public class AddA1CActivity extends AddReadingActivity {
         setPresenter(presenter);
         presenter.setReadingTimeNow();
 
-        readingTextView = (TextView) findViewById(R.id.hb1ac_add_value);
-        unitTextView = (TextView) findViewById(R.id.hb1ac_unit);
+        readingTextView = findViewById(R.id.hb1ac_add_value);
+        unitTextView = findViewById(R.id.hb1ac_unit);
 
         this.createDateTimeViewAndListener();
         this.createFANViewAndListener();
@@ -70,7 +69,7 @@ public class AddA1CActivity extends AddReadingActivity {
         if (this.isEditing()) {
             setTitle(R.string.title_activity_add_hb1ac_edit);
             HB1ACReading readingToEdit = presenter.getHB1ACReadingById(getEditId());
-            readingTextView.setText(new StringBuilder().append(this.numberFormat.format(readingToEdit.getReading())).append("").toString());
+            readingTextView.setText(this.numberFormat.format(readingToEdit.getReading()));
             Calendar cal = Calendar.getInstance();
             cal.setTime(readingToEdit.getCreated());
             this.getAddDateTextView().setText(formatDateTime.getDate(cal));
