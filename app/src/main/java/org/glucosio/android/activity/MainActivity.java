@@ -416,19 +416,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-//          E-mail support is no longer an option.
-
-//                if (which == 0) {
-//                    // Email
-//                    Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:hello@glucosio.org"));
-//                    boolean activityExists = emailIntent.resolveActivityInfo(getPackageManager(), 0) != null;
-//
-//                    if (activityExists) {
-//                        startActivity(emailIntent);
-//                    } else {
-//                        showSnackBar(getResources().getString(R.string.menu_support_error1), Snackbar.LENGTH_LONG);
-//                    }
-                // } else {
                 // Forum
                 String url = "http://community.glucosio.org/";
                 Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
@@ -442,7 +429,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                     i.setPackage(null);
                     startActivity(i);
                 }
-                //}
             }
         });
         builder.show();
