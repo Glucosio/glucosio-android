@@ -93,6 +93,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
 
+    public static final String FROM_DATE_DIALOG_TAG = "fromDateDialog";
+
     private BottomSheetBehavior bottomSheetBehavior;
     private ExportPresenter exportPresenter;
     private RadioButton exportRangeButton;
@@ -492,6 +494,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                             now.get(Calendar.DAY_OF_MONTH)
                     );
                     dpd.getDatePicker().setMaxDate(System.currentTimeMillis());
+                    // We use this tag to determine which date the user has edited
+                    dpd.getDatePicker().setTag(FROM_DATE_DIALOG_TAG);
                     dpd.show();
                 }
             });
@@ -715,16 +719,15 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     @Override
     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
         // Check which dialog set the date
-        if (view.getTag().equals("fromDateDialog")) {
-            exportPresenter.setFrom(year, monthOfYear, dayOfMonth);
+        int monthToShow = monthOfYear + 1;
+        if (String.valueOf(view.getTag()).equals(FROM_DATE_DIALOG_TAG)) {
+            exportPresenter.setFrom(year, monthToShow, dayOfMonth);
 
-            int monthToShow = monthOfYear + 1;
             String date = +dayOfMonth + "/" + monthToShow + "/" + year;
             exportDialogDateFrom.setText(date);
         } else {
-            exportPresenter.setTo(year, monthOfYear, dayOfMonth);
+            exportPresenter.setTo(year, monthToShow, dayOfMonth);
 
-            int monthToShow = monthOfYear + 1;
             String date = +dayOfMonth + "/" + monthToShow + "/" + year;
             exportDialogDateTo.setText(date);
         }
