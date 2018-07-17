@@ -440,15 +440,9 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         builder.setItems(getResources().getStringArray(R.array.menu_backup_options), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                // Backup to Google Drive has been removed because it crashes
+                // It needs to be re-implemented using non-deprecated API
                 if (which == 0) {
-                    if (checkPlayServices()) {
-                        // TODO: Finish backup in next release
-                        Intent intent = new Intent(getApplicationContext(), BackupActivity.class);
-                        startActivity(intent);
-                    } else {
-                        dialog.dismiss();
-                    }
-                } else {
                     // Export to CSV
                     showExportCsvDialog();
                 }
