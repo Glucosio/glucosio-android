@@ -71,7 +71,7 @@ public class ReadingTools {
 
     public static double safeParseDouble(String doubleValue) {
         try {
-            return Double.parseDouble(doubleValue);
+            return NumberFormat.getInstance().parse(doubleValue).doubleValue();
         } catch (Exception e) {
             return 0;
         }

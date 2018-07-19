@@ -126,9 +126,9 @@ public class AddGlucoseActivity extends AddReadingActivity {
 
             String readingString;
             if (presenter.getUnitMeasurement().equals(Constants.Units.MG_DL)) {
-                readingString = String.valueOf(readingToEdit.getReading());
+                readingString = String.valueOf(numberFormat.format(readingToEdit.getReading()));
             } else {
-                readingString = String.valueOf(GlucosioConverter.glucoseToMmolL(readingToEdit.getReading()));
+                readingString = String.valueOf(numberFormat.format(GlucosioConverter.glucoseToMmolL(readingToEdit.getReading())));
             }
 
             readingTextView.setText(readingString);
