@@ -259,7 +259,6 @@
     </string-array>
 
     <string-array name="menu_backup_options" translatable="false">
-        <item>@string/menu_backup_backup</item>
         <item>@string/menu_backup_csv</item>
     </string-array>
 
