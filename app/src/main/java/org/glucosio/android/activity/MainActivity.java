@@ -283,14 +283,12 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
          */
         super.onResume();
 
-        if (viewPager != null) {
+        if (viewPager != null && homePagerAdapter != null) {
             int currentPage = viewPager.getCurrentItem();
             if (currentPage == 1) {  // assumption - history tab is always position 1
-                if (homePagerAdapter != null) {
-                    HistoryFragment historyFragment = homePagerAdapter.getHistoryFragment();
-                    if (historyFragment != null) {
-                        historyFragment.reloadFragmentAdapter();
-                    }
+                HistoryFragment historyFragment = homePagerAdapter.getHistoryFragment();
+                if (historyFragment != null) {
+                    historyFragment.reloadFragmentAdapter();
                 }
             }
         }
