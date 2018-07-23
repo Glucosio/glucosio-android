@@ -71,6 +71,7 @@ import org.glucosio.android.R;
 import org.glucosio.android.adapter.HomePagerAdapter;
 import org.glucosio.android.analytics.Analytics;
 import org.glucosio.android.db.DatabaseHandler;
+import org.glucosio.android.fragment.HistoryFragment;
 import org.glucosio.android.presenter.ExportPresenter;
 import org.glucosio.android.presenter.MainPresenter;
 import org.glucosio.android.tools.LocaleHelper;
@@ -166,6 +167,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             public void onPageScrollStateChanged(int state) {
 
             }
+
         });
 
         FloatingActionButton fabAddReading = findViewById(R.id.activity_main_fab_add_reading);
@@ -270,6 +272,30 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         Analytics analytics = application.getAnalytics();
         Log.i("MainActivity", "Setting screen name: " + "main");
         analytics.reportScreen("Main Activity");
+    }
+
+    @Override
+    protected void onResume() {
+        /* Added this method to ensure that new data is shown after being added by other activities
+           example - while viewing HbA1c history, use calculator to add reading.  The new reading
+           wasn't being shown on the history until the user navigated away from the history page
+           and came back, and it should refresh with data IMHO
+         */
+        super.onResume();
+
+        if (viewPager != null) {
+            int currentPage = viewPager.getCurrentItem();
+            if (currentPage == 1) {  // assumption - history tab is always position 1
+                if (homePagerAdapter != null) {
+                    HistoryFragment historyFragment = homePagerAdapter.getHistoryFragment();
+                    if (historyFragment != null) {
+                        historyFragment.reloadFragmentAdapter();
+                    }
+                }
+            }
+        }
+
+
     }
 
     private void openRemindersActivity() {
@@ -793,4 +819,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private void showErrorDialogPlayServices() {
         Toast.makeText(getApplicationContext(), R.string.activity_main_error_play_services, Toast.LENGTH_SHORT).show();
     }
+
+
 }
