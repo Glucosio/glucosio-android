@@ -289,8 +289,8 @@ public class OverviewFragment extends Fragment implements OverviewView {
             ll1 = new LimitLine((float) minGlucoseValue);
             ll2 = new LimitLine((float) maxGlucoseValue);
         } else {
-            ll1 = new LimitLine((float) GlucosioConverter.glucoseToMmolL(maxGlucoseValue), getString(R.string.reading_high));
-            ll2 = new LimitLine((float) GlucosioConverter.glucoseToMmolL(minGlucoseValue), getString(R.string.reading_low));
+            ll1 = new LimitLine((float) GlucosioConverter.glucoseToMmolL(minGlucoseValue), getString(R.string.reading_low));
+            ll2 = new LimitLine((float) GlucosioConverter.glucoseToMmolL(maxGlucoseValue), getString(R.string.reading_high));
         }
 
         ll1.setLineWidth(0.8f);
