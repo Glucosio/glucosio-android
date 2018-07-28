@@ -44,7 +44,7 @@ public final class GlucosioConverter {
     }
 
     public static double glucoseToMmolL(double mgDl) {
-        return round(mgDl / MG_DL_TO_MMOL_CONSTANT, 1);
+        return round(mgDl / MG_DL_TO_MMOL_CONSTANT, 2);
     }
 
     public static double glucoseToA1C(double mgDl) {

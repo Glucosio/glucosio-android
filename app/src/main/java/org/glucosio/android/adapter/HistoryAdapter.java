@@ -180,7 +180,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
             case 1:
                 idTextView.setText(hb1acIdArray.get(position).toString());
                 if ("percentage".equals(presenter.getA1cUnitMeasurement())) {
-                    readingTextView.setText(hb1acReadingArray.get(position).toString() + " %");
+                    readingTextView.setText(numberFormat.format(hb1acReadingArray.get(position)) + " %");
                 } else {
                     double ifcc = GlucosioConverter.a1cNgspToIfcc(hb1acReadingArray.get(position));
                     String reading = numberFormat.format(ifcc);
@@ -194,16 +194,18 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
             // Cholesterol
             case 2:
                 idTextView.setText(cholesterolIdArray.get(position).toString());
-                String reading = cholesterolTotalArray.get(position).toString();
+                String reading = numberFormat.format(cholesterolTotalArray.get(position));
                 readingTextView.setText(mContext.getString(R.string.mg_dL_value, reading));
                 datetimeTextView.setText(presenter.convertDate(cholesterolDateTimeArray.get(position)));
-                typeTextView.setText("LDL: " + cholesterolLDLArray.get(position) + " - " + "HDL: " + cholesterolHDLArray.get(position));
+                typeTextView.setText("LDL: " + numberFormat.format(cholesterolLDLArray.get(position)) +
+                        " - " + "HDL: " + numberFormat.format(cholesterolHDLArray.get(position)));
                 readingTextView.setTextColor(ContextCompat.getColor(mContext, R.color.glucosio_text_dark));
                 break;
             // Pressure
             case 3:
                 idTextView.setText(pressureIdArray.get(position).toString());
-                readingTextView.setText(pressureMaxArray.get(position).toString() + "/" + pressureMinArray.get(position).toString() + "  mm/Hg");
+                readingTextView.setText(numberFormat.format(pressureMaxArray.get(position)) + "/" +
+                        numberFormat.format(pressureMinArray.get(position)) + "  mm/Hg");
                 datetimeTextView.setText(presenter.convertDate(pressureDateTimeArray.get(position)));
                 typeTextView.setText("");
                 typeTextView.setVisibility(View.GONE);
@@ -212,7 +214,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
             //Ketones
             case 4:
                 idTextView.setText(ketoneIdArray.get(position).toString());
-                readingTextView.setText(ketoneReadingArray.get(position).toString() + " mmol");
+                readingTextView.setText(numberFormat.format(ketoneReadingArray.get(position)) + " mmol");
                 datetimeTextView.setText(presenter.convertDate(ketoneDataTimeArray.get(position)));
                 typeTextView.setText("");
                 typeTextView.setVisibility(View.GONE);

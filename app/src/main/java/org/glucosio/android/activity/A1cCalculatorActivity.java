@@ -37,6 +37,8 @@ import org.glucosio.android.GlucosioApplication;
 import org.glucosio.android.R;
 import org.glucosio.android.presenter.A1CCalculatorPresenter;
 
+import java.text.NumberFormat;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnEditorAction;
@@ -79,7 +81,7 @@ public class A1cCalculatorActivity extends AppCompatActivity {
     @OnTextChanged(value = R.id.activity_converter_a1c_glucose, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
     void glucoseValueChanged(@NonNull final Editable s) {
         convertedA1C = presenter.calculateA1C(s.toString());
-        A1CTextView.setText(String.valueOf(convertedA1C));
+        A1CTextView.setText(String.valueOf(NumberFormat.getInstance().format(convertedA1C)));
     }
 
     @SuppressWarnings("UnusedParameters")

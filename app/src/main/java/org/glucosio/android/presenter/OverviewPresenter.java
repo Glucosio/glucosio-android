@@ -33,6 +33,7 @@ import org.joda.time.Days;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -118,7 +119,7 @@ public class OverviewPresenter {
     }
 
     public String getLastReading() {
-        return dB.getLastGlucoseReading().getReading() + "";
+        return String.valueOf(NumberFormat.getInstance().format(dB.getLastGlucoseReading().getReading()));
     }
 
     public String getLastDateTime() {
