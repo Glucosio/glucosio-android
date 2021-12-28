@@ -21,6 +21,7 @@
 package org.glucosio.android.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
@@ -210,6 +211,7 @@ public class AddGlucoseActivity extends AddReadingActivity {
                     this.getAddDateTextView().getText().toString(), readingTextView.getText().toString(),
                     readingType, notesEditText.getText().toString());
         }
+        isSubmit = true;
     }
 
     public void showErrorMessage() {
@@ -241,5 +243,40 @@ public class AddGlucoseActivity extends AddReadingActivity {
         super.onTimeSet(view, hourOfDay, minute);
         DecimalFormat df = new DecimalFormat("00");
         updateSpinnerTypeHour(Integer.parseInt(df.format(hourOfDay)));
+    }
+
+    private SharedPreferences spGen;
+
+    private boolean isSubmit;
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SharedPreferences.Editor spGenEditor = spGen.edit();
+        if (isSubmit) {
+            spGenEditor.putString("editGlucoseConcentration", "");
+            spGenEditor.putString("editNotes", "");
+            spGenEditor.putString("editTime", "");
+            spGenEditor.putString("editDate", "");
+        } else {
+            spGenEditor.putString("editGlucoseConcentration", readingTextView.getText().toString());
+            spGenEditor.putString("editNotes", notesEditText.getText().toString());
+            spGenEditor.putString("editTime", this.getAddTimeTextView().getText().toString());
+            spGenEditor.putString("editDate", this.getAddDateTextView().getText().toString());
+        }
+        spGenEditor.commit();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        spGen = getSharedPreferences("AddGlucoseActivity", MODE_PRIVATE);
+        readingTextView.setText(spGen.getString("editGlucoseConcentration", ""));
+        notesEditText.setText(spGen.getString("editNotes", ""));
+        TextView addTimeTextView = findViewById(R.id.dialog_add_time);
+        TextView addDateTextView = findViewById(R.id.dialog_add_date);
+        addTimeTextView.setText(spGen.getString("editTime", ""));
+        addDateTextView.setText(spGen.getString("editDate", ""));
+        isSubmit = false;
     }
 }
