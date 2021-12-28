@@ -20,6 +20,7 @@
 
 package org.glucosio.android.activity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
@@ -95,9 +96,45 @@ public class AddPressureActivity extends AddReadingActivity {
             presenter.dialogOnAddButtonPressed(this.getAddTimeTextView().getText().toString(),
                     this.getAddDateTextView().getText().toString(), minPressureTextView.getText().toString(), maxPressureTextView.getText().toString());
         }
+        isSubmit = true;
     }
 
     public void showErrorMessage() {
         Toast.makeText(getApplicationContext(), getString(R.string.dialog_error2), Toast.LENGTH_SHORT).show();
+    }
+
+    private SharedPreferences spGen;
+
+    private boolean isSubmit;
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SharedPreferences.Editor spGenEditor = spGen.edit();
+        if (isSubmit) {
+            spGenEditor.putString("editMinPressure", "");
+            spGenEditor.putString("editMaxPressure", "");
+            spGenEditor.putString("editTime", "");
+            spGenEditor.putString("editDate", "");
+        } else {
+            spGenEditor.putString("editMinPressure", minPressureTextView.getText().toString());
+            spGenEditor.putString("editMaxPressure", maxPressureTextView.getText().toString());
+            spGenEditor.putString("editTime", this.getAddTimeTextView().getText().toString());
+            spGenEditor.putString("editDate", this.getAddDateTextView().getText().toString());
+        }
+        spGenEditor.commit();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        spGen = getSharedPreferences("AddGlucoseActivity", MODE_PRIVATE);
+        minPressureTextView.setText(spGen.getString("editMinPressure", ""));
+        maxPressureTextView.setText(spGen.getString("editMaxPressure", ""));
+        TextView addTimeTextView = findViewById(R.id.dialog_add_time);
+        TextView addDateTextView = findViewById(R.id.dialog_add_date);
+        addTimeTextView.setText(spGen.getString("editTime", ""));
+        addDateTextView.setText(spGen.getString("editDate", ""));
+        isSubmit = false;
     }
 }
