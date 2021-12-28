@@ -20,6 +20,7 @@
 
 package org.glucosio.android.activity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
@@ -100,9 +101,42 @@ public class AddWeightActivity extends AddReadingActivity {
                     this.getAddDateTextView().getText().toString(), readingTextView.getText().toString());
 
         }
+        isSubmit = true;
     }
 
     public void showErrorMessage() {
         Toast.makeText(getApplicationContext(), getString(R.string.dialog_error2), Toast.LENGTH_SHORT).show();
+    }
+
+    private SharedPreferences spGen;
+
+    private boolean isSubmit;
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SharedPreferences.Editor spGenEditor = spGen.edit();
+        if (isSubmit) {
+            spGenEditor.putString("editWeight", "");
+            spGenEditor.putString("editTime", "");
+            spGenEditor.putString("editDate", "");
+        } else {
+            spGenEditor.putString("editWeight", readingTextView.getText().toString());
+            spGenEditor.putString("editTime", this.getAddTimeTextView().getText().toString());
+            spGenEditor.putString("editDate", this.getAddDateTextView().getText().toString());
+        }
+        spGenEditor.commit();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        spGen = getSharedPreferences("AddWeightActivity", MODE_PRIVATE);
+        readingTextView.setText(spGen.getString("editWeight", ""));
+        TextView addTimeTextView = findViewById(R.id.dialog_add_time);
+        TextView addDateTextView = findViewById(R.id.dialog_add_date);
+        addTimeTextView.setText(spGen.getString("editTime", ""));
+        addDateTextView.setText(spGen.getString("editDate", ""));
+        isSubmit = false;
     }
 }
