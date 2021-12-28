@@ -20,6 +20,7 @@
 
 package org.glucosio.android.activity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
@@ -96,9 +97,48 @@ public class AddCholesterolActivity extends AddReadingActivity {
             presenter.dialogOnAddButtonPressed(this.getAddTimeTextView().getText().toString(),
                     this.getAddDateTextView().getText().toString(), totalChoTextView.getText().toString(), LDLChoTextView.getText().toString(), HDLChoTextView.getText().toString());
         }
+        isSubmit = true;
     }
 
     public void showErrorMessage() {
         Toast.makeText(getApplicationContext(), getString(R.string.dialog_error2), Toast.LENGTH_SHORT).show();
+    }
+
+    private SharedPreferences spGen;
+
+    private boolean isSubmit;
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SharedPreferences.Editor spGenEditor = spGen.edit();
+        if (isSubmit) {
+            spGenEditor.putString("editTotalCho", "");
+            spGenEditor.putString("editLDLCho", "");
+            spGenEditor.putString("editHDLCho", "");
+            spGenEditor.putString("editTime", "");
+            spGenEditor.putString("editDate", "");
+        } else {
+            spGenEditor.putString("editTotalCho", totalChoTextView.getText().toString());
+            spGenEditor.putString("editLDLCho", LDLChoTextView.getText().toString());
+            spGenEditor.putString("editHDLCho", HDLChoTextView.getText().toString());
+            spGenEditor.putString("editTime", this.getAddTimeTextView().getText().toString());
+            spGenEditor.putString("editDate", this.getAddDateTextView().getText().toString());
+        }
+        spGenEditor.commit();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        spGen = getSharedPreferences("AddCholesterolActivity", MODE_PRIVATE);
+        totalChoTextView.setText(spGen.getString("editTotalCho", ""));
+        LDLChoTextView.setText(spGen.getString("editLDLCho", ""));
+        HDLChoTextView.setText(spGen.getString("editHDLCho", ""));
+        TextView addTimeTextView = findViewById(R.id.dialog_add_time);
+        TextView addDateTextView = findViewById(R.id.dialog_add_date);
+        addTimeTextView.setText(spGen.getString("editTime", ""));
+        addDateTextView.setText(spGen.getString("editDate", ""));
+        isSubmit = false;
     }
 }
