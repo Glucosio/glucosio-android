@@ -14,11 +14,18 @@ Learn more about the project [here](https://glucosio.org).
  
 ## Mission
 
-Our mission is to help people with diabetes manage their condition by providing free and easy-to-use tools that helps track and analyze important health data. Our goal is to build a modern diabetes app that works for both type 1 and type 2 diabetes. We also wanted to contribute to the open source community and foster connections to help support individuals within the community. 
+Our mission is to help people with diabetes manage their condition by providing free and easy-to-use tools that helps track and analyze important health data. 
+Our goal is to build a modern diabetes app that works for both type 1 and type 2 diabetes. 
+We also wanted to contribute to the open source community and foster connections to help support individuals within the community. 
  
 ## Features 
 
-Glucosio's diabetes tracker makes it easy to log and track personal data, such as blood glucose, cholesterol, and blood pressure. It is designed for both type 1 and type 2 diabetes. The app contains daily, weekly, and monthly graphs to monitor changes over time as well as analysis functions to interpret the data. Reminders can also be set to help users manage their diabetes. Data can be imported and exported to a CSV format. Users have to the option to opt-in sending information for diabetes research anonymously through the app. 
+Glucosio's diabetes tracker makes it easy to log and track personal data, such as blood glucose, cholesterol, and blood pressure. 
+It is designed to work for both type 1 and type 2 diabetes. 
+The app contains daily, weekly, and monthly graphs to monitor changes over time as well as analysis functions to interpret the data. 
+Reminders can also be set to help users manage their diabetes. 
+Data can be imported and exported to a CSV format. 
+Users have to the option to opt-in sending information for diabetes research anonymously through the app. 
  
 ## Build Instructions
  
@@ -33,7 +40,8 @@ Glucosio's diabetes tracker makes it easy to log and track personal data, such a
 
 ## Contributing
 
-Any contributions you make are appreciated and strongly encouraged! Read more about contributing to Glucosio [here](CONTRIBUTING.md).
+Any contributions you make are appreciated and strongly encouraged! 
+Read more about contributing to Glucosio [here](CONTRIBUTING.md).
 
 ## Download
 
@@ -48,7 +56,8 @@ Click the links below to download the app.
 Join our [Community on Google+](https://plus.google.com/communities/117048486613219870727), then [click here](https://play.google.com/apps/testing/org.glucosio.android) to officially join the testing program and gain access to the testing version of the app.
 
 ## Licensing
-Glucosio is licensed under the GNU general public license. For licensing details, look at the [LICENSE](LICENSE) document.
+Glucosio is licensed under the GNU general public license. 
+For licensing details, look at the [LICENSE](LICENSE) document.
 
 ## Test Drive Glucosio Daily
 http://daily.glucosio.org
