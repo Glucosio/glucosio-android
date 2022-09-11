@@ -31,9 +31,13 @@ Glucosio's diabetes tracker makes it easy to log and track personal data, such a
 - Import the project in Android Studio: **File > New > Import Project**.
   Alternatively, from the Welcome screen, select **Import project**.
 
-Read more about contributing to Glucosio [here](CONTRIBUTING.md).
+## Contributing
+
+Any contributions you make are appreciated and strongly encouraged! Read more about contributing to Glucosio [here](CONTRIBUTING.md).
 
 ## Download
+
+Click the links below to download the app.
 
 <a href="https://play.google.com/store/apps/details?id=org.glucosio.android&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-AC-global-none-all-co-pr-py-PartBadges-Oct1515-1" target="_blank">
 <img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Get it on Google Play" height="100"/></a>
